@@ -139,8 +139,8 @@ demoqingniaoDazhaoe2,2,1,0,0,,,,,magicWaterMediume1,0,1.5|demoqingniaoDazhaoe3,,
 demoqingniaoDazhaoe3,4,1,0,0,,,,,,,,,,,,debuffMagicb1,0,,,,1
 bossHundune1,2,1,0,0,,,,,bossHundune2,1,0.15|bossHundune2;0.3|bossHundune2;0.45|bossHundune2;0.6|bossHundune2,,,,,,0,,,,1
 bossHundune2,3,1,0,0,,,,,,,,0,2,0,0,,0,,0,,1
-phydazhaoPreparee1,4,1,1,0,,,,,,,,,,,,phydazhaoPrepareb1,0,,,,1
-magicdazhaoPreparee1,4,1,1,0,,,,,,,,,,,,magicdazhaoPrepareb1,0,,,,1
+phydazhaoPreparee1,4,1,1,0,,,,,,,,,,,,phydazhaoPrepareb1,12345,,,,1
+magicdazhaoPreparee1,4,1,1,0,,,,,,,,,,,,magicdazhaoPrepareb1,12345,,,,1
 bossMinghe18Karong1e1,2,1,0,0,,,,,bossMinghe18Karong1e2,1.85,0.15|bossMinghe18Karong1e2;0.3|bossMinghe18Karong1e2,,,,,,0,,,,1
 bossMinghe18Karong1e2,3,1,0,0,,,,,,,,0,0.667,0,0,,0,,0,,1
 bossMinghe18Karong2e1,1,1,0,0,,,1,bossMinghe18Karong2e2,,,,,,,,,0,,,,1

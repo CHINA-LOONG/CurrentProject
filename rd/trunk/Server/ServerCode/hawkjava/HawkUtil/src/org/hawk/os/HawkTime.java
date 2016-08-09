@@ -48,7 +48,7 @@ public class HawkTime {
 	}
 
 	/**
-	 * 获取系统时间
+	 * 获取时间
 	 * 
 	 * @return
 	 */

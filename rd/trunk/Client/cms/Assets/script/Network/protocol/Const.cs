@@ -101,7 +101,10 @@ namespace PB
       GROUP = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=7)]
-      MONSTER = 7
+      MONSTER = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE", Value=8)]
+      ALLIANCE = 8
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"moneyType")]
@@ -113,29 +116,6 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONEY_COIN", Value=2)]
       MONEY_COIN = 2
-    }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"playerAttr")]
-    public enum playerAttr
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD", Value=1)]
-      GOLD = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"COIN", Value=2)]
-      COIN = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"LEVEL", Value=3)]
-      LEVEL = 3,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EXP", Value=4)]
-      EXP = 4,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE", Value=5)]
-      FATIGUE = 5,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"VIPLEVEL", Value=6)]
-      VIPLEVEL = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -167,7 +147,10 @@ namespace PB
       CHANGE_FAV = 8,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=8)]
-      CHANGE_GOLD_BUY = 8
+      CHANGE_GOLD_BUY = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_PLAYER_CONTRIBUTION", Value=9)]
+      CHANGE_PLAYER_CONTRIBUTION = 9
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]

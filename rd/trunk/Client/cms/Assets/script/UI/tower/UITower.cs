@@ -15,6 +15,7 @@ public class UITower : UIBase
     public GameObject rewardButton;
     public GameObject closeRewardButton;
     public GameObject towerReward;//奖励
+	public Text rewardButtonName;
     public GameObject exitTowerButton;
     public Text rewardTitle;
     public Text towerStageNum;
@@ -22,6 +23,8 @@ public class UITower : UIBase
     public List<GameObject> towerItems;
     public Transform fatherBox;
     public GameObject towerItemOne;
+	public Text towerNext;
+    public GameObject towerNextImage;
     public GameObject towerItemTwo;
     public Transform startVec = null;
     public Transform middleVec = null;
@@ -35,7 +38,6 @@ public class UITower : UIBase
     int currLoopNum = -1;
 	float oneTime = 1f;
 	float twoTime = 2f;
-    int lastStage = -1;
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start()
@@ -44,6 +46,7 @@ public class UITower : UIBase
         EventTriggerListener.Get(closeRewardButton).onClick = StageRewardClick;
         EventTriggerListener.Get(exitTowerButton).onClick = ExitTowerClick;
         rewardTitle.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_reward");
+        rewardButtonName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_reward");
         towerReward.SetActive(false);
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
@@ -74,47 +77,65 @@ public class UITower : UIBase
                 currentFloor = GameDataMgr.Instance.curTowerSiwangFloor;
                 break;
         }
-
+        towerData = StaticDataMgr.Instance.GetTowerData(towerType);
         int towerItemNum = 0;
         TowerItemData towerItemData;
-
         Sprite towerStateImage = null;
+        if (currentFloor >= (towerData.floorList.Count - 5))
+        {
+            towerNextImage.SetActive(false);
+            towerNext.text = "FINISH";
+        }       
         int stageTower = (currentFloor) / 5;
+        if (currentFloor == towerData.floorList.Count)
+            --stageTower;
         towerStageNum.text = "STAGE " + (stageTower + 1);
         //first entry
         loopNum = 0;
-        if (towerID != 0)
+        if ((int)GameDataMgr.Instance.curTowerType != towerType)
         {
-            if (lastStage != stageTower)
-            {
-                loopNum = stageTower - lastStage;
-                SlideTowerItem();
-            }
+            GameDataMgr.Instance.lastStage = -1;
         }
-        towerData = StaticDataMgr.Instance.GetTowerData(towerType);
+        else
+        {
+            if (GameDataMgr.Instance.lastStage != -1)
+            {
+                if (GameDataMgr.Instance.lastStage != stageTower && stageTower > GameDataMgr.Instance.lastStage)
+                {
+                    loopNum = stageTower - GameDataMgr.Instance.lastStage;
+                    SlideTowerItem();
+                }
+            } 	
+        }        	
         for (int i = 0; i < towerData.floorList.Count; i++)
         {
             if ((i / 5) == stageTower || (i / 5) == (stageTower + 1))
             {
                 EventTriggerListener.Get(towerItems[towerItemNum]).onClick = TowerItemClick;
                 towerItemData = towerItems[towerItemNum].GetComponent<TowerItemData>();
-                towerItemData.towerNum.text = (towerItemNum + 1).ToString();
+				towerItemData.towerNum.text = (i + 1).ToString();
                 towerItemData.itemTowerID = towerData.floorList[i];
-                if ((currentFloor - 1) >= i)
+                if (currentFloor == towerData.floorList.Count)
+                {
+                   // towerStageNum.text = "STAGE " + stageTower;
+                    towerItemData.currType = TowerItemType.Item_Type_ok;
+                    towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_cleared");
+                }
+                else if ((currentFloor - 1) >= i)
                 {
                     towerItemData.currType = TowerItemType.Item_Type_ok;
                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_cleared");
                 }
                 else if (i == currentFloor)
                 {
-                     towerItemData.currType = TowerItemType.Item_Type_Curr;
-                     towerItemData.selectedImage.SetActive(true);
-                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_ready");
+                    towerItemData.currType = TowerItemType.Item_Type_Curr;
+                    towerItemData.selectedImage.SetActive(true);
+                    towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_ready");
                 }
                 else if ((towerItemNum + 1) % 5 == 0)
                 {
-                     towerItemData.currType = TowerItemType.Item_Type_end;
-                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_boss");
+                    towerItemData.currType = TowerItemType.Item_Type_end;
+                    towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_boss");
                 }
                 else if ((currentFloor - 1) < i)
                 {
@@ -126,13 +147,14 @@ public class UITower : UIBase
                 towerItemNum++;
             }
         }
-        lastStage = stageTower;
+        GameDataMgr.Instance.lastStage = stageTower;
 
         if (towerID != towerType)
         {
             towerID = towerType;
             ShowReward(towerID);
         }
+        GameDataMgr.Instance.curTowerType = (TowerType)towerType;
     }
 	//---------------------------------------------------------------------------------------------------------------------------------------    
     void SlideTowerItem()
@@ -183,6 +205,7 @@ public class UITower : UIBase
         ItemStaticData itemData;
         InstanceEntry instanceEntry;
         RewardData rewardData;
+		ItemIcon icon = null;
         towerData = StaticDataMgr.Instance.GetTowerData(towerType);
         int rewardNum = 0;
         for (int i = 0; i < towerData.floorList.Count; i++)
@@ -196,8 +219,17 @@ public class UITower : UIBase
                 towerRewardItems[rewardNum].transform.localScale = fatherBox.localScale;
                 towerItem = towerRewardItems[rewardNum].GetComponent<TowerRewardItem>();
                 itemData = StaticDataMgr.Instance.GetItemData(rewardData.itemList[0].protocolData.itemId);
-
-                ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(rewardData.itemList[0].protocolData.itemId, 1), false);
+				if (rewardData.itemList[0].protocolData.type == (int)PB.itemType.ITEM) 
+				{
+					icon = ItemIcon.CreateItemIcon(ItemData.valueof(rewardData.itemList[0].protocolData.itemId, 1), false);
+				}
+				else if (rewardData.itemList[0].protocolData.type == (int)PB.itemType.EQUIP)
+				{
+					EquipData equipData = EquipData.valueof(
+						rewardData.itemList[0].protocolData.id,rewardData.itemList[0].protocolData.itemId,
+						rewardData.itemList[0].protocolData.stage,rewardData.itemList[0].protocolData.level,BattleConst.invalidMonsterID, null);
+					icon = ItemIcon.CreateItemIcon(equipData,false);
+                }
                 icon.transform.SetParent(towerItem.rewardImage.transform, false);
 
                 towerItem.rewardName.text = StaticDataMgr.Instance.GetTextByID(itemData.name) + "x" + rewardData.itemList[0].protocolData.count;
@@ -223,23 +255,23 @@ public class UITower : UIBase
         TowerItemData towerItemData = item.GetComponent<TowerItemData>();
 		if (towerItemData.currType == TowerItemType.Item_Type_Curr)
         {
-            UIAdjustBattleTeam.OpenWith(towerItemData.itemTowerID, 0, InstanceType.Tower);
+            int curTowerFloor = int.Parse(towerItemData.towerNum.text);
+            UIAdjustBattleTeam.OpenWith(towerItemData.itemTowerID, 0, InstanceType.Tower, curTowerFloor);
         }
+		else if(towerItemData.currType == TowerItemType.Item_Type_not || towerItemData.currType == TowerItemType.Item_Type_end)
+		{
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("towerBoss_record_003"),  (int)PB.ImType.PROMPT);
+		}
+		else if (towerItemData.currType == TowerItemType.Item_Type_ok) 
+		{
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("towerBoss_record_002"),  (int)PB.ImType.PROMPT);
+		}
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     void ExitTowerClick(GameObject btn)
     {
         CloseReward();
         UIMgr.Instance.DestroyUI(transform.GetComponent<UITower>());
-    }
-    //---------------------------------------------------------------------------------------------------------------------------------------
-    public void OpenAdjustTeam()
-    {
-        string nextInstance = GameDataMgr.Instance.GetNextTowerFloor();
-        if (nextInstance != null)
-        {
-            UIAdjustBattleTeam.OpenWith(nextInstance, 0, InstanceType.Tower);
-        }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     //TODO: save current towid and laststage to playerdatamanager

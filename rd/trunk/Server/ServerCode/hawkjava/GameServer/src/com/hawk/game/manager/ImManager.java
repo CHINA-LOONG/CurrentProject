@@ -326,8 +326,7 @@ public class ImManager extends HawkAppObj {
 	 * 线程主执行函数
 	 */
 	@Override
-	public boolean onTick() {
-		
+	public boolean onTick(long tickTime) {
 		ImMsg msgObj = null;
 
 		// 推送---------------------------------------------------------------------------------------

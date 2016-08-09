@@ -232,6 +232,22 @@ namespace PB
       get { return _autoAccept; }
       set { _autoAccept = value; }
     }
+    private int _prayCount = default(int);
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int prayCount
+    {
+      get { return _prayCount; }
+      set { _prayCount = value; }
+    }
+    private int _taskCount = default(int);
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"taskCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int taskCount
+    {
+      get { return _taskCount; }
+      set { _taskCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

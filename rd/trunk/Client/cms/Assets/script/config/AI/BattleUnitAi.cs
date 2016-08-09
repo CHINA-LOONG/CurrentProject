@@ -130,10 +130,10 @@ public class BattleUnitAi : MonoBehaviour {
     {
         AiAttackResult attackResult = new AiAttackResult ();
 
-		if ( battleUnit.lazyList.Count < 1)
-		{
-			InitLazyList(battleUnit);
-		}
+		//if ( battleUnit.lazyList.Count < 1)
+		//{
+			//InitLazyList(battleUnit);
+	//	}
 		if (UnitCamp.Enemy == battleUnit.pbUnit.camp && battleUnit.dazhaoList.Count < 1)
 		{
 			InitDazhaoList(battleUnit);

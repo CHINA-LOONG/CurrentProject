@@ -171,7 +171,7 @@ public class HawkAppObj extends HawkListener {
 	 * 
 	 * @return
 	 */
-	public boolean onTick() {
+	public boolean onTick(long tickTime) {
 		// 更新延时对象
 		if (delayManager != null) {
 			delayManager.updateAction();
@@ -179,7 +179,7 @@ public class HawkAppObj extends HawkListener {
 		
 		for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
 			try {
-				entry.getValue().onTick();
+				entry.getValue().onTick(tickTime);
 			} catch (Exception e) {
 				HawkException.catchException(e);
 			}

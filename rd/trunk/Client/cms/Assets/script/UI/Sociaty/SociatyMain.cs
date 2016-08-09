@@ -13,19 +13,22 @@ public enum SociatyContenType:int
 }
 public class SociatyMain : UIBase, TabButtonDelegate
 {
+    public static string ViewName = "SociatyMain";
     public Text title;
     public Button closeButton;
     public TabButtonGroup tabBtnGroup;
+    public RectTransform contentParent;
 
 
     bool isFirst = true;
     SociatyContenType contentType = SociatyContenType.Count;
     SociatyContentBase[] contentPages = new SociatyContentBase[(int)SociatyContenType.Count];
 
-    // Use this for initialization
-    void Start () {
-	
-	}
+    public static void OpenWith(SociatyContenType contentType = SociatyContenType.Infomation)
+    {
+        SociatyMain main = (SociatyMain)UIMgr.Instance.OpenUI_(ViewName);
+        main.SetContentPage(contentType);
+    }
     public override void Init()
     {
         if (isFirst)
@@ -56,7 +59,12 @@ public class SociatyMain : UIBase, TabButtonDelegate
         }
     }
 
-    public  void RefreshUi(SociatyContenType contentType)
+    public  void    SetContentPage(SociatyContenType contentType)
+    {
+        tabBtnGroup.OnChangeItem((int)contentType);
+    }
+
+    private  void RefreshUi(SociatyContenType contentType)
     {
         this.contentType = contentType;
         for(int i = 0; i < contentPages.Length; ++i)
@@ -66,7 +74,8 @@ public class SociatyMain : UIBase, TabButtonDelegate
             {
                 if (subPage == null)
                 {
-                    subPage = SociatyContentBase.CreateWith(contentType);
+                    subPage = SociatyContentBase.CreateWith(contentType, contentParent);
+                    contentPages[i] = subPage;
                 }
                 subPage.gameObject.SetActive(true);
                 subPage.RefreshUI();
@@ -83,7 +92,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
 
     void OnCloseButtonClick()
     {
-
+        UIMgr.Instance.CloseUI_(this);
     }
 }
 

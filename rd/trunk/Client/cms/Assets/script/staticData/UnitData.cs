@@ -60,6 +60,25 @@ public class UnitData
     public string fragmentId;
     public int fragmentCount;
     public string say;
+    public string monsterfounds;
+
+    private List<List<string>> foundList;
+    public List<List<string>> FoundList
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(monsterfounds) && foundList == null)
+            {
+                foundList = new List<List<string>>();
+                string[] items = monsterfounds.Split(',');
+                for (int i = 0; i < items.Length; i++)
+                {
+                    foundList.Add(new List<string>(items[i].Split('_')));
+                }
+            }
+            return foundList;
+        }
+    }
 
     private List<SpellProtoType> spellList=null;
     public List<SpellProtoType> SpellList

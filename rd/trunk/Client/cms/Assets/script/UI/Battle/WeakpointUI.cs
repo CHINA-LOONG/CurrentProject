@@ -10,6 +10,7 @@ public class WeakpointUI : MonoBehaviour
     public List<WpIcon> wpIconList;
 
     public RectTransform tipsRectTrans;
+    public Text wpNameText;
     public Text tipsText;
 
     public Ease outEaseAni;
@@ -26,11 +27,18 @@ public class WeakpointUI : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-	    foreach(var subWpIcon in wpIconList)
+        HideAllWpIcon();
+        contentParetnOldPosition = contentParent.anchoredPosition;
+        Vector2 initPos = new Vector2(contentParetnOldPosition.x - 300, contentParetnOldPosition.y);
+        contentParent.anchoredPosition = initPos;
+    }
+
+    void HideAllWpIcon()
+    {
+        foreach (var subWpIcon in wpIconList)
         {
             subWpIcon.gameObject.SetActive(false);
         }
-        contentParetnOldPosition = contentParent.anchoredPosition;
     }
 
     void    OnEnable()
@@ -60,11 +68,12 @@ public class WeakpointUI : MonoBehaviour
         }
     }
 
-    public  void    RefreshUI(WeakPointGroup wpGroup,bool withAni = false)
+    public  void    RefreshUI(WeakPointGroup wpGroup,bool withAni = true)
     {
         this.wpGroup = wpGroup;
         WeakPointRuntimeData subRealData = null;
         int iconCount = 0;
+        HideAllWpIcon();
         foreach (var subWpData in wpGroup.allWpDic)
         {
             subRealData = subWpData.Value;
@@ -118,10 +127,11 @@ public class WeakpointUI : MonoBehaviour
         }
     }
 
-    public void ShowTips(WpIcon icon,string tips)
+    public void ShowTips(WpIcon icon,string tips,string wpName)
     {
         tipsRectTrans.gameObject.SetActive(true);
         tipsText.text = tips;
+        wpNameText.text = wpName;
         RectTransform iconRt = icon.transform as RectTransform;
         Vector3 iconPosition = UIUtil.GetSpacePos(iconRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
         float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;

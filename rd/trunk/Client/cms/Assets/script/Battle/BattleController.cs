@@ -205,6 +205,7 @@ public class BattleController : MonoBehaviour
             if(changeStep == -1 && MirrorEnegyAttr < 0.001)
             {
                 GameEventMgr.Instance.FireEvent<bool>(GameEventList.SetMirrorModeState, false);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("battle_zhaoyaojing_002"), (int)PB.ImType.PROMPT);
             }
         }
     }

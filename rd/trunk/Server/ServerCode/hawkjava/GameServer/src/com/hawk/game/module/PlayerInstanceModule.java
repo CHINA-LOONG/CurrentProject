@@ -79,6 +79,9 @@ public class PlayerInstanceModule extends PlayerModule {
 	private int curIndex;
 	// 本次塔id
 	private int curTowerId;
+	// 刷新类型掩码，副本开始后如果发生刷新，旧周期开始的副本结算时不影响新周期的数据
+	// 方法在单线程内调用，不需volatile
+	private int refreshMask;
 
 	public PlayerInstanceModule(Player player) {
 		super(player);
@@ -305,7 +308,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		HSTowerEnter protocol = cmd.parseProtocol(HSTowerEnter.getDefaultInstance());
 		int hsCode = cmd.getType();
 		int towerId = protocol.getTowerId();
+		int floor = protocol.getFloor();
 		List<Integer> battleMonsterList = protocol.getBattleMonsterIdList();
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 		TowerCfg towerCfg = HawkConfigManager.getInstance().getConfigByKey(TowerCfg.class, towerId);
 		if (towerCfg == null) {
@@ -313,15 +319,17 @@ public class PlayerInstanceModule extends PlayerModule {
 			return true;
 		}
 
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		if (floor -1 != statisticsEntity.getTowerFloor(towerId)) {
+			sendError(hsCode, Status.instanceError.TOWER_FLOOR);
+			return true;
+		}
 
 		String[] instanceList = towerCfg.getInstanceList();
-		int index = statisticsEntity.getTowerIndex(towerId);
-		if (index + 1 > instanceList.length) {
+		if (floor > instanceList.length) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
 			return true;
 		}
-		String instanceId = instanceList[index];
+		String instanceId = instanceList[floor - 1];
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
 		if (entryCfg == null) {
@@ -994,12 +1002,17 @@ public class PlayerInstanceModule extends PlayerModule {
 				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
 					statisticsEntity.setHardTopIndex(this.curIndex);
 				}
+
+				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
+					statisticsEntity.addHardCountDaily();
+				}
 				statisticsEntity.addHardCount();
-				statisticsEntity.addHardCountDaily();
 			}
 
+			if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
+				statisticsEntity.addInstanceAllCountDaily();
+			}
 			statisticsEntity.addInstanceAllCount();
-			statisticsEntity.addInstanceAllCountDaily();
 			statisticsEntity.notifyUpdate(true);
 
 			response.setStarCount(starCount);
@@ -1045,9 +1058,11 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 胜利
 		if (passBattleCount == this.curBattleList.size()) {
-			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-			statisticsEntity.addTowerIndex(this.curTowerId, 1);
-			statisticsEntity.notifyUpdate(true);
+			if (0 == (this.refreshMask & GsConst.RefreshMask.TOWER)) {
+				StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+				statisticsEntity.addTowerFloor(this.curTowerId, 1);
+				statisticsEntity.notifyUpdate(true);
+			}
 
 			// 奖励
 			AwardItems completeReward = genSettleReward();
@@ -1172,6 +1187,9 @@ public class PlayerInstanceModule extends PlayerModule {
 		return completeReward;
 	}
 
+	/**
+	 * 副本数据是否处于初始状态
+	 */
 	private boolean isCurDataClear() {
 		if (this.curType != 0
 				|| this.curInstanceId != ""
@@ -1180,11 +1198,13 @@ public class PlayerInstanceModule extends PlayerModule {
 				|| this.curMonsterList.isEmpty() == false
 				|| this.curReviveCount != 0
 				|| this.curDifficulty != 0 || this.curChapterId != 0 || this.curIndex != 0
-				|| this.curTowerId != 0) {
+				|| this.curTowerId != 0
+				|| this.refreshMask != 0) {
 			return false;
 		}
 		return true;
 	}
+
 	/**
 	 * 清空副本数据
 	 */
@@ -1199,6 +1219,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curChapterId = 0;
 		this.curIndex = 0;
 		this.curTowerId = 0;
+		this.refreshMask = 0;
 	}
 
 	@Override
@@ -1212,6 +1233,14 @@ public class PlayerInstanceModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// do nothing
+		return true;
+	}
+
+	@Override
+	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+		for (int index : refreshIndexList) {
+			this.refreshMask |= GsConst.PlayerRefreshMask[index];
+		}
 		return true;
 	}
 }

@@ -106,16 +106,6 @@ public class PlayerAllianceModule extends PlayerModule {
 		player.getPlayerData().getPlayerAllianceEntity().setLogoutTime(HawkTime.getSeconds());	
 		return true;
 	}
-	
-	/**
-	 * 更新
-	 * 
-	 * @return
-	 */
-	@Override
-	public boolean onTick() {
-		return super.onTick();
-	}
 
 	/**
 	 * 消息响应

@@ -103,6 +103,7 @@ public class WpIcon : MonoBehaviour
     void OnTouchEnter(GameObject go)
     {
         string tips = null;
+        bool wpShowOff = false;
         switch(wpRealData.wpState)
         {
             case WeakpointState.Hide:
@@ -110,17 +111,29 @@ public class WpIcon : MonoBehaviour
                 break;
             case WeakpointState.Normal1:
                 tips = wpRealData.staticData.state1Tips;
+                wpShowOff = true;
                 break;
             case WeakpointState.Normal2:
                 tips = wpRealData.staticData.state2Tips;
+                wpShowOff = true;
                 break;
+            default:
+                return;
         }
+
+        string tipsmsg = "";
         if(!string.IsNullOrEmpty(tips))
         {
-            ShowoffIcon(true);
-            BattleController.Instance.GetUIBattle().wpUI.ShowTips(this,StaticDataMgr.Instance.GetTextByID(tips));
+            tipsmsg = StaticDataMgr.Instance.GetTextByID(tips);
+        }
+        ShowoffIcon(true);
+        BattleController.Instance.GetUIBattle().wpUI.ShowTips(this, tipsmsg, 
+            StaticDataMgr.Instance.GetTextByID(wpRealData.staticData.name));
+        if (wpShowOff)
+        {
             wpRealData.showoffEffect.Show(true);
         }
+
     }
 
     void OnTouchExit(GameObject go)

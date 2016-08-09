@@ -69,11 +69,10 @@ public class SnapShotManager extends HawkAppObj {
 	}
 
 	@Override
-	public boolean onTick(){
-		long curTime = GsApp.getInstance().getCurrentTime();
-		if(curTime - lastTickTime >= tickPeriodTime){
+	public boolean onTick(long tickTime){
+		if(tickTime - lastTickTime >= tickPeriodTime){
 			logger.info("snapshot resource usage : {}/{}", playerSnapShotMap.size(), SysBasicCfg.getInstance().getMaxPlayerSnapShotQty());
-			lastTickTime = curTime;
+			lastTickTime = tickTime;
 		}
 		return true;
 	}

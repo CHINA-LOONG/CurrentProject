@@ -4,7 +4,7 @@ using System.Collections;
 public class SociatyContentBase : MonoBehaviour
 {
     public virtual void RefreshUI() { }
-    public  static SociatyContentBase CreateWith(SociatyContenType contentType)
+    public  static SociatyContentBase CreateWith(SociatyContenType contentType,RectTransform parent)
     {
         GameObject go = null;
         switch(contentType)
@@ -25,6 +25,8 @@ public class SociatyContentBase : MonoBehaviour
                 go = ResourceMgr.Instance.LoadAsset("SociatyContentOther");
                 break;
         }
+        go.transform.SetParent(parent);
+        go.transform.localScale = new Vector3(1, 1, 1);
         return go.GetComponent<SociatyContentBase>();
     }
 }

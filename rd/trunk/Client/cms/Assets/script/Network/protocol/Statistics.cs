@@ -186,12 +186,12 @@ namespace PB
       get { return _towerId; }
       set { _towerId = value; }
     }
-    private int _index;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int index
+    private int _floor;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"floor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int floor
     {
-      get { return _index; }
-      set { _index = value; }
+      get { return _floor; }
+      set { _floor = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

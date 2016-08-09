@@ -46,6 +46,7 @@ public class MainStageController : MonoBehaviour
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
+        GameDataMgr.Instance.mTowerRefreshed = false;
     }
     //---------------------------------------------------------------------------------------------
     public void OnDisable()
@@ -67,7 +68,7 @@ public class MainStageController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void OnDailyRefresh()
     {
-        RefreshHoleState();
+        RefreshHoleState(true);
     }
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
@@ -109,13 +110,13 @@ public class MainStageController : MonoBehaviour
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry
                     )
                 {
-                    mUITower.OpenAdjustTeam();
+                    UIMgr.Instance.OpenTowerAdjustTeam();
                 }
             }
         }
 
-        RefreshHoleState();
-        RefreshTowerState();
+        //RefreshHoleState();
+        //RefreshTowerState();
         //test only
         //mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
     }
@@ -191,7 +192,7 @@ public class MainStageController : MonoBehaviour
     {
         bool isMouseOnUI = false;
 
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX
         if (Input.GetMouseButtonDown(0))
         {
             isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
@@ -329,7 +330,7 @@ public class MainStageController : MonoBehaviour
 #if UNITY_ANDROID
                 moveLen *= 0.5f;
 #endif
-#if UNITY_IPHONE
+#if UNITY_IOS
                 moveLen *= 0.1f;
 #endif
                 if (moveLen != 0.0f)
@@ -471,19 +472,16 @@ public class MainStageController : MonoBehaviour
             //死亡之塔
             else if (selectedObj == mTowerSiwangObj)
             {
-                GameDataMgr.Instance.curTowerType = TowerType.Tower_Siwang;
                 mUITower = UITower.OpenTower((int)TowerType.Tower_Siwang);
             }
             //试炼之塔
             else if (selectedObj == mTowerShilianObj)
             {
-                GameDataMgr.Instance.curTowerType = TowerType.Tower_Shilian;
                 mUITower = UITower.OpenTower((int)TowerType.Tower_Shilian);
             }
             //绝望之塔
             else if (selectedObj == mTowerJuewangObj)
             {
-                GameDataMgr.Instance.curTowerType = TowerType.Tower_Juewang;
                 mUITower = UITower.OpenTower((int)TowerType.Tower_Juewang);
             }
             //金币洞穴
@@ -538,7 +536,7 @@ public class MainStageController : MonoBehaviour
             {
                 mUIHoleEntry = UIMgr.Instance.OpenUI_("UIHoleEntry") as UIHoleEntry;
                 mUIHoleEntry.SetMainStageControl(this);
-                RefreshHoleState();
+                RefreshHoleState(true);
             }
 
             //TODO: set outside instead of deactive

@@ -270,7 +270,7 @@ public class BattleProcess : MonoBehaviour
                             if (item.type <= (int)PB.itemType.MONSTER_ATTR)
                             {
                                 rewardID = int.Parse(item.itemId);
-                                if (rewardID > (int)PB.playerAttr.COIN)
+                                if (rewardID != (int)PB.changeType.CHANGE_COIN || rewardID != (int)PB.changeType.CHANGE_GOLD)//lixiaofei
                                     continue;
                             }
                             else if (item.type == (int)PB.itemType.ITEM || item.type == (int)PB.itemType.EQUIP)
@@ -840,6 +840,7 @@ public class BattleProcess : MonoBehaviour
 
     public void ReviveSuccess(int reviveCount)
     {
+        BattleController.Instance.MirrorEnegyAttr = GameConfig.Instance.MirrorMaxEnegy;
         lastSwitchTime = -BattleConst.switchPetCD;
         mCurrentReviveCount = reviveCount;
         Action reviveAction = new Action();
@@ -1204,8 +1205,9 @@ public class BattleProcess : MonoBehaviour
 		if (IsHaveDazhaoAction())
 		{
 			isCastDazhao = false;
-			Logger.Log("had a dazhaoAction,can't insert Another!");
-			return;
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(" im_battle_002"), (int)PB.ImType.PROMPT);
+            //Logger.Log("had a dazhaoAction,can't insert Another!");
+            return;
 		}
 		//检测是否有换怪
 		if (IsChangePeting (bo)) 

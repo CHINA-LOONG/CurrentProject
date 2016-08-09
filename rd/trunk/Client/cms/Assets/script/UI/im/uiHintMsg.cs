@@ -46,12 +46,12 @@ public class uiHintMsg : MonoBehaviour {
             hint.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(hintWidth, hintBoxText.preferredHeight);
         }
 
-        hintComponent.showTime = Time.time;
-        hintComponent.SetFadeTime(hintComponent.stopTime + Time.time);
+        hintComponent.showTime = Time.unscaledTime;
+        hintComponent.SetFadeTime(hintComponent.stopTime + Time.unscaledTime);
         if (hintMsg.Count == 1)
         {
             Hint lastHit = hintMsg[hintMsg.Count - 1].GetComponent<Hint>();
-            lastHit.SetFadeTime(Time.time);
+            lastHit.SetFadeTime(Time.unscaledTime);
             hintComponent.SetFadeTime(hintComponent.stopTime + lastHit.endTime);
             hintComponent.showTime = lastHit.endTime;
         }

@@ -95,7 +95,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				}
 
 			} else if (0 != (mask & GsConst.RefreshMask.TOWER)) {
-				statisticsEntity.clearTowerIndexMap();
+				statisticsEntity.clearTowerFloorMap();
 				statisticsEntity.notifyUpdate(true);
 				if (false == onLogin) {
 					player.getPlayerData().syncMonthlyRefreshInfo();

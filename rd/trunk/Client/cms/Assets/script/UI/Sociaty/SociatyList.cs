@@ -36,7 +36,7 @@ public class SociatyList : UIBase
     
     void    OnCreateButtonClick()
     {
-
+        CreateSociaty.Open();
     }
 
     void OnSearchButtonClick()

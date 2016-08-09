@@ -49,7 +49,7 @@ message HoleState
 message TowerState
 {
 	required int32 towerId = 1;
-	required int32 index = 2;
+	required int32 floor = 2;
 }
 
 // protocol-----------------------------------------------------

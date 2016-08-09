@@ -9542,6 +9542,16 @@ public final class Instance {
      */
     int getTowerId();
 
+    // required int32 floor = 2;
+    /**
+     * <code>required int32 floor = 2;</code>
+     */
+    boolean hasFloor();
+    /**
+     * <code>required int32 floor = 2;</code>
+     */
+    int getFloor();
+
     // repeated int32 battleMonsterId = 3;
     /**
      * <code>repeated int32 battleMonsterId = 3;</code>
@@ -9616,10 +9626,15 @@ public final class Instance {
               towerId_ = input.readInt32();
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              floor_ = input.readInt32();
+              break;
+            }
             case 24: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000004;
               }
               battleMonsterId_.add(input.readInt32());
               break;
@@ -9627,9 +9642,9 @@ public final class Instance {
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
                 battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
                 battleMonsterId_.add(input.readInt32());
@@ -9645,7 +9660,7 @@ public final class Instance {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
         }
         this.unknownFields = unknownFields.build();
@@ -9696,6 +9711,22 @@ public final class Instance {
       return towerId_;
     }
 
+    // required int32 floor = 2;
+    public static final int FLOOR_FIELD_NUMBER = 2;
+    private int floor_;
+    /**
+     * <code>required int32 floor = 2;</code>
+     */
+    public boolean hasFloor() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 floor = 2;</code>
+     */
+    public int getFloor() {
+      return floor_;
+    }
+
     // repeated int32 battleMonsterId = 3;
     public static final int BATTLEMONSTERID_FIELD_NUMBER = 3;
     private java.util.List<java.lang.Integer> battleMonsterId_;
@@ -9721,6 +9752,7 @@ public final class Instance {
 
     private void initFields() {
       towerId_ = 0;
+      floor_ = 0;
       battleMonsterId_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -9729,6 +9761,10 @@ public final class Instance {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasTowerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFloor()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9741,6 +9777,9 @@ public final class Instance {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, towerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, floor_);
       }
       for (int i = 0; i < battleMonsterId_.size(); i++) {
         output.writeInt32(3, battleMonsterId_.get(i));
@@ -9757,6 +9796,10 @@ public final class Instance {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, towerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, floor_);
       }
       {
         int dataSize = 0;
@@ -9889,8 +9932,10 @@ public final class Instance {
         super.clear();
         towerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        battleMonsterId_ = java.util.Collections.emptyList();
+        floor_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        battleMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -9923,9 +9968,13 @@ public final class Instance {
           to_bitField0_ |= 0x00000001;
         }
         result.towerId_ = towerId_;
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.floor_ = floor_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
           battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.battleMonsterId_ = battleMonsterId_;
         result.bitField0_ = to_bitField0_;
@@ -9947,10 +9996,13 @@ public final class Instance {
         if (other.hasTowerId()) {
           setTowerId(other.getTowerId());
         }
+        if (other.hasFloor()) {
+          setFloor(other.getFloor());
+        }
         if (!other.battleMonsterId_.isEmpty()) {
           if (battleMonsterId_.isEmpty()) {
             battleMonsterId_ = other.battleMonsterId_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureBattleMonsterIdIsMutable();
             battleMonsterId_.addAll(other.battleMonsterId_);
@@ -9963,6 +10015,10 @@ public final class Instance {
 
       public final boolean isInitialized() {
         if (!hasTowerId()) {
+          
+          return false;
+        }
+        if (!hasFloor()) {
           
           return false;
         }
@@ -10021,12 +10077,45 @@ public final class Instance {
         return this;
       }
 
+      // required int32 floor = 2;
+      private int floor_ ;
+      /**
+       * <code>required int32 floor = 2;</code>
+       */
+      public boolean hasFloor() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 floor = 2;</code>
+       */
+      public int getFloor() {
+        return floor_;
+      }
+      /**
+       * <code>required int32 floor = 2;</code>
+       */
+      public Builder setFloor(int value) {
+        bitField0_ |= 0x00000002;
+        floor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 floor = 2;</code>
+       */
+      public Builder clearFloor() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        floor_ = 0;
+        onChanged();
+        return this;
+      }
+
       // repeated int32 battleMonsterId = 3;
       private java.util.List<java.lang.Integer> battleMonsterId_ = java.util.Collections.emptyList();
       private void ensureBattleMonsterIdIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>(battleMonsterId_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
          }
       }
       /**
@@ -10082,7 +10171,7 @@ public final class Instance {
        */
       public Builder clearBattleMonsterId() {
         battleMonsterId_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -12623,15 +12712,15 @@ public final class Instance {
       "(\005\"J\n\017HSChapterBoxRet\022\021\n\tchapterId\030\001 \002(\005" +
       "\022\022\n\ndifficulty\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"J" +
       "\n\013HSHoleEnter\022\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanc" +
-      "eId\030\002 \002(\t\022\027\n\017battleMonsterId\030\003 \003(\005\"8\n\014HS" +
-      "TowerEnter\022\017\n\007towerId\030\001 \002(\005\022\027\n\017battleMon" +
-      "sterId\030\003 \003(\005\"C\n\024HSGuildInstanceEnter\022\022\n\n",
-      "instanceId\030\001 \002(\t\022\027\n\017battleMonsterId\030\002 \003(" +
-      "\005\"\022\n\020HSInstanceAssist\"0\n\023HSInstanceAssis" +
-      "tRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSIns" +
-      "tanceOpenCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSIn" +
-      "stanceOpenCardRetB\030\n\026com.hawk.game.proto" +
-      "col"
+      "eId\030\002 \002(\t\022\027\n\017battleMonsterId\030\003 \003(\005\"G\n\014HS" +
+      "TowerEnter\022\017\n\007towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002" +
+      "(\005\022\027\n\017battleMonsterId\030\003 \003(\005\"C\n\024HSGuildIn",
+      "stanceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battl" +
+      "eMonsterId\030\002 \003(\005\"\022\n\020HSInstanceAssist\"0\n\023" +
+      "HSInstanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t.HS" +
+      "Assist\"\'\n\022HSInstanceOpenCard\022\021\n\topenCoun" +
+      "t\030\001 \002(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026com." +
+      "hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12733,7 +12822,7 @@ public final class Instance {
           internal_static_HSTowerEnter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSTowerEnter_descriptor,
-              new java.lang.String[] { "TowerId", "BattleMonsterId", });
+              new java.lang.String[] { "TowerId", "Floor", "BattleMonsterId", });
           internal_static_HSGuildInstanceEnter_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_HSGuildInstanceEnter_fieldAccessorTable = new

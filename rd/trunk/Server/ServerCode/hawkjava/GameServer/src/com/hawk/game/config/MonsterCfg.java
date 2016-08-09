@@ -40,6 +40,7 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final int disposition = 0;
 	protected final String closeUp = null;
 	protected final String say = null;
+	protected final String monsterfounds = null;
 
 	// assemble
 	protected boolean canEvolve;

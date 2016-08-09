@@ -132,10 +132,10 @@ public class BuilderUtil {
 			builder.addHoleState(holeState);
 		}
 
-		for (Entry<Integer, Integer> entry : statisticsEntity.getTowerIndexMap().entrySet()) {
+		for (Entry<Integer, Integer> entry : statisticsEntity.getTowerFloorMap().entrySet()) {
 			TowerState.Builder towerState = TowerState.newBuilder();
 			towerState.setTowerId(entry.getKey());
-			towerState.setIndex(entry.getValue());
+			towerState.setFloor(entry.getValue());
 
 			builder.addTowerState(towerState);
 		}

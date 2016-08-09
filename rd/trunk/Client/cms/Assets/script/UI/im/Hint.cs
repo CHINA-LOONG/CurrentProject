@@ -18,19 +18,20 @@ public class Hint : MonoBehaviour
     public List<GameObject> ownedList;
     void Update()
     {
-        if (Time.time >= showTime)
+        if (Time.unscaledTime >= showTime)
         {
             GameObject hint = transform.FindChild("Image").gameObject;
             hint.SetActive(true);
         }
 
-        if (Time.time >= fadeTime && beginFade == false)
+        if (Time.unscaledTime >= fadeTime && beginFade == false)
         {
             beginFade = true;
             battleTitleTw = gameObject.transform.DOLocalMoveY(100, gradualTime);
-            gameObject.transform.DOScale(0, gradualTime);
-            bak.DOColor(new Color(0, 0, 0, 0), gradualTime);
-            text.DOColor(new Color(0, 0, 0, 0), gradualTime);
+            battleTitleTw.SetUpdate(true);
+            gameObject.transform.DOScale(0, gradualTime).SetUpdate(true);
+            bak.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
+            text.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
             battleTitleTw.OnComplete(End);
         }
     }

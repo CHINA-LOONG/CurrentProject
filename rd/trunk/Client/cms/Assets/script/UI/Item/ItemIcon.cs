@@ -16,17 +16,17 @@ public class ItemIcon : MonoBehaviour
 		TypeCount
 	}
 
-	#region ----------------Create Method
+    #region ----------------Create Method
 
-    public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true)
+    public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true, bool showGetby = false)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
         ItemIcon itemIcon = go.GetComponent<ItemIcon>();
-        itemIcon.RefreshWithItemInfo(itemInfo,showTips);
+        itemIcon.RefreshWithItemInfo(itemInfo, showTips, showGetby);
         return itemIcon;
     }
 
-    public static ItemIcon CreateItemIcon(EquipData equipInfo, bool showTips = true)
+    public static ItemIcon CreateItemIcon(EquipData equipInfo, bool showTips = true, bool showGetby = false)
 	{
 		GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
 		ItemIcon itemIcon = go.GetComponent<ItemIcon>();
@@ -50,6 +50,7 @@ public class ItemIcon : MonoBehaviour
     }
 
 	private	IconType	iconType;
+    private bool showGetby;
     ItemData itemInfo;
 
     EquipData equipInfo;
@@ -78,10 +79,11 @@ public class ItemIcon : MonoBehaviour
 
 	#region --------------public接口----------------------
 
-    public bool RefreshWithItemInfo(ItemData itemInfo, bool showTips = true)
+    public bool RefreshWithItemInfo(ItemData itemInfo, bool showTips = true, bool showGetby = false)
     {
         ShowTips = showTips;
         string itemStaticId = itemInfo.itemId;
+        this.showGetby = showGetby;
 
         ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData(itemStaticId);
         if (null == itemStaticData)
@@ -94,10 +96,11 @@ public class ItemIcon : MonoBehaviour
         return true;
     }
 
-	public	bool	RefreshWithEquipInfo(EquipData	equipInfo, bool showTips = true)
+	public	bool	RefreshWithEquipInfo(EquipData	equipInfo, bool showTips = true, bool showGetby = false)
 	{
 		ShowTips = showTips;
-		ItemStaticData itemStaticData =  StaticDataMgr.Instance.GetItemData (equipInfo.equipId);
+        this.showGetby = showGetby;
+        ItemStaticData itemStaticData =  StaticDataMgr.Instance.GetItemData (equipInfo.equipId);
 		if (null == itemStaticData)
 			return false;
 
@@ -242,13 +245,12 @@ public class ItemIcon : MonoBehaviour
         if(iconType == IconType.Equip)
         {
             UIEquipDetails.openEquipTips(equipInfo);
-            return;
         }
         else
         {
             itemStaticId = itemInfo.itemId;
+            UIPropTips tips = UIPropTips.openPropTips(itemStaticId, showGetby);
         }
-        UIPropTips tips = UIPropTips.openPropTips(itemStaticId);
     }
 
 }

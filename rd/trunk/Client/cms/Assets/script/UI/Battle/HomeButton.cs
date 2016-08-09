@@ -15,6 +15,11 @@ public class HomeButton : MonoBehaviour
 
 	public HomeButtonDelegate onClick;
 
+    public bool useDefault;
+    public Color textNormalColor= ColorConst.text_tabColor_normal;
+    public Color textSelectColor= ColorConst.text_tabColor_select;
+    public Color outlineNormalColor=ColorConst.outline_tabColor_normal;
+    public Color outlineSelectColor=ColorConst.outline_tabColor_select;
     private Text text;
     public Text Text
     {
@@ -113,11 +118,11 @@ public class HomeButton : MonoBehaviour
 		}
         if (Text!=null)
         {
-            Text.color = (isOn ? ColorConst.text_tabColor_select : ColorConst.text_tabColor_normal);
+            Text.color = (isOn ? textSelectColor : textNormalColor);
         }
         if (Outline!=null)
         {
-            Outline.effectColor = (isOn ? ColorConst.outline_tabColor_select : ColorConst.outline_tabColor_normal);
+            Outline.effectColor = (isOn ? outlineSelectColor : outlineNormalColor);
         }
 	}
 

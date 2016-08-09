@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 
-public class UIMonsterCompose : UIBase
+public class UIMonsterCompose : UIBase,TabButtonDelegate
 {
     public static string ViewName = "UIMonsterCompose";
 
@@ -25,9 +25,28 @@ public class UIMonsterCompose : UIBase
     public Button btnPrevious;
     public Button btnNext;
     public Button btnClose;
-
-
+    
     public ImageView imageView;
+
+    public Transform tipsContent;
+    //public Text text_GetBy;
+    private FoundItem[] foundItems = new FoundItem[3];
+    private TabButtonGroup tabGroup;
+    public TabButtonGroup TabGroup
+    {
+        get
+        {
+            if (tabGroup == null)
+            {
+                tabGroup = GetComponentInChildren<TabButtonGroup>();
+                tabGroup.InitWithDelegate(this);
+            }
+            return tabGroup;
+        }
+    }
+    public Text text_Tab1;
+    public Text text_Tab2;
+    private int selIndex = -1;
 
     [Serializable]
     public class AttributePanel
@@ -45,6 +64,7 @@ public class UIMonsterCompose : UIBase
         public Text textSPD;
     }
     public AttributePanel attrPanel;
+
     public Transform spellParent;
     private SpellIcon[] spellIcons = new SpellIcon[5];
     public Transform spellTipsParent;
@@ -68,7 +88,6 @@ public class UIMonsterCompose : UIBase
     public override void Init()
     {
     }
-
     public override void Clean()
     {
         imageView.CleanImageView();//关闭时释放模型资源
@@ -93,6 +112,9 @@ public class UIMonsterCompose : UIBase
         textName.color = ColorConst.GetStageTextColor(1);
         textName.GetComponent<Outline>().effectColor = ColorConst.GetStageOutLineColor(1);
 
+        //text_GetBy.text = StaticDataMgr.Instance.GetTextByID("handbook_huodeway");
+        text_Tab1.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
+        text_Tab2.text = StaticDataMgr.Instance.GetTextByID("item_type_chip");
     }
 
     public void SetTypeList(CollectUnit unit, List<CollectUnit> unitList)
@@ -143,8 +165,67 @@ public class UIMonsterCompose : UIBase
         textCommon.text = comCount.ToString();
 
         RefreshSpell(CurData.unit.SpellList);
+
+        if (selIndex != 0)
+        {
+            TabGroup.OnChangeItem(0);
+        }
+        else
+        {
+            RefreshFoundTips(selIndex);
+        }
+    }
+    #region GetByTips
+    public void OnTabButtonChanged(int index)
+    {
+        selIndex = index;
+        RefreshFoundTips(index);
+    }
+    void RefreshFoundTips(int index)
+    {
+        List<List<string>> foundList;
+        if (index==0)
+        {
+            foundList = CurData.unit.FoundList;
+        }
+        else
+        {
+            foundList = StaticDataMgr.Instance.GetItemData(CurData.unit.fragmentId).FoundList;
+        }
+        if (foundList.Count>foundItems.Length)
+        {
+            Logger.LogError("配置获取途径有错误");
+        }
+        for (int i = 0; i < foundItems.Length; i++)
+        {
+            FoundItem fountItem = foundItems[i];
+            if (i>=foundList.Count)
+            {
+                if (fountItem != null)
+                {
+                    fountItem.gameObject.SetActive(false);
+                }
+                continue;
+            }
+            else
+            {
+                if (fountItem != null)
+                {
+                    fountItem.gameObject.SetActive(true);
+                    fountItem.ReLoadData(foundList[i]);
+                }
+                else
+                {
+                    foundItems[i] = FoundItem.CreateItem(foundList[i]);
+                    UIUtil.SetParentReset(foundItems[i].transform, tipsContent);
+                }
+            }
+        }
     }
 
+    #endregion
+
+    #region spell
     void RefreshSpell(List<SpellProtoType> spellList)
     {
         int spellCount = 0; //最大显示5个
@@ -183,7 +264,7 @@ public class UIMonsterCompose : UIBase
             }
         }
     }
-
+    #endregion
     public void OnPointerEnter(GameObject go)
     {
         //Logger.LogError ("--------" + test++);
@@ -375,5 +456,5 @@ public class UIMonsterCompose : UIBase
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadUseFragmentNotify);
         Refresh();
     }
-    
+
 }

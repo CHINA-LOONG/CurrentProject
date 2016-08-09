@@ -233,7 +233,7 @@ public class GsApp extends HawkApp {
 		AllianceManager.getInstance().init();
 
 		//开机刷新一次
-		onRefresh();
+		onRefresh(HawkTime.getMillisecond());
 
 		// 快照缓存对象初始
 		HawkLog.logPrintln("init snapshot manager......");
@@ -304,14 +304,14 @@ public class GsApp extends HawkApp {
 	 * 帧更新
 	 */
 	@Override
-	public boolean onTick() {
+	public boolean onTick(long tickTime) {
 		// 首先刷新全局数据
 		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
 			tickIndex = 0;
-			onRefresh();
+			onRefresh(tickTime);
 		}
 
-		if (super.onTick()) {
+		if (super.onTick(tickTime)) {
 			// 显示服务器信息
 			ServerData.getInstance().showServerInfo();
 			return true;
@@ -733,8 +733,8 @@ public class GsApp extends HawkApp {
 	/**
 	 * 刷新全局数据
 	 */
-	private void onRefresh() {
-		Calendar curTime = HawkTime.getCalendar();
+	private void onRefresh(long refreshTime) {
+		Calendar curTime = HawkTime.getCalendar(refreshTime);
 
 		// 洞最大刷新时间
 		class HoleRefreshMaxTime {

@@ -45,16 +45,16 @@ public class UIHole : UIBase
             instEntry = StaticDataMgr.Instance.GetInstanceEntry(holeData.difficultyList[i]);
             vitalityNum[i] = instEntry.fatigue;
             difficultyObjs.Add(ResourceMgr.Instance.LoadAsset("holeItem"));
-            EventTriggerListener.Get(difficultyObjs[i]).onClick = HoleItemClick;
-			difficultyObjs[i].transform.SetParent(fatherBox, false);
+            ScrollViewEventListener.Get(difficultyObjs[i]).onClick = HoleItemClick;
+            difficultyObjs[i].transform.SetParent(fatherBox, false);
             holeItemData = difficultyObjs[i].GetComponent<HoleItemData>();
             if (i >= 0 && i < 4)
             {
                 for (int j = 0; j < 3 - i; j++)
                 {
-                     holeItemData.difficulty[j].SetActive(false);
+                    holeItemData.difficulty[j].SetActive(false);
                 }
-                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou1");                
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou1");
             }
             else if (i >= 4 && i < 8)
             {
@@ -62,7 +62,7 @@ public class UIHole : UIBase
                 {
                     holeItemData.difficulty[j].SetActive(false);
                 }
-                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou2");  
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou2");
             }
             else if (i >= 8)
             {
@@ -70,7 +70,7 @@ public class UIHole : UIBase
                 {
                     holeItemData.difficulty[j].SetActive(false);
                 }
-                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou3");  
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou3");
             }
             holeItemData.difficultyImage.sprite = difficultyImageAsset;
             holeItemData.difficultyImage.SetNativeSize();
@@ -97,8 +97,27 @@ public class UIHole : UIBase
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     void HoleItemClick(GameObject bnt)
-    {   
-		HoleItemData holeItemData = bnt.GetComponent<HoleItemData>();
+    {
+        HoleItemData holeItemData = bnt.GetComponent<HoleItemData>();
+        if (GameDataMgr.Instance.PlayerDataAttr.HuoliAttr < int.Parse(holeItemData.vitalityNumText.text))
+        {
+			UseHuoLi.Open();
+            return;
+        }
+
+        int holeCount = GameDataMgr.Instance.mHoleStateList.Count;
+        for (int i = 0; i < holeCount; ++i)
+        {
+            if (GameDataMgr.Instance.mHoleStateList[i].holeId == mCurrentHoleType)
+            {
+                if (GameDataMgr.Instance.mHoleStateList[i].isOpen == false)
+                {
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("tower_record_004"), (int)PB.ImType.PROMPT);
+                    return;
+                }
+            }
+        }
+
         if (holeItemData.holeLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("tower_record_003"), holeItemData.holeLevel), (int)PB.ImType.PROMPT);

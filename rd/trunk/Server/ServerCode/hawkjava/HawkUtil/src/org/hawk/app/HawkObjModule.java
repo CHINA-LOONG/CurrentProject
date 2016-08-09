@@ -38,7 +38,7 @@ public class HawkObjModule extends HawkListener {
 	 * 
 	 * @return
 	 */
-	public boolean onTick() {
+	public boolean onTick(long tickTime) {
 		return true;
 	}
 

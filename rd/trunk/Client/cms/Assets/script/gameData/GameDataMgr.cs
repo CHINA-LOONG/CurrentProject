@@ -11,14 +11,18 @@ public class GameDataMgr : MonoBehaviour
 
     //some global viriable
     //TODO: move to playerdata?
+    public int lastStage = -1;
     public float mainStageRotAngle = 0.0f;
     public int curInstanceType;//当前副本类型
     public TowerType curTowerType;//当前通天塔类型
-    public int curTowerShilianFloor;//试炼塔层数
-    public int curTowerJuewangFloor;//绝望塔层数
-    public int curTowerSiwangFloor;//死亡塔层数
+    public int curTowerShilianFloor = 0;//试炼塔层数
+    public int curTowerJuewangFloor = 0;//绝望塔层数
+    public int curTowerSiwangFloor = 0;//死亡塔层数
     public HoleType curHoleType;//当前洞类型
     public List<PB.HoleState> mHoleStateList;// = new List<PB.HoleState>();
+    public bool mHoleInvalidate = false;
+    public bool mTowerInvalidate = false;
+    public bool mTowerRefreshed = false;
     //public List<PB.TowerState> mTowerStateList;
 
     bool mGoldMaxHinted = false;
@@ -88,6 +92,16 @@ public class GameDataMgr : MonoBehaviour
             return huoliRestore;
         }
     }
+
+    [SerializeField]
+    SociatyDataMgr sociatyDataMgr;
+    public SociatyDataMgr SociatyDataMgrAttr
+    {
+        get
+        {
+            return sociatyDataMgr;
+        }
+    }
     
 
     //---------------------------------------------------------------------------------------------
@@ -112,6 +126,10 @@ public class GameDataMgr : MonoBehaviour
         GameObject huoliGo = new GameObject("HuoliRestore");
         huoliGo.transform.SetParent(transform);
         huoliRestore = huoliGo.AddComponent<HuoliRestore>();
+
+        GameObject sociatyGo = new GameObject("SociatyDataMgr");
+        sociatyGo.transform.SetParent(transform);
+        sociatyDataMgr = sociatyGo.AddComponent<SociatyDataMgr>();
 
         BindListener();
     }
@@ -169,8 +187,35 @@ public class GameDataMgr : MonoBehaviour
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
+    public void OnBattleStart()
+    {
+        if (mHoleInvalidate == true)
+        {
+            mHoleInvalidate = false;
+            return;
+        }
+
+        if (curInstanceType == (int)InstanceType.Hole)
+        {
+            for (int i = 0; i < mHoleStateList.Count; ++i)
+            {
+                if (mHoleStateList[i].holeId == (int)curHoleType)
+                {
+                    ++mHoleStateList[i].countDaily;
+                    break;
+                }
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
+        if (mTowerInvalidate == true)
+        {
+            mTowerInvalidate = false;
+            return;
+        }
+
         if(curInstanceType == (int)InstanceType.Tower)
         {
             TowerData curTowerData = StaticDataMgr.Instance.GetTowerData((int)curTowerType);
@@ -217,17 +262,6 @@ public class GameDataMgr : MonoBehaviour
                 }
             }
         }
-        else if (curInstanceType == (int)InstanceType.Hole)
-        {
-            for (int i = 0; i < mHoleStateList.Count; ++i)
-            {
-                if (mHoleStateList[i].holeId == (int)curHoleType)
-                {
-                    ++mHoleStateList[i].countDaily;
-                    break;
-                }
-            }
-        }
     }
     //---------------------------------------------------------------------------------------------
     public int GetHoleDailyCount(int holeType)
@@ -264,15 +298,15 @@ public class GameDataMgr : MonoBehaviour
             {
                 if (towerStateList[i].towerId == (int)TowerType.Tower_Juewang)
                 {
-                    curTowerJuewangFloor = towerStateList[i].index;
+                    curTowerJuewangFloor = towerStateList[i].floor;
                 }
                 else if (towerStateList[i].towerId == (int)TowerType.Tower_Siwang)
                 {
-                    curTowerSiwangFloor = towerStateList[i].index;
+                    curTowerSiwangFloor = towerStateList[i].floor;
                 }
                 else if (towerStateList[i].towerId == (int)TowerType.Tower_Shilian)
                 {
-                    curTowerShilianFloor = towerStateList[i].index;
+                    curTowerShilianFloor = towerStateList[i].floor;
                 }
             }
         }
@@ -280,9 +314,10 @@ public class GameDataMgr : MonoBehaviour
         //GameEventMgr.Instance.FireEvent(GameEventList.DailyRefresh);
     }
     //---------------------------------------------------------------------------------------------
-    public string GetNextTowerFloor()
+    public void GetNextTowerFloor(out string nextInstanceID, out int floor)
     {
-        string nextInstanceID = null;
+        nextInstanceID = null;
+        floor = -1;
         TowerData curTowerData = StaticDataMgr.Instance.GetTowerData((int)curTowerType);
         switch (curTowerType)
         {
@@ -290,23 +325,24 @@ public class GameDataMgr : MonoBehaviour
                 if(curTowerShilianFloor + 1 <= curTowerData.floorList.Count)
                 {
                     nextInstanceID = curTowerData.floorList[curTowerShilianFloor];
+                    floor = curTowerShilianFloor + 1;
                 }
                 break;
             case TowerType.Tower_Juewang:
                 if (curTowerJuewangFloor + 1 <= curTowerData.floorList.Count)
                 {
                     nextInstanceID = curTowerData.floorList[curTowerJuewangFloor];
+                    floor = curTowerJuewangFloor + 1;
                 }
                 break;
             case TowerType.Tower_Siwang:
                 if (curTowerSiwangFloor + 1 <= curTowerData.floorList.Count)
                 {
                     nextInstanceID = curTowerData.floorList[curTowerSiwangFloor];
+                    floor = curTowerSiwangFloor + 1;
                 }
                 break;
         }
-
-        return nextInstanceID;
     }
     //---------------------------------------------------------------------------------------------
     void OnPlayerInfoSync(ProtocolMessage msg)

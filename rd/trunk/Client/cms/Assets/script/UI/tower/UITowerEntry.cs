@@ -74,7 +74,7 @@ public class UITowerEntry : UIBase
         int daysInMonth = DateTime.DaysInMonth(serverDateTime.Year, serverDateTime.Month);
         if (serverDateTime.Day < daysInMonth)
         {
-            mRemainTime.text = string.Format("remain:{0}d", daysInMonth - serverDateTime.Day);
+            mRemainTime.text = string.Format("remain:{0}d", daysInMonth - serverDateTime.Day + 1);
         }
         else
         {
@@ -85,7 +85,7 @@ public class UITowerEntry : UIBase
             }
             else
             {
-                mRemainTime.text = string.Format("remain:{0}h", remainHour);
+                mRemainTime.text = string.Format("remain:{0}h", remainHour - 1);
             }
         }
     }

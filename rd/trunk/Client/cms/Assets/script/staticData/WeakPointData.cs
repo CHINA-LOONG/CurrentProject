@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class WeakPointData
 {
     public string id;
+    public string name;
     public int type;
     public byte isDamagePoint;//是否关联boss减血
     public int health;

@@ -70,6 +70,7 @@ public class UIAdjustBattleTeam : UIBase
 	private int enemyLevel = 1;
     private int star = 0;
     private InstanceType instanceType;
+    private int towerFloor;
     private int teamMax = 1;
     private int resetInstanceCost = 0;
 
@@ -82,9 +83,10 @@ public class UIAdjustBattleTeam : UIBase
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
     
-    public  static void OpenWith(string instanceId,int star, InstanceType insType = InstanceType.Normal)
+    public  static void OpenWith(string instanceId,int star, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
     {
         UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
+        uiadust.towerFloor = towerFloor;
         uiadust.SetData(instanceId, star, insType);
 
         UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
@@ -130,6 +132,7 @@ public class UIAdjustBattleTeam : UIBase
     void OnEnable()
     {
         BindListener();
+        isBattleClick = false;
     }
 
     void OnDisable()
@@ -142,6 +145,7 @@ public class UIAdjustBattleTeam : UIBase
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.TOWER_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
         //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
@@ -160,6 +164,7 @@ public class UIAdjustBattleTeam : UIBase
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString (), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.TOWER_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
@@ -893,17 +898,22 @@ public class UIAdjustBattleTeam : UIBase
     #endregion
 
     #region 开始战斗--战斗请求----保存阵容
+    bool isBattleClick = false;
     void OnBattleButtonClick(GameObject go)
     {
+        if (isBattleClick) return;
+        isBattleClick = true;
         List<int> battleTeam = SaveBattleTeam();
         if (null == battleTeam || battleTeam.Count < 1)
         {
            // MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"), (int)PB.ImType.PROMPT);
+            isBattleClick = false;
         }
         else if (instanceEntryData.fatigue > GameDataMgr.Instance.PlayerDataAttr.HuoliAttr)
         {
             UseHuoLi.Open();
+            isBattleClick = false;
         }
         else
         {
@@ -914,6 +924,7 @@ public class UIAdjustBattleTeam : UIBase
                 if(leftTimes == 0)
                 {
                     ResetInstance();
+                    isBattleClick = false;
                     return;
                 }
             }
@@ -1009,6 +1020,7 @@ public class UIAdjustBattleTeam : UIBase
                 param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
             }
             param.towerId = (int)GameDataMgr.Instance.curTowerType;
+            param.floor = towerFloor;
 
             GameApp.Instance.netManager.SendMessage(PB.code.TOWER_ENTER_C.GetHashCode(), param);
         }
@@ -1025,7 +1037,12 @@ public class UIAdjustBattleTeam : UIBase
             string errorMsg;
             if (error.errCode == (int)PB.instanceError.INSTANCE_NOT_OPEN)
             {
-                errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_004");
+                errorMsg = StaticDataMgr.Instance.GetTextByID("towerBoss_record_001");
+                UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
+            }
+            else if (error.errCode == (int)PB.instanceError.TOWER_FLOOR)
+            {
+                errorMsg = StaticDataMgr.Instance.GetTextByID("towerBoss_record_004");
                 UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
             }
             else if (error.errCode == (int)PB.instanceError.INSTANCE_FATIGUE)
@@ -1035,11 +1052,13 @@ public class UIAdjustBattleTeam : UIBase
             {
 
             }
-                return;
+            isBattleClick = false;
+            return;
         }
         
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
 		enterInstanceParam.instanceData = responseData;
+        GameDataMgr.Instance.OnBattleStart();
         //TODO:
         //------------------------------------------------------------------------
         //InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData(enterInstanceParam.instanceData.instanceId);
@@ -1051,7 +1070,7 @@ public class UIAdjustBattleTeam : UIBase
         //------------------------------------------------------------------------
         //GameMain.Instance.ChangeModule<BattleModule>(enterInstanceParam);
         //GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
-	}
+    }
     //---------------------------------------------------------------------------------------------
     #endregion
 }

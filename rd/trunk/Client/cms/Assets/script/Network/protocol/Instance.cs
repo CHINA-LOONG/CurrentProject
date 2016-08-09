@@ -397,6 +397,13 @@ namespace PB
       get { return _towerId; }
       set { _towerId = value; }
     }
+    private int _floor;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"floor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int floor
+    {
+      get { return _floor; }
+      set { _floor = value; }
+    }
     private readonly global::System.Collections.Generic.List<int> _battleMonsterId = new global::System.Collections.Generic.List<int>();
     [global::ProtoBuf.ProtoMember(3, Name=@"battleMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public global::System.Collections.Generic.List<int> battleMonsterId

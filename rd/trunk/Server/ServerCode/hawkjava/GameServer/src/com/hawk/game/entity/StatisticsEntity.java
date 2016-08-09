@@ -144,9 +144,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "holeCountDaily", nullable = false)
 	private String holeCountDailyJson = "";
 
-	// 各塔已完成副本索引
-	@Column(name = "towerIndex", nullable = false)
-	private String towerIndexJson = "";
+	// 各塔已完成层数
+	@Column(name = "towerFloor", nullable = false)
+	private String towerFloorJson = "";
 
 	// 历史炼妖炉次数
 	@Column(name = "monsterMixCount", nullable = false)
@@ -311,9 +311,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Transient
 	boolean holeCountDailyFlag = false;
 	@Transient
-	protected Map<Integer, Integer> towerIndexMap = new HashMap<Integer, Integer>();
+	protected Map<Integer, Integer> towerFloorMap = new HashMap<Integer, Integer>();
 	@Transient
-	boolean towerIndexFlag = false;
+	boolean towerFloorFlag = false;
 	@Transient
 	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer>();
 	@Transient
@@ -620,38 +620,38 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 
 	/**
-	 * @return 塔完成副本索引，如未完成返回0
+	 * @return 塔完成层数，如未完成返回0
 	 */
-	public int getTowerIndex(int towerId) {
-		Integer index = towerIndexMap.get(towerId);
+	public int getTowerFloor(int towerId) {
+		Integer index = towerFloorMap.get(towerId);
 		if (null != index) {
 			return index;
 		}
 		return 0;
 	}
 
-	public Map<Integer, Integer> getTowerIndexMap() {
-		return towerIndexMap;
+	public Map<Integer, Integer> getTowerFloorMap() {
+		return towerFloorMap;
 	}
 
-	public void addTowerIndex(int towerId, int addCount) {
+	public void addTowerFloor(int towerId, int addCount) {
 		int curIndex = 0;
-		Integer oldIndex = towerIndexMap.get(towerId);
+		Integer oldIndex = towerFloorMap.get(towerId);
 		if (null != oldIndex) {
 			curIndex = oldIndex;
 		}
-		towerIndexMap.put(towerId, curIndex + addCount);
-		towerIndexFlag = true;
+		towerFloorMap.put(towerId, curIndex + addCount);
+		towerFloorFlag = true;
 	}
 
-	public void setTowerIndex(int towerId, int index) {
-		towerIndexMap.put(towerId, index);
-		towerIndexFlag = true;
+	public void setTowerFloor(int towerId, int index) {
+		towerFloorMap.put(towerId, index);
+		towerFloorFlag = true;
 	}
 
-	public void clearTowerIndexMap() {
-		towerIndexMap.clear();
-		towerIndexFlag = true;
+	public void clearTowerFloorMap() {
+		towerFloorMap.clear();
+		towerFloorFlag = true;
 	}
 
 	public int getRechargeTime(String productId){
@@ -1143,8 +1143,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (holeCountDailyJson != null && false == "".equals(holeCountDailyJson) && false == "null".equals(holeCountDailyJson)) {
 			holeCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(holeCountDailyJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
 		}
-		if (towerIndexJson != null && false == "".equals(towerIndexJson) && false == "null".equals(towerIndexJson)) {
-			towerIndexMap = HawkJsonUtil.getJsonInstance().fromJson(towerIndexJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		if (towerFloorJson != null && false == "".equals(towerFloorJson) && false == "null".equals(towerFloorJson)) {
+			towerFloorMap = HawkJsonUtil.getJsonInstance().fromJson(towerFloorJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
 		}
 		if (rechargeRecordJson != null && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
 			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
@@ -1236,9 +1236,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 			holeCountDailyFlag = false;
 			holeCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(holeCountDailyMap);
 		}
-		if (true == towerIndexFlag) {
-			towerIndexFlag = false;
-			towerIndexJson = HawkJsonUtil.getJsonInstance().toJson(towerIndexMap);
+		if (true == towerFloorFlag) {
+			towerFloorFlag = false;
+			towerFloorJson = HawkJsonUtil.getJsonInstance().toJson(towerFloorMap);
 		}
 		if (true == rechargeRecordFlag) {
 			rechargeRecordFlag = false;

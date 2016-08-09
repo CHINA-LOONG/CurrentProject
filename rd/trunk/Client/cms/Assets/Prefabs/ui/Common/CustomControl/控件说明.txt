@@ -4,3 +4,4 @@ MButton   中按钮
 
 LPanel		大板.大板后面叠透明度70%的黑色   (备注)用的180，约70%
 TebControl	页签1
+TebControl2 页签2

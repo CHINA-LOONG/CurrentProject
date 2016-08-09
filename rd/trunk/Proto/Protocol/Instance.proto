@@ -118,6 +118,7 @@ message HSHoleEnter
 message HSTowerEnter
 {
 	required int32 towerId = 1;
+	required int32 floor = 2;
 	repeated int32 battleMonsterId = 3;
 }
 

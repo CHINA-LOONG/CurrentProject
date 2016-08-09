@@ -122,11 +122,14 @@ public class StatisticsDataMgr : MonoBehaviour {
         //清理副本 重置次数
         InstanceMapService.Instance.instanceResetTimes = 0;
         //清理通天塔洞次数
+        GameDataMgr.Instance.mHoleInvalidate = true;
         GameDataMgr.Instance.SyncHoleData(msgBody.holeState);
     }
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {
         //PB.HSSyncMonthlyRefresh msgBody = message.GetProtocolBody<PB.HSSyncMonthlyRefresh>();
+        GameDataMgr.Instance.mTowerInvalidate = true;
+        GameDataMgr.Instance.mTowerRefreshed = true;
         GameDataMgr.Instance.SyncTowerData(null);
     }
 

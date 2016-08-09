@@ -279,7 +279,7 @@ public class Player extends HawkAppObj {
 	 * 帧更新
 	 */
 	@Override
-	public boolean onTick() {
+	public boolean onTick(long tickTime) {
 		// 玩家未组装完成直接不走时钟tick机制
 		if (!isAssembleFinish()) {
 			return true;
@@ -288,10 +288,10 @@ public class Player extends HawkAppObj {
 		// 刷新玩家数据
 		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
 			tickIndex = 0;
-			onRefresh(false);
+			onRefresh(tickTime, false);
 		}
 
-		return super.onTick();
+		return super.onTick(tickTime);
 	}
 
 	/**
@@ -1303,7 +1303,7 @@ public class Player extends HawkAppObj {
 		}
 
 		// 登录时刷新
-		onRefresh(true);
+		onRefresh(HawkTime.getMillisecond(), true);
 	}
 
 	/**
@@ -1345,8 +1345,8 @@ public class Player extends HawkAppObj {
 	/**
 	 * 个人刷新
 	 */
-	private void onRefresh(boolean onLogin) {
-		Calendar curTime = HawkTime.getCalendar();
+	private void onRefresh(long refreshTime, boolean onLogin) {
+		Calendar curTime = HawkTime.getCalendar(refreshTime);
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 
 		// 刷新时间点

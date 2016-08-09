@@ -64,6 +64,8 @@ public class UIMgr : MonoBehaviour
     Dictionary<string, UIBase> uiList = new Dictionary<string, UIBase>();
     List<UIBase> popupList = new List<UIBase>();
 
+    public List<UIBase> stackList = new List<UIBase>();
+
 	void Start()
 	{
 		m_rootRectTransform = transform as RectTransform;
@@ -169,7 +171,6 @@ public class UIMgr : MonoBehaviour
 
         return uiItem;
     }
-
     public UIBase OpenUI_(string uiName,bool cache=true)
     {
         UIBase uiItem=null;
@@ -187,6 +188,11 @@ public class UIMgr : MonoBehaviour
         }
         uiItem.transform.SetAsLastSibling();
         uiItem.Init();
+        //显示管理
+        if (!string.Equals(uiName, UINetRequest.ViewName))
+        {
+            AddedToStack(uiItem);
+        }
         return uiItem;
     }
 
@@ -194,7 +200,6 @@ public class UIMgr : MonoBehaviour
     {
         CloseUI_(GetUI(uiName));
     }
-
     public void CloseUI_(UIBase uiItem)
     {
         if (uiItem != null)
@@ -202,6 +207,7 @@ public class UIMgr : MonoBehaviour
             if (uiList.ContainsValue(uiItem))
             {
                 uiItem.gameObject.SetActive(false);
+                RemoveFromStack(uiItem);
             }
             else
             {
@@ -216,6 +222,7 @@ public class UIMgr : MonoBehaviour
         {
             return;
         }
+        RemoveFromStack(uiItem);
         if (uiList.ContainsValue(uiItem))
         {
             string uiName = "";
@@ -236,15 +243,83 @@ public class UIMgr : MonoBehaviour
         uiItem.Clean();
         ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
     }
-
     public void DestroyAllPopup()
     {
         for (int i = popupList.Count - 1; i >= 0; i--)
         {
             if (popupList[i] == null)
                 continue;
+            RemoveFromStack(popupList[i]);
             ResourceMgr.Instance.DestroyAsset(popupList[i].gameObject);
         }
         popupList.Clear();
     }
+
+    public void ShowUI(UIBase uiItem)
+    {
+        if (!uiItem.gameObject.activeSelf)
+        {
+            uiItem.gameObject.SetActive(true);
+            //AddedToStack(uiItem);
+        }
+    }
+    public void HideUI(UIBase uiItem)
+    {
+        if (uiItem.gameObject.activeSelf)
+        {
+            uiItem.gameObject.SetActive(false);
+            //RemoveFromStack(uiItem);
+        }
+    }
+
+
+    public void AddedToStack(UIBase uiItem)
+    {
+        if (stackList.Contains(uiItem))
+        {
+            stackList.Remove(uiItem);
+        }
+        else
+        {
+            stackList.Add(uiItem);
+            //Logger.LogError("add ：" + uiItem.gameObject.name);
+        }
+    }
+    public void RemoveFromStack(UIBase uiItem)
+    {
+        if (stackList.Contains(uiItem))
+        {
+            stackList.Remove(uiItem);
+            //Logger.LogError("remove ：" + uiItem.gameObject.name);
+        }
+    }
+    public UIBase GetCurrentUI()
+    {
+        if (stackList.Count>0)
+        {
+            return stackList[stackList.Count - 1];
+        }
+        return null;
+        //for (int i = stackList.Count - 1; i >= 0; i++)
+        //{
+        //    if (stackList[i]!=null)
+        //    {
+        //        return stackList[i];
+        //    }
+        //}
+        //return null;
+    }
+    
+
+    public void OpenTowerAdjustTeam()
+    {
+        string nextInstance;
+        int nextFloor;
+        GameDataMgr.Instance.GetNextTowerFloor(out nextInstance, out nextFloor);
+        if (nextInstance != null)
+        {
+            UIAdjustBattleTeam.OpenWith(nextInstance, 0, InstanceType.Tower, nextFloor);
+        }
+    }
+
 }

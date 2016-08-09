@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum PartType
 {
@@ -51,6 +52,23 @@ public class ItemStaticData
 	public	int	part;
 	public	int	durability;
     public string itemfounds;
+    private List<List<string>> foundList;
+    public List<List<string>> FoundList
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(itemfounds)&&foundList==null)
+            {
+                foundList = new List<List<string>>();
+                string[] items = itemfounds.Split(',');
+                for (int i = 0; i < items.Length; i++)
+                {
+                    foundList.Add(new List<string>(items[i].Split('_')));
+                }
+            }
+            return foundList;
+        }
+    }
 
     public	string	NameAttr
 	{
@@ -75,4 +93,5 @@ public class ItemStaticData
             return ItemInfo.valueof(targetItem, ItemParseType.DemandItemType);
         }
     }
+
 }

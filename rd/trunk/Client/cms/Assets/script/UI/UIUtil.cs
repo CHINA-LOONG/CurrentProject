@@ -277,6 +277,16 @@ public class UIUtil
         return false;
     }
 
+    public static bool CheckIsComposeOpened()
+    {
+        return true;
+    }
+    public static bool CheckIsDecomposeOpened()
+    {
+        return true;
+    }
+
+
     public static void SetStageColor(Text label, GameUnit unit)
     {
         int quallity = 0;

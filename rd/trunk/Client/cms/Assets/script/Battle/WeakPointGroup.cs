@@ -95,7 +95,7 @@ public class WeakPointGroup
 		wpData.findWpEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.findWpEffect);
 		wpData.appraisalWpStateEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.appraisalStateEffect);
 		wpData.appraisalWpEffect = ParticleEffect.CreateEffect (effectGo.transform, "baozha_fire");
-        wpData.showoffEffect = ParticleEffect.CreateEffect(effectGo.transform, "baozha_fire");//
+		wpData.showoffEffect = ParticleEffect.CreateEffect(effectGo.transform, "weakpointEffect2");//
     }
 	//every weakstate have one mesh
 	void InitWeakPointState(WeakPointRuntimeData wpRealData,BattleObject bo)

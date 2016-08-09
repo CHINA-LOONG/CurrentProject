@@ -204,8 +204,8 @@ public class AllianceManager extends HawkAppObj {
 	 * 线程主执行函数
 	 */
 	@Override
-	public boolean onTick() {
-		int nowSeconds = HawkTime.getSeconds();
+	public boolean onTick(long tickTime) {
+		int nowSeconds = (int) tickTime / 1000;
 		for (AllianceEntity alliance : allianceMap.values()) {
 			if (nowSeconds > alliance.getRefreshTime()) {
 				alliance.dailyRefresh();

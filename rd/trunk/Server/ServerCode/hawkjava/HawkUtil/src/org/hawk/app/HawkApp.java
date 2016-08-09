@@ -1,6 +1,7 @@
 package org.hawk.app;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -638,7 +639,7 @@ public abstract class HawkApp extends HawkAppObj {
 
 				// 逻辑帧更新
 				try {
-					onTick();
+					onTick(currentTime);
 				} catch (Exception e) {
 					HawkException.catchException(e);
 				}
@@ -657,7 +658,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * 帧更新
 	 */
 	@Override
-	public boolean onTick() {
+	public boolean onTick(long tickTime) {
 		// 更新检测
 		if (!HawkNativeApi.tickHawk()) {
 			return false;
@@ -671,14 +672,14 @@ public abstract class HawkApp extends HawkAppObj {
 		}
 
 		// 对象管理器的更新(每小时一个周期)
-		if (currentTime - lastRemoveObjTime >= 3600000) {
-			lastRemoveObjTime = currentTime;
+		if (tickTime - lastRemoveObjTime >= 3600000) {
+			lastRemoveObjTime = tickTime;
 			int removeCount = 0;
 			for (Entry<Integer, HawkObjManager<HawkXID, HawkAppObj>> entry : objMans.entrySet()) {
 				HawkObjManager<HawkXID, HawkAppObj> objMan = entry.getValue();
 				if (objMan != null && objMan.getObjTimeout() > 0) {
 					// 清理超时对象
-					List<HawkAppObj> removeAppObjs = objMan.removeTimeoutObj(currentTime);
+					List<HawkAppObj> removeAppObjs = objMan.removeTimeoutObj(tickTime);
 					if (removeAppObjs != null) {
 						for (HawkAppObj appObj : removeAppObjs) {
 							onRemoveTimeoutObj(appObj);
@@ -691,8 +692,8 @@ public abstract class HawkApp extends HawkAppObj {
 		}
 
 		//打印任务队列状态
-		if (currentTime - lastShowStateTime >= 5000) {
-			lastShowStateTime = currentTime;
+		if (tickTime - lastShowStateTime >= 5000) {
+			lastShowStateTime = tickTime;
 			printState();
 			
 			// 检测内存不足
@@ -708,12 +709,12 @@ public abstract class HawkApp extends HawkAppObj {
 			if (objMan != null) {
 				objXidList.clear();
 				if (objMan.collectObjKey(objXidList, null) > 0) {
-					postTick(objXidList);
+					postTick(objXidList, tickTime);
 				}
 			}
 		}
 
-		return super.onTick();
+		return super.onTick(tickTime);
 	}
 
 	/**
@@ -1087,12 +1088,12 @@ public abstract class HawkApp extends HawkAppObj {
 	}
 
 	/**
-	 * 提交更新, 只会在主线程调用
+	 * 投递更新, 只会在主线程调用
 	 * 
 	 * @param xidList
 	 * @return
 	 */
-	public boolean postTick(Collection<HawkXID> xidList) {
+	public boolean postTick(Collection<HawkXID> xidList, long tickTime) {
 		if (running && xidList != null && xidList.size() > 0) {
 			// 先创建线程tick表
 			if (threadTickXids == null) {
@@ -1111,7 +1112,7 @@ public abstract class HawkApp extends HawkAppObj {
 				for (HawkXID xid : xidList) {
 					int threadIdx = getHashThread(xid, getThreadNum());
 					// app对象本身不参与线程tick更新计算, 本身的tick在主线程执行
-					if (!xid.equals(this.objXid)) {
+					if (false == xid.equals(this.objXid)) {
 						threadTickXids.get(threadIdx).add(xid);
 					}
 				}
@@ -1120,7 +1121,7 @@ public abstract class HawkApp extends HawkAppObj {
 				for (Map.Entry<Integer, List<HawkXID>> entry : threadTickXids.entrySet()) {
 					if (entry.getValue().size() > 0) {
 						// 不存在即创建
-						postMsgTask(HawkTickTask.valueOf(entry.getValue()), entry.getKey());
+						postMsgTask(HawkTickTask.valueOf(entry.getValue(), tickTime), entry.getKey());
 					}
 				}
 			}
@@ -1276,7 +1277,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean dispatchTick(HawkXID xid) {
+	public boolean dispatchTick(HawkXID xid, long tickTime) {
 		if (xid != null) {
 			if (xid.isValid()) {
 				HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
@@ -1293,7 +1294,7 @@ public abstract class HawkApp extends HawkAppObj {
 								HawkException.catchException(e);
 							}
 							
-							return objBase.getImpl().onTick();
+							return objBase.getImpl().onTick(tickTime);
 						}
 					} catch (Exception e) {
 						HawkException.catchException(e);
@@ -1302,7 +1303,7 @@ public abstract class HawkApp extends HawkAppObj {
 					}
 				}
 			} else {
-				return onTick();
+				return onTick(tickTime);
 			}
 		}
 		return false;

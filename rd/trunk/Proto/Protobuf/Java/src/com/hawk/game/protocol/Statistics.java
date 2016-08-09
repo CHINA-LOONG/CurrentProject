@@ -3597,15 +3597,15 @@ public final class Statistics {
      */
     int getTowerId();
 
-    // required int32 index = 2;
+    // required int32 floor = 2;
     /**
-     * <code>required int32 index = 2;</code>
+     * <code>required int32 floor = 2;</code>
      */
-    boolean hasIndex();
+    boolean hasFloor();
     /**
-     * <code>required int32 index = 2;</code>
+     * <code>required int32 floor = 2;</code>
      */
-    int getIndex();
+    int getFloor();
   }
   /**
    * Protobuf type {@code TowerState}
@@ -3665,7 +3665,7 @@ public final class Statistics {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              index_ = input.readInt32();
+              floor_ = input.readInt32();
               break;
             }
           }
@@ -3724,25 +3724,25 @@ public final class Statistics {
       return towerId_;
     }
 
-    // required int32 index = 2;
-    public static final int INDEX_FIELD_NUMBER = 2;
-    private int index_;
+    // required int32 floor = 2;
+    public static final int FLOOR_FIELD_NUMBER = 2;
+    private int floor_;
     /**
-     * <code>required int32 index = 2;</code>
+     * <code>required int32 floor = 2;</code>
      */
-    public boolean hasIndex() {
+    public boolean hasFloor() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 index = 2;</code>
+     * <code>required int32 floor = 2;</code>
      */
-    public int getIndex() {
-      return index_;
+    public int getFloor() {
+      return floor_;
     }
 
     private void initFields() {
       towerId_ = 0;
-      index_ = 0;
+      floor_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3753,7 +3753,7 @@ public final class Statistics {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasIndex()) {
+      if (!hasFloor()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3768,7 +3768,7 @@ public final class Statistics {
         output.writeInt32(1, towerId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, index_);
+        output.writeInt32(2, floor_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3785,7 +3785,7 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, index_);
+          .computeInt32Size(2, floor_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3905,7 +3905,7 @@ public final class Statistics {
         super.clear();
         towerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        index_ = 0;
+        floor_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -3942,7 +3942,7 @@ public final class Statistics {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.index_ = index_;
+        result.floor_ = floor_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3962,8 +3962,8 @@ public final class Statistics {
         if (other.hasTowerId()) {
           setTowerId(other.getTowerId());
         }
-        if (other.hasIndex()) {
-          setIndex(other.getIndex());
+        if (other.hasFloor()) {
+          setFloor(other.getFloor());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3974,7 +3974,7 @@ public final class Statistics {
           
           return false;
         }
-        if (!hasIndex()) {
+        if (!hasFloor()) {
           
           return false;
         }
@@ -4033,35 +4033,35 @@ public final class Statistics {
         return this;
       }
 
-      // required int32 index = 2;
-      private int index_ ;
+      // required int32 floor = 2;
+      private int floor_ ;
       /**
-       * <code>required int32 index = 2;</code>
+       * <code>required int32 floor = 2;</code>
        */
-      public boolean hasIndex() {
+      public boolean hasFloor() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 index = 2;</code>
+       * <code>required int32 floor = 2;</code>
        */
-      public int getIndex() {
-        return index_;
+      public int getFloor() {
+        return floor_;
       }
       /**
-       * <code>required int32 index = 2;</code>
+       * <code>required int32 floor = 2;</code>
        */
-      public Builder setIndex(int value) {
+      public Builder setFloor(int value) {
         bitField0_ |= 0x00000002;
-        index_ = value;
+        floor_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 index = 2;</code>
+       * <code>required int32 floor = 2;</code>
        */
-      public Builder clearIndex() {
+      public Builder clearFloor() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        index_ = 0;
+        floor_ = 0;
         onChanged();
         return this;
       }
@@ -10878,7 +10878,7 @@ public final class Statistics {
       "tate\022\016\n\006itemId\030\001 \002(\t\022\025\n\ruseCountDaily\030\002 " +
       "\002(\005\"B\n\tHoleState\022\016\n\006holeId\030\001 \002(\005\022\016\n\006isOp",
       "en\030\002 \002(\010\022\025\n\ncountDaily\030\003 \001(\005:\0010\",\n\nTower" +
-      "State\022\017\n\007towerId\030\001 \002(\005\022\r\n\005index\030\002 \002(\005\"\375\003" +
+      "State\022\017\n\007towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002(\005\"\375\003" +
       "\n\024HSStatisticsInfoSync\022%\n\rinstanceState\030" +
       "\001 \003(\0132\016.InstanceState\022#\n\014chapterState\030\002 " +
       "\002(\0132\r.ChapterState\022\026\n\016monsterCollect\030\003 \003" +
@@ -10938,7 +10938,7 @@ public final class Statistics {
           internal_static_TowerState_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_TowerState_descriptor,
-              new java.lang.String[] { "TowerId", "Index", });
+              new java.lang.String[] { "TowerId", "Floor", });
           internal_static_HSStatisticsInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new

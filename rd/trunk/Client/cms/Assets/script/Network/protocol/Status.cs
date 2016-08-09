@@ -264,7 +264,10 @@ namespace PB
       CHAPTER_BOX_ALREADY_OPEN = 393223,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393224)]
-      INSTANCE_NOT_ENTER = 393224
+      INSTANCE_NOT_ENTER = 393224,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393225)]
+      TOWER_FLOOR = 393225
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]

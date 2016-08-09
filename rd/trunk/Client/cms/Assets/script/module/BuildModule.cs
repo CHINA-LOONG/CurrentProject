@@ -105,9 +105,9 @@ public class BuildModule : ModuleBase
 	void OnRequestPlayerSyncInfoFinished(ProtocolMessage msg)
 	{
 
+        UINetRequest.Close();
         if (msg.GetMessageType() == (int) PB.sys.ERROR_CODE)
         {
-            UINetRequest.Close();
             return;
         }
 
@@ -118,13 +118,13 @@ public class BuildModule : ModuleBase
 		}
 		else if ( msgType == PB.code.ASSEMBLE_FINISH_S.GetHashCode() )
 		{           
-            UINetRequest.Close();
+            //UINetRequest.Close();
 
 			//消息同步完成
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
             //GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
 			Debug.LogWarning("player info sync finished!");
-
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = finishState.allianceID;
             StatisticsDataMgr.Instance.BeginHeartBreak();
 		}
 	}

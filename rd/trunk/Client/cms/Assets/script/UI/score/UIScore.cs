@@ -83,13 +83,20 @@ public class UIScore : UIBase
         }
         else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
         {
-            if (mIsSuccess == true)
+            if (GameDataMgr.Instance.mTowerRefreshed == false)
             {
-                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
+                if (mIsSuccess == true)
+                {
+                    BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
+                }
+                else
+                {
+                    BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Retry);
+                }
             }
             else
             {
-                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Retry);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("towerBoss_record_004"), (int)PB.ImType.PROMPT);
             }
         }
     }
@@ -469,7 +476,9 @@ public class UIScore : UIBase
         {
             if (mIsSuccess == true)
             {
-                string nextTowerFloor = GameDataMgr.Instance.GetNextTowerFloor();
+                string nextTowerFloor;
+                int nextFloor;
+                GameDataMgr.Instance.GetNextTowerFloor(out nextTowerFloor, out nextFloor);
                 if (nextTowerFloor != null)
                 {
                     mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");

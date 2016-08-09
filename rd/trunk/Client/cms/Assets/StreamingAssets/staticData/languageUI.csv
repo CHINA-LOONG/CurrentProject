@@ -267,6 +267,11 @@ record_notopen2,合成功能未开启,The combine function has not been opened y
 record_notopen3,分解功能未开启,The disenchant function has not been opened yet.
 record_notopen4,该商店未开启,This shop has not been opened yet.
 record_notopen5,尚未加入公会,You have not joined a Guild yet.
+compose_item,材料合成,材料合成
+compose_gem,宝石合成,宝石合成
+decompose_item,道具分解,道具分解
+tips_monster,宠物分解,宠物分解
+tips_go,进入,进入
 ,,
 xl_common,公用部分,
 pet_detail_skill_level,等级:,LVL:
@@ -362,5 +367,5 @@ arrayselect_count_004,等级达到 {0} 级就能开启这个站位哦,Player Lev
 arrayselect_count_005,该宠物正在进行大冒险，无法上阵哦,This monster is currently on an adventure. Unable to enter battle now.
 unkonwCharacter,未知,Unknow
 zhanli:{0},战力：{0},BP:{0}
-battle_zhaoyaojing_001,照妖镜还未准备好，请稍后再试,jingzi haimei zhunbeihao
-battle_zhaoyaojing_002,照妖镜能量已耗尽，请稍后再试,jingzi nengliang haojin
+battle_zhaoyaojing_001,照妖镜还未准备好，请稍后再试,"The Monster Detector is not ready yet, please wait and try again."
+battle_zhaoyaojing_002,照妖镜能量已耗尽，请稍后再试,"Out of Monster Detector Energy, please wait and try again."

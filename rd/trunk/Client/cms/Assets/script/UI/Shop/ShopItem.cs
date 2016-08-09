@@ -40,9 +40,9 @@ public class ShopItem : MonoBehaviour
 		RefreshItemIcon (itemStaticData);
 
 		itemName.text = itemStaticData.NameAttr;
-		priceText.text = (itemStaticData.buyPrice * itemData.count).ToString();
+		priceText.text = (itemData.price * itemData.count).ToString();
 
-		if (IsCoinEnough (itemStaticData)) 
+		if (IsCoinEnough (itemData)) 
 		{
 			priceText.color = ColorConst.text_color_Enough;
 		}
@@ -90,21 +90,21 @@ public class ShopItem : MonoBehaviour
 		}
 	}
 
-	bool IsCoinEnough(ItemStaticData itemData)
+	bool IsCoinEnough(PB.ShopItem itemData)
 	{
 		switch (shopType) 
 		{
 		case (int)PB.shopType.NORMALSHOP:
-			if(itemData.buyType == 2)
+			if(itemData.price == 2)
 			{
-				return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
+				return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
 			}
 			else
 			{
-				return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
+				return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
 			}
 		case (int)PB.shopType.ALLIANCESHOP:
-			return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gonghuiCoin;
+			return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gonghuiCoin;
 		default:
 			return false;
 		}

@@ -158,6 +158,7 @@ enum instanceError
 	CHAPTER_BOX_STAR_COUNT     = 0x0060006;
 	CHAPTER_BOX_ALREADY_OPEN   = 0x0060007;
 	INSTANCE_NOT_ENTER         = 0x0060008;
+	TOWER_FLOOR                = 0x0060009;
 }
 
 enum mailError

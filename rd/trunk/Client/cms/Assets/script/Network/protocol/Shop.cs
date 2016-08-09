@@ -66,8 +66,15 @@ namespace PB
       get { return _discount; }
       set { _discount = value; }
     }
+    private int _price;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"price", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int price
+    {
+      get { return _price; }
+      set { _price = value; }
+    }
     private bool _hasBuy;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool hasBuy
     {
       get { return _hasBuy; }
