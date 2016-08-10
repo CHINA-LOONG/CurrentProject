@@ -292,14 +292,14 @@ namespace UnityClientConsole
 //                 Console.WriteLine("获取im玩家信息");
 
 //                 GMGenTestAccount genAccount = new GMGenTestAccount();
-//                 NetManager.GetInstance().SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
+//                 netmanaget.SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
 //                 Console.WriteLine("生成测试账号");
 
-                GMOperation gmOperation = new GMOperation();
-                gmOperation.action = "setpass";
-                gmOperation.itemId = "minghe12";
-                gmOperation.value = 0;
-                netmanaget.SendProtocol(gm.GMOPERATION_C.GetHashCode(), gmOperation);
+//                 GMOperation gmOperation = new GMOperation();
+//                 gmOperation.action = "setpass";
+//                 gmOperation.itemId = "minghe12";
+//                 gmOperation.value = 0;
+//                 netmanaget.SendProtocol(gm.GMOPERATION_C.GetHashCode(), gmOperation);
 
 
 //                 HSMailRead mailRead = new HSMailRead();
@@ -383,6 +383,14 @@ namespace UnityClientConsole
 //                 allianceJoinList.reqPage = 1;
 //                 netmanaget.SendProtocol(code.ALLIANCE_JOINLIST_C.GetHashCode(), allianceJoinList);
 
+            }
+            // 刷新----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
+            {
+                HSSyncDailyRefresh dailyRefresh = protocol.GetProtocolBody<HSSyncDailyRefresh>();
+                Console.WriteLine("每日刷新");
+                Console.WriteLine(dailyRefresh.holeState[0].holeId.ToString() + dailyRefresh.holeState[0].isOpen.ToString());
+                Console.WriteLine(dailyRefresh.holeState[1].holeId.ToString() + dailyRefresh.holeState[1].isOpen.ToString());
             }
             // 副本----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.INSTANCE_ENTER_S.GetHashCode()))

@@ -56,7 +56,7 @@ public class UIIm : UIBase
     Vector3 leftCahtVec;//左侧聊天框初始位置  
     [HideInInspector]
     public bool isDrag;
-    public bool isBasicsChat = true;
+    bool isBasicsChat = true;
     #endregion
     public static UIIm Instance
     {
@@ -94,7 +94,7 @@ public class UIIm : UIBase
             EventTriggerListener.Get(imData.mPlayer.gameObject).onClick = PlayerClick;   
             imMessage.SetActive(false);
         }
-        basiceChatVec = basicsChat.transform.localPosition;
+        basiceChatVec = basicsChatBox.transform.localPosition;
         leftCahtVec = leftChatBox.transform.localPosition;
         playerBox.SetActive(false);
         RectTransform initTransform = msgPos.transform as RectTransform;
@@ -121,8 +121,10 @@ public class UIIm : UIBase
         {
             basicsChatBox.SetActive(false);
             isBasicsChat = false;
-            Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtMove.localPosition.y, 0.5f);
-            imMover.SetUpdate(true);
+            //Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtMove.localPosition.y, 0.5f);
+            //imMover.SetUpdate(true);
+            leftChatBox.transform.position = leftCahtMove.transform.position;
+            //leftChatBox.SetActive(true);
             ShowMessage();
         }
         else if (but.name == showBasicsChat.name)//show基础聊天框
@@ -209,6 +211,8 @@ public class UIIm : UIBase
             }
             if (item.channel == (int)PB.ImChannel.GUILD)
             {
+                if (GameDataMgr.Instance.PlayerDataAttr.playerId == item.senderId)
+                    return;
                 gangChannel.Add(item);
                 allMsg = item;
             }
@@ -394,7 +398,7 @@ public class UIIm : UIBase
                     if (i == count - 1)
                     {
                         showNewMsg = false;
-                    } 
+                    }
                     if (worldChannel[i].type == (int)PB.ImType.NOTICE)
                     {
                         sizeMsg += (0 - msgTrans.localPosition.y);
@@ -430,8 +434,10 @@ public class UIIm : UIBase
         {
             basicsChatBox.SetActive(true);
             isBasicsChat = true;
-            Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
-            imMover.SetUpdate(true);
+            //Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
+            //imMover.SetUpdate(true);
+            leftChatBox.transform.position = leftCahtVec;
+            msgBox.localPosition = new Vector3(0, 0, 0);
         }
     }
     //------------------------------------------------------------------------------------------------------
@@ -448,16 +454,7 @@ public class UIIm : UIBase
                 return;
             else
             {
-                if (isSend)
-                {
-                    isSend = !isSend;
-                    OnSendMsg(msgText.text);
-                    Invoke("SendInterval", 2.0f);
-                }
-                else
-                {
-                    uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
-                }
+                OnSendMsg(msgText.text);
             }
         }
         else if (but.name == shield.name)
@@ -486,11 +483,32 @@ public class UIIm : UIBase
         PB.HSImChatSend param = null;
         if (msgType == ImMessageType.Num_Msg_Type)
         {
-            param = new PB.HSImChatSend()
+            if (isSend)
             {
-                channel = channel,
-                text = message
-            };
+                isSend = !isSend;
+                Invoke("SendInterval", 5.0f);
+                param = new PB.HSImChatSend()
+                {
+                    channel = channel,
+                    text = message
+                };
+                PB.HSImMsg meMsg = new PB.HSImMsg();
+                meMsg.senderId = GameDataMgr.Instance.PlayerDataAttr.playerId;
+                meMsg.channel = channel;
+                meMsg.senderName = GameDataMgr.Instance.PlayerDataAttr.name;
+                if (channel == (int)PB.ImChannel.GUILD)
+                    meMsg.type = (int)PB.ImChannel.GUILD;
+                else
+                    meMsg.type = (int)PB.ImChannel.WORLD;
+                gangChannel.Add(meMsg);
+                allMsg = meMsg;
+                ShowMessage();
+            }
+            else
+            {
+                uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
+                return;
+            }           
         }
         else if (guildID != null)
         {

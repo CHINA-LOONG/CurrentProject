@@ -220,7 +220,7 @@ public class SpellFunctions
 		}	
 		return 0;
     } 
-	public static int UsingPhysicalRate_20(
+	public static int UsingPhysicalRate_100(
 		Buff triggerBuff,
 		Effect triggerEffect,
 		SpellService spellService

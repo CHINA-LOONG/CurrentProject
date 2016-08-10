@@ -81,11 +81,6 @@ public class Player extends HawkAppObj {
 	private boolean assembleFinish;
 
 	/**
-	 * 帧计数
-	 */
-	private int tickIndex = 0;
-
-	/**
 	 * 构造函数
 	 * 
 	 * @param xid
@@ -285,13 +280,17 @@ public class Player extends HawkAppObj {
 			return true;
 		}
 
-		// 刷新玩家数据
-		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
-			tickIndex = 0;
-			onRefresh(tickTime, false);
+		return super.onTick(tickTime);
+	}
+
+	public boolean onRefresh(long refreshTime) {
+		// 玩家未组装完成直接不走刷新机制
+		if (!isAssembleFinish()) {
+			return true;
 		}
 
-		return super.onTick(tickTime);
+		onPlayerRefresh(refreshTime, false);
+		return super.onRefresh(refreshTime);
 	}
 
 	/**
@@ -1352,7 +1351,7 @@ public class Player extends HawkAppObj {
 		}
 
 		// 登录时刷新
-		onRefresh(HawkTime.getMillisecond(), true);
+		onPlayerRefresh(HawkTime.getMillisecond(), true);
 	}
 
 	/**
@@ -1394,7 +1393,7 @@ public class Player extends HawkAppObj {
 	/**
 	 * 个人刷新
 	 */
-	private void onRefresh(long refreshTime, boolean onLogin) {
+	private void onPlayerRefresh(long refreshTime, boolean onLogin) {
 		Calendar curTime = HawkTime.getCalendar(refreshTime);
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 
@@ -1418,7 +1417,7 @@ public class Player extends HawkAppObj {
 			for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
 				PlayerModule playerModule = (PlayerModule) entry.getValue();
 				try {
-					playerModule.onRefresh(refreshIndexList, onLogin);
+					playerModule.onPlayerRefresh(refreshIndexList, onLogin);
 				} catch (Exception e) {
 					HawkException.catchException(e);
 				}

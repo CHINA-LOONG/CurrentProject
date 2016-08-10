@@ -179,7 +179,7 @@ Transform:
   m_GameObject: {fileID: 179494}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 472866}
   m_RootOrder: 0
@@ -450,10 +450,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294947459
+        rgba: 4279703551
       minMaxState: 0
     startSize:
-      scalar: 8
+      scalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1473,10 +1473,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294947459
+        rgba: 4280358130
       minMaxState: 0
     startSize:
-      scalar: 4.30000019
+      scalar: 2.1500001
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2496,10 +2496,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294947459
+        rgba: 4293941411
       minMaxState: 0
     startSize:
-      scalar: 4.5999999
+      scalar: 2.29999995
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3529,10 +3529,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4283832573
       minMaxState: 0
     startSize:
-      scalar: 5.86000013
+      scalar: 1.92999995
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4572,10 +4572,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294947459
+        rgba: 4280357887
       minMaxState: 0
     startSize:
-      scalar: 8
+      scalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5595,10 +5595,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294947459
+        rgba: 4279110137
       minMaxState: 0
     startSize:
-      scalar: 7
+      scalar: 3.5
       maxCurve:
         serializedVersion: 2
         m_Curve:

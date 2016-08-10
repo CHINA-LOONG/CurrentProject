@@ -70,7 +70,7 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @return
 	 */
-	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		return true;
 	}
 

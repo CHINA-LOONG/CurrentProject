@@ -1,5 +1,7 @@
 package com.hawk.orderserver.entify;
 
+import java.util.Map;
+
 import org.hawk.os.HawkException;
 
 import com.google.gson.JsonObject;
@@ -32,15 +34,15 @@ public class CallbackInfo {
 		return jsonObject;
 	}
 
-	public boolean fromJson(JsonObject jsonObject) {
+	public boolean fromMap(Map<String, String> params) {
 		try {
-			tid = jsonObject.get("tid").getAsString();
-			uid = jsonObject.get("uid").getAsString();
-			type = jsonObject.get("type").getAsString();
-			callbackStatus = jsonObject.get("status").getAsInt();
-			ts = jsonObject.get("ts").getAsInt();
-			through_cargo = jsonObject.get("through_cargo").getAsString();
-			product_id = jsonObject.get("product_id").getAsString();
+			tid = params.get("tid");
+			uid = params.get("uid");
+			type = params.get("type");
+			through_cargo = params.get("through_cargo");
+			product_id = params.get("product_id");
+			callbackStatus = Integer.valueOf(params.get("status"));
+			ts = Integer.valueOf(params.get("ts"));
 			
 			return true;
 		} catch (Exception e) {

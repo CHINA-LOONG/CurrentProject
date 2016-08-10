@@ -1066,45 +1066,61 @@ public final class HS {
      */
     ALLIANCE_DISSOVLE_TEAM_S(185, 9077),
     /**
+     * <code>ALLIANCE_CONTRIBUTION_C = 9078;</code>
+     */
+    ALLIANCE_CONTRIBUTION_C(186, 9078),
+    /**
+     * <code>ALLIANCE_CONTRIBUTION_S = 9079;</code>
+     */
+    ALLIANCE_CONTRIBUTION_S(187, 9079),
+    /**
+     * <code>ALLIANCE_CONTRI_REWARD_C = 9080;</code>
+     */
+    ALLIANCE_CONTRI_REWARD_C(188, 9080),
+    /**
+     * <code>ALLIANCE_CONTRI_REWARD_S = 9081;</code>
+     */
+    ALLIANCE_CONTRI_REWARD_S(189, 9081),
+    /**
      * <code>ALLIANCE_APPLY_N_S = 9100;</code>
      */
-    ALLIANCE_APPLY_N_S(186, 9100),
+    ALLIANCE_APPLY_N_S(190, 9100),
     /**
      * <code>ALLIANCE_REMOVE_APPLY_N_S = 9101;</code>
      */
-    ALLIANCE_REMOVE_APPLY_N_S(187, 9101),
+    ALLIANCE_REMOVE_APPLY_N_S(191, 9101),
     /**
      * <code>ALLIANCE_NOTICE_N_S = 9102;</code>
      */
-    ALLIANCE_NOTICE_N_S(188, 9102),
+    ALLIANCE_NOTICE_N_S(192, 9102),
     /**
      * <code>ALLIANCE_MEMBER_ADD_N_S = 9103;</code>
      */
-    ALLIANCE_MEMBER_ADD_N_S(189, 9103),
+    ALLIANCE_MEMBER_ADD_N_S(193, 9103),
     /**
      * <code>ALLIANCE_MEMBER_REMOVE_N_S = 9104;</code>
      */
-    ALLIANCE_MEMBER_REMOVE_N_S(190, 9104),
+    ALLIANCE_MEMBER_REMOVE_N_S(194, 9104),
     /**
      * <code>ALLIANCE_CHANGE_POS_N_S = 9105;</code>
      */
-    ALLIANCE_CHANGE_POS_N_S(191, 9105),
+    ALLIANCE_CHANGE_POS_N_S(195, 9105),
     /**
      * <code>ALLIANCE_CHANGE_OWNER_N_S = 9106;</code>
      */
-    ALLIANCE_CHANGE_OWNER_N_S(192, 9106),
+    ALLIANCE_CHANGE_OWNER_N_S(196, 9106),
     /**
      * <code>ALLIANCE_LEVEL_CHANGE_N_S = 9107;</code>
      */
-    ALLIANCE_LEVEL_CHANGE_N_S(193, 9107),
+    ALLIANCE_LEVEL_CHANGE_N_S(197, 9107),
     /**
      * <code>ALLIANCE_JOIN_N_S = 9108;</code>
      */
-    ALLIANCE_JOIN_N_S(194, 9108),
+    ALLIANCE_JOIN_N_S(198, 9108),
     /**
      * <code>ALLIANCE_LEAVE_N_S = 9109;</code>
      */
-    ALLIANCE_LEAVE_N_S(195, 9109),
+    ALLIANCE_LEAVE_N_S(199, 9109),
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -1112,19 +1128,19 @@ public final class HS {
      * 系统设置
      * </pre>
      */
-    SETTING_LANGUAGE_C(196, 10001),
+    SETTING_LANGUAGE_C(200, 10001),
     /**
      * <code>SETTING_LANGUAGE_S = 10002;</code>
      */
-    SETTING_LANGUAGE_S(197, 10002),
+    SETTING_LANGUAGE_S(201, 10002),
     /**
      * <code>SETTING_BLOCK_C = 10003;</code>
      */
-    SETTING_BLOCK_C(198, 10003),
+    SETTING_BLOCK_C(202, 10003),
     /**
      * <code>SETTING_BLOCK_S = 10004;</code>
      */
-    SETTING_BLOCK_S(199, 10004),
+    SETTING_BLOCK_S(203, 10004),
     /**
      * <code>SYNC_DAILY_REFRESH_S = 11001;</code>
      *
@@ -1132,7 +1148,7 @@ public final class HS {
      * 数据同步
      * </pre>
      */
-    SYNC_DAILY_REFRESH_S(200, 11001),
+    SYNC_DAILY_REFRESH_S(204, 11001),
     /**
      * <code>SYNC_MONTHLY_REFRESH_S = 11002;</code>
      *
@@ -1140,7 +1156,7 @@ public final class HS {
      * 每月刷新
      * </pre>
      */
-    SYNC_MONTHLY_REFRESH_S(201, 11002),
+    SYNC_MONTHLY_REFRESH_S(205, 11002),
     /**
      * <code>SYNC_SHOP_REFRESH_S = 11003;</code>
      *
@@ -1148,7 +1164,7 @@ public final class HS {
      * 商店刷新
      * </pre>
      */
-    SYNC_SHOP_REFRESH_S(202, 11003),
+    SYNC_SHOP_REFRESH_S(206, 11003),
     /**
      * <code>SYNC_EXP_LEFT_TIMES_S = 11004;</code>
      *
@@ -1156,7 +1172,7 @@ public final class HS {
      * 经验药水剩余次数
      * </pre>
      */
-    SYNC_EXP_LEFT_TIMES_S(203, 11004),
+    SYNC_EXP_LEFT_TIMES_S(207, 11004),
     ;
 
     /**
@@ -1944,6 +1960,22 @@ public final class HS {
      */
     public static final int ALLIANCE_DISSOVLE_TEAM_S_VALUE = 9077;
     /**
+     * <code>ALLIANCE_CONTRIBUTION_C = 9078;</code>
+     */
+    public static final int ALLIANCE_CONTRIBUTION_C_VALUE = 9078;
+    /**
+     * <code>ALLIANCE_CONTRIBUTION_S = 9079;</code>
+     */
+    public static final int ALLIANCE_CONTRIBUTION_S_VALUE = 9079;
+    /**
+     * <code>ALLIANCE_CONTRI_REWARD_C = 9080;</code>
+     */
+    public static final int ALLIANCE_CONTRI_REWARD_C_VALUE = 9080;
+    /**
+     * <code>ALLIANCE_CONTRI_REWARD_S = 9081;</code>
+     */
+    public static final int ALLIANCE_CONTRI_REWARD_S_VALUE = 9081;
+    /**
      * <code>ALLIANCE_APPLY_N_S = 9100;</code>
      */
     public static final int ALLIANCE_APPLY_N_S_VALUE = 9100;
@@ -2227,6 +2259,10 @@ public final class HS {
         case 9075: return ALLIANCE_INSTANCE_TASK_S;
         case 9076: return ALLIANCE_DISSOVLE_TEAM_C;
         case 9077: return ALLIANCE_DISSOVLE_TEAM_S;
+        case 9078: return ALLIANCE_CONTRIBUTION_C;
+        case 9079: return ALLIANCE_CONTRIBUTION_S;
+        case 9080: return ALLIANCE_CONTRI_REWARD_C;
+        case 9081: return ALLIANCE_CONTRI_REWARD_S;
         case 9100: return ALLIANCE_APPLY_N_S;
         case 9101: return ALLIANCE_REMOVE_APPLY_N_S;
         case 9102: return ALLIANCE_NOTICE_N_S;
@@ -2309,7 +2345,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*Y\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "\022\027\n\022GM_INSTANCE_PUSH_S\020\310\001*\310&\n\004code\022\014\n\007LO" +
+      "\022\027\n\022GM_INSTANCE_PUSH_S\020\310\001*\302\'\n\004code\022\014\n\007LO" +
       "GIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n" +
       "\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S\020\354\007\022\017\n\nSYNCINFO" +
       "_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\020\n\013RECCONECT_C\020\357\007" +
@@ -2420,20 +2456,23 @@ public final class HS {
       "\022\031\n\024ALLIANCE_SELF_TEAM_S\020\361F\022\035\n\030ALLIANCE_" +
       "INSTANCE_TASK_C\020\362F\022\035\n\030ALLIANCE_INSTANCE_" +
       "TASK_S\020\363F\022\035\n\030ALLIANCE_DISSOVLE_TEAM_C\020\364F" +
-      "\022\035\n\030ALLIANCE_DISSOVLE_TEAM_S\020\365F\022\027\n\022ALLIA" +
-      "NCE_APPLY_N_S\020\214G\022\036\n\031ALLIANCE_REMOVE_APPL" +
-      "Y_N_S\020\215G\022\030\n\023ALLIANCE_NOTICE_N_S\020\216G\022\034\n\027AL" +
-      "LIANCE_MEMBER_ADD_N_S\020\217G\022\037\n\032ALLIANCE_MEM" +
-      "BER_REMOVE_N_S\020\220G\022\034\n\027ALLIANCE_CHANGE_POS",
-      "_N_S\020\221G\022\036\n\031ALLIANCE_CHANGE_OWNER_N_S\020\222G\022" +
-      "\036\n\031ALLIANCE_LEVEL_CHANGE_N_S\020\223G\022\026\n\021ALLIA" +
-      "NCE_JOIN_N_S\020\224G\022\027\n\022ALLIANCE_LEAVE_N_S\020\225G" +
-      "\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SETTING_LAN" +
-      "GUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N\022\024\n\017SETT" +
-      "ING_BLOCK_S\020\224N\022\031\n\024SYNC_DAILY_REFRESH_S\020\371" +
-      "U\022\033\n\026SYNC_MONTHLY_REFRESH_S\020\372U\022\030\n\023SYNC_S" +
-      "HOP_REFRESH_S\020\373U\022\032\n\025SYNC_EXP_LEFT_TIMES_" +
-      "S\020\374UB\030\n\026com.hawk.game.protocol"
+      "\022\035\n\030ALLIANCE_DISSOVLE_TEAM_S\020\365F\022\034\n\027ALLIA" +
+      "NCE_CONTRIBUTION_C\020\366F\022\034\n\027ALLIANCE_CONTRI" +
+      "BUTION_S\020\367F\022\035\n\030ALLIANCE_CONTRI_REWARD_C\020" +
+      "\370F\022\035\n\030ALLIANCE_CONTRI_REWARD_S\020\371F\022\027\n\022ALL" +
+      "IANCE_APPLY_N_S\020\214G\022\036\n\031ALLIANCE_REMOVE_AP",
+      "PLY_N_S\020\215G\022\030\n\023ALLIANCE_NOTICE_N_S\020\216G\022\034\n\027" +
+      "ALLIANCE_MEMBER_ADD_N_S\020\217G\022\037\n\032ALLIANCE_M" +
+      "EMBER_REMOVE_N_S\020\220G\022\034\n\027ALLIANCE_CHANGE_P" +
+      "OS_N_S\020\221G\022\036\n\031ALLIANCE_CHANGE_OWNER_N_S\020\222" +
+      "G\022\036\n\031ALLIANCE_LEVEL_CHANGE_N_S\020\223G\022\026\n\021ALL" +
+      "IANCE_JOIN_N_S\020\224G\022\027\n\022ALLIANCE_LEAVE_N_S\020" +
+      "\225G\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SETTING_L" +
+      "ANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N\022\024\n\017SE" +
+      "TTING_BLOCK_S\020\224N\022\031\n\024SYNC_DAILY_REFRESH_S" +
+      "\020\371U\022\033\n\026SYNC_MONTHLY_REFRESH_S\020\372U\022\030\n\023SYNC",
+      "_SHOP_REFRESH_S\020\373U\022\032\n\025SYNC_EXP_LEFT_TIME" +
+      "S_S\020\374UB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

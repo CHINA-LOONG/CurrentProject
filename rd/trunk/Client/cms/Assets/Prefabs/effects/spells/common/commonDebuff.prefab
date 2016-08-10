@@ -83,7 +83,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &138356
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &138358
 GameObject:
   m_ObjectHideFlags: 1
@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.150999993, y: .897000015, z: .087690115}
+  m_LocalPosition: {x: -.150999993, y: 0, z: .087690115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438350}
@@ -230,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138354}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.178000003, y: -.00999999978, z: .087690115}
+  m_LocalPosition: {x: -.178000003, y: -.5, z: .087690115}
   m_LocalScale: {x: 1.85932362, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438350}
@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.178000003, y: -.00999999978, z: .087690115}
+  m_LocalPosition: {x: -.178000003, y: -.5, z: .087690115}
   m_LocalScale: {x: 1.85932362, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438350}
@@ -290,7 +290,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.150999993, y: .898000002, z: .087690115}
+  m_LocalPosition: {x: -.150999993, y: 0, z: .087690115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438362}
@@ -611,7 +611,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 3
+      scalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1634,7 +1634,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 2
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2657,7 +2657,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 1.5
+      scalar: .75
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3690,7 +3690,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 4
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4723,7 +4723,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 2.5
+      scalar: 1.25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5761,7 +5761,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 2.5
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -36,19 +36,43 @@ public class FoundMgr
     //合成
     public void GoToUICompose(int index)
     {
-        uibuild.uiCompose = UIMgr.Instance.OpenUI_(UICompose.ViewName) as UICompose;
-        uibuild.uiCompose.Refresh(index);
+        if (curUIPanel as UICompose == null)
+        {
+            uibuild.uiCompose = UIMgr.Instance.OpenUI_(UICompose.ViewName) as UICompose;
+
+            uibuild.uiCompose.Refresh(index);
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+            //(curUIPanel as UICompose).Refresh(index);
+        }
     }
     //分解
     public void GoToUIDecompose(int index)
     {
-        uibuild.uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
-        uibuild.uiDecompose.Refresh(index);
+        if (curUIPanel as UIDecompose == null)
+        {
+            uibuild.uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
+            uibuild.uiDecompose.Refresh(index);
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+            //(curUIPanel as UIDecompose).Refresh(index);
+        }
     }
     //商店
     public void GoToUIShop(PB.shopType type)
     {
-        uibuild.OpenShop((int)type);
+        if (curUIPanel as UIShop == null)
+        {
+            uibuild.OpenShop((int)type);
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+        }
     }
     //商城
     public void GoToUIStore()
@@ -79,6 +103,7 @@ public class FoundMgr
         {
             mainStage.SetCurrentSelectGroup((int)InstanceType.Tower);
         }
+
     }
     //洞
     public void GoToHole()

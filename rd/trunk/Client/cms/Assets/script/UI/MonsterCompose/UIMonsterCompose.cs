@@ -192,14 +192,14 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
         {
             foundList = StaticDataMgr.Instance.GetItemData(CurData.unit.fragmentId).FoundList;
         }
-        if (foundList.Count>foundItems.Length)
+        if (foundList != null&&foundList.Count>foundItems.Length)
         {
             Logger.LogError("配置获取途径有错误");
         }
         for (int i = 0; i < foundItems.Length; i++)
         {
             FoundItem fountItem = foundItems[i];
-            if (i>=foundList.Count)
+            if (foundList == null||i>=foundList.Count)
             {
                 if (fountItem != null)
                 {

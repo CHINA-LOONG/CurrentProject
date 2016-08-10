@@ -13,7 +13,16 @@ public class HawkInterceptHandler {
 	public boolean onTick(HawkAppObj appObj) {
 		return false;
 	}
-	
+
+	/**
+	 * 数据刷新
+	 * 
+	 * @return false表示不拦截, 否则拦截刷新调用不往下进行
+	 */
+	public boolean onRefresh(HawkAppObj appObj) {
+		return false;
+	}
+
 	/**
 	 * 消息响应
 	 * 

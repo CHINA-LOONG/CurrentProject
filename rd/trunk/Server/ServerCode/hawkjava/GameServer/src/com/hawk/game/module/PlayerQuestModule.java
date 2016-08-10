@@ -442,7 +442,7 @@ public class PlayerQuestModule extends PlayerModule {
 	}
 
 	@Override
-	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		for (int index : refreshIndexList) {
 			if (0 != (GsConst.PlayerRefreshMask[index] & GsConst.RefreshMask.DAILY )) {
 				// 忽略登录时刷新

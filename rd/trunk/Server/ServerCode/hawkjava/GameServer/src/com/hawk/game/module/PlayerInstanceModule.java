@@ -1237,7 +1237,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	}
 
 	@Override
-	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		for (int index : refreshIndexList) {
 			this.refreshMask |= GsConst.PlayerRefreshMask[index];
 		}

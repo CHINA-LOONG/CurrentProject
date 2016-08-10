@@ -18,6 +18,7 @@ import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyList;
+import com.hawk.game.protocol.Alliance.HSAllianceContribution;
 import com.hawk.game.protocol.Alliance.HSAllianceDataRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembers;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfDataRet;
@@ -70,6 +71,8 @@ public class PlayerAllianceModule extends PlayerModule {
 		listenProto(HS.code.ALLIANCE_SELF_TEAM_C_VALUE);
 		listenProto(HS.code.ALLIANCE_TEAM_LIST_C_VALUE);
 		listenProto(HS.code.ALLIANCE_DISSOVLE_TEAM_C_VALUE);
+		listenProto(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE);
+		listenProto(HS.code.ALLIANCE_CONTRI_REWARD_C_VALUE);
 	}
 
 	/**
@@ -276,6 +279,14 @@ public class PlayerAllianceModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
+		else if (protocol.checkType(HS.code.ALLIANCE_CONTRI_REWARD_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
 		else if (protocol.checkType(HS.code.ALLIANCE_SYN_C_VALUE)) {
 			onAllianceSyn(HS.code.ALLIANCE_SYN_C_VALUE, protocol.parseProtocol(HSAllianceSyn.getDefaultInstance()));
 			return true;
@@ -298,6 +309,10 @@ public class PlayerAllianceModule extends PlayerModule {
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_TEAM_LIST_C_VALUE)) {
 			onAllianceTeamListSyn(HS.code.ALLIANCE_TEAM_LIST_C_VALUE, protocol.parseProtocol(HSAllianceTeamList.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE)) {
+			onAllianceContributionSyn(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE, protocol.parseProtocol(HSAllianceContribution.getDefaultInstance()));
 			return true;
 		}
 		
@@ -332,7 +347,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		memberBuilder.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
 		memberBuilder.setTaskCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
 		sleftData.setSelfData(memberBuilder);
-		
+		sleftData.setContributionReward(player.getPlayerData().getStatisticsEntity().getAllianceContriRewardDaily());
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SELF_DATA_S_VALUE, sleftData));
 
 		// 同步成员数据
@@ -434,6 +449,26 @@ public class PlayerAllianceModule extends PlayerModule {
 		}
 		
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_TEAM_LIST_S_VALUE, AllianceUtil.getTeamList(allianceEntity)));
+		return true;
+	}
+	
+	/**
+	 * 队伍列表同步
+	 * 
+	 */
+	public boolean onAllianceContributionSyn(int hsCode, HSAllianceContribution protocol) {
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CONTRIBUTION_S_VALUE, AllianceUtil.getAllianceContributionInfo(allianceEntity)));
 		return true;
 	}
 	

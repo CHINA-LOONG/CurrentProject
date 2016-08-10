@@ -8,7 +8,7 @@ public class HitCombo : MonoBehaviour
 {
 	//public	Image	comboImage;
     public Text comboImage;
-	static	int	ComboMax = 10;
+	static	int	ComboMax = 20;
 
 	public	static	void	ShowCombo(Transform parent,int comboNum,float posX, float posY)
 	{

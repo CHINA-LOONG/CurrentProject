@@ -104,7 +104,7 @@ public class BuyItem : UIBase
 		itemData.itemId = itemId;
 		itemData.count = 1;
 
-		itemIcon.RefreshWithItemInfo (itemData);
+		itemIcon.RefreshWithItemInfo (itemData,true,false);
 
 		price = stData.buyPrice;
 

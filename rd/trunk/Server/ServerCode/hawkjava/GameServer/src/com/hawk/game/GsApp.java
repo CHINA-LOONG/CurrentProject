@@ -82,11 +82,6 @@ public class GsApp extends HawkApp {
 	private Map<String, Long> puidLoginTime;
 
 	/**
-	 * 帧计数
-	 */
-	private int tickIndex = 0;
-
-	/**
 	 * 全局静态对象
 	 */
 	private static GsApp instance = null;
@@ -305,18 +300,84 @@ public class GsApp extends HawkApp {
 	 */
 	@Override
 	public boolean onTick(long tickTime) {
-		// 首先刷新全局数据
-		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
-			tickIndex = 0;
-			onRefresh(tickTime);
-		}
-
 		if (super.onTick(tickTime)) {
 			// 显示服务器信息
 			ServerData.getInstance().showServerInfo();
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 刷新数据
+	 */
+	@Override
+	protected boolean onRefresh(long refreshTime) {
+		// 第1步，刷新全局数据
+		Calendar curTime = HawkTime.getCalendar(refreshTime);
+
+		// 洞最大刷新时间
+		class HoleRefreshMaxTime {
+			long time = 0;
+			boolean isOpen = false;
+		}
+		Map<Integer, HoleRefreshMaxTime> HoleRefreshMaxTimeMap = null;
+		Map<Object, HoleCfg> holeCfgMap = null;
+		boolean refreshHole = false;
+
+		for (int index = 0; index < GsConst.SysRefreshTime.length; ++index) {
+			int timeCfgId = GsConst.SysRefreshTime[index];
+
+			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
+			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
+			if (expectedRefreshTime != null) {
+				// 刷新时间点
+				ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
+
+				// 刷新数据
+				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
+					if (false == refreshHole) {
+						refreshHole = true;
+						// 初始化洞刷新所需临时数据
+						HoleRefreshMaxTimeMap = new HashMap<Integer, HoleRefreshMaxTime>();
+						holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
+						for (HoleCfg hole : holeCfgMap.values()) {
+							HoleRefreshMaxTimeMap.put(hole.getId(), new HoleRefreshMaxTime());
+						}
+					}
+					// 在所有洞刷新时间（都小于当前时间）中选择最接近当前时间的
+					for (HoleCfg hole : holeCfgMap.values()) {
+						Boolean isOpen = null;
+						// 洞开启时间区间左闭右开，因此先判断关闭，再判断开启
+						if (true == hole.isCloseTime(timeCfgId)) {
+							isOpen = false;
+						}
+						if (true == hole.isOpenTime(timeCfgId)) {
+							isOpen = true;
+						}
+
+						if (isOpen != null) {
+							HoleRefreshMaxTime max = HoleRefreshMaxTimeMap.get(hole.getId());
+							if (max.time < expectedRefreshTime.getTimeInMillis()) {
+								max.time = expectedRefreshTime.getTimeInMillis();
+								max.isOpen = isOpen;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// 刷新洞
+		if (true == refreshHole) {
+			for (Entry<Integer, HoleRefreshMaxTime> entry : HoleRefreshMaxTimeMap.entrySet()) {
+				ServerData.getInstance().setHoleOpen(entry.getKey(), entry.getValue().isOpen);
+			}
+		}
+
+		// 第2步，调用父类刷新其它对象
+		super.onRefresh(refreshTime);
+		return true;
 	}
 
 	/**
@@ -728,72 +789,6 @@ public class GsApp extends HawkApp {
 		}
 
 		return true;
-	}
-
-	/**
-	 * 刷新全局数据
-	 */
-	private void onRefresh(long refreshTime) {
-		Calendar curTime = HawkTime.getCalendar(refreshTime);
-
-		// 洞最大刷新时间
-		class HoleRefreshMaxTime {
-			long time = 0;
-			boolean isOpen = false;
-		}
-		Map<Integer, HoleRefreshMaxTime> HoleRefreshMaxTimeMap = null;
-		Map<Object, HoleCfg> holeCfgMap = null;
-		boolean refreshHole = false;
-
-		for (int index = 0; index < GsConst.SysRefreshTime.length; ++index) {
-			int timeCfgId = GsConst.SysRefreshTime[index];
-
-			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
-			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
-			if (expectedRefreshTime != null) {
-				// 刷新时间点
-				ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
-
-				// 刷新数据
-				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
-					if (false == refreshHole) {
-						refreshHole = true;
-						// 初始化洞刷新所需临时数据
-						HoleRefreshMaxTimeMap = new HashMap<Integer, HoleRefreshMaxTime>();
-						holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
-						for (HoleCfg hole : holeCfgMap.values()) {
-							HoleRefreshMaxTimeMap.put(hole.getId(), new HoleRefreshMaxTime());
-						}
-					}
-					// 在所有洞刷新时间（都小于当前时间）中选择最接近当前时间的
-					for (HoleCfg hole : holeCfgMap.values()) {
-						Boolean isOpen = null;
-						// 洞开启时间区间左闭右开，因此先判断关闭，再判断开启
-						if (true == hole.isCloseTime(timeCfgId)) {
-							isOpen = false;
-						}
-						if (true == hole.isOpenTime(timeCfgId)) {
-							isOpen = true;
-						}
-
-						if (isOpen != null) {
-							HoleRefreshMaxTime max = HoleRefreshMaxTimeMap.get(hole.getId());
-							if (max.time < expectedRefreshTime.getTimeInMillis()) {
-								max.time = expectedRefreshTime.getTimeInMillis();
-								max.isOpen = isOpen;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// 刷新洞
-		if (true == refreshHole) {
-			for (Entry<Integer, HoleRefreshMaxTime> entry : HoleRefreshMaxTimeMap.entrySet()) {
-				ServerData.getInstance().setHoleOpen(entry.getKey(), entry.getValue().isOpen);
-			}
-		}
 	}
 
 	// 主线程运行

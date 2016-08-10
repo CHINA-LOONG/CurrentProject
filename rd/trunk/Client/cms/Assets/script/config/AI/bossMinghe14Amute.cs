@@ -40,7 +40,6 @@ public class bossMinghe14Amute : BossAi {
 			if (GetAttackCount(AmuteUnit) % 4 == 0) 
 			{
 				AmuteSpellDic.TryGetValue ("bossAmute2", out useSpell);
-				attackResult.attackTarget = AmuteUnit;
 			}
 
 		} 
@@ -57,13 +56,13 @@ public class bossMinghe14Amute : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
+	public override void OnWpDead(WeakPointDeadArgs args)
 	{
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 		if (args.wpID == "bossMinghe14Amutewp03" && jishu==0)
         {
 			target.TriggerEvent("Amute_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
 			jishu ++;
         }
 	}

@@ -12,8 +12,8 @@ public class GameConfig : MonoBehaviour {
 
 	public	string	GoldExchangeId = "1";
 
-	public float FindWeakPointFinishedNeedTime = 0.6f;
-	public float MirrorRadius = 100f;
+	public float FindWeakPointFinishedNeedTime = 1.5f;
+	public float MirrorRadius = 60f;
 	//public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
 	public float FireFocusWpRadius = 50f;
 	public float EnmeyUnitOffsetYForBloodUI  = 1.4f;
@@ -25,7 +25,7 @@ public class GameConfig : MonoBehaviour {
     public float MirrorMaxEnegy = 100;
     public float UseMirrorMinEnegy = 20;
     public float RecoveryMirrorEnegyUnit = 2;//每200毫秒恢复能量数值
-    public float ConsumMirrorEnegyUnit = 3;//
+    public float ConsumMirrorEnegyUnit = 4;//
 
     //battle
     public  DG.Tweening.Ease InPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;

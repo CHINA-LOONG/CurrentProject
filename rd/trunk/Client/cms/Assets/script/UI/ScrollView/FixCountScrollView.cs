@@ -256,7 +256,10 @@ public class FixCountScrollView : MonoBehaviour
 
     public void CleanContent()
     {
-        iScrollViewDelegate.CleanData(m_Child);
+        if (iScrollViewDelegate != null)
+        {
+            iScrollViewDelegate.CleanData(m_Child);
+        }
         if (m_Child.Count != 0)
         {
             m_Child.ForEach(delegate (Transform item) { Destroy(item.gameObject); });

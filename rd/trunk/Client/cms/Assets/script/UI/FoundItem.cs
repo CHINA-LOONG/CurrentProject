@@ -93,7 +93,7 @@ public class FoundItem : MonoBehaviour
         {
             UIMgr.Instance.CloseUI_(uiTips);
         }
-        if (condition&&onClickEvent!=null)
+        if (onClickEvent!=null)
         {
             onClickEvent();
         }
@@ -145,12 +145,18 @@ public abstract class ParseBase
         get { return info; }
         set { info = value; }
     }
+
+    protected bool condition;
     public virtual void ClickCallBack()
     {
         if (FoundMgr.Instance.curUIPanel != UIMgr.Instance.GetCurrentUI())
         {
             UIMgr.Instance.CloseUI_(FoundMgr.Instance.curUIPanel);
             FoundMgr.Instance.curUIPanel = UIMgr.Instance.GetCurrentUI();
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
         }
     }
     public abstract void GetResult(List<string> info, out string name, out Action action, out bool condition);
@@ -159,33 +165,38 @@ public abstract class ParseBase
 
 public class StageParse : ParseBase
 {
-    
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        InstanceEntry entry = StaticDataMgr.Instance.GetInstanceEntry(Info[1]);
-        if (entry == null)
+        if (condition)
         {
-            return;
+            base.ClickCallBack();
+            InstanceEntry entry = StaticDataMgr.Instance.GetInstanceEntry(Info[1]);
+            if (entry == null)
+            {
+                return;
+            }
+            else
+            {
+                switch ((InstanceType)entry.type)
+                {
+                    case InstanceType.Normal:
+                        FoundMgr.Instance.GoToUIStage(entry);
+                        break;
+                    case InstanceType.Hole:
+                        FoundMgr.Instance.GoToHole();
+                        break;
+                    case InstanceType.Tower:
+                        FoundMgr.Instance.GoToTower();
+                        break;
+                }
+            }
+            Logger.Log("副本");
         }
         else
         {
-            switch ((InstanceType)entry.type)
-            {
-                case InstanceType.Normal:
-                    FoundMgr.Instance.GoToUIStage(entry);
-                    break;
-                case InstanceType.Hole:
-                    FoundMgr.Instance.GoToHole();
-                    break;
-                case InstanceType.Tower:
-                    FoundMgr.Instance.GoToTower();
-                    break;
-            }
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen1"), (int)PB.ImType.PROMPT);
         }
-        Logger.Log("副本");
     }
-
     public override void GetResult(List<string> info,out string name,out Action action, out bool condition)
     {
         Info = info;
@@ -222,6 +233,7 @@ public class StageParse : ParseBase
                     break;
             }
         }
+        this.condition = condition;
     }
     
 }
@@ -229,26 +241,33 @@ public class ComposeParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        switch ((FoundComposeType)int.Parse(Info[1]))
+        if (condition)
         {
-            case FoundComposeType.Gems:
-                FoundMgr.Instance.GoToUICompose(0);
-                break;
-            case FoundComposeType.Materials:
-                FoundMgr.Instance.GoToUICompose(1);
-                break;
-            default:
-                break;
+            base.ClickCallBack();
+            switch ((FoundComposeType)int.Parse(Info[1]))
+            {
+                case FoundComposeType.Gems:
+                    FoundMgr.Instance.GoToUICompose(0);
+                    break;
+                case FoundComposeType.Materials:
+                    FoundMgr.Instance.GoToUICompose(1);
+                    break;
+                default:
+                    break;
+            }
+            Logger.Log("合成");
         }
-        Logger.Log("合成");
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen2"), (int)PB.ImType.PROMPT);
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
     {
         Info = info;
         action = ClickCallBack;
-        condition = UIUtil.CheckIsComposeOpened();
+        condition = false;//UIUtil.CheckIsComposeOpened();
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("compose_title"));
 
         switch ((FoundComposeType)int.Parse(Info[1]))
@@ -262,26 +281,33 @@ public class ComposeParse : ParseBase
             default:
                 break;
         }
-
+        this.condition = condition;
     }
 }
 public class DecomposeParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        switch ((FoundDecomposeType)int.Parse(Info[1]))
+        if (condition)
         {
-            case FoundDecomposeType.Equipments:
-                FoundMgr.Instance.GoToUIDecompose(0);
-                break;
-            case FoundDecomposeType.Monsters:
-                FoundMgr.Instance.GoToUIDecompose(1);
-                break;
-            default:
-                break;
+            base.ClickCallBack();
+            switch ((FoundDecomposeType)int.Parse(Info[1]))
+            {
+                case FoundDecomposeType.Equipments:
+                    FoundMgr.Instance.GoToUIDecompose(0);
+                    break;
+                case FoundDecomposeType.Monsters:
+                    FoundMgr.Instance.GoToUIDecompose(1);
+                    break;
+                default:
+                    break;
+            }
+            Logger.Log("分解");
         }
-        Logger.Log("分解");
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen3"), (int)PB.ImType.PROMPT);
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -302,26 +328,33 @@ public class DecomposeParse : ParseBase
             default:
                 break;
         }
-
+        this.condition = condition;
     }
 }
 public class ShopParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-
-        switch ((FoundShopType)int.Parse(Info[1]))
+        if (condition)
         {
-            case FoundShopType.Normal:
-                FoundMgr.Instance.GoToUIShop(PB.shopType.NORMALSHOP);
-                break;
-            case FoundShopType.Guild:
-                FoundMgr.Instance.GoToUIShop(PB.shopType.ALLIANCESHOP);
-                break;
-            case FoundShopType.Wishing:
-                //TODO： 设置通天塔商店
-                break;
+            base.ClickCallBack();
+
+            switch ((FoundShopType)int.Parse(Info[1]))
+            {
+                case FoundShopType.Normal:
+                    FoundMgr.Instance.GoToUIShop(PB.shopType.NORMALSHOP);
+                    break;
+                case FoundShopType.Guild:
+                    FoundMgr.Instance.GoToUIShop(PB.shopType.ALLIANCESHOP);
+                    break;
+                case FoundShopType.Wishing:
+                    //TODO： 设置通天塔商店
+                    break;
+            }
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen4"), (int)PB.ImType.PROMPT);
         }
     }
 
@@ -352,15 +385,23 @@ public class ShopParse : ParseBase
             default:
                 break;
         }
+        this.condition = condition;
     }
 }
 public class StoreParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        //TODO:
-        Logger.Log("商城");
+        if (condition)
+        {
+            base.ClickCallBack();
+            //TODO:
+            Logger.Log("商城");
+        }
+        else
+        {
+
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -371,15 +412,24 @@ public class StoreParse : ParseBase
         //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("shop_store"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
+
+        this.condition = condition;
     }
 }
 public class DailyParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        //TODO:
-        Logger.Log("日常");
+        if (condition)
+        {
+            base.ClickCallBack();
+            //TODO:
+            Logger.Log("日常");
+        }
+        else
+        {
+
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -390,15 +440,24 @@ public class DailyParse : ParseBase
         //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("tips_main5"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
+
+        this.condition = condition;
     }
 }
 public class LuckyParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        //TODO:
-        Logger.Log("抽奖");
+        if (condition)
+        {
+            base.ClickCallBack();
+            //TODO:
+            Logger.Log("抽奖");
+        }
+        else
+        {
+
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -409,15 +468,23 @@ public class LuckyParse : ParseBase
         //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("tips_main6"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
+        this.condition = condition;
     }
 }
 public class GuildParse : ParseBase
 {
     public override void ClickCallBack()
     {
-        base.ClickCallBack();
-        //TODO:
-        Logger.Log("公会");
+        if (condition)
+        {
+            base.ClickCallBack();
+            //TODO:
+            Logger.Log("公会");
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen5"), (int)PB.ImType.PROMPT);
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -442,5 +509,6 @@ public class GuildParse : ParseBase
             default:
                 break;
         }
+        this.condition = condition;
     }
 }

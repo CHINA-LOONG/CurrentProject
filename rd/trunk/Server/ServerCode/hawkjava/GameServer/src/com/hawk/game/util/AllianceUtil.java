@@ -20,6 +20,8 @@ import com.hawk.game.protocol.Alliance.AllianceTeamInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamMemInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyListRet;
+import com.hawk.game.protocol.Alliance.HSAllianceContribution;
+import com.hawk.game.protocol.Alliance.HSAllianceContributionRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembersRet;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet;
 import com.hawk.game.protocol.Alliance.HSAllianceTeamListRet;
@@ -175,6 +177,18 @@ public class AllianceUtil {
 			}
 		}
 		
+		return builder;
+	}
+	
+	/**
+	 * 构造公会贡献值回复协议
+	 * @return 
+	 */
+	public static HSAllianceContributionRet.Builder getAllianceContributionInfo(AllianceEntity allianceEntity) {
+		HSAllianceContributionRet.Builder builder = HSAllianceContributionRet.newBuilder();
+		builder.setContribution(allianceEntity.getContribution());
+		builder.setContributionToday(allianceEntity.getContribution0());
+		builder.setContribution3Day(allianceEntity.get3DaysContribution());
 		return builder;
 	}
 	

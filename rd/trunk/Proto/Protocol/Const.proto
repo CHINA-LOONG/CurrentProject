@@ -46,7 +46,7 @@ enum itemType
 	NONE_ITEM              = 0;
 	// 玩家属性
 	PLAYER_ATTR            = 1;
-	// 角色属性
+	// 怪物属性
 	MONSTER_ATTR           = 2;
 	// 道具
 	ITEM                   = 3;

@@ -188,6 +188,13 @@ public class HawkAppObj extends HawkListener {
 	}
 
 	/**
+	 * 刷新数据
+	 */
+	protected boolean onRefresh(long refreshTime) {
+		return true;
+	}
+
+	/**
 	 * 消息响应, 子类在处理自身逻辑后需要调用父类接口
 	 * 
 	 * @param msg

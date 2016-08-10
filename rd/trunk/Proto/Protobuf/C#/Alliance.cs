@@ -95,15 +95,8 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _prayCount;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int prayCount
-    {
-      get { return _prayCount; }
-      set { _prayCount = value; }
-    }
     private bool _sendFatigue = default(bool);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"sendFatigue", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"sendFatigue", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
     public bool sendFatigue
     {
@@ -111,18 +104,34 @@ namespace PB
       set { _sendFatigue = value; }
     }
     private int _loginTime;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"loginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"loginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int loginTime
     {
       get { return _loginTime; }
       set { _loginTime = value; }
     }
     private int _logoutTime;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"logoutTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"logoutTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int logoutTime
     {
       get { return _logoutTime; }
       set { _logoutTime = value; }
+    }
+    private int _prayCount = default(int);
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int prayCount
+    {
+      get { return _prayCount; }
+      set { _prayCount = value; }
+    }
+    private int _taskCount = default(int);
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"taskCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int taskCount
+    {
+      get { return _taskCount; }
+      set { _taskCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -245,22 +254,6 @@ namespace PB
     {
       get { return _captaionName; }
       set { _captaionName = value; }
-    }
-    private int _prayCount = default(int);
-    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int prayCount
-    {
-      get { return _prayCount; }
-      set { _prayCount = value; }
-    }
-    private int _taskCount = default(int);
-    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"taskCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int taskCount
-    {
-      get { return _taskCount; }
-      set { _taskCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

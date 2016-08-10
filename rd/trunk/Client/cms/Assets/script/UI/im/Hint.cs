@@ -29,7 +29,7 @@ public class Hint : MonoBehaviour
             beginFade = true;
             battleTitleTw = gameObject.transform.DOLocalMoveY(100, gradualTime);
             battleTitleTw.SetUpdate(true);
-            gameObject.transform.DOScale(0, gradualTime).SetUpdate(true);
+            //gameObject.transform.DOScale(0, gradualTime).SetUpdate(true);
             bak.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
             text.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
             battleTitleTw.OnComplete(End);

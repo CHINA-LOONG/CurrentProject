@@ -250,9 +250,11 @@ enum allianceError
 	// 大任务未完成
 	ALLIANCE_TASK_NOT_FINISH      = 0x0080027;
 	// 不是队长
-	ALLIANCE_NOT_CAPTAIN       = 0x0080028;
+	ALLIANCE_NOT_CAPTAIN          = 0x0080028;
 	// 队伍中有队友
-	ALLIANCE_HAVE_MEMBER       = 0x0080029;	
+	ALLIANCE_HAVE_MEMBER          = 0x0080029;	
+	// 奖励已领取
+	ALLIANCE_REWARD_ALREADY_GIVE  = 0x008002A;	
 }
 
 enum shopError

@@ -137,7 +137,7 @@ public class MagicDazhaoController : MonoBehaviour
 
 	IEnumerator showOffCo()
 	{
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (0.0f);
 
 		//if (casterBattleGo.shifaNodeEffect != null) 
 		//{

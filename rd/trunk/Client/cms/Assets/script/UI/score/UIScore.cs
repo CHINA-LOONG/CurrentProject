@@ -395,7 +395,11 @@ public class UIScore : UIBase
                 PB.RewardItem item = rewardItemList[i];
                 if (item.type == (int)PB.itemType.ITEM)
                 {
-                    ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(item.itemId, item.count));
+                    ItemIcon icon = ItemIcon.CreateItemIcon(
+                        ItemData.valueof(item.itemId, item.count),
+                        true,
+                        false
+                        );
                     icon.transform.SetParent(mItemGainList.transform);
                     icon.transform.localScale = Vector3.one;
                     icon.ShowTips = true;
@@ -403,7 +407,7 @@ public class UIScore : UIBase
                 else if (item.type == (int)PB.itemType.EQUIP)
                 {
                     EquipData equipData = EquipData.valueof(item.id, item.itemId, item.stage, item.level, BattleConst.invalidMonsterID, null);
-                    ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true);
+                    ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true,false);
                     icon.transform.SetParent(mItemGainList.transform);
                     icon.transform.localScale = Vector3.one;
                     //icon.ShowTips = true;

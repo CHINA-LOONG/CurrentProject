@@ -241,7 +241,7 @@ message HSAlliancePray
 
 message HSAlliancePrayRet
 {
-	
+
 }
 
 // 公会设置
@@ -308,6 +308,7 @@ message HSAllianceSelfData
 message HSAllianceSelfDataRet
 {
 	required AllianceMember selfData = 1;
+	required int32 contributionReward = 2;
 }
 
 //工会成员列表
@@ -328,6 +329,29 @@ message HSAllianceApplyList
 message HSAllianceApplyListRet
 {
 	repeated AllianceApply apply = 1;
+}
+
+// 公会贡献值
+message HSAllianceContribution
+{
+}
+
+message HSAllianceContributionRet
+{
+   	required int32  contribution = 1; //当前贡献值
+	required int32  contributionToday = 2; //今日贡献值
+	required int32  contribution3day = 3; //3日累计活跃值
+}
+
+// 公会贡献值奖励
+message HSAllianceContriReward
+{
+	required int32 index = 1;
+}
+
+message HSAllianceContriRewardRet
+{
+
 }
 
 // 工会申请通知

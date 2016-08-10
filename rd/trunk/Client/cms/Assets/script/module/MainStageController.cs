@@ -104,7 +104,8 @@ public class MainStageController : MonoBehaviour
         mMaxNormalAngle = mMaxYawAngle - mBoundAngle;
         mMinNormalAngle = mMinYawAngle + mBoundAngle;
         Camera.main.transform.SetParent(mRecPos, false);
-        ResetCameraPos(GameDataMgr.Instance.mainStageRotAngle);
+        mCurYawAngle = GameDataMgr.Instance.mainStageRotAngle;
+        ResetCameraPos(mCurYawAngle);
         mBeginDrag = false;
 
         BuildModule curModule = GameMain.Instance.GetBuildModule();

@@ -91,12 +91,17 @@ public class UIBag : UIBase,TabButtonDelegate
 		cancelSellButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
 		conformSellButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
 
-		BindListener ();
 	}
-    public override void Clean()
+
+    void OnEnable()
     {
-		UnBindListener ();
+        BindListener();
     }
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+
 
 	void	BindListener()
 	{
@@ -319,7 +324,7 @@ public class UIBag : UIBase,TabButtonDelegate
             {
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_recordhuoli_002"), (int)PB.ImType.PROMPT);
             }
-            Logger.LogError("use items Error.....");
+          
 			return;
 		}
 		string succMsg = "bag_record_004";

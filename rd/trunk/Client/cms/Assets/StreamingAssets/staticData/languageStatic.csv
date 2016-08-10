@@ -43,16 +43,21 @@ Harpy,哈皮,Harpy
 Melody Bulb,Melody Bulb,Melody Bulb
 Medusa,美杜莎,Medusa
 Charon,卡戎,Charon
-Moon Forest - 1,月光森林 - 1,Moon Forest - 1
-Moon Forest - 2,月光森林 - 2,Moon Forest - 2
-Moon Forest - 4,月光森林 - 4,Moon Forest - 4
-Moon Forest - 7,月光森林 - 7,Moon Forest - 7
-Moon Forest - 8,月光森林 - 8,Moon Forest - 8
-Nether River - 2,冥河 - 2,Nether River - 2
-Nether River - 3,冥河 - 3,Nether River - 3
-Nether River - 4,冥河 - 4,Nether River - 4
-Nether River - 7,冥河 - 7,Nether River - 7
-Nether River - 8,冥河 - 8,Nether River - 8
+Moon Forest - 1,月光森林 - 1 - 普通,Moon Forest - 1 - Normal
+Moon Forest - 2,月光森林 - 2 - 普通,Moon Forest - 2 - Normal
+Moon Forest - 4,月光森林 - 4 - 普通,Moon Forest - 4 - Normal
+Moon Forest - 7,月光森林 - 7 - 普通,Moon Forest - 7 - Normal
+Moon Forest - 8,月光森林 - 8 - 普通,Moon Forest - 8 - Normal
+Moon Forest1 - 1,月光森林 - 1 - 挑战,Moon Forest - 1 - Heroic
+Moon Forest1 - 2,月光森林 - 2 - 挑战,Moon Forest - 2 - Heroic
+Moon Forest1 - 4,月光森林 - 4 - 挑战,Moon Forest - 4 - Heroic
+Moon Forest1 - 7,月光森林 - 7 - 挑战,Moon Forest - 7 - Heroic
+Moon Forest1 - 8,月光森林 - 8 - 挑战,Moon Forest - 8 - Heroic
+Nether River - 2,冥河 - 2 - 容易,Nether River - 2
+Nether River - 3,冥河 - 3 - 容易,Nether River - 3
+Nether River - 4,冥河 - 4 - 容易,Nether River - 4
+Nether River - 7,冥河 - 7 - 容易,Nether River - 7
+Nether River - 8,冥河 - 8 - 容易,Nether River - 8
 attackCutSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
 attackCutMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
 attackCutStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target

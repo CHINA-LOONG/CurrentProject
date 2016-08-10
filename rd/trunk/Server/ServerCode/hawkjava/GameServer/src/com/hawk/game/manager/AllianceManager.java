@@ -27,6 +27,7 @@ import com.hawk.game.module.alliance.AllianceCancleApplyHandler;
 import com.hawk.game.module.alliance.AllianceChangeOwnerHandler;
 import com.hawk.game.module.alliance.AllianceChangePosHandler;
 import com.hawk.game.module.alliance.AllianceCommitQuestHandler;
+import com.hawk.game.module.alliance.AllianceContributionRewardHandler;
 import com.hawk.game.module.alliance.AllianceCreateHandler;
 import com.hawk.game.module.alliance.AllianceDissolveTeamHandler;
 import com.hawk.game.module.alliance.AllianceFatigueHandler;
@@ -114,8 +115,8 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, new AllianceInstanceQuestHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_REWARD_TASK, new AllianceTaskRewardHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_DISSOLVE_TEAM, new AllianceDissolveTeamHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, new AllianceContributionRewardHandler());
 		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
-
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
 		playerApplyMap = new ConcurrentHashMap<Integer, HashSet<Integer>>();

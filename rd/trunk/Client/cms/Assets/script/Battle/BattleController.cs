@@ -266,7 +266,7 @@ public class BattleController : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
            // Logger.LogWarning("hit enemy gameobject....");
         }
-        else if (battleGo.camp == UnitCamp.Player && process.SwitchingPet == false)
+        else if (battleGo.camp == UnitCamp.Player && process.SwitchingPet == false && uiBattle.gameObject.activeSelf == true)
         {
             //换宠
             ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();

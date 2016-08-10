@@ -630,7 +630,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 4
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1688,7 +1688,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 8
+      scalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2746,7 +2746,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 2.0999999
+      scalar: 1.04999995
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3784,7 +3784,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .400000006
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4827,7 +4827,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 4.19999981
+      scalar: 2.0999999
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6878,7 +6878,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .400000006
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8797,7 +8797,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 3
     startSpeed:
-      scalar: 4.19999981
+      scalar: 2.0999999
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9957,7 +9957,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 5.5999999
+      scalar: 2.79999995
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10878,7 +10878,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 3
     startSpeed:
-      scalar: 4.19999981
+      scalar: 2.0999999
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12038,7 +12038,7 @@ ParticleSystem:
         rgba: 4284546897
       minMaxState: 0
     startSize:
-      scalar: 4.92000008
+      scalar: 2.46000004
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13071,7 +13071,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .400000006
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:

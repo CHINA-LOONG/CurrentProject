@@ -1,11 +1,13 @@
 package com.hawk.orderserver.http;
 
 import java.io.IOException;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
 
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
+import org.hawk.util.HawkHttpParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,32 +30,19 @@ public class CallbackHttpHandler implements HttpHandler {
 	public void handle(HttpExchange httpExchange) throws IOException {
 		JsonObject retStatus = new JsonObject();
 		retStatus.addProperty("status", -1);
+		
 		try {
-			String uriQuery = httpExchange.getRequestURI().getQuery();
-			logger.info("Callback: " + uriQuery);
-			
-			JsonObject jsonObject = new JsonObject();
-			String[] params = uriQuery.split("&");
-			for (String item : params) {
-				// param maybe empty string, use -1
-				String[] pair = item.split("=", -1);
-				if (pair.length == 2) {
-					if (pair[0].equals("app_data")) {
-						JSONObject appData = JSONObject.fromObject(pair[1]); 
-						for (Object element : appData.keySet()) {
-							String key = (String) element;
-							jsonObject.addProperty(key, appData.getString(key));
-						}
-					}
-					else
-					{
-						jsonObject.addProperty(pair[0], pair[1]);
-					}
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
+			if (params.containsKey("app_data")) {
+				JSONObject appData = JSONObject.fromObject(params.get("app_data")); 
+				for (Object element : appData.keySet()) {
+					String key = (String) element;
+					params.put(key, appData.getString(key));
 				}
 			}
-
+			
 			CallbackInfo callbackInfo = new CallbackInfo();
-			if (callbackInfo.fromJson(jsonObject)) {
+			if (callbackInfo.fromMap(params)) {
 				OrderManager.getInstance().addCallbackInfo(callbackInfo);
 				retStatus.addProperty("status", 0);
 			}

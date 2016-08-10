@@ -292,6 +292,10 @@ public class BehaviorLogger {
 		 */
 		ALLIANCE_DISSOLVE_TEAM_REWARD,
 		/**
+		 * 解散每日贡献值奖励
+		 */
+		ALLIANCE_CONTRIBUTION_REWARD,
+		/**
 		 * 公会小任务奖励
 		 */
 		ALLIANCE_QUEST_REWARD,

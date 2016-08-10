@@ -111,7 +111,7 @@ public class PhyDazhaoController : MonoBehaviour
 
 	IEnumerator showOffCo()
 	{
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (0.0f);
 		casterBattleGo.TriggerEvent ("phyDazhaoRead_Finish", Time.time, null);
 		dazhaoFocusController.ShowoffDazhao (casterBattleGo);
 	}

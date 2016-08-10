@@ -76,7 +76,7 @@ public class UseHuoLi : UIBase
             itemData = ItemData.valueof(itemId, 0);
         }
         szItemData[index] = itemData;
-        szItemIcon[index].RefreshWithItemInfo(itemData);
+        szItemIcon[index].RefreshWithItemInfo(itemData, true, false);
 
         int leftTime = HuoLiDataMgr.Instance.GetHuoliYaoLeftTime(itemId);
 
@@ -176,7 +176,7 @@ public class UseHuoLi : UIBase
             {
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_recordhuoli_002"),(int)PB.ImType.PROMPT);
             }
-            Logger.LogError("use items Error.....");
+           // Logger.LogError("use items Error.....");
             return;
         }
        // string succMsg = "bag_record_001";

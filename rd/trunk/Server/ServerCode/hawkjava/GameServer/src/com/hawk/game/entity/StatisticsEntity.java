@@ -224,6 +224,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "allianceTaskCountDaily", nullable = false)
 	private int allianceTaskCountDaily = 0;
 
+	// 今日公会贡献值领奖数
+	@Column(name = "allianceContriRewardDaily", nullable = false)
+	private int allianceContriRewardDaily = 0;
+	
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
@@ -978,6 +982,40 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return itemUseCountDailyMap;
 	}
 
+	public void setAllianceContriRewardDaily(int index) {
+		if (index == 0) {
+			allianceContriRewardDaily |= 1;
+		}
+		else if (index == 1) {
+			allianceContriRewardDaily |= 2;
+		}
+		else if (index == 2) {
+			allianceContriRewardDaily |= 4;
+		}
+	}
+
+	public boolean isAllianceContriRewardDaily(int index) {
+		if (index == 0) {
+			return (index & 1) != 0;
+		}
+		else if (index == 1) {
+			return (index & 2) != 0;
+		}
+		else if (index == 2) {
+			return (index & 4) != 0;
+		}
+		
+		return false;
+	}
+	
+	public void clearAllianceContriRewardDaily() {
+		allianceContriRewardDaily = 0;
+	}
+	
+	public int getAllianceContriRewardDaily() {
+		return allianceContriRewardDaily;
+	}
+	
 	/**
 	 * @return 物品使用次数，如未使用返回0
 	 */

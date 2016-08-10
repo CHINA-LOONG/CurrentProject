@@ -472,7 +472,7 @@ public class GmService_Dev extends GameService {
 				for (HawkObjModule module : player.getObjModules().values()) {
 					PlayerModule playerModule = (PlayerModule) module;
 					try {
-						playerModule.onRefresh(refreshIndexList, false);
+						playerModule.onPlayerRefresh(refreshIndexList, false);
 					} catch (Exception e) {
 						HawkException.catchException(e);
 					}

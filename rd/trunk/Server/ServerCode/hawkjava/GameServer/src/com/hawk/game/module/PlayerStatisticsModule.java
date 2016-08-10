@@ -63,7 +63,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	}
 
 	@Override
-	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		// 刷新统计数据，保证其它模块刷新时数据时间一致
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 
@@ -89,6 +89,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearHoleCountDaily();
 				statisticsEntity.clearAlliancePrayCountDaily();
 				statisticsEntity.clearAllianceTaskCountDaily();
+				statisticsEntity.clearAllianceContriRewardDaily();
 				statisticsEntity.notifyUpdate(true);
 				if (false == onLogin) {
 					player.getPlayerData().syncDailyRefreshInfo();

@@ -235,7 +235,7 @@ public class UIMonsters : UIBase,
         CollectList.Clear();
         if (0 == curType)
         {
-            CollectList = new List<CollectUnit>(list);
+            CollectList.AddRange(list);
         }
         else
         {
@@ -359,14 +359,7 @@ public class UIMonsters : UIBase,
     }
     public void CleanData(List<Transform> itemList)
     {
-        if (uiType == UIType.Owned)
-        {
-            itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
-        }
-        else if (uiType == UIType.Collection)
-        {
-            itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
-        }
+        itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }
 
     public void OnClickOwnedPet(GameUnit data)

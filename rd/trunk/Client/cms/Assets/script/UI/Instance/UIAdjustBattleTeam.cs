@@ -491,6 +491,7 @@ public class UIAdjustBattleTeam : UIBase
             buffIcon.SetData(1, spellId);
 
             skillTips.SetSpellId(spellId, 1);
+            skillTips.gameObject.SetActive(false);
         }
         
 

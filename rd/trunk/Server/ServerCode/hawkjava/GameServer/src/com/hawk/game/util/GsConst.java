@@ -6,8 +6,6 @@ package com.hawk.game.util;
  * @author hawk
  */
 public class GsConst {
-	// 刷新间隔帧
-	public static final int REFRESH_PERIOD = 200;
 	// 没有值，无效值，不可用
 	public static final int UNUSABLE = -1;
 	// 装备在背包时monsterId
@@ -74,6 +72,12 @@ public class GsConst {
 	public static final int COMPOSE_MAX_COUNT = 10;	
 	// 经验药水邮件
 	public static final String FATIGUE_MAIL_ID = "mail_sys_010";
+	// 公会贡献值奖励1
+	public static final String ALLIANCE_CONTRI_REWARD1 = "10002";
+	// 公会贡献值奖励2
+	public static final String ALLIANCE_CONTRI_REWARD2 = "10002";
+	// 公会贡献值奖励3
+	public static final String ALLIANCE_CONTRI_REWARD3 = "10002";
 
 	/**
 	 * 对象类型
@@ -159,6 +163,9 @@ public class GsConst {
 		public static final int ALLIANCE_REWARD_TASK = 117;
 		// 解散工会
 		public static final int ALLIANCE_DISSOLVE_TEAM = 118;
+		// 公会贡献值奖励
+		public static final int ALLIANCE_CONTRIBUTION_REWARD = 119;
+
 		/**
 		 * 快照管理器消息定义
 		 */
@@ -293,6 +300,26 @@ public class GsConst {
 		
 		public float GetWeight(){
 			return weight;
+		}
+	}
+	
+	/**
+	 * equip 品级对应的打孔数量
+	 */
+	public enum AllianceReward
+	{
+		FIRST_REWARD(500),
+		SECOND_REWARD(1500),
+		THIRD_REWARD(3000);
+		
+		private int rewardCount;
+		
+		private AllianceReward(int count) {
+			this.rewardCount = count;
+		}
+		
+		public int GetRewardCount(){
+			return rewardCount;
 		}
 	}
 	

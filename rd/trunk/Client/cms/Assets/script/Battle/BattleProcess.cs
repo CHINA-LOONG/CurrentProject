@@ -317,11 +317,11 @@ public class BattleProcess : MonoBehaviour
                 else
                 {
                     BattleObject unit = battleGroup.GetPlayerToField();
+                    deadUnit.unit.backUp = true;
                     if (unit != null)
                     {
 						//if no unit,don't call exitfield() since the changepetview will show all exited pet
                         battleGroup.OnUnitExitField(deadUnit, slot);
-                        deadUnit.unit.backUp = true;
                         //battleGroup.OnUnitEnterField(unit, slot);
                         InsertReplaceDeadAction(unit, slot, args.triggerTime);
                         //StartCoroutine(LoggerAnim(unit));
@@ -1067,7 +1067,7 @@ public class BattleProcess : MonoBehaviour
 
             //check if there is empty slot in field(only check once),since another pet may dead when switching
             int emptySlot = battleGroup.GetEmptyPlayerSlot();
-            if (emptySlot <= BattleConst.slotIndexMax)
+            if (emptySlot <= BattleConst.slotIndexMax && replaceDeadUnitCount == 0)
             {
                 exit.unit.CalcNextActionOrder(lastActionOrder);
                 battleGroup.OnUnitEnterField(exit, emptySlot);

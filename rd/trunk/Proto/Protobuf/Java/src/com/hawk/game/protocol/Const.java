@@ -480,7 +480,7 @@ public final class Const {
      * <code>MONSTER_ATTR = 2;</code>
      *
      * <pre>
-     * 角色属性
+     * 怪物属性
      * </pre>
      */
     MONSTER_ATTR(2, 2),
@@ -554,7 +554,7 @@ public final class Const {
      * <code>MONSTER_ATTR = 2;</code>
      *
      * <pre>
-     * 角色属性
+     * 怪物属性
      * </pre>
      */
     public static final int MONSTER_ATTR_VALUE = 2;

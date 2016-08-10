@@ -76,7 +76,7 @@ public class PromptComposeMST : UIBase
         {
             if (iconCommon == null)
             {
-                iconCommon = ItemIcon.CreateItemIcon(new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 });
+                iconCommon = ItemIcon.CreateItemIcon(new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 }, true, false);
                 UIUtil.SetParentReset(iconCommon.transform, iconComPos);
                 iconCommon.HideExceptIcon();
             }

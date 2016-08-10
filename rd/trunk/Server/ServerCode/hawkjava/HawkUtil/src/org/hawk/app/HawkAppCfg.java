@@ -38,6 +38,10 @@ public class HawkAppCfg extends HawkConfigBase {
 	 */
 	protected final int tickPeriod;
 	/**
+	 * 刷新数据间隔帧数
+	 */
+	protected final int refreshTickCount;
+	/**
 	 * 逻辑线程数
 	 */
 	protected final int threadNum;
@@ -173,6 +177,7 @@ public class HawkAppCfg extends HawkConfigBase {
 		serverId = "";
 		isDebug = true;
 		tickPeriod = 50;
+		refreshTickCount = 200;
 		threadNum = 4;
 		taskThreads = 0;
 		dbThreads = 0;
@@ -230,6 +235,11 @@ public class HawkAppCfg extends HawkConfigBase {
 	
 	public int getTickPeriod() {
 		return tickPeriod;
+	}
+
+	public int getRefreshTickCount()
+	{
+		return refreshTickCount;
 	}
 
 	public int getThreadNum() {

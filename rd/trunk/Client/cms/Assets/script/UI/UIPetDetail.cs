@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIPetDetail : UIBase, IEquipPopupCallBack
 {
 
-    public static string ViewName = PetViewConst.UIPetDetailAssetName;
+    public static string ViewName = "UIPetDetail";
 
     public Button closeButton;
     public Button preButton;
@@ -19,7 +19,14 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
 
     List<GameUnit> m_curTypeList = null;
     int m_currentIndex = 0;
-    public GameUnit CurrentUnit { get { return m_curTypeList[m_currentIndex]; } }
+    public GameUnit CurrentUnit
+    {
+        get
+        {
+            //Logger.LogError(m_currentIndex);
+            return m_curTypeList[m_currentIndex];
+        }
+    }
 
     int m_currentPart = 0;
 
@@ -223,7 +230,7 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
                     param = new UIPetInlayParam()
                     {
                         unit = CurrentUnit,
-                        equip=CurrentUnit.equipList[m_currentPart],
+                        equip=CurrentUnit.equipList[m_currentPart-1],
                         tabIndex = 0,
                         selIndex = -1
                     };

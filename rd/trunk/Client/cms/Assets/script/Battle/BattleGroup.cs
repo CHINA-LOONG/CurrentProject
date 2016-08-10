@@ -271,7 +271,7 @@ public class BattleGroup
         for (int i = 0; i < playerField.Count; i++)
         {
             var bo = playerField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible && bo.unit.dazhao == 0)
             {
 				//施法对象不参与行动序列
 				//if(null != shifaBo && shifaBo.guid == bo.guid)

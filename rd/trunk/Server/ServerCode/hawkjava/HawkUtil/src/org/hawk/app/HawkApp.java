@@ -18,6 +18,7 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.util.ConcurrentHashSet;
 import org.hawk.app.task.HawkMsgTask;
 import org.hawk.app.task.HawkProtoTask;
+import org.hawk.app.task.HawkRefreshTask;
 import org.hawk.app.task.HawkTickTask;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
@@ -80,6 +81,10 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	protected long currentTime;
 	/**
+	 * 帧计数
+	 */
+	private int tickCounter = 0;
+	/**
 	 * 更新对象列表
 	 */
 	protected Set<HawkTickable> tickables;
@@ -135,6 +140,10 @@ public abstract class HawkApp extends HawkAppObj {
 	 * tick时使用xid线程分类表
 	 */
 	protected Map<Integer, List<HawkXID>> threadTickXids;
+	/**
+	 * refresh时使用xid线程分类表
+	 */
+	protected Map<Integer, List<HawkXID>> threadRefreshXids;
 	/**
 	 * 拦截器
 	 */
@@ -639,6 +648,12 @@ public abstract class HawkApp extends HawkAppObj {
 				// 逻辑帧更新
 				try {
 					onTick(currentTime);
+					++tickCounter;
+
+					if (tickCounter % appCfg.getRefreshTickCount() == 0) {
+						tickCounter = 0;
+						onRefresh(currentTime);
+					}
 				} catch (Exception e) {
 					HawkException.catchException(e);
 				}
@@ -714,6 +729,25 @@ public abstract class HawkApp extends HawkAppObj {
 		}
 
 		return super.onTick(tickTime);
+	}
+
+	/**
+	 * 刷新数据
+	 */
+	@Override
+	protected boolean onRefresh(long refreshTime) {
+		// 对象刷新数据
+		for (Entry<Integer, HawkObjManager<HawkXID, HawkAppObj>> entry : objMans.entrySet()) {
+			HawkObjManager<HawkXID, HawkAppObj> objMan = entry.getValue();
+			if (objMan != null) {
+				objXidList.clear();
+				if (objMan.collectObjKey(objXidList, null) > 0) {
+					postRefresh(objXidList, refreshTime);
+				}
+			}
+		}
+
+		return super.onTick(refreshTime);
 	}
 
 	/**
@@ -1129,6 +1163,45 @@ public abstract class HawkApp extends HawkAppObj {
 	}
 
 	/**
+	 * 投递刷新, 只会在主线程调用
+	 */
+	public boolean postRefresh(Collection<HawkXID> xidList, long refreshTime) {
+		if (running && xidList != null && xidList.size() > 0) {
+			// 先创建线程refresh表
+			if (threadRefreshXids == null) {
+				threadRefreshXids = new HashMap<Integer, List<HawkXID>>();
+				for (int i = 0; i < getThreadNum(); i++) {
+					threadRefreshXids.put(i, new LinkedList<HawkXID>());
+				}
+			} else {
+				for (int i = 0; i < getThreadNum(); i++) {
+					threadRefreshXids.get(i).clear();
+				}
+			}
+
+			if (xidList != null && xidList.size() > 0) {
+				// 计算xid列表所属线程
+				for (HawkXID xid : xidList) {
+					int threadIdx = getHashThread(xid, getThreadNum());
+					// app对象本身不参与线程refresh更新计算, 本身的refresh在主线程执行
+					if (false == xid.equals(this.objXid)) {
+						threadRefreshXids.get(threadIdx).add(xid);
+					}
+				}
+
+				// 按线程投递消息
+				for (Map.Entry<Integer, List<HawkXID>> entry : threadRefreshXids.entrySet()) {
+					if (entry.getValue().size() > 0) {
+						// 不存在即创建
+						postMsgTask(HawkRefreshTask.valueOf(entry.getValue(), refreshTime), entry.getKey());
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * 广播消息
 	 * 
 	 * @param msg
@@ -1271,9 +1344,6 @@ public abstract class HawkApp extends HawkAppObj {
 
 	/**
 	 * 分发更新事件
-	 * 
-	 * @param xid
-	 * @return
 	 * @throws Exception
 	 */
 	public boolean dispatchTick(HawkXID xid, long tickTime) {
@@ -1303,6 +1373,42 @@ public abstract class HawkApp extends HawkAppObj {
 				}
 			} else {
 				return onTick(tickTime);
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 分发刷新事件
+	 * @throws Exception
+	 */
+	public boolean dispatchRefresh(HawkXID xid, long refreshTime) {
+		if (xid != null) {
+			if (xid.isValid()) {
+				HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
+				if (objBase != null) {
+					try {
+						if (objBase.isObjValid()) {
+
+							try {
+								HawkInterceptHandler interceptHandler = getInterceptHandler(objBase.getImpl().getClass().getName());
+								if (interceptHandler != null && interceptHandler.onRefresh(objBase.getImpl())) {
+									return true;
+								}
+							} catch (Exception e) {
+								HawkException.catchException(e);
+							}
+
+							return objBase.getImpl().onRefresh(refreshTime);
+						}
+					} catch (Exception e) {
+						HawkException.catchException(e);
+					} finally {
+						objBase.unlockObj();
+					}
+				}
+			} else {
+				return onRefresh(refreshTime);
 			}
 		}
 		return false;

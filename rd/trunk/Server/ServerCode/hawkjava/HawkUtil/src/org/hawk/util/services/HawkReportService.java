@@ -877,6 +877,7 @@ public class HawkReportService extends HawkThread {
 				return false;
 			}
 		} catch (Exception e) {
+			HawkException.catchException(e);
 			reportLogger.info("fetch account server fail");
 			return false;
 		}

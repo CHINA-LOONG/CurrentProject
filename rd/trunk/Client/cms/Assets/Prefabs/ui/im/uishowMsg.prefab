@@ -1436,7 +1436,6 @@ MonoBehaviour:
   moduleVec: {fileID: 22414552}
   leftCahtMove: {fileID: 22498682}
   isDrag: 0
-  isBasicsChat: 1
 --- !u!114 &11446820
 MonoBehaviour:
   m_ObjectHideFlags: 1

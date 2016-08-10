@@ -303,7 +303,7 @@ public class Buff
             foreach (Buff buff in buffList)
             {
                 //同名刷新，不区分来源
-                if (buff.buffProto.id == buffProto.id)
+                if (buff.buffProto.id == buffProto.id && buff.isFinish == false)
                 {
                     buff.Reset(applyTime, skipUpdate);
                     return;

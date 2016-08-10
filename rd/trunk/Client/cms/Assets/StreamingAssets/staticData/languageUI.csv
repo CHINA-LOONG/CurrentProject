@@ -174,7 +174,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -649,4 +649,6 @@ towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
 im_battle_002,己方宠物正在释放大招，请稍后再试,jifangchongwuzhengzaishifang
+im_battle_001,正在进行换怪，不能施放大招,huaguaine，dengyixiasa
+im_spell_001,当前宠物处于眩晕状态，无法释放大招,bei yun le
 passive,被动,Passive
