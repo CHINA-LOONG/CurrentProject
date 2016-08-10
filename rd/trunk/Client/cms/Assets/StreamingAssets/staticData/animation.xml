@@ -68,7 +68,7 @@ state = 1 Remove
 		<Ani id="unitExitandenter" state="0">
 			<MotionList>
 				<Motion time="0" ani="" key="paobu" value="true"/>
-				<Motion time="1.3" ani="" key="paobu" value="false"/>
+				<Motion time="1.6" ani="" key="paobu" value="false"/>
 			</MotionList>
 		</Ani>
 		<Ani id="stun" state="0">
@@ -131,22 +131,22 @@ state = 1 Remove
 		</Ani>
 		<Ani id="phydazhaoPrepareb1" state="0" AniType="BuffEffect">
 			<ParticleList>
-				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="phydazhaoPrepareb1Finish" state="1" finish_event="phydazhaoPrepareb1">
 		</Ani>
 		<Ani id="magicdazhaoPrepareb1" state="0" AniType="BuffEffect">
 			<ParticleList>
-				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji"/>
-				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="Bip001 Footsteps"/>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="" locky="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="magicdazhaoPrepareb1Finish" state="1" finish_event="magicdazhaoPrepareb1">
 		</Ani>
 		<Ani id="phyDazhaoPrepare" state="0">
 			<ParticleList>
-				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="phyDazhaoPrepare_Finish" state="1" finish_event="phyDazhaoPrepare">
@@ -160,8 +160,8 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicDazhaoPrepare" state="0">
 			<ParticleList>
-				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="Bip001 Footsteps"/>
-				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji"/>
+				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="" locky="true"/>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="magicDazhaoPrepare_Finish" state="1" finish_event="magicDazhaoPrepare">
@@ -1564,6 +1564,13 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffstunb1Finish" state="1" finish_event="debuffstunb1" AniType="Passive">
 		</Ani>
+		<Ani id="debuffstun1b1" state="0" AniType="Passive-todo:">
+			<ParticleList>
+				<Particle asset="bd_xuanyun" bundle="effect/particle" ani="" attach="true" parent="lifebarnode"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffstun1b1Finish" state="1" finish_event="debuffstun1b1" AniType="Passive">
+		</Ani>
 		<Ani id="buffTauntb1" state="0" AniType="Passive">
 			<ParticleList>
 				<Particle asset="bd_chaofeng" bundle="effect/particle" ani="" attach="true" locky="" parent="lifebarnode"/>
@@ -2250,7 +2257,7 @@ state = 1 Remove
 		
 		<Ani id="ultHetonge2" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicWaterMediump" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0.5" asset="magicWaterMediump" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="waterp2"/>

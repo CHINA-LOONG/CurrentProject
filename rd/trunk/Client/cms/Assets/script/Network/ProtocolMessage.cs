@@ -53,7 +53,7 @@ public class ProtocolMessage
 
 
     public ProtocolHeader header;
-	private MemoryStream octets;
+    private MemoryStream octets;
 
 	public static ProtocolMessage Create()
 	{
@@ -177,7 +177,9 @@ public class ProtocolMessage
 			buffer.Write(System.BitConverter.GetBytes(IPAddress.HostToNetworkOrder(header.type)), 0, sizeof(int));
 			buffer.Write(System.BitConverter.GetBytes(IPAddress.HostToNetworkOrder(header.size)), 0, sizeof(int));
 			buffer.Write(System.BitConverter.GetBytes(IPAddress.HostToNetworkOrder(header.reserve)), 0, sizeof(int));
-			buffer.Write(System.BitConverter.GetBytes(IPAddress.HostToNetworkOrder(header.crc)), 0, sizeof(int));
+
+            header.crc = calcCrc(octets.ToArray(), 0, header.size, 0);
+            buffer.Write(System.BitConverter.GetBytes(IPAddress.HostToNetworkOrder(header.crc)), 0, sizeof(int));
 			
 			if (header.size > 0)
 			{
@@ -201,7 +203,7 @@ public class ProtocolMessage
 		}
 		
 		header.clear();
-		//int crc = 0;
+		int crc = 0;
 		
 		try {
 			
@@ -230,13 +232,21 @@ public class ProtocolMessage
 					{
 						octets = new MemoryStream(header.size);
 					}
-					
-					octets.SetLength(0);
-					octets.Write(buffer.GetBuffer(), (int)buffer.Position, header.size);
+
+                    octets.SetLength(0);
+                    octets.Write(buffer.GetBuffer(), (int)buffer.Position, header.size);
+                    crc = calcCrc(octets.ToArray(), 0, (int)octets.Length, 0);
+
+                    if (header.reserve == 1)
+                    {
+                        byte[] result = null;
+                        ZlibUtil.DecompressData(octets.ToArray(), out result);
+                        octets.SetLength(0);
+                        octets.Write(result, 0,  result.Length);
+                    }
 					
 					Buffer.BlockCopy(buffer.GetBuffer(), HEAD_SIZE + header.size, buffer.GetBuffer(), 0, (int)(buffer.Length - HEAD_SIZE - header.size));
 					buffer.SetLength(buffer.Length - header.size - HEAD_SIZE);
-					//crc = 0;
 				}
 			}
 			else
@@ -258,10 +268,39 @@ public class ProtocolMessage
 		}
 		
 		// crc校验
-		//if (!checkCrc(crc)) {
-		//	throw new HawkException(String.format("protocol crc verify failed, type: %d", header.type));
-		//}
+        if (crc != header.crc)
+        {
+            return false;
+		}
 		
 		return true;
 	}
+
+    public static int calcCrc(byte[] bytes, int offset, int size, int crc)
+    { 
+        int hash = crc;
+		for (int i = offset; i < offset + size; i++) {
+            hash ^= ((i & 1) == 0) ? ((hash << 7) ^ (bytes[i] & 0xff) ^ (MoveByte(hash, 3))) : (~((hash << 11) ^ (bytes[i] & 0xff) ^ (MoveByte(hash, 5))));
+		}
+
+		return hash;
+    }
+
+    public static int MoveByte(int value, int pos)
+    {
+        if (value < 0)
+        {
+            string s = Convert.ToString(value, 2);
+            for (int i = 0; i < pos; i++)
+            {
+                s = "0" + s.Substring(0, 31);
+            }
+            return Convert.ToInt32(s, 2);
+        }
+        else
+        {
+            return value >> pos;
+        }
+    }
+
 }

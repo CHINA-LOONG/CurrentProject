@@ -26,8 +26,10 @@ public class JiuWeiHuUnitAi : BossAi {
 		jiuWeihuSpellDic.TryGetValue ("attackCutTriStrong", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(jiuWeihuUnit);
+        if (attackResult.attackTarget == null)
+            return null;
 
-		List<string> wpList = null;
+        List<string> wpList = null;
 		wpList = GetAliveWeakPointList (jiuWeihuUnit);
 		int count = 0;
 		for(int n = wpList.Count -1 ;n > 0;n--)
@@ -89,15 +91,6 @@ public class JiuWeiHuUnitAi : BossAi {
 	private List<GameUnit> GetCanAttackList(GameUnit jiuWeihuUnit)
 	{
 		return BattleUnitAi.Instance.GetOppositeSideFiledList(jiuWeihuUnit);
-	}
-
-	private GameUnit GetAttackRandomTarget(GameUnit jiuWeiHuUnit)
-	{
-		List<GameUnit> listTarge = GetCanAttackList (jiuWeiHuUnit);
-		
-		int index = Random.Range (0, listTarge.Count);
-		
-		return listTarge[index];
 	}
 
 	private int GetAttackCount(GameUnit jiuWeihuUnit)

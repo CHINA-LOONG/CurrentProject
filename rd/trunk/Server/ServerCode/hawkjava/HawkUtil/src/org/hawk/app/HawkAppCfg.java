@@ -74,6 +74,10 @@ public class HawkAppCfg extends HawkConfigBase {
 	 */
 	protected final int sessionBuffSize;
 	/**
+	 * 数据压缩阀值
+	 */
+	protected final int compressSize;
+	/**
 	 * 会话空闲超时
 	 */
 	protected final int sessionIdleTime;
@@ -186,6 +190,7 @@ public class HawkAppCfg extends HawkConfigBase {
 		isWebSocket = false;
 		isHttpServer = false;
 		sessionBuffSize = 4096;
+		compressSize = 100;
 		sessionIdleTime = 0;
 		sessionPPS = 0;
 		sessionEncryption = false;
@@ -264,6 +269,10 @@ public class HawkAppCfg extends HawkConfigBase {
 	
 	public int getSessionBuffSize() {
 		return sessionBuffSize;
+	}
+	
+	public int getCompressSize() {
+		return compressSize;
 	}
 
 	public int getSessionIdleTime() {

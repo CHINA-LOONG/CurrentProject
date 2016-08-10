@@ -95,7 +95,7 @@ im_chatSettings,频道设置,Chat Settings
 im_blockGlobal,屏蔽世界频道所有发言,Block all Global Chat messages
 im_blockGuild,屏蔽公会频道所有发言,Block all Guild Chat messages
 im_noGuild,未加入公会,No guild
-im_invite,邀请入会,Invite to guild
+im_invite,查看公会,Check guild
 im_block,屏蔽,Block
 im_block_chat,确定屏蔽聊天么？,Confirm block chat?
 im_block_cancel,（可以在系统设置取消屏蔽）,(Blocked chats can be managed in system settings)
@@ -103,6 +103,7 @@ im_record_001,您发送过于频繁，请稍后再试,You have sent messages too
 im_record_002,您还没有公会,You have not joined a Guild.
 im_record_003,屏蔽聊天成功,Chat is now blocked.
 im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
+im_record_005,目标还没有公会,mu biao mei you guild
 ss,,
 bag_title,背包,Bag
 bag_shengyu,剩余:{0},Remain:{0}
@@ -145,6 +146,7 @@ quest_shijianweidao,时间未到,Available Later
 quest_lijiqianwang,立即前往,Go Now
 quest_lingqujiangli,领取奖励,Collect Reward
 quest_reward_title,任务奖励,Mission Reward
+,,
 xl_mail,薛龙_邮箱界面,
 mail_title,邮箱,Inbox
 mail_tab1,系统邮件,System
@@ -160,6 +162,11 @@ mail_record_005,邮件已过期,Mail has already expired.
 mail_youxiangjiangman,<color=#ff0000ff>邮箱即将爆仓，请及时收取邮件</color>,"<color=#ff0000ff>Your inbox is almost full,be sure to promptly collect mails!</color>"
 mail_youxiangyiman,<color=#ff0000ff>邮箱已经爆仓，快快收取邮件</color>,"<color=#ff0000ff>Your inbox is full,go collect some mails!</color>"
 mail_CollectedAll,全部收取成功！,Collected all!
+mail_zidongshantips,邮件将在领取附件后自动删除,邮件将在领取附件后自动删除
+mail_shouquall,确认收取所有邮件吗？,确认收取所有邮件吗？
+mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,*若金币/钻石达到上限，收取将无法继续获得
+,,
+,,
 xl_equip_forge,薛龙_装备强化进阶,
 equip_forge_xiaohao,消耗材料,Materials Consumed
 equip_forge_dazao,打造,Forge
@@ -174,7 +181,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -267,7 +274,7 @@ compose_item,材料合成,材料合成
 compose_gem,宝石合成,宝石合成
 decompose_item,道具分解,道具分解
 tips_monster,宠物分解,宠物分解
-tips_go,进入,进入
+tips_go,进入,go to
 ,,
 xl_common,公用部分,
 pet_detail_skill_level,等级:,LVL:
@@ -290,6 +297,7 @@ monstertype2,人物,Human
 monstertype3,特异,Peculiar
 monstertype4,植物,Plant
 monstertype5,神,Deity
+list_empty,别找了，啥也没有…,别找了，啥也没有…
 ,,
 zs_modify:xl,,
 pet_list_type,(圣兽),(shengshou)
@@ -303,6 +311,7 @@ pet_detail,,
 pet_detail_left_detail_attr,详细属性,Details
 pet_detail_left_skill,技能,Abilities
 pet_detail_left_advance,进化,Evolve
+pet_detail_roles,性格,roles
 im_monster_lock,宠物锁定成功,Monster is now locked.
 im_monster_unlock,宠物解锁成功,Monster is now unlocked.
 pet_detail_skill_current_level,本级:,Current:
@@ -378,9 +387,9 @@ sociaty_applylevel,申请等级,Lvl Req.
 sociaty_operate,操作,Action
 sociaty_shenqing,申请加入,Apply
 sociaty_cancelshenqing,取消申请,Cancel
-sociaty_notice,公会公告,Guild Announcement
-sociaty_buildbtn,创建公会,Create Guild
-sociaty_tips1,您已满足该公会申请条件，是否立即加入？（退出公会12小时后才能加入其他公会）,You already met this guild's application requirements. Join immediately?(You must wait 12 hours after leaving a Guild before you may join another.)
+sociaty_notice,公会公告,Announcement
+sociaty_buildbtn,创建公会,Create
+sociaty_tips1,该公会不需批准，满足条件立即加入，是否确定操作？（退出公会12小时后才能加入其他公会）,"This guild doesn't require approval to join. If all requirements are met, you may join immediately. Continue?(You must wait 12 hours after leaving a Guild before you may join another.)"
 sociaty_buildtitle,创建公会,Guild Creation
 sociaty_buildlimit,（只能输入字母、数字和中文汉字）,(Alphanumeric and Chinese characters only.)
 sociaty_reqcoin,消耗,Cost
@@ -397,7 +406,7 @@ sociaty_comcontribution,公会贡献值：,Guild Pts Total:
 sociaty_oneliveness,公会今日贡献值：,Today's Guild Pts:
 sociaty_revisenotice,修改公告,Edit
 sociaty_activity,公会活动,Guild Event
-sociaty_pray,公会祈福,Guild Wish
+sociaty_pray,公会许愿,Guild Wish
 sociaty_jidi,公会基地,Guild Base
 sociaty_beiqingli,很遗憾，您已被请出公会,"Unfortunately, you were removed from the guild."
 sociaty_shouren,招收成员,Recruitment
@@ -413,7 +422,7 @@ sociaty_hour,X小时前,X hrs ago
 sociaty_day,X天前,X days ago
 sociaty_zaixian,在线,Online
 sociaty_quit,退出公会,Leave Guild
-sociaty_newapply,新的申请,New Applications
+sociaty_newapply,新的申请,Application
 sociaty_yield,移交会长,Transfer Master Role
 sociaty_yieldfu,任命副会长,Promote Elder
 sociaty_yieldfujie,解除副会长,Demote Elder
@@ -425,7 +434,7 @@ sociaty_tips5,确定将XXX请离公会？,Confirm leave guild?
 sociaty_tips6,确定退出公会？,Confirm leave guild?
 sociaty_refuse,拒绝,Refuse
 sociaty_approve,批准,Accept
-sociaty_setup,申请设置,Application Settings
+sociaty_setup,申请设置,Settings
 sociaty_approveall,全部批准,Accept All
 sociaty_refuseall,全部拒绝,Refuse All
 sociaty_type,公会类型：,Guild Type:
@@ -435,12 +444,12 @@ sociaty_minlevel,最低人物等级：,Level Req:
 sociaty_tips7,设置后，该公会将收不到低于设置要求的申请,"Once set, the guild cannot receive applications from players below the Level Requirement."
 sociaty_levelname,公会等级,Guild Lvl
 sociaty_peoplenum2,公会人数,Member Count
-sociaty_coinup,金钱试炼增益,Palace of Midas Gains
-sociaty_expup,经验试炼增益,Fields of Elysium Gains
+sociaty_coinup,米达斯宫增益,Palace of Midas Gains
+sociaty_expup,至福乐土增益,Fields of Elysium Gains
 sociaty_leveltips,限制公会科技可提升最大等级,Increases guild's level limit.
 sociaty_peopletips,提升公会最大人数,Increases guild's member limit.
-sociaty_cointips,增加金钱试炼的金币获得量,Increases Coins gained from Palace of Midas.
-sociaty_exptips,经验试炼时额外获得经验药,Grants bonus EXP while playing Fields of Elysium.
+sociaty_cointips,增加米达斯宫的金币获得量,Increases Coins gained from Palace of Midas.
+sociaty_exptips,至福乐土额外获得经验药,Grants bonus EXP while playing Fields of Elysium.
 sociaty_nowlevel,本级效果：,Current:
 sociaty_leveltipsmiaoshu1,X级,LVL X
 sociaty_peopletipsmiaoshu1,X人,X Members
@@ -457,9 +466,9 @@ sociaty_tasknum,今日剩余次数：X,Remaining today:
 sociaty_teamreward,奖励,Rewards
 sociaty_start,开启,Open
 sociaty_spendtips,确定开启公会任务吗？,Confirm open Guild Mission?
-sociaty_myteam1,我的小队,My squad
+sociaty_myteam1,我的小队,My team
 sociaty_shengyutime,剩余时间：,Time remaining:
-sociaty_tasktarget,任务目标,Mission Objective
+sociaty_tasktarget,任务目标,Objective
 sociaty_daojutarget,提交X个Y（X代表道具数量，Y代表道具数量）,Retrieve X of Y
 sociaty_cointarget,提交X个金币,Retrieve X Coins
 sociaty_fubentarget,通关X副本（X代表副本名称）,Clear Stage X
@@ -468,8 +477,8 @@ sociaty_commit,提交,Submit
 sociaty_gogogo,立即前往,Go Now
 sociaty_completename,玩家XXX已完成,Completed by XXX 
 sociaty_renbuzai,完成人已不在公会,The member who completed is no longer in this Guild.
-sociaty_giveup,放弃任务,Abandon Mission
-sociaty_findfriends,招募伙伴,Recruit Allies
+sociaty_giveup,放弃任务,Abandon
+sociaty_findfriends,招募伙伴,Recruit
 sociaty_taskfail,时间已到，任务失败,Time's up! Mission failed.
 sociaty_giveuptips,确定要放弃公会任务吗？,Confirm abandon Guild Mission?
 sociaty_giveuptips1,（放弃将返还80%的开启费用，但会消耗1次任务次数）,"(Abandoning returns 80% of initial cost, but will use up 1 mission chance.)"
@@ -501,9 +510,9 @@ sociaty_record_023,公会容纳不下这么多人啦,The guild cannot fit that m
 sociaty_record_024,没有可领取的活力值,No Guild Points to be collected.
 sociaty_record_025,公会等级已变更,Guild Lvl has changed.
 sociaty_record_026,公会贡献值不足，升级失败,"Insufficient Guild Points, upgrade failed."
-sociaty_record_027,今日祈福次数已用完,Today's Wishes have already all been used.
-sociaty_record_028,祈福所需货币不足,Insufficient currency required for the Wish.
-sociaty_record_029,祈福成功！个人贡献值+XX，公会贡献值+YY,"Wish successful! Your Guild Points +XX, Guild Points Total +YY."
+sociaty_record_027,今日许愿次数已用完,Today's Wishes have already all been used.
+sociaty_record_028,许愿所需货币不足,Insufficient currency required for the Wish.
+sociaty_record_029,许愿成功！个人贡献值+XX，公会贡献值+YY,"Wish successful! Your Guild Points +XX, Guild Points Total +YY."
 sociaty_record_030,今日任务次数已用完,Today's mission chances have all been used.
 sociaty_record_031,等级不足，快去提升自己的等级吧,Insufficient level. Get out there and level up!
 sociaty_record_032,您正在公会任务小队中，不能退出公会,You are in a Guild Mission Squad. Unable to leave guild.
@@ -527,6 +536,7 @@ sociaty_record_054,XXX（玩家名称）已成为新任会长,XXX is now Guild M
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
 sociaty_record_056,存在非法字符,Contains illegal characters.
 sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.
+sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1}
 ,,
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas
@@ -648,7 +658,7 @@ towerBoss_3_37,死亡之塔 - 37,Tower Of Death - 37
 towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
-im_battle_002,己方宠物正在释放大招，请稍后再试,jifangchongwuzhengzaishifang
-im_battle_001,正在进行换怪，不能施放大招,huaguaine，dengyixiasa
-im_spell_001,当前宠物处于眩晕状态，无法释放大招,bei yun le
+im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
+im_battle_001,正在进行换怪，不能施放大招,"Swapping monsters, unable to cast ult now."
+im_spell_001,当前宠物处于眩晕状态，无法释放大招,"Monster is currently stunned, unable to cast ult now."
 passive,被动,Passive

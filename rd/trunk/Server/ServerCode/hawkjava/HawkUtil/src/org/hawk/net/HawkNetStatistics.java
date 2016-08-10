@@ -22,6 +22,8 @@ public class HawkNetStatistics extends HawkTickable {
 	protected AtomicLong totalSendBytes;
 	// 总发送协议数
 	protected AtomicLong totalSendProto;
+	// 压缩节省的字节数
+	protected AtomicLong totolCompressBytes;
 	// 当前接收速率
 	protected long curRecvRate;
 	// 接收峰值速率(byte/s)
@@ -64,6 +66,7 @@ public class HawkNetStatistics extends HawkTickable {
 		totalSendProto = new AtomicLong();
 		totalRecvBytes = new AtomicLong();
 		totalRecvProto = new AtomicLong();
+		totolCompressBytes = new AtomicLong();
 		curSession = new AtomicLong();
 		peakSession = new AtomicLong();
 		
@@ -119,6 +122,7 @@ public class HawkNetStatistics extends HawkTickable {
 		jsonObject.addProperty("totalRecvProto", getTotalRecvProto());
 		jsonObject.addProperty("totalSendBytes", getTotalSendBytes());
 		jsonObject.addProperty("totalSendProto", getTotalSendProto());
+		jsonObject.addProperty("totalCompressBytes",getTotalCompressBytes());
 		jsonObject.addProperty("curRecvRate", getCurRecvRate());
 		jsonObject.addProperty("peakRecvRate", getPeakRecvRate());
 		jsonObject.addProperty("curSendRate", getCurSendRate());
@@ -180,6 +184,16 @@ public class HawkNetStatistics extends HawkTickable {
 	}
 
 	/**
+	 * 通知压缩了多少字节
+	 * 
+	 * @param bytes
+	 */
+	public void onCompressBytes(int bytes) {
+		totolCompressBytes.addAndGet(bytes);
+	}
+
+	
+	/**
 	 * 通知接收到协议
 	 */
 	public void onRecvProto() {
@@ -202,6 +216,15 @@ public class HawkNetStatistics extends HawkTickable {
 		return totalRecvBytes.get();
 	}
 
+	/**
+	 * 获取总压缩字节数
+	 * 
+	 * @return
+	 */
+	public long getTotalCompressBytes() {
+		return totolCompressBytes.get();
+	}
+	
 	/**
 	 * 获取总接收协议数
 	 * 

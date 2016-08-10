@@ -1082,6 +1082,13 @@ namespace PB
       get { return _selfData; }
       set { _selfData = value; }
     }
+    private int _contributionReward;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"contributionReward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contributionReward
+    {
+      get { return _contributionReward; }
+      set { _contributionReward = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1136,6 +1143,74 @@ namespace PB
       get { return _apply; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceContribution")]
+  public partial class HSAllianceContribution : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceContribution() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceContributionRet")]
+  public partial class HSAllianceContributionRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceContributionRet() {}
+    
+    private int _contribution;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"contribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution
+    {
+      get { return _contribution; }
+      set { _contribution = value; }
+    }
+    private int _contributionToday;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"contributionToday", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contributionToday
+    {
+      get { return _contributionToday; }
+      set { _contributionToday = value; }
+    }
+    private int _contribution3day;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"contribution3day", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution3day
+    {
+      get { return _contribution3day; }
+      set { _contribution3day = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceContriReward")]
+  public partial class HSAllianceContriReward : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceContriReward() {}
+    
+    private int _index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int index
+    {
+      get { return _index; }
+      set { _index = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceContriRewardRet")]
+  public partial class HSAllianceContriRewardRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceContriRewardRet() {}
+    
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

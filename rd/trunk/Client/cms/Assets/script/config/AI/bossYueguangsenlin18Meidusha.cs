@@ -28,8 +28,10 @@ public class bossYueguangsenlin18Meidusha : BossAi {
 		//jiuWeihuSpellDic.TryGetValue ("bossKarong_anyingzhua", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(meidushaUnit);
+        if (attackResult.attackTarget == null)
+            return null;
 
-		List<string> wpList = null;
+        List<string> wpList = null;
         wpList = GetAliveWeakPointList (meidushaUnit);
         int wp_count = wpList.Count -1;
         //spell_AI

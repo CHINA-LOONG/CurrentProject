@@ -13,6 +13,7 @@ import org.hawk.os.HawkRand;
 import com.hawk.game.config.GoldChangeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.ShopCfg;
+import com.hawk.game.config.StoreCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.item.AwardItems;
@@ -31,6 +32,8 @@ import com.hawk.game.protocol.Shop.HSShopItemBuy;
 import com.hawk.game.protocol.Shop.HSShopItemBuyRet;
 import com.hawk.game.protocol.Shop.HSShopRefresh;
 import com.hawk.game.protocol.Shop.HSShopRefreshRet;
+import com.hawk.game.protocol.Shop.HSStoreItemBuy;
+import com.hawk.game.protocol.Shop.HSStoreItemBuyRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ShopUtil;
@@ -136,7 +139,7 @@ public class PlayerShopModule extends PlayerModule{
 		HSShopRefresh protocol = cmd.parseProtocol(HSShopRefresh.getDefaultInstance());
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
 		ShopCfg shopCfg = ShopCfg.getShopCfg(protocol.getType(), player.getLevel());
-		if (shopEntity.getShopRefreshNum(protocol.getType()) >= shopCfg.getRefreshMaxNumByHand()) {
+		if (shopCfg.getRefreshMaxNumByHand() != GsConst.UNUSABLE && shopEntity.getShopRefreshNum(protocol.getType()) >= shopCfg.getRefreshMaxNumByHand()) {
 			sendError(HS.code.SHOP_REFRESH_C_VALUE, Status.shopError.SHOP_REFRESH_MAX_COUNT_VALUE);
 			return true;
 		}
@@ -238,7 +241,43 @@ public class PlayerShopModule extends PlayerModule{
 
 		return true;
 	}
+	
+	@ProtocolHandler(code = HS.code.SHOP_STORE_BUY_C_VALUE)
+	private boolean onStoreItemBuy(HawkProtocol cmd){
+		HSStoreItemBuy protocol = cmd.parseProtocol(HSStoreItemBuy.getDefaultInstance());
+		int hsCode = cmd.getType();
+		StoreCfg storeCfg = HawkConfigManager.getInstance().getConfigByKey(StoreCfg.class, protocol.getId());
 
+		if (storeCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
+			return true;
+		}
+
+		ConsumeItems consume = new ConsumeItems();
+		consume.addGold((int)(storeCfg.getCount() * storeCfg.getPrice() * storeCfg.getDiscount()));
+
+		if (consume.checkConsume(player, hsCode) == false) {
+			return true;
+		}
+		
+		AwardItems award = new AwardItems();
+		if (storeCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
+			award.addEquip(storeCfg.getItem(), storeCfg.getCount(), storeCfg.getStage(), storeCfg.getLevel());
+		}
+		else
+		{
+			award.addItem(storeCfg.getItem(), storeCfg.getCount());
+		}
+		
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
+
+		HSStoreItemBuyRet.Builder response = HSStoreItemBuyRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_STORE_BUY_S_VALUE, response));
+
+		return true;
+	}
+	
 	@Override
 	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		ShopEntity shopEntity = player.getPlayerData().loadShop();

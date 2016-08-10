@@ -33,11 +33,11 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final String spellIDList;
 	protected final String weakpointList;
 	protected final int friendship;
+	protected final int disposition;
 	protected final String fragmentId;
 	protected final int fragmentCount;
 
 	//client only
-	protected final int disposition = 0;
 	protected final String closeUp = null;
 	protected final String say = null;
 	protected final String monsterfounds = null;
@@ -70,6 +70,7 @@ public class MonsterCfg extends HawkConfigBase {
 		spellIDList = "";
 		weakpointList = "";
 		friendship = 0;
+		disposition = 0;
 		fragmentId = "";
 		fragmentCount = 0;
 	}
@@ -186,6 +187,10 @@ public class MonsterCfg extends HawkConfigBase {
 
 	public int getFriendship() {
 		return friendship;
+	}
+
+	public int getDisposition() {
+		return disposition;
 	}
 
 	public String getFragmentId() {

@@ -1093,7 +1093,7 @@ ultAmute3Description,给群体目标添加法术、物理吸收护盾,Casts a sh
 ultLuoxinfu5Description,给群体目标添加痛楚效果（持续伤害）,Casts Anguish effect(Dot) on all enemy targets
 ultSaibulesi5Description,在3秒内进行操作，每次操作给单体目标造成暗属性法术伤害,"Carry out actions for 3 seconds, each action dealing dark type magic damage to a single target"
 ultHongniu4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害20%附加嘲讽效果，若目标已拥有嘲讽效果则伤害翻倍,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target, with a 20% chance of provoke effect; damage multiplied on provoked target"
-ultAnpusha5Description,使单体目标速度，力量，智力，防御下降80%，持续3回合,"Reduces the SPD, STR, INT, and DEF of a single target by 80% for 3 turns"
+ultAnpusha5Description,使单体目标力量，智力，防御下降80%，持续3回合,"Reduces the STR, INT, and DEF of a single target by 80% for 3 turns"
 ultDaochengsizhong4Description,给群体目标造成火属性法术伤害50%附加眩晕效果,"Deals fire type magic damage to all enemy targets, with a 50% chance of stun effect"
 ultHuoniao4Description,给群体目标造成火属性法术伤害附加缓速效果,Deals fire type magic damage to all enemy targets with slow effect
 ultIfrit4Description,给群体目标造成火属性物理伤害驱散自身减益效果，根据驱散的自身减益效果数量增加群体伤害量,Deals fire type physical damage to all enemies and dispells any debuffs you are affected by; damage is increased based on the amount of debuffs dispelled

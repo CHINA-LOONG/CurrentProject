@@ -27,6 +27,8 @@ public class bossMinghe14Amute : BossAi {
 		//jiuWeihuSpellDic.TryGetValue ("bossAmute_anyingzhua", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(AmuteUnit);
+        if (attackResult.attackTarget == null)
+            return null;
 
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (AmuteUnit);

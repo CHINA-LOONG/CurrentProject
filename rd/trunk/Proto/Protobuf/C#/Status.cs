@@ -406,7 +406,10 @@ namespace PB
       ALLIANCE_NOT_CAPTAIN = 524328,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HAVE_MEMBER", Value=524329)]
-      ALLIANCE_HAVE_MEMBER = 524329
+      ALLIANCE_HAVE_MEMBER = 524329,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_REWARD_ALREADY_GIVE", Value=524330)]
+      ALLIANCE_REWARD_ALREADY_GIVE = 524330
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

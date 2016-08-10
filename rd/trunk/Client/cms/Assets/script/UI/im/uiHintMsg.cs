@@ -19,11 +19,11 @@ public class uiHintMsg : MonoBehaviour {
     }
     public void NoticeAdd(string msg)//系统公告
     {
-        noticeMove.AddMsg(msg);
+        noticeMove.AddMsg(msg, (int)PB.ImType.NOTICE);
     }
     public void LanternAdd(string msg)//走马灯
     {
-        lanternMove.AddMsg(msg);
+        lanternMove.AddMsg(msg, (int)PB.ImType.LANTERN);
     }
     public void HintShow(string hintText)//系统提示
     {

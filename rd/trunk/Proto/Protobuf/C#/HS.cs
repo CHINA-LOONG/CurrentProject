@@ -420,6 +420,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_TIMES", Value=8011)]
       SHOP_REFRESH_TIMES = 8011,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_C", Value=8012)]
+      SHOP_STORE_BUY_C = 8012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_S", Value=8013)]
+      SHOP_STORE_BUY_S = 8013,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_C", Value=9001)]
       ALLIANCE_CREATE_C = 9001,
             
@@ -605,6 +611,18 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_DISSOVLE_TEAM_S", Value=9077)]
       ALLIANCE_DISSOVLE_TEAM_S = 9077,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRIBUTION_C", Value=9078)]
+      ALLIANCE_CONTRIBUTION_C = 9078,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRIBUTION_S", Value=9079)]
+      ALLIANCE_CONTRIBUTION_S = 9079,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_REWARD_C", Value=9080)]
+      ALLIANCE_CONTRI_REWARD_C = 9080,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_REWARD_S", Value=9081)]
+      ALLIANCE_CONTRI_REWARD_S = 9081,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,

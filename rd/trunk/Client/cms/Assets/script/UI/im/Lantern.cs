@@ -33,11 +33,19 @@ public class Lantern : MonoBehaviour
     //    GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
     //}
 
-    public void AddMsg(string msg)
+    public void AddMsg(string msg,int type)
     {
         LanternData lanData = new LanternData();
         lanData.content = msg;
         lanData.lant = ResourceMgr.Instance.LoadAsset("lanternText").GetComponent<Text>();
+        if (type == (int)PB.ImType.LANTERN)
+        {
+            lanData.lant.fontSize = 24;
+        }
+        else if (type == (int)PB.ImType.NOTICE)
+        {
+            lanData.lant.color = Color.red;
+        }
         lanData.lant.transform.parent = transform;
         lanData.lant.transform.localScale = transform.localScale;
         lanData.lant.text = lanData.content;

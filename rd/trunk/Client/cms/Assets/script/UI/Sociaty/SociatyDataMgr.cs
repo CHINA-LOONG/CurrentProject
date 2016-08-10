@@ -8,6 +8,8 @@ public class SociatyDataMgr : MonoBehaviour
     public PB.AllianceInfo allianceData = new PB.AllianceInfo();
     public PB.AllianceMember allianceSelfData = new PB.AllianceMember();
 
+    public bool[] hasReceivContributionReword = new bool[3];
+
     private NetMessageDelegate callBack = null;
     // Use this for initialization
     void Start ()
@@ -15,11 +17,17 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_DATA_S.GetHashCode().ToString(), OnAllianceDataSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_SELF_DATA_S.GetHashCode().ToString(),OnSelfAllianceDataSync);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnApplyFinish);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnApplyFinish);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode().ToString(), OnCancelApplyFinish);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_S.GetHashCode().ToString(), OnCancelApplyFinish);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_NOTICE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_NOTICE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 
 
@@ -28,21 +36,26 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_DATA_S.GetHashCode().ToString(), OnAllianceDataSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_SELF_DATA_S.GetHashCode().ToString(),OnSelfAllianceDataSync);
 
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnApplyFinish);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnApplyFinish);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode().ToString(), OnCancelApplyFinish);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_S.GetHashCode().ToString(), OnCancelApplyFinish);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
-        
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_NOTICE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_NOTICE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
     }
 	
     //打开公会
-    public  void    OpenSociaty()
+    public  void    OpenSociaty(string search = null)
     {
         if(allianceID < 1)
         {
-            SociatyList.OpenWith(null);
+            SociatyList.OpenWith(search);
         }
         else
         {
@@ -65,9 +78,20 @@ public class SociatyDataMgr : MonoBehaviour
         if(selfData != null)
         {
             allianceSelfData = selfData.selfData;
+            hasReceivContributionReword[0] = (selfData.contributionReward & 1) == 1;
+            hasReceivContributionReword[1] = (selfData.contributionReward & 2) == 2;
+            hasReceivContributionReword[2] = (selfData.contributionReward & 4) == 4;
         }
     }
 
+
+    void OnReceivSociatyMessage(ProtocolMessage msg)
+    {
+        if(null != callBack)
+        {
+            callBack(msg);
+        }
+    }
 
     public  void RequestCancelApply(int allianceId, NetMessageDelegate callBack)
     {
@@ -78,13 +102,6 @@ public class SociatyDataMgr : MonoBehaviour
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode(), param);
     }
 
-    void OnCancelApplyFinish(ProtocolMessage msg)
-    {
-        if (null != callBack)
-        {
-            callBack(msg);
-        }
-    }
 
     public  void RequestApply(int allianceId, NetMessageDelegate callBack)
     {
@@ -95,11 +112,26 @@ public class SociatyDataMgr : MonoBehaviour
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_APPLY_C.GetHashCode(), param);
     }
 
-    void OnApplyFinish(ProtocolMessage msg)
+
+    public bool CheckNotify(string msg)
     {
-        if(null != callBack)
-        {
-            callBack(msg);
-        }
+        return true;
     }
+
+    public void RequestModifyNotify(string newNotify, NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceNotice param = new PB.HSAllianceNotice();
+        param.notice = newNotify;
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_NOTICE_C.GetHashCode(), param);
+    }
+
+    public  void    RequestContributionReward(int index, NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceContriReward param = new PB.HSAllianceContriReward();
+        param.index = index;
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode(), param);
+    }
+
 }

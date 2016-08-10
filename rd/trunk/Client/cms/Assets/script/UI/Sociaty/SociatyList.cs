@@ -93,6 +93,7 @@ public class SociatyList : UIBase
         }
         else
         {
+            searchInputField.text = search;
             RequestSearch(search);
         }
 

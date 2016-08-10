@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class RewardItemCreator
 {
-    public  static  GameObject  CreateRewardItem(PB.RewardItem rewardItemData,Transform parent,bool isTips = false)
+    public  static  GameObject  CreateRewardItem(PB.RewardItem rewardItemData,Transform parent,bool isTips ,bool showGetby )
     {
        // PB.RewardItem subItem = rewardItemData.protocolData;
 
@@ -13,12 +13,12 @@ public class RewardItemCreator
         {
             case (int)PB.itemType.ITEM:
                 ItemData itemData = ItemData.valueof(rewardItemData.itemId, rewardItemData.count);
-                go = InitItem(itemData,isTips);
+                go = InitItem(itemData,isTips, showGetby);
                 break;
 
             case (int)PB.itemType.EQUIP:
                 EquipData equipData = EquipData.valueof(rewardItemData.id, rewardItemData.itemId, rewardItemData.stage, rewardItemData.level, -1, new List<PB.GemPunch>());
-                go = InitEquip(equipData,isTips);
+                go = InitEquip(equipData,isTips, showGetby);
                 break;
 
             case (int)PB.itemType.MONSTER:
@@ -40,16 +40,16 @@ public class RewardItemCreator
         return go;
     }
 
-    static  GameObject InitItem(ItemData itemdata,bool isTips)
+    static  GameObject InitItem(ItemData itemdata,bool isTips,bool showGetby)
     {
-        ItemIcon subItem = ItemIcon.CreateItemIcon(itemdata, isTips);
+        ItemIcon subItem = ItemIcon.CreateItemIcon(itemdata, isTips, showGetby);
 
         return subItem.gameObject;
     }
 
-   static GameObject InitEquip(EquipData equipData, bool isTips)
+   static GameObject InitEquip(EquipData equipData, bool isTips, bool showGetby)
     {
-        ItemIcon subitem = ItemIcon.CreateItemIcon(equipData, isTips);
+        ItemIcon subitem = ItemIcon.CreateItemIcon(equipData, isTips, showGetby);
 
         return subitem.gameObject;
     }

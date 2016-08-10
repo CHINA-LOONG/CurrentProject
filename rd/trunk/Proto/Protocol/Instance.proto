@@ -45,6 +45,7 @@ message HSInstanceEnterRet
 message HSInstanceSettle
 {
 	required int32 passBattleCount = 1;
+	required int32 deadMonsterCount = 2;
 }
 
 // INSTANCE_SETTLE_S

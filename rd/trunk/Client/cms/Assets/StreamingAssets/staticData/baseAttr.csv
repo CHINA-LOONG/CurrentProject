@@ -1,6 +1,6 @@
-ï»¿#TEXT,NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT
+#TEXT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT
 id,strength,intelligence,speed,defense,health,energy,healRatio,criticalRatio,criticalDmg
-#id,åŠ›é‡,æ™ºåŠ›,é€Ÿåº¦,é˜²å¾¡,ä½“åŠ›,åˆå§‹èƒ½é‡,è¢«æ²»ç–—åŠ æˆ,æš´å‡»ç‡,æš´å‡»ä¼¤å®³
+#id,Á¦Á¿,ÖÇÁ¦,ËÙ¶È,·ÀÓù,ÌåÁ¦,³õÊ¼ÄÜÁ¿,±»ÖÎÁÆ¼Ó³É,±©»÷ÂÊ,±©»÷ÉËº¦
 1,10,10,10,10,10,0,0,0,0
 2,99999,99999,99999,99999,99999,0,0,0,0
 3,12,12,12,12,12,0,0,0,0

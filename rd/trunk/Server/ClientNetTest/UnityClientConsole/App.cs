@@ -537,6 +537,11 @@ namespace UnityClientConsole
                 HSSettingBlockRet block = protocol.GetProtocolBody<HSSettingBlockRet>();
                 Console.WriteLine("屏蔽玩家");
             }
+            else if (protocol.checkType(gm.GMOPERATION_S.GetHashCode()))
+            {
+                GMOperationRet imPlayer = protocol.GetProtocolBody<GMOperationRet>();
+                Console.WriteLine("gm 操作成功");
+            }
             // ALLIANCE-------------------------------------------------------------------------------------------------------
 //             else if (protocol.checkType(code.ALLIANCE_CREATE_S.GetHashCode()))
 //             {

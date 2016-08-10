@@ -594,9 +594,9 @@ public class HawkProtocol extends HawkCacheObj {
 		}
 
 		// crc校验
-		//if (!checkCrc(crc)) {
-		//	throw new HawkException(String.format("protocol crc verify failed, type: %d", header.type));
-		//}
+		if (!checkCrc(crc)) {
+			//throw new HawkException(String.format("protocol crc verify failed, type: %d", header.type));
+		}
 
 		return true;
 	}

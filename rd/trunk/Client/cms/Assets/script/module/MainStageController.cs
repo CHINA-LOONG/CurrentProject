@@ -132,7 +132,7 @@ public class MainStageController : MonoBehaviour
                 }
                 else
                 {
-                    mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
+                    StartCoroutine(ShowTowerUI());
                 }
             }
         }
@@ -141,6 +141,11 @@ public class MainStageController : MonoBehaviour
         //RefreshTowerState();
         //test only
         //mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
+    }
+    IEnumerator ShowTowerUI()
+    {
+        yield return new WaitForSeconds(0.05f);
+        mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
     }
     //---------------------------------------------------------------------------------------------
     public void RefreshHoleState(bool forceRefresh = false)

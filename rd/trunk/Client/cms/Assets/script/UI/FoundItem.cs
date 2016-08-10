@@ -154,10 +154,10 @@ public abstract class ParseBase
             UIMgr.Instance.CloseUI_(FoundMgr.Instance.curUIPanel);
             FoundMgr.Instance.curUIPanel = UIMgr.Instance.GetCurrentUI();
         }
-        else
-        {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
-        }
+        //else
+        //{
+        //    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+        //}
     }
     public abstract void GetResult(List<string> info, out string name, out Action action, out bool condition);
 
@@ -218,7 +218,8 @@ public class StageParse : ParseBase
             {
                 case InstanceType.Normal:
                     InstanceEntryRuntimeData runtime = InstanceMapService.Instance.GetRuntimeInstance(entry.id);
-                    condition = runtime.isOpen;
+
+                    condition = (runtime != null)&&(runtime.isOpen);
                     break;
                 case InstanceType.Hole:
                     condition = true;
@@ -267,7 +268,7 @@ public class ComposeParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = false;//UIUtil.CheckIsComposeOpened();
+        condition = UIUtil.CheckIsComposeOpened();
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("compose_title"));
 
         switch ((FoundComposeType)int.Parse(Info[1]))

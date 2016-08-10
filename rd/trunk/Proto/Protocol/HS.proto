@@ -176,6 +176,8 @@ enum code
 	SHOP_GOLD2COIN_C            = 8009;
 	SHOP_GOLD2COIN_S            = 8010;
 	SHOP_REFRESH_TIMES          = 8011;
+	SHOP_STORE_BUY_C            = 8012;
+	SHOP_STORE_BUY_S            = 8013;
 
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;

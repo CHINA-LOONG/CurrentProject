@@ -50,10 +50,11 @@ public class UIBattle : UIBase
     private Animator animator;
     private MsgBox.PrompCostMsg reviveWnd;
     //private int reviveIndex;
-    struct SpellVitalChangeData
+    class SpellVitalChangeData
     {
         public SpellVitalChangeArgs vitalChangeArgs;
         public float showTime;
+        public GameObject vitalObj = null;
     }
     private List<SpellVitalChangeData> mVitalChangeList = new List<SpellVitalChangeData>();
     private List<SpellVitalChangeData> mSpellNameList = new List<SpellVitalChangeData>();
@@ -112,6 +113,25 @@ public class UIBattle : UIBase
     public override void Clean()
     {
         //UIMgr.Instance.DestroyUI(uiFazhen);
+        for (int i = mSpellNameList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mSpellNameList[i];
+            if (vitalData.vitalObj != null)
+            {
+                ResourceMgr.Instance.DestroyAsset(vitalData.vitalObj);
+            }
+        }
+        mSpellNameList.Clear();
+
+        for (int i = mVitalChangeList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mVitalChangeList[i];
+            if (vitalData.vitalObj != null)
+            {
+                ResourceMgr.Instance.DestroyAsset(vitalData.vitalObj);
+            }
+        }
+        mVitalChangeList.Clear();
     }
 
     public void HideBattleUI()
@@ -261,7 +281,7 @@ public class UIBattle : UIBase
         
         if (
             lifeChange.vitalType != (int)VitalType.Vital_Type_FixLife &&
-            lifeChange.vitalType != (int)VitalType.Vital_Type_Shield
+            lifeChange.vitalType != (int)VitalType.Vital_Type_Shield 
             )
         {
             SpellVitalChangeData vitalChangeData = new SpellVitalChangeData();
@@ -273,11 +293,15 @@ public class UIBattle : UIBase
             }
             else
             {
+                if (
+                    vitalChangeData.vitalChangeArgs.vitalType == (int)VitalType.Vital_Type_Default &&
+                    vitalChangeData.vitalChangeArgs.vitalChange == 0
+                    )
+                {
+                    return;
+                }
                 vitalChangeData.showTime = Time.time + BattleConst.intervalTime * mVitalChangeList.Count;
                 mVitalChangeList.Add(vitalChangeData);
-                //GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
-                //UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
-                //uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
             }
         }
     }
@@ -323,35 +347,46 @@ public class UIBattle : UIBase
         for (int i = mSpellNameList.Count - 1; i >= 0; i--)
         {
             SpellVitalChangeData vitalData = mSpellNameList[i];
-            if (vitalData.showTime <= Time.time)
+            if (vitalData.vitalObj == null && vitalData.showTime <= Time.time)
             {
-                GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
-                UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+                vitalData.vitalObj = ResourceMgr.Instance.LoadAsset("VitalChange");
+                UIVitalChangeView uiVitalChangeView = vitalData.vitalObj.GetComponent<UIVitalChangeView>();
                 uiVitalChangeView.ShowVitalChange(vitalData.vitalChangeArgs, gameObject.transform as RectTransform);
-                mSpellNameList.Remove(vitalData);
+                //mSpellNameList.Remove(vitalData);
             }
         }
 
         for (int i = mVitalChangeList.Count - 1; i >= 0; i--)
         {
             SpellVitalChangeData vitalData = mVitalChangeList[i];
-            if (vitalData.showTime <= Time.time)
+            if (vitalData.vitalObj == null && vitalData.showTime <= Time.time)
             {
-                if (
-                    vitalData.vitalChangeArgs.vitalType == (int)VitalType.Vital_Type_Default &&
-                    vitalData.vitalChangeArgs.vitalChange == 0
-                    )
-                {
-                    mVitalChangeList.Remove(vitalData);
-                    continue;
-                }
-                GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
-                UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+                vitalData.vitalObj = ResourceMgr.Instance.LoadAsset("VitalChange");
+                UIVitalChangeView uiVitalChangeView = vitalData.vitalObj.GetComponent<UIVitalChangeView>();
                 uiVitalChangeView.ShowVitalChange(vitalData.vitalChangeArgs, gameObject.transform as RectTransform);
-                mVitalChangeList.Remove(vitalData);
+                //mVitalChangeList.Remove(vitalData);
             }
         }
 
+        for (int i = mSpellNameList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mSpellNameList[i];
+            if (vitalData.vitalObj != null && vitalData.showTime + 1.0f <= Time.time)
+            {
+                ResourceMgr.Instance.DestroyAsset(vitalData.vitalObj);
+                mSpellNameList.RemoveAt(i);
+            }
+        }
+
+        for (int i = mVitalChangeList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mVitalChangeList[i];
+            if (vitalData.vitalObj != null && vitalData.showTime + 1.0f <= Time.time)
+            {
+                ResourceMgr.Instance.DestroyAsset(vitalData.vitalObj);
+                mVitalChangeList.RemoveAt(i);
+            }
+        }
         //if (reviveWnd != null)
         //{
         //    reviveWnd.transform.SetAsLastSibling();

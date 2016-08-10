@@ -103,6 +103,7 @@ public class BattleController : MonoBehaviour
     private UIBattle uiBattle;
     public bool processStart;
     private UIScore mUIScore;
+    public int mHuoliBeforeScore;
     private UILevelInfo mUILevelInfo;
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
@@ -305,6 +306,7 @@ public class BattleController : MonoBehaviour
 
         //add scoreui
         UIScore.AddResourceRequest();
+        mHuoliBeforeScore = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
     }
     //---------------------------------------------------------------------------------------------
     public EnterInstanceParam GetCurrentInstance()

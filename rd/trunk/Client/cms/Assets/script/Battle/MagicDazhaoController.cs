@@ -75,20 +75,39 @@ public class MagicDazhaoController : MonoBehaviour
 		return casterBattleGo;
 	}
 
+    public void SetDazhaoPrepareState(bool isFinish)
+    {
+        if (casterBattleGo != null)
+        {
+            if (isFinish == false)
+            {
+                casterBattleGo.TriggerEvent("magicDazhaoPrepare", Time.time, null);
+            }
+            else
+            {
+                StartCoroutine(DelayFinishPrepare());
+            }
+        }
+    }
 
+    private IEnumerator DelayFinishPrepare()
+    {
+        yield return new WaitForSeconds(0.3f);
+        casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+    }
 	public void PrepareShifa(BattleProcess.Action magicAction)
 	{
 		this.magicAction = magicAction;
 		dazhaoState = DazhaoState.Shifa;
 		casterBattleGo = magicAction.caster;
 
-		//蓄气
-		//casterBattleGo.ShowDazhaoPrepareEffect ();
-		//if(casterBattleGo.shifaNodeEffect !=null)
-		//{
-			//casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
-		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
+        //蓄气
+        //casterBattleGo.ShowDazhaoPrepareEffect ();
+        //if(casterBattleGo.shifaNodeEffect !=null)
+        //{
+        //casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
+        //}
+        //casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
         BattleController.Instance.Process.InsertAction(magicAction);
 
         //显示法阵
@@ -111,7 +130,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 		
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -132,7 +151,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//}
 		casterBattleGo.TriggerEvent ("magicDazhaoReady", Time.time, null);
 
-		StartCoroutine (showOffCo());
+        StartCoroutine (showOffCo());
 	}
 
 	IEnumerator showOffCo()
@@ -143,7 +162,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoReady);
 		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoRead_Finish", Time.time, null);
+		//casterBattleGo.TriggerEvent ("magicDazhaoRead_Finish", Time.time, null);
 
 		dazhaoFocusController.ShowoffDazhao (casterBattleGo);
 	}
@@ -213,7 +232,7 @@ public class MagicDazhaoController : MonoBehaviour
             //{
             //	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
             //}
-            casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+           // casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
 
             dazhaoState = DazhaoState.Finished;
 
@@ -260,7 +279,7 @@ public class MagicDazhaoController : MonoBehaviour
 			//{
 			//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 			//}
-			casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+			//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 			//todo:大招被打断ui提示
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_Interrupt;

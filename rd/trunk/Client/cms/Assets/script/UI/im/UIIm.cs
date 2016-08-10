@@ -30,7 +30,6 @@ public class UIIm : UIBase
     public GameObject basicsChat;
     public GameObject imMsgFather;
     public RectTransform msgBox;
-    public GameObject sendButton;
     public Text basicsValue;
     public Text globalText;
     public Text guildText;
@@ -45,10 +44,13 @@ public class UIIm : UIBase
     public Text playerName;
     public GameObject shield;//屏蔽
     public GameObject inviteGuild;//邀请入工会
+    public Text guildName;//工会名称
+    int guildID = 0;
     int blockID;//屏蔽ID
     ImMessageData imMsgData;
     static UIIm mInst = null;
     bool isSend = true;
+    bool isSendRecruit = true;
     private MsgBox.PromptMsg shieldWnd;
     public Transform moduleVec;//对局位置
     public Transform leftCahtMove;//左侧聊天框唤出位置
@@ -73,16 +75,16 @@ public class UIIm : UIBase
         msgText.gameObject.transform.FindChild("Placeholder").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_enter");
         globalButton.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_global");
         guildButton.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_guild");
-        sendButton.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_send");
         shield.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_block");
         inviteGuild.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_invite");
         EventTriggerListener.Get(showLeftChatBox).onClick = MsgOnClick;
         EventTriggerListener.Get(showBasicsChat).onClick = MsgOnClick;
         EventTriggerListener.Get(globalButton).onClick = MsgOnClick;
         EventTriggerListener.Get(guildButton).onClick = MsgOnClick;
-        EventTriggerListener.Get(sendButton).onClick = SendClick;
         EventTriggerListener.Get(playerBoxClone).onClick = MsgOnClick;
-        EventTriggerListener.Get(shield).onClick = SendClick;
+        EventTriggerListener.Get(shield).onClick = ShieldClick;
+        EventTriggerListener.Get(inviteGuild).onClick = SelectGuild;
+        msgText.onEndEdit.AddListener(delegate { SendClick(msgText); });
         ImMessageData imData;
         for (int i = 0; i < BattleConst.maxMsg; i++)
         {
@@ -148,6 +150,11 @@ public class UIIm : UIBase
         }
         else if (but.name == guildButton.name)//工会频道
         {
+            if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceID == 0)
+            {
+                ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_002"), (int)PB.ImType.PROMPT);
+                return;
+            }
             if (channel != (int)PB.ImChannel.GUILD)
             {
                 channel = (int)PB.ImChannel.GUILD;
@@ -179,12 +186,24 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpRecruit(GameObject btn)
     {
-        Debug.Log("我跳到工会列表~~");
+        GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(guildID.ToString());
     }
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpTask(GameObject btn)
     {
         Debug.Log("我跳到工会任务~~");
+    }
+    //------------------------------------------------------------------------------------------------------
+    void SelectGuild(GameObject btn)
+    {
+        if (guildID != 0)
+        {
+             GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(guildID.ToString());
+        }
+        else
+        {
+            ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_005"), (int)PB.ImType.PROMPT);
+        }
     }
     //------------------------------------------------------------------------------------------------------
     void OnMsgReturn(ProtocolMessage msg)//返回服务器消息数据
@@ -319,6 +338,7 @@ public class UIIm : UIBase
                 if (ImMessageType.Msg_Type_Recruit.ToString() == msgData[0])
                 {
                     ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpRecruit;
+                    guildID = int.Parse(msgData[1]);
                 }
                 else if (ImMessageType.Msg_Type_Task.ToString() == msgData[0])
                 {
@@ -443,21 +463,16 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void SendInterval() //发言间隔
     {
-        isSend = true;
+        isSend = true;       
+    }
+    void SendRecruitInterval() //招收成员间隔
+    {
+        isSendRecruit = true;
     }
     //------------------------------------------------------------------------------------------------------
-    void SendClick(GameObject but)//发送协议
+    void ShieldClick(GameObject btn)
     {
-        if (but.name == sendButton.name)
-        {
-            if (msgText.text == string.Empty || msgText.text == null)
-                return;
-            else
-            {
-                OnSendMsg(msgText.text);
-            }
-        }
-        else if (but.name == shield.name)
+        if (btn.name == shield.name)
         {
             shieldWnd = MsgBox.PromptMsg.Open(
             MsgBox.MsgBoxType.Conform_Cancel,StaticDataMgr.Instance.GetTextByID("im_block_chat"),
@@ -469,6 +484,13 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
+    void SendClick(InputField input)//发送协议
+    {
+        if (input.text.Length == 0)
+            return;
+        OnSendMsg(input.text);
+    }
+    //------------------------------------------------------------------------------------------------------
     void OnPlayerGetRet(ProtocolMessage msg)//返回玩家信息
     {
         PB.HSImPlayer result = msg.GetProtocolBody<PB.HSImPlayerGetRet>().imPlayer;
@@ -476,9 +498,14 @@ public class UIIm : UIBase
         playerName.text = result.nickname;
         playerLevel.text = result.level.ToString();
         blockID = (int)result.playerId;
+        guildID = result.guildId;
+        if (result.guildId != 0)
+            guildName.text = StaticDataMgr.Instance.GetTextByID("im_chat_guild") + ": " + result.guildName;
+        else
+            guildName.text = StaticDataMgr.Instance.GetTextByID("im_noGuild");
     }
     //------------------------------------------------------------------------------------------------------
-    public void OnSendMsg(string message, ImMessageType msgType = ImMessageType.Num_Msg_Type, string guildID = null)//发送消息
+    public bool OnSendMsg(string message, ImMessageType msgType = ImMessageType.Num_Msg_Type, string guildID = null)//发送消息
     {
         PB.HSImChatSend param = null;
         if (msgType == ImMessageType.Num_Msg_Type)
@@ -507,21 +534,31 @@ public class UIIm : UIBase
             else
             {
                 uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
-                return;
+                return false;
             }           
         }
         else if (guildID != null)
         {
-            param = new PB.HSImChatSend()
+            if (isSendRecruit)
             {
-                channel = channel,
-                text = message,
-                expansion = msgType.ToString() + "^" + guildID
-            };
+                isSendRecruit = !isSendRecruit;
+                Invoke("SendRecruitInterval", 10f);
+                param = new PB.HSImChatSend()
+                {
+                    channel = channel,
+                    text = message,
+                    expansion = msgType.ToString() + "^" + guildID
+                };
+            }
+            else
+            {
+                uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
+                return false;
+            }
         }
         GameApp.Instance.netManager.SendMessage(PB.code.IM_CHAT_SEND_C.GetHashCode(), param, false);
         msgText.text = "";
-        sendButton.GetComponent<Button>().enabled = false;
+        return true;
     }
     //------------------------------------------------------------------------------------------------------
     public void SendShield(MsgBox.PrompButtonClick state)//屏蔽禁言

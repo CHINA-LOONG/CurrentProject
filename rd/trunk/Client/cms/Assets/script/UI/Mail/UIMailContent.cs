@@ -107,7 +107,7 @@ public class UIMailContent : MonoBehaviour
     void OnLanguageChanged()
     {
         textSend.text = StaticDataMgr.Instance.GetTextByID("mail_laizi");
-        textAnnex.text = StaticDataMgr.Instance.GetTextByID("mail_fujian");
+        //textAnnex.text = StaticDataMgr.Instance.GetTextByID("mail_fujian");
         textReceive.text = StaticDataMgr.Instance.GetTextByID("mail_shouqu");
     }
     

@@ -12,27 +12,27 @@ public class BaseAttrCfg extends HawkConfigBase{
 	/**
 	 * 力量
 	 */
-	protected final int strength;
+	protected final float strength;
 	/**
 	 * 智力
 	 */
-	protected final int intelligence;
+	protected final float intelligence;
 	/**
 	 * 速度
 	 */
-	protected final int speed;
+	protected final float speed;
 	/**
 	 * 防御
 	 */
-	protected final int defense;
+	protected final float defense;
 	/**
 	 * 体力
 	 */
-	protected final int health;
+	protected final float health;
 	/**
 	 * 初始能量
 	 */
-	protected final int energy;
+	protected final float energy;
 	/**
 	 * 被治疗加成
 	 */
@@ -48,18 +48,18 @@ public class BaseAttrCfg extends HawkConfigBase{
 	
 	public BaseAttrCfg(){
 		this.id = null;
-		this.strength = 0;
-		this.intelligence = 0;
-		this.health = 0;
-		this.defense = 0;
-		this.speed = 0;
-		this.energy = 0;
+		this.strength = .0f;
+		this.intelligence = .0f;
+		this.health = .0f;
+		this.defense = .0f;
+		this.speed = .0f;
+		this.energy = .0f;
 		this.healRatio = .0f;
 		this.criticalDmg = .0f;
 		this.criticalRatio = .0f;
 	}
 
-	public int getEnergy() {
+	public float getEnergy() {
 		return energy;
 	}
 
@@ -79,23 +79,23 @@ public class BaseAttrCfg extends HawkConfigBase{
 		return id;
 	}
 
-	public int getStrength() {
+	public float getStrength() {
 		return strength;
 	}
 
-	public int getIntelligence() {
+	public float getIntelligence() {
 		return intelligence;
 	}
 
-	public int getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
 
-	public int getDefense() {
+	public float getDefense() {
 		return defense;
 	}
 
-	public int getHealth() {
+	public float getHealth() {
 		return health;
 	}
 	

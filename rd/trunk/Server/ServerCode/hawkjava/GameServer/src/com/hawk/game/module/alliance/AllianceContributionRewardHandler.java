@@ -55,15 +55,15 @@ public class AllianceContributionRewardHandler implements HawkMsgHandler{
 		String rewardId = null;
 		if (GsConst.AllianceReward.FIRST_REWARD.ordinal() == request.getIndex()) {
 			contributon = GsConst.AllianceReward.FIRST_REWARD.GetRewardCount();
-			rewardId = GsConst.ALLIANCE_CONTRI_REWARD1;
+			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD1;
 		}
 		else if (GsConst.AllianceReward.SECOND_REWARD.ordinal() == request.getIndex()) {
 			contributon = GsConst.AllianceReward.SECOND_REWARD.GetRewardCount();
-			rewardId = GsConst.ALLIANCE_CONTRI_REWARD2;
+			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD2;
 		}
 		else if (GsConst.AllianceReward.THIRD_REWARD.ordinal() == request.getIndex()) {
 			contributon = GsConst.AllianceReward.THIRD_REWARD.GetRewardCount();
-			rewardId = GsConst.ALLIANCE_CONTRI_REWARD3;
+			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD3;
 		}
 		else {
 			player.sendError(protocol.getType(), Status.error.PARAMS_INVALID_VALUE);

@@ -676,7 +676,7 @@ public class GameDataMgr : MonoBehaviour
         PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
         if (reward.playerAttr!=null)
         {
-            if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
+            //if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
             {
                 //PlayerDataAttr.LevelAttr = reward.playerAttr.level;
                 //PlayerDataAttr.ExpAttr = reward.playerAttr.exp;

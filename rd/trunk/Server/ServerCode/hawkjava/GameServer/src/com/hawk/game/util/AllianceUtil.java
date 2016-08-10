@@ -11,6 +11,9 @@ import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.item.ItemInfo;
+import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.AllianceApply;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
@@ -20,7 +23,6 @@ import com.hawk.game.protocol.Alliance.AllianceTeamInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamMemInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyListRet;
-import com.hawk.game.protocol.Alliance.HSAllianceContribution;
 import com.hawk.game.protocol.Alliance.HSAllianceContributionRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembersRet;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet;
@@ -39,6 +41,53 @@ public class AllianceUtil {
 		Matcher mat = pat.matcher(name);  
 		return mat.find();     
     }
+	
+	/**
+	 * 检测公会金币加成
+	 * @param name
+	 * @return
+	 */
+	public static float getAllianceCoinRatio(Player player){
+		if (player.getAllianceId() == 0) {
+			return 0;
+		}
+		
+		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianeEntity == null || allianeEntity.getCoinLevel() == 0) {
+			return 0;
+		}
+		
+		SociatyTechnologyCfg techCfg = SociatyTechnologyCfg.getSociatyTechnologyCfg(GsConst.Alliance.ALLIANCE_TEC_COIN, allianeEntity.getCoinLevel());
+		if (techCfg == null) {
+			return 0;
+		}
+		
+		return techCfg.getGainCoin();
+	}
+	
+	/**
+	 * 检测公会经验药品加成
+	 * @param name
+	 * @return
+	 */
+	public static ItemInfo getAllianceExp(Player player){
+		if (player.getAllianceId() == 0) {
+			return null;
+		}
+		
+		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianeEntity == null || allianeEntity.getCoinLevel() == 0) {
+			return null;
+		}
+		
+		SociatyTechnologyCfg techCfg = SociatyTechnologyCfg.getSociatyTechnologyCfg(GsConst.Alliance.ALLIANCE_TEC_EXP, allianeEntity.getExpLevel());
+		if (techCfg == null || techCfg.getGainExp() == null || techCfg.getGainExp().equals("")) {
+			return null;
+		}
+		
+		return ItemInfo.valueOf(techCfg.getGainExp(), GsConst.ItemParseType.PARSE_DEFAULT);
+	}
+	
 	
 	/**
 	 * 公会排行比较器

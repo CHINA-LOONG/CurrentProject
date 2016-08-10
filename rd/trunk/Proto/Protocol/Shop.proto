@@ -66,6 +66,16 @@ message HSShopItemBuyRet
 	
 }
 
+message HSStoreItemBuy
+{
+	required int32 id = 1;
+}
+
+message HSStoreItemBuyRet
+{
+	
+}
+
 message HSShopGold2Coin
 {
 }

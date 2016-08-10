@@ -11,24 +11,30 @@ public class UIMailList : MonoBehaviour,IScrollView
     public FixCountScrollView scrollView;
     //public GameObject mainNone;
 
-    public Action<PB.HSMail> actionReadMail;
+    public Action<MailItemInfo> actionReadMail;
+
+    public Text textEmptytips;
     
-    private List<PB.HSMail> infos;
+    private List<MailItemInfo> infos=new List<MailItemInfo>();
     private List<mailItem> items = new List<mailItem>();
     private List<mailItem> itemsPool = new List<mailItem>();
-    
+
+    void Start()
+    {
+        textEmptytips.text = StaticDataMgr.Instance.GetTextByID("list_empty");
+    }
 
     public void Clean()
     {
         scrollView.CleanContent();
     }
 
-    public void RefreshList(List<PB.HSMail> list)
+    public void RefreshList(List<MailItemInfo> list)
     {
         this.infos = list;
-        if (infos.Count<=0)
-			return;
-        infos.Sort(SortMail);
+
+        textEmptytips.gameObject.SetActive(infos.Count <= 0);
+        //infos.Sort(SortMail);
 
         scrollView.InitContentSize(infos.Count, this);
     }
@@ -41,55 +47,19 @@ public class UIMailList : MonoBehaviour,IScrollView
     void SingleMailClick(GameObject go)
     {
         mailItem item = go.GetComponent<mailItem>();
-        PB.HSMail info = item.info;
+        MailItemInfo mailInfo = item.CruData;
 
-        if (info.state == (int)PB.mailState.UNREAD)
+        if (mailInfo.info.state == (int)PB.mailState.UNREAD)
         {
             PB.HSMailRead param = new PB.HSMailRead();
-            param.mailId = item.info.mailId;
+            param.mailId = item.CruData.info.mailId;
             GameApp.Instance.netManager.SendMessage(PB.code.MAIL_READ_C.GetHashCode(), param,false);
 
-            info.state = (int)PB.mailState.READ;
+            mailInfo.info.state = (int)PB.mailState.READ;
             item.UpdateMailState();
         }
 
-        actionReadMail(info);
-    }
-
-    public static int SortMail(PB.HSMail a, PB.HSMail b)
-    {
-        int result = 0;
-        if (a.state == (int)PB.mailState.UNREAD && b.state == (int)PB.mailState.UNREAD)
-        {
-            if (a.sendTimeStamp > b.sendTimeStamp)
-            {
-                result = -1;
-            }
-            else if (a.sendTimeStamp < b.sendTimeStamp)
-            {
-                result = 1;
-            }
-        }
-        else if (a.state == (int)PB.mailState.UNREAD)
-        {
-            return result = -1;
-        }
-        else if (b.state == (int)PB.mailState.UNREAD)
-        {
-            return result = 1;
-        }
-        else
-        {
-            if (a.sendTimeStamp > b.sendTimeStamp)
-            {
-                result = -1;
-            }
-            else if (a.sendTimeStamp < b.sendTimeStamp)
-            {
-                result = 1;
-            }
-        }
-        return result;
+        actionReadMail(mailInfo);
     }
 
     public void ReloadData(Transform item, int index)

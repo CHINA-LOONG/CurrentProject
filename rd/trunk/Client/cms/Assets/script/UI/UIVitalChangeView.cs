@@ -225,7 +225,7 @@ public class UIVitalChangeView : MonoBehaviour
     public void OnAnimationFinish()
     {
 		//Destroy(gameObject);
-		ResourceMgr.Instance.DestroyAsset(gameObject);
+		//ResourceMgr.Instance.DestroyAsset(gameObject);
     }
     //---------------------------------------------------------------------------------------------
 }

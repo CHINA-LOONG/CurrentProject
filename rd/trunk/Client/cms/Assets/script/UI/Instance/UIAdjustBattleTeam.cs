@@ -458,7 +458,7 @@ public class UIAdjustBattleTeam : UIBase
                 break;
 
             var subRewardData = rewardData.itemList[i];
-            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData.protocolData, dropList[i],true);
+            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData.protocolData, dropList[i],true,true);
             if(null != go)
             {
                 dropObjectList.Add(go);

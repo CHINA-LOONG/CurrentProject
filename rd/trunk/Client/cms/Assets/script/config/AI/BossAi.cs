@@ -28,14 +28,16 @@ public class BossAi : MonoBehaviour
 
     //common method
     #region
-    protected List<GameUnit> GetCanAttackList(GameUnit battleUnit)
+    protected virtual List<GameUnit> GetCanAttackList(GameUnit battleUnit)
     {
         return BattleUnitAi.Instance.GetOppositeSideFiledList(battleUnit);
     }
 
-    protected GameUnit GetAttackRandomTarget(GameUnit battleUnit)
+    protected virtual GameUnit GetAttackRandomTarget(GameUnit battleUnit)
     {
         List<GameUnit> listTarge = GetCanAttackList(battleUnit);
+        if (listTarge.Count == 0)
+            return null;
 
         int index = Random.Range(0, listTarge.Count);
 

@@ -308,7 +308,7 @@ public class UIScore : UIBase
                 mPlayerLvlUp.SetActive(mainPlayer.LevelAttr != playerAttr.level);
                 mOriginalPlayerLvl = mainPlayer.LevelAttr;
                 mCurrentPlayerLvl = playerAttr.level;
-                mCurrentHuoli = playerAttr.fatigue;
+                mCurrentHuoli = BattleController.Instance.mHuoliBeforeScore;
                 mHuoliBeginTime = playerAttr.fatigueBeginTime;
                 //TODO:Sysnc player info here?
                 if (mainPlayer.LevelAttr != playerAttr.level)
@@ -506,8 +506,7 @@ public class UIScore : UIBase
         if (mOriginalPlayerLvl != mCurrentPlayerLvl)
         {
             PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
-            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mainPlayer.HuoliAttr, mCurrentHuoli);
-            mainPlayer.UpdateHuoli(mCurrentHuoli, mHuoliBeginTime);
+            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mCurrentHuoli, mainPlayer.HuoliAttr);
         }
     }
     //---------------------------------------------------------------------------------------------

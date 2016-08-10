@@ -6,6 +6,8 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderAdapter;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
+import org.hawk.app.HawkApp;
+import org.hawk.app.HawkAppCfg;
 import org.hawk.cryption.HawkEncryption;
 import org.hawk.net.HawkNetStatistics;
 import org.hawk.net.HawkSession;
@@ -69,11 +71,19 @@ public class HawkEncoder extends ProtocolEncoderAdapter {
 				IoBuffer outBuffer = session.getOutBuffer();
 				if (outBuffer != null) {
 					outBuffer.clear();
+					// 压缩协议
+					if (HawkApp.getInstance().getAppCfg().getCompressSize() < protocol.getSize()) {
+						int uncompressSize = protocol.getSize();
+						protocol.zlibCompress(1);
+						// 统计更新信息
+						HawkNetStatistics.getInstance().onCompressBytes(uncompressSize - protocol.getSize());
+					}
+					
 					if (!protocol.encode(outBuffer)) {
 						throw new HawkException("protocol encode failed");
 					}
 					outBuffer.flip();
-		
+
 					// 协议加密
 					ByteBuffer byteBuffer = null;
 					HawkEncryption encryption = session.getEncryption();
@@ -83,7 +93,8 @@ public class HawkEncoder extends ProtocolEncoderAdapter {
 						byteBuffer = ByteBuffer.allocate(outBuffer.remaining()).order(outBuffer.order());
 						byteBuffer.put(outBuffer.array(), outBuffer.position(), outBuffer.remaining());
 						byteBuffer.flip();
-					}			
+					}
+					
 					return IoBuffer.wrap(byteBuffer);
 				}
 			} finally {

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIMail : UIBase,TabButtonDelegate
+public class UIMail : UIBase//,TabButtonDelegate
 {
     public const int maxCount = 300;
 
@@ -13,22 +13,29 @@ public class UIMail : UIBase,TabButtonDelegate
   
     public Text textTitle;      //界面标题
     public Text textOnekey;     //一键收取
-    public Text textTab1;       //系统邮件
+    //public Text textTab1;       //系统邮件
 
     public Button btnClose;
     public Button btnOnekey;
 
-    public TabButtonGroup tabGroup;
+    //public TabButtonGroup tabGroup;
     public ScrollRect scrollRect;
     public UIMailList mailList;
     public UIMailContent mailContent;
 
+    public Transform coinButtonPos;
+    public Transform goldButtonPos;
+    private CoinButton coinBtn;
+    private CoinButton goldBtn;
+
+    public Text textTips;
+
     private Dictionary<int, PB.HSMail> allMailList;
-    private List<PB.HSMail> sysMailList = new List<PB.HSMail>();
-    private List<PB.HSMail> plyMailList = new List<PB.HSMail>();
+    private List<MailItemInfo> sysMailList = new List<MailItemInfo>();
+    //private List<PB.HSMail> plyMailList = new List<PB.HSMail>();
 
     private int tabIndex = 0;
-    private PB.HSMail readMail;
+    private MailItemInfo readMail;
     
     private int mailCount
     {
@@ -46,15 +53,27 @@ public class UIMail : UIBase,TabButtonDelegate
 
         textTitle.text = StaticDataMgr.Instance.GetTextByID("mail_title");
         textOnekey.text = StaticDataMgr.Instance.GetTextByID("mail_yijianlingqu");
-        textTab1.text = StaticDataMgr.Instance.GetTextByID("mail_tab1");
+        textTips.text = StaticDataMgr.Instance.GetTextByID("mail_zidongshantips");
+        //textTab1.text = StaticDataMgr.Instance.GetTextByID("mail_tab1");
     }
     public override void Init()
     {
-        tabGroup.InitWithDelegate(this);
+        if (coinBtn==null)
+        {
+            coinBtn = CoinButton.CreateWithType(CoinButton.CoinType.Jinbi);
+            UIUtil.SetParentReset(coinBtn.transform, coinButtonPos);
+        }
+        if (goldBtn==null)
+        {
+            goldBtn = CoinButton.CreateWithType(CoinButton.CoinType.Zuanshi);
+            UIUtil.SetParentReset(goldBtn.transform, goldButtonPos);
+        }
+
+        //tabGroup.InitWithDelegate(this);
         mailContent.SetMailContentActive(false);
+        readMail = null;
         OnMailChanged();
         //scrollRect.verticalNormalizedPosition = 1.0f;
-        readMail = null;
 
         if (mailCount >= UIMail.maxCount)
 			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangyiman"));
@@ -70,7 +89,7 @@ public class UIMail : UIBase,TabButtonDelegate
     void OnMailChanged()
     {
         UpdateMailList();
-        OnTabButtonChanged(tabIndex);
+        //OnTabButtonChanged(tabIndex);
         SetMailCount();
     }
 
@@ -80,16 +99,23 @@ public class UIMail : UIBase,TabButtonDelegate
         sysMailList.Clear();
         foreach (var item in allMailList)
         {
-            sysMailList.Add(item.Value);
+            if (readMail != null && readMail.info.mailId == item.Value.mailId)
+            {
+                sysMailList.Add(new MailItemInfo() { info = item.Value, IsSelect = true });
+            }
+            else
+            {
+                sysMailList.Add(new MailItemInfo() { info = item.Value, IsSelect = false });
+            }
         }
+        sysMailList.Sort(SortMail);
+        mailList.RefreshList(sysMailList);
     }
 
-    public void OnTabButtonChanged(int index)
-    {
-        List<PB.HSMail> list = sysMailList;
-
-        mailList.RefreshList(list);
-    }
+    //public void OnTabButtonChanged(int index)
+    //{
+    //    mailList.RefreshList(sysMailList);
+    //}
 
     void SetMailCount()
     {
@@ -97,30 +123,34 @@ public class UIMail : UIBase,TabButtonDelegate
     }
 
     //读取邮件
-    void ActionReadMail(PB.HSMail info)
+    void ActionReadMail(MailItemInfo mailInfo)
     {
         //检测是否读取的同一封
         if (readMail != null)
         {
-            if (readMail.mailId == info.mailId) return;
-            if (readMail.state == (int)PB.mailState.RECEIVE ||
-                (readMail.state == (int)PB.mailState.READ && readMail.reward.Count <= 0))
+            if (readMail.info.mailId == mailInfo.info.mailId) return;
+            if (readMail.info.state == (int)PB.mailState.RECEIVE ||
+                (readMail.info.state == (int)PB.mailState.READ && readMail.info.reward.Count <= 0))
             {
                 sysMailList.Remove(readMail);
-                mailList.RemoveItem();
+                mailList.RefreshList(sysMailList);
                 SetMailCount();
             }
+            else
+            {
+                readMail.IsSelect = false;
+            }
         }
-        readMail = info;
-
+        readMail = mailInfo;
+        readMail.IsSelect = true;
         //检测是否需要删除邮件
-        if (info.reward.Count <= 0)
+        if (mailInfo.info.reward.Count <= 0)
         {
-            GameDataMgr.Instance.PlayerDataAttr.gameMailData.RemoveMail(info.mailId);
-            readMail = info;
+            GameDataMgr.Instance.PlayerDataAttr.gameMailData.RemoveMail(mailInfo.info.mailId);
+            readMail = mailInfo;
         }
-        mailContent.SetMailContent(info);
-        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailRead,info.mailId);
+        mailContent.SetMailContent(mailInfo.info);
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailRead, mailInfo.info.mailId);
     }
     //收取附件
     void ActionReceiveMail(PB.HSMail info)
@@ -148,14 +178,14 @@ public class UIMail : UIBase,TabButtonDelegate
             return;
         }
         PB.HSMailReceiveRet result = msg.GetProtocolBody<PB.HSMailReceiveRet>();
-        if (result.mailId != readMail.mailId)
+        if (result.mailId != readMail.info.mailId)
         {
             Logger.LogError("收取错误");
             return;
         }
 
         UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_002"), (int)PB.ImType.PROMPT);
-        readMail.state= (int)PB.mailState.RECEIVE;
+        readMail.info.state= (int)PB.mailState.RECEIVE;
         mailContent.SetReceiveState();
         CheckPlayerData();
     }
@@ -164,7 +194,7 @@ public class UIMail : UIBase,TabButtonDelegate
     {
         if (mailCount <= 0)
         {
-            if (readMail!=null)
+            if (readMail != null)
             {
                 mailContent.SetMailContentActive(false);
                 OnMailChanged();
@@ -173,11 +203,25 @@ public class UIMail : UIBase,TabButtonDelegate
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_001"), (int)PB.ImType.PROMPT);
             return;
         }
-
-        PB.HSMailReceiveAll param = new PB.HSMailReceiveAll();
-        GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode(), param);
-        SavePlayerData();
+        else
+        {
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+                                  StaticDataMgr.Instance.GetTextByID("mail_shouquall"),
+                                  StaticDataMgr.Instance.GetTextByID("mail_coinmanle"),
+                                  OnReceiveAllMsgCallBack);
+        }
     }
+
+    void OnReceiveAllMsgCallBack(MsgBox.PrompButtonClick btnParam)
+    {
+        if (btnParam == MsgBox.PrompButtonClick.OK)
+        {
+            PB.HSMailReceiveAll param = new PB.HSMailReceiveAll();
+            GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode(), param);
+            SavePlayerData();
+        }
+    }
+    
     //收取返回
     void OnMailReceiveAllRet(ProtocolMessage msg)
     {
@@ -230,6 +274,45 @@ public class UIMail : UIBase,TabButtonDelegate
     {
         OnMailChanged();
         scrollRect.verticalNormalizedPosition = 1.0f;
+    }
+    public static int SortMail(MailItemInfo aInfo, MailItemInfo bInfo)
+    {
+
+        PB.HSMail a, b;
+        a = aInfo.info;
+        b = bInfo.info;
+        int result = 0;
+        if (a.state == (int)PB.mailState.UNREAD && b.state == (int)PB.mailState.UNREAD)
+        {
+            if (a.sendTimeStamp > b.sendTimeStamp)
+            {
+                result = -1;
+            }
+            else if (a.sendTimeStamp < b.sendTimeStamp)
+            {
+                result = 1;
+            }
+        }
+        else if (a.state == (int)PB.mailState.UNREAD)
+        {
+            return result = -1;
+        }
+        else if (b.state == (int)PB.mailState.UNREAD)
+        {
+            return result = 1;
+        }
+        else
+        {
+            if (a.sendTimeStamp > b.sendTimeStamp)
+            {
+                result = -1;
+            }
+            else if (a.sendTimeStamp < b.sendTimeStamp)
+            {
+                result = 1;
+            }
+        }
+        return result;
     }
 
     #region 检测玩家等级疲劳值变化

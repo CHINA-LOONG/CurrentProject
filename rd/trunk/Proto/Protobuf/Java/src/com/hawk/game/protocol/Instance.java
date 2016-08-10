@@ -3687,6 +3687,16 @@ public final class Instance {
      * <code>required int32 passBattleCount = 1;</code>
      */
     int getPassBattleCount();
+
+    // required int32 deadMonsterCount = 2;
+    /**
+     * <code>required int32 deadMonsterCount = 2;</code>
+     */
+    boolean hasDeadMonsterCount();
+    /**
+     * <code>required int32 deadMonsterCount = 2;</code>
+     */
+    int getDeadMonsterCount();
   }
   /**
    * Protobuf type {@code HSInstanceSettle}
@@ -3748,6 +3758,11 @@ public final class Instance {
               passBattleCount_ = input.readInt32();
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              deadMonsterCount_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3804,8 +3819,25 @@ public final class Instance {
       return passBattleCount_;
     }
 
+    // required int32 deadMonsterCount = 2;
+    public static final int DEADMONSTERCOUNT_FIELD_NUMBER = 2;
+    private int deadMonsterCount_;
+    /**
+     * <code>required int32 deadMonsterCount = 2;</code>
+     */
+    public boolean hasDeadMonsterCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 deadMonsterCount = 2;</code>
+     */
+    public int getDeadMonsterCount() {
+      return deadMonsterCount_;
+    }
+
     private void initFields() {
       passBattleCount_ = 0;
+      deadMonsterCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3813,6 +3845,10 @@ public final class Instance {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasPassBattleCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDeadMonsterCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3826,6 +3862,9 @@ public final class Instance {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, passBattleCount_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, deadMonsterCount_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3838,6 +3877,10 @@ public final class Instance {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, passBattleCount_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, deadMonsterCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3961,6 +4004,8 @@ public final class Instance {
         super.clear();
         passBattleCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        deadMonsterCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -3993,6 +4038,10 @@ public final class Instance {
           to_bitField0_ |= 0x00000001;
         }
         result.passBattleCount_ = passBattleCount_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.deadMonsterCount_ = deadMonsterCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4012,12 +4061,19 @@ public final class Instance {
         if (other.hasPassBattleCount()) {
           setPassBattleCount(other.getPassBattleCount());
         }
+        if (other.hasDeadMonsterCount()) {
+          setDeadMonsterCount(other.getDeadMonsterCount());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasPassBattleCount()) {
+          
+          return false;
+        }
+        if (!hasDeadMonsterCount()) {
           
           return false;
         }
@@ -4072,6 +4128,39 @@ public final class Instance {
       public Builder clearPassBattleCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
         passBattleCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 deadMonsterCount = 2;
+      private int deadMonsterCount_ ;
+      /**
+       * <code>required int32 deadMonsterCount = 2;</code>
+       */
+      public boolean hasDeadMonsterCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 deadMonsterCount = 2;</code>
+       */
+      public int getDeadMonsterCount() {
+        return deadMonsterCount_;
+      }
+      /**
+       * <code>required int32 deadMonsterCount = 2;</code>
+       */
+      public Builder setDeadMonsterCount(int value) {
+        bitField0_ |= 0x00000002;
+        deadMonsterCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 deadMonsterCount = 2;</code>
+       */
+      public Builder clearDeadMonsterCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        deadMonsterCount_ = 0;
         onChanged();
         return this;
       }
@@ -12697,30 +12786,31 @@ public final class Instance {
       "nceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battleMo",
       "nsterId\030\002 \003(\005\022\020\n\010friendId\030\003 \001(\005\"C\n\022HSIns" +
       "tanceEnterRet\022\022\n\ninstanceId\030\001 \002(\t\022\031\n\006bat" +
-      "tle\030\002 \003(\0132\t.HSBattle\"+\n\020HSInstanceSettle" +
-      "\022\027\n\017passBattleCount\030\001 \002(\005\"J\n\023HSInstanceS" +
-      "ettleRet\022\024\n\tstarCount\030\001 \001(\005:\0010\022\035\n\006reward" +
-      "\030\002 \001(\0132\r.HSRewardInfo\"4\n\017HSInstanceSweep" +
-      "\022\022\n\ninstanceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022H" +
-      "SInstanceSweepRet\022%\n\016completeReward\030\001 \003(" +
-      "\0132\r.HSRewardInfo\022\"\n\013sweepReward\030\002 \001(\0132\r." +
-      "HSRewardInfo\"*\n\024HSInstanceResetCount\022\022\n\n",
-      "instanceId\030\001 \002(\t\"\031\n\027HSInstanceResetCount" +
-      "Ret\"\022\n\020HSInstanceRevive\"*\n\023HSInstanceRev" +
-      "iveRet\022\023\n\013reviveCount\030\001 \002(\005\"5\n\014HSChapter" +
-      "Box\022\021\n\tchapterId\030\001 \002(\005\022\022\n\ndifficulty\030\002 \002" +
-      "(\005\"J\n\017HSChapterBoxRet\022\021\n\tchapterId\030\001 \002(\005" +
-      "\022\022\n\ndifficulty\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"J" +
-      "\n\013HSHoleEnter\022\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanc" +
-      "eId\030\002 \002(\t\022\027\n\017battleMonsterId\030\003 \003(\005\"G\n\014HS" +
-      "TowerEnter\022\017\n\007towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002" +
-      "(\005\022\027\n\017battleMonsterId\030\003 \003(\005\"C\n\024HSGuildIn",
-      "stanceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battl" +
-      "eMonsterId\030\002 \003(\005\"\022\n\020HSInstanceAssist\"0\n\023" +
-      "HSInstanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t.HS" +
-      "Assist\"\'\n\022HSInstanceOpenCard\022\021\n\topenCoun" +
-      "t\030\001 \002(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026com." +
-      "hawk.game.protocol"
+      "tle\030\002 \003(\0132\t.HSBattle\"E\n\020HSInstanceSettle" +
+      "\022\027\n\017passBattleCount\030\001 \002(\005\022\030\n\020deadMonster" +
+      "Count\030\002 \002(\005\"J\n\023HSInstanceSettleRet\022\024\n\tst" +
+      "arCount\030\001 \001(\005:\0010\022\035\n\006reward\030\002 \001(\0132\r.HSRew" +
+      "ardInfo\"4\n\017HSInstanceSweep\022\022\n\ninstanceId" +
+      "\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022HSInstanceSweep" +
+      "Ret\022%\n\016completeReward\030\001 \003(\0132\r.HSRewardIn" +
+      "fo\022\"\n\013sweepReward\030\002 \001(\0132\r.HSRewardInfo\"*",
+      "\n\024HSInstanceResetCount\022\022\n\ninstanceId\030\001 \002" +
+      "(\t\"\031\n\027HSInstanceResetCountRet\"\022\n\020HSInsta" +
+      "nceRevive\"*\n\023HSInstanceReviveRet\022\023\n\013revi" +
+      "veCount\030\001 \002(\005\"5\n\014HSChapterBox\022\021\n\tchapter" +
+      "Id\030\001 \002(\005\022\022\n\ndifficulty\030\002 \002(\005\"J\n\017HSChapte" +
+      "rBoxRet\022\021\n\tchapterId\030\001 \002(\005\022\022\n\ndifficulty" +
+      "\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"J\n\013HSHoleEnter\022" +
+      "\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanceId\030\002 \002(\t\022\027\n\017b" +
+      "attleMonsterId\030\003 \003(\005\"G\n\014HSTowerEnter\022\017\n\007" +
+      "towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002(\005\022\027\n\017battleMo",
+      "nsterId\030\003 \003(\005\"C\n\024HSGuildInstanceEnter\022\022\n" +
+      "\ninstanceId\030\001 \002(\t\022\027\n\017battleMonsterId\030\002 \003" +
+      "(\005\"\022\n\020HSInstanceAssist\"0\n\023HSInstanceAssi" +
+      "stRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSIn" +
+      "stanceOpenCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSI" +
+      "nstanceOpenCardRetB\030\n\026com.hawk.game.prot" +
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12756,7 +12846,7 @@ public final class Instance {
           internal_static_HSInstanceSettle_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceSettle_descriptor,
-              new java.lang.String[] { "PassBattleCount", });
+              new java.lang.String[] { "PassBattleCount", "DeadMonsterCount", });
           internal_static_HSInstanceSettleRet_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSInstanceSettleRet_fieldAccessorTable = new

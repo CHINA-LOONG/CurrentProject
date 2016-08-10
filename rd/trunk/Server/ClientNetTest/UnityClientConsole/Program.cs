@@ -39,6 +39,8 @@ namespace UnityClientConsole
             for (int i = 0; i < TEST_USER; ++i)
             {
                 string name = "shuadong2";// +(1 + i);
+                //string name = "root" + (1 + 1 + i);
+               // string name = "_chat" + (1 + i);
                 //string name = "11171002";
 
                 test[i] = new App();

@@ -36,9 +36,9 @@ public class UITower : UIBase
     int towerID;//塔ID
     TowerData towerData;
     int loopNum = 0;
-    int currLoopNum = -1;
-	float oneTime = 1f;
-	float twoTime = 2f;
+    int currLoopNum = 1;
+    float oneTime = 0.2f;
+    float twoTime = 0.4f;
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start()
@@ -93,32 +93,18 @@ public class UITower : UIBase
         towerStageNum.text = "STAGE " + (stageTower + 1);
         //first entry
         loopNum = 0;
-        if ((int)GameDataMgr.Instance.curTowerType != towerType)
-        {
-            GameDataMgr.Instance.lastStage = -1;
-        }
-        else
-        {
-            if (GameDataMgr.Instance.lastStage != -1)
-            {
-                if (GameDataMgr.Instance.lastStage != stageTower && stageTower > GameDataMgr.Instance.lastStage)
-                {
-                    loopNum = stageTower - GameDataMgr.Instance.lastStage;
-                    SlideTowerItem();
-                }
-            } 	
-        }        	
+       	
         for (int i = 0; i < towerData.floorList.Count; i++)
         {
             if ((i / 5) == stageTower || (i / 5) == (stageTower + 1))
             {
                 EventTriggerListener.Get(towerItems[towerItemNum]).onClick = TowerItemClick;
                 towerItemData = towerItems[towerItemNum].GetComponent<TowerItemData>();
-				towerItemData.towerNum.text = (i + 1).ToString();
+                towerItemData.towerNum.text = (i + 1).ToString();
                 towerItemData.itemTowerID = towerData.floorList[i];
                 if (currentFloor == towerData.floorList.Count)
                 {
-                   // towerStageNum.text = "STAGE " + stageTower;
+                    towerStageNum.text = "STAGE " + stageTower;
                     towerItemData.currType = TowerItemType.Item_Type_ok;
                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_cleared");
                 }
@@ -148,6 +134,21 @@ public class UITower : UIBase
                 towerItemNum++;
             }
         }
+        if ((int)GameDataMgr.Instance.curTowerType != towerType)
+        {
+            GameDataMgr.Instance.lastStage = -1;
+        }
+        else
+        {
+            if (GameDataMgr.Instance.lastStage != -1)
+            {
+                if (GameDataMgr.Instance.lastStage != stageTower && stageTower > GameDataMgr.Instance.lastStage)
+                {
+                    loopNum = stageTower - GameDataMgr.Instance.lastStage;
+                    SlideTowerItem();
+                }
+            }
+        }        
         GameDataMgr.Instance.lastStage = stageTower;
 
         if (towerID != towerType)

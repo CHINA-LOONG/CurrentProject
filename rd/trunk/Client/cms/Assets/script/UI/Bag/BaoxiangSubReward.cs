@@ -42,7 +42,7 @@ public class BaoxiangSubReward : MonoBehaviour
 		} 
 		else  if (reward.type == (int)PB.itemType.ITEM) 
 		{
-			ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(reward.itemId, reward.count));
+			ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(reward.itemId, reward.count),true,false);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
 			name = GetItemName(reward.itemId);
@@ -50,7 +50,7 @@ public class BaoxiangSubReward : MonoBehaviour
 		else if (reward.type == (int)PB.itemType.EQUIP)
 		{
             EquipData equipData = EquipData.valueof(reward.id, reward.itemId, reward.stage, reward.level, BattleConst.invalidMonsterID, null);
-			ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+			ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true,false);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
 			name = GetItemName(reward.itemId);

@@ -23,6 +23,7 @@ import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceResetCfg;
 import com.hawk.game.config.InstanceRewardCfg;
+import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.MonsterEntity;
@@ -53,6 +54,7 @@ import com.hawk.game.protocol.Instance.HSInstanceSweep;
 import com.hawk.game.protocol.Instance.HSInstanceSweepRet;
 import com.hawk.game.protocol.Instance.HSTowerEnter;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.InstanceUtil.InstanceChapter;
@@ -77,6 +79,8 @@ public class PlayerInstanceModule extends PlayerModule {
 	private int curChapterId;
 	// 本次副本章节索引
 	private int curIndex;
+	// 本次洞id
+	private int curHoleId;
 	// 本次塔id
 	private int curTowerId;
 	// 刷新类型掩码，副本开始后如果发生刷新，旧周期开始的副本结算时不影响新周期的数据
@@ -278,6 +282,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curType = Const.InstanceType.INSTANCE_HOLE_VALUE;
 		this.curInstanceId = instanceId;
 		this.curMonsterList.addAll(battleMonsterList);
+		this.curHoleId = holeId;
 
 		// 生成副本
 		genInstance(instanceId);
@@ -449,6 +454,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		HSInstanceSettle protocol = cmd.parseProtocol(HSInstanceSettle.getDefaultInstance());
 		int hsCode = cmd.getType();
 		int passBattleCount = protocol.getPassBattleCount();
+		int deadMonsterCount = protocol.getDeadMonsterCount();
 
 		if (this.curInstanceId == ""){
 			sendError(hsCode, Status.instanceError.INSTANCE_NOT_ENTER_VALUE);
@@ -458,7 +464,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		switch (this.curType) {
 		case Const.InstanceType.INSTANCE_STORY_VALUE:
-			settleStory(passBattleCount, hsCode);
+			settleStory(passBattleCount, deadMonsterCount, hsCode);
 			break;
 
 		case Const.InstanceType.INSTANCE_HOLE_VALUE:
@@ -960,15 +966,26 @@ public class PlayerInstanceModule extends PlayerModule {
 	/**
 	 * 结算故事副本
 	 */
-	private void settleStory(int passBattleCount, int hsCode) {
+	private void settleStory(int passBattleCount, int deadMonsterCount, int hsCode) {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
 		// 胜利
 		if (passBattleCount == this.curBattleList.size()) {
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
-			// TODO
-			int starCount = 3;
+			// 根据复活次数和死亡宠物次数决定星级
+			int starCount = 0;
+			if (this.curReviveCount > 0) {
+				starCount = 1;
+			} else {
+				if (deadMonsterCount == 0) {
+					starCount = 3;
+				} else if (deadMonsterCount == 1) {
+					starCount = 2;
+				} else {
+					starCount = 1;
+				}
+			}
 
 			// 记录副本进度
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
@@ -1018,7 +1035,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			response.setStarCount(starCount);
 
 			// 奖励
-			AwardItems completeReward = genSettleReward();
+			AwardItems completeReward = genSettleReward(0, null);
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -1042,8 +1059,21 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 胜利
 		if (passBattleCount == this.curBattleList.size()) {
+			float moreCoinRatio = 0;
+			List<ItemInfo> moreItemList = null;
+
+			if (this.curHoleId == GsConst.HoleType.EXP_HOLE) {
+				ItemInfo itemInfo = AllianceUtil.getAllianceExp(player);
+				if (itemInfo != null) {
+					moreItemList = new ArrayList<ItemInfo>();
+					moreItemList.add(itemInfo);
+				}
+			} else if (this.curHoleId == GsConst.HoleType.COIN_HOLE) {
+				moreCoinRatio = AllianceUtil.getAllianceCoinRatio(player);
+			}
+
 			// 奖励
-			AwardItems completeReward = genSettleReward();
+			AwardItems completeReward = genSettleReward(moreCoinRatio, moreItemList);
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -1065,7 +1095,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			// 奖励
-			AwardItems completeReward = genSettleReward();
+			AwardItems completeReward = genSettleReward(0, null);
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -1087,7 +1117,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 
 			// 奖励
-			AwardItems completeReward = genSettleReward();
+			AwardItems completeReward = genSettleReward(0, null);
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -1106,7 +1136,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	/**
 	 * 发放结算奖励
 	 */
-	private AwardItems genSettleReward() {
+	private AwardItems genSettleReward(float moreCoinRatio, List<ItemInfo> moreItemInfoList) {
 		AwardItems completeReward = AwardItems.valueOf();
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
@@ -1122,6 +1152,11 @@ public class PlayerInstanceModule extends PlayerModule {
 		InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, this.curInstanceId);
 		if (instanceRewardCfg != null) {
 			this.curDropList.addAll(instanceRewardCfg.getReward().getRewardList());
+		}
+
+		// 额外奖励
+		if (moreItemInfoList != null) {
+			this.curDropList.addAll(moreItemInfoList);
 		}
 
 		List<ItemInfo> monsterRewardList = new ArrayList<ItemInfo>();
@@ -1153,6 +1188,12 @@ public class PlayerInstanceModule extends PlayerModule {
 				}
 				break;
 
+			case itemType.PLAYER_ATTR_VALUE:
+				if (Integer.parseInt(itemInfo.getItemId()) == changeType.CHANGE_COIN_VALUE) {
+					completeReward.addCoin((int) (itemInfo.getCount() * (1 + moreCoinRatio)));
+				}
+				break;
+
 			default:
 				completeReward.addItemInfo(itemInfo);
 				break;
@@ -1164,8 +1205,9 @@ public class PlayerInstanceModule extends PlayerModule {
 			try {
 				int index = HawkRand.randInt(0, monsterRewardList.size() - 1);
 				ItemInfo monster = monsterRewardList.get(index);
-				int disposition = HawkRand.randInt(1, 6);
-				completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 1, disposition);
+				MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getItemId());
+
+				completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 1, monsterCfg.getDisposition());
 			} catch (HawkException e) {
 				HawkException.catchException(e);
 			}
@@ -1199,6 +1241,7 @@ public class PlayerInstanceModule extends PlayerModule {
 				|| this.curReviveCount != 0
 				|| this.curDifficulty != 0 || this.curChapterId != 0 || this.curIndex != 0
 				|| this.curTowerId != 0
+				|| this.curHoleId != 0
 				|| this.refreshMask != 0) {
 			return false;
 		}
@@ -1218,6 +1261,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curDifficulty = 0;
 		this.curChapterId = 0;
 		this.curIndex = 0;
+		this.curHoleId = 0;
 		this.curTowerId = 0;
 		this.refreshMask = 0;
 	}

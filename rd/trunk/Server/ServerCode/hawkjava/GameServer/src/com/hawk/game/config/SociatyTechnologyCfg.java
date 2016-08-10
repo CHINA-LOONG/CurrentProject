@@ -120,6 +120,10 @@ public class SociatyTechnologyCfg extends HawkConfigBase{
 		return technologyList.get(GsConst.Alliance.ALLIANCE_TEC_MEMBER).get(level - 1).getGainPeople();
 	}
 	
+	public static SociatyTechnologyCfg getSociatyTechnologyCfg(int type, int level){
+		return technologyList.get(type).get(level - 1);
+	}
+	
 	@Override
 	protected boolean assemble() {	
 		List<SociatyTechnologyCfg> technology = technologyList.get(type);

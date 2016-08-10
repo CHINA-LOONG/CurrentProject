@@ -29,8 +29,10 @@ public class bossMinghe18Karong : BossAi {
 		//jiuWeihuSpellDic.TryGetValue ("bossmeidusha_anyingzhua", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(meidushaUnit);
+        if (attackResult.attackTarget == null)
+            return null;
 
-		List<string> wpList = null;
+        List<string> wpList = null;
 		wpList = GetAliveWeakPointList (meidushaUnit);
 
 		if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp02")==0)

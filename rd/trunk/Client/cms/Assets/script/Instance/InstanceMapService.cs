@@ -192,6 +192,19 @@ public class InstanceMapService : MonoBehaviour
 		if (listStaticInstance.Count == 0)
 			return false;
 
+        if(difftype == InstanceDifficulty.Hard)
+        {
+            //检测对应普通副本是否通关
+            List<InstanceEntryRuntimeData> listNormalInstance = GetRuntimeInstance(InstanceDifficulty.Normal, nextChapter);
+            foreach(var subNormalInstance in listNormalInstance)
+            {
+                if(!subNormalInstance.isOpen)
+                {
+                    return false;//对应普通副本未通关，则不能开通困难副本
+                }
+            }
+        }
+
         Chapter chapter = StaticDataMgr.Instance.GetChapterData(nextChapter);
         if(null == chapter)
         {

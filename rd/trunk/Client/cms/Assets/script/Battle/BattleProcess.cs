@@ -668,6 +668,7 @@ public class BattleProcess : MonoBehaviour
 			switch (action.type)
 			{
 			case ActionType.None:
+                    StartCoroutine(WaitAnim(action.caster, 0.5f, false));
 				break;
 			case ActionType.UnitFight:
                 //NOTE: buff may change the speed of unit, so if actionOrder is less than last, keep as last
@@ -693,6 +694,7 @@ public class BattleProcess : MonoBehaviour
                         if (curSpell != null)
                         {
                             SpellService.Instance.SpellRequest(curSpell.spellData.id, action.caster.unit, action.caster.unit, Time.time);
+                            MagicDazhaoController.Instance.SetDazhaoPrepareState(true);
                         }
                     }
                     else if (action.dazhaoType == DazhaoType.Magic)
@@ -863,8 +865,17 @@ public class BattleProcess : MonoBehaviour
     void RunUnitFightAction(BattleObject bo)
     {
         Logger.LogFormat("[Battle.Process]Unit {0} is moving...", bo.unit.name);
+
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(bo.unit);
+        if (aiResult == null)
+        {
+            Action emptyAction = new Action();
+            emptyAction.caster = bo;
+            InsertAction(emptyAction);
+            StartAction();
+            return;
+        }
         // Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
 
         if (fireFocusTarget != null &&
@@ -1260,6 +1271,7 @@ public class BattleProcess : MonoBehaviour
 			action.dazhaoType = DazhaoType.Magic_Prepare;
             MagicDazhaoController magicController = MagicDazhaoController.Instance;
             magicController.PrepareShifa(action);
+            magicController.SetDazhaoPrepareState(false);
 		}
 		isCastDazhao = false;
     }

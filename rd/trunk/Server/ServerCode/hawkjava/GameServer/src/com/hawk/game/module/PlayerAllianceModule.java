@@ -12,6 +12,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.module.alliance.AllianceListHandler;
+import com.hawk.game.module.alliance.AllianceNoticeHandler;
 import com.hawk.game.module.alliance.AllianceSearchHandler;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
@@ -49,6 +50,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		listenProto(HS.code.ALLIANCE_CREATE_C);
 		listenProto(HS.code.ALLIANCE_LIST_C, new AllianceListHandler());
 		listenProto(HS.code.ALLIANCE_SEARCH_C, new AllianceSearchHandler());
+		listenProto(HS.code.ALLIANCE_NOTICE_C_VALUE, new AllianceNoticeHandler());
 		listenProto(HS.code.ALLIANCE_APPLY_C_VALUE);
 		listenProto(HS.code.ALLIANCE_HANDLE_APPLY_C);
 		listenProto(HS.code.ALLIANCE_CHANGE_OWNER_C);
