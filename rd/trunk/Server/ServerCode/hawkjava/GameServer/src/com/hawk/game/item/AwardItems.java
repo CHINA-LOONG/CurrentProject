@@ -219,7 +219,7 @@ public class AwardItems {
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.ALLIANCE_VALUE);
-			rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+			rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
 			rewardItem.setCount(count);
 			rewardInfo.addRewardItems(rewardItem);
 		}

@@ -849,7 +849,6 @@ public class BattleController : MonoBehaviour
             {
                 continue;
             }
-
             Transform playerNode = GetSlotNode(UnitCamp.Player, battleObj.unit.pbUnit.slot, false).transform;
             vec = new Vector3(playerNode.forward.x, playerNode.forward.y, playerNode.forward.z);
             Vector3.Normalize(vec);
@@ -857,14 +856,15 @@ public class BattleController : MonoBehaviour
             {
                 newPos = BattleConst.distance * vec * -1.0f + playerNode.transform.position;
                 moveTag = playerNode.position;
+                battleGroup.PlayerFieldList[i].transform.localPosition = newPos;
             }
             else//离场
             {
                 newPos = vec + playerNode.position;
                 moveTag = BattleConst.distance * vec + playerNode.transform.position;
             }
-            battleGroup.PlayerFieldList[i].transform.localPosition = newPos;
             battleGroup.PlayerFieldList[i].transform.DOMove(moveTag, BattleConst.moveTime);
+            //tw.SetEase(Ease.Linear);
             battleObj.TriggerEvent(BattleConst.unitExitandenter, Time.time, null);
         }
     }

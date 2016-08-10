@@ -1028,45 +1028,27 @@ public final class Alliance {
      */
     int getId();
 
-    // required int32 prayCount = 7;
+    // optional bool sendFatigue = 7;
     /**
-     * <code>required int32 prayCount = 7;</code>
+     * <code>optional bool sendFatigue = 7;</code>
      *
      * <pre>
-     * 祈福次数
-     * </pre>
-     */
-    boolean hasPrayCount();
-    /**
-     * <code>required int32 prayCount = 7;</code>
-     *
-     * <pre>
-     * 祈福次数
-     * </pre>
-     */
-    int getPrayCount();
-
-    // optional bool sendFatigue = 8;
-    /**
-     * <code>optional bool sendFatigue = 8;</code>
-     *
-     * <pre>
-     * 祈福次数
+     * 发送体力值
      * </pre>
      */
     boolean hasSendFatigue();
     /**
-     * <code>optional bool sendFatigue = 8;</code>
+     * <code>optional bool sendFatigue = 7;</code>
      *
      * <pre>
-     * 祈福次数
+     * 发送体力值
      * </pre>
      */
     boolean getSendFatigue();
 
-    // required int32 loginTime = 9;
+    // required int32 loginTime = 8;
     /**
-     * <code>required int32 loginTime = 9;</code>
+     * <code>required int32 loginTime = 8;</code>
      *
      * <pre>
      * 登陆时间
@@ -1074,7 +1056,7 @@ public final class Alliance {
      */
     boolean hasLoginTime();
     /**
-     * <code>required int32 loginTime = 9;</code>
+     * <code>required int32 loginTime = 8;</code>
      *
      * <pre>
      * 登陆时间
@@ -1082,9 +1064,9 @@ public final class Alliance {
      */
     int getLoginTime();
 
-    // required int32 logoutTime = 10;
+    // required int32 logoutTime = 9;
     /**
-     * <code>required int32 logoutTime = 10;</code>
+     * <code>required int32 logoutTime = 9;</code>
      *
      * <pre>
      * 登出时间
@@ -1092,13 +1074,49 @@ public final class Alliance {
      */
     boolean hasLogoutTime();
     /**
-     * <code>required int32 logoutTime = 10;</code>
+     * <code>required int32 logoutTime = 9;</code>
      *
      * <pre>
      * 登出时间
      * </pre>
      */
     int getLogoutTime();
+
+    // optional int32 prayCount = 10;
+    /**
+     * <code>optional int32 prayCount = 10;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    boolean hasPrayCount();
+    /**
+     * <code>optional int32 prayCount = 10;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    int getPrayCount();
+
+    // optional int32 taskCount = 11;
+    /**
+     * <code>optional int32 taskCount = 11;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    boolean hasTaskCount();
+    /**
+     * <code>optional int32 taskCount = 11;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    int getTaskCount();
   }
   /**
    * Protobuf type {@code AllianceMember}
@@ -1187,22 +1205,27 @@ public final class Alliance {
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              prayCount_ = input.readInt32();
+              sendFatigue_ = input.readBool();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
-              sendFatigue_ = input.readBool();
+              loginTime_ = input.readInt32();
               break;
             }
             case 72: {
               bitField0_ |= 0x00000100;
-              loginTime_ = input.readInt32();
+              logoutTime_ = input.readInt32();
               break;
             }
             case 80: {
               bitField0_ |= 0x00000200;
-              logoutTime_ = input.readInt32();
+              prayCount_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              taskCount_ = input.readInt32();
               break;
             }
           }
@@ -1420,69 +1443,45 @@ public final class Alliance {
       return id_;
     }
 
-    // required int32 prayCount = 7;
-    public static final int PRAYCOUNT_FIELD_NUMBER = 7;
-    private int prayCount_;
-    /**
-     * <code>required int32 prayCount = 7;</code>
-     *
-     * <pre>
-     * 祈福次数
-     * </pre>
-     */
-    public boolean hasPrayCount() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>required int32 prayCount = 7;</code>
-     *
-     * <pre>
-     * 祈福次数
-     * </pre>
-     */
-    public int getPrayCount() {
-      return prayCount_;
-    }
-
-    // optional bool sendFatigue = 8;
-    public static final int SENDFATIGUE_FIELD_NUMBER = 8;
+    // optional bool sendFatigue = 7;
+    public static final int SENDFATIGUE_FIELD_NUMBER = 7;
     private boolean sendFatigue_;
     /**
-     * <code>optional bool sendFatigue = 8;</code>
+     * <code>optional bool sendFatigue = 7;</code>
      *
      * <pre>
-     * 祈福次数
+     * 发送体力值
      * </pre>
      */
     public boolean hasSendFatigue() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional bool sendFatigue = 8;</code>
+     * <code>optional bool sendFatigue = 7;</code>
      *
      * <pre>
-     * 祈福次数
+     * 发送体力值
      * </pre>
      */
     public boolean getSendFatigue() {
       return sendFatigue_;
     }
 
-    // required int32 loginTime = 9;
-    public static final int LOGINTIME_FIELD_NUMBER = 9;
+    // required int32 loginTime = 8;
+    public static final int LOGINTIME_FIELD_NUMBER = 8;
     private int loginTime_;
     /**
-     * <code>required int32 loginTime = 9;</code>
+     * <code>required int32 loginTime = 8;</code>
      *
      * <pre>
      * 登陆时间
      * </pre>
      */
     public boolean hasLoginTime() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required int32 loginTime = 9;</code>
+     * <code>required int32 loginTime = 8;</code>
      *
      * <pre>
      * 登陆时间
@@ -1492,21 +1491,21 @@ public final class Alliance {
       return loginTime_;
     }
 
-    // required int32 logoutTime = 10;
-    public static final int LOGOUTTIME_FIELD_NUMBER = 10;
+    // required int32 logoutTime = 9;
+    public static final int LOGOUTTIME_FIELD_NUMBER = 9;
     private int logoutTime_;
     /**
-     * <code>required int32 logoutTime = 10;</code>
+     * <code>required int32 logoutTime = 9;</code>
      *
      * <pre>
      * 登出时间
      * </pre>
      */
     public boolean hasLogoutTime() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>required int32 logoutTime = 10;</code>
+     * <code>required int32 logoutTime = 9;</code>
      *
      * <pre>
      * 登出时间
@@ -1516,6 +1515,54 @@ public final class Alliance {
       return logoutTime_;
     }
 
+    // optional int32 prayCount = 10;
+    public static final int PRAYCOUNT_FIELD_NUMBER = 10;
+    private int prayCount_;
+    /**
+     * <code>optional int32 prayCount = 10;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    public boolean hasPrayCount() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 prayCount = 10;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    public int getPrayCount() {
+      return prayCount_;
+    }
+
+    // optional int32 taskCount = 11;
+    public static final int TASKCOUNT_FIELD_NUMBER = 11;
+    private int taskCount_;
+    /**
+     * <code>optional int32 taskCount = 11;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    public boolean hasTaskCount() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional int32 taskCount = 11;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    public int getTaskCount() {
+      return taskCount_;
+    }
+
     private void initFields() {
       level_ = 0;
       name_ = "";
@@ -1523,10 +1570,11 @@ public final class Alliance {
       contribution_ = 0;
       postion_ = 0;
       id_ = 0;
-      prayCount_ = 0;
       sendFatigue_ = false;
       loginTime_ = 0;
       logoutTime_ = 0;
+      prayCount_ = 0;
+      taskCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1554,10 +1602,6 @@ public final class Alliance {
         return false;
       }
       if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPrayCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1595,16 +1639,19 @@ public final class Alliance {
         output.writeInt32(6, id_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, prayCount_);
+        output.writeBool(7, sendFatigue_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBool(8, sendFatigue_);
+        output.writeInt32(8, loginTime_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, loginTime_);
+        output.writeInt32(9, logoutTime_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, logoutTime_);
+        output.writeInt32(10, prayCount_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(11, taskCount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1641,19 +1688,23 @@ public final class Alliance {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, prayCount_);
+          .computeBoolSize(7, sendFatigue_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, sendFatigue_);
+          .computeInt32Size(8, loginTime_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, loginTime_);
+          .computeInt32Size(9, logoutTime_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, logoutTime_);
+          .computeInt32Size(10, prayCount_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, taskCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1787,14 +1838,16 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00000010);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        prayCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
         sendFatigue_ = false;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         loginTime_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000080);
         logoutTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        prayCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        taskCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -1850,19 +1903,23 @@ public final class Alliance {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.prayCount_ = prayCount_;
+        result.sendFatigue_ = sendFatigue_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.sendFatigue_ = sendFatigue_;
+        result.loginTime_ = loginTime_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.loginTime_ = loginTime_;
+        result.logoutTime_ = logoutTime_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.logoutTime_ = logoutTime_;
+        result.prayCount_ = prayCount_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.taskCount_ = taskCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1899,9 +1956,6 @@ public final class Alliance {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasPrayCount()) {
-          setPrayCount(other.getPrayCount());
-        }
         if (other.hasSendFatigue()) {
           setSendFatigue(other.getSendFatigue());
         }
@@ -1910,6 +1964,12 @@ public final class Alliance {
         }
         if (other.hasLogoutTime()) {
           setLogoutTime(other.getLogoutTime());
+        }
+        if (other.hasPrayCount()) {
+          setPrayCount(other.getPrayCount());
+        }
+        if (other.hasTaskCount()) {
+          setTaskCount(other.getTaskCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1937,10 +1997,6 @@ public final class Alliance {
           return false;
         }
         if (!hasId()) {
-          
-          return false;
-        }
-        if (!hasPrayCount()) {
           
           return false;
         }
@@ -2317,118 +2373,69 @@ public final class Alliance {
         return this;
       }
 
-      // required int32 prayCount = 7;
-      private int prayCount_ ;
-      /**
-       * <code>required int32 prayCount = 7;</code>
-       *
-       * <pre>
-       * 祈福次数
-       * </pre>
-       */
-      public boolean hasPrayCount() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>required int32 prayCount = 7;</code>
-       *
-       * <pre>
-       * 祈福次数
-       * </pre>
-       */
-      public int getPrayCount() {
-        return prayCount_;
-      }
-      /**
-       * <code>required int32 prayCount = 7;</code>
-       *
-       * <pre>
-       * 祈福次数
-       * </pre>
-       */
-      public Builder setPrayCount(int value) {
-        bitField0_ |= 0x00000040;
-        prayCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 prayCount = 7;</code>
-       *
-       * <pre>
-       * 祈福次数
-       * </pre>
-       */
-      public Builder clearPrayCount() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        prayCount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional bool sendFatigue = 8;
+      // optional bool sendFatigue = 7;
       private boolean sendFatigue_ ;
       /**
-       * <code>optional bool sendFatigue = 8;</code>
+       * <code>optional bool sendFatigue = 7;</code>
        *
        * <pre>
-       * 祈福次数
+       * 发送体力值
        * </pre>
        */
       public boolean hasSendFatigue() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional bool sendFatigue = 8;</code>
+       * <code>optional bool sendFatigue = 7;</code>
        *
        * <pre>
-       * 祈福次数
+       * 发送体力值
        * </pre>
        */
       public boolean getSendFatigue() {
         return sendFatigue_;
       }
       /**
-       * <code>optional bool sendFatigue = 8;</code>
+       * <code>optional bool sendFatigue = 7;</code>
        *
        * <pre>
-       * 祈福次数
+       * 发送体力值
        * </pre>
        */
       public Builder setSendFatigue(boolean value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000040;
         sendFatigue_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool sendFatigue = 8;</code>
+       * <code>optional bool sendFatigue = 7;</code>
        *
        * <pre>
-       * 祈福次数
+       * 发送体力值
        * </pre>
        */
       public Builder clearSendFatigue() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         sendFatigue_ = false;
         onChanged();
         return this;
       }
 
-      // required int32 loginTime = 9;
+      // required int32 loginTime = 8;
       private int loginTime_ ;
       /**
-       * <code>required int32 loginTime = 9;</code>
+       * <code>required int32 loginTime = 8;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public boolean hasLoginTime() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>required int32 loginTime = 9;</code>
+       * <code>required int32 loginTime = 8;</code>
        *
        * <pre>
        * 登陆时间
@@ -2438,46 +2445,46 @@ public final class Alliance {
         return loginTime_;
       }
       /**
-       * <code>required int32 loginTime = 9;</code>
+       * <code>required int32 loginTime = 8;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public Builder setLoginTime(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000080;
         loginTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 loginTime = 9;</code>
+       * <code>required int32 loginTime = 8;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public Builder clearLoginTime() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000080);
         loginTime_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 logoutTime = 10;
+      // required int32 logoutTime = 9;
       private int logoutTime_ ;
       /**
-       * <code>required int32 logoutTime = 10;</code>
+       * <code>required int32 logoutTime = 9;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public boolean hasLogoutTime() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>required int32 logoutTime = 10;</code>
+       * <code>required int32 logoutTime = 9;</code>
        *
        * <pre>
        * 登出时间
@@ -2487,28 +2494,126 @@ public final class Alliance {
         return logoutTime_;
       }
       /**
-       * <code>required int32 logoutTime = 10;</code>
+       * <code>required int32 logoutTime = 9;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public Builder setLogoutTime(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000100;
         logoutTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 logoutTime = 10;</code>
+       * <code>required int32 logoutTime = 9;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public Builder clearLogoutTime() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000100);
         logoutTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 prayCount = 10;
+      private int prayCount_ ;
+      /**
+       * <code>optional int32 prayCount = 10;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public boolean hasPrayCount() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 prayCount = 10;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public int getPrayCount() {
+        return prayCount_;
+      }
+      /**
+       * <code>optional int32 prayCount = 10;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public Builder setPrayCount(int value) {
+        bitField0_ |= 0x00000200;
+        prayCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 prayCount = 10;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public Builder clearPrayCount() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        prayCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 taskCount = 11;
+      private int taskCount_ ;
+      /**
+       * <code>optional int32 taskCount = 11;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public boolean hasTaskCount() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional int32 taskCount = 11;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public int getTaskCount() {
+        return taskCount_;
+      }
+      /**
+       * <code>optional int32 taskCount = 11;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public Builder setTaskCount(int value) {
+        bitField0_ |= 0x00000400;
+        taskCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 taskCount = 11;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public Builder clearTaskCount() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        taskCount_ = 0;
         onChanged();
         return this;
       }
@@ -2841,42 +2946,6 @@ public final class Alliance {
      */
     com.google.protobuf.ByteString
         getCaptaionNameBytes();
-
-    // optional int32 prayCount = 17;
-    /**
-     * <code>optional int32 prayCount = 17;</code>
-     *
-     * <pre>
-     *祈福次数
-     * </pre>
-     */
-    boolean hasPrayCount();
-    /**
-     * <code>optional int32 prayCount = 17;</code>
-     *
-     * <pre>
-     *祈福次数
-     * </pre>
-     */
-    int getPrayCount();
-
-    // optional int32 taskCount = 18;
-    /**
-     * <code>optional int32 taskCount = 18;</code>
-     *
-     * <pre>
-     *任务接取次数
-     * </pre>
-     */
-    boolean hasTaskCount();
-    /**
-     * <code>optional int32 taskCount = 18;</code>
-     *
-     * <pre>
-     *任务接取次数
-     * </pre>
-     */
-    int getTaskCount();
   }
   /**
    * Protobuf type {@code AllianceInfo}
@@ -3011,16 +3080,6 @@ public final class Alliance {
             case 130: {
               bitField0_ |= 0x00008000;
               captaionName_ = input.readBytes();
-              break;
-            }
-            case 136: {
-              bitField0_ |= 0x00010000;
-              prayCount_ = input.readInt32();
-              break;
-            }
-            case 144: {
-              bitField0_ |= 0x00020000;
-              taskCount_ = input.readInt32();
               break;
             }
           }
@@ -3540,54 +3599,6 @@ public final class Alliance {
       }
     }
 
-    // optional int32 prayCount = 17;
-    public static final int PRAYCOUNT_FIELD_NUMBER = 17;
-    private int prayCount_;
-    /**
-     * <code>optional int32 prayCount = 17;</code>
-     *
-     * <pre>
-     *祈福次数
-     * </pre>
-     */
-    public boolean hasPrayCount() {
-      return ((bitField0_ & 0x00010000) == 0x00010000);
-    }
-    /**
-     * <code>optional int32 prayCount = 17;</code>
-     *
-     * <pre>
-     *祈福次数
-     * </pre>
-     */
-    public int getPrayCount() {
-      return prayCount_;
-    }
-
-    // optional int32 taskCount = 18;
-    public static final int TASKCOUNT_FIELD_NUMBER = 18;
-    private int taskCount_;
-    /**
-     * <code>optional int32 taskCount = 18;</code>
-     *
-     * <pre>
-     *任务接取次数
-     * </pre>
-     */
-    public boolean hasTaskCount() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
-    }
-    /**
-     * <code>optional int32 taskCount = 18;</code>
-     *
-     * <pre>
-     *任务接取次数
-     * </pre>
-     */
-    public int getTaskCount() {
-      return taskCount_;
-    }
-
     private void initFields() {
       id_ = 0;
       level_ = 0;
@@ -3605,8 +3616,6 @@ public final class Alliance {
       autoAccept_ = false;
       captainId_ = 0;
       captaionName_ = "";
-      prayCount_ = 0;
-      taskCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3732,12 +3741,6 @@ public final class Alliance {
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeBytes(16, getCaptaionNameBytes());
       }
-      if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        output.writeInt32(17, prayCount_);
-      }
-      if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeInt32(18, taskCount_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3810,14 +3813,6 @@ public final class Alliance {
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(16, getCaptaionNameBytes());
-      }
-      if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(17, prayCount_);
-      }
-      if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(18, taskCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3971,10 +3966,6 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00004000);
         captaionName_ = "";
         bitField0_ = (bitField0_ & ~0x00008000);
-        prayCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00010000);
-        taskCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
 
@@ -4067,14 +4058,6 @@ public final class Alliance {
           to_bitField0_ |= 0x00008000;
         }
         result.captaionName_ = captaionName_;
-        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
-          to_bitField0_ |= 0x00010000;
-        }
-        result.prayCount_ = prayCount_;
-        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
-          to_bitField0_ |= 0x00020000;
-        }
-        result.taskCount_ = taskCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4144,12 +4127,6 @@ public final class Alliance {
           bitField0_ |= 0x00008000;
           captaionName_ = other.captaionName_;
           onChanged();
-        }
-        if (other.hasPrayCount()) {
-          setPrayCount(other.getPrayCount());
-        }
-        if (other.hasTaskCount()) {
-          setTaskCount(other.getTaskCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5169,104 +5146,6 @@ public final class Alliance {
   }
   bitField0_ |= 0x00008000;
         captaionName_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 prayCount = 17;
-      private int prayCount_ ;
-      /**
-       * <code>optional int32 prayCount = 17;</code>
-       *
-       * <pre>
-       *祈福次数
-       * </pre>
-       */
-      public boolean hasPrayCount() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
-      }
-      /**
-       * <code>optional int32 prayCount = 17;</code>
-       *
-       * <pre>
-       *祈福次数
-       * </pre>
-       */
-      public int getPrayCount() {
-        return prayCount_;
-      }
-      /**
-       * <code>optional int32 prayCount = 17;</code>
-       *
-       * <pre>
-       *祈福次数
-       * </pre>
-       */
-      public Builder setPrayCount(int value) {
-        bitField0_ |= 0x00010000;
-        prayCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 prayCount = 17;</code>
-       *
-       * <pre>
-       *祈福次数
-       * </pre>
-       */
-      public Builder clearPrayCount() {
-        bitField0_ = (bitField0_ & ~0x00010000);
-        prayCount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 taskCount = 18;
-      private int taskCount_ ;
-      /**
-       * <code>optional int32 taskCount = 18;</code>
-       *
-       * <pre>
-       *任务接取次数
-       * </pre>
-       */
-      public boolean hasTaskCount() {
-        return ((bitField0_ & 0x00020000) == 0x00020000);
-      }
-      /**
-       * <code>optional int32 taskCount = 18;</code>
-       *
-       * <pre>
-       *任务接取次数
-       * </pre>
-       */
-      public int getTaskCount() {
-        return taskCount_;
-      }
-      /**
-       * <code>optional int32 taskCount = 18;</code>
-       *
-       * <pre>
-       *任务接取次数
-       * </pre>
-       */
-      public Builder setTaskCount(int value) {
-        bitField0_ |= 0x00020000;
-        taskCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 taskCount = 18;</code>
-       *
-       * <pre>
-       *任务接取次数
-       * </pre>
-       */
-      public Builder clearTaskCount() {
-        bitField0_ = (bitField0_ & ~0x00020000);
-        taskCount_ = 0;
         onChanged();
         return this;
       }
@@ -41022,105 +40901,104 @@ public final class Alliance {
     java.lang.String[] descriptorData = {
       "\n\027Protocol/Alliance.proto\"V\n\rAllianceApp" +
       "ly\022\022\n\nallianceId\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005" +
-      "\022\020\n\010nickname\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\304\001\n\016Al" +
+      "\022\020\n\010nickname\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\327\001\n\016Al" +
       "lianceMember\022\r\n\005level\030\001 \002(\005\022\014\n\004name\030\002 \002(" +
       "\t\022\023\n\013battlePoint\030\003 \002(\005\022\024\n\014contribution\030\004" +
-      " \002(\005\022\017\n\007postion\030\005 \002(\005\022\n\n\002id\030\006 \002(\005\022\021\n\tpra" +
-      "yCount\030\007 \002(\005\022\023\n\013sendFatigue\030\010 \001(\010\022\021\n\tlog" +
-      "inTime\030\t \002(\005\022\022\n\nlogoutTime\030\n \002(\005\"\342\002\n\014All" +
-      "ianceInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\024\n\014" +
-      "contribution\030\003 \002(\005\022\031\n\021contributionToday\030",
-      "\004 \002(\005\022\030\n\020contribution3day\030\005 \002(\005\022\022\n\ncurre" +
-      "ntPop\030\006 \002(\005\022\016\n\006maxPop\030\007 \002(\005\022\020\n\010memLevel\030" +
-      "\010 \002(\005\022\020\n\010expLevel\030\t \002(\005\022\021\n\tcoinLevel\030\n \002" +
-      "(\005\022\016\n\006notice\030\013 \002(\t\022\014\n\004name\030\014 \002(\t\022\020\n\010minL" +
-      "evel\030\r \002(\005\022\022\n\nautoAccept\030\016 \002(\010\022\021\n\tcaptai" +
-      "nId\030\017 \002(\005\022\024\n\014captaionName\030\020 \002(\t\022\021\n\tprayC" +
-      "ount\030\021 \001(\005\022\021\n\ttaskCount\030\022 \001(\005\"\351\001\n\022Allian" +
-      "ceSimpleInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022" +
-      "\030\n\020contribution3day\030\003 \002(\005\022\022\n\ncurrentPop\030" +
-      "\004 \002(\005\022\016\n\006maxPop\030\005 \002(\005\022\016\n\006notice\030\006 \002(\t\022\014\n",
-      "\004name\030\007 \002(\t\022\020\n\010minLevel\030\010 \002(\005\022\021\n\tcaptain" +
-      "Id\030\t \002(\005\022\024\n\014captaionName\030\n \002(\t\022\r\n\005apply\030" +
-      "\013 \002(\010\022\022\n\nautoAccept\030\014 \002(\010\"L\n\020AllianceTas" +
-      "kInfo\022\020\n\010itemTask\030\001 \003(\005\022\020\n\010coinTask\030\002 \003(" +
-      "\005\022\024\n\014instanceTask\030\003 \003(\005\"k\n\025AllianceTeamQ" +
-      "uestInfo\022\017\n\007questId\030\001 \002(\005\022\020\n\010playerId\030\002 " +
-      "\002(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\016\n\006" +
-      "avatar\030\005 \001(\005\"k\n\023AllianceTeamMemInfo\022\020\n\010p" +
-      "layerId\030\001 \002(\005\022\020\n\010nickname\030\002 \001(\t\022\r\n\005level" +
-      "\030\003 \002(\005\022\016\n\006avatar\030\004 \002(\005\022\021\n\tisCaptain\030\005 \002(",
-      "\010\"x\n\020AllianceTeamInfo\022\021\n\tstartTime\030\001 \002(\005" +
-      "\022%\n\007members\030\002 \003(\0132\024.AllianceTeamMemInfo\022" +
-      "*\n\nquestInfos\030\003 \003(\0132\026.AllianceTeamQuestI" +
-      "nfo\"0\n\020HSAllianceCreate\022\014\n\004name\030\001 \002(\t\022\016\n" +
-      "\006notice\030\002 \002(\t\"(\n\023HSAllianceCreateRet\022\021\n\t" +
-      "allianeId\030\001 \002(\005\"!\n\016HSAllianceList\022\017\n\007req" +
-      "Page\030\001 \002(\005\"Q\n\021HSAllianceListRet\022\021\n\ttotal" +
-      "Page\030\001 \002(\005\022)\n\014allianceList\030\002 \003(\0132\023.Allia" +
-      "nceSimpleInfo\"$\n\020HSAllianceSearch\022\020\n\010nam" +
-      "eOrId\030\001 \002(\t\":\n\023HSAllianceSearchRet\022#\n\006re",
-      "sult\030\001 \003(\0132\023.AllianceSimpleInfo\"\"\n\020HSAll" +
-      "ianceNotice\022\016\n\006notice\030\001 \002(\t\"\025\n\023HSAllianc" +
-      "eNoticeRet\"%\n\017HSAllianceApply\022\022\n\nallianc" +
-      "eId\030\001 \002(\005\"(\n\022HSAllianceApplyRet\022\022\n\nallia" +
-      "nceId\030\001 \002(\005\"G\n\024HSAllianceHanleApply\022\020\n\010p" +
-      "layerId\030\001 \001(\005\022\016\n\006accept\030\002 \002(\010\022\r\n\005isAll\030\003" +
-      " \002(\010\"\031\n\027HSAllianceHanleApplyRet\"+\n\025HSAll" +
-      "ianceCancleApply\022\022\n\nallianceId\030\001 \002(\005\"\032\n\030" +
-      "HSAllianceCancleApplyRet\"8\n\023HSAllianceCh" +
-      "angePos\022\020\n\010playerId\030\001 \002(\005\022\017\n\007postion\030\002 \002",
-      "(\005\"\030\n\026HSAllianceChangePosRet\"\021\n\017HSAllian" +
-      "ceLeave\"\024\n\022HSAllianceLeaveRet\")\n\025HSAllia" +
-      "nceChangeOwner\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAl" +
-      "lianceChangeOwnerRet\"%\n\021HSAllianceMemKic" +
-      "k\022\020\n\010targetId\030\001 \002(\005\"\026\n\024HSAllianceMemKick" +
-      "Ret\"!\n\021HSAllianceLevelUp\022\014\n\004type\030\001 \002(\005\"\026" +
-      "\n\024HSAllianceLevelUpRet\"#\n\016HSAlliancePray" +
-      "\022\021\n\tprayIndex\030\001 \002(\005\"\023\n\021HSAlliancePrayRet" +
-      "\"7\n\021HSAllianceSettion\022\020\n\010minLevel\030\001 \002(\005\022" +
-      "\020\n\010autoJoin\030\002 \002(\010\"\026\n\024HSAllianceSettionRe",
-      "t\")\n\025HSAllianceFatigueGive\022\020\n\010targetId\030\001" +
-      " \002(\005\"\032\n\030HSAllianceFatigueGiveRet\"\017\n\rHSAl" +
-      "lianceSyn\"\022\n\020HSAllianceSynRet\"\020\n\016HSAllia" +
-      "nceData\"8\n\021HSAllianceDataRet\022#\n\014alliance" +
-      "Data\030\001 \002(\0132\r.AllianceInfo\"\026\n\024HSAllianceS" +
-      "ettingSyn\"=\n\027HSAllianceSettingSynRet\022\020\n\010" +
-      "minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\024\n\022HSAl" +
-      "lianceSelfData\":\n\025HSAllianceSelfDataRet\022" +
-      "!\n\010selfData\030\001 \002(\0132\017.AllianceMember\"\023\n\021HS" +
-      "AllianceMembers\";\n\024HSAllianceMembersRet\022",
-      "#\n\nmemberList\030\001 \003(\0132\017.AllianceMember\"\025\n\023" +
-      "HSAllianceApplyList\"7\n\026HSAllianceApplyLi" +
-      "stRet\022\035\n\005apply\030\001 \003(\0132\016.AllianceApply\"6\n\025" +
-      "HSAllianceApplyNotify\022\035\n\005apply\030\001 \002(\0132\016.A" +
-      "llianceApply\">\n\033HSAllianceRemoveApplyNot" +
-      "ify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005clear\030\002 \002(\010\"(\n\026" +
-      "HSAllianceNoticeNotify\022\016\n\006notice\030\001 \002(\t\"8" +
-      "\n\021HSMemberAddNotify\022#\n\nmemberData\030\001 \003(\0132" +
-      "\017.AllianceMember\"(\n\024HSMemberRemoveNotify" +
-      "\022\020\n\010playerId\030\001 \002(\005\";\n\027HSMemberPosChangeN",
-      "otify\022\020\n\010playerId\030\001 \002(\005\022\016\n\006newPos\030\002 \002(\005\"" +
-      "&\n\023HSChangeOwnerNotify\022\017\n\007ownerId\030\001 \002(\005\"" +
-      "2\n\023HSLevelChangeNotify\022\014\n\004type\030\001 \002(\005\022\r\n\005" +
-      "level\030\002 \002(\005\"*\n\024HSAllianceJoinNotify\022\022\n\na" +
-      "llianceId\030\001 \002(\005\"\027\n\025HSAllianceLeaveNotify" +
-      "\"&\n\024HSAllianceCreateTeam\022\016\n\006taskId\030\001 \002(\005" +
-      "\">\n\027HSAllianceCreateTeamRet\022#\n\010taskInfo\030" +
-      "\001 \002(\0132\021.AllianceTaskInfo\"$\n\022HSAllianceJo" +
-      "inTeam\022\016\n\006teamId\030\001 \002(\005\"\027\n\025HSAllianceJoin" +
-      "TeamRet\"\'\n\024HSAllianceTaskAccept\022\017\n\007quest",
-      "Id\030\001 \002(\005\"\031\n\027HSAllianceTaskAcceptRet\"\'\n\024H" +
-      "SAllianceTaskCommit\022\017\n\007questId\030\001 \002(\005\"\031\n\027" +
-      "HSAllianceTaskCommitRet\"\026\n\024HSAllianceTas" +
-      "kReward\"\031\n\027HSAllianceTaskRewardRet\"\030\n\026HS" +
-      "AllianceDissolveTeam\"\033\n\031HSAllianceDissol" +
-      "veTeamRet\"\024\n\022HSAllianceTeamList\"A\n\025HSAll" +
-      "ianceTeamListRet\022(\n\rallianceTeams\030\001 \003(\0132" +
-      "\021.AllianceTeamInfo\"\024\n\022HSAllianceSelfTeam" +
-      "\"<\n\025HSAllianceSelfTeamRet\022#\n\010selfTeam\030\001 " +
-      "\002(\0132\021.AllianceTeamInfoB\030\n\026com.hawk.game.",
-      "protocol"
+      " \002(\005\022\017\n\007postion\030\005 \002(\005\022\n\n\002id\030\006 \002(\005\022\023\n\013sen" +
+      "dFatigue\030\007 \001(\010\022\021\n\tloginTime\030\010 \002(\005\022\022\n\nlog" +
+      "outTime\030\t \002(\005\022\021\n\tprayCount\030\n \001(\005\022\021\n\ttask" +
+      "Count\030\013 \001(\005\"\274\002\n\014AllianceInfo\022\n\n\002id\030\001 \002(\005" +
+      "\022\r\n\005level\030\002 \002(\005\022\024\n\014contribution\030\003 \002(\005\022\031\n",
+      "\021contributionToday\030\004 \002(\005\022\030\n\020contribution" +
+      "3day\030\005 \002(\005\022\022\n\ncurrentPop\030\006 \002(\005\022\016\n\006maxPop" +
+      "\030\007 \002(\005\022\020\n\010memLevel\030\010 \002(\005\022\020\n\010expLevel\030\t \002" +
+      "(\005\022\021\n\tcoinLevel\030\n \002(\005\022\016\n\006notice\030\013 \002(\t\022\014\n" +
+      "\004name\030\014 \002(\t\022\020\n\010minLevel\030\r \002(\005\022\022\n\nautoAcc" +
+      "ept\030\016 \002(\010\022\021\n\tcaptainId\030\017 \002(\005\022\024\n\014captaion" +
+      "Name\030\020 \002(\t\"\351\001\n\022AllianceSimpleInfo\022\n\n\002id\030" +
+      "\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\030\n\020contribution3day" +
+      "\030\003 \002(\005\022\022\n\ncurrentPop\030\004 \002(\005\022\016\n\006maxPop\030\005 \002" +
+      "(\005\022\016\n\006notice\030\006 \002(\t\022\014\n\004name\030\007 \002(\t\022\020\n\010minL",
+      "evel\030\010 \002(\005\022\021\n\tcaptainId\030\t \002(\005\022\024\n\014captaio" +
+      "nName\030\n \002(\t\022\r\n\005apply\030\013 \002(\010\022\022\n\nautoAccept" +
+      "\030\014 \002(\010\"L\n\020AllianceTaskInfo\022\020\n\010itemTask\030\001" +
+      " \003(\005\022\020\n\010coinTask\030\002 \003(\005\022\024\n\014instanceTask\030\003" +
+      " \003(\005\"k\n\025AllianceTeamQuestInfo\022\017\n\007questId" +
+      "\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005\022\020\n\010nickname\030\003 \001" +
+      "(\t\022\r\n\005level\030\004 \001(\005\022\016\n\006avatar\030\005 \001(\005\"k\n\023All" +
+      "ianceTeamMemInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010ni" +
+      "ckname\030\002 \001(\t\022\r\n\005level\030\003 \002(\005\022\016\n\006avatar\030\004 " +
+      "\002(\005\022\021\n\tisCaptain\030\005 \002(\010\"x\n\020AllianceTeamIn",
+      "fo\022\021\n\tstartTime\030\001 \002(\005\022%\n\007members\030\002 \003(\0132\024" +
+      ".AllianceTeamMemInfo\022*\n\nquestInfos\030\003 \003(\013" +
+      "2\026.AllianceTeamQuestInfo\"0\n\020HSAllianceCr" +
+      "eate\022\014\n\004name\030\001 \002(\t\022\016\n\006notice\030\002 \002(\t\"(\n\023HS" +
+      "AllianceCreateRet\022\021\n\tallianeId\030\001 \002(\005\"!\n\016" +
+      "HSAllianceList\022\017\n\007reqPage\030\001 \002(\005\"Q\n\021HSAll" +
+      "ianceListRet\022\021\n\ttotalPage\030\001 \002(\005\022)\n\014allia" +
+      "nceList\030\002 \003(\0132\023.AllianceSimpleInfo\"$\n\020HS" +
+      "AllianceSearch\022\020\n\010nameOrId\030\001 \002(\t\":\n\023HSAl" +
+      "lianceSearchRet\022#\n\006result\030\001 \003(\0132\023.Allian",
+      "ceSimpleInfo\"\"\n\020HSAllianceNotice\022\016\n\006noti" +
+      "ce\030\001 \002(\t\"\025\n\023HSAllianceNoticeRet\"%\n\017HSAll" +
+      "ianceApply\022\022\n\nallianceId\030\001 \002(\005\"(\n\022HSAlli" +
+      "anceApplyRet\022\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAl" +
+      "lianceHanleApply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006ac" +
+      "cept\030\002 \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027HSAllianceH" +
+      "anleApplyRet\"+\n\025HSAllianceCancleApply\022\022\n" +
+      "\nallianceId\030\001 \002(\005\"\032\n\030HSAllianceCancleApp" +
+      "lyRet\"8\n\023HSAllianceChangePos\022\020\n\010playerId" +
+      "\030\001 \002(\005\022\017\n\007postion\030\002 \002(\005\"\030\n\026HSAllianceCha",
+      "ngePosRet\"\021\n\017HSAllianceLeave\"\024\n\022HSAllian" +
+      "ceLeaveRet\")\n\025HSAllianceChangeOwner\022\020\n\010t" +
+      "argetId\030\001 \002(\005\"\032\n\030HSAllianceChangeOwnerRe" +
+      "t\"%\n\021HSAllianceMemKick\022\020\n\010targetId\030\001 \002(\005" +
+      "\"\026\n\024HSAllianceMemKickRet\"!\n\021HSAllianceLe" +
+      "velUp\022\014\n\004type\030\001 \002(\005\"\026\n\024HSAllianceLevelUp" +
+      "Ret\"#\n\016HSAlliancePray\022\021\n\tprayIndex\030\001 \002(\005" +
+      "\"\023\n\021HSAlliancePrayRet\"7\n\021HSAllianceSetti" +
+      "on\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\026" +
+      "\n\024HSAllianceSettionRet\")\n\025HSAllianceFati",
+      "gueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceF" +
+      "atigueGiveRet\"\017\n\rHSAllianceSyn\"\022\n\020HSAlli" +
+      "anceSynRet\"\020\n\016HSAllianceData\"8\n\021HSAllian" +
+      "ceDataRet\022#\n\014allianceData\030\001 \002(\0132\r.Allian" +
+      "ceInfo\"\026\n\024HSAllianceSettingSyn\"=\n\027HSAlli" +
+      "anceSettingSynRet\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010a" +
+      "utoJoin\030\002 \002(\010\"\024\n\022HSAllianceSelfData\":\n\025H" +
+      "SAllianceSelfDataRet\022!\n\010selfData\030\001 \002(\0132\017" +
+      ".AllianceMember\"\023\n\021HSAllianceMembers\";\n\024" +
+      "HSAllianceMembersRet\022#\n\nmemberList\030\001 \003(\013",
+      "2\017.AllianceMember\"\025\n\023HSAllianceApplyList" +
+      "\"7\n\026HSAllianceApplyListRet\022\035\n\005apply\030\001 \003(" +
+      "\0132\016.AllianceApply\"6\n\025HSAllianceApplyNoti" +
+      "fy\022\035\n\005apply\030\001 \002(\0132\016.AllianceApply\">\n\033HSA" +
+      "llianceRemoveApplyNotify\022\020\n\010playerId\030\001 \001" +
+      "(\005\022\r\n\005clear\030\002 \002(\010\"(\n\026HSAllianceNoticeNot" +
+      "ify\022\016\n\006notice\030\001 \002(\t\"8\n\021HSMemberAddNotify" +
+      "\022#\n\nmemberData\030\001 \003(\0132\017.AllianceMember\"(\n" +
+      "\024HSMemberRemoveNotify\022\020\n\010playerId\030\001 \002(\005\"" +
+      ";\n\027HSMemberPosChangeNotify\022\020\n\010playerId\030\001",
+      " \002(\005\022\016\n\006newPos\030\002 \002(\005\"&\n\023HSChangeOwnerNot" +
+      "ify\022\017\n\007ownerId\030\001 \002(\005\"2\n\023HSLevelChangeNot" +
+      "ify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"*\n\024HSAl" +
+      "lianceJoinNotify\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025" +
+      "HSAllianceLeaveNotify\"&\n\024HSAllianceCreat" +
+      "eTeam\022\016\n\006taskId\030\001 \002(\005\">\n\027HSAllianceCreat" +
+      "eTeamRet\022#\n\010taskInfo\030\001 \002(\0132\021.AllianceTas" +
+      "kInfo\"$\n\022HSAllianceJoinTeam\022\016\n\006teamId\030\001 " +
+      "\002(\005\"\027\n\025HSAllianceJoinTeamRet\"\'\n\024HSAllian" +
+      "ceTaskAccept\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllia",
+      "nceTaskAcceptRet\"\'\n\024HSAllianceTaskCommit" +
+      "\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskCommi" +
+      "tRet\"\026\n\024HSAllianceTaskReward\"\031\n\027HSAllian" +
+      "ceTaskRewardRet\"\030\n\026HSAllianceDissolveTea" +
+      "m\"\033\n\031HSAllianceDissolveTeamRet\"\024\n\022HSAlli" +
+      "anceTeamList\"A\n\025HSAllianceTeamListRet\022(\n" +
+      "\rallianceTeams\030\001 \003(\0132\021.AllianceTeamInfo\"" +
+      "\024\n\022HSAllianceSelfTeam\"<\n\025HSAllianceSelfT" +
+      "eamRet\022#\n\010selfTeam\030\001 \002(\0132\021.AllianceTeamI" +
+      "nfoB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -41138,13 +41016,13 @@ public final class Alliance {
           internal_static_AllianceMember_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceMember_descriptor,
-              new java.lang.String[] { "Level", "Name", "BattlePoint", "Contribution", "Postion", "Id", "PrayCount", "SendFatigue", "LoginTime", "LogoutTime", });
+              new java.lang.String[] { "Level", "Name", "BattlePoint", "Contribution", "Postion", "Id", "SendFatigue", "LoginTime", "LogoutTime", "PrayCount", "TaskCount", });
           internal_static_AllianceInfo_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_AllianceInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceInfo_descriptor,
-              new java.lang.String[] { "Id", "Level", "Contribution", "ContributionToday", "Contribution3Day", "CurrentPop", "MaxPop", "MemLevel", "ExpLevel", "CoinLevel", "Notice", "Name", "MinLevel", "AutoAccept", "CaptainId", "CaptaionName", "PrayCount", "TaskCount", });
+              new java.lang.String[] { "Id", "Level", "Contribution", "ContributionToday", "Contribution3Day", "CurrentPop", "MaxPop", "MemLevel", "ExpLevel", "CoinLevel", "Notice", "Name", "MinLevel", "AutoAccept", "CaptainId", "CaptaionName", });
           internal_static_AllianceSimpleInfo_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_AllianceSimpleInfo_fieldAccessorTable = new

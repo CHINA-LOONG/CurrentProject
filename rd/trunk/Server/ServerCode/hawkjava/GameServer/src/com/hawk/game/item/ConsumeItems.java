@@ -153,7 +153,7 @@ public class ConsumeItems {
 		if (consumeItem == null) {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.ALLIANCE_VALUE);
-			consumeItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+			consumeItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
 			consumeItem.setCount(count);
 			consumeInfo.addConsumeItems(consumeItem);
 		}

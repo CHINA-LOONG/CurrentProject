@@ -12,4 +12,6 @@ public class ImMessageData : MonoBehaviour {
     public int speakerID;
     [HideInInspector]
     public string playerName;
+    [HideInInspector]
+    public ScrollViewEventListener mScrollmContentClick;
 }

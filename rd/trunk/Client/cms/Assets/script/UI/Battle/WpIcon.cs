@@ -126,9 +126,19 @@ public class WpIcon : MonoBehaviour
         {
             tipsmsg = StaticDataMgr.Instance.GetTextByID(tips);
         }
+
+        string wpName = null;
+        if(wpRealData.wpState != WeakpointState.Hide)
+        {
+            wpName = StaticDataMgr.Instance.GetTextByID(wpRealData.staticData.name);
+        }
+
         ShowoffIcon(true);
-        BattleController.Instance.GetUIBattle().wpUI.ShowTips(this, tipsmsg, 
-            StaticDataMgr.Instance.GetTextByID(wpRealData.staticData.name));
+        if (!string.IsNullOrEmpty(tipsmsg) || !string.IsNullOrEmpty(wpName))
+        {
+            BattleController.Instance.GetUIBattle().wpUI.ShowTips(this, tipsmsg, wpName);
+        }
+
         if (wpShowOff)
         {
             wpRealData.showoffEffect.Show(true);

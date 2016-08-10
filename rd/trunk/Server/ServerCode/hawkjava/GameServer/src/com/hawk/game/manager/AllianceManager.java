@@ -170,7 +170,7 @@ public class AllianceManager extends HawkAppObj {
 				}
 			}
 		}
-
+ 
 		// 组队信息
 		for (AllianceTeamEntity teamEntity : allianceTeams) {
 			AllianceEntity allianceEntity = getAlliance(teamEntity.getAllianceId());

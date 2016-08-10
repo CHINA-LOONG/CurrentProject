@@ -16,6 +16,7 @@ import com.hawk.game.module.alliance.AllianceSearchHandler;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
+import com.hawk.game.protocol.Alliance.AllianceMember;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyList;
 import com.hawk.game.protocol.Alliance.HSAllianceDataRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembers;
@@ -322,15 +323,16 @@ public class PlayerAllianceModule extends PlayerModule {
 		// 同步工会数据
 		HSAllianceDataRet.Builder allianceData = HSAllianceDataRet.newBuilder();
 		AllianceInfo.Builder allianceBuilder = AllianceUtil.getAllianceInfo(allianceEntity);
-		allianceBuilder.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
-		allianceBuilder.setPrayCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
-		
 		allianceData.setAllianceData(allianceBuilder);
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_DATA_S_VALUE, allianceData));
 
 		// 同步自身数据
 		HSAllianceSelfDataRet.Builder sleftData = HSAllianceSelfDataRet.newBuilder();
-		sleftData.setSelfData(AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity(), null));
+		AllianceMember.Builder memberBuilder = AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity(), null);
+		memberBuilder.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
+		memberBuilder.setTaskCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
+		sleftData.setSelfData(memberBuilder);
+		
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SELF_DATA_S_VALUE, sleftData));
 
 		// 同步成员数据

@@ -79,6 +79,7 @@ public class UIAdjustBattleTeam : UIBase
 	private int prepareIndex = -1;//准备上阵的空位索引
     private bool isOpenSaodangOneTimes = false;
     private bool isOpenSaodangTenTimes = false;
+    private bool isFirst = true;
 
 	private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
@@ -87,6 +88,7 @@ public class UIAdjustBattleTeam : UIBase
     public  static void OpenWith(string instanceId,int star, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
     {
         UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
+        uiadust.FirstInit();
         uiadust.towerFloor = towerFloor;
         uiadust.SetData(instanceId, star, insType);
 
@@ -97,32 +99,29 @@ public class UIAdjustBattleTeam : UIBase
         }
     }
 
-	// Use this for initialization
-	void Start () 
-	{
-		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
-		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
+   public void FirstInit()
+    {
+        if (!isFirst)
+            return;
+        isFirst = true;
+        EventTriggerListener.Get(backButton.gameObject).onClick = OnBackButtonClick;
+        EventTriggerListener.Get(battleButton.gameObject).onClick = OnBattleButtonClick;
         EventTriggerListener.Get(resetTimesButton.gameObject).onClick = OnResetInstanceTimesClick;
         EventTriggerListener.Get(rapid1Button.gameObject).onClick = OnRapid1ButtonClick;
         EventTriggerListener.Get(rapid10Button.gameObject).onClick = OnRapid10ButtonClick;
         EventTriggerListener.Get(buffIcon.iconButton.gameObject).onEnter = OnPointerEnterBuffIcon;
         EventTriggerListener.Get(buffIcon.iconButton.gameObject).onExit = OnPointerExitBuffIcon;
 
-        lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
-		lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID ("instance_houbei");
-		lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
-		lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_wofangzhenrong");
+        lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID("instance_difangzhenrong");
+        lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID("instance_houbei");
+        lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID("instance_shangzhen");
+        lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID("instance_wofangzhenrong");
         dropInfoText.text = StaticDataMgr.Instance.GetTextByID("instance_jiangliList");
 
-        battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
-        resetTimesButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu");
+        battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("instance_kaishizhandou");
+        UIUtil.SetButtonTitle(resetTimesButton.transform, StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu"));
         UIUtil.SetButtonTitle(rapid1Button.transform, StaticDataMgr.Instance.GetTextByID("instance_saodang"));
         skillTips.gameObject.SetActive(false);
-    }
-
-    public override void Init()
-    {
-
     }
     public override void Clean()
     {
@@ -263,6 +262,9 @@ public class UIAdjustBattleTeam : UIBase
         ClearAllDropObject();
         nameText.text = "";
         buffIcon.gameObject.SetActive(false);
+        rapid1Button.gameObject.SetActive(false);
+        rapid10Button.gameObject.SetActive(false);
+        resetTimesButton.gameObject.SetActive(false);
        yield break;
     }
 

@@ -10,7 +10,7 @@ public class UIRoot : MonoBehaviour {
     //------------------------------------------------------------------------------------------------------
 	// Use this for initialization
 	void Start () {
-        EventTriggerListener.Get(gmButton.gameObject).onClick = OnGMButtonClick;
+        ScrollViewEventListener.Get(gmButton.gameObject).onClick = OnGMButtonClick;
 	}
     //------------------------------------------------------------------------------------------------------
 	// Update is called once per frame

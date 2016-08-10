@@ -37,17 +37,17 @@ Material:
       data:
         first:
           name: _ForceX
-        second: .0729999989
+        second: .0460000001
       data:
         first:
           name: _ForceY
-        second: .0729999989
+        second: .0149999997
       data:
         first:
           name: _HeatTime
-        second: -.239999995
+        second: .100000001
     m_Colors:
       data:
         first:
           name: _TintColor
-        second: {r: .5, g: .5, b: .5, a: .141000003}
+        second: {r: .5, g: .5, b: .5, a: .533999979}

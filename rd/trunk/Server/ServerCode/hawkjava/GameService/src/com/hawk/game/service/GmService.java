@@ -24,7 +24,6 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.service.GameService;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -52,9 +51,9 @@ public class GmService extends GameService {
 			genTestAccount();
 			return true;
 		}
-		if (protocol.checkType(HS.gm.GMOPERATION_C_VALUE)) {
-			// TODO 合并测试GmService到此文件
-		}
+//		if (protocol.checkType(HS.gm.GMOPERATION_C_VALUE)) {
+//			// TODO 合并测试GmService到此文件
+//		}
 
 		return false;
 	}
@@ -128,6 +127,7 @@ public class GmService extends GameService {
 					// 加载数据
 					player.getPlayerData().loadPlayer();
 					player.getPlayerData().loadStatistics();
+					player.getPlayerData().loadAllMonster();
 
 					// 生成宠物
 					for (TestAccountCfg cfg : entry.getValue()) {

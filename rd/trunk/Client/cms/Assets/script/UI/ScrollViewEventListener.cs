@@ -100,6 +100,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
         {
             onExit(gameObject);
         }
+        pressDown = false;
     }
 
 

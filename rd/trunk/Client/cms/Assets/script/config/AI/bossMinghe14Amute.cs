@@ -37,7 +37,7 @@ public class bossMinghe14Amute : BossAi {
 			AmuteSpellDic.TryGetValue ("bossAmute1", out useSpell);
 
 			int i = 1;
-			if (GetAttackCount(AmuteUnit) % 3 == 0) 
+			if (GetAttackCount(AmuteUnit) % 4 == 0) 
 			{
 				AmuteSpellDic.TryGetValue ("bossAmute2", out useSpell);
 				attackResult.attackTarget = AmuteUnit;
@@ -47,14 +47,7 @@ public class bossMinghe14Amute : BossAi {
 
 		else 
 		{
-			AmuteSpellDic.TryGetValue ("bossAmute1", out useSpell);
-			
-			int i = 1;
-			if (GetAttackCount(AmuteUnit) % 4 == 0) 
-			{
-				AmuteSpellDic.TryGetValue ("bossAmute3", out useSpell);
-				attackResult.attackTarget = AmuteUnit;
-			}
+			AmuteSpellDic.TryGetValue ("bossAmute3", out useSpell);
 
 		}			
 		attackResult.useSpell = useSpell;

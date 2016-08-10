@@ -19,10 +19,11 @@ message AllianceMember
 	required int32  contribution = 4;//贡献值
 	required int32  postion = 5;//职位: 0:普通成员,2:会长,1:副会长
 	required int32  id = 6;//唯一ID
-	required int32  prayCount = 7; // 祈福次数
-	optional bool   sendFatigue = 8; // 祈福次数
-	required int32  loginTime = 9; // 登陆时间
-	required int32  logoutTime = 10; // 登出时间
+	optional bool   sendFatigue = 7; // 发送体力值
+	required int32  loginTime = 8; // 登陆时间
+	required int32  logoutTime = 9; // 登出时间
+	optional int32  prayCount = 10; //祈福次数
+	optional int32  taskCount = 11; //任务接取次数
 }
 
 //返回的公会基础信息
@@ -44,8 +45,6 @@ message AllianceInfo
 	required bool   autoAccept = 14; //自否自动允许加入
 	required int32  captainId = 15; //队长ID
 	required string captaionName = 16; //队长昵称
-	optional int32  prayCount = 17; //祈福次数
-	optional int32  taskCount = 18; //任务接取次数
 }
 
 //返回的公会基础信息
@@ -242,7 +241,7 @@ message HSAlliancePray
 
 message HSAlliancePrayRet
 {
-
+	
 }
 
 // 公会设置

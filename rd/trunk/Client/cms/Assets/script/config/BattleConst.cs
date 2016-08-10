@@ -56,7 +56,7 @@ public class BattleConst
 
     //换宠换出去时间
     public const float unitOutTime = 1.0f;
-    public const float battleProcessTime = 3.0f;
+    public const float battleProcessTime = 2.0f;
     //换宠换进来时间
     public const float unitInTime = 0.5f;
     //头顶节点

@@ -100,7 +100,15 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SetBool(string name, bool value)
     {
-        animator.SetBool(name, value);
+        //TODO: find why
+        if (name == "fangyu")
+        {
+            animator.SetBool(hashFangyu, value);
+        }
+        else
+        {
+            animator.SetBool(name, value);
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void SetInt(string name, int value)

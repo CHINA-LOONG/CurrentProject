@@ -5,10 +5,16 @@ public delegate void NetMessageDelegate(ProtocolMessage msg);
 public class SociatyDataMgr : MonoBehaviour
 {
     public int allianceID = 0;
+    public PB.AllianceInfo allianceData = new PB.AllianceInfo();
+    public PB.AllianceMember allianceSelfData = new PB.AllianceMember();
+
     private NetMessageDelegate callBack = null;
     // Use this for initialization
     void Start ()
     {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_DATA_S.GetHashCode().ToString(), OnAllianceDataSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_SELF_DATA_S.GetHashCode().ToString(),OnSelfAllianceDataSync);
+
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnApplyFinish);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnApplyFinish);
 
@@ -19,11 +25,16 @@ public class SociatyDataMgr : MonoBehaviour
 
     void OnDestroy()
     {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_DATA_S.GetHashCode().ToString(), OnAllianceDataSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_SELF_DATA_S.GetHashCode().ToString(),OnSelfAllianceDataSync);
+
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_C.GetHashCode().ToString(), OnApplyFinish);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_APPLY_S.GetHashCode().ToString(), OnApplyFinish);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_C.GetHashCode().ToString(), OnCancelApplyFinish);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CANCLE_APPLY_S.GetHashCode().ToString(), OnCancelApplyFinish);
+
+        
     }
 	
     //打开公会
@@ -36,6 +47,24 @@ public class SociatyDataMgr : MonoBehaviour
         else
         {
             SociatyMain.OpenWith();
+        }
+    }
+
+    void OnAllianceDataSync(ProtocolMessage msg)
+    {
+        PB.HSAllianceDataRet data = msg.GetProtocolBody<PB.HSAllianceDataRet>();
+        if(null != data)
+        {
+            allianceData = data.allianceData;
+        }
+    }
+
+    void OnSelfAllianceDataSync(ProtocolMessage msg)
+    {
+        PB.HSAllianceSelfDataRet selfData = msg.GetProtocolBody<PB.HSAllianceSelfDataRet>();
+        if(selfData != null)
+        {
+            allianceSelfData = selfData.selfData;
         }
     }
 

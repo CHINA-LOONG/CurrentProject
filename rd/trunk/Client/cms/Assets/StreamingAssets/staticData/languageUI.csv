@@ -105,7 +105,7 @@ im_record_003,屏蔽聊天成功,Chat is now blocked.
 im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
 ss,,
 bag_title,背包,Bag
-bag_shengyu,剩余:{0},Remaining:{0}
+bag_shengyu,剩余:{0},Remain:{0}
 ui_chushou,出售,Sell
 bag_usenum,使用个数,Use amount
 bag_buynum,购买个数,Purchase amount
@@ -648,3 +648,5 @@ towerBoss_3_37,死亡之塔 - 37,Tower Of Death - 37
 towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
+im_battle_002,己方宠物正在释放大招，请稍后再试,jifangchongwuzhengzaishifang
+passive,被动,Passive

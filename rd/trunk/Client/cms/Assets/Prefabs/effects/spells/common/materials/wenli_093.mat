@@ -26,22 +26,22 @@ Material:
         first:
           name: _NoiseTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7682422925a5f284a9ca25a896f5d402, type: 3}
+          m_Texture: {fileID: 2800000, guid: 4def5515ee7c7fd428c8ab57ca2e18e7, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _ForceX
-        second: .129999995
+        second: .0500000007
       data:
         first:
           name: _ForceY
-        second: .0799999982
+        second: .0520000011
       data:
         first:
           name: _HeatTime
-        second: -.360000014
+        second: -.143999994
     m_Colors:
       data:
         first:

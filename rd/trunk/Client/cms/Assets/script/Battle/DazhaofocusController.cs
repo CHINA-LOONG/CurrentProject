@@ -105,7 +105,7 @@ public class DazhaofocusController : MonoBehaviour
 
 		//new
 		monsterTrans.position = focusUnitTrans.position;
-		monsterTrans.localScale = focusUnitTrans.localScale;
+		monsterTrans.localScale = focusUnitTrans.localScale * battleObject.originalScale;
         monsterTrans.localRotation = focusUnitTrans.localRotation;
 
         battleObject.SetTargetRotate(battleObject.transform.localRotation, false);

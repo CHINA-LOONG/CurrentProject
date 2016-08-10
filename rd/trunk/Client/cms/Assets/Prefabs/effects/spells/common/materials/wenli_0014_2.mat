@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -33,41 +33,17 @@ Material:
       data:
         first:
           name: _ForceX
-        second: .100000001
+        second: .170000002
       data:
         first:
           name: _ForceY
-        second: .100000001
+        second: .150000006
       data:
         first:
           name: _HeatTime
-        second: 0
-      data:
-        first:
-          name: _InnerColorPower
-        second: .5
-      data:
-        first:
-          name: _RimPower
-        second: 2.5
-      data:
-        first:
-          name: _AlphaPower
-        second: 4
-      data:
-        first:
-          name: _AllPower
-        second: 1
+        second: .25999999
     m_Colors:
       data:
         first:
           name: _TintColor
-        second: {r: .5, g: .5, b: .5, a: .5}
-      data:
-        first:
-          name: _RimColor
-        second: {r: .5, g: .5, b: .5, a: .5}
-      data:
-        first:
-          name: _InnerColor
-        second: {r: .5, g: .5, b: .5, a: .5}
+        second: {r: .360294104, g: .761764526, b: 1, a: .477999985}

@@ -59,7 +59,7 @@ import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
-import com.hawk.game.service.GmService;
+import com.hawk.game.service.GmService_Dev;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 import com.hawk.game.util.TimeUtil;
@@ -146,7 +146,8 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
 
-		HawkServiceManager.getInstance().registerService("GMTest", new GmService());
+		// 初始化开发版GmService
+		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
 
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
@@ -343,7 +344,7 @@ public class GsApp extends HawkApp {
 	@Override
 	public void printState() {
 		super.printState();
-		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
+//		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
 	}
 
 	/**

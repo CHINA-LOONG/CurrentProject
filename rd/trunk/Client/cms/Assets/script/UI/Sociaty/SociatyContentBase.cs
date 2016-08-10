@@ -27,6 +27,10 @@ public class SociatyContentBase : MonoBehaviour
         }
         go.transform.SetParent(parent);
         go.transform.localScale = new Vector3(1, 1, 1);
+
+        RectTransform rt = go.transform as RectTransform;
+        rt.anchoredPosition = new Vector2(0, 0);
+
         return go.GetComponent<SociatyContentBase>();
     }
 }
