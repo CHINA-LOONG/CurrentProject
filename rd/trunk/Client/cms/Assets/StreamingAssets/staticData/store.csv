@@ -1,8 +1,6 @@
-﻿#NUM,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT
-id,item,type,stage,level,count,price,discount
-#id,物品id,类型,品阶,级别,数量,价钱,折扣
-1,10009,3,0,0,1,100,1
-2,40001,3,0,0,1,100,1
-3,50001,3,0,0,1,100,1
-4,70001,4,3,2,1,100,1
-5,70001,4,1,1,1,100,1
+﻿#TEXT,NUM,FLOAT
+itemId,price,discount
+#物品id,价钱,折扣
+10009,100,1
+40001,100,1
+50001,100,1

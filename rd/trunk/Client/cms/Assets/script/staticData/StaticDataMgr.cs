@@ -68,7 +68,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, SociatyPrayData> sociatyPrayDic = new Dictionary<int, SociatyPrayData>();
     Dictionary<int, SociatyTask> sociaTaskDic = new Dictionary<int, SociatyTask>();
     Dictionary<int, SociatyQuest> sociatyQuestDic = new Dictionary<int, SociatyQuest>();
-    List<Sociatytechnology> sociatyTechnologyList = new List<Sociatytechnology>();
+    List<SociatyTechnologyData> sociatyTechnologyList = new List<SociatyTechnologyData>();
 
 
     public void Init()
@@ -707,6 +707,8 @@ public class StaticDataMgr : MonoBehaviour
                 }
                 towerList.Add(item.id, towerData);
             }
+            //clear original data
+            data.Clear();
         }
         {
             var data = InitTable<HoleStaticData>("hole");
@@ -726,6 +728,9 @@ public class StaticDataMgr : MonoBehaviour
                 } 
                 holeList.Add(item.id, holeData);
             }
+
+            //clear original data
+            data.Clear();
         }
 
         {
@@ -748,7 +753,8 @@ public class StaticDataMgr : MonoBehaviour
                 sociatyQuestDic.Add(item.id, item);
             }
 
-            sociatyTechnologyList = InitTable<Sociatytechnology>("sociatytechnology");
+            sociatyTechnologyList = InitTable<SociatyTechnologyData>("sociatytechnology");
+
         }
     }
 
@@ -1133,6 +1139,25 @@ public class StaticDataMgr : MonoBehaviour
         SociatyPrayData prayData = null;
         sociatyPrayDic.TryGetValue(id, out prayData);
         return prayData;
+    }
+
+    public SociatyTechnologyData GetSociatyTechData(int type, int techLevel)
+    {
+        SociatyTechnologyData curData = null;
+        int count = sociatyTechnologyList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (
+                sociatyTechnologyList[i].type == type &&
+                sociatyTechnologyList[i].level == techLevel
+                )
+            {
+                curData = sociatyTechnologyList[i];
+                break;
+            }
+        }
+
+        return curData;
     }
     #endregion
 }

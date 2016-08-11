@@ -147,6 +147,7 @@ phydazhaoPreparee1,4,1,1,0,,,,,,,,,,,,phydazhaoPrepareb1,12345,,,,1
 magicdazhaoPreparee1,4,1,1,0,,,,,,,,,,,,magicdazhaoPrepareb1,12345,,,,1
 phydazhaoPrepare1e1,4,1,1,0,,,,,,,,,,,,phydazhaoPrepare1b1,12345,,,,1
 magicdazhaoPrepare1e1,4,1,1,0,,,,,,,,,,,,magicdazhaoPrepare1b1,12345,,,,1
+magicdazhaoPrepare2e1,4,1,1,0,,,,,,,,,,,,magicdazhaoPrepare2b1,12345,,,,1
 bossMinghe18Karong1e1,2,1,0,0,,,,,bossMinghe18Karong1e2,1.85,0.15|bossMinghe18Karong1e2;0.3|bossMinghe18Karong1e2,,,,,,12345,,,,1
 bossMinghe18Karong1e2,3,1,0,0,,,,,,,,0,0.667,0,0,,12345,,0,,1
 bossMinghe18Karong2e1,1,1,0,0,,,1,bossMinghe18Karong2e2,,,,,,,,,12345,,,,1
@@ -179,7 +180,13 @@ bossYueguangsenlin18Meidusha3e2,2,1,0,0,,,,,bossYueguangsenlin18Meidusha3e3,1,,,
 bossYueguangsenlin18Meidusha3e3,3,1,0,0,,,,,,,,0,2.8,0,3,,12345,,0,,1
 bossYueguangsenlin18Meidusha4e1,1,1,0,0,,,1,bossYueguangsenlin18Meidusha4e2,,,,,,,,,12345,,,,1
 bossYueguangsenlin18Meidusha4e2,2,1,0,0,,,,,bossYueguangsenlin18Meidusha4e3,1.5,,,,,,,12345,,,,1
-bossYueguangsenlin18Meidusha4e3,3,1,0,0,,,,,,,,0,2.8,0,3,,12345,,0,,1
+bossYueguangsenlin18Meidusha4e3,3,1,0,0,,,,,,,,1,2.8,0,3,,12345,,0,,1
+bossYueguangsenlin18Meidusha10e1,1,1,0,0,,,1,bossYueguangsenlin18Meidusha10e2,,,,,,,,,12345,,,,1
+bossYueguangsenlin18Meidusha10e2,2,1,0,0,,,,,bossYueguangsenlin18Meidusha10e3,1,,,,,,,12345,,,,1
+bossYueguangsenlin18Meidusha10e3,3,1,0,0,,,,,,,,0,10,0,3,,12345,,0,,1
+bossYueguangsenlin18Meidusha11e1,1,1,0,0,,,1,bossYueguangsenlin18Meidusha11e2,,,,,,,,,12345,,,,1
+bossYueguangsenlin18Meidusha11e2,2,1,0,0,,,,,bossYueguangsenlin18Meidusha11e3,1.5,,,,,,,12345,,,,1
+bossYueguangsenlin18Meidusha11e3,3,1,0,0,,,,,,,,1,10,0,3,,12345,,0,,1
 bossYueguangsenlin18Meidusha5e1,1,1,0,0,,,1,bossYueguangsenlin18Meidusha5e2,,,,,,,,,12345,,,,1
 bossYueguangsenlin18Meidusha5e2,2,1,0,0,,,,,bossYueguangsenlin18Meidusha5e3,1.5,,,,,,,12345,,,,1
 bossYueguangsenlin18Meidusha5e3,0,1,0,0,"[""bossYueguangsenlin18Meidusha5e4"",""bossYueguangsenlin18Meidusha5e5""]",,,,,,,,,,,,12345,,,,1
@@ -337,7 +344,7 @@ ultPanshene3,2,1,0,0,,,,,ultPanshenCast,0.5,0|ultPanshene2;0.2|ultPanshene2;0.2|
 ultPanshenCast,2,1,1,0,,,,,,,,,,,,,12345,,,,1
 ultKairuisie1,1,1,0,0,,,1,ultKairuisie2,,,,,,,,,12345,,,,1
 ultKairuisie2,2,1,0,0,,,,,ultKairuisie3,0,"""""",,,,,,12345,,,,1
-ultKairuisie3,3,1,0,0,,,,,,,,1,1.5,0,5,,12345,,0,ultKairuisie4,1
+ultKairuisie3,3,1,0,0,,,,,,,,0,0.75,0,5,,12345,,0,ultKairuisie4,1
 ultKairuisie4,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,0.2
 psvKairuisie1,4,1,1,0,,,,,,,,,,,,psvKairuisib1,12345,,,,1
 ultLuoxinfue1,5,1,0,0,,,,,,,IsEnemy|ultLuoxinfue3;Default|ultLuoxinfue2;,,,,,,12345,,,,1
@@ -358,7 +365,8 @@ magicWaterStrong1e2,3,1,0,0,,,,,,,,1,1.8,0,3,,12345,,0,,1
 magicWaterStrong2e1,2,1,0,0,,,,,magicWaterStrong2e2,1.5,"""""",,,,,,12345,,,,1
 magicWaterStrong2e2,3,1,0,0,,,,,,,,1,1.8,0,3,,12345,,0,magicWaterStrong2e3,1
 magicWaterStrong2e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,0.5
-magicWaterStrong3e1,1,1,0,0,,,1,magicWaterStrong3e2,,,"""""",,,,,,12345,,,,1
+magicWaterStrong3e1,1,1,0,0,,,1,magicWaterStrong3e3,,,"""""",,,,,,12345,,,,1
+magicWaterStrong3e3,2,1,0,0,,,,,magicWaterStrong3e2,1.5,"""""",,,,,,12345,,,,1
 magicWaterStrong3e2,3,1,0,0,,,,,,,,1,2,0,3,,12345,,0,,1
 buffInterrupte1,2,1,0,0,,,,,buffInterrupte2,0,"""""",,,,,,12345,,,,1
 buffInterrupte2,4,1,0,,,,,,,,,,,,,Interruptb1,12345,,,,1

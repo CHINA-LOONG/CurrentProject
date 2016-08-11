@@ -6,30 +6,10 @@ import org.hawk.config.HawkConfigManager;
 @HawkConfigManager.CsvResource(file = "staticData/store.csv")
 public class StoreCfg extends HawkConfigBase{
 	/**
-	 * id
+	 * itemId
 	 */
 	@Id
-	protected final int id;
-	/**
-	 * 物品Id
-	 */
-	protected final String item;
-	/**
-	 * 类型
-	 */
-	protected final int type;
-	/**
-	 * 品阶
-	 */
-	protected final int stage;
-	/**
-	 * 级别
-	 */
-	protected final int level;
-	/**
-	 * 数量
-	 */
-	protected final int count;
+	protected final String itemId;
 	/**
 	 * 价钱
 	 */
@@ -40,38 +20,13 @@ public class StoreCfg extends HawkConfigBase{
 	protected final float discount;
 	
 	public StoreCfg(){
-		this.id = 0;
-		this.item = null;
-		this.type = 0;
-		this.stage = 0;
-		this.level = 0;
-		this.count = 0;
+		this.itemId = null;
 		this.price = 0;
 		this.discount = 0.0f;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public String getItem() {
-		return item;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public int getStage() {
-		return stage;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public int getCount() {
-		return count;
+	public String getItemId() {
+		return itemId;
 	}
 
 	public int getPrice() {
@@ -84,7 +39,7 @@ public class StoreCfg extends HawkConfigBase{
 	
 	@Override
 	protected boolean checkValid() {
-		if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, item) == null) {
+		if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId) == null) {
 			return false;
 		}
 		return true;

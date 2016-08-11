@@ -80,6 +80,13 @@ namespace PB
       get { return _hasBuy; }
       set { _hasBuy = value; }
     }
+    private int _priceType;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"priceType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int priceType
+    {
+      get { return _priceType; }
+      set { _priceType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -253,6 +260,40 @@ namespace PB
   public partial class HSShopItemBuyRet : global::ProtoBuf.IExtensible
   {
     public HSShopItemBuyRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStoreItemBuy")]
+  public partial class HSStoreItemBuy : global::ProtoBuf.IExtensible
+  {
+    public HSStoreItemBuy() {}
+    
+    private int _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private int _count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStoreItemBuyRet")]
+  public partial class HSStoreItemBuyRet : global::ProtoBuf.IExtensible
+  {
+    public HSStoreItemBuyRet() {}
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

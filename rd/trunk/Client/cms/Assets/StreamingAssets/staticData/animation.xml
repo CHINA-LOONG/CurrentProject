@@ -136,6 +136,14 @@ state = 1 Remove
 		</Ani>
 		<Ani id="phydazhaoPrepareb1Finish" state="1" finish_event="phydazhaoPrepareb1">
 		</Ani>
+		<Ani id="phydazhaoPrepare1b1" state="0" AniType="BuffEffect">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phydazhaoPrepare1b1Finish" state="1" finish_event="phydazhaoPrepare1b1">
+		</Ani>
 		<Ani id="magicdazhaoPrepareb1" state="0" AniType="BuffEffect">
 			<ParticleList>
 				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
@@ -143,6 +151,21 @@ state = 1 Remove
 			</ParticleList>
 		</Ani>
 		<Ani id="magicdazhaoPrepareb1Finish" state="1" finish_event="magicdazhaoPrepareb1">
+		</Ani>
+		<Ani id="magicdazhaoPrepare1b1" state="0" AniType="BuffEffect">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicdazhaoPrepare1b1Finish" state="1" finish_event="magicdazhaoPrepare1b1">
+		</Ani>
+		<Ani id="magicdazhaoPrepare2b1" state="0" AniType="BuffEffect">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicdazhaoPrepare2b1Finish" state="1" finish_event="magicdazhaoPrepare2b1">
 		</Ani>
 		<Ani id="phyDazhaoPrepare" state="0">
 			<ParticleList>
@@ -160,7 +183,6 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicDazhaoPrepare" state="0">
 			<ParticleList>
-				<Particle asset="dazhao_daduan" bundle="effect/particle" ani="" parent="" locky="true"/>
 				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
 			</ParticleList>
 		</Ani>
@@ -180,7 +202,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="phyDazhaoSlowMotion" state="0">
 			<SpeedList>
-				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+				<Speed time="0" speed_ratio="0.2" duration="2.5"/>
 			</SpeedList>
 		</Ani>
 		<Ani id="normalHit" state="0">
@@ -622,6 +644,22 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		<Ani id="magicWaterStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterStrong2e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterStrong3e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
@@ -1816,6 +1854,39 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossYueguangsenlin18Meidusha10" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="paidagongji" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha0e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha11" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="shihuaguangxian" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaShihuaguangxian" bundle="effect/particle" ani="" parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushashihuaguangxian" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha11e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossYueguangsenlin18Meidusha5" state="0" AniType="Skill">
 			<MotionList>
 				<Motion key="yazhi" value="true" />
@@ -2028,6 +2099,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="curep1"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 		
 		<Ani id="txMomo" state="0" AniType="Skill">
@@ -2082,6 +2156,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="stab"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 
 		<Ani id="txLuoxinfu" state="0" AniType="Skill">
@@ -2121,6 +2198,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="Karongposui"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 		
 		<Ani id="txKairuisi" state="0" AniType="Skill">
@@ -2155,6 +2235,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="Karonganyingbo"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 	
 		<Ani id="txAnpusha" state="0" AniType="Skill">
@@ -2271,6 +2354,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="watere1"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 		
 		<Ani id="psvHetong" state="0" AniType="Skill">
@@ -2324,6 +2410,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="watere1"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 	
 		<Ani id="txWagui" state="0" AniType="Skill">
@@ -2407,6 +2496,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="curep1"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 	
 		<Ani id="txMantuoluo" state="0" AniType="Skill">
@@ -2462,6 +2554,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="stab"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 	
 		<Ani id="txPanshen" state="0" AniType="Skill">
@@ -2518,6 +2613,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="stab"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 		
 		<Ani id="txHuapo" state="0" AniType="Skill">
@@ -2554,6 +2652,9 @@ state = 1 Remove
 			<AudioList>
 				<Audio time="0" name="cut"/>
 			</AudioList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.7" duration="0.5"/>
+			</SpeedList>
 		</Ani>
 		
 		<Ani id="txXiyiren" state="0" AniType="Skill">
@@ -2705,22 +2806,28 @@ state = 1 Remove
 				<Wp time="2.6" name="bossMinghe18Karongwp05" state="1"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="meidusha_state1to2" state="0" action_delay="2">
+		<Ani id="meidusha_state1to2" state="0" action_delay="1">
 			<WpStateList>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp03" state="3"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="4"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp04" state="0"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp05" state="0"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp06" state="0"/>
+				<!--Wp time="2" name="bossYueguangsenlin18Meidushawp03" state="2"/-->
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp04" state="0"/>
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp05" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="meidusha_state1to3" state="0" action_delay="2">
+		<Ani id="meidusha_wp02_to4" state="0" action_delay="1">
 			<WpStateList>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="3"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp03" state="4"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp04" state="0"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp05" state="0"/>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp06" state="0"/>
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="meidusha_state1to3" state="0" action_delay="1">
+			<WpStateList>
+				<!--Wp time="2" name="bossYueguangsenlin18Meidushawp02" state="2"/-->
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp04" state="0"/>
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp05" state="0"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="meidusha_wp03_to4" state="0" action_delay="1">
+			<WpStateList>
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp03" state="4"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="meidusha_state2to1" state="0" action_delay="2">

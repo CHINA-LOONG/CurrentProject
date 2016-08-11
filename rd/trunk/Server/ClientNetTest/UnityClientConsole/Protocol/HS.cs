@@ -420,6 +420,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_TIMES", Value=8011)]
       SHOP_REFRESH_TIMES = 8011,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_C", Value=8012)]
+      SHOP_STORE_BUY_C = 8012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_S", Value=8013)]
+      SHOP_STORE_BUY_S = 8013,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_C", Value=9001)]
       ALLIANCE_CREATE_C = 9001,
             

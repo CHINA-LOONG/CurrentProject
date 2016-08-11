@@ -1,10 +1,12 @@
 package com.hawk.game.module.alliance;
 
 import org.hawk.app.HawkAppObj;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -16,6 +18,7 @@ import com.hawk.game.protocol.Alliance.HSAllianceLeave;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKick;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKickRet;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
 
 public class AllianceMemberKickHandler implements HawkMsgHandler{
 	/**
@@ -74,6 +77,11 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 			teamEntity.removePlayerFromTeam(request.getTargetId());
 		}
 		
+		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_KICK);
+		if (mailCfg != null) {
+			MailUtil.SendSysMail(mailCfg, request.getTargetId(), allianceEntity.getName());
+		}
+
 		HSAllianceMemKickRet.Builder response = HSAllianceMemKickRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_KCIK_S_VALUE, response));
 		

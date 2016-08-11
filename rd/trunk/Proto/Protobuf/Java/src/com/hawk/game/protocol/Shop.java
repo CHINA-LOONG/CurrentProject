@@ -173,6 +173,24 @@ public final class Shop {
      * </pre>
      */
     boolean getHasBuy();
+
+    // required int32 priceType = 10;
+    /**
+     * <code>required int32 priceType = 10;</code>
+     *
+     * <pre>
+     *货币种类
+     * </pre>
+     */
+    boolean hasPriceType();
+    /**
+     * <code>required int32 priceType = 10;</code>
+     *
+     * <pre>
+     *货币种类
+     * </pre>
+     */
+    int getPriceType();
   }
   /**
    * Protobuf type {@code ShopItem}
@@ -268,6 +286,11 @@ public final class Shop {
             case 72: {
               bitField0_ |= 0x00000100;
               hasBuy_ = input.readBool();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              priceType_ = input.readInt32();
               break;
             }
           }
@@ -549,6 +572,30 @@ public final class Shop {
       return hasBuy_;
     }
 
+    // required int32 priceType = 10;
+    public static final int PRICETYPE_FIELD_NUMBER = 10;
+    private int priceType_;
+    /**
+     * <code>required int32 priceType = 10;</code>
+     *
+     * <pre>
+     *货币种类
+     * </pre>
+     */
+    public boolean hasPriceType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required int32 priceType = 10;</code>
+     *
+     * <pre>
+     *货币种类
+     * </pre>
+     */
+    public int getPriceType() {
+      return priceType_;
+    }
+
     private void initFields() {
       type_ = 0;
       itemId_ = "";
@@ -559,6 +606,7 @@ public final class Shop {
       discount_ = 0F;
       price_ = 0;
       hasBuy_ = false;
+      priceType_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -590,6 +638,10 @@ public final class Shop {
         return false;
       }
       if (!hasHasBuy()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPriceType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -626,6 +678,9 @@ public final class Shop {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBool(9, hasBuy_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(10, priceType_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -671,6 +726,10 @@ public final class Shop {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(9, hasBuy_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, priceType_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -806,6 +865,8 @@ public final class Shop {
         bitField0_ = (bitField0_ & ~0x00000080);
         hasBuy_ = false;
         bitField0_ = (bitField0_ & ~0x00000100);
+        priceType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -870,6 +931,10 @@ public final class Shop {
           to_bitField0_ |= 0x00000100;
         }
         result.hasBuy_ = hasBuy_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.priceType_ = priceType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -915,6 +980,9 @@ public final class Shop {
         if (other.hasHasBuy()) {
           setHasBuy(other.getHasBuy());
         }
+        if (other.hasPriceType()) {
+          setPriceType(other.getPriceType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -945,6 +1013,10 @@ public final class Shop {
           return false;
         }
         if (!hasHasBuy()) {
+          
+          return false;
+        }
+        if (!hasPriceType()) {
           
           return false;
         }
@@ -1440,6 +1512,55 @@ public final class Shop {
       public Builder clearHasBuy() {
         bitField0_ = (bitField0_ & ~0x00000100);
         hasBuy_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required int32 priceType = 10;
+      private int priceType_ ;
+      /**
+       * <code>required int32 priceType = 10;</code>
+       *
+       * <pre>
+       *货币种类
+       * </pre>
+       */
+      public boolean hasPriceType() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required int32 priceType = 10;</code>
+       *
+       * <pre>
+       *货币种类
+       * </pre>
+       */
+      public int getPriceType() {
+        return priceType_;
+      }
+      /**
+       * <code>required int32 priceType = 10;</code>
+       *
+       * <pre>
+       *货币种类
+       * </pre>
+       */
+      public Builder setPriceType(int value) {
+        bitField0_ |= 0x00000200;
+        priceType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 priceType = 10;</code>
+       *
+       * <pre>
+       *货币种类
+       * </pre>
+       */
+      public Builder clearPriceType() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        priceType_ = 0;
         onChanged();
         return this;
       }
@@ -6154,15 +6275,30 @@ public final class Shop {
   public interface HSStoreItemBuyOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    boolean hasId();
+    boolean hasItemId();
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
+
+    // required int32 count = 2;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    int getCount();
   }
   /**
    * Protobuf type {@code HSStoreItemBuy}
@@ -6215,9 +6351,14 @@ public final class Shop {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
+              itemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count_ = input.readInt32();
               break;
             }
           }
@@ -6260,31 +6401,79 @@ public final class Shop {
     }
 
     private int bitField0_;
-    // required int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    // required string itemId = 1;
+    public static final int ITEMID_FIELD_NUMBER = 1;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 count = 2;
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public int getCount() {
+      return count_;
     }
 
     private void initFields() {
-      id_ = 0;
+      itemId_ = "";
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
+      if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6296,7 +6485,10 @@ public final class Shop {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
+        output.writeBytes(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6309,7 +6501,11 @@ public final class Shop {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeBytesSize(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6427,8 +6623,10 @@ public final class Shop {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6460,7 +6658,11 @@ public final class Shop {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6477,15 +6679,24 @@ public final class Shop {
 
       public Builder mergeFrom(com.hawk.game.protocol.Shop.HSStoreItemBuy other) {
         if (other == com.hawk.game.protocol.Shop.HSStoreItemBuy.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
+        if (other.hasItemId()) {
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
+        if (!hasItemId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
           
           return false;
         }
@@ -6511,35 +6722,109 @@ public final class Shop {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
-      private int id_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder clearId() {
+      public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 count = 2;
+      private int count_ ;
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
         onChanged();
         return this;
       }
@@ -8517,28 +8802,29 @@ public final class Shop {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023Protocol/Shop.proto\"\224\001\n\010ShopItem\022\014\n\004ty" +
+      "\n\023Protocol/Shop.proto\"\247\001\n\010ShopItem\022\014\n\004ty" +
       "pe\030\001 \002(\005\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022" +
       "\r\n\005stage\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\014\n\004slot\030\006 " +
       "\002(\005\022\020\n\010discount\030\007 \002(\002\022\r\n\005price\030\010 \002(\005\022\016\n\006" +
-      "hasBuy\030\t \002(\010\"`\n\010ShopData\022\014\n\004type\030\001 \002(\005\022\016" +
-      "\n\006shopId\030\002 \002(\005\022\034\n\titemInfos\030\003 \003(\0132\t.Shop" +
-      "Item\022\030\n\020refreshTimesLeft\030\004 \002(\005\"\020\n\016HSShop" +
-      "DataInit\"1\n\021HSShopDataInitRet\022\034\n\tshopDat" +
-      "as\030\001 \003(\0132\t.ShopData\"\035\n\rHSShopDataSyn\022\014\n\004" +
-      "type\030\001 \002(\005\"/\n\020HSShopDataSynRet\022\033\n\010shopDa",
-      "ta\030\001 \002(\0132\t.ShopData\"\035\n\rHSShopRefresh\022\014\n\004" +
-      "type\030\001 \002(\005\"/\n\020HSShopRefreshRet\022\033\n\010shopDa" +
-      "ta\030\001 \002(\0132\t.ShopData\";\n\rHSShopItemBuy\022\014\n\004" +
-      "type\030\001 \002(\005\022\014\n\004slot\030\002 \002(\005\022\016\n\006shopId\030\003 \002(\005" +
-      "\"\022\n\020HSShopItemBuyRet\"\034\n\016HSStoreItemBuy\022\n" +
-      "\n\002id\030\001 \002(\005\"\023\n\021HSStoreItemBuyRet\"\021\n\017HSSho" +
-      "pGold2Coin\"P\n\022HSShopGold2CoinRet\022\023\n\013chan" +
-      "geCount\030\001 \002(\005\022\020\n\010multiple\030\002 \002(\005\022\023\n\013total" +
-      "Reward\030\003 \002(\005\"u\n\025HSShopRefreshTimeSync\022\035\n" +
-      "\025normalShopRefreshTime\030\001 \002(\005\022\037\n\027alliance",
-      "ShopRefreshTime\030\002 \002(\005\022\034\n\024towerShopRefres" +
-      "hTime\030\003 \002(\005B\030\n\026com.hawk.game.protocol"
+      "hasBuy\030\t \002(\010\022\021\n\tpriceType\030\n \002(\005\"`\n\010ShopD" +
+      "ata\022\014\n\004type\030\001 \002(\005\022\016\n\006shopId\030\002 \002(\005\022\034\n\tite" +
+      "mInfos\030\003 \003(\0132\t.ShopItem\022\030\n\020refreshTimesL" +
+      "eft\030\004 \002(\005\"\020\n\016HSShopDataInit\"1\n\021HSShopDat" +
+      "aInitRet\022\034\n\tshopDatas\030\001 \003(\0132\t.ShopData\"\035" +
+      "\n\rHSShopDataSyn\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopD",
+      "ataSynRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\"\035" +
+      "\n\rHSShopRefresh\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopR" +
+      "efreshRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\";" +
+      "\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002 " +
+      "\002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemBuyRet\"" +
+      "/\n\016HSStoreItemBuy\022\016\n\006itemId\030\001 \002(\t\022\r\n\005cou" +
+      "nt\030\002 \002(\005\"\023\n\021HSStoreItemBuyRet\"\021\n\017HSShopG" +
+      "old2Coin\"P\n\022HSShopGold2CoinRet\022\023\n\013change" +
+      "Count\030\001 \002(\005\022\020\n\010multiple\030\002 \002(\005\022\023\n\013totalRe" +
+      "ward\030\003 \002(\005\"u\n\025HSShopRefreshTimeSync\022\035\n\025n",
+      "ormalShopRefreshTime\030\001 \002(\005\022\037\n\027allianceSh" +
+      "opRefreshTime\030\002 \002(\005\022\034\n\024towerShopRefreshT" +
+      "ime\030\003 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8550,7 +8836,7 @@ public final class Shop {
           internal_static_ShopItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ShopItem_descriptor,
-              new java.lang.String[] { "Type", "ItemId", "Count", "Stage", "Level", "Slot", "Discount", "Price", "HasBuy", });
+              new java.lang.String[] { "Type", "ItemId", "Count", "Stage", "Level", "Slot", "Discount", "Price", "HasBuy", "PriceType", });
           internal_static_ShopData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_ShopData_fieldAccessorTable = new
@@ -8610,7 +8896,7 @@ public final class Shop {
           internal_static_HSStoreItemBuy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStoreItemBuy_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "ItemId", "Count", });
           internal_static_HSStoreItemBuyRet_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_HSStoreItemBuyRet_fieldAccessorTable = new

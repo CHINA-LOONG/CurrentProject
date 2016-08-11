@@ -8,7 +8,6 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.os.HawkRand;
 
 import com.hawk.game.item.ShopItemInfo;
-import com.hawk.game.protocol.Const;
 
 @HawkConfigManager.CsvResource(file = "staticData/sellItem.csv", struct = "map")
 public class SellItemCfg extends HawkConfigBase{
@@ -61,28 +60,12 @@ public class SellItemCfg extends HawkConfigBase{
 		
 		if (sellFixed != null && sellFixed.length() > 0 && !"0".equals(sellFixed)) {
 			String[] itemArrays = sellFixed.split(",");
-			for (String itemArray : itemArrays) {
-				String[] items = itemArray.split("_");
-				if (items.length == 5) {
-					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Float.valueOf(items[4]));
-					if (item.getType() != Const.itemType.EQUIP_VALUE)
-					{
-						fixItems.add(item);
-					}
-					else {
-						return false;
-					}
+			for (String itemArray : itemArrays) {			
+				ShopItemInfo item = ShopItemInfo.valueOf(itemArray);
+				if (item == null) {
+					return false;
 				}
-				else if (items.length == 7) {
-					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Float.valueOf(items[6]));
-					if (item.getType() == Const.itemType.EQUIP_VALUE)
-					{
-						fixItems.add(item);
-					}
-					else {
-						return false;
-					}
-				}			
+				fixItems.add(item);
 			}
 		}	
 		

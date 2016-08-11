@@ -264,6 +264,10 @@ public class BehaviorLogger {
 		 */
 		SHOP_ITEM_BUY,	
 		/**
+		 * 商城物品购买
+		 */
+		STORE_ITEM_BUY,	
+		/**
 		 * 商店物品刷新
 		 */
 		SHOP_REFRESH,

@@ -43,13 +43,17 @@ public class ServerData {
 	 */
 	protected ConcurrentHashMap<String, Integer> puidMap;
 	/**
+	 * 玩家id和puid的映射表
+	 */
+	protected ConcurrentHashMap<Integer, String> idMap;
+	/**
 	 * 玩家名和玩家id的映射表
 	 */
 	protected ConcurrentHashMap<String, Integer> nameMap;
 	/**
-	 * 玩家id和puid的映射表
+	 * 玩家id和语言映射表
 	 */
-	protected ConcurrentHashMap<Integer, String> idMap;
+	protected ConcurrentHashMap<Integer, String> langMap;
 	/**
 	 * 在线玩家列表
 	 */
@@ -100,8 +104,9 @@ public class ServerData {
 		registerPlayer = new AtomicInteger();
 		onlinePlayer = new AtomicInteger();
 		puidMap = new ConcurrentHashMap<String, Integer>();
-		nameMap = new ConcurrentHashMap<String, Integer>();
 		idMap = new ConcurrentHashMap<Integer, String>();
+		nameMap = new ConcurrentHashMap<String, Integer>();
+		langMap = new ConcurrentHashMap<Integer, String>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
 		refreshTimeMap = new HashMap<Integer, Calendar>();
@@ -118,8 +123,6 @@ public class ServerData {
 
 	/**
 	 * 初始化服务器数据
-	 * 
-	 * @return
 	 */
 	public boolean init() {
 		// 从db拉取玩家个数
@@ -160,10 +163,23 @@ public class ServerData {
 		// 从db拉取玩家name和id的映射表
 		try {
 			HawkLog.logPrintln("load nickname and playerId from db......");
-			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select nickname, id from player ");
+			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select nickname, id from player");
 			for (Object rowInfo : rowInfos) {
 				Object[] colInfos = (Object[]) rowInfo;
 				addNameAndPlayerId((String) colInfos[0], (Integer) colInfos[1]);
+			}
+		} catch (Exception e) {
+			HawkException.catchException(e);
+			return false;
+		}
+
+		// 从db拉取玩家id和language的映射表
+		try {
+			HawkLog.logPrintln("load playerId and language from db......");
+			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select id, language from player");
+			for (Object rowInfo : rowInfos) {
+				Object[] colInfos = (Object[]) rowInfo;
+				addPlayerIdAndLang((Integer) colInfos[0], (String) colInfos[1]);
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -175,8 +191,6 @@ public class ServerData {
 
 	/**
 	 * 增加注册玩家数
-	 * 
-	 * @return
 	 */
 	public int addRegisterPlayer() {
 		return registerPlayer.addAndGet(1);
@@ -184,8 +198,6 @@ public class ServerData {
 
 	/**
 	 * 获取注册玩家数
-	 * 
-	 * @return
 	 */
 	public int getRegisterPlayer() {
 		return registerPlayer.get();
@@ -193,8 +205,6 @@ public class ServerData {
 
 	/**
 	 * 增加在线玩家数
-	 * 
-	 * @return
 	 */
 	public int addOnlinePlayer() {
 		return onlinePlayer.addAndGet(1);
@@ -202,8 +212,6 @@ public class ServerData {
 
 	/**
 	 * 获取在线玩家数
-	 * 
-	 * @return
 	 */
 	public int getOnlinePlayer() {
 		return onlinePlayer.get();
@@ -211,35 +219,24 @@ public class ServerData {
 
 	/**
 	 * 通过puid获取玩家id
-	 * 
-	 * @param puid
-	 * @return
 	 */
 	public int getPlayerIdByPuid(String puid) {
-		if (puidMap.containsKey(puid)) {
-			return puidMap.get(puid);
+		Integer id = puidMap.get(puid);
+		if (id != null) {
+			return id;
 		}
 		return 0;
 	}
 
 	/**
 	 * 通过玩家id获取puid
-	 * 
-	 * @param id
-	 * @return
 	 */
 	public String getPuidByPlayerId(int playerId) {
-		if (idMap.containsKey(playerId)) {
-			return idMap.get(playerId);
-		}
-		return null;
+		return idMap.get(playerId);
 	}
 
 	/**
 	 * 增加puid和玩家id的映射
-	 * 
-	 * @param puid
-	 * @param playerId
 	 */
 	public void addPuidAndPlayerId(String puid, int playerId) {
 		puidMap.put(puid, playerId);
@@ -248,12 +245,16 @@ public class ServerData {
 
 	/**
 	 * 增加name和玩家id的映射
-	 * 
-	 * @param name
-	 * @param playerId
 	 */
 	public void addNameAndPlayerId(String name, int playerId) {
 		nameMap.put(name.toLowerCase(), playerId);
+	}
+
+	/**
+	 * 增加name和玩家id的映射
+	 */
+	public void addPlayerIdAndLang(int playerId, String lang) {
+		langMap.put(playerId, lang);
 	}
 
 	/**
@@ -271,8 +272,14 @@ public class ServerData {
 	}
 
 	/**
+	 * 获取玩家语言
+	 */
+	public String getPlayerLang(int playerId) {
+		return langMap.get(playerId);
+	}
+
+	/**
 	 * 增加order
-	 * @param 
 	 */
 	public void addOrderSerial(String orderSerial) {
 		rechargeList.add(orderSerial);
@@ -287,8 +294,6 @@ public class ServerData {
 
 	/**
 	 * 是否存在名字
-	 * @param name
-	 * @return
 	 */
 	public boolean isExistName(String name) {
 		return nameMap.containsKey(name.toLowerCase());
@@ -296,8 +301,6 @@ public class ServerData {
 
 	/**
 	 * 添加在线id
-	 * 
-	 * @param playerId
 	 */
 	public void addOnlinePlayerId(int playerId) {
 		onlineMap.put(playerId, playerId);
@@ -305,8 +308,6 @@ public class ServerData {
 
 	/**
 	 * 移除在线id
-	 * 
-	 * @param playerId
 	 */
 	public void removeOnlinePlayerId(int playerId) {
 		try {
@@ -318,9 +319,6 @@ public class ServerData {
 
 	/**
 	 * 玩家在线判断
-	 * 
-	 * @param playerId
-	 * @return
 	 */
 	public boolean isPlayerOnline(int playerId) {
 		return onlineMap.containsKey(playerId);
@@ -328,8 +326,6 @@ public class ServerData {
 
 	/**
 	 * 添加禁用设备
-	 * 
-	 * @param phoneInfo
 	 */
 	public void addDisablePhone(String phoneInfo) {
 		disablePhoneMap.put(phoneInfo, phoneInfo);
@@ -337,9 +333,6 @@ public class ServerData {
 
 	/**
 	 * 是否为禁用设备
-	 * 
-	 * @param phoneInfo
-	 * @return
 	 */
 	public boolean isDisablePhone(String phoneInfo) {
 		return disablePhoneMap.containsKey(phoneInfo);

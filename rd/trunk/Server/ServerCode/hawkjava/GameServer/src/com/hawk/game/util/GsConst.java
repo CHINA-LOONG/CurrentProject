@@ -70,8 +70,6 @@ public class GsConst {
 	public static final int GEM_COMPOSE_COUNT = 5;	
 	// 最大合成次数
 	public static final int COMPOSE_MAX_COUNT = 10;	
-	// 经验药水邮件
-	public static final String FATIGUE_MAIL_ID = "mail_sys_010";
 
 	/**
 	 * 对象类型
@@ -422,6 +420,7 @@ public class GsConst {
 
 		public static final int ONE_PAGE_SIZE = 2;
 		public static final int NOTICE_MAX_LENGTH = 200;
+		public static final int MAX_COPYMAIN_COUNT = 2;
 		
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";
@@ -430,7 +429,7 @@ public class GsConst {
 		// 公会贡献值奖励3
 		public static final String ALLIANCE_CONTRI_REWARD3 = "10002";
 	}
-	
+
 	// 翻译系统，敏感词选项
 	public static class Profanity {
 		public static final String OFF = "off";
@@ -447,5 +446,21 @@ public class GsConst {
 	public static class HoleType {
 		public static final int EXP_HOLE = 1;
 		public static final int COIN_HOLE = 2;
+	}
+
+	public static class SysMail {
+		// 任命会长
+		public static final int ALLIANCE_OWNER = 101;
+		// 被赠送活力值
+		public static final int ALLIANCE_FATIGUE = 102;
+		// 被踢出工会
+		public static final int ALLIANCE_KICK = 103;
+	}
+
+	public static class SysIm {
+		// 公会科技升级
+		public static final int ALLIANCE_LEVEL_UP = 101;
+		// 公会任命会长
+		public static final int ALLIANCE_OWNER = 102;
 	}
 }

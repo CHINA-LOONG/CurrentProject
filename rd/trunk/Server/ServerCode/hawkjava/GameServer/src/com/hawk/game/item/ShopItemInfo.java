@@ -12,6 +12,10 @@ public class ShopItemInfo extends ItemInfo{
 	 */
 	int price;
 	/**
+	 * 货币类型
+	 */
+	int priceType;
+	/**
 	 * 折扣
 	 */
 	float discount;
@@ -24,28 +28,31 @@ public class ShopItemInfo extends ItemInfo{
 		super();
 		this.slot = 0;
 		this.price = 0;
+		this.priceType = 0;
 		this.discount = 1;		
 		this.hasBuy = false;
 	}
 	
-	public ShopItemInfo(int type, String itemId, int count, int price, float discount) {
+	public ShopItemInfo(int type, String itemId, int count, int priceType, int price, float discount) {
 		super();
 		this.type = type;
 		this.itemId = itemId;
 		this.count = count;
-		this.discount = discount;	
+		this.priceType = priceType;
 		this.price = price;
+		this.discount = discount;	
 	}
 	
-	public ShopItemInfo(int type, String itemId, int count, int stage, int level, int price, float discount) {
+	public ShopItemInfo(int type, String itemId, int count, int stage, int level, int priceType, int price, float discount) {
 		super();
 		this.type = type;
 		this.itemId = itemId;
 		this.count = count;
 		this.stage = stage;
 		this.level = level;
-		this.discount = discount;		
+		this.priceType = priceType;
 		this.price = price;
+		this.discount = discount;		
 	}
 	
 	public ShopItemInfo clone() {
@@ -56,8 +63,9 @@ public class ShopItemInfo extends ItemInfo{
 		ret.stage = this.stage;
 		ret.level = this.level;
 		ret.slot = this.slot;
-		ret.discount = this.discount;	
+		ret.priceType = this.priceType;
 		ret.price = this.price;
+		ret.discount = this.discount;	
 		ret.hasBuy = this.hasBuy;
 		return ret;
 	}
@@ -76,6 +84,14 @@ public class ShopItemInfo extends ItemInfo{
 
 	public void setDiscount(float discount) {
 		this.discount = discount;
+	}
+
+	public int getPriceType() {
+		return priceType;
+	}
+
+	public void setPriceType(int priceType) {
+		this.priceType = priceType;
 	}
 
 	public int getPrice() {
@@ -97,33 +113,33 @@ public class ShopItemInfo extends ItemInfo{
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		if (this.type != Const.itemType.EQUIP_VALUE) {
-			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(price).append("_").append(discount);
+			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(priceType).append("_").append(price).append("_").append(discount);
 		}
 		else
 		{
-			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(stage).append("_").append(level).append("_").append(price).append("_").append(discount);
+			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(stage).append("_").append(level).append("_").append(priceType).append("_").append(price).append("_").append(discount);
 		}
 		
 		return builder.toString();
 	}
 	
-	public static ShopItemInfo valueOf(int type, String itemId, int count, int price, float discount) {
-		return new ShopItemInfo(type, itemId, count, price, discount);
+	public static ShopItemInfo valueOf(int type, String itemId, int count, int priceType, int price, float discount) {
+		return new ShopItemInfo(type, itemId, count, priceType, price, discount);
 	}
 
-	public static ShopItemInfo valueOf(int type, String itemId, int count, int stage, int level, int price, float discount) {
-		return new ShopItemInfo(type, itemId, count, stage, level, price, discount);
+	public static ShopItemInfo valueOf(int type, String itemId, int count, int stage, int level, int priceType, int price, float discount) {
+		return new ShopItemInfo(type, itemId, count, stage, level, priceType, price, discount);
 	}
 	
 	public static ShopItemInfo valueOf(String info)
 	{
 		String[] items = info.split("_");
 		ShopItemInfo shopItem = null;
-		if (items.length == 5) {
-			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Float.valueOf(items[4]));					
+		if (items.length == 6) {
+			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));					
 		}
-		else if (items.length == 7) {
-			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Float.valueOf(items[6]));
+		else if (items.length == 8) {
+			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Integer.valueOf(items[6]), Float.valueOf(items[7]));
 		}
 		return shopItem;
 	}

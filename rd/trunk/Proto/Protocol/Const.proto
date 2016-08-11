@@ -69,6 +69,10 @@ enum moneyType
 	MONEY_GOLD             = 1;
 	// 金币
 	MONEY_COIN             = 2;	
+	// 公会贡献值
+	ALLIANCE_COTRIBUTION   = 3;	
+	// 通天塔货币
+	TOWER_COIN             = 4;	
 }
 
 // 变换的数值类型

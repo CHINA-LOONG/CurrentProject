@@ -55,6 +55,7 @@ public class ShopUtil {
 				shopItem.setLevel(element.getLevel());
 			}
 			shopItem.setPrice(element.getPrice());
+			shopItem.setPriceType(element.getPriceType());
 			shopItem.setDiscount(element.getDiscount());
 			shopItem.setSlot(element.getSlot());
 			shopItem.setHasBuy(element.isHasBuy());
@@ -76,9 +77,15 @@ public class ShopUtil {
 		for (int i = 0; i < shopItemList.size(); i++) {
 			shopItemList.get(i).setSlot(i);
 			shopItemList.get(i).setHasBuy(false);
+			if (type == Const.shopType.ALLIANCESHOP_VALUE) {
+				shopItemList.get(i).setPriceType(Const.moneyType.ALLIANCE_COTRIBUTION_VALUE);
+			}
+			else if (type == Const.shopType.TOWERSHOP_VALUE){
+				shopItemList.get(i).setPriceType(Const.moneyType.TOWER_COIN_VALUE);
+			}
 		}
 		shopEntity.increaseShopId(type);
-		shopEntity.setRefreshDate(type, HawkTime.getCalendar());
+		shopEntity.setRefreshDate(type, HawkTime.getSeconds());
 		shopEntity.setShopItemsList(type, shopItemList);
 		shopEntity.notifyUpdate(true);
 	}

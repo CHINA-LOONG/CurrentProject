@@ -2036,6 +2036,14 @@ public final class Status {
      * </pre>
      */
     ALLIANCE_REWARD_ALREADY_GIVE(39, 524330),
+    /**
+     * <code>ALLIANCE_MAX_COPY_MAIN = 524331;</code>
+     *
+     * <pre>
+     * 副会长最大值
+     * </pre>
+     */
+    ALLIANCE_MAX_COPY_MAIN(40, 524331),
     ;
 
     /**
@@ -2358,6 +2366,14 @@ public final class Status {
      * </pre>
      */
     public static final int ALLIANCE_REWARD_ALREADY_GIVE_VALUE = 524330;
+    /**
+     * <code>ALLIANCE_MAX_COPY_MAIN = 524331;</code>
+     *
+     * <pre>
+     * 副会长最大值
+     * </pre>
+     */
+    public static final int ALLIANCE_MAX_COPY_MAIN_VALUE = 524331;
 
 
     public final int getNumber() { return value; }
@@ -2404,6 +2420,7 @@ public final class Status {
         case 524328: return ALLIANCE_NOT_CAPTAIN;
         case 524329: return ALLIANCE_HAVE_MEMBER;
         case 524330: return ALLIANCE_REWARD_ALREADY_GIVE;
+        case 524331: return ALLIANCE_MAX_COPY_MAIN;
         default: return null;
       }
     }
@@ -2808,7 +2825,7 @@ public final class Status {
       "TER\020\210\200\030\022\021\n\013TOWER_FLOOR\020\211\200\030*^\n\tmailError\022" +
       "\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024" +
       "\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020\204",
-      "\200\034*\277\t\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_N" +
+      "\200\034*\335\t\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_N" +
       "OT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200 " +
       "\022\030\n\022ALLIANCE_NOT_EXIST\020\203\200 \022\031\n\023ALLIANCE_N" +
       "AME_ERROR\020\204\200 \022\031\n\023ALLIANCE_NAME_EXIST\020\205\200 " +
@@ -2838,13 +2855,14 @@ public final class Status {
       "QUEST_FINISH\020\246\200 \022\036\n\030ALLIANCE_TASK_NOT_FI" +
       "NISH\020\247\200 \022\032\n\024ALLIANCE_NOT_CAPTAIN\020\250\200 \022\032\n\024" +
       "ALLIANCE_HAVE_MEMBER\020\251\200 \022\"\n\034ALLIANCE_REW",
-      "ARD_ALREADY_GIVE\020\252\200 *\202\001\n\tshopError\022\032\n\024SH" +
-      "OP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALRE" +
-      "ADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200" +
-      "$\022\036\n\030SHOP_GOLD2COIN_MAX_COUNT\020\204\200$*\037\n\007imE" +
-      "rror\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(\n\014settingErr" +
-      "or\022\030\n\022SETTING_BLOCK_FULL\020\201\200DB\030\n\026com.hawk" +
-      ".game.protocol"
+      "ARD_ALREADY_GIVE\020\252\200 \022\034\n\026ALLIANCE_MAX_COP" +
+      "Y_MAIN\020\253\200 *\202\001\n\tshopError\022\032\n\024SHOP_REFRESH" +
+      "_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200" +
+      "$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_" +
+      "GOLD2COIN_MAX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM" +
+      "_CHAT_LENGTH\020\201\200@*(\n\014settingError\022\030\n\022SETT" +
+      "ING_BLOCK_FULL\020\201\200DB\030\n\026com.hawk.game.prot" +
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

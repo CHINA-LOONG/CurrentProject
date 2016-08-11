@@ -537,28 +537,30 @@ tips_70021_zhiyuanxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot 
 tips_70022_zhiyuanxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_70023_zhiyuanxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_70024_zhiyuanxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-amutehide_lian,面具都掉了，看看什么露出来了？,mianjudoudiaole
-amutehide_mianju,阿姆特这个面具好奇特的感觉,mianjuhaoqiguai
-amutenormal1_lian,这脸细皮嫩肉的，一定不抗打！,xipineiroude
-amutenormal1_shenti,阿姆特的胸部，似乎并不是他非常重要的部位,xiong
-amutenormal1_mianju,面具后面似乎隐藏着什么秘密,mianjuhoumian
+amutehide_lian,面具都掉了，看看什么露出来了？,打掉了面具，弱点一定会显现出来！
+amutehide_mianju,阿姆特这个面具好奇特的感觉,一定有什么东西保护着阿姆特的弱点！
+amutenormal1_lian,这脸细皮嫩肉的，一定不抗打！,原来这让人看着晕眩的脸就是他的弱点！
+amutenormal1_shenti,阿姆特的胸部，似乎并不是他非常重要的部位,阿姆特的胸部，似乎并不是他非常重要的部位
+amutenormal1_mianju,面具后面似乎隐藏着什么秘密,面具可能保护着他的弱点！
 wpName24,脸,face
 wpName25,胸,xiong
 wpName26,面具,mianju
 wpName15,胸,xiong
-wpName16,左侧蛇头,zuoshetou
-wpName17,右侧蛇头,youshetou
-wpName18,小蛇头,xiaoshetou
-wpName19,小蛇头,xiaoshetou
+wpName16,左下蛇头,左下蛇头
+wpName17,右下蛇头,右下蛇头
+wpName18,小蛇头,小蛇头
+wpName19,小蛇头,小蛇头
 wpName20,眼睛,eyes
-meidushahide_zuoshetou,这蛇头好像有些问题,youwenti！
-meidushahide_youshetou,这蛇头好像有些问题,youwenti！
-meidushahide_xiaoshetou,据说美杜莎非常喜爱他的头发,love toufa
+meidushahide_zuoshetou,这蛇头好像有些问题,是什么东西的存在，让美杜莎有如此强的物理攻击能力？
+meidushahide_youshetou,这蛇头好像有些问题,是什么东西的存在，让美杜莎有如此强的法术攻击能力？
+meidushahide_xiaoshetou,据说美杜莎非常喜爱他的头发,美杜莎的弱点在哪里呢？
 meidushahide_eyes,据说被美杜莎注视过的人都会石化！,shihua！
-meidushanormal1_xiong,美杜莎的胸，看起来好平哦！,feijichang
-meidushanormal1_zuoshetou,这蛇头提升了美杜莎的物理攻击能力,wulinengli
-meidushanormal1_youshetou,这蛇头提升了美杜莎的法术攻击能力,fashunengli
-meidushanormal1_xiaoshetou,这蛇头看起来有些诡异,haoqiguaio
+meidushanormal1_xiong,美杜莎的胸，看起来好平哦！,美杜莎的胸，看起来好平哦！
+meidushanormal1_zuoshetou,这蛇头提升了美杜莎的物理攻击能力,原来是这个蛇头提升了美杜莎的物理攻击能力
+meidushanormal1_youshetou,这蛇头提升了美杜莎的法术攻击能力,原来是这个蛇头提升了美杜莎的法术攻击能力
+meidushanormal2_zuoshetou,美杜莎只有这一个物理能力的蛇头了，要不要都打掉？,美杜莎最在意这个提升物理能力的蛇头，可不要激怒他！
+meidushanormal2_youshetou,美杜莎只有这一个物理能力的蛇头了，要不要都打掉？,美杜莎最在意这个提升法术能力的蛇头，可不要激怒他！
+meidushanormal1_xiaoshetou,要不要打掉这个诡异的蛇头？,美杜莎会因为掉头发伤心的昏过去！
 meidushanormal1_eyes,往往危险的部位也比较脆弱！,cuiruo！
 amutejineng1,冰焰,bingyan
 amutejineng2,水禁,shuijin
@@ -585,15 +587,15 @@ longgongtongzitips,别急，有我在你挂不了,don't warry be happy
 hetongtips,智商与血量成反比,zhishang
 hapitips,有我在，谁都别想使出大招！,I am here，who can dese
 huapotips1,可以进行{0}次操作，每次给单体目标造成{1}%法术伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
-huapotips2,使用物理技能时，50%几率提升自身10%力量，持续1回合,Gives a 50% chance of increasing your strength by 10% whenever casting a physical ability  for 1 turns
+huapotips2,使用法术技能时，50%几率提升自身10%力量,Gives a 50% chance of increasing your strength by 10% whenever casting a Magic ability  for 1 turns
 longgongtongzitips1,给全体目标回复{0}%法攻的生命值并附带法术吸收护盾,Recovers ({0}% of magic ATK) HP for all targets and summons a shield that abosrbs magic damage
-longgongtongzitips2,使用治疗技能时，100%几率附加法术吸收护盾,Gives a 10% chance of summoning a shield that absorbs magic damage whenever casting a healing ability
+longgongtongzitips2,使用治疗技能时，100%几率附加法术吸收护盾,Gives a 100% chance of summoning a shield that absorbs magic damage whenever casting a healing ability
 hetongtips1,给全体目标造成{0}%法攻的水属性伤害并附带降低防御力效果,Deals ({0}% of magic ATK) water type damage to all targets
 hetongtips2,战斗开始时，提升己方全体50%智力，持续3回合,Increase all allies' defense by 50% at the start of battle for 3 turns
 hapitips1,群体打断大招！,Dispells all debuff effects that affect allies' damage
 hapitips2,死亡后恢复在场宠物一定血量,Increases intelligence permanently by 10%
 kairuisitips1,给全体目标造成{0}%法攻的暗属性伤害并50%附加眩晕效果,Deals ({0}% of magic ATK) dark type damage to all targets with a dishearten effect
-kairuisitips2,攻击时20%为自身提供提升力量buff,Gives a 50% chance of dispelling enemy buffs whenever casting a physical ability 
+kairuisitips2,攻击时50%为自身提供提升力量buff,Gives a 50% chance of dispelling enemy buffs whenever casting a physical ability 
 kairuisiname1,黑幕,Unnerving Darkness
 kairuisiname2,散佚,Disseminate
 longgongtongziname1,生命之盾,Healing Nova

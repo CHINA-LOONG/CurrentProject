@@ -1,7 +1,5 @@
 package com.hawk.game.module.alliance;
 
-import java.util.ArrayList;
-
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
@@ -15,10 +13,10 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceFatigueGive;
 import com.hawk.game.protocol.Alliance.HSAllianceFatigueGiveRet;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
 
@@ -49,7 +47,7 @@ public class AllianceFatigueHandler  implements HawkMsgHandler{
 			return true;
 		}
 		
-		PlayerAllianceEntity selfPlayerAllianceEntity = allianceEntity.getMember(request.getTargetId());
+		PlayerAllianceEntity selfPlayerAllianceEntity = allianceEntity.getMember(player.getId());
 		if (selfPlayerAllianceEntity == null) {
 			// 不应该出现的情况
 			player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
@@ -88,13 +86,10 @@ public class AllianceFatigueHandler  implements HawkMsgHandler{
 			targetPlayerAllianceEntity.addFatigueCount();
 			targetPlayerAllianceEntity.notifyUpdate(true);
 			
-			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.FATIGUE_MAIL_ID);
-			if (mailCfg == null) {
-				return true;
+			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_FATIGUE);
+			if (mailCfg != null) {
+				MailUtil.SendSysMail(mailCfg, request.getTargetId(), selfPlayerAllianceEntity.getName(), 888888888);
 			}
-			
-			final int targetId = request.getTargetId();
-			MailUtil.SendSysMail(mailCfg, new ArrayList<Integer>(){{add(targetId);}});
 		}
 		
 		HSAllianceFatigueGiveRet.Builder repsonse = HSAllianceFatigueGiveRet.newBuilder();

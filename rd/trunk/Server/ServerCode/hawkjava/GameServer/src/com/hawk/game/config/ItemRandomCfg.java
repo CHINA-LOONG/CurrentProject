@@ -60,21 +60,21 @@ public class ItemRandomCfg extends HawkConfigBase{
 			String[] itemArrays = itemRandom.split(",");
 			for (String itemArray : itemArrays) {
 				String[] items = itemArray.split("_");
-				if (items.length == 6) {
-					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Float.valueOf(items[4]));
+				if (items.length == 7) {
+					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));
 					if (item.getType() != Const.itemType.MONSTER_VALUE && item.getType() != Const.itemType.EQUIP_VALUE)
 					{
-						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[5])));
+						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[6])));
 					}
 					else {
 						return false;
 					}	
 				}
-				else if (items.length == 8) {
-					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Float.valueOf(items[6]));
+				else if (items.length == 9) {
+					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Integer.valueOf(items[6]), Float.valueOf(items[7]));
 					if (item.getType()== Const.itemType.EQUIP_VALUE)
 					{
-						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[7])));
+						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[8])));
 					}
 					else {
 						return false;

@@ -400,7 +400,7 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
         GameEventMgr.Instance.AddListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.AddListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
-		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
+		GameEventMgr.Instance.AddListener<bool,bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
@@ -412,7 +412,7 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
         GameEventMgr.Instance.RemoveListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.RemoveListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
-        GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
+        GameEventMgr.Instance.RemoveListener<bool,bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
@@ -423,12 +423,12 @@ public class UIBattle : UIBase
     {
         EventTriggerListener.Get(m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
         EventTriggerListener.Get(m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
-		m_ButtonDaoju.onClick = OnButtonDaojuClicked;
+		//m_ButtonDaoju.onClick = OnButtonDaojuClicked;
 
 		m_ButtonMirror.onClick = OnToggleMirrorClicked;
 		m_ButtonTuoguan.onClick = OnTuoguanButtonClick;
 
-		m_ButtonMomo.onClick = OnMomoCliced;
+		//m_ButtonMomo.onClick = OnMomoCliced;
     }
 
 
@@ -513,7 +513,7 @@ public class UIBattle : UIBase
 
     void OnButtonDaojuClicked(GameObject go)
     {
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
     }
 
     void OnButtonSpeedClicked(GameObject go)
@@ -558,7 +558,7 @@ public class UIBattle : UIBase
 		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
-	void OnSetMirrorModeState(bool isMirrorMode)
+	void OnSetMirrorModeState(bool isMirrorMode,bool isMirrExitEffect)
 	{
 		/*
 		m_ButtonMirror.IsOn = isMirrorMode;
@@ -578,7 +578,7 @@ public class UIBattle : UIBase
 		}
 		*/
 		//
-		m_MirrorDray.OnSetMirrorModeState (isMirrorMode);
+		m_MirrorDray.OnSetMirrorModeState (isMirrorMode, isMirrExitEffect);
 	}
     void OnTuoguanButtonClick(GameObject go)
     {
@@ -587,7 +587,7 @@ public class UIBattle : UIBase
 
 	void OnMomoCliced(GameObject go)
 	{
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 	}
 
 #region Event

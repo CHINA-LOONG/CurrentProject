@@ -52,7 +52,7 @@ public class ShopItem : MonoBehaviour
 		}
 
 		//coinImage.sprite = 
-		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType,itemStaticData.buyType)) as Sprite;
+		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType,itemData.priceType)) as Sprite;
 		if(null != coinSp)
 		{
 			coinImage.sprite = coinSp;
@@ -75,7 +75,7 @@ public class ShopItem : MonoBehaviour
 		switch (stype) 
 		{
 		case (int)PB.shopType.NORMALSHOP:
-			if(buyType == 2)
+			if(buyType == (int)PB.moneyType.MONEY_COIN)
 			{
 				return "icon_jinbi";//2
 			}
@@ -95,7 +95,7 @@ public class ShopItem : MonoBehaviour
 		switch (shopType) 
 		{
 		case (int)PB.shopType.NORMALSHOP:
-			if(itemData.price == 2)
+			if(itemData.priceType == (int)PB.moneyType.MONEY_COIN)
 			{
 				return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
 			}

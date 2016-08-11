@@ -63,12 +63,12 @@ public class WeakpointUI : MonoBehaviour
             if(Time.time > changeBatchAtTime)
             {
                 isPrepareChangeBatch = false;
-                RefreshUI(wpGroup, true);
+                RefreshWithAni(wpGroup);
             }
         }
     }
 
-    public  void    RefreshUI(WeakPointGroup wpGroup,bool withAni = true)
+    private  void    RefreshUI(WeakPointGroup wpGroup)
     {
         this.wpGroup = wpGroup;
         WeakPointRuntimeData subRealData = null;
@@ -85,18 +85,28 @@ public class WeakpointUI : MonoBehaviour
                 iconCount++;
             }
         }
-        if(withAni)
-        {
-            StopAllCoroutines();
-            StartCoroutine(pageAniCo());    
-        }
     }
-    IEnumerator pageAniCo()
+
+     public void RefreshWithAni(WeakPointGroup wpGroup)
+    {
+        this.wpGroup = wpGroup;
+        StopAllCoroutines();
+        StartCoroutine(PageOutAnimationCo());
+        StartCoroutine(PageComeAnimationCo());
+    }
+
+    IEnumerator PageOutAnimationCo()
     {
         Vector2 outPos = new Vector2(contentParetnOldPosition.x - 300, contentParetnOldPosition.y);
         contentParent.DOAnchorPos(outPos, outTime).SetEase(outEaseAni);
         yield return new WaitForSeconds(outTime);
+        RefreshUI(wpGroup);
+    }
+
+    IEnumerator PageComeAnimationCo()
+    {
         contentParent.DOAnchorPos(contentParetnOldPosition, comeTime).SetEase(comEaseani);
+        yield break;
     }
 
     public  void    UpdateWeakpointIcon(WeakPointRuntimeData wpRealData)

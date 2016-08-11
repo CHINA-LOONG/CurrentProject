@@ -41,6 +41,22 @@ public class AllianceUtil {
 		Matcher mat = pat.matcher(name);  
 		return mat.find();     
     }
+
+	/**
+	 * 统计副会长数量
+	 * @param name
+	 * @return
+	 */
+	public static int getCopyMainCount(AllianceEntity alliance) {  
+		int count = 0;
+		for (PlayerAllianceEntity playerAlliance : alliance.getMemberList().values()) {
+			if (playerAlliance.getPostion() == GsConst.Alliance.ALLIANCE_POS_COPYMAIN) {
+				count ++;
+			}
+		}
+		
+		return count;
+    }
 	
 	/**
 	 * 检测公会金币加成
@@ -131,8 +147,11 @@ public class AllianceUtil {
 	 * @return
 	 */
 	public static boolean isAllianceId(String str){ 
-	    Pattern pattern = Pattern.compile("[0-9]*"); 
-	    return pattern.matcher(str).matches();    
+		if (str.length() == 5 || str.length() == 6) {
+			  Pattern pattern = Pattern.compile("[0-9]*"); 
+			    return pattern.matcher(str).matches();  
+		}
+		return false;
 	 } 
 
 	/**

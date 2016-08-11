@@ -165,6 +165,13 @@ namespace PB
       get { return _passBattleCount; }
       set { _passBattleCount = value; }
     }
+    private int _deadMonsterCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"deadMonsterCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int deadMonsterCount
+    {
+      get { return _deadMonsterCount; }
+      set { _deadMonsterCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

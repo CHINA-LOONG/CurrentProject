@@ -255,6 +255,8 @@ enum allianceError
 	ALLIANCE_HAVE_MEMBER          = 0x0080029;	
 	// 奖励已领取
 	ALLIANCE_REWARD_ALREADY_GIVE  = 0x008002A;	
+	// 副会长最大值
+	ALLIANCE_MAX_COPY_MAIN        = 0x008002B;	
 }
 
 enum shopError

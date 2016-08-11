@@ -29,6 +29,7 @@ public class uiHintMsg : MonoBehaviour {
     {
         GameObject hintBox = ResourceMgr.Instance.LoadAsset("hintMessage");
         hintBox.transform.SetParent(transform);
+        hintBox.transform.localPosition = new Vector3(0, 152, 0);
         hintBox.transform.localScale = gameObject.transform.localScale;
         Hint hintComponent = hintBox.GetComponent<Hint>();
         hintComponent.ownedList = hintMsg;

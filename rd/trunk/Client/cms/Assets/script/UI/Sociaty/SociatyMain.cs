@@ -11,6 +11,8 @@ public enum SociatyContenType:int
     OtherSociaty,
     Count
 }
+
+
 public class SociatyMain : UIBase, TabButtonDelegate
 {
     public static string ViewName = "SociatyMain";
@@ -19,16 +21,28 @@ public class SociatyMain : UIBase, TabButtonDelegate
     public TabButtonGroup tabBtnGroup;
     public RectTransform contentParent;
 
-
+    public static SociatyMain Instance = null;
     bool isFirst = true;
     SociatyContenType contentType = SociatyContenType.Count;
     SociatyContentBase[] contentPages = new SociatyContentBase[(int)SociatyContenType.Count];
 
+    //---------------------------------------------------------------------------------------------
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEVEL_CHANGE_N_S.GetHashCode().ToString(), OnLevelChange);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEVEL_CHANGE_N_S.GetHashCode().ToString(), OnLevelChange);
+    }
+    //---------------------------------------------------------------------------------------------
     public static void OpenWith(SociatyContenType contentType = SociatyContenType.Infomation)
     {
         SociatyMain main = (SociatyMain)UIMgr.Instance.OpenUI_(ViewName);
         main.SetContentPage(contentType);
     }
+    //---------------------------------------------------------------------------------------------
     public override void Init()
     {
         if (isFirst)
@@ -37,8 +51,10 @@ public class SociatyMain : UIBase, TabButtonDelegate
             FirsInit();
         }
     }
+    //---------------------------------------------------------------------------------------------
     void FirsInit()
     {
+        Instance = this;
         tabBtnGroup.InitWithDelegate(this);
         title.text = StaticDataMgr.Instance.GetTextByID("sociaty_title");
 
@@ -50,7 +66,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
 
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
-
+    //---------------------------------------------------------------------------------------------
     public void OnTabButtonChanged(int index)
     {
         if((int)contentType != index)
@@ -58,13 +74,13 @@ public class SociatyMain : UIBase, TabButtonDelegate
             RefreshUi((SociatyContenType)index);
         }
     }
-
-    public  void    SetContentPage(SociatyContenType contentType)
+    //---------------------------------------------------------------------------------------------
+    public void    SetContentPage(SociatyContenType contentType)
     {
         tabBtnGroup.OnChangeItem((int)contentType);
     }
-
-    private  void RefreshUi(SociatyContenType contentType)
+    //---------------------------------------------------------------------------------------------
+    private void RefreshUi(SociatyContenType contentType)
     {
         this.contentType = contentType;
         for(int i = 0; i < contentPages.Length; ++i)
@@ -89,8 +105,56 @@ public class SociatyMain : UIBase, TabButtonDelegate
             }
         }
     }
-
+    //---------------------------------------------------------------------------------------------
     void OnCloseButtonClick()
+    {
+        UIMgr.Instance.CloseUI_(this);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnLevelChange(ProtocolMessage msg)
+    {
+        PB.AllianceInfo allianceData = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData;
+        PB.HSLevelChangeNotify lvlChangeData = msg.GetProtocolBody<PB.HSLevelChangeNotify>();
+        if (lvlChangeData != null)
+        {
+            switch ((SociatyTecEnum)lvlChangeData.type)
+            {
+                case SociatyTecEnum.Sociaty_Tec_Lvl:
+                    allianceData.level = lvlChangeData.level;
+                    break;
+                case SociatyTecEnum.Sociaty_Tec_Member:
+                    allianceData.memLevel = lvlChangeData.level;
+                    break;
+                case SociatyTecEnum.Sociaty_Tec_Coin:
+                    allianceData.coinLevel = lvlChangeData.level;
+                    break;
+                case SociatyTecEnum.Sociaty_Tec_Exp:
+                    allianceData.expLevel = lvlChangeData.level;
+                    break;
+            }
+
+            SetTechnologyInternal(lvlChangeData.type);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    private void SetTechnologyInternal(int type)
+    {
+        for (int i = 0; i < contentPages.Length; ++i)
+        {
+            if (i == (int)SociatyContenType.Technology)
+            {
+                if (contentPages[i] != null && contentPages[i].gameObject.activeSelf)
+                {
+                    SociatyContentTechnology technologyUI = contentPages[i] as SociatyContentTechnology;
+                    technologyUI.RefreshTechnologyInfo(type);
+                }
+                break;
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+
+    public void Close()
     {
         UIMgr.Instance.CloseUI_(this);
     }

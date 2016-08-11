@@ -1,13 +1,17 @@
 package com.hawk.game.module.alliance;
 
 import org.hawk.app.HawkAppObj;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.config.ImSysCfg;
+import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceChangeOwnerRet;
 import com.hawk.game.protocol.Alliance.HSChangeOwnerNotify;
@@ -15,6 +19,7 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceChangeOwner;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
 
 public class AllianceChangeOwnerHandler implements HawkMsgHandler{
 	/**
@@ -69,7 +74,17 @@ public class AllianceChangeOwnerHandler implements HawkMsgHandler{
 		allianceEntity.setPlayerId(targetPlayerAllianceEntity.getPlayerId());
 		allianceEntity.setPlayerName(targetPlayerAllianceEntity.getName());
 		allianceEntity.notifyUpdate(true);
-		
+
+		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_OWNER);
+		if (mailCfg != null) {
+			MailUtil.SendSysMail(mailCfg, request.getTargetId(), allianceEntity.getName());
+		}
+
+		ImSysCfg imCfg = HawkConfigManager.getInstance().getConfigByKey(ImSysCfg.class, GsConst.SysIm.ALLIANCE_OWNER);
+		if (imCfg != null) {
+			ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), allianceEntity.getPlayerName());
+		}
+
 		HSAllianceChangeOwnerRet.Builder response = HSAllianceChangeOwnerRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CHANGE_OWNER_S_VALUE, response));
 		

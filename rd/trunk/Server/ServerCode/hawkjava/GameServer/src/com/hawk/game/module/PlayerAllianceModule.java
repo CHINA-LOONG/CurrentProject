@@ -410,7 +410,7 @@ public class PlayerAllianceModule extends PlayerModule {
 			return true;
 		}
 		
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBERS_S_VALUE, AllianceUtil.getAllianceMembersInfo(allianceEntity, playerEntity, player.getId())));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBERS_S_VALUE, AllianceUtil.getAllianceMembersInfo(allianceEntity, playerEntity, 0)));
 		return true;
 	}
 	

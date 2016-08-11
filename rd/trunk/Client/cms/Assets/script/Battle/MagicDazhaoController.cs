@@ -142,7 +142,7 @@ public class MagicDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Prepare;
 
 		//隐藏摄像机 
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
 		//if (casterGo.shifaNodeEffect != null) 

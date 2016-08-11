@@ -1,6 +1,5 @@
 package com.hawk.game.manager;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -85,7 +84,7 @@ public class AllianceManager extends HawkAppObj {
 	/**
 	 * 已存在公会名字
 	 */
-	private List<String> existName;
+	private Set<String> existName;
 	
 	/**
 	 * 构造函数
@@ -182,10 +181,11 @@ public class AllianceManager extends HawkAppObj {
 			}
 		}
 		
-		existName = HawkDBManager.getInstance().query("select name from AllianceEntity");
-		if (existName == null)
-			existName = new ArrayList<String>();
-		
+		List<String> allianeNames = HawkDBManager.getInstance().query("select name from AllianceEntity");
+		existName = new HashSet<>();
+		if (allianeNames != null)
+			existName.addAll(allianeNames);
+
 		return true;
 	}
 
@@ -242,6 +242,14 @@ public class AllianceManager extends HawkAppObj {
 	 */
 	public void addAlliance(AllianceEntity allianceEntity) {
 		allianceMap.put(allianceEntity.getId(), allianceEntity);
+	}
+
+	/**
+	 * 移除公会
+	 * @param allianceEntity
+	 */
+	public void removeAlliance(AllianceEntity allianceEntity) {
+		allianceMap.remove(allianceEntity.getId());
 	}
 
 	/**
@@ -333,7 +341,7 @@ public class AllianceManager extends HawkAppObj {
 	 * 获取所有已经存在的公会名
 	 * @return
 	 */
-	public List<String> getExistName() {
+	public Set<String> getExistName() {
 		return existName;
 	}	
 	
@@ -477,7 +485,7 @@ public class AllianceManager extends HawkAppObj {
 	 */
 	public void broadcastNotify(int allianceId, HawkProtocol protocol, int filterId) {
 		AllianceEntity allianceEntity = allianceMap.get(allianceId);
-		if (allianceEntity != null) {			
+		if (allianceEntity != null) {
 			for (int playerId : allianceEntity.getMemberList().keySet()) {
 				if (playerId != filterId && ServerData.getInstance().isPlayerOnline(playerId) == true) {
 					Player member = GsApp.getInstance().queryPlayer(playerId);

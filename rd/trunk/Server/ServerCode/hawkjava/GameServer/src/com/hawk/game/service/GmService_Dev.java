@@ -362,22 +362,25 @@ public class GmService_Dev extends GameService {
 		}
 		// 给指定玩家发送邮件
 		case "mail": {
-			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, gmItemId);
+			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, Integer.parseInt(gmItemId));
 			if (mailCfg == null) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
 
+			int receiverId = (int)gmTargetId;
 			MailInfo mailInfo = new MailInfo();
-			mailInfo.subject = mailCfg.getSubject();
-			mailInfo.content = mailCfg.getContent();
+			String lang = ServerData.getInstance().getPlayerLang(receiverId);
+			mailInfo.subject = mailCfg.getSubject(lang);
+			mailInfo.content = mailCfg.getContent(lang);
 			RewardCfg reward = mailCfg.getReward();
 			if (reward != null) {
 				mailInfo.rewardList = reward.getRewardList();
 			}
+			String senderName = mailCfg.getSender(lang);
 
 			for (int i = 0; i < gmValue; ++i) {
-				MailUtil.SendMail(mailInfo, (int)gmTargetId, 0, mailCfg.getSender());
+				MailUtil.SendMail(mailInfo, receiverId, 0, senderName);
 			}
 
 			actionHandled = true;

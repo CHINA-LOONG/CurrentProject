@@ -627,7 +627,7 @@ public class BattleProcess : MonoBehaviour
         if(BattleController.Instance.battleType == BattleType.Boss)
         {
             WeakPointGroup wpGroup = battleGroup.EnemyFieldList[0].wpGroup;
-            BattleController.Instance.GetUIBattle().wpUI.RefreshUI(wpGroup);
+            BattleController.Instance.GetUIBattle().wpUI.RefreshWithAni(wpGroup);
         }
 
         StartAction();
@@ -787,6 +787,7 @@ public class BattleProcess : MonoBehaviour
 
         if (battleResult == BattleRetCode.Failed)
         {
+            BattleController.Instance.IsRevived = true;
             insertAction.Clear();
             if (mCurrentReviveCount < BattleConst.maxReviveCount)
             {

@@ -197,17 +197,12 @@ public class PlayerShopModule extends PlayerModule{
 			return true;	
 		}
 
-		if (itemCfg.getBuyPrice() == GsConst.UNUSABLE) {
-			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
-			return true;
-		}
-
 		ConsumeItems consume = new ConsumeItems();
 		if (protocol.getType() == Const.shopType.NORMALSHOP_VALUE) {
-			if (itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE) {
+			if (itemInfo.getPriceType() == Const.moneyType.MONEY_COIN_VALUE) {
 				consume.addCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
 			}
-			else{
+			else if (itemInfo.getPriceType() == Const.moneyType.MONEY_GOLD_VALUE) {
 				consume.addGold((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
 			}
 		}
@@ -226,8 +221,7 @@ public class PlayerShopModule extends PlayerModule{
 		if (itemCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
 			award.addEquip(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), itemInfo.getLevel());
 		}
-		else
-		{
+		else{
 			award.addItem(itemInfo.getItemId(), itemInfo.getCount());
 		}
 		
@@ -246,7 +240,7 @@ public class PlayerShopModule extends PlayerModule{
 	private boolean onStoreItemBuy(HawkProtocol cmd){
 		HSStoreItemBuy protocol = cmd.parseProtocol(HSStoreItemBuy.getDefaultInstance());
 		int hsCode = cmd.getType();
-		StoreCfg storeCfg = HawkConfigManager.getInstance().getConfigByKey(StoreCfg.class, protocol.getId());
+		StoreCfg storeCfg = HawkConfigManager.getInstance().getConfigByKey(StoreCfg.class, protocol.getItemId());
 
 		if (storeCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
@@ -254,27 +248,20 @@ public class PlayerShopModule extends PlayerModule{
 		}
 
 		ConsumeItems consume = new ConsumeItems();
-		consume.addGold((int)(storeCfg.getCount() * storeCfg.getPrice() * storeCfg.getDiscount()));
-
+		consume.addGold((int)(protocol.getCount() * storeCfg.getPrice() * storeCfg.getDiscount()));
+		
 		if (consume.checkConsume(player, hsCode) == false) {
 			return true;
 		}
 		
 		AwardItems award = new AwardItems();
-		if (storeCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
-			award.addEquip(storeCfg.getItem(), storeCfg.getCount(), storeCfg.getStage(), storeCfg.getLevel());
-		}
-		else
-		{
-			award.addItem(storeCfg.getItem(), storeCfg.getCount());
-		}
+		award.addItem(storeCfg.getItemId(), protocol.getCount());
 		
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.STORE_ITEM_BUY, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.STORE_ITEM_BUY, hsCode);
 
 		HSStoreItemBuyRet.Builder response = HSStoreItemBuyRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_STORE_BUY_S_VALUE, response));
-
 		return true;
 	}
 	

@@ -67,14 +67,12 @@ public class SociatyContentInfomation : SociatyContentBase
 	void    OnEnable()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_SYN_S.GetHashCode().ToString(), OnAllianceSynceFinish);
-
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnContributionReward);
     }
 
     void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_SYN_S.GetHashCode().ToString(), OnAllianceSynceFinish);
-
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnContributionReward);
     }
 

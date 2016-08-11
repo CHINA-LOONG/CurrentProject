@@ -38,10 +38,10 @@ namespace UnityClientConsole
 
             for (int i = 0; i < TEST_USER; ++i)
             {
-                string name = "shuadong2";// +(1 + i);
-                //string name = "root" + (1 + 1 + i);
-               // string name = "_chat" + (1 + i);
-                //string name = "11171002";
+                // string name = "shuadong2";// +(1 + i);
+                // string name = "root" + (0 + 1 + i);
+                //string name = "_chat" + (1 + i);
+                string name = "shishu2";
 
                 test[i] = new App();
                 if (test[i].Init("127.0.0.1", 9595, name) == false)

@@ -469,14 +469,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .39199999}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 92c48b436dea0e34b8d59d11da4a3675, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59d15592fe3a23743bae4de772de0b43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -585,6 +585,22 @@ Prefab:
     - target: {fileID: 22475310, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
@@ -696,7 +712,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 82, y: 164.000061}
+  m_AnchoredPosition: {x: 82, y: 194.399994}
   m_SizeDelta: {x: 800, y: 35}
   m_Pivot: {x: 0, y: .5}
 --- !u!114 &1641094832
@@ -737,7 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .39199999}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

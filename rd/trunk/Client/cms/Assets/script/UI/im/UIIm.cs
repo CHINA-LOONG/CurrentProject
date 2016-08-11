@@ -59,6 +59,8 @@ public class UIIm : UIBase
     [HideInInspector]
     public bool isDrag;
     bool isBasicsChat = true;
+    bool isChannel = false;
+    Vector2 msgBoxSizeDelta;
     #endregion
     public static UIIm Instance
     {
@@ -98,6 +100,7 @@ public class UIIm : UIBase
         }
         basiceChatVec = basicsChatBox.transform.localPosition;
         leftCahtVec = leftChatBox.transform.localPosition;
+        msgBoxSizeDelta = msgBox.sizeDelta;
         playerBox.SetActive(false);
         RectTransform initTransform = msgPos.transform as RectTransform;
         msgPosY = -initTransform.anchoredPosition.y;
@@ -138,6 +141,7 @@ public class UIIm : UIBase
         {
             if (channel != (int)PB.ImChannel.WORLD)
             {
+                isChannel = true;
                 channel = (int)PB.ImChannel.WORLD;
                 globalBackground.enabled = true;
                 guildBackground.enabled = false;
@@ -145,6 +149,8 @@ public class UIIm : UIBase
                 guildText.color = ColorConst.text_tabColor_normal;
                 globalText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
                 globalText.color = ColorConst.text_tabColor_select;
+                msgBox.sizeDelta = msgBoxSizeDelta;
+                msgBox.localPosition = new Vector3(0, 0, 0);
                 ShowMessage();
             }
         }
@@ -157,6 +163,7 @@ public class UIIm : UIBase
             }
             if (channel != (int)PB.ImChannel.GUILD)
             {
+                isChannel = true;
                 channel = (int)PB.ImChannel.GUILD;
                 guildBackground.enabled = true;
                 globalBackground.enabled = false;
@@ -164,6 +171,8 @@ public class UIIm : UIBase
                 globalText.color = ColorConst.text_tabColor_normal;
                 guildText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
                 guildText.color = ColorConst.text_tabColor_select;
+                msgBox.sizeDelta = msgBoxSizeDelta;
+                msgBox.localPosition = new Vector3(0, 0, 0);
                 ShowMessage();
             }
         }
@@ -217,11 +226,17 @@ public class UIIm : UIBase
             {
                 uiHintMsg.Instance.NoticeAdd(item.origText);
                 worldChannel.Add(item);
+                if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceID > 0)
+                {
+                    gangChannel.Add(item);
+                }
                 //所有消息
                 allMsg = item;
                 continue;
             }
-            ShowSystemHints(item.origText,item.type);
+            ShowSystemHints(item.origText, item.type);
+            if (GameDataMgr.Instance.PlayerDataAttr.playerId == item.senderId)
+                return;
             //频道相关
             if (item.channel == (int)PB.ImChannel.WORLD && item.type != (int)PB.ImType.LANTERN && item.type != (int)PB.ImType.PROMPT)
             {
@@ -230,8 +245,6 @@ public class UIIm : UIBase
             }
             if (item.channel == (int)PB.ImChannel.GUILD)
             {
-                if (GameDataMgr.Instance.PlayerDataAttr.playerId == item.senderId)
-                    return;
                 gangChannel.Add(item);
                 allMsg = item;
             }
@@ -369,9 +382,17 @@ public class UIIm : UIBase
             imMsgData.mContent.color = textColor;
             imMsgData.speakerID = msgList[i].senderId;             
             imMsgData.mChannel.color = textColor;
-            if (!isDrag)
+            if (isChannel)
             {
-                showNewMsg = true;
+                StartCoroutine(RenovateMsg());
+                isChannel = !isChannel;
+            }
+            else
+            {
+                if (!isDrag)
+                {
+                    showNewMsg = true;
+                }
             }
         }
         for (; i < msgObj.Count; ++i)
@@ -402,13 +423,30 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
+    IEnumerator RenovateMsg()
+    {
+        yield return new WaitForEndOfFrame();
+        ShowMessage();
+    }
+    //------------------------------------------------------------------------------------------------------
     void Update()
     {
         if (showNewMsg)
         {
             float sizeMsg = msgPosY;
             GameObject msgText;
-            int count = worldChannel.Count;
+            List<PB.HSImMsg> msgChannelList;
+            int count = 0;
+            if (channel == (int)PB.ImChannel.GUILD)
+            {
+                count = gangChannel.Count;
+                msgChannelList = gangChannel;
+            }
+            else
+            {
+                count = worldChannel.Count;
+                msgChannelList = worldChannel;
+            }
             for (int i = 0; i < count; i++)
             {
                 msgText = Util.FindChildByName(msgObj[i], "msgText");
@@ -419,7 +457,7 @@ public class UIIm : UIBase
                     {
                         showNewMsg = false;
                     }
-                    if (worldChannel[i].type == (int)PB.ImType.NOTICE)
+                    if (msgChannelList[i].type == (int)PB.ImType.NOTICE)
                     {
                         sizeMsg += (0 - msgTrans.localPosition.y);
                     }
@@ -522,12 +560,18 @@ public class UIIm : UIBase
                 PB.HSImMsg meMsg = new PB.HSImMsg();
                 meMsg.senderId = GameDataMgr.Instance.PlayerDataAttr.playerId;
                 meMsg.channel = channel;
-                meMsg.senderName = GameDataMgr.Instance.PlayerDataAttr.name;
+                meMsg.senderName = GameDataMgr.Instance.PlayerDataAttr.nickName;
+                meMsg.origText = message;
                 if (channel == (int)PB.ImChannel.GUILD)
+                {
                     meMsg.type = (int)PB.ImChannel.GUILD;
+                    gangChannel.Add(meMsg);
+                }
                 else
+                {
                     meMsg.type = (int)PB.ImChannel.WORLD;
-                gangChannel.Add(meMsg);
+                    worldChannel.Add(meMsg);
+                }
                 allMsg = meMsg;
                 ShowMessage();
             }

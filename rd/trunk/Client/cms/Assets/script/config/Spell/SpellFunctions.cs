@@ -260,7 +260,7 @@ public class SpellFunctions
 			if (damageProto.isHeal == false)
 			{
 				Spell ownedSpell = triggerEffect.ownedSpell;
-				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 1.0f)
+				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 0.5f)
 				{
 					return 1;
 				}

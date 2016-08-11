@@ -43,7 +43,7 @@ public class AllianceListHandler implements HawkProtocolHandler {
 		int formIndex = Math.max((reqPageNum-1) * GsConst.Alliance.ONE_PAGE_SIZE, 0);
 		int endIndex = Math.max(reqPageNum * GsConst.Alliance.ONE_PAGE_SIZE, 0);
 		if(reqPageNum == maxPageNum){
-			endIndex = Math.min(reqPageNum * GsConst.Alliance.ONE_PAGE_SIZE - 1, levelSet.size());
+			endIndex = Math.min(reqPageNum * GsConst.Alliance.ONE_PAGE_SIZE, levelSet.size());
 			endIndex = Math.max(endIndex, 0);
 		}
 		

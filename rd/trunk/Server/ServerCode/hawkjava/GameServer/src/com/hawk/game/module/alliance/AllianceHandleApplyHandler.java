@@ -127,8 +127,8 @@ public class AllianceHandleApplyHandler implements HawkMsgHandler{
 					targetPlayerAllianceEntity.setPostion(GsConst.Alliance.ALLIANCE_POS_COMMON);
 					targetPlayerAllianceEntity.setAllianceId(allianceEntity.getId());
 					targetPlayerAllianceEntity.notifyUpdate(true);
-					allianceEntity.addMember(request.getPlayerId(), targetPlayerAllianceEntity);
-					AllianceManager.getInstance().addPlayerAndAllianceMap(request.getPlayerId(), allianceEntity.getId());	
+					allianceEntity.addMember(targetId, targetPlayerAllianceEntity);
+					AllianceManager.getInstance().addPlayerAndAllianceMap(targetId, allianceEntity.getId());	
 					// 清理该玩家在其他公会的申请
 					AllianceManager.getInstance().clearPlayerApply(targetId);
 					HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_JOIN_N_S_VALUE, HSAllianceJoinNotify.newBuilder().setAllianceId(allianceEntity.getId()));

@@ -13,6 +13,7 @@ message ShopItem
 	required float  discount = 7;//折扣
 	required int32  price = 8;//价钱
 	required bool   hasBuy = 9;//是否已经购买
+	required int32  priceType = 10;//货币种类
 }
 
 message ShopData
@@ -68,7 +69,8 @@ message HSShopItemBuyRet
 
 message HSStoreItemBuy
 {
-	required int32 id = 1;
+	required string itemId = 1;
+	required int32 count = 2;
 }
 
 message HSStoreItemBuyRet

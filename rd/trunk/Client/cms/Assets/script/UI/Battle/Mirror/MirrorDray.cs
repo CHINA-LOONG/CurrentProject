@@ -74,6 +74,16 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
         {
             float enegyRatio = BattleController.Instance.MirrorEnegyAttr / GameConfig.Instance.MirrorMaxEnegy;
             mirrorEnegyImage.fillAmount = enegyRatio;
+
+            if(Mathf.Abs( BattleController.Instance.MirrorEnegyAttr - GameConfig.Instance.MirrorMaxEnegy) < 0.001f)
+            {
+                
+                int state = mirrorUIAnimator.GetInteger(mirrorStateHash);
+                if(state != 3)
+                {
+                    mirrorUIAnimator.SetInteger(mirrorStateHash, 3);
+                }
+            }
         }
     }
 
@@ -145,14 +155,13 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		//mirrorUi.gameObject.SetActive (false);
 		mirrorUIAnimator.SetInteger (mirrorStateHash, 1);
 		rectTrans.anchoredPosition = GetMirrorScreenPosition (Input.mousePosition);	
-		OnSetMirrorModeState (true);
+		OnSetMirrorModeState (true,false);
 	}  
 
 	//鼠标抬起
 	public void OnPointerUp (PointerEventData eventData)
 	{
-		isShowMirrorExitEffect = true;
-		OnSetMirrorModeState (false);
+		OnSetMirrorModeState (false,true);
 		isCanShowMirrorExitEffect = false;
 	}
 	// 拖动  
@@ -191,11 +200,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		return newPos;
 	}
 
-	public void	OnSetMirrorModeState(bool isMirror)
+	public void	OnSetMirrorModeState(bool isMirror, bool isMirrExitEffect)
 	{
 		if (isMirror) 
 		{
-			mirrorExitEffect.gameObject.SetActive(false);
+            mirrorExitEffect.gameObject.SetActive(false);
 			StartRayCast();
 
             BattleController.Instance.mirrorState = MirrorState.Consum;
@@ -203,6 +212,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
         } 
 		else 
 		{
+            isShowMirrorExitEffect = isMirrExitEffect;
             BattleController.Instance.mirrorState = MirrorState.Recover;
             BattleController.Instance.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
             StopRayCast();
@@ -215,8 +225,6 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 				if(rt != null )
 				{
 					Vector3 mirrorScreenPos = UIUtil.GetSpacePos(rectTrans,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-					
-					
 					mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
 					mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
 					
@@ -229,18 +237,14 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 				mirrorExitEffect.gameObject.SetActive(false);
 			}
 
-
 			isCanShowMirrorExitEffect = false;
 			ResetMirror();
-
 		}
 	}
 
 	void StartRayCast()
 	{
 		lastFindWeakpoint.Clear ();
-
-
 		StartCoroutine ("weakPointRayCastCo");
 	}
 
@@ -266,10 +270,6 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 			finishFindTargett.Clear();
 
 			Vector3 mirrorScreenPos = UIUtil.GetSpacePos(mirrorParticle.transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-			//mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
-			//mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
-
-
 
 			listFindTarget = m_MirrorRaycast.WeakpointRayCast (mirrorScreenPos);
 			if(listFindTarget.Count > 0)

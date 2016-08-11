@@ -23,22 +23,42 @@ public class MailUtil {
 	}
 
 	/**
-	 * 群发系统邮件
+	 * 群发系统邮件，多语言
 	 */
-	public static void SendSysMail(MailSysCfg mailCfg, List<Integer> receiverIdList) {
+	public static void SendSysMail(MailSysCfg mailCfg, List<Integer> receiverIdList, Object... contentArgs) {
 		MailInfo mailInfo = new MailInfo();
-		mailInfo.subject = mailCfg.getSubject();
-		mailInfo.content = mailCfg.getContent();
 		RewardCfg reward = mailCfg.getReward();
 		if (reward != null) {
 			mailInfo.rewardList = reward.getRewardList();
 		}
 
-		SendMail(mailInfo, receiverIdList, 0, mailCfg.getSender());
+		for (Integer receiverId : receiverIdList) {
+			String lang = ServerData.getInstance().getPlayerLang(receiverId);
+			mailInfo.subject = mailCfg.getSubject(lang);
+			mailInfo.content = String.format(mailCfg.getContent(lang), contentArgs);
+
+			SendMail(mailInfo, receiverId, 0, mailCfg.getSender(lang));
+		}
 	}
-	
+
 	/**
-	 * 群发邮件
+	 * 单发系统邮件，多语言
+	 */
+	public static void SendSysMail(MailSysCfg mailCfg, int receiverId, Object... contentArgs) {
+		MailInfo mailInfo = new MailInfo();
+		String lang = ServerData.getInstance().getPlayerLang(receiverId);
+		mailInfo.subject = mailCfg.getSubject(lang);
+		mailInfo.content = String.format(mailCfg.getContent(lang), contentArgs);
+		RewardCfg reward = mailCfg.getReward();
+		if (reward != null) {
+			mailInfo.rewardList = reward.getRewardList();
+		}
+
+		SendMail(mailInfo, receiverId, 0, mailCfg.getSender(lang));
+	}
+
+	/**
+	 * 群发邮件，单语言
 	 */
 	public static void SendMail(MailInfo mailInfo, List<Integer> receiverIdList, int senderId, String senderName) {
 		for (Integer receiverId : receiverIdList) {
@@ -47,10 +67,23 @@ public class MailUtil {
 	}
 
 	/**
-	 * 发送邮件
+	 * 单发邮件，单语言
 	 * @return entityId, <0 表示失败
 	 */
 	public static int SendMail(MailInfo mailInfo, int receiverId, int senderId, String senderName) {
+		if (mailInfo == null) {
+			return GsConst.UNUSABLE;
+		}
+		if (mailInfo.subject == null) {
+			mailInfo.subject = "";
+		}
+		if (mailInfo.content == null) {
+			mailInfo.content = "";
+		}
+		if (senderName == null) {
+			senderName = "";
+		}
+
 		MailEntity mailEntity = new MailEntity();
 		mailEntity.setReceiverId(receiverId);
 		mailEntity.setSenderId(senderId);
@@ -75,6 +108,6 @@ public class MailUtil {
 			return mailEntity.getId();
 		}
 
-		return -1;
+		return GsConst.UNUSABLE;
 	}
 }

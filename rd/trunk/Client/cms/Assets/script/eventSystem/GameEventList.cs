@@ -19,7 +19,7 @@ public class GameEventList
     public static string RefreshWpProgress = "RefreshWpProgress";//param wpRun oldHp
 
     //Mirror in the Battle
-    public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
+    public static string SetMirrorModeState = "SetMirrorModeState"; //param bool ,bool
 	public static string FindWeakPoint = "FindWeakPoint";//param List<MirrorTarget>
 	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param  List<MirrorTarget>
 	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param  List<MirrorTarget>

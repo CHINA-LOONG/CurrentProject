@@ -27,7 +27,7 @@ public class Hint : MonoBehaviour
         if (Time.unscaledTime >= fadeTime && beginFade == false)
         {
             beginFade = true;
-            battleTitleTw = gameObject.transform.DOLocalMoveY(100, gradualTime);
+            battleTitleTw = gameObject.transform.DOLocalMoveY(230, gradualTime);
             battleTitleTw.SetUpdate(true);
             //gameObject.transform.DOScale(0, gradualTime).SetUpdate(true);
             bak.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);

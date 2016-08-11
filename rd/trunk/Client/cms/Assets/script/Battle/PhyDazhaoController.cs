@@ -101,7 +101,7 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Prepare;
 
 		//隐藏摄像机 
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
 		casterBattleGo.TriggerEvent ("phyDazhaoReady", Time.time, null);
@@ -196,7 +196,7 @@ public class PhyDazhaoController : MonoBehaviour
 			wpPosInScreen.x /= uiScale;
 			wpPosInScreen.y /= uiScale;
 			Transform comboParent =  BattleController.Instance.GetUIBattle().publicTopGroup;
-			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x - 150,wpPosInScreen.y + 50);
+			HitCombo.ShowCombo(comboParent,comboIndex, dazhaoSpell.spellData.actionCount,wpPosInScreen.x - 150,wpPosInScreen.y + 50);
 		}
 	}
 

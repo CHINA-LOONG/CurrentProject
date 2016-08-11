@@ -138,8 +138,14 @@ public class AllianceInfoItem : MonoBehaviour
             PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
             switch (errorCode.errCode)
             {
+                case (int)PB.allianceError.ALLIANCE_ALREADY_FULL:
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_002"), (int)PB.ImType.PROMPT);
+                    break;
                 case (int)PB.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH:
-                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("等级不足..."), (int)PB.ImType.PROMPT);
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_010"), (int)PB.ImType.PROMPT);
+                    break;
+                case (int)PB.allianceError.ALLIANCE_FRIZEN_TIME:
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_037"), (int)PB.ImType.PROMPT);
                     break;
             }
             return;

@@ -30,7 +30,6 @@ public class SociatyPrayItem : MonoBehaviour
     void Start()
     {
         EventTriggerListener.Get(mPrayBtn.gameObject).onClick = OnPray;
-        StaticDataMgr sdMgr = StaticDataMgr.Instance;
         mPrayBtnText.text = StaticDataMgr.Instance.GetTextByID("sociaty_qifubtn");
     }
     //---------------------------------------------------------------------------------------------

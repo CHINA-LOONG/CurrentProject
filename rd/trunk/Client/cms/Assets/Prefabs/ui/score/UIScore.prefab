@@ -1419,8 +1419,6 @@ MonoBehaviour:
   mPlayerGainExp: {fileID: 11475476}
   mPlayerGainGold: {fileID: 11406504}
   mPlayerLvlUp: {fileID: 148524}
-  mVictorySprite: {fileID: 21300000, guid: adf759861c89e3842a0ed55680fee45f, type: 3}
-  mFailedSprite: {fileID: 21300000, guid: 1ee3f92fa55771846ae2e0b7a615f49f, type: 3}
   mScoreBack: {fileID: 158440}
   mCenterPos: {fileID: 22433710}
   mTopPos: {fileID: 22492868}

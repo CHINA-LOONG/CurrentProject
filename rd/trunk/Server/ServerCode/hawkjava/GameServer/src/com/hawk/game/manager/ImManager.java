@@ -21,9 +21,11 @@ import org.hawk.util.services.FunPlusTranslateService.Translation;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsConfig;
+import com.hawk.game.config.ImSysCfg;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Im.HSImMsg;
 import com.hawk.game.protocol.Im.HSImPush;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
@@ -38,20 +40,27 @@ public class ImManager extends HawkAppObj {
 	// 结构----------------------------------------------------------------------------------------------------------
 
 	public class ImMsg {
-		public int type;
-		public int channel;
-		public int senderId;
-		public String senderName;
-		public String origLang;
-		public String origText;
-		/** @key 语言IOS代码 */
-		public Map<String, String> transText;
+		// 必须的
+		public int type = 0;
+		public int channel = 0;
+		public int senderId = 0;
 
 		// 可选的
-		public int guildId;
-		public int receiverId;
-		public ImPlayer receiver;
-		public String expansion;
+		public int guildId = 0;
+		public int receiverId = 0;
+		public ImPlayer receiver = null;
+		public String expansion = null;
+
+		// 系统消息----------------------------
+		public ImSysCfg sysCfg = null;
+		public Object[] sysArgs = null;
+
+		// 非系统消息-------------------------
+		public String senderName = "";
+		public String origLang = GsConst.DEFAULT_LANGUAGE;
+		public String origText = "";
+		/** @key 语言IOS代码 */
+		public Map<String, String> transText = null;
 	}
 
 	/**
@@ -286,14 +295,33 @@ public class ImManager extends HawkAppObj {
 		msgObj.type = Const.ImType.CHAT_VALUE;
 		msgObj.channel = channel;
 		msgObj.senderId = player.getId();
+		msgObj.expansion = expansion;
 		msgObj.senderName = player.getName();
 		msgObj.origLang = player.getLanguage();
 		msgObj.origText = chatText;
 		msgObj.transText = null;
-		msgObj.expansion = expansion;
 
 		if (channel == Const.ImChannel.GUILD_VALUE) {
 			msgObj.guildId = player.getPlayerData().getPlayerAllianceEntity().getAllianceId();
+		}
+
+		post(msgObj);
+	}
+
+	/**
+	 * 投递系统消息
+	 */
+	public void postSys(ImSysCfg imCfg, int guildId, Object... args) {
+		ImMsg msgObj = new ImMsg();
+		msgObj.type = imCfg.getType();
+		msgObj.channel = imCfg.getChannel();
+		msgObj.senderId = 0;
+		msgObj.expansion = null;
+		msgObj.sysCfg = imCfg;
+		msgObj.sysArgs = args;
+
+		if (msgObj.channel == Const.ImChannel.GUILD_VALUE) {
+			msgObj.guildId = guildId;
 		}
 
 		post(msgObj);
@@ -313,7 +341,8 @@ public class ImManager extends HawkAppObj {
 			}
 		}
 
-		if (true == GsConfig.getInstance().isTranslate()) {
+		// 如果开启翻译服务，并且非系统消息
+		if (true == GsConfig.getInstance().isTranslate() && msgObj.sysCfg == null) {
 			// 加入待翻译列表
 			if (false == transMsgQueue.offer(msgObj)) {
 				// 失败直接加入待推送列表
@@ -605,7 +634,7 @@ public class ImManager extends HawkAppObj {
 		for (ImMsg msgObj : imMsgList) {
 			// 检查屏蔽
 			if (false == playerObj.getBlockPlayerList().contains(msgObj.senderId)) {
-				builder.addImMsg(BuilderUtil.genImMsgBuilder(msgObj, playerObj.getLanguage()));
+				builder.addImMsg(genImMsgBuilder(msgObj, playerObj.getLanguage()));
 				++size;
 			}
 
@@ -620,5 +649,39 @@ public class ImManager extends HawkAppObj {
 		if (size > 0) {
 			playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
 		}
+	}
+
+	/**
+	 * 生成ImMsg
+	 */
+	private HSImMsg.Builder genImMsgBuilder(ImMsg imMsg, String language) {
+		HSImMsg.Builder builder = HSImMsg.newBuilder();
+		builder.setType(imMsg.type);
+		builder.setChannel(imMsg.channel);
+		builder.setSenderId(imMsg.senderId);
+		if (imMsg.expansion != null) {
+			builder.setExpansion(imMsg.expansion);
+		}
+
+		// 系统消息
+		if (imMsg.sysCfg != null) {
+			builder.setOrigText(String.format(imMsg.sysCfg.getContent(language), imMsg.sysArgs));
+			builder.setSenderName(imMsg.sysCfg.getSender(language));
+		}
+		// 非系统消息
+		else {
+			builder.setOrigText(imMsg.origText);
+			if (imMsg.senderName != null) {
+				builder.setSenderName(imMsg.senderName);
+			}
+			if (imMsg.transText != null) {
+				String transMsg = imMsg.transText.get(language);
+				if (transMsg != null) {
+					builder.setTransText(transMsg);
+				}
+			}
+		}
+
+		return builder;
 	}
 }

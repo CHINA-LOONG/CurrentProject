@@ -14,8 +14,6 @@ public class UIScore : UIBase
     public Text mPlayerGainExp;
     public Text mPlayerGainGold;
     public GameObject mPlayerLvlUp;
-    public Sprite mVictorySprite;
-    public Sprite mFailedSprite;
     public GameObject mScoreBack;
     
     //internal use only
@@ -48,12 +46,14 @@ public class UIScore : UIBase
     private int mCurrentHuoli;
     private int mHuoliBeginTime;
     private bool mCheckCoin;
+    private int mStarCount;
     //---------------------------------------------------------------------------------------------
     public static void AddResourceRequest()
     {
         ResourceMgr resMgr = ResourceMgr.Instance;
         resMgr.AddAssetRequest(new AssetRequest("monsterExpIcon"));
         resMgr.AddAssetRequest(new AssetRequest("endBattle"));
+        resMgr.AddAssetRequest(new AssetRequest("star_ui"));
         resMgr.AddAssetRequest(new AssetRequest(ViewName));
         //TODO: always keep this
         ResourceMgr.Instance.AddAssetRequest(new AssetRequest("monsterIcon"));
@@ -134,6 +134,12 @@ public class UIScore : UIBase
             {
                 itor.Current.Value.SkipAnimation();
             }
+
+            if (mIsSuccess == true)
+            {
+                EndBattleUI endBattleComponent = mEndBattleUI.GetComponent<EndBattleUI>();
+                endBattleComponent.SkipShowStarAni();
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -167,8 +173,9 @@ public class UIScore : UIBase
         ResourceMgr.Instance.DestroyAsset(mEndBattleUI);
     }
     //---------------------------------------------------------------------------------------------
-    public void ShowScoreUI(bool success)
+    public void ShowScoreUI(bool success, int starCount)
     {
+        mStarCount = starCount;
         if (UIIm.Instance != null)
         {
             UIIm.Instance.SetLevelVisible(false);
@@ -229,16 +236,8 @@ public class UIScore : UIBase
         mEndBattleUI = ResourceMgr.Instance.LoadAsset("endBattle");
         mEndBattleUI.transform.SetParent(transform, false);
         mEndBattleUI.transform.localPosition = mCenterPos.localPosition;
-        Image endImage = mEndBattleUI.GetComponent<Image>();
-        if (mIsSuccess)
-        {
-            endImage.sprite = mVictorySprite;
-        }
-        else
-        {
-            endImage.sprite = mFailedSprite;
-        }
-        endImage.SetNativeSize();
+        EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
+        endBattleUI.SetSuccess(mIsSuccess);
         mBattleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
         mBattleTitleTw.OnComplete(ShowStar);
         mBattleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
@@ -254,7 +253,13 @@ public class UIScore : UIBase
     private void ShowStar()
     {
         //Logger.LogFormat("get star {0}", mInstanceSettleResult.starCount);
-        ShowScoreInfo();
+        EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
+        endBattleUI.SetStarVisiblebool(mIsSuccess);
+        if (mIsSuccess == true)
+        {
+            endBattleUI.SetStar(mStarCount);
+        }
+        StartCoroutine(ShowScoreInfo(mStarCount * BattleConst.scoreStarInterval));
     }
     //---------------------------------------------------------------------------------------------
     private void SetScoreInternal()
@@ -421,8 +426,9 @@ public class UIScore : UIBase
         }
     }
     //---------------------------------------------------------------------------------------------
-    private void ShowScoreInfo()
+    private IEnumerator ShowScoreInfo(float showStarTime)
     {
+        yield return new WaitForSeconds(showStarTime);
         mRetryBtn.gameObject.SetActive(false);
         mNextLevelBtn.gameObject.SetActive(false);
         mConfirmBtn.gameObject.SetActive(false);

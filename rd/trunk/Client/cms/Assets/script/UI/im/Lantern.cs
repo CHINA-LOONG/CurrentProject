@@ -41,6 +41,7 @@ public class Lantern : MonoBehaviour
         if (type == (int)PB.ImType.LANTERN)
         {
             lanData.lant.fontSize = 24;
+            lanData.lant.GetComponent<Shadow>().enabled = false;
         }
         else if (type == (int)PB.ImType.NOTICE)
         {
@@ -113,7 +114,17 @@ public class Lantern : MonoBehaviour
             ResourceMgr.Instance.DestroyAsset(lanternMsg[i].lant.gameObject);
         }
         lanternMsg.Clear();
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);       
+    }
+    void OnApplicationPause(bool isPause)//Home出
+    {
+        if (isPause)
+            RemoveAll();
+    }
+    void OnapplicationFocus(bool isFocus)//Home进
+    {
+        if (isFocus)
+            RemoveAll();
     }
     //public void OnSpeedChange(System.EventArgs args)
     //{
@@ -130,6 +141,5 @@ public class Lantern : MonoBehaviour
     //            lanternMsg[i].battleTitleTw.timeScale = curTimeScale;
     //        }
     //    }
-
     //}
 }

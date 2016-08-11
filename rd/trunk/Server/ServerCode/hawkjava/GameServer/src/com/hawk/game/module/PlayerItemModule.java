@@ -8,6 +8,7 @@ import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.RewardCfg;
+import com.hawk.game.config.StoreCfg;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
@@ -146,13 +147,13 @@ public class PlayerItemModule extends PlayerModule{
 			return ;
 		}
 		
-		if (itemCfg.getBuyPrice() == GsConst.UNUSABLE) {
-			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
+		StoreCfg storeCfg = HawkConfigManager.getInstance().getConfigByKey(StoreCfg.class, itemId);
+		if (storeCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
 			return ;
 		}
-		
-		Const.changeType changeType = itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
-		ConsumeItems consumeItem = ConsumeItems.valueOf(changeType, itemCfg.getBuyPrice() * itemCount);
+		ConsumeItems consumeItem = new ConsumeItems();
+		consumeItem.addGold((int) (storeCfg.getPrice() * storeCfg.getDiscount() * itemCount));
 		if (consumeItem.checkConsume(player, hsCode) == false) {
 			return ;
 		}
@@ -192,11 +193,12 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 
-		if (itemCfg.getBuyPrice() == GsConst.UNUSABLE) {
-			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
-			return;
+		StoreCfg storeCfg = HawkConfigManager.getInstance().getConfigByKey(StoreCfg.class, itemId);
+		if (storeCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
+			return ;
 		}
-
+		
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		int maxUseCount = itemCfg.getTimes();
 		int useCount = GsConst.UNUSABLE;
@@ -207,9 +209,10 @@ public class PlayerItemModule extends PlayerModule{
 				return;
 			}
 		}
-
-		Const.changeType changeType = itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
-		ConsumeItems consumeItem = ConsumeItems.valueOf(changeType, itemCfg.getBuyPrice() * itemCount);
+		
+		ConsumeItems consumeItem = new ConsumeItems();
+		consumeItem.addGold((int) (storeCfg.getPrice() * storeCfg.getDiscount() * itemCount));
+		
 		AwardItems awardItems = AwardItems.valueOf();
 		awardItems.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, itemCfg.getAddAttrValue() * itemCount);
 

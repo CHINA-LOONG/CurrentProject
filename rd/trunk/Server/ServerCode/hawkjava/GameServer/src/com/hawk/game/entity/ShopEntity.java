@@ -1,6 +1,5 @@
 package com.hawk.game.entity;
 
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import net.sf.json.JSONArray;
 
 import org.hawk.db.HawkDBEntity;
 
@@ -32,7 +29,7 @@ public class ShopEntity extends HawkDBEntity{
 	protected int normalShopId = 0;
 	
 	@Column(name = "normalRefreshDate")
-	protected Calendar normalRefreshDate = null;
+	protected int normalRefreshDate = 0;
 
 	@Column(name = "normalRefreshNums")
 	protected int normalRefreshNums = 0;
@@ -44,7 +41,7 @@ public class ShopEntity extends HawkDBEntity{
 	protected int allianceShopId = 0;
 	
 	@Column(name = "allianceRefreshDate")
-	protected Calendar allianceRefreshDate = null;
+	protected int allianceRefreshDate = 0;
 
 	@Column(name = "allianceRefreshNums")
 	protected int allianceRefreshNums = 0;
@@ -56,7 +53,7 @@ public class ShopEntity extends HawkDBEntity{
 	protected int towerShopId = 0;
 
 	@Column(name = "towerRefreshDate")
-	protected Calendar towerRefreshDate = null;
+	protected int towerRefreshDate = 0;
 
 	@Column(name = "towerRefreshNums")
 	protected int towerRefreshNums = 0;
@@ -98,11 +95,11 @@ public class ShopEntity extends HawkDBEntity{
 		this.normalShopId = normalShopId;
 	}
 
-	public Calendar getNormalRefreshDate() {
+	public int getNormalRefreshDate() {
 		return normalRefreshDate;
 	}
 
-	public void setNormalRefreshDate(Calendar normalRefreshDate) {
+	public void setNormalRefreshDate(int normalRefreshDate) {
 		this.normalRefreshDate = normalRefreshDate;
 	}
 
@@ -130,11 +127,11 @@ public class ShopEntity extends HawkDBEntity{
 		this.allianceShopId = allianceShopId;
 	}
 
-	public Calendar getAllianceRefreshDate() {
+	public int getAllianceRefreshDate() {
 		return allianceRefreshDate;
 	}
 
-	public void setAllianceRefreshDate(Calendar allianceRefreshDate) {
+	public void setAllianceRefreshDate(int allianceRefreshDate) {
 		this.allianceRefreshDate = allianceRefreshDate;
 	}
 
@@ -162,11 +159,11 @@ public class ShopEntity extends HawkDBEntity{
 		this.towerShopId = towerShopId;
 	}
 
-	public Calendar getTowerRefreshDate() {
+	public int getTowerRefreshDate() {
 		return towerRefreshDate;
 	}
 
-	public void setTowerRefreshDate(Calendar towerRefreshDate) {
+	public void setTowerRefreshDate(int towerRefreshDate) {
 		this.towerRefreshDate = towerRefreshDate;
 	}
 
@@ -288,7 +285,7 @@ public class ShopEntity extends HawkDBEntity{
 		}
 	}
 	
-	public Calendar getRefreshDate(int type) {
+	public int getRefreshDate(int type) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			return normalRefreshDate;
@@ -297,11 +294,11 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.TOWERSHOP_VALUE:
 			return towerRefreshDate;
 		default:
-			return null;
+			return 0;
 		}
 	}
 	
-	public void setRefreshDate(int type, Calendar refreshData) {
+	public void setRefreshDate(int type, int refreshData) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalRefreshDate = refreshData;

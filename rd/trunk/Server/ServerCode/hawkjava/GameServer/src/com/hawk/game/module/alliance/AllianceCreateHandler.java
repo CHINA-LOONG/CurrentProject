@@ -76,6 +76,7 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NAME_EXIST_VALUE);
 			return true;
 		}
+		
 		// 锁住玩家
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, player.getId());
 		if(xid != null){
@@ -113,7 +114,7 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 					
 					// 从db创建
 					AllianceManager.getInstance().addAlliance(allianceEntity);
-					
+					AllianceManager.getInstance().addAllianceForSort(allianceEntity);
 					AllianceManager.getInstance().getExistName().add(name);
 					
 					ConsumeItems consumes =  ConsumeItems.valueOf(changeType.CHANGE_COIN, SysBasicCfg.getInstance().getAllianceCreateCoin());

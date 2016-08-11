@@ -383,6 +383,9 @@ namespace UnityClientConsole
 //                 allianceJoinList.reqPage = 1;
 //                 netmanaget.SendProtocol(code.ALLIANCE_JOINLIST_C.GetHashCode(), allianceJoinList);
 
+                HSAllianceFatigueGive fatigue = new HSAllianceFatigueGive();
+                fatigue.targetId = 1891;
+                netmanaget.SendProtocol(code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode(), fatigue);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
@@ -553,6 +556,11 @@ namespace UnityClientConsole
 //                 HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
 //                 Console.WriteLine("工会列表");
 //             }
+             //if (protocol.checkType(code.ALLIANCE_JOINLIST_S.GetHashCode()))
+             //{
+             //    HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
+             //    Console.WriteLine("工会列表");
+             //}
         }
 
         public void OnTick(long timeStamp)
@@ -562,14 +570,14 @@ namespace UnityClientConsole
                 return;
             }
 
-//             if (lastBeatTime + 3000 < timeStamp)
-//             {
-//                 SendHeartBeatProtocol();
-//                 lastBeatTime = timeStamp;
-//                 lastBeatTime += random.Next(0, 3000);
-//             }
+            if (lastBeatTime + 3000 < timeStamp)
+            {
+                SendHeartBeatProtocol();
+                lastBeatTime = timeStamp;
+                lastBeatTime += random.Next(0, 3000);
+            }
 
-            if ( lastIMTime + 10000 < timeStamp)
+            if (lastIMTime + 10000 < timeStamp)
             {
                 SendIMMessage();
                 IMSendTime++;
@@ -577,22 +585,22 @@ namespace UnityClientConsole
                 lastIMTime += random.Next(0, 100);
             }
 
-//             if (lastInstanceime + 15000 < timeStamp)
-//             {
-//                 SendInstanceMessage();
-//                 SendRefreshShop();
-//                 instanceTime++;
-//                 lastInstanceime = timeStamp;
-//                 lastInstanceime += random.Next(0, 15000);
-//             }
+            if (lastInstanceime + 15000 < timeStamp)
+            {
+                SendInstanceMessage();
+                SendRefreshShop();
+                instanceTime++;
+                lastInstanceime = timeStamp;
+                lastInstanceime += random.Next(0, 15000);
+            }
 // 
-//             if (lastShowStateTime + 1000 < timeStamp)
-//             {
-//                 Console.WriteLine("heartBeat数量:{0}, 副本数量{1}, 发送IM数{2}, 收到{3}", heartBeatTime, instanceTime, IMSendTime, IMReceivedTime,puid);
-//                 lastShowStateTime = timeStamp;
-//                 IMSendTime = 0;
-//                 IMReceivedTime = 0;
-//             }
+            if (puid.Equals("root1") && lastShowStateTime + 1000 < timeStamp)
+            {
+                Console.WriteLine("heartBeat数量:{0}, 副本数量{1}, 发送IM数{2}, 收到{3}", heartBeatTime, instanceTime, IMSendTime, IMReceivedTime);
+                lastShowStateTime = timeStamp;
+                IMSendTime = 0;
+                IMReceivedTime = 0;
+            }
         }
     }
 }

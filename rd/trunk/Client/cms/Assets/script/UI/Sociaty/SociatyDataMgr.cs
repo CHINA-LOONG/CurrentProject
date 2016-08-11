@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public delegate void NetMessageDelegate(ProtocolMessage msg);
 public class SociatyDataMgr : MonoBehaviour
@@ -7,8 +8,12 @@ public class SociatyDataMgr : MonoBehaviour
     public int allianceID = 0;
     public PB.AllianceInfo allianceData = new PB.AllianceInfo();
     public PB.AllianceMember allianceSelfData = new PB.AllianceMember();
-
     public bool[] hasReceivContributionReword = new bool[3];
+
+    public List<PB.AllianceMember> allianceMemberList = new List<PB.AllianceMember>();
+    public int lastSyncAllianceMemberTime = 0;
+
+    public List<PB.AllianceApply> newApplyList = new List<PB.AllianceApply>();
 
     private NetMessageDelegate callBack = null;
     // Use this for initialization
@@ -28,6 +33,9 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 
 
@@ -48,6 +56,9 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CONTRI_REWARD_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
     }
 	
     //打开公会
@@ -61,6 +72,12 @@ public class SociatyDataMgr : MonoBehaviour
         {
             SociatyMain.OpenWith();
         }
+    }
+
+    public void ClearSociaty()
+    {
+        allianceMemberList.Clear();
+        allianceID = 0;
     }
 
     void OnAllianceDataSync(ProtocolMessage msg)
@@ -134,4 +151,42 @@ public class SociatyDataMgr : MonoBehaviour
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_CONTRI_REWARD_C.GetHashCode(), param);
     }
 
+    public void RequestApplyOperate(int playerId,bool accept,bool isAll, NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceHanleApply param = new PB.HSAllianceHanleApply();
+        param.accept = accept;
+        param.isAll = isAll;
+        if(!isAll)
+        {
+            param.playerId = playerId;
+        }
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode(), param);
+    }
+
+    public  void SetMemberPosition(int playerId,int position)
+    {
+        foreach(var subMember in allianceMemberList)
+        {
+            if(subMember.id == playerId)
+            {
+                subMember.postion = position;
+                break;
+            }
+        }
+    }
+
+    public string GetPositionDesc(int position)
+    {
+        switch(position)
+        {
+            case 0:
+                return StaticDataMgr.Instance.GetTextByID("sociaty_member");
+            case 1:
+                return StaticDataMgr.Instance.GetTextByID("sociaty_vicechairman");
+            case 2:
+                return StaticDataMgr.Instance.GetTextByID("sociaty_chairman");
+        }
+        return "";
+    }
 }

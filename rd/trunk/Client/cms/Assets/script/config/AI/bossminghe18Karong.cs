@@ -35,7 +35,20 @@ public class bossMinghe18Karong : BossAi {
         List<string> wpList = null;
 		wpList = GetAliveWeakPointList (meidushaUnit);
 
-		if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp02")==0)
+		if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp02")==0 && NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp03")==0)
+		{
+			
+			meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha10", out useSpell);
+			
+			int i = 1;
+			if (GetAttackCount(meidushaUnit) % 2 == 0) 
+			{
+				meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha11", out useSpell);
+				attackResult.attackTarget = meidushaUnit;
+			}
+			
+		} 
+		else if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp02")==0)
 		{
 			
 			meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha2", out useSpell);
@@ -98,6 +111,7 @@ public class bossMinghe18Karong : BossAi {
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 		if (args.wpID == "bossYueguangsenlin18Meidushawp02" && jishu==0)
         {
+			target.TriggerEvent("meidusha_wp02_to4", Time.time, null);
 			target.TriggerEvent("meidusha_state1to2", Time.time, null);
 			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
 			jishu ++;
@@ -105,7 +119,15 @@ public class bossMinghe18Karong : BossAi {
 
 		if (args.wpID == "bossYueguangsenlin18Meidushawp03" && jishu==0)
 		{
+			target.TriggerEvent("meidusha_wp03_to4", Time.time, null);
 			target.TriggerEvent("meidusha_state1to3", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			jishu ++;
+		}
+
+		if (args.wpID == "bossYueguangsenlin18Meidushawp03" && args.wpID == "bossYueguangsenlin18Meidushawp02" && jishu==0)
+		{
+			target.TriggerEvent("meidusha_stateNto3", Time.time, null);
 			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
 			jishu ++;
 		}

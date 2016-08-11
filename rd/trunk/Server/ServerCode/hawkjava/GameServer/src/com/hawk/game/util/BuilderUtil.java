@@ -279,27 +279,4 @@ public class BuilderUtil {
 		return builder;
 	}
 
-	public static HSImMsg.Builder genImMsgBuilder(ImMsg imMsg, String language) {
-		HSImMsg.Builder builder = HSImMsg.newBuilder();
-		builder.setType(imMsg.type);
-		builder.setChannel(imMsg.channel);
-		builder.setSenderId(imMsg.senderId);
-		builder.setOrigText(imMsg.origText);
-
-		if (imMsg.senderName != null) {
-			builder.setSenderName(imMsg.senderName);
-		}
-
-		if (imMsg.transText != null) {
-			String transMsg = imMsg.transText.get(language);
-			if (transMsg != null) {
-				builder.setTransText(transMsg);
-			}
-		}
-
-		if (imMsg.expansion != null) {
-			builder.setExpansion(imMsg.expansion);
-		}
-		return builder;
-	}
 }

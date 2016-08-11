@@ -71,12 +71,12 @@ shop_cannotbuy,无法继续购买,Unable to continue purchase.
 shop_nojinbi_noduihuan,金币不足，且今日钻石兑换金币次数已经用完。,"Insufficient Coins, and today's Diamond to Coin exchanges have all been used."
 shop_refresh_error,<color=#ff0000ff>已达当前等级今日可刷新最大次数，刷新失败</color>,"<color=#ff0000ff>You have reached your current level's refresh limit for today, failed to refresh.</color>"
 xf,,
-equip_Helmet,护腰,Helmet
+equip_Helmet,头盔,Helmet
 equip_Weapon,武器,Weapon
 equip_Armor,护甲,Armor
 equip_Bracer,护腕,Bracer
 equip_Ring,戒指,Ring
-equip_Accessory,饰品,Accessory
+equip_Jewelry,饰品,Accessory
 equip_gem_NotSet,未镶嵌,Not engraved
 equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
 equip_Change,换装,Change
@@ -456,9 +456,9 @@ sociaty_peopletipsmiaoshu1,X人,X Members
 sociaty_maxlevel,已满级,Max
 sociaty_startlevel,公会X级可开启,Unlocked at Guild Lvl X
 sociaty_levelupup,升级,Upgrade
-sociaty_X1dang,X1档,X1 Spot
-sociaty_X2dang,X2档,X2 Spot
-sociaty_X3dang,X3档,X3 Spot
+sociaty_X1dang,思之许愿,Wish Thinker
+sociaty_X2dang,酿之许愿,Wish Brewer
+sociaty_X3dang,梦之许愿,Wish Dreamer
 sociaty_qifubtn,许愿,Wish
 sociaty_myteam,我的队伍,My Team
 sociaty_otherteam,其他队伍,Other Teams
@@ -531,8 +531,6 @@ sociaty_record_046,科技等级已与公会等级相同，不能再升啦,Tech L
 sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.
 sociaty_record_048,已达可完成的队内任务上限,Team missions limit reached.
 sociaty_record_052,快来加入我的小队：XXXX（XXXX代表任务名称）,Come join my squad: XXXX
-sociaty_record_053,XXX（科技名词）升至Y级,XXX is now Lvl Y.
-sociaty_record_054,XXX（玩家名称）已成为新任会长,XXX is now Guild Master.
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
 sociaty_record_056,存在非法字符,Contains illegal characters.
 sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.

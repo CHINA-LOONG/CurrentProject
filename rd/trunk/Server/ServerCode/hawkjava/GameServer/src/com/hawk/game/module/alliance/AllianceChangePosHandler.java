@@ -13,6 +13,7 @@ import com.hawk.game.protocol.Alliance.HSAllianceChangePos;
 import com.hawk.game.protocol.Alliance.HSAllianceChangePosRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
 
 public class AllianceChangePosHandler implements HawkMsgHandler{
@@ -59,6 +60,11 @@ public class AllianceChangePosHandler implements HawkMsgHandler{
 		
 		if (targetPlayerAllianceEntity.getPostion() == request.getPostion()) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_SAME_POSITION_VALUE);
+			return true;
+		}
+		
+		if (request.getPostion() == GsConst.Alliance.ALLIANCE_POS_COPYMAIN && AllianceUtil.getCopyMainCount(allianceEntity) >= GsConst.Alliance.MAX_COPYMAIN_COUNT) {
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_COPY_MAIN_VALUE);
 			return true;
 		}
 		

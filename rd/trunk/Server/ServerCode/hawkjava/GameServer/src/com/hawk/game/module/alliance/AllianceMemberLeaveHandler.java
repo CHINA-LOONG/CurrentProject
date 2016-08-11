@@ -7,6 +7,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.SysBasicCfg;
+import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -57,12 +58,12 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 			}
 
 			allianceEntity.removeMember(player.getId());
-			deleteAlliance = true;
 		}
 		else
 		{
 			allianceEntity.getMemberList().clear();
 			allianceEntity.delete();
+			deleteAlliance = true;
 		}
 		
 		playerAllianceEntity.setPostion(GsConst.Alliance.ALLIANCE_POS_COMMON);
@@ -76,6 +77,20 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(player.getId());
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(player.getId());
+		}
+		
+		// 清理工会数据
+		if (deleteAlliance) {
+			AllianceManager.getInstance().removeAlliance(allianceEntity);
+			AllianceManager.getInstance().removeAllianceForSort(allianceEntity);
+			AllianceManager.getInstance().getExistName().remove(allianceEntity.getName());
+			for (AllianceApplyEntity apply : allianceEntity.getApplyList().values()) {
+				AllianceManager.getInstance().removePlayerApply(apply.getPlayerId(), apply.getAllianceId());
+				apply.delete();
+			}
+			if (teamEntity != null) {
+				teamEntity.delete();
+			}
 		}
 		
 		HSAllianceLeaveRet.Builder response = HSAllianceLeaveRet.newBuilder();

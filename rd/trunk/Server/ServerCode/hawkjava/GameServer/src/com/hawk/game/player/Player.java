@@ -315,6 +315,7 @@ public class Player extends HawkAppObj {
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
+		HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
 		if (onPlayerProtocol(protocol)) {
 			return true;
 		}

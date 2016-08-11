@@ -86,6 +86,14 @@ public class BattleController : MonoBehaviour
     {
         get { return battleGroup; }
     }
+
+    bool mRevived;
+    public bool IsRevived
+    {
+        set { mRevived = value; }
+        get { return mRevived; }
+    }
+
     //战斗胜利method
     MethodInfo victorMethod = null;
 
@@ -205,7 +213,7 @@ public class BattleController : MonoBehaviour
             }
             if(changeStep == -1 && MirrorEnegyAttr < 0.001)
             {
-                GameEventMgr.Instance.FireEvent<bool>(GameEventList.SetMirrorModeState, false);
+                GameEventMgr.Instance.FireEvent<bool,bool>(GameEventList.SetMirrorModeState, false,true);
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("battle_zhaoyaojing_002"), (int)PB.ImType.PROMPT);
             }
         }
@@ -327,6 +335,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void StartBattle()
     {
+        mRevived = false;
         UIMgr.Instance.CloseUI_(UILoading.ViewName);
         ResourceMgr.Instance.UnloadCachedBundles(false);
         curProcessIndex = 0;
@@ -785,7 +794,7 @@ public class BattleController : MonoBehaviour
 
         MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
 		process.HideFireFocus ();
 
         //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
@@ -916,8 +925,32 @@ public class BattleController : MonoBehaviour
         PhyDazhaoController.Instance.ClearAll();
         process.HideFireFocus();
 
+
+
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
-        instanceParam.passBattleCount = isSuccess ? 3 : curProcessIndex;
+        instanceParam.deadMonsterCount = 0;
+        if (mRevived == false)
+        {
+            List<BattleObject>boList = battleGroup.GetAllUnitList((int)UnitCamp.Player);
+            for (int i = 0; i < boList.Count; ++i)
+            {
+                BattleObject bo = boList[i];
+                if (bo != null)
+                {
+                    if (bo.unit.curLife <= 0 || bo.unit.State == UnitState.Dead)
+                    {
+                        instanceParam.deadMonsterCount++;
+                    }
+                }
+            }
+        }
+        else
+        {
+            //3 means 1 star
+            instanceParam.deadMonsterCount = 3;
+        }
+
+        instanceParam.passBattleCount = isSuccess ? maxProcessIndex : curProcessIndex;
         GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
     } 
     //---------------------------------------------------------------------------------------------
@@ -936,14 +969,17 @@ public class BattleController : MonoBehaviour
             {
                 mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
             }
-            mUIScore.ShowScoreUI(battleSuccess);
-            uiBattle.HideBattleUI();
+
+            int starCount = 0;
             if(battleSuccess)
             {
                 PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
                 GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, scoreInfo.starCount, instanceData.instanceProtoData.id);
+                starCount = scoreInfo.starCount;
             }
-            
+            mUIScore.ShowScoreUI(battleSuccess, starCount);
+            uiBattle.HideBattleUI();
+
             GameDataMgr.Instance.OnBattleOver(battleSuccess);
         }
     }
