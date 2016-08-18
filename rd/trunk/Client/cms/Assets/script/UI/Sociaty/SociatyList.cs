@@ -203,8 +203,8 @@ public class SociatyList : UIBase
             if (i < allianceItemCatch.Count)
             {
                 itemUi = allianceItemCatch[i];
-                itemUi.InitWith(itemData);
                 itemUi.gameObject.SetActive(true);
+                itemUi.InitWith(itemData);
             }
             if(null == itemUi)
             {

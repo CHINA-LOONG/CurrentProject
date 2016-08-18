@@ -218,6 +218,7 @@ public class AllianceUtil {
 		builder.setName(playerAllianceEntity.getName());
 		builder.setBattlePoint(0);
 		builder.setContribution(playerAllianceEntity.getContribution());
+		builder.setTotalContribution(playerAllianceEntity.getTotalContribution());
 		builder.setPostion(playerAllianceEntity.getPostion());
 		builder.setId(playerAllianceEntity.getPlayerId());
 		builder.setPrayCount(playerAllianceEntity.getFatigueCount());

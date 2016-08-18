@@ -992,9 +992,27 @@ public final class Alliance {
      */
     int getContribution();
 
-    // required int32 postion = 5;
+    // required int32 totalContribution = 5;
     /**
-     * <code>required int32 postion = 5;</code>
+     * <code>required int32 totalContribution = 5;</code>
+     *
+     * <pre>
+     *历史贡献值
+     * </pre>
+     */
+    boolean hasTotalContribution();
+    /**
+     * <code>required int32 totalContribution = 5;</code>
+     *
+     * <pre>
+     *历史贡献值
+     * </pre>
+     */
+    int getTotalContribution();
+
+    // required int32 postion = 6;
+    /**
+     * <code>required int32 postion = 6;</code>
      *
      * <pre>
      *职位: 0:普通成员,2:会长,1:副会长
@@ -1002,7 +1020,7 @@ public final class Alliance {
      */
     boolean hasPostion();
     /**
-     * <code>required int32 postion = 5;</code>
+     * <code>required int32 postion = 6;</code>
      *
      * <pre>
      *职位: 0:普通成员,2:会长,1:副会长
@@ -1010,9 +1028,9 @@ public final class Alliance {
      */
     int getPostion();
 
-    // required int32 id = 6;
+    // required int32 id = 7;
     /**
-     * <code>required int32 id = 6;</code>
+     * <code>required int32 id = 7;</code>
      *
      * <pre>
      *唯一ID
@@ -1020,7 +1038,7 @@ public final class Alliance {
      */
     boolean hasId();
     /**
-     * <code>required int32 id = 6;</code>
+     * <code>required int32 id = 7;</code>
      *
      * <pre>
      *唯一ID
@@ -1028,9 +1046,9 @@ public final class Alliance {
      */
     int getId();
 
-    // optional bool sendFatigue = 7;
+    // optional bool sendFatigue = 8;
     /**
-     * <code>optional bool sendFatigue = 7;</code>
+     * <code>optional bool sendFatigue = 8;</code>
      *
      * <pre>
      * 发送体力值
@@ -1038,7 +1056,7 @@ public final class Alliance {
      */
     boolean hasSendFatigue();
     /**
-     * <code>optional bool sendFatigue = 7;</code>
+     * <code>optional bool sendFatigue = 8;</code>
      *
      * <pre>
      * 发送体力值
@@ -1046,9 +1064,9 @@ public final class Alliance {
      */
     boolean getSendFatigue();
 
-    // required int32 loginTime = 8;
+    // required int32 loginTime = 9;
     /**
-     * <code>required int32 loginTime = 8;</code>
+     * <code>required int32 loginTime = 9;</code>
      *
      * <pre>
      * 登陆时间
@@ -1056,7 +1074,7 @@ public final class Alliance {
      */
     boolean hasLoginTime();
     /**
-     * <code>required int32 loginTime = 8;</code>
+     * <code>required int32 loginTime = 9;</code>
      *
      * <pre>
      * 登陆时间
@@ -1064,9 +1082,9 @@ public final class Alliance {
      */
     int getLoginTime();
 
-    // required int32 logoutTime = 9;
+    // required int32 logoutTime = 10;
     /**
-     * <code>required int32 logoutTime = 9;</code>
+     * <code>required int32 logoutTime = 10;</code>
      *
      * <pre>
      * 登出时间
@@ -1074,7 +1092,7 @@ public final class Alliance {
      */
     boolean hasLogoutTime();
     /**
-     * <code>required int32 logoutTime = 9;</code>
+     * <code>required int32 logoutTime = 10;</code>
      *
      * <pre>
      * 登出时间
@@ -1082,9 +1100,9 @@ public final class Alliance {
      */
     int getLogoutTime();
 
-    // optional int32 prayCount = 10;
+    // optional int32 prayCount = 11;
     /**
-     * <code>optional int32 prayCount = 10;</code>
+     * <code>optional int32 prayCount = 11;</code>
      *
      * <pre>
      *祈福次数
@@ -1092,7 +1110,7 @@ public final class Alliance {
      */
     boolean hasPrayCount();
     /**
-     * <code>optional int32 prayCount = 10;</code>
+     * <code>optional int32 prayCount = 11;</code>
      *
      * <pre>
      *祈福次数
@@ -1100,9 +1118,9 @@ public final class Alliance {
      */
     int getPrayCount();
 
-    // optional int32 taskCount = 11;
+    // optional int32 taskCount = 12;
     /**
-     * <code>optional int32 taskCount = 11;</code>
+     * <code>optional int32 taskCount = 12;</code>
      *
      * <pre>
      *任务接取次数
@@ -1110,7 +1128,7 @@ public final class Alliance {
      */
     boolean hasTaskCount();
     /**
-     * <code>optional int32 taskCount = 11;</code>
+     * <code>optional int32 taskCount = 12;</code>
      *
      * <pre>
      *任务接取次数
@@ -1195,36 +1213,41 @@ public final class Alliance {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              postion_ = input.readInt32();
+              totalContribution_ = input.readInt32();
               break;
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              id_ = input.readInt32();
+              postion_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              sendFatigue_ = input.readBool();
+              id_ = input.readInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
-              loginTime_ = input.readInt32();
+              sendFatigue_ = input.readBool();
               break;
             }
             case 72: {
               bitField0_ |= 0x00000100;
-              logoutTime_ = input.readInt32();
+              loginTime_ = input.readInt32();
               break;
             }
             case 80: {
               bitField0_ |= 0x00000200;
-              prayCount_ = input.readInt32();
+              logoutTime_ = input.readInt32();
               break;
             }
             case 88: {
               bitField0_ |= 0x00000400;
+              prayCount_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
               taskCount_ = input.readInt32();
               break;
             }
@@ -1395,21 +1418,45 @@ public final class Alliance {
       return contribution_;
     }
 
-    // required int32 postion = 5;
-    public static final int POSTION_FIELD_NUMBER = 5;
+    // required int32 totalContribution = 5;
+    public static final int TOTALCONTRIBUTION_FIELD_NUMBER = 5;
+    private int totalContribution_;
+    /**
+     * <code>required int32 totalContribution = 5;</code>
+     *
+     * <pre>
+     *历史贡献值
+     * </pre>
+     */
+    public boolean hasTotalContribution() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 totalContribution = 5;</code>
+     *
+     * <pre>
+     *历史贡献值
+     * </pre>
+     */
+    public int getTotalContribution() {
+      return totalContribution_;
+    }
+
+    // required int32 postion = 6;
+    public static final int POSTION_FIELD_NUMBER = 6;
     private int postion_;
     /**
-     * <code>required int32 postion = 5;</code>
+     * <code>required int32 postion = 6;</code>
      *
      * <pre>
      *职位: 0:普通成员,2:会长,1:副会长
      * </pre>
      */
     public boolean hasPostion() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required int32 postion = 5;</code>
+     * <code>required int32 postion = 6;</code>
      *
      * <pre>
      *职位: 0:普通成员,2:会长,1:副会长
@@ -1419,21 +1466,21 @@ public final class Alliance {
       return postion_;
     }
 
-    // required int32 id = 6;
-    public static final int ID_FIELD_NUMBER = 6;
+    // required int32 id = 7;
+    public static final int ID_FIELD_NUMBER = 7;
     private int id_;
     /**
-     * <code>required int32 id = 6;</code>
+     * <code>required int32 id = 7;</code>
      *
      * <pre>
      *唯一ID
      * </pre>
      */
     public boolean hasId() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 id = 6;</code>
+     * <code>required int32 id = 7;</code>
      *
      * <pre>
      *唯一ID
@@ -1443,21 +1490,21 @@ public final class Alliance {
       return id_;
     }
 
-    // optional bool sendFatigue = 7;
-    public static final int SENDFATIGUE_FIELD_NUMBER = 7;
+    // optional bool sendFatigue = 8;
+    public static final int SENDFATIGUE_FIELD_NUMBER = 8;
     private boolean sendFatigue_;
     /**
-     * <code>optional bool sendFatigue = 7;</code>
+     * <code>optional bool sendFatigue = 8;</code>
      *
      * <pre>
      * 发送体力值
      * </pre>
      */
     public boolean hasSendFatigue() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional bool sendFatigue = 7;</code>
+     * <code>optional bool sendFatigue = 8;</code>
      *
      * <pre>
      * 发送体力值
@@ -1467,21 +1514,21 @@ public final class Alliance {
       return sendFatigue_;
     }
 
-    // required int32 loginTime = 8;
-    public static final int LOGINTIME_FIELD_NUMBER = 8;
+    // required int32 loginTime = 9;
+    public static final int LOGINTIME_FIELD_NUMBER = 9;
     private int loginTime_;
     /**
-     * <code>required int32 loginTime = 8;</code>
+     * <code>required int32 loginTime = 9;</code>
      *
      * <pre>
      * 登陆时间
      * </pre>
      */
     public boolean hasLoginTime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>required int32 loginTime = 8;</code>
+     * <code>required int32 loginTime = 9;</code>
      *
      * <pre>
      * 登陆时间
@@ -1491,21 +1538,21 @@ public final class Alliance {
       return loginTime_;
     }
 
-    // required int32 logoutTime = 9;
-    public static final int LOGOUTTIME_FIELD_NUMBER = 9;
+    // required int32 logoutTime = 10;
+    public static final int LOGOUTTIME_FIELD_NUMBER = 10;
     private int logoutTime_;
     /**
-     * <code>required int32 logoutTime = 9;</code>
+     * <code>required int32 logoutTime = 10;</code>
      *
      * <pre>
      * 登出时间
      * </pre>
      */
     public boolean hasLogoutTime() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>required int32 logoutTime = 9;</code>
+     * <code>required int32 logoutTime = 10;</code>
      *
      * <pre>
      * 登出时间
@@ -1515,21 +1562,21 @@ public final class Alliance {
       return logoutTime_;
     }
 
-    // optional int32 prayCount = 10;
-    public static final int PRAYCOUNT_FIELD_NUMBER = 10;
+    // optional int32 prayCount = 11;
+    public static final int PRAYCOUNT_FIELD_NUMBER = 11;
     private int prayCount_;
     /**
-     * <code>optional int32 prayCount = 10;</code>
+     * <code>optional int32 prayCount = 11;</code>
      *
      * <pre>
      *祈福次数
      * </pre>
      */
     public boolean hasPrayCount() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional int32 prayCount = 10;</code>
+     * <code>optional int32 prayCount = 11;</code>
      *
      * <pre>
      *祈福次数
@@ -1539,21 +1586,21 @@ public final class Alliance {
       return prayCount_;
     }
 
-    // optional int32 taskCount = 11;
-    public static final int TASKCOUNT_FIELD_NUMBER = 11;
+    // optional int32 taskCount = 12;
+    public static final int TASKCOUNT_FIELD_NUMBER = 12;
     private int taskCount_;
     /**
-     * <code>optional int32 taskCount = 11;</code>
+     * <code>optional int32 taskCount = 12;</code>
      *
      * <pre>
      *任务接取次数
      * </pre>
      */
     public boolean hasTaskCount() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>optional int32 taskCount = 11;</code>
+     * <code>optional int32 taskCount = 12;</code>
      *
      * <pre>
      *任务接取次数
@@ -1568,6 +1615,7 @@ public final class Alliance {
       name_ = "";
       battlePoint_ = 0;
       contribution_ = 0;
+      totalContribution_ = 0;
       postion_ = 0;
       id_ = 0;
       sendFatigue_ = false;
@@ -1594,6 +1642,10 @@ public final class Alliance {
         return false;
       }
       if (!hasContribution()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTotalContribution()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1633,25 +1685,28 @@ public final class Alliance {
         output.writeInt32(4, contribution_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, postion_);
+        output.writeInt32(5, totalContribution_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, id_);
+        output.writeInt32(6, postion_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBool(7, sendFatigue_);
+        output.writeInt32(7, id_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, loginTime_);
+        output.writeBool(8, sendFatigue_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, logoutTime_);
+        output.writeInt32(9, loginTime_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, prayCount_);
+        output.writeInt32(10, logoutTime_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, taskCount_);
+        output.writeInt32(11, prayCount_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt32(12, taskCount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1680,31 +1735,35 @@ public final class Alliance {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, postion_);
+          .computeInt32Size(5, totalContribution_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, id_);
+          .computeInt32Size(6, postion_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, sendFatigue_);
+          .computeInt32Size(7, id_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, loginTime_);
+          .computeBoolSize(8, sendFatigue_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, logoutTime_);
+          .computeInt32Size(9, loginTime_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, prayCount_);
+          .computeInt32Size(10, logoutTime_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, taskCount_);
+          .computeInt32Size(11, prayCount_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, taskCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1834,20 +1893,22 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00000004);
         contribution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        postion_ = 0;
+        totalContribution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        id_ = 0;
+        postion_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        sendFatigue_ = false;
+        id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        loginTime_ = 0;
+        sendFatigue_ = false;
         bitField0_ = (bitField0_ & ~0x00000080);
-        logoutTime_ = 0;
+        loginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        prayCount_ = 0;
+        logoutTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        taskCount_ = 0;
+        prayCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        taskCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -1895,29 +1956,33 @@ public final class Alliance {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.postion_ = postion_;
+        result.totalContribution_ = totalContribution_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.id_ = id_;
+        result.postion_ = postion_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.sendFatigue_ = sendFatigue_;
+        result.id_ = id_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.loginTime_ = loginTime_;
+        result.sendFatigue_ = sendFatigue_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.logoutTime_ = logoutTime_;
+        result.loginTime_ = loginTime_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.prayCount_ = prayCount_;
+        result.logoutTime_ = logoutTime_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
+        }
+        result.prayCount_ = prayCount_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
         }
         result.taskCount_ = taskCount_;
         result.bitField0_ = to_bitField0_;
@@ -1949,6 +2014,9 @@ public final class Alliance {
         }
         if (other.hasContribution()) {
           setContribution(other.getContribution());
+        }
+        if (other.hasTotalContribution()) {
+          setTotalContribution(other.getTotalContribution());
         }
         if (other.hasPostion()) {
           setPostion(other.getPostion());
@@ -1989,6 +2057,10 @@ public final class Alliance {
           return false;
         }
         if (!hasContribution()) {
+          
+          return false;
+        }
+        if (!hasTotalContribution()) {
           
           return false;
         }
@@ -2275,20 +2347,69 @@ public final class Alliance {
         return this;
       }
 
-      // required int32 postion = 5;
+      // required int32 totalContribution = 5;
+      private int totalContribution_ ;
+      /**
+       * <code>required int32 totalContribution = 5;</code>
+       *
+       * <pre>
+       *历史贡献值
+       * </pre>
+       */
+      public boolean hasTotalContribution() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 totalContribution = 5;</code>
+       *
+       * <pre>
+       *历史贡献值
+       * </pre>
+       */
+      public int getTotalContribution() {
+        return totalContribution_;
+      }
+      /**
+       * <code>required int32 totalContribution = 5;</code>
+       *
+       * <pre>
+       *历史贡献值
+       * </pre>
+       */
+      public Builder setTotalContribution(int value) {
+        bitField0_ |= 0x00000010;
+        totalContribution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 totalContribution = 5;</code>
+       *
+       * <pre>
+       *历史贡献值
+       * </pre>
+       */
+      public Builder clearTotalContribution() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        totalContribution_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 postion = 6;
       private int postion_ ;
       /**
-       * <code>required int32 postion = 5;</code>
+       * <code>required int32 postion = 6;</code>
        *
        * <pre>
        *职位: 0:普通成员,2:会长,1:副会长
        * </pre>
        */
       public boolean hasPostion() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required int32 postion = 5;</code>
+       * <code>required int32 postion = 6;</code>
        *
        * <pre>
        *职位: 0:普通成员,2:会长,1:副会长
@@ -2298,46 +2419,46 @@ public final class Alliance {
         return postion_;
       }
       /**
-       * <code>required int32 postion = 5;</code>
+       * <code>required int32 postion = 6;</code>
        *
        * <pre>
        *职位: 0:普通成员,2:会长,1:副会长
        * </pre>
        */
       public Builder setPostion(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         postion_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 postion = 5;</code>
+       * <code>required int32 postion = 6;</code>
        *
        * <pre>
        *职位: 0:普通成员,2:会长,1:副会长
        * </pre>
        */
       public Builder clearPostion() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         postion_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 id = 6;
+      // required int32 id = 7;
       private int id_ ;
       /**
-       * <code>required int32 id = 6;</code>
+       * <code>required int32 id = 7;</code>
        *
        * <pre>
        *唯一ID
        * </pre>
        */
       public boolean hasId() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 id = 6;</code>
+       * <code>required int32 id = 7;</code>
        *
        * <pre>
        *唯一ID
@@ -2347,46 +2468,46 @@ public final class Alliance {
         return id_;
       }
       /**
-       * <code>required int32 id = 6;</code>
+       * <code>required int32 id = 7;</code>
        *
        * <pre>
        *唯一ID
        * </pre>
        */
       public Builder setId(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 id = 6;</code>
+       * <code>required int32 id = 7;</code>
        *
        * <pre>
        *唯一ID
        * </pre>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         id_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bool sendFatigue = 7;
+      // optional bool sendFatigue = 8;
       private boolean sendFatigue_ ;
       /**
-       * <code>optional bool sendFatigue = 7;</code>
+       * <code>optional bool sendFatigue = 8;</code>
        *
        * <pre>
        * 发送体力值
        * </pre>
        */
       public boolean hasSendFatigue() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional bool sendFatigue = 7;</code>
+       * <code>optional bool sendFatigue = 8;</code>
        *
        * <pre>
        * 发送体力值
@@ -2396,46 +2517,46 @@ public final class Alliance {
         return sendFatigue_;
       }
       /**
-       * <code>optional bool sendFatigue = 7;</code>
+       * <code>optional bool sendFatigue = 8;</code>
        *
        * <pre>
        * 发送体力值
        * </pre>
        */
       public Builder setSendFatigue(boolean value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         sendFatigue_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool sendFatigue = 7;</code>
+       * <code>optional bool sendFatigue = 8;</code>
        *
        * <pre>
        * 发送体力值
        * </pre>
        */
       public Builder clearSendFatigue() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         sendFatigue_ = false;
         onChanged();
         return this;
       }
 
-      // required int32 loginTime = 8;
+      // required int32 loginTime = 9;
       private int loginTime_ ;
       /**
-       * <code>required int32 loginTime = 8;</code>
+       * <code>required int32 loginTime = 9;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public boolean hasLoginTime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>required int32 loginTime = 8;</code>
+       * <code>required int32 loginTime = 9;</code>
        *
        * <pre>
        * 登陆时间
@@ -2445,46 +2566,46 @@ public final class Alliance {
         return loginTime_;
       }
       /**
-       * <code>required int32 loginTime = 8;</code>
+       * <code>required int32 loginTime = 9;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public Builder setLoginTime(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         loginTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 loginTime = 8;</code>
+       * <code>required int32 loginTime = 9;</code>
        *
        * <pre>
        * 登陆时间
        * </pre>
        */
       public Builder clearLoginTime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         loginTime_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 logoutTime = 9;
+      // required int32 logoutTime = 10;
       private int logoutTime_ ;
       /**
-       * <code>required int32 logoutTime = 9;</code>
+       * <code>required int32 logoutTime = 10;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public boolean hasLogoutTime() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>required int32 logoutTime = 9;</code>
+       * <code>required int32 logoutTime = 10;</code>
        *
        * <pre>
        * 登出时间
@@ -2494,46 +2615,46 @@ public final class Alliance {
         return logoutTime_;
       }
       /**
-       * <code>required int32 logoutTime = 9;</code>
+       * <code>required int32 logoutTime = 10;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public Builder setLogoutTime(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         logoutTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 logoutTime = 9;</code>
+       * <code>required int32 logoutTime = 10;</code>
        *
        * <pre>
        * 登出时间
        * </pre>
        */
       public Builder clearLogoutTime() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         logoutTime_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 prayCount = 10;
+      // optional int32 prayCount = 11;
       private int prayCount_ ;
       /**
-       * <code>optional int32 prayCount = 10;</code>
+       * <code>optional int32 prayCount = 11;</code>
        *
        * <pre>
        *祈福次数
        * </pre>
        */
       public boolean hasPrayCount() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional int32 prayCount = 10;</code>
+       * <code>optional int32 prayCount = 11;</code>
        *
        * <pre>
        *祈福次数
@@ -2543,46 +2664,46 @@ public final class Alliance {
         return prayCount_;
       }
       /**
-       * <code>optional int32 prayCount = 10;</code>
+       * <code>optional int32 prayCount = 11;</code>
        *
        * <pre>
        *祈福次数
        * </pre>
        */
       public Builder setPrayCount(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         prayCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 prayCount = 10;</code>
+       * <code>optional int32 prayCount = 11;</code>
        *
        * <pre>
        *祈福次数
        * </pre>
        */
       public Builder clearPrayCount() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         prayCount_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 taskCount = 11;
+      // optional int32 taskCount = 12;
       private int taskCount_ ;
       /**
-       * <code>optional int32 taskCount = 11;</code>
+       * <code>optional int32 taskCount = 12;</code>
        *
        * <pre>
        *任务接取次数
        * </pre>
        */
       public boolean hasTaskCount() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>optional int32 taskCount = 11;</code>
+       * <code>optional int32 taskCount = 12;</code>
        *
        * <pre>
        *任务接取次数
@@ -2592,27 +2713,27 @@ public final class Alliance {
         return taskCount_;
       }
       /**
-       * <code>optional int32 taskCount = 11;</code>
+       * <code>optional int32 taskCount = 12;</code>
        *
        * <pre>
        *任务接取次数
        * </pre>
        */
       public Builder setTaskCount(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         taskCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 taskCount = 11;</code>
+       * <code>optional int32 taskCount = 12;</code>
        *
        * <pre>
        *任务接取次数
        * </pre>
        */
       public Builder clearTaskCount() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         taskCount_ = 0;
         onChanged();
         return this;
@@ -22301,6 +22422,26 @@ public final class Alliance {
 
   public interface HSAlliancePrayRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 selfContribution = 1;
+    /**
+     * <code>required int32 selfContribution = 1;</code>
+     */
+    boolean hasSelfContribution();
+    /**
+     * <code>required int32 selfContribution = 1;</code>
+     */
+    int getSelfContribution();
+
+    // required int32 allianceContribution = 2;
+    /**
+     * <code>required int32 allianceContribution = 2;</code>
+     */
+    boolean hasAllianceContribution();
+    /**
+     * <code>required int32 allianceContribution = 2;</code>
+     */
+    int getAllianceContribution();
   }
   /**
    * Protobuf type {@code HSAlliancePrayRet}
@@ -22335,6 +22476,7 @@ public final class Alliance {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -22350,6 +22492,16 @@ public final class Alliance {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              selfContribution_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              allianceContribution_ = input.readInt32();
               break;
             }
           }
@@ -22391,13 +22543,56 @@ public final class Alliance {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required int32 selfContribution = 1;
+    public static final int SELFCONTRIBUTION_FIELD_NUMBER = 1;
+    private int selfContribution_;
+    /**
+     * <code>required int32 selfContribution = 1;</code>
+     */
+    public boolean hasSelfContribution() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 selfContribution = 1;</code>
+     */
+    public int getSelfContribution() {
+      return selfContribution_;
+    }
+
+    // required int32 allianceContribution = 2;
+    public static final int ALLIANCECONTRIBUTION_FIELD_NUMBER = 2;
+    private int allianceContribution_;
+    /**
+     * <code>required int32 allianceContribution = 2;</code>
+     */
+    public boolean hasAllianceContribution() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 allianceContribution = 2;</code>
+     */
+    public int getAllianceContribution() {
+      return allianceContribution_;
+    }
+
     private void initFields() {
+      selfContribution_ = 0;
+      allianceContribution_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasSelfContribution()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAllianceContribution()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -22405,6 +22600,12 @@ public final class Alliance {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, selfContribution_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, allianceContribution_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -22414,6 +22615,14 @@ public final class Alliance {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, selfContribution_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, allianceContribution_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -22530,6 +22739,10 @@ public final class Alliance {
 
       public Builder clear() {
         super.clear();
+        selfContribution_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        allianceContribution_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -22556,6 +22769,17 @@ public final class Alliance {
 
       public com.hawk.game.protocol.Alliance.HSAlliancePrayRet buildPartial() {
         com.hawk.game.protocol.Alliance.HSAlliancePrayRet result = new com.hawk.game.protocol.Alliance.HSAlliancePrayRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.selfContribution_ = selfContribution_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.allianceContribution_ = allianceContribution_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -22571,11 +22795,25 @@ public final class Alliance {
 
       public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAlliancePrayRet other) {
         if (other == com.hawk.game.protocol.Alliance.HSAlliancePrayRet.getDefaultInstance()) return this;
+        if (other.hasSelfContribution()) {
+          setSelfContribution(other.getSelfContribution());
+        }
+        if (other.hasAllianceContribution()) {
+          setAllianceContribution(other.getAllianceContribution());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasSelfContribution()) {
+          
+          return false;
+        }
+        if (!hasAllianceContribution()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -22594,6 +22832,73 @@ public final class Alliance {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 selfContribution = 1;
+      private int selfContribution_ ;
+      /**
+       * <code>required int32 selfContribution = 1;</code>
+       */
+      public boolean hasSelfContribution() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 selfContribution = 1;</code>
+       */
+      public int getSelfContribution() {
+        return selfContribution_;
+      }
+      /**
+       * <code>required int32 selfContribution = 1;</code>
+       */
+      public Builder setSelfContribution(int value) {
+        bitField0_ |= 0x00000001;
+        selfContribution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 selfContribution = 1;</code>
+       */
+      public Builder clearSelfContribution() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        selfContribution_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 allianceContribution = 2;
+      private int allianceContribution_ ;
+      /**
+       * <code>required int32 allianceContribution = 2;</code>
+       */
+      public boolean hasAllianceContribution() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 allianceContribution = 2;</code>
+       */
+      public int getAllianceContribution() {
+        return allianceContribution_;
+      }
+      /**
+       * <code>required int32 allianceContribution = 2;</code>
+       */
+      public Builder setAllianceContribution(int value) {
+        bitField0_ |= 0x00000002;
+        allianceContribution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 allianceContribution = 2;</code>
+       */
+      public Builder clearAllianceContribution() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        allianceContribution_ = 0;
+        onChanged();
         return this;
       }
 
@@ -42726,110 +43031,112 @@ public final class Alliance {
     java.lang.String[] descriptorData = {
       "\n\027Protocol/Alliance.proto\"V\n\rAllianceApp" +
       "ly\022\022\n\nallianceId\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005" +
-      "\022\020\n\010nickname\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\327\001\n\016Al" +
+      "\022\020\n\010nickname\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\362\001\n\016Al" +
       "lianceMember\022\r\n\005level\030\001 \002(\005\022\014\n\004name\030\002 \002(" +
       "\t\022\023\n\013battlePoint\030\003 \002(\005\022\024\n\014contribution\030\004" +
-      " \002(\005\022\017\n\007postion\030\005 \002(\005\022\n\n\002id\030\006 \002(\005\022\023\n\013sen" +
-      "dFatigue\030\007 \001(\010\022\021\n\tloginTime\030\010 \002(\005\022\022\n\nlog" +
-      "outTime\030\t \002(\005\022\021\n\tprayCount\030\n \001(\005\022\021\n\ttask" +
-      "Count\030\013 \001(\005\"\274\002\n\014AllianceInfo\022\n\n\002id\030\001 \002(\005" +
-      "\022\r\n\005level\030\002 \002(\005\022\024\n\014contribution\030\003 \002(\005\022\031\n",
-      "\021contributionToday\030\004 \002(\005\022\030\n\020contribution" +
-      "3day\030\005 \002(\005\022\022\n\ncurrentPop\030\006 \002(\005\022\016\n\006maxPop" +
-      "\030\007 \002(\005\022\020\n\010memLevel\030\010 \002(\005\022\020\n\010expLevel\030\t \002" +
-      "(\005\022\021\n\tcoinLevel\030\n \002(\005\022\016\n\006notice\030\013 \002(\t\022\014\n" +
-      "\004name\030\014 \002(\t\022\020\n\010minLevel\030\r \002(\005\022\022\n\nautoAcc" +
-      "ept\030\016 \002(\010\022\021\n\tcaptainId\030\017 \002(\005\022\024\n\014captaion" +
-      "Name\030\020 \002(\t\"\351\001\n\022AllianceSimpleInfo\022\n\n\002id\030" +
-      "\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\030\n\020contribution3day" +
-      "\030\003 \002(\005\022\022\n\ncurrentPop\030\004 \002(\005\022\016\n\006maxPop\030\005 \002" +
-      "(\005\022\016\n\006notice\030\006 \002(\t\022\014\n\004name\030\007 \002(\t\022\020\n\010minL",
-      "evel\030\010 \002(\005\022\021\n\tcaptainId\030\t \002(\005\022\024\n\014captaio" +
-      "nName\030\n \002(\t\022\r\n\005apply\030\013 \002(\010\022\022\n\nautoAccept" +
-      "\030\014 \002(\010\"L\n\020AllianceTaskInfo\022\020\n\010itemTask\030\001" +
-      " \003(\005\022\020\n\010coinTask\030\002 \003(\005\022\024\n\014instanceTask\030\003" +
-      " \003(\005\"k\n\025AllianceTeamQuestInfo\022\017\n\007questId" +
-      "\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005\022\020\n\010nickname\030\003 \001" +
-      "(\t\022\r\n\005level\030\004 \001(\005\022\016\n\006avatar\030\005 \001(\005\"k\n\023All" +
-      "ianceTeamMemInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010ni" +
-      "ckname\030\002 \001(\t\022\r\n\005level\030\003 \002(\005\022\016\n\006avatar\030\004 " +
-      "\002(\005\022\021\n\tisCaptain\030\005 \002(\010\"x\n\020AllianceTeamIn",
-      "fo\022\021\n\tstartTime\030\001 \002(\005\022%\n\007members\030\002 \003(\0132\024" +
-      ".AllianceTeamMemInfo\022*\n\nquestInfos\030\003 \003(\013" +
-      "2\026.AllianceTeamQuestInfo\"0\n\020HSAllianceCr" +
-      "eate\022\014\n\004name\030\001 \002(\t\022\016\n\006notice\030\002 \002(\t\"(\n\023HS" +
-      "AllianceCreateRet\022\021\n\tallianeId\030\001 \002(\005\"!\n\016" +
-      "HSAllianceList\022\017\n\007reqPage\030\001 \002(\005\"Q\n\021HSAll" +
-      "ianceListRet\022\021\n\ttotalPage\030\001 \002(\005\022)\n\014allia" +
-      "nceList\030\002 \003(\0132\023.AllianceSimpleInfo\"$\n\020HS" +
-      "AllianceSearch\022\020\n\010nameOrId\030\001 \002(\t\":\n\023HSAl" +
-      "lianceSearchRet\022#\n\006result\030\001 \003(\0132\023.Allian",
-      "ceSimpleInfo\"\"\n\020HSAllianceNotice\022\016\n\006noti" +
-      "ce\030\001 \002(\t\"\025\n\023HSAllianceNoticeRet\"%\n\017HSAll" +
-      "ianceApply\022\022\n\nallianceId\030\001 \002(\005\"(\n\022HSAlli" +
-      "anceApplyRet\022\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAl" +
-      "lianceHanleApply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006ac" +
-      "cept\030\002 \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027HSAllianceH" +
-      "anleApplyRet\"+\n\025HSAllianceCancleApply\022\022\n" +
-      "\nallianceId\030\001 \002(\005\"\032\n\030HSAllianceCancleApp" +
-      "lyRet\"8\n\023HSAllianceChangePos\022\020\n\010playerId" +
-      "\030\001 \002(\005\022\017\n\007postion\030\002 \002(\005\"\030\n\026HSAllianceCha",
-      "ngePosRet\"\021\n\017HSAllianceLeave\"\024\n\022HSAllian" +
-      "ceLeaveRet\")\n\025HSAllianceChangeOwner\022\020\n\010t" +
-      "argetId\030\001 \002(\005\"\032\n\030HSAllianceChangeOwnerRe" +
-      "t\"%\n\021HSAllianceMemKick\022\020\n\010targetId\030\001 \002(\005" +
-      "\"\026\n\024HSAllianceMemKickRet\"!\n\021HSAllianceLe" +
-      "velUp\022\014\n\004type\030\001 \002(\005\"\026\n\024HSAllianceLevelUp" +
-      "Ret\"#\n\016HSAlliancePray\022\021\n\tprayIndex\030\001 \002(\005" +
-      "\"\023\n\021HSAlliancePrayRet\"7\n\021HSAllianceSetti" +
-      "on\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\026" +
-      "\n\024HSAllianceSettionRet\")\n\025HSAllianceFati",
-      "gueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceF" +
-      "atigueGiveRet\"\017\n\rHSAllianceSyn\"\022\n\020HSAlli" +
-      "anceSynRet\"\020\n\016HSAllianceData\"8\n\021HSAllian" +
-      "ceDataRet\022#\n\014allianceData\030\001 \002(\0132\r.Allian" +
-      "ceInfo\"\026\n\024HSAllianceSettingSyn\"=\n\027HSAlli" +
-      "anceSettingSynRet\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010a" +
-      "utoJoin\030\002 \002(\010\"\024\n\022HSAllianceSelfData\"V\n\025H" +
-      "SAllianceSelfDataRet\022!\n\010selfData\030\001 \002(\0132\017" +
-      ".AllianceMember\022\032\n\022contributionReward\030\002 " +
-      "\002(\005\"\023\n\021HSAllianceMembers\";\n\024HSAllianceMe",
-      "mbersRet\022#\n\nmemberList\030\001 \003(\0132\017.AllianceM" +
-      "ember\"\025\n\023HSAllianceApplyList\"7\n\026HSAllian" +
-      "ceApplyListRet\022\035\n\005apply\030\001 \003(\0132\016.Alliance" +
-      "Apply\"\030\n\026HSAllianceContribution\"f\n\031HSAll" +
-      "ianceContributionRet\022\024\n\014contribution\030\001 \002" +
-      "(\005\022\031\n\021contributionToday\030\002 \002(\005\022\030\n\020contrib" +
-      "ution3day\030\003 \002(\005\"\'\n\026HSAllianceContriRewar" +
-      "d\022\r\n\005index\030\001 \002(\005\"\033\n\031HSAllianceContriRewa" +
-      "rdRet\"6\n\025HSAllianceApplyNotify\022\035\n\005apply\030" +
-      "\001 \002(\0132\016.AllianceApply\">\n\033HSAllianceRemov",
-      "eApplyNotify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005clear\030" +
-      "\002 \002(\010\"(\n\026HSAllianceNoticeNotify\022\016\n\006notic" +
-      "e\030\001 \002(\t\"8\n\021HSMemberAddNotify\022#\n\nmemberDa" +
-      "ta\030\001 \003(\0132\017.AllianceMember\"(\n\024HSMemberRem" +
-      "oveNotify\022\020\n\010playerId\030\001 \002(\005\";\n\027HSMemberP" +
-      "osChangeNotify\022\020\n\010playerId\030\001 \002(\005\022\016\n\006newP" +
-      "os\030\002 \002(\005\"&\n\023HSChangeOwnerNotify\022\017\n\007owner" +
-      "Id\030\001 \002(\005\"2\n\023HSLevelChangeNotify\022\014\n\004type\030" +
-      "\001 \002(\005\022\r\n\005level\030\002 \002(\005\"*\n\024HSAllianceJoinNo" +
-      "tify\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025HSAllianceLe",
-      "aveNotify\"&\n\024HSAllianceCreateTeam\022\016\n\006tas" +
-      "kId\030\001 \002(\005\">\n\027HSAllianceCreateTeamRet\022#\n\010" +
-      "taskInfo\030\001 \002(\0132\021.AllianceTaskInfo\"$\n\022HSA" +
-      "llianceJoinTeam\022\016\n\006teamId\030\001 \002(\005\"\027\n\025HSAll" +
-      "ianceJoinTeamRet\"\'\n\024HSAllianceTaskAccept" +
-      "\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskAccep" +
-      "tRet\"\'\n\024HSAllianceTaskCommit\022\017\n\007questId\030" +
-      "\001 \002(\005\"\031\n\027HSAllianceTaskCommitRet\"\026\n\024HSAl" +
-      "lianceTaskReward\"\031\n\027HSAllianceTaskReward" +
-      "Ret\"\030\n\026HSAllianceDissolveTeam\"\033\n\031HSAllia",
-      "nceDissolveTeamRet\"\024\n\022HSAllianceTeamList" +
-      "\"A\n\025HSAllianceTeamListRet\022(\n\rallianceTea" +
-      "ms\030\001 \003(\0132\021.AllianceTeamInfo\"\024\n\022HSAllianc" +
-      "eSelfTeam\"<\n\025HSAllianceSelfTeamRet\022#\n\010se" +
-      "lfTeam\030\001 \002(\0132\021.AllianceTeamInfoB\030\n\026com.h" +
-      "awk.game.protocol"
+      " \002(\005\022\031\n\021totalContribution\030\005 \002(\005\022\017\n\007posti" +
+      "on\030\006 \002(\005\022\n\n\002id\030\007 \002(\005\022\023\n\013sendFatigue\030\010 \001(" +
+      "\010\022\021\n\tloginTime\030\t \002(\005\022\022\n\nlogoutTime\030\n \002(\005" +
+      "\022\021\n\tprayCount\030\013 \001(\005\022\021\n\ttaskCount\030\014 \001(\005\"\274" +
+      "\002\n\014AllianceInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002",
+      "(\005\022\024\n\014contribution\030\003 \002(\005\022\031\n\021contribution" +
+      "Today\030\004 \002(\005\022\030\n\020contribution3day\030\005 \002(\005\022\022\n" +
+      "\ncurrentPop\030\006 \002(\005\022\016\n\006maxPop\030\007 \002(\005\022\020\n\010mem" +
+      "Level\030\010 \002(\005\022\020\n\010expLevel\030\t \002(\005\022\021\n\tcoinLev" +
+      "el\030\n \002(\005\022\016\n\006notice\030\013 \002(\t\022\014\n\004name\030\014 \002(\t\022\020" +
+      "\n\010minLevel\030\r \002(\005\022\022\n\nautoAccept\030\016 \002(\010\022\021\n\t" +
+      "captainId\030\017 \002(\005\022\024\n\014captaionName\030\020 \002(\t\"\351\001" +
+      "\n\022AllianceSimpleInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005leve" +
+      "l\030\002 \002(\005\022\030\n\020contribution3day\030\003 \002(\005\022\022\n\ncur" +
+      "rentPop\030\004 \002(\005\022\016\n\006maxPop\030\005 \002(\005\022\016\n\006notice\030",
+      "\006 \002(\t\022\014\n\004name\030\007 \002(\t\022\020\n\010minLevel\030\010 \002(\005\022\021\n" +
+      "\tcaptainId\030\t \002(\005\022\024\n\014captaionName\030\n \002(\t\022\r" +
+      "\n\005apply\030\013 \002(\010\022\022\n\nautoAccept\030\014 \002(\010\"L\n\020All" +
+      "ianceTaskInfo\022\020\n\010itemTask\030\001 \003(\005\022\020\n\010coinT" +
+      "ask\030\002 \003(\005\022\024\n\014instanceTask\030\003 \003(\005\"k\n\025Allia" +
+      "nceTeamQuestInfo\022\017\n\007questId\030\001 \002(\005\022\020\n\010pla" +
+      "yerId\030\002 \002(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004" +
+      " \001(\005\022\016\n\006avatar\030\005 \001(\005\"k\n\023AllianceTeamMemI" +
+      "nfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030\002 \001(\t\022" +
+      "\r\n\005level\030\003 \002(\005\022\016\n\006avatar\030\004 \002(\005\022\021\n\tisCapt",
+      "ain\030\005 \002(\010\"x\n\020AllianceTeamInfo\022\021\n\tstartTi" +
+      "me\030\001 \002(\005\022%\n\007members\030\002 \003(\0132\024.AllianceTeam" +
+      "MemInfo\022*\n\nquestInfos\030\003 \003(\0132\026.AllianceTe" +
+      "amQuestInfo\"0\n\020HSAllianceCreate\022\014\n\004name\030" +
+      "\001 \002(\t\022\016\n\006notice\030\002 \002(\t\"(\n\023HSAllianceCreat" +
+      "eRet\022\021\n\tallianeId\030\001 \002(\005\"!\n\016HSAllianceLis" +
+      "t\022\017\n\007reqPage\030\001 \002(\005\"Q\n\021HSAllianceListRet\022" +
+      "\021\n\ttotalPage\030\001 \002(\005\022)\n\014allianceList\030\002 \003(\013" +
+      "2\023.AllianceSimpleInfo\"$\n\020HSAllianceSearc" +
+      "h\022\020\n\010nameOrId\030\001 \002(\t\":\n\023HSAllianceSearchR",
+      "et\022#\n\006result\030\001 \003(\0132\023.AllianceSimpleInfo\"" +
+      "\"\n\020HSAllianceNotice\022\016\n\006notice\030\001 \002(\t\"\025\n\023H" +
+      "SAllianceNoticeRet\"%\n\017HSAllianceApply\022\022\n" +
+      "\nallianceId\030\001 \002(\005\"(\n\022HSAllianceApplyRet\022" +
+      "\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAllianceHanleAp" +
+      "ply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006accept\030\002 \002(\010\022\r\n" +
+      "\005isAll\030\003 \002(\010\"\031\n\027HSAllianceHanleApplyRet\"" +
+      "+\n\025HSAllianceCancleApply\022\022\n\nallianceId\030\001" +
+      " \002(\005\"\032\n\030HSAllianceCancleApplyRet\"8\n\023HSAl" +
+      "lianceChangePos\022\020\n\010playerId\030\001 \002(\005\022\017\n\007pos",
+      "tion\030\002 \002(\005\"\030\n\026HSAllianceChangePosRet\"\021\n\017" +
+      "HSAllianceLeave\"\024\n\022HSAllianceLeaveRet\")\n" +
+      "\025HSAllianceChangeOwner\022\020\n\010targetId\030\001 \002(\005" +
+      "\"\032\n\030HSAllianceChangeOwnerRet\"%\n\021HSAllian" +
+      "ceMemKick\022\020\n\010targetId\030\001 \002(\005\"\026\n\024HSAllianc" +
+      "eMemKickRet\"!\n\021HSAllianceLevelUp\022\014\n\004type" +
+      "\030\001 \002(\005\"\026\n\024HSAllianceLevelUpRet\"#\n\016HSAlli" +
+      "ancePray\022\021\n\tprayIndex\030\001 \002(\005\"K\n\021HSAllianc" +
+      "ePrayRet\022\030\n\020selfContribution\030\001 \002(\005\022\034\n\024al" +
+      "lianceContribution\030\002 \002(\005\"7\n\021HSAllianceSe",
+      "ttion\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(" +
+      "\010\"\026\n\024HSAllianceSettionRet\")\n\025HSAllianceF" +
+      "atigueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllian" +
+      "ceFatigueGiveRet\"\017\n\rHSAllianceSyn\"\022\n\020HSA" +
+      "llianceSynRet\"\020\n\016HSAllianceData\"8\n\021HSAll" +
+      "ianceDataRet\022#\n\014allianceData\030\001 \002(\0132\r.All" +
+      "ianceInfo\"\026\n\024HSAllianceSettingSyn\"=\n\027HSA" +
+      "llianceSettingSynRet\022\020\n\010minLevel\030\001 \002(\005\022\020" +
+      "\n\010autoJoin\030\002 \002(\010\"\024\n\022HSAllianceSelfData\"V" +
+      "\n\025HSAllianceSelfDataRet\022!\n\010selfData\030\001 \002(",
+      "\0132\017.AllianceMember\022\032\n\022contributionReward" +
+      "\030\002 \002(\005\"\023\n\021HSAllianceMembers\";\n\024HSAllianc" +
+      "eMembersRet\022#\n\nmemberList\030\001 \003(\0132\017.Allian" +
+      "ceMember\"\025\n\023HSAllianceApplyList\"7\n\026HSAll" +
+      "ianceApplyListRet\022\035\n\005apply\030\001 \003(\0132\016.Allia" +
+      "nceApply\"\030\n\026HSAllianceContribution\"f\n\031HS" +
+      "AllianceContributionRet\022\024\n\014contribution\030" +
+      "\001 \002(\005\022\031\n\021contributionToday\030\002 \002(\005\022\030\n\020cont" +
+      "ribution3day\030\003 \002(\005\"\'\n\026HSAllianceContriRe" +
+      "ward\022\r\n\005index\030\001 \002(\005\"\033\n\031HSAllianceContriR",
+      "ewardRet\"6\n\025HSAllianceApplyNotify\022\035\n\005app" +
+      "ly\030\001 \002(\0132\016.AllianceApply\">\n\033HSAllianceRe" +
+      "moveApplyNotify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005cle" +
+      "ar\030\002 \002(\010\"(\n\026HSAllianceNoticeNotify\022\016\n\006no" +
+      "tice\030\001 \002(\t\"8\n\021HSMemberAddNotify\022#\n\nmembe" +
+      "rData\030\001 \003(\0132\017.AllianceMember\"(\n\024HSMember" +
+      "RemoveNotify\022\020\n\010playerId\030\001 \002(\005\";\n\027HSMemb" +
+      "erPosChangeNotify\022\020\n\010playerId\030\001 \002(\005\022\016\n\006n" +
+      "ewPos\030\002 \002(\005\"&\n\023HSChangeOwnerNotify\022\017\n\007ow" +
+      "nerId\030\001 \002(\005\"2\n\023HSLevelChangeNotify\022\014\n\004ty",
+      "pe\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"*\n\024HSAllianceJoi" +
+      "nNotify\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025HSAllianc" +
+      "eLeaveNotify\"&\n\024HSAllianceCreateTeam\022\016\n\006" +
+      "taskId\030\001 \002(\005\">\n\027HSAllianceCreateTeamRet\022" +
+      "#\n\010taskInfo\030\001 \002(\0132\021.AllianceTaskInfo\"$\n\022" +
+      "HSAllianceJoinTeam\022\016\n\006teamId\030\001 \002(\005\"\027\n\025HS" +
+      "AllianceJoinTeamRet\"\'\n\024HSAllianceTaskAcc" +
+      "ept\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskAc" +
+      "ceptRet\"\'\n\024HSAllianceTaskCommit\022\017\n\007quest" +
+      "Id\030\001 \002(\005\"\031\n\027HSAllianceTaskCommitRet\"\026\n\024H",
+      "SAllianceTaskReward\"\031\n\027HSAllianceTaskRew" +
+      "ardRet\"\030\n\026HSAllianceDissolveTeam\"\033\n\031HSAl" +
+      "lianceDissolveTeamRet\"\024\n\022HSAllianceTeamL" +
+      "ist\"A\n\025HSAllianceTeamListRet\022(\n\ralliance" +
+      "Teams\030\001 \003(\0132\021.AllianceTeamInfo\"\024\n\022HSAlli" +
+      "anceSelfTeam\"<\n\025HSAllianceSelfTeamRet\022#\n" +
+      "\010selfTeam\030\001 \002(\0132\021.AllianceTeamInfoB\030\n\026co" +
+      "m.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -42847,7 +43154,7 @@ public final class Alliance {
           internal_static_AllianceMember_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceMember_descriptor,
-              new java.lang.String[] { "Level", "Name", "BattlePoint", "Contribution", "Postion", "Id", "SendFatigue", "LoginTime", "LogoutTime", "PrayCount", "TaskCount", });
+              new java.lang.String[] { "Level", "Name", "BattlePoint", "Contribution", "TotalContribution", "Postion", "Id", "SendFatigue", "LoginTime", "LogoutTime", "PrayCount", "TaskCount", });
           internal_static_AllianceInfo_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_AllianceInfo_fieldAccessorTable = new
@@ -43039,7 +43346,7 @@ public final class Alliance {
           internal_static_HSAlliancePrayRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAlliancePrayRet_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "SelfContribution", "AllianceContribution", });
           internal_static_HSAllianceSettion_descriptor =
             getDescriptor().getMessageTypes().get(34);
           internal_static_HSAllianceSettion_fieldAccessorTable = new

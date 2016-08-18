@@ -147,13 +147,18 @@ public class AllianceInfoItem : MonoBehaviour
                 case (int)PB.allianceError.ALLIANCE_FRIZEN_TIME:
                     UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_037"), (int)PB.ImType.PROMPT);
                     break;
+                case (int)PB.allianceError.ALLIANCE_MAX_APPLY:
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_055"), (int)PB.ImType.PROMPT);
+                    break;
             }
             return;
         }
 
         itemInfoData.apply = true;
 
-        if(itemInfoData.autoAccept)
+        PB.HSAllianceApplyRet msgRet = msg.GetProtocolBody<PB.HSAllianceApplyRet>();
+
+        if (msgRet.allianceId > 0)
         {
             GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = itemInfoData.id;
             UIMgr.Instance.CloseUI_(SociatyList.ViewName);

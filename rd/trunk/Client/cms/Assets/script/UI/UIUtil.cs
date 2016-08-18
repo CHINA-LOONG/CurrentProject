@@ -242,13 +242,21 @@ public class UIUtil
         return GameDataMgr.Instance.PlayerDataAttr.CheckEquipTypePart(petData.equip, (int)part);
     }
 
-    public static bool CheckPetIsMaxLevel(int level)
+    public static int CheckPetIsMaxLevel(int level)
     {
-        if (level>=GameConfig.MaxMonsterLevel||level>=GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        //版本最大等级
+        if (level>=GameConfig.MaxMonsterLevel)
         {
-            return true;
+            return 1;
         }
-        return false;
+
+        //达到玩家等级
+        if (level >= GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        {
+            return 2;
+        }
+
+        return 0;
     }
 
     public static bool CheckHaveNewMail()

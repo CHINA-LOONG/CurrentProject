@@ -18,9 +18,9 @@ public class SociatyContentBase : MonoBehaviour
             case SociatyContenType.Technology:
                 go = ResourceMgr.Instance.LoadAsset("SociatyContentTechnology");
                 break;
-            case SociatyContenType.Log:
-                go = ResourceMgr.Instance.LoadAsset("SociatyContentLog");
-                break;
+           // case SociatyContenType.Log:
+             //   go = ResourceMgr.Instance.LoadAsset("SociatyContentLog");
+            //    break;
             case SociatyContenType.OtherSociaty:
                 go = ResourceMgr.Instance.LoadAsset("SociatyContentOther");
                 break;

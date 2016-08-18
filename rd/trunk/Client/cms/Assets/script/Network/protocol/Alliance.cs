@@ -913,6 +913,20 @@ namespace PB
   {
     public HSAlliancePrayRet() {}
     
+    private int _selfContribution;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"selfContribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int selfContribution
+    {
+      get { return _selfContribution; }
+      set { _selfContribution = value; }
+    }
+    private int _allianceContribution;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"allianceContribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceContribution
+    {
+      get { return _allianceContribution; }
+      set { _allianceContribution = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -47,6 +47,7 @@ public class SociatyApplySetting : UIBase
         titleText.text = StaticDataMgr.Instance.GetTextByID("sociaty_setup");
         applyTypeLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_type");
         levelLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_minlevel");
+        tipsText.text = StaticDataMgr.Instance.GetTextByID("sociaty_tips7");
 
         UIUtil.SetButtonTitle(cancelButton.transform, StaticDataMgr.Instance.GetTextByID("ui_quxiao"));
         UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));

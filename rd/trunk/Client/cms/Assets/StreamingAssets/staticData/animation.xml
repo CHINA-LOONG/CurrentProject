@@ -2808,7 +2808,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="meidusha_state1to2" state="0" action_delay="1">
 			<WpStateList>
-				<!--Wp time="2" name="bossYueguangsenlin18Meidushawp03" state="2"/-->
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp03" state="2"/>
 				<Wp time="2" name="bossYueguangsenlin18Meidushawp04" state="0"/>
 				<Wp time="2" name="bossYueguangsenlin18Meidushawp05" state="0"/>
 			</WpStateList>
@@ -2820,7 +2820,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="meidusha_state1to3" state="0" action_delay="1">
 			<WpStateList>
-				<!--Wp time="2" name="bossYueguangsenlin18Meidushawp02" state="2"/-->
+				<Wp time="2" name="bossYueguangsenlin18Meidushawp02" state="2"/>
 				<Wp time="2" name="bossYueguangsenlin18Meidushawp04" state="0"/>
 				<Wp time="2" name="bossYueguangsenlin18Meidushawp05" state="0"/>
 			</WpStateList>

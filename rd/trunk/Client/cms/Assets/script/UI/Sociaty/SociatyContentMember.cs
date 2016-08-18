@@ -28,6 +28,9 @@ public class SociatyContentMember : SociatyContentBase
         titleTextArray[3].text = StaticDataMgr.Instance.GetTextByID("sociaty_contributionall");
         titleTextArray[4].text = StaticDataMgr.Instance.GetTextByID("sociaty_last");
         titleTextArray[5].text = StaticDataMgr.Instance.GetTextByID("sociaty_songhuo");
+
+        UIUtil.SetButtonTitle(exitSociatyButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_quit"));
+        UIUtil.SetButtonTitle(newApplayButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_newapply"));
     }
 
     void OnEnable()

@@ -376,7 +376,7 @@ monster_record_015,战力下降{0},BP decrease {0}
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
 pet_list_title,宠物,Monsters
 pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
-pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
+pet_tip_full2,到达300将无法继续获得宠物,"Upon reaching 300 monsters, you will no longer be able to receive any more."
 pet_skill_point_not_enough,技能点不足,skill point not enough
 exp_title,信仰之力,Mytho Essence
 exp_monsterlevel,当前等级：LVL,Current：LVL
@@ -591,7 +591,7 @@ sociaty_record_045,数据已过期,Data has expired.
 sociaty_record_046,请先升级科技,Please level up your guild tech first.
 sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.
 sociaty_record_048,已达可完成的队内任务上限,Team quests limit reached.
-sociaty_record_052,快来加入我的小队：{0},Come join my squad: {0}
+sociaty_record_052,点击这里加入我的小队：{0},Tap here to join my squad: {0}
 sociaty_record_053,{0}升至{1}级,{0} is now Lvl {1}.
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
 sociaty_record_056,存在非法字符,Contains illegal characters.
@@ -1482,7 +1482,7 @@ gift_exchange_title,兑换奖励,Exchange
 gift_event_notok,尚未达成,Not yet reached
 main_icon_libao,活动中心,Events
 gift_event_done,已领取,Received
-gift_exchange_notenough,积分不足，快去收集吧！,"Insufficient points, go and collect some more!"
+gift_exchange_notenough,积分不足，快去收集吧！,"Insufficient points, go collect some more!"
 ranking_player,个人排行,Personal Ranking
 ranking_playerbp,综合战力,Total BP
 ranking_playerlvl,玩家等级,Player Level
@@ -1541,7 +1541,7 @@ gift_event_notreach,未达成,In progress
 invite_alreadyinvite,领取,Collect
 invite_paihangbang,排行榜,Rankings
 invite_fuzhi,快速邀请,Quick Invite
-invite_imtext,我的id是{0}，快来接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, please accept my invitation under Friends Collaboration in the Events."
+invite_imtext,我的id是{0}，快来接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, tap here accept my invitation under Friends Collaboration in the Events."
 facebookshare_fuhuo,"立即获得免费复活机会
 （每天1次）！","Immediately revive for free 
 (once per day)!"
@@ -1800,3 +1800,109 @@ gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领
 xinyang_instance_title,神话守护者,Myth Guardian
 setting_pvpweikai,尚未开启竞技场玩法,Arena has not been opened yet
 setting_headpicturetips,拥有过的宠物可以设置为头像,Monsters that you have collected can be set as your avatar.
+decompose_sureother,选择宠物包含<color=#ffcc00>绿色及以上品质</color>，确定分解操作么？,Selection includes monsters <color=#ffcc00>green grade or above</color>. Continue?
+decompose_c,稀有度C,C Class
+decompose_b,稀有度B,B Class
+compose_record_008,已选择所有稀有度{0}目标,All {0} class targets have already been selected.
+worldboss_title,神怪入侵,Deity Invasion
+worldboss_times,今日可参与活动次数：{0},Tries remaining today: {0}
+worldboss_rankbutton,排行榜,Rankings
+worldboss_rankrewardbutton,排名奖励,Ranking Reward
+worldboss_rulebutton,规则说明,Rules
+worldboss_myrank,我的排名,My Ranking
+worldboss_myhurt,我的伤害,My Damage
+worldboss_kong,无,None
+worldboss_myrank500,500名之后,Rank 500 and above
+worldboss_kexingtitle,神怪克星,Deity Nemesis
+worldboss_kexingdiji,低级克星,Minor Nemesis
+worldboss_kexinggaoji,高级克星,Major Nemesis
+worldboss_moraletitle1,士气提升属性,Morale Increases Stats
+worldboss_moraletitle2,（每项最多100%）,(Up to 100% each)
+worldboss_moralestrenth,力量,STR
+worldboss_moraleintelligence,智力,INT
+worldboss_moralehealth,体力,STA
+worldboss_moralebutton,提升士气,Increase Moral
+worldboss_battlebuttonyicanjia,已参与,have participated
+worldboss_battlebuttonweikai,未开启,Locked
+worldboss_battlebuttongo,挑战,Battle
+worldboss_battlebuttonrevive,再次挑战,Battle Again
+worldboss_battlebuttonrevivetime,{0}秒后可再次挑战,Can battle again after {0} seconds
+worldboss_revivesure,确认立即挑战吗？,Battle now?
+worldboss_timetips,下场活动开启时间,Next event start time
+worldboss_timelefttips,本场活动将于{0}后结束,This event will end after {0}
+worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
+worldboss_kexingtitle,神怪克星,Monster Nemesis
+worldboss_kexinglow,出战全员伤害+10%,Ally monster damage +10%
+worldboss_kexinghigh,出战全员伤害+20%,Ally monster damage +20%
+worldboss_kexingcomplain,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each monster has a nemesis. Adding that nemesis to your lineup will grant the specified buff to all your monsters. 
+worldboss_battle,挑战,Battle
+worldboss_rulestitle,规则说明,Rules
+worldboss_rules,"1. 神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。
+    开放时间：每天中午12:45——13:00
+                    每天晚上20:00——20:15
+                    每天晚上21:45——22:00
+2. 每场神怪入侵活动中，可以通过提升士气来提升出战怪物的属性，出战宠物能够得到力量、智力、体力的全面提升！
+   提升士气消耗钻石，在单场活动里，士气最高能被提升到100%。  
+3. 每个boss都有克星，当日只要将克星配置进阵容，全员获得指定buff加成。Buff能够叠加存在哦！
+   低级克星buff：出战全员增加伤害10%
+   高级克星buff：出战全员增加伤害20%
+4. 神怪入侵活动会根据个人对boss的总伤害量进行排名，伤害量越高，排名越靠前，奖励也就越丰厚哦！
+5. 每场活动持续时间为15分钟，本场活动的boss死亡或者活动时间到达后，本场活动结束。
+6. 如果单场活动boss被消灭，排名前100的玩家将根据排名获得不同的额外钻石奖励！排名越靠前，钻石越多哦！
+    第1名               钻石
+    第2名               钻石
+    第3名               钻石
+    第4-10名          钻石
+    第11-20名        钻石
+    第21-30名        钻石
+    第31-40名        钻石
+    第41-50名        钻石
+    第51-100名      钻石","1.Deity Invasion opens for 3 battles daily. Players may only participate in 1 of the 3 battles each day.
+   Open every afternoon from 12:45 to 13:00
+   Open every night from 20:00 to 20:15
+   Open every night from 21:45 to 22:00
+2.In each Deity Invasion battle, players can increase morale to increase their monsters' stats. Monsters can receive increases to STR, INT, and Power.
+  Increasing moral requires diamonds. In one battle, morale can be upgraded up to 100%.
+3.Each boss has a nemesis. Players simply need to put the nemesis in their lineup and all their monsters will receive the specified buff. This buff can be stacked!
+  Minor nemesis buff: increases all monsters' damage by 10%
+  Major nemesis buff: increases all monsters' damage by 20%
+4.Monster Invasion will have rankings for each player based on total damage dealt to the boss. The higher the damage, the higher the ranking and the better the rewards!
+5.Each Monster Invasion battle will last for 15 mintues. The battle will end when the boss dies or the time limit is reached.
+6.If the boss is defeated, players ranked in the top 100 will receive bonus rewards based on their rankings. The higher the player ranking, the more diamonds that will be rewarded!
+   Rank 1                     Diamonds
+   Rank 2                     Diamonds
+   Rank 3                     Diamonds
+   Ranks 4 - 10            Diamonds
+   Ranks 11 - 20          Diamonds
+   Ranks 21 - 30          Diamonds
+   Ranks 31 - 40          Diamonds
+   Ranks 41 - 50          Diamonds
+   Ranks 51 - 100        Diamonds"
+worldboss_rewardtitle,排名奖励,Ranking Reward
+worldboss_ranklast,{0}及以后,After level {0}
+worldboss_rewardtips,奖励将在活动后通过邮件发放，boss被击杀，排名前100的玩家将获得额外的钻石奖励,"Rewards will be sent via in-game mail after the event has ended. When the boss is defeated, players ranked in the top 100 will receive bonus Diamond rewards."
+worldboss_ranktitle1,上场伤害排名,Previous damage ranking
+worldboss_ranktitle2,本场伤害排名,Current damage ranking
+worldboss_shuchushanghai,输出伤害,Damage Output
+worldboss_startbefore,活动即将开启（参加活动将获得纹章、开孔石、金币奖励，快来参加吧！伤害量越多，奖励越丰厚！）,"The event is about to begin! (Participate to receive insignias, engraving stones, and coin rewards, so join now! The more damage dealt, the better the rewards!)"
+worldboss_timeleftfight,活动倒计时,Event Countdown
+worldboss_deathtips,前方传来捷报，神怪已被消灭！,Good news from the frontlines! The invading deities has already been defeated!
+worldboss_battleovertips,时间到啦！活动已结束~,Time's up! The event has ended.
+worldboss_gongxiandu,宠物贡献度,Monster Contribution
+worldboss_totaldamage,总伤害量,Total Damage
+worldboss_record_001,购买失败，已经可以挑战啦！,Purchase failed. You may already battle now!
+worldboss_record_002,士气已提升至最高！快去征战神怪吧！,Morale already increased to the max! Join the battle now!
+worldboss_record_003,金币提升已达上限，试试钻石提升吧！,"Coins increased to the max, try increasing diamonds!"
+worldboss_record_004,活动已经结束，正在结算，稍后去邮箱查看奖励哦！,Event has already ended and results are being calculated. Your reward will be available in your mailbox shortly.
+worldboss_record_005,请先选择要提升的士气,Please select the morale to be increased.
+worldboss_record_006,很遗憾，本场活动已达参与人数上限，下场再来吧。,"Unfortunately, this event has already reached the max number of participants. Please come for the next event."
+gohorselight_bossstart,神怪即将降临！代行者们，准备好率领自己的宠物战队将这些怪物驱逐回神怪界了吗！,"The Deities are invading! Monster keepers, prepare to command your monsters to battle and banish these invaders back to where they came from!"
+gohorselight_bossover,恭喜<color=#ffcc00>{0}</color>获得本场神怪入侵活动的第一名，获得了丰厚的纹章等奖励！,Congratulations to <color=#ffcc00>{0}</color> who has reached 1st place in the Deity Invasion event. 
+loading_tips52,神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。,Deity Invasion will be open for battle 3 times per day. Players may participate in 1 of the 3 battles each day.
+loading_tips53,可以通过提升士气来提升出战怪物的属性。,Players can increase morale to increase their monsters' stats in battle.
+loading_tips54,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each deity boss has a set nemesis. Players simply need to put the nemesis in the lineup and all their monsters will receive the specified buff.
+loading_tips55,输出伤害量越高，排名越靠前，奖励也就越丰厚哦！,"The higher the damage dealt, the higher the ranking and the better the rewards!"
+loading_tips56,神怪入侵战斗中，需要手动施放大招、集火、使用照妖镜！,"During the Deity Invasion, players need to manually cast abilities, concentrate attacks, and use the Mytho Lens."
+arrayselect_count_006,活力不足，请先补充活力,"Insufficient energy, please recharge some energy first."
+bag_record_008,钥匙不足，请先购买钥匙,"Insufficient keys, please purchase some more keys first."
+summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit reached, unable to summon."

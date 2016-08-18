@@ -133,7 +133,7 @@ public class HawkAccountService extends HawkTickable {
 	}
 	
 	/**
-	 * 初始化cdk服务
+	 * 初始化账号服务
 	 * 
 	 * @return
 	 */

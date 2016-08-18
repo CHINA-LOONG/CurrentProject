@@ -240,7 +240,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         textLevel.text = level.ToString();
 
-        if (UIUtil.CheckPetIsMaxLevel(level))
+        if (UIUtil.CheckPetIsMaxLevel(level) > 0)
         {
             textExp.text = "MAX LEVEL";
             progressExp.value = 0.0f;

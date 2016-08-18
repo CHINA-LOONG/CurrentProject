@@ -22,18 +22,26 @@ public class EndBattleUI : MonoBehaviour {
 
     }
     //---------------------------------------------------------------------------------------------
-    public void SetStar(int starCount)
+    public void SetStarCount(int starCount)
     {
         for (int i = 0; i < mStarList.Length; ++i)
         {
-            StartCoroutine(ShowStarInternal(i, i < starCount));
+            mStarList[i].SetHasStar(i < starCount);
         }
     }
     //---------------------------------------------------------------------------------------------
-    private IEnumerator ShowStarInternal(int index, bool hasStar)
+    public void ShowStar()
+    {
+        for (int i = 0; i < mStarList.Length; ++i)
+        {
+            StartCoroutine(ShowStarInternal(i));
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    private IEnumerator ShowStarInternal(int index)
     {
         yield return new WaitForSeconds(index * BattleConst.scoreStarInterval);
-        mStarList[index].ShowStar(hasStar);
+        mStarList[index].ShowStar();
     }
     //---------------------------------------------------------------------------------------------
     public void SkipShowStarAni()

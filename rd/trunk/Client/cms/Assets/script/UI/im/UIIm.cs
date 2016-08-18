@@ -18,7 +18,8 @@ public class UIIm : UIBase
     List<PB.HSImMsg> gangChannel = new List<PB.HSImMsg>();//工會頻道列表 
     PB.HSImMsg allMsg;//基础聊天框
     int channel = (int)PB.ImChannel.WORLD;//頻道
-    public InputField msgText; 
+    public InputField msgText;
+    public Text placeholder;
     public GameObject showLeftChatBox;
     public GameObject showBasicsChat;
     public GameObject basicsChatBox;
@@ -74,7 +75,7 @@ public class UIIm : UIBase
     void Start()
     {        
         mInst = this;
-        msgText.gameObject.transform.FindChild("Placeholder").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_enter");
+        placeholder.text = StaticDataMgr.Instance.GetTextByID("im_chat_enter");
         globalButton.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_global");
         guildButton.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_chat_guild");
         shield.transform.FindChild("Text").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("im_block");
@@ -363,7 +364,9 @@ public class UIIm : UIBase
             {
                 textColor = ColorConst.systemColor;
                 imMsgData.mChannel.text = "[" + StaticDataMgr.Instance.GetTextByID("im_chat_system") + "]";
+                imMsgData.mContent.supportRichText = true;
                 imMsgData.mSpeaker.text = msgList[i].origText;
+                imMsgData.mContent.text = null;
                 imMsgData.mSpeaker.color = textColor;
                 imMsgData.mPlayer.gameObject.SetActive(false);
             }
@@ -372,6 +375,7 @@ public class UIIm : UIBase
                 imMsgData.mPlayer.gameObject.SetActive(true);
                 imMsgData.mSpeaker.text = msgList[i].senderName + ":";
                 imMsgData.mChannel.text = "[" + channelName + "]";
+                imMsgData.mContent.supportRichText = false;
                 imMsgData.mContent.text = msgList[i].origText;
                 textColor = msgColor;
                 imMsgData.mSpeaker.color = ColorConst.nameColor;
@@ -381,23 +385,23 @@ public class UIIm : UIBase
             imMsgData.playerName = msgList[i].senderName;            
             imMsgData.mContent.color = textColor;
             imMsgData.speakerID = msgList[i].senderId;             
-            imMsgData.mChannel.color = textColor;
-            if (isChannel)
-            {
-                StartCoroutine(RenovateMsg());
-                isChannel = !isChannel;
-            }
-            else
-            {
-                if (!isDrag)
-                {
-                    showNewMsg = true;
-                }
-            }
+            imMsgData.mChannel.color = textColor;           
         }
         for (; i < msgObj.Count; ++i)
         {
             msgObj[i].SetActive(false);
+        }
+        if (isChannel)
+        {
+            StartCoroutine(RenovateMsg());
+            isChannel = !isChannel;
+        }
+        else
+        {
+            if (!isDrag)
+            {
+                StartCoroutine(RenovateMsg(false));
+            }
         }
     }
     //------------------------------------------------------------------------------------------------------
@@ -423,10 +427,13 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
-    IEnumerator RenovateMsg()
+    IEnumerator RenovateMsg(bool Renovate = true)
     {
         yield return new WaitForEndOfFrame();
-        ShowMessage();
+        if (Renovate)
+            ShowMessage();
+        else
+            showNewMsg = true;
     }
     //------------------------------------------------------------------------------------------------------
     void Update()
@@ -602,6 +609,7 @@ public class UIIm : UIBase
         }
         GameApp.Instance.netManager.SendMessage(PB.code.IM_CHAT_SEND_C.GetHashCode(), param, false);
         msgText.text = "";
+        //placeholder.text = StaticDataMgr.Instance.GetTextByID("im_chat_enter");
         return true;
     }
     //------------------------------------------------------------------------------------------------------

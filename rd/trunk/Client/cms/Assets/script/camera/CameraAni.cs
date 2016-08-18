@@ -20,8 +20,10 @@ public class CameraAni : MonoBehaviour
 	{
 		if (isAni)
 		{
-			transform.DOMove (targetTrans.position, duration);
-			return	transform.DORotate (targetTrans.rotation.eulerAngles, duration);
+			transform.DOMove (targetTrans.position, duration).SetUpdate(true);
+            Tweener rotTwn = transform.DORotate(targetTrans.rotation.eulerAngles, duration);
+            rotTwn.SetUpdate(true);
+            return rotTwn;
 		}
 		else
 		{

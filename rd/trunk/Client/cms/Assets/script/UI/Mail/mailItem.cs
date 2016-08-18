@@ -6,7 +6,7 @@ using System.Collections;
 public class MailItemInfo
 {
     public PB.HSMail info;
-    public System.Action Refresh;
+    public System.Action<MailItemInfo> Refresh;
     private bool isSelect = false;
     public bool IsSelect
     {
@@ -18,7 +18,7 @@ public class MailItemInfo
                 isSelect = value;
                 if (Refresh != null)
                 {
-                    Refresh();
+                    Refresh(this);
                 }
             }
         }
@@ -45,10 +45,10 @@ public class mailItem : MonoBehaviour
         get { return curData; }
         set
         {
-            if (curData!=null)
-            {
-                curData.Refresh = null;
-            }
+            //if (curData!=null)
+            //{
+            //    curData.Refresh = null;
+            //}
             curData = value;
             curData.Refresh = RefreshInfo;
         }
@@ -70,11 +70,13 @@ public class mailItem : MonoBehaviour
         textSendTime.text = GameTimeMgr.GetTime(info.sendTimeStamp).ToString("MM-dd-yyyy");
 
         UpdateMailState();
-        RefreshInfo();
+        RefreshInfo(CruData);
     }
 
-    public void RefreshInfo()
+    public void RefreshInfo(MailItemInfo info)
     {
+        if (info != CruData)
+            return;
         imgSelect.gameObject.SetActive(CruData.IsSelect);
     }
 

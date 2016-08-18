@@ -8,10 +8,11 @@ public class BuildButton : MonoBehaviour
     public Image tipImage;
     public Text nameText;
 
+    bool showTip = false;
 	// Use this for initialization
 	void Start ()
     {
-        tipImage.gameObject.SetActive(false);
+        tipImage.gameObject.SetActive(showTip);
 
         EventTriggerListener.Get(this.gameObject).onEnter = OnTouchEnter;
         EventTriggerListener.Get(this.gameObject).onExit = OnTouchExit;
@@ -21,6 +22,7 @@ public class BuildButton : MonoBehaviour
 
     public  void    SetRemind(bool isRemind)
     {
+        showTip = isRemind;
         tipImage.gameObject.SetActive(isRemind);
     }
 

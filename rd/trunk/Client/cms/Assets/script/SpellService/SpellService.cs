@@ -39,6 +39,11 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void AddDeadData(SpellUnitDeadArgs args, GameUnit deadUnit, EffectDamage causeDeadEffect)
     {
+        if (deadUnit.State == UnitState.Dead)
+        {
+            return;
+        }
+
         DeadData deadInfo;
         if (deadList.TryGetValue(args.deathID, out deadInfo))
         {

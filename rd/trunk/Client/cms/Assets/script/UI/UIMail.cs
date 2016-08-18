@@ -88,6 +88,13 @@ public class UIMail : UIBase//,TabButtonDelegate
 
     void OnMailChanged()
     {
+        //检测是否读取的同一封
+        if (readMail != null && (readMail.info.state == (int)PB.mailState.RECEIVE ||
+            (readMail.info.state == (int)PB.mailState.READ && readMail.info.reward.Count <= 0)))
+        {
+            readMail = null;
+        }
+
         UpdateMailList();
         //OnTabButtonChanged(tabIndex);
         SetMailCount();
@@ -101,13 +108,15 @@ public class UIMail : UIBase//,TabButtonDelegate
         {
             if (readMail != null && readMail.info.mailId == item.Value.mailId)
             {
-                sysMailList.Add(new MailItemInfo() { info = item.Value, IsSelect = true });
+                readMail = new MailItemInfo() { info = item.Value, IsSelect = true };
+                sysMailList.Add(readMail);
             }
             else
             {
                 sysMailList.Add(new MailItemInfo() { info = item.Value, IsSelect = false });
             }
         }
+        mailContent.SetMailContentActive(readMail != null);
         sysMailList.Sort(SortMail);
         mailList.RefreshList(sysMailList);
     }
@@ -196,7 +205,6 @@ public class UIMail : UIBase//,TabButtonDelegate
         {
             if (readMail != null)
             {
-                mailContent.SetMailContentActive(false);
                 OnMailChanged();
                 readMail = null;
             }

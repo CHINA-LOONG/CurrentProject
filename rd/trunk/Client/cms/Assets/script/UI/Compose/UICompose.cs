@@ -305,6 +305,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         }
         int index = composeView.fields.IndexOf(field);
         composeList.ItemInfo[field.curData.itemId].SelectCount -= 1;
+        composeList.ItemInfo[field.curData.itemId].IsDisable =false;
         composeView.selectItems[index] = null;
         composeView.fields[index].SetItemIcon(null);
         if (CheckIsEmpty())

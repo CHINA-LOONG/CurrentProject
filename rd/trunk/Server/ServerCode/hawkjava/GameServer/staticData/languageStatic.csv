@@ -1,20 +1,20 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
 #文字Id,文字内容,文字内容
-pet_character_1,输出,Attack
-pet_character_2,输出,Attack
+pet_character_1,物理输出,Physical DPS
+pet_character_2,法术输出,Magic DPS
 pet_character_3,支援,Support
 pet_character_4,支援,Support
 pet_character_5,治疗,Healer
 pet_character_6,肉盾,Tank
-Valor,输出,Attack
-Spiritual,输出,Attack
+Valor,物理输出,Physical DPS
+Spiritual,法术输出,Magic DPS
 Mischievous,支援,Support
 Collaborate,支援,Support
 Compassion,治疗,Healer
 Humility,肉盾,Tank
-descrip_valor,善于运用伤害技能，是队伍的主要输出,Unleashes high damage abilities and acts as the team's main DPS
-descrip_spiritual,善于运用伤害技能，是队伍的主要输出,Unleashes high damage abilities and acts as the team's main DPS
+descrip_valor,力量的化身，善于运用物理技能对敌方造成物理伤害，是队伍的主要输出,The epitome of strength; excels at using physical abilities to deal physical damage to the enemy. An important part of your team's DPS.
+descrip_spiritual,智慧的代表，善于运用法术技能对敌方造成法术伤害，是队伍的主要输出,The representative of wisdom; excels at using magic abilities to deal magic damage to the enemy. An important part of your team's DPS.
 descrip_mischievous,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle
 descrip_collaborate,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle
 descrip_compassion,善于运用治疗技能，可以恢复队伍的生命和状态,Uses healing abilities to recover HP and increase survivability

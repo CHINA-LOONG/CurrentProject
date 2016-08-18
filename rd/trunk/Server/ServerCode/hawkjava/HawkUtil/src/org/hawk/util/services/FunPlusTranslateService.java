@@ -309,7 +309,7 @@ public class FunPlusTranslateService extends HawkTickable {
 	}
 
 	@Override
-	public  void finalize() {
+	public void finalize() {
 		try {
 			httpClient.close();
 		} catch (IOException e) {

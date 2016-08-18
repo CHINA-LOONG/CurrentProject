@@ -36,6 +36,9 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 
 
@@ -58,6 +61,9 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_HANDLE_APPLY_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
     }
 	
@@ -162,6 +168,14 @@ public class SociatyDataMgr : MonoBehaviour
             param.playerId = playerId;
         }
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_HANDLE_APPLY_C.GetHashCode(), param);
+    }
+
+    public void RequestSendHuoli(int playerId, NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceFatigueGive param = new PB.HSAllianceFatigueGive();
+        param.targetId = playerId;
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode(), param);
     }
 
     public  void SetMemberPosition(int playerId,int position)

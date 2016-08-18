@@ -99,6 +99,8 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());
 					
 					HSAlliancePrayRet.Builder response = HSAlliancePrayRet.newBuilder();
+					response.setSelfContribution(playerAllianceEntity.getContribution());
+					response.setAllianceContribution(allianceEntity.getContribution());
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_PRAY_S_VALUE, response));
 				}
 			} finally {

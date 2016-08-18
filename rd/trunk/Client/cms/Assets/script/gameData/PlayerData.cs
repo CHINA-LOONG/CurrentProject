@@ -338,7 +338,7 @@ public class PlayerData : MonoBehaviour
     }
     public void AddEquipTypePart(EquipData equip)
     {
-        if (equip.monsterId == BattleConst.invalidMonsterID)
+        //if (equip.monsterId == BattleConst.invalidMonsterID)
         {
             ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
             equipTypePart[itemInfo.subType-1, itemInfo.part-1] += 1;

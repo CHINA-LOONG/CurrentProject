@@ -95,7 +95,7 @@ im_chatSettings,频道设置,Chat Settings
 im_blockGlobal,屏蔽世界频道所有发言,Block all Global Chat messages
 im_blockGuild,屏蔽公会频道所有发言,Block all Guild Chat messages
 im_noGuild,未加入公会,No guild
-im_invite,查看公会,Check guild
+im_invite,查看公会,View Guild
 im_block,屏蔽,Block
 im_block_chat,确定屏蔽聊天么？,Confirm block chat?
 im_block_cancel,（可以在系统设置取消屏蔽）,(Blocked chats can be managed in system settings)
@@ -103,7 +103,7 @@ im_record_001,您发送过于频繁，请稍后再试,You have sent messages too
 im_record_002,您还没有公会,You have not joined a Guild.
 im_record_003,屏蔽聊天成功,Chat is now blocked.
 im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
-im_record_005,目标还没有公会,mu biao mei you guild
+im_record_005,目标还没有公会,Currently not in a guild.
 ss,,
 bag_title,背包,Bag
 bag_shengyu,剩余:{0},Remain:{0}
@@ -162,9 +162,9 @@ mail_record_005,邮件已过期,Mail has already expired.
 mail_youxiangjiangman,<color=#ff0000ff>邮箱即将爆仓，请及时收取邮件</color>,"<color=#ff0000ff>Your inbox is almost full,be sure to promptly collect mails!</color>"
 mail_youxiangyiman,<color=#ff0000ff>邮箱已经爆仓，快快收取邮件</color>,"<color=#ff0000ff>Your inbox is full,go collect some mails!</color>"
 mail_CollectedAll,全部收取成功！,Collected all!
-mail_zidongshantips,邮件将在领取附件后自动删除,邮件将在领取附件后自动删除
-mail_shouquall,确认收取所有邮件吗？,确认收取所有邮件吗？
-mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,*若金币/钻石达到上限，收取将无法继续获得
+mail_zidongshantips,邮件将在领取附件后自动删除,Mails are automatically deleted after attachments are collected.
+mail_shouquall,确认收取所有邮件吗？,Confirm collect all mails?
+mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,"* If Coin/Diamond limit is reached, any exceeding amount will not be collected."
 ,,
 ,,
 xl_equip_forge,薛龙_装备强化进阶,
@@ -297,7 +297,7 @@ monstertype2,人物,Human
 monstertype3,特异,Peculiar
 monstertype4,植物,Plant
 monstertype5,神,Deity
-list_empty,别找了，啥也没有…,别找了，啥也没有…
+list_empty,别找了，啥也没有…,Nothing to see here…
 ,,
 zs_modify:xl,,
 pet_list_type,(圣兽),(shengshou)

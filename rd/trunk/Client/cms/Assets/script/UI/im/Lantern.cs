@@ -64,8 +64,12 @@ public class Lantern : MonoBehaviour
                 //100 is the distance between two lanterns
                 interval = (lastLanter.lant.preferredWidth + 100) / speed;
             }
-            lanData.beginTime = lastLanter.beginTime + interval;
-            lanData.nextTime = lanData.beginTime + duration;
+            float curBeginTime = lastLanter.beginTime + interval;
+            if (curBeginTime > lanData.beginTime)
+            {
+                lanData.beginTime = curBeginTime;
+            }
+            lanData.nextTime = lanData.beginTime + duration;             
         }
 
         lanternMsg.Add(lanData);
@@ -85,10 +89,10 @@ public class Lantern : MonoBehaviour
                 lanternMsg[i].battleTitleTw.SetUpdate(true);
                 lanternMsg[i].battleTitleTw.SetEase(Ease.Linear);
                 lanternMsg[i].battleTitleTw.OnComplete(LanternMoveEnd);
-                if (Time.timeScale != 0.0f)
-                {
-                    lanternMsg[i].battleTitleTw.timeScale = 1.0f / Time.timeScale;
-                }
+                //if (Time.timeScale != 0.0f)
+                //{
+                //    lanternMsg[i].battleTitleTw.timeScale = 1.0f / Time.timeScale;
+                //} 
             }
         }
         if (lanternMsg.Count > 0 && GameMain.Instance.IsCurModule<BattleModule>() && moveTypeEnd)

@@ -1,0 +1,7 @@
+#NUM,TEXT,TEXT
+id,rank,reward
+#id,排名,界面显示奖励
+1,1,pvp_rankrewardxianshi1
+2,2,pvp_rankrewardxianshi2
+3,3,pvp_rankrewardxianshi3
+4,3-10,pvp_rankrewardxianshi4

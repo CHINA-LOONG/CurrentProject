@@ -3,7 +3,7 @@ package com.hawk.game.entity;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.persistence.Column;
@@ -16,7 +16,6 @@ import javax.persistence.Transient;
 import org.hawk.db.HawkDBEntity;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.sun.org.apache.bcel.internal.util.Objects;
 
 /**
  * @author zs

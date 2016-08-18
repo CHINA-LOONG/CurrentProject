@@ -37,10 +37,27 @@ public class MemberItem : MonoBehaviour
         positionText.text = GameDataMgr.Instance.SociatyDataMgrAttr.GetPositionDesc(memberData.postion);
         historyContributionText.text = memberData.contribution.ToString();
         lastLogin.text = memberData.loginTime.ToString();//todo
+        bool isSend = memberData.sendFatigue;
+        if (memberData.id == GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.id)
+        {
+            isSend = true;
+        }
+        giveHuoliButton.SetIsSend(isSend);
     }
     void OnGiveHuoliButtonClick()
     {
+        GameDataMgr.Instance.SociatyDataMgrAttr.RequestSendHuoli(memberData.id, OnSendHuoliFinish);
+    }
 
+    void OnSendHuoliFinish(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        giveHuoliButton.SetIsSend(true);
+        memberData.sendFatigue = true;
     }
 
     void OnItemButtonClick()

@@ -97,7 +97,7 @@ public class WeakpointUI : MonoBehaviour
 
     IEnumerator PageOutAnimationCo()
     {
-        Vector2 outPos = new Vector2(contentParetnOldPosition.x - 300, contentParetnOldPosition.y);
+        Vector2 outPos = new Vector2(contentParetnOldPosition.x - 500, contentParetnOldPosition.y);
         contentParent.DOAnchorPos(outPos, outTime).SetEase(outEaseAni);
         yield return new WaitForSeconds(outTime);
         RefreshUI(wpGroup);

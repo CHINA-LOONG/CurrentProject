@@ -47,6 +47,7 @@ public class UIScore : UIBase
     private int mHuoliBeginTime;
     private bool mCheckCoin;
     private int mStarCount;
+    private float mWaitStarTime;
     //---------------------------------------------------------------------------------------------
     public static void AddResourceRequest()
     {
@@ -65,6 +66,7 @@ public class UIScore : UIBase
         EventTriggerListener.Get(mNextLevelBtn.gameObject).onClick = OnNextLevel;
         EventTriggerListener.Get(mConfirmBtn.gameObject).onClick = OnConfirm;
         EventTriggerListener.Get(mScoreBack.gameObject).onClick = SkipScoreAni;
+        mWaitStarTime = 0.0f;
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()
@@ -139,6 +141,7 @@ public class UIScore : UIBase
             {
                 EndBattleUI endBattleComponent = mEndBattleUI.GetComponent<EndBattleUI>();
                 endBattleComponent.SkipShowStarAni();
+                mWaitStarTime = 0.0f;
             }
         }
     }
@@ -238,10 +241,15 @@ public class UIScore : UIBase
         mEndBattleUI.transform.localPosition = mCenterPos.localPosition;
         EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
         endBattleUI.SetSuccess(mIsSuccess);
+        if (mIsSuccess == true)
+        {
+            endBattleUI.SetStarCount(mStarCount);
+        }
+
         mBattleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
         mBattleTitleTw.OnComplete(ShowStar);
         mBattleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
-
+        
         mSkipEnable = true;
     }
     //---------------------------------------------------------------------------------------------
@@ -257,9 +265,11 @@ public class UIScore : UIBase
         endBattleUI.SetStarVisiblebool(mIsSuccess);
         if (mIsSuccess == true)
         {
-            endBattleUI.SetStar(mStarCount);
+            endBattleUI.ShowStar();
         }
-        StartCoroutine(ShowScoreInfo(mStarCount * BattleConst.scoreStarInterval));
+
+        mWaitStarTime = mStarCount * BattleConst.scoreStarInterval;
+        StartCoroutine(ShowScoreInfo());
     }
     //---------------------------------------------------------------------------------------------
     private void SetScoreInternal()
@@ -350,7 +360,7 @@ public class UIScore : UIBase
                         originalMonster.pbUnit.stage
                         );
                     mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
-                    if (UIUtil.CheckPetIsMaxLevel(monsterInfoList[i].level) == false)
+                    if (UIUtil.CheckPetIsMaxLevel(monsterInfoList[i].level) == 0)
                     {
                         mUIMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
                     }
@@ -426,9 +436,13 @@ public class UIScore : UIBase
         }
     }
     //---------------------------------------------------------------------------------------------
-    private IEnumerator ShowScoreInfo(float showStarTime)
+    private IEnumerator ShowScoreInfo()
     {
-        yield return new WaitForSeconds(showStarTime);
+        while (mWaitStarTime > 0.0f)
+        {
+            mWaitStarTime -= Time.unscaledDeltaTime;
+            yield return null;
+        }
         mRetryBtn.gameObject.SetActive(false);
         mNextLevelBtn.gameObject.SetActive(false);
         mConfirmBtn.gameObject.SetActive(false);

@@ -1,5 +1,6 @@
 package com.hawk.game.util;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.hawk.app.HawkApp;
@@ -35,7 +36,7 @@ public class MailUtil {
 		for (Integer receiverId : receiverIdList) {
 			String lang = ServerData.getInstance().getPlayerLang(receiverId);
 			mailInfo.subject = mailCfg.getSubject(lang);
-			mailInfo.content = String.format(mailCfg.getContent(lang), contentArgs);
+			mailInfo.content = MessageFormat.format(mailCfg.getContent(lang), contentArgs);
 
 			SendMail(mailInfo, receiverId, 0, mailCfg.getSender(lang));
 		}
@@ -48,7 +49,7 @@ public class MailUtil {
 		MailInfo mailInfo = new MailInfo();
 		String lang = ServerData.getInstance().getPlayerLang(receiverId);
 		mailInfo.subject = mailCfg.getSubject(lang);
-		mailInfo.content = String.format(mailCfg.getContent(lang), contentArgs);
+		mailInfo.content = MessageFormat.format(mailCfg.getContent(lang), contentArgs);
 		RewardCfg reward = mailCfg.getReward();
 		if (reward != null) {
 			mailInfo.rewardList = reward.getRewardList();

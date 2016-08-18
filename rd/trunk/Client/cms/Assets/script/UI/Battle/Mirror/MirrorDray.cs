@@ -127,6 +127,12 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		m_MinPosY = myWith * pivot.y;
 		m_MaxposY = rootHeight - myHeigth * (1-pivot.y);
 	}  
+    
+    void OnEnable()
+    {
+        if(null != mirrorUIAnimator)
+            mirrorUIAnimator.SetInteger(mirrorStateHash, 2);
+    }
 
 
 	// 鼠标按下  

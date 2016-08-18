@@ -43,7 +43,7 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
         for (int i = 0; i < infos.Count; i++)
         {
             EXPListItem item = GetElement();
-            item.OnReload(infos[i],UIUtil.CheckPetIsMaxLevel(t_unit.level));
+            item.OnReload(infos[i],UIUtil.CheckPetIsMaxLevel(t_unit.level) > 0);
             item.transform.SetAsLastSibling();
         }
 
@@ -112,7 +112,7 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
 
     void AddTempExp(int exp, System.Action callback)
     {
-        if (UIUtil.CheckPetIsMaxLevel(t_unit.level))
+        if (UIUtil.CheckPetIsMaxLevel(t_unit.level) > 0)
         {
             t_unit.level = (GameConfig.MaxMonsterLevel < GameDataMgr.Instance.PlayerDataAttr.LevelAttr ?
                            GameConfig.MaxMonsterLevel :

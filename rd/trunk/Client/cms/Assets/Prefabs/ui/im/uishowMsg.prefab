@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .913725495, g: .996078432, b: 1, a: 1}
+  m_Color: {r: 1, g: .800000012, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1276,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mViewType: 0
   msgText: {fileID: 11471312}
+  placeholder: {fileID: 11457278}
   showLeftChatBox: {fileID: 131738}
   showBasicsChat: {fileID: 192584}
   basicsChatBox: {fileID: 171550}

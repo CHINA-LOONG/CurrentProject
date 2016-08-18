@@ -54,6 +54,9 @@ public class changeTypeIcon : MonoBehaviour
             case PB.changeType.CHANGE_PLAYER_EXP:
                 iconName = "icon_exp2";
                 break;
+            case PB.changeType.CHANGE_FATIGUE:
+                iconName = "icon_huolizhi1";
+                break;
             default:
                 break;
         }

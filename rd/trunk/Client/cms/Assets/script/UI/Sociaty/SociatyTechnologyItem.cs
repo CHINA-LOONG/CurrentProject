@@ -16,6 +16,7 @@ public class SociatyTechnologyItem : MonoBehaviour
     public Button mTecLvlUp;
     public Image mTecIcon;
     public Image mContributeConsumIcon;
+    public Image mMaxLvlBackImg;
 
     private SociatyTechnologyData mTechData;
     private int mCurrentType;
@@ -32,7 +33,7 @@ public class SociatyTechnologyItem : MonoBehaviour
         EventTriggerListener.Get(mTecLvlUp.gameObject).onClick = OnLvlUp;
         StaticDataMgr sdMgr = StaticDataMgr.Instance;
         mTecLvlUpText.text = sdMgr.GetTextByID("sociaty_levelupup");
-        mMaxLvlText.gameObject.SetActive(false);
+        mMaxLvlBackImg.gameObject.SetActive(false);
     }
     //---------------------------------------------------------------------------------------------
     void OnLvlUp(GameObject go)
@@ -98,7 +99,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                     mContributeConsumValue.gameObject.SetActive(false);
                     mContributeConsumIcon.gameObject.SetActive(false);
                     mTecLvlUp.gameObject.SetActive(false);
-                    mMaxLvlText.gameObject.SetActive(true);
+                    mMaxLvlBackImg.gameObject.SetActive(true);
                     mMaxLvlText.text = sdMgr.GetTextByID("sociaty_maxlevel");
                 }
                 else
@@ -106,7 +107,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                     mContributeConsumValue.gameObject.SetActive(true);
                     mContributeConsumIcon.gameObject.SetActive(true);
                     mTecLvlUp.gameObject.SetActive(true);
-                    mMaxLvlText.gameObject.SetActive(false);
+                    mMaxLvlBackImg.gameObject.SetActive(false);
                     SetLvlInfoInternal(nextLvlEffect, nextTechData, ref mNextLvlDescript);
                 }
             }

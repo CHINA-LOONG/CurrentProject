@@ -91,7 +91,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		if (allianceEntity.getRefreshTime() < HawkTime.getSeconds()) {
 			allianceEntity.clearFatigueCount();
 			allianceEntity.clearFatigueSet();
-			allianceEntity.setRefreshTime((int) HawkTime.getNextAM0Date() / 1000);
+			allianceEntity.setRefreshTime((int) (HawkTime.getNextAM0Date() / 1000));
 			allianceEntity.notifyUpdate(true);
 		}
 		

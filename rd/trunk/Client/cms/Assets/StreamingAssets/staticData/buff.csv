@@ -1,4 +1,4 @@
-#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT,NUM,NUM,FLOAT,FLOAT,FLOAT,NUM,TEXT,TEXT,NUM,FLOAT,FLOAT,FLOAT,TEXT
+﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT,NUM,NUM,FLOAT,FLOAT,FLOAT,NUM,TEXT,TEXT,NUM,FLOAT,FLOAT,FLOAT,TEXT
 id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon,shieldNum,shieldBaseAttr,shieldRatio,phyReduceInjury,mgReduceInjury,noDead,damageResponse,deadResponse,responseCount,healthRatio,hitRatio,criticalRatio,effectExpire
 #id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon,phyShield,shieldBaseAttr,magicShield,phyReduceInjury,mgReduceInjury,noDead,damageResponse,deadResponse,responseCount,healthRatio,hitRatio,criticalRatio,effectExpire
 b1,1,e1,5,0,0,0,1,1,1,0,1,soul,0,0,1,0,0,0,"BuffValidatorSample,e1","BuffValidatorSample,e6",1,0,0,0,
@@ -17,7 +17,7 @@ phydazhaoPrepareb1,6,,1,0,0,3,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
 magicdazhaoPrepareb1,6,,1,0,0,3,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
 phydazhaoPrepare1b1,6,,1,0,0,3,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
 magicdazhaoPrepare1b1,6,,1,0,0,3,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
-magicdazhaoPrepare2b1,6,,1,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
+magicdazhaoPrepare2b1,6,,1,0,0,1,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,
 ultLonggongtongzib1,8,,1,,,,,,,,,,0,0,0,0,0.2,,,,,0,0,0,
 psvWaguib1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_100,debuffMagice2",,999,0,0,0,
 psvMagicb1,11,,999,0,0,0,,,,,,,,,,,,,,"uncondition,magicCureStrong1e1",999,0,0,0,

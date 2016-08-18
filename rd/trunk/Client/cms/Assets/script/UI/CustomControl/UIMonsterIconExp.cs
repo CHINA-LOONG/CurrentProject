@@ -46,9 +46,15 @@ public class UIMonsterIconExp : MonoBehaviour {
         mExpBar.SetTargetRatio(expTarget / (float)targetMaxExp);
 
         mLvlUpUI.gameObject.SetActive(lvlTarget > lvlOriginal);
-        if (UIUtil.CheckPetIsMaxLevel(lvlTarget) == true)
+        int maxLvlCheck = UIUtil.CheckPetIsMaxLevel(lvlTarget);
+        if (maxLvlCheck == 1)
         {
             mExpGainUI.text = "MAX LVL";
+            mExpBar.SetTargetRatio(0.0f);
+        }
+        else if (maxLvlCheck == 2)
+        {
+            mExpGainUI.text = string.Empty;
             mExpBar.SetTargetRatio(0.0f);
         }
         else

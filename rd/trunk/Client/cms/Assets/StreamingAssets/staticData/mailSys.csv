@@ -11,6 +11,7 @@ id,textId,comments,rewardId,lang_1,sender_1,subject_1,content_1,lang_2,sender_2,
 8,mail_sys_008,测试,,zh-CN,,金币道具道具道具经验,,en,sys,hello,world
 9,mail_sys_009,集体测试,,zh-CN,系统,欢迎参加集体测试,今天进行的是超级复杂的集体测试，希望你们喜欢,en,sys,hello,world
 101,mail_sociaty_001,移交会长,,zh-CN,系统,会内职务变更,"亲爱的玩家：
-您已成为%s公会会长！",en,sys,hello,%s
-102,mail_sociaty_002,被赠送活力值,,zh-CN,系统,活力值,这是来自%s赠送的%d点活力值,en,sys,hello,%s%d
-103,mail_sociaty_003,被踢出公会,,zh-CN,系统,公会变更,很遗憾，您已被请离公会%s,en,sys,hello,%s
+您已成为{0}公会会长！",en,sys,Change in the position,"Dear players: 
+You have become president of {0} association!"
+102,mail_sociaty_002,被赠送活力值,10004,zh-CN,系统,活力值,这是来自{0}赠送的{1}点活力值,en,sys,Dynamic value,This is {1} point of energy from {0}
+103,mail_sociaty_003,被踢出公会,,zh-CN,系统,公会变更,很遗憾，您已被请离公会{0},en,sys,Guild changes,It's a pity that you have been asked to leave the guild {0}

@@ -1,5 +1,6 @@
 package com.hawk.game.manager;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -665,7 +666,7 @@ public class ImManager extends HawkAppObj {
 
 		// 系统消息
 		if (imMsg.sysCfg != null) {
-			builder.setOrigText(String.format(imMsg.sysCfg.getContent(language), imMsg.sysArgs));
+			builder.setOrigText(MessageFormat.format(imMsg.sysCfg.getContent(language), imMsg.sysArgs));
 			builder.setSenderName(imMsg.sysCfg.getSender(language));
 		}
 		// 非系统消息

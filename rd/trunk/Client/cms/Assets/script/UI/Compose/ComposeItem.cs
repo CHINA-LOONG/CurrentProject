@@ -7,20 +7,18 @@ public class ComposeItemInfo
     public ItemDataInfo itemInfo;
     private int selectCount = 0;
     private bool isDisable=false;
-    public System.Action Refresh;
+    public System.Action<int> RefreshCount;
+    public System.Action<bool> RefreshDisable;
 
     public int SelectCount
     {
         get{return selectCount;}
         set
         {
-            if (selectCount != value)
+            selectCount = value;
+            if (RefreshCount != null)
             {
-                selectCount = value;
-                if (Refresh != null)
-                {
-                    Refresh();
-                }
+                RefreshCount(selectCount);
             }
         }
     }
@@ -29,13 +27,10 @@ public class ComposeItemInfo
         get{return isDisable; }
         set
         {
-            if (isDisable != value)
+            isDisable = value;
+            if (RefreshDisable != null)
             {
-                isDisable = value;
-                if (Refresh != null)
-                {
-                    Refresh();
-                }
+                RefreshDisable(isDisable || (itemInfo.itemData.count - selectCount <= 0));
             }
         }
     }
@@ -77,10 +72,12 @@ public class ComposeItem : MonoBehaviour
         {
             if (curData != null)
             {
-                curData.Refresh = null;
+                curData.RefreshCount = null;
+                CurData.RefreshDisable = null;
             }
             curData = value;
-            curData.Refresh = RefreshInfo;
+            curData.RefreshCount = SetSelCount;
+            CurData.RefreshDisable = SetDisable;
         }
     }
 
@@ -109,16 +106,12 @@ public class ComposeItem : MonoBehaviour
         {
             objAttr.SetActive(false);
         }
-        RefreshInfo();
-    }
-
-    public void RefreshInfo()
-    {
         SetSelCount(CurData.SelectCount);
         SetDisable(CurData.IsDisable);
     }
+    
 
-    void SetSelCount(int select)
+    public void SetSelCount(int select)
     {
         ItemData tempData = new ItemData() { itemId = CurData.itemInfo.itemData.itemId, count = CurData.itemInfo.itemData.count - CurData.SelectCount };
         if (itemIcon == null)
@@ -130,12 +123,12 @@ public class ComposeItem : MonoBehaviour
         {
             itemIcon.RefreshWithItemInfo(tempData);
         }
-        if (tempData.count<=0)
+        if (tempData.count <= 0)
         {
             CurData.IsDisable = true;
         }
     }
-    void SetDisable(bool disable)
+    public void SetDisable(bool disable)
     {
         objMask.SetActive(disable);
     }

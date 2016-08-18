@@ -15,7 +15,7 @@ public class GsMain {
 			for (int i = 0; i < args.length; i++) {
 				HawkLog.logPrintln(args[i]);
 			}
-			
+
 			// 创建应用
 			GsApp app = new GsApp();
 			if (app.init("cfg/gs.cfg")) {

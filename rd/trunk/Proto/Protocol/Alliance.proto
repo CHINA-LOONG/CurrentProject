@@ -17,13 +17,14 @@ message AllianceMember
 	required string name = 2;//名字
 	required int32  battlePoint = 3;//战斗力
 	required int32  contribution = 4;//贡献值
-	required int32  postion = 5;//职位: 0:普通成员,2:会长,1:副会长
-	required int32  id = 6;//唯一ID
-	optional bool   sendFatigue = 7; // 发送体力值
-	required int32  loginTime = 8; // 登陆时间
-	required int32  logoutTime = 9; // 登出时间
-	optional int32  prayCount = 10; //祈福次数
-	optional int32  taskCount = 11; //任务接取次数
+	required int32  totalContribution = 5;//历史贡献值
+	required int32  postion = 6;//职位: 0:普通成员,2:会长,1:副会长
+	required int32  id = 7;//唯一ID
+	optional bool   sendFatigue = 8; // 发送体力值
+	required int32  loginTime = 9; // 登陆时间
+	required int32  logoutTime = 10; // 登出时间
+	optional int32  prayCount = 11; //祈福次数
+	optional int32  taskCount = 12; //任务接取次数
 }
 
 //返回的公会基础信息
@@ -241,7 +242,8 @@ message HSAlliancePray
 
 message HSAlliancePrayRet
 {
-
+	required int32 selfContribution = 1;
+	required int32 allianceContribution = 2;
 }
 
 // 公会设置

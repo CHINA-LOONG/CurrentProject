@@ -90,7 +90,7 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if (SociatyTechnologyCfg.levelUpContribution(request.getType(), currentLevel + 1) < allianceEntity.getContribution()) {
+		if (SociatyTechnologyCfg.levelUpContribution(request.getType(), currentLevel + 1) > allianceEntity.getContribution()) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH_VALUE);
 			return true;
 		}

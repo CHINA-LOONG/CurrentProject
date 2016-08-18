@@ -297,7 +297,7 @@ miaoshu_np,普通,Normalpoint
 speak_006,Tips：要找到弱点，记得使用魔法水晶哦。,Tips : Remember to use Magic Crystal to find out enemy's weakpoint.
 name_10001_yaoshi,钥匙,key
 name_10002_wuming,无名,no name
-name_10003_duihuanquan,兑换券,ticket
+name_10003_duihuanquan,扫荡券,ticket
 name_10004_chujiqianghuacailiao,初级装备强化石,basic upgrade stone
 name_11001_chujizhuangbeiqianghuashi,初级装备强化石,basic upgrade stone
 name_11002_zhongjizhuangbeiqianghuashi,中级装备强化石,standard  upgrade stone
@@ -556,10 +556,10 @@ meidushahide_youshetou,这蛇头好像有些问题,是什么东西的存在，�
 meidushahide_xiaoshetou,据说美杜莎非常喜爱他的头发,美杜莎的弱点在哪里呢？
 meidushahide_eyes,据说被美杜莎注视过的人都会石化！,shihua！
 meidushanormal1_xiong,美杜莎的胸，看起来好平哦！,美杜莎的胸，看起来好平哦！
-meidushanormal1_zuoshetou,这蛇头提升了美杜莎的物理攻击能力,原来是这个蛇头提升了美杜莎的物理攻击能力
-meidushanormal1_youshetou,这蛇头提升了美杜莎的法术攻击能力,原来是这个蛇头提升了美杜莎的法术攻击能力
-meidushanormal2_zuoshetou,美杜莎只有这一个物理能力的蛇头了，要不要都打掉？,美杜莎最在意这个提升物理能力的蛇头，可不要激怒他！
-meidushanormal2_youshetou,美杜莎只有这一个物理能力的蛇头了，要不要都打掉？,美杜莎最在意这个提升法术能力的蛇头，可不要激怒他！
+meidushanormal1_zuoshetou,这蛇发让美杜莎物理能力倍增！,原来是这个蛇发提升了美杜莎的物理攻击能力
+meidushanormal1_youshetou,这蛇发让美杜莎法术能力倍增！,原来是这个蛇发提升了美杜莎的法术攻击能力
+meidushanormal2_zuoshetou,美杜莎只有这一个物理能力的蛇发了，要不要都打掉？,美杜莎最在意这个提升物理能力的蛇发，可不要激怒他！
+meidushanormal2_youshetou,美杜莎只有这一个物理能力的蛇发了，要不要都打掉？,美杜莎最在意这个提升法术能力的蛇发，可不要激怒他！
 meidushanormal1_xiaoshetou,要不要打掉这个诡异的蛇头？,美杜莎会因为掉头发伤心的昏过去！
 meidushanormal1_eyes,往往危险的部位也比较脆弱！,cuiruo！
 amutejineng1,冰焰,bingyan

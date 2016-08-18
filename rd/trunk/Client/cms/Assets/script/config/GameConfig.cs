@@ -12,7 +12,7 @@ public class GameConfig : MonoBehaviour {
 
 	public	string	GoldExchangeId = "1";
 
-	public float FindWeakPointFinishedNeedTime = 1.5f;
+	public float FindWeakPointFinishedNeedTime = 0.8f;
 	public float MirrorRadius = 60f;
 	//public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
 	public float FireFocusWpRadius = 50f;

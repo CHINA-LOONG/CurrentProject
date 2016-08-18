@@ -7,7 +7,7 @@ public enum SociatyContenType:int
     Infomation = 0,//公会信息
     Member,
     Technology,
-    Log,
+   // Log,
     OtherSociaty,
     Count
 }
@@ -61,8 +61,8 @@ public class SociatyMain : UIBase, TabButtonDelegate
         tabBtnGroup.tabButtonList[0].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_information"));
         tabBtnGroup.tabButtonList[1].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_member"));
         tabBtnGroup.tabButtonList[2].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_technology"));
-        tabBtnGroup.tabButtonList[3].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_log"));
-        tabBtnGroup.tabButtonList[4].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_other"));
+        //tabBtnGroup.tabButtonList[3].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_log"));
+        tabBtnGroup.tabButtonList[3].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_other"));
 
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
