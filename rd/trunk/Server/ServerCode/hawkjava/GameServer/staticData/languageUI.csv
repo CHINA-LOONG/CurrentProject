@@ -1541,7 +1541,7 @@ gift_event_notreach,未达成,In progress
 invite_alreadyinvite,领取,Collect
 invite_paihangbang,排行榜,Rankings
 invite_fuzhi,快速邀请,Quick Invite
-invite_imtext,我的id是{0}，快来接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, tap here accept my invitation under Friends Collaboration in the Events."
+invite_imtext,我的id是{0}，点击这里接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, tap here to accept my invitation under Friends Collaboration in the Events."
 facebookshare_fuhuo,"立即获得免费复活机会
 （每天1次）！","Immediately revive for free 
 (once per day)!"
@@ -1803,7 +1803,7 @@ setting_headpicturetips,拥有过的宠物可以设置为头像,Monsters that yo
 decompose_sureother,选择宠物包含<color=#ffcc00>绿色及以上品质</color>，确定分解操作么？,Selection includes monsters <color=#ffcc00>green grade or above</color>. Continue?
 decompose_c,稀有度C,C Class
 decompose_b,稀有度B,B Class
-compose_record_008,已选择所有稀有度{0}目标,All {0} class targets have already been selected.
+compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.
 worldboss_title,神怪入侵,Deity Invasion
 worldboss_times,今日可参与活动次数：{0},Tries remaining today: {0}
 worldboss_rankbutton,排行榜,Rankings
@@ -1816,20 +1816,20 @@ worldboss_myrank500,500名之后,Rank 500 and above
 worldboss_kexingtitle,神怪克星,Deity Nemesis
 worldboss_kexingdiji,低级克星,Minor Nemesis
 worldboss_kexinggaoji,高级克星,Major Nemesis
-worldboss_moraletitle1,士气提升属性,Morale Increases Stats
+worldboss_moraletitle1,士气提升,Increase Morale
 worldboss_moraletitle2,（每项最多100%）,(Up to 100% each)
 worldboss_moralestrenth,力量,STR
 worldboss_moraleintelligence,智力,INT
 worldboss_moralehealth,体力,STA
-worldboss_moralebutton,提升士气,Increase Moral
+worldboss_moralebutton,提升,Increase
 worldboss_battlebuttonyicanjia,已参与,have participated
 worldboss_battlebuttonweikai,未开启,Locked
 worldboss_battlebuttongo,挑战,Battle
 worldboss_battlebuttonrevive,再次挑战,Battle Again
 worldboss_battlebuttonrevivetime,{0}秒后可再次挑战,Can battle again after {0} seconds
 worldboss_revivesure,确认立即挑战吗？,Battle now?
-worldboss_timetips,下场活动开启时间,Next event start time
-worldboss_timelefttips,本场活动将于{0}后结束,This event will end after {0}
+worldboss_timetips,下场活动开启时间 {0} {1}:{2},Next event start time {0} {1}:{2}
+worldboss_timelefttips,本场活动将于{0}:{1}后结束,This event will end after {0}:{1}
 worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
 worldboss_kexingtitle,神怪克星,Monster Nemesis
 worldboss_kexinglow,出战全员伤害+10%,Ally monster damage +10%
@@ -1906,3 +1906,13 @@ loading_tips56,神怪入侵战斗中，需要手动施放大招、集火、使�
 arrayselect_count_006,活力不足，请先补充活力,"Insufficient energy, please recharge some energy first."
 bag_record_008,钥匙不足，请先购买钥匙,"Insufficient keys, please purchase some more keys first."
 summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit reached, unable to summon."
+handbook_record_006,已达宠物最大持有量，无法合成,"Max monster limit reached, unable to craft."
+list_byname,按名称排序,按名称排序
+list_bylevel,按等级排序,按等级排序
+compose_insignia_001,{0}%概率获得{1},{0}%概率获得{1}
+compose_insignia_003,祝福之力,祝福之力
+compose_insignia_004,可合成{0}次，每次合成100%概率获得{1}！,可合成{0}次，每次合成100%概率获得{1}！
+compose_insignia_005,将消耗,将消耗
+compose_record_009,纹章不足,纹章不足
+compose_record_010,请添加5个相同名称的纹章,请添加5个相同名称的纹章
+compose_record_011,祝福之力不足,祝福之力不足

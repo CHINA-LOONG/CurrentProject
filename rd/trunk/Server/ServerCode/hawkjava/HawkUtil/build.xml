@@ -64,6 +64,8 @@
         <pathelement location="lib/httpclient-cache-4.4.1.jar"/>
         <pathelement location="lib/httpcore-4.4.1.jar"/>
         <pathelement location="lib/httpcore-nio-4.4.1.jar"/>
+        <pathelement location="lib/concurrentlinkedhashmap-lru-1.4.jar"/>
+        <pathelement location="lib/notnoop-javaapns-1.0.0.beta3.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>

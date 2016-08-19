@@ -57,10 +57,10 @@ public class PetViewConst{
     public static string PetListFull = "pet_tip_full";
     public static string PetListProperty = "pet_list_proprety";
     public static string PetListType = "pet_list_type";
-    public static string PetDetailLeftDetailAttr = "pet_detail_left_detail_attr";
-    public static string PetDetailLeftSkill = "pet_detail_left_skill";
-    public static string PetDetailLeftStage = "pet_detail_stage";
-    public static string PetDetailLeftAdvance = "pet_detail_left_advance";
+    //public static string PetDetailLeftDetailAttr = "pet_detail_left_detail_attr";
+    //public static string PetDetailLeftSkill = "pet_detail_left_skill";
+    //public static string PetDetailLeftStage = "pet_detail_stage";
+    //public static string PetDetailLeftAdvance = "pet_detail_left_advance";
 
     public static string PetDetailSkillLevel = "pet_detail_skill_level";
     public static string PetDetailSkillCurrentLeve = "pet_detail_skill_current_level";

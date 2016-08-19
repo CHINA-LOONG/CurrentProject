@@ -73,4 +73,5 @@ public class GameConfig : MonoBehaviour {
     public int contributionRewordLevel1 = 500;//公会贡献值领取
     public int contributionRewordLevel2 = 1500;
     public int contributionRewordLevel3 = 3000;
+    public int sociatyTaskMaxCount = 3;
 }

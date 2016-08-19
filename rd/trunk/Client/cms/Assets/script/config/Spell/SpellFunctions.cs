@@ -470,5 +470,30 @@ public class SpellFunctions
         }
         return 0;
     }
+	public static int UsingBuffRate_50(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        ) 
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			if (damageProto.isHeal == false)
+			{
+				Spell ownedSpell = triggerEffect.ownedSpell;
+				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_Negative && randNum <= 0.50f)
+				{
+					return 1;
+				}
+			}				
+		}	
+		return 0;
+    } 
 
 }

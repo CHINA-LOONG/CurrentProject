@@ -306,7 +306,7 @@ public class PlayerAllianceModule extends PlayerModule {
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_SELF_TEAM_C_VALUE)) {
-			onAllianceSelfTeamSyn(HS.code.ALLIANCE_SELF_DATA_C_VALUE, protocol.parseProtocol(HSAllianceSelfTeam.getDefaultInstance()));
+			onAllianceSelfTeamSyn(HS.code.ALLIANCE_SELF_TEAM_C_VALUE, protocol.parseProtocol(HSAllianceSelfTeam.getDefaultInstance()));
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_TEAM_LIST_C_VALUE)) {
@@ -344,13 +344,14 @@ public class PlayerAllianceModule extends PlayerModule {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_DATA_S_VALUE, allianceData));
 
 		// 同步自身数据
-		HSAllianceSelfDataRet.Builder sleftData = HSAllianceSelfDataRet.newBuilder();
+		HSAllianceSelfDataRet.Builder seleftData = HSAllianceSelfDataRet.newBuilder();
 		AllianceMember.Builder memberBuilder = AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity(), null);
-		memberBuilder.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
-		memberBuilder.setTaskCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
-		sleftData.setSelfData(memberBuilder);
-		sleftData.setContributionReward(player.getPlayerData().getStatisticsEntity().getAllianceContriRewardDaily());
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SELF_DATA_S_VALUE, sleftData));
+		seleftData.setSelfData(memberBuilder);
+		seleftData.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
+		seleftData.setTaskCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
+		seleftData.setContributionReward(player.getPlayerData().getStatisticsEntity().getAllianceContriRewardDaily());
+		seleftData.setTeamID(allianceEntity.getTeamEntity(player.getId()) == null ? 0 : allianceEntity.getTeamEntity(player.getId()).getId());
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SELF_DATA_S_VALUE, seleftData));
 
 		// 同步成员数据
 		//player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBERS_S_VALUE, AllianceUtil.getAllianceMembersInfo(allianceEntity, player.getId())));

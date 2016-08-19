@@ -188,7 +188,8 @@ public class SociatyContentInfomation : SociatyContentBase
 
     void OnTaskButtonClick()
     {
-        UIIm.Instance.ShowSystemHints("comming Later!", (int)PB.ImType.PROMPT);
+        UISociatyTask.Open();
+       // UIIm.Instance.ShowSystemHints("comming Later!", (int)PB.ImType.PROMPT);
     }
 
     void OnShopButtonClick()

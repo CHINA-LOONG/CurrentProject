@@ -522,12 +522,12 @@ tips_90005_gonghuibi,公会玩法获得的货币，可通过公会商店购买�
 tips_90006_huolizhi,玩家活力,Player Energy
 tips_90007_jingyanzhi,可以增加角色经验值,To increase character's experience
 tips_90008_huodongdian,活动期间，完成相应任务，收集活动积分可以兑换各类珍稀碎片以及道具哦！,"During the event period, complete the corresponding quests to accumulate event points that can be exchanged for rare fragments and items!"
-name_40011_pvprankxianshijinbi,大金币箱子,Giant Box of Gold
+name_40011_pvprankxianshijinbi,小金币箱子,Small Box of Gold
 name_40012_pvprankxianshijinbi,中金币箱子,Medium Box of Gold
-name_40013_pvprankxianshijinbi,小金币箱子,Small Box of Gold
-tips_40011_pvprankxianshijinbi,能获得大量金币,Receive a large amount of Gold
+name_40013_pvprankxianshijinbi,大金币箱子,Giant Box of Gold
+tips_40011_pvprankxianshijinbi,能获得一定量金币,Receive a certain amount of Gold
 tips_40012_pvprankxianshijinbi,能获得很多金币,Receive a lot of Gold
-tips_40013_pvprankxianshijinbi,能获得一定量金币,Receive a certain amount of Gold
+tips_40013_pvprankxianshijinbi,能获得大量金币,Receive a large amount of Gold
 name_10018_jinjiejuanzhou,妖力晶核lv1,Crystal Ball Core lv 1
 name_10019_jinjiejuanzhou,妖力晶核lv2,Crystal Ball Core lv 2
 name_10020_jinjiejuanzhou,妖力晶核lv3,Crystal Ball Core lv 3
@@ -552,3 +552,13 @@ tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎�
 tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)"
 name_90009_xinyangzhili,书魂,Soul Tome
 tips_90009_xinyangzhili,可以在神话守护者玩法中兑换珍稀奖励！,"Accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards！"
+name_10028_zhufuzhili1,祝福之力lv1,祝福之力lv1
+name_10029_zhufuzhili2,祝福之力lv2,祝福之力lv2
+name_10030_zhufuzhili3,祝福之力lv3,祝福之力lv3
+name_10031_zhufuzhili4,祝福之力lv4,祝福之力lv4
+name_10032_zhufuzhili5,祝福之力lv5,祝福之力lv5
+tips_10028_zhufuzhili1,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章
+tips_10029_zhufuzhili2,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章
+tips_10030_zhufuzhili3,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章
+tips_10031_zhufuzhili4,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章
+tips_10032_zhufuzhili5,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章

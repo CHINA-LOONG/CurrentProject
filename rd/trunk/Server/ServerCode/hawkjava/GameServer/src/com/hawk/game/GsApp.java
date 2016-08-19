@@ -27,6 +27,8 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkShutdownHook;
 import org.hawk.os.HawkTime;
 import org.hawk.service.HawkServiceManager;
+import org.hawk.util.services.FunPlusPushService;
+import org.hawk.util.services.FunPlusTranslateService;
 import org.hawk.util.services.HawkAccountService;
 import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
@@ -222,6 +224,16 @@ public class GsApp extends HawkApp {
 					GsConfig.getInstance().getEmailUser(),
 					GsConfig.getInstance().getEmailPwd());
 		}
+
+		// 初始化Funplus翻译服务
+		if (true == GsConfig.getInstance().isTranslate()) {
+			HawkLog.logPrintln("install translate service......");
+			FunPlusTranslateService.getInstance().install(GsConst.FUNPLUS_APP_ID, GsConst.FUNPLUS_KEY);
+		}
+
+		// 初始化Funplus推送服务
+		HawkLog.logPrintln("install push service......");
+		FunPlusPushService.getInstance().install(GsConst.FUNPLUS_APP_ID, GsConst.FUNPLUS_KEY);
 
 		// 公会初始化
 		HawkLog.logPrintln("init alliance manager......");

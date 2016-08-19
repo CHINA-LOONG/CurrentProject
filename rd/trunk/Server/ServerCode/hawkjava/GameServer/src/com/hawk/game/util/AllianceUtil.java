@@ -18,7 +18,6 @@ import com.hawk.game.protocol.Alliance.AllianceApply;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
 import com.hawk.game.protocol.Alliance.AllianceSimpleInfo;
-import com.hawk.game.protocol.Alliance.AllianceTaskInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamMemInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo;
@@ -221,7 +220,6 @@ public class AllianceUtil {
 		builder.setTotalContribution(playerAllianceEntity.getTotalContribution());
 		builder.setPostion(playerAllianceEntity.getPostion());
 		builder.setId(playerAllianceEntity.getPlayerId());
-		builder.setPrayCount(playerAllianceEntity.getFatigueCount());
 		builder.setLoginTime(playerAllianceEntity.getLoginTime());
 		builder.setLogoutTime(playerAllianceEntity.getLoginTime());
 		if (selfEntity != null && selfEntity.getRefreshTime() > HawkTime.getSeconds() && selfEntity.getFatigueSet().contains(playerAllianceEntity.getPlayerId())) {
@@ -299,6 +297,9 @@ public class AllianceUtil {
 	public static AllianceTeamInfo.Builder getTeamInfo(AllianceTeamEntity teamEntity, AllianceEntity allianceEntity, boolean questInfo) {
 		AllianceTeamInfo.Builder element = AllianceTeamInfo.newBuilder();
 		element.setStartTime(teamEntity.getCreateTime());
+		element.setTaskId(teamEntity.getTaskId());
+		element.setTeamId(teamEntity.getId());
+		
 		if (teamEntity.getCaptain() != 0) {
 			AllianceTeamMemInfo.Builder member = getPlayerInfo(teamEntity.getCaptain(), allianceEntity);
 			member.setIsCaptain(true);
@@ -384,23 +385,6 @@ public class AllianceUtil {
 		for (AllianceApplyEntity applyEntity : allianceEntity.getApplyList().values()) {
 			builder.addApply(getApplyNotify(applyEntity));
 		}
-		return builder;
-	}
-	
-	/**
-	 * 工会任务信息
-	 * @param allianceId
-	 * @param player
-	 * @return
-	 */
-	public static AllianceTaskInfo.Builder getAllianceTaskInfo(AllianceTeamEntity teamEntity) {
-		AllianceTaskInfo.Builder builder = AllianceTaskInfo.newBuilder();
-		builder.addItemTask(teamEntity.getItemQuest1());
-		builder.addItemTask(teamEntity.getItemQuest2());
-		builder.addItemTask(teamEntity.getItemQuest3());
-		builder.addCoinTask(teamEntity.getCoinQuest1());
-		builder.addCoinTask(teamEntity.getCoinQuest2());
-		builder.addInstanceTask(teamEntity.getInstanceQuest1());
 		return builder;
 	}
 	

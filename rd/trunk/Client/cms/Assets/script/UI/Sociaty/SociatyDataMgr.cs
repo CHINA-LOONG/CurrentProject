@@ -6,6 +6,7 @@ public delegate void NetMessageDelegate(ProtocolMessage msg);
 public class SociatyDataMgr : MonoBehaviour
 {
     public int allianceID = 0;
+    public int allianceParyCount = 0;
     public PB.AllianceInfo allianceData = new PB.AllianceInfo();
     public PB.AllianceMember allianceSelfData = new PB.AllianceMember();
     public bool[] hasReceivContributionReword = new bool[3];
@@ -14,6 +15,12 @@ public class SociatyDataMgr : MonoBehaviour
     public int lastSyncAllianceMemberTime = 0;
 
     public List<PB.AllianceApply> newApplyList = new List<PB.AllianceApply>();
+
+    //task
+    public int taskTeamId = 0;
+    public PB.AllianceTaskInfo taskInfo = null;
+    public int taskCount = 0;
+    public List<PB.AllianceTeamInfo> teamList = new List<PB.AllianceTeamInfo>();
 
     private NetMessageDelegate callBack = null;
     // Use this for initialization
@@ -39,6 +46,9 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 
 
@@ -65,6 +75,8 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_FATIGUE_GIVE_S.GetHashCode().ToString(), OnReceivSociatyMessage);
 
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 	
     //打开公会
@@ -100,10 +112,14 @@ public class SociatyDataMgr : MonoBehaviour
         PB.HSAllianceSelfDataRet selfData = msg.GetProtocolBody<PB.HSAllianceSelfDataRet>();
         if(selfData != null)
         {
+            allianceParyCount = selfData.prayCount;
             allianceSelfData = selfData.selfData;
             hasReceivContributionReword[0] = (selfData.contributionReward & 1) == 1;
             hasReceivContributionReword[1] = (selfData.contributionReward & 2) == 2;
             hasReceivContributionReword[2] = (selfData.contributionReward & 4) == 4;
+
+            taskTeamId = selfData.teamID;
+            taskCount = selfData.taskCount;
         }
     }
 
@@ -176,6 +192,14 @@ public class SociatyDataMgr : MonoBehaviour
         PB.HSAllianceFatigueGive param = new PB.HSAllianceFatigueGive();
         param.targetId = playerId;
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode(), param);
+    }
+
+    public void RequestJoinTeam(int teamId,NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceJoinTeam param = new PB.HSAllianceJoinTeam();
+        param.teamId = teamId;
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode(), param);
     }
 
     public  void SetMemberPosition(int playerId,int position)

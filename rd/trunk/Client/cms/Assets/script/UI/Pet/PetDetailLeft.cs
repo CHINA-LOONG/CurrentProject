@@ -131,10 +131,10 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         btnAdvance.interactable = false;
 
 
-        btnDetailAttr.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftDetailAttr);
-        btnSkill.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftSkill);
-        btnStage.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftStage);
-        btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAdvance);
+        btnDetailAttr.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_detail_attr");
+        btnSkill.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_skill");
+        btnStage.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
+        btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_advance");
 
         foreach (EquipField item in fields)
         {
@@ -153,19 +153,19 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
 
     void BindListener()
     {
-        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
     }
     void UnBindListener()
     {
-        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
     }
 
 
-    void ReloadPetStage()
+    void ReloadPetStage(GameUnit gameUnit)
     {
         if (m_unit != null)
         {
@@ -212,8 +212,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         textType.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListType);
         //刷新装备
         RefreshEquip(m_unit.equipList);
-
-
+        
         Sprite image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
         if (image != null)
         {
@@ -242,7 +241,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
 
         if (UIUtil.CheckPetIsMaxLevel(level) > 0)
         {
-            textExp.text = "MAX LEVEL";
+            textExp.text = "Max LVL";
             progressExp.value = 0.0f;
             btnAddExp.interactable = false;
         }

@@ -1,6 +1,6 @@
-ï»¿#TEXT,TEXT,NUM ,TEXT,NUM ,NUM ,NUM,NUM ,NUM ,NUM,TEXT,NUM ,NUM ,NUM ,NUM ,NUM ,NUM ,TEXT,TEXT,TEXT,TEXT,NUM ,NUM ,NUM ,TEXT,NUM,NUM,NUM,TEXT
+#TEXT,TEXT,NUM ,TEXT,NUM ,NUM ,NUM,NUM ,NUM ,NUM,TEXT,NUM ,NUM ,NUM ,NUM ,NUM ,NUM ,TEXT,TEXT,TEXT,TEXT,NUM ,NUM ,NUM ,TEXT,NUM,NUM,NUM,TEXT
 id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindType,sellPrice,sellType,buyPrice,buyType,stack,rewardId,componentItem,needItem,targetItem,needCount,addAttrType,addAttrValue,gemId,gemType,part,durability,itemfounds
-#id,åç§°,1è§’è‰²2æ€ªç‰©,èµ„æº,ç±»å‹ï¼ˆ1=ææ–™ï¼Œ2=ç¢ç‰‡ï¼Œ3=å®çŸ³ï¼Œ4=å®ç®±ï¼Œ5=æ¶ˆè€—å“ï¼Œ7=è£…å¤‡ï¼‰,ç±»å‹å­é›†,å“çº§,æœ€ä½çº§åˆ«,ä½¿ç”¨æ¡ä»¶,æ¯å¤©å¯ä½¿ç”¨æ¬¡æ•°,æç¤ºæ–‡æ¡ˆ,ç»‘å®šç±»å‹,æ•°é‡,1å®çŸ³2é‡‘å¸,æ•°é‡,1å®çŸ³2é‡‘å¸,å †å ä¸Šé™,å®ç®±çš„å¥–åŠ±åˆ—è¡¨,åˆæˆè¯¥è£…å¤‡éœ€è¦çš„é“å…·,å‰ç½®è£…å¤‡åˆ—è¡¨,åˆæˆ/å…‘æ¢åˆ—è¡¨,åˆæˆ/å…‘æ¢éœ€è¦æ•°é‡,æ¶ˆè€—å“å¢ç›Šç±»å‹,æ¶ˆè€—å“å¢ç›Šæ•°é‡,å®çŸ³å¢ç›ŠID,å®çŸ³ç±»å‹,éƒ¨ä½,è€ä¹…åº¦,è·å–é€”å¾„
+#id,Ãû³Æ,1½ÇÉ«2¹ÖÎï,×ÊÔ´,ÀàĞÍ£¨1=²ÄÁÏ£¬2=ËéÆ¬£¬3=±¦Ê¯£¬4=±¦Ïä£¬5=ÏûºÄÆ·£¬7=×°±¸£©,ÀàĞÍ×Ó¼¯,Æ·¼¶,×îµÍ¼¶±ğ,Ê¹ÓÃÌõ¼ş,Ã¿Ìì¿ÉÊ¹ÓÃ´ÎÊı,ÌáÊ¾ÎÄ°¸,°ó¶¨ÀàĞÍ,ÊıÁ¿,1±¦Ê¯2½ğ±Ò,ÊıÁ¿,1±¦Ê¯2½ğ±Ò,¶ÑµşÉÏÏŞ,±¦ÏäµÄ½±ÀøÁĞ±í,ºÏ³É¸Ã×°±¸ĞèÒªµÄµÀ¾ß,Ç°ÖÃ×°±¸ÁĞ±í,ºÏ³É/¶Ò»»ÁĞ±í,ºÏ³É/¶Ò»»ĞèÒªÊıÁ¿,ÏûºÄÆ·ÔöÒæÀàĞÍ,ÏûºÄÆ·ÔöÒæÊıÁ¿,±¦Ê¯ÔöÒæID,±¦Ê¯ÀàĞÍ,²¿Î»,ÄÍ¾Ã¶È,»ñÈ¡Í¾¾¶
 10001,name_10001_yaoshi,-1,,1,-1,1,0,1,-1,tips_10001_yaoshi,3,-1,-1,200,1,1,,,,,-1,-1,-1,,-1,-1,-1,
 10002,name_10002_wuming,-1,,1,-1,1,10,1,-1,tips_10002_wuming,3,-1,-1,200,1,100,,,,,-1,-1,-1,,-1,-1,-1,
 10003,name_10003_duihuanquan,-1,,1,-1,1,0,1,-1,tips_10003_duihuanquan,3,-1,-1,200,1,100,,,,,-1,-1,-1,,-1,-1,-1,
@@ -16,6 +16,9 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 10010,name_10010_baoxiangyaoshi2,-1,icon_bossYueguangsenlin18Meidusha5,1,3,3,0,1,-1,tips_10010_baoxiangyaoshi2,3,1000,2,60,1,100,,,,,-1,-1,-1,,-1,-1,-1,
 10011,name_10011_baoxiangyaoshi3,-1,icon_bossYueguangsenlin18Meidusha8,1,3,4,0,1,-1,tips_10011_baoxiangyaoshi3,3,1000,2,60,1,100,,,,,-1,-1,-1,,-1,-1,-1,
 10012,name_10012_baoxiangyaoshi4,-1,icon_bossYueguangsenlin18Meidusha9,1,3,5,0,1,-1,tips_10012_baoxiangyaoshi4,3,1000,2,60,1,100,,,,,-1,-1,-1,,-1,-1,-1,
+10013,name_10013_yibanlaji1,-1,icon_xgXiyiren,1,1,1,0,1,-1,tips_10013_yibanlaji1,3,600,2,-1,-1,100,,,,,-1,-1,-1,,-1,-1,-1,
+10014,name_10014_yibanlaji2,-1,icon_xgHuapo,1,1,1,0,1,-1,tips_10014_yibanlaji2,3,800,2,-1,-1,100,,,,,-1,-1,-1,,-1,-1,-1,
+10015,name_10015_yibanlaji3,-1,icon_xgPanshen,1,1,1,0,1,-1,tips_10015_yibanlaji3,3,1000,2,-1,-1,100,,,,,-1,-1,-1,,-1,-1,-1,
 20001,name_20001_suipian_common,-1,icon_wannengsuipian,2,1,1,0,1,-1,tips_20001_suipian_common,1,100,2,200,1,100,,,,,-1,-1,-1,,-1,-1,-1,
 20002,name_20002_suipian_xiyiren,-1,icon_xgXiyiren,2,1,1,0,1,-1,tips_20002_suipian_xiyiren,1,100,2,200,1,100,,,,,-1,-1,-1,,-1,-1,-1,
 20003,name_20003_suipian_huapo,-1,icon_xgHuapo,2,1,1,0,1,-1,tips_20003_suipian_huapo,1,100,2,200,1,100,,,,,-1,-1,-1,,-1,-1,-1,

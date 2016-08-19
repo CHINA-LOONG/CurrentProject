@@ -38,7 +38,7 @@ public class SociatyPrayItem : MonoBehaviour
         if (mPrayData != null)
         {
             PlayerData playerData = GameDataMgr.Instance.PlayerDataAttr;
-            if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.prayCount > 0)
+            if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceParyCount > 0)
             {
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_027"),
                                                (int)PB.ImType.PROMPT);

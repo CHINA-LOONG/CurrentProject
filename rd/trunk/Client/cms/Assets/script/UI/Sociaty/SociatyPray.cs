@@ -71,7 +71,7 @@ public class SociatyPray : UIBase
         }
         else
         {
-            GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.prayCount = 1;
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceParyCount = 1;
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_029"), (int)PB.ImType.PROMPT);
             PB.HSAlliancePrayRet playerSync = msg.GetProtocolBody<PB.HSAlliancePrayRet>();
             if (playerSync != null)

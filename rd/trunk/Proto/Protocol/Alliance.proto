@@ -23,8 +23,6 @@ message AllianceMember
 	optional bool   sendFatigue = 8; // 发送体力值
 	required int32  loginTime = 9; // 登陆时间
 	required int32  logoutTime = 10; // 登出时间
-	optional int32  prayCount = 11; //祈福次数
-	optional int32  taskCount = 12; //任务接取次数
 }
 
 //返回的公会基础信息
@@ -65,13 +63,6 @@ message AllianceSimpleInfo
 	required bool   autoAccept = 12; //自否自动允许加入
 }
 
-message AllianceTaskInfo
-{
-	repeated int32 itemTask = 1;
-	repeated int32 coinTask = 2;
-	repeated int32 instanceTask = 3;
-}
-
 message AllianceTeamQuestInfo
 {
 	required int32 questId = 1;
@@ -93,8 +84,10 @@ message AllianceTeamMemInfo
 message AllianceTeamInfo
 {
 	required int32 startTime = 1;
-	repeated AllianceTeamMemInfo members = 2;
-	repeated AllianceTeamQuestInfo questInfos = 3;
+	required int32 taskId = 2;
+	required int32 teamId = 3;
+	repeated AllianceTeamMemInfo members = 4;
+	repeated AllianceTeamQuestInfo questInfos = 5;
 }
 
 // -------------------------------------------------------  工会基础协议 -----------------------------------------------------
@@ -311,6 +304,9 @@ message HSAllianceSelfDataRet
 {
 	required AllianceMember selfData = 1;
 	required int32 contributionReward = 2;
+	required int32  prayCount = 3; //祈福次数
+	required int32  taskCount = 4; //任务接取次数
+	required int32 teamID = 5 ;    //队伍ID
 }
 
 //工会成员列表
@@ -429,7 +425,7 @@ message HSAllianceCreateTeam
 
 message HSAllianceCreateTeamRet
 {
-	required AllianceTaskInfo taskInfo = 1; //任务信息
+	required int32 teamId = 1;//组号
 }
 
 // 加入队伍
@@ -440,7 +436,7 @@ message HSAllianceJoinTeam
 
 message HSAllianceJoinTeamRet
 {
-
+	required int32 teamId = 1;
 }
 
 // 接取任务

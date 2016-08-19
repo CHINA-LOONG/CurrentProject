@@ -33,8 +33,9 @@ public class EquipMaterialItem : MonoBehaviour
         }
         else
         {
-            color = ColorConst.text_color_Req;
+            color = ColorConst.system_color_white;
         }
+        textCount.color = ColorConst.system_color_white;
         textCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + (mineItem.count > 9999 ? 9999 : mineItem.count) + "</color>/" + count;
     }
 

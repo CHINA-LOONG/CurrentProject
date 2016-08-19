@@ -7,6 +7,7 @@ public class SociatyTask
     public int minLevel;
     public int time;//分钟
     public string taskName;
+    public string taskDesc;
     public int taskStart;//开启任务消耗钻石数
     public string reward;
 

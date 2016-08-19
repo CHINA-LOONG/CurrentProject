@@ -1373,20 +1373,9 @@ public class Player extends HawkAppObj {
 		playerData.loadAllMonster();
 		// default monster
 		if (statisticsEntity.getMonsterMaxCount() == 0) {
-			increaseMonster("xgXiyiren", 1, Action.SYSTEM);
-			increaseMonster("xgHuapo", 1, Action.SYSTEM);
-			increaseMonster("xgPanshen", 1, Action.SYSTEM);
-			increaseMonster("xgMantuoluo", 1, Action.SYSTEM);
-			increaseMonster("xgAmute", 1, Action.SYSTEM);
-			increaseMonster("xgWagui", 1, Action.SYSTEM);
-			increaseMonster("xgHetong", 1, Action.SYSTEM);
-			increaseMonster("xgLonggongtongzi", 1, Action.SYSTEM);
-			increaseMonster("xgLangren", 1, Action.SYSTEM);
-			increaseMonster("xgAnpusha", 1, Action.SYSTEM);
-			increaseMonster("xgKairuisi", 1, Action.SYSTEM);
-			increaseMonster("xgLuoxinfu", 1, Action.SYSTEM);
-			increaseMonster("xgMomo", 1, Action.SYSTEM);
-			increaseMonster("xgHapi", 1, Action.SYSTEM);
+			increaseMonster("xgXiyiren2", 1, Action.SYSTEM);
+			increaseMonster("xgHuapo2", 1, Action.SYSTEM);
+			increaseMonster("xgPanshen2", 1, Action.SYSTEM);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

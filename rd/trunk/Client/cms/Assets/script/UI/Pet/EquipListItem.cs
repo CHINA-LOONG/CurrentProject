@@ -125,12 +125,18 @@ public class EquipListItem : MonoBehaviour
 
     void OnClickSelectEquip(GameObject go)
     {
-        ClickDelegate.OnSelectEquip(info.equipData);
+        if (ClickDelegate != null)
+        {
+            ClickDelegate.OnSelectEquip(info.equipData);
+        }
     }
 
     void OnClickUsedEquip(GameObject go)
     {
-        ClickDelegate.OnUsedEquip(info.equipData);
+        if (ClickDelegate != null)
+        {
+            ClickDelegate.OnUsedEquip(info.equipData);
+        }
     }
 
 }

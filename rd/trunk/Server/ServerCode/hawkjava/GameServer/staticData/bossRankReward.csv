@@ -1,7 +1,7 @@
-#NUM,TEXT,TEXT
-id,rank,reward
-#id,ÅÅÃû,½çÃæÏÔÊ¾½±Àø
-1,1,pvp_rankrewardxianshi1
-2,2,pvp_rankrewardxianshi2
-3,3,pvp_rankrewardxianshi3
-4,3-10,pvp_rankrewardxianshi4
+ï»¿#NUM,NUM,TEXT,TEXT
+id,rank,rankUI,reward
+#id,æ’å,æ’åUI,ç•Œé¢æ˜¾ç¤ºå¥–åŠ±
+1,1,1,pvp_rankrewardxianshi1
+2,2,2,pvp_rankrewardxianshi2
+3,3,3,pvp_rankrewardxianshi3
+4,500,3æœˆ10æ—¥,pvp_rankrewardxianshi4

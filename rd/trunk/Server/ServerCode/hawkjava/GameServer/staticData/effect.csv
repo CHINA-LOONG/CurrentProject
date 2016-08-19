@@ -902,6 +902,8 @@ bosssenlin36Momo14e1,0,1,1,0,"[""bosssenlin36Momo14e2"",""bosssenlin36Momo14e3""
 bosssenlin36Momo14e2,4,1,1,0,,,,,,,,,,,,bosssenlin36Momo14b2,12345,,,,1
 bosssenlin36Momo14e3,4,1,1,0,,,,,,,,,,,,bosssenlin36Momo14b1,12345,,,,1
 bosssenlin36Momo14e4,3,1,0,0,,,,,,,,1,0.4,0,1,,12345,,,,1
+bosssenlin36Momo14e5,0,1,0,0,"[""bosssenlin36Momo14e4"",""bosssenlin36Momo14e6""]",,,,,,,,,,,,12345,,,,1
+bosssenlin36Momo14e6,1,1,1,0,,,,,,,,,,,,,12345,,,,1
 bosssenlin37Hapi11e1,4,1,1,0,,,,,,,,,,,,bosssenlin37Hapi11b1,12345,,,,1
 bosssenlin37Hapi11e2,3,1,1,0,,,,,,,,1,0.25,1,1,,12345,,,,1
 bosssenlin37Hapi12e1,2,1,0,0,,,,,bosssenlin37Hapi12e2,1,,,,,,,12345,,,,1
@@ -1084,8 +1086,10 @@ bossdajie13Cike43e2,2,1,0,0,,,,,bossdajie13Cike43e3,2.3,,,,,,,12345,,,,1
 bossdajie13Cike43e3,3,1,0,0,,,,,,,,0,1.2,0,4,,12345,,,,1
 bossdajie13Cike44e1,0,1,1,0,"[""bossdajie13Cike44e2"",""bossdajie13Cike44e4""]",,,,,,,,,,,,12345,,,,1
 bossdajie13Cike44e2,4,1,1,0,,,,,,,,,,,,bossdajie13Cike44b1,12345,,,,1
+bossdajie13Cike44e5,0,1,0,0,"[""bossdajie13Cike44e3"",""bossdajie13Cike44e6""]",,,,,,,,,,,,12345,,,,1
 bossdajie13Cike44e3,3,1,0,0,,,,,,,,0,0.2,0,4,,12345,,,,1
 bossdajie13Cike44e4,4,1,1,0,,,,,,,,,,,,bossdajie13Cike44b2,12345,,,,1
+bossdajie13Cike44e6,1,1,1,0,,,,,,,,,,,,,12345,,,,1
 bossdajie18Ladong51e1,2,1,0,0,,,,,bossdajie18Ladong51e2,1.8,,,,,,,12345,,,,1
 bossdajie18Ladong51e2,3,1,0,0,,,,,,,,1,1,0,5,,12345,,,,1
 bossdajie18Ladong52e1,1,1,0,0,,,1,bossdajie18Ladong52e2,,,"""""",,,,,,12345,,,,1
@@ -1212,6 +1216,8 @@ psvBingyan3e2,4,1,1,0,,,,,,,,,,,,psvBingyan3b1,12345,,,,1
 psvBingyan3e3,4,1,1,0,,,,,,,,,,,,psvBingyan3b2,12345,,,,1
 psvBingyan3e4,3,1,0,0,,,,,,,,1,0.5,0,3,,12345,,,,1
 psvBingyan3e5,4,1,0,0,,,,,,,,,,,,buffTauntb1,12345,,,,1
+psvBingyan3e6,0,1,0,0,"[""psvBingyan3e4"",""psvBingyan3e7""]",,,,,,,,,,,,12345,,,,1
+psvBingyan3e7,1,1,1,0,,,,,,,,,,,,,12345,,,,1
 psvMengyan5e1,4,1,1,0,,,,,,,,,,,,psvMengyan5b1,12345,,,,1
 psvIfrit5e1,4,1,1,0,,,,,,,,,,,,psvIfrit5b1,12345,,,,1
 psvIfrit5e2,1,1,0,0,,,1,psvIfrit5e3,,,"""""",,,,,,12345,,,,1

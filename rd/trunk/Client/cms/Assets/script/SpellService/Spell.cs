@@ -28,8 +28,11 @@ public class SpellProtoType
     public float baseTipValue;
     public int isAoe;
     public string firstSpell;
+    public string tipsDescription;
+    public string tipsCurlvl;
+    public string tipsNextlvl;
 
-	public string TipAttr
+    public string TipAttr
 	{
 		get
 		{

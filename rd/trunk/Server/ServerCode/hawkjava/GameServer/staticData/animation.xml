@@ -5246,6 +5246,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="Bingyan31"/>
 			</AudioList>
 		</Ani>
+		
+		<Ani id="psvBingyan3e7" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle asset="fanshang" bundle="effect/particle" parent="" attach="" locky="true"/>
+			</ParticleList>
+		</Ani>
 	</AniList>
 	<AniList group="xgChange1">
 	
@@ -11560,6 +11566,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bosssenlin36Momo14e6" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle asset="fanshang" bundle="effect/particle" parent="" attach="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		
 		<Ani id="bosssiwangtaMomo12" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
@@ -13048,6 +13060,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<AudioList>
 				<Audio time="0" name="cut"/>
 			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Cike44e6" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle asset="fanshang" bundle="effect/particle" parent="" attach="" locky="true"/>
+			</ParticleList>
 		</Ani>
 
 	</AniList>
@@ -14918,6 +14936,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="Yimier3_state1" state="0" action_delay="1">
 			<WpStateList>
+				<Wp time="0.1" name="bosschaoxue58Yimier3wp02" state="4"/>
+				<Wp time="0.1" name="bosschaoxue58Yimier3wp03" state="4"/>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp02" state="0"/>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp03" state="0"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp04" state="3"/>
@@ -14926,6 +14946,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="Yimier3_state2" state="0" action_delay="1">
 			<WpStateList>
+				<Wp time="0.1" name="bosschaoxue58Yimier3wp04" state="4"/>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp04" state="0"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp02" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp03" state="3"/>
@@ -14934,6 +14955,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="Yimier3_state3" state="0" action_delay="1">
 			<WpStateList>
+				<Wp time="0.1" name="bosschaoxue58Yimier3wp05" state="4"/>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp05" state="0"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp04" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp03" state="3"/>

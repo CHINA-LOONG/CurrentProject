@@ -65,11 +65,14 @@ public class GsConst {
 	// 最大屏蔽玩家数
 	public static final int MAX_BLOCK_COUNT = 5;
 	// 合成上一级宝石数量
-	public static final int NEXT_LEVEL_GEM_COUNT = 1;	
+	public static final int NEXT_LEVEL_GEM_COUNT = 1;
 	// 合成上一级需要宝石数量
-	public static final int GEM_COMPOSE_COUNT = 5;	
+	public static final int GEM_COMPOSE_COUNT = 5;
 	// 最大合成次数
-	public static final int COMPOSE_MAX_COUNT = 10;	
+	public static final int COMPOSE_MAX_COUNT = 10;
+	// 趣加Funplus
+	public static final String FUNPLUS_APP_ID = "1013";
+	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
 
 	/**
 	 * 对象类型
@@ -99,7 +102,6 @@ public class GsConst {
 		public static final int ALLIANCE = 4;
 		// 快照
 		public static final int SNAPSHOT = 5;
-		
 	}
 
 	/**
@@ -118,9 +120,9 @@ public class GsConst {
 		public static final int PLAYER_LEVEL_CHANGE = 6;
 
 		// 创建公会
-		public static final int ALLIANCE_CREATE = 100;	
+		public static final int ALLIANCE_CREATE = 100;
 		// 申请入会
-		public static final int ALLIANCE_APPLY = 101;	
+		public static final int ALLIANCE_APPLY = 101;
 		// 操作申请
 		public static final int ALLIANCE_HANDLE_APPLY = 102;
 		// 职位变更
@@ -240,8 +242,8 @@ public class GsConst {
 	 */
 	public static class ItemParseType {
 		public static final int PARSE_DEFAULT = 0;
-		public static final int PARSE_MONSTER_STAGE = 1;	
-		public static final int PARSE_EQUIP_ATTR = 2;	
+		public static final int PARSE_MONSTER_STAGE = 1;
+		public static final int PARSE_EQUIP_ATTR = 2;
 	}
 
 	/**
@@ -256,13 +258,13 @@ public class GsConst {
 		PURPLE_STAGE(2),
 		ORANGE_STAGE(3),
 		RED_STAGE(4);
-		
+
 		private int punchCount;
-		
+
 		private EquipStagePunch(int count) {
 			this.punchCount = count;
 		}
-		
+
 		public int GetCount(){
 			return punchCount;
 		}
@@ -283,18 +285,18 @@ public class GsConst {
 		SEVENTH_GEM_TYPE(700),
 		EIGHTI_GEM_TYPE(800),
 		NINTH_GEM_TYPE(900);
-		
+
 		private int weight;
-		
+
 		private GemTypeWeight(int weight) {
 			this.weight = weight;
 		}
-		
+
 		public float GetWeight(){
 			return weight;
 		}
 	}
-	
+
 	/**
 	 * equip 品级对应的打孔数量
 	 */
@@ -303,18 +305,18 @@ public class GsConst {
 		FIRST_REWARD(500),
 		SECOND_REWARD(1500),
 		THIRD_REWARD(3000);
-		
+
 		private int rewardCount;
-		
+
 		private AllianceReward(int count) {
 			this.rewardCount = count;
 		}
-		
+
 		public int GetRewardCount(){
 			return rewardCount;
 		}
 	}
-	
+
 	/**
 	 * item 消耗检查内容
 	 */
@@ -370,7 +372,7 @@ public class GsConst {
 		public static final int ITEM_QUEST = 2;
 		public static final int INSTANCE_QUEST = 3;
 	}
-	
+
 	// 任务目标类型
 	public static class QuestGoalType {
 		public static final int DIFFICULTY_GOAL = 1;
@@ -421,7 +423,7 @@ public class GsConst {
 		public static final int ONE_PAGE_SIZE = 2;
 		public static final int NOTICE_MAX_LENGTH = 200;
 		public static final int MAX_COPYMAIN_COUNT = 2;
-		
+
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";
 		// 公会贡献值奖励2

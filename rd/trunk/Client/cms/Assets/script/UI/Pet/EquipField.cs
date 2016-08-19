@@ -39,6 +39,14 @@ public class EquipField : MonoBehaviour
         }
     }
 
+    public bool CanEquip
+    {
+        get
+        {
+            return UIUtil.CheckIsEnoughEquip(unit, part);
+        }
+    }
+
     public void SetField(GameUnit unit, PartType part)
     {
         this.unit=unit;
@@ -61,7 +69,7 @@ public class EquipField : MonoBehaviour
             {
                 equipNull.gameObject.SetActive(true);
             }
-            equipNull.ShowAdd(UIUtil.CheckIsEnoughEquip(unit,part));
+            equipNull.ShowAdd(CanEquip);
 
             if (equipIcon != null)
             {
@@ -90,7 +98,10 @@ public class EquipField : MonoBehaviour
 
     void OnClickNullSlot(GameObject go)
     {
-        iClickBack.OnSelectEquipField(part, null);
+        if (CanEquip)
+        {
+            iClickBack.OnSelectEquipField(part, null);
+        }
     }
 
     void OnClickEquipSlot(GameObject go)

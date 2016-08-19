@@ -460,8 +460,9 @@ public class AllianceManager extends HawkAppObj {
 		AllianceEntity allianeEntity = getAlliance(allianceId);
 		if (allianeEntity != null) {
 			AllianceApplyEntity applyEntity = allianeEntity.removeApply(playerId);
-			applyEntity.delete();
-			allianeEntity.getApplyList().remove(playerId);
+			if (applyEntity != null) {
+				applyEntity.delete();
+			}
 			removePlayerApply(playerId, allianceId);
 		}
 	}

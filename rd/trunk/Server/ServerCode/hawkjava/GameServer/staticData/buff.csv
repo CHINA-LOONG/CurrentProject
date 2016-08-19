@@ -175,7 +175,7 @@ bosssenlin34Amute32b1,5,,999,0,0,0,0,0.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1
 bosssenlin34Amute32b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffAmute_100,bosssenlin34Amute32e2",,1,0,0,0,,-1
 bosssenlin34Amute34b1,9,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,100,4,0,0,0,,,1,0,0,0,,-1
 bosssenlin34Amute34b2,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,100,4,0,0,0,,,1,0,0,0,,-1
-bosssenlin36Momo14b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_100,bosssenlin36Momo14e4",,999,0,0,0,,-1
+bosssenlin36Momo14b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_100,bosssenlin36Momo14e5",,999,0,0,0,,-1
 bosssenlin36Momo14b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateDispelpsvMomo_100,dispelPassivee1",,1,0,0,0,,-1
 bosssenlin37Hapi11b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_100,bosssenlin37Hapi11e2",,999,0,0,0,,-1
 bosssenlin37Hapi13b1,5,,3,0,0,0,0,0,0,0,1,bufficon_buffSpeed,0,,0,0,0,0,,,1,0,0,0,,-1
@@ -208,7 +208,7 @@ bosssenlin38Meidusha28b10,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateHurt
 bosssenlin38Meidusha28b11,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateHurtselfMeidusha3_100,bosssenlin38Meidusha28e14",,1,0,0,0,,-1
 bosssenlin38Meidusha28b12,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateHurtselfMeidusha4_100,bosssenlin38Meidusha28e14",,1,0,0,0,,-1
 psvMoguguai3b1,11,,999,,,,,,,,,,,,,,,,,,,0.2,0,0,,-1
-bossdajie13Cike44b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_80,bossdajie13Cike44e3",,999,0,0,0,,-1
+bossdajie13Cike44b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_80,bossdajie13Cike44e5",,999,0,0,0,,-1
 bossdajie13Cike44b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateDispelpsv_100,dispelPassivee1",,1,0,0,0,,-1
 bossdajie18Ladong53b1,13,,2,1,0,0,0,0,0,0,0,bufficon_debuffStun,0,,0,0,0,0,,,0,0,0,0,,-1
 bossdajie18Ladong53b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddstun_100,bossdajie18Ladong53e2",,999,0,0,0,,-1
@@ -228,7 +228,7 @@ psvDujiaoshou1b2,9,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,20,0.4,0,0,0,,,1,0
 psvDujiaoshou1b3,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,20,0.4,0,0,0,,,1,0,0,0,,-1
 psvWeitianshi5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingBuffRate_25,psvWeitianshi5e2",,999,0,0,0,,-1
 psvSheshou1b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_25,psvSheshou1e2",,999,0,0,0,,-1
-psvBingyan3b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_50,psvBingyan3e4",,999,0,0,0,,-1
+psvBingyan3b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_50,psvBingyan3e6",,999,0,0,0,,-1
 psvBingyan3b2,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalMagicRate_90,psvBingyan3e5",,999,0,0,0,,-1
 psvMengyan5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_10,debuffAttacke2",,999,0,0,0,,-1
 psvIfrit5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_25,psvIfrit5e2",,999,0,0,0,,-1

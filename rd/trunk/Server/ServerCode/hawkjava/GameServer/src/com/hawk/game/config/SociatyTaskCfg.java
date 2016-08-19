@@ -20,7 +20,12 @@ public class SociatyTaskCfg extends HawkConfigBase{
 	 * 最低等级
 	 */
 	protected final int minLevel;
-
+	
+	/**
+	 * 描述
+	 */
+	protected final String taskDesc;
+	
 	/**
 	 * 任务时长
 	 */
@@ -77,6 +82,7 @@ public class SociatyTaskCfg extends HawkConfigBase{
 	
 	public SociatyTaskCfg(){
 		id = 0;
+		taskDesc = null;
 		minLevel = 0;
 		time = 0;
 		taskName = null;
@@ -92,6 +98,10 @@ public class SociatyTaskCfg extends HawkConfigBase{
 		return id;
 	}
 
+	public String getTaskDesc() {
+		return taskDesc;
+	}
+	
 	public int getTime() {
 		return time;
 	}

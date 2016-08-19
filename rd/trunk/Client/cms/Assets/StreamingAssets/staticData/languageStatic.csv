@@ -310,6 +310,9 @@ name_10009_baoxiangyaoshi1,木质宝箱钥匙,Wood Key
 name_10010_baoxiangyaoshi2,铁质宝箱钥匙,Iron Key
 name_10011_baoxiangyaoshi3,白银宝箱钥匙,Silver Key
 name_10012_baoxiangyaoshi4,黄金宝箱钥匙,Gold Key
+name_10013_yibanlaji1,妖兽的晶核,Wicked Crux
+name_10014_yibanlaji2,妖兽的皮毛,Wicked Pelt
+name_10015_yibanlaji3,妖兽的指甲,Wicked Nails
 name_20001_suipian_common,灵魂本源,Core Fragments
 name_20002_suipian_xiyiren,蜥蜴人碎片,xiyirensuipian
 name_20003_suipian_huapo,花魄碎片,huaposuipian
@@ -431,6 +434,9 @@ tips_10009_baoxiangyaoshi1,开启木质宝箱所需要的钥匙,The key to open 
 tips_10010_baoxiangyaoshi2,开启铁质宝箱所需要的钥匙,The key to open the Iron Treasurecase
 tips_10011_baoxiangyaoshi3,开启白银宝箱所需要的钥匙,The key to open the Silver Treasurecase
 tips_10012_baoxiangyaoshi4,开启黄金宝箱所需要的钥匙,The key to open the Gold Treasurecase
+tips_10013_yibanlaji1,还是拿去换钱好些,Might be a good idea to sell this one…
+tips_10014_yibanlaji2,还是拿去换钱好些,Might be a good idea to sell this one…
+tips_10015_yibanlaji3,还是拿去换钱好些,Might be a good idea to sell this one…
 tips_20001_suipian_common,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20002_suipian_xiyiren,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20003_suipian_huapo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
@@ -610,3 +616,42 @@ langrenname1,疯狂撕裂,silie
 langrenname2,刚烈,ganglie
 langrentips1,连续攻击3次，给单体目标造成{1}%物理伤害并50%几率附加降低目标智力、力量、防御力效果,lianxugongji
 langrentips2,死亡时对敌方全体造成一定物理伤害,siwangshanghai
+xgXiaochou3,小丑,Joker
+xgKairuisi4,凯瑞斯,Keres
+xgHetong2,河童,Kappa
+xgWagui3,蛙鬼,Phantom Frog
+xgXiaochou4,小丑,Joker
+xgCike4,刺壳,Ceres
+xgPanshen2,潘神,Pans
+xgHuapo2,花魄,Flower Spirit
+xgWushi3,舞狮,Tantra
+xgWushi4,舞狮,Tantra
+xgXiyiren4,蜥蜴人,Lizardman
+xgMantuoluo2,曼陀罗,Mandrake
+xgHetong3,河童,Kappa
+xgLonggongtongzi3,龙宫童子,Water Tyke
+xgXiyiren2,蜥蜴人,Lizardman
+xgLangren5,狼人,Werewolf
+xgLangren3,狼人,Werewolf
+xgShuigui3,水鬼,Captain
+xgNvyao5,女妖,Succubus
+xgHapi1,哈皮,Harpy
+xgPiying5,皮影,Bremis
+xgKairuisi5,凯瑞斯,Keres
+bossdajie11Xiaochou4,小丑首领,Joker King
+bossdajie12Mantuoluo2,曼陀罗之王,Mandrake
+bossdajie13Langren3,狼人头领,Werewolf
+bossdajie14Piying5,皮影大王,Bremis
+bossdajie15Huapo2,花魄之王,Flower Spirit
+bossdajie16Xiaochou3,小丑首领,Joker King
+bossdajie17Zouyincao2,走音草国王,Lucasha
+bossxiaoxiang21Wushi4,舞狮领舞,Tantra
+bossxiaoxiang22Xiyiren2,蜥蜴人首领,Lizardman
+bossxiaoxiang23Panshen2,潘神国王,King of Pans
+bossxiaoxiang24Shuigui3,水鬼头领,Captain
+bossxiaoxiang25Kairuisi5,凯瑞斯陛下,Keres
+bossxiaoxiang26Longgongtongzi3,龙宫童子的头,Water Tyke
+bossxiaoxiang27hetong2,河童将军,Kappa
+attackCutSlightTipsDescription,给单体目标造成一定比例物攻的物理伤害,Deals (proportion of physical ATK) physical damage to a single target
+attackCutSlightTipsCurlvl,造成{0}伤害,Makes {0} damage
+attackCutSlightTipsNextlvl,造成{0}伤害,Makes {0} damage

@@ -88,6 +88,7 @@ public class AllianceJoinTeamHandler implements HawkMsgHandler{
 		allianceEntity.addPlayerTeamMap(player.getId(), teamEntity.getId());
 		
 		HSAllianceJoinTeamRet.Builder response = HSAllianceJoinTeamRet.newBuilder();
+		response.setTeamId(teamEntity.getId());
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_JOIN_TEAM_S_VALUE, response));
 		return true;
 	}

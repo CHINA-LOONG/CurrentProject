@@ -139,7 +139,7 @@ public class AllianceTeamCreateHandler implements HawkMsgHandler{
 					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_TASK_CONSUME, protocol.getType());
 					
 					HSAllianceCreateTeamRet.Builder response = HSAllianceCreateTeamRet.newBuilder();
-					response.setTaskInfo(AllianceUtil.getAllianceTaskInfo(teamEntity));
+					response.setTeamId(teamEntity.getId());
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CREATE_TEAM_S_VALUE, response));	
 					
 					return true;

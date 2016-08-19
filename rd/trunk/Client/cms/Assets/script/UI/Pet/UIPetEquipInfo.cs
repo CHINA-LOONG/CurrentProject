@@ -28,7 +28,7 @@ public class UIPetEquipInfo : PetDetailRightBase,IEquipCallBack
             uiEquipDetails.gameObject.SetActive(true);
         }
 
-        uiEquipDetails.Show(info.unit.equipList[(int)info.part], info.unit, EquipState.show);
+        uiEquipDetails.Show(info.unit.equipList[(int)info.part-1], info.unit, EquipState.show);
 
     }
 

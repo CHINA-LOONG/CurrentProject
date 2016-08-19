@@ -227,7 +227,7 @@ public class PetDetailRightStage : PetDetailRightBase{
         m_unit.SetStage(m_unit.pbUnit.stage + 1);
         ReloadData(new PetRightParamBase() { unit = m_unit });
 
-        GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetStageNotify);
+        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetStageNotify,m_unit);
     }
 
     string ShowFormatMaterailCount(int currentCount, int needCount, int currentMaxCount)

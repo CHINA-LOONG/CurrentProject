@@ -52,6 +52,7 @@
         <pathelement location="${HawkUtil.location}/lib/httpcore-4.4.1.jar"/>
         <pathelement location="${HawkUtil.location}/lib/httpcore-nio-4.4.1.jar"/>
         <pathelement location="${HawkUtil.location}/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
+        <pathelement location="${HawkUtil.location}/lib/notnoop-javaapns-1.0.0.beta3.jar"/>
     </path>
     <path id="ServerProto.classpath">
         <pathelement location="${ServerProto.location}/bin"/>

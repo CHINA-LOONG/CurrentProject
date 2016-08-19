@@ -46,7 +46,6 @@ public class GenerateAnimatorController
         AnimatorData fangyuState = new AnimatorData();
         AnimatorData dazhaoxuanyaoState = new AnimatorData();
         AnimatorData dazhaoState = new AnimatorData();
-        AnimatorData toulanState = new AnimatorData();
         AnimatorData shoujiState = new AnimatorData();
         AnimatorData paobuState = new AnimatorData();
         AnimatorData chuchangState = new AnimatorData();
@@ -108,7 +107,7 @@ public class GenerateAnimatorController
                 wugongState.aniState = curState;
                 wugongState.aniKey = stateName;
                 wugongState.aniState.motion = newClip;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnWuGongEnd";
                     events.Add(startEvent);
@@ -120,7 +119,7 @@ public class GenerateAnimatorController
                 fagongState.aniState = curState;
                 fagongState.aniKey = stateName;
                 fagongState.aniState.motion = newClip;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnFaGongEnd";
                     events.Add(startEvent);
@@ -141,7 +140,7 @@ public class GenerateAnimatorController
                 dazhaoxuanyaoState.aniState = curState;
                 dazhaoxuanyaoState.aniKey = stateName;
                 dazhaoxuanyaoState.aniState.motion = newClip;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnDaZhaoxuanyaoEnd";
                     events.Add(startEvent);
@@ -154,21 +153,9 @@ public class GenerateAnimatorController
                 dazhaoState.aniKey = stateName;
                 dazhaoState.aniState.motion = newClip;
                 isdazhao = true;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnDaZhaoEnd";
-                    events.Add(startEvent);
-                    AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
-                }
-            }
-            else if (name.Contains("toulan") == true)
-            {
-                toulanState.aniState = curState;
-                toulanState.aniKey = stateName;
-                toulanState.aniState.motion = newClip;
-                if (events.Count < 0)
-                {
-                    startEvent.functionName = "OnLazyEnd";
                     events.Add(startEvent);
                     AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
                 }
@@ -178,7 +165,7 @@ public class GenerateAnimatorController
                 shoujiState.aniState = curState;
                 shoujiState.aniKey = stateName;
                 shoujiState.aniState.motion = newClip;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnShoujiEnd";
                     events.Add(startEvent);
@@ -199,7 +186,7 @@ public class GenerateAnimatorController
                 chuchangState.aniState = curState;
                 chuchangState.aniKey = stateName;
                 chuchangState.aniState.motion = newClip;
-                if (events.Count < 0)
+                if (events.Count <= 0)
                 {
                     startEvent.functionName = "OnChuChangEnd";
                     events.Add(startEvent);
@@ -275,10 +262,6 @@ public class GenerateAnimatorController
             fangyuToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
             fangyuToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
             fangyuToDazhaoTrans.hasExitTime = false;
-            AnimatorStateTransition toulanToDazhaoTrans = toulanState.aniState.AddTransition(dazhaoState.aniState);
-            toulanToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
-            toulanToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-            toulanToDazhaoTrans.hasExitTime = false;
             AnimatorStateTransition dazhaoxuanyaoToDazhaoTrans = dazhaoxuanyaoState.aniState.AddTransition(dazhaoState.aniState);
             dazhaoxuanyaoToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
             dazhaoxuanyaoToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
@@ -287,11 +270,7 @@ public class GenerateAnimatorController
         AnimatorStateTransition daijiToDazhaoxuanyaoTrans = daijiState.aniState.AddTransition(dazhaoxuanyaoState.aniState);
         daijiToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoxuanyaoState.aniKey);
         daijiToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        daijiToDazhaoxuanyaoTrans.hasExitTime = false;      
-        AnimatorStateTransition daijiToToulanTrans = daijiState.aniState.AddTransition(toulanState.aniState);
-        daijiToToulanTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, toulanState.aniKey);
-        daijiToToulanTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        daijiToToulanTrans.hasExitTime = false;
+        daijiToDazhaoxuanyaoTrans.hasExitTime = false;  
         AnimatorStateTransition daijiToShoujiTrans = daijiState.aniState.AddTransition(shoujiState.aniState);
         daijiToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
         daijiToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
@@ -365,10 +344,6 @@ public class GenerateAnimatorController
         fangyuToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
         fangyuToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
         fangyuToShoujiTrans.hasExitTime = false;
-        AnimatorStateTransition fangyuToToulanTrans = fangyuState.aniState.AddTransition(toulanState.aniState);
-        fangyuToToulanTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, toulanState.aniKey);
-        fangyuToToulanTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        fangyuToToulanTrans.hasExitTime = false;
         AnimatorStateTransition fangyuToSiwangTrans = fangyuState.aniState.AddTransition(siwangState.aniState);
         fangyuToSiwangTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, siwangState.aniKey);
         fangyuToSiwangTrans.hasExitTime = false;
@@ -387,21 +362,6 @@ public class GenerateAnimatorController
         AnimatorStateTransition dazhaoxuanyaoToSiwangTrans = dazhaoxuanyaoState.aniState.AddTransition(siwangState.aniState);
         dazhaoxuanyaoToSiwangTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, siwangState.aniKey);
         dazhaoxuanyaoToSiwangTrans.hasExitTime = false;
-        AnimatorStateTransition toulanToDaijiTrans = toulanState.aniState.AddTransition(daijiState.aniState);
-        toulanToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        toulanToDaijiTrans.exitTime = 0.99f;
-        toulanToDaijiTrans.hasExitTime = true;
-        AnimatorStateTransition toulanToShoujiTrans = toulanState.aniState.AddTransition(shoujiState.aniState);
-        toulanToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
-        toulanToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        toulanToShoujiTrans.hasExitTime = false;
-        AnimatorStateTransition toulanToDazhaoxuanyaoTrans = toulanState.aniState.AddTransition(dazhaoxuanyaoState.aniState);
-        toulanToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoxuanyaoState.aniKey);
-        toulanToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
-        toulanToDazhaoxuanyaoTrans.hasExitTime = false;
-        AnimatorStateTransition toulanToSiwangTrans = toulanState.aniState.AddTransition(siwangState.aniState);
-        toulanToSiwangTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, siwangState.aniKey);
-        toulanToSiwangTrans.hasExitTime = false;
         AnimatorStateTransition shoujiToDaijiTrans = shoujiState.aniState.AddTransition(daijiState.aniState);
         shoujiToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, shoukongState.aniKey);
         shoujiToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);

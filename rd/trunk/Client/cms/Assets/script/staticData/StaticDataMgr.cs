@@ -66,7 +66,7 @@ public class StaticDataMgr : MonoBehaviour
 
     //¹«»á
     Dictionary<int, SociatyPrayData> sociatyPrayDic = new Dictionary<int, SociatyPrayData>();
-    Dictionary<int, SociatyTask> sociaTaskDic = new Dictionary<int, SociatyTask>();
+    List<SociatyTask> sociatyTaskList = new List< SociatyTask>();
     Dictionary<int, SociatyQuest> sociatyQuestDic = new Dictionary<int, SociatyQuest>();
     List<SociatyTechnologyData> sociatyTechnologyList = new List<SociatyTechnologyData>();
 
@@ -741,12 +741,8 @@ public class StaticDataMgr : MonoBehaviour
                 sociatyPrayDic.Add(item.id, item);
             }
 
-            var stask = InitTable<SociatyTask>("sociatyTask");
-            foreach (var item in stask)
-            {
-                sociaTaskDic.Add(item.id, item);
-            }
-
+            sociatyTaskList = InitTable<SociatyTask>("sociatyTask");
+            
             var squest = InitTable<SociatyQuest>("sociatyQuest");
             foreach (var item in squest)
             {
@@ -1158,6 +1154,23 @@ public class StaticDataMgr : MonoBehaviour
         }
 
         return curData;
+    }
+
+    public List<SociatyTask> GetSociatyTaskList()
+    {
+        return sociatyTaskList;
+    }
+
+    public SociatyTask GetSociatyTask(int id)
+    {
+        foreach(var subTask in sociatyTaskList)
+        {
+            if(subTask.id == id)
+            {
+                return subTask;
+            }
+        }
+        return null;
     }
     #endregion
 }

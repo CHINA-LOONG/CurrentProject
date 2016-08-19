@@ -373,7 +373,7 @@ public class UIEquipDetails : UIBase
         EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.SetEquipData(itemInfo.part, null, true);
-        GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
+        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetEquipNotify,unitDate);
         equipCallBack.Unload();
     }
 
