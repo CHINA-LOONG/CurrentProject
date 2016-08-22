@@ -1826,29 +1826,31 @@ worldboss_battlebuttonyicanjia,已参与,have participated
 worldboss_battlebuttonweikai,未开启,Locked
 worldboss_battlebuttongo,挑战,Battle
 worldboss_battlebuttonrevive,再次挑战,Battle Again
-worldboss_battlebuttonrevivetime,{0}秒后可再次挑战,Can battle again after {0} seconds
+worldboss_battlebuttonrevivetime,<color=#7aff00>{0}</color>秒后可再次挑战,Can battle again after <color=#7aff00>{0}</color> seconds
 worldboss_revivesure,确认立即挑战吗？,Battle now?
 worldboss_timetips,下场活动开启时间 {0} {1}:{2},Next event start time {0} {1}:{2}
-worldboss_timelefttips,本场活动将于{0}:{1}后结束,This event will end after {0}:{1}
+worldboss_timelefttips,本场活动将于<color=#ffcc00>{0}:{1}</color>后结束,This event will end after <color=#ffcc00>{0}:{1}</color>
 worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
 worldboss_kexingtitle,神怪克星,Monster Nemesis
-worldboss_kexinglow,出战全员伤害+10%,Ally monster damage +10%
-worldboss_kexinghigh,出战全员伤害+20%,Ally monster damage +20%
+worldboss_kexinglow,出战全员伤害<color=#ffcc00>+10%</color>,Ally monster damage <color=#ffcc00>+10%</color>
+worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+20%</color>,Ally monster damage <color=#ffcc00>+20%</color>
+worldboss_kexinglow1,<color=#7aff00>{出战全员伤害+10%</color>,<color=#7aff00>{Ally monster damage +10%</color>
+worldboss_kexinghigh1,<color=#7aff00>{出战全员伤害+20%</color>,<color=#7aff00>{Ally monster damage +20%</color>
 worldboss_kexingcomplain,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each monster has a nemesis. Adding that nemesis to your lineup will grant the specified buff to all your monsters. 
 worldboss_battle,挑战,Battle
 worldboss_rulestitle,规则说明,Rules
-worldboss_rules,"1. 神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。
+worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。
     开放时间：每天中午12:45——13:00
-                    每天晚上20:00——20:15
-                    每天晚上21:45——22:00
-2. 每场神怪入侵活动中，可以通过提升士气来提升出战怪物的属性，出战宠物能够得到力量、智力、体力的全面提升！
+                         每天晚上20:00——20:15
+                         每天晚上21:45——22:00
+2.每场神怪入侵活动中，可以通过提升士气来提升出战怪物的属性，出战宠物能够得到力量、智力、体力的全面提升！
    提升士气消耗钻石，在单场活动里，士气最高能被提升到100%。  
-3. 每个boss都有克星，当日只要将克星配置进阵容，全员获得指定buff加成。Buff能够叠加存在哦！
+3.每个boss都有克星，当日只要将克星配置进阵容，全员获得指定buff加成。Buff能够叠加存在哦！
    低级克星buff：出战全员增加伤害10%
    高级克星buff：出战全员增加伤害20%
-4. 神怪入侵活动会根据个人对boss的总伤害量进行排名，伤害量越高，排名越靠前，奖励也就越丰厚哦！
-5. 每场活动持续时间为15分钟，本场活动的boss死亡或者活动时间到达后，本场活动结束。
-6. 如果单场活动boss被消灭，排名前100的玩家将根据排名获得不同的额外钻石奖励！排名越靠前，钻石越多哦！
+4.神怪入侵活动会根据个人对boss的总伤害量进行排名，伤害量越高，排名越靠前，奖励也就越丰厚哦！
+5.每场活动持续时间为15分钟，本场活动的boss死亡或者活动时间到达后，本场活动结束。
+6.如果单场活动boss被消灭，排名前100的玩家将根据排名获得不同的额外钻石奖励！排名越靠前，钻石越多哦！
     第1名               钻石
     第2名               钻石
     第3名               钻石
@@ -1880,7 +1882,7 @@ worldboss_rules,"1. 神怪入侵活动每天开放3场，玩家每天只能参�
    Ranks 51 - 100        Diamonds"
 worldboss_rewardtitle,排名奖励,Ranking Reward
 worldboss_ranklast,{0}及以后,After level {0}
-worldboss_rewardtips,奖励将在活动后通过邮件发放，boss被击杀，排名前100的玩家将获得额外的钻石奖励,"Rewards will be sent via in-game mail after the event has ended. When the boss is defeated, players ranked in the top 100 will receive bonus Diamond rewards."
+worldboss_rewardtips,奖励将在活动后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. 
 worldboss_ranktitle1,上场伤害排名,Previous damage ranking
 worldboss_ranktitle2,本场伤害排名,Current damage ranking
 worldboss_shuchushanghai,输出伤害,Damage Output
@@ -1909,9 +1911,9 @@ summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit 
 handbook_record_006,已达宠物最大持有量，无法合成,"Max monster limit reached, unable to craft."
 list_byname,按名称排序,按名称排序
 list_bylevel,按等级排序,按等级排序
-compose_insignia_001,{0}%概率获得{1},{0}%概率获得{1}
+compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},{0}%概率获得{1}
 compose_insignia_003,祝福之力,祝福之力
-compose_insignia_004,可合成{0}次，每次合成100%概率获得{1}！,可合成{0}次，每次合成100%概率获得{1}！
+compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,可合成{0}次，每次合成100%概率获得{1}！
 compose_insignia_005,将消耗,将消耗
 compose_record_009,纹章不足,纹章不足
 compose_record_010,请添加5个相同名称的纹章,请添加5个相同名称的纹章

@@ -624,6 +624,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_REWARD_S", Value=9081)]
       ALLIANCE_CONTRI_REWARD_S = 9081,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_REWARD_S", Value=9082)]
+      ALLIANCE_INSTANCE_REWARD_S = 9082,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,
             

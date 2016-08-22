@@ -332,7 +332,7 @@ public class SpellFunctions
 		if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
 		{
 			Spell ownedSpell = triggerEffect.ownedSpell;
-			if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack && randNum <= 0.4f)
+			if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack && randNum <= 1.0f)
 			{
 				return 1;
 			}
@@ -420,7 +420,7 @@ public class SpellFunctions
 		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
 		{
 			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
-			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && randNum <= 0.1f)
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && randNum <= 1.0f)
 			{
 				return 1;
 			}

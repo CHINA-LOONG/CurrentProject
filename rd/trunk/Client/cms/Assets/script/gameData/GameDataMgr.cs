@@ -569,6 +569,11 @@ public class GameDataMgr : MonoBehaviour
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
 
+        if(reward.hsCode == (int) PB.code.ALLIANCE_INSTANCE_REWARD_S)
+        {
+            sociatyDataMgr.allianceInstanceReward.Add(reward);
+        }
+
         if (reward.playerAttr != null)
         {
             //change later in uiscore

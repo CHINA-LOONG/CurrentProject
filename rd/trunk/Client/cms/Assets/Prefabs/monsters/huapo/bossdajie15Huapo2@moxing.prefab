@@ -573,6 +573,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &181512
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429890}
+  - 33: {fileID: 3304946}
+  - 65: {fileID: 6559168}
+  - 23: {fileID: 2322728}
+  m_Layer: 0
+  m_Name: ruodian01_box1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &181714
 GameObject:
   m_ObjectHideFlags: 1
@@ -921,6 +939,7 @@ Transform:
   - {fileID: 402182}
   - {fileID: 454962}
   - {fileID: 487508}
+  - {fileID: 429890}
   m_Father: {fileID: 435222}
   m_RootOrder: 0
 --- !u!4 &428704
@@ -935,6 +954,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 471252}
   m_RootOrder: 0
+--- !u!4 &429890
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427194}
+  m_RootOrder: 4
 --- !u!4 &433492
 Transform:
   m_ObjectHideFlags: 1
@@ -1347,6 +1378,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455640}
   m_RootOrder: 0
+--- !u!23 &2322728
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181512}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3304946
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181512}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6559168
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1, z: 1}
+  m_Center: {x: -.100000001, y: 0, z: 0}
 --- !u!65 &6589834
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1368,7 +1442,7 @@ Animator:
   m_GameObject: {fileID: 159184}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 79c8851aeadb32045b16b823adbb87bf, type: 3}
-  m_Controller: {fileID: 9100000, guid: fe23ed5984dc51c4cb06681e3a844ef6, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf5e14513ad5a304a92e4e94bf325fa2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1387,7 +1461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69338ac10ab37e941a6bd6852456cf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUseXgAi: 1
+  isUseXgAi: 0
 --- !u!137 &13740208
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1471,7 +1545,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: isUseXgAi
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

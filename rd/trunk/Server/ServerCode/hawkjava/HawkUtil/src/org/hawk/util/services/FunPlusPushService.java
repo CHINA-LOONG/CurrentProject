@@ -132,7 +132,7 @@ public class FunPlusPushService extends HawkTickable {
 		}
 
 		final HttpPost httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to_all");
-		httpPost.setHeader("Accept", "application/json;charset=UTF-8");
+		httpPost.addHeader("Accept", "application/json;charset=UTF-8");
 		httpPost.addHeader("Content-type", "application/json;charset=UTF-8");
 		httpPost.addHeader("Authorization", this.authentication);
 		try {

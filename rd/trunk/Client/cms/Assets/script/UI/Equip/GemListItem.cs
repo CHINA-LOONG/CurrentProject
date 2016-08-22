@@ -2,9 +2,25 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public interface IXiangQianCallBack
+public interface IGemListItem
 {
-    void OnMosaicReturn(ItemData data);
+    void OnRemoveReturn(ItemData data);
+    void OnEmbedReturn(ItemData data);
+    void OnChangeReturn(ItemData data);
+}
+
+public class GemListItemInfo
+{
+    public ItemData itemData;
+    public ItemStaticData staticData;
+    public enum Type
+    {
+        Remove,
+        Embed,
+        Change
+    }
+
+    public Type type;
 }
 
 public class GemListItem : MonoBehaviour
@@ -18,21 +34,33 @@ public class GemListItem : MonoBehaviour
     public Text text_Attr2;
     public Text textAttr2;
 
-    public Button btnXiangqian;
+    public Button btnButton;
+    private Text textButton;
+    public Text TextButton
+    {
+        get
+        {
+            if (textButton==null)
+            {
+                textButton = btnButton.GetComponentInChildren<Text>();
+            }
+            return textButton;
+        }
+    }
 
-    public IXiangQianCallBack XiangqianDelegate;
+    public IGemListItem IGemListItemDelegate;
 
-    public ItemDataInfo curData;
+    public GemListItemInfo curData;
+
 
     void Start()
     {
-        btnXiangqian.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
-        ScrollViewEventListener.Get(btnXiangqian.gameObject).onClick = OnClickXiangqian;
+        ScrollViewEventListener.Get(btnButton.gameObject).onClick = OnClickXiangqian;
     }
 
-    public void OnReload(ItemDataInfo data)
+    public void OnReload(GemListItemInfo data)
     {
-        this.curData = data;
+        curData = data;
         if (itemIcon==null)
         {
             itemIcon = ItemIcon.CreateItemIcon(curData.itemData);
@@ -45,16 +73,37 @@ public class GemListItem : MonoBehaviour
         UIUtil.SetStageColor(textName, curData.staticData);
         EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.staticData.gemId);
         UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
-    }
-
-
-    void OnClickXiangqian(GameObject go)
-    {
-        if (XiangqianDelegate!=null)
+        switch (curData.type)
         {
-            XiangqianDelegate.OnMosaicReturn(curData.itemData);
+            case GemListItemInfo.Type.Remove:
+                TextButton.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
+                break;
+            case GemListItemInfo.Type.Embed:
+                TextButton.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
+                break;
+            case GemListItemInfo.Type.Change:
+                TextButton.text = StaticDataMgr.Instance.GetTextByID("equip_Change");
+                break;
         }
     }
-
-
+    
+    void OnClickXiangqian(GameObject go)
+    {
+        if (IGemListItemDelegate!=null)
+        {
+            switch (curData.type)
+            {
+                case GemListItemInfo.Type.Remove:
+                    IGemListItemDelegate.OnRemoveReturn(curData.itemData);
+                    break;
+                case GemListItemInfo.Type.Embed:
+                    IGemListItemDelegate.OnEmbedReturn(curData.itemData);
+                    break;
+                case GemListItemInfo.Type.Change:
+                    IGemListItemDelegate.OnChangeReturn(curData.itemData);
+                    break;
+            }
+        }
+    }
+    
 }

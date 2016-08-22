@@ -218,3 +218,5 @@ siwangta16,49,3.5,2.55,3,tongtianta,7,2,1,"[""siwangta16Level1"",""siwangta16Lev
 siwangta17,51,3.6,2.75,3,tongtianta,7,2,1,"[""siwangta17Level1"",""siwangta17Level2""]",siwangta17Boss1,tongtiantanormal
 siwangta18,53,4.2,3,3,tongtianta,7,2,1,"[""siwangta18Level1"",""siwangta18Level2""]",siwangta18Boss1,tongtiantanormal
 siwangta19,54,4.5,3,3,tongtianta,7,2,1,"[""siwangta19Level1"",""siwangta19Level2""]",siwangta19Boss1,tongtiantanormal
+worldboss1,60,1.1,0.3,1,shijie2,7,2,1,"[""pvp_test1""]",bossWorldBoss1,instance8
+worldboss2,60,1.3,0.35,1,shijie1,7,2,1,"[""pvp_test1""]",bossWorldBoss2,instance8

@@ -39,6 +39,12 @@ public class SociatyList : UIBase
         thislist.InitWithSearch(search);
     }
 
+    public static void Close()
+    {
+        UIMgr.Instance.CloseUI_(Instance);
+        Instance = null;
+    }
+
 	void Start ()
     {
         Instance = this;
@@ -204,7 +210,7 @@ public class SociatyList : UIBase
             {
                 itemUi = allianceItemCatch[i];
                 itemUi.gameObject.SetActive(true);
-                itemUi.InitWith(itemData);
+                itemUi.InitWith(itemData,false);
             }
             if(null == itemUi)
             {

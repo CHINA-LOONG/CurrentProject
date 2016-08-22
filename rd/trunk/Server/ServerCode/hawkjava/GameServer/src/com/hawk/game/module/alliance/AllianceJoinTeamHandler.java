@@ -7,6 +7,7 @@ import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.config.SociatyTaskCfg;
+import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -51,6 +52,11 @@ public class AllianceJoinTeamHandler implements HawkMsgHandler{
 	
 		if (allianceEntity.getPlayerTeamMap().get(player.getId()) != null ) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_ALREADY_IN_TEAM_VALUE);
+			return true;
+		}
+		
+		if (player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily() >= SysBasicCfg.getInstance().getAllianceMaxBigTask()) {
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_BIG_TASK_VALUE);
 			return true;
 		}
 		

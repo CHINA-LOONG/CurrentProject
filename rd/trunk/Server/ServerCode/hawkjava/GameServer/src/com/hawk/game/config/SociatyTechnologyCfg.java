@@ -22,29 +22,36 @@ public class SociatyTechnologyCfg extends HawkConfigBase{
 	 */
 	protected final int type;
 	/**
-	 * 类型
+	 * 级别
 	 */
 	protected final int level;
 	/**
-	 * 类型
+	 * 工会等级限制
 	 */
 	protected final int sociatyLevel;
 	/**
-	 * 类型
+	 * 升级消耗
 	 */
 	protected final int levelUp;
 	/**
-	 * 类型
+	 * 容量
 	 */
 	protected final int gainPeople;
 	/**
-	 * 类型
+	 * 金币
 	 */
 	protected final float gainCoin;
 	/**
-	 * 类型
+	 * 经验药
 	 */
 	protected final String gainExp;
+
+	/**
+	 * 客户端数据
+	 */
+	protected final String icon;
+	protected final String tecDescript;
+	protected final String tecName;
 
 	/**
 	 * 科技列表
@@ -66,6 +73,9 @@ public class SociatyTechnologyCfg extends HawkConfigBase{
 		gainCoin = 0.0f;
 		gainExp = null;
 		expItem = null;
+		icon = null;
+		tecDescript = null;
+		tecName = null;
 	}
 	
 	public int getId() {
@@ -104,6 +114,18 @@ public class SociatyTechnologyCfg extends HawkConfigBase{
 		return expItem;
 	}
 	
+	public String getIcon() {
+		return icon;
+	}
+
+	public String getTecDescript() {
+		return tecDescript;
+	}
+
+	public String getTecName() {
+		return tecName;
+	}
+
 	public static boolean fullLevel(int type, int level){
 		return level >= technologyList.get(type).size();
 	}

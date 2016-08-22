@@ -164,8 +164,8 @@ public class GmService_Dev extends GameService {
 				if (coinChange > 0) {
 					award.addCoin((int)coinChange);
 				}
-				else {
-					consume.addCoin((int)(-coinChange));
+				else if (coinChange < 0) {
+					consume.addCoin((int)(0 - coinChange));
 				}
 				actionHandled = true;
 			}
@@ -179,8 +179,8 @@ public class GmService_Dev extends GameService {
 				if (goldChange > 0) {
 					award.addFreeGold((int)goldChange);
 				}
-				else {
-					consume.addGold((int)(-goldChange));
+				else if (goldChange < 0) {
+					consume.addGold((int)(0 - goldChange));
 				}
 				actionHandled = true;
 			}
@@ -194,8 +194,8 @@ public class GmService_Dev extends GameService {
 				if (towercoinChange > 0) {
 					award.addTowerCoin((int)towercoinChange);
 				}
-				else {
-					consume.addTowerCoin((int)(-towercoinChange));
+				else if (towercoinChange < 0) {
+					consume.addTowerCoin((int)(0 - towercoinChange));
 				}
 				actionHandled = true;
 			}
@@ -208,8 +208,8 @@ public class GmService_Dev extends GameService {
 				if (tiliChange > 0) {
 					award.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, tiliChange);
 				}
-				else {
-					consume.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, -tiliChange);
+				else if (tiliChange < 0) {
+					consume.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 0 - tiliChange);
 				}
 
 				actionHandled = true;

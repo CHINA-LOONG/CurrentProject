@@ -1,7 +1,8 @@
-﻿#NUM,NUM,TEXT,TEXT
-id,rank,rankUI,reward
-#id,排名,排名UI,界面显示奖励
-1,1,1,pvp_rankrewardxianshi1
-2,2,2,pvp_rankrewardxianshi2
-3,3,3,pvp_rankrewardxianshi3
-4,500,3月10日,pvp_rankrewardxianshi4
+﻿#NUM,NUM,TEXT,TEXT,TEXT
+id,rank,rankUI,reward,rewardDeath
+#id,排名,排名UI,界面显示奖励,boss死亡奖励
+1,1,1,pvp_rankrewardxianshi1,pvp_rankrewardxianshi1
+2,2,2,pvp_rankrewardxianshi2,pvp_rankrewardxianshi2
+3,3,3,pvp_rankrewardxianshi3,pvp_rankrewardxianshi3
+4,"4,499",4-499,pvp_rankrewardxianshi4,pvp_rankrewardxianshi4
+5,"500,9999",,pvp_rankrewardxianshi4,

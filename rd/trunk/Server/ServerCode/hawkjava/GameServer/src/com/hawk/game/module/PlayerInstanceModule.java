@@ -1166,11 +1166,11 @@ public class PlayerInstanceModule extends PlayerModule {
 			ItemInfo itemInfo = iter.next();
 
 			switch (itemInfo.getType()) {
-			case itemType.MONSTER_VALUE:
+			case itemType.MONSTER_VALUE: {
 				monsterRewardList.add(itemInfo);
 				break;
-
-			case itemType.MONSTER_ATTR_VALUE:
+			}
+			case itemType.MONSTER_ATTR_VALUE: {
 				int count = itemInfo.getCount();
 				int type = Integer.parseInt(itemInfo.getItemId());
 
@@ -1187,13 +1187,18 @@ public class PlayerInstanceModule extends PlayerModule {
 					completeReward.addMonsterAttr(type, count, monsterId);
 				}
 				break;
+			}
+			case itemType.PLAYER_ATTR_VALUE: {
+				int count = itemInfo.getCount();
+				int type = Integer.parseInt(itemInfo.getItemId());
 
-			case itemType.PLAYER_ATTR_VALUE:
-				if (Integer.parseInt(itemInfo.getItemId()) == changeType.CHANGE_COIN_VALUE) {
-					completeReward.addCoin((int) (itemInfo.getCount() * (1 + moreCoinRatio)));
+				if (type == changeType.CHANGE_COIN_VALUE) {
+					count *= 1 + moreCoinRatio;
 				}
-				break;
 
+				completeReward.addAttr(type, count);
+				break;
+			}
 			default:
 				completeReward.addItemInfo(itemInfo);
 				break;

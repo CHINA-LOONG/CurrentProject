@@ -2,6 +2,11 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public interface IGemSlotItem
+{
+    void OnClickGemSlot(GemInfo info);
+}
+
 public class GemSlotItem : MonoBehaviour
 {
     public Image imageType;
@@ -13,7 +18,7 @@ public class GemSlotItem : MonoBehaviour
     public Text textAttr1;
     public Text textAttr2;
 
-
+    public IGemSlotItem IGemSlotItemDelegate;
     private GemInfo curInfo;
     
     public enum SlotType
@@ -54,7 +59,8 @@ public class GemSlotItem : MonoBehaviour
             if (curInfo.gemId.Equals(BattleConst.invalidGemID))
             {
                 Type = SlotType.Unlock;
-                textUnlock.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips");
+                textUnlock.text = Interactable ? StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips") :
+                                                StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
             }
             else
             {
@@ -90,13 +96,15 @@ public class GemSlotItem : MonoBehaviour
             {
                 ScrollViewEventListener.Get(gameObject).onClick = null;
             }
-
         }
     }
 
     void OnClickThisSlot(GameObject go)
     {
-
+        if (IGemSlotItemDelegate!=null)
+        {
+            IGemSlotItemDelegate.OnClickGemSlot(curInfo);
+        }
     }
 
 }

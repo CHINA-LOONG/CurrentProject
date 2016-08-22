@@ -80,12 +80,26 @@ public class bossdajie13Langren3 : BossAi {
     public override void OnWpDead(WeakPointDeadArgs args)
 	{
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossMinghe14Langren3wp03" && jishu==0)
-        {
+		if (args.wpID == "bossdajie13Langren3wp02" && jishu==0)
+		{
 			target.TriggerEvent("Langren3_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
 			jishu ++;
-        }
+		}
+
+		if (args.wpID == "bossdajie13Langren3wp03" && jishu==0)
+		{
+			target.TriggerEvent("Langren3_state1to3", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			jishu ++;
+		}
+		
+		if (args.wpID == "bossdajie13Langren3wp03" && args.wpID == "bossdajie13Langren3wp02" && jishu==0)
+		{
+			target.TriggerEvent("Langren3_stateNto4", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			jishu ++;
+		}
 	}
 	//---------------------------------------------------------------------------------------------
 }

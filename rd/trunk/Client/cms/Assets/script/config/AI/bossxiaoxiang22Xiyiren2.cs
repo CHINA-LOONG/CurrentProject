@@ -52,10 +52,10 @@ public class bossxiaoxiang22Xiyiren2 : BossAi {
     public override void OnWpDead(WeakPointDeadArgs args)
 	{
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossMinghe14Xiyiren2wp03" && jishu==0)
+		if (args.wpID == "bossxiaoxiang22Xiyiren2wp03" && jishu==0)
         {
 			target.TriggerEvent("Xiyiren2_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
 			jishu ++;
         }
 	}

@@ -76,7 +76,7 @@ public class SociatyTaskList : MonoBehaviour
             var itemUi = SociatyTaskItem.CreateWith(itemData);
             scrollView.AddElement(itemUi.gameObject);
         }
-        leftTimes.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_shengyutime"), 
+        leftTimes.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tasknum"), 
             GameConfig.Instance.sociatyTaskMaxCount - GameDataMgr.Instance.SociatyDataMgrAttr.taskCount);
     }
 
@@ -140,11 +140,11 @@ public class SociatyTaskList : MonoBehaviour
 
     void ConformOpenTask(MsgBox.PrompButtonClick click)
     {
-      // // if(curSelItem.sociatyTaskData.minLevel > GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.level)
-      //  {
-       //     UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
-       //     return;
-      //  }
+        if(curSelItem.sociatyTaskData.minLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
+            return;
+        }
         if (curSelItem.sociatyTaskData.taskStart > GameDataMgr.Instance.PlayerDataAttr.gold)
         {
             GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
@@ -173,8 +173,8 @@ public class SociatyTaskList : MonoBehaviour
             return;
         }
         PB.HSAllianceCreateTeamRet msgRet = message.GetProtocolBody<PB.HSAllianceCreateTeamRet>();
-        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = curSelItem.sociatyTaskData.id;
-        GameDataMgr.Instance.SociatyDataMgrAttr.taskInfo = msgRet.taskInfo;
+
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = msgRet.teamId;
 
         UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
     }

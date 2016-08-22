@@ -54,11 +54,6 @@ public class AllianceAcceptQuestHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if (player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily() >= SysBasicCfg.getInstance().getAllianceMaxBigTask()) {
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_BIG_TASK_VALUE);
-			return true;
-		}
-		
 		if (teamEntity.getInstanceQuest1() != request.getQuestId()) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_QUEST_NOT_EXIST_VALUE);
 			return true;

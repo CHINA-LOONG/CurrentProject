@@ -7,7 +7,6 @@ import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.config.ImSysCfg;
-import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -20,7 +19,6 @@ import com.hawk.game.protocol.Alliance.HSLevelChangeNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.MailUtil;
 
 public class AllianceLevelUpHandler implements HawkMsgHandler{
 	/**

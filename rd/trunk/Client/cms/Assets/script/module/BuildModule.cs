@@ -75,6 +75,11 @@ public class BuildModule : ModuleBase
                         break;
                 }
             }
+            else  if(curInstanceType == (int)InstanceType.Guild)
+            {
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.MyTeam);
+            }
         }
 	}
 	

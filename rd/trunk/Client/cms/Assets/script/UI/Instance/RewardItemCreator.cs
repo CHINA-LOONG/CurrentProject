@@ -25,6 +25,11 @@ public class RewardItemCreator
                 PB.HSMonster monster = rewardItemData.monster;
                 go = InitMonsterItem(monster);
                 break;
+            case (int)PB.itemType.PLAYER_ATTR:
+                    go = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(rewardItemData.itemId)), rewardItemData.count).gameObject;
+                    UIUtil.SetParentReset(go.transform, parent);
+                break;
+                
         }
         if(null != go)
         {

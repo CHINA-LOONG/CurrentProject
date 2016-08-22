@@ -96,7 +96,7 @@ public class SociatyOtherItem : MonoBehaviour
         {
             isNeedUpdateTime = false;
         }
-        timeLeftText.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hour, minute, second);
+        timeLeftText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_shengyutime"), hour, minute, second);
     }
 
     void RefreshMemberItem()

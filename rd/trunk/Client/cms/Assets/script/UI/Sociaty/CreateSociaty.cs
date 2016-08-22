@@ -110,7 +110,7 @@ public class CreateSociaty : UIBase
 
         PB.HSAllianceCreateRet allianceRet = msg.GetProtocolBody<PB.HSAllianceCreateRet>();
         GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = allianceRet.allianeId;
-        InstanceList.Close();
+        SociatyList.Close();
         UIMgr.Instance.CloseUI_(this);
 
         GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();

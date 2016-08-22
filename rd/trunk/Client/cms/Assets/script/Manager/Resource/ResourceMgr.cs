@@ -370,7 +370,17 @@ public class ResourceMgr : MonoBehaviour
     public IEnumerator LoadAssetRequest(AssetRequest request)
     {
         string realName = StaticDataMgr.Instance.GetRealName(request.assetName);
-        string abname = StaticDataMgr.Instance.GetBundleName(realName).ToLower();
+        if(string.IsNullOrEmpty(realName))
+        {
+            Logger.LogError("load assert Error  no realname : " + request.assetName);
+        }
+        string abname = StaticDataMgr.Instance.GetBundleName(realName);//.ToLower();
+        if(string.IsNullOrEmpty(abname))
+        {
+            Logger.LogError("load assert Error: " + request.assetName);
+        }
+        abname = abname.ToLower();
+
         LoadAssetBundleAsync(abname);
         AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
             abname,

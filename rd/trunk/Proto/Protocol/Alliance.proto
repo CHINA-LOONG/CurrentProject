@@ -461,7 +461,7 @@ message HSAllianceTaskCommitRet
 
 }
 
-// 提交任务
+// 任务奖励
 message HSAllianceTaskReward
 {
 

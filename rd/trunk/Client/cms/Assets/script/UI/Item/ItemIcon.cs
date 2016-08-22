@@ -17,7 +17,13 @@ public class ItemIcon : MonoBehaviour
 	}
 
     #region ----------------Create Method
-
+    /// <summary>
+    /// 创建物品ICON  设置点击处理
+    /// </summary>
+    /// <param name="itemInfo">要创建icon的物品</param>
+    /// <param name="showTips">点击是否显示tips</param>
+    /// <param name="showGetby">tips中是否显示获取途径</param>
+    /// <returns></returns>
     public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true, bool showGetby = true)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
@@ -25,12 +31,18 @@ public class ItemIcon : MonoBehaviour
         itemIcon.RefreshWithItemInfo(itemInfo, showTips, showGetby);
         return itemIcon;
     }
-
-    public static ItemIcon CreateItemIcon(EquipData equipInfo, bool showTips = true, bool showGetby = false)
+    /// <summary>
+    /// 创建装备icon    设置icon点击事件
+    /// </summary>
+    /// <param name="equipInfo">要创建icon的装备</param>
+    /// <param name="showTips">点击是否显示装备tips</param>
+    /// <param name="showGetby">tips中是否显示获取途径</param>
+    /// <returns></returns>
+    public static ItemIcon CreateItemIcon(EquipData equipInfo, bool showTips = true, bool showGetby = true)
 	{
 		GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
 		ItemIcon itemIcon = go.GetComponent<ItemIcon>();
-		itemIcon.RefreshWithEquipInfo (equipInfo,showTips);
+		itemIcon.RefreshWithEquipInfo (equipInfo,showTips,showGetby);
 		return itemIcon;
 	}
 	#endregion
@@ -96,20 +108,20 @@ public class ItemIcon : MonoBehaviour
         return true;
     }
 
-	public	bool	RefreshWithEquipInfo(EquipData	equipInfo, bool showTips = true, bool showGetby = false)
-	{
-		ShowTips = showTips;
+    public bool RefreshWithEquipInfo(EquipData equipInfo, bool showTips = true, bool showGetby = true)
+    {
+        ShowTips = showTips;
         this.showGetby = showGetby;
-        ItemStaticData itemStaticData =  StaticDataMgr.Instance.GetItemData (equipInfo.equipId);
-		if (null == itemStaticData)
-			return false;
+        ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData(equipInfo.equipId);
+        if (null == itemStaticData)
+            return false;
 
-		iconType = IconType.Equip;
-		this.equipInfo = equipInfo;
+        iconType = IconType.Equip;
+        this.equipInfo = equipInfo;
 
-		SetItemIconUi (itemStaticData);
-		return true;
-	}
+        SetItemIconUi(itemStaticData);
+        return true;
+    }
 
     public void HideItemCountText()
     {
@@ -244,7 +256,8 @@ public class ItemIcon : MonoBehaviour
         string itemStaticId;
         if(iconType == IconType.Equip)
         {
-            UIEquipDetails.openEquipTips(equipInfo);
+            UIEquipTips.OpenEquipTips(equipInfo, showGetby);
+            //UIEquipDetails.openEquipTips(equipInfo);
         }
         else
         {

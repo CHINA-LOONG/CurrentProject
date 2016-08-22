@@ -138,6 +138,7 @@ public class UIAdjustBattleTeam : UIBase
     void OnDisable()
     {
         UnBindListener();
+        isBattleClick = false;
     }
 
 	void BindListener()
@@ -146,7 +147,8 @@ public class UIAdjustBattleTeam : UIBase
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.TOWER_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
-
+        //公会战
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.GUILD_INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
@@ -165,6 +167,8 @@ public class UIAdjustBattleTeam : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.TOWER_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        //公会战
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.GUILD_INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
@@ -1027,6 +1031,22 @@ public class UIAdjustBattleTeam : UIBase
             param.floor = towerFloor;
 
             GameApp.Instance.netManager.SendMessage(PB.code.TOWER_ENTER_C.GetHashCode(), param);
+        }
+        else if (instanceType == InstanceType.Guild)
+        {
+            PB.HSGuildInstanceEnter  param = new PB.HSGuildInstanceEnter();
+            param.instanceId = instanceId;
+            int count = enterInstanceParam.playerTeam.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
+            }
+
+            GameApp.Instance.netManager.SendMessage(PB.code.GUILD_INSTANCE_ENTER_C.GetHashCode(), param);
+        }
+        else
+        {
+            isBattleClick = false;
         }
 	}
 

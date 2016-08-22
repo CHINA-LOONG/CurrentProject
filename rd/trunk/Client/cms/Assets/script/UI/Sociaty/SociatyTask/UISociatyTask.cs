@@ -24,10 +24,10 @@ public class UISociatyTask : UIBase, TabButtonDelegate
 
     public static UISociatyTask Instance = null;
 
-    public static   void Open()
+    public static   void Open(SociatyTaskContenType taskType = SociatyTaskContenType.MyTeam)
     {
         UISociatyTask taskUi = (UISociatyTask)UIMgr.Instance.OpenUI_(ViewName);
-        taskUi.SetTaskType(SociatyTaskContenType.MyTeam);
+        taskUi.SetTaskType(taskType);
     }
 
     public override void Init()
@@ -49,7 +49,7 @@ public class UISociatyTask : UIBase, TabButtonDelegate
         }
         if(null != taskOther)
         {
-            ResourceMgr.Instance.DestroyAsset(taskRunning.gameObject);
+            ResourceMgr.Instance.DestroyAsset(taskOther.gameObject);
         }
     }
 
@@ -128,6 +128,16 @@ public class UISociatyTask : UIBase, TabButtonDelegate
             }
             return;
         }
+        if (null == taskRunning)
+        {
+            taskRunning = SociatyTaskRunning.Instance;
+            taskRunning.transform.SetParent(contentParent);
+            RectTransform rt = taskRunning.transform as RectTransform;
+            rt.anchoredPosition = new Vector2(0, 0);
+            rt.localScale = new Vector3(1, 1, 1);
+        }
+        taskRunning.gameObject.SetActive(true);
+        taskRunning.RequestMyTeamInfo();
     }
     void ShowTaskOther(bool bshow)
     {

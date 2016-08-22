@@ -1654,3 +1654,23 @@ bossrenjie88Yafogemeng55Name,暗之护盾,Dark Shield
 bossrenjie88Yafogemeng52Name,能量补充,Regeneration Aura
 bossrenjie88Yafogemeng56Name,净化,purification
 bossrenjie88Yafogemeng59Name,复生,Reincarnation
+bossWorldJidu51Name,恶毒杀,Malevolent Strike
+bossWorldJidu54Name,黑暗暴怒,Dark Temper
+bossWorldJidu57Name,折磨强袭,Tormenting Strike
+bossWorldJidu510Name,突发粉碎,Abrupt Bash
+bossWorldJidu513Name,精神辐射,Radiance Spirit
+bossWorldJidu51Tips,攻击敌方单体，造成X1%物攻暗属性伤害,Deals (X1% of physical ATK) dark type damage to a single enemy target.
+bossWorldJidu54Tips,攻击敌方群体，造成XX1%物攻暗属性伤害并提升自身力量30%2回合,"Deals (XX1% of physical ATK) dark type damage to all enemies, and increases your STR by 30% for 2 turns."
+bossWorldJidu57Tips,攻击敌方群体，造成XX4%物攻暗属性伤害并附加暗属性dot3回合,"Deals (XX4% of physical ATK) dark type damage to all enemies, with additional dark type DOT for 3 turns."
+bossWorldJidu510Tips,攻击敌方群体，造成XX7%物攻暗属性伤害并提升自身速度50%3回合，并眩晕敌方全体1回合,"Deals (XX7% of physical ATK) dark type damage to all enemies, increases your SPD by 50% for 3 turns, and stuns all enemies for 1 turn."
+bossWorldJidu513Tips,免疫控制（被动技能）,Control ability immunity (passive ability).
+bossWorldMeitatelong11Name,寒光闪,Cold Snap
+bossWorldMeitatelong14Name,圣光压制,Suppressing Light
+bossWorldMeitatelong17Name,诛灭,Eradication
+bossWorldMeitatelong110Name,神圣祝福,Divine Blessing
+bossWorldMeitatelong113Name,精神辐射,Radiance Spirit
+bossWorldMeitatelong11Tips,攻击敌方群体，造成xx%法攻的光属性伤害,Deals (xx% of magic ATK) light type damage to all enemy targets.
+bossWorldMeitatelong14Tips,攻击敌方群体，造成xx%法攻的光属性伤害并降低xx%智力持续3回合,"Deals (xx% of magic ATK) light type damage to all enemies, and reduces their INT by xx% for 3 turns."
+bossWorldMeitatelong17Tips,攻击敌方单体，造成xx%法攻的光属性伤害并降低xx%力量持续3回合,"Deals (xx% of magic ATK) light type damage to a single enemy target, and reduces their STR by xx% for 3 turns."
+bossWorldMeitatelong110Tips,驱散自身debuff并攻击敌方群体，根据清除debuff数量造成xx%法攻的光属性伤害，并给自己添加物理减免护盾,"Dispells any debuffs affecting you and attacks all enemy targets, dealing(xx% of magic ATK) light type damage based on the number of debuffs dispelled, and adds a physical damage reduction shield for yourself."
+bossWorldMeitatelong113Tips,免疫控制（被动技能）,Control ability immunity (passive ability).

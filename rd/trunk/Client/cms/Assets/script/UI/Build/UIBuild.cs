@@ -263,6 +263,17 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		UIMgr.Instance.DestroyUI (uiShop);
         UIMgr.Instance.DestroyUI(uiCompose);
         UIMgr.Instance.DestroyUI(uiDecompose);
+        
+        if(null != UISociatyTask.Instance)
+        {
+            UIMgr.Instance.DestroyUI(UISociatyTask.Instance);
+            UISociatyTask.Instance = null;
+        }
+        if(null != SociatyMain.Instance)
+        {
+            UIMgr.Instance.DestroyUI(SociatyMain.Instance);
+            SociatyMain.Instance = null;
+        }
     }
 
     public InstanceMap OpenInstanceUI()

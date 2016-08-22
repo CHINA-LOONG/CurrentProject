@@ -1172,5 +1172,12 @@ public class StaticDataMgr : MonoBehaviour
         }
         return null;
     }
+
+    public SociatyQuest GetSociatyQuest(int id)
+    {
+        SociatyQuest questData = null;
+        sociatyQuestDic.TryGetValue(id, out questData);
+        return questData;
+    }
     #endregion
 }

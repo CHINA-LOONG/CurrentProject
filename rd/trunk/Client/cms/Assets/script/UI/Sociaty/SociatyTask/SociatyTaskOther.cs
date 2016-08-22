@@ -37,16 +37,16 @@ public class SociatyTaskOther : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LIST_C.GetHashCode().ToString(), OnRequestTeamListFinish);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LIST_S.GetHashCode().ToString(), OnRequestTeamListFinish);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnRequestJoinTeamFinish);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnRequestJoinTeamFinish);
+     //   GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnRequestJoinTeamFinish);
+       // GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnRequestJoinTeamFinish);
     }
     void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LIST_C.GetHashCode().ToString(), OnRequestTeamListFinish);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LIST_S.GetHashCode().ToString(), OnRequestTeamListFinish);
 
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnRequestJoinTeamFinish);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnRequestJoinTeamFinish);
+       // GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnRequestJoinTeamFinish);
+       // GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnRequestJoinTeamFinish);
     }
 
     public  void RequestTeamList()
@@ -72,7 +72,7 @@ public class SociatyTaskOther : MonoBehaviour
 
     void RefreshUi()
     {
-        timesText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_shengyutime"),
+        timesText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tasknum"),
             GameConfig.Instance.sociatyTaskMaxCount - GameDataMgr.Instance.SociatyDataMgrAttr.taskCount);
 
         HideAllOtherTask();
@@ -102,7 +102,7 @@ public class SociatyTaskOther : MonoBehaviour
             subItem.gameObject.SetActive(false);
         }
     }
-
+/*
     //////////////////////////////////////////////////////////////////
     void RequestJoinTeam()
     {
@@ -121,5 +121,5 @@ public class SociatyTaskOther : MonoBehaviour
             return;
         }
     }
-
+    */
 }

@@ -10,12 +10,22 @@ public class AllianceInfoItem : MonoBehaviour
     public Button itemButton;
 
     public PB.AllianceSimpleInfo itemInfoData;
+    private bool hasJoinSociaty = false;
 
-    public  static  AllianceInfoItem CreateWith(PB.AllianceSimpleInfo itemInfo)
+    public  static  AllianceInfoItem CreateWith(PB.AllianceSimpleInfo itemInfo,bool hasJoinSociaty = false)
     {
-       GameObject go =  ResourceMgr.Instance.LoadAsset("AllianceInfoItem");
+        GameObject go = null;
+        if(hasJoinSociaty)
+        {
+            go = ResourceMgr.Instance.LoadAsset("OtherSociatyItem");
+        }
+        else
+        {
+            go = ResourceMgr.Instance.LoadAsset("AllianceInfoItem");
+        }
+        
         AllianceInfoItem allianceItem = go.GetComponent<AllianceInfoItem>();
-        allianceItem.InitWith(itemInfo);
+        allianceItem.InitWith(itemInfo,hasJoinSociaty);
         allianceItem.SetSelect(false);
         return allianceItem;
     }
@@ -23,12 +33,18 @@ public class AllianceInfoItem : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        operationButton.onClick.AddListener(OnOperationButtonClick);
-        itemButton.onClick.AddListener(OnItemButtonClick);
+        if(operationButton != null)
+            operationButton.onClick.AddListener(OnOperationButtonClick);
+
+        if(itemButton != null)
+        {
+            itemButton.onClick.AddListener(OnItemButtonClick);
+        }
 	}
 
-    public  void    InitWith(PB.AllianceSimpleInfo itemInfo)
+    public  void    InitWith(PB.AllianceSimpleInfo itemInfo, bool hasJoinSociaty)
     {
+        this.hasJoinSociaty = hasJoinSociaty;
         itemInfoData = itemInfo;
         textArray[0].text = itemInfo.id.ToString();
         textArray[1].text = itemInfo.name;
@@ -43,13 +59,16 @@ public class AllianceInfoItem : MonoBehaviour
 
     void RefreshButtonTitle()
     {
-        if (itemInfoData.apply)
+        if (null != operationButton)
         {
-            UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_cancelshenqing"));
-        }
-        else
-        {
-            UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_shenqing"));
+            if (itemInfoData.apply)
+            {
+                UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_cancelshenqing"));
+            }
+            else
+            {
+                UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_shenqing"));
+            }
         }
     }
 
@@ -60,7 +79,14 @@ public class AllianceInfoItem : MonoBehaviour
 
     void OnItemButtonClick()
     {
-        SociatyList.Instance.OnAllianceInfoItemClick(this);
+        if(hasJoinSociaty)
+        {
+            SociatyContentOther.Instance.OnAllianceInfoItemClick(this);
+        }
+        else
+        {
+            SociatyList.Instance.OnAllianceInfoItemClick(this);
+        }  
     }
 
     void OnOperationButtonClick()

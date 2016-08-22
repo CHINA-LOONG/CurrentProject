@@ -12,12 +12,12 @@ public class NeedMonsterElement : MonoBehaviour
     private string monsterId;
     private int monsterStage;
 
-    public void Refresh(string monsterId,int monsterStage,int needCount,int curCount)
+    public void Refresh(string monsterId,int monsterStage/*,int needCount,int curCount*/)
     {
         this.monsterId = monsterId;
         this.monsterStage = monsterStage;
 
-        UpdateCount(needCount, curCount);
+        //UpdateCount(needCount, curCount);
     }
 
     public void UpdateCount(int needCount, int curCount)
@@ -30,7 +30,7 @@ public class NeedMonsterElement : MonoBehaviour
         }
         else
         {
-            color = ColorConst.text_color_Req;
+            color = ColorConst.system_color_white;
         }
         monsterCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + curCount + "</color>/" + needCount;
 

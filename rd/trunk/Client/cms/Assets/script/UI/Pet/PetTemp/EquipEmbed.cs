@@ -4,7 +4,8 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 
-public class EquipEmbed : EquipInfoBase
+public class EquipEmbed : EquipInfoBase,
+                          IGemSlotItem
 {
     public Text text_Gems;
     public Text text_Tips1;     //开孔已满
@@ -75,6 +76,7 @@ public class EquipEmbed : EquipInfoBase
                 GameObject go = ResourceMgr.Instance.LoadAsset("GemSlotItem");
                 UIUtil.SetParentReset(go.transform, GemsPos);
                 mosaicItems[index] = go.GetComponent<GemSlotItem>();
+                mosaicItems[index].IGemSlotItemDelegate = this;
             }
         };
         for (int i = 0; i < mosaicItems.Length; i++)
@@ -90,7 +92,7 @@ public class EquipEmbed : EquipInfoBase
             SetGemSlot(i);
             if (curData.gemList.Count > i)
             {
-                mosaicItems[i].ReloadData(curData.gemList[i]);
+                mosaicItems[i].ReloadData(curData.gemList[i],true);
                 if (!curData.gemList[i].gemId.Equals(BattleConst.invalidGemID))
                 {
                     isMosaic = true;
@@ -205,7 +207,6 @@ public class EquipEmbed : EquipInfoBase
     {
         BindListener();
     }
-
     void OnDisable()
     {
         UnBindListener();
@@ -216,19 +217,12 @@ public class EquipEmbed : EquipInfoBase
         GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipSocketNotify, RefreshNotify);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_C.GetHashCode().ToString(), OnEquipPunchRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_S.GetHashCode().ToString(), OnEquipPunchRet);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_GEM_C.GetHashCode().ToString(), OnEquipMosaicRet);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_GEM_S.GetHashCode().ToString(), OnEquipMosaicRet);
-
-        //GameEventMgr.Instance.AddListener(GameEventList.ReloadEquipGemNotify, ReloadData);
     }
-
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipSocketNotify, RefreshNotify);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_C.GetHashCode().ToString(), OnEquipPunchRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_S.GetHashCode().ToString(), OnEquipPunchRet);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_GEM_C.GetHashCode().ToString(), OnEquipMosaicRet);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_GEM_S.GetHashCode().ToString(), OnEquipMosaicRet);
     }
 
     //开孔返回
@@ -253,25 +247,10 @@ public class EquipEmbed : EquipInfoBase
 
         GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadEquipSocketNotify, curData);
     }
-    //卸载返回
-    void OnEquipMosaicRet(ProtocolMessage msg)
+    
+    public void OnClickGemSlot(GemInfo info)
     {
-        UINetRequest.Close();
-        if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
-        {
-            return;
-        }
-        PB.HSEquipGemRet result = msg.GetProtocolBody<PB.HSEquipGemRet>();
-
-        #region 同步服务器宝石
-        curData.gemList.Clear();
-        foreach (PB.GemPunch element in result.gemItems)
-        {
-            GemInfo gemInfo = new GemInfo(element);
-            curData.gemList.Add(gemInfo);
-        }
-        curData.RefreshGemAttr();
-        #endregion
-
+        UISelectGemList uiSelectGemList = UIMgr.Instance.OpenUI_(UISelectGemList.ViewName) as UISelectGemList;
+        uiSelectGemList.ReloadData(curData, info);
     }
 }

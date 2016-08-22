@@ -40,8 +40,12 @@ public class UIPetDetails : UIBase,
     public Button btnAdvance;
 
     public PetDetailsLeft leftView;
+    private PetDetailsRight rightView;
+
     public Transform rightViewPos;
     private PetDetailsEquipInfo petDetailsEquipInfo;
+    private PetDetailsAbilities petDetailsAbilities;
+    private PetDetailsAdvance petDetailsAdvance;
 
     //popup
     private UISelectEquipList uiSelectEquipList;
@@ -83,40 +87,30 @@ public class UIPetDetails : UIBase,
 
     public void SetTypeList(GameUnit unit, List<GameUnit> unitList)
     {
-
         curUnitList = unitList;
         curUnitIndex = unitList.IndexOf(unit);
         Refresh();
     }
-
-
+    
     void Refresh()
     {
-        ReloadLeft();
-    }
-    void ReloadLeft()
-    {
         leftView.ReloadData(CurData);
-
-    }
-    void ReloadRight(string rightView)
-    {
-
+        OpenPetDetailsAbilities(CurData);
     }
     
-    #region On Click Button Down
-
+    #region 界面按钮事件
+    
     void OnClickDetailsBtn()
     {
 
     }
     void OnClickSkillBtn()
     {
-
+        OpenPetDetailsAbilities(CurData);
     }
     void OnClickStageBtn()
     {
-
+        OpenPetDetailsAdvance(CurData);
     }
     void OnClickRolesBtn()
     {
@@ -124,8 +118,8 @@ public class UIPetDetails : UIBase,
     }
     void OnClickAdvanceBtn()
     {
-
     }
+
     void OnClickPreviousBtn()
     {
         if (curUnitList.Count == 1)
@@ -144,34 +138,63 @@ public class UIPetDetails : UIBase,
         curUnitIndex = (curUnitIndex + 1) % curUnitList.Count;
         Refresh();
     }
+
     void OnClickCloseBtn()
     {
         UIMgr.Instance.CloseUI_(this);
     }
 
     #endregion
-    
+
+    #region 开启子界面接口
+    void OpenRightView<T>(string ViewName,ref T openView)where T: PetDetailsRight
+    {
+        if (rightView == null || rightView != openView)
+        {
+            if (openView == null)
+            {
+                GameObject go = ResourceMgr.Instance.LoadAsset(ViewName);
+                UIUtil.SetParentReset(go.transform, rightViewPos);
+                openView = go.GetComponent<T>() as T;
+                openView.IPetDetailsRight = this;
+            }
+            else
+            {
+                openView.gameObject.SetActive(true);
+            }
+            if (rightView != null)
+            {
+                rightView.gameObject.SetActive(false);
+            }
+            rightView = openView;
+        }
+    }
+    public void OpenPetDetailsAbilities(GameUnit unit)
+    {
+        OpenRightView(PetDetailsAbilities.ViewName, ref petDetailsAbilities);
+        petDetailsAbilities.ReloadData(unit);
+    }
     public void OpenPetDetailsEquipInfo(EquipData data)
     {
-        //打开装备详细资料界面
-        if (petDetailsEquipInfo==null)
-        {
-            GameObject go = ResourceMgr.Instance.LoadAsset("PetDetailsEquipInfo");
-            UIUtil.SetParentReset(go.transform, rightViewPos);
-            petDetailsEquipInfo = go.GetComponent<PetDetailsEquipInfo>();
-            petDetailsEquipInfo.IPetDetailsRight = this;
-        }
+        OpenRightView(PetDetailsEquipInfo.ViewName, ref petDetailsEquipInfo);
         petDetailsEquipInfo.Refresh(data);
     }
+    public void OpenPetDetailsAdvance(GameUnit unit)
+    {
+        OpenRightView(PetDetailsAdvance.ViewName, ref petDetailsAdvance);
+        petDetailsAdvance.ReloadData(unit);
+    }
+
     //打开选择装备列表弹窗
     public void OpenSelectEquipList(PartType part)
     {
         uiSelectEquipList = UIMgr.Instance.OpenUI_(UISelectEquipList.ViewName) as UISelectEquipList;
         uiSelectEquipList.ReloadData(CurData, part);
     }
+    #endregion
+
 
     
-
     #region PetDetailLeft Interface
     public void OnClickEmptyField(PartType part)
     {
@@ -192,9 +215,47 @@ public class UIPetDetails : UIBase,
     {
         OpenSelectEquipList(part);
     }
-    
+
+    public void OnRemoveEquip()
+    {
+        OpenPetDetailsAbilities(CurData);
+    }
+
 
     #endregion
+
+
+    void OnEnable()
+    {
+        BindListener();
+
+    }
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+
+    void BindListener()
+    {
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+    }
+    void UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+    }
+
+    void ReloadPetEquipNotify(EquipData equipData)
+    {
+        if (equipData.monsterId == CurData.pbUnit.guid && rightView == petDetailsEquipInfo)
+        {
+            ItemStaticData curItem = StaticDataMgr.Instance.GetItemData(petDetailsEquipInfo.CurData.equipId);
+            ItemStaticData tarItem = StaticDataMgr.Instance.GetItemData(equipData.equipId);
+            if (curItem.part == tarItem.part)
+            {
+                OpenPetDetailsEquipInfo(equipData);
+            }
+        }
+    }
 
 }
 

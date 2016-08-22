@@ -181,7 +181,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -190,10 +190,12 @@ equip_confirm_open,确定开孔么？,Confirm Open Sockets?
 equip_random_open,开孔将随机开启不同数量的宝石槽,Opening Sockets will randomly reveal different amounts of Gem slots.
 equip_return_gem,若已镶嵌宝石，宝石将全部返还到背包,Any inserted Gems will all be returned to your Bag.
 xl_equip_list,薛龙_装备列表界面,
+equip_title,装备列表,Amories
 equip_List_zhuangbeileixing,装备类型,Type
 equip_List_xianzhidengji,等级限制,Level
 equip_List_zhuangbei,装备,Equip
 xl_gem_list,薛龙_宝石列表界面,
+gem_title,宝石列表,Gems
 equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
 equip_gem_casting,宝石加成,Gem Casting
 xl_pet_exp,,
@@ -318,7 +320,9 @@ pet_detail_skill_current_level,本级:,Current:
 pet_detail_skill_next_level,下一级:,Next LVL:
 pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
 pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
+pet_detail_skill_current_huifu,{0}之后回复1点,{0}zhihouhuifu1dian
 pet_detail_skill_max_point,(点数已满),(Full)
+pet_detail_skill_cannt_level,该技能不可升级,can not level up
 pet_detail_stage_attr,基础属性,Base attribute
 pet_detail_stage_demand_level,需求等级,Req. LVL
 pet_detail_stage_demand_item,需求材料,Req. Materials
@@ -389,7 +393,9 @@ sociaty_shenqing,申请加入,Apply
 sociaty_cancelshenqing,取消申请,Cancel
 sociaty_notice,公会公告,Announcement
 sociaty_buildbtn,创建公会,Create
-sociaty_tips1,该公会不需批准，满足条件立即加入，是否确定操作？（退出公会12小时后才能加入其他公会）,"This guild doesn't require approval to join. If all requirements are met, you may join immediately. Continue?(You must wait 12 hours after leaving a Guild before you may join another.)"
+sociaty_tips1,"该公会不需批准，满足条件立即加入，是否确定操作？
+（退出公会12小时后才能加入其他公会）","This guild doesn't require approval to join. If all requirements are met, you may join immediately. Continue?
+(You must wait 12 hours after leaving a Guild before you may join another.)"
 sociaty_buildtitle,创建公会,Guild Creation
 sociaty_buildlimit,（只能输入字母、数字和中文汉字）,(Alphanumeric and Chinese characters only.)
 sociaty_reqcoin,消耗,Cost
@@ -417,9 +423,9 @@ sociaty_contributionall,历史贡献值,Guild Pts.
 sociaty_last,最后上线,Last Online
 sociaty_songhuo,赠活力值,Send Energy
 sociaty_gang,刚刚,Just now
-sociaty_minite,X分钟前,X min ago
-sociaty_hour,X小时前,X hrs ago
-sociaty_day,X天前,X days ago
+sociaty_minite,{0}分钟前,{0} min ago
+sociaty_hour,{0}小时前,{0} hrs ago
+sociaty_day,{0}天前,{0} days ago
 sociaty_zaixian,在线,Online
 sociaty_quit,退出公会,Leave Guild
 sociaty_newapply,新的申请,Application
@@ -427,11 +433,12 @@ sociaty_yield,移交会长,Transfer Master Role
 sociaty_yieldfu,任命副会长,Promote Elder
 sociaty_yieldfujie,解除副会长,Demote Elder
 sociaty_expel,请离公会,Remove From Guild
-sociaty_tips3,确定将会长移交给XXX？,You are transfering Guild Master role to XXX. Continue?
-sociaty_tips4,确定任命XXX为副会长？,You are promoting XXX to Guild Elder. Continue?
-sociaty_jiechu,确定解除XXX副会长职务？,You are removing XXX from the guild. Continue?
-sociaty_tips5,确定将XXX请离公会？,Confirm leave guild?
+sociaty_tips3,确定将会长移交给{0}？,You are transfering Guild Master role to {0} Continue?
+sociaty_tips4,确定任命{0}为副会长？,You are promoting XXX to Guild Elder. Continue?
+sociaty_jiechu,确定解除{0}副会长职务？,You are removing {0} from the guild. Continue?
+sociaty_tips5,确定将{0}请离公会？,Confirm leave guild?
 sociaty_tips6,确定退出公会？,Confirm leave guild?
+sociaty_tips2,（退出公会12小时后才能加入其他公会）,(You must wait 12 hours after leaving a Guild before you may join another.)
 sociaty_refuse,拒绝,Refuse
 sociaty_approve,批准,Accept
 sociaty_setup,申请设置,Settings
@@ -451,10 +458,10 @@ sociaty_peopletips,提升公会最大人数,Increases guild's member limit.
 sociaty_cointips,增加米达斯宫的金币获得量,Increases Coins gained from Palace of Midas.
 sociaty_exptips,至福乐土额外获得经验药,Grants bonus EXP while playing Fields of Elysium.
 sociaty_nowlevel,本级效果：,Current:
-sociaty_leveltipsmiaoshu1,X级,LVL X
-sociaty_peopletipsmiaoshu1,X人,X Members
+sociaty_leveltipsmiaoshu1,{0}级,LVL {0}
+sociaty_peopletipsmiaoshu1,{0}人,{0} Members
 sociaty_maxlevel,已满级,Max
-sociaty_startlevel,公会X级可开启,Unlocked at Guild Lvl X
+sociaty_startlevel,公会{0}级可开启,Unlocked at Guild Lvl {0}
 sociaty_levelupup,升级,Upgrade
 sociaty_X1dang,思之许愿,Wish Thinker
 sociaty_X2dang,酿之许愿,Wish Brewer
@@ -462,20 +469,20 @@ sociaty_X3dang,梦之许愿,Wish Dreamer
 sociaty_qifubtn,许愿,Wish
 sociaty_myteam,我的队伍,My Team
 sociaty_otherteam,其他队伍,Other Teams
-sociaty_tasknum,今日剩余次数：X,Remaining today:
+sociaty_tasknum,今日剩余次数：{0},Remaining today: {0}
 sociaty_teamreward,奖励,Rewards
 sociaty_start,开启,Open
 sociaty_spendtips,确定开启公会任务吗？,Confirm open Guild Mission?
 sociaty_myteam1,我的小队,My team
-sociaty_shengyutime,剩余时间：,Time remaining:
+sociaty_shengyutime,剩余时间：{0:D2}:{1:D2}:{2:D2},Time remaining:{0:D2}:{1:D2}:{2:D2}
 sociaty_tasktarget,任务目标,Objective
-sociaty_daojutarget,提交X个Y（X代表道具数量，Y代表道具数量）,Retrieve X of Y
-sociaty_cointarget,提交X个金币,Retrieve X Coins
-sociaty_fubentarget,通关X副本（X代表副本名称）,Clear Stage X
+sociaty_daojutarget,提交{0}个{1},Retrieve {0} of {1}
+sociaty_cointarget,提交{0}个金币,Retrieve {0} Coins
+sociaty_fubentarget,通关{0}副本,Clear Stage {0}
 sociaty_rewardtitle,任务奖励,Mission Reward
 sociaty_commit,提交,Submit
 sociaty_gogogo,立即前往,Go Now
-sociaty_completename,玩家XXX已完成,Completed by XXX 
+sociaty_completename,玩家{0}已完成,Completed by {0}
 sociaty_renbuzai,完成人已不在公会,The member who completed is no longer in this Guild.
 sociaty_giveup,放弃任务,Abandon
 sociaty_findfriends,招募伙伴,Recruit
@@ -497,22 +504,22 @@ sociaty_record_009,金币不足，快去赚钱吧,Insufficient Coins. Go earn so
 sociaty_record_010,公会已解散，试试其他公会吧,"Guild already disbanded, please try another."
 sociaty_record_011,活跃度未达标，快去叫小伙伴们一起参加公会活动吧,Activity level requirement not met. Rally the members and join some events.
 sociaty_record_013,移交会长成功，您的身份已变更为会员,Transfer of Guild Master role successful. You are now just a member.
-sociaty_record_014,操作失败，XXX已不在公会（XXX为玩家名称）,Action failed. XXX is no longer in the guild.
-sociaty_record_015,操作失败，XXX已为副会长（XXX为玩家名称）,Action failed. XXX is already a Guild Elder.
-sociaty_record_016,XXX（玩家名称）已被任命为副会长（该条信息在公会频道特殊颜色显示，美术给配个色）,XXX has been promoted to Guild Elder.
-sociaty_record_017,XXX已被请离公会（XXX为玩家名称）,XXX has been removed from the guild.
+sociaty_record_014,操作失败，{0}已不在公会,Action failed. {0} is no longer in the guild.
+sociaty_record_015,操作失败，{0}已为副会长,Action failed. {0} is already a Guild Elder.
+sociaty_record_016,{0}已被任命为副会长,{0} has been promoted to Guild Elder.
+sociaty_record_017,{0}已被请离公会,{0} has been removed from the guild.
 sociaty_record_018,您没有操作权限,You do not have the power to do this.
 sociaty_record_019,请先移交会长，才能退出公会,Please tranfer the role of Guild Master before leaving.
 sociaty_record_020,退出公会成功,You have left the guild.
 sociaty_record_021,公会人数已满,Guild is full.
-sociaty_record_022,XXX（玩家名称）加入公会（该条信息在公会频道特殊颜色显示，美术给配个色，同前）,XXX has joined the guild.
+sociaty_record_022,{0}加入公会,{0} has joined the guild.
 sociaty_record_023,公会容纳不下这么多人啦,The guild cannot fit that many members.
 sociaty_record_024,没有可领取的活力值,No Guild Points to be collected.
 sociaty_record_025,公会等级已变更,Guild Lvl has changed.
 sociaty_record_026,公会贡献值不足，升级失败,"Insufficient Guild Points, upgrade failed."
 sociaty_record_027,今日许愿次数已用完,Today's Wishes have already all been used.
 sociaty_record_028,许愿所需货币不足,Insufficient currency required for the Wish.
-sociaty_record_029,许愿成功！个人贡献值+XX，公会贡献值+YY,"Wish successful! Your Guild Points +XX, Guild Points Total +YY."
+sociaty_record_029,许愿成功！个人贡献值+{0}，公会贡献值+{1},"Wish successful! Your Guild Points +{0}, Guild Points Total +{1}"
 sociaty_record_030,今日任务次数已用完,Today's mission chances have all been used.
 sociaty_record_031,等级不足，快去提升自己的等级吧,Insufficient level. Get out there and level up!
 sociaty_record_032,您正在公会任务小队中，不能退出公会,You are in a Guild Mission Squad. Unable to leave guild.
@@ -523,18 +530,20 @@ sociaty_record_036,您已有队伍，请完成任务后再加入其他队伍,You
 sociaty_record_037,距离您上次退出公会还未满12小时，无法加入新的公会,12 hours have not passed since you left a guild. Unable to join another guild yet.
 sociaty_record_038,您未达到该公会限制的最低等级,You do not meet this guild's minimum level requirement.
 sociaty_record_040,副会长人数已达最大，任命失败,The guild has reached the max number of Elders. Unable to promote.
-sociaty_record_041,XXX（玩家名称）已被解除副会长,XXX has been demoted from Guild Elder.
+sociaty_record_041,{0}已被解除副会长,{0} has been demoted from Guild Elder.
 sociaty_record_042,公会科技等级已变更,Guild Tech Lvl has changed.
 sociaty_record_044,小队人数已满了哟,Squad is full.
 sociaty_record_045,数据已过期,Data has expired.
 sociaty_record_046,科技等级已与公会等级相同，不能再升啦,Tech Level is now equal to Guild Level. Unable to upgrade.
 sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.
 sociaty_record_048,已达可完成的队内任务上限,Team missions limit reached.
-sociaty_record_052,快来加入我的小队：XXXX（XXXX代表任务名称）,Come join my squad: XXXX
+sociaty_record_052,快来加入我的小队：{0},Come join my squad: {0}
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
 sociaty_record_056,存在非法字符,Contains illegal characters.
 sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.
 sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1}
+sociaty_vicechairman,副会长,Elder
+sociaty_member1,成员,Member
 ,,
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas
@@ -660,3 +669,43 @@ im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters ar
 im_battle_001,正在进行换怪，不能施放大招,"Swapping monsters, unable to cast ult now."
 im_spell_001,当前宠物处于眩晕状态，无法释放大招,"Monster is currently stunned, unable to cast ult now."
 passive,被动,Passive
+Street - 1,大街 - 1 - 普通,Street - 1 - Normal
+Street - 2,大街 - 2 - 普通,Street - 2 - Normal
+Street - 3,大街 - 3 - 普通,Street - 3 - Normal
+Street - 4,大街 - 4 - 普通,Street - 4 - Normal
+Street - 5,大街 - 5 - 普通,Street - 5 - Normal
+Street - 6,大街 - 6 - 普通,Street - 6 - Normal
+Street - 7,大街 - 7 - 普通,Street - 7 - Normal
+Street - 8,大街 - 8 - 普通,Street - 8 - Normal
+Street1 - 1,大街 - 1 - 挑战,Street - 1 - Heroic
+Street1 - 2,大街 - 2 - 挑战,Street - 2 - Heroic
+Street1 - 3,大街 - 3 - 挑战,Street - 3 - Heroic
+Street1 - 4,大街 - 4 - 挑战,Street - 4 - Heroic
+Street1 - 5,大街 - 5 - 挑战,Street - 5 - Heroic
+Street1 - 6,大街 - 6 - 挑战,Street - 6 - Heroic
+Street1 - 7,大街 - 7 - 挑战,Street - 7 - Heroic
+Street1 - 8,大街 - 8 - 挑战,Street - 8 - Heroic
+Alley - 1,小巷 - 1 - 普通,Alley - 1 - Normal
+Alley - 2,小巷 - 2 - 普通,Alley - 2 - Normal
+Alley - 3,小巷 - 3 - 普通,Alley - 3 - Normal
+Alley - 4,小巷 - 4 - 普通,Alley - 4 - Normal
+Alley - 5,小巷 - 5 - 普通,Alley - 5 - Normal
+Alley - 6,小巷 - 6 - 普通,Alley - 6 - Normal
+Alley - 7,小巷 - 7 - 普通,Alley - 7 - Normal
+Alley - 8,小巷 - 8 - 普通,Alley - 8 - Normal
+Alley1 - 1,小巷 - 1 - 挑战,Alley - 1 - Heroic
+Alley1 - 2,小巷 - 2 - 挑战,Alley - 2 - Heroic
+Alley1 - 3,小巷 - 3 - 挑战,Alley - 3 - Heroic
+Alley1 - 4,小巷 - 4 - 挑战,Alley - 4 - Heroic
+Alley1 - 5,小巷 - 5 - 挑战,Alley - 5 - Heroic
+Alley1 - 6,小巷 - 6 - 挑战,Alley - 6 - Heroic
+Alley1 - 7,小巷 - 7 - 挑战,Alley - 7 - Heroic
+Alley1 - 8,小巷 - 8 - 挑战,Alley - 8 - Heroic
+chapter1_name,大街,Street
+chapter2_name,小巷,Alley
+chapter3_name,东邪,dong
+chapter4_name,西毒,xi
+chapter5_name,南拳,nan
+chapter6_name,北郊,bei
+chapter7_name,昌平,changping
+chapter8_name,大兴,daxing

@@ -227,6 +227,7 @@ public class CloseMipmap : MonoBehaviour
                     }
 
                     Texture curMainTex = curMat.GetTexture("_MainTex");
+                    Texture distortTex = curMat.GetTexture("_NoiseTex");
                     //Texture curBumpTex = curMat.GetTexture("_BumpMap");
                     //Texture curCubeTex = curMat.GetTexture("_Cube");
                     if (curMainTex != null)
@@ -236,6 +237,13 @@ public class CloseMipmap : MonoBehaviour
                             fuInfo.used = true;
                         }
                         //textureList.Add(curMat.name, curMainTex.name);
+                    }
+                    if (distortTex != null)
+                    {
+                        if (allTexList.TryGetValue(distortTex.name, out fuInfo) == true)
+                        {
+                            fuInfo.used = true;
+                        }
                     }
 //                     if (curBumpTex != null)
 //                     {

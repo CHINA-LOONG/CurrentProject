@@ -28,7 +28,6 @@ public class AllianceFatigueHandler  implements HawkMsgHandler{
 	 * @param msg
 	 * @return
 	 */
-	@SuppressWarnings("serial")
 	@Override
 	public boolean onMessage(HawkAppObj appObj, HawkMsg msg)
 	{

@@ -18,6 +18,7 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.HS;
 import com.hawk.game.util.GsConst;
 
 public class AllianceInstanceQuestHandler implements HawkMsgHandler{
@@ -72,7 +73,10 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 			HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
 			try {
 				if (objBase != null && objBase.isObjValid()) {				
-					teamEntity.setQuestFinish(teamEntity.getInstanceQuest1(), player.getId());
+					if (teamEntity.getInstanceQuest1PlayerId() == 0) {
+						teamEntity.setQuestFinish(teamEntity.getInstanceQuest1(), player.getId());
+					}
+					
 					teamEntity.notifyUpdate(true);
 					AwardItems reward = new AwardItems();
 					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
@@ -82,7 +86,7 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 						allianceEntity.notifyUpdate(true);
 					}
 					
-					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_QUEST_REWARD, 0);
+					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_QUEST_REWARD, HS.code.ALLIANCE_INSTANCE_REWARD_S_VALUE);
 					return true;
 				}
 			} 

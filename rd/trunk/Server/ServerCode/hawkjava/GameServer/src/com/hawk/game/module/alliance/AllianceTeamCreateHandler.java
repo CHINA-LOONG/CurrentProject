@@ -15,6 +15,7 @@ import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
 import com.hawk.game.config.SociatyTaskCfg;
+import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -26,7 +27,6 @@ import com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceCreateTeam;
-import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
 
 public class AllianceTeamCreateHandler implements HawkMsgHandler{
@@ -67,6 +67,11 @@ public class AllianceTeamCreateHandler implements HawkMsgHandler{
 			return true;
 		}
 		
+		if (player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily() >= SysBasicCfg.getInstance().getAllianceMaxBigTask()) {
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_BIG_TASK_VALUE);
+			return true;
+		}
+		
 		SociatyTaskCfg task = HawkConfigManager.getInstance().getConfigByKey(SociatyTaskCfg.class, request.getTaskId());
 		if (task == null) {
 			player.sendError(protocol.getType(), Status.error.CONFIG_ERROR_VALUE);
@@ -91,6 +96,7 @@ public class AllianceTeamCreateHandler implements HawkMsgHandler{
 					}
 					
 					AllianceTeamEntity teamEntity = new AllianceTeamEntity();
+					teamEntity.setAllianceEntity(allianceEntity);
 					teamEntity.setCaptain(player.getId());	
 					teamEntity.setTaskId(request.getTaskId());
 					teamEntity.setAllianceId(allianceEntity.getId());

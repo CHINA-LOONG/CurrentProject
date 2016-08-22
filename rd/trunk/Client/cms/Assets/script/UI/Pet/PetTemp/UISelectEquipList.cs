@@ -21,7 +21,7 @@ public class UISelectEquipList : UIBase,
 
     void Start()
     {
-        textTitle.text = StaticDataMgr.Instance.GetTextByID("");
+        textTitle.text = StaticDataMgr.Instance.GetTextByID("equip_title");
         textNotfound.text = StaticDataMgr.Instance.GetTextByID("list_empty");
         btnClose.onClick.AddListener(OnClickCloseBtn);
     }
@@ -159,7 +159,7 @@ public class UISelectEquipList : UIBase,
     public void OnUsedEquip(EquipData equip)
     {
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
-        if (curUnit.equipList[itemInfo.part] == null)
+        if (curUnit.equipList[itemInfo.part - 1] == null)
         {
             PB.HSEquipMonsterDress param = new PB.HSEquipMonsterDress()
             {

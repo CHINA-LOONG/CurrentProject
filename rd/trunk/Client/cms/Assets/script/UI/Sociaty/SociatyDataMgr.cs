@@ -18,9 +18,10 @@ public class SociatyDataMgr : MonoBehaviour
 
     //task
     public int taskTeamId = 0;
-    public PB.AllianceTaskInfo taskInfo = null;
+    public PB.AllianceTeamInfo selfTeamData = null;
     public int taskCount = 0;
     public List<PB.AllianceTeamInfo> teamList = new List<PB.AllianceTeamInfo>();
+    public List<PB.HSRewardInfo> allianceInstanceReward = new List<PB.HSRewardInfo>(); 
 
     private NetMessageDelegate callBack = null;
     // Use this for initialization
@@ -90,6 +91,11 @@ public class SociatyDataMgr : MonoBehaviour
         {
             SociatyMain.OpenWith();
         }
+    }
+
+    public void OpenSociatyTaskWithTeam(SociatyTaskContenType taskType)
+    {
+        UISociatyTask.Open(taskType);
     }
 
     public void ClearSociaty()

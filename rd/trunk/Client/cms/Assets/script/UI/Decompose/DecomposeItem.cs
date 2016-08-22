@@ -205,12 +205,12 @@ public class DecomposeItem : MonoBehaviour
 
         if (equipIcon==null)
         {
-            equipIcon = ItemIcon.CreateItemIcon(curEquip);
+            equipIcon = ItemIcon.CreateItemIcon(curEquip, true, true);
             UIUtil.SetParentReset(equipIcon.transform, transEquipIcon);
         }
         else
         {
-            equipIcon.RefreshWithEquipInfo(CurData.curEquip);
+            equipIcon.RefreshWithEquipInfo(CurData.curEquip,true,true);
         }
         UIUtil.SetStageColor(equipName, staticData.name, curEquip.stage);
         //TODO:设置战力

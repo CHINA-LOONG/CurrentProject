@@ -142,10 +142,10 @@ public class PetDetailRightStage : PetDetailRightBase{
             itemInfo = unitStageData.demandMonsterList[i];
             monsterSelect.Add(new List<int>());
             monsterFields[i].gameObject.SetActive(true);
-            monsterFields[i].Refresh((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? m_unit.pbUnit.id : itemInfo.itemId),
-                                   itemInfo.stage,
-                                   itemInfo.count,
-                                   monsterSelect[i].Count);
+            //monsterFields[i].Refresh((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? m_unit.pbUnit.id : itemInfo.itemId),
+            //                       itemInfo.stage,
+            //                       itemInfo.count,
+            //                       monsterSelect[i].Count);
         }
 
         UpdateMaterails();
@@ -229,6 +229,8 @@ public class PetDetailRightStage : PetDetailRightBase{
 
         GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetStageNotify,m_unit);
     }
+
+
 
     string ShowFormatMaterailCount(int currentCount, int needCount, int currentMaxCount)
     {

@@ -4436,6 +4436,289 @@ state = 1 Remove
 		</Ani>
 		
 	</AniList>
+	<!--chapter1boss-->
+	<AniList group="bossdajie11Xiaochou4">
+	
+		<Ani id="bossdajie11Xiaochou41" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie11Xiaochou42" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossqungong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie11Xiaochou43" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossdajie12Mantuoluo2">
+	
+		<Ani id="bossdajie12Mantuoluo21" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="wugong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie12Mantuoluo22" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie12Mantuoluo23" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie12Mantuoluo24" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossdajie13Langren3">
+	
+		<Ani id="bossdajie13Langren31" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="wugong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren33" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren34" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossdajie14Piying5">
+	
+		<Ani id="bossdajie14Piying51" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosslilianbuff" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie14Piying53" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosslilianbuff" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie14Piying54" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossdajie15Huapo2">
+	
+		<Ani id="bossdajie15Huapo21" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="wugong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie15Huapo23" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie15Huapo24" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossdajie16Xiaochou3">
+	
+		<Ani id="bossdajie16Xiaochou31" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie16Xiaochou32" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie16Xiaochou33" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossqungong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie16Xiaochou34" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie16Xiaochou35" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
 	<AniList group="bossdajie17Zouyincao2">
 	
 		<Ani id="bossdajie17Zouyincao21" state="0" AniType="Skill">
@@ -4545,7 +4828,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang22Xiyiren24" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
@@ -4785,7 +5068,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang27hetong23" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="bossbuff" value="true"/>
+				<Motion time="0" ani="" key="bossfennu" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultHetong2Pre" bundle="effect/particle" attach="true"/>
@@ -4949,6 +5232,90 @@ state = 1 Remove
 			<WpStateList>
 				<Wp time="0" name="bossMinghe14Amutewp01" state="0"/>
 				<Wp time="0" name="bossMinghe14Amutewp03" state="3"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Mantuoluo2_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie12Mantuoluo2wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Langren3_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie13Langren3wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Langren3_state1to3" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie13Langren3wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Langren3_stateNto4" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie13Langren3wp02" state="4"/>
+				<Wp time="0" name="bossdajie13Langren3wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Piying5_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Piying5_state1to3" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie14Piying5wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Piying5_stateNto4" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Huapo2_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie15Huapo2wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Xiaochou3_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie16Xiaochou3wp02" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Zouyincao2_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossdajie17Zouyincao2wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Wushi4_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang21Wushi4wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Shuigui3_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp02" state="4"/>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp03" state="1"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Kairuisi5_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang25Kairuisi5wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Longgongtongzi3_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang26Longgongtongzi3wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Hetong2_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang27Hetong2wp03" state="4"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Xiyiren2_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang22Xiyiren2wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang22Xiyiren2wp02" state="1"/>
 			</WpStateList>
 		</Ani>
 	</AniList>

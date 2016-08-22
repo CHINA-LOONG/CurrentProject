@@ -9,7 +9,9 @@ public abstract class EquipInfoBase : MonoBehaviour
     public IEquipInfoBase IEquipInfoBaseDelegate;
     public abstract void ReloadData(EquipData data);
 }
-public interface IEquipInfoBase : IEquipDetails { }
+public interface IEquipInfoBase : IEquipDetails
+{
+}
 
 //*************************
 //装备详情
@@ -17,6 +19,7 @@ public interface IEquipInfoBase : IEquipDetails { }
 public interface IEquipDetails
 {
     void OnClickChangeBtn(PartType part);
+    void OnUnloadEquip();
 }
 
 public class EquipDetails : EquipInfoBase
@@ -141,8 +144,6 @@ public class EquipDetails : EquipInfoBase
                 mosaicItems[i].ReloadData(null);
             }
         }
-
-
     }
 
     void OnClickChangeBtn()
@@ -175,6 +176,11 @@ public class EquipDetails : EquipInfoBase
         monster.SetEquipData(itemInfo.part, null, true);
 
         GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetEquipNotify, monster);
+
+        if (IEquipDetailsDelegate!=null)
+        {
+            IEquipDetailsDelegate.OnUnloadEquip();
+        }
     }
 
     void OnEnable()

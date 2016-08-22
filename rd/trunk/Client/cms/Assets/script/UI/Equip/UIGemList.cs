@@ -9,7 +9,7 @@ public interface IGemListCallBack
 }
 
 
-public class UIGemList : MonoBehaviour,IXiangQianCallBack
+public class UIGemList : MonoBehaviour/*,IGemListItem*/
 {
 
     public const string AssetName = "UIGemList";
@@ -50,8 +50,8 @@ public class UIGemList : MonoBehaviour,IXiangQianCallBack
         RemoveAllElement();
         for (int i = 0; i < infos.Count; i++)
         {
-            GemListItem item = GetElement();
-            item.OnReload(infos[i]);
+            //GemListItem item = GetElement();
+            //item.OnReload(infos[i]);
         }
 
 
@@ -68,7 +68,7 @@ public class UIGemList : MonoBehaviour,IXiangQianCallBack
             {
                 UIUtil.SetParentReset(go.transform, content);
                 item = go.GetComponent<GemListItem>();
-                item.XiangqianDelegate = this;
+                //item.IGemListItemDelegate = this;
             }
         }
         else

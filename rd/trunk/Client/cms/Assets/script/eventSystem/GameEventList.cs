@@ -105,9 +105,10 @@ public class GameEventList
     public static string ReloadPetEquipNotify = "reloadPetEquipNotify";
     public static string ReloadPetCollectNotify = "reloadPetCollectNotify";
     public static string ReloadUseFragmentNotify = "reloadUseFragmentNotify";
-
-    public static string ReloadEquipSocketNotify = "reloadEquipSocketNotify";
+    
     public static string ReloadEquipForgeNotify = "reloadEquipForgeNotify";
+    public static string ReloadEquipSocketNotify = "reloadEquipSocketNotify";
+    public static string ReloadEquipEmbedNotify = "reloadEquipEmbedNotify";
 
     //buyItem
     public	static	string	BuyItemFinished = "BuyItemFinished";

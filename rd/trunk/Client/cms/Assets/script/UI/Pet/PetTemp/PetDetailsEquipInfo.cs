@@ -9,17 +9,18 @@ public abstract class PetDetailsRight:MonoBehaviour
 }
 
 public interface IPetDetailsRight : IPetDetailsEquipInfo { }
-
-
 public interface IPetDetailsEquipInfo
 {
     void OnClickChangeEquip(PartType part);
+    void OnRemoveEquip();
 }
 
 public class PetDetailsEquipInfo : PetDetailsRight,
                                    TabButtonDelegate,
                                    IEquipInfoBase
 {
+    public static string ViewName = "PetDetailsEquipInfo";
+
     public Transform iconPos;
     private ItemIcon EquipIcon;
     public Text textName;
@@ -56,6 +57,10 @@ public class PetDetailsEquipInfo : PetDetailsRight,
     public EquipInfoBase[] tabPanel=new EquipInfoBase[3];
 
     private EquipData curData;
+    public EquipData CurData
+    {
+        get { return curData; }
+    }
 
     void Start()
     {
@@ -75,7 +80,7 @@ public class PetDetailsEquipInfo : PetDetailsRight,
         ReloadData(tabIndex);
     }
 
-    public void Refresh(EquipData data, int select = -1)
+    public void Refresh(EquipData data,int select = -1)
     {
         curData = data;
         selIndex = (select == -1 ? selIndex : select);
@@ -137,10 +142,12 @@ public class PetDetailsEquipInfo : PetDetailsRight,
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipEmbedNotify, ReloadEquipNotify);
     }
     void UnBindListener()
     {
-        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipEmbedNotify, ReloadEquipNotify);
     }
 
 
@@ -150,6 +157,14 @@ public class PetDetailsEquipInfo : PetDetailsRight,
         if (IPetDetailsEquipInfoDelegate!=null)
         {
             IPetDetailsEquipInfoDelegate.OnClickChangeEquip(part);
+        }
+    }
+
+    public void OnUnloadEquip()
+    {
+        if (IPetDetailsEquipInfoDelegate!=null)
+        {
+            IPetDetailsEquipInfoDelegate.OnRemoveEquip();
         }
     }
 
