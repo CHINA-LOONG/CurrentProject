@@ -478,6 +478,8 @@ public class GameUnit : IComparable
     }
     private void RefreshBp()
     {
+        float previousBp = mBp;
+
         float bpHp = (maxLife / mInjuryratio * (1.0f + additionHealRatio * 0.33f));
         float bpDps = (magicAttack + phyAttack) * 0.5f * speed * (criticalRatio * criticalDamageRatio + (1.0f - criticalRatio)) * (1 + additionEnergy * 0.0033f);
         //TODO: save spell lvl
@@ -513,6 +515,12 @@ public class GameUnit : IComparable
             BattleConst.bpMagicLvl * magicLvl +
             BattleConst.bpDotLvl * dotLvl
             );
+
+        int bpChange = (int)(previousBp - mBp);
+        if (previousBp > 0.0f)
+        {
+            GameEventMgr.Instance.FireEvent<int, int>(GameEventList.ReloadPetBPNotify, pbUnit.guid, bpChange);
+        }
     }
 
     void InitWeakPoint(string strWeak)

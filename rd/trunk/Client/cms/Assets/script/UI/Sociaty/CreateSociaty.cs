@@ -26,7 +26,10 @@ public class CreateSociaty : UIBase
     {
         cancelButton.onClick.AddListener(OnCancelButtonClick);
         conformButton.onClick.AddListener(OnConformButtonClick);
-	}
+
+        ((Text)nameInputField.placeholder).text = "";
+        ((Text)gonggaoInputField.placeholder).text = "";
+    }
 
     public override  void Init()
     {
@@ -37,6 +40,14 @@ public class CreateSociaty : UIBase
         gonggaoLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_notice");
         costLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_reqcoin");
         costValueText.text = GameConfig.Instance.createSociatyCostCoin.ToString();
+        if(GameConfig.Instance.createSociatyCostCoin > GameDataMgr.Instance.PlayerDataAttr.coin)
+        {
+            costValueText.color = new Color(1, 0, 0);
+        }
+        else
+        {
+            costValueText.color = new Color(251.0f/255.0f, 241.0f/255.0f, 216.0f/255.0f);
+        }
 
         UIUtil.SetButtonTitle(cancelButton.transform, StaticDataMgr.Instance.GetTextByID("ui_quxiao"));
         UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
@@ -74,17 +85,40 @@ public class CreateSociaty : UIBase
 
     bool CheckInput()
     {
-        if(string.IsNullOrEmpty(nameInputField.text))
+        string name = nameInputField.text;
+        string gonggao = gonggaoInputField.text;
+        if(string.IsNullOrEmpty(name))
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_005"),(int)PB.ImType.PROMPT);
             return false;
         }
-        if(string.IsNullOrEmpty(gonggaoInputField.text))
+        name = name.TrimStart();
+        name = name.TrimEnd();
+        if(Util.StringByteLength(name) > 12)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_059"), (int)PB.ImType.PROMPT);
+            return false;
+        }
+        if (Util.StringIsAllNumber(name) )
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_057"), (int)PB.ImType.PROMPT);
+            return false;
+        }
+
+
+        if(string.IsNullOrEmpty(gonggao))
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_007"), (int)PB.ImType.PROMPT);
             return false;
         }
-      //  UIIm.Instance.ShowSystemHints(nameInputField.text.Length.ToString(), (int)PB.ImType.PROMPT);
+        gonggao = gonggao.TrimStart();
+        gonggao = gonggao.TrimEnd();
+        if (Util.StringByteLength(gonggao) > 300)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_007"), (int)PB.ImType.PROMPT);
+            return false;
+        }
+
         return true;
     }
 

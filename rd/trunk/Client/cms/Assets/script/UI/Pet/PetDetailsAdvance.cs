@@ -286,9 +286,14 @@ public class PetDetailsAdvance : PetDetailsRight
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_011"), (int)PB.ImType.PROMPT);
             return;
         }
-        if (!enoughItem||!enoughCoin||!enoughMonster)
+        if (!enoughItem||!enoughMonster)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_004"), (int)PB.ImType.PROMPT);
+            return;
+        }
+        if(!enoughCoin)
+        {
+            GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
             return;
         }
         PB.HSMonsterStageUp resquest = new PB.HSMonsterStageUp();

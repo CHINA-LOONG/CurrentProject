@@ -127,6 +127,7 @@ public class SociatyErrorMsg
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_019"), (int)PB.ImType.PROMPT);
                 break;
             case PB.allianceError.ALLIANCE_HAVE_MEMBER:
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_060"), (int)PB.ImType.PROMPT);
                 break;
             case PB.allianceError.ALLIANCE_REWARD_ALREADY_GIVE:
                 break;

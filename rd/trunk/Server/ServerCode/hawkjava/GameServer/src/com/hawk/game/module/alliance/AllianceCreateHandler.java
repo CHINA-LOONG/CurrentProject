@@ -40,7 +40,7 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 			return true;
 		}
 		
-		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId()!=0){
+		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId() != 0){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_ALREADY_IN_VALUE);
 			return true;
 		}	

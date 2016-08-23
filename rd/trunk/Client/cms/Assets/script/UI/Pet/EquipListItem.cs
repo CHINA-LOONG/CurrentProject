@@ -15,12 +15,7 @@ public class EquipListItem : MonoBehaviour
     private ItemIcon equipIcon;
     public Text textName;
     public Text textType;
-    public Text textZhanli;
-    public Text textDengji;
-
-    public Text textZhanli_lang;
-    public Text textDengji_lang;
-
+    
     public Button btnSelect;
     public Button btnUsed;
 
@@ -42,8 +37,6 @@ public class EquipListItem : MonoBehaviour
 
     void Start()
     {
-        textDengji_lang.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
-        textZhanli_lang.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         btnUsed.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbei");
 
         ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickSelectEquip;
@@ -58,18 +51,16 @@ public class EquipListItem : MonoBehaviour
 
         if (equipIcon == null)
         {
-            equipIcon = ItemIcon.CreateItemIcon(info.equipData,false);
+            equipIcon = ItemIcon.CreateItemIcon(info.equipData,true);
 			UIUtil.SetParentReset(equipIcon.transform,transIcon);
         }
         else
         {
-            equipIcon.RefreshWithEquipInfo(info.equipData,false);
+            equipIcon.RefreshWithEquipInfo(info.equipData,true);
         }
         UIUtil.SetStageColor(textName, info.itemInfo.name, info.equipData.stage);
-        //TODO:设置战力
-        //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)
-        textDengji.text = info.itemInfo.minLevel.ToString();
-        UIUtil.SetEquipType(textType, info.itemInfo.subType);
+
+        UIUtil.SetEquipPart(textType, info.itemInfo.part);
 
         RefreshGem(data.gemList);
     }

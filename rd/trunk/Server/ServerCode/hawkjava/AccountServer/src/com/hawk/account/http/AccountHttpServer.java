@@ -18,14 +18,14 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
 public class AccountHttpServer {
-	
+
 	/**
 	 * 前端访问状态码
 	 */
 	public static final int ACCOUNT_STATUS_OK = 0; // 账号登陆成功
 	public static final int ACCOUNT_STATUS_NONEXIST = 1; // 账号不存在
 	public static final int ACCOUNT_STATUS_ERROR = 2; // 服务器错误
-	
+
 	/**
 	 * 服务器对象
 	 */
@@ -47,14 +47,14 @@ public class AccountHttpServer {
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * 开启服务
 	 */
 	public boolean setup(String addr, int port, int pool) {
 		try {
 			if (addr != null && addr.length() > 0) {
-				httpServer = HttpServer.create(new InetSocketAddress(addr, port), 0);				
+				httpServer = HttpServer.create(new InetSocketAddress(addr, port), 0);
 				// TODO: 暂时不支持多线程(若以后性能不足, 及时修改)
 				httpServer.setExecutor(Executors.newFixedThreadPool(1));
 				httpServer.createContext("/report_roleCreate", new UserCreateRoleHandler());
@@ -74,7 +74,7 @@ public class AccountHttpServer {
 			HawkException.catchException(e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -91,7 +91,7 @@ public class AccountHttpServer {
 			HawkException.catchException(e);
 		}
 	}
-	
+
 	/**
 	 * http请求回应内容
 	 * 
@@ -113,5 +113,5 @@ public class AccountHttpServer {
 			HawkException.catchException(e);
 		}
 	}
-	
+
 }

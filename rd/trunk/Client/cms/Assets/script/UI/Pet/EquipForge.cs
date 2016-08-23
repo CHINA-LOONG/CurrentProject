@@ -17,7 +17,8 @@ public class EquipForge : EquipInfoBase
     private ShowAttributesItem[] AttrList = new ShowAttributesItem[5];
     private EquipData curData;
     private EquipData nextData;
-    
+    private EquipForgeData nextForge;
+
     public enum ForgeType
     {
         Qianghua,
@@ -33,6 +34,9 @@ public class EquipForge : EquipInfoBase
 
     public Image imgCoin;
     public Text textCoin;
+
+    private bool enoughCoin;
+    private bool enoughItem;
 
     void Start()
     {
@@ -55,18 +59,20 @@ public class EquipForge : EquipInfoBase
         {
             uiType = ForgeType.Qianghua;
             nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage, curData.level + 1, BattleConst.invalidMonsterID, null);
+            textForge.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
         }
         else if (curData.stage < BattleConst.maxEquipStage)
         {
             uiType = ForgeType.Jinjie;
             nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage + 1, BattleConst.minEquipLevel, BattleConst.invalidMonsterID, null);
+            textForge.text = StaticDataMgr.Instance.GetTextByID("equip_forge_Xxdazao");
         }
 
-        EquipForgeData nextForge = StaticDataMgr.Instance.GetEquipForgeData(nextData.stage, nextData.level);
-        if (nextForge.playerlevelDemand > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
-        {
-            uiType = ForgeType.MaxLevel;
-        }
+        nextForge = StaticDataMgr.Instance.GetEquipForgeData(nextData.stage, nextData.level);
+        //if (nextForge.playerlevelDemand > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        //{
+        //    uiType = ForgeType.MaxLevel;
+        //}
         #endregion
 
         #region 设置显示属性变化
@@ -154,13 +160,16 @@ public class EquipForge : EquipInfoBase
         nextForge.GetLevelDemand(ref curDemand);
         materialItems.ForEach(delegate (EquipMaterialItem item) { item.gameObject.SetActive(false); });
         int materialIndex = 0;
+        enoughCoin = true;
+        enoughItem = true;
         for (int i = 0; i < curDemand.Count; i++)
         {
             if (curDemand[i].type == (int)PB.itemType.ITEM && materialIndex < materialItems.Count)
             {
                 materialItems[materialIndex].gameObject.SetActive(true);
-                materialItems[materialIndex].Refresh(curDemand[i].itemId, curDemand[i].count);
+                bool enough= materialItems[materialIndex].Refresh(curDemand[i].itemId, curDemand[i].count);
                 materialIndex++;
+                enoughItem &= enough;
             }
             else if (curDemand[i].type == (int)PB.itemType.PLAYER_ATTR)
             {
@@ -170,6 +179,7 @@ public class EquipForge : EquipInfoBase
                     if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count)
                     {
                         textCoin.color = ColorConst.text_color_nReq;
+                        enoughCoin = false;
                     }
                     else
                     {
@@ -193,20 +203,32 @@ public class EquipForge : EquipInfoBase
         }
         #endregion
 
-        if (UIUtil.CheckIsEnoughMaterial(curDemand) && UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
-        {
-            btnForge.interactable = true;
-        }
-        else
-        {
-            btnForge.interactable = false;
-        }
+        //if (UIUtil.CheckIsEnoughMaterial(curDemand) && UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
+        //{
+        //    btnForge.interactable = true;
+        //}
+        //else
+        //{
+        //    btnForge.interactable = false;
+        //}
 
     }
 
     void OnClickForgeBtn()
     {
-        if (uiType == ForgeType.Qianghua)
+        if(!enoughItem)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_004"), (int)PB.ImType.PROMPT);
+        }
+        else if (nextForge.playerlevelDemand > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_010"), (int)PB.ImType.PROMPT);
+        }
+        else if (!enoughCoin)
+        {
+            GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+        }
+        else if (uiType == ForgeType.Qianghua)
         {
             PB.HSEquipIncreaseLevel param = new PB.HSEquipIncreaseLevel();
             param.id = curData.id;

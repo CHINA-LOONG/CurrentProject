@@ -30,7 +30,7 @@ public class HawkVariableManager {
 	 * 变量表
 	 */
 	private Map<String, String> variableMap;
-	
+
 	/**
 	 * 配置管理器实例
 	 */
@@ -47,7 +47,7 @@ public class HawkVariableManager {
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * 默认构造
 	 */
@@ -55,7 +55,7 @@ public class HawkVariableManager {
 		variableFiles = new HashSet<String>();
 		variableMap = new ConcurrentHashMap<String, String>();
 	}
-	
+
 	/**
 	 * 获取参数(字符串)
 	 * 
@@ -65,7 +65,7 @@ public class HawkVariableManager {
 	public String getString(String key) {
 		return variableMap.get(key);
 	}
-	
+
 	/**
 	 * 获取参数(整数)
 	 * 
@@ -79,7 +79,7 @@ public class HawkVariableManager {
 		}
 		throw new RuntimeException("variable fault");
 	}
-	
+
 	/**
 	 * 获取参数(浮点)
 	 * 
@@ -93,7 +93,7 @@ public class HawkVariableManager {
 		}
 		throw new RuntimeException("variable fault");
 	}
-	
+
 	/**
 	 * 获取参数(布尔)
 	 * 
@@ -121,7 +121,7 @@ public class HawkVariableManager {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 更新所有已注册的变量
 	 * 
@@ -135,9 +135,9 @@ public class HawkVariableManager {
 			} else {
 				HawkLog.logPrintln("update variable failed: " + filePath);
 			}
-		}		
+		}
 	}
-	
+
 	/**
 	 * 从文件中读取变量
 	 * 
@@ -168,7 +168,7 @@ public class HawkVariableManager {
 				variableMap.putAll(newVariable);
 				return true;
 			}
-			
+
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}

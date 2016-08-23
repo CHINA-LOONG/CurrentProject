@@ -48,6 +48,7 @@ public class Const
     }
 
     public static string CollectorUrl = "http://123.59.45.55:9001/fetch_accountServer";
+    public static string ServerUrl = "http://123.59.45.55:9101/fetch_gameServer";
     //应用程序名称
     public static string AppName = "hawk"; 
     //应用程序前缀

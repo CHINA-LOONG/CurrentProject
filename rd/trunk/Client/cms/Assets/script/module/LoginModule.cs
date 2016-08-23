@@ -48,38 +48,38 @@ public class LoginModule : ModuleBase
         //GameApp.Instance.netManager.SendConnect();
 
         UINetRequest.Open();
-        HTTPRequest centerRequest = new HTTPRequest(new Uri(Const.CollectorUrl), HTTPMethods.Post);
-        centerRequest.AddField("game", Const.AppName);
-        centerRequest.AddField("platform", Const.platform);
-        centerRequest.AddField("channel", Const.channel);
-        centerRequest.Send();
-        yield return StartCoroutine(centerRequest);
-        if (centerRequest.Response == null || !centerRequest.Response.IsSuccess)
-        {
-            Debug.Log("连接中心服务器失败");
-            yield break;
-        }
+        //HTTPRequest centerRequest = new HTTPRequest(new Uri(Const.CollectorUrl), HTTPMethods.Post);
+        //centerRequest.AddField("game", Const.AppName);
+        //centerRequest.AddField("platform", Const.platform);
+        //centerRequest.AddField("channel", Const.channel);
+        //centerRequest.Send();
+        //yield return StartCoroutine(centerRequest);
+        //if (centerRequest.Response == null || !centerRequest.Response.IsSuccess)
+        //{
+        //    Debug.Log("连接中心服务器失败");
+        //    yield break;
+        //}
 
-        //账号服务器返回值
-        string accountServerAddress = centerRequest.Response.DataAsText;
-        int port = 0;
-        string ip = null;
+        ////账号服务器返回值
+        //string accountServerAddress = centerRequest.Response.DataAsText;
+        //int port = 0;
+        //string ip = null;
 
-        Hashtable ht = MiniJsonExtensions.hashtableFromJson(accountServerAddress);
-        if (null == ht)
-        {
-           Debug.Log("账号服务器分配失败");
-           yield break;
-        }
-        else
-        {
-           port = int.Parse(ht["httpPort"].ToString());
-           ip = ht["hostIp"].ToString();
-        }
+        //Hashtable ht = MiniJsonExtensions.hashtableFromJson(accountServerAddress);
+        //if (null == ht)
+        //{
+        //   Debug.Log("账号服务器分配失败");
+        //   yield break;
+        //}
+        //else
+        //{
+        //   port = int.Parse(ht["httpPort"].ToString());
+        //   ip = ht["hostIp"].ToString();
+        //}
 
-        Debug.Log("连接中心服务器成功");
+        //Debug.Log("连接中心服务器成功");
 
-        string path = "http://" + ip + ":" + port + "" + "/fetch_gameServer";
+        string path = Const.ServerUrl;//"http://" + "192.168.199.177:9101 " + "/fetch_gameServer";123.59.45.55
         HTTPRequest accountRequest = new HTTPRequest(new Uri(path), HTTPMethods.Post);
         accountRequest.AddField("game", Const.AppName);
         accountRequest.AddField("platform", Const.platform);
@@ -88,7 +88,6 @@ public class LoginModule : ModuleBase
         {
             accountRequest.AddField("puid", PlayerPrefs.GetString("testGuid"));
         }
-
         accountRequest.Send();
         yield return StartCoroutine(accountRequest);
         if (accountRequest.Response == null || !accountRequest.Response.IsSuccess)
@@ -96,21 +95,59 @@ public class LoginModule : ModuleBase
             Debug.Log("连接账号服务器失败");
             yield break;
         }
-
         string gameServerAddress = accountRequest.Response.DataAsText;
-
-        ArrayList serverList = MiniJsonExtensions.arrayListFromJson(gameServerAddress);
-        if (null == serverList)
+        Dictionary<string, List<UIServerData>> serverDictionary = new Dictionary<string, List<UIServerData>>();
+        Hashtable jsonObjects = MiniJSON.jsonDecode(gameServerAddress) as Hashtable;
+        if (null == jsonObjects)
         {
             Debug.Log("游戏服务器获取失败");
             yield break;
         }
 
+        Hashtable serverHashtable = jsonObjects["servers"] as Hashtable;
+        Hashtable roles = jsonObjects["roles"] as Hashtable;
+
+        foreach (var item in serverHashtable.Keys)
+        {
+            List<UIServerData> serverList = new List<UIServerData>();
+            Hashtable areaInfo = serverHashtable[item] as Hashtable;
+            ArrayList servers = areaInfo["serverList"] as ArrayList;
+            foreach (Hashtable item1 in servers)
+            {
+                UIServerData uiServerData = new UIServerData();
+                uiServerData.serverName = item1["serverName"].ToString();
+                uiServerData.serverIndex = int.Parse(item1["serverIndex"].ToString());
+                uiServerData.hostIp = item1["hostIp"].ToString();
+                uiServerData.port = int.Parse(item1["port"].ToString());
+                foreach (UIServerType serverType in Enum.GetValues(typeof(UIServerType)))
+                {
+                    if ((int)serverType == int.Parse(item1["state"].ToString()))
+                    {
+                        uiServerData.serverType = serverType;
+                    }
+                }
+                if(roles != null) 
+                {
+                    foreach( var index in roles.Keys)
+                    {
+                        if (uiServerData.serverIndex == int.Parse(index.ToString()))
+                        {
+                            Hashtable playerInfo = roles[index] as Hashtable;
+                            uiServerData.nickName = playerInfo["nickname"].ToString();
+                            uiServerData.level = int.Parse(playerInfo["level"].ToString());
+                            break;
+                        }
+                    }
+                }
+                serverList.Add(uiServerData);
+            }
+            serverDictionary.Add(areaInfo["name"].ToString(), serverList);
+        }
         Debug.Log("连接账号服务器成功");
-        UISelectServer uiSelectServer = UIMgr.Instance.OpenUI_(UISelectServer.ViewName) as UISelectServer;
+        UIServer uiSelectServer = UIMgr.Instance.OpenUI_(UIServer.ViewName) as UIServer;
         if (uiSelectServer != null)
         {
-            uiSelectServer.ResetServerList(serverList);
+            uiSelectServer.SetCurrServer(serverDictionary);
         }
         UINetRequest.Close();
     }

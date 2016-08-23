@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ba234efdcfd6b4844b960b55c22a44c1
-timeCreated: 1450245003
+guid: 985cc5ffb95412c4c87fb5092c66e288
+timeCreated: 1451108531
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -10,19 +10,19 @@ ModelImporter:
     100004: Bone004
     100006: //RootNode
     100008: mesh_flower
-    100010: wp_flower
-    100012: "\u5BF9\u8C61001"
+    100010: mesh_flower 1
+    100012: wp_flower
     400000: Bone002
     400002: Bone003
     400004: Bone004
     400006: //RootNode
     400008: mesh_flower
-    400010: wp_flower
-    400012: "\u5BF9\u8C61001"
-    4300000: "\u5BF9\u8C61001"
+    400010: mesh_flower 1
+    400012: wp_flower
+    4300000: mesh_flower
     7400000: Take 001
     9500000: //RootNode
-    13700000: "\u5BF9\u8C61001"
+    13700000: mesh_flower
   materials:
     importMaterials: 1
     materialName: 0

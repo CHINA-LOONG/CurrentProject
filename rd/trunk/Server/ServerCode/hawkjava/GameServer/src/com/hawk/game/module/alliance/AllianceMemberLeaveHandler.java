@@ -15,6 +15,7 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceLeaveRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamLeaveNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
@@ -78,6 +79,9 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(player.getId());
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(player.getId());
+			HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
+			notify.setPlayerId(player.getId());
+			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
 		}
 
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), player.getId());

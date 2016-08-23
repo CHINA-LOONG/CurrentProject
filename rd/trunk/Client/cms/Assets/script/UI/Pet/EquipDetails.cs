@@ -108,8 +108,18 @@ public class EquipDetails : EquipInfoBase
 
 
         int canOpenCount = curData.stage - (BattleConst.minGemStage - 1);
-        textNotSlot.gameObject.SetActive(canOpenCount <= 0);
+        textNotSlot.gameObject.SetActive(canOpenCount <= 0 || curData.gemList.Count <= 0);
+        if (canOpenCount<=0)
+        {
+            textNotSlot.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
+        }
+        else if (curData.gemList.Count<=0)
+        {
+            textNotSlot.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotKong");
+            canOpenCount = 0;
+        }
 
+        #region Create Slot
         Action<int> SetGemSlot = (index) =>
           {
               if (mosaicItems[index] != null)
@@ -124,6 +134,8 @@ public class EquipDetails : EquipInfoBase
                   mosaicItems[index] = go.GetComponent<GemSlotItem>();
               }
           };
+        #endregion
+
         for (int i = 0; i < mosaicItems.Length; i++)
         {
             if (canOpenCount <= i)

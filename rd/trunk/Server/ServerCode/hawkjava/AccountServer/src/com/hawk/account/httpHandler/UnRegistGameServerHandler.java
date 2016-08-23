@@ -3,7 +3,6 @@ package com.hawk.account.httpHandler;
 import java.io.IOException;
 import java.util.Map;
 
-import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.util.HawkHttpParams;
 
@@ -24,12 +23,11 @@ public class UnRegistGameServerHandler implements HttpHandler{
 			AccountHttpServer.response(httpExchange, null);
 		}
 	}
-	
+
 	public static void doReport(Map<String, String> params) throws Exception {
-		HawkLog.logPrintln(params.toString());
 		if (params != null) {
-			if (params.get("server") != null && params.get("game") != null && params.get("platform") != null) {
-				AccountServices.getInstance().removeGameServer(params.get("game"), params.get("platform"), params.get("server"));
+			if (params.get("server") != null) {
+				AccountServices.getInstance().unregistGameServer(Integer.valueOf(params.get("server")));
 			}
 		}
 	}

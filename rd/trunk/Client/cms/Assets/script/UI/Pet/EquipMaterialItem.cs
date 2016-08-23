@@ -7,7 +7,7 @@ public class EquipMaterialItem : MonoBehaviour
     public Text textCount;
     private ItemIcon itemIcon;
 
-    public void Refresh(string itemId,int count)
+    public bool Refresh(string itemId,int count)
     {
         ItemData data = new ItemData() { itemId = itemId, count = 1 };
         if (itemIcon == null)
@@ -27,16 +27,20 @@ public class EquipMaterialItem : MonoBehaviour
             mineItem = new ItemData() { itemId = itemId, count = 0 };
         }
         Color color;
+        bool enough;
         if (mineItem.count<count)
         {
             color = ColorConst.text_color_nReq;
+            enough = false;
         }
         else
         {
             color = ColorConst.system_color_white;
+            enough = true;
         }
         textCount.color = ColorConst.system_color_white;
         textCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + (mineItem.count > 9999 ? 9999 : mineItem.count) + "</color>/" + count;
+        return enough;
     }
 
 }

@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamPanel: {fileID: 22449664}
   rewardPanel: {fileID: 22469288}
-  rewardText: {fileID: 0}
+  rewardText: {fileID: 11469808}
   timeLeftText: {fileID: 11453082}
   joinButton: {fileID: 11460166}
 --- !u!114 &11434864

@@ -33,8 +33,11 @@ public class EquipEmbed : EquipInfoBase,
 
     private bool isMosaic = false;
     private bool isOpenmax = false;
+    private bool enoughCoin;
+    private bool enoughItem;
     void Start()
     {
+        text_Gems.text = StaticDataMgr.Instance.GetTextByID("equip_smalltitle");
         textSocket.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
         text_Tips1.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_openmax");
         textNotSlot.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
@@ -112,6 +115,9 @@ public class EquipEmbed : EquipInfoBase,
         curForge.GetPunchDemand(ref curDemand);
 
         btnSocket.interactable = UIUtil.CheckIsEnoughMaterial(curDemand);
+
+        enoughCoin = true;
+        enoughItem = true;
         for (int i = 0; i < curDemand.Count; i++)
         {
             if (curDemand[i].type==(int)PB.itemType.ITEM)
@@ -121,7 +127,7 @@ public class EquipEmbed : EquipInfoBase,
                 {
                     mineItem = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
                 }
-
+                mineItem.count = Mathf.Clamp(mineItem.count, 0, 9999);
                 ItemData material = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
                 if (materialIcon == null)
                 {
@@ -136,6 +142,7 @@ public class EquipEmbed : EquipInfoBase,
                 if (mineItem.count < curDemand[i].count)
                 {
                     color = ColorConst.text_color_nReq;
+                    enoughItem = false;
                 }
                 else
                 {
@@ -150,6 +157,7 @@ public class EquipEmbed : EquipInfoBase,
                     if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count)
                     {
                         textCoin.color = ColorConst.text_color_nReq;
+                        enoughCoin = false;
                     }
                     else
                     {
@@ -173,6 +181,11 @@ public class EquipEmbed : EquipInfoBase,
 
     void OnClickSocketBtn()
     {
+        if (!enoughItem||!enoughCoin)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_004"), (int)PB.ImType.PROMPT);
+            return;
+        }
 
         if (isMosaic || isOpenmax)
         {

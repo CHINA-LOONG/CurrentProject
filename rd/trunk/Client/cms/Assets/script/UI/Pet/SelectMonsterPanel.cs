@@ -144,7 +144,7 @@ public class SelectMonsterPanel : UIBase
             m_currentSelectMonster.Add(element.guid);
         }
 
-        UpdateSelectState();
+        //UpdateSelectState();
     }
 
     void ShowScrollIcon()

@@ -57,6 +57,12 @@ public class AllianceHandleApplyHandler implements HawkMsgHandler{
 		}
 
 		// 没有申请
+		if (request.getIsAll() == true && allianceEntity.getApplyList().isEmpty() == true) {
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_APPLY_LIST_EMPTY_VALUE);
+			return true;
+		}
+
+		// 没有申请
 		if (request.getIsAll() == false && allianceEntity.getApplyList().get(request.getPlayerId()) == null) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_APPLY_NOT_EXIST_VALUE);
 			return true;

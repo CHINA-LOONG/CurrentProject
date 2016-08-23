@@ -56,9 +56,21 @@ public class PetDetailsAbilities : PetDetailsRight
     void ReloadSpell(Dictionary<string,Spell> spellDict)
     {
         spellCount = 0;//最大5个
-        foreach (var item in spellDict)
+
+        UnitData unit = StaticDataMgr.Instance.GetUnitRowData(curData.pbUnit.id);
+        List<SpellProtoType> spellList = unit.SpellList;
+
+        for (int i = 0; i < spellList.Count; i++)
         {
-            if (!string.IsNullOrEmpty(item.Value.spellData.tips)&& spellCount < spellIcons.Length)
+            if (null == spellList[i])
+            {
+                continue;
+            }
+            if (string.IsNullOrEmpty(spellList[i].tips))
+            {
+                continue;
+            }
+            if (spellDict.ContainsKey(spellList[i].id))
             {
                 if (null == spellIcons[spellCount])
                 {
@@ -71,7 +83,7 @@ public class PetDetailsAbilities : PetDetailsRight
                 {
                     spellIcons[spellCount].gameObject.SetActive(true);
                 }
-                spellIcons[spellCount].ReloadData(item.Value);
+                spellIcons[spellCount].ReloadData(spellDict[spellList[i].id]);
                 spellCount++;
                 if (spellCount >= spellIcons.Length)
                 {
@@ -109,7 +121,8 @@ public class PetDetailsAbilities : PetDetailsRight
             text_Current.gameObject.SetActive(false);
             text_Next.gameObject.SetActive(false);
             objLevelUP.SetActive(false);
-            text_MaxLevel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_no_upgrade");
+            text_MaxLevel.gameObject.SetActive(true);
+            text_MaxLevel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_cannt_level");
         }
         else
         {
@@ -119,7 +132,8 @@ public class PetDetailsAbilities : PetDetailsRight
             textCurrentDesc.text = string.Format(spellData.tipsCurlvl, spellData.baseTipValue + spell.level * spellData.levelAdjust);
             if (spell.level >= GameConfig.MaxMonsterLevel)
             {
-                text_MaxLevel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_no_upgrade");
+                text_MaxLevel.gameObject.SetActive(true);
+                text_MaxLevel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_max_level");
                 objLevelUP.SetActive(false);
             }
             else
@@ -129,14 +143,20 @@ public class PetDetailsAbilities : PetDetailsRight
                 objLevelUP.SetActive(true);
                 textNextDesc.text = string.Format(spellData.tipsNextlvl, spellData.baseTipValue + (spell.level + 1) * spellData.levelAdjust);
                 textCoin.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
-                ////判断金币
-                //if (StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1) > GameDataMgr.Instance.PlayerDataAttr.coin)
-                //{
-                //    GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
-                //}
+                //判断金币
+                if (StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1) > GameDataMgr.Instance.PlayerDataAttr.coin)
+                {
+                    textCoin.color = ColorConst.outline_color_nReq;
+                }
+                else
+                {
+                    textCoin.color = ColorConst.system_color_black;
+                }
             }
         }
     }
+
+
 
     void OnClickAbiliteOption(GameObject go)
     {
@@ -225,7 +245,13 @@ public class PetDetailsAbilities : PetDetailsRight
             currentPoint = string.Format(StaticDataMgr.Instance.GetTextByID("pet_detail_skill_current_point")+"{0}", StatisticsDataMgr.Instance.GetSkillPoint());
             if (StatisticsDataMgr.Instance.isMaxPoint() == false)
             {
-                currentDesc = string.Format(StaticDataMgr.Instance.GetTextByID("pet_detail_skill_current_huifu"), string.Format("({0:D2} : {1:D2})", StatisticsDataMgr.Instance.GetSkillPointLeftTime() / 60, StatisticsDataMgr.Instance.GetSkillPointLeftTime() % 60));
+                int refreshTime = StatisticsDataMgr.Instance.GetSkillPointLeftTime();
+                if (refreshTime> GameConfig.SkillPointTime)
+                {
+                    Logger.LogError("更新时间有误差:"+ (refreshTime - GameConfig.SkillPointTime).ToString());
+                    refreshTime = GameConfig.SkillPointTime;
+                }
+                currentDesc = string.Format(StaticDataMgr.Instance.GetTextByID("pet_detail_skill_current_huifu"), string.Format("({0:D2} : {1:D2})", refreshTime / 60, refreshTime % 60));
             }
             else
             {

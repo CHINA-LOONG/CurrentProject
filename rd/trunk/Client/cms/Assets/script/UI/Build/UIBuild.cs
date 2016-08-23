@@ -53,6 +53,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     [HideInInspector]
     public UIDecompose uiDecompose;
 
+    public Text mTestShowExp;
+
     void Start()
     {
         EventTriggerListener.Get(m_PetButton.gameObject).onClick = PetButtonClick;
@@ -133,6 +135,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         {
             playerProgress.mProgressText.text = string.Format("{0}%", ratio);
         }
+
+        //test only
+        mTestShowExp.text = newExp.ToString() + "/" + originalAttr.exp.ToString();
     }       
 
     void OnHuoliChanged(int newHuoli)

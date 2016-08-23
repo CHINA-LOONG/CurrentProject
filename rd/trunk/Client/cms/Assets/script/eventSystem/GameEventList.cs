@@ -101,6 +101,8 @@ public class GameEventList
 	public	static	string	RefreshShopUiAfterBuy = "RefreshShopUiAfterBuy";
 
     //UI--Pet/Equip
+    public static string ReloadPetBPNotify = "reloadPetBPNotify";
+    public static string ReloadPetLevelNotify = "reloadPetLevelNotify";
     public static string ReloadPetListNotify = "reloadPetListNotify";
     public static string ReloadPetStageNotify = "reloadPetStageNotify";
     public static string ReloadPetEquipNotify = "reloadPetEquipNotify";

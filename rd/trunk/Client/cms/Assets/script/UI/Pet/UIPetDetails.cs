@@ -82,6 +82,8 @@ public class UIPetDetails : UIBase,
         btnRoles.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_roles");
         btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_advance");
 
+        btnRoles.gameObject.SetActive(false);
+
         leftView.IPetDetailsLeftDelegate = this;
     }
 
@@ -237,10 +239,12 @@ public class UIPetDetails : UIBase,
 
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<int,int>(GameEventList.ReloadPetBPNotify, ReloadPetBPNotify);
         GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
     }
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<int,int>(GameEventList.ReloadPetBPNotify, ReloadPetBPNotify);
         GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
     }
 
@@ -253,6 +257,20 @@ public class UIPetDetails : UIBase,
             if (curItem.part == tarItem.part)
             {
                 OpenPetDetailsEquipInfo(equipData);
+            }
+        }
+    }
+    void ReloadPetBPNotify(int guid,int value)
+    {
+        if (CurData.pbUnit.guid==guid)
+        {
+            if (value>0)
+            {
+                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("monster_record_005"), value), (int)PB.ImType.PROMPT);
+            }
+            else
+            {
+                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("monster_record_005"), Mathf.Abs(value)), (int)PB.ImType.PROMPT);
             }
         }
     }

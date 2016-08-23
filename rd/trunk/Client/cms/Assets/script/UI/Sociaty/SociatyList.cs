@@ -83,6 +83,8 @@ public class SociatyList : UIBase
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LIST_C.GetHashCode().ToString(), OnRequestPageFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LIST_S.GetHashCode().ToString(), OnRequestPageFinished);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
     }
 
     void    OnDisable()
@@ -92,6 +94,8 @@ public class SociatyList : UIBase
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LIST_C.GetHashCode().ToString(), OnRequestPageFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LIST_S.GetHashCode().ToString(), OnRequestPageFinished);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
     }
 
     public  void    InitWithSearch(string search)
@@ -232,5 +236,17 @@ public class SociatyList : UIBase
             subitem.SetSelect(false);
             subitem.gameObject.SetActive(false);
         }
+    }
+
+    void OnAllianceJoin_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSAllianceJoinNotify msgRet = message.GetProtocolBody<PB.HSAllianceJoinNotify>();
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = msgRet.allianceId;
+        Close();
+        GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
     }
 }

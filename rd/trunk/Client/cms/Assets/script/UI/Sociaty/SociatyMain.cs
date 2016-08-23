@@ -32,11 +32,15 @@ public class SociatyMain : UIBase, TabButtonDelegate
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEVEL_CHANGE_N_S.GetHashCode().ToString(), OnLevelChange);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
     }
     //---------------------------------------------------------------------------------------------
     void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEVEL_CHANGE_N_S.GetHashCode().ToString(), OnLevelChange);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
     }
     //---------------------------------------------------------------------------------------------
     public static void OpenWith(SociatyContenType contentType = SociatyContenType.Infomation,string search = null)
@@ -146,6 +150,19 @@ public class SociatyMain : UIBase, TabButtonDelegate
 
             SetTechnologyInternal(lvlChangeData.type);
         }
+    }
+
+    void OnAllianceLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
+        Close();
+        UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("mail_sociaty_003"),
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.name), 
+            (int)PB.ImType.PROMPT);
     }
     //---------------------------------------------------------------------------------------------
     private void SetTechnologyInternal(int type)

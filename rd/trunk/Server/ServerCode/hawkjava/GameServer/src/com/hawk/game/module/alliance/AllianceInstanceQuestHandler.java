@@ -4,6 +4,7 @@ import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
+import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
@@ -19,6 +20,7 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamQuestFinishNotify;
 import com.hawk.game.util.GsConst;
 
 public class AllianceInstanceQuestHandler implements HawkMsgHandler{
@@ -75,6 +77,12 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 				if (objBase != null && objBase.isObjValid()) {				
 					if (teamEntity.getInstanceQuest1PlayerId() == 0) {
 						teamEntity.setQuestFinish(teamEntity.getInstanceQuest1(), player.getId());
+						HSAllianceTeamQuestFinishNotify.Builder notify = HSAllianceTeamQuestFinishNotify.newBuilder();
+						notify.setQuestId(teamEntity.getInstanceQuest1());
+						notify.setTeamId(teamEntity.getId());
+						notify.setPlayerId(player.getId());
+						HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ALLIANCE_QUEST_FINISH_N_S_VALUE, notify);
+						AllianceManager.getInstance().broadcastNotify(teamEntity, protocol, 0);
 					}
 					
 					teamEntity.notifyUpdate(true);

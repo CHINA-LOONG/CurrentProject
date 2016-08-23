@@ -1,13 +1,16 @@
 package com.hawk.game.module.alliance;
 
 import org.hawk.app.HawkAppObj;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.config.ImSysCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceChangePos;
 import com.hawk.game.protocol.Alliance.HSAllianceChangePosRet;
@@ -67,7 +70,20 @@ public class AllianceChangePosHandler implements HawkMsgHandler{
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_COPY_MAIN_VALUE);
 			return true;
 		}
-		
+
+		if (request.getPostion() == GsConst.Alliance.ALLIANCE_POS_COPYMAIN) {
+			ImSysCfg imCfg = HawkConfigManager.getInstance().getConfigByKey(ImSysCfg.class, GsConst.SysIm.ALLIANCE_ELDER_PROMOTE);
+			if (imCfg != null) {
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), targetPlayerAllianceEntity.getName());
+			}
+		}
+		else if(targetPlayerAllianceEntity.getPostion() == GsConst.Alliance.ALLIANCE_POS_COPYMAIN){
+			ImSysCfg imCfg = HawkConfigManager.getInstance().getConfigByKey(ImSysCfg.class, GsConst.SysIm.ALLIANCE_ELDER_DEMOTE);
+			if (imCfg != null) {
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), targetPlayerAllianceEntity.getName());
+			}
+		}
+
 		targetPlayerAllianceEntity.setPostion(request.getPostion());
 		targetPlayerAllianceEntity.notifyUpdate(true);
 		

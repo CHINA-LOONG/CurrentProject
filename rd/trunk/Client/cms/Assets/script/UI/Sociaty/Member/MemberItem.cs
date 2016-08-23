@@ -36,7 +36,7 @@ public class MemberItem : MonoBehaviour
         levelText.text = memberData.level.ToString();
         positionText.text = GameDataMgr.Instance.SociatyDataMgrAttr.GetPositionDesc(memberData.postion);
         historyContributionText.text = memberData.contribution.ToString();
-        lastLogin.text = memberData.loginTime.ToString();//todo
+        RefreshLogOutTime();
         bool isSend = memberData.sendFatigue;
         giveHuoliButton.SetIsSend(isSend);
         if (memberData.id == GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.id)
@@ -46,6 +46,41 @@ public class MemberItem : MonoBehaviour
         }
         
     }
+
+    void RefreshLogOutTime()
+    {
+        string logOutMsg = "";
+        int loginTime = memberData.loginTime;
+        int logoutTime = memberData.logoutTime;
+        if(loginTime > logoutTime)
+        {
+            logOutMsg = StaticDataMgr.Instance.GetTextByID("sociaty_zaixian");
+        }
+        else
+        {
+            int curTime = GameTimeMgr.Instance.GetServerTimeStamp();
+
+            int delthaTime = curTime - logoutTime;
+            if (delthaTime < 60)//1min
+            {
+                logOutMsg = StaticDataMgr.Instance.GetTextByID("sociaty_gang");
+            }
+            else if (delthaTime < 3600)//1hour
+            {
+                logOutMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_minite"), delthaTime / 60);
+            }
+            else if (delthaTime < 3600 * 24)//1day
+            {
+                logOutMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_hour"), delthaTime / 3600);
+            }
+            else
+            {
+                logOutMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_day"),delthaTime/(3600 * 24));
+            }
+        }
+        lastLogin.text = logOutMsg;
+    }
+
     void OnGiveHuoliButtonClick()
     {
         GameDataMgr.Instance.SociatyDataMgrAttr.RequestSendHuoli(memberData.id, OnSendHuoliFinish);

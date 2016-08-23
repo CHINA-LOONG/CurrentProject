@@ -88,7 +88,7 @@ public class GemSlotItem : MonoBehaviour
                 }
             }
 
-            if (Interactable)
+            if (Interactable&& Type != SlotType.Locked)
             {
                 ScrollViewEventListener.Get(gameObject).onClick = OnClickThisSlot;
             }
@@ -101,6 +101,11 @@ public class GemSlotItem : MonoBehaviour
 
     void OnClickThisSlot(GameObject go)
     {
+        if (Type==SlotType.Locked)//锁定
+        {
+            return;
+        }
+
         if (IGemSlotItemDelegate!=null)
         {
             IGemSlotItemDelegate.OnClickGemSlot(curInfo);

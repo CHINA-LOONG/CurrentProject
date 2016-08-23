@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigStorage;
@@ -67,7 +68,7 @@ public class GmService extends GameService {
 		Map<String, List<TestAccountCfg>> accountMap = new HashMap<>();
 
 		try {
-			HawkConfigStorage cfgStorgae = new HawkConfigStorage(TestAccountCfg.class);
+			HawkConfigStorage cfgStorgae = new HawkConfigStorage(TestAccountCfg.class, HawkApp.getInstance().getWorkPath());
 			List<TestAccountCfg> accountCfgList = (List<TestAccountCfg>) cfgStorgae.getConfigList();
 
 			for (TestAccountCfg cfg : accountCfgList) {

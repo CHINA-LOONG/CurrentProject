@@ -15,8 +15,10 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceJoinTeam;
 import com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamJoinNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
 
 public class AllianceJoinTeamHandler implements HawkMsgHandler{
 	/**
@@ -92,6 +94,10 @@ public class AllianceJoinTeamHandler implements HawkMsgHandler{
 		
 		teamEntity.notifyUpdate(true);
 		allianceEntity.addPlayerTeamMap(player.getId(), teamEntity.getId());
+		
+		HSAllianceTeamJoinNotify.Builder notify = HSAllianceTeamJoinNotify.newBuilder();
+		notify.setMember(AllianceUtil.getTeamMemberInfo(player.getId(), allianceEntity));
+		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_JOIN_N_S_VALUE, notify), 0);
 		
 		HSAllianceJoinTeamRet.Builder response = HSAllianceJoinTeamRet.newBuilder();
 		response.setTeamId(teamEntity.getId());

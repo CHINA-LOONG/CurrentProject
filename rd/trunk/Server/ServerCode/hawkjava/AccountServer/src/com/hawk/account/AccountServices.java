@@ -2,15 +2,21 @@ package com.hawk.account;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.net.InetAddress;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import net.sf.json.JSONObject;
-
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkXmlCfg;
 import org.hawk.log.HawkLog;
 import org.hawk.nativeapi.HawkNativeApi;
@@ -20,40 +26,24 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.HawkTickable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.hawk.account.config.ServerIndexCfg;
+import com.hawk.account.config.ServerInfoCfg;
 import com.hawk.account.db.DBManager;
+import com.hawk.account.gameserver.GameServer;
 import com.hawk.account.http.AccountHttpServer;
 import com.hawk.account.zmq.AccountZmqServer;
 
-public class AccountServices {	
-	
-	public static class GameServer{
-		public String server;
-		public String hostIp;
-		public int port;
-		public long heartBeatTime;
-		
-		public GameServer(String server, String hostIp, int port) {
-			this.server = server;
-			this.hostIp = hostIp;
-			this.port = port;
-			heartBeatTime = HawkTime.getMillisecond();
-		}
-	}
-	
+public class AccountServices {
 	/**
 	 * 默认心跳时间周期
 	 */
 	public final static int HEART_PERIOD = 300000;
-	
+
+	public final static String DEFAULT_LANGUAGE = "zh-CN";
+
 	/**
 	 * 调试日志对象
 	 */
@@ -66,17 +56,27 @@ public class AccountServices {
 	 * 可更新列表
 	 */
 	Set<HawkTickable> tickableSet;
-	
+
 	/**
-	 * 挂在服务器列表
+	 * 挂载服务器列表
 	 */
-	Map<String, GameServer> serverList;
-	
+	Map<Integer, GameServer> serverList;
+
+	/**
+	 * 区间服务器列表
+	 */
+	Map<Integer, Set<Integer>> serverAreaList;
+
+	/**
+	 * 服务器json字符串
+	 */
+	JsonObject serverInfo;
+
 	/**
 	 * 服务器ip
 	 */
 	private String hostIpAddr = null;
-	
+
 	/**
 	 * 单实例对象
 	 */
@@ -87,9 +87,9 @@ public class AccountServices {
 
 	private static final String serverPath = "/report_accountServer";
 	private static final String fetchIpPath = "/fetch_myip";
-	
-	private static final String serverQuery = "game=%s&platform=%s&chanel=%s&server=%s&ip=%s&zmq_port=%d&http_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
-	
+
+	private static final String serverQuery = "game=%s&platform=%s&channel=%s&server=%s&ip=%s&zmq_port=%d&http_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
+
 	/**
 	 * 获取实例对象
 	 * 
@@ -101,7 +101,7 @@ public class AccountServices {
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * 构造函数
 	 */
@@ -109,9 +109,10 @@ public class AccountServices {
 		// 初始化变量
 		running = true;
 		tickableSet = new HashSet<HawkTickable>();
-		serverList = new LinkedHashMap<String, GameServer>();
+		serverList = new LinkedHashMap<Integer, GameServer>();
+		serverAreaList = new LinkedHashMap<>();
 	}
-	
+
 	/**
 	 * 添加可更新对象列表
 	 * 
@@ -126,57 +127,83 @@ public class AccountServices {
 	 * 
 	 * @param gameServer
 	 */
-	public void addGameServer(GameServer gameServer) {
-		serverList.put(gameServer.server, gameServer);
+	private void addGameServer(GameServer gameServer) {
+		serverList.put(gameServer.getIndex(), gameServer);
+
+		// 添加服务器区间映射
+		Set<Integer> areaServers = serverAreaList.get(gameServer.getArea());
+		if (areaServers == null) {
+			areaServers = new LinkedHashSet<Integer>();
+			serverAreaList.put(gameServer.getArea(), areaServers);
+		}
+
+		areaServers.add(gameServer.getIndex());
 	}
-	
+
 	/**
-	 * 移除游戏服务器对象
+	 * 挂载游戏服务器
+	 * 
+	 * @param serverIndex
+	 * @param hostIp
+	 * @param port
+	 */
+	public void registGameServer(int serverIndex, String hostIp, int port) {
+		GameServer gameServer = getGameServer(serverIndex);
+		ServerInfoCfg serverInfo = HawkConfigManager.getInstance().getConfigByKey(ServerInfoCfg.class, serverIndex);
+		if (gameServer != null && serverInfo != null) {
+			gameServer.setHostIp(hostIp);
+			gameServer.setPort(port);
+			gameServer.setState(serverInfo.getState());
+			gameServer.setHeartBeatTime(HawkTime.getMillisecond());
+			updateServerInfo();
+		}
+	}
+
+	/**
+	 * 卸载游戏服务器
+	 * 
+	 * @param serverIndex
+	 * @param hostIp
+	 * @param port
+	 */
+	public void unregistGameServer(int serverIndex) {
+		GameServer gameServer = getGameServer(serverIndex);
+		if (gameServer != null ) {
+			gameServer.setHostIp("");
+			gameServer.setPort(0);
+			gameServer.setState(GameServer.SERVER_STATE_MAINTAIN);
+			updateServerInfo();
+		}
+	}
+
+	/**
+	 * 获取区域服务器列表
 	 * 
 	 * @param gameServer
 	 */
-	public void removeGameServer(String game, String platform, String server) {
-		for (Map.Entry<String, GameServer> entry : serverList.entrySet()) {
-			if (entry.getValue().server.equals(server)) {
-				serverList.remove(server);
-				break;
-			}
-		}
+	public Map<Integer, Set<Integer>> getAreaServerList() {
+		return serverAreaList;
 	}
-	
-	/**
-	 * 移除游戏服务器对象
-	 * 
-	 * @param gameServer
-	 */
-	public void updateGameServer(String game, String platform, String server) {
-		for (Map.Entry<String, GameServer> entry : serverList.entrySet()) {
-			if (entry.getValue().server.equals(server)) {
-				entry.getValue().heartBeatTime = HawkTime.getMillisecond();
-				break;
-			}
-		}
-	}
-	
+
 	/**
 	 * 获取游戏服务器对象
 	 * 
 	 * @param gameServer
 	 */
-	public Map<String, GameServer> getGameServer(String platform, String channel) {
-		return serverList;
+	public GameServer getGameServer(int index) {
+		return serverList.get(index);
 	}
-	
+
 	/**
 	 * 使用配置文件初始化
 	 * 
 	 * @param cfgFile
 	 * @return
 	 */
-	public boolean init(String cfgFile) {	
+	public boolean init(String cfgFile) {
 		boolean initOK = true;
-		try {		
-			// 添加库加载目录		
+		try {
+			// 添加库加载目录
 			HawkOSOperator.addUsrPath(System.getProperty("user.dir") + "/lib");
 			HawkOSOperator.addUsrPath(System.getProperty("user.dir") + "/hawk");
 			new File(".").list(new FilenameFilter() {
@@ -189,7 +216,7 @@ public class AccountServices {
 					return false;
 				}
 			});
-			
+
 			try {
 				// 初始化
 				System.loadLibrary("hawk");
@@ -199,19 +226,19 @@ public class AccountServices {
 			} catch (Exception e) {
 				HawkException.catchException(e);
 			}
-			
+
 			// 加载配置文件
 			HawkXmlCfg conf = new HawkXmlCfg(System.getProperty("user.dir") + "/cfg/config.xml");
-			
-			// 获取账号服务器地址信息
-			initOK = fetchReportInfo(conf);
-			if (initOK) {
-				HawkLog.logPrintln("fetch my hostIp success, " + hostIpAddr);
-			} else {
-				HawkLog.logPrintln("fetch my hostIp fail");
-				return false;
+
+			// 初始化配置
+			if (conf.getString("app.configPath") != null && conf.getString("app.configPath").length() > 0) {
+				String workPath = System.getProperty("user.dir") + File.separator;
+				if (!HawkConfigManager.getInstance().init(conf.getString("app.configPath"), workPath)) {
+					System.err.println("config error");
+					return false;
+				}
 			}
-			
+
 			// 初始化http服务器
 			initOK &= AccountHttpServer.getInstance().setup(conf.getString("httpServer.addr"), conf.getInt("httpServer.port"), conf.getInt("httpServer.pool"));
 			if (initOK) {
@@ -220,13 +247,13 @@ public class AccountServices {
 				HawkLog.logPrintln("Setup HttpServer Failed, " + conf.getString("httpServer.addr") + ":" + conf.getInt("httpServer.port"));
 				return false;
 			}
-			
+
 			// 线程池大小
 			int threadPool = 4;
 			if (conf.containsKey("database.threads")) {
 				threadPool = conf.getInt("database.threads");
 			}
-			
+
 			// 初始化数据库
 			initOK &= DBManager.getInstance().init(conf.getString("db.dbConnUrl"), conf.getString("db.dbUserName"), conf.getString("db.dbPassWord"), threadPool);
 			if (initOK) {
@@ -235,7 +262,7 @@ public class AccountServices {
 				HawkLog.logPrintln("Init DBManager Failed, dbConnUrl: " + conf.getString("db.dbConnUrl"));
 				return false;
 			}
-			
+
 			// 创建db会话
 			initOK &= createDbSessions();
 			if (initOK) {
@@ -243,8 +270,8 @@ public class AccountServices {
 			} else {
 				HawkLog.logPrintln("Create Database Session Failed");
 				return false;
-			}			
-			
+			}
+
 			// 启动zmq服务器
 			initOK &= AccountZmqServer.getInstance().setup(conf.getString("zmqServer.addr"), conf.getInt("zmqServer.pool"));
 			if (initOK) {
@@ -253,22 +280,67 @@ public class AccountServices {
 				HawkLog.logPrintln("Setup Zmqserver Failed: " + conf.getString("zmqServer.addr"));
 				return false;
 			}
-			
+
 			// 注册账号服务器
-			initOK &= registAccountServer(conf);
-			if (initOK) {
-				HawkLog.logPrintln("Regist AccountServer Success");
-			} else {
-				HawkLog.logPrintln("Regist AccountServer Failed");
-				return false;
+			//initOK &= registAccountServer(conf);
+			//if (initOK) {
+			//	HawkLog.logPrintln("Regist AccountServer Success");
+			//} else {
+			//  HawkLog.logPrintln("Regist AccountServer Failed");
+			//	return false;
+			//}
+
+			// 加载全部服务器
+			for (ServerInfoCfg serverInfo : HawkConfigManager.getInstance().getConfigMap(ServerInfoCfg.class).values()) {
+				GameServer gameServer = new GameServer();
+				gameServer.setName(serverInfo.getName(DEFAULT_LANGUAGE));
+				gameServer.setArea(serverInfo.getArea());
+				gameServer.setIndex(serverInfo.getIndex());
+				gameServer.setState(GameServer.SERVER_STATE_MAINTAIN);
+				addGameServer(gameServer);
 			}
-			
+
+			updateServerInfo();
+
 		} catch (Exception e) {
 			HawkException.catchException(e);
 			initOK = false;
 		}
-		
+
 		return initOK;
+	}
+
+	/**
+	 * 生成服务器json数据
+	 * 
+	 */
+	private void updateServerInfo() {
+		JsonObject serverListInfo = new JsonObject();
+		for (int area : AccountServices.getInstance().getAreaServerList().keySet()) {
+			Set<Integer> serverList = AccountServices.getInstance().getAreaServerList().get(area);
+			JsonArray jsonArray = new JsonArray();
+			for (Integer serverIndex : serverList) {
+				GameServer gameServer = AccountServices.getInstance().getGameServer(serverIndex);
+				JsonObject jsonObject = new JsonObject();
+				jsonObject.addProperty("serverIndex", serverIndex);
+				jsonObject.addProperty("serverName", gameServer.getName());
+				jsonObject.addProperty("hostIp", gameServer.getHostIp());
+				jsonObject.addProperty("port", gameServer.getPort());
+				jsonObject.addProperty("state", gameServer.getState());
+				jsonArray.add(jsonObject);
+			}
+
+			JsonObject areaInfo = new JsonObject();
+			areaInfo.addProperty("name", HawkConfigManager.getInstance().getConfigByKey(ServerIndexCfg.class, area).getName(AccountServices.DEFAULT_LANGUAGE));
+			areaInfo.add("serverList", jsonArray);
+			serverListInfo.add(String.valueOf(area), areaInfo);
+		}
+
+		serverInfo = serverListInfo;
+	}
+
+	public JsonObject getServerInfo() {
+		return serverInfo;
 	}
 
 	private boolean createDbSessions() {
@@ -279,7 +351,7 @@ public class AccountServices {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 获取hostIp地址
 	 * 
@@ -321,62 +393,10 @@ public class AccountServices {
 			accountLogger.info("register account server info failed: " + serverPath + "?" + queryParam);
 			return false;
 		}
-	
+
 		return true;
 	}
 
-	/**
-	 * 获取上报服务器信息
-	 * 
-	 * @return
-	 */
-	protected boolean fetchReportInfo(HawkXmlCfg conf) {			
-		String reportInfo = null;
-		hostIpAddr = conf.getString("app.addr");
-		
-		try {
-			if (false == initHttpClient(conf)) {
-				return false;
-			}
-
-			uriBuilder.setPath(fetchIpPath);
-			uriBuilder.setCustomQuery("");
-			httpGet.setURI(uriBuilder.build());
-			HttpResponse httpResponse = httpClient.execute(httpGet);
-			int status =  httpResponse.getStatusLine().getStatusCode();
-			if (status == HttpStatus.SC_OK) {
-				reportInfo = EntityUtils.toString(httpResponse.getEntity());
-			}
-		} catch (Exception e) {
-			HawkException.catchException(e);
-			return false;
-		}
-		
-		try {
-			if (reportInfo != null && reportInfo.length() > 0) {
-				accountLogger.info("fetch account service info: " + reportInfo);
-				JSONObject jsonObject = JSONObject.fromObject(reportInfo);
-				if (jsonObject.containsKey("myIp")) {
-					hostIpAddr = (String) jsonObject.get("myIp");
-					//TODO
-					if (hostIpAddr.equals("127.0.0.1") || hostIpAddr.equalsIgnoreCase("123.126.3.94")) {
-						hostIpAddr = InetAddress.getLocalHost().getHostAddress();
-					}
-				}
-			}
-			else
-			{
-				accountLogger.info("regist account service fail: ");
-				return false;
-			}			
-		} catch (Exception e) {
-			HawkException.catchException(e);
-			return false;
-		}
-		
-		return true;
-	}
-	
 	/**
 	 * 初始化httpclient
 	 */
@@ -406,7 +426,7 @@ public class AccountServices {
 
 		return true;
 	}
-	
+
 	/**
 	 * 运行服务器
 	 */
@@ -415,17 +435,17 @@ public class AccountServices {
 		while (running) {
 			try {
 				onTick();
-				
-				// 更新服务器
+
+				// 心跳检测
 				long curTime = HawkTime.getMillisecond();
-				Iterator<Map.Entry<String, GameServer>> it = serverList.entrySet().iterator();  
-				while(it.hasNext()){  
-					Map.Entry<String, GameServer> entry = it.next(); 
-		            if (entry.getValue().heartBeatTime + HEART_PERIOD < curTime) {
-		            	 it.remove(); 
+				Iterator<Map.Entry<Integer, GameServer>> it = serverList.entrySet().iterator();  
+				while(it.hasNext()){
+					Map.Entry<Integer, GameServer> entry = it.next(); 
+					if (entry.getValue().getState() != GameServer.SERVER_STATE_MAINTAIN && entry.getValue().heartBeatTime + HEART_PERIOD < curTime) {
+						entry.getValue().setState(GameServer.SERVER_STATE_MAINTAIN);
 					}
 				}
-				
+
 				HawkOSOperator.sleep();
 			} catch (Exception e) {
 				HawkException.catchException(e);
@@ -435,7 +455,7 @@ public class AccountServices {
 		AccountHttpServer.getInstance().stop();
 		AccountZmqServer.getInstance().stop();
 	}
-	
+
 	/**
 	 * 定时更新
 	 */
@@ -448,7 +468,7 @@ public class AccountServices {
 			}
 		}
 	}
-	
+
 	/**
 	 * 停止服务器
 	 */

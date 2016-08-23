@@ -1,6 +1,8 @@
 package org.hawk.app;
 
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,8 +46,6 @@ import org.hawk.thread.HawkTask;
 import org.hawk.thread.HawkThreadPool;
 import org.hawk.timer.HawkTimerManager;
 import org.hawk.util.HawkTickable;
-import org.hawk.util.services.HawkCdkService;
-import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 import org.hawk.zmq.HawkZmq;
 import org.hawk.zmq.HawkZmqManager;
@@ -195,6 +195,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * 
 	 * @param appCfg
 	 * @return
+	 * @throws UnknownHostException 
 	 */
 	public boolean init(HawkAppCfg appCfg) {
 		this.appCfg = appCfg;
@@ -224,6 +225,16 @@ public abstract class HawkApp extends HawkAppObj {
 		// 获取本机ip
 		myHostIp = HawkOSOperator.getMyIp(2000);
 
+		// TODO
+		try {
+			if (myHostIp.equals("") || myHostIp.equals("127.0.0.1") || myHostIp.equals("123.126.3.94")) {
+				myHostIp = InetAddress.getLocalHost().getHostAddress();
+			}
+		} catch (Exception e) {
+			HawkLog.logPrintln("ip 获取失败");
+			return false;
+		}
+		
 		// 初始化网络统计
 		HawkNetStatistics.getInstance().init();
 				
@@ -239,7 +250,7 @@ public abstract class HawkApp extends HawkAppObj {
 
 		// 初始化配置
 		if (appCfg.configPackages != null && appCfg.configPackages.length() > 0) {
-			if (!HawkConfigManager.getInstance().init(appCfg.configPackages)) {
+			if (!HawkConfigManager.getInstance().init(appCfg.configPackages, getWorkPath())) {
 				System.err.println("----------------------------------------------------------------------");
 				System.err.println("-------------config crashed, take weapon to fuck designer-------------");
 				System.err.println("----------------------------------------------------------------------");
@@ -294,37 +305,6 @@ public abstract class HawkApp extends HawkAppObj {
 		// 自动脚本运行
 		HawkScriptManager.getInstance().autoRunScript();
 
-		return true;
-	}
-
-	/**
-	 * 初始化系统服务
-	 * 
-	 * @return
-	 */
-	public boolean initService(String suuid) {
-		// cdk服务初始化
-		if (appCfg.getCdkHost().length() > 0) {
-			HawkLog.logPrintln("install cdk service......");
-			HawkCdkService.getInstance().install(appCfg.getGameId(), appCfg.getPlatform(), String.valueOf(appCfg.getServerId()), appCfg.getCdkHost(), appCfg.getCdkTimeout());
-		}
-
-		// 数据上报服务初始化
-		if (appCfg.getReportHost().length() > 0) {
-			HawkLog.logPrintln("install report service......");
-			HawkReportService.getInstance().install(appCfg.getGameId(), appCfg.getPlatform(), 
-					String.valueOf(appCfg.getServerId()), appCfg.getReportHost(), appCfg.getReportTimeout());
-		}
-
-		// 开启订单服务
-		if (appCfg.getOrderAddr().length() > 0 && suuid != null && suuid.length() > 0) {
-		//	if (HawkOrderService.getInstance().init(suuid, appCfg.getOrderAddr(), appCfg.getGameId(), appCfg.getPlatform(), appCfg.getServerId())) {
-		//		HawkLog.logPrintln("install order service success......");
-		//	} else {
-		//		HawkLog.logPrintln("install order service failed......");
-		//	}
-		}
-		
 		return true;
 	}
 	
@@ -1448,20 +1428,12 @@ public abstract class HawkApp extends HawkAppObj {
 	}
 
 	/**
-	 * 检测是否成功
-	 * 
-	 * @return
-	 */
-	public boolean checkConfigData() {
-		return true;
-	}
-
-	/**
 	 * 报告异常信息(主要通过邮件)
 	 * 
 	 * @param e
 	 */
 	public void reportException(Exception e) {
+		
 	}
 
 	/**

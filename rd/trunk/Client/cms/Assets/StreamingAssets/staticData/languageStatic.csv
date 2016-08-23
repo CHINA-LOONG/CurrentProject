@@ -383,6 +383,12 @@ Mischievous,狡猾,Support - Harmful Effects
 Collaborate,互助,Support - Beneficial Effects
 Compassion,善良,Healer
 Humility,谨慎,Defense
+descrip_valor,勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述,Attack - Physical  description
+descrip_spiritual,聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述,Attack - Magical   description
+descrip_mischievous,狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述,Support - Harmful Effects   description
+descrip_collaborate,互助描述互助描述互助描述互助描述互助描述互助描述互助描述,Support - Beneficial Effects   description
+descrip_compassion,善良描述善良描述善良描述善良描述善良描述善良描述善良描述,Healer   description
+descrip_humility,谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述,Defense   description
 miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
 miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
 miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
@@ -497,29 +503,29 @@ name_50007_gaojipilaoyaoshui,活力饼干大,Energy Cookies(Large)
 name_50008_shuangbeijingyanyao,双倍经验药,doubleExpMedicine
 name_50009_sanbeijingyanyao,三倍经验药,tribleExpMedicine
 name_70001_fangyuxingwuqi,防御型武器,weapon1
-name_70002_fangyuxinghuyao,防御型护腰,belt1
-name_70003_fangyuxinghujia,防御型护甲,armor1
-name_70004_fangyuxingshouzhuo,防御型手镯,bracelet1
+name_70002_fangyuxinghujia,防御型护甲,belt1
+name_70003_fangyuxingtoukui,防御型头盔,armor1
+name_70004_fangyuxinghuwan,防御型护腕,bracelet1
 name_70005_fangyuxingjiezhi,防御型戒指,ring1
-name_70006_fangyuxinghushenfu,防御型护身符,amulet1
+name_70006_fangyuxingshipin,防御型饰品,amulet1
 name_70007_wulixingwuqi,物理型武器,weapon2
-name_70008_wulixinghuyao,物理型护腰,belt2
-name_70009_wulixinghujia,物理型护甲,armor2
-name_70010_wulixingshouzhuo,物理型手镯,bracelet2
+name_70008_wulixinghujia,物理型护甲,belt2
+name_70009_wulixingtoukui,物理型头盔,armor2
+name_70010_wulixinghuwan,物理型护腕,bracelet2
 name_70011_wulixingjiezhi,物理型戒指,ring2
-name_70012_wulixinghushenfu,物理型护身符,amulet2
+name_70012_wulixingshipin,物理型饰品,amulet2
 name_70013_fashuxingwuqi,法术型武器,weapon3
-name_70014_fashuxinghuyao,法术型护腰,belt3
-name_70015_fashuxinghujia,法术型护甲,armor3
-name_70016_fashuxingshouzhuo,法术型手镯,bracelet3
+name_70014_fashuxinghujia,法术型护甲,belt3
+name_70015_fashuxingtoukui,法术型头盔,armor3
+name_70016_fashuxinghuwan,法术型护腕,bracelet3
 name_70017_fashuxingjiezhi,法术型戒指,ring3
-name_70018_fashuxinghushenfu,法术型护身符,amulet3
+name_70018_fashuxingshipin,法术型饰品,amulet3
 name_70019_zhiyuanxingwuqi,支援型武器,weapon4
-name_70020_zhiyuanxinghuyao,支援型护腰,belt4
-name_70021_zhiyuanxinghujia,支援型护甲,armor4
-name_70022_zhiyuanxingshouzhuo,支援型手镯,bracelet4
+name_70020_zhiyuanxinghujia,支援型护甲,belt4
+name_70021_zhiyuanxingtoukui,支援型头盔,armor4
+name_70022_zhiyuanxinghuwan,支援型护腕,bracelet4
 name_70023_zhiyuanxingjiezhi,支援型戒指,ring4
-name_70024_zhiyuanxinghushenfu,支援型护身符,amulet4
+name_70024_zhiyuanxingshipin,支援型饰品,amulet4
 tips_11Gmjian,佳沛出品,made by jiapei
 tips_10001_yaoshi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10002_wuming,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
@@ -1054,6 +1060,27 @@ magicEarthBallStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals
 magicEarthColumnSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnMediumTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicMetalSlightDescription,给单体目标造成{0}%物攻的光属性伤害,Deals ({0}% of physical ATK) light type physical damage to a single target
+magicPlantSlightDescription,给单体目标造成{0}%物攻的木属性伤害,Deals ({0}% of physical ATK) grass type physical damage to a single target
+magicWaterSlightDescription,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicFireSlightDescription,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicEarthSlightDescription,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicCureSlightDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureMediumDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureStrongDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+buffSpeedDescription,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfDescription,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicDescription,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfDescription,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackDescription,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfDescription,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseDescription,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfDescription,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
+buffHotDescription,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseDescription,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
+debuffAttackDescription,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicDescription,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedDescription,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
 physicdebuffFireDotSlightTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
 physicdebuffFireDotMediumTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
 physicdebuffFireDotStrongTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
@@ -1113,6 +1140,7 @@ psvHetong2Tips,血量小于等于总血量{0}%时，提升自身{1}%智力,"When
 psvWagui3Tips,受到伤害时，{0}%降低攻击者{1}%速度，持续{2}回合,Gives an {0}% chance of reducing the SPD of your attacker by {1}% whenever you take damage for {2} turns
 psvHuapo2Tips,使用物理技能时，{0}%提升自身{1}%力量，持续{2}回合,"Whenever you cast a physical ability, there is a {0}% chance of increasing your STR by {1}% for {2} turns "
 psvCike4Tips,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvLangren3Tips,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
 psvPanshen2Tips,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
 psvWushi4Tips,血量小于等于总血量{0}%时，提升自身{1}%速度,"When HP drops below {0}% of your total HP amount, increase your SPD by {1}%"
 psvWushi3Tips,战斗开始时，提升己方全体{0}%智力，持续{1}回合,"At the start of battle, increase all allies' INT by {0}% for XX turns"
@@ -1177,3 +1205,575 @@ bossxiaoxiang27hetong21Tips,给群体目标造成{0}%法攻的草属性法术伤
 bossxiaoxiang27hetong22Tips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
 bossxiaoxiang27hetong23Tips,提升自身{0}%智力,Increases your INT by {0}%
 bossxiaoxiang27hetong24Tips,给单体目标连续造成{0}次{1}%法攻的草属性法术伤害,Repeatedly deals ({0}% of magic ATK) grass type magic damage {1} times to a single target
+attackMetalCutSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalCutMediumDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalCutStrongDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackPlantCutSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantCutMediumDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantCutStrongDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackWaterCutSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterCutMediumDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterCutStrongDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackFireCutSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireCutMediumDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireCutStrongDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackEarthCutSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthCutMediumDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthCutStrongDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackMetalStabSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalStabMediumDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalStabStrongDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackPlantStabSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantStabMediumDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantStabStrongDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackWaterStabSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterStabMediumDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterStabStrongDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackFireStabSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireStabMediumDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireStabStrongDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackEarthStabSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthStabMediumDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthStabStrongDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackMetalSmashSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalSmashMediumDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackMetalSmashStrongDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackPlantSmashSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantSmashMediumDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackPlantSmashStrongDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackWaterSmashSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterSmashMediumDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackWaterSmashStrongDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackFireSmashSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireSmashMediumDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackFireSmashStrongDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackEarthSmashSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthSmashMediumDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackEarthSmashStrongDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+attackMetalSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackPlantSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackWaterSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackFireSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackEarthSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+magicMetalBallSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicMetalBallMediumDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicMetalBallStrongDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicMetalColumnSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicMetalColumnMediumDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicMetalColumnStrongDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicPlantBallSlightDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicPlantBallMediumDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicPlantBallStrongDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicPlantColumnSlightDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicPlantColumnMediumDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicPlantColumnStrongDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicWaterBallSlightDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicWaterBallMediumDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicWaterBallStrongDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicWaterColumnSlightDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicWaterColumnMediumDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicWaterColumnStrongDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicFireBallSlightDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicFireBallMediumDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicFireBallStrongDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicFireColumnSlightDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicFireColumnMediumDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicFireColumnStrongDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicEarthBallSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicEarthBallMediumDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicEarthBallStrongDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicEarthColumnSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicEarthColumnMediumDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicEarthColumnStrongDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicMetalSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicPlantSlightDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicWaterSlightDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicFireSlightDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicEarthSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+magicCureSlightDescription,给单体目标回复生命值,Recovers HP for a single target
+magicCureMediumDescription,给单体目标回复生命值,Recovers HP for a single target
+magicCureStrongDescription,给单体目标回复生命值,Recovers HP for a single target
+buffSpeedDescription,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfDescription,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicDescription,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfDescription,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackDescription,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfDescription,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseDescription,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfDescription,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
+buffHotDescription,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseDescription,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
+debuffAttackDescription,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicDescription,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedDescription,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
+physicdebuffFireDotSlightDescription,"给单体目标每回合造成火属性物理伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+physicdebuffFireDotMediumDescription,"给单体目标每回合造成火属性物理伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+physicdebuffFireDotStrongDescription,"给单体目标每回合造成火属性物理伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+physicdebuffWaterDotSlightDescription,"给单体目标每回合造成水属性物理伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+physicdebuffWaterDotMediumDescription,"给单体目标每回合造成水属性物理伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+physicdebuffWaterDotStrongDescription,"给单体目标每回合造成水属性物理伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+physicdebuffPlantDotSlightDescription,"给单体目标每回合造成木属性物理伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+physicdebuffPlantDotMediumDescription,"给单体目标每回合造成木属性物理伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+physicdebuffPlantDotStrongDescription,"给单体目标每回合造成木属性物理伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+physicdebuffMetalDotSlightDescription,"给单体目标每回合造成光属性物理伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+physicdebuffMetalDotMediumDescription,"给单体目标每回合造成光属性物理伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+physicdebuffMetalDotStrongDescription,"给单体目标每回合造成光属性物理伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+physicdebuffEarthDotSlightDescription,"给单体目标每回合造成暗属性物理伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+physicdebuffEarthDotMediumDescription,"给单体目标每回合造成暗属性物理伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+physicdebuffEarthDotStrongDescription,"给单体目标每回合造成暗属性物理伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+magicdebuffFireDotSlightDescription,"给单体目标每回合造成火属性法术伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+magicdebuffFireDotMediumDescription,"给单体目标每回合造成火属性法术伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+magicdebuffFireDotStrongDescription,"给单体目标每回合造成火属性法术伤害,持续3回合",Deals fire type damage to a single target each turn for 3 turns
+magicdebuffWaterDotSlightDescription,"给单体目标每回合造成水属性法术伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+magicdebuffWaterDotMediumDescription,"给单体目标每回合造成水属性法术伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+magicdebuffWaterDotStrongDescription,"给单体目标每回合造成水属性法术伤害,持续3回合",Deals water type damage to a single target each turn for 3 turns
+magicdebuffPlantDotSlightDescription,"给单体目标每回合造成木属性法术伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+magicdebuffPlantDotMediumDescription,"给单体目标每回合造成木属性法术伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+magicdebuffPlantDotStrongDescription,"给单体目标每回合造成木属性法术伤害,持续3回合",Deals grass type damage to a single target each turn for 3 turns
+magicdebuffMetalDotSlightDescription,"给单体目标每回合造成光属性法术伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+magicdebuffMetalDotMediumDescription,"给单体目标每回合造成光属性法术伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+magicdebuffMetalDotStrongDescription,"给单体目标每回合造成光属性法术伤害,持续3回合",Deals light type damage to a single target each turn for 3 turns
+magicdebuffEarthDotSlightDescription,"给单体目标每回合造成暗属性法术伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+magicdebuffEarthDotMediumDescription,"给单体目标每回合造成暗属性法术伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+magicdebuffEarthDotStrongDescription,"给单体目标每回合造成暗属性法术伤害,持续3回合",Deals dark type damage to a single target each turn for 3 turns
+ultXiaochou3Description,给群体目标造成水属性法术伤害,Deals water type magic damage to all enemy targets
+ultXiaochou4Description,在3秒内进行操作，每次操作给单体目标造成火属性法术伤害,"Carry out actions for 3 seconds, each action dealing fire type magic damage to a single target"
+ultKairuisi4Description,给群体目标造成火属性法术伤害,Deals fire type magic damage to all enemy targets
+ultHetong2Description,在3秒内进行操作，每次操作给单体目标造成草属性法术伤害,"Carry out actions for 3 seconds, each action dealing grass type magic damage to a single target"
+ultWagui3Description,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+ultHuapo2Description,在3秒内进行操作，每次操作给单体目标造成草属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
+ultCike4Description,嘲讽敌方全体，持续一定回合,Provoke all enemy targets for some turns
+ultPanshen2Description,在3秒内进行操作，每次操作给单体目标造成草属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
+ultWushi4Description,给己方全体目标提升力量与智力，持续一定回合,Increases all allies' STR and INT for some turns
+ultWushi3Description,在3秒内进行操作，每次操作给单体目标造成水属性法术伤害,"Carry out actions for 3 seconds, each action dealing water type magic damage to a single target"
+ultXiyiren4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target"
+ultXiyiren2Description,嘲讽敌方全体，持续一定回合,Provoke all enemy targets for some turns
+ultMantuoluo2Description,给单体目标回复生命值,Recovers HP for a single target 
+ultHetong3Description,给群体目标造成水属性法术伤害,Deals water type magic damage to all enemy targets
+ultLonggongtongzi3Description,给群体目标回复生命值,Recovers HP for all allies
+ultLangren5Description,在3秒内进行操作，每次操作给单体目标造成暗属性物理伤害,"Carry out actions for 3 seconds, each action dealing dark type physical damage to a single target"
+ultLangren3Description,嘲讽敌方全体，持续一定回合,Provoke all enemy targets for some turns
+ultKairuisi5Description,给群体目标造成暗属性法术伤害并小概率附加失心效果,Deals dark type magic damage to all enemy targets with a small chance of Stupefying effect
+ultNvyao5Description,给单体目标造成暗属性法术伤害,Deals dark type magic damage to all enemy targets 
+ultHapi1Description,给群体目标回复生命值并附加恢复术效果,"Recovers HP for all allies, and buffs all healing effects "
+ultPiying5Description,给群体目标造成暗属性法术伤害,Deals dark type magic damage to all enemy targets
+ultShuigui3Description,给群体目标造成水属性法术伤害并小概率附加眩晕效果,Deals water type magic damage to all enemy targets with a small chance of stunning effects
+psvXiaochou3Description,永久提升10%智力,Permanently increases INT by 10%
+psvXiaochou4Description,永久提升10%智力,Permanently increases INT by 10%
+psvKairuisi4Description,使用法术技能时，{0}%提升自身{1}%智力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of increasing your INT by {1}% for {2} turns "
+psvHetong2Description,血量小于等于总血量{0}%时，提升自身{1}%智力,"When HP drops below {0}% of your total HP amount, increase your INT by {1}%"
+psvWagui3Description,受到伤害时，{0}%降低攻击者{1}%速度，持续{2}回合,Gives an {0}% chance of reducing the SPD of your attacker by {1}% whenever you take damage for {2} turns
+psvHuapo2Description,使用物理技能时，{0}%提升自身{1}%力量，持续{2}回合,"Whenever you cast a physical ability, there is a {0}% chance of increasing your STR by {1}% for {2} turns "
+psvCike4Description,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvLangren3Description,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvPanshen2Description,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+psvWushi4Description,血量小于等于总血量{0}%时，提升自身{1}%速度,"When HP drops below {0}% of your total HP amount, increase your SPD by {1}%"
+psvWushi3Description,战斗开始时，提升己方全体{0}%智力，持续{1}回合,"At the start of battle, increase all allies' INT by {0}% for XX turns"
+psvXiyiren4Description,永久提升10%力量,Increases INT permanently by 10%
+psvXiyiren2Description,使用物理技能时，{0}%嘲讽被攻击者，持续{1}回合,"Whenever you cast a physical ability, there is a {0}% chance of casting Provoke on your target for {1} turns "
+psvMantuoluo2Description,受到伤害时，{0}%提高自身{0}%智力，持续{1}回合,Gives an {0}% chance of increasing your INT by {1}% for {2} turns whenever you take damage
+psvHetong3Description,战斗开始时，提升己方全体{0}%防御力，持续{1}回合,"At the start of battle, increase all allies' DEF by {0}% for {1} turns"
+psvLonggongtongzi3Description,永久提升10%暴击率,Increases Crit Rate permanently by 10%
+psvLangren5Description,使用物理技能时，{0}%恢复自身{1}%法攻的生命值,"Whenever you cast a physical ability, there is a {0}% chance of recovering ({1}% of magic ATK) HP "
+psvKairuisi5Description,死亡时，降低敌方群体{0}%防御力，持续{1}回合,"Upon dying, reduce all enemies' DEF by {0}% for {1} turns"
+psvNvyao5Description,使用法术技能时，{0}%降低被攻击者{1}%防御力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of reducing your target's DEF by {1}% for {2} turns "
+psvHapi1Description,死亡时，己方全体回复{0}%法攻的生命值,"Upon dying, recover ({0}% of magic ATK) HP for all allies"
+psvPiying5Description,使用法术技能时，{0}%给被攻击者附加痛楚效果,"Whenever you cast a magic ability, there is a {0}% chance of dealing your target an additional Anguish effect"
+psvShuigui3Description,使用buff技能时，{0}%给被攻击者附加眩晕效果,"Whenever you cast a buff ability, there is a {0}% chance of stunning your target"
+attackMetalCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalCutMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalCutStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicMetalBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicCureSlightCurlvl,{0}%法攻生命,{0}% of magic ATK HP
+magicCureMediumCurlvl,{0}%法攻生命,{0}% of magic ATK HP
+magicCureStrongCurlvl,{0}%法攻生命,{0}% of magic ATK HP
+buffSpeedCurlvl,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfCurlvl,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicCurlvl,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfCurlvl,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackCurlvl,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfCurlvl,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseCurlvl,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfCurlvl,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
+buffHotCurlvl,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseCurlvl,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
+debuffAttackCurlvl,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicCurlvl,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedCurlvl,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
+physicdebuffFireDotSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffFireDotMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffFireDotStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicdebuffFireDotSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffFireDotMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffFireDotStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiaochou3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiaochou4Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultKairuisi4Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHetong2Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultWagui3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHuapo2Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultCike4Curlvl,持续{0}回合,{0} turns
+ultPanshen2Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultWushi4Curlvl,提升{0}%力量与智力，持续{0}回合,Increases by {0}% for {0} turns
+ultWushi3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiyiren4Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultXiyiren2Curlvl,持续{0}回合,{0} turns
+ultMantuoluo2Curlvl,{0}%法攻生命,{0}% of magic ATK HP
+ultHetong3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultLonggongtongzi3Curlvl,{0}%法攻生命,{0}% of magic ATK HP
+ultLangren5Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultLangren3Curlvl,持续{0}回合,{0} turns
+ultKairuisi5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultNvyao5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHapi1Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultPiying5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultShuigui3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+psvXiaochou3Curlvl,永久提升10%智力,Permanently increases INT by 10%
+psvXiaochou4Curlvl,永久提升10%智力,Permanently increases INT by 10%
+psvKairuisi4Curlvl,使用法术技能时，{0}%提升自身{1}%智力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of increasing your INT by {1}% for {2} turns "
+psvHetong2Curlvl,血量小于等于总血量{0}%时，提升自身{1}%智力,"When HP drops below {0}% of your total HP amount, increase your INT by {1}%"
+psvWagui3Curlvl,受到伤害时，{0}%降低攻击者{1}%速度，持续{2}回合,Gives an {0}% chance of reducing the SPD of your attacker by {1}% whenever you take damage for {2} turns
+psvHuapo2Curlvl,使用物理技能时，{0}%提升自身{1}%力量，持续{2}回合,"Whenever you cast a physical ability, there is a {0}% chance of increasing your STR by {1}% for {2} turns "
+psvCike4Curlvl,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvLangren3Curlvl,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvPanshen2Curlvl,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+psvWushi4Curlvl,血量小于等于总血量{0}%时，提升自身{1}%速度,"When HP drops below {0}% of your total HP amount, increase your SPD by {1}%"
+psvWushi3Curlvl,战斗开始时，提升己方全体{0}%智力，持续{1}回合,"At the start of battle, increase all allies' INT by {0}% for XX turns"
+psvXiyiren4Curlvl,永久提升10%力量,Increases INT permanently by 10%
+psvXiyiren2Curlvl,使用物理技能时，{0}%嘲讽被攻击者，持续{1}回合,"Whenever you cast a physical ability, there is a {0}% chance of casting Provoke on your target for {1} turns "
+psvMantuoluo2Curlvl,受到伤害时，{0}%提高自身{0}%智力，持续{1}回合,Gives an {0}% chance of increasing your INT by {1}% for {2} turns whenever you take damage
+psvHetong3Curlvl,战斗开始时，提升己方全体{0}%防御力，持续{1}回合,"At the start of battle, increase all allies' DEF by {0}% for {1} turns"
+psvLonggongtongzi3Curlvl,永久提升10%暴击率,Increases Crit Rate permanently by 10%
+psvLangren5Curlvl,使用物理技能时，{0}%恢复自身{1}%法攻的生命值,"Whenever you cast a physical ability, there is a {0}% chance of recovering ({1}% of magic ATK) HP "
+psvKairuisi5Curlvl,死亡时，降低敌方群体{0}%防御力，持续{1}回合,"Upon dying, reduce all enemies' DEF by {0}% for {1} turns"
+psvNvyao5Curlvl,使用法术技能时，{0}%降低被攻击者{1}%防御力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of reducing your target's DEF by {1}% for {2} turns "
+psvHapi1Curlvl,死亡时，己方全体回复{0}%法攻的生命值,"Upon dying, recover ({0}% of magic ATK) HP for all allies"
+psvPiying5Curlvl,使用法术技能时，{0}%给被攻击者附加痛楚效果,"Whenever you cast a magic ability, there is a {0}% chance of dealing your target an additional Anguish effect"
+psvShuigui3Curlvl,使用buff技能时，{0}%给被攻击者附加眩晕效果,"Whenever you cast a buff ability, there is a {0}% chance of stunning your target"
+attackMetalCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalStabStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantStabStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterStabStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireStabStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthStabStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackMetalSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicMetalBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicMetalSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicCureSlightNextlvl,{0}%法攻生命,{0}% of magic ATK HP
+magicCureMediumNextlvl,{0}%法攻生命,{0}% of magic ATK HP
+magicCureStrongNextlvl,{0}%法攻生命,{0}% of magic ATK HP
+buffSpeedNextlvl,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfNextlvl,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicNextlvl,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfNextlvl,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackNextlvl,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfNextlvl,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseNextlvl,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfNextlvl,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
+buffHotNextlvl,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseNextlvl,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
+debuffAttackNextlvl,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicNextlvl,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedNextlvl,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
+physicdebuffFireDotSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffFireDotMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffFireDotStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffWaterDotStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffPlantDotStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffMetalDotStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+physicdebuffEarthDotStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicdebuffFireDotSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffFireDotMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffFireDotStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffWaterDotStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffPlantDotStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffMetalDotStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicdebuffEarthDotStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiaochou3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiaochou4Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultKairuisi4Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHetong2Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultWagui3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHuapo2Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultCike4Nextlvl,持续{0}回合,{0} turns
+ultPanshen2Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultWushi4Nextlvl,提升{0}%力量与智力，持续{0}回合,Increases by {0}% for {0} turns
+ultWushi3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultXiyiren4Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultXiyiren2Nextlvl,持续{0}回合,{0} turns
+ultMantuoluo2Nextlvl,{0}%法攻生命,{0}% of magic ATK HP
+ultHetong3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultLonggongtongzi3Nextlvl,{0}%法攻生命,{0}% of magic ATK HP
+ultLangren5Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+ultLangren3Nextlvl,持续{0}回合,{0} turns
+ultKairuisi5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultNvyao5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultHapi1Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultPiying5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultShuigui3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+psvXiaochou3Nextlvl,永久提升10%智力,Permanently increases INT by 10%
+psvXiaochou4Nextlvl,永久提升10%智力,Permanently increases INT by 10%
+psvKairuisi4Nextlvl,使用法术技能时，{0}%提升自身{1}%智力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of increasing your INT by {1}% for {2} turns "
+psvHetong2Nextlvl,血量小于等于总血量{0}%时，提升自身{1}%智力,"When HP drops below {0}% of your total HP amount, increase your INT by {1}%"
+psvWagui3Nextlvl,受到伤害时，{0}%降低攻击者{1}%速度，持续{2}回合,Gives an {0}% chance of reducing the SPD of your attacker by {1}% whenever you take damage for {2} turns
+psvHuapo2Nextlvl,使用物理技能时，{0}%提升自身{1}%力量，持续{2}回合,"Whenever you cast a physical ability, there is a {0}% chance of increasing your STR by {1}% for {2} turns "
+psvCike4Nextlvl,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvLangren3Nextlvl,受到伤害时，{0}%嘲讽攻击者，持续{1}回合,Gives an {0}% chance of casting Provoke on your attacker for {1} turns whenever you take damage
+psvPanshen2Nextlvl,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+psvWushi4Nextlvl,血量小于等于总血量{0}%时，提升自身{1}%速度,"When HP drops below {0}% of your total HP amount, increase your SPD by {1}%"
+psvWushi3Nextlvl,战斗开始时，提升己方全体{0}%智力，持续{1}回合,"At the start of battle, increase all allies' INT by {0}% for XX turns"
+psvXiyiren4Nextlvl,永久提升10%力量,Increases INT permanently by 10%
+psvXiyiren2Nextlvl,使用物理技能时，{0}%嘲讽被攻击者，持续{1}回合,"Whenever you cast a physical ability, there is a {0}% chance of casting Provoke on your target for {1} turns "
+psvMantuoluo2Nextlvl,受到伤害时，{0}%提高自身{0}%智力，持续{1}回合,Gives an {0}% chance of increasing your INT by {1}% for {2} turns whenever you take damage
+psvHetong3Nextlvl,战斗开始时，提升己方全体{0}%防御力，持续{1}回合,"At the start of battle, increase all allies' DEF by {0}% for {1} turns"
+psvLonggongtongzi3Nextlvl,永久提升10%暴击率,Increases Crit Rate permanently by 10%
+psvLangren5Nextlvl,使用物理技能时，{0}%恢复自身{1}%法攻的生命值,"Whenever you cast a physical ability, there is a {0}% chance of recovering ({1}% of magic ATK) HP "
+psvKairuisi5Nextlvl,死亡时，降低敌方群体{0}%防御力，持续{1}回合,"Upon dying, reduce all enemies' DEF by {0}% for {1} turns"
+psvNvyao5Nextlvl,使用法术技能时，{0}%降低被攻击者{1}%防御力，持续{2}回合,"Whenever you cast a magic ability, there is a {0}% chance of reducing your target's DEF by {1}% for {2} turns "
+psvHapi1Nextlvl,死亡时，己方全体回复{0}%法攻的生命值,"Upon dying, recover ({0}% of magic ATK) HP for all allies"
+psvPiying5Nextlvl,使用法术技能时，{0}%给被攻击者附加痛楚效果,"Whenever you cast a magic ability, there is a {0}% chance of dealing your target an additional Anguish effect"
+psvShuigui3Nextlvl,使用buff技能时，{0}%给被攻击者附加眩晕效果,"Whenever you cast a buff ability, there is a {0}% chance of stunning your target"
+bigTaskname201,小巷探秘,Alley Quest
+bigTaskname202,小巷寻宝,Lane Digging Treasure
+bigTaskname301,森林探秘,Forest Explore
+bigTaskname302,森林寻宝,Forest Treasure
+bigTaskname401,火山探秘,Volcano Explore
+bigTaskname402,火山寻宝,Volcano Treasure
+bigTaskdesc1,（主产宠物碎片）,(Drops Monster Fragments)
+bigTaskdesc2,（主产宝石）,(Drops Gems)
+name_40005_bigTaskleader201,队长礼包,Captain packs
+name_40006_bigTaskleader301,队长礼包,Captain packs
+name_40007_bigTaskleader401,队长礼包,Captain packs
+name_40008_bigTaskleader202,队长礼包,Captain packs
+name_40009_bigTaskleader302,队长礼包,Captain packs
+name_40010_bigTaskleader402,队长礼包,Captain packs
+tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40008_bigTaskleader202,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40009_bigTaskleader302,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40010_bigTaskleader402,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+smallTarget10001,提交1000金币,Submit 1000 coins
+smallTarget10002,提交2000金币,Submit 2000 coins
+smallTarget10003,提交3000金币,Submit 3000 coins
+smallTarget10004,提交4000金币,Submit 4000 coins
+smallTarget10005,提交5000金币,Submit 5000 coins
+smallTarget10006,提交6000金币,Submit 6000 coins
+smallTarget10007,提交7000金币,Submit 7000 coins
+smallTarget10008,提交8000金币,Submit 8000 coins
+smallTarget10009,提交9000金币,Submit 9000 coins
+smallTarget10010,提交9500金币,Submit 9500 coins
+smallTarget10011,提交8500金币,Submit 8500 coins
+smallTarget20001,提交5个初级装备强化石,Submit 5 basic upgrade stone
+smallTarget20002,提交5个初级装备强化石,Submit 5 basic upgrade stone
+smallTarget20003,提交5个中级装备强化石,Submit 5 standard  upgrade stone
+smallTarget20004,提交5个高级装备强化石,Submit 5 superior  upgrade stone
+smallTarget20005,提交5个装备进阶石,Submit 5 Advanced stone
+smallTarget20006,提交5个装备进阶卷轴,Submit 5 Advanced scroll
+smallTarget20007,提交5个宝石开孔石,Submit 5 Gem Socketing Chisel
+smallTarget20008,提交5个进阶卷轴碎片,Submit 5 Advanced scroll chip
+smallTarget20009,提交5个木质宝箱钥匙,Submit 5 Wood Key
+smallTarget20010,提交5个铁质宝箱钥匙,Submit 5 Iron Key
+smallTarget20011,提交5个白银宝箱钥匙,Submit 5 Silver Key
+smallTarget30001,成功通关副本,Complete  instance  successfully
+smallTarget30002,成功通关副本,Complete  instance  successfully
+smallTarget30003,成功通关副本,Complete  instance  successfully
+smallTarget30004,成功通关副本,Complete  instance  successfully
+smallTarget30005,成功通关副本,Complete  instance  successfully

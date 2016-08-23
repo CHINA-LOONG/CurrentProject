@@ -61,7 +61,7 @@ public class AccountZmqServer extends HawkTickable{
 	 * 函数
 	 */
 	private AccountZmqServer() {
-		
+
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class AccountZmqServer extends HawkTickable{
 	public String getName() {
 		return this.getClass().getSimpleName();
 	}
-	
+
 	/**
 	 * 解析zmq投递参数
 	 * 
@@ -99,7 +99,7 @@ public class AccountZmqServer extends HawkTickable{
 		}
 		return paramMap;
 	}
-	
+
 	/**
 	 * 开启服务
 	 */
@@ -113,25 +113,25 @@ public class AccountZmqServer extends HawkTickable{
 			HawkLog.logPrintln("service zmq bind failed......");
 			return false;
 		}
-		
+
 		if (pool > 0) {
 			threadPool = new HawkThreadPool(getClass().getSimpleName());
 			if (!threadPool.initPool(pool)) {
 				return false;
 			}
-			
+
 			if (!threadPool.start()) {
 				return false;
 			}
-			
+
 			HawkLog.logPrintln("zmq service thread pool running......");
 		}
-		
+
 		serviceZmq.startMonitor(SocketEvent.CONNECTED | SocketEvent.DISCONNECTED);
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 停止服务
 	 */
@@ -141,7 +141,7 @@ public class AccountZmqServer extends HawkTickable{
 				HawkZmqManager.getInstance().closeZmq(serviceZmq);
 				serviceZmq = null;
 			}
-			
+
 			if (threadPool != null) {
 				threadPool.close(true);
 			}
@@ -149,7 +149,7 @@ public class AccountZmqServer extends HawkTickable{
 			HawkException.catchException(e);
 		}
 	}
-	
+
 	/**
 	 * 获取服务地址
 	 * 
@@ -158,7 +158,7 @@ public class AccountZmqServer extends HawkTickable{
 	public String getAddr() {
 		return this.zmqAddr;
 	}
-	
+
 	/**
 	 * 获取服务端口
 	 * 
@@ -174,7 +174,7 @@ public class AccountZmqServer extends HawkTickable{
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 帧更新事件
 	 */
@@ -204,7 +204,7 @@ public class AccountZmqServer extends HawkTickable{
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param reportPath
@@ -214,9 +214,9 @@ public class AccountZmqServer extends HawkTickable{
 		try {
 			if (reportPath.equals("/regist_gameserver")) {
 				RegistGameServerHandler.doReport(params);
-			}else if (reportPath.equals("/unregist_gameserver")) {				
+			}else if (reportPath.equals("/unregist_gameserver")) {
 				UnRegistGameServerHandler.doReport(params);
-			}else if (reportPath.equals("/report_roleCreate")) {				
+			}else if (reportPath.equals("/report_roleCreate")) {
 				UserCreateRoleHandler.doReport(params);
 			} else if (reportPath.equals("/report_levelUp")) {
 				UserLevelUpHandler.doReport(params);

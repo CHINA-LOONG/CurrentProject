@@ -352,14 +352,7 @@ public class AllianceTeamEntity extends HawkDBEntity{
 		
 		allianceEntity.removePlayerTeamMap(playerId);
 		if (isTeamEmpty() == true) {
-			if (allianceEntity.getFinishTeamList().get(id) != null) {
-				allianceEntity.getFinishTeamList().remove(id);
-			}
-			else if (allianceEntity.getUnfinishTeamList().get(id) != null) {
-				allianceEntity.getUnfinishTeamList().remove(id);
-			}
-
-			this.delete();
+			allianceEntity.removeTeam(id);
 		}
 		
 		return true;
@@ -380,8 +373,6 @@ public class AllianceTeamEntity extends HawkDBEntity{
 		}else if (member3 != 0) {
 			allianceEntity.removePlayerTeamMap(member3);
 		}
-		
-		this.delete();
 		
 		return true;
 	}

@@ -120,7 +120,7 @@ public class ShopManager extends HawkAppObj {
 														  "",
 														  "");
 		
-		HawkReportService.getInstance().report(rechargeData);
+		//HawkReportService.getInstance().report(rechargeData);
 		return true;
 	}
 }

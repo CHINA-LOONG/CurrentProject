@@ -73,6 +73,9 @@ public class SociatyTaskOther : MonoBehaviour
         PB.HSAllianceTeamListRet msgRet = message.GetProtocolBody<PB.HSAllianceTeamListRet>();
         sociatyDataMgr.teamList.Clear();
         sociatyDataMgr.teamList.AddRange(msgRet.allianceTeams);
+        //排序
+        sociatyDataMgr.teamList.Sort(SortTeamInfo);
+        //置顶
         if(topOtherTeamId > -1 )
         {
             PB.AllianceTeamInfo topTeam = null;
@@ -89,6 +92,17 @@ public class SociatyTaskOther : MonoBehaviour
             topOtherTeamId = -1;
         }
         RefreshUi();
+    }
+    int SortTeamInfo(PB.AllianceTeamInfo itemA, PB.AllianceTeamInfo itemB)
+    {
+        if (itemA.startTime > itemB.startTime)
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     void RefreshUi()

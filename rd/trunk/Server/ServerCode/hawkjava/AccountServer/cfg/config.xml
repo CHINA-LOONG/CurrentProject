@@ -5,6 +5,7 @@
 		<channel>test</channel>
 		<platform>ios</platform>
 		<serverId>account1</serverId>
+		<configPath>com.hawk.account.config</configPath>
 	</app>
 	
 	<httpServer>

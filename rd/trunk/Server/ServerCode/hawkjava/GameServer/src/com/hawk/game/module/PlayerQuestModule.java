@@ -129,7 +129,7 @@ public class PlayerQuestModule extends PlayerModule {
 		AwardItems awardItems = new AwardItems();
 		awardItems.addExp(exp);
 		awardItems.addItemInfos(list);
-		awardItems.rewardTakeAffectAndPush(player,  Action.QUEST_SUBMIT, HS.code.QUEST_SUBMIT_C_VALUE);
+		awardItems.rewardTakeAffectAndPush(player, Action.QUEST_SUBMIT, HS.code.QUEST_SUBMIT_C_VALUE);
 
 		// 记录
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();

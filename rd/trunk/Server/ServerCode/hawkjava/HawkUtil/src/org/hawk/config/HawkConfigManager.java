@@ -48,7 +48,7 @@ public class HawkConfigManager {
 		 */
 		public String struct() default "map";
 	}
-	
+
 	/**
 	 * xml类型配置注解
 	 * 
@@ -80,9 +80,7 @@ public class HawkConfigManager {
 		public Class<?> nestValueType() default Object.class;
 		public String struct() default "map";
 	}
-	
-	
-	
+
 	/**
 	 * kv类型配置注解
 	 * 
@@ -115,7 +113,7 @@ public class HawkConfigManager {
 		 * @return
 		 */
 		public String file() default "";
-		
+
 		/**
 		 * 存储结构, "map" | "list"
 		 * 
@@ -123,15 +121,16 @@ public class HawkConfigManager {
 		 */
 		public String struct() default "map";
 	}
-	
+
+	/**
+	 * 配置路径
+	 */
+	String workPath = null;
+
 	/**
 	 * 配置对象存储器
 	 */
 	private ConcurrentHashMap<Class<?>, HawkConfigStorage> storages = new ConcurrentHashMap<Class<?>, HawkConfigStorage>();
-	/**
-	 * 存储备份配置对象
-	 */
-	private Map<Class<?>, HawkConfigStorage> backupStorages = new ConcurrentHashMap<Class<?>, HawkConfigStorage>();
 	/**
 	 * 自动清理static容器数据
 	 */
@@ -160,12 +159,14 @@ public class HawkConfigManager {
 	 *            , 多个包以逗号分隔
 	 * @throws Exception
 	 */
-	public boolean init(String configPackages) {
+	public boolean init(String configPackages, String workPath) {
 		// 检测
 		if (!HawkNativeApi.checkHawk()) {
 			return false;
 		}
 		 
+		this.workPath = workPath;
+
 		try {
 			String[] configPackageArray = configPackages.split(",");
 			if (configPackageArray != null) {
@@ -173,18 +174,18 @@ public class HawkConfigManager {
 					HawkLog.logPrintln("init config package: " + configPackage);
 					List<Class<?>> classList = HawkClassScaner.scanClassesFilter(configPackage, 
 							CsvResource.class, XmlResource.class, KVResource.class, JsonResource.class);
-					
+
 					for (Class<?> configClass : classList) {
-						storages.put(configClass, new HawkConfigStorage(configClass));
+						storages.put(configClass, new HawkConfigStorage(configClass, workPath));
 					}
 				}
 			}
-			
+
 			// 最终校验配置文件数据
 			if (!checkConfigData()) {
 				return false;
 			}
-			
+
 			return true;
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -200,7 +201,7 @@ public class HawkConfigManager {
 	public void autoClearStaticData(boolean auto) {
 		this.autoClearStaticData = auto;
 	}
-	
+
 	/**
 	 * 检测配置数据
 	 * @return
@@ -213,9 +214,10 @@ public class HawkConfigManager {
 				return false;
 			}
 		}
-		return HawkApp.getInstance().checkConfigData();
+
+		return true;
 	}
-	
+
 	/**
 	 * 清理静态数据
 	 * 
@@ -229,7 +231,7 @@ public class HawkConfigManager {
 					if (!Modifier.isStatic(field.getModifiers())) {
 						continue;
 					}
-					
+
 					for (Method method : field.getType().getDeclaredMethods()) {
 						if (method.getName().equals("clear")) {
 							try {
@@ -249,11 +251,12 @@ public class HawkConfigManager {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 更新加载
 	 */
 	public boolean updateReload() {
+		Map<Class<?>, HawkConfigStorage> backupStorages = new ConcurrentHashMap<Class<?>, HawkConfigStorage>();
 		backupStorages.clear();
 		backupStorages.putAll(storages);
 		List<HawkConfigStorage> needCheckList = new LinkedList<>();
@@ -265,9 +268,9 @@ public class HawkConfigManager {
 					if (!clearConfigStaticData(entry.getKey())) {
 						continue;
 					}
-					
+
 					// 加载新配置信息
-					HawkConfigStorage configStorage = new HawkConfigStorage(entry.getKey());
+					HawkConfigStorage configStorage = new HawkConfigStorage(entry.getKey(), this.workPath);
 					storages.put(entry.getKey(), configStorage);
 					// 添加待检测列表
 					needCheckList.add(configStorage);
@@ -281,7 +284,7 @@ public class HawkConfigManager {
 			HawkException.catchException(e);
 			return false;
 		}
-		
+
 		for(HawkConfigStorage storage : needCheckList) {
 			// 校验失败即恢复备份配置信息
 			if (!storage.checkValid()) {
@@ -292,7 +295,7 @@ public class HawkConfigManager {
 			}
 			HawkLog.logPrintln("update config success: " + storage.getFilePath());
 		}
-		
+
 		HawkLog.logPrintln("check config finish: " + HawkTime.getTimeString());
 		return true;
 	}

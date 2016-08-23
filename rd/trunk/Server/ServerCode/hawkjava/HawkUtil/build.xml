@@ -66,12 +66,12 @@
         <pathelement location="lib/httpcore-nio-4.4.1.jar"/>
         <pathelement location="lib/concurrentlinkedhashmap-lru-1.4.jar"/>
         <pathelement location="lib/notnoop-javaapns-1.0.0.beta3.jar"/>
+        <pathelement location="lib/google-gcm-151226.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>

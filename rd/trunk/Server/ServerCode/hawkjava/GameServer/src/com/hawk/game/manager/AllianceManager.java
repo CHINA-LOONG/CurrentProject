@@ -2,6 +2,7 @@ package com.hawk.game.manager;
 
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -69,7 +70,7 @@ public class AllianceManager extends HawkAppObj {
 	/**
 	 * 申请列表
 	 */
-	private ConcurrentHashMap<Integer, HashSet<Integer>> playerApplyMap;
+	private ConcurrentHashMap<Integer, LinkedHashSet<Integer>> playerApplyMap;
 
 	/**
 	 * 玩家工会映射表
@@ -118,7 +119,7 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
-		playerApplyMap = new ConcurrentHashMap<Integer, HashSet<Integer>>();
+		playerApplyMap = new ConcurrentHashMap<Integer, LinkedHashSet<Integer>>();
 		playerAllianceMap = new ConcurrentHashMap<Integer, Integer>();
 		allianceLevelSet = new TreeSet<>(new Comparator<AllianceEntity>() {
             public int compare(AllianceEntity o1, AllianceEntity o2) {
@@ -352,9 +353,9 @@ public class AllianceManager extends HawkAppObj {
 	 * 添加申请列表
 	 */
 	public void addPlayerApply(int playerId, int allianceId) {
-		HashSet<Integer> allianceSet = playerApplyMap.get(playerId);
+		LinkedHashSet<Integer> allianceSet = playerApplyMap.get(playerId);
 		if (allianceSet == null) {
-			allianceSet = new HashSet<Integer>();
+			allianceSet = new LinkedHashSet<Integer>();
 			playerApplyMap.put(playerId, allianceSet);	
 		}
 		 
@@ -433,7 +434,7 @@ public class AllianceManager extends HawkAppObj {
 					}
 				}
 			}
-			playerAllianceMap.remove(playerId);
+			playerApplyMap.remove(playerId);
 		}
 	}
 	
@@ -492,12 +493,30 @@ public class AllianceManager extends HawkAppObj {
 		if (allianceEntity != null) {
 			for (int playerId : allianceEntity.getMemberList().keySet()) {
 				if (playerId != filterId && ServerData.getInstance().isPlayerOnline(playerId) == true) {
-					Player member = GsApp.getInstance().queryPlayer(playerId);
-					if (member != null && member.isOnline() && member.isAssembleFinish()) {
-						member.sendProtocol(protocol);
-					}
+					memberNotify(playerId, protocol);
 				}	
 			}
+		}
+	}
+	
+	/*
+	 * 队伍广播
+	 * @param teamEntity
+	 * @param protocol
+	 * @param filterId
+	 */
+	public void broadcastNotify(AllianceTeamEntity teamEntity, HawkProtocol protocol, int filterId) {	
+		if (teamEntity.getCaptain() != 0 && teamEntity.getCaptain() != filterId) {
+			memberNotify(teamEntity.getCaptain(), protocol);
+		}
+		if (teamEntity.getMember1() != 0 && teamEntity.getMember1() != filterId) {
+			memberNotify(teamEntity.getMember1(), protocol);
+		}
+		if (teamEntity.getMember2() != 0 && teamEntity.getMember2() != filterId) {
+			memberNotify(teamEntity.getMember1(), protocol);
+		}
+		if (teamEntity.getMember3() != 0 && teamEntity.getMember3() != filterId) {
+			memberNotify(teamEntity.getMember3(), protocol);
 		}
 	}
 	

@@ -24,7 +24,7 @@ public class UserLevelUpHandler implements HttpHandler{
 			AccountHttpServer.response(httpExchange, null);
 		}
 	}
-	
+
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
 			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %d, %d", 
@@ -34,8 +34,9 @@ public class UserLevelUpHandler implements HttpHandler{
 			HawkLog.logPrintln("report_createRole: " + value);
 
 			// 更新
-			String sql = String.format("UPDATE role SET level = %d WHERE game = \"%s\" AND channel = \"%s\" AND platform = \"%s\" AND server = \"%s\" AND puid = \"%s\" AND playerid = %d", 
-					Integer.valueOf(params.get("level")), params.get("game"), params.get("channel"), params.get("platform"), params.get("server"), params.get("puid"), Integer.valueOf(params.get("playerid")));
+			String sql = String.format("UPDATE role SET level = %d WHERE game = \"%s\" AND channel = \"%s\" AND platform = \"%s\" AND server = %d AND puid = \"%s\" AND playerid = %d", 
+					Integer.valueOf(params.get("level")), params.get("game"), params.get("channel"), params.get("platform"), 
+					Integer.valueOf(params.get("server")), params.get("puid"), Integer.valueOf(params.get("playerid")));
 
 			HawkLog.logPrintln("report_UpdateLevel: " + sql);
 			DBManager.getInstance().executeSql("account", sql);

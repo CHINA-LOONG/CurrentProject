@@ -23,11 +23,13 @@ public class RegistGameServerHandler implements HttpHandler{
 			AccountHttpServer.response(httpExchange, null);
 		}
 	}
-	
+
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
-			if (params.get("server") != null && params.get("ip") != null && params.get("port") != null) {
-				AccountServices.getInstance().addGameServer(new AccountServices.GameServer(params.get("server"), params.get("ip"), Integer.valueOf(params.get("port"))));
+			// 初始化服务器地址
+			if (params.get("server") != null && params.get("ip") != null && params.get("port") != null){
+				// 更新服务器状态
+				AccountServices.getInstance().registGameServer(Integer.valueOf(params.get("server")), params.get("ip"), Integer.valueOf(params.get("port")));
 			}
 		}
 	}

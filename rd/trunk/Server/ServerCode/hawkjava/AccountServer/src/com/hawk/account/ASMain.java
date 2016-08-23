@@ -18,7 +18,7 @@ public class ASMain {
 			} else {
 				HawkLog.errPrintln("Account Server Init Failed.");
 			}
-			
+
 			// 退出
 			HawkLog.logPrintln("account server exit");
 			System.exit(0);

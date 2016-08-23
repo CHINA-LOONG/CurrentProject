@@ -34,7 +34,7 @@ public class EXPListItem : MonoBehaviour
         set 
         { 
             isMaxlevel = value;
-            SetButton();
+            //SetButton();
         }
     }
     private bool isNone = false;
@@ -49,25 +49,26 @@ public class EXPListItem : MonoBehaviour
     }
     void SetButton()
     {
-        bool isActive = !(IsMaxlevel/* || IsNone*/);
-        btnUsed.interactable = isActive;
-        if (isActive)
-        {
+        //bool isActive = !(IsMaxlevel/* || IsNone*/);
+        //btnUsed.interactable = isActive;
+        //if (isActive)
+        //{
             ScrollViewEventListener.Get(btnUsed.gameObject).onDown = OnButtonDown;
             ScrollViewEventListener.Get(btnUsed.gameObject).onUp = OnButtonUp;
             ScrollViewEventListener.Get(btnUsed.gameObject).onExit = OnButtonExit;
-        }
-        else
-        {
-            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = null;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = null;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = null;
-        }
+        //}
+        //else
+        //{
+        //    ScrollViewEventListener.Get(btnUsed.gameObject).onDown = null;
+        //    ScrollViewEventListener.Get(btnUsed.gameObject).onUp = null;
+        //    ScrollViewEventListener.Get(btnUsed.gameObject).onExit = null;
+        //}
     }
 
     void Start()
     {
         text_Use.text = StaticDataMgr.Instance.GetTextByID("exp_use");
+        SetButton();
     }
 
     public void OnReload(ItemStaticData staticData,bool isMaxleve)
@@ -140,8 +141,16 @@ public class EXPListItem : MonoBehaviour
 
     void OnButtonDown(GameObject go)
     {
-        InvokeRepeating("UsedExp", 1.0f, 0.1f);
-        UsedExp();
+        if (!IsMaxlevel)
+        {
+            InvokeRepeating("UsedExp", 1.0f, 0.1f);
+            UsedExp();
+        }
+        else
+        {
+            OnButtonUp(null);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_002"), (int)PB.ImType.PROMPT);
+        }
     }
     void OnButtonUp(GameObject go)
     {

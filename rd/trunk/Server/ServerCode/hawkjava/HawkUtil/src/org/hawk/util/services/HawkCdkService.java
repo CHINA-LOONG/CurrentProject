@@ -48,7 +48,8 @@ public class HawkCdkService {
 	 */
 	private String gameName = "";
 	private String platform = "";
-	private String serverId = "";
+	private String chanel = "";
+	private int serverId = 0;
 	private String token = "";
 
 	/**
@@ -100,12 +101,13 @@ public class HawkCdkService {
 	 * 
 	 * @return
 	 */
-	public boolean install(String gameName, String platform, String serverId, String host, int timeout) {
+	public boolean install(String gameName, String platform, String chanle, int serverId, String host, int timeout) {
 		try {
 			this.gameName = gameName;
 			this.platform = platform;
+			this.chanel = chanle;
 			this.serverId = serverId;
-
+			
 			if (httpClient == null) {
 				RequestConfig requestConfig = RequestConfig.custom()
 						.setConnectTimeout(timeout)

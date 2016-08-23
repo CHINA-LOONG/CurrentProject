@@ -29,7 +29,7 @@ public class UISociatyTask : UIBase, TabButtonDelegate
     {
         UISociatyTask taskUi = (UISociatyTask)UIMgr.Instance.OpenUI_(ViewName);
         taskUi.SetOtherTeamId(otherTeamId);
-        taskUi.SetTaskType(taskType);
+        taskUi.InitType((int)taskType);
     }
 
     public override void Init()
@@ -60,18 +60,34 @@ public class UISociatyTask : UIBase, TabButtonDelegate
     {
         Instance = this;
         title.text = StaticDataMgr.Instance.GetTextByID("sociaty_task");
-        tabBtnGroup.InitWithDelegate(this);
+        
         tabBtnGroup.tabButtonList[0].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_myteam"));
         tabBtnGroup.tabButtonList[1].SetButtonTitleName(StaticDataMgr.Instance.GetTextByID("sociaty_otherteam"));
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
 
-    public void OnTabButtonChanged(int index)
+    void OnEnable()
     {
-        if ((int)taskType != index)
-        {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+    }
+
+    public  void InitType(int initType)
+    {
+        tabBtnGroup.InitWithDelegate(this);
+        tabBtnGroup.OnChangeItem(initType);
+    }
+
+    public  void OnTabButtonChanged(int index)
+    {
+       // if ((int)taskType != index)
+       // {
             SetTaskType((SociatyTaskContenType)index);
-        }
+       // }
     }
     /// <summary>
     /// 设置 定位到其它公会的id
@@ -184,6 +200,14 @@ public class UISociatyTask : UIBase, TabButtonDelegate
     {
         UIMgr.Instance.CloseUI_(this);
     }
+    void OnAllianceLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
+        UIMgr.Instance.CloseUI_(this);
+    }
 
-   
 }

@@ -32,7 +32,7 @@ public class HawkClassScaner {
 	 */
 	public static List<Class<?>> scanClassesFilter(String packageName, Class<?>... annotationClass) {
 		List<Class<?>> classList = getAllClasses(packageName);
-		
+
 		Iterator<Class<?>> it = classList.iterator();
 		while (it.hasNext()) {
 			Class<?> cls = it.next();
@@ -71,7 +71,7 @@ public class HawkClassScaner {
 		Enumeration<URL> dirs;
 		try {
 			dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
-			
+
 			// 循环迭代下去
 			while (dirs.hasMoreElements()) {
 				// 获取下一个元素

@@ -371,22 +371,51 @@ public class UIUtil
     {
         switch (type)
         {
-            case 0:
+            case 1:
                 label.text = StaticDataMgr.Instance.GetTextByID("common_type_defence");
                 break;
-            case 1:
+            case 2:
                 label.text = StaticDataMgr.Instance.GetTextByID("common_type_physical");
                 break;
-            case 2:
+            case 3:
                 label.text = StaticDataMgr.Instance.GetTextByID("common_type_magic");
                 break;
-            case 3:
+            case 4:
                 label.text = StaticDataMgr.Instance.GetTextByID("common_type_support");
                 break;
             default:
                 label.text = "";
                 break;
         }
+    }
+    public static void SetEquipPart(Text label, int part)
+    {
+        string languageId;
+        switch (part)
+        {
+            case 1:
+                languageId = "equip_Weapon";
+                break;
+            case 2:
+                languageId = "equip_Armor";
+                break;
+            case 3:
+                languageId = "equip_Helmet";
+                break;
+            case 4:
+                languageId = "equip_Bracer";
+                break;
+            case 5:
+                languageId = "equip_Ring";
+                break;
+            case 6:
+                languageId = "equip_Jewelry";
+                break;
+            default:
+                languageId = "";
+                break;
+        }
+        label.text = StaticDataMgr.Instance.GetTextByID(languageId);
     }
 
     public static void GetAttrValue(GameUnit unit, int stage, out int health, out int strength, out int inteligence, out int defence, out int speed)

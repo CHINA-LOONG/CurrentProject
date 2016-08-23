@@ -79,11 +79,27 @@ public class UISelectGemList : UIBase,
                     });
             }
         }
+        
         textNotfound.gameObject.SetActive(infos.Count <= 0);
+
+        infos.Sort(SortInfos);
 
         scrollView.InitContentSize(infos.Count, this);
     }
-    
+
+    static int SortInfos(GemListItemInfo a, GemListItemInfo b)
+    {
+        if (a.staticData.grade>b.staticData.grade)
+        {
+            return -1;
+        }
+        else if(a.staticData.grade < b.staticData.grade)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
     public void OnClickCloseBtn()
     {
         UIMgr.Instance.DestroyUI(this);

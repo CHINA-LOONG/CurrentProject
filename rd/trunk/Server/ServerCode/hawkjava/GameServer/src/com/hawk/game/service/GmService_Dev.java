@@ -26,7 +26,6 @@ import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.config.QuestCfg;
-import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -54,7 +53,6 @@ import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.MailUtil;
-import com.hawk.game.util.MailUtil.MailInfo;
 import com.hawk.game.util.QuestUtil;
 
 /**

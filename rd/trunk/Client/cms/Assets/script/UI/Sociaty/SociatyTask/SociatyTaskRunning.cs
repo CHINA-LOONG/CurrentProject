@@ -181,6 +181,8 @@ public class SociatyTaskRunning : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_C.GetHashCode().ToString(), OnRequestTaskRewardFinish);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_S.GetHashCode().ToString(), OnRequestTaskRewardFinish);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
     }
     void OnDisable()
     {
@@ -200,6 +202,8 @@ public class SociatyTaskRunning : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_C.GetHashCode().ToString(), OnRequestTaskRewardFinish);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_S.GetHashCode().ToString(), OnRequestTaskRewardFinish);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
 
         isNeedUpdateTime = false;
     }
@@ -283,6 +287,7 @@ public class SociatyTaskRunning : MonoBehaviour
             else
             {
                 teamMemberItem = SociatyTeamMemberItem.CreateWith(submemberData);
+                teamMemberItem.SetShowTips(true);
                 teamMemberItems.Add(teamMemberItem);
 
                 teamMemberItem.transform.SetParent(teamTransform);
@@ -376,7 +381,23 @@ public class SociatyTaskRunning : MonoBehaviour
         if(curSelItem.questInfo.playerId > 0)
         {
             commitButton.gameObject.SetActive(false);
-            finishText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_completename"), curSelItem.questInfo.nickname);
+
+            bool playerInTeam = false;
+            foreach(var subM in selfTeamData.members)
+            {
+                if(subM.playerId == curSelItem.questInfo.playerId)
+                {
+                    playerInTeam = true;
+                    finishText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_completename"), subM.nickname);
+                    break;
+                }
+            }
+            if(!playerInTeam)
+            {
+                finishText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_renbuzai"));
+            }
+            
+            
         }
         else
         {
@@ -433,7 +454,7 @@ public class SociatyTaskRunning : MonoBehaviour
         {
             case SociatyQuestType.CommitCoin:
                 jinbiObj.SetActive(true);
-                itemCountText.text = string.Format("{0}/{1}", questStData.goalCount, GameDataMgr.Instance.PlayerDataAttr.coin);
+                itemCountText.text = string.Format("{0}/{1}", GameDataMgr.Instance.PlayerDataAttr.coin, questStData.goalCount);
                 if(questStData.goalCount > GameDataMgr.Instance.PlayerDataAttr.coin)
                 {
                     itemCountText.color = new Color(1, 0, 0);
@@ -441,10 +462,10 @@ public class SociatyTaskRunning : MonoBehaviour
                 else
                 {
                     itemCountText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
-                    commitButton.gameObject.SetActive(true);
-                    UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
                 }
-                
+                commitButton.gameObject.SetActive(true);
+                UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
+
                 break;
             case SociatyQuestType.CommitDrop:
                 ItemData goalItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(questStData.goalParam);
@@ -457,7 +478,12 @@ public class SociatyTaskRunning : MonoBehaviour
                 {
                     goalItemData = ItemData.valueof(questStData.goalParam,0);
                 }
+                if(itemCount > 9999)
+                {
+                    itemCount = 9999;
+                }
                 ItemIcon icon = ItemIcon.CreateItemIcon(goalItemData, true, false);
+                icon.itemCountText.text = "";
                 icon.transform.SetParent(taskNeedItemParent);
                 // icon.transform.localPosition
                 float parentWith = ((RectTransform)taskNeedItemParent).rect.width;
@@ -468,7 +494,7 @@ public class SociatyTaskRunning : MonoBehaviour
                 icon.transform.localScale = new Vector3(fScale, fScale, fScale);
                 questDestIconObj = icon.gameObject;
 
-                itemCountText.text = string.Format("{0}/{1}", questStData.goalCount, itemCount);
+                itemCountText.text = string.Format("{0}/{1}", itemCount, questStData.goalCount);
                 if (questStData.goalCount > itemCount)
                 {
                     itemCountText.color = new Color(1, 0, 0);
@@ -476,9 +502,9 @@ public class SociatyTaskRunning : MonoBehaviour
                 else
                 {
                     itemCountText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
-                    commitButton.gameObject.SetActive(true);
-                    UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
                 }
+                commitButton.gameObject.SetActive(true);
+                UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
                 break;
             case SociatyQuestType.CommitInstance:
                 commitButton.gameObject.SetActive(true);
@@ -517,6 +543,28 @@ public class SociatyTaskRunning : MonoBehaviour
             acceptParam.questId = curSelItem.questInfo.questId;
             GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_ACCEPT_TASK_C.GetHashCode(), acceptParam);
             return;
+        }
+        else if (questType == SociatyQuestType.CommitCoin)
+        {
+            if (questStData.goalCount > GameDataMgr.Instance.PlayerDataAttr.coin)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+                return;
+            }
+        }
+        else if(questType == SociatyQuestType.CommitDrop)
+        {
+            ItemData goalItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(questStData.goalParam);
+            int itemCount = 0;
+            if (goalItemData != null)
+            {
+                itemCount = goalItemData.count;
+            }
+            if (questStData.goalCount > itemCount)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_048"), (int)PB.ImType.PROMPT);
+                return;
+            }
         }
         PB.HSAllianceTaskCommit param = new PB.HSAllianceTaskCommit();
         param.questId = curSelItem.questInfo.questId;
@@ -590,6 +638,8 @@ public class SociatyTaskRunning : MonoBehaviour
         UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
@@ -621,10 +671,36 @@ public class SociatyTaskRunning : MonoBehaviour
         UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
         UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
+    }
+
+    void OnTeamQuestFinish_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+
+        PB.HSAllianceTeamQuestFinishNotify msgRet = message.GetProtocolBody<PB.HSAllianceTeamQuestFinishNotify>();
+
+        if (msgRet.teamId != GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId)
+            return;
+        foreach(var subQuest in subTaskItems)
+        {
+            if(subQuest.questInfo.questId == msgRet.questId)
+            {
+                subQuest.questInfo.playerId = msgRet.playerId;
+                break;
+            }
+        }
+        //update 
+        RefreshSubTasks();
+
     }
 
     bool SelfIsCaptain()

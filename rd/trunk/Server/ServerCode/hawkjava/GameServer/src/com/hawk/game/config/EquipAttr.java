@@ -17,17 +17,9 @@ public class EquipAttr extends HawkConfigBase{
 
 	private static Map<String, Map<Integer, EquipStageItem>> equipList = new HashMap<String, Map<Integer, EquipStageItem>>();
 
-	private class EquipStageItem{
-		/**
-		 * 品级属性索引
-		 */
-		private String stageAttrId;
-		/**
-		 * 级别属性索引
-		 */
-		private String levelAttrId;
-		/**
-		 * 随机属性强化列表
+	private static class EquipStageItem{
+		/** 
+  		 * 随机属性强化列表
 		 */
 		private List<WeightItem<AdditionAttrItem>> weightList;
 		/**
@@ -36,16 +28,11 @@ public class EquipAttr extends HawkConfigBase{
 		private int rollCount;
 		
 		public  EquipStageItem() {
-			stageAttrId = null;
-			levelAttrId = null;
 			weightList = new LinkedList<WeightItem<AdditionAttrItem>>();
 			rollCount = 0;
 		}
 		 
 		public boolean init(String stageAttrId, String levelAttrId, String additionAttr, int rollCount){
-			this.levelAttrId = levelAttrId;
-			this.stageAttrId = stageAttrId;		
-			
 			if (additionAttr != null && additionAttr.length() > 0 && !"0".equals(additionAttr)) {
 				String[] itemArrays = additionAttr.split(",");
 				for (String itemArray : itemArrays) {
@@ -60,8 +47,7 @@ public class EquipAttr extends HawkConfigBase{
 				}
 			}	
 			
-			this.rollCount = rollCount;
-			
+			this.rollCount = rollCount;		
 			return true;
 		}
 		
@@ -88,17 +74,9 @@ public class EquipAttr extends HawkConfigBase{
 			}
 			return attr.getAttrMap().isEmpty() == true ? null : attr;
 		}
-
-		public String getStageAttrId() {
-			return stageAttrId;
-		}
-
-		public String getLevelAttrId() {
-			return levelAttrId;
-		}
 	}
 	
-	private  class AdditionAttrItem{
+	private static class AdditionAttrItem{
 		/**
 		 * 附加属性类型
 		 */
@@ -116,12 +94,15 @@ public class EquipAttr extends HawkConfigBase{
 		public int getType() {
 			return type;
 		}
+		
 		public void setType(int type) {
 			this.type = type;
 		}
+		
 		public float getValue() {
 			return value;
 		}
+		
 		public void setValue(float value) {
 			this.value = value;
 		}

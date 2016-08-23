@@ -44,6 +44,7 @@ GameObject:
   - 224: {fileID: 22477646}
   - 222: {fileID: 22269620}
   - 114: {fileID: 11410112}
+  - 114: {fileID: 11439914}
   m_Layer: 5
   m_Name: ServerStageItem
   m_TagString: Untagged
@@ -105,6 +106,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11439914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2e2791bf3b25b45a0941ed6dd8853c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageName: {fileID: 11467452}
+  selectBox: {fileID: 132616}
+  serverStageType: 0
+  interval: 
 --- !u!114 &11467452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,8 +202,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 212, y: 58}
+  m_AnchoredPosition: {x: 0, y: 1.49999952}
+  m_SizeDelta: {x: 212, y: 63}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22477646
 RectTransform:

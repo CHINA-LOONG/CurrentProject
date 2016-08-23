@@ -466,5 +466,9 @@ public class GsConst {
 		public static final int ALLIANCE_OWNER = 102;
 		// 公会成员加入
 		public static final int ALLIANCE_JOIN = 103;
+		// 公会任命副会长
+		public static final int ALLIANCE_ELDER_PROMOTE = 104;
+		// 公会解除副会长
+		public static final int ALLIANCE_ELDER_DEMOTE = 105;
 	}
 }

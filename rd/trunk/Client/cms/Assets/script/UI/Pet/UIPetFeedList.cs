@@ -18,8 +18,9 @@ public class UIPetFeedList : UIBase,
 
     public Text text_Title;
     public Button btnClose;
-    
-    public Text text_Tips1;
+
+    public Text text_Current;
+    public Text text_Target;
     public Transform content;
     public Text text_Tips2;
 
@@ -61,7 +62,7 @@ public class UIPetFeedList : UIBase,
         t_unit.getData(m_unit);
         s_unit = StaticDataMgr.Instance.GetUnitRowData(m_unit.pbUnit.id);
 
-        text_Tips1.text = StaticDataMgr.Instance.GetTextByID("exp_level") + GameDataMgr.Instance.PlayerDataAttr.LevelAttr.ToString();
+        text_Target.text = StaticDataMgr.Instance.GetTextByID("exp_level") + GameDataMgr.Instance.PlayerDataAttr.LevelAttr.ToString();
         RefreshLevelExp(m_unit.pbUnit.level, m_unit.pbUnit.curExp);
         
         StaticDataMgr.Instance.GetItemData(PB.changeType.CHANGE_MONSTER_EXP, ref infos);
@@ -77,18 +78,22 @@ public class UIPetFeedList : UIBase,
     }
     public void RefreshLevelExp(int level, int exp)
     {
-        //textLevel.text = "LVL:" + level;
-
-        if (UIUtil.CheckPetIsMaxLevel(level) != 0)
+        text_Current.text = StaticDataMgr.Instance.GetTextByID("exp_monsterlevel") + level;
+        int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * s_unit.levelUpExpRate);
+        switch (UIUtil.CheckPetIsMaxLevel(level))
         {
-            textExp.text = "Max";
-            progressExp.value = 0.0f;
-        }
-        else
-        {
-            int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * s_unit.levelUpExpRate);
-            textExp.text = exp + "/" + maxExp;
-            progressExp.value = (float)exp / (float)maxExp;
+            case 0:
+                textExp.text = exp + "/" + maxExp;
+                progressExp.value = (float)exp / (float)maxExp;
+                break;
+            case 1:
+                textExp.text = "MAX LVL";
+                progressExp.value = 0.0f;
+                break;
+            case 2:
+                textExp.text = 0 + "/" + maxExp;
+                progressExp.value = 0.0f;
+                break;
         }
     }
     public EXPListItem GetElement()

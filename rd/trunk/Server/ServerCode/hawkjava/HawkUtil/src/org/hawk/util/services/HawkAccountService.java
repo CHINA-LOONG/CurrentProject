@@ -78,7 +78,13 @@ public class HawkAccountService extends HawkTickable {
 	 */
 	private Lock reportLock = null;
 	List<Object> reportDatas = null;
+	
+	/**
+	 * 连接成功
+	 */
 
+	private boolean connectOK = false;
+	
 	/**
 	 * 上次beat周期时间
 	 */
@@ -91,11 +97,11 @@ public class HawkAccountService extends HawkTickable {
 	private static final String serverUnRegistPath  = "/unregist_gameserver";
 	private static final String heartBeatPath    	= "/heartBeat";
 	
-	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%s&puid=%s&playerid=%d&nickname=%s";
-	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%s&puid=%s&playerid=%d&level=%d";
-	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%s&ip=%s&port=%d";
-	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%s";
-	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%s";
+	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&nickname=%s";
+	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&level=%d";
+	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%d&ip=%s&port=%d";
+	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%d";
+	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%d";
 	
 	/**
 	 * 服务器信息
@@ -104,7 +110,7 @@ public class HawkAccountService extends HawkTickable {
 	private String gameName = "";
 	private String platform = "";
 	private String channel = "";
-	private String serverId = "";
+	private int serverId = 0;
 	
 	/**
 	 * 实例对象
@@ -137,12 +143,13 @@ public class HawkAccountService extends HawkTickable {
 	 * 
 	 * @return
 	 */
-	public boolean install(String gameName, String platform, String serverId, int timeout, String accountServerIp, int accountServerPort) {
+	public boolean install(String gameName, String platform, String channel, int serverId, int timeout, String zmqAddress) {
 		try {
 			this.gameName = gameName;
 			this.platform = platform;
+			this.channel = channel;
 			this.serverId = serverId;
-			this.accountZmqHost = "tcp://" + accountServerIp + ":" + accountServerPort;
+			this.accountZmqHost = zmqAddress;
 			lastBeatTime = HawkTime.getMillisecond();
 			
 			// 可重复调用
@@ -201,6 +208,11 @@ public class HawkAccountService extends HawkTickable {
 	protected boolean createAccountZmq(String addr) {
 		if (accountZmq == null) {
 			accountZmq = HawkZmqManager.getInstance().createZmq(HawkZmq.ZmqType.PUSH);
+			accountZmq.startMonitor(HawkZmq.SocketEvent.CONNECTED 
+									| HawkZmq.SocketEvent.DISCONNECTED 
+									| HawkZmq.SocketEvent.CONNECT_RETRIED 
+									| HawkZmq.SocketEvent.CONNECT_DELAYED
+									);
 			if (!accountZmq.connect(addr)) {
 				accountZmq = null;
 				return false;
@@ -336,7 +348,7 @@ public class HawkAccountService extends HawkTickable {
 			try {
 				String queryParam = String.format(heartBeatParam, gameName, platform, channel, serverId);
 				
-				accountLogger.info("report: " + heartBeatParam + "?" + queryParam);
+				accountLogger.info("report:"  + queryParam);
 
 				int status = executeMethod(heartBeatPath, queryParam);
 				if (status == HttpStatus.SC_OK) {
@@ -436,49 +448,73 @@ public class HawkAccountService extends HawkTickable {
 	 */
 	@Override
 	public void onTick() {
-		// 心跳检测
-		long curTime = HawkTime.getMillisecond();
-		if (curTime - lastBeatTime >= HEART_PERIOD) {
-			lastBeatTime = curTime;
-			report(new HeartBeatData());
+		// 检测连接是否正常
+		try {
+			int events = accountZmq.updateMonitor(0);
+			if ((events & HawkZmq.SocketEvent.CONNECTED) > 0) {
+				connectOK = true;
+				HawkLog.logPrintln("account zmq client connected: " + this.accountZmqHost);
+			} else if ((events & HawkZmq.SocketEvent.DISCONNECTED) > 0) {
+				connectOK = false;
+				HawkLog.logPrintln("account zmq client disconnected: " + this.accountZmqHost);
+			}
+			else if ((events & HawkZmq.SocketEvent.CONNECT_RETRIED) > 0) {
+				HawkLog.logPrintln("account zmq client connect retried: " + this.accountZmqHost);
+			}
+			else if ((events & HawkZmq.SocketEvent.CONNECT_DELAYED) > 0) {
+				HawkLog.logPrintln("account zmq client connect delayed: " + this.accountZmqHost);
+			}
+			
+		} catch (Exception e) {
+			HawkException.catchException(e);
 		}
 		
-		if (reportDatas.size() > 0) {
-			// 取出队列首个上报数据对象
-			Object reportData = null;
-			reportLock.lock();
-			try {
-				reportData = reportDatas.remove(0);
-			} finally {
-				reportLock.unlock();
+		if (connectOK == true) {
+			// 心跳检测
+			long curTime = HawkTime.getMillisecond();
+			if (curTime - lastBeatTime >= HEART_PERIOD) {
+				lastBeatTime = curTime;
+				report(new HeartBeatData());
 			}
-
-			// 数据上报操作
-			try {
-				if (gameName.length() > 0 && platform.length() > 0) {
-					if (reportData instanceof CreateRoleData) {
-						doReport((CreateRoleData) reportData);
-					} else if (reportData instanceof LevelUpData) {
-						doReport((LevelUpData) reportData);
-					} else if (reportData instanceof RegitsterGameServer) {
-						doReport((RegitsterGameServer) reportData);
-					} else if (reportData instanceof UnRegitsterGameServer) {
-						doReport((UnRegitsterGameServer) reportData);
-					} else if (reportData instanceof HeartBeatData) {
-						doReport((HeartBeatData) reportData);
-					}
-				}
-			} catch (Exception e) {
-				HawkException.catchException(e);
-
-				// 上报失败重新放回
+			
+			if (reportDatas.size() > 0) {
+				// 取出队列首个上报数据对象
+				Object reportData = null;
 				reportLock.lock();
 				try {
-					reportDatas.add(reportData);
+					reportData = reportDatas.remove(0);
 				} finally {
 					reportLock.unlock();
 				}
-			}
+
+				// 数据上报操作
+				try {
+					if (gameName.length() > 0 && platform.length() > 0) {
+						if (reportData instanceof CreateRoleData) {
+							doReport((CreateRoleData) reportData);
+						} else if (reportData instanceof LevelUpData) {
+							doReport((LevelUpData) reportData);
+						} else if (reportData instanceof RegitsterGameServer) {
+							doReport((RegitsterGameServer) reportData);
+						} else if (reportData instanceof UnRegitsterGameServer) {
+							doReport((UnRegitsterGameServer) reportData);
+						} else if (reportData instanceof HeartBeatData) {
+							doReport((HeartBeatData) reportData);
+						}
+					}
+				} catch (Exception e) {
+					HawkException.catchException(e);
+
+					// 上报失败重新放回
+					reportLock.lock();
+					try {
+						reportDatas.add(reportData);
+					} finally {
+						reportLock.unlock();
+					}
+				}
+		}
+			
 		}
 	}
 

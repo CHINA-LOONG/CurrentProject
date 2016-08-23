@@ -35,6 +35,7 @@ public class SociatyTaskList : MonoBehaviour
     void Start ()
     {
         openButton.onClick.AddListener(OnOpenButtonClick);
+        UIUtil.SetButtonTitle(openButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_start"));
         rewardText.text = StaticDataMgr.Instance.GetTextByID("sociaty_teamreward");
 	}
 
@@ -140,6 +141,9 @@ public class SociatyTaskList : MonoBehaviour
 
     void ConformOpenTask(MsgBox.PrompButtonClick click)
     {
+        if (click == MsgBox.PrompButtonClick.Cancle)
+            return;
+
         if(curSelItem.sociatyTaskData.minLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);

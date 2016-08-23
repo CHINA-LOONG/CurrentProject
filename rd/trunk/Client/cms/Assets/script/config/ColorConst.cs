@@ -80,13 +80,17 @@ public class ColorConst
     public static Color guildColor = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f, 1);//工會字体颜色
     public static Color systemColor = new Color(255.0f / 255.0f, 65.0f / 255.0f, 98.0f / 255.0f, 1);//系统字体颜色
     public static Color nameColor = new Color(255.0f / 255.0f, 204.0f / 255.0f, 0.0f / 255.0f);//默认名字颜色
+    public static Color guildTaskColor = new Color(0f, 198.0f / 255.0f, 1f);//默认名字颜色
     //选项卡颜色
     public static Color text_tabColor_normal = new Color(250f/255.0f,247f/255f,241/255f,1f);
     public static Color outline_tabColor_normal = new Color(202f/255f,151f/255f,13/255f,1f);
     public static Color text_tabColor_select = new Color(255f/255f,255f/255f,255/255f,1f);
     public static Color outline_tabColor_select = new Color(20f/255f,15f/255f,16f/255f,1f);
-
-
+    //服务器状态颜色
+    public static Color server_color_new = new Color(122f / 255f, 1f, 0f, 1f);
+    public static Color server_color_full = new Color(1f, 0f, 0f, 1f);
+    public static Color server_color_hot = new Color(1f, 204f / 255f, 0f, 1f);
+    public static Color server_color_Maintain = new Color(143f/255f, 143f / 255f, 143f/255f, 1f);
     public static string colorTo_Hstr(Color color)
     {
         string strColor = "#";

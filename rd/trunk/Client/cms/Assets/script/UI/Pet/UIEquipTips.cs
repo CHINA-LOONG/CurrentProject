@@ -84,7 +84,7 @@ public class UIEquipTips : UIBase
             {
                 AttrList[index].gameObject.SetActive(true);
             }
-            AttrList[index].SetValue(name, (int)value, (int)change);
+            AttrList[index].SetValue(name, (int)value, (int)change, 20);
         };
         int count = 0;
         if (curData.health + curData.healthStrengthen > 0.0f)

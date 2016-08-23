@@ -603,6 +603,7 @@ public class GameDataMgr : MonoBehaviour
             if (GameMain.Instance.IsCurModule<BattleModule>() == false)
             {
                 unit.RefreshUnitLvl(item.level, item.exp);
+                GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetLevelNotify, unit);
             }
         }
 

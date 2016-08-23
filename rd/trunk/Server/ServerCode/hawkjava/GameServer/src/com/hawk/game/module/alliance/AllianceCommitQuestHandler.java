@@ -25,6 +25,7 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskCommit;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamQuestFinishNotify;
 import com.hawk.game.util.GsConst;
 
 public class AllianceCommitQuestHandler implements HawkMsgHandler{
@@ -153,6 +154,12 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 						allianceEntity.addContribution(contribution);
 						allianceEntity.notifyUpdate(true);
 					}
+					
+					HSAllianceTeamQuestFinishNotify.Builder notify = HSAllianceTeamQuestFinishNotify.newBuilder();
+					notify.setQuestId(request.getQuestId());
+					notify.setTeamId(teamEntity.getId());
+					notify.setPlayerId(player.getId());
+					AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_QUEST_FINISH_N_S_VALUE, notify), 0);
 					
 					HSAllianceTaskCommitRet.Builder response = HSAllianceTaskCommitRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_COMMIT_TASK_S_VALUE, response));

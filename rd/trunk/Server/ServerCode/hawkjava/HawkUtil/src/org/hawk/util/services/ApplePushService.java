@@ -67,7 +67,6 @@ public class ApplePushService extends HawkTickable {
 		if (HawkApp.getInstance() != null) {
 			HawkApp.getInstance().addTickable(this);
 		}
-
 		return true;
 	}
 

@@ -10,18 +10,6 @@ import org.hawk.os.HawkException;
 @HawkConfigManager.KVResource(file = "cfg/gs.cfg")
 public class GsConfig extends HawkAppCfg {
 	/**
-	 * 游戏名
-	 */
-	protected final String gameId;
-	/**
-	 * 平台名
-	 */
-	protected final String platform;
-	/**
-	 * 服务器id
-	 */
-	protected final String serverId;
-	/**
 	 * 灰度状态
 	 */
 	protected final int grayState;
@@ -50,6 +38,14 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final int cdkTimeout;
 	/**
+	 * 账号服务器地址
+	 */
+	protected final String accountHost;
+	/**
+	 * 账号服务器超时
+	 */
+	protected final int accountTimeout;
+	/**
 	 * 数据上报地址
 	 */
 	protected final String reportHost;
@@ -69,7 +65,6 @@ public class GsConfig extends HawkAppCfg {
 	 * 是否开启翻译
 	 */
 	protected final boolean translate;
-
 	/**
 	 * 邮箱用户名
 	 */
@@ -94,15 +89,13 @@ public class GsConfig extends HawkAppCfg {
 
 	public GsConfig() {
 		instance = this;
-
-		gameId = "";
-		platform = "";
-		serverId = "";
 		registerMaxSize = 0;
 		roleMaxSize = 0;
 		grayState = 0;
 		cdkHost = "";
 		cdkTimeout = 1000;
+		accountHost = "";
+		accountTimeout = 1000;
 		reportHost = "";
 		reportTimeout = 1000;
 		serviceDate = "20150101";
@@ -111,18 +104,6 @@ public class GsConfig extends HawkAppCfg {
 		translate = false;
 		emailUser = "";
 		emailPwd = "";
-	}
-
-	public String getGameId() {
-		return gameId;
-	}
-
-	public String getPlatform() {
-		return platform;
-	}
-
-	public String getServerId() {
-		return serverId;
 	}
 
 	public int getRegisterMaxSize() {
@@ -149,10 +130,18 @@ public class GsConfig extends HawkAppCfg {
 		return cdkTimeout;
 	}
 
+	public String getAccountHost() {
+		return accountHost;
+	}
+
+	public int getAccountTimeout() {
+		return accountTimeout;
+	}
+
 	public String getReportHost() {
 		return reportHost;
 	}
-	
+
 	public int getReportTimeout() {
 		return reportTimeout;
 	}

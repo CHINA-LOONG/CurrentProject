@@ -50,7 +50,7 @@ import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.HS.sys;
+import com.hawk.game.protocol.HS.code;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSKickPlayer;
 import com.hawk.game.util.ConfigUtil;
@@ -199,7 +199,7 @@ public class Player extends HawkAppObj {
 	public void kickout(int reason) {
 		HSKickPlayer.Builder builder = HSKickPlayer.newBuilder();
 		builder.setReason(reason);
-		HawkProtocol protocol = HawkProtocol.valueOf(sys.KICK_PLAYER_VALUE, builder);
+		HawkProtocol protocol = HawkProtocol.valueOf(code.KICKOUT_S_VALUE, builder);
 		sendProtocol(protocol);
 		session.setAppObject(null);
 		session = null;
@@ -782,6 +782,7 @@ public class Player extends HawkAppObj {
 					&& expRemain >= targetLevelMaxExp) {
 				expRemain -= targetLevelMaxExp;
 				targetLevel += 1;
+				targetLevelMaxExp = monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
 				levelup = true;
 			}
 
@@ -847,10 +848,12 @@ public class Player extends HawkAppObj {
 
 		int expRemain = getExp() + exp;
 		int targetLevel = getLevel();
+		int targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
 		boolean levelup = false;
-		while (targetLevel != playAttrCfg.size() && expRemain >= playAttrCfg.get(targetLevel).getExp()) {
-			expRemain -= playAttrCfg.get(targetLevel).getExp();
+		while (targetLevel != playAttrCfg.size() && expRemain >= targetLevelMaxExp) {
+			expRemain -= targetLevelMaxExp;
 			targetLevel += 1;
+			targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
 			levelup = true;
 		}
 

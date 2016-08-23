@@ -19,7 +19,7 @@ import java.util.Map;
  * @author hawk
  */
 public abstract class HawkConfigBase extends HawkConstable {
-	
+
 	/**
 	 * 嵌套的对象列表
 	 */
@@ -27,8 +27,8 @@ public abstract class HawkConfigBase extends HawkConstable {
 	/**
 	 * 嵌套的对象映射表
 	 */
-	private Map<Object, HawkConfigBase> nestMap = null;	
-	
+	private Map<Object, HawkConfigBase> nestMap = null;
+
 	/**
 	 * 所属的configStorage
 	 */
@@ -51,7 +51,7 @@ public abstract class HawkConfigBase extends HawkConstable {
 	protected boolean assemble() {
 		return true;
 	}
-	
+
 	/**
 	 * 检测有效性
 	 * @return
@@ -77,7 +77,7 @@ public abstract class HawkConfigBase extends HawkConstable {
 	public void setStorage(HawkConfigStorage storage) {
 		this.storage = storage;
 	}
-	
+
 	/**
 	 * 获取配置列表
 	 * 
@@ -96,7 +96,7 @@ public abstract class HawkConfigBase extends HawkConstable {
 	public void setConfigList(List<HawkConfigBase> nestList) {
 		this.nestList = nestList;
 	}
-	
+
 	/**
 	 * 获取配置表映射
 	 * 
@@ -106,7 +106,7 @@ public abstract class HawkConfigBase extends HawkConstable {
 	public<T> Map<Object, T> getConfigMap(Class<T> cfgClass) {
 		return (Map<Object, T>)nestMap;
 	}
-	
+
 	/**
 	 * 设置配置表映射
 	 * 

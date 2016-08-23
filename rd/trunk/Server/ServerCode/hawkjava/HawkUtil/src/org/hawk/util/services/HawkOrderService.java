@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
 
 public class HawkOrderService extends HawkTickable {
 	/**
-	 * 请求类型(请求生成订单: 1, 订单生成反馈: 2, 请求充值发货: 3, 充值发货响应: 4)
+	 * 请求类型
 	 */
 	public static int ACTION_ORDER_HEART_BEAT = 0;
 	public static int ACTION_ORDER_DELIVER_REQUEST = 1;
@@ -47,9 +47,13 @@ public class HawkOrderService extends HawkTickable {
 	 */
 	private String platform = "";
 	/**
+	 * 渠道名
+	 */
+	private String channel = "";
+	/**
 	 * 服务器id
 	 */
-	private String serverId = "";
+	private int serverId = 0;
 	/**
 	 * 上次tick周期时间
 	 */
@@ -102,13 +106,14 @@ public class HawkOrderService extends HawkTickable {
 	 * @param addr
 	 * @return
 	 */
-	public boolean init(String suuid, String addr, String game, String platform, String serverId) {
+	public boolean init(String suuid, String addr, String game, String platform, String channel, int serverId) {
 		this.game = game;
 		this.platform = platform;
 		this.serverId = serverId;
+		this.channel = channel;
 		this.suuid = suuid;
 		if (this.suuid == null || this.suuid.length() <= 0) {
-			this.suuid = String.format("%s.%s.%s", game, platform, serverId);
+			this.suuid = String.format("%s.%s.%s.%d", game, platform, channel, serverId);
 		}
 
 		this.suuid.toLowerCase();
@@ -146,11 +151,10 @@ public class HawkOrderService extends HawkTickable {
 			jsonObject.addProperty("suuid", this.suuid);
 			jsonObject.addProperty("game", this.game);
 			jsonObject.addProperty("platform", this.platform);
+			jsonObject.addProperty("channel", this.channel);
 			jsonObject.addProperty("serverId", this.serverId);
-			if (HawkApp.getInstance() != null) {
-				jsonObject.addProperty("ip", HawkApp.getInstance().getMyHostIp());
-			}
-			jsonObject.addProperty("action", 0);
+			jsonObject.addProperty("ip", HawkApp.getInstance().getMyHostIp());
+			jsonObject.addProperty("action", ACTION_ORDER_HEART_BEAT);
 			sendQueue.add(jsonObject.toString());
 		}
 	}

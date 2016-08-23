@@ -122,6 +122,8 @@ public class SociatyTechnologyItem : MonoBehaviour
         //if (techData != null)
         {
             string lvlInfo = string.Empty;
+            string itemName = string.Empty;
+            int curCount = 0;
             SociatyTecEnum curType = (SociatyTecEnum)techData.type;
             switch (curType)
             {
@@ -139,13 +141,28 @@ public class SociatyTechnologyItem : MonoBehaviour
                     curText.text = prefix + string.Format(lvlInfo, techData.gainCoin * 100);
                     break;
                 case SociatyTecEnum.Sociaty_Tec_Exp:
-                    lvlInfo = "+{0}";
-                    curText.text = prefix + lvlInfo;// string.Format(lvlInfo, techData.gainExp);
+                    GetItemNameCount(techData.gainExp, out itemName, out curCount);
+                    lvlInfo = "{0}*{1}";
+                    curText.text = prefix + string.Format(lvlInfo, itemName, curCount);
                     break;
             }
         }
     }
     //---------------------------------------------------------------------------------------------
+    private void GetItemNameCount(string reward, out string name, out int count)
+    {
+        string[] itemInfo = reward.Split('_');
+
+        if (itemInfo.Length < 3)
+            Logger.LogError("technology reward config error!");
+
+        ItemStaticData item = StaticDataMgr.Instance.GetItemData(itemInfo[1]);
+        if (item == null)
+            Logger.LogError("technology reward config error!");
+
+        count = int.Parse(itemInfo[2]);
+        name = item.NameAttr;
+    }
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------

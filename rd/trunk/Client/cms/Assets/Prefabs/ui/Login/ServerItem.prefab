@@ -27,6 +27,7 @@ GameObject:
   - 224: {fileID: 22466440}
   - 222: {fileID: 22212160}
   - 114: {fileID: 11473220}
+  - 114: {fileID: 11407370}
   m_Layer: 5
   m_Name: ServerItem
   m_TagString: Untagged
@@ -51,6 +52,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11407370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a427eab481f74245b51fc652f8c207d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sServerName: {fileID: 11449134}
+  sServerType: {fileID: 11493636}
+  sPlayerName: {fileID: 0}
+  sPlayerLv: {fileID: 0}
+  sHostIp: 
+  sPort: 0
+  lv: 0
 --- !u!114 &11449134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,12 +93,12 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 16
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1 - BeiJing
@@ -133,12 +152,12 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 16
+    m_MaxSize: 20
     m_Alignment: 5
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New
@@ -174,8 +193,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 5.5999999, y: 5.00000095}
-  m_SizeDelta: {x: 117.199997, y: 25}
+  m_AnchoredPosition: {x: 10, y: 5.00000095}
+  m_SizeDelta: {x: 188, y: 25}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22462640
 RectTransform:
@@ -191,8 +210,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -10.1000004, y: 5.00000095}
-  m_SizeDelta: {x: 54.6999969, y: 25}
+  m_AnchoredPosition: {x: -10, y: 5.00000095}
+  m_SizeDelta: {x: 72.9000015, y: 25}
   m_Pivot: {x: 1, y: .5}
 --- !u!224 &22466440
 RectTransform:

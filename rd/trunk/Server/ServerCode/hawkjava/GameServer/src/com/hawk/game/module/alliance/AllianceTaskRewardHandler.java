@@ -19,6 +19,7 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamLeaveNotify;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
@@ -94,6 +95,10 @@ public class AllianceTaskRewardHandler implements HawkMsgHandler{
 					teamEntity.removePlayerFromTeam(player.getId());
 					teamEntity.getAcceptList().remove(player.getId());
 					teamEntity.notifyUpdate(true);
+					
+					HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
+					notify.setPlayerId(player.getId());
+					AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
 					
 					HSAllianceTaskRewardRet.Builder response = HSAllianceTaskRewardRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_TASK_REWARD_S_VALUE, response));

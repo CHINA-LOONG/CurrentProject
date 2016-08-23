@@ -104,7 +104,7 @@ public class DBManager {
 	public String getDbUrl(String dbName) {
 		return String.format("jdbc:mysql://%s/%s?useUnicode=true&amp;characterEncoding=UTF-8", dbHost, dbName);
 	}
-	
+
 	/**
 	 * 获取数据库会话
 	 * 
@@ -114,7 +114,7 @@ public class DBManager {
 	public HawkMysqlSession getDbSession(String dbName) {
 		return dbSessions.get(dbName);
 	}
-	
+
 	/**
 	 * 进行连接
 	 * 
@@ -126,16 +126,16 @@ public class DBManager {
 			if (session.init(getDbUrl(dbName), dbUser, dbPwd, poolSize)) {
 				dbSessions.put(dbName, session);
 				AccountServices.getInstance().addTickable(session);
-				
+
 				HawkLog.logPrintln(String.format("create dbsession success, dbHost: %s, dbUser: %s, dbPwd: %s, poolSize: %d", 
 						getDbUrl(dbName), dbUser, dbPwd, poolSize));
-				
+
 				return session;
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
-		
+
 		HawkLog.logPrintln(String.format("create dbsession failed, dbHost: %s, dbUser: %s, dbPwd: %s, poolSize: %d", 
 				getDbUrl(dbName), dbUser, dbPwd, poolSize));
 		return null;
@@ -181,25 +181,25 @@ public class DBManager {
 	 */
 	private String getCollectorDbSchema() {
 		StringBuffer stringBuffer = new StringBuffer(4096);
-		 try {
-             File file = new File(System.getProperty("user.dir") + "/db/collector.sql");
-             if(file.isFile() && file.exists()){
-                 InputStreamReader read = new InputStreamReader(new FileInputStream(file), "UTF8");
-                 BufferedReader bufferedReader = new BufferedReader(read);
-                 String line = null;
-                 while((line = bufferedReader.readLine()) != null) {
-                	 line = line.trim();
-                	 if (line.length() > 0) {
-                		 stringBuffer.append(line);
-                		 stringBuffer.append("\r\n");
-                	 }
-                 }
-                 read.close();
-                 return stringBuffer.toString();
-             }
-	     } catch (Exception e) {
-	         HawkException.catchException(e);
-	     }
+		try {
+			File file = new File(System.getProperty("user.dir") + "/db/collector.sql");
+			if(file.isFile() && file.exists()){
+				InputStreamReader read = new InputStreamReader(new FileInputStream(file), "UTF8");
+				BufferedReader bufferedReader = new BufferedReader(read);
+				String line = null;
+				while((line = bufferedReader.readLine()) != null) {
+					line = line.trim();
+					if (line.length() > 0) {
+						stringBuffer.append(line);
+						stringBuffer.append("\r\n");
+					}
+				}
+				read.close();
+				return stringBuffer.toString();
+			}
+		} catch (Exception e) {
+			HawkException.catchException(e);
+		}
 		return "";
 	}
 	 
@@ -236,7 +236,7 @@ public class DBManager {
 						}
 					}
 				}
-			}			
+			}
 		}
 		return false;
 	}

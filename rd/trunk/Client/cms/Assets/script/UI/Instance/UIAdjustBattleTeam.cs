@@ -900,6 +900,8 @@ public class UIAdjustBattleTeam : UIBase
     #region      取消战斗
     void OnBackButtonClick(GameObject go)
     {
+        if (isBattleClick) return;
+
         GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
         UIMgr.Instance.CloseUI_(this);
     }

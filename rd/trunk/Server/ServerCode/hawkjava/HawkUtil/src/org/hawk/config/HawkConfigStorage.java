@@ -50,7 +50,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  */
 public class HawkConfigStorage {
-	
+
 	/**
 	 * 日期转化器
 	 */
@@ -84,14 +84,14 @@ public class HawkConfigStorage {
 	 * 域映射
 	 */
 	private static Map<String, Field> classFieldMap = new ConcurrentHashMap<String, Field>();
-	
+
 	/**
 	 * 构造函数
 	 * 
 	 * @param cfgClass
 	 * @throws Exception
 	 */
-	public HawkConfigStorage(Class<?> cfgClass) throws Exception {
+	public HawkConfigStorage(Class<?> cfgClass, String workPath) throws Exception {
 		this.cfgClass = cfgClass;
 
 		if (cfgClass.getAnnotation(HawkConfigManager.CsvResource.class) != null) {
@@ -103,9 +103,9 @@ public class HawkConfigStorage {
 			} else {
 				throw new Exception("unknown config struct: " + csvRes.struct() + ", filePath: " + filePath);
 			}
-			filePath = HawkApp.getInstance().getWorkPath() + csvRes.file();
-			HawkLog.logPrintln("load config: " + filePath);		
-			
+			filePath = workPath + csvRes.file();
+			HawkLog.logPrintln("load config: " + filePath);
+
 			loadCsvConfig();
 		} else if (cfgClass.getAnnotation(HawkConfigManager.XmlResource.class) != null) {
 			HawkConfigManager.XmlResource xmlRes = cfgClass.getAnnotation(HawkConfigManager.XmlResource.class);
@@ -116,15 +116,15 @@ public class HawkConfigStorage {
 			} else {
 				throw new Exception("unknown config struct: " + xmlRes.struct() + ", filePath: " + filePath);
 			}
-			filePath = HawkApp.getInstance().getWorkPath() + xmlRes.file();
-			HawkLog.logPrintln("load config: " + filePath);		
-			
+			filePath = workPath + xmlRes.file();
+			HawkLog.logPrintln("load config: " + filePath);
+
 			loadXmlConfig(configMap, configList);
 		} else if (cfgClass.getAnnotation(HawkConfigManager.KVResource.class) != null) {
 			HawkConfigManager.KVResource kvRes = cfgClass.getAnnotation(HawkConfigManager.KVResource.class);
 
 			configList = new LinkedList<HawkConfigBase>();
-			filePath = HawkApp.getInstance().getWorkPath() + kvRes.file();
+			filePath = workPath + kvRes.file();
 			HawkLog.logPrintln("load config: " + filePath);
 
 			loadKVConfig();
@@ -135,7 +135,7 @@ public class HawkConfigStorage {
 			 */
 			HawkConfigManager.JsonResource jsonRes = cfgClass.getAnnotation(HawkConfigManager.JsonResource.class);
 
-			filePath = HawkApp.getInstance().getWorkPath() + jsonRes.file();
+			filePath = workPath + jsonRes.file();
 			HawkLog.logPrintln("load config: " + filePath);
 
 			if ("map".equals(jsonRes.struct())) {
@@ -145,7 +145,7 @@ public class HawkConfigStorage {
 			} else {
 				throw new Exception("unknown config struct: " + jsonRes.struct() + ", filePath: " + filePath);
 			}
-			
+
 			loadJsonConfig();
 		}
 	}
@@ -172,7 +172,7 @@ public class HawkConfigStorage {
 			if (file.exists() == false) {
 				throw new HawkException("config file not exist: " + filePath);
 			}
-			
+
 			InputStream stream = new FileInputStream(file);
 			// UTF-8 CSV with 3 bytes BOM
 			//stream.skip(3);
@@ -189,20 +189,20 @@ public class HawkConfigStorage {
 			if (csvReader.readHeaders() == false) {
 				throw new HawkException("config headers not exist: " + filePath);
 			}
-			
+
 			String[] headers = csvReader.getHeaders();
 			Object cfg = cfgClass.newInstance();
 			if (cfg instanceof HawkConfigBase) {
 				Class<?> cfgKeyType = null;
 				int cfgKeyIndex = 0;
-				
+
 				// 检测属性
 				for (int i = 0; i < headers.length; ++i) {
 					Field field = getField(cfg, headers[i].trim());
 					if (field == null) {
 						throw new HawkException("config class field not exist, file: " + filePath + ", field: " + headers[i].trim());
 					}
-					
+
 					Id id = null;
 					try {
 						// 测试Id标注是否存在
@@ -210,13 +210,13 @@ public class HawkConfigStorage {
 					} catch (Exception e) {
 						throw new NullPointerException("config id annotation not exist: " + cfg.getClass().getName() + ", nodeName: "+ headers[i]);
 					}
-					
+
 					if (id != null) {
 						// id标注重复
 						if (cfgKeyType != null) {
 							throw new HawkException("config id annotation duplicate: " + filePath + ", nodeName: "+ headers[i]);
 						}
-						
+
 						String type = field.getType().toString();
 						if (type.indexOf("int") >= 0 || type.indexOf("Integer") >= 0) {
 							cfgKeyType = Integer.class;
@@ -232,7 +232,7 @@ public class HawkConfigStorage {
 					Object cfgObj = cfgClass.newInstance();
 					HawkConfigBase configBase = (HawkConfigBase) cfgObj;
 					configBase.setStorage(this);
-					
+
 					for (int i = 0; i < headers.length; ++i) {
 						setAttr(cfgObj, headers[i].trim(), csvReader.get(i));
 					}
@@ -252,7 +252,7 @@ public class HawkConfigStorage {
 								} else if (cfgKeyType == String.class) {
 									cfgKey = csvReader.get(cfgKeyIndex);
 								}
-								
+
 								if (configMap.containsKey(cfgKey)) {
 									throw new Exception("config key duplicate: " + filePath + ", key: " + cfgKey);
 								}
@@ -274,7 +274,7 @@ public class HawkConfigStorage {
 		// 存储文件热加载信息
 		updateFileInfo();
 	}
-	
+
 	/**
 	 * 加载xml配置数据
 	 */
@@ -284,15 +284,15 @@ public class HawkConfigStorage {
 			if (!file.exists()) {
 				throw new HawkException("config file not exist: " + filePath);
 			}
-			
+
 			DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dombuilder = domFactory.newDocumentBuilder();
 			Document doc = dombuilder.parse(new FileInputStream(file));
 			Element root = doc.getDocumentElement();
 			NodeList nodes = root.getChildNodes();
-			
+
 			LoadXMLNestConfig(nodes, cfgClass, containerMap, containerList);
-			
+
 		} catch (Exception e) {
 			throw e;
 		}
@@ -302,7 +302,7 @@ public class HawkConfigStorage {
 	}
 
 	private void LoadXMLNestConfig (NodeList nodes, Class<?> configType, Map<Object, HawkConfigBase> containerMap, List<HawkConfigBase> containerList) throws Exception 
-	{		
+	{
 		try{
 			for (int i = 0; i < nodes.getLength(); i++) {
 				Node node = nodes.item(i);
@@ -314,7 +314,7 @@ public class HawkConfigStorage {
 						if (cfg instanceof HawkConfigBase) {
 							HawkConfigBase configBase = (HawkConfigBase) cfg;
 							configBase.setStorage(this);
-							
+
 							Object cfgKey = null;
 							for (int j = 0; j < attrMap.getLength(); j++) {
 								Node attrNode = attrMap.item(j);
@@ -323,20 +323,20 @@ public class HawkConfigStorage {
 								if (field == null) {
 									throw new HawkException("config class field not exist, file: " + filePath + ", field: " + attrNode.getNodeName().trim());
 								}
-								
+
 								Id id = null;
 								try {
 									id = field.getAnnotation(Id.class);
 								} catch (Exception e) {
 									throw new NullPointerException("config id annotation not exist: " + cfg.getClass().getName() + ", nodeName: "+ attrNode.getNodeName());
 								}
-								
+
 								if (id != null) {
 									// id标注重复
 									if (cfgKey != null) {
 										throw new HawkException("config id annotation duplicate: " + filePath + ", nodeName: "+ attrNode.getNodeName());
 									}
-									
+
 									String type = field.getType().toString();
 									if (type.indexOf("int") >= 0 || type.indexOf("Integer") >= 0) {
 										cfgKey = Integer.valueOf(attrNode.getNodeValue().trim());
@@ -348,7 +348,7 @@ public class HawkConfigStorage {
 								setAttr(cfg, attrNode.getNodeName().trim(), attrNode.getNodeValue().trim());
 							}
 
-							HawkConfigManager.XMLNestResource xmlNestRes = configType.getAnnotation(HawkConfigManager.XMLNestResource.class);			
+							HawkConfigManager.XMLNestResource xmlNestRes = configType.getAnnotation(HawkConfigManager.XMLNestResource.class);
 							if(xmlNestRes != null){
 								if ("map".equals(xmlNestRes.struct())) {
 									 configBase.setConfigMap(new TreeMap<Object, HawkConfigBase>());
@@ -357,10 +357,10 @@ public class HawkConfigStorage {
 								} else {
 									throw new Exception("unknown config struct: " + xmlNestRes.struct() + ", filePath: " + configType.getSimpleName());
 								}
-															
+
 								LoadXMLNestConfig(node.getChildNodes(), xmlNestRes.nestValueType(), configBase.getConfigMap(HawkConfigBase.class), configBase.getConfigList(HawkConfigBase.class));
-							}	
-							
+							}
+
 							// 通知上层装配
 							if (configBase.assemble()) {
 								// 常量锁定
@@ -373,7 +373,7 @@ public class HawkConfigStorage {
 										if (containerMap.containsKey(cfgKey)) {
 											throw new Exception("config key duplicate: " + filePath + ", key: " + cfgKey);
 										}
-										
+
 										containerMap.put(cfgKey, configBase);
 									} else {
 										throw new Exception("config mapping key is null");
@@ -388,11 +388,11 @@ public class HawkConfigStorage {
 			}
 		}catch (Exception e) {
 			throw e;
-		}	
-		
+		}
+
 		updateFileInfo();
 	}
-	
+
 	/**
 	 * 加载kv配置数据
 	 */
@@ -416,8 +416,7 @@ public class HawkConfigStorage {
 				if (cfg instanceof HawkConfigBase) {
 					HawkConfigBase configBase = (HawkConfigBase) cfg;
 					configBase.setStorage(this);
-					
-					
+
 					while (keys.hasMoreElements()) {
 						String key = keys.nextElement().trim();
 						setAttr(configBase, key, bundle.getString(key).trim());
@@ -452,7 +451,7 @@ public class HawkConfigStorage {
 			if (!file.exists()) {
 				throw new HawkException("config file not exist: " + filePath);
 			}
-			
+
 			String fileData = HawkOSOperator.readTextFile(filePath);
 			if (fileData != null) {
 				JSONObject jsonObject = JSONObject.fromObject(fileData);
@@ -461,25 +460,25 @@ public class HawkConfigStorage {
 					jsonArray = jsonObject.getJSONArray("list");
 				} else if (configMap != null && jsonObject.containsKey("map")) {
 					jsonArray = jsonObject.getJSONArray("map");
-	            } else {
-	            	throw new HawkException("json root key must be list or map");
-	            }
-				
+				} else {
+					throw new HawkException("json root key must be list or map");
+				}
+
 				for (int i=0; jsonArray!=null && jsonArray.isArray() && i<jsonArray.size(); i++) {
 					JSONObject jsonCfgObj = jsonArray.getJSONObject(i);
-		            
+					
 					Object cfg = cfgClass.newInstance();
 					if (cfg instanceof HawkConfigBase) {
 						HawkConfigBase configBase = (HawkConfigBase) cfg;
 						configBase.setStorage(this);
-						
+
 						Object cfgKey = null;
 						Iterator<?> it = jsonCfgObj.keys();
-			            while (it.hasNext()) {  
-			                String key = (String) it.next();  
-			                String value = jsonCfgObj.getString(key);
-			                
-			                // 测试Id标注是否存在
+						while (it.hasNext()) {  
+							String key = (String) it.next();  
+							String value = jsonCfgObj.getString(key);
+
+							// 测试Id标注是否存在
 							Field field = cfg.getClass().getDeclaredField(key.trim());
 
 							Id id = null;
@@ -488,7 +487,7 @@ public class HawkConfigStorage {
 							} catch (Exception e) {
 								throw new NullPointerException("config id annotation not exist: " + cfg.getClass().getName() + ", nodeName: "+ key);
 							}
-							
+
 							if (id != null) {
 								// id标注重复
 								if (cfgKey != null) {
@@ -501,7 +500,7 @@ public class HawkConfigStorage {
 									cfgKey = value.trim();
 								}
 							}
-							
+
 							// 设置对应属性值
 							setAttr(cfg, key, value);
 						}
@@ -528,7 +527,7 @@ public class HawkConfigStorage {
 						}
 					}
 				}
-			}			
+			}
 		} catch (Exception e) {
 			throw e;
 		}
@@ -565,7 +564,7 @@ public class HawkConfigStorage {
 		}
 		return field;
 	}
-	
+
 	/**
 	 * 给指定对象调用set方法设置属性值，现在仅判断int float long double string 类型
 	 * 
@@ -579,7 +578,7 @@ public class HawkConfigStorage {
 			HawkLog.errPrintln(String.format("config class cannot find field, class: %s, field: %s", instance.getClass().getName(), attrName));
 			throw new Exception("config class cannot find field");
 		}
-		
+
 		try {
 			// 必须带final属性
 			if ((field.getModifiers() & Modifier.FINAL) == 0) {
@@ -710,7 +709,7 @@ public class HawkConfigStorage {
 				}
 			}
 		}
-		
+
 		if (configMap != null) {
 			for (Map.Entry<Object, HawkConfigBase> entry : configMap.entrySet()) {
 				if (!entry.getValue().checkValid()) {
@@ -720,7 +719,7 @@ public class HawkConfigStorage {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 获取文件路径
 	 * @return
@@ -728,7 +727,7 @@ public class HawkConfigStorage {
 	public String getFilePath() {
 		return filePath;
 	}
-	
+
 	/**
 	 * 获取配置列表
 	 * 

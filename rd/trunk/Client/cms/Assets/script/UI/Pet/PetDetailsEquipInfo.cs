@@ -40,9 +40,7 @@ public class PetDetailsEquipInfo : PetDetailsRight,
             return tabGroup;
         }
     }
-
-    string[] partLanguageId = new string[6] { "equip_Weapon", "equip_Helmet", "equip_Armor", "equip_Bracer", "equip_Ring", "equip_Accessory" };
-    string[] typeLanguageId = new string[4] { "common_type_defence", "common_type_physical", "common_type_magic", "common_type_support" };
+   
     private int tabIndex = -1;
     private int selIndex = 0;
 
@@ -108,8 +106,8 @@ public class PetDetailsEquipInfo : PetDetailsRight,
         }
 
         UIUtil.SetStageColor(textName, itemData.name, curData.stage, curData.level);
-        textType.text = StaticDataMgr.Instance.GetTextByID(typeLanguageId[itemData.subType - 1]);
-        textPart.text = StaticDataMgr.Instance.GetTextByID(partLanguageId[itemData.part - 1]);
+        UIUtil.SetEquipType(textType, itemData.subType);
+        UIUtil.SetEquipPart(textPart, itemData.part);
 
         for (int i = 0; i < tabPanel.Length; i++)
         {

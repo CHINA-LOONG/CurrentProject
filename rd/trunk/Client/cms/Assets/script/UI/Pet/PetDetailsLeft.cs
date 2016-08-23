@@ -98,19 +98,21 @@ public class PetDetailsLeft : MonoBehaviour,
     public void RefreshLevelExp(int level, int exp)
     {
         textLevel.text = "LVL:" + level;
-
-        if (UIUtil.CheckPetIsMaxLevel(level)!=0)
+        int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * curUnitData.levelUpExpRate);
+        switch (UIUtil.CheckPetIsMaxLevel(level))
         {
-            textExp.text = "Max";
-            progressExp.value = 0.0f;
-            btnAddExp.interactable = false;
-        }
-        else
-        {
-            int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * curUnitData.levelUpExpRate);
-            textExp.text = exp + "/" + maxExp;
-            progressExp.value = (float)exp / (float)maxExp;
-            btnAddExp.interactable = true;
+            case 0:
+                textExp.text = exp + "/" + maxExp;
+                progressExp.value = (float)exp / (float)maxExp;
+                break;
+            case 1:
+                textExp.text = "MAX LVL";
+                progressExp.value = 0.0f;
+                break;
+            case 2:
+                textExp.text = 0 + "/" + maxExp;
+                progressExp.value = 0.0f;
+                break;
         }
     }
 
@@ -137,12 +139,19 @@ public class PetDetailsLeft : MonoBehaviour,
     }
     void OnClickAddExpBtn()
     {
-        if (uiPetFeedList==null)
+        if (UIUtil.CheckPetIsMaxLevel(curData.pbUnit.level) == 0)
         {
-            uiPetFeedList = UIMgr.Instance.OpenUI_(UIPetFeedList.ViewName, false) as UIPetFeedList;
-            uiPetFeedList.IUIPetFeedListDelegate = this;
+            if (uiPetFeedList == null)
+            {
+                uiPetFeedList = UIMgr.Instance.OpenUI_(UIPetFeedList.ViewName, false) as UIPetFeedList;
+                uiPetFeedList.IUIPetFeedListDelegate = this;
+            }
+            uiPetFeedList.ReloadData(curData);
         }
-        uiPetFeedList.ReloadData(curData);
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_002"), (int)PB.ImType.PROMPT);
+        }
     }
     
     void OnPetLockReturn(ProtocolMessage msg)

@@ -221,7 +221,7 @@ public class AllianceUtil {
 		builder.setPostion(playerAllianceEntity.getPostion());
 		builder.setId(playerAllianceEntity.getPlayerId());
 		builder.setLoginTime(playerAllianceEntity.getLoginTime());
-		builder.setLogoutTime(playerAllianceEntity.getLoginTime());
+		builder.setLogoutTime(playerAllianceEntity.getLogoutTime());
 		if (selfEntity != null && selfEntity.getRefreshTime() > HawkTime.getSeconds() && selfEntity.getFatigueSet().contains(playerAllianceEntity.getPlayerId())) {
 			builder.setSendFatigue(true);
 		}
@@ -301,21 +301,21 @@ public class AllianceUtil {
 		element.setTeamId(teamEntity.getId());
 		
 		if (teamEntity.getCaptain() != 0) {
-			AllianceTeamMemInfo.Builder member = getPlayerInfo(teamEntity.getCaptain(), allianceEntity);
+			AllianceTeamMemInfo.Builder member = getTeamMemberInfo(teamEntity.getCaptain(), allianceEntity);
 			member.setIsCaptain(true);
 			element.addMembers(member);
 		}
 		
 		if (teamEntity.getMember1() != 0) {
-			element.addMembers(getPlayerInfo(teamEntity.getMember1(), allianceEntity));
+			element.addMembers(getTeamMemberInfo(teamEntity.getMember1(), allianceEntity));
 		}
 		
 		if (teamEntity.getMember2() != 0) {
-			element.addMembers(getPlayerInfo(teamEntity.getMember2(), allianceEntity));
+			element.addMembers(getTeamMemberInfo(teamEntity.getMember2(), allianceEntity));
 		}
 		
 		if (teamEntity.getMember3() != 0) {
-			element.addMembers(getPlayerInfo(teamEntity.getMember3(), allianceEntity));
+			element.addMembers(getTeamMemberInfo(teamEntity.getMember3(), allianceEntity));
 		}
 		
 		if (questInfo == true) {
@@ -361,7 +361,7 @@ public class AllianceUtil {
 	 * @param player
 	 * @return
 	 */
-	public static AllianceTeamMemInfo.Builder getPlayerInfo(int playerId, AllianceEntity allianceEntity) {
+	public static AllianceTeamMemInfo.Builder getTeamMemberInfo(int playerId, AllianceEntity allianceEntity) {
 		AllianceTeamMemInfo.Builder member = AllianceTeamMemInfo.newBuilder();
 		PlayerAllianceEntity playerEntity = allianceEntity.getMember(playerId);
 		if (playerEntity != null) {

@@ -494,7 +494,7 @@ message HSAllianceTeamListRet
 	repeated AllianceTeamInfo allianceTeams = 1;
 }
 
-// 我的工会
+// 我的工会队伍
 message HSAllianceSelfTeam
 {
 
@@ -504,4 +504,29 @@ message HSAllianceSelfTeamRet
 {
 	required AllianceTeamInfo selfTeam = 1;
 }
-	
+
+// 小任务完成通知
+message HSAllianceTeamQuestFinishNotify
+{
+	required int32 teamId = 1;
+	required int32 questId = 2;
+	required int32 playerId = 3;
+}
+
+// 新队员入队通知
+message HSAllianceTeamJoinNotify
+{
+	required AllianceTeamMemInfo member = 1;
+}
+
+// 队员离队通知
+message HSAllianceTeamLeaveNotify
+{
+	required int32 playerId = 1;
+}
+
+// 任务超时通知
+message HSAllianceTaskTimeoutNotify
+{
+	required int32 taskId = 1;
+}

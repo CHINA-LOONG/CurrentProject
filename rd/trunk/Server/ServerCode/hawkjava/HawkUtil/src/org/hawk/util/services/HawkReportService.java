@@ -540,7 +540,7 @@ public class HawkReportService extends HawkThread {
 	private String myHostIp = "";
 	private String gameName = "";
 	private String platform = "";
-	private String serverId = "";
+	private int serverId = 0;
 	private int retryTimes = 1;
 	private String token = "";
 	
@@ -650,7 +650,7 @@ public class HawkReportService extends HawkThread {
 	 * 
 	 * @return
 	 */
-	public boolean install(String gameName, String platform, String serverId, String host, int timeout) {
+	public boolean install(String gameName, String platform, int serverId, String host, int timeout) {
 		return install(gameName, platform, serverId, host, timeout, HawkApp.getInstance().getAppCfg());
 	}
 	
@@ -659,7 +659,7 @@ public class HawkReportService extends HawkThread {
 	 * 
 	 * @return
 	 */
-	public boolean install(String gameName, String platform, String serverId, String host, int timeout, HawkAppCfg appCfg) {
+	public boolean install(String gameName, String platform, int serverId, String host, int timeout, HawkAppCfg appCfg) {
 		try {
 			this.gameName = gameName;
 			this.platform = platform;
@@ -1147,9 +1147,14 @@ public class HawkReportService extends HawkThread {
 		
 		if (isValid()) {
 			try {
-				String queryParam = String.format(registerQuery, gameName, platform, serverId, registerData.puid, 
-						registerData.device, registerData.playerId, 
-						(registerData.time == null || registerData.time.length() <= 0) ? HawkTime.getTimeString() : registerData.time);
+				String queryParam = String.format(registerQuery, 
+												gameName, 
+												platform, 
+												serverId, 
+												registerData.puid, 
+												registerData.device, 
+												registerData.playerId, 
+												(registerData.time == null || registerData.time.length() <= 0) ? HawkTime.getTimeString() : registerData.time);
 
 				reportLogger.info("report: " + registerPath + "?" + queryParam);
 

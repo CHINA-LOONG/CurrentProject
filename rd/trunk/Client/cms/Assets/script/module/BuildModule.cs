@@ -73,6 +73,16 @@ public class BuildModule : ModuleBase
                             }
                         }
                         break;
+                    case (int)ExitInstanceType.Exit_Instance_OK:
+                        {
+                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                            if (curInstance != null)
+                            {
+                                InstanceMap.Instance.FocusOnChapterButton(curInstance.instanceData.instanceId);
+                                GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, curInstance.instanceData.instanceId);
+                            }
+                        }
+                        break;
                 }
             }
             else  if(curInstanceType == (int)InstanceType.Guild)

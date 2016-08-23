@@ -1267,7 +1267,7 @@ login_namederror_001,这个名字已经被使用,This name is already in use.
 login_nameinvalidate_001,名称中含有非法字符,Name contains illegal character(s).
 chapter_name,章节,Chapter
 buycoin,兑换金币,Coin exchanges
-gonggao_title_name,公告,Announcement
+gonggao_title_name,公告,Notice
 setting_sound_name,音效,Sound FX
 setting_sound_open,开启,On
 setting_sound_close,关闭,Off
@@ -1813,8 +1813,8 @@ decompose_c,稀有度C,C Class
 decompose_b,稀有度B,B Class
 compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.
 worldboss_title,神怪入侵,Deity Invasion
-worldboss_timesbefore,每天可参与1场活动,每天可参与1场活动
-worldboss_timesafter,今日已参与,今日已参与
+worldboss_timesbefore,每天可参与1场活动,Participate once per day
+worldboss_timesafter,今日已参与,Participated today already
 worldboss_rankbutton,排行榜,Rankings
 worldboss_rankrewardbutton,排名奖励,Reward
 worldboss_rulebutton,规则说明,Rules
@@ -1840,7 +1840,6 @@ worldboss_revivesure,确认立即挑战吗？,Battle now?
 worldboss_timetips,下场活动开启时间 {0} {1}:{2},Next event start time {0} {1}:{2}
 worldboss_timelefttips,本场活动将于<color=#ffcc00>{0}:{1}</color>后结束,This event will end after <color=#ffcc00>{0}:{1}</color>
 worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
-worldboss_kexingtitle,神怪克星,Monster Nemesis
 worldboss_kexinglow,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>
 worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>
 worldboss_kexinglow1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>
@@ -1916,18 +1915,18 @@ compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},<color=#ffcc00>{
 compose_insignia_003,祝福之力,Blessing Power
 compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,"Can combine <color=#ffcc00>{0}</color> times, with a <color=#ffcc00>100%</color> chance each time of receiving {1}."
 compose_insignia_005,将消耗,Will consume
-compose_record_009,纹章不足,纹章不足
-compose_record_010,请添加5个相同名称的纹章,请添加5个相同名称的纹章
-compose_record_011,祝福之力不足,祝福之力不足
-guide_hero1,一起来看看挑战难度的副本吧,一起来看看挑战难度的副本吧
-guide_hero2,选择第一章,选择第一章
-guide_hero3,这里可以切换普通与挑战难度,这里可以切换普通与挑战难度
-guide_hero4,选择挑战难度,选择挑战难度
-guide_hero5,点击这里看看奖励多棒吧,点击这里看看奖励多棒吧
-speech_hero1,挑战难度副本主要产出宠物进阶的相关材料、宠物碎片等，三星通关挑战难度副本能够获得钻石等丰富的奖励呢！,挑战难度副本主要产出宠物进阶的相关材料、宠物碎片等，三星通关挑战难度副本能够获得钻石等丰富的奖励呢！
-guide_worldboss1,神怪入侵玩法开启啦！,神怪入侵玩法开启啦！
-guide_worldboss2,每个神怪都有克星，战斗时将克星上阵，就能获得对应的伤害加成,每个神怪都有克星，战斗时将克星上阵，就能获得对应的伤害加成
-speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。
-speech_worldboss2,活动开始后，根据玩家对神怪的总伤害输出进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的纹章呐。,活动开始后，根据玩家对神怪的总伤害输出进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的纹章呐。
+compose_record_009,请添加5个相同名称的纹章,Please add 5 insignias with the same name.
+compose_record_010,请添加5个相同名称的纹章,Please add 5 insignias with the same name.
+compose_record_011,祝福之力不足,Insufficient Blessing Power.
 dazhao_jieduan,连续,Keep
 dazhao_shifang,可获得多次伤害,for more damage
+compose_monster_name,宠物,Monster
+monstercompose_tips,*合成5个同稀有度的宠物可以几率获得更高稀有度的宠物,*Combine 5 same class Monster and receive 1 higher class Monster
+compose_monster_filter,筛选,Filter
+compose_monster_hecheng,合成,Compose
+monstercompose_hecheng_tips,材料宠物合成后将消失，确定进行合成操作吗？,材料宠物合成后将消失，确定进行合成操作吗？
+compose_filter_c,稀有度C,C Class
+compose_filter_b,稀有度B,B Class
+compose_filter_a,稀有度A,A Class
+compose_filter_all,全部,All
+worldboss_record_007,活动未开始，可以在规则说明处查看活动时间哦！,"Event not started yet, please check Rules for event starting time."

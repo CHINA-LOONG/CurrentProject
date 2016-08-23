@@ -163,6 +163,19 @@ public class InstanceMap : UIBase
         }
     }
 
+    public void FocusOnChapterButton(string instanceID)
+    {
+        InstanceEntryRuntimeData subInstance = InstanceMapService.Instance.GetRuntimeInstance(instanceID);
+        if (null == subInstance)
+            return;
+
+        ChapterButton cb;
+        if (allChapterButtonDic.TryGetValue(subInstance.staticData.chapter, out cb) == true)
+        {
+            OnChapterButtonOnClicked(cb);
+        }
+    }
+
     float GetScrollNormlizePosition()
     {
         return mapScrollRect.normalizedPosition.x;

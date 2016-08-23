@@ -50,6 +50,10 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
     }
 
 
@@ -78,6 +82,10 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode().ToString(), OnReceivSociatyMessage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_TEAM_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
     }
 	
     //打开公会
@@ -213,6 +221,25 @@ public class SociatyDataMgr : MonoBehaviour
         PB.HSAllianceJoinTeam param = new PB.HSAllianceJoinTeam();
         param.teamId = teamId;
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_JOIN_TEAM_C.GetHashCode(), param);
+    }
+
+    void OnAllianceJoin_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSAllianceJoinNotify msgRet = message.GetProtocolBody<PB.HSAllianceJoinNotify>();
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = msgRet.allianceId;
+    }
+
+    void OnAllianceLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
     }
 
     public  void SetMemberPosition(int playerId,int position)

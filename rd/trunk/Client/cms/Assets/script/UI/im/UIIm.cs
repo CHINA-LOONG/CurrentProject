@@ -15,7 +15,7 @@ public class UIIm : UIBase
     #region 
     public static string ViewName = "uishowMsg";
     List<PB.HSImMsg> worldChannel = new List<PB.HSImMsg>();//世界頻道列表
-    List<PB.HSImMsg> gangChannel = new List<PB.HSImMsg>();//工會頻道列表 
+    List<PB.HSImMsg> guildChannel = new List<PB.HSImMsg>();//工會頻道列表 
     PB.HSImMsg allMsg;//基础聊天框
     int channel = (int)PB.ImChannel.WORLD;//頻道
     public InputField msgText;
@@ -47,11 +47,13 @@ public class UIIm : UIBase
     public GameObject inviteGuild;//邀请入工会
     public Text guildName;//工会名称
     int guildID = 0;
+    int TaskID = 0;
     int blockID;//屏蔽ID
     ImMessageData imMsgData;
     static UIIm mInst = null;
     bool isSend = true;
     bool isSendRecruit = true;
+    bool isRendTask = true;
     private MsgBox.PromptMsg shieldWnd;
     public Transform moduleVec;//对局位置
     public Transform leftCahtMove;//左侧聊天框唤出位置
@@ -201,7 +203,10 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpTask(GameObject btn)
     {
-        Debug.Log("我跳到工会任务~~");
+        if (TaskID != 0)
+        {
+            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.OtherTeam, TaskID.ToString());
+        }
     }
     //------------------------------------------------------------------------------------------------------
     void SelectGuild(GameObject btn)
@@ -229,15 +234,13 @@ public class UIIm : UIBase
                 worldChannel.Add(item);
                 if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceID > 0)
                 {
-                    gangChannel.Add(item);
+                    guildChannel.Add(item);
                 }
                 //所有消息
                 allMsg = item;
                 continue;
             }
             ShowSystemHints(item.origText, item.type);
-            if (GameDataMgr.Instance.PlayerDataAttr.playerId == item.senderId)
-                return;
             //频道相关
             if (item.channel == (int)PB.ImChannel.WORLD && item.type != (int)PB.ImType.LANTERN && item.type != (int)PB.ImType.PROMPT)
             {
@@ -246,7 +249,7 @@ public class UIIm : UIBase
             }
             if (item.channel == (int)PB.ImChannel.GUILD)
             {
-                gangChannel.Add(item);
+                guildChannel.Add(item);
                 allMsg = item;
             }
         }
@@ -261,7 +264,7 @@ public class UIIm : UIBase
         }
         else if (channel == (int)PB.ImChannel.GUILD)
         {
-            ReadMsg(ref gangChannel, StaticDataMgr.Instance.GetTextByID("im_chat_guild"), ColorConst.guildColor);
+            ReadMsg(ref guildChannel, StaticDataMgr.Instance.GetTextByID("im_chat_guild"), ColorConst.guildColor);
         }
         if (isBasicsChat && allMsg != null)//basicsChat.activeSelf && worldChannel.Count > 0)
         {
@@ -345,21 +348,7 @@ public class UIIm : UIBase
                 }            
             }
             Color textColor;
-            msgObj[i].SetActive(true);
-            if (msgList[i].expansion != null)
-            {
-                string[] msgData = msgList[i].expansion.Split('^');
-                if (ImMessageType.Msg_Type_Recruit.ToString() == msgData[0])
-                {
-                    ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpRecruit;
-                    guildID = int.Parse(msgData[1]);
-                }
-                else if (ImMessageType.Msg_Type_Task.ToString() == msgData[0])
-                {
-                    ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpTask;
-                }
-                imMsgData.mScrollmContentClick = imMsgData.mContent.gameObject.GetComponent<ScrollViewEventListener>();
-            }
+            msgObj[i].SetActive(true);            
             if (msgList[i].type == (int)PB.ImType.NOTICE)
             {
                 textColor = ColorConst.systemColor;
@@ -381,11 +370,27 @@ public class UIIm : UIBase
                 imMsgData.mSpeaker.color = ColorConst.nameColor;
                 imMsgData.mPlayer.rectTransform.sizeDelta = new Vector2(imMsgData.mSpeaker.preferredWidth,
                         imMsgData.mPlayer.rectTransform.sizeDelta.y);
-            }
+            }           
             imMsgData.playerName = msgList[i].senderName;            
             imMsgData.mContent.color = textColor;
             imMsgData.speakerID = msgList[i].senderId;             
-            imMsgData.mChannel.color = textColor;           
+            imMsgData.mChannel.color = textColor;
+            if (msgList[i].expansion != null)
+            {
+                string[] msgData = msgList[i].expansion.Split('^');
+                if (ImMessageType.Msg_Type_Recruit.ToString() == msgData[0])
+                {
+                    ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpRecruit;
+                    guildID = int.Parse(msgData[1]);
+                }
+                else if (ImMessageType.Msg_Type_Task.ToString() == msgData[0])
+                {
+                    ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpTask;
+                    TaskID = int.Parse(msgData[1]);
+                    imMsgData.mContent.color = ColorConst.guildTaskColor;
+                }
+                imMsgData.mScrollmContentClick = imMsgData.mContent.gameObject.GetComponent<ScrollViewEventListener>();
+            }
         }
         for (; i < msgObj.Count; ++i)
         {
@@ -446,8 +451,8 @@ public class UIIm : UIBase
             int count = 0;
             if (channel == (int)PB.ImChannel.GUILD)
             {
-                count = gangChannel.Count;
-                msgChannelList = gangChannel;
+                count = guildChannel.Count;
+                msgChannelList = guildChannel;
             }
             else
             {
@@ -514,6 +519,10 @@ public class UIIm : UIBase
     {
         isSendRecruit = true;
     }
+    void SendTaskInterval() //工会任务招募间隔
+    {
+        isRendTask = true;
+    }
     //------------------------------------------------------------------------------------------------------
     void ShieldClick(GameObject btn)
     {
@@ -564,31 +573,14 @@ public class UIIm : UIBase
                     channel = channel,
                     text = message
                 };
-                PB.HSImMsg meMsg = new PB.HSImMsg();
-                meMsg.senderId = GameDataMgr.Instance.PlayerDataAttr.playerId;
-                meMsg.channel = channel;
-                meMsg.senderName = GameDataMgr.Instance.PlayerDataAttr.nickName;
-                meMsg.origText = message;
-                if (channel == (int)PB.ImChannel.GUILD)
-                {
-                    meMsg.type = (int)PB.ImChannel.GUILD;
-                    gangChannel.Add(meMsg);
-                }
-                else
-                {
-                    meMsg.type = (int)PB.ImChannel.WORLD;
-                    worldChannel.Add(meMsg);
-                }
-                allMsg = meMsg;
-                ShowMessage();
             }
             else
             {
                 uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
                 return false;
-            }           
+            }
         }
-        else if (guildID != null)
+        else if (msgType == ImMessageType.Msg_Type_Recruit && guildID != null)
         {
             if (isSendRecruit)
             {
@@ -596,7 +588,26 @@ public class UIIm : UIBase
                 Invoke("SendRecruitInterval", 10f);
                 param = new PB.HSImChatSend()
                 {
-                    channel = channel,
+                    channel = (int)PB.ImChannel.WORLD,
+                    text = message,
+                    expansion = msgType.ToString() + "^" + guildID
+                };
+            }
+            else
+            {
+                uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_001"));
+                return false;
+            }
+        }
+        else if (msgType == ImMessageType.Msg_Type_Task && guildID != null)
+        {
+            if (isRendTask)
+            {
+                isRendTask = !isRendTask;
+                Invoke("SendTaskInterval", 10f);
+                param = new PB.HSImChatSend()
+                {
+                    channel = (int)PB.ImChannel.GUILD,
                     text = message,
                     expansion = msgType.ToString() + "^" + guildID
                 };
@@ -609,7 +620,6 @@ public class UIIm : UIBase
         }
         GameApp.Instance.netManager.SendMessage(PB.code.IM_CHAT_SEND_C.GetHashCode(), param, false);
         msgText.text = "";
-        //placeholder.text = StaticDataMgr.Instance.GetTextByID("im_chat_enter");
         return true;
     }
     //------------------------------------------------------------------------------------------------------

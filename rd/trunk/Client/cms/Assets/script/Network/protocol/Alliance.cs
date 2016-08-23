@@ -1626,4 +1626,35 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTeamQuestFinishNotify")]
+  public partial class HSAllianceTeamQuestFinishNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTeamQuestFinishNotify() {}
+    
+    private int _teamId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"teamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamId
+    {
+      get { return _teamId; }
+      set { _teamId = value; }
+    }
+    private int _questId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int questId
+    {
+      get { return _questId; }
+      set { _questId = value; }
+    }
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

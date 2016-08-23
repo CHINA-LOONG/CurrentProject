@@ -412,7 +412,10 @@ namespace PB
       ALLIANCE_REWARD_ALREADY_GIVE = 524330,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_COPY_MAIN", Value=524331)]
-      ALLIANCE_MAX_COPY_MAIN = 524331
+      ALLIANCE_MAX_COPY_MAIN = 524331,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_LIST_EMPTY", Value=524332)]
+      ALLIANCE_APPLY_LIST_EMPTY = 524332
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

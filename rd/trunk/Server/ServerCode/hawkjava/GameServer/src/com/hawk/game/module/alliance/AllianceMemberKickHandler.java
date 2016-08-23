@@ -18,6 +18,7 @@ import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceLeave;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKick;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKickRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamLeaveNotify;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
 
@@ -76,6 +77,9 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(request.getTargetId());
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(request.getTargetId());
+			HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
+			notify.setPlayerId(request.getTargetId());
+			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);	
 		}
 
 		// 离开公会频道

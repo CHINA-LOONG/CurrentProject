@@ -50,7 +50,6 @@ public class HawkScriptHttpHandler implements HttpHandler {
 				}
 			}
 			
-	
 			String result = "" + HawkTime.getTimeString() + ":\n\n";
 			String uriInfo = httpExchange.getRequestURI().getQuery();
 			String path = httpExchange.getRequestURI().getPath();

@@ -83,12 +83,7 @@ public class MemberInfo : UIBase
     }
     ///-----------------------------------------------------------------------------------
     void OnTransferButtonClick()
-    {
-        if(selfData.postion != 2)
-        {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            return;
-        }
+    { 
         string msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tips3"), memberData.name);
         MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, msg, OnConformTransfer);
     }
@@ -97,6 +92,11 @@ public class MemberInfo : UIBase
     {
         if(click == MsgBox.PrompButtonClick.OK)
         {
+            if (selfData.postion != 2)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
+                return;
+            }
             RequestTransfer();
         }
     }
@@ -131,11 +131,6 @@ public class MemberInfo : UIBase
     ///-----------------------------------------------------------------------------------
     void OnAppointmentButtonClick()
     {
-        if(selfData.postion != 2 )
-        {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            return;
-        }
         string msg = "";
         if(memberData.postion ==0)
         {
@@ -153,6 +148,12 @@ public class MemberInfo : UIBase
     {
         if(click == (int) MsgBox.PrompButtonClick.OK)
         {
+            if (selfData.postion != 2)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
+                return;
+            }
+
             RequestAppointment();
         }
     }
@@ -201,12 +202,6 @@ public class MemberInfo : UIBase
     ///-----------------------------------------------------------------------------------
     void OnKichButton()
     {
-        if (selfData.postion == 1
-            && memberData.postion != 0)
-        {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            return;
-        }
         string msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tips5"), memberData.name);
         MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, msg, OnKichAppointment);
     }
@@ -214,6 +209,12 @@ public class MemberInfo : UIBase
     {
         if(click == MsgBox.PrompButtonClick.OK)
         {
+            if (selfData.postion == 1
+           && memberData.postion != 0)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
+                return;
+            }
             RequestKich();
         }
     }

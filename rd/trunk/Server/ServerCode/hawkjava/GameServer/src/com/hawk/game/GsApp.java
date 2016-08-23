@@ -1,6 +1,6 @@
 package com.hawk.game;
 
-import java.net.InetAddress;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,12 +30,9 @@ import org.hawk.service.HawkServiceManager;
 import org.hawk.util.services.FunPlusPushService;
 import org.hawk.util.services.FunPlusTranslateService;
 import org.hawk.util.services.HawkAccountService;
-import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
 import org.hawk.util.services.HawkOrderService;
-import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
-import org.omg.CORBA.IntHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -117,10 +114,9 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public boolean init(String cfg) {
-
 		GsConfig appCfg = null;
 		try {
-			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class);
+			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class, getWorkPath());
 			appCfg = (GsConfig) cfgStorgae.getConfigList().get(0);
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -143,62 +139,28 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
 
-		// 初始化开发版GmService
-		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
+		// 账号服务器初始化
+		if (GsConfig.getInstance().getAccountHost().length() > 0) {
+			HawkLog.logPrintln("install account service......");
+			if (HawkAccountService.getInstance().install(
+								GsConfig.getInstance().getGameId(),
+								GsConfig.getInstance().getPlatform(),
+								GsConfig.getInstance().getChannel(),
+								GsConfig.getInstance().getServerId(),
+								GsConfig.getInstance().getAccountTimeout(),
+								GsConfig.getInstance().getAccountHost()))
+			{
+				HawkLog.logPrintln("register game server");
+				try {
+					// TODO
+					String ip = getMyHostIp();
 
-		// cdk服务初始化
-		if (GsConfig.getInstance().getCdkHost().length() > 0) {
-			HawkLog.logPrintln("install cdk service......");
-			 HawkCdkService.getInstance().install(
-					 GsConfig.getInstance().getGameId(),
-					 GsConfig.getInstance().getPlatform(),
-					 GsConfig.getInstance().getServerId(),
-					 GsConfig.getInstance().getCdkHost(),
-					 GsConfig.getInstance().getCdkTimeout());
-		}
-		// 数据上报服务初始化并获取账号服务器地址
-		if (GsConfig.getInstance().getReportHost().length() > 0) {
-			HawkLog.logPrintln("install report service......");
-			if (!HawkReportService.getInstance().install(
-					 GsConfig.getInstance().getGameId(), 
-					 GsConfig.getInstance().getPlatform(),
-					 GsConfig.getInstance().getServerId(),
-					 GsConfig.getInstance().getReportHost(),
-					 GsConfig.getInstance().getReportTimeout())) 
-			{
-				HawkLog.logPrintln("install report service fail");
-			}
-			else
-			{
-				HawkLog.logPrintln("get account server......");
-				StringBuilder accountZmqHost = new StringBuilder();
-				IntHolder zmqPort = new IntHolder();
-				if (!HawkReportService.getInstance().fetchAccountServerInfo(appCfg, accountZmqHost, zmqPort)) {
-					HawkLog.logPrintln("get account fail......");
+
+					HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort()));
 				}
-				else
-				{
-					HawkLog.logPrintln("install account service......");
-					if (HawkAccountService.getInstance().install(
-							GsConfig.getInstance().getGameId(), 												 
-							GsConfig.getInstance().getPlatform(), 
-							GsConfig.getInstance().getServerId(), 
-							GsConfig.getInstance().getReportTimeout(),
-							accountZmqHost.toString(), zmqPort.value)) 
-					{
-						HawkLog.logPrintln("register game server");
-						try {
-							// TODO
-							String ip = getMyHostIp();
-							if (ip.equals("127.0.0.1") || ip.equals("123.126.3.94")) {
-								ip = InetAddress.getLocalHost().getHostAddress();
-							}
-							HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort()));
-						} 
-						catch (Exception e) {
-							HawkLog.logPrintln("get ip fail");
-						}
-					}
+				catch (Exception e) {
+					HawkLog.logPrintln("get ip fail");
+					return false;
 				}
 			}
 		}
@@ -209,12 +171,14 @@ public class GsApp extends HawkApp {
 							GsConfig.getInstance().getOrderAddr(),
 							GsConfig.getInstance().getGameId(),
 							GsConfig.getInstance().getPlatform(),
+							GsConfig.getInstance().getChannel(),
 							GsConfig.getInstance().getServerId())) 
 		{
 			HawkLog.logPrintln("install order service success");
 		}
 		else {
 			HawkLog.logPrintln("install order service fail");
+			return false;
 		}
 
 		// 初始化邮件服务
@@ -239,12 +203,15 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init alliance manager......");
 		AllianceManager.getInstance().init();
 
-		//开机刷新一次
-		onRefresh(HawkTime.getMillisecond());
-
 		// 快照缓存对象初始
 		HawkLog.logPrintln("init snapshot manager......");
 		SnapShotManager.getInstance().init();
+
+		// 初始化开发版GmService
+		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
+
+		//开机刷新一次
+		onRefresh(HawkTime.getMillisecond());
 
 		return true;
 	}
@@ -289,7 +256,7 @@ public class GsApp extends HawkApp {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 获取hash线程索引
 	 */
@@ -517,13 +484,11 @@ public class GsApp extends HawkApp {
 			if (protocol.checkType(HS.sys.HEART_BEAT)) {
 				HSHeartBeat.Builder builder = HSHeartBeat.newBuilder();
 				builder.setTimeStamp(HawkTime.getSeconds());
-				protocol.getSession().sendProtocol(
-						HawkProtocol.valueOf(HS.sys.HEART_BEAT, builder));
+				protocol.getSession().sendProtocol(HawkProtocol.valueOf(HS.sys.HEART_BEAT, builder));
 				return true;
 			}
 
 			try {
-
 				if (session.getAppObject() == null) {
 					// 登陆协议
 					if (protocol.checkType(HS.code.LOGIN_C)) {
@@ -536,7 +501,7 @@ public class GsApp extends HawkApp {
 						// 登陆协议时间间隔控制
 						synchronized (puidLoginTime) {
 							if (puidLoginTime.containsKey(puid) && HawkTime.getMillisecond() <= puidLoginTime.get(puid) + 5000) {
-								//return true;
+								return true;
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
 						}
@@ -843,7 +808,7 @@ public class GsApp extends HawkApp {
 
 					playerOffline = true;
 				}
- 
+
 				if (objBase != null) {
 					Player player = (Player) objBase.getImpl();
 					if (playerOffline == true) {

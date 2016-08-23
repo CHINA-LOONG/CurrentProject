@@ -1,10 +1,13 @@
 package com.hawk.game.entity;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.persistence.Column;
@@ -15,7 +18,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
+import org.hawk.net.protocol.HawkProtocol;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Alliance.HSAllianceTaskTimeoutNotify;
 
 
 /**
@@ -123,7 +131,13 @@ public class AllianceEntity extends HawkDBEntity {
 	 */
 	@Transient
 	private Map<Integer, AllianceTeamEntity> unfinishTeamList;
-
+	
+	/**
+	 * 组队任务到期时间
+	 */
+	@Transient
+	private Set<AllianceTeamEntity> unfinishTeamTimeoutList;
+	
 	/**
 	 * 刷新时间
 	 */
@@ -136,6 +150,12 @@ public class AllianceEntity extends HawkDBEntity {
 		playerTeamMap = new HashMap<Integer, Integer>();
 		finishTeamList = new HashMap<>();
 		unfinishTeamList = new HashMap<>();
+		unfinishTeamTimeoutList =  new TreeSet<>(new Comparator<AllianceTeamEntity>() {
+            public int compare(AllianceTeamEntity o1, AllianceTeamEntity o2) {
+                if (o1 == null || o2 == null)
+                    return 0; 
+                return (o1.getCreateTime() + o1.getOverTime()) - (o2.getCreateTime() + o2.getOverTime());
+         }});
 	}
 
 	public int getId() {
@@ -298,6 +318,23 @@ public class AllianceEntity extends HawkDBEntity {
 		return unfinishTeamList;
 	}
 	
+	public Set<AllianceTeamEntity> getUnfinishTeamTiemoutList() {
+		return unfinishTeamTimeoutList;
+	}
+	
+	public void removeTeam(int teamId){
+		AllianceTeamEntity teamEntity = null;
+		if (finishTeamList.get(teamId) != null) {
+			teamEntity = finishTeamList.remove(teamId);
+		}
+		else if (unfinishTeamList.get(teamId) != null) {
+			teamEntity = unfinishTeamList.remove(teamId);
+			unfinishTeamTimeoutList.remove(teamEntity);
+		}
+
+		teamEntity.delete();
+	}
+	
 	/**
 	 * 获取玩家所在的队伍
 	 * @param playerId
@@ -320,6 +357,7 @@ public class AllianceEntity extends HawkDBEntity {
 		}
 		else{
 			unfinishTeamList.put(teamEntity.getId(), teamEntity);
+			unfinishTeamTimeoutList.add(teamEntity);
 		}
 		
 		if (teamEntity.getCaptain() != 0) {
@@ -352,6 +390,7 @@ public class AllianceEntity extends HawkDBEntity {
 		AllianceTeamEntity teamEntity = unfinishTeamList.get(taskId);
 		if (teamEntity != null) {
 			unfinishTeamList.remove(taskId);
+			unfinishTeamTimeoutList.remove(teamEntity);
 			finishTeamList.put(taskId, teamEntity);
 		}
 	}
@@ -406,20 +445,25 @@ public class AllianceEntity extends HawkDBEntity {
 	
 	public void refreshTeamEntity(int nowSeconds)
 	{
-		if (nowSeconds > lastRefreshTime + 60) {
+		if (nowSeconds > lastRefreshTime) {
 			lastRefreshTime = nowSeconds;
-			Iterator<Map.Entry<Integer, AllianceTeamEntity>> it = unfinishTeamList.entrySet().iterator();  
+			Iterator<AllianceTeamEntity> it = unfinishTeamTimeoutList.iterator();  
 	        while(it.hasNext()){  
-	            Map.Entry<Integer, AllianceTeamEntity> entry = it.next();  
-	            AllianceTeamEntity teamEntity = entry.getValue();  
+	        	AllianceTeamEntity teamEntity = it.next();  
 	            if(teamEntity.getCreateTime() + teamEntity.getOverTime() < nowSeconds){  
 	            	it.remove();
 	            	teamEntity.clearTeam();
+	        		unfinishTeamList.remove(id);
+	        		
+	        		HSAllianceTaskTimeoutNotify.Builder notify = HSAllianceTaskTimeoutNotify.newBuilder();
+	        		notify.setTaskId(teamEntity.getId());
+	        		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TASK_TIMEOUT_N_S_VALUE, notify ), 0);
 	            }
+	            else {
+					break;
+				}
 	        }
 		}
-		
-		
 	}
 	
 	@Override 

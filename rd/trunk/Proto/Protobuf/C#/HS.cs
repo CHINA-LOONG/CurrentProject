@@ -660,6 +660,15 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEAVE_N_S", Value=9109)]
       ALLIANCE_LEAVE_N_S = 9109,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_FINISH_N_S", Value=9110)]
+      ALLIANCE_QUEST_FINISH_N_S = 9110,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEMA_JOIN_N_S", Value=9111)]
+      ALLIANCE_TEMA_JOIN_N_S = 9111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEMA_LEAVE_N_S", Value=9112)]
+      ALLIANCE_TEMA_LEAVE_N_S = 9112,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,
             

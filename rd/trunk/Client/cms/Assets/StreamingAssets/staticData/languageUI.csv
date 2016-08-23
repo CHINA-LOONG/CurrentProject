@@ -71,15 +71,15 @@ shop_cannotbuy,无法继续购买,Unable to continue purchase.
 shop_nojinbi_noduihuan,金币不足，且今日钻石兑换金币次数已经用完。,"Insufficient Coins, and today's Diamond to Coin exchanges have all been used."
 shop_refresh_error,<color=#ff0000ff>已达当前等级今日可刷新最大次数，刷新失败</color>,"<color=#ff0000ff>You have reached your current level's refresh limit for today, failed to refresh.</color>"
 xf,,
-equip_Helmet,头盔,Helmet
-equip_Weapon,武器,Weapon
-equip_Armor,护甲,Armor
-equip_Bracer,护腕,Bracer
-equip_Ring,戒指,Ring
-equip_Jewelry,饰品,Accessory
+equip_Helmet,<头盔>,<Helmet>
+equip_Weapon,<武器>,<Weapon>
+equip_Armor,<护甲>,<Armor>
+equip_Bracer,<护腕>,<Bracer>
+equip_Ring,<戒指>,<Ring>
+equip_Jewelry,<饰品>,<Accessory>
 equip_gem_NotSet,未镶嵌,Not engraved
 equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
-equip_Change,换装,Change
+equip_Change,更换,Change
 item_type,类型:,Type:
 item_demandLevel,需求等级:,Req. LVL:
 bag_tag_box,宝箱,Treasure
@@ -179,9 +179,10 @@ im_forge_success,打造成功,Forge success!
 im_forge_failed,打造失败,Forge failed.
 im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
+equip_smalltitle,宝石,Gem
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_tips,1到{0}个孔，试试你的运气吧！,"Opens one to {0} Gem Slots, give your luck a shot!"
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -287,8 +288,8 @@ common_attr_intelligence,智力,INT
 common_attr_speed,速度,SPD
 common_attr_health,体力,STA
 common_attr_critical_ratio,暴击率,Crit Rate
-common_attr_critical_dmg,暴击伤害加成,Crit DMG
-common_attr_heal_ratio,被治疗效果加成,Heal AMNT
+common_attr_critical_dmg,暴击伤害,Crit DMG
+common_attr_heal_ratio,受治疗量,Heal AMNT
 common_attr_energy,前置能量,Start ENG
 common_type_defence,防御型,Defense Type
 common_type_physical,物理型,PHYS Type
@@ -320,7 +321,7 @@ pet_detail_skill_current_level,本级:,Current:
 pet_detail_skill_next_level,下一级:,Next LVL:
 pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
 pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
-pet_detail_skill_current_huifu,{0}之后回复1点,{0}zhihouhuifu1dian
+pet_detail_skill_current_huifu,({0}之后回复1点),({0}till 1 point)
 pet_detail_skill_max_point,(点数已满),(Full)
 pet_detail_skill_cannt_level,该技能不可升级,can not level up
 pet_detail_stage_attr,基础属性,Base attribute
@@ -329,11 +330,27 @@ pet_detail_stage_demand_item,需求材料,Req. Materials
 pet_detail_stage,进阶,Advance
 pet_detail_stage_full,进阶完成,Advancement Complete
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
+monster_record_004,需求道具不足,Insufficient amount of required items.
+monster_record_005,战力上升{0},BP increase {0}
+monster_record_006,宠物锁定成功,Monster is now locked.
+monster_record_007,打造成功,Forge success!
+monster_record_008,打造失败,Forge failed.
+monster_record_009,宠物解锁成功,Monster is now unlocked.
+monster_record_010,角色升级后才能继续打造！,Increase your character level to continue forging!
+monster_record_011,宠物等级不足,Monster level too low.
+monster_record_012,暂未开放,Currently unavailable
+monster_record_013,请提升宠物等级,Please level up your monster.
+monster_record_014,技能点不足,Insufficient Ability Points.
+monster_record_015,战力下降{0},BP decrease {0}
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
 pet_list_title,宠物,Monsters
 pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
 pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
 pet_skill_point_not_enough,技能点不足,skill point not enough
+exp_title,经验药,EXP Potion
+exp_monsterlevel,当前等级：LVL,Current：LVL
+exp_level,可升级到：LVL,Can reach: LVL
+exp_changan,长按可快速使用,Tap and hold to use multiple.
 coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
 gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."
 drop_info,掉落信息,Drop Info
@@ -380,6 +397,7 @@ zhanli:{0},战力：{0},BP:{0}
 battle_zhaoyaojing_001,照妖镜还未准备好，请稍后再试,"The Monster Detector is not ready yet, please wait and try again."
 battle_zhaoyaojing_002,照妖镜能量已耗尽，请稍后再试,"Out of Monster Detector Energy, please wait and try again."
 sociaty_shuruxianshi,请输入要搜索的公会名称或者公会ID,Search Guild Name or Guild ID
+sociaty_shuruxianshi1,搜索公会,Search Guild
 sociaty_search,搜索,Search
 sociaty_id,公会ID,Guild ID
 sociaty_name,公会名称,Name
@@ -506,7 +524,6 @@ sociaty_record_011,活跃度未达标，快去叫小伙伴们一起参加公会�
 sociaty_record_013,移交会长成功，您的身份已变更为会员,Transfer of Guild Master role successful. You are now just a member.
 sociaty_record_014,操作失败，{0}已不在公会,Action failed. {0} is no longer in the guild.
 sociaty_record_015,操作失败，{0}已为副会长,Action failed. {0} is already a Guild Elder.
-sociaty_record_016,{0}已被任命为副会长,{0} has been promoted to Guild Elder.
 sociaty_record_017,{0}已被请离公会,{0} has been removed from the guild.
 sociaty_record_018,您没有操作权限,You do not have the power to do this.
 sociaty_record_019,请先移交会长，才能退出公会,Please tranfer the role of Guild Master before leaving.
@@ -529,7 +546,6 @@ sociaty_record_036,您已有队伍，请完成任务后再加入其他队伍,You
 sociaty_record_037,距离您上次退出公会还未满12小时，无法加入新的公会,12 hours have not passed since you left a guild. Unable to join another guild yet.
 sociaty_record_038,您未达到该公会限制的最低等级,You do not meet this guild's minimum level requirement.
 sociaty_record_040,副会长人数已达最大，任命失败,The guild has reached the max number of Elders. Unable to promote.
-sociaty_record_041,{0}已被解除副会长,{0} has been demoted from Guild Elder.
 sociaty_record_042,公会科技等级已变更,Guild Tech Lvl has changed.
 sociaty_record_044,小队人数已满了哟,Squad is full.
 sociaty_record_045,数据已过期,Data has expired.
@@ -540,6 +556,9 @@ sociaty_record_052,快来加入我的小队：{0},Come join my squad: {0}
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
 sociaty_record_056,存在非法字符,Contains illegal characters.
 sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.
+sociaty_record_058,请先选择一个任务,Please select a mission first.
+sociaty_record_059,输入过长,Input is too long
+sociaty_record_060,已有成员加入，不能放弃,"There are members to join, can not give up"
 sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1}
 sociaty_vicechairman,副会长,Elder
 sociaty_member1,成员,Member

@@ -63,7 +63,7 @@ public class IsApp extends HawkApp {
 	public boolean init(String cfg) {
 		IsConfig appCfg = null;
 		try {
-			HawkConfigStorage cfgStorgae = new HawkConfigStorage(IsConfig.class);
+			HawkConfigStorage cfgStorgae = new HawkConfigStorage(IsConfig.class, getWorkPath());
 			appCfg = (IsConfig) cfgStorgae.getConfigList().get(0);
 		} catch (Exception e) {
 			HawkException.catchException(e);

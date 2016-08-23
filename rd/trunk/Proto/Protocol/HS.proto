@@ -11,8 +11,6 @@ enum sys
 	HEART_BEAT                  = 3;
 	// 错误码提示
 	ERROR_CODE                  = 4;
-	// 踢用户下线
-	KICK_PLAYER                 = 5;
 }
 
 // GM协议ID列表(100<=gm<1000)
@@ -36,7 +34,7 @@ enum code
 	LOGIN_S                     = 1001;
 	LOGOUT_C                    = 1002;
 	LOGOUT_S                    = 1003;
-	KICKOUT_S                   = 1004;
+	KICKOUT_S                   = 1004; 
 	SYNCINFO_C                  = 1005;
 	SYNCINFO_S                  = 1006;
 	RECCONECT_C                 = 1007;
@@ -261,6 +259,10 @@ enum code
 	ALLIANCE_LEVEL_CHANGE_N_S   = 9107;
 	ALLIANCE_JOIN_N_S           = 9108;
 	ALLIANCE_LEAVE_N_S          = 9109;
+	ALLIANCE_QUEST_FINISH_N_S   = 9110;
+	ALLIANCE_TEMA_JOIN_N_S      = 9111;
+	ALLIANCE_TEMA_LEAVE_N_S     = 9112;
+	ALLIANCE_TASK_TIMEOUT_N_S   = 9113;
 
 	// 系统设置
 	SETTING_LANGUAGE_C          = 10001;

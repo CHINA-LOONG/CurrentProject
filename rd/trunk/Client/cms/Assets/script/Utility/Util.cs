@@ -279,4 +279,43 @@ public class Util
             }
         }
     }
+
+    public static int StringByteLength(string str)
+    {
+        int length = 0;
+        if (string.IsNullOrEmpty(str))
+            return 0;
+
+        char[] strArray = str.ToCharArray();
+        foreach(var subChar in strArray)
+        {
+            int asc = subChar;
+            if(subChar < 0 || subChar > 127)
+            {
+                length += 2;
+            }
+            else
+            {
+                length += 1;
+            }
+        }
+
+        return length;
+    }
+
+    public static bool StringIsAllNumber(string str)
+    {
+        if (string.IsNullOrEmpty(str))
+            return false;
+        char[] strArray = str.ToCharArray();
+        foreach (var subChar in strArray)
+        {
+            int asc = subChar;
+            if (subChar < 48 || subChar > 57)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

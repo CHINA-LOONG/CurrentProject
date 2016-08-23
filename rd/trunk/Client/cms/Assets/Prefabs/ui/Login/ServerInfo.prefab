@@ -44,6 +44,7 @@ GameObject:
   - 224: {fileID: 22450624}
   - 222: {fileID: 22229284}
   - 114: {fileID: 11418582}
+  - 114: {fileID: 11459838}
   m_Layer: 5
   m_Name: ServerInfo
   m_TagString: Untagged
@@ -176,6 +177,23 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'lv: 40'
+--- !u!114 &11459838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a427eab481f74245b51fc652f8c207d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sServerName: {fileID: 11417456}
+  sServerType: {fileID: 11462682}
+  sPlayerName: {fileID: 11466026}
+  sPlayerLv: {fileID: 11433246}
+  sHostIp: 
+  sPort: 0
 --- !u!114 &11462682
 MonoBehaviour:
   m_ObjectHideFlags: 1

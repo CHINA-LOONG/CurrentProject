@@ -125,6 +125,14 @@ public class UIMonsters : UIBase,
         scrollView_Owend.CleanContent();
         scrollView_Collect.CleanContent();
     }
+    void ReloadPetLevelNotify(GameUnit gameUnit)
+    {
+        if (uiType == UIType.Owned)
+        {
+            //TODO:
+            Refresh();
+        }
+    }
     void ReloadPetStageNotify(GameUnit gameUnit)
     {
         if (uiType == UIType.Owned)
@@ -160,6 +168,7 @@ public class UIMonsters : UIBase,
 
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetLevelNotify, ReloadPetLevelNotify);
         GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStageNotify);
         GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
         GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
@@ -168,6 +177,7 @@ public class UIMonsters : UIBase,
     }
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetLevelNotify, ReloadPetLevelNotify);
         GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStageNotify);
         GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
         GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);

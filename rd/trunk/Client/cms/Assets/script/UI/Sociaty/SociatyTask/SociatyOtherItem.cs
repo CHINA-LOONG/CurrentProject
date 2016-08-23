@@ -208,6 +208,6 @@ public class SociatyOtherItem : MonoBehaviour
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = teamInfo.teamId;
  
-        UISociatyTask.Instance.OnTabButtonChanged((int)SociatyTaskContenType.MyTeam);
+        UISociatyTask.Instance.InitType((int)SociatyTaskContenType.MyTeam);
     }
 }

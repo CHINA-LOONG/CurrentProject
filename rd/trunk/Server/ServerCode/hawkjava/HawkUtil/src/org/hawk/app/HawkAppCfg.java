@@ -22,9 +22,13 @@ public class HawkAppCfg extends HawkConfigBase {
 	 */
 	protected final String platform;
 	/**
+	 * 渠道名
+	 */
+	protected final String channel;
+	/**
 	 * 服务器id
 	 */
-	protected final String serverId;
+	protected final int serverId;
 	/**
 	 * 网络接收器端口
 	 */
@@ -177,8 +181,9 @@ public class HawkAppCfg extends HawkConfigBase {
 	public HawkAppCfg() {
 		admin = "hawk";
 		gameId = "";
+		channel = "";
 		platform = "";
-		serverId = "";
+		serverId = 0;
 		isDebug = true;
 		tickPeriod = 50;
 		refreshTickCount = 200;
@@ -230,7 +235,11 @@ public class HawkAppCfg extends HawkConfigBase {
 		return platform;
 	}
 
-	public String getServerId() {
+	public String getChannel() {
+		return channel;
+	}
+
+	public int getServerId() {
 		return serverId;
 	}
 
