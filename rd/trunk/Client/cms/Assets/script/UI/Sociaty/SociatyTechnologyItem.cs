@@ -28,7 +28,7 @@ public class SociatyTechnologyItem : MonoBehaviour
         return item;
     }
     //---------------------------------------------------------------------------------------------
-    void Start()
+    void Awake()
     {
         EventTriggerListener.Get(mTecLvlUp.gameObject).onClick = OnLvlUp;
         StaticDataMgr sdMgr = StaticDataMgr.Instance;
@@ -54,7 +54,7 @@ public class SociatyTechnologyItem : MonoBehaviour
             if (data != null)
             {
                 mTecName.text = sdMgr.GetTextByID(data.tecName);
-                mCurLvlDescript.text = sdMgr.GetTextByID("sociaty_startlevel");
+                mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), data.sociatyLevel);
                 mNextLvlDescript.text = string.Empty;
                 mFunctionDescript.text = sdMgr.GetTextByID(data.tecDescript);
                 mContributeConsumValue.text = data.levelUp.ToString();
@@ -83,9 +83,9 @@ public class SociatyTechnologyItem : MonoBehaviour
             mFunctionDescript.text = sdMgr.GetTextByID(mTechData.tecDescript);
             if (mTechData.sociatyLevel >= 0 && mTechData.sociatyLevel < sociatyLvl)
             {
-                ////not open
-                //mCurLvlDescript.text = sdMgr.GetTextByID("sociaty_startlevel");
-                //mNextLvlDescript.text = string.Empty;
+                //not open
+                mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), mTechData.sociatyLevel);
+                mNextLvlDescript.text = string.Empty;
             }
             else
             {
@@ -100,6 +100,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                     mContributeConsumIcon.gameObject.SetActive(false);
                     mTecLvlUp.gameObject.SetActive(false);
                     mMaxLvlBackImg.gameObject.SetActive(true);
+                    mMaxLvlText.gameObject.SetActive(true);
                     mMaxLvlText.text = sdMgr.GetTextByID("sociaty_maxlevel");
                 }
                 else
@@ -108,6 +109,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                     mContributeConsumIcon.gameObject.SetActive(true);
                     mTecLvlUp.gameObject.SetActive(true);
                     mMaxLvlBackImg.gameObject.SetActive(false);
+                    mMaxLvlText.gameObject.SetActive(false);
                     SetLvlInfoInternal(nextLvlEffect, nextTechData, ref mNextLvlDescript);
                 }
             }
@@ -125,15 +127,16 @@ public class SociatyTechnologyItem : MonoBehaviour
             {
                 case SociatyTecEnum.Sociaty_Tec_Lvl:
                     lvlInfo = sdMgr.GetTextByID("sociaty_leveltipsmiaoshu1");
-                    curText.text = prefix + lvlInfo;//string.Format(lvlInfo, techData.level);
+                    curText.text = prefix + string.Format(lvlInfo, techData.level);
                     break;
                 case SociatyTecEnum.Sociaty_Tec_Member:
                     lvlInfo = sdMgr.GetTextByID("sociaty_peopletipsmiaoshu1");
-                    curText.text = prefix + lvlInfo;// string.Format(lvlInfo, techData.gainPeople);
+                    string.Format(lvlInfo, techData);
+                    curText.text = prefix + string.Format(lvlInfo, techData.gainPeople);
                     break;
                 case SociatyTecEnum.Sociaty_Tec_Coin:
-                    lvlInfo = "+{0}%";
-                    curText.text = prefix + lvlInfo;// string.Format(lvlInfo, techData.gainCoin);
+                    lvlInfo = "+{0:F0}%";
+                    curText.text = prefix + string.Format(lvlInfo, techData.gainCoin * 100);
                     break;
                 case SociatyTecEnum.Sociaty_Tec_Exp:
                     lvlInfo = "+{0}";

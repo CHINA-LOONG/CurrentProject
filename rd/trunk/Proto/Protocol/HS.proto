@@ -11,6 +11,8 @@ enum sys
 	HEART_BEAT                  = 3;
 	// 错误码提示
 	ERROR_CODE                  = 4;
+	// 踢用户下线
+	KICK_PLAYER                 = 5;
 }
 
 // GM协议ID列表(100<=gm<1000)

@@ -45,6 +45,13 @@ public class NewApplyItem : MonoBehaviour
     void OnRefruseRequestFinished(ProtocolMessage message)
     {
         UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+
         PB.HSAllianceHanleApplyRet retmsg = message.GetProtocolBody<PB.HSAllianceHanleApplyRet>();
         if(null != retmsg)
         {
@@ -64,14 +71,10 @@ public class NewApplyItem : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-           if(errorCode.errCode == (int)PB.allianceError.ALLIANCE_TARGET_ALREADY_JOIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
-            }
-
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
-
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_022"), (int)PB.ImType.PROMPT);
         GameDataMgr.Instance.SociatyDataMgrAttr.newApplyList.Remove(applyData);
         MemberApply.Instance.RefreshUi();
         SociatyContentMember.Instance.RequestMemberData();

@@ -69,20 +69,7 @@ public class SociatyContentTechnology : SociatyContentBase
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-            if (error.errCode == (int)PB.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_026"),
-                                               (int)PB.ImType.PROMPT);
-            }
-            else if (error.errCode == (int)PB.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"),
-                                               (int)PB.ImType.PROMPT);
-            }
-            else if (error.errCode == (int)PB.allianceError.ALLIANCE_TECH_FULL)
-            {
-
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
         }
         else
         {

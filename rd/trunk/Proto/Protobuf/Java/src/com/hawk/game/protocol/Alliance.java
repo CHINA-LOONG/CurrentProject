@@ -39020,7 +39020,7 @@ public final class Alliance {
    * Protobuf type {@code HSAllianceTaskReward}
    *
    * <pre>
-   * 提交任务
+   * 任务奖励
    * </pre>
    */
   public static final class HSAllianceTaskReward extends
@@ -39214,7 +39214,7 @@ public final class Alliance {
      * Protobuf type {@code HSAllianceTaskReward}
      *
      * <pre>
-     * 提交任务
+     * 任务奖励
      * </pre>
      */
     public static final class Builder extends

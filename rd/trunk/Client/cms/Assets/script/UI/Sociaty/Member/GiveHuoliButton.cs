@@ -17,4 +17,10 @@ public class GiveHuoliButton : MonoBehaviour
         itemButton.gameObject.SetActive(!isSendFinish);
         giveFinish.gameObject.SetActive(isSendFinish);
     }
+
+    public void HideAll()
+    {
+        itemButton.gameObject.SetActive(false);
+        giveFinish.gameObject.SetActive(false);
+    }
 }

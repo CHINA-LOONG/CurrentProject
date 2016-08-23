@@ -56,7 +56,8 @@ public class ContributionBox : MonoBehaviour
         UINetRequest.Close();
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-            Logger.LogError("contribution rewoard   faild!");
+            PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.hasReceivContributionReword[index] = true;

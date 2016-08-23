@@ -7,7 +7,8 @@ public interface IEquipField
 }
 public class EquipField : MonoBehaviour
 {
-
+    public Transform IconPos;
+    public GameObject upMark;
     private ItemIcon equipIcon;
     private NullEquip equipNull;
 
@@ -56,12 +57,13 @@ public class EquipField : MonoBehaviour
 
     void SetEquip(EquipData data)
     {
+        upMark.SetActive(false);
         if (data==null)
         {
             if (equipNull==null)
             {
                 GameObject go = ResourceMgr.Instance.LoadAsset(NullEquip.AssetName);
-                UIUtil.SetParentReset(go.transform, transform);
+                UIUtil.SetParentReset(go.transform, IconPos);
                 equipNull = go.GetComponent<NullEquip>();
                 EventTriggerListener.Get(equipNull.button.gameObject).onClick = OnClickNullSlot;
             }
@@ -81,7 +83,7 @@ public class EquipField : MonoBehaviour
             if (equipIcon==null)
             {
                 equipIcon = ItemIcon.CreateItemIcon(data,false);
-                UIUtil.SetParentReset(equipIcon.transform, transform);
+                UIUtil.SetParentReset(equipIcon.transform, IconPos);
                 EventTriggerListener.Get(equipIcon.iconButton.gameObject).onClick = OnClickEquipSlot;
             }
             else
@@ -89,6 +91,7 @@ public class EquipField : MonoBehaviour
                 equipIcon.gameObject.SetActive(true);
                 equipIcon.RefreshWithEquipInfo(data,false);
             }
+            upMark.SetActive(UIUtil.CheckIsEnoughEquipLevelUP(data));
             if (equipNull!=null)
             {
                 equipNull.gameObject.SetActive(false);

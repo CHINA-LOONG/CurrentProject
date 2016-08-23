@@ -12,6 +12,7 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceLeaveRet;
 import com.hawk.game.protocol.HS;
@@ -78,7 +79,9 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(player.getId());
 		}
-		
+
+		ImManager.getInstance().quitGuild(allianceEntity.getId(), player.getId());
+
 		// 清理工会数据
 		if (deleteAlliance) {
 			AllianceManager.getInstance().removeAlliance(allianceEntity);

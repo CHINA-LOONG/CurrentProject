@@ -24,7 +24,6 @@ public class UICreatePlayer : UIBase
             return;
         }
         GameEventMgr.Instance.FireEvent<string>(GameEventList.createPlayerClick, nameInputFileld.text);
-
 	}
 
 }

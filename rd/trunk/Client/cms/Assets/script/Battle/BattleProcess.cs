@@ -303,7 +303,7 @@ public class BattleProcess : MonoBehaviour
             }
             else
             {
-                var switchAction = GetSwitchAction(deadId);
+                var switchAction = GetSwitchAction(deadId, true);
                 if (switchAction != null)
                 {
                     battleGroup.OnUnitExitField(deadUnit, slot);
@@ -316,19 +316,24 @@ public class BattleProcess : MonoBehaviour
                 }
                 else
                 {
-                    BattleObject unit = battleGroup.GetPlayerToField();
-                    deadUnit.unit.backUp = true;
-                    if (unit != null)
+                    switchAction = GetSwitchAction(deadId, false);
+                    //to be replace target is dead
+                    if (switchAction == null)
                     {
-						//if no unit,don't call exitfield() since the changepetview will show all exited pet
-                        battleGroup.OnUnitExitField(deadUnit, slot);
-                        //battleGroup.OnUnitEnterField(unit, slot);
-                        InsertReplaceDeadAction(unit, slot, args.triggerTime);
-                        //StartCoroutine(LoggerAnim(unit));
-                    }
-                    else
-                    {
-                        BattleController.Instance.GetUIBattle().HideUnitUI(deadUnit.guid);
+                        BattleObject unit = battleGroup.GetPlayerToField();
+                        deadUnit.unit.backUp = true;
+                        if (unit != null)
+                        {
+						    //if no unit,don't call exitfield() since the changepetview will show all exited pet
+                            battleGroup.OnUnitExitField(deadUnit, slot);
+                            //battleGroup.OnUnitEnterField(unit, slot);
+                            InsertReplaceDeadAction(unit, slot, args.triggerTime);
+                            //StartCoroutine(LoggerAnim(unit));
+                        }
+                        else
+                        {
+                            BattleController.Instance.GetUIBattle().HideUnitUI(deadUnit.guid);
+                        }
                     }
                 }
             }
@@ -1472,17 +1477,29 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
-    Action GetSwitchAction(int toBeReplaedId)
+    Action GetSwitchAction(int toBeReplaedId, bool checkTarget)
     {
-        Action action = null;
         foreach (Action item in insertAction)
         {
-            if (item.type == ActionType.SwitchPet && item.target.guid == toBeReplaedId)
+            if (item.type == ActionType.SwitchPet)
             {
-                return item;
+                if (checkTarget == true)
+                {
+                    if (item.target.guid == toBeReplaedId)
+                    {
+                        return item;
+                    }
+                }
+                else
+                {
+                    if (item.caster.guid == toBeReplaedId)
+                    {
+                        return item;
+                    }
+                }
             }
         }
-        return action;
+        return null;
     }
 
     Action GetReplaceDeadUnitAction()

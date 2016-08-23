@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/fp__account_main_button_corner_radius"/>
+            <solid android:color="@color/fp__account_fb_light_blue"/>
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/fp__account_main_button_corner_radius"/>
+            <solid android:color="@color/fp__account_fb_light_blue"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/fp__account_main_button_corner_radius"/>
+            <solid android:color="@color/fp__account_fb_dark_blue"/>
+        </shape>
+    </item>
+</selector>

@@ -26,7 +26,7 @@ public class SpellIcon : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		maskFrame.gameObject.SetActive (false);
+        SetMask(false);
 	}
 
 	public	void SetData(int ilevel,string spellid)

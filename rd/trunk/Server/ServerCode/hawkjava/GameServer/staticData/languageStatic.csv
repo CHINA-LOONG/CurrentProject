@@ -38,7 +38,7 @@ wpName54,手,Claw
 wpName55,爪,Bracelet
 wpName57,玫瑰,Rose
 wpName59,宝箱,Box
-wpName60,右脚,Right Leg
+wpName60,头顶,Skull
 wpName61,乌鸦,Crow
 wpName63,头,Head
 wpName64,镰刀,Sickle
@@ -61,7 +61,7 @@ xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?
 xiyiren2hide_claw,锋利的爪子,Attack its Bracelet could be where its secret lies.
 panshen2hide_eye,口中的玫瑰，散发着迷人的香气,The rose in his mouth is emitting a strange scent.
 shuigui3hide_box,船长脚边的宝箱好像有些奇怪！,Something interesting besides the captain.
-shuigui3hide_rfoot,船长的右脚已经失去了保护,His Right leg seems exposed.
+shuigui3hide_skull,船长的头顶已经失去了保护,His Skull seems exposed.
 shuigui3hide_bird,注意到船长头顶的乌鸦了么？,Notice there is a Crow on his head?
 kairuisi5hide_head,帽子下掩藏的头部会是他的弱点么？,This shape looks like her hood?
 kairuisi5hide_weapon,手中挥舞的镰刀,How about her Sickle？
@@ -77,7 +77,7 @@ piying5normal1_lbody,右半身能够压制我方物理攻击力,Right shadow cri
 piying5normal1_rbody,左半身能够压制我方法术攻击力,Left shadow cripples all magical attack.
 piying5normal1_head,皮影的软肋就在头部,His head is his weakest links!
 huapo2normal1_flower,花魄高连击的永动机,The Petal increases the Pixie number of Strikes.
-zouyincao2normal1_trumpet,疯狂的旋律，疯狂的法术攻击,Crazy Trumpet increases his magical attacks.
+zouyincao2normal1_trumpet,喇叭竟是它的弱点！,The Trumpet is where it's weakpoint lies.
 wushi4normal1_horn,尖尖角竟是舞狮的弱点！,The Horn is where it's weakpoint lies.
 wushi4normal1_ball,打破它的球！压制他的法术攻击！,This Magic Ball can increase the Lion's magical abilities.
 xiyiren2normal1_hand,蜥蜴人的薄弱所在,His Claw is his weakpoint.
@@ -85,7 +85,7 @@ xiyiren2normal1_claw,干掉爪子！看看爪子下隐藏着怎样的黑手！,D
 panshen2normal1_eye,攻击玫瑰会让潘神心碎,Let's break his heart by attacking the Rose.
 shuigui3normal1_box,击破宝箱，船长会丧失眩晕我方的能力,This Magic Chest Box can increase in Stunning Effect
 siwangtashuigui3normal1_box,附加炸弹效果,Increases bomb effect
-shuigui3normal1_rfoot,船长的脚，不堪一击….,Attack his Right leg now.
+shuigui3normal1_skull,船长的头顶，不堪一击….,Attack his Skull now.
 shuigui3normal1_bird,乌鸦似乎在保护着什么…打掉它看看,The Crow could be protect his weakpoint.
 kairuisi5normal1_head,凯瑞斯的软肋,This is her weakpoint.
 kairuisi5normal1_weapon,镰刀不仅提升法术攻击，还能够治疗凯瑞斯！,This Sickle increases her attack and healing power.
@@ -2225,3 +2225,13 @@ guide_ruodian4,看起来<color=#ffcc00>花瓣</color>是弱点,Seems that it's t
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.
 guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoints</color>?
+zouyincao2normal1_yinfu1,音符守护着他不受伤害！,音符守护着它不受伤害！
+zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,环绕的音符，会有什么样的秘密？
+bossdajie16Zouyincao2wp03,音符盾,音符盾
+bosschaoxue52Yifanmumian3wp02,吊坠,Pendant
+bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll
+yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？
+yifanmumian3normal1_pendant,吊坠是dot效果的源动力,The pendant is the source of her DOT effects.
+yifanmumian1normal1_zhiren,干掉她的保护伞！,Destroy her protective scroll!
+ladong5hide_appleshell,这坚硬的壳里面会有什么秘密？,What secrets lie under this protective shield?
+ladong5normal_appleshell,金苹果可能就在里面！,Maybe the Golden Apple is inside!

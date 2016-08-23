@@ -81,22 +81,29 @@ namespace PB
       get { return _contribution; }
       set { _contribution = value; }
     }
+    private int _totalContribution;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"totalContribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int totalContribution
+    {
+      get { return _totalContribution; }
+      set { _totalContribution = value; }
+    }
     private int _postion;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"postion", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"postion", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int postion
     {
       get { return _postion; }
       set { _postion = value; }
     }
     private int _id;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int id
     {
       get { return _id; }
       set { _id = value; }
     }
     private bool _sendFatigue = default(bool);
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"sendFatigue", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"sendFatigue", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
     public bool sendFatigue
     {
@@ -104,34 +111,18 @@ namespace PB
       set { _sendFatigue = value; }
     }
     private int _loginTime;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"loginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"loginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int loginTime
     {
       get { return _loginTime; }
       set { _loginTime = value; }
     }
     private int _logoutTime;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"logoutTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"logoutTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int logoutTime
     {
       get { return _logoutTime; }
       set { _logoutTime = value; }
-    }
-    private int _prayCount = default(int);
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int prayCount
-    {
-      get { return _prayCount; }
-      set { _prayCount = value; }
-    }
-    private int _taskCount = default(int);
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"taskCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int taskCount
-    {
-      get { return _taskCount; }
-      set { _taskCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -354,37 +345,6 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTaskInfo")]
-  public partial class AllianceTaskInfo : global::ProtoBuf.IExtensible
-  {
-    public AllianceTaskInfo() {}
-    
-    private readonly global::System.Collections.Generic.List<int> _itemTask = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"itemTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> itemTask
-    {
-      get { return _itemTask; }
-    }
-  
-    private readonly global::System.Collections.Generic.List<int> _coinTask = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"coinTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> coinTask
-    {
-      get { return _coinTask; }
-    }
-  
-    private readonly global::System.Collections.Generic.List<int> _instanceTask = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"instanceTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> instanceTask
-    {
-      get { return _instanceTask; }
-    }
-  
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTeamQuestInfo")]
   public partial class AllianceTeamQuestInfo : global::ProtoBuf.IExtensible
   {
@@ -491,15 +451,29 @@ namespace PB
       get { return _startTime; }
       set { _startTime = value; }
     }
+    private int _taskId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"taskId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int taskId
+    {
+      get { return _taskId; }
+      set { _taskId = value; }
+    }
+    private int _teamId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"teamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamId
+    {
+      get { return _teamId; }
+      set { _teamId = value; }
+    }
     private readonly global::System.Collections.Generic.List<AllianceTeamMemInfo> _members = new global::System.Collections.Generic.List<AllianceTeamMemInfo>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"members", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, Name=@"members", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<AllianceTeamMemInfo> members
     {
       get { return _members; }
     }
   
     private readonly global::System.Collections.Generic.List<AllianceTeamQuestInfo> _questInfos = new global::System.Collections.Generic.List<AllianceTeamQuestInfo>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"questInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, Name=@"questInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<AllianceTeamQuestInfo> questInfos
     {
       get { return _questInfos; }
@@ -913,6 +887,20 @@ namespace PB
   {
     public HSAlliancePrayRet() {}
     
+    private int _selfContribution;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"selfContribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int selfContribution
+    {
+      get { return _selfContribution; }
+      set { _selfContribution = value; }
+    }
+    private int _allianceContribution;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"allianceContribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceContribution
+    {
+      get { return _allianceContribution; }
+      set { _allianceContribution = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1088,6 +1076,27 @@ namespace PB
     {
       get { return _contributionReward; }
       set { _contributionReward = value; }
+    }
+    private int _prayCount;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int prayCount
+    {
+      get { return _prayCount; }
+      set { _prayCount = value; }
+    }
+    private int _taskCount;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"taskCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int taskCount
+    {
+      get { return _taskCount; }
+      set { _taskCount = value; }
+    }
+    private int _teamID;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"teamID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamID
+    {
+      get { return _teamID; }
+      set { _teamID = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -1423,12 +1432,12 @@ namespace PB
   {
     public HSAllianceCreateTeamRet() {}
     
-    private AllianceTaskInfo _taskInfo;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"taskInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public AllianceTaskInfo taskInfo
+    private int _teamId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"teamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamId
     {
-      get { return _taskInfo; }
-      set { _taskInfo = value; }
+      get { return _teamId; }
+      set { _teamId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -1457,6 +1466,13 @@ namespace PB
   {
     public HSAllianceJoinTeamRet() {}
     
+    private int _teamId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"teamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamId
+    {
+      get { return _teamId; }
+      set { _teamId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

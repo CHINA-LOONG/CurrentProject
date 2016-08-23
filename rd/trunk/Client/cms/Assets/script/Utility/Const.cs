@@ -52,6 +52,10 @@ public class Const
     public static string AppName = "hawk"; 
     //应用程序前缀
     public static string AppPrefix = AppName + "_";
+    //funPlus ID
+    public static string FunPlusID = "1013";
+    //funPlus key
+    public static string FunPlusKey = "aacbb2be28236338a3cb61d610a76f9e"; 
     //素材扩展名
     public static string ExtName = "";
     //素材目录

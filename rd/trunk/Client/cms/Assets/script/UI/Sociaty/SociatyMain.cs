@@ -26,6 +26,8 @@ public class SociatyMain : UIBase, TabButtonDelegate
     SociatyContenType contentType = SociatyContenType.Count;
     SociatyContentBase[] contentPages = new SociatyContentBase[(int)SociatyContenType.Count];
 
+    private string searchOtherSociaty = null;
+
     //---------------------------------------------------------------------------------------------
     void OnEnable()
     {
@@ -37,10 +39,10 @@ public class SociatyMain : UIBase, TabButtonDelegate
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEVEL_CHANGE_N_S.GetHashCode().ToString(), OnLevelChange);
     }
     //---------------------------------------------------------------------------------------------
-    public static void OpenWith(SociatyContenType contentType = SociatyContenType.Infomation)
+    public static void OpenWith(SociatyContenType contentType = SociatyContenType.Infomation,string search = null)
     {
         SociatyMain main = (SociatyMain)UIMgr.Instance.OpenUI_(ViewName);
-        main.SetContentPage(contentType);
+        main.SetContentPage(contentType,search);
     }
     //---------------------------------------------------------------------------------------------
     public override void Init()
@@ -69,14 +71,15 @@ public class SociatyMain : UIBase, TabButtonDelegate
     //---------------------------------------------------------------------------------------------
     public void OnTabButtonChanged(int index)
     {
-        if((int)contentType != index)
-        {
+       // if((int)contentType != index)
+      //  {
             RefreshUi((SociatyContenType)index);
-        }
+      //  }
     }
     //---------------------------------------------------------------------------------------------
-    public void    SetContentPage(SociatyContenType contentType)
+    public void    SetContentPage(SociatyContenType contentType,string search = null)
     {
+        this.searchOtherSociaty = search;
         tabBtnGroup.OnChangeItem((int)contentType);
     }
     //---------------------------------------------------------------------------------------------
@@ -94,6 +97,14 @@ public class SociatyMain : UIBase, TabButtonDelegate
                     contentPages[i] = subPage;
                 }
                 subPage.gameObject.SetActive(true);
+                if(contentType == SociatyContenType.OtherSociaty)
+                {
+                    if(!string.IsNullOrEmpty(searchOtherSociaty))
+                    {
+                        ((SociatyContentOther)subPage).SetSearch(searchOtherSociaty);
+                        searchOtherSociaty = null;
+                    }
+                }
                 subPage.RefreshUI();
             }
             else

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class SelectMonsterPanel : UIBase
 {
     public static string ViewName = "SelectMonsterPanel";
@@ -38,7 +37,7 @@ public class SelectMonsterPanel : UIBase
     public void init(ItemInfo itemInfo, List<List<int>> demandList, List<int> selectMonster, GameUnit curUnit/* int selfId*/)
     {
         int selfId=curUnit.pbUnit.guid;
-        demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
+        demandLabel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_monster");
         textClose.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
@@ -48,7 +47,7 @@ public class SelectMonsterPanel : UIBase
         {
             if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked && !CheckMonsterIsSelect(unit, demandList, selectMonster))
             {
-                GameObject go = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetStageMonsterElementAssetName, false);
+                GameObject go = ResourceMgr.Instance.LoadAsset("UIPetStageMonsterElement", false);
                 scrollView.AddElement(go);
                 go.GetComponent<SelectMonsterElement>().ReloadData(unit, m_currentSelectMonster.Contains(unit.pbUnit.guid));
                 ScrollViewEventListener.Get(go.GetComponent<SelectMonsterElement>().eventObject).onClick = SelectButtonDown;

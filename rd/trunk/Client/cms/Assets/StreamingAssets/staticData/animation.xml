@@ -4510,7 +4510,7 @@ state = 1 Remove
 		
 		<Ani id="bossdajie12Mantuoluo24" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+				<Motion time="0" ani="" key="xiquyangfen" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
@@ -4817,7 +4817,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang22Xiyiren23" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="chuchang" value="true"/>
+				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
@@ -4912,7 +4912,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang24Shuigui33" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultShuigui3Pre" bundle="effect/particle" attach="true"/>

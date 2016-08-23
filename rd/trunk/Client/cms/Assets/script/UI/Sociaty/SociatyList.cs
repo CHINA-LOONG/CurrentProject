@@ -54,6 +54,7 @@ public class SociatyList : UIBase
         leftButton.onClick.AddListener(OnLeftButtonClick);
         rightButton.onClick.AddListener(OnRightButtonClick);
 
+        title.text = StaticDataMgr.Instance.GetTextByID("sociaty_title");
         contentTitle[0].text = StaticDataMgr.Instance.GetTextByID("sociaty_id");
         contentTitle[1].text = StaticDataMgr.Instance.GetTextByID("sociaty_name");
         contentTitle[2].text = StaticDataMgr.Instance.GetTextByID("sociaty_level");
@@ -62,6 +63,8 @@ public class SociatyList : UIBase
         contentTitle[5].text = StaticDataMgr.Instance.GetTextByID("sociaty_qiliveness");
         contentTitle[6].text = StaticDataMgr.Instance.GetTextByID("sociaty_applylevel");
         contentTitle[7].text = StaticDataMgr.Instance.GetTextByID("sociaty_operate");
+
+        ((Text)searchInputField.placeholder).text = StaticDataMgr.Instance.GetTextByID("sociaty_shuruxianshi");
     }
 
     public  override void Clean()

@@ -7,6 +7,7 @@ public class GameEventList
     public static string LoginClick = "LoginClick";//no param
     public static string ServerClick = "ServerClick";//param hashtable
     public static string createPlayerClick = "CreatePlayerClick";//no param
+    public static string funplusPuid = "funplusPuid";//no param
 
     //Build
     public static string BattleBtnClick = "BattleBtnClick";

@@ -11,6 +11,7 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
@@ -76,7 +77,9 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(request.getTargetId());
 		}
-		
+
+		// 离开公会频道
+		ImManager.getInstance().quitGuild(allianceEntity.getId(), request.getTargetId());
 		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_KICK);
 		if (mailCfg != null) {
 			MailUtil.SendSysMail(mailCfg, request.getTargetId(), allianceEntity.getName());

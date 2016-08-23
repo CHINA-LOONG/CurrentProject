@@ -8,7 +8,7 @@ public class SociatyOtherItem : MonoBehaviour
     public Transform teamPanel;
     public Transform rewardPanel;
    // public GameObject leaderRewardObject;
-    public Text descText;
+    public Text rewardText;
     public Text timeLeftText;
     public Button joinButton;
 
@@ -29,7 +29,9 @@ public class SociatyOtherItem : MonoBehaviour
 	void Start ()
     {
         joinButton.onClick.AddListener(OnJoinButtonClick);
-	}
+        UIUtil.SetButtonTitle(joinButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_enqueue"));
+        rewardText.text = StaticDataMgr.Instance.GetTextByID("sociaty_teamreward");
+    }
 
     int updateCount = 1;
     void Update()
@@ -183,8 +185,8 @@ public class SociatyOtherItem : MonoBehaviour
             return;
         }
 
-        MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("确认加入小队"),
-            StaticDataMgr.Instance.GetTextByID("加入后，完成任务才能退出。。。"), ConformJoinTeam);
+        MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("sociaty_jiarutips"),
+            StaticDataMgr.Instance.GetTextByID("sociaty_jiarutips1"), ConformJoinTeam);
     }
 
     void ConformJoinTeam(MsgBox.PrompButtonClick click)
@@ -201,26 +203,7 @@ public class SociatyOtherItem : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-            if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_ALREADY_IN_TEAM)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_036"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_LEVEL_LIMIT)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_TEAM_FULL)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_044"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_TASK_FINISH)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_035"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_TEAM_NOT_EXIST)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = teamInfo.teamId;

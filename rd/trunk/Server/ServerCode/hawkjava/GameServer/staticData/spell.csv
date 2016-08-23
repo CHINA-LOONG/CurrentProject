@@ -139,7 +139,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 136,ultXiaochou3,ultXiaochou3e1,0,0,100,0,9,0.01,icon_ultXiaochou3,ultXiaochou3Name,ultXiaochou3Tips,2.5,1,,ultXiaochou3Description,ultXiaochou3Curlvl,ultXiaochou3Nextlvl
 137,ultXiaochou4,ultXiaochou4e1,25,3,100,0,8,0.002,icon_ultXiaochou4,ultXiaochou4Name,ultXiaochou4Tips,0.1,0,,ultXiaochou4Description,ultXiaochou4Curlvl,ultXiaochou4Nextlvl
 138,ultKairuisi4,ultKairuisi4e1,0,0,100,0,9,0.005,icon_ultMoguguai4,ultKairuisi4Name,ultKairuisi4Tips,1.6,1,,ultKairuisi4Description,ultKairuisi4Curlvl,ultKairuisi4Nextlvl
-139,ultHetong2,ultHetong2e1,25,3,100,0,8,0.002,icon_ultHetong2,ultHetong2Name,ultHetong2Tips,0.175,0,,ultHetong2Description,ultHetong2Curlvl,ultHetong2Nextlvl
+139,ultHetong2,ultHetong2e1,25,3,100,0,8,0.002,icon_ultWendige2,ultHetong2Name,ultHetong2Tips,0.175,0,,ultHetong2Description,ultHetong2Curlvl,ultHetong2Nextlvl
 140,ultWagui3,ultWagui3e1,0,0,100,0,9,0.03,icon_ultWagui3,ultWagui3Name,ultWagui3Tips,3.5,0,,ultWagui3Description,ultWagui3Curlvl,ultWagui3Nextlvl
 141,ultHuapo2,ultHuapo2e1,25,3,100,0,8,0.002,icon_ultHuapo2,ultHuapo2Name,ultHuapo2Tips,0.175,0,,ultHuapo2Description,ultHuapo2Curlvl,ultHuapo2Nextlvl
 142,ultCike4,ultCike4e1,0,0,100,0,9,0,icon_ultCike4,ultCike4Name,ultCike4Tips,0,1,,ultCike4Description,,
@@ -229,7 +229,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 226,bossxiaoxiang27Hetong21,bossxiaoxiang27Hetong21e1,0,0,0,50,1,0,icon_ultHuapo2,bossxiaoxiang27Hetong21Name,bossxiaoxiang27Hetong21Tips,0,1,,,,
 227,bossxiaoxiang27Hetong22,bossxiaoxiang27Hetong22e1,0,0,0,50,11,0,icon_debuffPlantDotMedium,bossxiaoxiang27Hetong22Name,bossxiaoxiang27Hetong22Tips,0,0,,,,
 228,bossxiaoxiang27Hetong23,bossxiaoxiang27Hetong23e1,0,0,0,50,4,0,icon_buffMagic,bossxiaoxiang27Hetong23Name,bossxiaoxiang27Hetong23Tips,0,0,,,,
-229,bossxiaoxiang27Hetong24,bossxiaoxiang27Hetong24e1,0,0,0,50,1,0,icon_ultHetong2,bossxiaoxiang27Hetong24Name,bossxiaoxiang27Hetong24Tips,0,0,,,,
+229,bossxiaoxiang27Hetong24,bossxiaoxiang27Hetong24e1,0,0,0,50,1,0,icon_ultWendige2,bossxiaoxiang27Hetong24Name,bossxiaoxiang27Hetong24Tips,0,0,,,,
 230,dispelPassive,dispelPassivee1,0,0,0,50,1,0,,,,0,0,,,,
 231,bossxiaoxiang28Muling21,bossxiaoxiang28Muling21e1,0,0,0,50,1,0,icon_bossxiaoxiang28Muling21,bossxiaoxiang28Muling21Name,bossxiaoxiang28Muling21Tips,0,0,,,,
 232,bossxiaoxiang28Muling22,bossxiaoxiang28Muling22e1,0,0,0,50,1,0,icon_bossxiaoxiang28Muling22,bossxiaoxiang28Muling22Name,bossxiaoxiang28Muling22Tips,0,1,,,,
@@ -341,7 +341,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 338,bosssenlin38Meidusha25,bosssenlin38Meidusha25e1,0,0,0,50,1,0,icon_magicPlantStrong,bosssenlin38Meidusha25Name,bosssenlin38Meidusha25Tips,0,0,,,,
 339,bosssenlin38Meidusha26,bosssenlin38Meidusha26e1,0,0,0,50,1,0,icon_bosssenlin38Meidusha26,bosssenlin38Meidusha26Name,bosssenlin38Meidusha26Tips,0,1,,,,
 340,bosssenlin38Meidusha27,bosssenlin38Meidusha27e1,0,0,0,50,8,0,icon_bosssenlin38Meidusha27,bosssenlin38Meidusha27Name,bosssenlin38Meidusha27Tips,0,1,,,,
-341,bosssenlin38Meidusha28,bosssenlin38Meidusha28e1,0,0,0,50,4,0,icon_bosssenlin38Meidusha28,bosssenlin38Meidusha28Name,bosssenlin38Meidusha28Tips,0,0,,,,
+341,bosssenlin38Meidusha28,bosssenlin38Meidusha28e1,0,0,0,50,4,0,icon_psvMantuoluo2,bosssenlin38Meidusha28Name,bosssenlin38Meidusha28Tips,0,0,,,,
 342,bosshuoshan48Hehuaisituosi41,bosshuoshan48Hehuaisituosi41e1,0,0,0,50,0,0,icon_attackFireStrong,bosshuoshan48Hehuaisituosi41Name,bosshuoshan48Hehuaisituosi41Tips,0,0,,,,
 343,bosshuoshan48Hehuaisituosi42,bosshuoshan48Hehuaisituosi42e1,0,0,0,50,0,0,icon_bosshuoshan48Hehuaisituosi42,bosshuoshan48Hehuaisituosi42Name,bosshuoshan48Hehuaisituosi42Tips,0,1,,,,
 344,bosshuoshan48Hehuaisituosi43,bosshuoshan48Hehuaisituosi43e1,0,0,0,50,8,0,icon_bosshuoshan48Hehuaisituosi43,bosshuoshan48Hehuaisituosi43Name,bosshuoshan48Hehuaisituosi43Tips,0,1,,,,
@@ -522,7 +522,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 519,bosskongdao71Weitianshi13,bosskongdao71Weitianshi13e1,0,0,0,50,1,0,,bosskongdao71Weitianshi13Name,,0,0,,,,
 520,bosskongdao71Weitianshi14,bosskongdao71Weitianshi14e1,0,0,0,50,8,0,icon_bosskongdao71Weitianshi14,bosskongdao71Weitianshi14Name,bosskongdao71Weitianshi14Tips,0,1,,,,
 521,bosskongdao71Weitianshi15,bosskongdao71Weitianshi15e1,0,0,0,50,2,0,icon_bosskongdao71Weitianshi15,bosskongdao71Weitianshi15Name,bosskongdao71Weitianshi15Tips,0,0,,,,
-522,bosskongdao72Nvyao11,bosskongdao72Nvyao11e1,0,0,0,50,1,0,icon_bosskongdao72Nvyao11,bosskongdao72Nvyao11Name,bosskongdao72Nvyao11Tips,0,0,,,,
+522,bosskongdao72Nvyao11,bosskongdao72Nvyao11e1,0,0,0,50,1,0,icon_bosskongdao71Weitianshi14,bosskongdao72Nvyao11Name,bosskongdao72Nvyao11Tips,0,0,,,,
 523,bosskongdao72Nvyao12,bosskongdao72Nvyao12e1,0,0,0,50,1,0,,bosskongdao72Nvyao12Name,,0,0,,,,
 524,bosskongdao72Nvyao13,bosskongdao72Nvyao13e1,0,0,0,50,1,0,,bosskongdao72Nvyao13Name,,0,0,,,,
 525,bosskongdao72Nvyao14,bosskongdao72Nvyao14e1,0,0,0,50,1,0,icon_bosskongdao72Nvyao14,bosskongdao72Nvyao14Name,bosskongdao72Nvyao14Tips,0,1,,,,
@@ -554,7 +554,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 551,bosskongdao76Yifanmumian19,bosskongdao76Yifanmumian19e8,0,0,0,50,0,0,,bosskongdao76Yifanmumian19Name,,0,1,,,,
 552,bosskongdao76Yifanmumian110,bosskongdao76Yifanmumian110e1,0,0,0,50,0,0,,bosskongdao76Yifanmumian110Name,,0,0,,,,
 553,bosskongdao76Yifanmumian111,bosskongdao76Yifanmumian111e6,0,0,0,50,0,0,,bosskongdao76Yifanmumian111Name,,0,1,,,,
-554,bosskongdao77Longnv11,bosskongdao77Longnv11e1,0,0,0,50,1,0,icon_bosskongdao77Longnv11,bosskongdao77Longnv11Name,bosskongdao77Longnv11Tips,0,0,,,,
+554,bosskongdao77Longnv11,bosskongdao77Longnv11e1,0,0,0,50,1,0,icon_bosskongdao71Weitianshi14,bosskongdao77Longnv11Name,bosskongdao77Longnv11Tips,0,0,,,,
 555,bosskongdao77Longnv12,bosskongdao77Longnv12e1,0,0,0,50,1,0,icon_bosskongdao77Longnv13,bosskongdao77Longnv12Name,bosskongdao77Longnv12Tips,0,1,,,,
 556,bosskongdao77Longnv13,bosskongdao77Longnv13e1,0,0,0,50,8,0,icon_bosskongdao77Longnv14,bosskongdao77Longnv13Name,bosskongdao77Longnv13Tips,0,1,,,,
 557,bosskongdao77Longnv14,bosskongdao77Longnv14e1,0,0,0,50,8,0,,bosskongdao77Longnv14Name,,0,1,,,,
@@ -660,3 +660,8 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 666,bossWorldMeitatelong112,bossWorldMeitatelong112e1,0,0,0,50,0,0,,,,0,1,,,,
 667,bossWorldMeitatelong113,bossWorldMeitatelong113e1,0,0,0,50,4,0,icon_bosskongdao73Luoxinfu12,bossWorldMeitatelong113Name,bossWorldMeitatelong113Tips,0,0,,,,
 668,bossWorldMeitatelong114,bossWorldMeitatelong114e1,0,0,0,50,0,0,,,,0,0,,,,
+669,bosschaoxue52Yifanmumian31,bosschaoxue52Yifanmumian31e1,0,0,0,50,0,0,icon_magicWaterStrong,bosschaoxue52Yifanmumian31Name,bosschaoxue52Yifanmumian31Tips,0,1,,,,
+670,bosschaoxue52Yifanmumian32,bosschaoxue52Yifanmumian32e1,0,0,0,50,0,0,,bosschaoxue52Yifanmumian32Name,,0,1,,,,
+671,bosschaoxue52Yifanmumian33,bosschaoxue52Yifanmumian33e1,0,0,0,50,0,0,icon_ultWagui3,bosschaoxue52Yifanmumian33Name,bosschaoxue52Yifanmumian34Tips,0,1,,,,
+672,bosschaoxue52Yifanmumian34,bosschaoxue52Yifanmumian34e1,0,0,0,50,0,0,,bosschaoxue52Yifanmumian34Name,,0,0,,,,
+673,bosschaoxue52Yifanmumian35,bosschaoxue52Yifanmumian35e1,0,0,0,50,5,0,icon_attackWaterSlight,bosschaoxue52Yifanmumian35Name,bosschaoxue52Yifanmumian35Tips,0,0,,,,

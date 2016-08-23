@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/fp__account_window_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/fp__account_switch_window_padding"
+        android:background="@drawable/fp__account_window_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/fp__account_switch_logout_alert_padding"
+            android:textSize="@dimen/fp__account_switch_logout_alert_text_size"
+            android:textColor="@color/fp__black"
+            android:text="@string/fp__account_bound_account_prompt"/>
+
+        <Button
+            android:id="@+id/fp__account_cancel_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fp__account_main_button_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/fp__account_switch_cancel_button_margin_top"
+            android:paddingLeft="@dimen/fp__account_main_button_padding_left"
+            android:paddingRight="@dimen/fp__account_main_button_padding_right"
+            android:background="@drawable/fp__account_cancel_button"
+            android:textColor="@color/fp__white"
+            android:textStyle="bold"
+            android:text="@string/fp__account_no"/>
+
+        <Button
+            android:id="@+id/fp__account_confirm_switch_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fp__account_main_button_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/fp__account_switch_confirm_button_margin_top"
+            android:layout_marginBottom="@dimen/fp__account_switch_confirm_button_margin_bottom"
+            android:paddingLeft="@dimen/fp__account_main_button_padding_left"
+            android:paddingRight="@dimen/fp__account_main_button_padding_right"
+            android:background="@drawable/fp__account_submit_button"
+            android:textColor="@color/fp__white"
+            android:textStyle="bold"
+            android:text="@string/fp__account_switch_account"/>
+
+    </LinearLayout>
+
+</LinearLayout>

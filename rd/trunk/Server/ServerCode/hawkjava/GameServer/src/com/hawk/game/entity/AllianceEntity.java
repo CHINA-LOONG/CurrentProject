@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.persistence.Column;
@@ -131,7 +132,7 @@ public class AllianceEntity extends HawkDBEntity {
 	
 	public AllianceEntity() {
 		memberList = new HashMap<Integer, PlayerAllianceEntity>();
-		applyList = new HashMap<Integer, AllianceApplyEntity>();
+		applyList = new TreeMap<Integer, AllianceApplyEntity>();
 		playerTeamMap = new HashMap<Integer, Integer>();
 		finishTeamList = new HashMap<>();
 		unfinishTeamList = new HashMap<>();

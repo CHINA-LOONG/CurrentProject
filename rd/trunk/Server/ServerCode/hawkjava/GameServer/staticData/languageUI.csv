@@ -33,7 +33,7 @@ instance_zhenrongtiaozheng,阵容调整,Line-up
 tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
 spell_yongyoujineng_normal,一般技能,Normal Skills
 spell_yongyoujineng_special,特殊技能,Special Skills
-dazhao_click,连续<color=#ff4c4cff>点击</color>可造成多次伤害,Keep <color=#ff4c4cff>tapping</color> for more damage
+dazhao_click,点击,Tapping
 dazhao_huazhenshibai,画阵失败，请重试,"Failed,please try again"
 shop_putong,普通商店,World Store
 shop_gonghui,公会商店,Guild Store
@@ -1322,7 +1322,7 @@ Attacking targets of the element you are weak against reduces damage effects.
 instanceselect_open_006,需要通关前一章挑战副本才能开启该章节哦！,You must clear the previous chapter on heroic difficulty to unlock this chapter!
 shield_tips,当前内容含有违禁词语,Current content contains prohibited words.
 lv501_title,1.你每天花在这款游戏上多少时间?,1.How much time do you spend daily playing games on your phone/tablet?
-lv502_title,2.你平均每天登陆几次?,2.How many times do you log in each day?
+lv502_title,2.你平均每天登录几次?,2.How many times do you log in each day?
 lv503_title,3.你喜欢游戏的交互界面吗?,3.Do you like the user interface of our game?
 lv504_title,4.你对照妖镜有什么看法吗?,4.What do you think about the Mytho Lens feature?
 lv505_title,5.你对游戏的战斗有何看法?,5.What do you think about the game's battle system?
@@ -1339,7 +1339,7 @@ lv2007_title,7.你对怪物的技能的视觉特效是否满意（分越高越�
 lv2008_title,8.你对怪物的技能的平衡性是否满意（分越高越满意）,"8.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)"
 lv2009_title,9.你觉得ss和s品质的怪物够酷吗？,9.Do you think S & SS grade monsters are cool enough?
 lv2010_title,10.你现在已经20级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣）,"10.You have already reached level 20, do you still think the Mytho Lens is fun? "
-lv2011_title,11.你平均每天登陆几次？,11.How many times do you log in each day?
+lv2011_title,11.你平均每天登录几次？,11.How many times do you log in each day?
 lv2012_title,12.你觉得神话守护者的奖励如何？,12.What do you think of the rewards from Mytho Guardian?
 lv2013_title,13.你觉得神话守护者的难度如何？,13.How would you rate the difficulty of Myth Guardian mode?
 lv5questionfor1000,新手玩家问卷,The novice players questionnaire
@@ -1350,7 +1350,7 @@ lv501_op1,少于1小时,1 hour or less
 lv501_op2,1至3小时,1 - 3 hours
 lv501_op3,3至5小时,3 - 5 hours
 lv501_op4,5小时以上,5 hours +
-lv502_op1,不是每天都登陆,not every day
+lv502_op1,不是每天都登录,not every day
 lv502_op2,一天1次,Once per day
 lv502_op3,2~3次每天,2~3 times per day
 lv502_op4,每天超过3次,3+ times per day
@@ -1429,7 +1429,7 @@ lv2010_op4,仍然有趣,Still fun
 lv2011_op1,每天1次,Once per day
 lv2011_op2,每天2~3次,2~3 times per day
 lv2011_op3,每天3次以上,3+ times per day
-lv2011_op4,2天才登陆一次,2 days One time
+lv2011_op4,2天才登录一次,2 days One time
 lv2011_op5,我超过3天可能才上线一次,More than 3 days 1 time
 lv2012_op1,很好,Very good
 lv2012_op2,一般,Average
@@ -1635,17 +1635,25 @@ mythoPath_battle_close,通关前一个关卡即可开启本关卡挑战！,Clear
 mythoPath_UI_jifen,书魂,Soul Tome
 mythoPath_UI_duihuan,兑换,Exchange
 mythoPath_rule_title,规则说明,Rules
-mythoPath_rule_desc,"1.玩家每天可以参与一次神话守护者玩法
-2.神话守护者玩法进行中，敌我双方的生命值和能量值不会重置
-3.已经阵亡的宠物不会复活
-4.出现超时战斗时，则算作双方所有宠物同归于尽
-5.玩家每挑战成功一个关卡都会获得大量奖励，同时有几率获得额外奖励
-6.挑战成功可以积攒书魂，可以用于兑换丰富奖励","1. Players may enter Myth Guardian once per day.
-2. While in Myth Guardian mode, HP and Power will not be reset for either players or their opponents.
-3. Monsters that are killed will not revive.
-4. When a battle times out, monsters from both sides will all die.
-5. Players will receive large rewards for each stage cleared, and there is also a chance of receiving bonus rewards.
-6. Players can accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards."
+mythoPath_rule_desc,"1.玩家每天均可以挑战<color=#ffcd00>9个</color>神话的守护者。
+2.9个神话守护者的难度会根据玩家当日挑战成功的<color=#ffcd00>次数</color>逐渐<color=#ffcd00>提升</color>。
+3.神话守护者们的实力会随着<color=#ffcd00>玩家能力提升而增强</color>。
+4.已经阵亡的宠物<color=#ffcd00>无法继续上阵</color>，同时无法继续参加<color=#ffcd00>当日后续关卡</color>的挑战。
+5.每一关结束后敌我双方的<color=#ffcd00>血量值</color>和<color=#ffcd00>能量值</color>均会继承到下次神话守护者的战斗中。
+6.每次挑战成功均会获得<color=#ffcd00>大量奖励</color>，并有几率获得额外<color=#ffcd00>惊喜之书</color>奖励！
+7.成功挑战最后一个神话守护者<color=#ffcd00>必定</color>会获得<color=#ffcd00>惊喜之书</color>奖励哦！
+8.每个关卡只能<color=#ffcd00>成功挑战1次</color>，挑战失败后可以继续进行挑战，但是挑战失败不会获得任何奖励。
+9.挑战成功后还可以获得<color=#ffcd00>书魂</color>，可以用于兑换<color=#ffcd00>丰富奖励</color>！
+","1.玩家每天均可以挑战<color=#ffcd00>9个</color>神话的守护者。
+2.9个神话守护者的难度会根据玩家当日挑战成功的<color=#ffcd00>次数</color>逐渐<color=#ffcd00>提升</color>。
+3.神话守护者们的实力会随着<color=#ffcd00>玩家能力提升而增强</color>。
+4.已经阵亡的宠物<color=#ffcd00>无法继续上阵</color>，同时无法继续参加<color=#ffcd00>当日后续关卡</color>的挑战。
+5.每一关结束后敌我双方的<color=#ffcd00>血量值</color>和<color=#ffcd00>能量值</color>均会继承到下次神话守护者的战斗中。
+6.每次挑战成功均会获得<color=#ffcd00>大量奖励</color>，并有几率获得额外<color=#ffcd00>惊喜之书</color>奖励！
+7.成功挑战最后一个神话守护者<color=#ffcd00>必定</color>会获得<color=#ffcd00>惊喜之书</color>奖励哦！
+8.每个关卡只能<color=#ffcd00>成功挑战1次</color>，挑战失败后可以继续进行挑战，但是挑战失败不会获得任何奖励。
+9.挑战成功后还可以获得<color=#ffcd00>书魂</color>，可以用于兑换<color=#ffcd00>丰富奖励</color>！
+"
 mythoPath_surprise_title,惊喜之书,Tome of Surprises
 mythoPath_surprise_desc,概率获得下列物品之一,Set chance of receiving 1 of the following items
 mythoPath_battle_start,挑战,Battle
@@ -1655,7 +1663,7 @@ mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,A well-planne
 mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,Training more monsters will greatly increase your chances of clearing stages!
 mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,Rewards from the Tome of Surprises can be pretty amazing!
 mythoPath_loading_tips4,通关最后一个关卡一定会获得惊喜之书奖励哦！,Clearing the final stage will drop some awesome rewards for sure!
-mythoPath_battle_draw,久战后仍未分出胜负，双方宠物同归于尽！,"If the battle ends up timing out, monsters from both sides will die!"
+mythoPath_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!"
 giftspecial_jinjie1_name,进阶礼包,Advancement Package
 giftspecial_jinjie1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
 giftspecial_jinjie2_name,进阶礼包（稀有）,Advancement Package (Rare)
@@ -1695,7 +1703,7 @@ gift_name_117,玩转通天塔,Tower of Fun
 gift_name_118,公会欢乐多,Guild Joy
 gift_name_119,激情大冒险,Passion for Adventure
 gift_name_120,惊喜十连抽,Surprise 10-Summons
-gift_desc_110,活动期间，累计登录指定天数，即可活动丰厚钻石、资源奖励，更有稀有宠物碎片礼包在等你！,"During the event period, accumulate login days up to the specified amount to get Diamonds and resources, and even a rare monster fragment package!"
+gift_desc_110,活动期间，累计登录指定天数，即可获得丰厚钻石、资源奖励，更有稀有宠物碎片礼包在等你！,"During the event period, accumulate login days up to the specified amount to get Diamonds and resources, and even a rare monster fragment package!"
 gift_desc_111,活动期间，每日登录都有海量钻石、资源奖励哦！,"During the event period, log in each day to receive tons of Diamonds and resources!"
 gift_desc_112,活动期间，达到指定等级，可以领取丰厚钻石、资源奖励哦！,"During the event period, reach the specified level to receive tons of Diamonds and resources!"
 gift_desc_113,活动期间，玩家首次登录游戏即可获得我们准备的起航礼包！,"During the event period, players can receive a Journey Package upon their first login!"
@@ -1805,9 +1813,10 @@ decompose_c,稀有度C,C Class
 decompose_b,稀有度B,B Class
 compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.
 worldboss_title,神怪入侵,Deity Invasion
-worldboss_times,今日可参与活动次数：{0},Tries remaining today: {0}
+worldboss_timesbefore,每天可参与1场活动,每天可参与1场活动
+worldboss_timesafter,今日已参与,今日已参与
 worldboss_rankbutton,排行榜,Rankings
-worldboss_rankrewardbutton,排名奖励,Ranking Reward
+worldboss_rankrewardbutton,排名奖励,Reward
 worldboss_rulebutton,规则说明,Rules
 worldboss_myrank,我的排名,My Ranking
 worldboss_myhurt,我的伤害,My Damage
@@ -1832,10 +1841,10 @@ worldboss_timetips,下场活动开启时间 {0} {1}:{2},Next event start time {0
 worldboss_timelefttips,本场活动将于<color=#ffcc00>{0}:{1}</color>后结束,This event will end after <color=#ffcc00>{0}:{1}</color>
 worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
 worldboss_kexingtitle,神怪克星,Monster Nemesis
-worldboss_kexinglow,出战全员伤害<color=#ffcc00>+10%</color>,Ally monster damage <color=#ffcc00>+10%</color>
-worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+20%</color>,Ally monster damage <color=#ffcc00>+20%</color>
-worldboss_kexinglow1,<color=#7aff00>{出战全员伤害+10%</color>,<color=#7aff00>{Ally monster damage +10%</color>
-worldboss_kexinghigh1,<color=#7aff00>{出战全员伤害+20%</color>,<color=#7aff00>{Ally monster damage +20%</color>
+worldboss_kexinglow,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>
+worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>
+worldboss_kexinglow1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>
+worldboss_kexinghigh1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>
 worldboss_kexingcomplain,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each monster has a nemesis. Adding that nemesis to your lineup will grant the specified buff to all your monsters. 
 worldboss_battle,挑战,Battle
 worldboss_rulestitle,规则说明,Rules
@@ -1851,15 +1860,11 @@ worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与
 4.神怪入侵活动会根据个人对boss的总伤害量进行排名，伤害量越高，排名越靠前，奖励也就越丰厚哦！
 5.每场活动持续时间为15分钟，本场活动的boss死亡或者活动时间到达后，本场活动结束。
 6.如果单场活动boss被消灭，排名前100的玩家将根据排名获得不同的额外钻石奖励！排名越靠前，钻石越多哦！
-    第1名               钻石
-    第2名               钻石
-    第3名               钻石
-    第4-10名          钻石
-    第11-20名        钻石
-    第21-30名        钻石
-    第31-40名        钻石
-    第41-50名        钻石
-    第51-100名      钻石","1.Deity Invasion opens for 3 battles daily. Players may only participate in 1 of the 3 battles each day.
+    第1名               250钻石
+    第2名               200钻石
+    第3名               150钻石
+    第4-20名          100钻石
+    第21-100名      50钻石","1.Deity Invasion opens for 3 battles daily. Players may only participate in 1 of the 3 battles each day.
    Open every afternoon from 12:45 to 13:00
    Open every night from 20:00 to 20:15
    Open every night from 21:45 to 22:00
@@ -1871,18 +1876,14 @@ worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与
 4.Monster Invasion will have rankings for each player based on total damage dealt to the boss. The higher the damage, the higher the ranking and the better the rewards!
 5.Each Monster Invasion battle will last for 15 mintues. The battle will end when the boss dies or the time limit is reached.
 6.If the boss is defeated, players ranked in the top 100 will receive bonus rewards based on their rankings. The higher the player ranking, the more diamonds that will be rewarded!
-   Rank 1                     Diamonds
-   Rank 2                     Diamonds
-   Rank 3                     Diamonds
-   Ranks 4 - 10            Diamonds
-   Ranks 11 - 20          Diamonds
-   Ranks 21 - 30          Diamonds
-   Ranks 31 - 40          Diamonds
-   Ranks 41 - 50          Diamonds
-   Ranks 51 - 100        Diamonds"
+   Rank 1                     250 Diamonds
+   Rank 2                     200 Diamonds
+   Rank 3                     150 Diamonds
+   Ranks 4 - 20            100 Diamonds
+   Ranks 21 - 100        50   Diamonds"
 worldboss_rewardtitle,排名奖励,Ranking Reward
 worldboss_ranklast,{0}及以后,After level {0}
-worldboss_rewardtips,奖励将在活动后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. 
+worldboss_rewardtips,奖励将在活动结束后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. 
 worldboss_ranktitle1,上场伤害排名,Previous damage ranking
 worldboss_ranktitle2,本场伤害排名,Current damage ranking
 worldboss_shuchushanghai,输出伤害,Damage Output
@@ -1909,12 +1910,24 @@ arrayselect_count_006,活力不足，请先补充活力,"Insufficient energy, pl
 bag_record_008,钥匙不足，请先购买钥匙,"Insufficient keys, please purchase some more keys first."
 summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit reached, unable to summon."
 handbook_record_006,已达宠物最大持有量，无法合成,"Max monster limit reached, unable to craft."
-list_byname,按名称排序,按名称排序
-list_bylevel,按等级排序,按等级排序
-compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},{0}%概率获得{1}
-compose_insignia_003,祝福之力,祝福之力
-compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,可合成{0}次，每次合成100%概率获得{1}！
-compose_insignia_005,将消耗,将消耗
+list_byname,按名称排序,By Name
+list_bylevel,按等级排序,By Level
+compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},<color=#ffcc00>{0}%</color> chance of receiving {1}.
+compose_insignia_003,祝福之力,Blessing Power
+compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,"Can combine <color=#ffcc00>{0}</color> times, with a <color=#ffcc00>100%</color> chance each time of receiving {1}."
+compose_insignia_005,将消耗,Will consume
 compose_record_009,纹章不足,纹章不足
 compose_record_010,请添加5个相同名称的纹章,请添加5个相同名称的纹章
 compose_record_011,祝福之力不足,祝福之力不足
+guide_hero1,一起来看看挑战难度的副本吧,一起来看看挑战难度的副本吧
+guide_hero2,选择第一章,选择第一章
+guide_hero3,这里可以切换普通与挑战难度,这里可以切换普通与挑战难度
+guide_hero4,选择挑战难度,选择挑战难度
+guide_hero5,点击这里看看奖励多棒吧,点击这里看看奖励多棒吧
+speech_hero1,挑战难度副本主要产出宠物进阶的相关材料、宠物碎片等，三星通关挑战难度副本能够获得钻石等丰富的奖励呢！,挑战难度副本主要产出宠物进阶的相关材料、宠物碎片等，三星通关挑战难度副本能够获得钻石等丰富的奖励呢！
+guide_worldboss1,神怪入侵玩法开启啦！,神怪入侵玩法开启啦！
+guide_worldboss2,每个神怪都有克星，战斗时将克星上阵，就能获得对应的伤害加成,每个神怪都有克星，战斗时将克星上阵，就能获得对应的伤害加成
+speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。
+speech_worldboss2,活动开始后，根据玩家对神怪的总伤害输出进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的纹章呐。,活动开始后，根据玩家对神怪的总伤害输出进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的纹章呐。
+dazhao_jieduan,连续,Keep
+dazhao_shifang,可获得多次伤害,for more damage

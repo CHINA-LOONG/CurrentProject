@@ -138,15 +138,12 @@ public class AllianceInfoItem : MonoBehaviour
         if(msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
-            // switch(errorCode)
-            // {
-            // case PB.allianceError.ALLIANCE_ALREADY_APPLY
-            //}
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
 
         itemInfoData.apply = false;
-
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_004"), (int)PB.ImType.PROMPT);
         RefreshButtonTitle();
 
     }
@@ -162,26 +159,12 @@ public class AllianceInfoItem : MonoBehaviour
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
-            switch (errorCode.errCode)
-            {
-                case (int)PB.allianceError.ALLIANCE_ALREADY_FULL:
-                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_002"), (int)PB.ImType.PROMPT);
-                    break;
-                case (int)PB.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH:
-                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_010"), (int)PB.ImType.PROMPT);
-                    break;
-                case (int)PB.allianceError.ALLIANCE_FRIZEN_TIME:
-                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_037"), (int)PB.ImType.PROMPT);
-                    break;
-                case (int)PB.allianceError.ALLIANCE_MAX_APPLY:
-                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_055"), (int)PB.ImType.PROMPT);
-                    break;
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
 
         itemInfoData.apply = true;
-
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_003"), (int)PB.ImType.PROMPT);
         PB.HSAllianceApplyRet msgRet = msg.GetProtocolBody<PB.HSAllianceApplyRet>();
 
         if (msgRet.allianceId > 0)
@@ -192,6 +175,11 @@ public class AllianceInfoItem : MonoBehaviour
         }
         else
         {
+            if (itemInfoData.autoAccept)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_008"), (int)PB.ImType.PROMPT);
+            }
+
             RefreshButtonTitle();
         }
     }

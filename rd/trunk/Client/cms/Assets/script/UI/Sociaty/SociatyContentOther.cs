@@ -9,6 +9,9 @@ public class SociatyContentOther : SociatyContentBase
    // public Text title;
     public Text[] contentTitle;
 
+    public Button searchButton;
+    public InputField searchInputField;
+
     public Text gonggaoDescText;
     public Text gonggaoContentText;
     public Text pageText;
@@ -34,6 +37,7 @@ public class SociatyContentOther : SociatyContentBase
 
         leftButton.onClick.AddListener(OnLeftButtonClick);
         rightButton.onClick.AddListener(OnRightButtonClick);
+        searchButton.onClick.AddListener(OnSearchButtonClick);
 
         contentTitle[0].text = StaticDataMgr.Instance.GetTextByID("sociaty_id");
         contentTitle[1].text = StaticDataMgr.Instance.GetTextByID("sociaty_name");
@@ -42,6 +46,8 @@ public class SociatyContentOther : SociatyContentBase
         contentTitle[4].text = StaticDataMgr.Instance.GetTextByID("sociaty_peoplenum");
         contentTitle[5].text = StaticDataMgr.Instance.GetTextByID("sociaty_qiliveness");
         contentTitle[6].text = StaticDataMgr.Instance.GetTextByID("sociaty_applylevel");
+
+        ((Text)searchInputField.placeholder).text = StaticDataMgr.Instance.GetTextByID("sociaty_shuruxianshi");
     }
 
     public  void Clean()
@@ -85,7 +91,6 @@ public class SociatyContentOther : SociatyContentBase
         else
         {
             RequestSearch(search);
-            search = null;
         }
     }
     void OnLeftButtonClick()
@@ -102,6 +107,12 @@ public class SociatyContentOther : SociatyContentBase
         {
             RequestPage(curPage + 1);
         }
+    }
+    void OnSearchButtonClick()
+    {
+        string search = searchInputField.text.Trim();
+        SetSearch(search);
+        RefreshUI();
     }
 
     public void OnAllianceInfoItemClick(AllianceInfoItem item)
@@ -132,7 +143,7 @@ public class SociatyContentOther : SociatyContentBase
             listAllianceInfo.AddRange(searchRet.result);
             curPage = 1;
             totalPage = 1;
-            RefreshUi();
+            RefreshContentUi();
             return;
         }
         UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_001"), (int)PB.ImType.PROMPT);
@@ -159,12 +170,21 @@ public class SociatyContentOther : SociatyContentBase
         totalPage = listRet.totalPage;
         curPage = requestPage;
 
-        RefreshUi();
+        RefreshContentUi();
     }
 
-    void RefreshUi()
+    void RefreshContentUi()
     {
         gonggaoContentText.text = "";
+
+        if(string.IsNullOrEmpty(search))
+        {
+            searchInputField.text = "";
+        }
+        else
+        {
+            searchInputField.text = search;
+        }
 
         PB.AllianceSimpleInfo itemData = null;
         AllianceInfoItem itemUi = null;

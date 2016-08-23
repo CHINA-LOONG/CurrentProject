@@ -125,9 +125,10 @@ public class LoginModule : ModuleBase
         if (1 == state)
         {
             Debug.LogWarning("OK for net");
-
+            
             if (string.IsNullOrEmpty(PlayerPrefs.GetString("testGuid")) == false)
             {
+                GameDataMgr.Instance.UserDataAttr.guid = PlayerPrefs.GetString("testGuid");
                 PB.HSLogin hsLogin = new PB.HSLogin();
                 hsLogin.puid = PlayerPrefs.GetString("testGuid");
                 hsLogin.token = GameDataMgr.Instance.UserDataAttr.token;
@@ -135,9 +136,7 @@ public class LoginModule : ModuleBase
             }
             else
             {
-                UINetRequest.Close();
-                UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILogin.ViewName));
-                GameMain.Instance.ChangeModule<CreatePlayerModule>();
+                Debug.Log("username cant't be empty");
             }
         }
         else

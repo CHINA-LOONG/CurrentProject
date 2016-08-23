@@ -197,7 +197,7 @@ enum allianceError
 	ALLIANCE_ALREADY_FULL         = 0x008000A;
 	// 申请不存在
 	ALLIANCE_APPLY_NOT_EXIST      = 0x008000B;
-	// 工会级别有误
+	// 工会职位有误
 	ALLIANCE_POSITION_ERROR	      = 0x008000C;
 	// 公会会长退出时不空
 	ALLIANCE__LEAVE_NOT_EMPTY     = 0x008000D;

@@ -88,14 +88,21 @@ public class SociatyDataMgr : MonoBehaviour
             SociatyList.OpenWith(search);
         }
         else
-        {
-            SociatyMain.OpenWith();
+        {;
+            if(string.IsNullOrEmpty(search))
+            {
+                SociatyMain.OpenWith();
+            }
+            else
+            {
+                SociatyMain.OpenWith(SociatyContenType.OtherSociaty,search);
+            }
         }
     }
 
-    public void OpenSociatyTaskWithTeam(SociatyTaskContenType taskType)
+    public void OpenSociatyTaskWithTeam(SociatyTaskContenType taskType,string otherTeamId = null)
     {
-        UISociatyTask.Open(taskType);
+        UISociatyTask.Open(taskType, otherTeamId);
     }
 
     public void ClearSociaty()

@@ -175,10 +175,13 @@ public class SociatyContentInfomation : SociatyContentBase
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("modify   faild!");
+            PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         MsgBox.InputConform.Close();
         gonggaoValue.text = newNotify;
+        allianceInfo.notice = newNotify;
     }
 
     void OnQifubuttonClick()
@@ -188,7 +191,7 @@ public class SociatyContentInfomation : SociatyContentBase
 
     void OnTaskButtonClick()
     {
-        UISociatyTask.Open();
+        UISociatyTask.Open(SociatyTaskContenType.MyTeam,null);
        // UIIm.Instance.ShowSystemHints("comming Later!", (int)PB.ImType.PROMPT);
     }
 

@@ -50,7 +50,9 @@ import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.HS.sys;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
+import com.hawk.game.protocol.SysProtocol.HSKickPlayer;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
@@ -195,6 +197,10 @@ public class Player extends HawkAppObj {
 	 * @param reason
 	 */
 	public void kickout(int reason) {
+		HSKickPlayer.Builder builder = HSKickPlayer.newBuilder();
+		builder.setReason(reason);
+		HawkProtocol protocol = HawkProtocol.valueOf(sys.KICK_PLAYER_VALUE, builder);
+		sendProtocol(protocol);
 		session.setAppObject(null);
 		session = null;
 	}

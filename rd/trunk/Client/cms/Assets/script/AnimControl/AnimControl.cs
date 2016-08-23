@@ -217,10 +217,11 @@ public class AnimControl : MonoBehaviour
         animator.SetBool(hashWugong, false);
     }
     //---------------------------------------------------------------------------------------------
-    //---------------------------------------------------------------------------------------------
+    //-------------------------------------------------------+--------------------------------------
     public void OnNormalEnd(string str)
     {
-        animator.SetBool(str, false);
+		int hashstr = Animator.StringToHash (str);
+		animator.SetBool(hashstr, false);
     }
     //---------------------------------------------------------------------------------------------
     public void OnChuChangEnd()

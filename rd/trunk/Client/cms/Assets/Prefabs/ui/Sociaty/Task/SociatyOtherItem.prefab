@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamPanel: {fileID: 22449664}
   rewardPanel: {fileID: 22469288}
-  descText: {fileID: 11487744}
+  rewardText: {fileID: 0}
   timeLeftText: {fileID: 11453082}
   joinButton: {fileID: 11460166}
 --- !u!114 &11434864
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 64, y: 64}
-  m_Spacing: {x: 10, y: 0}
+  m_Spacing: {x: 24, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!114 &11476458
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -438,8 +438,8 @@ MonoBehaviour:
     m_MaxSize: 28
     m_Alignment: 4
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Join Squad
 --- !u!114 &11487744
@@ -574,10 +574,10 @@ RectTransform:
   - {fileID: 22440738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 109.800018}
-  m_SizeDelta: {x: 890, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22429294
 RectTransform:
@@ -593,7 +593,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 99, y: 53}
+  m_AnchoredPosition: {x: 84, y: 60.5999985}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22440566
@@ -608,10 +608,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22440738}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 134, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22440738
 RectTransform:

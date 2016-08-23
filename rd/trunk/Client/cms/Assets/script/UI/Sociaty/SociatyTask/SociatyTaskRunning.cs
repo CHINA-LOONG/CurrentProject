@@ -75,7 +75,11 @@ public class SociatyTaskRunning : MonoBehaviour
 
         rewardLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_teamreward");
         destLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_tasktarget");
-	}
+
+        UIUtil.SetButtonTitle(exitTaskButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_giveup"));
+        UIUtil.SetButtonTitle(recruitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_findfriends"));
+        UIUtil.SetButtonTitle(taskRewardButton.transform, StaticDataMgr.Instance.GetTextByID("quest_lingqujiangli"));
+    }
 
     int updateCount = 1;
     void Update()
@@ -109,8 +113,18 @@ public class SociatyTaskRunning : MonoBehaviour
         else
         {
             isNeedUpdateTime = false;
+            if (!IsTaskFinish())
+            {
+                MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("sociaty_taskfail"), OnTaskFaild);
+            }
         }
         timeText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_shengyutime"), hour, minute, second);
+    }
+
+    void OnTaskFaild(MsgBox.PrompButtonClick click)
+    {
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
+        UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
     }
 
     public void Clear()
@@ -202,14 +216,8 @@ public class SociatyTaskRunning : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-            if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_TASK_FINISH)
-            {
-               // UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_TASK_NOT_EXIST)
-            {
-              //  UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+
             GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
             GameDataMgr.Instance.SociatyDataMgrAttr.selfTeamData = null;
             UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);            
@@ -434,7 +442,9 @@ public class SociatyTaskRunning : MonoBehaviour
                 {
                     itemCountText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
                     commitButton.gameObject.SetActive(true);
+                    UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
                 }
+                
                 break;
             case SociatyQuestType.CommitDrop:
                 ItemData goalItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(questStData.goalParam);
@@ -467,11 +477,13 @@ public class SociatyTaskRunning : MonoBehaviour
                 {
                     itemCountText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
                     commitButton.gameObject.SetActive(true);
+                    UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_commit"));
                 }
                 break;
             case SociatyQuestType.CommitInstance:
                 commitButton.gameObject.SetActive(true);
                 instanceObj.SetActive(true);
+                UIUtil.SetButtonTitle(commitButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_gogogo"));
                 break;
         }
     }
@@ -517,14 +529,8 @@ public class SociatyTaskRunning : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-            if(errorCode.errCode == (int)PB.allianceError.ALLIANCE_MAX_SMALL_TASK)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_048"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_QUEST_FINISH)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_033"), (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+
             RequestMyTeamInfo();
             return;
         }
@@ -542,15 +548,8 @@ public class SociatyTaskRunning : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-            if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_MAX_SMALL_TASK)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_048"), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_QUEST_FINISH)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_033"), (int)PB.ImType.PROMPT);
-                RequestMyTeamInfo();
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+
             return;
         }
         curSelItem.SetFinish(GameDataMgr.Instance.PlayerDataAttr.playerId);
@@ -599,12 +598,17 @@ public class SociatyTaskRunning : MonoBehaviour
 
     void OnRecruitButtonClick()
     {
-        string sendMsg = StaticDataMgr.Instance.GetTextByID("sociaty_record_052");
-        bool issend = UIIm.Instance.OnSendMsg(sendMsg, ImMessageType.Msg_Type_Recruit, GameDataMgr.Instance.SociatyDataMgrAttr.allianceID.ToString());
-        if (issend)
+        if(selfTeamData.members.Count >= GameConfig.Instance.sociatyTeamMaxMember)
         {
-            MsgBox.InputConform.Close();
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_044"), (int)PB.ImType.PROMPT);
+            return;
         }
+        string sendMsg = StaticDataMgr.Instance.GetTextByID("sociaty_record_052");
+        bool issend = UIIm.Instance.OnSendMsg(sendMsg, ImMessageType.Msg_Type_Task, GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId.ToString());
+       // if (issend)
+       // {
+          //  MsgBox.InputConform.Close();
+       // }
     }
     void OnTaskRewardButtonClick()
     {

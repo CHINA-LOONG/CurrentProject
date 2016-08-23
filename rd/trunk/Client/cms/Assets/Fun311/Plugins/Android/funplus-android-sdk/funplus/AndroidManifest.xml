@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.funplus.sdk"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="23" />
+
+    <!-- BASIC -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- END_BASIC -->
+
+    <!-- GCM -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- END_GCM -->
+
+    <!-- GOOGLEIAB -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <!-- END_GOOGLEIAB -->
+
+    <application>
+		<!-- RUM -->
+		<receiver
+            android:name="com.funplus.sdk.rum.NetworkChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+		<!-- END_RUM -->
+
+		<!-- GCM -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="<PACKAGE-NAME>" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.funplus.sdk.caffeine.gcm.FunplusGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.funplus.sdk.caffeine.gcm.FunplusInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.funplus.sdk.caffeine.gcm.FunplusRegisterIntentService"
+            android:exported="false">
+        </service>
+		<!-- END_GCM -->
+
+        <!-- HELPSHIFT -->
+        <activity
+            android:name="com.helpshift.support.activities.ParentActivity"
+            android:theme="@style/Helpshift.Theme.Activity" />
+        <activity
+            android:name="com.helpshift.support.HSReview"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/Helpshift.Theme.Dialog" />
+
+        <service
+            android:name="com.helpshift.support.HSService"
+            android:label="Helpshift Service" >
+        </service>
+        <service
+            android:name="com.helpshift.support.HSRetryService"
+            android:label="Helpshift Service" >
+        </service>
+        <!-- END_HELPSHIFT -->
+    </application>
+
+</manifest>

@@ -29,7 +29,7 @@ public class UILevelInfo : UIBase
     public void SetBattleLevelProcess(int curIndex, int maxIndex)
     {
         gameObject.SetActive(true);
-        mLevelInfoAnimator.Play("level_info_show");
+        mLevelInfoAnimator.Play("levelinfo");
         mLevelInfoIndex.text = curIndex.ToString() + "/" + maxIndex.ToString();
         mLevelBoss.gameObject.SetActive(curIndex == maxIndex);
     }

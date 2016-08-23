@@ -2048,6 +2048,418 @@ public final class SysProtocol {
     // @@protoc_insertion_point(class_scope:HSErrorCode)
   }
 
+  public interface HSKickPlayerOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 reason = 1;
+    /**
+     * <code>required int32 reason = 1;</code>
+     */
+    boolean hasReason();
+    /**
+     * <code>required int32 reason = 1;</code>
+     */
+    int getReason();
+  }
+  /**
+   * Protobuf type {@code HSKickPlayer}
+   *
+   * <pre>
+   * KICK_PLAYER
+   * </pre>
+   */
+  public static final class HSKickPlayer extends
+      com.google.protobuf.GeneratedMessage
+      implements HSKickPlayerOrBuilder {
+    // Use HSKickPlayer.newBuilder() to construct.
+    private HSKickPlayer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSKickPlayer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSKickPlayer defaultInstance;
+    public static HSKickPlayer getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSKickPlayer getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSKickPlayer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              reason_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSKickPlayer_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSKickPlayer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.SysProtocol.HSKickPlayer.class, com.hawk.game.protocol.SysProtocol.HSKickPlayer.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSKickPlayer> PARSER =
+        new com.google.protobuf.AbstractParser<HSKickPlayer>() {
+      public HSKickPlayer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSKickPlayer(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSKickPlayer> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 reason = 1;
+    public static final int REASON_FIELD_NUMBER = 1;
+    private int reason_;
+    /**
+     * <code>required int32 reason = 1;</code>
+     */
+    public boolean hasReason() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 reason = 1;</code>
+     */
+    public int getReason() {
+      return reason_;
+    }
+
+    private void initFields() {
+      reason_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasReason()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, reason_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, reason_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.SysProtocol.HSKickPlayer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HSKickPlayer prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSKickPlayer}
+     *
+     * <pre>
+     * KICK_PLAYER
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.SysProtocol.HSKickPlayerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKickPlayer_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKickPlayer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.SysProtocol.HSKickPlayer.class, com.hawk.game.protocol.SysProtocol.HSKickPlayer.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.SysProtocol.HSKickPlayer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        reason_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKickPlayer_descriptor;
+      }
+
+      public com.hawk.game.protocol.SysProtocol.HSKickPlayer getDefaultInstanceForType() {
+        return com.hawk.game.protocol.SysProtocol.HSKickPlayer.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.SysProtocol.HSKickPlayer build() {
+        com.hawk.game.protocol.SysProtocol.HSKickPlayer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.SysProtocol.HSKickPlayer buildPartial() {
+        com.hawk.game.protocol.SysProtocol.HSKickPlayer result = new com.hawk.game.protocol.SysProtocol.HSKickPlayer(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.reason_ = reason_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.SysProtocol.HSKickPlayer) {
+          return mergeFrom((com.hawk.game.protocol.SysProtocol.HSKickPlayer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSKickPlayer other) {
+        if (other == com.hawk.game.protocol.SysProtocol.HSKickPlayer.getDefaultInstance()) return this;
+        if (other.hasReason()) {
+          setReason(other.getReason());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasReason()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.SysProtocol.HSKickPlayer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.SysProtocol.HSKickPlayer) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 reason = 1;
+      private int reason_ ;
+      /**
+       * <code>required int32 reason = 1;</code>
+       */
+      public boolean hasReason() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 reason = 1;</code>
+       */
+      public int getReason() {
+        return reason_;
+      }
+      /**
+       * <code>required int32 reason = 1;</code>
+       */
+      public Builder setReason(int value) {
+        bitField0_ |= 0x00000001;
+        reason_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 reason = 1;</code>
+       */
+      public Builder clearReason() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        reason_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSKickPlayer)
+    }
+
+    static {
+      defaultInstance = new HSKickPlayer(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSKickPlayer)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSDataWarpper_descriptor;
   private static
@@ -2068,6 +2480,11 @@ public final class SysProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSErrorCode_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSKickPlayer_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSKickPlayer_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2082,8 +2499,8 @@ public final class SysProtocol {
       "keys\030\001 \001(\014\".\n\013HSHeartBeat\022\021\n\ttimeStamp\030\001" +
       " \001(\005\022\014\n\004data\030\002 \001(\014\"R\n\013HSErrorCode\022\016\n\006hsC" +
       "ode\030\001 \002(\005\022\017\n\007errCode\030\002 \002(\005\022\016\n\006errMsg\030\003 \001" +
-      "(\t\022\022\n\007errFlag\030\004 \001(\005:\0010B\030\n\026com.hawk.game." +
-      "protocol"
+      "(\t\022\022\n\007errFlag\030\004 \001(\005:\0010\"\036\n\014HSKickPlayer\022\016" +
+      "\n\006reason\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2114,6 +2531,12 @@ public final class SysProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSErrorCode_descriptor,
               new java.lang.String[] { "HsCode", "ErrCode", "ErrMsg", "ErrFlag", });
+          internal_static_HSKickPlayer_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_HSKickPlayer_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSKickPlayer_descriptor,
+              new java.lang.String[] { "Reason", });
           return null;
         }
       };

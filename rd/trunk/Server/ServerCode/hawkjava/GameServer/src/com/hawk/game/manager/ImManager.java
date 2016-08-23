@@ -16,6 +16,7 @@ import org.hawk.app.HawkAppObj;
 import org.hawk.cache.HawkCacheObj;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
 import org.hawk.thread.HawkTask;
 import org.hawk.util.services.FunPlusTranslateService;
 import org.hawk.util.services.FunPlusTranslateService.Translation;
@@ -28,7 +29,6 @@ import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Im.HSImMsg;
 import com.hawk.game.protocol.Im.HSImPush;
-import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -253,7 +253,7 @@ public class ImManager extends HawkAppObj {
 		guildPlayerMap.remove(guildId);
 		guildLangMap.remove(guildId);
 	}
-	
+
 	/**
 	 * 切换语言
 	 */
@@ -277,7 +277,7 @@ public class ImManager extends HawkAppObj {
 					Integer count = langMap.get(oldLang);
 					if (count != null && count != 0) {
 						langMap.put(oldLang, count - 1);
-					}		
+					}
 					count = langMap.get(newLang);
 					if (count == null) {
 						count = 0;
@@ -385,7 +385,7 @@ public class ImManager extends HawkAppObj {
 				pushWorldList.add(msgObj);
 			}
 		}
-//		if (false == worldMsgQueue.isEmpty()) {	
+//		if (false == worldMsgQueue.isEmpty()) {
 //			pushWorldList = new ArrayList<ImMsg>();
 //			synchronized(worldMsgQueue){
 //				pushWorldList.addAll(worldMsgQueue);
@@ -616,7 +616,7 @@ public class ImManager extends HawkAppObj {
 		while (iterator.hasNext()) {
 			Entry<Integer, ImPlayer> entry = iterator.next();
 			push(imMsgList, entry.getValue());
-			
+
 			if (false == entry.getValue().getSession().isActive()) {
 				iterator.remove();
 			}
@@ -632,23 +632,30 @@ public class ImManager extends HawkAppObj {
 		int size = 0;
 		HSImPush.Builder builder = HSImPush.newBuilder();
 
-		for (ImMsg msgObj : imMsgList) {
-			// 检查屏蔽
-			if (false == playerObj.getBlockPlayerList().contains(msgObj.senderId)) {
-				builder.addImMsg(genImMsgBuilder(msgObj, playerObj.getLanguage()));
-				++size;
+		try {
+			for (ImMsg msgObj : imMsgList) {
+				// 检查屏蔽
+				if (false == playerObj.getBlockPlayerList().contains(msgObj.senderId)) {
+					builder.addImMsg(genImMsgBuilder(msgObj, playerObj.getLanguage()));
+					++size;
+				}
+
+				// 分批发送
+				if (size >= PUSH_BATCH_SIZE) {
+					size = 0;
+					playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
+					builder.clear();
+				}
 			}
 
-			// 分批发送
-			if (size >= PUSH_BATCH_SIZE) {
-				size = 0;
+			if (size > 0) {
 				playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
-				builder.clear();
 			}
-		}
-		
-		if (size > 0) {
-			playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
+		} catch (NullPointerException e) {
+			// playerObj可能已经下线，sesson == null，为了效率不用锁操作修正问题，而是忽略异常
+			if (playerObj.getSession() != null) {
+				HawkException.catchException(e);
+			}
 		}
 	}
 

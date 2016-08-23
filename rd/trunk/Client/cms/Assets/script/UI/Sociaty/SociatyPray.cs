@@ -63,11 +63,7 @@ public class SociatyPray : UIBase
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-            if (error.errCode == (int)PB.allianceError.ALLIANCE_PRAY_MAX_COUNT)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_027"),
-                                               (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
         }
         else
         {
@@ -76,6 +72,8 @@ public class SociatyPray : UIBase
             PB.HSAlliancePrayRet playerSync = msg.GetProtocolBody<PB.HSAlliancePrayRet>();
             if (playerSync != null)
             {
+                SociatyDataMgr mgr = GameDataMgr.Instance.SociatyDataMgrAttr;
+                mgr.allianceSelfData.contribution = playerSync.selfContribution;
                 mSelfContributeValue.text = playerSync.selfContribution.ToString();
                 mSociatyLiveValue.text = playerSync.allianceContribution.ToString();
             }

@@ -127,6 +127,9 @@ public class AllianceManager extends HawkAppObj {
                 if (o1.getLevel() != o2.getLevel()) {
                 	return o2.getLevel() - o1.getLevel();
 				}
+                else if(o1.get3DaysContribution() != o2.get3DaysContribution() ) {
+					return o2.get3DaysContribution() - o1.get3DaysContribution();
+				}
                 
                 return o1.getId() - o2.getId();
          }});

@@ -36,7 +36,7 @@ public class CreateSociaty : UIBase
 
         gonggaoLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_notice");
         costLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_reqcoin");
-        costValueText.text = GameConfig.Instance.createSociatyCostZuanshi.ToString();
+        costValueText.text = GameConfig.Instance.createSociatyCostCoin.ToString();
 
         UIUtil.SetButtonTitle(cancelButton.transform, StaticDataMgr.Instance.GetTextByID("ui_quxiao"));
         UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
@@ -61,9 +61,9 @@ public class CreateSociaty : UIBase
 
     void OnConformButtonClick()
     {
-        if(GameConfig.Instance.createSociatyCostZuanshi > GameDataMgr.Instance.PlayerDataAttr.gold)
+        if(GameConfig.Instance.createSociatyCostCoin > GameDataMgr.Instance.PlayerDataAttr.coin)
         {
-            GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_009"), (int)PB.ImType.PROMPT);
             return;
         }
         if(CheckInput())
@@ -76,12 +76,12 @@ public class CreateSociaty : UIBase
     {
         if(string.IsNullOrEmpty(nameInputField.text))
         {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("名字不能为空 "),(int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_005"),(int)PB.ImType.PROMPT);
             return false;
         }
         if(string.IsNullOrEmpty(gonggaoInputField.text))
         {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("公告内容不能为空 "), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_007"), (int)PB.ImType.PROMPT);
             return false;
         }
       //  UIIm.Instance.ShowSystemHints(nameInputField.text.Length.ToString(), (int)PB.ImType.PROMPT);
@@ -98,13 +98,11 @@ public class CreateSociaty : UIBase
     }
     void OnRequestCreateSociatyFinished(ProtocolMessage msg)
     {
+        UINetRequest.Close();
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
-           // switch(errorCode)
-           // {
-               // case PB.allianceError.ALLIANCE_ALREADY_APPLY
-            //}
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
 

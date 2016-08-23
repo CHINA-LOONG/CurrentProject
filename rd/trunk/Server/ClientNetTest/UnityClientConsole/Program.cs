@@ -41,7 +41,7 @@ namespace UnityClientConsole
                 // string name = "shuadong2";// +(1 + i);
                 // string name = "root" + (0 + 1 + i);
                 //string name = "_chat" + (1 + i);
-                string name = "shishu2";
+                string name = "nuwa";
 
                 test[i] = new App();
                 if (test[i].Init("127.0.0.1", 9595, name) == false)

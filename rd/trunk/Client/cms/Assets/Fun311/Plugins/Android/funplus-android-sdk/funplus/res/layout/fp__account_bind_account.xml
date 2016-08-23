@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/fp__account_window_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/fp__account_window_padding"
+        android:background="@drawable/fp__account_window_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fp__account_header_height">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/fp__logo_padding"
+                android:background="@color/fp__white"
+                android:textColor="@color/fp__account_title_color"
+                android:textSize="@dimen/fp__account_title_text_size"
+                android:text="@string/fp__account_bind_your_account"/>
+
+            <include layout="@layout/fp__account_back_button"/>
+
+        <ImageButton
+            android:id="@+id/fp__account_switch_account_button"
+            android:layout_width="40dp"
+            android:layout_height="66dp"
+            android:paddingRight="10dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fp__account_switch_account"
+            android:background="@null"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/fp__account_bind_form"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fp__account_body_margin_top"
+            android:layout_marginRight="@dimen/fp__account_body_margin_right"
+            android:layout_marginBottom="@dimen/fp__account_body_margin_bottom"
+            android:layout_marginLeft="@dimen/fp__account_body_margin_left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/fp__account_bind_alert_padding_left"
+                android:paddingTop="@dimen/fp__account_bind_alert_padding_top"
+                android:paddingRight="@dimen/fp__account_bind_alert_padding_right"
+                android:paddingBottom="@dimen/fp__account_bind_alert_padding_bottom"
+                android:layout_marginBottom="@dimen/fp__account_bind_alert_margin_bottom"
+                android:background="@drawable/fp__account_bind_alert"
+                android:text="@string/fp__account_bind_facebook_or_email"
+                android:textColor="@color/fp__account_bind_alert_text_color"
+                android:textSize="@dimen/fp__account_bind_alert_text_size"/>
+
+            <TextView
+                android:id="@+id/fp__account_fpid"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fp__black"
+                android:text="@string/fp__account_your_fpid"/>
+
+            <TextView
+                android:id="@+id/fp__account_bind_with_sns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fp__account_bind_with_sns_margin_top"
+                android:layout_marginBottom="@dimen/fp__account_bind_with_sns_margin_bottom"
+                android:textColor="@color/fp__black"
+                android:text="@string/fp__account_bind_with_sns"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/fp__account_bind_fb_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fp__account_main_button_height"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/fp__account_bind_fb_margin_top"
+                android:paddingLeft="@dimen/fp__account_main_button_padding_left"
+                android:paddingRight="@dimen/fp__account_main_button_padding_right"
+                android:background="@drawable/fp__account_fb_login_button"
+                android:drawableLeft="@drawable/fp__account_fb_logo"
+                android:textColor="@color/fp__white"
+                android:textStyle="bold"
+                android:text="@string/fp__account_bind_facebook"/>
+
+            <TextView
+                android:id="@+id/fp__account_bind_email_clickable"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:textSize="@dimen/fp__account_bind_email_text_size"
+                android:layout_marginTop="@dimen/fp__account_bind_email_margin_top"
+                android:layout_marginBottom="@dimen/fp__account_bind_email_margin_bottom"
+                android:layout_gravity="center"
+                android:textColor="@color/fp__account_dark_blue"
+                android:text="@string/fp__account_bind_email_to_continue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fp__account_bind_failed"
+            android:visibility="invisible"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fp__account_body_margin_top"
+            android:layout_marginRight="@dimen/fp__account_body_margin_right"
+            android:layout_marginBottom="@dimen/fp__account_body_margin_bottom"
+            android:layout_marginLeft="@dimen/fp__account_body_margin_left">
+
+            <TextView
+                android:id="@+id/fp__account_bind_failed_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fp__account_bind_failed"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

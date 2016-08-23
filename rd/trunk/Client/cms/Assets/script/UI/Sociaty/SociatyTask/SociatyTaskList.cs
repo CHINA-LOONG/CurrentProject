@@ -162,14 +162,7 @@ public class SociatyTaskList : MonoBehaviour
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-            if(errorCode.errCode == (int) PB.allianceError.ALLIANCE_ALREADY_IN_TEAM)
-            {
-                //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(""), (int)PB.ImType.PROMPT);
-            }
-            else if (errorCode.errCode == (int)PB.allianceError.ALLIANCE_LEVEL_LIMIT)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         PB.HSAllianceCreateTeamRet msgRet = message.GetProtocolBody<PB.HSAllianceCreateTeamRet>();

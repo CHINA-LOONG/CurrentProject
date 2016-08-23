@@ -7,6 +7,7 @@ public class MemberInfo : UIBase
     public static string ViewName = "MemberInfo";
     public Image headImage;
     public Text nameText;
+    public Text levelText;
 
     public Button closebutton;
     public Button transferCaptionButton;
@@ -63,7 +64,7 @@ public class MemberInfo : UIBase
     {
         memberData = allianceMember;
         selfData = GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData;
-        if(memberData.postion == 0)
+        if(memberData.postion == 0 || memberData.postion == 2)
         {
             UIUtil.SetButtonTitle(appointmentButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_yieldfu"));
         }
@@ -71,7 +72,9 @@ public class MemberInfo : UIBase
         {
             UIUtil.SetButtonTitle(appointmentButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_yieldfujie"));
         }
-        nameText.text = memberData.name;        
+        nameText.text = memberData.name;
+        if(null != levelText)
+             levelText.text = memberData.level.ToString();
     }
 
     void OnCloseButtonClick()
@@ -111,14 +114,7 @@ public class MemberInfo : UIBase
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
-            if(error.errCode == (int)PB.allianceError.ALLIANCE_TARGET_NOT_JOIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_014"), (int)PB.ImType.PROMPT);
-            }
-            else if (error.errCode == (int)PB.allianceError.ALLIANCE_NOT_CAPTAIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            }
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
         }
         else
         {
@@ -183,15 +179,7 @@ public class MemberInfo : UIBase
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
-            if (error.errCode == (int)PB.allianceError.ALLIANCE_TARGET_NOT_JOIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_014"), (int)PB.ImType.PROMPT);
-            }
-            else if (error.errCode == (int)PB.allianceError.ALLIANCE_NOT_CAPTAIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            }
-            //else if (error.errCode == (int)PB.allianceError.)
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
         }
         else
         {
@@ -243,15 +231,7 @@ public class MemberInfo : UIBase
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
-            if (error.errCode == (int)PB.allianceError.ALLIANCE_TARGET_NOT_JOIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_014"), (int)PB.ImType.PROMPT);
-            }
-            else if (error.errCode == (int)PB.allianceError.ALLIANCE_NOT_CAPTAIN)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_018"), (int)PB.ImType.PROMPT);
-            }
-            //else if (error.errCode == (int)PB.allianceError.)
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
         }
         else
         {

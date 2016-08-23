@@ -23,10 +23,12 @@ public class UISociatyTask : UIBase, TabButtonDelegate
     private SociatyTaskContenType taskType = SociatyTaskContenType.Count;
 
     public static UISociatyTask Instance = null;
+    private string topOtherTeamId = null;
 
-    public static   void Open(SociatyTaskContenType taskType = SociatyTaskContenType.MyTeam)
+    public static   void Open(SociatyTaskContenType taskType = SociatyTaskContenType.MyTeam,string otherTeamId = null)
     {
         UISociatyTask taskUi = (UISociatyTask)UIMgr.Instance.OpenUI_(ViewName);
+        taskUi.SetOtherTeamId(otherTeamId);
         taskUi.SetTaskType(taskType);
     }
 
@@ -71,7 +73,15 @@ public class UISociatyTask : UIBase, TabButtonDelegate
             SetTaskType((SociatyTaskContenType)index);
         }
     }
-    
+    /// <summary>
+    /// 设置 定位到其它公会的id
+    /// </summary>
+    /// <param name="otherTeamId"></param>
+    void SetOtherTeamId(string otherTeamId)
+    {
+        topOtherTeamId = otherTeamId;
+    }
+
     public void SetTaskType(SociatyTaskContenType type)
     {
         taskType = type;
@@ -158,6 +168,15 @@ public class UISociatyTask : UIBase, TabButtonDelegate
             rt.localScale = new Vector3(1, 1, 1);
         }
         taskOther.gameObject.SetActive(true);
+        int otherTeamid = -1;
+        if (!string.IsNullOrEmpty(topOtherTeamId))
+        {
+            otherTeamid = int.Parse(topOtherTeamId);
+            topOtherTeamId = null;
+        }
+
+        taskOther.SetTopTeamId(otherTeamid);
+        topOtherTeamId = null;
         taskOther.RequestTeamList();
     }
 

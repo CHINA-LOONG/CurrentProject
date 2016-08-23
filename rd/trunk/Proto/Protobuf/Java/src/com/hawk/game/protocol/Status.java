@@ -1808,7 +1808,7 @@ public final class Status {
      * <code>ALLIANCE_POSITION_ERROR = 524300;</code>
      *
      * <pre>
-     * 工会级别有误
+     * 工会职位有误
      * </pre>
      */
     ALLIANCE_POSITION_ERROR(11, 524300),
@@ -2138,7 +2138,7 @@ public final class Status {
      * <code>ALLIANCE_POSITION_ERROR = 524300;</code>
      *
      * <pre>
-     * 工会级别有误
+     * 工会职位有误
      * </pre>
      */
     public static final int ALLIANCE_POSITION_ERROR_VALUE = 524300;

@@ -13,6 +13,12 @@ public class SociatyTaskOther : MonoBehaviour
     private List<SociatyOtherItem> listOtherTaskCatche = new List<SociatyOtherItem>();
 
     private static SociatyTaskOther instance = null;
+    private int topOtherTeamId = -1;
+
+    public void SetTopTeamId(int oherTeamId)
+    {
+        topOtherTeamId = oherTeamId;
+    }
     public static SociatyTaskOther Instance
     {
         get
@@ -60,13 +66,28 @@ public class SociatyTaskOther : MonoBehaviour
         UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-           // PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
-           
+           PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         PB.HSAllianceTeamListRet msgRet = message.GetProtocolBody<PB.HSAllianceTeamListRet>();
         sociatyDataMgr.teamList.Clear();
         sociatyDataMgr.teamList.AddRange(msgRet.allianceTeams);
+        if(topOtherTeamId > -1 )
+        {
+            PB.AllianceTeamInfo topTeam = null;
+            for(int i = 0;i<sociatyDataMgr.teamList.Count;++i)
+            {
+                if (sociatyDataMgr.teamList[i].teamId == topOtherTeamId)
+                {
+                    topTeam = sociatyDataMgr.teamList[i];
+                    sociatyDataMgr.teamList.Remove(topTeam);
+                    sociatyDataMgr.teamList.Insert(0, topTeam);
+                    break;
+                }
+            }
+            topOtherTeamId = -1;
+        }
         RefreshUi();
     }
 

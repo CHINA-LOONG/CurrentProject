@@ -490,11 +490,14 @@ public class MainStageController : MonoBehaviour
             //普通副本
             if (selectedObj == mInstanceObj)
             {
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
+                /*
                 UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
                 if (uiBuild != null)
                 {
                     uiBuild.OpenInstanceUI();
                 }
+                */
             }
             //死亡之塔
             else if (selectedObj == mTowerSiwangObj)

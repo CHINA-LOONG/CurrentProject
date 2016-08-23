@@ -38,11 +38,13 @@ public class MemberItem : MonoBehaviour
         historyContributionText.text = memberData.contribution.ToString();
         lastLogin.text = memberData.loginTime.ToString();//todo
         bool isSend = memberData.sendFatigue;
+        giveHuoliButton.SetIsSend(isSend);
         if (memberData.id == GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.id)
         {
             isSend = true;
+            giveHuoliButton.HideAll();
         }
-        giveHuoliButton.SetIsSend(isSend);
+        
     }
     void OnGiveHuoliButtonClick()
     {
@@ -54,6 +56,8 @@ public class MemberItem : MonoBehaviour
         UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
         giveHuoliButton.SetIsSend(true);

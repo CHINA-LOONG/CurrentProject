@@ -242,6 +242,32 @@ public class UIUtil
         return GameDataMgr.Instance.PlayerDataAttr.CheckEquipTypePart(petData.equip, (int)part);
     }
 
+    public static bool CheckIsEnoughEquipLevelUP(EquipData data)
+    {
+        EquipData curData = data;
+        EquipData nextData = null;
+        if (curData.level >= BattleConst.maxEquipLevel && curData.stage >= BattleConst.maxEquipStage)
+        {
+            return false;
+        }
+        else if (curData.level < BattleConst.maxEquipLevel)
+        {
+            nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage, curData.level + 1, BattleConst.invalidMonsterID, null);
+        }
+        else if (curData.stage < BattleConst.maxEquipStage)
+        {
+            nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage + 1, BattleConst.minEquipLevel, BattleConst.invalidMonsterID, null);
+        }
+        EquipForgeData nextForge = StaticDataMgr.Instance.GetEquipForgeData(nextData.stage, nextData.level);
+        if (!CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
+        {
+            return false;
+        }
+        List<ItemInfo> curDemand = new List<ItemInfo>();
+        nextForge.GetLevelDemand(ref curDemand);
+        return UIUtil.CheckIsEnoughMaterial(curDemand);
+    }
+
     public static int CheckPetIsMaxLevel(int level)
     {
         //版本最大等级

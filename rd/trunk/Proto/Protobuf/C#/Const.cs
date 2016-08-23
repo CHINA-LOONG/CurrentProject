@@ -115,7 +115,13 @@ namespace PB
       MONEY_GOLD = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONEY_COIN", Value=2)]
-      MONEY_COIN = 2
+      MONEY_COIN = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_COTRIBUTION", Value=3)]
+      ALLIANCE_COTRIBUTION = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN", Value=4)]
+      TOWER_COIN = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]

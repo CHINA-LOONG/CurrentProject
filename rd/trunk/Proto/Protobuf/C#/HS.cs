@@ -24,7 +24,10 @@ namespace PB
       HEART_BEAT = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=4)]
-      ERROR_CODE = 4
+      ERROR_CODE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"KICK_PLAYER", Value=5)]
+      KICK_PLAYER = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"gm")]
@@ -623,6 +626,9 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_REWARD_S", Value=9081)]
       ALLIANCE_CONTRI_REWARD_S = 9081,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_REWARD_S", Value=9082)]
+      ALLIANCE_INSTANCE_REWARD_S = 9082,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,

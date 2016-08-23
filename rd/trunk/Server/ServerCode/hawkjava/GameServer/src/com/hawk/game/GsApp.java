@@ -245,7 +245,7 @@ public class GsApp extends HawkApp {
 		// 快照缓存对象初始
 		HawkLog.logPrintln("init snapshot manager......");
 		SnapShotManager.getInstance().init();
-		
+
 		return true;
 	}
 

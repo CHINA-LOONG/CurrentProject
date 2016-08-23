@@ -80,6 +80,13 @@ namespace PB
       get { return _hasBuy; }
       set { _hasBuy = value; }
     }
+    private int _priceType;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"priceType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int priceType
+    {
+      get { return _priceType; }
+      set { _priceType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -264,12 +271,19 @@ namespace PB
   {
     public HSStoreItemBuy() {}
     
-    private int _id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int id
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
-      get { return _id; }
-      set { _id = value; }
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private int _count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -67,7 +67,7 @@ public class SociatyApplySetting : UIBase
         }
 
         SetAutoJoin(autoJoin);
-        chgValue.ResetValue(sociatyLevelLimit, 100, 10);
+        chgValue.ResetValue(sociatyLevelLimit, 99, 10);
         chgValue.callback = OnChangedValueByHand;
         LevelLimitAttr = sociatyLevelLimit;
     }
@@ -90,11 +90,11 @@ public class SociatyApplySetting : UIBase
 
     void OnApplyTypeLeftClick(GameObject go)
     {
-        SetAutoJoin(false);
+        SetAutoJoin(!this.autoJoin);
     }
     void OnApplyTypeRightClick(GameObject go)
     {
-        SetAutoJoin(true);
+        SetAutoJoin(!this.autoJoin);
     }
 
     public void SetAutoJoin(bool autoJoin)
@@ -119,7 +119,7 @@ public class SociatyApplySetting : UIBase
         
         if(allianceInfo.autoAccept == this.autoJoin && allianceInfo.minLevel == LevelLimitAttr)
         {
-            UIIm.Instance.ShowSystemHints("请先修改",(int)PB.ImType.PROMPT);
+           // UIIm.Instance.ShowSystemHints("请先修改",(int)PB.ImType.PROMPT);
             return;
         }
         PB.HSAllianceSettion param = new PB.HSAllianceSettion();
@@ -131,6 +131,12 @@ public class SociatyApplySetting : UIBase
     void OnSettingAllianceFinish(ProtocolMessage message)
     {
         UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
         PB.HSAllianceSettionRet retMsg = message.GetProtocolBody<PB.HSAllianceSettionRet>();
         if(null != retMsg)
         {

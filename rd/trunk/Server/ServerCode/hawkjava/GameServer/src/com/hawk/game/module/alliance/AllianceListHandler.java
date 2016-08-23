@@ -20,18 +20,20 @@ public class AllianceListHandler implements HawkProtocolHandler {
 	@Override
 	public boolean onProtocol(HawkAppObj appObj, HawkProtocol protocol) {
 		Player player = (Player) appObj;
-		Set<AllianceEntity> levelSet = new LinkedHashSet<AllianceEntity>();
-		
-		if (AllianceManager.getInstance().getPlayerApplyList(player.getId()) != null) {
+		Set<AllianceEntity> levelSet = AllianceManager.getInstance().getAllianceLevelSet();
+		// 如果有申请，重新排序
+		Set<Integer> guildApplyList = AllianceManager.getInstance().getPlayerApplyList(player.getId());
+		if (guildApplyList != null && guildApplyList.isEmpty() == false){
+			levelSet = new LinkedHashSet<AllianceEntity>();
 			for (int allianceId : AllianceManager.getInstance().getPlayerApplyList(player.getId())) {
 				AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(allianceId);
 				if (allianceEntity != null) {
 					levelSet.add(allianceEntity);
 				}
 			}
+			
+			levelSet.addAll(AllianceManager.getInstance().getAllianceLevelSet());
 		}
-		
-		levelSet.addAll(AllianceManager.getInstance().getAllianceLevelSet());
 		
 		// 计算最大页码
 		int maxPageNum = (levelSet.size() + GsConst.Alliance.ONE_PAGE_SIZE - 1) / GsConst.Alliance.ONE_PAGE_SIZE;

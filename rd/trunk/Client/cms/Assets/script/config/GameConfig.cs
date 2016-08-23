@@ -68,10 +68,11 @@ public class GameConfig : MonoBehaviour {
     public int saodangOpenLevelForTenTimes = 20;//扫荡10次开启等级
 
     //公会
-    public int createSociatyCostZuanshi = 500;//创建公会花费
+    public int createSociatyCostCoin = 500;//创建公会花费
     public int maxContributionToday = 3000;//一天公会贡献值上限
     public int contributionRewordLevel1 = 500;//公会贡献值领取
     public int contributionRewordLevel2 = 1500;
     public int contributionRewordLevel3 = 3000;
     public int sociatyTaskMaxCount = 3;
+    public int sociatyTeamMaxMember = 3;
 }

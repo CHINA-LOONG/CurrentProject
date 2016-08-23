@@ -14,6 +14,7 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceCreate;
 import com.hawk.game.protocol.Alliance.HSAllianceCreateRet;
@@ -123,7 +124,10 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 					}
 					
 					consumes.consumeTakeAffectAndPush(player, Action.ALLIANCE_CREATE_CONSUME, protocol.getType());
-					
+
+					// 加入公会频道
+					ImManager.getInstance().joinGuild(allianceEntity.getId(), player);
+
 					HSAllianceCreateRet.Builder response = HSAllianceCreateRet.newBuilder();
 					response.setAllianeId(allianceEntity.getId());
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CREATE_S_VALUE, response));

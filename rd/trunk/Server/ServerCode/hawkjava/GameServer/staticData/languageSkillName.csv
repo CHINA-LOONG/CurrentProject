@@ -1674,3 +1674,11 @@ bossWorldMeitatelong14Tips,攻击敌方群体，造成xx%法攻的光属性伤�
 bossWorldMeitatelong17Tips,攻击敌方单体，造成xx%法攻的光属性伤害并降低xx%力量持续3回合,"Deals (xx% of magic ATK) light type damage to a single enemy target, and reduces their STR by xx% for 3 turns."
 bossWorldMeitatelong110Tips,驱散自身debuff并攻击敌方群体，根据清除debuff数量造成xx%法攻的光属性伤害，并给自己添加物理减免护盾,"Dispells any debuffs affecting you and attacks all enemy targets, dealing(xx% of magic ATK) light type damage based on the number of debuffs dispelled, and adds a physical damage reduction shield for yourself."
 bossWorldMeitatelong113Tips,免疫控制（被动技能）,Control ability immunity (passive ability).
+bosschaoxue52Yifanmumian31Name,水流狙击,Hydro Strike
+bosschaoxue52Yifanmumian32Name,水流狙击,Hydro Strike
+bosschaoxue52Yifanmumian33Name,水魔翻腾,Water Surge
+bosschaoxue52Yifanmumian34Name,水魔翻腾,Water Surge
+bosschaoxue52Yifanmumian35Name,激流一击,Torrential Blast
+bosschaoxue52Yifanmumian31Tips,攻击敌方单体，造成100%法攻水法术伤害，几率附加溺水效果,"Deals (100% of magic ATK) water type damage to a single enemy target, with a chance of drowning effect."
+bosschaoxue52Yifanmumian34Tips,攻击敌方群体，造成100%法攻水法术伤害，几率附加溺水效果,"Deals (100% of magic ATK) water type damage to all  enemies, with a chance of drowning effect."
+bosschaoxue52Yifanmumian35Tips,攻击敌方群体，造成100%法攻水法术伤害，提升自身暴击率、智力,"Deals (100% of magic ATK) water type damage to all  enemies, and increases your crit rate and INT."

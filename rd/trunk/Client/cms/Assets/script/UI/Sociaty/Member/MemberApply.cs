@@ -139,9 +139,17 @@ public class MemberApply : UIBase
     void OnAcceptAllRequestFinish(ProtocolMessage message)
     {
         UINetRequest.Close();
+
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
         PB.HSAllianceHanleApplyRet retmsg = message.GetProtocolBody<PB.HSAllianceHanleApplyRet>();
         if (null != retmsg)
         {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_022"), (int)PB.ImType.PROMPT);
             GameDataMgr.Instance.SociatyDataMgrAttr.newApplyList.Clear();
             RefreshUi();
             SociatyContentMember.Instance.RequestMemberData();
@@ -159,6 +167,13 @@ public class MemberApply : UIBase
     void OnRefuseAllRequestFinish(ProtocolMessage message)
     {
         UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+
         PB.HSAllianceHanleApplyRet retmsg = message.GetProtocolBody<PB.HSAllianceHanleApplyRet>();
         if (null != retmsg)
         {

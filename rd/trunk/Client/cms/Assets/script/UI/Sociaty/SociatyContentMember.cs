@@ -116,6 +116,17 @@ public class SociatyContentMember : SociatyContentBase
         {
             return 1;
         }
+        else
+        {
+           if( itemA.totalContribution > itemB.totalContribution)
+            {
+                return -1;
+            }
+           else if(itemA.totalContribution < itemB.totalContribution)
+            {
+                return 1;
+            }
+        }
         return 0;
     }
 
@@ -177,10 +188,13 @@ public class SociatyContentMember : SociatyContentBase
         UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
+            PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
+            SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
             return;
         }
         sociatyDataMgr.ClearSociaty();
         SociatyMain.Instance.Close();
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_020"), (int)PB.ImType.PROMPT);
     }
 
     ///-------------------------------------------------------------------------------------------------
