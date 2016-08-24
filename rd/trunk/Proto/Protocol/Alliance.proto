@@ -402,6 +402,7 @@ message HSLevelChangeNotify
 {
 	required int32 type = 1;
 	required int32 level = 2;
+	required int32 contribution = 3;
 }
 
 // 入会通知

@@ -35,7 +35,7 @@ public class SociatyTaskList : MonoBehaviour
     void Start ()
     {
         openButton.onClick.AddListener(OnOpenButtonClick);
-        UIUtil.SetButtonTitle(openButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_start"));
+        costText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_start"), 30);
         rewardText.text = StaticDataMgr.Instance.GetTextByID("sociaty_teamreward");
 	}
 
@@ -77,7 +77,12 @@ public class SociatyTaskList : MonoBehaviour
             var itemUi = SociatyTaskItem.CreateWith(itemData);
             scrollView.AddElement(itemUi.gameObject);
         }
-        leftTimes.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tasknum"), 
+        RefreshLeftTimes();
+    }
+
+    void RefreshLeftTimes()
+    {
+        leftTimes.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tasknum"),
             GameConfig.Instance.sociatyTaskMaxCount - GameDataMgr.Instance.SociatyDataMgrAttr.taskCount);
     }
 
@@ -90,7 +95,7 @@ public class SociatyTaskList : MonoBehaviour
         leaderRewardObject.SetActive(false);
         selItem.SetSelected(true);
         curSelItem = selItem;
-        costText.text = selItem.sociatyTaskData.taskStart.ToString();
+        costText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_start"), selItem.sociatyTaskData.taskStart);
         ClearReward();
         AddLeaderReward(selItem.sociatyTaskData.leaderReward);
         AddTeamReward(selItem.sociatyTaskData.reward);
@@ -120,7 +125,6 @@ public class SociatyTaskList : MonoBehaviour
                 go.transform.localScale = new Vector3(1, 1, 1);
                 rewardItems.Add(go);
             }
-            
         }
     }
 	
@@ -172,7 +176,8 @@ public class SociatyTaskList : MonoBehaviour
         PB.HSAllianceCreateTeamRet msgRet = message.GetProtocolBody<PB.HSAllianceCreateTeamRet>();
 
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = msgRet.teamId;
-
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskCount++;
+        RefreshLeftTimes();
         UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
     }
 }

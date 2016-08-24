@@ -48,7 +48,7 @@ public class SociatyContentTechnology : SociatyContentBase
     //---------------------------------------------------------------------------------------------
     public override void RefreshUI()
     {
-        mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.contribution.ToString();
+        mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.contribution.ToString();
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()
@@ -74,7 +74,7 @@ public class SociatyContentTechnology : SociatyContentBase
         else
         {
             UIIm.Instance.ShowSystemHints("level up success", (int)PB.ImType.PROMPT);
-            mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.contribution.ToString();
+            mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.contribution.ToString();
             //TODO: broadcast in sociaty channel
         }
     }

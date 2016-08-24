@@ -96,7 +96,7 @@ enum changeType
 	CHANGE_FAV	           = 8;
 	// 充值钻石
 	CHANGE_GOLD_BUY	       = 9;
-	// 公会贡献值
+	// 个人贡献值
 	CHANGE_PLAYER_CONTRIBUTION = 10;
 	// 通天塔币
 	CHANGE_TOWER_COIN      = 11;

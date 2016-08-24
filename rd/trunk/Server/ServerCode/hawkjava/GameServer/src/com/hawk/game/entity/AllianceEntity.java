@@ -452,8 +452,8 @@ public class AllianceEntity extends HawkDBEntity {
 	        	AllianceTeamEntity teamEntity = it.next();  
 	            if(teamEntity.getCreateTime() + teamEntity.getOverTime() < nowSeconds){  
 	            	it.remove();
+	        		unfinishTeamList.remove(teamEntity.getId());
 	            	teamEntity.clearTeam();
-	        		unfinishTeamList.remove(id);
 	        		
 	        		HSAllianceTaskTimeoutNotify.Builder notify = HSAllianceTaskTimeoutNotify.newBuilder();
 	        		notify.setTaskId(teamEntity.getId());

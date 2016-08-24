@@ -101,10 +101,10 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 			allianceEntity.setMemLevel(currentLevel + 1);
 			break;
 		case GsConst.Alliance.ALLIANCE_TEC_COIN:
-			allianceEntity.setExpLevel(currentLevel + 1);
+			allianceEntity.setCoinLevel(currentLevel + 1);
 			break;
 		case GsConst.Alliance.ALLIANCE_TEC_EXP:
-			allianceEntity.setCoinLevel(currentLevel + 1);
+			allianceEntity.setExpLevel(currentLevel + 1);
 			break;
 		default:
 		}
@@ -115,6 +115,7 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 		HSLevelChangeNotify.Builder notify = HSLevelChangeNotify.newBuilder();
 		notify.setType(request.getType());
 		notify.setLevel(currentLevel + 1);
+		notify.setContribution(allianceEntity.getContribution());
 		AllianceManager.getInstance().broadcastNotify(allianceEntity.getId(), HawkProtocol.valueOf(HS.code.ALLIANCE_LEVEL_CHANGE_N_S, notify), 0);
 
 		ImSysCfg imCfg = HawkConfigManager.getInstance().getConfigByKey(ImSysCfg.class, GsConst.SysIm.ALLIANCE_LEVEL_UP);

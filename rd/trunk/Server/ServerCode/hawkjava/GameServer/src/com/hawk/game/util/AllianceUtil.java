@@ -35,12 +35,45 @@ public class AllianceUtil {
 	 * @return
 	 */
 	public static boolean checkName(String name) {  
-		String regEx = "^[0-9A-Za-z\u4e00-\u9fa5]{2,6}$";
-		Pattern pat = Pattern.compile(regEx);  
-		Matcher mat = pat.matcher(name);  
-		return mat.find();     
+		int nameLength = getChineseCount(name);
+		if (nameLength > GsConst.Alliance.NAME_MAX_LENGTH) {
+			return false;
+		}
+		return true;
     }
 
+	/**
+	 * 检测公会通告是否合法
+	 * @param name
+	 * @return
+	 */
+	public static boolean checkNotice(String notice) {  
+		int nameLength = getChineseCount(notice);
+		if (nameLength > GsConst.Alliance.NOTICE_MAX_LENGTH) {
+			return false;
+		}
+		return true;
+    }
+	
+	/**
+	 * 检测汉子字符
+	 * @param content
+	 * @return
+	 */
+	public static int getChineseCount(String content){
+		int count = 0;      
+        String regEx = "[\\u4e00-\\u9fa5]";   
+        Pattern p = Pattern.compile(regEx);      
+        Matcher m = p.matcher(content);      
+        while (m.find()) {      
+           for (int i = 0; i <= m.groupCount(); i++) {      
+                count = count + 1;      
+            }      
+        }      
+		
+        return count;
+	}
+	
 	/**
 	 * 统计副会长数量
 	 * @param name
@@ -130,15 +163,6 @@ public class AllianceUtil {
 			}
 		}
 	};
-	
-	/**
-	 * 检查工会通告
-	 * @param name
-	 * @return
-	 */	
-	public static boolean checkNotice(String name) {  
-		return name.length() <= GsConst.Alliance.NOTICE_MAX_LENGTH;     
-      }
 	
 	/**
 	 * 检查是否是工会Id
@@ -332,8 +356,10 @@ public class AllianceUtil {
 	
 	/**
 	 * 工会任务信息
-	 * @param allianceId
-	 * @param player
+	 * @param playerId
+	 * @param questId
+	 * @param teamEntity
+	 * @param allianceEntity
 	 * @return
 	 */
 	public static AllianceTeamQuestInfo.Builder getTaskInfo(int playerId, int questId, AllianceTeamEntity teamEntity, AllianceEntity allianceEntity){
@@ -346,14 +372,10 @@ public class AllianceUtil {
 				questBuilder.setNickname(playerEntity.getName());
 				questBuilder.setLevel(playerEntity.getLevel());
 				questBuilder.setAvatar(0);
-			}	
-			else {
-				questBuilder.setPlayerId(-1);
 			}
 		}	
 		return questBuilder;
 	}
-	
 	
 	/**
 	 * 工会队伍队员

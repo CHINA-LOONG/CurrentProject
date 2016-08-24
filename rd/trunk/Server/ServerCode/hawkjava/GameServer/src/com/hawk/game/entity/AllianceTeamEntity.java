@@ -17,7 +17,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "allianceTeam")
-@SuppressWarnings("serial")
 public class AllianceTeamEntity extends HawkDBEntity{
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
@@ -373,10 +372,10 @@ public class AllianceTeamEntity extends HawkDBEntity{
 		}else if (member3 != 0) {
 			allianceEntity.removePlayerTeamMap(member3);
 		}
-		
+
+		this.delete();
 		return true;
 	}
-	
 	
 	/**
 	 * 玩家小任务数量统计

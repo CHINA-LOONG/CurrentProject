@@ -56,16 +56,16 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if (teamEntity.getInstanceQuest1PlayerId() != 0) {
-			return true;
-		}
-		
 		SociatyQuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, teamEntity.getInstanceQuest1());
 		if (questCfg == null) {
 			return true;
 		}
 		
 		if (!questCfg.getGoalParam().equals(instanceId)) {
+			return true;
+		}
+
+		if (!teamEntity.getAcceptList().contains(player.getId())) {
 			return true;
 		}
 		

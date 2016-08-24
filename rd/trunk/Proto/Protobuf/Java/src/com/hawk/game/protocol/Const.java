@@ -893,7 +893,7 @@ public final class Const {
      * <code>CHANGE_PLAYER_CONTRIBUTION = 10;</code>
      *
      * <pre>
-     * 公会贡献值
+     * 个人贡献值
      * </pre>
      */
     CHANGE_PLAYER_CONTRIBUTION(9, 10),
@@ -983,7 +983,7 @@ public final class Const {
      * <code>CHANGE_PLAYER_CONTRIBUTION = 10;</code>
      *
      * <pre>
-     * 公会贡献值
+     * 个人贡献值
      * </pre>
      */
     public static final int CHANGE_PLAYER_CONTRIBUTION_VALUE = 10;

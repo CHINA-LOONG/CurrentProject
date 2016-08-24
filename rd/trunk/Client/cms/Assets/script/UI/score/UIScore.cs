@@ -113,6 +113,10 @@ public class UIScore : UIBase
         {
             BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
         }
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
+        {
+            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnConfirm(GameObject go)
@@ -460,6 +464,9 @@ public class UIScore : UIBase
                 break;
             case (int)InstanceType.Tower:
                 break;
+            case (int)InstanceType.Guild:
+                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                break;
         }
 
         mBackground.SetActive(true);
@@ -496,7 +503,7 @@ public class UIScore : UIBase
             mNextLevelBtn.gameObject.SetActive(true);
         }
         //tower instance
-        else
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
         {
             if (mIsSuccess == true)
             {
@@ -516,6 +523,11 @@ public class UIScore : UIBase
             }
 
             mConfirmBtn.gameObject.SetActive(true);
+        }
+        //guild instance
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
+        {
+            mNextLevelBtn.gameObject.SetActive(true);
         }
 
         if (mCheckCoin)

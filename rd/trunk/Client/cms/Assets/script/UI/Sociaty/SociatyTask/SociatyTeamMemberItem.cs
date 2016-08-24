@@ -11,13 +11,16 @@ public class SociatyTeamMemberItem : MonoBehaviour
     public GameObject tipsObject;
     public Text tipsText;
 
+    public GameObject topTipsObject;
+    public Text topTipsText;
+
     private PB.AllianceTeamMemInfo teamMemberData;
-    private bool isShowTips = false;
-    public static SociatyTeamMemberItem CreateWith(PB.AllianceTeamMemInfo memberData)
+    private bool tipsOnTop = true;
+    public static SociatyTeamMemberItem CreateWith(PB.AllianceTeamMemInfo memberData,bool tipsOnTop)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("SociatyTeamMemberItem");
         var item = go.GetComponent<SociatyTeamMemberItem>();
-        item.FirstInit();
+        item.FirstInit(tipsOnTop);
         item.RefreshWith(memberData);
         return item;
     }
@@ -26,10 +29,11 @@ public class SociatyTeamMemberItem : MonoBehaviour
         EventTriggerListener.Get(gameObject).onEnter = OnTouchOnEnter;
         EventTriggerListener.Get(gameObject).onExit = OnTouchOnExit;
     }
-    public void FirstInit()
+    public void FirstInit(bool isOnTop)
     {
+        this.tipsOnTop = isOnTop;
         tipsObject.SetActive(false);
-        SetShowTips(false);
+        topTipsObject.SetActive(false);
     }
 	public void RefreshWith(PB.AllianceTeamMemInfo memberData)
     {
@@ -44,16 +48,16 @@ public class SociatyTeamMemberItem : MonoBehaviour
         }
         leaderObject.SetActive(memberData.isCaptain);
         tipsText.text = memberData.nickname;
-    }
-
-    public void SetShowTips(bool isShow)
-    { 
-        isShowTips = isShow;
+        topTipsText.text = memberData.nickname;
     }
 
     void OnTouchOnEnter(GameObject go)
     {
-        if(isShowTips)
+        if(tipsOnTop)
+        {
+            topTipsObject.SetActive(true);
+        }
+        else
         {
             tipsObject.SetActive(true);
         }
@@ -62,5 +66,6 @@ public class SociatyTeamMemberItem : MonoBehaviour
     void OnTouchOnExit(GameObject go)
     {
         tipsObject.SetActive(false);
+        topTipsObject.SetActive(false);
     }
 }

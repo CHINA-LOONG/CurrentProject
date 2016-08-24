@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterData 
 {
 	public int 	index;
+    public string name;
 	public	string desc;
 	public int	physicsWeight;
 	public int	magicWeight;

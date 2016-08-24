@@ -41,8 +41,6 @@ public class SociatyErrorMsg
             case PB.allianceError.ALLIANCE_ALREADY_FULL:
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_002"), (int)PB.ImType.PROMPT);
                 break;
-
-
             case PB.allianceError.ALLIANCE_APPLY_NOT_EXIST:
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
                 break;
@@ -81,6 +79,7 @@ public class SociatyErrorMsg
             case PB.allianceError.ALLIANCE_FAGIGUE_GIVE_ALREADY:
                 break;
             case PB.allianceError.ALLIANCE_CAPACITY_NOT_ENOUGH:
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_023"), (int)PB.ImType.PROMPT);
                 break;
             case PB.allianceError.ALLIANCE_SAME_POSITION:
                 break;
@@ -134,6 +133,9 @@ public class SociatyErrorMsg
 
             case PB.allianceError.ALLIANCE_MAX_COPY_MAIN:
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_040"), (int)PB.ImType.PROMPT);
+                break;
+            case PB.allianceError.ALLIANCE_APPLY_LIST_EMPTY:
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_045"), (int)PB.ImType.PROMPT);
                 break;
         }
     }

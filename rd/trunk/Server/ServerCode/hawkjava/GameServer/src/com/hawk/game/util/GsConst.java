@@ -421,6 +421,7 @@ public class GsConst {
 		public static final int ALLIANCE_TEC_EXP = 4;
 
 		public static final int ONE_PAGE_SIZE = 10;
+		public static final int NAME_MAX_LENGTH = 12;
 		public static final int NOTICE_MAX_LENGTH = 200;
 		public static final int MAX_COPYMAIN_COUNT = 2;
 

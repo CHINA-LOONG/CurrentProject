@@ -287,6 +287,13 @@ public static class BuildPostProcessor {
 
 		plist.Save (plistPath);
 
+		FileModifier plistModifier = new FileModifier(plistPath);
+		UnityEngine.Debug.Log (plistModifier.ToString());
+		plistModifier.Replace("[]","");
+		UnityEngine.Debug.Log (plistModifier.ToString());
+		
+		plistModifier.Write ();
+
 #endif
 		
 		UnityEngine.Debug.Log ("Finish running post build script");

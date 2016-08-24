@@ -126,6 +126,9 @@ public class StatisticsDataMgr : MonoBehaviour {
         //清理通天塔洞次数
         GameDataMgr.Instance.mHoleInvalidate = true;
         GameDataMgr.Instance.SyncHoleData(msgBody.holeState);
+
+        //公会大任务
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskCount = 0;
     }
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {
@@ -200,6 +203,7 @@ public class StatisticsDataMgr : MonoBehaviour {
     {
         PB.HSHeartBeat heartBreak = message.GetProtocolBody<PB.HSHeartBeat>();
         UpdateServerTime(heartBreak.timeStamp);
+        UIMgr.Instance.curParkTime = Time.time;
     }
 
     void UpdateServerTime(int serverTime)

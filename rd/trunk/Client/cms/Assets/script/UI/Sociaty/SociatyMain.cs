@@ -130,6 +130,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
     {
         PB.AllianceInfo allianceData = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData;
         PB.HSLevelChangeNotify lvlChangeData = msg.GetProtocolBody<PB.HSLevelChangeNotify>();
+        allianceData.contribution = lvlChangeData.contribution;
         if (lvlChangeData != null)
         {
             switch ((SociatyTecEnum)lvlChangeData.type)
@@ -160,9 +161,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
         Close();
-        UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("mail_sociaty_003"),
-            GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.name), 
-            (int)PB.ImType.PROMPT);
+        MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("sociaty_beiqingli"));
     }
     //---------------------------------------------------------------------------------------------
     private void SetTechnologyInternal(int type)

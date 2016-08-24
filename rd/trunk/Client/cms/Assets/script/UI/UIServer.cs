@@ -336,7 +336,7 @@ public class UIServer : UIBase {
             CurrServerHashtable.Add("role", role);
         }
         GameEventMgr.Instance.FireEvent<Hashtable>(GameEventList.ServerClick, CurrServerHashtable);
-        UIMgr.Instance.CloseUI_(UIServer.ViewName);
+        UIMgr.Instance.DestroyUI(transform.GetComponent<UIServer>());
     }
     //------------------------------------------------------------------------------------------------------
 	void Start () {

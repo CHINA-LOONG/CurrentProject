@@ -141,6 +141,9 @@ public class AllianceTeamCreateHandler implements HawkMsgHandler{
 						return true;
 					}
 					
+					player.getPlayerData().getStatisticsEntity().addAllianceTaskCountDaily();
+					player.getPlayerData().getStatisticsEntity().notifyUpdate();
+					
 					allianceEntity.addAllianceTeamEntity(teamEntity);
 					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_TASK_CONSUME, protocol.getType());
 					

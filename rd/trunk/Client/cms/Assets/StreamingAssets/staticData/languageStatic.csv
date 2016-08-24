@@ -1060,30 +1060,6 @@ magicEarthBallStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals
 magicEarthColumnSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnMediumTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
-magicMetalSlightDescription,给单体目标造成{0}%物攻的光属性伤害,Deals ({0}% of physical ATK) light type physical damage to a single target
-magicPlantSlightDescription,给单体目标造成{0}%物攻的木属性伤害,Deals ({0}% of physical ATK) grass type physical damage to a single target
-magicWaterSlightDescription,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
-magicFireSlightDescription,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
-magicEarthSlightDescription,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
-magicCureSlightDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
-magicCureMediumDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
-magicCureStrongDescription,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
-buffSpeedDescription,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
-buffSpeedSelfDescription,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
-buffMagicDescription,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
-buffMagicSelfDescription,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
-buffAttackDescription,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
-buffAttackSelfDescription,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
-buffDefenseDescription,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
-buffDefenseSelfDescription,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
-buffHotDescription,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
-debuffDefenseDescription,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
-debuffAttackDescription,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
-debuffMagicDescription,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
-debuffSpeedDescription,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
-physicdebuffFireDotSlightTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
-physicdebuffFireDotMediumTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
-physicdebuffFireDotStrongTips,"给单体目标每回合造成{0}%物攻的火属性伤害,持续3回合",Deals ({0}% of physical ATK) fire type damage to a single target each turn for 3 turns
 physicdebuffWaterDotSlightTips,"给单体目标每回合造成{0}%物攻的水属性伤害,持续3回合",Deals ({0}% of physical ATK) water type damage to a single target each turn for 3 turns
 physicdebuffWateDotMediumTips,"给单体目标每回合造成{0}%物攻的水属性伤害,持续3回合",Deals ({0}% of physical ATK) water type damage to a single target each turn for 3 turns
 physicdebuffWateDotStrongTips,"给单体目标每回合造成{0}%物攻的水属性伤害,持续3回合",Deals ({0}% of physical ATK) water type damage to a single target each turn for 3 turns

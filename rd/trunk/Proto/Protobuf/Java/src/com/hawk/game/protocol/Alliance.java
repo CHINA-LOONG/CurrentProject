@@ -34635,6 +34635,16 @@ public final class Alliance {
      * <code>required int32 level = 2;</code>
      */
     int getLevel();
+
+    // required int32 contribution = 3;
+    /**
+     * <code>required int32 contribution = 3;</code>
+     */
+    boolean hasContribution();
+    /**
+     * <code>required int32 contribution = 3;</code>
+     */
+    int getContribution();
   }
   /**
    * Protobuf type {@code HSLevelChangeNotify}
@@ -34699,6 +34709,11 @@ public final class Alliance {
             case 16: {
               bitField0_ |= 0x00000002;
               level_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              contribution_ = input.readInt32();
               break;
             }
           }
@@ -34773,9 +34788,26 @@ public final class Alliance {
       return level_;
     }
 
+    // required int32 contribution = 3;
+    public static final int CONTRIBUTION_FIELD_NUMBER = 3;
+    private int contribution_;
+    /**
+     * <code>required int32 contribution = 3;</code>
+     */
+    public boolean hasContribution() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 contribution = 3;</code>
+     */
+    public int getContribution() {
+      return contribution_;
+    }
+
     private void initFields() {
       type_ = 0;
       level_ = 0;
+      contribution_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -34787,6 +34819,10 @@ public final class Alliance {
         return false;
       }
       if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasContribution()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -34802,6 +34838,9 @@ public final class Alliance {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, contribution_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -34819,6 +34858,10 @@ public final class Alliance {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, contribution_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -34944,6 +34987,8 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00000001);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        contribution_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -34980,6 +35025,10 @@ public final class Alliance {
           to_bitField0_ |= 0x00000002;
         }
         result.level_ = level_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.contribution_ = contribution_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -35002,6 +35051,9 @@ public final class Alliance {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
+        if (other.hasContribution()) {
+          setContribution(other.getContribution());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -35012,6 +35064,10 @@ public final class Alliance {
           return false;
         }
         if (!hasLevel()) {
+          
+          return false;
+        }
+        if (!hasContribution()) {
           
           return false;
         }
@@ -35099,6 +35155,39 @@ public final class Alliance {
       public Builder clearLevel() {
         bitField0_ = (bitField0_ & ~0x00000002);
         level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 contribution = 3;
+      private int contribution_ ;
+      /**
+       * <code>required int32 contribution = 3;</code>
+       */
+      public boolean hasContribution() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 contribution = 3;</code>
+       */
+      public int getContribution() {
+        return contribution_;
+      }
+      /**
+       * <code>required int32 contribution = 3;</code>
+       */
+      public Builder setContribution(int value) {
+        bitField0_ |= 0x00000004;
+        contribution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 contribution = 3;</code>
+       */
+      public Builder clearContribution() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        contribution_ = 0;
         onChanged();
         return this;
       }
@@ -44565,31 +44654,32 @@ public final class Alliance {
       "\"(\n\024HSMemberRemoveNotify\022\020\n\010playerId\030\001 \002" +
       "(\005\";\n\027HSMemberPosChangeNotify\022\020\n\010playerI" +
       "d\030\001 \002(\005\022\016\n\006newPos\030\002 \002(\005\"&\n\023HSChangeOwner" +
-      "Notify\022\017\n\007ownerId\030\001 \002(\005\"2\n\023HSLevelChange" +
-      "Notify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"*\n\024H",
-      "SAllianceJoinNotify\022\022\n\nallianceId\030\001 \002(\005\"" +
-      "\027\n\025HSAllianceLeaveNotify\"&\n\024HSAllianceCr" +
-      "eateTeam\022\016\n\006taskId\030\001 \002(\005\")\n\027HSAllianceCr" +
-      "eateTeamRet\022\016\n\006teamId\030\001 \002(\005\"$\n\022HSAllianc" +
-      "eJoinTeam\022\016\n\006teamId\030\001 \002(\005\"\'\n\025HSAllianceJ" +
-      "oinTeamRet\022\016\n\006teamId\030\001 \002(\005\"\'\n\024HSAlliance" +
-      "TaskAccept\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianc" +
-      "eTaskAcceptRet\"\'\n\024HSAllianceTaskCommit\022\017" +
-      "\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskCommitR" +
-      "et\"\026\n\024HSAllianceTaskReward\"\031\n\027HSAlliance",
-      "TaskRewardRet\"\030\n\026HSAllianceDissolveTeam\"" +
-      "\033\n\031HSAllianceDissolveTeamRet\"\024\n\022HSAllian" +
-      "ceTeamList\"A\n\025HSAllianceTeamListRet\022(\n\ra" +
-      "llianceTeams\030\001 \003(\0132\021.AllianceTeamInfo\"\024\n" +
-      "\022HSAllianceSelfTeam\"<\n\025HSAllianceSelfTea" +
-      "mRet\022#\n\010selfTeam\030\001 \002(\0132\021.AllianceTeamInf" +
-      "o\"T\n\037HSAllianceTeamQuestFinishNotify\022\016\n\006" +
-      "teamId\030\001 \002(\005\022\017\n\007questId\030\002 \002(\005\022\020\n\010playerI" +
-      "d\030\003 \002(\005\"@\n\030HSAllianceTeamJoinNotify\022$\n\006m" +
-      "ember\030\001 \002(\0132\024.AllianceTeamMemInfo\"-\n\031HSA",
-      "llianceTeamLeaveNotify\022\020\n\010playerId\030\001 \002(\005" +
-      "\"-\n\033HSAllianceTaskTimeoutNotify\022\016\n\006taskI" +
-      "d\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      "Notify\022\017\n\007ownerId\030\001 \002(\005\"H\n\023HSLevelChange" +
+      "Notify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\024\n\014c",
+      "ontribution\030\003 \002(\005\"*\n\024HSAllianceJoinNotif" +
+      "y\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025HSAllianceLeave" +
+      "Notify\"&\n\024HSAllianceCreateTeam\022\016\n\006taskId" +
+      "\030\001 \002(\005\")\n\027HSAllianceCreateTeamRet\022\016\n\006tea" +
+      "mId\030\001 \002(\005\"$\n\022HSAllianceJoinTeam\022\016\n\006teamI" +
+      "d\030\001 \002(\005\"\'\n\025HSAllianceJoinTeamRet\022\016\n\006team" +
+      "Id\030\001 \002(\005\"\'\n\024HSAllianceTaskAccept\022\017\n\007ques" +
+      "tId\030\001 \002(\005\"\031\n\027HSAllianceTaskAcceptRet\"\'\n\024" +
+      "HSAllianceTaskCommit\022\017\n\007questId\030\001 \002(\005\"\031\n" +
+      "\027HSAllianceTaskCommitRet\"\026\n\024HSAllianceTa",
+      "skReward\"\031\n\027HSAllianceTaskRewardRet\"\030\n\026H" +
+      "SAllianceDissolveTeam\"\033\n\031HSAllianceDisso" +
+      "lveTeamRet\"\024\n\022HSAllianceTeamList\"A\n\025HSAl" +
+      "lianceTeamListRet\022(\n\rallianceTeams\030\001 \003(\013" +
+      "2\021.AllianceTeamInfo\"\024\n\022HSAllianceSelfTea" +
+      "m\"<\n\025HSAllianceSelfTeamRet\022#\n\010selfTeam\030\001" +
+      " \002(\0132\021.AllianceTeamInfo\"T\n\037HSAllianceTea" +
+      "mQuestFinishNotify\022\016\n\006teamId\030\001 \002(\005\022\017\n\007qu" +
+      "estId\030\002 \002(\005\022\020\n\010playerId\030\003 \002(\005\"@\n\030HSAllia" +
+      "nceTeamJoinNotify\022$\n\006member\030\001 \002(\0132\024.Alli",
+      "anceTeamMemInfo\"-\n\031HSAllianceTeamLeaveNo" +
+      "tify\022\020\n\010playerId\030\001 \002(\005\"-\n\033HSAllianceTask" +
+      "TimeoutNotify\022\016\n\006taskId\030\001 \002(\005B\030\n\026com.haw" +
+      "k.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -44961,7 +45051,7 @@ public final class Alliance {
           internal_static_HSLevelChangeNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSLevelChangeNotify_descriptor,
-              new java.lang.String[] { "Type", "Level", });
+              new java.lang.String[] { "Type", "Level", "Contribution", });
           internal_static_HSAllianceJoinNotify_descriptor =
             getDescriptor().getMessageTypes().get(61);
           internal_static_HSAllianceJoinNotify_fieldAccessorTable = new

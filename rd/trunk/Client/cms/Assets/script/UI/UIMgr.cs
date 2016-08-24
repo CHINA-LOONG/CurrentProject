@@ -3,27 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIMgr : MonoBehaviour 
+public class UIMgr : MonoBehaviour
 {
-	[SerializeField]
-	RectTransform	m_rootRectTransform;
-	public	RectTransform	RootRectTransform
-	{
-		get
-		{
-			return	m_rootRectTransform;
-		}
-	}
+    [SerializeField]
+    RectTransform m_rootRectTransform;
+    public RectTransform RootRectTransform
+    {
+        get
+        {
+            return m_rootRectTransform;
+        }
+    }
 
-	[SerializeField]
-	Canvas canVas = null;
-	public Canvas CanvasAttr
-	{
-		get
-		{
-			return canVas;
-		}
-	}
+    [SerializeField]
+    Canvas canVas = null;
+    public Canvas CanvasAttr
+    {
+        get
+        {
+            return canVas;
+        }
+    }
 
     private struct uiRootData
     {
@@ -44,13 +44,14 @@ public class UIMgr : MonoBehaviour
     }
     private MainStageController mMainstageController;
 
-	static UIMgr mInst = null;
-	public static UIMgr Instance
-	{
-		get
-		{
-			if (mInst == null)
-			{
+    public float curParkTime;
+    static UIMgr mInst = null;
+    public static UIMgr Instance
+    {
+        get
+        {
+            if (mInst == null)
+            {
                 //GameObject ui = GameObject.Find("/UIRoot");
                 uiRootNormal = GameObject.Find("/UIRoot");
                 uiRootTop = GameObject.Find("/UIRootTop");
@@ -59,9 +60,9 @@ public class UIMgr : MonoBehaviour
                 DontDestroyOnLoad(uiRootNormal);
                 DontDestroyOnLoad(uiRootTop);
             }
-			return mInst;
-		}
-	}
+            return mInst;
+        }
+    }
 
     public static bool IsUIDestroyed()
     {
@@ -73,22 +74,22 @@ public class UIMgr : MonoBehaviour
 
     public List<UIBase> stackList = new List<UIBase>();
 
-	void Start()
-	{
-		m_rootRectTransform = transform as RectTransform;
-	}
+    void Start()
+    {
+        m_rootRectTransform = transform as RectTransform;
+    }
 
-	public void Init()
-	{
-		canVas = gameObject.GetComponent<Canvas> ();
+    public void Init()
+    {
+        canVas = gameObject.GetComponent<Canvas>();
 
-		UICamera.Instance.Init ();
-		canVas.worldCamera = UICamera.Instance.CameraAttr;
+        UICamera.Instance.Init();
+        canVas.worldCamera = UICamera.Instance.CameraAttr;
         InitUIRootData(uiRootNormal, ref uiNormalData);
         InitUIRootData(uiRootTop, ref uiTopData);
     }
 
-    public void SetModelView(Transform model,int index)
+    public void SetModelView(Transform model, int index)
     {
         UIUtil.SetParentReset(model, uiNormalData.modelTransform, new Vector3(1000f * index, 0f, 1000f));
     }
@@ -139,7 +140,7 @@ public class UIMgr : MonoBehaviour
         rootData.topPanelTransform = topGo.transform;
     }
 
-    UIBase CreateUI(string uiName,bool cache=true)
+    UIBase CreateUI(string uiName, bool cache = true)
     {
         UIBase uiItem = null;
         GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
@@ -178,9 +179,9 @@ public class UIMgr : MonoBehaviour
 
         return uiItem;
     }
-    public UIBase OpenUI_(string uiName,bool cache=true)
+    public UIBase OpenUI_(string uiName, bool cache = true)
     {
-        UIBase uiItem=null;
+        UIBase uiItem = null;
         if (cache)
         {
             uiItem = GetUI(uiName);
@@ -302,7 +303,7 @@ public class UIMgr : MonoBehaviour
     }
     public UIBase GetCurrentUI()
     {
-        if (stackList.Count>0)
+        if (stackList.Count > 0)
         {
             return stackList[stackList.Count - 1];
         }
@@ -316,7 +317,7 @@ public class UIMgr : MonoBehaviour
         //}
         //return null;
     }
-    
+
 
     public void OpenTowerAdjustTeam()
     {
@@ -329,4 +330,57 @@ public class UIMgr : MonoBehaviour
         }
     }
 
+    public void OnKickPlayer(ProtocolMessage msg)//顶号
+    {
+        PB.HSKickPlayer result = msg.GetProtocolBody<PB.HSKickPlayer>();
+        if (result.reason == 1)
+        {
+            MsgBox.PromptMsg.Open(
+             MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("login_dinghao_001"), SetKickPlayre);
+        }
+    }
+    void Update()
+    {
+        if (curParkTime != 0)
+        {
+            if (Time.time - curParkTime >= 10.0f)
+            {
+                MsgBox.PromptMsg.Open(
+                MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("login_duankai_001"), SetKickPlayre);
+                curParkTime = 0f;
+            }
+        }
+    }
+
+    public void SetKickPlayre(MsgBox.PrompButtonClick state)
+    {
+        if (state == MsgBox.PrompButtonClick.OK)
+        {
+            //重置数据
+            GameDataMgr.Instance.ClearAllData();
+            //跳转到登录
+            GameMain.Instance.ChangeModule<LoginModule>();
+        }
+    }
+    //------------------------------------------------------------------------------------------------------
+    void OnEnable()
+    {
+        BindListener();
+    }
+    //------------------------------------------------------------------------------------------------------
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+    //------------------------------------------------------------------------------------------------------
+    void BindListener()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.KICKOUT_S.GetHashCode().ToString(), OnKickPlayer);
+    }
+    //------------------------------------------------------------------------------------------------------
+    void UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.KICKOUT_S.GetHashCode().ToString(), OnKickPlayer);
+    }
+    //------------------------------------------------------------------------------------------------------
 }

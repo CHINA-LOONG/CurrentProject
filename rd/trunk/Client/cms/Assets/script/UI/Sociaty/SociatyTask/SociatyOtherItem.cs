@@ -118,7 +118,7 @@ public class SociatyOtherItem : MonoBehaviour
             }
             else
             {
-                var item = SociatyTeamMemberItem.CreateWith(itemData);
+                var item = SociatyTeamMemberItem.CreateWith(itemData,true);
                 item.transform.SetParent(teamPanel);
                 item.transform.localScale = new Vector3(1, 1, 1);
                 teamMemberItemCatche.Add(item);
@@ -204,10 +204,11 @@ public class SociatyOtherItem : MonoBehaviour
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
             SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            SociatyTaskOther.Instance.RequestTeamList();
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = teamInfo.teamId;
- 
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskCount++;
         UISociatyTask.Instance.InitType((int)SociatyTaskContenType.MyTeam);
     }
 }

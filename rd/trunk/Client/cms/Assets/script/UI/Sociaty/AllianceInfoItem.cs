@@ -164,7 +164,7 @@ public class AllianceInfoItem : MonoBehaviour
         }
 
         itemInfoData.apply = true;
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_003"), (int)PB.ImType.PROMPT);
+        
         PB.HSAllianceApplyRet msgRet = msg.GetProtocolBody<PB.HSAllianceApplyRet>();
 
         if (msgRet.allianceId > 0)
@@ -178,8 +178,12 @@ public class AllianceInfoItem : MonoBehaviour
             if (itemInfoData.autoAccept)
             {
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_008"), (int)PB.ImType.PROMPT);
+                itemInfoData.autoAccept = false;
             }
-
+            else
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_003"), (int)PB.ImType.PROMPT);
+            }
             RefreshButtonTitle();
         }
     }

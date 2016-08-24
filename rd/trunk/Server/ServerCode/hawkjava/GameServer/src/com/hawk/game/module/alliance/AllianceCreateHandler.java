@@ -67,8 +67,14 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NAME_ERROR_VALUE);
 			return true;
 		}
-		
-		if(!AllianceUtil.checkNotice(request.getNotice())){
+
+		String notice = request.getNotice();
+		notice = notice.trim();
+		if(notice.length() <= 0){
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOTICE_ERROR_VALUE);
+			return true;
+		}
+		if(!AllianceUtil.checkNotice(notice)){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOTICE_ERROR_VALUE);
 			return true;
 		}

@@ -1378,6 +1378,13 @@ namespace PB
       get { return _level; }
       set { _level = value; }
     }
+    private int _contribution;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"contribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution
+    {
+      get { return _contribution; }
+      set { _contribution = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1651,6 +1658,57 @@ namespace PB
     {
       get { return _playerId; }
       set { _playerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTeamJoinNotify")]
+  public partial class HSAllianceTeamJoinNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTeamJoinNotify() {}
+    
+    private AllianceTeamMemInfo _member;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"member", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceTeamMemInfo member
+    {
+      get { return _member; }
+      set { _member = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTeamLeaveNotify")]
+  public partial class HSAllianceTeamLeaveNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTeamLeaveNotify() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskTimeoutNotify")]
+  public partial class HSAllianceTaskTimeoutNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskTimeoutNotify() {}
+    
+    private int _taskId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"taskId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int taskId
+    {
+      get { return _taskId; }
+      set { _taskId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -54,6 +54,7 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
     }
 
 
@@ -86,6 +87,7 @@ public class SociatyDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_JOIN_N_S.GetHashCode().ToString(), OnAllianceJoin_N_S);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
     }
 	
     //打开公会
@@ -172,12 +174,6 @@ public class SociatyDataMgr : MonoBehaviour
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_APPLY_C.GetHashCode(), param);
     }
 
-
-    public bool CheckNotify(string msg)
-    {
-        return true;
-    }
-
     public void RequestModifyNotify(string newNotify, NetMessageDelegate callBack)
     {
         this.callBack = callBack;
@@ -241,6 +237,14 @@ public class SociatyDataMgr : MonoBehaviour
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
     }
+    void OnTaskTimeOut_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
+    }
 
     public  void SetMemberPosition(int playerId,int position)
     {
@@ -259,7 +263,7 @@ public class SociatyDataMgr : MonoBehaviour
         switch(position)
         {
             case 0:
-                return StaticDataMgr.Instance.GetTextByID("sociaty_member");
+                return StaticDataMgr.Instance.GetTextByID("sociaty_member1");
             case 1:
                 return StaticDataMgr.Instance.GetTextByID("sociaty_vicechairman");
             case 2:

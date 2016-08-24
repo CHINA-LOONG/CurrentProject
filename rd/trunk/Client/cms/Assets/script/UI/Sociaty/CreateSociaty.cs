@@ -115,7 +115,7 @@ public class CreateSociaty : UIBase
         gonggao = gonggao.TrimEnd();
         if (Util.StringByteLength(gonggao) > 300)
         {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_007"), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_061"), (int)PB.ImType.PROMPT);
             return false;
         }
 

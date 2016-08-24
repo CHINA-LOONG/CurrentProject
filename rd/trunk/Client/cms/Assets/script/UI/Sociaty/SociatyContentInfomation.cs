@@ -143,6 +143,15 @@ public class SociatyContentInfomation : SociatyContentBase
     {
         if (buttonClick == MsgBox.PrompButtonClick.OK)
         {
+            if(!string.IsNullOrEmpty(msg))
+            {
+                if(Util.StringByteLength(msg) > 100)
+                {
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_062"), (int)PB.ImType.PROMPT);
+                    return;
+                }
+            }
+
             string sendMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_gonghuiyaoqing"), allianceInfo.name, msg);
             bool issend = UIIm.Instance.OnSendMsg(sendMsg, ImMessageType.Msg_Type_Recruit, GameDataMgr.Instance.SociatyDataMgrAttr.allianceID.ToString());
             if(issend)
@@ -161,11 +170,19 @@ public class SociatyContentInfomation : SociatyContentBase
     {
         if (buttonClick == MsgBox.PrompButtonClick.OK)
         {
-            if(GameDataMgr.Instance.SociatyDataMgrAttr.CheckNotify(newNotify))
+            if (string.IsNullOrEmpty(newNotify))
             {
-                this.newNotify = newNotify;
-                GameDataMgr.Instance.SociatyDataMgrAttr.RequestModifyNotify(newNotify, OnModifyNotifyFinished);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_007"), (int)PB.ImType.PROMPT);
+                return ;
             }
+            if (Util.StringByteLength(newNotify) > 300)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_061"), (int)PB.ImType.PROMPT);
+                return ;
+            }
+            this.newNotify = newNotify;
+            GameDataMgr.Instance.SociatyDataMgrAttr.RequestModifyNotify(newNotify, OnModifyNotifyFinished);
+  
         }
     }
 

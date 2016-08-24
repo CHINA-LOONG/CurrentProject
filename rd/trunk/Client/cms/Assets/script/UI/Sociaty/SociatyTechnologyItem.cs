@@ -64,7 +64,7 @@ public class SociatyTechnologyItem : MonoBehaviour
             return;
         }
 
-        int sociatyLvl = GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.level;
+        int sociatyLvl = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.level;
         mTechData = sdMgr.GetSociatyTechData(techType, lvl);
         SociatyTechnologyData nextTechData = sdMgr.GetSociatyTechData(techType, lvl + 1);
         if (mTechData != null)
@@ -81,10 +81,10 @@ public class SociatyTechnologyItem : MonoBehaviour
             //set current level info
             mTecCurLvl.text = "LVL" + lvl.ToString();
             mFunctionDescript.text = sdMgr.GetTextByID(mTechData.tecDescript);
-            if (mTechData.sociatyLevel >= 0 && mTechData.sociatyLevel < sociatyLvl)
+            if (nextTechData != null && nextTechData.sociatyLevel > sociatyLvl)
             {
                 //not open
-                mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), mTechData.sociatyLevel);
+                mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), nextTechData.sociatyLevel);
                 mNextLvlDescript.text = string.Empty;
             }
             else

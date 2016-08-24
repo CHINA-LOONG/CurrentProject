@@ -47,7 +47,6 @@ public class UIIm : UIBase
     public GameObject inviteGuild;//邀请入工会
     public Text guildName;//工会名称
     int guildID = 0;
-    int TaskID = 0;
     int blockID;//屏蔽ID
     ImMessageData imMsgData;
     static UIIm mInst = null;
@@ -196,16 +195,21 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
+    Transform GetRootObject(Transform childObject)
+    {
+        return childObject.transform.parent.transform.parent;
+    }
+    //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpRecruit(GameObject btn)
     {
-        GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(guildID.ToString());
+        GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().guildID);
     }
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpTask(GameObject btn)
     {
-        if (TaskID != 0)
+        if (GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID != null)
         {
-            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.OtherTeam, TaskID.ToString());
+            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.OtherTeam, GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID);
         }
     }
     //------------------------------------------------------------------------------------------------------
@@ -381,13 +385,13 @@ public class UIIm : UIBase
                 if (ImMessageType.Msg_Type_Recruit.ToString() == msgData[0])
                 {
                     ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpRecruit;
-                    guildID = int.Parse(msgData[1]);
+                    imMsgData.guildID = msgData[1];
                 }
                 else if (ImMessageType.Msg_Type_Task.ToString() == msgData[0])
                 {
                     ScrollViewEventListener.Get(imMsgData.mContent.gameObject).onClick = HyperlinkJumpTask;
-                    TaskID = int.Parse(msgData[1]);
                     imMsgData.mContent.color = ColorConst.guildTaskColor;
+                    imMsgData.taskID = msgData[1];
                 }
                 imMsgData.mScrollmContentClick = imMsgData.mContent.gameObject.GetComponent<ScrollViewEventListener>();
             }

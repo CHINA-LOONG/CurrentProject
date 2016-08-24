@@ -113,19 +113,10 @@ public class SociatyTaskRunning : MonoBehaviour
         else
         {
             isNeedUpdateTime = false;
-            if (!IsTaskFinish())
-            {
-                MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("sociaty_taskfail"), OnTaskFaild);
-            }
         }
         timeText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_shengyutime"), hour, minute, second);
     }
 
-    void OnTaskFaild(MsgBox.PrompButtonClick click)
-    {
-        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
-        UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
-    }
 
     public void Clear()
     {
@@ -183,6 +174,10 @@ public class SociatyTaskRunning : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_S.GetHashCode().ToString(), OnRequestTaskRewardFinish);
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
     }
     void OnDisable()
     {
@@ -203,8 +198,11 @@ public class SociatyTaskRunning : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_C.GetHashCode().ToString(), OnRequestTaskRewardFinish);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_REWARD_S.GetHashCode().ToString(), OnRequestTaskRewardFinish);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
 
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
         isNeedUpdateTime = false;
     }
 	
@@ -237,22 +235,7 @@ public class SociatyTaskRunning : MonoBehaviour
         if (null == selfTeamData)
             return;
 
-        bool isTaskFinish = IsTaskFinish();
-
-       
-        bool isSelfCaptain = SelfIsCaptain();
-        bool showExitTaskButton = false;
-        if (isSelfCaptain && !isTaskFinish)
-        {
-            if(selfTeamData.members.Count == 1)
-            {
-                showExitTaskButton = true;
-            }
-        }
-
-        exitTaskButton.gameObject.SetActive(showExitTaskButton);
-        recruitButton.gameObject.SetActive(isSelfCaptain);
-        taskRewardButton.gameObject.SetActive(isTaskFinish);
+        RefreshButtons();
 
         finishText.text = "";
         ResetSubTasks();
@@ -265,6 +248,25 @@ public class SociatyTaskRunning : MonoBehaviour
         taskEndTime = taskInfo.time * 60 + selfTeamData.startTime;
         RefreshTimeLeft();
         isNeedUpdateTime = true;
+    }
+
+    void RefreshButtons()
+    {
+        bool isTaskFinish = IsTaskFinish();
+
+        bool isSelfCaptain = SelfIsCaptain();
+        bool showExitTaskButton = false;
+        if (isSelfCaptain && !isTaskFinish)
+        {
+            if (selfTeamData.members.Count == 1)
+            {
+                showExitTaskButton = true;
+            }
+        }
+
+        exitTaskButton.gameObject.SetActive(showExitTaskButton);
+        recruitButton.gameObject.SetActive(isSelfCaptain && !isTaskFinish);
+        taskRewardButton.gameObject.SetActive(isTaskFinish);
     }
 
     void RefreshTeamMember()
@@ -286,8 +288,7 @@ public class SociatyTaskRunning : MonoBehaviour
             }
             else
             {
-                teamMemberItem = SociatyTeamMemberItem.CreateWith(submemberData);
-                teamMemberItem.SetShowTips(true);
+                teamMemberItem = SociatyTeamMemberItem.CreateWith(submemberData,false);
                 teamMemberItems.Add(teamMemberItem);
 
                 teamMemberItem.transform.SetParent(teamTransform);
@@ -396,8 +397,6 @@ public class SociatyTaskRunning : MonoBehaviour
             {
                 finishText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_renbuzai"));
             }
-            
-            
         }
         else
         {
@@ -653,7 +652,7 @@ public class SociatyTaskRunning : MonoBehaviour
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_044"), (int)PB.ImType.PROMPT);
             return;
         }
-        string sendMsg = StaticDataMgr.Instance.GetTextByID("sociaty_record_052");
+        string sendMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_052"),GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.name);
         bool issend = UIIm.Instance.OnSendMsg(sendMsg, ImMessageType.Msg_Type_Task, GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId.ToString());
        // if (issend)
        // {
@@ -700,9 +699,62 @@ public class SociatyTaskRunning : MonoBehaviour
         }
         //update 
         RefreshSubTasks();
-
+        RefreshButtons();
+        if(curSelItem != null && curSelItem.questInfo.questId == msgRet.questId)
+        {
+            OnSubTaskItemSelected(curSelItem);
+        }
     }
+    void    OnNewMemberJoin_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSAllianceTeamJoinNotify msgRet = message.GetProtocolBody<PB.HSAllianceTeamJoinNotify>();
+        PB.AllianceTeamMemInfo newMember = msgRet.member;
+        selfTeamData.members.Add(newMember);
 
+        RefreshTeamMember();
+    }
+    void OnMemberLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSAllianceTeamJoinNotify msgRet = message.GetProtocolBody<PB.HSAllianceTeamJoinNotify>();
+        PB.AllianceTeamMemInfo leaveMember = msgRet.member;
+
+        for (int i = 0; i < selfTeamData.members.Count; ++i)
+        {
+            var subMember = selfTeamData.members[i];
+            if (subMember.playerId == leaveMember.playerId)
+            {
+                selfTeamData.members.RemoveAt(i);
+                break;
+            }
+        }
+
+        RefreshTeamMember();
+    }
+    void OnTaskTimeOut_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
+        if (!IsTaskFinish())
+        {
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("sociaty_taskfail"), OnTaskFaild);
+        }
+    }
+    void OnTaskFaild(MsgBox.PrompButtonClick click)
+    {
+        GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId = 0;
+        UISociatyTask.Instance.SetTaskType(SociatyTaskContenType.MyTeam);
+    }
     bool SelfIsCaptain()
     {
         if (selfTeamData == null)
