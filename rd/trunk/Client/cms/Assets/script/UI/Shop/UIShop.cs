@@ -23,15 +23,10 @@ public class UIShop : UIBase
 	private bool	isInit  =false;
 	List<ShopItem> listShopItem = new List<ShopItem>();
 	ShopDataMgr	shopDataMgr = null;
-	int	curShopType = -1;	
+	int	curShopType = -1;
+    int maxOpenShopIndex = 0;
 
-	TimeStaticData	timeNextRefresh = null;
-
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
+    TimeStaticData	timeNextRefresh = null;
 		
 	#region ------------ override method---------------
 
@@ -93,23 +88,6 @@ public class UIShop : UIBase
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
 	}
 
-	/*
-	int count = 0;
-	void Update()
-	{
-		count ++;
-		if (count < 10)
-			return;
-
-		count = 0;
-		TimeStaticData tNow = GameTimeMgr.Instance.GetServerTime ();
-		if (timeNextRefresh.dayOfMonth < 1 && tNow > timeNextRefresh)
-		{
-			RefreshShopData(curShopType,true);
-		}
-	}
-	*/
-
 	void OnRefreshButtonClilck(GameObject go)
 	{
 		PB.ShopData shopData = shopDataMgr.GetShopData (curShopType);
@@ -117,16 +95,19 @@ public class UIShop : UIBase
 		{
 			return;
 		}
+        int maxRefreshTimes = shopDataMgr.GetMaxRefreshTimesWithShopType(curShopType);
+        if(maxRefreshTimes == -1)
+        {
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("shop_refreshtips1"), OnRefreshConformDlgClick);
+            return;
+        }
+
 		if (shopData.refreshTimesLeft < 1)
 		{
-			//todo: modify IM Message
-			//Logger.LogError("-------今天刷新次数已经用完。。。。");
 			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_refresh_error"),
 			                              (int)PB.ImType.PROMPT);
 			return;
 		}
-		//ShopDataMgr.ShopDescWithLevel desc = shopDataMgr.GetShopDesc (GameDataMgr.Instance.PlayerDataAttr.level, curShopType);
-
 		string msg = string.Format (StaticDataMgr.Instance.GetTextByID ("shop_refreshtips"), shopData.refreshTimesLeft);
 		MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform_Cancel, msg, OnRefreshConformDlgClick);
 	
@@ -135,7 +116,7 @@ public class UIShop : UIBase
 	{
 		if (param == MsgBox.PrompButtonClick.OK) 
 		{
-			if (GameDataMgr.Instance.PlayerDataAttr.gold < 5)
+			if (GameDataMgr.Instance.PlayerDataAttr.gold < 20)
 			{
 				shopDataMgr.ZuanshiNoEnough();
 				return;
@@ -167,7 +148,13 @@ public class UIShop : UIBase
 
 	public	void	RefreshShopData(int shopType,bool forceRefresh = false)
 	{
+        CheckOpendShop();
 		curShopType = shopType;
+        if (curShopType > maxOpenShopIndex)
+        {
+            curShopType = maxOpenShopIndex;
+        }
+
 		if (forceRefresh || shopDataMgr.IsNeedUpdateShopData ())
 		{
 			shopDataMgr.RequestShopData();
@@ -178,6 +165,22 @@ public class UIShop : UIBase
 		}
 		timeNextRefresh = shopDataMgr.GetNextFreeRefreshTime (curShopType);
 	}
+
+    void CheckOpendShop()
+    {
+        if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForTower)
+        {
+            maxOpenShopIndex = (int)PB.shopType.TOWERSHOP;
+        }
+        else if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
+        {
+            maxOpenShopIndex = (int)PB.shopType.ALLIANCESHOP;
+        }
+        else
+        {
+            maxOpenShopIndex = (int)PB.shopType.NORMALSHOP;
+        }
+    }
 
 	void	OnRefreshShopUi()
 	{
@@ -201,15 +204,22 @@ public class UIShop : UIBase
 		shopName.text = GetShopName (curShopType);
 		
 		TimeStaticData nextRefTime = shopDataMgr.GetNextFreeRefreshTime (curShopType);
-		string day =  StaticDataMgr.Instance.GetTextByID("shop_today");;
-		if (nextRefTime.dayOfMonth > 0)
-		{
-			day = StaticDataMgr.Instance.GetTextByID("shop_tommorow");
-		}
-		string nextRefDes = string.Format ("{0}{1} {2:00}:{3:00}",StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
-		                                   day,nextRefTime.hour,nextRefTime.minute);
-		
-		nextRefreshText.text = nextRefDes;
+        if(null == nextRefTime)
+        {
+            nextRefreshText.text = "";
+        }
+        else
+        {
+            string day = StaticDataMgr.Instance.GetTextByID("shop_today"); ;
+            if (nextRefTime.dayOfMonth > 0)
+            {
+                day = StaticDataMgr.Instance.GetTextByID("shop_tommorow");
+            }
+            string nextRefDes = string.Format("{0}{1} {2:00}:{3:00}", StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
+                                               day, nextRefTime.hour, nextRefTime.minute);
+
+            nextRefreshText.text = nextRefDes;
+        }
 		
 		jinbiCoinBtn.CoinTypeAttr = GetCoinType (shopData.type);
 		
@@ -250,7 +260,7 @@ public class UIShop : UIBase
 	{
 		if (curShopType == (int)PB.shopType.NORMALSHOP) 
 		{
-			return (int)PB.shopType.ALLIANCESHOP;
+			return maxOpenShopIndex;
 		}
 		else
 		{
@@ -260,7 +270,7 @@ public class UIShop : UIBase
 
 	int GetNextShopType()
 	{
-		if (curShopType == (int)PB.shopType.ALLIANCESHOP)
+		if (curShopType == maxOpenShopIndex)
 		{
 			return (int) PB.shopType.NORMALSHOP;
 		}
@@ -278,6 +288,8 @@ public class UIShop : UIBase
 			return CoinButton.CoinType.Jinbi;
 		case (int)PB.shopType.ALLIANCESHOP:
 			return CoinButton.CoinType.GonghuiBi;
+            case (int)PB.shopType.TOWERSHOP:
+                return CoinButton.CoinType.TowerCoin;
 		default:
 			return CoinButton.CoinType.Jinbi;
 		}
@@ -291,6 +303,8 @@ public class UIShop : UIBase
 			return StaticDataMgr.Instance.GetTextByID("shop_putong");
 		case (int)PB.shopType.ALLIANCESHOP:
 			 return StaticDataMgr.Instance.GetTextByID("shop_gonghui");
+            case (int)PB.shopType.TOWERSHOP:
+                return StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop"); 
 		default:
 			return "";
 		}

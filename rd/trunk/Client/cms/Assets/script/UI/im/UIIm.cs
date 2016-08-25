@@ -37,7 +37,6 @@ public class UIIm : UIBase
     public GameObject msgPos;//位置
     float msgPosY;
     List<GameObject> msgObj = new List<GameObject>();//消息gameobj
-    bool showNewMsg;//新消息
     //玩家信息
     public GameObject playerBox;
     public GameObject playerBoxClone;
@@ -62,6 +61,7 @@ public class UIIm : UIBase
     public bool isDrag;
     bool isBasicsChat = true;
     bool isChannel = false;
+    public bool showNewMsg;//新消息
     Vector2 msgBoxSizeDelta;
     #endregion
     public static UIIm Instance

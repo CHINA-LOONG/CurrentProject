@@ -294,6 +294,19 @@ public class ShopDataMgr : MonoBehaviour
 	}
 	#endregion
 
+    public int GetMaxRefreshTimesWithShopType(int shopType)
+    {
+        List<ShopStaticData> listShop = StaticDataMgr.Instance.GetShopStaticDataList();
+        foreach(var subItem in listShop)
+        {
+            if(subItem.type == shopType)
+            {
+                return subItem.refreshMaxNumByHand;
+            }
+        }
+        return -1;
+    }
+
 	public ShopDescWithLevel GetShopDesc(int playerLevel, int shopType)
 	{
 		ShopDescWithLevel shopDesc = new ShopDescWithLevel() ;
@@ -341,6 +354,9 @@ public class ShopDataMgr : MonoBehaviour
 	public	TimeStaticData	GetNextFreeRefreshTime(int shopType)
 	{
 		ShopAutoRefreshData refreshItem = StaticDataMgr.Instance.GetShopAutoRefreshData (shopType);
+
+        if (null == refreshItem)
+            return null;
 
 		ArrayList timesArray = MiniJsonExtensions.arrayListFromJson (refreshItem.times);
 		string subitem = null;

@@ -51,11 +51,12 @@ public class BuilderUtil {
 		PlayerInfo.Builder builder = PlayerInfo.newBuilder();
 		builder.setPlayerId(playerEntity.getId());
 		builder.setNickname(playerEntity.getNickname());
-		builder.setGold(playerEntity.getBuyGold() + playerEntity.getFreeGold());
-		builder.setCoin(playerEntity.getCoin());
-		builder.setExp(playerEntity.getExp());
 		builder.setCareer(playerEntity.getCareer());
 		builder.setLevel(playerEntity.getLevel());
+		builder.setExp(playerEntity.getExp());
+		builder.setGold(playerEntity.getBuyGold() + playerEntity.getFreeGold());
+		builder.setCoin(playerEntity.getCoin());
+		builder.setTowerCoin(playerEntity.getTowerCoin());
 		builder.setGender(playerEntity.getLevel());
 		builder.setEye(playerEntity.getExp());
 		builder.setHair(playerEntity.getHair());

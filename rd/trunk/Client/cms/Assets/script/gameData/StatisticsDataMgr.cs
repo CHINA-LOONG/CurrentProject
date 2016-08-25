@@ -152,7 +152,6 @@ public class StatisticsDataMgr : MonoBehaviour {
         {
             InstanceMapService.Instance.chapterState = gmInstance.chapterState;
         }
-
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

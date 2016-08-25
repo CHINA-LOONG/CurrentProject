@@ -72,7 +72,7 @@ public class UIQuestInfo : UIBase
     void SetReward(string rewardId)
     {
         List<RewardItemData> list = new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
-        list.Sort(questItem.SortReward);
+        list.Sort(QuestItem.SortReward);
         for (int i = 0; i < items.Count; i++)
         {
             if (i >= list.Count) items[i].gameObject.SetActive(false);

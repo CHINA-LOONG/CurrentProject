@@ -54,6 +54,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, EquipLevelData> baseAttrData = new Dictionary<int, EquipLevelData>();
 	Dictionary<int,ShopAutoRefreshData> shopAutoRefreshData = new Dictionary<int, ShopAutoRefreshData>();
 	List<ShopStaticData>	shopStaticDataList = new List<ShopStaticData>();
+    List<StoreStaticData> storeStaticDataList = new List<StoreStaticData>();
+    Dictionary<string, StoreStaticData> storeStaticDataDic = new Dictionary<string, StoreStaticData>();
 
 	Dictionary<string,RechargeStaticData> rechargeStaticDataDic = new Dictionary<string, RechargeStaticData>();
     Dictionary<string, InstanceReset> instanceResetDic = new Dictionary<string, InstanceReset>();
@@ -647,6 +649,14 @@ public class StaticDataMgr : MonoBehaviour
                 shopStaticDataList.Add(item);
             }
         }
+        {
+            var data = InitTable<StoreStaticData>("store");
+            foreach (var item in data)
+            {
+                storeStaticDataList.Add(item);
+                storeStaticDataDic.Add(item.itemId, item);
+            }
+        }
 
         {
             var data = InitTable<RechargeStaticData>("recharge");
@@ -1020,6 +1030,18 @@ public class StaticDataMgr : MonoBehaviour
 	{
 		return shopStaticDataList;
 	}
+
+    public List<StoreStaticData> GetStoreStaticData()
+    {
+        return storeStaticDataList;
+    }
+
+    public StoreStaticData GetStoreStaticDataWith(string itemId)
+    {
+        StoreStaticData item = null;
+        storeStaticDataDic.TryGetValue(itemId, out item);
+        return item;
+    }
 
 	public RechargeStaticData GetRechageStaticData(string itemId)
 	{

@@ -38,7 +38,24 @@ public class PlayerData : MonoBehaviour
     }
 	public	int	gold;//钻石
 	public	long coin;//金币
-	public	int	gonghuiCoin;//公会币
+	private	int	gonghuiCoin;//公会币
+    public int GonghuiCoinAttr
+    {
+        get { return gonghuiCoin; }
+        set
+        {
+            gonghuiCoin = value;
+        }
+    }
+    private int towerCoin;//通天塔币
+    public int TowerCoinAttr
+    {
+        get { return towerCoin; }
+        set
+        {
+            towerCoin = value;
+        }
+    }
 	public	int	gender;
 	public	int	eye;
 	public	int	hair;
@@ -83,6 +100,8 @@ public class PlayerData : MonoBehaviour
         get
         {
             PlayerLevelAttr levelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(level);
+            if (null == levelAttr)
+                return 0;
             return levelAttr.fatigue;
         }
     }

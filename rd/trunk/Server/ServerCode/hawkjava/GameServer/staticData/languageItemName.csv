@@ -1,25 +1,16 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
 #文字Id,文字内容,文字内容
-name_11_Gmjian,GM剑,NB~~~
-name_10001_yaoshi,钥匙,key
-name_10002_wuming,无名,no name
 name_10003_duihuanquan,扫荡券,Raid Ticket
-name_10004_chujiqianghuacailiao,初级装备强化石,basic upgrade stone
 name_11001_chujizhuangbeiqianghuashi,初级灵铁,Basic Raw Iron
 name_11002_zhongjizhuangbeiqianghuashi,中级灵铁,Average Raw Iron
 name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Advanced Raw Iron
 name_10005_zhuangbeijinjieshi,妖力结晶,Crystal Ball
-name_10006_zhuangbeijinjiecailiao2,装备进阶卷轴,Advanced scroll
 name_10007_baoshikaikongcailiao,纹章开孔石,Insignia Stone
-name_10008_zhuangbeijinjiecailiao2chip,进阶卷轴碎片,Advanced scroll chip
 name_10009_baoxiangyaoshi1,木质宝箱钥匙,Deadwood Chest key
 name_10010_baoxiangyaoshi2,白银宝箱钥匙,Gleaming Chest key
 name_10011_baoxiangyaoshi3,黄金宝箱钥匙,Golden Strongbox key
 name_10012_baoxiangyaoshi4,黄金宝箱钥匙,Gold Key
-name_10013_yibanlaji1,妖兽的晶核,Wicked Crux
-name_10014_yibanlaji2,妖兽的皮,Wicked Skin
-name_10015_yibanlaji3,妖兽的爪,Wicked Claw
 name_10016_chongwuqianghuashi,贤者墨水,Sage's Ink
 name_10017_chongwujinjieshi,化形之书,Book of Transformation
 name_10021_gongpin,天使之羽,Angel's feather
@@ -144,7 +135,6 @@ name_30096_MorbidStone_6,日之纹章lv6,Sun Insignia(lv6)
 name_40000_baoxiang,木质宝箱,Deadwood Chest
 name_40001_baoxiang,白银宝箱,Gleaming Chest
 name_40002_baoxiang,黄金宝箱,Golden Strongbox
-name_40003_baoxiang,黄金宝箱,Gold Treasurecase
 name_40005_bigTaskleader201,领袖宝箱（金币）lv1,Leader Chest(coins) (lv1)
 name_40006_bigTaskleader301,领袖宝箱（金币）lv2,Leader Chest(coins) (lv2)
 name_40007_bigTaskleader401,领袖宝箱（金币）lv3,Leader Chest(coins) (lv3)
@@ -153,42 +143,6 @@ name_40008_bigTaskleader202,领袖宝箱（补给品）lv1,Leader Chest(supplies
 name_40009_bigTaskleader302,领袖宝箱（补给品）lv2,Leader Chest(supplies) (lv2)
 name_40010_bigTaskleader402,领袖宝箱（补给品）lv3,Leader Chest(supplies) (lv3)
 name_40010_bigTaskleader502,领袖宝箱（补给品）lv4,Leader Chest(supplies) (lv4)
-name_40016_adventure,强化宝箱（5小时）lv1,Upgrades Chest(5h) (lv1)
-name_40017_adventure,强化宝箱（5小时）lv2,Upgrades Chest(5h) (lv2)
-name_40018_adventure,强化宝箱（5小时）lv3,Upgrades Chest(5h) (lv3)
-name_40019_adventure,强化宝箱（5小时）lv4,Upgrades Chest(5h) (lv4)
-name_40020_adventure,强化宝箱（8小时）lv1,Upgrades Chest(8h) (lv1)
-name_40021_adventure,强化宝箱（8小时）lv2,Upgrades Chest(8h) (lv2)
-name_40022_adventure,强化宝箱（8小时）lv3,Upgrades Chest(8h) (lv3)
-name_40023_adventure,强化宝箱（8小时）lv4,Upgrades Chest(8h) (lv4)
-name_40024_adventure,强化宝箱（12小时）lv1,Upgrades Chest(12h) (lv1)
-name_40025_adventure,强化宝箱（12小时）lv2,Upgrades Chest(12h) (lv2)
-name_40026_adventure,强化宝箱（12小时）lv3,Upgrades Chest(12h) (lv3)
-name_40027_adventure,强化宝箱（12小时）lv4,Upgrades Chest(12h) (lv4
-name_40028_adventure,进阶宝箱（5小时）lv1,Advance Chest(5h) (lv1)
-name_40029_adventure,进阶宝箱（5小时）lv2,Advance Chest(5h) (lv2)
-name_40030_adventure,进阶宝箱（5小时）lv3,Advance Chest(5h) (lv3)
-name_40031_adventure,进阶宝箱（5小时）lv4,Advance Chest(5h) (lv4)
-name_40032_adventure,进阶宝箱（8小时）lv1,Advance Chest(8h) (lv1)
-name_40033_adventure,进阶宝箱（8小时）lv2,Advance Chest(8h) (lv2)
-name_40034_adventure,进阶宝箱（8小时）lv3,Advance Chest(8h) (lv3)
-name_40035_adventure,进阶宝箱（8小时）lv4,Advance Chest(8h) (lv4)
-name_40036_adventure,进阶宝箱（12小时）lv1,Advance Chest(12h) (lv1)
-name_40037_adventure,进阶宝箱（12小时）lv2,Advance Chest(12h) (lv2)
-name_40038_adventure,进阶宝箱（12小时）lv3,Advance Chest(12h) (lv3)
-name_40039_adventure,进阶宝箱（12小时）lv4,Advance Chest(12h) (lv4)
-name_40040_adventure,究极宝箱（5小时）lv1,Greatness Chest(5h) (lv1)
-name_40041_adventure,究极宝箱（5小时）lv2,Greatness Chest(5h) (lv2)
-name_40042_adventure,究极宝箱（5小时）lv3,Greatness Chest(5h) (lv3)
-name_40043_adventure,究极宝箱（5小时）lv4,Greatness Chest(5h) (lv4)
-name_40044_adventure,究极宝箱（8小时）lv1,Greatness Chest(8h) (lv1)
-name_40045_adventure,究极宝箱（8小时）lv2,Greatness Chest(8h) (lv2)
-name_40046_adventure,究极宝箱（8小时）lv3,Greatness Chest(8h) (lv3)
-name_40047_adventure,究极宝箱（8小时）lv4,Greatness Chest(8h) (lv4)
-name_40048_adventure,究极宝箱（12小时）lv1,Greatness Chest(12h) (lv1)
-name_40049_adventure,究极宝箱（12小时）lv2,Greatness Chest(12h) (lv2)
-name_40050_adventure,究极宝箱（12小时）lv3,Greatness Chest(12h) (lv3)
-name_40051_adventure,究极宝箱（12小时）lv4,Greatness Chest(12h) (lv4)
 name_40052_pvpstagereward,1级纹章箱子,Level 1 Insignia Chest
 name_40053_pvpstagereward,2级纹章箱子,Level 2 Insignia Chest
 name_40054_pvpstagereward,3级纹章箱子,Level 3 Insignia Chest
@@ -210,7 +164,6 @@ name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies
 name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragment Chest
 name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragment Chest
 name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragment Chest
-name_50001_jingyanyaoshui,经验药水,expMedicine
 name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Mytho Essence
 name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Mytho Essence
 name_50004_gaojichongwujingyanyaoshui,高级信仰之力,Advanced Mytho Essence
@@ -249,24 +202,16 @@ name_103,头盔,helmet
 name_104,护手,gauntlet
 name_105,鞋子,shoes
 name_106,戒指,ring
-tips_10001_yaoshi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_10002_wuming,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10003_duihuanquan,扫荡副本的凭证,Voucher used to pass a stage battle.
-tips_10004_chujiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_11001_chujizhuangbeiqianghuashi,用于低品质装备打造,For low-quality equipment to forge.
 tips_11002_zhongjizhuangbeiqianghuashi,用于中品质装备打造,For medium-quality equipment to forge.
 tips_11003_gaojizhuangbeiqianghuashi,用于高品质装备打造,For high-quality equipment to forge.
 tips_10005_zhuangbeijinjieshi,装备强化打造的材料，通过每个章节<color=#FFCC00>（除第一章）普通难度的第四个和第八个本产出</color>,"Equipment strengthening material, rewarded via <color=#FFCC00>Story mode stage 4 or stage 8 of each chapters (except for 1st chapter)</color>."
-tips_10006_zhuangbeijinjiecailiao2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10007_baoshikaikongcailiao,纹章开孔道具,Use to open Insignia slots
-tips_10008_zhuangbeijinjiecailiao2chip,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10009_baoxiangyaoshi1,可以用来开启[木质宝箱],Used to open a Deadwood Chest.
 tips_10010_baoxiangyaoshi2,可以用来开启[白银宝箱],Used to open a Gleaming Chest.
 tips_10011_baoxiangyaoshi3,可以用来开启[黄金宝箱],Used to open a Golden Strongbox.
 tips_10012_baoxiangyaoshi4,开启黄金宝箱所需要的钥匙,The key to open the Gold Treasurecase
-tips_10013_yibanlaji1,还是拿去换钱好些,Might be a good idea to sell this one…
-tips_10014_yibanlaji2,还是拿去换钱好些,Might be a good idea to sell this one…
-tips_10015_yibanlaji3,还是拿去换钱好些,Might be a good idea to sell this one…
 tips_10016_chongwuqianghuashi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度任意副本（除第四个和第八个）产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) all stages (except for stage 4 and stage 8)</color>."
 tips_10017_chongwujinjieshi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度的第四个和第八个本产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) stage 4 or stage 8</color>."
 tips_10021_gongpin,天使的羽翼，光明的气息，可交给公会完成任务,"A feather from an Angel, bright and radiant. You can turn it in to the Guild to complete a quest."
@@ -391,7 +336,6 @@ tips_30096_MorbidStone_6,寄宿着太阳之力的纹章，镶嵌在装备上可�
 tips_40000_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
 tips_40001_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
 tips_40002_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
-tips_40003_baoxiang,"游戏自然产出的宝箱,开启获得产出物",A chest produced by the game. Open it to receive its contents.
 tips_40005_bigTaskleader201,公会任务发给队长的宝箱，内有  <color=#FFCC00>个人贡献值*50，金币*20000</color>,"Chest filled with 
 <color=#FFCC00>Guild Pts*50,Coin*20000</color> sent to Team Leaders from Guild Quests"
 tips_40006_bigTaskleader301,公会任务发给队长的宝箱，内有  <color=#FFCC00>个人贡献值*75，金币*30000</color>,"Chest filled with 
@@ -408,42 +352,6 @@ tips_40010_bigTaskleader402,公会任务发给队长的宝箱，内有  <color=#
 <color=#FFCC00>Guild Pts*100,Gleaming Chest key*1</color> sent to Team Leaders from Guild Quests"
 tips_40015_bigTaskleader502,公会任务发给队长的宝箱，内有  <color=#FFCC00>个人贡献值*150，白银宝箱钥匙*1</color>,"Chest filled with 
 <color=#FFCC00>Guild Pts*150,Gleaming Chest key*1</color> sent to Team Leaders from Guild Quests"
-tips_40016_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40017_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40018_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40019_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40020_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40021_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40022_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40023_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40024_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40025_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40026_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40027_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40028_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40029_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40030_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40031_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40032_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40033_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40034_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40035_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40036_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40037_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40038_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40039_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40040_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40041_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40042_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40043_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40044_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40045_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40046_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40047_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40048_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40049_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40050_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
-tips_40051_adventure,通过大冒险获得的宝箱，内有丰富奖励,Chest filled with rewards available via Adventure Mode
 tips_40052_pvpstagereward,随机开出1个1级纹章,Open to randomly receive 1 level 1 insignia
 tips_40053_pvpstagereward,随机开出1个2级纹章,Open to randomly receive 1 level 2 insignia
 tips_40054_pvpstagereward,随机开出1个3级纹章,Open to randomly receive 1 level 3 insignia
@@ -467,7 +375,6 @@ tips_40069_bigTaskleader602,公会任务发给队长的宝箱，内有  <color=#
 tips_40070_commonfregmentda,随机开出整只B级宠物(通过碎片方式)，小概率开出A级宠物(通过碎片方式),"Reward one Class B Monster (by ways of fragments), or small chance of one Class A Monster (by ways of fragments)"
 tips_40071_rarefregmentda,随机开出整只A级宠物(通过碎片方式)，小概率开出S级宠物(通过碎片方式),"Reward one Class A Monster (by ways of fragments), or small chance of one Class S Monster (by ways of fragments)"
 tips_40072_epicfregmentda,随机开出整只S级宠物(通过碎片方式)，小概率开出SS级宠物(通过碎片方式),"Reward one Class S Monster (by ways of fragments), or small chance of one Class SS Monster (by ways of fragments)"
-tips_50001_jingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_50002_chujichongwujingyanyaoshui,宠物经验提升 60点,Increases a monster's EXP by 60
 tips_50003_zhongjichongwujingyanyaoshui,宠物经验提升 300点,Increases a monster's EXP by 300
 tips_50004_gaojichongwujingyanyaoshui,宠物经验提升 1500点,Increases a monster's EXP by 1500

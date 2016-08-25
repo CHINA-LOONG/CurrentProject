@@ -8,14 +8,18 @@ message SynPlayerAttr
 	optional int32 gold = 1;
 	// 金币
 	optional int64 coin = 2;
+	// 通天塔币
+	optional int32 towerCoin = 3;
+	// 公会币
+	optional int32 contribution = 4;
 	// 主卡等级
-	optional int32 level = 3;
+	optional int32 level = 5;
 	// 主卡经验
-	optional int32 exp = 4;
+	optional int32 exp = 6;
 	// 活力值
-	optional int32 fatigue = 5;
+	optional int32 fatigue = 7;
 	// 正在累计活力值恢复时间开始时间戳（秒）
-	optional int32 fatigueBeginTime = 6;
+	optional int32 fatigueBeginTime = 8;
 }
 
 message PlayerInfo
@@ -27,12 +31,13 @@ message PlayerInfo
 	required int32  exp = 5;
 	required int32  gold = 6;
 	required int64  coin = 7;
-	optional int32  gender = 8;
-	optional int32  eye = 9;
-	optional int32  hair = 10;
-	optional int32  hairColor = 11;
-	required int32  recharge = 12;
-	required int32  vipLevel = 13;
+	required int32  towerCoin = 8;
+	optional int32  gender = 9;
+	optional int32  eye = 10;
+	optional int32  hair = 11;
+	optional int32  hairColor = 12;
+	required int32  recharge = 13;
+	required int32  vipLevel = 14;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
@@ -73,5 +78,6 @@ message HSAssembleFinish
 {
 	required int32 playerId = 1;
 	required int32 allianceID = 2;
+	required int32 contribution = 3;
 }
 

@@ -145,7 +145,7 @@ public class AllianceHandleApplyHandler implements HawkMsgHandler{
 					if (targetPlayer != null) {
 						ImManager.getInstance().joinGuild(allianceEntity.getId(), targetPlayer);
 					}
-					if ( imCfg != null) {
+					if (imCfg != null) {
 						ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), targetPlayerAllianceEntity.getName());
 					}
 

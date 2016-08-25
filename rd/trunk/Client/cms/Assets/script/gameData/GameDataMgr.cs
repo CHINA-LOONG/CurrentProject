@@ -377,6 +377,9 @@ public class GameDataMgr : MonoBehaviour
             mainPlayer.coin = playerInfo.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
         }
+
+        mainPlayer.TowerCoinAttr = playerInfo.towerCoin;
+
         mainPlayer.gender = playerInfo.gender;
         mainPlayer.eye = playerInfo.eye;
         mainPlayer.hair = playerInfo.hair;

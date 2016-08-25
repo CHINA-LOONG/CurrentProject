@@ -58,8 +58,6 @@ enum itemType
 	GROUP                  = 6;
 	// 怪物奖励
 	MONSTER                = 7;
-	// 公会奖励
-	ALLIANCE               = 8;
 }
 
 // 普通商店购买价格类型

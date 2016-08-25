@@ -33,12 +33,15 @@ public class WeakPointData
 
     public string stateparam0;
     public string state0Tips;
+    public string state0Icon;
 	public string stateparam1;
     public string state1Tips;
-	public string stateparam2;
+    public string state1Icon;
+    public string stateparam2;
     public string state2Tips;
+    public string state2Icon;
 
-	public string stateparam3;
+    public string stateparam3;
 	public string stateparam4;
     public string state4Tips;
 

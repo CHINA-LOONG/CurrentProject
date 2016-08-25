@@ -11,7 +11,6 @@ import org.hawk.os.HawkException;
 
 import com.hawk.version.VersionServices;
 import com.hawk.version.handler.ResourceControlHandler;
-import com.hawk.version.handler.VersionControlHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
@@ -20,12 +19,10 @@ public class VersionHttpServer {
 	 * 前端访问状态码
 	 */
 	public static final int VERSION_STATUS_OK = 0; // 
-	public static final int VERSION_STATUS_VERSION_NONEXIST = 1; // 版本不存在
-	public static final int VERSION_STATUS_VERSION_TIMEOUT = 2; // 版本过期
-	public static final int VERSION_STATUS_RESOURCE_NONEXIST = 3; // 小版本不存在
-	public static final int VERSION_STATUS_PLATFORM_ERROR = 4; // 平台错误
-	public static final int VERSION_STATUS_CHANEL_ERROR = 5; // 渠道错误
-	public static final int VERSION_STATUS_ERROR = 6; // 服务器错误
+	public static final int VERSION_STATUS_VERSION_TIMEOUT = 1; // 版本过期
+	public static final int VERSION_STATUS_PLATFORM_ERROR = 2; // 平台错误
+	public static final int VERSION_STATUS_CHANNEL_ERROR = 3; // 渠道错误
+	public static final int VERSION_STATUS_ERROR = 4; // 服务器错误
 	
 	/**
 	 * 服务器对象
@@ -40,7 +37,6 @@ public class VersionHttpServer {
 			if (addr != null && addr.length() > 0) {
 				httpServer = HttpServer.create(new InetSocketAddress(addr, port), 0);				
 				httpServer.setExecutor(Executors.newFixedThreadPool(pool));
-				httpServer.createContext("/version_control", new VersionControlHandler());
 				httpServer.createContext("/resource_control", new ResourceControlHandler());
 				httpServer.start();
 				HawkLog.logPrintln("Version Http Server [" + addr + ":" + port + "] Start OK.");

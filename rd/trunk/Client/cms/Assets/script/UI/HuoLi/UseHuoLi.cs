@@ -191,8 +191,18 @@ public class UseHuoLi : UIBase
         if (HuoLiDataMgr.Instance.showHuoliBuyDlg)
         {
             ItemStaticData stData = StaticDataMgr.Instance.GetItemData(itemId);
+            int price = 999999;
+            StoreStaticData storeItemData = StaticDataMgr.Instance.GetStoreStaticDataWith(itemId);
+            if(null != storeItemData)
+            {
+                price = (int)(storeItemData.price * storeItemData.discount);
+            }
+            else
+            {
+                Logger.LogError("huoliyao should config in store.csv item id = " + itemId);
+            }
             string msg = string.Format(StaticDataMgr.Instance.GetTextByID("energy_hint_buy"), stData.NameAttr);
-            BuyHuoliDlg.OpenWith(msg, stData.buyPrice, OnBuyAndUseItem);
+            BuyHuoliDlg.OpenWith(msg, price, OnBuyAndUseItem);
         }
         else
         {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class questItem : MonoBehaviour
+public class QuestItem : MonoBehaviour
 {
     public Image img_QuestIcon;
     public Image img_Bground;
@@ -43,14 +43,7 @@ public class questItem : MonoBehaviour
         img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(info.staticData.icon) as Sprite;
         text_Name.text = StaticDataMgr.Instance.GetTextByID(info.staticData.name);
         //TODO: extend  need to modify
-        #region Desc
-        string param="";
-        if (string.IsNullOrEmpty(info.staticData.descType))
-        {
-            param = info.staticData.goalParam;
-        }
-        text_Desc.text = string.Format(StaticDataMgr.Instance.GetTextByID(info.staticData.desc), param);
-        #endregion
+        text_Desc.text = string.Format(StaticDataMgr.Instance.GetTextByID(info.staticData.desc));
 
         text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
         if (StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) != null &&

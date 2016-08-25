@@ -75,4 +75,8 @@ public class GameConfig : MonoBehaviour {
     public int contributionRewordLevel3 = 3000;
     public int sociatyTaskMaxCount = 3;
     public int sociatyTeamMaxMember = 3;
+
+    //功能开启等级限制
+    public int OpenLevelForGonghui = 10;//公会开发等级
+    public int OpenLevelForTower = 20;//通天塔开放等级
 }

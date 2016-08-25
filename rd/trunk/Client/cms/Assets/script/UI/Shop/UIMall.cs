@@ -9,11 +9,13 @@ public class UIMall : UIBase
 
 	public	Text	mallNameText;
 	public	Button	closeButton;
+    public Button storeButton;
 	public	ScrollView	itemScrollView;
 	// Use this for initialization
 	void Start () 
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
+        storeButton.onClick.AddListener(OnStoreButtonClick);
 	}
 	
 	#region ------------ override method---------------
@@ -27,7 +29,8 @@ public class UIMall : UIBase
 			coinButton.HideAddCoinButton(true);
 		}
 
-		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_store");
+		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_chongzhi");
+        UIUtil.SetButtonTitle(storeButton.transform, StaticDataMgr.Instance.GetTextByID("shop_store"));
 	}
 	
 	public override void Clean()
@@ -51,5 +54,11 @@ public class UIMall : UIBase
 	{
 		UIMgr.Instance.CloseUI_ (this);
 	}
+
+    void OnStoreButtonClick()
+    {
+        UIMgr.Instance.CloseUI_(this);
+        UIMgr.Instance.OpenUI_(UIStore.ViewName, false);
+    }
 	#endregion
 }

@@ -7,10 +7,15 @@ public class ShopItem : MonoBehaviour
 	public	Text	itemName;
 	public	ItemIcon	itemIcon;
 	public	Image	coinImage;
+    public Image oldCoinImage;
 	public	Text	priceText;
 
 	public	Button	buyButton;
 	public	Transform	hasBuyPanel;
+
+    public Transform cheapPanel;
+    public Text offText;
+    public Text oldPrice;
 
 
 	//data
@@ -39,8 +44,17 @@ public class ShopItem : MonoBehaviour
 
 		RefreshItemIcon (itemStaticData);
 
-		itemName.text = itemStaticData.NameAttr;
-		priceText.text = (itemData.price * itemData.count).ToString();
+        if(itemData.count > 1)
+        {
+            itemName.text = string.Format("{0}*{1}", itemStaticData.NameAttr, itemData.count);
+        }
+        else
+        {
+            itemName.text = itemStaticData.NameAttr;
+        }
+		
+
+		priceText.text = string.Format("{0}", (int)(itemData.price * itemData.count* shopItemData.discount));
 
 		if (IsCoinEnough (itemData)) 
 		{
@@ -68,47 +82,68 @@ public class ShopItem : MonoBehaviour
 			hasBuyPanel.gameObject.SetActive(false);
 			EventTriggerListener.Get(buyButton.gameObject).onClick = OnBuyItemClick;
 		}
-	}
+        if(shopItemData.discount > 0.9999f)
+        {
+            cheapPanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            cheapPanel.gameObject.SetActive(true);
+            oldPrice.text = (itemData.price * itemData.count).ToString();
+            offText.text = string.Format("-{0}%", (int)(shopItemData.discount * 100));
+
+            Sprite oldSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType, itemData.priceType)) as Sprite;
+            if (null != oldSp)
+            {
+                oldCoinImage.sprite = oldSp;
+            }
+        }
+    }
 
 	string GetCoinImageName(int stype, int buyType)
 	{
-		switch (stype) 
-		{
-		case (int)PB.shopType.NORMALSHOP:
-			if(buyType == (int)PB.moneyType.MONEY_COIN)
-			{
-				return "icon_jinbi";//2
-			}
-			else
-			{
-				return "icon_zuanshi";//1
-			}
-		case (int)PB.shopType.ALLIANCESHOP:
-			return "icon_gonghuibi";
-		default:
-			return "";
-		}
-	}
+        switch (stype)
+        {
+            case (int)PB.shopType.NORMALSHOP:
+                if (buyType == (int)PB.moneyType.MONEY_COIN)
+                {
+                    return "icon_jinbi";//2
+                }
+                else
+                {
+                    return "icon_zuanshi";//1
+                }
+            case (int)PB.shopType.ALLIANCESHOP:
+                return "icon_gonghuibi";
+            case (int)PB.shopType.TOWERSHOP:
+                return "icon_towercoin";
+            default:
+                return "";
+        }
+    }
 
 	bool IsCoinEnough(PB.ShopItem itemData)
 	{
-		switch (shopType) 
-		{
-		case (int)PB.shopType.NORMALSHOP:
-			if(itemData.priceType == (int)PB.moneyType.MONEY_COIN)
-			{
-				return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
-			}
-			else
-			{
-				return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
-			}
-		case (int)PB.shopType.ALLIANCESHOP:
-			return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gonghuiCoin;
-		default:
-			return false;
-		}
-	}
+        switch (shopType)
+        {
+            case (int)PB.shopType.NORMALSHOP:
+                if (itemData.priceType == (int)PB.moneyType.MONEY_COIN)
+                {
+                    int costCoin = (int)(itemData.price * shopItemData.count * shopItemData.discount);
+                    return costCoin <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
+                }
+                else
+                {
+                    return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
+                }
+            case (int)PB.shopType.ALLIANCESHOP:
+                return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr;
+            case (int)PB.shopType.TOWERSHOP:
+                return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr;
+            default:
+                return false;
+        }
+    }
 
 	private	void	RefreshItemIcon(ItemStaticData itemStaticData)
 	{
@@ -119,7 +154,7 @@ public class ShopItem : MonoBehaviour
 		}
 		else 
 		{
-			ItemData itemData = ItemData.valueof(shopItemData.itemId,shopItemData.count);
+			ItemData itemData = ItemData.valueof(shopItemData.itemId,0);
 
 			itemIcon.RefreshWithItemInfo(itemData);
 		}

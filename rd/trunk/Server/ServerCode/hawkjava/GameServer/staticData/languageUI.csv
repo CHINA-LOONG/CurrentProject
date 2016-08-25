@@ -1916,7 +1916,6 @@ compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},<color=#ffcc00>{
 compose_insignia_003,祝福之力,Blessing Power
 compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,"Can combine <color=#ffcc00>{0}</color> times, with a <color=#ffcc00>100%</color> chance each time of receiving {1}."
 compose_insignia_005,将消耗,Will consume
-compose_record_009,请添加5个相同名称的纹章,Please add 5 insignias with the same name.
 compose_record_010,请添加5个相同名称的纹章,Please add 5 insignias with the same name.
 compose_record_011,祝福之力不足,Insufficient Blessing Power.
 dazhao_jieduan,连续,Keep

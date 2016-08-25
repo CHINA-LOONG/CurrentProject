@@ -16,10 +16,7 @@ public class VSMain {
 
 			HawkXmlCfg conf = new HawkXmlCfg(System.getProperty("user.dir") + "/cfg/config.xml");
 			
-			VersionServices.getInstance().init(conf.getString("db.dbHbmXml"), conf.getString("db.dbConnUrl"), conf.getString("db.dbUserName"), conf.getString("db.dbPassWord"), conf.getString("db.entityPackages"), conf.getString("app.platform"), conf.getString("app.chanel"));		
-			VersionServices.getInstance().setResourceServerAddress(conf.getString("app.resourceServer"));
-			VersionServices.getInstance().setChanel(conf.getString("app.chanel"));
-			VersionServices.getInstance().setPlatform(conf.getString("app.platform"));
+			VersionServices.getInstance().init(conf.getString("app.channel"), conf.getString("app.resourceServer"));	
 			VersionHttpServer versionServer = new VersionHttpServer();
 			versionServer.setup(conf.getString("app.addr"), conf.getInt("app.port"), conf.getInt("app.pool"));
 			versionServer.run();

@@ -106,7 +106,16 @@ public class BuyItem : UIBase
 
 		itemIcon.RefreshWithItemInfo (itemData,true,false);
 
-		price = stData.buyPrice;
+        StoreStaticData storeItemData = StaticDataMgr.Instance.GetStoreStaticDataWith(itemId);
+        if (null != storeItemData)
+        {
+            price = (int)(storeItemData.price * storeItemData.discount);
+        }
+        else
+        {
+            price = 999999;
+            Logger.LogError("huoliyao should config in store.csv item id = " + itemId);
+        }
 
 		coinButton.gameObject.SetActive (param.isShowCoinButton);
 
@@ -169,6 +178,19 @@ public class BuyItem : UIBase
 		GameEventMgr.Instance.FireEvent (GameEventList.BuyItemFinished);
         GameEventMgr.Instance.FireEvent(GameEventList.RefreshSaodangTimes);
 		UIMgr.Instance.CloseUI_ (this);
-		//PB.HSItemBuyRet msgRet = msg.GetProtocolBody<PB.HSItemBuyRet> ();
-	}
+        string succMsg = null;
+        string buyItemName = "";
+        ItemStaticData stItem = StaticDataMgr.Instance.GetItemData(itemId);
+        if(null != stItem)
+        {
+            buyItemName = stItem.NameAttr;
+        }
+        succMsg = string.Format(StaticDataMgr.Instance.GetTextByID("shop_record_001"), buyItemName);
+        if (curCount > 1)
+        {
+            succMsg = string.Format("{0}*{1}", succMsg, curCount);
+        }
+
+        UIIm.Instance.ShowSystemHints(succMsg,(int)PB.ImType.PROMPT);
+    }
 }

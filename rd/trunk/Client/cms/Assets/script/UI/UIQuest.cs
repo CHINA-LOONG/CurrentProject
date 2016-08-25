@@ -41,7 +41,7 @@ public class UIQuest : UIBase, TabButtonDelegate
     }
 
     private TabButtonGroup tabGroup;
-    private List<questItem> items = new List<questItem>();
+    private List<QuestItem> items = new List<QuestItem>();
 
     private Dictionary<int, QuestInfo> QuestList = new Dictionary<int, QuestInfo>();
     private List<QuestInfo> StoryList = new List<QuestInfo>();
@@ -160,7 +160,7 @@ public class UIQuest : UIBase, TabButtonDelegate
             {
                 go.transform.localScale = Vector3.one;
                 go.transform.SetParent(list_Content.transform, false);
-                questItem item = go.GetComponent<questItem>();
+                QuestItem item = go.GetComponent<QuestItem>();
                 items.Add(item);
                 //TODO:
                 LanguageMgr.Instance.SetLanguageFont(go);

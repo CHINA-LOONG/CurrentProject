@@ -53,14 +53,16 @@ public class WpIcon : MonoBehaviour
                 deadMask.gameObject.SetActive(true);
                 return;
             case WeakpointState.Hide:
-                wpIconname = "ruodianIcon_hide";
+                wpIconname = wpRealData.staticData.state0Icon;
                 break;
             case WeakpointState.Normal1:
-                wpIconname = GetWpIconName(wpRealData.staticData.stat1WpType);
+                //wpIconname = GetWpIconName(wpRealData.staticData.stat1WpType);
+                wpIconname = wpRealData.staticData.state0Icon;
                 isArmor = wpRealData.staticData.stat1WpType >= 0 && wpRealData.staticData.stat1WpType <= 2;
                 break;
             case WeakpointState.Normal2:
-                wpIconname = GetWpIconName(wpRealData.staticData.state2WpType);
+                //  wpIconname = GetWpIconName(wpRealData.staticData.state2WpType);
+                wpIconname = wpRealData.staticData.state2Icon;
                 isArmor = wpRealData.staticData.state2WpType >= 0 && wpRealData.staticData.state2WpType <= 2;
                 break;
         }

@@ -31,8 +31,24 @@ namespace PB
       get { return _coin; }
       set { _coin = value; }
     }
+    private int _towerCoin = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"towerCoin", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int towerCoin
+    {
+      get { return _towerCoin; }
+      set { _towerCoin = value; }
+    }
+    private int _contribution = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"contribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int contribution
+    {
+      get { return _contribution; }
+      set { _contribution = value; }
+    }
     private int _level = default(int);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int level
     {
@@ -40,7 +56,7 @@ namespace PB
       set { _level = value; }
     }
     private int _exp = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int exp
     {
@@ -48,7 +64,7 @@ namespace PB
       set { _exp = value; }
     }
     private int _fatigue = default(int);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int fatigue
     {
@@ -56,7 +72,7 @@ namespace PB
       set { _fatigue = value; }
     }
     private int _fatigueBeginTime = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int fatigueBeginTime
     {
@@ -122,8 +138,22 @@ namespace PB
       get { return _coin; }
       set { _coin = value; }
     }
+    private int _towerCoin;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"towerCoin", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int towerCoin
+    {
+      get { return _towerCoin; }
+      set { _towerCoin = value; }
+    }
+    private int _contribution;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"contribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution
+    {
+      get { return _contribution; }
+      set { _contribution = value; }
+    }
     private int _gender = default(int);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int gender
     {
@@ -131,7 +161,7 @@ namespace PB
       set { _gender = value; }
     }
     private int _eye = default(int);
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"eye", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"eye", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int eye
     {
@@ -139,7 +169,7 @@ namespace PB
       set { _eye = value; }
     }
     private int _hair = default(int);
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"hair", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"hair", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int hair
     {
@@ -147,7 +177,7 @@ namespace PB
       set { _hair = value; }
     }
     private int _hairColor = default(int);
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int hairColor
     {
@@ -155,14 +185,14 @@ namespace PB
       set { _hairColor = value; }
     }
     private int _recharge;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int recharge
     {
       get { return _recharge; }
       set { _recharge = value; }
     }
     private int _vipLevel;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int vipLevel
     {
       get { return _vipLevel; }

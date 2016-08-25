@@ -139,6 +139,7 @@ public class BuildModule : ModuleBase
             //GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
 			Debug.LogWarning("player info sync finished!");
             GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = finishState.allianceID;
+            GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr = finishState.contribution;
             StatisticsDataMgr.Instance.BeginHeartBreak();
 		}
 	}

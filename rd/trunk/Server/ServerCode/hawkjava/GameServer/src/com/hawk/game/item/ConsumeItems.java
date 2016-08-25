@@ -18,7 +18,6 @@ import com.hawk.game.protocol.Consume.ConsumeItem;
 import com.hawk.game.protocol.Consume.HSConsumeInfo;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
-import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst.ConsumeCheckResult;
 
@@ -145,14 +144,14 @@ public class ConsumeItems {
 	public ConsumeItems addContribution(int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume : consumeInfo.getConsumeItemsBuilderList()) {
-			if (consume.getType() == itemType.ALLIANCE_VALUE && Integer.valueOf(consume.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && Integer.valueOf(consume.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
 				consumeItem = consume;
 				break;
 			}
 		}
 		if (consumeItem == null) {
 			consumeItem = ConsumeItem.newBuilder();
-			consumeItem.setType(itemType.ALLIANCE_VALUE);
+			consumeItem.setType(itemType.PLAYER_ATTR_VALUE);
 			consumeItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
 			consumeItem.setCount(count);
 			consumeInfo.addConsumeItems(consumeItem);
@@ -193,7 +192,7 @@ public class ConsumeItems {
 			else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
 				throw new RuntimeException("unsupport config consume type");
 			}
-			else if (itemInfo.getType() == itemType.ALLIANCE_VALUE) {
+			else if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
 				addContribution(itemInfo.getCount());
 			}
 			//配置的消耗类型不包括装备
@@ -324,6 +323,18 @@ public class ConsumeItems {
 						return ConsumeCheckResult.FATIGUE_NOT_ENOUGH;
 					}
 				}
+				else if (changeType == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+					// 检测公会
+					if (player.getAllianceId() == 0) {
+						return ConsumeCheckResult.NOT_IN_ALLIANCE;
+					}
+					// 检测贡献值
+					if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+						if (player.getPlayerData().getPlayerAllianceEntity().getContribution() < consumeItem.getCount()) {
+							return ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH;
+						}
+					}
+				}
 				break;
 
 			case itemType.EQUIP_VALUE:
@@ -347,19 +358,6 @@ public class ConsumeItems {
 				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(consumeItem.getItemId());
 				if(itemEntity == null || itemEntity.getCount() <= 0 || itemEntity.getCount() < consumeItem.getCount()) {
 					return ConsumeCheckResult.TOOLS_NOT_ENOUGH;
-				}
-				break;
-
-			case itemType.ALLIANCE_VALUE:
-				//检测公会
-				if (player.getAllianceId() == 0) {
-					return ConsumeCheckResult.NOT_IN_ALLIANCE;
-				}
-				// 检测贡献值
-				if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-					if (player.getPlayerData().getPlayerAllianceEntity().getContribution() < consumeItem.getCount()) {
-						return ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH;
-					}
 				}
 				break;
 
@@ -397,13 +395,19 @@ public class ConsumeItems {
 					case changeType.CHANGE_FATIGUE_VALUE:
 						player.consumeFatigue(item.getCount(), action);
 						break;
-
+						
+					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
+						player.consumeContribution(item.getCount(), action);
+						break;
+						
 					default:
 						break;
 					}
 					SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();
-					playerBuilder.setCoin(player.getCoin());
 					playerBuilder.setGold(player.getGold());
+					playerBuilder.setCoin(player.getCoin());
+					playerBuilder.setTowerCoin(player.getTowerCoin());
+					playerBuilder.setContribution(player.getAllianceId() != 0 ? player.getPlayerData().getPlayerAllianceEntity().getContribution() : 0);
 					playerBuilder.setExp(player.getExp());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
@@ -428,15 +432,6 @@ public class ConsumeItems {
 					if (false == player.consumeMonster((int)item.getId(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
-					}
-					break;
-
-				case itemType.ALLIANCE_VALUE:
-					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-						if (false == player.consumeContribution(item.getCount(), action)) {
-							consumeInfo.removeConsumeItems(i);
-							continue;
-						}
 					}
 					break;
 

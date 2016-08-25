@@ -211,14 +211,14 @@ public class AwardItems {
 	public AwardItems addContribution(int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.ALLIANCE_VALUE && Integer.valueOf(reward.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && Integer.valueOf(reward.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
 				rewardItem = reward;
 				break;
 			}
 		}
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
-			rewardItem.setType(itemType.ALLIANCE_VALUE);
+			rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
 			rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
 			rewardItem.setCount(count);
 			rewardInfo.addRewardItems(rewardItem);
@@ -303,7 +303,7 @@ public class AwardItems {
 					addMonster(itemInfo.getItemId(), itemInfo.getStage());
 				}
 			}
-			else if (itemInfo.getType() == itemType.ALLIANCE_VALUE) {
+			else if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
 				if (Integer.valueOf(itemInfo.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
 					addContribution(itemInfo.getCount());
 				}
@@ -322,14 +322,12 @@ public class AwardItems {
 		return this;
 	}
 
-	public int getRewardCount(int type, String itemId)
-	{
+	public int getRewardCount(int type, String itemId){
 		for (RewardItem.Builder rewardItem : rewardInfo.getRewardItemsBuilderList()) {
 			if (rewardItem.getType() == type && itemId.equals(rewardItem.getItemId())) {
 				return rewardItem.getCount();
 			}
 		}
-
 		return 0;
 	}
 
@@ -518,15 +516,20 @@ public class AwardItems {
 							}
 						}
 						break;
-
+					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
+						player.increaseContribution(item.getCount(), action);
+						break;
+						
 					default:
 						invalidType = true;
 						break;
 					}
 
 					SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();
-					playerBuilder.setCoin(player.getCoin());
 					playerBuilder.setGold(player.getGold());
+					playerBuilder.setCoin(player.getCoin());
+					playerBuilder.setTowerCoin(player.getTowerCoin());
+					playerBuilder.setContribution(player.getAllianceId() != 0 ? player.getPlayerData().getPlayerAllianceEntity().getContribution() : 0);
 					playerBuilder.setExp(player.getExp());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
@@ -619,14 +622,6 @@ public class AwardItems {
 					}
 					break;
 
-				case itemType.ALLIANCE_VALUE:
-					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-						if (player.increaseContribution(item.getCount(), action) == false) {
-							rewardFail = true;
-						}
-					}
-					break;
-
 				default:
 					invalidType = true;
 					break;
@@ -657,5 +652,4 @@ public class AwardItems {
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_REWARD_S_VALUE, rewardInfo));
 		}
 	}
-
 }

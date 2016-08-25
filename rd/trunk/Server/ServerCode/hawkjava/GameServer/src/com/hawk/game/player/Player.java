@@ -1016,7 +1016,7 @@ public class Player extends HawkAppObj {
 		int exp = 0;
 		byte lazy = 1;
 		int lazyExp = 0;
-		byte disposition = 1;
+		byte disposition = (byte)monster.getDisposition();
 		String[] skillList = monster.getSpellIdList();
 
 		MonsterEntity monsterEntity = new MonsterEntity(monsterCfgId, playerId, (byte)stage, level, exp, lazy, lazyExp, disposition);
@@ -1389,9 +1389,8 @@ public class Player extends HawkAppObj {
 		playerData.loadAllMonster();
 		// default monster
 		if (statisticsEntity.getMonsterMaxCount() == 0) {
-			increaseMonster("xgXiyiren2", 1, Action.SYSTEM);
-			increaseMonster("xgHuapo2", 1, Action.SYSTEM);
-			increaseMonster("xgPanshen2", 1, Action.SYSTEM);
+			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
+			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

@@ -6,7 +6,9 @@ public class QuestStaticData
     public int id;             //#任务Id	
     public int group;           //任务组	
     public int type;            //类别	
+    public string comments;     //注释
     public string name;         //名称	
+    public string desc;         //任务描述
     public string icon;         //图标
     public int level;           //接取等级	
     public int cycle;           //循环性	
@@ -15,8 +17,6 @@ public class QuestStaticData
     public int timeEndId;       //关闭时间配置Id	
 
     public string goalType;     //目标类型
-    public string descType;     //任务描述参数类型
-    public string desc;         //任务描述
     public string goalParam;    //目标参数
     public int goalCount;       //目标值	
 

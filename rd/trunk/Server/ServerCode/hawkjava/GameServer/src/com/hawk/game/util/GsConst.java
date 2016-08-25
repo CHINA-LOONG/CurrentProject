@@ -1,5 +1,6 @@
 package com.hawk.game.util;
 
+
 /**
  * 游戏常量定义
  * 
@@ -375,24 +376,55 @@ public class GsConst {
 
 	// 任务目标类型
 	public static class QuestGoalType {
-		public static final int DIFFICULTY_GOAL = 1;
-		public static final int STAR_GOAL = 2;
-		public static final int INSTANCE_NORMAL_GOAL = 3;
-		public static final int INSTANCE_HARD_GOAL = 4;
-		public static final int INSTANCE_ALL_GOAL = 5;
-		public static final int LEVEL_GOAL = 6;
-		public static final int MONSTER_STAGE_GOAL = 7;
-		public static final int MONSTER_LEVEL_GOAL = 8;
-		public static final int ARENA_GOAL = 9;
-		public static final int TIMEHOLE_GOAL  = 10;
-		public static final int MONSTER_MIX_GOAL  = 11;
-		public static final int ADVENTURE_GOAL  = 12;
-		public static final int BOSSRUSH_GOAL = 13;
-		public static final int EXPLORE_GOAL = 14;
-		public static final int SKILL_UP_GOAL = 15;
-		public static final int EQUIP_UP_GOAL = 16;
-		public static final int BUY_COIN_GOAL = 17;
-		public static final int GET_FATIGUE_GOAL = 18;
+		public static final int INSTANCE = 1;
+		public static final int INSTANCE_STAR3 = 2;
+		public static final int INSTANCE_NORMAL_TIMES = 3;
+		public static final int INSTANCE_HARD_TIMES = 4;
+		public static final int INSTANCE_ALL_TIMES = 5;
+		public static final int CHAPTER = 6;
+		public static final int LEVEL = 7;
+		public static final int MONSTER_STAGE_COUNT = 8;
+		public static final int MONSTER_LEVEL_COUNT = 9;
+		public static final int MONSTER_MIX_TIMES = 10;
+		public static final int ARENA_TIMES = 11;
+		public static final int HOLE_COIN_TIMES = 12;
+		public static final int HOLE_EXP_TIMES = 13;
+		public static final int TOWER_TIMES = 14;
+		public static final int ADVENTURE_TIMES = 15;
+		public static final int UP_SKILL_TIMES = 16;
+		public static final int UP_EQUIP_TIMES = 17;
+		public static final int BUY_COIN_TIMES = 18;
+		public static final int BUY_GIFT_TIMES = 19;
+		public static final int BUY_ITEM_TIMES = 20;
+		public static final int PAY_DIAMOND_COUNT = 21;
+		public static final int USE_FATIGUE_COUNT = 22;
+		public static final int USE_ITEM_COUNT = 23;
+		public static final int USE_DIAMOND_COUNT = 24;
+		public static final int INLAY_ALL_TIMES = 25;
+		public static final int INLAY_TYPE_TIMES = 26;
+		public static final int SYN_ALL_TIMES = 27;
+		public static final int SYN_TYPE_TIMES = 28;
+		public static final int EGG_COIN_TIMES = 29;
+		public static final int EGG_DIAMOND_TIMES = 30;
+		public static final int EGG_ALL_TIMES = 31;
+		public static final int CALL_PET_STAGE_TIMES = 32;
+		public static final int CALL_EQUIP_STAGE_TIMES = 33;
+		public static final int CALL_ITEM_TIMES = 34;
+		public static final int SOCIETY_JOIN_TIMES = 35;
+		public static final int SOCIETY_LEAVE_TIMES = 36;
+		public static final int SOCIETY_PRAY_TIMES = 37;
+		public static final int SOCIETY_BOSS_TIMES = 38;
+		public static final int SOCIETY_FATIGUE_TIMES = 39;
+		public static final int SHOP_REFRESH_TIMES = 40;
+		public static final int COIN_ARENA_COUNT = 41;
+		public static final int COIN_SOCIETY_COUNT = 42;
+		public static final int COIN_TOWER_COUNT = 43;
+		public static final int QUEST = 44;
+		public static final int QUEST_TYPE_COUNT = 45;
+		public static final int QUEST_CYCLE_COUNT = 46;
+		public static final int EQUIP_STAGE_COUNT = 47;
+		public static final int EQUIP_SLOT_TIMES = 48;
+		public static final int FREE_GOAL = 49;
 	}
 
 	// 统计数据类型

@@ -88,7 +88,7 @@ public class AllianceTaskRewardHandler implements HawkMsgHandler{
 					
 					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_TASK_REWARD, protocol.getType());
 					
-					int contribution = reward.getRewardCount(Const.itemType.ALLIANCE_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+					int contribution = reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
 					allianceEntity.addContribution(contribution);
 					allianceEntity.notifyUpdate(true);
 					

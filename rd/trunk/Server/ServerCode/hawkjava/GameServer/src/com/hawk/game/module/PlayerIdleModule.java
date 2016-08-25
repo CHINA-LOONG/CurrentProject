@@ -36,6 +36,7 @@ public class PlayerIdleModule extends PlayerModule {
 		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
 		response.setPlayerId(player.getId());
 		response.setAllianceID(player.getAllianceId());
+		response.setContribution(player.getPlayerData().getPlayerAllianceEntity().getContribution());
 		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
 		
 		// 通知玩家组装完成

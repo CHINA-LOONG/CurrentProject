@@ -101,10 +101,7 @@ namespace PB
       GROUP = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=7)]
-      MONSTER = 7,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE", Value=8)]
-      ALLIANCE = 8
+      MONSTER = 7
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"moneyType")]

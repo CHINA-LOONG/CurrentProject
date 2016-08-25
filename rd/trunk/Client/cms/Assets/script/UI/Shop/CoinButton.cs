@@ -8,8 +8,9 @@ public class CoinButton : MonoBehaviour
 	{
 		Zuanshi = 0,
 		Jinbi,
-		GonghuiBi
-	}
+		GonghuiBi,
+        TowerCoin
+    }
 
 	public	static CoinButton CreateWithType(CoinType cType)
 	{
@@ -79,10 +80,16 @@ public class CoinButton : MonoBehaviour
 		}
 		else if(coinType == CoinType.GonghuiBi)
 		{
-			OnGonghuiBiChanged(1);
+			OnGonghuiBiChanged(GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr);
 			coinImg = "icon_gonghuibi";
 			HideAddCoinButton(true);
 		}
+        else if (coinType == CoinType.TowerCoin)
+        {
+            OTowerCoinChanged(GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr);
+            coinImg = "icon_towercoin";
+            HideAddCoinButton(true);
+        }
 		
 		if(!string.IsNullOrEmpty(coinImg))
 		{
@@ -135,4 +142,12 @@ public class CoinButton : MonoBehaviour
 			coinCount.text = string.Format("{0:N0}",gonghuibi);
 		}
 	}
+
+    void OTowerCoinChanged(int towerCoin)
+    {
+        if (coinType == CoinType.TowerCoin)
+        {
+            coinCount.text = string.Format("{0:N0}", towerCoin);
+        }
+    }
 }

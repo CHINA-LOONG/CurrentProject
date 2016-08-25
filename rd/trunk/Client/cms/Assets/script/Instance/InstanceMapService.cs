@@ -179,9 +179,7 @@ public class InstanceMapService : MonoBehaviour
                     return -1;
                 }
             }
-
         }
-
         return 1;
     }
 

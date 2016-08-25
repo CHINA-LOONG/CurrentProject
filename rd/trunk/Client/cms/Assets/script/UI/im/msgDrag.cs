@@ -13,5 +13,6 @@ public class msgDrag : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         UIIm.Instance.isDrag = false;
+        UIIm.Instance.showNewMsg = true;
     }
 }
