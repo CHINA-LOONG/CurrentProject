@@ -17,6 +17,7 @@ public class GemSlotItem : MonoBehaviour
     public Text text_Attr2;
     public Text textAttr1;
     public Text textAttr2;
+    public GameObject button;
 
     public IGemSlotItem IGemSlotItemDelegate;
     private GemInfo curInfo;
@@ -61,6 +62,10 @@ public class GemSlotItem : MonoBehaviour
                 Type = SlotType.Unlock;
                 textUnlock.text = Interactable ? StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips") :
                                                 StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
+                if (gemIcon!=null)
+                {
+                    gemIcon.gameObject.SetActive(false);
+                }
             }
             else
             {
@@ -90,11 +95,11 @@ public class GemSlotItem : MonoBehaviour
 
             if (Interactable&& Type != SlotType.Locked)
             {
-                ScrollViewEventListener.Get(gameObject).onClick = OnClickThisSlot;
+                ScrollViewEventListener.Get(button).onClick = OnClickThisSlot;
             }
             else
             {
-                ScrollViewEventListener.Get(gameObject).onClick = null;
+                ScrollViewEventListener.Get(button).onClick = null;
             }
         }
     }

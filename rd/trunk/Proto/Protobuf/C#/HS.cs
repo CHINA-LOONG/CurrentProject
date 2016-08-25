@@ -24,10 +24,7 @@ namespace PB
       HEART_BEAT = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=4)]
-      ERROR_CODE = 4,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"KICK_PLAYER", Value=5)]
-      KICK_PLAYER = 5
+      ERROR_CODE = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"gm")]
@@ -668,6 +665,9 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEMA_LEAVE_N_S", Value=9112)]
       ALLIANCE_TEMA_LEAVE_N_S = 9112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_TIMEOUT_N_S", Value=9113)]
+      ALLIANCE_TASK_TIMEOUT_N_S = 9113,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,

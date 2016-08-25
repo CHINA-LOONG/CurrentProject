@@ -28,11 +28,11 @@ public class bossdajie11Xiaochou4 : BossAi {
 
 		attackResult.attackTarget = GetAttackRandomTarget(Xiaochou4Unit);
 
-		if (GetAttackCount(Xiaochou4Unit) % 7 == 0) 
+		if (GetAttackCount(Xiaochou4Unit) % 7 == 0 && GetAttackCount(Xiaochou4Unit) != 0) 
 		{
 			Xiaochou4SpellDic.TryGetValue ("bossdajie11Xiaochou43", out useSpell);
 		}
-		if (GetAttackCount(Xiaochou4Unit) % 3 == 0) 
+		if (GetAttackCount(Xiaochou4Unit) % 3 == 0 && GetAttackCount(Xiaochou4Unit) != 0) 
 		{
 			Xiaochou4SpellDic.TryGetValue ("bossdajie11Xiaochou42", out useSpell);
 

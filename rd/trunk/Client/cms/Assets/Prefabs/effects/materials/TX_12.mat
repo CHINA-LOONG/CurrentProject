@@ -32,7 +32,7 @@ Material:
     m_Floats:
       data:
         first:
-          name: _HeatTime
+          name: _InvFade
         second: 1
       data:
         first:
@@ -44,7 +44,7 @@ Material:
         second: .100000001
       data:
         first:
-          name: _InvFade
+          name: _HeatTime
         second: 1
     m_Colors:
       data:

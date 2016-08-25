@@ -105,6 +105,8 @@ public class InstanceMapService : MonoBehaviour
 		openedMaxNormlChapter = 1;
 		openedMaxHardChapter = 0;
 
+        finishedInstance.Sort(SortFinishInstance);
+
 		PB.InstanceState subState = null;
 		for (int i = 0; i< finishedInstance.Count; ++i) 
 		{
@@ -143,6 +145,45 @@ public class InstanceMapService : MonoBehaviour
 
 		AddLeftInstanceInChapter ();
 	}
+
+    int SortFinishInstance(PB.InstanceState itemA,PB.InstanceState itemB)
+    {
+        InstanceEntry insA = StaticDataMgr.Instance.GetInstanceEntry(itemA.instanceId);
+        InstanceEntry insB = StaticDataMgr.Instance.GetInstanceEntry(itemB.instanceId);
+        if (insA.chapter > insB.chapter)
+        {
+            return 1;
+        }
+        else if (insA.chapter<insB.chapter)
+        {
+            return -1;
+        }
+        else
+        {
+            if (insA.difficulty > insB.difficulty)
+            {
+                return 1;
+            }
+            else if (insA.difficulty < insB.difficulty)
+            {
+                return -1;
+            }
+            else
+            {
+                if (insA.index > insB.index)
+                {
+                    return 1;
+                }
+                else if (insA.index < insB.index)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
+        return 1;
+    }
 
 	private	void	AddLeftInstanceInChapter()
 	{
@@ -317,8 +358,35 @@ public class InstanceMapService : MonoBehaviour
 		return StaticDataMgr.Instance.GetInstanceEntryList((int) diffType,chapter);
 	}
 
+    public bool IsChapterFinished(int chapter, InstanceDifficulty diff)
+    {
+        if (chapter < 1)
+            return true;
+        List<InstanceEntryRuntimeData> listChapter = GetRuntimeInstance(diff, chapter);
+        if(null == listChapter || listChapter.Count < 1)
+            return false;
+        foreach (var subData in listChapter)
+        {
+            if(subData.star < 1)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public bool IsChapterOpened(int chapter)
     {
+        if (chapter <= openedMaxNormlChapter)
+            return true;
+
+        if(chapter == openedMaxNormlChapter + 1)
+        {
+            if (IsChapterFinished(chapter - 1, InstanceDifficulty.Normal))
+            {
+                CheckAndOpenNextChapter(InstanceDifficulty.Normal, chapter);
+            }
+        }
         return chapter <= openedMaxNormlChapter;
     }
 

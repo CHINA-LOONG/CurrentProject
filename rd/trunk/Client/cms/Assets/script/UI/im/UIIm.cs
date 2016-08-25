@@ -202,27 +202,40 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpRecruit(GameObject btn)
     {
-        GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().guildID);
+        if (GameMain.Instance.IsCurModule<BattleModule>())
+            ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_006"), (int)PB.ImType.PROMPT);
+        else
+            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().guildID);
     }
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpTask(GameObject btn)
     {
-        if (GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID != null)
+        if (GameMain.Instance.IsCurModule<BattleModule>())
+            ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_006"), (int)PB.ImType.PROMPT);
+        else
         {
-            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.OtherTeam, GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID);
+            if (GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID != null)
+            {
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.OtherTeam, GetRootObject(btn.transform.parent).GetComponent<ImMessageData>().taskID);
+            } 
         }
     }
     //------------------------------------------------------------------------------------------------------
     void SelectGuild(GameObject btn)
     {
-        if (guildID != 0)
-        {
-             GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(guildID.ToString());
-        }
+        if (GameMain.Instance.IsCurModule<BattleModule>())
+            ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_006"), (int)PB.ImType.PROMPT);
         else
         {
-            ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_005"), (int)PB.ImType.PROMPT);
-        }
+            if (guildID != 0)
+            {
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty(guildID.ToString());
+            }
+            else
+            {
+                ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_005"), (int)PB.ImType.PROMPT);
+            }
+        }        
     }
     //------------------------------------------------------------------------------------------------------
     void OnMsgReturn(ProtocolMessage msg)//返回服务器消息数据

@@ -422,8 +422,9 @@ public class GsConst {
 
 		public static final int ONE_PAGE_SIZE = 10;
 		public static final int NAME_MAX_LENGTH = 12;
-		public static final int NOTICE_MAX_LENGTH = 200;
+		public static final int NOTICE_MAX_LENGTH = 300;
 		public static final int MAX_COPYMAIN_COUNT = 2;
+		public static final int SEND_FATIGUE_COUNT = 1;
 
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";

@@ -488,7 +488,7 @@ public class AwardItems {
 						if (newLevel > oldLevel) {
 							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
 								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
-								if (null != attrCfg) {
+								if (attrCfg != null && attrCfg.getFatigueReward() > 0) {
 									RewardItem.Builder rewardItem = RewardItem.newBuilder();
 									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
 									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
@@ -508,7 +508,7 @@ public class AwardItems {
 						if (newLevel > oldLevel) {
 							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
 								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
-								if (null != attrCfg) {
+								if (attrCfg != null && attrCfg.getFatigueReward() > 0) {
 									RewardItem.Builder rewardItem = RewardItem.newBuilder();
 									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
 									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));

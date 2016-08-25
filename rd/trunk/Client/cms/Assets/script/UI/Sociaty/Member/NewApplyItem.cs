@@ -74,7 +74,7 @@ public class NewApplyItem : MonoBehaviour
             SociatyErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_022"), (int)PB.ImType.PROMPT);
+        UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_022"), applyData.nickname), (int)PB.ImType.PROMPT);
         GameDataMgr.Instance.SociatyDataMgrAttr.newApplyList.Remove(applyData);
         MemberApply.Instance.RefreshUi();
         SociatyContentMember.Instance.RequestMemberData();

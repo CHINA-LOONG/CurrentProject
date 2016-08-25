@@ -93,22 +93,6 @@ Material:
         second: .5
       data:
         first:
-          name: _InnerColorPower
-        second: 0
-      data:
-        first:
-          name: _RimPower
-        second: 2.02999997
-      data:
-        first:
-          name: _AlphaPower
-        second: 8
-      data:
-        first:
-          name: _AllPower
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -147,6 +131,22 @@ Material:
         first:
           name: _EmissionScaleUI
         second: 0
+      data:
+        first:
+          name: _AllPower
+        second: 0
+      data:
+        first:
+          name: _AlphaPower
+        second: 8
+      data:
+        first:
+          name: _InnerColorPower
+        second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 2.02999997
     m_Colors:
       data:
         first:
@@ -158,13 +158,13 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _RimColor
-        second: {r: 1, g: .526977658, b: .220588207, a: .501960814}
+          name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _InnerColor
         second: {r: .992647052, g: .554714561, b: .357644945, a: .501960814}
       data:
         first:
-          name: _EmissionColorUI
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _RimColor
+        second: {r: 1, g: .526977658, b: .220588207, a: .501960814}

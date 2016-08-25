@@ -33,28 +33,24 @@ public class bossdajie14Piying5 : BossAi {
 
 		if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") != 0 )
 		{
-			if (GetAttackCount(Piying5Unit) % 6 == 0) 
+			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying54", out useSpell);
 			}
-			else if (GetAttackCount(Piying5Unit) % 3 == 0) 
+			else if (GetAttackCount(Piying5Unit) % 3 == 0 ) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying52", out useSpell);
-			}
-			else if (GetAttackCount(Piying5Unit) % 2 == 0) 
-			{
-				Piying5SpellDic.TryGetValue ("bossdajie14Piying53", out useSpell);
 			}
 					
 		} 
 
 		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") == 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") != 0 )
 		{
-			if (GetAttackCount(Piying5Unit) % 6 == 0) 
+			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying54", out useSpell);
 			}
-			else if (GetAttackCount(Piying5Unit) % 2 == 0) 
+			else if (GetAttackCount(Piying5Unit) % 3 == 0 ) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying53", out useSpell);
 			}
@@ -62,19 +58,19 @@ public class bossdajie14Piying5 : BossAi {
 		}
 		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") == 0 )
 		{
-			if (GetAttackCount(Piying5Unit) % 6 == 0) 
+			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying54", out useSpell);
 			}
-			else if (GetAttackCount(Piying5Unit) % 2 == 0) 
+			else if (GetAttackCount(Piying5Unit) % 3 == 0 ) 
 			{
-				Piying5SpellDic.TryGetValue ("bossdajie14Piying52", out useSpell);
+				Piying5SpellDic.TryGetValue ("bossdajie14Piying55", out useSpell);
 			}
 
 		}
 		else
 		{
-			if (GetAttackCount(Piying5Unit) % 6 == 0) 
+			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
 				Piying5SpellDic.TryGetValue ("bossdajie14Piying54", out useSpell);
 			}

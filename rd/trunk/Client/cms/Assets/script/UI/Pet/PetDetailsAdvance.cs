@@ -38,8 +38,6 @@ public class PetDetailsAdvance : PetDetailsRight
     public Text text_Advance;
 
     List<List<int>> monsterSelect = new List<List<int>>();
-    List<int> m_monsterList1 = new List<int>();
-    List<int> m_monsterList2 = new List<int>();
 
     private GameUnit curData;
     private UnitStageData unitStageData;
@@ -51,6 +49,9 @@ public class PetDetailsAdvance : PetDetailsRight
     private bool enoughItem;
     private bool enoughMonster;
 
+    public EquipForgeEffect advanceEffect;
+    private bool isPlayingFX=false;
+       
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
@@ -215,7 +216,7 @@ public class PetDetailsAdvance : PetDetailsRight
 
         monsterFields.ForEach(delegate (NeedMonsterElement item) { item.gameObject.SetActive(false); });
         ItemInfo itemInfo;
-
+        monsterSelect.Clear();
         for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
         {
             itemInfo = unitStageData.demandMonsterList[i];
@@ -281,6 +282,10 @@ public class PetDetailsAdvance : PetDetailsRight
 
     void OnClickAdvanceBtn()
     {
+        if (isPlayingFX)
+        {
+            return;
+        }
         if (!enoughLevel)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_011"), (int)PB.ImType.PROMPT);
@@ -307,7 +312,12 @@ public class PetDetailsAdvance : PetDetailsRight
         }
         GameApp.Instance.netManager.SendMessage(ProtocolMessage.Create(PB.code.MONSTER_STAGE_UP_C.GetHashCode(), resquest));
     }
-    
+
+    void OnCoinChangedRefresh(long coin)
+    {
+        ReloadData(curData);
+    }
+
     void OnEnable()
     {
         BindListerner();
@@ -316,15 +326,29 @@ public class PetDetailsAdvance : PetDetailsRight
     {
         UnBindListerner();
     }
+    void OnDestroy()
+    {
+        if (isPlayingFX)
+        {
+            EffectEnd();
+        }
+    }
+    void EffectEnd()
+    {
+        isPlayingFX = false;
+        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetStageNotify, curData);
+    }
 
     void BindListerner()
     {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadData);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_C.GetHashCode().ToString(), OnStageUpResponse);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_S.GetHashCode().ToString(), OnStageUpResponse);
     }
     void UnBindListerner()
     {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadData);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_C.GetHashCode().ToString(), OnStageUpResponse);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_S.GetHashCode().ToString(), OnStageUpResponse);
@@ -339,7 +363,17 @@ public class PetDetailsAdvance : PetDetailsRight
             Logger.LogError("重聚进阶错误");
             return;
         }
+        if (unitStageData.demandMonsterList.Count <= 0)
+        {
+            isPlayingFX = true;
+            advanceEffect.Play(1, EffectEnd);
+        }
+        else
+        {
+            isPlayingFX = true;
+            advanceEffect.Play(2, EffectEnd);
+        }
+
         curData.SetStage(curData.pbUnit.stage + 1);
-        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetStageNotify, curData);
     }
 }

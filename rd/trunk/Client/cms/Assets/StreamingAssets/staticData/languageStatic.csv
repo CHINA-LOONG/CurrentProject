@@ -377,12 +377,12 @@ pet_character_3,狡猾,Mischievous
 pet_character_4,互助,Collaborate
 pet_character_5,善良,Compassion
 pet_character_6,谨慎,Humility
-Valor,勇敢,Attack - Physical 
-Spiritual,聪慧,Attack - Magical
-Mischievous,狡猾,Support - Harmful Effects
-Collaborate,互助,Support - Beneficial Effects
-Compassion,善良,Healer
-Humility,谨慎,Defense
+Valor,勇敢,Valor
+Spiritual,聪慧,Spiritual
+Mischievous,狡猾,Mischievous
+Collaborate,互助,Collaborate
+Compassion,善良,Compassion
+Humility,谨慎,Humility
 descrip_valor,勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述,Attack - Physical  description
 descrip_spiritual,聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述,Attack - Magical   description
 descrip_mischievous,狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述,Support - Harmful Effects   description
@@ -421,20 +421,28 @@ name_10015_yibanlaji3,妖兽的指甲,Wicked Nails
 name_10016_chongwuqianghuashi,宠物强化石,Monster Upgrade Stone
 name_10017_chongwujinjieshi,宠物进阶石,Monster Advancement Stone
 name_20001_suipian_common,灵魂本源,Core Fragments
-name_20002_suipian_xiyiren,蜥蜴人碎片,xiyirensuipian
-name_20003_suipian_huapo,花魄碎片,huaposuipian
-name_20004_suipian_panshen,潘神碎片,panshensuipian
-name_20005_suipian_mantuoluo,曼陀罗碎片,mantuoluosuipian
-name_20006_suipian_amute,阿姆特碎片,amutesuipian
-name_20007_suipian_wagui,蛙鬼碎片,waguisuipian
-name_20008_suipian_hetong,河童碎片,hetongsuipian
-name_20009_suipian_longgongtongzi,龙宫童子碎片,longgongtongzisuipian
-name_20010_suipian_langren,狼人碎片,langrensuipian
-name_20011_suipian_anpusha,安普啥碎片,anpushasuipian
-name_20012_suipian_kairuisi,凯瑞斯碎片,kairuisisuipian
-name_20013_suipian_luoxinfu,络新妇碎片,luoxinfusuipian
-name_20014_suipian_momo,莫莫碎片,momosuipian
-name_20015_suipian_hapi,哈皮碎片,hapisuipian
+name_20002_suipian_xiaochou3,水小丑碎片,xiaochou3suipian
+name_20003_suipian_kairuisi4,火凯瑞斯碎片,kairuisi4suipian
+name_20004_suipian_hetong2,草河童碎片,hetong2suipian
+name_20005_suipian_wagui3,水蛙鬼碎片,wagui3suipian
+name_20006_suipian_xiaochou4,火小丑碎片,xiaochou4suipian
+name_20007_suipian_cike4,火刺壳碎片,cike4suipian
+name_20008_suipian_panshen2,草潘神碎片,panshen2suipian
+name_20009_suipian_huapo2,草花魄碎片,huapo2suipian
+name_20010_suipian_wushi3,水舞狮碎片,wushi3suipian
+name_20011_suipian_wushi4,火舞狮碎片,wushi4suipian
+name_20012_suipian_xiyiren4,火蜥蜴人碎片,xiyiren4suipian
+name_20013_suipian_mantuoluo2,草曼陀罗碎片,mantuoluo2suipian
+name_20014_suipian_hetong3,水河童碎片,hetong3suipian
+name_20015_suipian_longgongtongzi3,水龙宫童子碎片,longgongtongzi3suipian
+name_20016_suipian_xiyiren2,草蜥蜴人碎片,xiyiren2suipian
+name_20017_suipian_langren5,暗狼人碎片,langren5suipian
+name_20018_suipian_langren3,水狼人碎片,langren3suipian
+name_20019_suipian_shuigui3,水水鬼碎片,shuigui3suipian
+name_20020_suipian_nvyao5,暗女妖碎片,nvyao5suipian
+name_20021_suipian_hapi1,光哈皮碎片,hapi1suipian
+name_20022_suipian_piying5,暗皮影碎片,piying5suipian
+name_20023_suipian_kairuisi5,暗凯瑞斯碎片,kairuisi5suipian
 name_30011_BloodStone_1,一级血魄石,Blood Stone(LV1)
 name_30012_BloodStone_2,二级血魄石,Blood Stone(LV2)
 name_30013_BloodStone_3,三级血魄石,Blood Stone(LV3)
@@ -548,20 +556,28 @@ tips_10015_yibanlaji3,还是拿去换钱好些,Might be a good idea to sell this
 tips_10016_chongwuqianghuashi,宠物强化材料,Monster upgrade material.
 tips_10017_chongwujinjieshi,宠物进阶材料,Monster advancement material.
 tips_20001_suipian_common,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20002_suipian_xiyiren,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20003_suipian_huapo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20004_suipian_panshen,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20005_suipian_mantuoluo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20006_suipian_amute,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20007_suipian_wagui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20008_suipian_hetong,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20009_suipian_longgongtongzi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20010_suipian_langren,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20011_suipian_anpusha,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20012_suipian_kairuisi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20013_suipian_luoxinfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20014_suipian_momo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20015_suipian_hapi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20002_suipian_xiaochou3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20003_suipian_kairuisi4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20004_suipian_hetong2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20005_suipian_wagui3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20006_suipian_xiaochou4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20007_suipian_cike4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20008_suipian_panshen2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20009_suipian_huapo2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20010_suipian_wushi3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20011_suipian_wushi4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20012_suipian_xiyiren4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20013_suipian_mantuoluo2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20014_suipian_hetong3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20015_suipian_longgongtongzi3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20016_suipian_xiyiren2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20017_suipian_langren5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20018_suipian_langren3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20019_suipian_shuigui3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20020_suipian_nvyao5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20021_suipian_hapi1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20022_suipian_piying5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20023_suipian_kairuisi5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30011_BloodStone_1,镶嵌在装备上可获得：体力 + 10,insert the gem into a equipment available ：STA + 10
 tips_30012_BloodStone_2,镶嵌在装备上可获得：体力 + 20,insert the gem into a equipment available ：STA + 20
 tips_30013_BloodStone_3,镶嵌在装备上可获得：体力 + 40,insert the gem into a equipment available ：STA + 40
@@ -1714,42 +1730,42 @@ bigTaskname401,火山探秘,Volcano Explore
 bigTaskname402,火山寻宝,Volcano Treasure
 bigTaskdesc1,（主产宠物碎片）,(Drops Monster Fragments)
 bigTaskdesc2,（主产宝石）,(Drops Gems)
-name_40005_bigTaskleader201,队长礼包,Captain packs
-name_40006_bigTaskleader301,队长礼包,Captain packs
-name_40007_bigTaskleader401,队长礼包,Captain packs
-name_40008_bigTaskleader202,队长礼包,Captain packs
-name_40009_bigTaskleader302,队长礼包,Captain packs
-name_40010_bigTaskleader402,队长礼包,Captain packs
+name_40005_bigTaskleader201,队长礼包,Team Leader Gift
+name_40006_bigTaskleader301,队长礼包,Team Leader Gift
+name_40007_bigTaskleader401,队长礼包,Team Leader Gift
+name_40008_bigTaskleader202,队长礼包,Team Leader Gift
+name_40009_bigTaskleader302,队长礼包,Team Leader Gift
+name_40010_bigTaskleader402,队长礼包,Team Leader Gift
 tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40008_bigTaskleader202,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40009_bigTaskleader302,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40010_bigTaskleader402,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-smallTarget10001,提交1000金币,Submit 1000 coins
-smallTarget10002,提交2000金币,Submit 2000 coins
-smallTarget10003,提交3000金币,Submit 3000 coins
-smallTarget10004,提交4000金币,Submit 4000 coins
-smallTarget10005,提交5000金币,Submit 5000 coins
-smallTarget10006,提交6000金币,Submit 6000 coins
-smallTarget10007,提交7000金币,Submit 7000 coins
-smallTarget10008,提交8000金币,Submit 8000 coins
-smallTarget10009,提交9000金币,Submit 9000 coins
-smallTarget10010,提交9500金币,Submit 9500 coins
-smallTarget10011,提交8500金币,Submit 8500 coins
-smallTarget20001,提交5个初级装备强化石,Submit 5 basic upgrade stone
-smallTarget20002,提交5个初级装备强化石,Submit 5 basic upgrade stone
-smallTarget20003,提交5个中级装备强化石,Submit 5 standard  upgrade stone
-smallTarget20004,提交5个高级装备强化石,Submit 5 superior  upgrade stone
-smallTarget20005,提交5个装备进阶石,Submit 5 Advanced stone
-smallTarget20006,提交5个装备进阶卷轴,Submit 5 Advanced scroll
-smallTarget20007,提交5个宝石开孔石,Submit 5 Gem Socketing Chisel
-smallTarget20008,提交5个进阶卷轴碎片,Submit 5 Advanced scroll chip
-smallTarget20009,提交5个木质宝箱钥匙,Submit 5 Wood Key
-smallTarget20010,提交5个铁质宝箱钥匙,Submit 5 Iron Key
-smallTarget20011,提交5个白银宝箱钥匙,Submit 5 Silver Key
-smallTarget30001,成功通关副本,Complete  instance  successfully
-smallTarget30002,成功通关副本,Complete  instance  successfully
-smallTarget30003,成功通关副本,Complete  instance  successfully
-smallTarget30004,成功通关副本,Complete  instance  successfully
-smallTarget30005,成功通关副本,Complete  instance  successfully
+smallTarget10001,提交1000金币,Retrieve 1000 Coins
+smallTarget10002,提交2000金币,Retrieve 2000 Coins
+smallTarget10003,提交3000金币,Retrieve 3000 Coins
+smallTarget10004,提交4000金币,Retrieve 4000 Coins
+smallTarget10005,提交5000金币,Retrieve 5000 Coins
+smallTarget10006,提交6000金币,Retrieve 6000 Coins
+smallTarget10007,提交7000金币,Retrieve 7000 Coins
+smallTarget10008,提交8000金币,Retrieve 8000 Coins
+smallTarget10009,提交9000金币,Retrieve 9000 Coins
+smallTarget10010,提交9500金币,Retrieve 9500 Coins
+smallTarget10011,提交8500金币,Retrieve 8500 Coins
+smallTarget20001,提交5个初级装备强化石,Retrieve 5 of basic upgrade stone
+smallTarget20002,提交5个初级装备强化石,Retrieve 5 of basic upgrade stone
+smallTarget20003,提交5个中级装备强化石,Retrieve 5 of standard  upgrade stone
+smallTarget20004,提交5个高级装备强化石,Retrieve 5 of superior  upgrade stone
+smallTarget20005,提交5个装备进阶石,Retrieve 5 of Advanced stone
+smallTarget20006,提交5个装备进阶卷轴,Retrieve 5 of Advanced scroll
+smallTarget20007,提交5个宝石开孔石,Retrieve 5 of Gem Socketing Chisel
+smallTarget20008,提交5个进阶卷轴碎片,Retrieve 5 of Advanced scroll chip
+smallTarget20009,提交5个木质宝箱钥匙,Retrieve 5 of Wood Key
+smallTarget20010,提交5个铁质宝箱钥匙,Retrieve 5 of Iron Key
+smallTarget20011,提交5个白银宝箱钥匙,Retrieve 5 of Silver Key
+smallTarget30001,成功通关副本,Clear Stage
+smallTarget30002,成功通关副本,Clear Stage
+smallTarget30003,成功通关副本,Clear Stage
+smallTarget30004,成功通关副本,Clear Stage
+smallTarget30005,成功通关副本,Clear Stage

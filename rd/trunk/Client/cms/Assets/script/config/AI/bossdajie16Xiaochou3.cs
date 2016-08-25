@@ -36,7 +36,7 @@ public class bossdajie16Xiaochou3 : BossAi {
 			
 			Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou32", out useSpell);
 
-			if (GetAttackCount(Xiaochou3Unit) % 7 == 0) 
+			if (GetAttackCount(Xiaochou3Unit) % 7 == 0 && GetAttackCount(Xiaochou3Unit) != 0) 
 			{
 				Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou35", out useSpell);
 			}
@@ -46,11 +46,11 @@ public class bossdajie16Xiaochou3 : BossAi {
 		{
 			Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou31", out useSpell);
 
-			if (GetAttackCount(Xiaochou3Unit) % 7 == 0) 
+			if (GetAttackCount(Xiaochou3Unit) % 7 == 0 && GetAttackCount(Xiaochou3Unit) != 0) 
 			{
 				Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou34", out useSpell);
 			}
-			else if (GetAttackCount(Xiaochou3Unit) % 3 == 0) 
+			else if (GetAttackCount(Xiaochou3Unit) % 3 == 0 && GetAttackCount(Xiaochou3Unit) != 0) 
 			{
 				Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou33", out useSpell);
 			}

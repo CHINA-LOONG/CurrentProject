@@ -25,7 +25,7 @@ public class UIPetDetails : UIBase,
     }
     public override void Clean()
     {
-
+        UIMgr.Instance.DestroyUI(uiSelectEquipList);
     }
 
 
@@ -58,6 +58,7 @@ public class UIPetDetails : UIBase,
 
     private List<GameUnit> curUnitList;
     private int curUnitIndex;
+    private GameUnit curData;
     public GameUnit CurData
     {
         get { return curUnitList[curUnitIndex]; }
@@ -90,12 +91,13 @@ public class UIPetDetails : UIBase,
     public void SetTypeList(GameUnit unit, List<GameUnit> unitList)
     {
         curUnitList = unitList;
-        curUnitIndex = unitList.IndexOf(unit);
+        curUnitIndex = curUnitList.IndexOf(unit);
         Refresh();
     }
     
     void Refresh()
     {
+        curData = CurData;
         leftView.ReloadData(CurData);
         OpenPetDetailsAbilities(CurData);
     }
@@ -120,6 +122,7 @@ public class UIPetDetails : UIBase,
     }
     void OnClickAdvanceBtn()
     {
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_012"), (int)PB.ImType.PROMPT);
     }
 
     void OnClickPreviousBtn()
@@ -174,7 +177,7 @@ public class UIPetDetails : UIBase,
     public void OpenPetDetailsAbilities(GameUnit unit)
     {
         OpenRightView(PetDetailsAbilities.ViewName, ref petDetailsAbilities);
-        petDetailsAbilities.ReloadData(unit);
+        petDetailsAbilities.ReloadData(unit, 0);
     }
     public void OpenPetDetailsEquipInfo(EquipData data)
     {
@@ -218,10 +221,10 @@ public class UIPetDetails : UIBase,
         OpenSelectEquipList(part);
     }
 
-    public void OnRemoveEquip()
-    {
-        OpenPetDetailsAbilities(CurData);
-    }
+    //public void OnRemoveEquip()
+    //{
+    //    OpenPetDetailsAbilities(CurData);
+    //}
 
 
     #endregion
@@ -239,16 +242,44 @@ public class UIPetDetails : UIBase,
 
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetLevelNotify, ReloadPetLevelNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
         GameEventMgr.Instance.AddListener<int,int>(GameEventList.ReloadPetBPNotify, ReloadPetBPNotify);
-        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipForgeNotify);
     }
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetLevelNotify, ReloadPetLevelNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
         GameEventMgr.Instance.RemoveListener<int,int>(GameEventList.ReloadPetBPNotify, ReloadPetBPNotify);
-        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipForgeNotify);
     }
-
+    void ReloadPetLevelNotify(GameUnit gameUnit)
+    {
+        if (curData==gameUnit)
+        {
+            curUnitIndex = curUnitList.IndexOf(gameUnit);
+        }
+        if (rightView==petDetailsAdvance)
+        {
+            OpenPetDetailsAdvance(CurData);
+        }
+    }
     void ReloadPetEquipNotify(EquipData equipData)
+    {
+        if (equipData!=null&&equipData.monsterId==CurData.pbUnit.guid)
+        {
+            if (rightView==petDetailsEquipInfo)
+            {
+                OpenPetDetailsEquipInfo(equipData);
+            }
+        }
+        else
+        {
+            OpenPetDetailsAbilities(CurData);
+        }
+    }
+    void ReloadEquipForgeNotify(EquipData equipData)
     {
         if (equipData.monsterId == CurData.pbUnit.guid && rightView == petDetailsEquipInfo)
         {
@@ -264,14 +295,15 @@ public class UIPetDetails : UIBase,
     {
         if (CurData.pbUnit.guid==guid)
         {
-            if (value>0)
+            if (value > 0)
             {
                 UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("monster_record_005"), value), (int)PB.ImType.PROMPT);
             }
-            else
+            else if (value < 0)
             {
-                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("monster_record_005"), Mathf.Abs(value)), (int)PB.ImType.PROMPT);
+                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("monster_record_015"), Mathf.Abs(value)), (int)PB.ImType.PROMPT);
             }
+            leftView.ReloadData(CurData, false);
         }
     }
 

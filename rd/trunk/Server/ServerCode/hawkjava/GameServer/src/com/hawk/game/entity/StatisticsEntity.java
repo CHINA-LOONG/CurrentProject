@@ -467,9 +467,16 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 
 	public void setInstanceStar(String instanceId, int starCount) {
-		instanceStarMap.put(instanceId, starCount);
+		// 如果没有星级，直接删除
+		if (starCount <= 0) {
+			instanceStarMap.remove(instanceId);
+		} else {
+			instanceStarMap.put(instanceId, starCount);
+		}
+
 		instanceStarFlag = true;
 	}
+
 	/**
 	 * @return 副本完成星级，如未完成返回0
 	 */

@@ -34,11 +34,11 @@ public class bossdajie15Huapo2 : BossAi {
 		if (NormalScript.GetWpLifeLeftRatio(Huapo2Unit.battleUnit, "bossdajie15Huapo2wp02")==0)
 		{
 			
-			if (GetAttackCount(Huapo2Unit) % 6 == 0) 
+			if (GetAttackCount(Huapo2Unit) % 6 == 0 && GetAttackCount(Huapo2Unit) != 0) 
 			{
 				Huapo2SpellDic.TryGetValue ("bossdajie15Huapo24", out useSpell);
 			}
-			else if (GetAttackCount(Huapo2Unit) % 3 == 0) 
+			else if (GetAttackCount(Huapo2Unit) % 3 == 0 && GetAttackCount(Huapo2Unit) != 0) 
 			{
 				Huapo2SpellDic.TryGetValue ("bossdajie15Huapo22", out useSpell);
 			}
@@ -47,11 +47,11 @@ public class bossdajie15Huapo2 : BossAi {
 
 		else 
 		{
-			if (GetAttackCount(Huapo2Unit) % 6 == 0) 
+			if (GetAttackCount(Huapo2Unit) % 6 == 0 && GetAttackCount(Huapo2Unit) != 0) 
 			{
 				Huapo2SpellDic.TryGetValue ("bossdajie15Huapo23", out useSpell);
 			}
-			else if (GetAttackCount(Huapo2Unit) % 3 == 0) 
+			else if (GetAttackCount(Huapo2Unit) % 3 == 0 && GetAttackCount(Huapo2Unit) != 0) 
 			{
 				Huapo2SpellDic.TryGetValue ("bossdajie15Huapo22", out useSpell);
 			}

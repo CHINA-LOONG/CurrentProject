@@ -12,6 +12,7 @@ public class SociatyTechnologyItem : MonoBehaviour
     public Text mContributeConsumValue;
     public Text mTecLvlUpText;
     public Text mMaxLvlText;
+    public Text mOpenLvlText;
 
     public Button mTecLvlUp;
     public Image mTecIcon;
@@ -59,6 +60,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                 mFunctionDescript.text = sdMgr.GetTextByID(data.tecDescript);
                 mContributeConsumValue.text = data.levelUp.ToString();
                 mTecCurLvl.text = string.Empty;
+                mOpenLvlText.text = string.Empty;
             }
 
             return;
@@ -69,6 +71,13 @@ public class SociatyTechnologyItem : MonoBehaviour
         SociatyTechnologyData nextTechData = sdMgr.GetSociatyTechData(techType, lvl + 1);
         if (mTechData != null)
         {
+            mContributeConsumValue.gameObject.SetActive(true);
+            mContributeConsumIcon.gameObject.SetActive(true);
+            mTecLvlUp.gameObject.SetActive(true);
+            mMaxLvlBackImg.gameObject.SetActive(false);
+            mMaxLvlText.gameObject.SetActive(false);
+            mOpenLvlText.text = string.Empty;
+
             //set icon
             Sprite iconImg = ResourceMgr.Instance.LoadAssetType<Sprite>(mTechData.icon) as Sprite;
             if (null != iconImg)
@@ -84,8 +93,13 @@ public class SociatyTechnologyItem : MonoBehaviour
             if (nextTechData != null && nextTechData.sociatyLevel > sociatyLvl)
             {
                 //not open
-                mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), nextTechData.sociatyLevel);
-                mNextLvlDescript.text = string.Empty;
+                //mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), nextTechData.sociatyLevel);
+                //mNextLvlDescript.text = string.Empty;
+
+                SetLvlInfoInternal(curLvlEffect, mTechData, ref mCurLvlDescript);
+                SetLvlInfoInternal(nextLvlEffect, nextTechData, ref mNextLvlDescript);
+                string openText = sdMgr.GetTextByID("sociaty_limitlevel");
+                mOpenLvlText.text = string.Format(openText, nextTechData.level);
             }
             else
             {
@@ -105,11 +119,11 @@ public class SociatyTechnologyItem : MonoBehaviour
                 }
                 else
                 {
-                    mContributeConsumValue.gameObject.SetActive(true);
-                    mContributeConsumIcon.gameObject.SetActive(true);
-                    mTecLvlUp.gameObject.SetActive(true);
-                    mMaxLvlBackImg.gameObject.SetActive(false);
-                    mMaxLvlText.gameObject.SetActive(false);
+                    //mContributeConsumValue.gameObject.SetActive(true);
+                    //mContributeConsumIcon.gameObject.SetActive(true);
+                    //mTecLvlUp.gameObject.SetActive(true);
+                    //mMaxLvlBackImg.gameObject.SetActive(false);
+                    //mMaxLvlText.gameObject.SetActive(false);
                     SetLvlInfoInternal(nextLvlEffect, nextTechData, ref mNextLvlDescript);
                 }
             }

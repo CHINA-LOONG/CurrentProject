@@ -19,7 +19,7 @@ public interface IEquipInfoBase : IEquipDetails
 public interface IEquipDetails
 {
     void OnClickChangeBtn(PartType part);
-    void OnUnloadEquip();
+    //void OnUnloadEquip();
 }
 
 public class EquipDetails : EquipInfoBase
@@ -187,12 +187,12 @@ public class EquipDetails : EquipInfoBase
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.SetEquipData(itemInfo.part, null, true);
 
-        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetEquipNotify, monster);
+        GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadPetEquipNotify, null);
 
-        if (IEquipDetailsDelegate!=null)
-        {
-            IEquipDetailsDelegate.OnUnloadEquip();
-        }
+        //if (IEquipDetailsDelegate!=null)
+        //{
+        //    IEquipDetailsDelegate.OnUnloadEquip();
+        //}
     }
 
     void OnEnable()

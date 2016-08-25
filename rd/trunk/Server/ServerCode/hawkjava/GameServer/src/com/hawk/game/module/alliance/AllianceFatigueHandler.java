@@ -87,7 +87,7 @@ public class AllianceFatigueHandler  implements HawkMsgHandler{
 			
 			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_FATIGUE);
 			if (mailCfg != null) {
-				MailUtil.SendSysMail(mailCfg, request.getTargetId(), selfPlayerAllianceEntity.getName(), 888888888);
+				MailUtil.SendSysMail(mailCfg, request.getTargetId(), selfPlayerAllianceEntity.getName(), GsConst.Alliance.SEND_FATIGUE_COUNT);
 			}
 		}
 		

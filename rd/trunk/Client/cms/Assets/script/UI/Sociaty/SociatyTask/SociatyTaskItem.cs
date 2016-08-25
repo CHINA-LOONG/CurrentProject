@@ -33,7 +33,7 @@ public class SociatyTaskItem : MonoBehaviour
 
         nameText.text = StaticDataMgr.Instance.GetTextByID(taskData.taskName);
         descText.text = StaticDataMgr.Instance.GetTextByID(taskData.taskDesc);
-        lockLevelText.text = string.Format(StaticDataMgr.Instance.GetTextByID("towerBoss_instance_level"), taskData.minLevel);
+        lockLevelText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_taskopenlevel"), taskData.minLevel);
         if(taskData.minLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             lockLevelText.color = new Color(1, 0, 0);

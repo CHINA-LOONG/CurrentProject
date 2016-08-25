@@ -44,21 +44,7 @@ public class UISelectGemList : UIBase,
         Dictionary<string, ItemData> itemList = GameDataMgr.Instance.PlayerDataAttr.gameItemData.itemList;
         infos.Clear();
         ItemStaticData itemStatic;
-        if (isEmbed)
-        {
-            itemStatic = StaticDataMgr.Instance.GetItemData(curInfo.gemId);
-            infos.Add(
-                new GemListItemInfo()
-                {
-                    itemData = new ItemData()
-                    {
-                        itemId = curInfo.gemId,
-                        count = 1
-                    },
-                    staticData = itemStatic,
-                    type = GemListItemInfo.Type.Remove
-                });
-        }
+
         GemListItemInfo.Type tempType = isEmbed ? GemListItemInfo.Type.Change : GemListItemInfo.Type.Embed;
         foreach (var item in itemList)
         {
@@ -68,7 +54,7 @@ public class UISelectGemList : UIBase,
                 Logger.LogError("缺少物品配置:" + item.Value.itemId);
                 continue;
             }
-            if (itemStatic.type == 3 && itemStatic.gemType == info.type)
+            if (itemStatic.type == 3 && itemStatic.gemType == info.type && itemStatic.minLevel <= GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
             {
                 infos.Add(
                     new GemListItemInfo()
@@ -79,11 +65,25 @@ public class UISelectGemList : UIBase,
                     });
             }
         }
-        
-        textNotfound.gameObject.SetActive(infos.Count <= 0);
-
         infos.Sort(SortInfos);
 
+        if (isEmbed)
+        {
+            itemStatic = StaticDataMgr.Instance.GetItemData(curInfo.gemId);
+            infos.Insert(0,
+                         new GemListItemInfo()
+                         {
+                             itemData = new ItemData()
+                             {
+                                 itemId = curInfo.gemId,
+                                 count = 1
+                             },
+                             staticData = itemStatic,
+                             type = GemListItemInfo.Type.Remove
+                         });
+        }
+        textNotfound.gameObject.SetActive(infos.Count <= 0);
+        
         scrollView.InitContentSize(infos.Count, this);
     }
 

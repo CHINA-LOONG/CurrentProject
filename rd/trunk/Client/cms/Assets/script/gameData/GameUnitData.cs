@@ -149,7 +149,7 @@ public class GameUnit : IComparable
 
         return gameUnit;
     }
-
+    
     //create a fake monster for view only
     public static GameUnit CreateFakeUnit(int guid, string unitID)
     {
@@ -516,7 +516,7 @@ public class GameUnit : IComparable
             BattleConst.bpDotLvl * dotLvl
             );
 
-        int bpChange = (int)(previousBp - mBp);
+        int bpChange = (int)(mBp - previousBp);
         if (previousBp > 0.0f)
         {
             GameEventMgr.Instance.FireEvent<int, int>(GameEventList.ReloadPetBPNotify, pbUnit.guid, bpChange);
@@ -833,22 +833,22 @@ public class GameUnit : IComparable
 
             if (this.pbUnit.level == target.pbUnit.level)
             {
-                int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).rarity;
-                int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).rarity;
-                if (selfGrade == targetGrade)
+                if (this.pbUnit.stage == target.pbUnit.stage)
                 {
-                    if (this.pbUnit.stage == target.pbUnit.stage)
+                    int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).rarity;
+                    int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).rarity;
+                    if (selfGrade == targetGrade)
                     {
                         result = 0;
                     }
                     else
                     {
-                        result = this.pbUnit.stage > target.pbUnit.stage ? -1 : 1;
+                        result = selfGrade > targetGrade ? -1 : 1;
                     }
                 }
                 else
                 {
-                    result = selfGrade > targetGrade ? -1 : 1;
+                    result = this.pbUnit.stage > target.pbUnit.stage ? -1 : 1;
                 }
             }
             else

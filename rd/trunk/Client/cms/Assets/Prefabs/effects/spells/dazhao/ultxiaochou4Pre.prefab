@@ -514,7 +514,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179904}
   lengthInSec: 5
-  startDelay: 1.20000005
+  startDelay: 1.5
   speed: 1
   randomSeed: 0
   looping: 0
@@ -2615,7 +2615,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143222}
   lengthInSec: 2
-  startDelay: 1.79999995
+  startDelay: 2.0999999
   speed: 1
   randomSeed: 0
   looping: 0
@@ -3673,7 +3673,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171474}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: .800000012
   speed: 1
   randomSeed: 0
   looping: 0
@@ -5764,7 +5764,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173048}
   lengthInSec: .100000001
-  startDelay: 1.15999997
+  startDelay: 1.39999998
   speed: 1
   randomSeed: 0
   looping: 0
@@ -6802,7 +6802,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155254}
   lengthInSec: 5
-  startDelay: 1.14999998
+  startDelay: 1.39999998
   speed: 1
   randomSeed: 0
   looping: 0
@@ -8898,7 +8898,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152734}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: .800000012
   speed: 1
   randomSeed: 0
   looping: 0
@@ -9951,7 +9951,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124928}
   lengthInSec: .100000001
-  startDelay: 1.16999996
+  startDelay: 1.39999998
   speed: 1
   randomSeed: 0
   looping: 0
@@ -12002,7 +12002,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175738}
   lengthInSec: 5
-  startDelay: 1.20000005
+  startDelay: 1.5
   speed: 1
   randomSeed: 0
   looping: 0
@@ -13055,7 +13055,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110324}
   lengthInSec: 5
-  startDelay: 1.79999995
+  startDelay: 2.0999999
   speed: 1
   randomSeed: 0
   looping: 0
@@ -15161,7 +15161,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190412}
   lengthInSec: 5
-  startDelay: 1.14999998
+  startDelay: 1.39999998
   speed: 1
   randomSeed: 0
   looping: 0
@@ -16209,7 +16209,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115406}
   lengthInSec: 2
-  startDelay: 1.79999995
+  startDelay: 2.0999999
   speed: 1
   randomSeed: 0
   looping: 0

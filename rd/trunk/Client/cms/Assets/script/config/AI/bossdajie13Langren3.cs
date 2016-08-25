@@ -41,11 +41,11 @@ public class bossdajie13Langren3 : BossAi {
 
 		if (count == 2)
 		{
-			if (GetAttackCount(Langren3Unit) % 7 == 0) 
+			if (GetAttackCount(Langren3Unit) % 7 == 0 && GetAttackCount(Langren3Unit) != 0) 
 			{
 				Langren3SpellDic.TryGetValue ("bossdajie13Langren34", out useSpell);
 			}
-			else if (GetAttackCount(Langren3Unit) % 3 == 0) 
+			else if (GetAttackCount(Langren3Unit) % 3 == 0 && GetAttackCount(Langren3Unit) != 0) 
 			{
 				Langren3SpellDic.TryGetValue ("bossdajie13Langren32", out useSpell);
 			}
@@ -54,18 +54,18 @@ public class bossdajie13Langren3 : BossAi {
 
 		else if (count == 1)
 		{
-			if (GetAttackCount(Langren3Unit) % 7 == 0) 
+			if (GetAttackCount(Langren3Unit) % 7 == 0 && GetAttackCount(Langren3Unit) != 0) 
 			{
 				Langren3SpellDic.TryGetValue ("bossdajie13Langren34", out useSpell);
 			}
-			else if (GetAttackCount(Langren3Unit) % 3 == 0) 
+			else if (GetAttackCount(Langren3Unit) % 3 == 0 && GetAttackCount(Langren3Unit) != 0) 
 			{
 				Langren3SpellDic.TryGetValue ("bossdajie13Langren33", out useSpell);
 			}
 		}
 		else if (count == 0)
 		{
-			if (GetAttackCount(Langren3Unit) % 7 == 0) 
+			if (GetAttackCount(Langren3Unit) % 7 == 0 && GetAttackCount(Langren3Unit) != 0) 
 			{
 				Langren3SpellDic.TryGetValue ("bossdajie13Langren34", out useSpell);
 			}

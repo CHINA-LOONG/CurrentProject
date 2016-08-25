@@ -58,7 +58,27 @@ public class UISelectEquipList : UIBase,
     //TODO: sort by zhandouli(战斗力)
     public static int SortEquip(EquipData a, EquipData b)
     {
-        return 0;
+        int result = 1;
+        if (a.stage == b.stage)
+        {
+            if (a.level > b.level)
+            {
+                result = -1;
+            }
+            else if (a.level < b.level)
+            {
+                result = 1;
+            }
+        }
+        else if (a.stage > b.stage)
+        {
+            result = -1;
+        }
+        else
+        {
+            result = 1;
+        }
+        return result;
     }
     
     void OnEnable()
@@ -99,7 +119,7 @@ public class UISelectEquipList : UIBase,
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.SetEquipData(itemInfo.part, equip, true);
 
-        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetEquipNotify,curUnit);
+        GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadPetEquipNotify, equip);
 
         UIMgr.Instance.DestroyUI(this);
     }
@@ -118,7 +138,7 @@ public class UISelectEquipList : UIBase,
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.SetEquipData(itemInfo.part, equip, true);
 
-        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.ReloadPetEquipNotify,curUnit);
+        GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadPetEquipNotify, equip);
 
         UIMgr.Instance.DestroyUI(this);
     }

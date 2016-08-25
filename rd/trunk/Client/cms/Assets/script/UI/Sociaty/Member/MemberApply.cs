@@ -149,7 +149,7 @@ public class MemberApply : UIBase
         PB.HSAllianceHanleApplyRet retmsg = message.GetProtocolBody<PB.HSAllianceHanleApplyRet>();
         if (null != retmsg)
         {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_022"), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_064"), (int)PB.ImType.PROMPT);
             GameDataMgr.Instance.SociatyDataMgrAttr.newApplyList.Clear();
             RefreshUi();
             SociatyContentMember.Instance.RequestMemberData();

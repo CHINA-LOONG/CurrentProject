@@ -39,11 +39,11 @@ public class bossxiaoxiang21Wushi4 : BossAi {
 				//Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi43", out useSpell);
 				//i--;
 			//}
-			if (GetAttackCount(Wushi4Unit) % 5 == 0) 
+			if (GetAttackCount(Wushi4Unit) % 5 == 0 && GetAttackCount(Wushi4Unit) !=0 ) 
 			{
 				Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi44", out useSpell);
 			}
-			else if (GetAttackCount(Wushi4Unit) % 3 == 0) 
+			else if (GetAttackCount(Wushi4Unit) % 3 == 0 && GetAttackCount(Wushi4Unit) !=0) 
 			{
 				Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi42", out useSpell);
 			}
@@ -56,7 +56,7 @@ public class bossxiaoxiang21Wushi4 : BossAi {
 				//Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi43", out useSpell);
 				//i--;
 			//}
-			if (GetAttackCount(Wushi4Unit) % 7 == 0) 
+			if (GetAttackCount(Wushi4Unit) % 7 == 0 && GetAttackCount(Wushi4Unit) !=0) 
 			{
 				Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi44", out useSpell);
 			}

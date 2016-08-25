@@ -35,11 +35,11 @@ public class bossxiaoxiang25Kairuisi5 : BossAi {
 			
 			Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi52", out useSpell);
 
-			if (GetAttackCount(Kairuisi5Unit) % 5 == 0) 
+			if (GetAttackCount(Kairuisi5Unit) % 5 == 0 && GetAttackCount(Kairuisi5Unit) != 0) 
 			{
 				Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi55", out useSpell);
 			}
-			else if (GetAttackCount(Kairuisi5Unit) % 4 == 0) 
+			else if (GetAttackCount(Kairuisi5Unit) % 4 == 0 && GetAttackCount(Kairuisi5Unit) != 0) 
 			{
 				Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi53", out useSpell);
 			}
@@ -49,15 +49,15 @@ public class bossxiaoxiang25Kairuisi5 : BossAi {
 		{
 			Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi51", out useSpell);
 
-			if (GetAttackCount(Kairuisi5Unit) % 5 == 0) 
+			if (GetAttackCount(Kairuisi5Unit) % 5 == 0 && GetAttackCount(Kairuisi5Unit) != 0) 
 			{
 				Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi54", out useSpell);
 			}
-			else if (GetAttackCount(Kairuisi5Unit) % 4 == 0) 
+			else if (GetAttackCount(Kairuisi5Unit) % 4 == 0 && GetAttackCount(Kairuisi5Unit) != 0) 
 			{
 				Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi53", out useSpell);
 			}
-			else if (GetAttackCount(Kairuisi5Unit) % 3 == 0) 
+			else if (GetAttackCount(Kairuisi5Unit) % 3 == 0 && GetAttackCount(Kairuisi5Unit) != 0) 
 			{
 				Kairuisi5SpellDic.TryGetValue ("bossxiaoxiang25Kairuisi52", out useSpell);
 			}

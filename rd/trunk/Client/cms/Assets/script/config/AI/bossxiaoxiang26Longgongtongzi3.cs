@@ -39,11 +39,11 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 				Longgongtongzi3SpellDic.TryGetValue ("dispelPassive", out useSpell);
 				i--;
 			}
-			else if (GetAttackCount(Longgongtongzi3Unit) % 10 == 0)
+			else if (GetAttackCount(Longgongtongzi3Unit) % 10 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi34", out useSpell);
 			}				
-			else if (GetAttackCount(Longgongtongzi3Unit) % 3 == 0)
+			else if (GetAttackCount(Longgongtongzi3Unit) % 3 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi32", out useSpell);
 			}		
@@ -51,11 +51,11 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 
 		else 
 		{
-			if (GetAttackCount(Longgongtongzi3Unit) % 7 == 0)
+			if (GetAttackCount(Longgongtongzi3Unit) % 7 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi34", out useSpell);
 			}				
-			else if (GetAttackCount(Longgongtongzi3Unit) % 3 == 0)
+			else if (GetAttackCount(Longgongtongzi3Unit) % 3 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi32", out useSpell);
 			}		

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class PetDetailsAbilities : PetDetailsRight
 {
@@ -26,12 +27,16 @@ public class PetDetailsAbilities : PetDetailsRight
     public Text textLevelUP;
 
     public Transform spellParent;
+
+    public GameObject effectLevelUp;
+
+    private int index = 0;
     private int spellCount;
-    private AbilitieOptionItem[] spellIcons = new AbilitieOptionItem[5];
+    private List<AbilitieOptionItem> spellIcons = new List<AbilitieOptionItem>(5) { null,null,null,null,null};
     private AbilitieOptionItem curAbilitie;
     
     private GameUnit curData;
-
+    
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_skill");
@@ -42,15 +47,17 @@ public class PetDetailsAbilities : PetDetailsRight
         btnLevelUP.onClick.AddListener(OnClickLevelUPBtn);
     }
 
-    public void ReloadData(GameUnit gameUnit)
+    public void ReloadData(GameUnit gameUnit, int select = -1)
     {
+        SetInitEffect();
         curData = gameUnit;
 
         StopAllCoroutines();
         StartCoroutine(IncreasePoint());
 
         ReloadSpell(curData.spellList);
-        ReloadAbilitie(spellIcons[0]);
+        index = (select == -1) ? index : select;
+        ReloadAbilitie(spellIcons[index]);
     }
 
     void ReloadSpell(Dictionary<string,Spell> spellDict)
@@ -85,13 +92,13 @@ public class PetDetailsAbilities : PetDetailsRight
                 }
                 spellIcons[spellCount].ReloadData(spellDict[spellList[i].id]);
                 spellCount++;
-                if (spellCount >= spellIcons.Length)
+                if (spellCount >= spellIcons.Count)
                 {
                     break;
                 }
             }
         }
-        for (int i = spellCount; i < spellIcons.Length; i++)
+        for (int i = spellCount; i < spellIcons.Count; i++)
         {
             if (null != spellIcons[i])
             {
@@ -107,6 +114,7 @@ public class PetDetailsAbilities : PetDetailsRight
         }
         curAbilitie = abilitie;
         curAbilitie.IsSelect = true;
+        index = spellIcons.IndexOf(abilitie);
 
         Spell spell = curAbilitie.curData;
         SpellProtoType spellData = spell.spellData;
@@ -129,10 +137,11 @@ public class PetDetailsAbilities : PetDetailsRight
             textLevel.gameObject.SetActive(true);
             text_Current.gameObject.SetActive(true);
             textLevel.text = string.Format("LVL({0}/{1})", spell.level, GameConfig.MaxMonsterLevel);
-            textCurrentDesc.text = string.Format(spellData.tipsCurlvl, spellData.baseTipValue + spell.level * spellData.levelAdjust);
+            textCurrentDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsCurlvl), spellData.baseTipValue + spell.level * spellData.levelAdjust);
             if (spell.level >= GameConfig.MaxMonsterLevel)
             {
                 text_MaxLevel.gameObject.SetActive(true);
+                text_Next.gameObject.SetActive(false);
                 text_MaxLevel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_max_level");
                 objLevelUP.SetActive(false);
             }
@@ -141,7 +150,7 @@ public class PetDetailsAbilities : PetDetailsRight
                 text_MaxLevel.gameObject.SetActive(false);
                 text_Next.gameObject.SetActive(true);
                 objLevelUP.SetActive(true);
-                textNextDesc.text = string.Format(spellData.tipsNextlvl, spellData.baseTipValue + (spell.level + 1) * spellData.levelAdjust);
+                textNextDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsNextlvl), spellData.baseTipValue + (spell.level + 1) * spellData.levelAdjust);
                 textCoin.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
                 //判断金币
                 if (StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1) > GameDataMgr.Instance.PlayerDataAttr.coin)
@@ -204,9 +213,18 @@ public class PetDetailsAbilities : PetDetailsRight
                 MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
                                       StaticDataMgr.Instance.GetTextByID("pet_skill_point_not_enough"));
             }
-
             return;
         }
+
+        effectLevelUp.gameObject.SetActive(true);
+        Tweener tweener = effectLevelUp.transform.DOScale(2.0f, 0.5f)
+                                                 .SetEase(Ease.Linear)
+                                                 .OnComplete(delegate ()
+                                                            {
+                                                                SetInitEffect();
+                                                            });
+        curAbilitie.PlayEffect();
+
 
         PB.HSMonsterSkillUpRet skillUpResponse = msg.GetProtocolBody<PB.HSMonsterSkillUpRet>();
         curData.spellList[curAbilitie.curData.spellData.id].level += 1;
@@ -214,6 +232,17 @@ public class PetDetailsAbilities : PetDetailsRight
 
         StatisticsDataMgr.Instance.ResetSkillPointState(skillUpResponse.skillPoint, skillUpResponse.skillPointTimeStamp);
         ReloadAbilitie(curAbilitie);
+    }
+
+    void SetInitEffect()
+    {
+        effectLevelUp.SetActive(false);
+        effectLevelUp.transform.localScale = Vector3.one;
+    }
+
+    void OnCoinChangedRefresh(long coin)
+    {
+        ReloadData(curData);
     }
     void OnEnable()
     {
@@ -225,17 +254,18 @@ public class PetDetailsAbilities : PetDetailsRight
     }
     void BindLisetener()
     {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_SKILL_UP_S.GetHashCode().ToString(), OnMonsterSkillUpReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_SKILL_UP_C.GetHashCode().ToString(), OnMonsterSkillUpReturn);
     }
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_SKILL_UP_S.GetHashCode().ToString(), OnMonsterSkillUpReturn);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_SKILL_UP_C.GetHashCode().ToString(), OnMonsterSkillUpReturn);
     }
 
-
-
+    
     IEnumerator IncreasePoint()
     {
         string currentPoint;
@@ -251,7 +281,7 @@ public class PetDetailsAbilities : PetDetailsRight
                     Logger.LogError("更新时间有误差:"+ (refreshTime - GameConfig.SkillPointTime).ToString());
                     refreshTime = GameConfig.SkillPointTime;
                 }
-                currentDesc = string.Format(StaticDataMgr.Instance.GetTextByID("pet_detail_skill_current_huifu"), string.Format("({0:D2} : {1:D2})", refreshTime / 60, refreshTime % 60));
+                currentDesc = string.Format(StaticDataMgr.Instance.GetTextByID("pet_detail_skill_current_huifu"), string.Format("{0:D2}:{1:D2}", refreshTime / 60, refreshTime % 60));
             }
             else
             {

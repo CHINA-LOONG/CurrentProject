@@ -119,8 +119,23 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 		AllianceManager.getInstance().broadcastNotify(allianceEntity.getId(), HawkProtocol.valueOf(HS.code.ALLIANCE_LEVEL_CHANGE_N_S, notify), 0);
 
 		ImSysCfg imCfg = HawkConfigManager.getInstance().getConfigByKey(ImSysCfg.class, GsConst.SysIm.ALLIANCE_LEVEL_UP);
-		if (imCfg != null) {
-			ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), "XXXXXXX", currentLevel + 1);
+		if (imCfg != null) {		
+			switch (request.getType()) {
+			case GsConst.Alliance.ALLIANCE_TEC_LEVEL:
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), player.getLanguage().equals("en") ? "Guild Lvl": "公会等级", currentLevel + 1);
+				break;
+			case GsConst.Alliance.ALLIANCE_TEC_MEMBER:
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), player.getLanguage().equals("en") ? "Member Count": "公会人数", currentLevel + 1);
+				break;
+			case GsConst.Alliance.ALLIANCE_TEC_COIN:
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), player.getLanguage().equals("en") ? "Palace of Midas Gains": "米达斯宫增益", currentLevel + 1);
+				break;
+			case GsConst.Alliance.ALLIANCE_TEC_EXP:
+				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), player.getLanguage().equals("en") ? "Fields of Elysium Gains": "至福乐土增益", currentLevel + 1);
+				break;
+			default:
+				break;
+			}
 		}
 
 		HSAllianceLevelUpRet.Builder resonse = HSAllianceLevelUpRet.newBuilder();

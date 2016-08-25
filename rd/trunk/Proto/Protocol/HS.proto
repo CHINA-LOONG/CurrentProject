@@ -34,7 +34,7 @@ enum code
 	LOGIN_S                     = 1001;
 	LOGOUT_C                    = 1002;
 	LOGOUT_S                    = 1003;
-	KICKOUT_S                   = 1004; 
+	KICKOUT_S                   = 1004;
 	SYNCINFO_C                  = 1005;
 	SYNCINFO_S                  = 1006;
 	RECCONECT_C                 = 1007;

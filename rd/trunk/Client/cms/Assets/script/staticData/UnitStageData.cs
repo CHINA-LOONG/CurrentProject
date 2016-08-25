@@ -13,7 +13,7 @@ public class UnitStageData
     public int defense;
     public int endurance;
     public int recovery;
-    public int modifyRate;
+    public float modifyRate;
     public int demandLevel;
     public int demandCoin;
     public string demandItem;

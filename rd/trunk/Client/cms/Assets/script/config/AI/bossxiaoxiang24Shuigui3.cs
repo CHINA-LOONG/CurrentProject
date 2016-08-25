@@ -34,11 +34,11 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 		if (NormalScript.GetWpLifeLeftRatio(Shuigui3Unit.battleUnit, "bossxiaoxiang24Shuigui3wp02")==0)
 		{
 			
-			if (GetAttackCount(Shuigui3Unit) % 7 == 0) 
+			if (GetAttackCount(Shuigui3Unit) % 7 == 0 && GetAttackCount(Shuigui3Unit) != 0) 
 			{
 				Shuigui3SpellDic.TryGetValue ("bossxiaoxiang24Shuigui34", out useSpell);
 			}
-			else if (GetAttackCount(Shuigui3Unit) % 5 == 0) 
+			else if (GetAttackCount(Shuigui3Unit) % 5 == 0 && GetAttackCount(Shuigui3Unit) != 0) 
 			{
 				Shuigui3SpellDic.TryGetValue ("bossxiaoxiang24Shuigui32", out useSpell);
 			}
@@ -46,11 +46,11 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 
 		else 
 		{
-			if (GetAttackCount(Shuigui3Unit) % 7 == 0) 
+			if (GetAttackCount(Shuigui3Unit) % 7 == 0 && GetAttackCount(Shuigui3Unit) != 0) 
 			{
 				Shuigui3SpellDic.TryGetValue ("bossxiaoxiang24Shuigui33", out useSpell);
 			}
-			else if (GetAttackCount(Shuigui3Unit) % 5 == 0) 
+			else if (GetAttackCount(Shuigui3Unit) % 5 == 0 && GetAttackCount(Shuigui3Unit) != 0) 
 			{
 				Shuigui3SpellDic.TryGetValue ("bossxiaoxiang24Shuigui32", out useSpell);
 			}

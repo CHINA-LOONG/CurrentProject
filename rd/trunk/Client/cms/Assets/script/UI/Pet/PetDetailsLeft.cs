@@ -34,6 +34,12 @@ public class PetDetailsLeft : MonoBehaviour,
 
     private UIPetFeedList uiPetFeedList;
 
+    public Button btnDisposition;
+    public Text textDisposition;
+    private CharacterData dispositionData;
+    public GameObject objDispositionTips;
+    public Text textDisName;
+    public Text textDisDesc;
     public bool IsLocked
     {
         get { return curData.pbUnit.locked; }
@@ -65,6 +71,8 @@ public class PetDetailsLeft : MonoBehaviour,
     {
         btnLock.onClick.AddListener(OnClickLockBtn);
         btnAddExp.onClick.AddListener(OnClickAddExpBtn);
+        ScrollViewEventListener.Get(btnDisposition.gameObject).onDown = OnDispositionDown;
+        ScrollViewEventListener.Get(btnDisposition.gameObject).onUp = OnDispositionUp;
 
         for (int i = 0; i < fields.Length; i++)
         {
@@ -92,9 +100,32 @@ public class PetDetailsLeft : MonoBehaviour,
         textZhanli.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli") + curData.mBp;
         IsLocked = curData.pbUnit.locked;
         RefreshLevelExp(curData.pbUnit.level, curData.pbUnit.curExp);
-        
+
+        dispositionData = StaticDataMgr.Instance.GetCharacterData(curUnitData.disposition);
+        SetDisposition(dispositionData.index);
+        textDisposition.text = StaticDataMgr.Instance.GetTextByID(dispositionData.name);
+        objDispositionTips.gameObject.SetActive(false);
     }
-    
+
+    void SetDisposition(int index)
+    {
+        btnDisposition.image.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("chongwu_xinge"+ index);
+        SpriteState state = btnDisposition.spriteState;
+        state.pressedSprite = ResourceMgr.Instance.LoadAssetType<Sprite>("chongwu_xinge" + index + "_anxia");
+        btnDisposition.spriteState = state;
+    }
+
+    void OnDispositionDown(GameObject go)
+    {
+        objDispositionTips.SetActive(true);
+        textDisName.text = StaticDataMgr.Instance.GetTextByID(dispositionData.name);
+        textDisDesc.text = StaticDataMgr.Instance.GetTextByID(dispositionData.desc);
+    }
+    void OnDispositionUp(GameObject go)
+    {
+        objDispositionTips.SetActive(false);
+    }
+
     public void RefreshLevelExp(int level, int exp)
     {
         textLevel.text = "LVL:" + level;
@@ -135,7 +166,7 @@ public class PetDetailsLeft : MonoBehaviour,
         PB.HSMonsterLock param = new PB.HSMonsterLock();
         param.monsterId = curData.pbUnit.guid;
         param.locked = !curData.pbUnit.locked;
-        GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_LOCK_C.GetHashCode(), param);
+        GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_LOCK_C.GetHashCode(), param,false);
     }
     void OnClickAddExpBtn()
     {
@@ -156,7 +187,7 @@ public class PetDetailsLeft : MonoBehaviour,
     
     void OnPetLockReturn(ProtocolMessage msg)
     {
-        UINetRequest.Close();
+        //UINetRequest.Close();
         if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("设置失败");
@@ -167,6 +198,7 @@ public class PetDetailsLeft : MonoBehaviour,
         if (result.monsterId == curData.pbUnit.guid)
         {
             IsLocked = result.locked;
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(result.locked ? "monster_record_006" : "monster_record_009"), (int)PB.ImType.PROMPT);
         }
         else
         {
@@ -183,15 +215,11 @@ public class PetDetailsLeft : MonoBehaviour,
             ReloadData(curData, false);
         }
     }
-    void ReloadPetEquipNotify(GameUnit gameUnit)
-    {
-        if (curData == gameUnit)
-        {
-            //ReloadData(curData, false);
-            RefreshEquip(curData);
-        }
-    }
     void ReloadPetEquipNotify(EquipData equipData)
+    {
+        RefreshEquip(curData);
+    }
+    void ReloadEquipForgeNotify(EquipData equipData)
     {
         if (equipData.monsterId==curData.pbUnit.guid)
         {
@@ -211,16 +239,16 @@ public class PetDetailsLeft : MonoBehaviour,
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStageNotify);
-        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
-        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipForgeNotify);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
     }
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetStageNotify, ReloadPetStageNotify);
-        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
-        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadPetEquipNotify, ReloadPetEquipNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipForgeNotify);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
     }

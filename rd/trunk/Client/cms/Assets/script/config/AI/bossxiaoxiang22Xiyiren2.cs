@@ -28,16 +28,16 @@ public class bossxiaoxiang22Xiyiren2 : BossAi {
 
 		attackResult.attackTarget = GetAttackRandomTarget(Xiyiren2Unit);
 
-		if (GetAttackCount(Xiyiren2Unit) % 7 == 0) 
+		if (GetAttackCount(Xiyiren2Unit) % 7 == 0 && GetAttackCount(Xiyiren2Unit) != 0) 
 		{
 			Xiyiren2SpellDic.TryGetValue ("bossxiaoxiang22Xiyiren24", out useSpell);
 		}
-		if (GetAttackCount(Xiyiren2Unit) % 5 == 0) 
+		if (GetAttackCount(Xiyiren2Unit) % 5 == 0 && GetAttackCount(Xiyiren2Unit) != 0) 
 		{
 			Xiyiren2SpellDic.TryGetValue ("bossxiaoxiang22Xiyiren23", out useSpell);
 
 		}	
-		if (GetAttackCount(Xiyiren2Unit) % 2 == 0) 
+		if (GetAttackCount(Xiyiren2Unit) % 2 == 0 && GetAttackCount(Xiyiren2Unit) != 0) 
 		{
 			Xiyiren2SpellDic.TryGetValue ("bossxiaoxiang22Xiyiren22", out useSpell);
 

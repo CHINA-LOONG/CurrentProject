@@ -345,7 +345,12 @@ public class BattleController : MonoBehaviour
         //battleType = (BattleType)proto.battleType;
         instanceData = StaticDataMgr.Instance.GetInstanceData(curInstanceParam.instanceData.instanceId);
         maxProcessIndex = curInstanceParam.instanceData.battle.Count;
-        instanceStar = InstanceMapService.Instance.GetRuntimeInstance(curInstanceParam.instanceData.instanceId).star;
+
+        InstanceEntryRuntimeData instanceRuntimeData = InstanceMapService.Instance.GetRuntimeInstance(curInstanceParam.instanceData.instanceId);
+        if (instanceRuntimeData!=null)
+        {
+            instanceStar = instanceRuntimeData.star;
+        }
         if (!InitVictorMethod())
             return;
         AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);

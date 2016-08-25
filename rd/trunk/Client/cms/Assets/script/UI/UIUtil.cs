@@ -426,10 +426,10 @@ public class UIUtil
         UnitBaseData unitBase = StaticDataMgr.Instance.GetUnitBaseRowData(unit.pbUnit.level);
 
         health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * unitBase.health + unitStageData.health * unitData.healthModifyRate);
-        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * unitBase.strength + unitStageData.strength * unitData.healthModifyRate);
-        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * unitBase.intelligence + unitStageData.intelligence * unitData.healthModifyRate);
-        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * unitBase.defense + unitStageData.defense * unitData.healthModifyRate);
-        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * unitBase.speed + unitStageData.speed * unitData.healthModifyRate);
+        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * unitBase.strength + unitStageData.strength * unitData.strengthModifyRate);
+        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * unitBase.intelligence + unitStageData.intelligence * unitData.intelligenceModifyRate);
+        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * unitBase.defense + unitStageData.defense * unitData.defenseModifyRate);
+        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * unitBase.speed + unitStageData.speed * unitData.speedModifyRate);
     }
 
     public static void SetParentReset(Transform child, Transform parent)
@@ -544,12 +544,12 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
-                value1.text = "+" + data.criticalRatio.ToString();
+                value1.text = "+" + data.criticalRatio.ToString("0%");
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
-                value2.text = "+" + data.criticalRatio.ToString();
+                value2.text = "+" + data.criticalRatio.ToString("0%");
             }
             index++;
         }
@@ -558,12 +558,12 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
-                value1.text = "+" + data.criticalDmg.ToString();
+                value1.text = "+" + data.criticalDmg.ToString("0%");
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
-                value2.text = "+" + data.criticalDmg.ToString();
+                value2.text = "+" + data.criticalDmg.ToString("0%");
             }
             index++;
         }
@@ -572,12 +572,12 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
-                value1.text = "+" + data.healRatio.ToString();
+                value1.text = "+" + data.healRatio.ToString("0%");
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
-                value2.text = "+" + data.healRatio.ToString();
+                value2.text = "+" + data.healRatio.ToString("0%");
             }
             index++;
         }

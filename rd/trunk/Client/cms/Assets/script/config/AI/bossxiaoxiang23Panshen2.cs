@@ -32,12 +32,12 @@ public class bossxiaoxiang23Panshen2 : BossAi {
 		wpList = GetAliveWeakPointList (Panshen2Unit);
 
 
-		if (GetAttackCount(Panshen2Unit) % 6 == 0) 
+		if (GetAttackCount(Panshen2Unit) % 6 == 0 && GetAttackCount(Panshen2Unit) != 0) 
 		{
 			Panshen2SpellDic.TryGetValue ("bossxiaoxiang23Panshen24", out useSpell);
 		}
 
-		else if (GetAttackCount(Panshen2Unit) % 3 == 0) 
+		else if (GetAttackCount(Panshen2Unit) % 3 == 0 && GetAttackCount(Panshen2Unit) != 0) 
 		{
 			Panshen2SpellDic.TryGetValue ("bossxiaoxiang23Panshen23", out useSpell);
 

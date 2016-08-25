@@ -704,6 +704,7 @@ public class UIAdjustBattleTeam : UIBase
     #region 重置副本
     void OnResetInstanceTimesClick(GameObject go)
     {
+        if (isBattleClick) return;
         ResetInstance();
     }
 
@@ -759,6 +760,7 @@ public class UIAdjustBattleTeam : UIBase
     #region   扫荡相关
     void OnRapid1ButtonClick(GameObject go)
     {
+        if (isBattleClick) return;
         int saodTime = 1;
         SaodangState sstate = GetSaodangState(out saodTime);
         if(sstate == SaodangState.OK)
@@ -773,6 +775,7 @@ public class UIAdjustBattleTeam : UIBase
 
     void OnRapid10ButtonClick(GameObject go)
     {
+        if (isBattleClick) return;
         int saodTime = 1;
         SaodangState sstate = GetSaodangState(out saodTime);
         if (sstate == SaodangState.OK)

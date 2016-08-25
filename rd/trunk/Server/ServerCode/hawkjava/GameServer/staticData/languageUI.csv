@@ -1821,7 +1821,7 @@ worldboss_rulebutton,规则说明,Rules
 worldboss_myrank,我的排名,My Ranking
 worldboss_myhurt,我的伤害,My Damage
 worldboss_kong,无,None
-worldboss_myrank500,500名之后,Rank 500 and above
+worldboss_myrank500,500名之后,500 and above
 worldboss_kexingtitle,神怪克星,Deity Nemesis
 worldboss_kexingdiji,低级克星,Minor Nemesis
 worldboss_kexinggaoji,高级克星,Major Nemesis
@@ -1881,7 +1881,8 @@ worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与
    Ranks 4 - 20            100 Diamonds
    Ranks 21 - 100        50   Diamonds"
 worldboss_rewardtitle,排名奖励,Ranking Reward
-worldboss_ranklast,{0}及以后,After level {0}
+worldboss_ranklast,{0}及以后,"{0} and 
+above"
 worldboss_rewardtips,奖励将在活动结束后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. 
 worldboss_ranktitle1,上场伤害排名,Previous damage ranking
 worldboss_ranktitle2,本场伤害排名,Current damage ranking

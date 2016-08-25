@@ -34,11 +34,11 @@ public class bossdajie17Zouyincao2 : BossAi {
 		if (NormalScript.GetWpLifeLeftRatio(Zouyincao2Unit.battleUnit, "bossdajie17Zouyincao2wp02")!=0)
 		{
 			
-			if (GetAttackCount(Zouyincao2Unit) % 7 == 0) 
+			if (GetAttackCount(Zouyincao2Unit) % 7 == 0 && GetAttackCount(Zouyincao2Unit) != 0) 
 			{
 				Zouyincao2SpellDic.TryGetValue ("bossdajie17Zouyincao23", out useSpell);
 			}
-			else if (GetAttackCount(Zouyincao2Unit) % 3 == 0) 
+			else if (GetAttackCount(Zouyincao2Unit) % 3 == 0 && GetAttackCount(Zouyincao2Unit) != 0) 
 			{
 				Zouyincao2SpellDic.TryGetValue ("bossdajie17Zouyincao22", out useSpell);
 			}

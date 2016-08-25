@@ -617,7 +617,7 @@ public class ImManager extends HawkAppObj {
 			Entry<Integer, ImPlayer> entry = iterator.next();
 			push(imMsgList, entry.getValue());
 
-			if (false == entry.getValue().getSession().isActive()) {
+			if (null == entry.getValue().getSession()) {
 				iterator.remove();
 			}
 		}

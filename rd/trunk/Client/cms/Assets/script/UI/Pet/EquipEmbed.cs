@@ -114,7 +114,7 @@ public class EquipEmbed : EquipInfoBase,
         curDemand.Clear();
         curForge.GetPunchDemand(ref curDemand);
 
-        btnSocket.interactable = UIUtil.CheckIsEnoughMaterial(curDemand);
+        //btnSocket.interactable = UIUtil.CheckIsEnoughMaterial(curDemand);
 
         enoughCoin = true;
         enoughItem = true;
@@ -181,9 +181,14 @@ public class EquipEmbed : EquipInfoBase,
 
     void OnClickSocketBtn()
     {
-        if (!enoughItem||!enoughCoin)
+        if (!enoughItem)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_004"), (int)PB.ImType.PROMPT);
+            return;
+        }
+        else if (!enoughCoin)
+        {
+            GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
             return;
         }
 
@@ -216,6 +221,10 @@ public class EquipEmbed : EquipInfoBase,
         GameApp.Instance.netManager.SendMessage(PB.code.EQUIP_PUNCH_C.GetHashCode(), param);
     }
 
+    void OnCoinChangedRefresh(long coin)
+    {
+        ReloadData(curData);
+    }
     void OnEnable()
     {
         BindListener();
@@ -227,12 +236,14 @@ public class EquipEmbed : EquipInfoBase,
 
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipSocketNotify, RefreshNotify);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_C.GetHashCode().ToString(), OnEquipPunchRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_S.GetHashCode().ToString(), OnEquipPunchRet);
     }
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadEquipSocketNotify, RefreshNotify);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_C.GetHashCode().ToString(), OnEquipPunchRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_S.GetHashCode().ToString(), OnEquipPunchRet);

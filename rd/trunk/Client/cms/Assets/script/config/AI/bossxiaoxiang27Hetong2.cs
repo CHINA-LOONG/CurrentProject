@@ -37,12 +37,13 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 			if (i == 1) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong23", out useSpell);
+				i--;
 			}
-			else if (GetAttackCount(Hetong2Unit) % 5 == 0) 
+			else if (GetAttackCount(Hetong2Unit) % 5 == 0 && GetAttackCount(Hetong2Unit) != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong24", out useSpell);
 			}
-			else if (GetAttackCount(Hetong2Unit) % 2 == 0) 
+			else if (GetAttackCount(Hetong2Unit) % 2 == 0 && GetAttackCount(Hetong2Unit) != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong22", out useSpell);
 			}
@@ -51,11 +52,11 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 
 		else 
 		{
-			if (GetAttackCount(Hetong2Unit) % 6 == 0) 
+			if (GetAttackCount(Hetong2Unit) % 6 == 0 && GetAttackCount(Hetong2Unit) != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong24", out useSpell);
 			}
-			else if (GetAttackCount(Hetong2Unit) % 2 == 0) 
+			else if (GetAttackCount(Hetong2Unit) % 2 == 0 && GetAttackCount(Hetong2Unit) != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong22", out useSpell);
 			}

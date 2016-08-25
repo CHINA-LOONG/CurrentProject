@@ -138,12 +138,6 @@ public class AllianceEntity extends HawkDBEntity {
 	@Transient
 	private Set<AllianceTeamEntity> unfinishTeamTimeoutList;
 	
-	/**
-	 * 刷新时间
-	 */
-	@Transient
-	private int lastRefreshTime = 0;
-	
 	public AllianceEntity() {
 		memberList = new HashMap<Integer, PlayerAllianceEntity>();
 		applyList = new TreeMap<Integer, AllianceApplyEntity>();
@@ -445,25 +439,22 @@ public class AllianceEntity extends HawkDBEntity {
 	
 	public void refreshTeamEntity(int nowSeconds)
 	{
-		if (nowSeconds > lastRefreshTime) {
-			lastRefreshTime = nowSeconds;
-			Iterator<AllianceTeamEntity> it = unfinishTeamTimeoutList.iterator();  
-	        while(it.hasNext()){  
-	        	AllianceTeamEntity teamEntity = it.next();  
-	            if(teamEntity.getCreateTime() + teamEntity.getOverTime() < nowSeconds){  
-	            	it.remove();
-	        		unfinishTeamList.remove(teamEntity.getId());
-	            	teamEntity.clearTeam();
-	        		
-	        		HSAllianceTaskTimeoutNotify.Builder notify = HSAllianceTaskTimeoutNotify.newBuilder();
-	        		notify.setTaskId(teamEntity.getId());
-	        		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TASK_TIMEOUT_N_S_VALUE, notify ), 0);
-	            }
-	            else {
-					break;
-				}
-	        }
-		}
+		Iterator<AllianceTeamEntity> it = unfinishTeamTimeoutList.iterator();  
+        while(it.hasNext()){  
+        	AllianceTeamEntity teamEntity = it.next();  
+            if(teamEntity.getCreateTime() + teamEntity.getOverTime() < nowSeconds){  
+            	it.remove();
+        		unfinishTeamList.remove(teamEntity.getId());
+            	teamEntity.clearTeam();
+        		
+        		HSAllianceTaskTimeoutNotify.Builder notify = HSAllianceTaskTimeoutNotify.newBuilder();
+        		notify.setTaskId(teamEntity.getId());
+        		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TASK_TIMEOUT_N_S_VALUE, notify ), 0);
+            }
+            else {
+				break;
+			}
+        }
 	}
 	
 	@Override 

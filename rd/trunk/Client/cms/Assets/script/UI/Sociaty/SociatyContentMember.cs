@@ -54,7 +54,8 @@ public class SociatyContentMember : SociatyContentBase
     public override void RefreshUI()
     {
         sociatyDataMgr = GameDataMgr.Instance.SociatyDataMgrAttr;
-        CheckAndRequestMemberData();
+        RequestMemberData();
+        //CheckAndRequestMemberData();
     }
 
     void CheckAndRequestMemberData()

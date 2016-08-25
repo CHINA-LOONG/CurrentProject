@@ -16,7 +16,7 @@ public class EquipListItem : MonoBehaviour
     public Text textName;
     public Text textType;
     
-    public Button btnSelect;
+    //public Button btnSelect;
     public Button btnUsed;
 
     public IClickUsedEquip ClickDelegate;
@@ -39,7 +39,7 @@ public class EquipListItem : MonoBehaviour
     {
         btnUsed.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbei");
 
-        ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickSelectEquip;
+        //ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickSelectEquip;
         ScrollViewEventListener.Get(btnUsed.gameObject).onClick = OnClickUsedEquip;
     }
 
@@ -114,13 +114,13 @@ public class EquipListItem : MonoBehaviour
         items.Clear();
     }
 
-    void OnClickSelectEquip(GameObject go)
-    {
-        if (ClickDelegate != null)
-        {
-            ClickDelegate.OnSelectEquip(info.equipData);
-        }
-    }
+    //void OnClickSelectEquip(GameObject go)
+    //{
+    //    if (ClickDelegate != null)
+    //    {
+    //        ClickDelegate.OnSelectEquip(info.equipData);
+    //    }
+    //}
 
     void OnClickUsedEquip(GameObject go)
     {

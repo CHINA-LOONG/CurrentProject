@@ -3,7 +3,7 @@ index,name,desc,physicsWeight,magicWeight,cureMagicWeight,gainWeight,negativeWei
 #性格ID,性格名称,性格描述,物理攻击权重,法术攻击权重,治疗法术权重，与法术攻击权重互斥,增益效果攻击权重,减益效果权重，和gainWeight互斥,防御效果权重,有自身嘲讽buff防御的权重，与防御互斥
 1,Valor,descrip_valor,8,1,1,1,1,1,0
 2,Spiritual,descrip_spiritual,1,8,1,1,1,1,0
-3,Mischievous,descrip_mischievous,2,2,2,2,16,1,0
+3,Mischievous,descrip_mischievous,1,1,1,1,8,1,0
 4,Collaborate,descrip_collaborate,1,1,1,8,1,1,0
 5,Compassion,descrip_compassion,1,1,8,1,1,1,0
-6,Humility,descrip_humility,1,1,1,1,1,5,8
+6,Humility,descrip_humility,1,1,1,1,1,1,8

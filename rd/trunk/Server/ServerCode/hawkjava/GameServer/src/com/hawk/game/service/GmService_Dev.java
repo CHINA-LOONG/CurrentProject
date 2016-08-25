@@ -17,7 +17,6 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
-import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
@@ -51,7 +50,6 @@ import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.InstanceState;
 import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.QuestUtil;
 
@@ -480,144 +478,215 @@ public class GmService_Dev extends GameService {
 		}
 		// 设置副本星级
 		case "setstar": {
-			InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, gmItemId);
-			if (instanceCfg == null) {
+			// 因为是GM未优化
+			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
+			if (targetCfg == null) {
+				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
+				return;
+			}
+
+			int star = (int)gmValue;
+			if (star < 1 || star > 3) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
 
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-			statisticsEntity.setInstanceStar(gmItemId, (int)gmValue);
+			int oldStar = statisticsEntity.getInstanceStar(gmItemId);
+			if (oldStar != star) {
+				statisticsEntity.setInstanceStar(gmItemId, star);
 
-			// 重计算章节和索引
-			int normalTopChapter = 0;
-			int hardTopChapter = 0;
-			int normalTopIndex = 0;
-			int hardTopIndex = 0;
-			for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
-				if (entry.getValue() <= 0) {
-					continue;
-				}
-				InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
-				if (entryCfg != null) {
-					int chapter = entryCfg.getChapter();
-					int index = entryCfg.getIndex();
-					if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-						if (chapter > normalTopChapter) {
-							normalTopChapter = chapter;
-							normalTopIndex = index;
-						} else if (chapter == normalTopChapter && index > normalTopIndex) {
-							normalTopIndex = index;
-						}
-					} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-						if (chapter > hardTopChapter) {
-							hardTopChapter = chapter;
-							hardTopIndex = index;
-						} else if (chapter == hardTopChapter && index > hardTopIndex) {
-							hardTopIndex = index;
+				if (oldStar == 0) {
+					// 修改所有前置未完成副本星级
+					int targetChapter = targetCfg.getChapter();
+					int targetIndex = targetCfg.getIndex();
+					int targetDifficult = targetCfg.getDifficult();
+
+					Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+					for (InstanceEntryCfg entry : cfgMap.values()) {
+						if(targetDifficult == entry.getDifficult()) {
+							if (entry.getChapter() < targetChapter
+									|| ( entry.getChapter() == targetChapter && entry.getIndex() < targetIndex )) {
+								if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+									statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
+								}
+							}
+						} else if (targetDifficult == GsConst.InstanceDifficulty.HARD_INSTANCE
+								&& entry.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+							if (entry.getChapter() <= targetChapter) {
+								if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+									statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
+								}
+							}
 						}
 					}
+
+					// 重计算章节和索引
+					int normalTopChapter = 0;
+					int hardTopChapter = 0;
+					int normalTopIndex = 0;
+					int hardTopIndex = 0;
+					for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+						if (entry.getValue() <= 0) {
+							continue;
+						}
+						InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
+						if (entryCfg != null) {
+							int chapter = entryCfg.getChapter();
+							int index = entryCfg.getIndex();
+							if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+								if (chapter > normalTopChapter) {
+									normalTopChapter = chapter;
+									normalTopIndex = index;
+								} else if (chapter == normalTopChapter && index > normalTopIndex) {
+									normalTopIndex = index;
+								}
+							} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+								if (chapter > hardTopChapter) {
+									hardTopChapter = chapter;
+									hardTopIndex = index;
+								} else if (chapter == hardTopChapter && index > hardTopIndex) {
+									hardTopIndex = index;
+								}
+							}
+						}
+					}
+					statisticsEntity.setNormalTopChapter(normalTopChapter);
+					statisticsEntity.setNormalTopIndex(normalTopIndex);
+					statisticsEntity.setHardTopChapter(hardTopChapter);
+					statisticsEntity.setHardTopIndex(hardTopIndex);
+
+					statisticsEntity.notifyUpdate(true);
 				}
-			}
-			statisticsEntity.setNormalTopChapter(normalTopChapter);
-			statisticsEntity.setNormalTopIndex(normalTopIndex);
-			statisticsEntity.setHardTopChapter(hardTopChapter);
-			statisticsEntity.setHardTopIndex(hardTopIndex);
 
-			statisticsEntity.notifyUpdate(true);
-
-			// 推送副本数据
-			GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
-			for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
-				InstanceState.Builder instanceState = InstanceState.newBuilder();
-				instanceState.setInstanceId(entry.getKey());
-				instanceState.setStar(entry.getValue());
-				instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
-				gmPush.addInstanceState(instanceState);
+				// 推送副本数据
+				GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
+				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+					InstanceState.Builder instanceState = InstanceState.newBuilder();
+					instanceState.setInstanceId(entry.getKey());
+					instanceState.setStar(entry.getValue());
+					instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+					gmPush.addInstanceState(instanceState);
+				}
+				ChapterState.Builder chapterState = ChapterState.newBuilder();
+				chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
+				chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
+				chapterState.setHardTopChapter(statisticsEntity.getHardTopChapter());
+				chapterState.setHardTopIndex(statisticsEntity.getHardTopIndex());
+				chapterState.addAllNormalBoxState(statisticsEntity.getNormalChapterBoxStateList());
+				chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
+				gmPush.setChapterState(chapterState);
+				player.sendProtocol(HawkProtocol.valueOf(HS.gm.GM_INSTANCE_PUSH_S_VALUE, gmPush));
 			}
-			ChapterState.Builder chapterState = ChapterState.newBuilder();
-			chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
-			chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
-			chapterState.setHardTopChapter(statisticsEntity.getHardTopChapter());
-			chapterState.setHardTopIndex(statisticsEntity.getHardTopIndex());
-			chapterState.addAllNormalBoxState(statisticsEntity.getNormalChapterBoxStateList());
-			chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
-			gmPush.setChapterState(chapterState);
-			player.sendProtocol(HawkProtocol.valueOf(HS.gm.GM_INSTANCE_PUSH_S_VALUE, gmPush));
 
 			actionHandled = true;
 			break;
 		}
 		// 设置副本是否通关
 		case "setpass": {
-			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
-			if (entryCfg == null) {
+			// 因为是GM未优化
+			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
+			if (targetCfg == null) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
 
 			boolean isPass = (gmValue == 0) ? false : true;
-			int chapter = entryCfg.getChapter();
-			int index = entryCfg.getIndex();			
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-			int topChapter = 0;
-			int topIndex = 0;
 			boolean update = true;
+			int oldStar = statisticsEntity.getInstanceStar(gmItemId);
 
-			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-				topChapter = statisticsEntity.getNormalTopChapter();
-				topIndex = statisticsEntity.getNormalTopIndex();
-			} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-				topChapter = statisticsEntity.getHardTopChapter();
-				topIndex = statisticsEntity.getHardTopIndex();
-			}
+			if (true == isPass && 0 == oldStar) {
+				update = true;
+				statisticsEntity.setInstanceStar(gmItemId, 1);
 
-			if (true == isPass) {
-				if (chapter > topChapter) {
-					topChapter = chapter;
-					topIndex = index;
-				} else if (chapter == topChapter && index > topIndex) {
-					topIndex = index;
-				} else {
-					update = false;
-				}
-			} else {
-				if (chapter == 0
-						|| (chapter == 1 && index == 0)) {
-					topChapter = 0;
-					topIndex = 0;
-				} else if (chapter < topChapter
-						|| (chapter == topChapter && index <= topIndex)) {
-					if (index == 0) {
-						topChapter = chapter - 1;
-						if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-							topIndex = InstanceUtil.getInstanceChapter(topChapter).normalList.size() - 1;
-						} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-							topIndex = InstanceUtil.getInstanceChapter(topChapter).hardList.size() - 1;
+				// 修改所有前置未完成副本星级
+				int targetChapter = targetCfg.getChapter();
+				int targetIndex = targetCfg.getIndex();
+				int targetDifficult = targetCfg.getDifficult();
+
+				Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+				for (InstanceEntryCfg entry : cfgMap.values()) {
+					if(targetDifficult == entry.getDifficult()) {
+						if (entry.getChapter() < targetChapter
+								|| ( entry.getChapter() == targetChapter && entry.getIndex() < targetIndex )) {
+							if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+								statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
+							}
 						}
-					} else {
-						topChapter = chapter;
-						topIndex = index - 1;
+					} else if (targetDifficult == GsConst.InstanceDifficulty.HARD_INSTANCE
+							&& entry.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+						if (entry.getChapter() <= targetChapter) {
+							if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+								statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
+							}
+						}
 					}
-				} else {
-					update = false;
+				}
+			} else if (false == isPass && 0 != oldStar){
+				update = true;
+				statisticsEntity.setInstanceStar(gmItemId, 0);
+
+				// 修改所有后续已完成副本星级
+				int targetChapter = targetCfg.getChapter();
+				int targetIndex = targetCfg.getIndex();
+				int targetDifficult = targetCfg.getDifficult();
+
+				Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+				for (InstanceEntryCfg entry : cfgMap.values()) {
+					if (targetDifficult == entry.getDifficult()) {
+						if (entry.getChapter() > targetChapter
+								|| (entry.getChapter() == targetChapter && entry.getIndex() > targetIndex)) {
+							if (0 != statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+								statisticsEntity.setInstanceStar(entry.getInstanceId(), 0);
+							}
+						}
+					} else if (targetDifficult == GsConst.InstanceDifficulty.NORMAL_INSTANCE
+							&& entry.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+						if (entry.getChapter() >= targetChapter) {
+							if (0 != statisticsEntity.getInstanceStar(entry.getInstanceId())) {
+								statisticsEntity.setInstanceStar(entry.getInstanceId(), 0);
+							}
+						}
+					}
 				}
 			}
 
 			if (true == update) {
-				if (true == isPass) {
-					statisticsEntity.setInstanceStar(gmItemId, 1);
-				} else {
-					statisticsEntity.setInstanceStar(gmItemId, 0);
+				// 重计算章节和索引
+				int normalTopChapter = 0;
+				int hardTopChapter = 0;
+				int normalTopIndex = 0;
+				int hardTopIndex = 0;
+				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+					if (entry.getValue() <= 0) {
+						continue;
+					}
+					InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
+					if (entryCfg != null) {
+						int chapter = entryCfg.getChapter();
+						int index = entryCfg.getIndex();
+						if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+							if (chapter > normalTopChapter) {
+								normalTopChapter = chapter;
+								normalTopIndex = index;
+							} else if (chapter == normalTopChapter && index > normalTopIndex) {
+								normalTopIndex = index;
+							}
+						} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+							if (chapter > hardTopChapter) {
+								hardTopChapter = chapter;
+								hardTopIndex = index;
+							} else if (chapter == hardTopChapter && index > hardTopIndex) {
+								hardTopIndex = index;
+							}
+						}
+					}
 				}
-
-				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-					statisticsEntity.setNormalTopChapter(topChapter);
-					statisticsEntity.setNormalTopIndex(topIndex);
-				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-					statisticsEntity.setHardTopChapter(topChapter);
-					statisticsEntity.setHardTopIndex(topIndex);
-				}
+				statisticsEntity.setNormalTopChapter(normalTopChapter);
+				statisticsEntity.setNormalTopIndex(normalTopIndex);
+				statisticsEntity.setHardTopChapter(hardTopChapter);
+				statisticsEntity.setHardTopIndex(hardTopIndex);
 
 				statisticsEntity.notifyUpdate(true);
 

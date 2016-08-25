@@ -31,17 +31,17 @@ public class bossdajie12Mantuoluo2 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Mantuoluo2Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Mantuoluo2Unit.battleUnit, "bossdajie12Mantuoluo2wp02")==0)
+		if (NormalScript.GetWpLifeLeftRatio(Mantuoluo2Unit.battleUnit, "bossdajie12Mantuoluo2wp02") != 0)
 		{
-			if (GetUnitHp(Mantuoluo2Unit) <= (GetUnitMaxHp(Mantuoluo2Unit) * 0.2 ))
+			if (GetUnitHp(Mantuoluo2Unit) <= (GetUnitMaxHp(Mantuoluo2Unit) * 0.5 ) && GetAttackCount(Mantuoluo2Unit) != 0)
 			{
 				Mantuoluo2SpellDic.TryGetValue ("bossdajie12Mantuoluo24", out useSpell);
 			}			
-			else if (GetAttackCount(Mantuoluo2Unit) % 4 == 0) 
+			else if (GetAttackCount(Mantuoluo2Unit) % 4 == 0 && GetAttackCount(Mantuoluo2Unit) != 0) 
 			{
 				Mantuoluo2SpellDic.TryGetValue ("bossdajie12Mantuoluo23", out useSpell);
 			}
-			else if (GetAttackCount(Mantuoluo2Unit) % 3 == 0) 
+			else if (GetAttackCount(Mantuoluo2Unit) % 3 == 0 && GetAttackCount(Mantuoluo2Unit) != 0) 
 			{
 				Mantuoluo2SpellDic.TryGetValue ("bossdajie12Mantuoluo22", out useSpell);
 			}
@@ -51,11 +51,11 @@ public class bossdajie12Mantuoluo2 : BossAi {
 
 		else 
 		{
-			if (GetAttackCount(Mantuoluo2Unit) % 4 == 0) 
+			if (GetAttackCount(Mantuoluo2Unit) % 4 == 0 && GetAttackCount(Mantuoluo2Unit) != 0) 
 			{
 				Mantuoluo2SpellDic.TryGetValue ("bossdajie12Mantuoluo23", out useSpell);
 			}
-			else if (GetAttackCount(Mantuoluo2Unit) % 3 == 0) 
+			else if (GetAttackCount(Mantuoluo2Unit) % 3 == 0 && GetAttackCount(Mantuoluo2Unit) != 0) 
 			{
 				Mantuoluo2SpellDic.TryGetValue ("bossdajie12Mantuoluo22", out useSpell);
 			}

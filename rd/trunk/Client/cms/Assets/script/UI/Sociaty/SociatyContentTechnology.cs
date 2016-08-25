@@ -49,6 +49,14 @@ public class SociatyContentTechnology : SociatyContentBase
     public override void RefreshUI()
     {
         mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.contribution.ToString();
+        PB.AllianceInfo allianceData = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData;
+        if (mLvlItem != null)
+        {
+            mLvlItem.SetTechnologyData((int)SociatyTecEnum.Sociaty_Tec_Lvl, allianceData.level);
+            mMemberItem.SetTechnologyData((int)SociatyTecEnum.Sociaty_Tec_Member, allianceData.memLevel);
+            mCoinItem.SetTechnologyData((int)SociatyTecEnum.Sociaty_Tec_Coin, allianceData.coinLevel);
+            mExpItem.SetTechnologyData((int)SociatyTecEnum.Sociaty_Tec_Exp, allianceData.expLevel);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()

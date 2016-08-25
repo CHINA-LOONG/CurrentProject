@@ -321,7 +321,15 @@ public class SociatyTaskRunning : MonoBehaviour
                 subItem.transform.SetParent(taskPanel);
                 subItem.transform.localScale = new Vector3(1, 1, 1);
             }
+            if(i ==0)
+            {
+                if(null == curSelItem)
+                {
+                    curSelItem = subItem;
+                }
+            }
         }
+        OnSubTaskItemSelected(curSelItem);
     }
 
     void RefreshTaskReward()
@@ -453,7 +461,12 @@ public class SociatyTaskRunning : MonoBehaviour
         {
             case SociatyQuestType.CommitCoin:
                 jinbiObj.SetActive(true);
-                itemCountText.text = string.Format("{0}/{1}", GameDataMgr.Instance.PlayerDataAttr.coin, questStData.goalCount);
+                long haveCoin = GameDataMgr.Instance.PlayerDataAttr.coin;
+                if(haveCoin > 9999)
+                {
+                    haveCoin = 9999;
+                }
+                itemCountText.text = string.Format("{0}/{1}", haveCoin, questStData.goalCount);
                 if(questStData.goalCount > GameDataMgr.Instance.PlayerDataAttr.coin)
                 {
                     itemCountText.color = new Color(1, 0, 0);
@@ -652,12 +665,14 @@ public class SociatyTaskRunning : MonoBehaviour
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_044"), (int)PB.ImType.PROMPT);
             return;
         }
-        string sendMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_052"),GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.name);
+        int taskId = GameDataMgr.Instance.SociatyDataMgrAttr.selfTeamData.taskId;
+        SociatyTask task = StaticDataMgr.Instance.GetSociatyTask(taskId);
+        string sendMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_052"),StaticDataMgr.Instance.GetTextByID(task.taskName));
         bool issend = UIIm.Instance.OnSendMsg(sendMsg, ImMessageType.Msg_Type_Task, GameDataMgr.Instance.SociatyDataMgrAttr.taskTeamId.ToString());
-       // if (issend)
-       // {
-          //  MsgBox.InputConform.Close();
-       // }
+        if (issend)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_063"), (int)PB.ImType.PROMPT);
+        }
     }
     void OnTaskRewardButtonClick()
     {

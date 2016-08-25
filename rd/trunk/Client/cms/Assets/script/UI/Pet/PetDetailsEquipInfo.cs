@@ -12,7 +12,7 @@ public interface IPetDetailsRight : IPetDetailsEquipInfo { }
 public interface IPetDetailsEquipInfo
 {
     void OnClickChangeEquip(PartType part);
-    void OnRemoveEquip();
+    //void OnRemoveEquip();
 }
 
 public class PetDetailsEquipInfo : PetDetailsRight,
@@ -111,7 +111,10 @@ public class PetDetailsEquipInfo : PetDetailsRight,
 
         for (int i = 0; i < tabPanel.Length; i++)
         {
-            tabPanel[i].gameObject.SetActive(i == index);
+            if (tabPanel[i].gameObject.activeSelf != (i == index))
+            {
+                tabPanel[i].gameObject.SetActive(i == index);
+            }
             if (i == index)
             {
                 tabPanel[i].IEquipInfoBaseDelegate = this;
@@ -158,13 +161,13 @@ public class PetDetailsEquipInfo : PetDetailsRight,
         }
     }
 
-    public void OnUnloadEquip()
-    {
-        if (IPetDetailsEquipInfoDelegate!=null)
-        {
-            IPetDetailsEquipInfoDelegate.OnRemoveEquip();
-        }
-    }
+    //public void OnUnloadEquip()
+    //{
+    //    if (IPetDetailsEquipInfoDelegate!=null)
+    //    {
+    //        IPetDetailsEquipInfoDelegate.OnRemoveEquip();
+    //    }
+    //}
 
     #endregion
 

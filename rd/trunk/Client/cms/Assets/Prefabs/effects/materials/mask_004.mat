@@ -80,16 +80,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _MaskTex
+          name: _NoiseTex
         second:
-          m_Texture: {fileID: 2800000, guid: ea943b20a5437234caef99d859bfb845, type: 3}
+          m_Texture: {fileID: 2800000, guid: 9c86161bea25f6e4cb0d727f778c9d43, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _NoiseTex
+          name: _MaskTex
         second:
-          m_Texture: {fileID: 2800000, guid: 9c86161bea25f6e4cb0d727f778c9d43, type: 3}
+          m_Texture: {fileID: 2800000, guid: ea943b20a5437234caef99d859bfb845, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -147,16 +147,16 @@ Material:
         second: 1
       data:
         first:
-          name: _HeatTime
-        second: -.270000011
-      data:
-        first:
           name: _ForceX
         second: .0799999982
       data:
         first:
           name: _ForceY
         second: .0799999982
+      data:
+        first:
+          name: _HeatTime
+        second: -.270000011
     m_Colors:
       data:
         first:

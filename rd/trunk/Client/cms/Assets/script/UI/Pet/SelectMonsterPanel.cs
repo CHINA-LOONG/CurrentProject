@@ -14,16 +14,17 @@ public class SelectMonsterPanel : UIBase
     public Button closeButton;
     public Text textClose;
     public Text countLabel;
-    public Text demandLabel;
+    //public Text demandLabel;
     public Image scrollIcon;
     public GameObject elementContainer;
     public Transform monIconPos;
     private MonsterIcon avatar;
+    public Text textEmpty;
+
 
     List<int> m_currentSelectMonster = null;
     ItemInfo m_itemInfo = null;
 
-	// Update is called once per frame
 	void Update () {
 	
         if (m_itemInfo != null && m_currentSelectMonster != null)
@@ -31,18 +32,20 @@ public class SelectMonsterPanel : UIBase
             countLabel.text = string.Format("{0}/{1}", m_currentSelectMonster.Count, m_itemInfo.count);
         }
 
-        ShowScrollIcon();
+        //ShowScrollIcon();
 	}
 
     public void init(ItemInfo itemInfo, List<List<int>> demandList, List<int> selectMonster, GameUnit curUnit/* int selfId*/)
     {
         int selfId=curUnit.pbUnit.guid;
-        demandLabel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_monster");
+        //demandLabel.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_monster");
         textClose.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+        textEmpty.text = StaticDataMgr.Instance.GetTextByID("list_empty");
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
 
         List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId), itemInfo.stage);
+        int showCount = 0;
         foreach (GameUnit unit in petList)
         {
             if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked && !CheckMonsterIsSelect(unit, demandList, selectMonster))
@@ -51,8 +54,10 @@ public class SelectMonsterPanel : UIBase
                 scrollView.AddElement(go);
                 go.GetComponent<SelectMonsterElement>().ReloadData(unit, m_currentSelectMonster.Contains(unit.pbUnit.guid));
                 ScrollViewEventListener.Get(go.GetComponent<SelectMonsterElement>().eventObject).onClick = SelectButtonDown;
+                showCount++;
             }
         }
+        textEmpty.gameObject.SetActive(showCount == 0);
 
         //if (elementContainer != null && elementContainer.transform.childCount > 0)
         //{
@@ -144,18 +149,18 @@ public class SelectMonsterPanel : UIBase
             m_currentSelectMonster.Add(element.guid);
         }
 
-        //UpdateSelectState();
+        UpdateSelectState();
     }
 
-    void ShowScrollIcon()
-    {
-        if (scrollRect != null && elementContainer.transform.childCount > 3 && scrollRect.GetComponent<ScrollRect>().normalizedPosition.y > 0.01)
-        {
-            scrollIcon.gameObject.SetActive(true);
-        }
-        else
-        {
-            scrollIcon.gameObject.SetActive(false);
-        }
-    }
+    //void ShowScrollIcon()
+    //{
+    //    if (scrollRect != null && elementContainer.transform.childCount > 3 && scrollRect.GetComponent<ScrollRect>().normalizedPosition.y > 0.01)
+    //    {
+    //        scrollIcon.gameObject.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        scrollIcon.gameObject.SetActive(false);
+    //    }
+    //}
 }

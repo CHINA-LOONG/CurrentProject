@@ -38,10 +38,13 @@ public class EquipForge : EquipInfoBase
     private bool enoughCoin;
     private bool enoughItem;
 
+    public EquipForgeEffect forgeEffect;
+    private bool isPlayingFX = false;
     void Start()
     {
         btnForge.onClick.AddListener(OnClickForgeBtn);
         textBaseAttr.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
+        textNotForge.text = StaticDataMgr.Instance.GetTextByID("equip_fully_forged");
     }
 
     public override void ReloadData(EquipData data)
@@ -216,6 +219,10 @@ public class EquipForge : EquipInfoBase
 
     void OnClickForgeBtn()
     {
+        if (isPlayingFX)
+        {
+            return;
+        }
         if(!enoughItem)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_004"), (int)PB.ImType.PROMPT);
@@ -242,33 +249,48 @@ public class EquipForge : EquipInfoBase
         }
     }
 
-    //void ReloadEquipNotify(EquipData equipData)
-    //{
-    //    if (curData==equipData)
-    //    {
-    //        ReloadData(curData);
-    //    }
-    //}
+    void EffectEnd()
+    {
+        isPlayingFX = false;
+        GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadEquipForgeNotify, curData);
+    }
+
+    void OnCoinChangedRefresh(long coin)
+    {
+        ReloadData(curData);
+    }
     void OnEnable()
     {
         BindListener();
     }
     void OnDisable()
     {
+        if (isPlayingFX)
+        {
+            EffectEnd();
+        }
         UnBindListener();
+    }
+    void OnDestroy()
+    {
+        if (isPlayingFX)
+        {
+            EffectEnd();
+        }
     }
 
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         //GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipNotify);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_LEVEL_C.GetHashCode().ToString(), OnEquipForgeLevelRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_LEVEL_S.GetHashCode().ToString(), OnEquipForgeLevelRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_STAGE_C.GetHashCode().ToString(), OnEquipForgeStageRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_STAGE_S.GetHashCode().ToString(), OnEquipForgeStageRet);
     }
-
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChangedRefresh);
         //GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadEquipForgeNotify, ReloadEquipNotify);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_LEVEL_C.GetHashCode().ToString(), OnEquipForgeLevelRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_INCREASE_LEVEL_S.GetHashCode().ToString(), OnEquipForgeLevelRet);
@@ -310,7 +332,17 @@ public class EquipForge : EquipInfoBase
             }
             else
             {//成功
-                // update local data
+                if (curData.stage != stage)
+                {
+                    isPlayingFX = true;
+                    forgeEffect.Play(2, EffectEnd);
+                }
+                else
+                {
+                    isPlayingFX = true;
+                    forgeEffect.Play(1, EffectEnd);
+                }
+
                 {
                     curData.id = id;
                     curData.SetStageLvl(stage);
@@ -323,6 +355,5 @@ public class EquipForge : EquipInfoBase
         {
             Logger.LogError("强化物品出现id不匹配异常！");
         }
-        GameEventMgr.Instance.FireEvent<EquipData>(GameEventList.ReloadEquipForgeNotify, curData);
     }
 }

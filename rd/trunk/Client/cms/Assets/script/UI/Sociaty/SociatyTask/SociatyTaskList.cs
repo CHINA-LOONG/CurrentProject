@@ -25,7 +25,7 @@ public class SociatyTaskList : MonoBehaviour
             {
                 GameObject go = ResourceMgr.Instance.LoadAsset("SociatyTaskList");
                 SociatyTaskList taskList = go.GetComponent<SociatyTaskList>();
-                taskList.RefreshTaskList();
+                //taskList.RefreshTaskList();
                 instance = taskList;
             }
             return instance;
@@ -35,7 +35,6 @@ public class SociatyTaskList : MonoBehaviour
     void Start ()
     {
         openButton.onClick.AddListener(OnOpenButtonClick);
-        costText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_start"), 30);
         rewardText.text = StaticDataMgr.Instance.GetTextByID("sociaty_teamreward");
 	}
 
@@ -76,6 +75,10 @@ public class SociatyTaskList : MonoBehaviour
             var itemData = sociatyList[i];
             var itemUi = SociatyTaskItem.CreateWith(itemData);
             scrollView.AddElement(itemUi.gameObject);
+            if (i == 0)
+            {
+                OnItemSelected(itemUi);
+            }
         }
         RefreshLeftTimes();
     }

@@ -117,7 +117,7 @@ bossdajie14Piying52b1,4,,3,0,0,0,-0.8,0,0,0,0,bufficon_debuffAttack,0,,0,0,0,0,,
 bossdajie14Piying52b2,4,,3,0,0,0,0,-0.8,0,0,0,bufficon_debuffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bosskongdao74Piying12b1,9,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bosskongdao74Piying13b1,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed,1,100,1.2,0,0,0,,,1,0,0,0,,-1
-bossdajie16Zouyincao23b1,5,,3,0,0,0,0,2.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
+bossdajie16Zouyincao23b1,5,,3,0,0,0,0,1,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossxiaoxiang21Wushi42b1,5,,3,0,0,0,0,0.6,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossxiaoxiang21Wushi43b1,11,,999,0,0,0,,,,,,,,,,,,,"LifeLower_25,buffSpeedSelfe2",,999,0,0,0,,-1
 bossxiaoxiang22Xiyiren23b1,5,,3,0,0,0,0,0,0.5,0,0,bufficon_buffDefense,0,,0,0,0,0,,,1,0,0,0,,-1

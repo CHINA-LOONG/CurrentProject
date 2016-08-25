@@ -35,8 +35,9 @@ public class AllianceUtil {
 	 * @return
 	 */
 	public static boolean checkName(String name) {  
-		int nameLength = getChineseCount(name);
-		if (nameLength > GsConst.Alliance.NAME_MAX_LENGTH) {
+		int chineseLength = getChineseCount(name);
+		int length = chineseLength * 2 + name.length() - chineseLength;
+		if (length > GsConst.Alliance.NAME_MAX_LENGTH) {
 			return false;
 		}
 		return true;
@@ -48,8 +49,9 @@ public class AllianceUtil {
 	 * @return
 	 */
 	public static boolean checkNotice(String notice) {  
-		int nameLength = getChineseCount(notice);
-		if (nameLength > GsConst.Alliance.NOTICE_MAX_LENGTH) {
+		int chineseLength = getChineseCount(notice);
+		int length = chineseLength * 2 + notice.length() - chineseLength;
+		if (length > GsConst.Alliance.NOTICE_MAX_LENGTH) {
 			return false;
 		}
 		return true;

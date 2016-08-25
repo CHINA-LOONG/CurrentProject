@@ -187,12 +187,14 @@ public class MemberInfo : UIBase
             if (memberData.postion == 0)
             {
                 memberData.postion = 1;
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_016"), (int)PB.ImType.PROMPT);
+                string msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_016"), memberData.name);
+                UIIm.Instance.ShowSystemHints(msg, (int)PB.ImType.PROMPT);
             }
             else
             {
                 memberData.postion = 0;
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_041"), (int)PB.ImType.PROMPT);
+                string msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_041"), memberData.name);
+                UIIm.Instance.ShowSystemHints(msg, (int)PB.ImType.PROMPT);
             }
            
             SociatyContentMember.Instance.UpdateMemberItems();

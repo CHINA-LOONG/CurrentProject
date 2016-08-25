@@ -143,6 +143,7 @@ public class UISociatyTask : UIBase, TabButtonDelegate
             rt.localScale = new Vector3(1, 1, 1);
         }
         taskList.gameObject.SetActive(true);
+        taskList.RefreshTaskList();
     }
     void ShowTaskRunning(bool bshow)
     {
