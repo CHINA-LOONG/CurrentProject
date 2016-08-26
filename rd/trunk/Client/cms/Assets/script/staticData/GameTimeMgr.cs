@@ -34,19 +34,11 @@ public class GameTimeMgr
         return (double)(DateTime.Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalMilliseconds;
     }
 
-
-    public TimeStaticData GetTime()
-    {
-       // TimeStaticData time = new TimeStaticData();
-		timeNow.hour = GetHour();
-		timeNow.minute = GetMinute();
-		return timeNow;
-    }
+    
 
 	public	TimeStaticData GetServerTime()
 	{
-		int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
-		DateTime serverDateTime = GetTime (serverTimeStamp);
+		DateTime serverDateTime = GetServerDateTime();
 		serverTime.hour = serverDateTime.Hour;
 		serverTime.minute = serverDateTime.Minute;
         serverTime.month = serverDateTime.Month;

@@ -10,18 +10,6 @@ public class RewardStaticData
 
 public class RewardItemData
 {
-    //public int type;
-    ////database id
-    //public int id;
-    ////if it is PLAYER_ATTR or MONSTER_ATTR 
-    //public string itemId;
-    //public int count;
-
-    ////If it is EQUIP
-    //public int stage;
-    //public int level;
-    //public List<PB.Attr> attrDatas = new List<PB.Attr>();
-
     public PB.RewardItem protocolData=new PB.RewardItem();
     public float prob;
 

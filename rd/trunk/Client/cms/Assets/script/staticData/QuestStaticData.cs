@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class QuestStaticData
 {
@@ -25,5 +26,18 @@ public class QuestStaticData
     public int expB;            //经验系数b	
 
     public string speechId;        //后续对话Id
+    public string path;           // 跳转途径
+    private List<string> pathList;
+    public List<string> PathList
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(path) && pathList == null)
+            {
+                pathList=new List<string>(path.Split('_'));
+            }
+            return pathList;
+        }
+    }
 
 }

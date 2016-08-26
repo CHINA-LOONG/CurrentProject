@@ -41,7 +41,7 @@ public class SociatyContentInfomation : SociatyContentBase
 
     public static SociatyContentInfomation Instance = null;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         Instance = this;
         recruitButton.onClick.AddListener(OnRecruitButtonClick);

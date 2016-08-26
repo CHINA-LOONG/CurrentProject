@@ -56,7 +56,7 @@ public class ShopItem : MonoBehaviour
 
 		priceText.text = string.Format("{0}", (int)(itemData.price * itemData.count* shopItemData.discount));
 
-		if (IsCoinEnough (itemData)) 
+		if (IsCoinEnough (itemData,false)) 
 		{
 			priceText.color = ColorConst.text_color_Enough;
 		}
@@ -122,27 +122,48 @@ public class ShopItem : MonoBehaviour
         }
     }
 
-	bool IsCoinEnough(PB.ShopItem itemData)
+	bool IsCoinEnough(PB.ShopItem itemData,bool showNotEnoughTip)
 	{
+        bool isEnough = false;
+        int costCoin = (int)(itemData.price * shopItemData.count * shopItemData.discount);
         switch (shopType)
         {
             case (int)PB.shopType.NORMALSHOP:
                 if (itemData.priceType == (int)PB.moneyType.MONEY_COIN)
                 {
-                    int costCoin = (int)(itemData.price * shopItemData.count * shopItemData.discount);
-                    return costCoin <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
+                    isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
+                    if (showNotEnoughTip && !isEnough)
+                    {
+                        GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+                    }
                 }
                 else
                 {
-                    return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
+                    isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
+                    if (showNotEnoughTip && !isEnough)
+                    {
+                        GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                    }
                 }
+                break;
             case (int)PB.shopType.ALLIANCESHOP:
-                return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr;
+                isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr;
+                if(showNotEnoughTip &&!isEnough)
+                {
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_record_003"), (int)PB.ImType.PROMPT);
+                }
+                break;
             case (int)PB.shopType.TOWERSHOP:
-                return itemData.price * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr;
+                isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr;
+                if (showNotEnoughTip && !isEnough)
+                {
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_record_003"), (int)PB.ImType.PROMPT);
+                }
+                break;
             default:
                 return false;
         }
+        return isEnough;
     }
 
 	private	void	RefreshItemIcon(ItemStaticData itemStaticData)
@@ -163,9 +184,10 @@ public class ShopItem : MonoBehaviour
 
 	private	void	OnBuyItemClick(GameObject go)
 	{
-		//Logger.LogError ("buy item");
-
-		GameDataMgr.Instance.ShopDataMgrAttr.BuyShopItem (shopItemData, shopId,shopType);
+        if(IsCoinEnough(shopItemData,true))
+        {
+            GameDataMgr.Instance.ShopDataMgrAttr.BuyShopItem(shopItemData, shopId, shopType);
+        }
 	}
 
 }

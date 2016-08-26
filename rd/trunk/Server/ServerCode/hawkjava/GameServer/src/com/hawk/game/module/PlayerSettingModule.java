@@ -13,6 +13,7 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Setting.HSSettingBlock;
 import com.hawk.game.protocol.Setting.HSSettingBlockRet;
 import com.hawk.game.protocol.Setting.HSSettingLanguage;
+import com.hawk.game.protocol.Setting.HSSettingLanguageRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 
@@ -38,6 +39,10 @@ public class PlayerSettingModule extends PlayerModule {
 
 		player.getEntity().setLanguage(newLang);
 		ImManager.getInstance().changeLanguage(oldLang, newLang, player.getPlayerData().getPlayerAllianceEntity().getId());
+
+		HSSettingLanguageRet.Builder response = HSSettingLanguageRet.newBuilder();
+		response.setLanguage(newLang);
+		sendProtocol(HawkProtocol.valueOf(HS.code.SETTING_LANGUAGE_S, response));
 
 		return true;
 	}

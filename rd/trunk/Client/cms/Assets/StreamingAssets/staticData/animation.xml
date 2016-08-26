@@ -3222,8 +3222,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultKairuisi4Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -3232,8 +3232,8 @@ state = 1 Remove
 	
 		<Ani id="txKairuisi4" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultKairuisi4Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -3287,8 +3287,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultWagui3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultWagui3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultWaguiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wagui31"/>
@@ -3298,8 +3297,7 @@ state = 1 Remove
 	
 		<Ani id="txWagui3" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultWagui3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultWagui3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultWaguiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wagui31"/>
@@ -3387,8 +3385,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultPanshen2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<!--Particle asset="ultPanshen2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/-->
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultPanshenPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -3396,8 +3394,8 @@ state = 1 Remove
 	
 		<Ani id="txPanshen2" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultPanshen2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultPanshen2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultPanshenPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -3422,19 +3420,19 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHuapo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHuapoPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 				<!--Particle asset="ultHuapo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/-->
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Huapo21"/>
-				<Audio time="3.75" name="Huapo22"/>
+				<!--Audio time="0" name="Huapo21"/>
+				<Audio time="3.75" name="Huapo22"/-->
 			</AudioList>
 		</Ani>
 	
 		<Ani id="txHuapo2" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHuapo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultHuapo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHuapoPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHuapoPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Huapo21"/>
@@ -3461,20 +3459,18 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<!--Particle asset="ultwushi4Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
-				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/-->
-				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Wushi31"/>
+				<!--Audio time="0" name="Wushi31"/-->
 			</AudioList>
 		</Ani>
 	
 		<Ani id="txWushi3" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultwushi4Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
-				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
-				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wushi31"/>
@@ -3489,8 +3485,9 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="" attach="" locky=""/>
-				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
+				<Particle asset="ultwushi4Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
+				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wushi41"/>
@@ -3499,8 +3496,9 @@ state = 1 Remove
 	
 		<Ani id="txWushi4" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="" attach="" locky=""/>
-				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
+				<Particle asset="ultwushi4Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
+				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wushi41"/>
@@ -3532,7 +3530,7 @@ state = 1 Remove
 				<Particle asset="ultshuigui3Hit" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Xiyiren41"/>
+				<!--Audio time="0" name="Xiyiren41"/-->
 			</AudioList>
 		</Ani>
 	
@@ -3555,8 +3553,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultMantuoluo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultMantuoluo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Huapo21"/>
@@ -3565,8 +3562,7 @@ state = 1 Remove
 	
 		<Ani id="txMantuoluo2" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultMantuoluo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultMantuoluo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Huapo21"/>
@@ -3581,8 +3577,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHetong3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultHetong3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHetongPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Hetong31"/>
@@ -3592,8 +3587,7 @@ state = 1 Remove
 	
 		<Ani id="txHetong3" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHetong3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultHetong3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHetongPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Hetong31"/>
@@ -3609,8 +3603,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultLonggongtongzi3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLonggongtongziPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLonggongtongziHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Longgongtongzi31"/>
@@ -3620,8 +3614,8 @@ state = 1 Remove
 	
 		<Ani id="txLonggongtongzi3" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultLonggongtongzi3Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLonggongtongziPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLonggongtongziHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Longgongtongzi31"/>
@@ -3637,8 +3631,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultXiyiren2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultXiyiren3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultXiyiren3Hit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
@@ -3647,8 +3641,8 @@ state = 1 Remove
 	
 		<Ani id="txXiyiren2" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultXiyiren2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultXiyiren3Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultXiyiren3Hit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
@@ -3674,19 +3668,17 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLangren5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<!--Particle asset="ultLangren5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/-->
+				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Langren51"/>
-				<Audio time="3.75" name="Langren52"/>
+				<!--Audio time="0" name="Langren51"/>
+				<Audio time="3.75" name="Langren52"/-->
 			</AudioList>
 		</Ani>
 	
 		<Ani id="txLangren5" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultLangren5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultLangren5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Langren51"/>
@@ -3758,8 +3750,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultshuigui5Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
-				<Particle asset="ultshuigui5Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
 				<Particle asset="ultnvyao5Pre1" bundle="effect/particle" parent="" attach="" locky=""/>
 				<Particle asset="ultnvyao5Hit" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
@@ -3770,8 +3762,8 @@ state = 1 Remove
 	
 		<Ani id="txNvyao5" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultshuigui5Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
-				<Particle asset="ultshuigui5Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
 				<Particle asset="ultnvyao5Pre1" bundle="effect/particle" parent="" attach="" locky=""/>
 				<Particle asset="ultnvyao5Hit" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
@@ -3788,8 +3780,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHapi1Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultHapi1Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Hapi11"/>
@@ -3799,8 +3791,8 @@ state = 1 Remove
 	
 		<Ani id="txHapi1" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHapi1Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultHapi1Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Hapi11"/>
@@ -3816,8 +3808,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultPiying5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultPiying5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultpiying5pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultpiying5pre_body" bundle="effect/particle" parent="wp_body" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Piying51"/>
@@ -3826,8 +3818,8 @@ state = 1 Remove
 	
 		<Ani id="txPiying5" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultPiying5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultPiying5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultpiying5pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultpiying5pre_body" bundle="effect/particle" parent="wp_body" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Piying51"/>
@@ -3842,8 +3834,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultKairuisi5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -3852,8 +3844,8 @@ state = 1 Remove
 	
 		<Ani id="txKairuisi5" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
-				<Particle asset="ultKairuisi5Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -4501,9 +4493,18 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 			</ParticleList>
 			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie11Xiaochou41e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="firee1"/>
 			</AudioList>
 		</Ani>
 		
@@ -4521,9 +4522,14 @@ state = 1 Remove
 		<Ani id="bossdajie11Xiaochou43" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0.15" ani="" key="dazhao" value="true"/>
+				<Motion time="0.3" ani="" key="dazhao" value="true"/>
+				<Motion time="0.45" ani="" key="dazhao" value="true"/>
+				<Motion time="0.6" ani="" key="dazhao" value="true"/>
+				<Motion time="0.75" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultxiaochou4Pre_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4543,6 +4549,15 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie12Mantuoluo21e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantCut" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossdajie12Mantuoluo22" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
@@ -4554,12 +4569,25 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie12Mantuoluo22e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="plantp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossdajie12Mantuoluo22e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
 		<Ani id="bossdajie12Mantuoluo23" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4590,12 +4618,29 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie13Langren31e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackEarthCut" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie13Langren32e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4612,12 +4657,25 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie13Langren33e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossdajie13Langren34" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0.15" ani="" key="dazhao" value="true"/>
+				<Motion time="0.45" ani="" key="dazhao" value="true"/>
+				<Motion time="0.75" ani="" key="dazhao" value="true"/>
+				<Motion time="1.05" ani="" key="dazhao" value="true"/>
+				<Motion time="1.35" ani="" key="dazhao" value="true"/>
+				<Motion time="1.65" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultlangren3Pre_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4637,7 +4695,16 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
+		<Ani id="bossdajie14Piying51e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicEarthColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="earthp1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie14Piying52" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bosslilianbuff" value="true"/>
 			</MotionList>
@@ -4664,6 +4731,18 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
+				<Particle asset="ultpiying5pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultpiying5pre_body" bundle="effect/particle" parent="wp_body" attach="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie14Piying55" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosslilianbuff" value="true"/>
+			</MotionList>
+			<ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
@@ -4684,7 +4763,16 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossdajie13Langren32" state="0" AniType="Skill">
+		<Ani id="bossdajie15Huapo21e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantStab" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossdajie15Huapo22" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
@@ -4695,12 +4783,27 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie15Huapo22e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossdajie15Huapo23" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultHuapo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHuapo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4711,7 +4814,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultHuapo2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHuapo2Pre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4731,6 +4835,15 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie16Xiaochou31e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossdajie16Xiaochou32" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
@@ -4742,6 +4855,14 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossdajie16Xiaochou32e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="watere1"/>
+			</AudioList>
+		</Ani>
 		<Ani id="bossdajie16Xiaochou33" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bossqungong" value="true"/>
@@ -4755,10 +4876,10 @@ state = 1 Remove
 		
 		<Ani id="bossdajie16Xiaochou34" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultxiaochou4Pre_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4766,10 +4887,10 @@ state = 1 Remove
 		
 		<Ani id="bossdajie16Xiaochou35" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultxiaochou4Pre_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4825,6 +4946,20 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossxiaoxiang21Wushi41e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="magicFireBallp" bundle="effect/particle" parent="e_shouji" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="firee1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang21Wushi41e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicFireBall" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
 		<Ani id="bossxiaoxiang21Wushi42" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bossbuff" value="true"/>
@@ -4841,7 +4976,9 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultWushi4Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultwushi4Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
+				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4861,6 +4998,14 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossxiaoxiang22Xiyiren21e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantCut" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
 		<Ani id="bossxiaoxiang22Xiyiren22" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
@@ -4872,6 +5017,28 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="attackPlantCutMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantCut" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="bossxiaoxiang22Xiyiren22e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="" bundle="effect/particle" parent="e_shouji" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang22Xiyiren22e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantBall" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+		</Ani>
 		<Ani id="bossxiaoxiang22Xiyiren23" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bossbuff" value="true"/>
@@ -4888,7 +5055,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultXiyirenPre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4899,23 +5066,39 @@ state = 1 Remove
 	
 		<Ani id="bossxiaoxiang23Panshen21" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossxiaoxiang23Panshen22" state="0" AniType="Skill">
-			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
-			</MotionList>
+		<Ani id="bossxiaoxiang23Panshen21e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="attackPlantSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="smash"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang23Panshen22" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="wugong" value="true"/>
+			</MotionList>
+			<ParticleList>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang23Panshen22e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="smash"/>
 			</AudioList>
 		</Ani>
 		
@@ -4924,18 +5107,32 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossxiaoxiang23Panshen23e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
 		<Ani id="bossxiaoxiang23Panshen24" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0.15" ani="" key="dazhao" value="true"/>
+				<Motion time="0.3" ani="" key="dazhao" value="true"/>
+				<Motion time="0.45" ani="" key="dazhao" value="true"/>
+				<Motion time="0.6" ani="" key="dazhao" value="true"/>
+				<Motion time="0.75" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultXiyiren2Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultPanshenPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4950,9 +5147,17 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultShuigui3Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang24Shuigui31e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="watere1"/>
 			</AudioList>
 		</Ani>
 		
@@ -4961,7 +5166,6 @@ state = 1 Remove
 				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultShuigui3Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4969,10 +5173,12 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang24Shuigui33" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="bossbuff" value="true"/>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultShuigui3Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultshuigui3Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle asset="ultshuigui3Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultshuigui3Hit" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4980,10 +5186,12 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang24Shuigui34" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultShuigui3Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultshuigui3Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle asset="ultshuigui3Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultshuigui3Hit" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -4999,9 +5207,17 @@ state = 1 Remove
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang25Kairuisi51e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackEarthCut" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
 		
@@ -5010,10 +5226,23 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang25Kairuisi52e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="magicEarthBallp" bundle="effect/particle" parent="e_shouji" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang25Kairuisi52e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthBall" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
 		</Ani>
 		
 		<Ani id="bossxiaoxiang25Kairuisi53" state="0" AniType="Skill">
@@ -5021,7 +5250,6 @@ state = 1 Remove
 				<Motion time="0" ani="" key="chuchang" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5032,7 +5260,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5043,7 +5272,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi5Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5058,9 +5288,17 @@ state = 1 Remove
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang26Longgongtongzi31e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackWaterStab" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
 			</AudioList>
 		</Ani>
 		
@@ -5069,18 +5307,30 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
+		<Ani id="bossxiaoxiang26Longgongtongzi32e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="magicWaterBallp" bundle="effect/particle" parent="e_shouji" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang26Longgongtongzi32e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterBall" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
 		<Ani id="bossxiaoxiang26Longgongtongzi33" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="chuchang" value="true"/>
+				<Motion time="0" ani="" key="bossdazhao3" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5091,7 +5341,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultLonggongtongzi3Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultLonggongtongziPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultLonggongtongziHit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5099,47 +5350,67 @@ state = 1 Remove
 		
 	</AniList>
 	
-	<AniList group="bossxiaoxiang27hetong2">
+	<AniList group="bossxiaoxiang27Hetong2">
 	
-		<Ani id="bossxiaoxiang27hetong21" state="0" AniType="Skill">
+		<Ani id="bossxiaoxiang27Hetong21" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossxiaoxiang27hetong22" state="0" AniType="Skill">
+		<Ani id="bossxiaoxiang27Hetong21e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang27Hetong22" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossxiaoxiang27hetong23" state="0" AniType="Skill">
+		<Ani id="bossxiaoxiang27Hetong22e1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="" bundle="effect/particle" parent="e_shouji" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossxiaoxiang27Hetong22e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossxiaoxiang27Hetong23" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bossfennu" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossxiaoxiang27hetong24" state="0" AniType="Skill">
+		<Ani id="bossxiaoxiang27Hetong24" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultHetong2Pre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHetong2Hit" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5293,85 +5564,92 @@ state = 1 Remove
 		</Ani>
 		<Ani id="Mantuoluo2_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie12Mantuoluo2wp02" state="4"/>
+				<Wp time="0" name="bossdajie12Mantuoluo2wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Langren3_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie13Langren3wp02" state="4"/>
+				<Wp time="0" name="bossdajie13Langren3wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Langren3_state1to3" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie13Langren3wp03" state="4"/>
+				<Wp time="0" name="bossdajie13Langren3wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Langren3_stateNto4" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie13Langren3wp02" state="4"/>
-				<Wp time="0" name="bossdajie13Langren3wp03" state="4"/>
+				<Wp time="0" name="bossdajie13Langren3wp02" state="3"/>
+				<Wp time="0" name="bossdajie13Langren3wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Piying5_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Piying5_state1to3" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie14Piying5wp03" state="4"/>
+				<Wp time="0" name="bossdajie14Piying5wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Piying5_stateNto4" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
-				<Wp time="0" name="bossdajie14Piying5wp02" state="4"/>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="3"/>
+				<Wp time="0" name="bossdajie14Piying5wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Huapo2_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie15Huapo2wp02" state="4"/>
+				<Wp time="0" name="bossdajie15Huapo2wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Xiaochou3_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie16Xiaochou3wp02" state="4"/>
+				<Wp time="0" name="bossdajie16Xiaochou3wp02" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Zouyincao2_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossdajie17Zouyincao2wp03" state="4"/>
+				<Wp time="0" name="bossdajie17Zouyincao2wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Wushi4_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang21Wushi4wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang21Wushi4wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Shuigui3_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang24Shuigui3wp02" state="4"/>
-				<Wp time="0" name="bossxiaoxiang24Shuigui3wp03" state="1"/>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp04" state="3"/>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp03" state="0"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="Shuigui3_state1to3" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp04" state="3"/>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp02" state="3"/>
+				<Wp time="0" name="bossxiaoxiang24Shuigui3wp03" state="0"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Kairuisi5_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang25Kairuisi5wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang25Kairuisi5wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Longgongtongzi3_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang26Longgongtongzi3wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang26Longgongtongzi3wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Hetong2_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang27Hetong2wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang27Hetong2wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Xiyiren2_state1to2" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang22Xiyiren2wp03" state="4"/>
+				<Wp time="0" name="bossxiaoxiang22Xiyiren2wp03" state="3"/>
 				<Wp time="0" name="bossxiaoxiang22Xiyiren2wp02" state="1"/>
 			</WpStateList>
 		</Ani>

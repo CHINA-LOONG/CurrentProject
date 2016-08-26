@@ -13,6 +13,7 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 	}
 	int jishu = 0 ;
 	int i = 1 ;
+	int huihe = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Longgongtongzi3Unit)
 	{
@@ -37,16 +38,17 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 			if (i == 1) 
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("dispelPassive", out useSpell);
-				i--;
+				i-- ;
 			}
-			else if (GetAttackCount(Longgongtongzi3Unit) % 10 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
+			else if (huihe % 10 == 0 && huihe != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi34", out useSpell);
 			}				
-			else if (GetAttackCount(Longgongtongzi3Unit) % 3 == 0 && GetAttackCount(Longgongtongzi3Unit) != 0)
+			else if (huihe % 3 == 0 && huihe != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi32", out useSpell);
-			}		
+			}
+			huihe++ ;	
 		} 
 
 		else 
@@ -68,15 +70,15 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
-	{
-		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossxiaoxiang26Longgongtongzi3wp03" && jishu==0)
-        {
-			target.TriggerEvent("Longgongtongzi3_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-			jishu ++;
-        }
-	}
+    //public override void OnWpDead(WeakPointDeadArgs args)
+	//{
+	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+	//	if (args.wpID == "bossxiaoxiang26Longgongtongzi3wp03" && jishu==0)
+      //  {
+		//	target.TriggerEvent("Longgongtongzi3_state1to2", Time.time, null);
+		//	BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+		//	jishu ++;
+        //}
+	//}
 	//---------------------------------------------------------------------------------------------
 }

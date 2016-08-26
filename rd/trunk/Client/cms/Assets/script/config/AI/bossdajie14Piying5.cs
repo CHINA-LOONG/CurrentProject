@@ -52,7 +52,7 @@ public class bossdajie14Piying5 : BossAi {
 			}
 			else if (GetAttackCount(Piying5Unit) % 3 == 0 ) 
 			{
-				Piying5SpellDic.TryGetValue ("bossdajie14Piying53", out useSpell);
+				Piying5SpellDic.TryGetValue ("bossdajie14Piying55", out useSpell);
 			}
 
 		}
@@ -64,7 +64,7 @@ public class bossdajie14Piying5 : BossAi {
 			}
 			else if (GetAttackCount(Piying5Unit) % 3 == 0 ) 
 			{
-				Piying5SpellDic.TryGetValue ("bossdajie14Piying55", out useSpell);
+				Piying5SpellDic.TryGetValue ("bossdajie14Piying53", out useSpell);
 			}
 
 		}

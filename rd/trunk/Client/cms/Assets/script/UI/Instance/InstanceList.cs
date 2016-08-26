@@ -12,7 +12,7 @@ public class InstanceList : UIBase
     public Text chaptrName;
     public Text getStartText;
     public GameObject boxButton;
-    public GameObject openedBoxButton;
+    public BaoxiangState baoxiangState;
     public Image closeImage;
     public GameObject closeButton;
 
@@ -81,7 +81,6 @@ public class InstanceList : UIBase
     {
         EventTriggerListener.Get(dropButton.gameObject).onClick = OnDropButtonClicked;
         EventTriggerListener.Get(boxButton).onClick = OnboxButtonClicked;
-        EventTriggerListener.Get(openedBoxButton).onClick = OnboxButtonClicked;
         oldPosition = rootRt.anchoredPosition;
         difficultyDropDown.onValueChanged.AddListener(OnDifficultyValueChanged);
         difficultyDropDown.options.Clear();
@@ -203,13 +202,23 @@ public class InstanceList : UIBase
             InstanceMapService.Instance.SetChapterBoxState(chapterIndex, insDifficulty,ChapterBoxState.CanReceiv);
             boxState = ChapterBoxState.CanReceiv;
         }
-        SetBoxButtonState(boxState == ChapterBoxState.HasReceiv);
+        SetBoxButtonState(boxState);
     }
 
-    void SetBoxButtonState(bool hasReciev)
+    void SetBoxButtonState(ChapterBoxState boxState)
     {
-        boxButton.SetActive(!hasReciev);
-        openedBoxButton.SetActive(hasReciev);
+        if (boxState == ChapterBoxState.CanNotReceiv)
+        {
+            baoxiangState.SetState(BaoxiangState.State.BukeLingqu);
+        }
+        else if(boxState == ChapterBoxState.CanReceiv)
+        {
+            baoxiangState.SetState(BaoxiangState.State.Kelingqu);
+        }
+        else if( boxState == ChapterBoxState.HasReceiv)
+        {
+            baoxiangState.SetState(BaoxiangState.State.YiLingqu);
+        }
     }
 
     IEnumerator AdjustListPosition(int focusIndex,int allItemsCount)

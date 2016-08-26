@@ -976,6 +976,19 @@ public class StaticDataMgr : MonoBehaviour
     {
         QuestStaticData item = null;
         questData.TryGetValue(id, out item);
+
+
+        //foreach (var aa in questData)
+        //{
+
+        //    RewardData rewardData = StaticDataMgr.Instance.GetRewardData(aa.Value.rewardId);
+        //    if (rewardData == null)
+        //    {
+        //        Logger.Log("Ω±¿¯√ª”–≈‰÷√11£∫" + aa.Value.rewardId);
+        //        continue;
+        //    }
+        //}
+
         return item;
     }
 

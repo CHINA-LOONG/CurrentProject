@@ -186,7 +186,7 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
@@ -401,6 +401,8 @@ public class GameDataMgr : MonoBehaviour
         }
 
         PB.HSSettingInfoSync settingInfo = msg.GetProtocolBody<PB.HSSettingInfoSync>();
+        PB.HSSetting hsSetting = settingInfo.setting;
+        PlayerPrefs.SetString("language", hsSetting.language);
         int count = settingInfo.setting.blockPlayerId.Count;
         for (int i = 0; i < count; ++i)
         {
@@ -768,8 +770,6 @@ public class GameDataMgr : MonoBehaviour
             }
         }
     }
-
-
     //---------------------------------------------------------------------------------------------
     //public void AddPlayerData(PlayerData data)
     //{

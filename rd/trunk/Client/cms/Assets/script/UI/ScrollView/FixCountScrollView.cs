@@ -99,7 +99,7 @@ public class FixCountScrollView : MonoBehaviour
         arrangeType = m_ScrollRect.vertical ? ArrangeType.Vertical : ArrangeType.Horizontal;
 
     }
-    
+
     void OnDrag(Vector2 delta)
     {
         Vector3[] conner_local = new Vector3[4];
@@ -111,28 +111,28 @@ public class FixCountScrollView : MonoBehaviour
         //计算ScrollRect的中心坐标 相对于this的坐标
         Vector2 center = (conner_local[3] + conner_local[0]) / 2f;
 
-        if (m_Grid.constraint==GridLayoutGroup.Constraint.FixedColumnCount)
+        if (m_Grid.constraint == GridLayoutGroup.Constraint.FixedColumnCount)
         {
-            float top = conner_local[0].y + (m_Grid.cellSize.y + m_Grid.spacing.y) / 2f;
-            float bottom = conner_local[3].y - (m_Grid.cellSize.y + m_Grid.spacing.y) / 2f;
+            //float top = conner_local[0].y + (m_Grid.cellSize.y + m_Grid.spacing.y) / 2f;
+            //float bottom = conner_local[3].y - (m_Grid.cellSize.y + m_Grid.spacing.y) / 2f;
 
             for (int i = 0; i < m_Child.Count; i++)
             {
                 Transform temp = m_Child[i];
                 float distance = temp.localPosition.y - center.y;
-                if (distance < -extents*0.5f)
+                if (distance < -extents * 0.5f)
                 {
                     Vector2 pos = temp.localPosition;
-                    pos.y += extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents );
+                    pos.y += extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents);
                     int realIndex = getRealIndex(pos);
                     temp.localPosition = pos;
 
                     ReloadData(temp, realIndex);
                 }
-                else if (distance > extents*0.5f)
+                else if (distance > extents * 0.5f)
                 {
                     Vector2 pos = temp.localPosition;
-                    pos.y -= extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents ); ;
+                    pos.y -= extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents); ;
                     int realIndex = getRealIndex(pos);
                     temp.localPosition = pos;
 
@@ -142,8 +142,8 @@ public class FixCountScrollView : MonoBehaviour
         }
         else //水平
         {
-            float left = conner_local[0].x - (m_Grid.cellSize.x + m_Grid.spacing.x) / 2f;
-            float right = conner_local[3].x + (m_Grid.cellSize.x + m_Grid.spacing.x) / 2f;
+            //float left = conner_local[0].x - (m_Grid.cellSize.x + m_Grid.spacing.x) / 2f;
+            //float right = conner_local[3].x + (m_Grid.cellSize.x + m_Grid.spacing.x) / 2f;
 
             for (int i = 0; i < m_Child.Count; i++)
             {
@@ -171,7 +171,6 @@ public class FixCountScrollView : MonoBehaviour
             }
         }
     }
-
     int getRealIndex(Vector2 pos)//计算realindex 从0开始
     {
         int x = (int)Mathf.Ceil((-pos.y - m_Grid.padding.top) / (m_Grid.cellSize.y + m_Grid.spacing.y)) - 1;
@@ -184,35 +183,41 @@ public class FixCountScrollView : MonoBehaviour
         return realIndex;
     }
 
-    public void InitContentSize(int count,IScrollView iScrollView,bool reset=false)
+    public void InitContentSize(int count, IScrollView iScrollView, bool record = false)
     {
-        maxCount=count;
+        maxCount = count;
+        record &= (m_Child.Count > 0);
         this.iScrollViewDelegate = iScrollView;
-
-        m_ScrollView.pivot = new Vector2(0.5f, 0.5f);
-        m_Content.pivot = new Vector2(0, 1);
-        Debug.Log(m_ScrollView.rect);
-        m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
-        //四角坐标  横着数  矩形区域
-        //一号位中心点
-        //①       ②
-        //
-        //③       ④
-
-        SR_size = m_ScrollView.rect.size;
-
-        conners[0] = new Vector3(-SR_size.x / 2f, SR_size.y / 2f, 0);
-        conners[1] = new Vector3(SR_size.x / 2f, SR_size.y / 2f, 0);
-        conners[2] = new Vector3(-SR_size.x / 2f, -SR_size.y / 2f, 0);
-        conners[3] = new Vector3(SR_size.x / 2f, -SR_size.y / 2f, 0);
-
-        for (int i = 0; i < 4; i++)
+        if (!record)
         {
-            Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
-            conners[i].x = temp.x;
-            conners[i].y = temp.y;
+            m_ScrollView.pivot = new Vector2(0.5f, 0.5f);
+            m_Content.anchorMin = new Vector2(0.5f, 0.5f);
+            m_Content.anchorMax = new Vector2(0.5f, 0.5f);
+            m_Content.pivot = new Vector2(0, 1);
+            //Debug.Log(m_ScrollView.rect);
+            m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
+
+            //四角坐标  横着数  矩形区域
+            //一号位中心点
+            //①       ②
+            //
+            //③       ④
+
+            SR_size = m_ScrollView.rect.size;
+
+            conners[0] = new Vector3(-SR_size.x / 2f, SR_size.y / 2f, 0);
+            conners[1] = new Vector3(SR_size.x / 2f, SR_size.y / 2f, 0);
+            conners[2] = new Vector3(-SR_size.x / 2f, -SR_size.y / 2f, 0);
+            conners[3] = new Vector3(SR_size.x / 2f, -SR_size.y / 2f, 0);
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
+                conners[i].x = temp.x;
+                conners[i].y = temp.y;
+            }
         }
-        
+
         int childCont = 0;                      //创建列表项的个数
         Vector2 contentSize;                    //活动面板的大小
 
@@ -240,7 +245,7 @@ public class FixCountScrollView : MonoBehaviour
                 m_Content.sizeDelta = contentSize;
                 break;
         }
-        if (reset || m_Child.Count <= 0)
+        if (m_Child.Count <= 0)
         {
             CleanContent();
             for (int i = 0; i < childCont; i++)

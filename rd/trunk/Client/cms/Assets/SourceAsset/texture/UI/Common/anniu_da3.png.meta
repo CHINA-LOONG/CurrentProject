@@ -50,7 +50,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: 
+  spritePackingTag: common
   userData: 
-  assetBundleName: 
+  assetBundleName: texture/common
   assetBundleVariant: 

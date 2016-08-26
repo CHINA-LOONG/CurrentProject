@@ -4,8 +4,7 @@ using System.Collections;
 
 public class ContributionBox : MonoBehaviour
 {
-    public Image openBox;
-    public Image openedBox;
+    public BaoxiangState baoxiangState;
     public Text contributionText;
     // Use this for initialization
 
@@ -24,11 +23,24 @@ public class ContributionBox : MonoBehaviour
         this.index = index;
     }
 
-    public void SetHasReword(bool hasReword)
+    public void SetHasReword(bool hasRewarded)
     {
-        hasGetReword = hasReword;
-        openBox.gameObject.SetActive(!hasReword);
-        openedBox.gameObject.SetActive(hasReword);
+        hasGetReword = hasRewarded;
+        if (hasGetReword)
+        {
+            baoxiangState.SetState(BaoxiangState.State.YiLingqu);
+            return;
+        }
+
+        int sociatyContirbution = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.contributionToday;
+        if (sociatyContirbution >= needContribution)
+        {
+            baoxiangState.SetState(BaoxiangState.State.Kelingqu);
+        }
+        else
+        {
+            baoxiangState.SetState(BaoxiangState.State.BukeLingqu);
+        }
     }
 
     void OnBoxClick(GameObject go)

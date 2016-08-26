@@ -15404,5 +15404,865 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="bossrehuo" value="true"/>
 			</MotionList>
 		</Ani>
+		<Ani id="jidu5_state2" state="0" action_delay="2">
+			<MeshStateList>
+				<Mesh time="0.5" name="mesh_body" state="show"/>
+				<Mesh time="0.5" name="mesh_rhand" state="show"/>
+				<Mesh time="0.5" name="mesh_lhand" state="show"/>
+				<Mesh time="0.5" name="mesh_scissors" state="hide"/>
+				<Mesh time="0.5" name="mesh_rwing" state="show"/>
+				<Mesh time="0.5" name="mesh_lwing" state="show"/>
+				<Mesh time="0.5" name="mesh_angle" state="show"/>
+				<Mesh time="0.5" name="mesh_rcloak" state="show"/>	
+				<Mesh time="0.5" name="mesh_lcloak" state="show"/>
+				<Mesh time="0.5" name="mesh_hood" state="show"/>								
+			</MeshStateList>
+			<ControllerList>
+				<Controller time="0" name="Jidu5boss1"/>
+			</ControllerList>
+		</Ani>
+		<Ani id="jidu5_state3" state="0" action_delay="2">
+			<MeshStateList>
+				<Mesh time="0.5" name="mesh_body" state="show"/>
+				<Mesh time="0.5" name="mesh_rhand" state="show"/>
+				<Mesh time="0.5" name="mesh_lhand" state="show"/>
+				<Mesh time="0.5" name="mesh_scissors" state="hide"/>
+				<Mesh time="0.5" name="mesh_rwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_lwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_angle" state="show"/>
+				<Mesh time="0.5" name="mesh_rcloak" state="show"/>	
+				<Mesh time="0.5" name="mesh_lcloak" state="show"/>
+				<Mesh time="0.5" name="mesh_hood" state="show"/>								
+			</MeshStateList>
+			<ControllerList>
+				<Controller time="0" name="Jidu5boss2"/>
+			</ControllerList>
+		</Ani>
+		<Ani id="meitatelong1_state2" state="0" action_delay="2">
+			<MeshStateList>
+				<Mesh time="0.5" name="mesh_head" state="show"/>
+				<Mesh time="0.5" name="mesh_rmwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_lmwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_star" state="show"/>
+				<Mesh time="0.5" name="mesh_rdwing" state="show"/>
+				<Mesh time="0.5" name="mesh_ldwing" state="show"/>
+				<Mesh time="0.5" name="mesh_face" state="show"/>
+				<Mesh time="0.5" name="mesh_ruwing" state="show"/>	
+				<Mesh time="0.5" name="mesh_luwing" state="show"/>
+				<Mesh time="0.5" name="mesh_cross" state="show"/>								
+			</MeshStateList>
+		</Ani>
+		<Ani id="meitatelong1_state3" state="0" action_delay="2">
+			<MeshStateList>
+				<Mesh time="0.5" name="mesh_head" state="show"/>
+				<Mesh time="0.5" name="mesh_rmwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_lmwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_star" state="show"/>
+				<Mesh time="0.5" name="mesh_rdwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_ldwing" state="hide"/>
+				<Mesh time="0.5" name="mesh_face" state="show"/>
+				<Mesh time="0.5" name="mesh_ruwing" state="show"/>	
+				<Mesh time="0.5" name="mesh_luwing" state="show"/>
+				<Mesh time="0.5" name="mesh_cross" state="show"/>								
+			</MeshStateList>
+		</Ani>
 	</AniList>
+			
+	<AniList group="bossworldbossjidu5">	
+		<Ani id="bossWorldJidu51" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossanying" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_anying_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_anying" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu51e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu52" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossanying" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_anying_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_anying" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu52e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu53" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossanying" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_anying2_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_anying2" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu53e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu54" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfennu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fennu" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu54e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu54e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu55" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfennu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fennu" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu55e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu55e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu56" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfennu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fennu2" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu56e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu56e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="bossWorldJidu57" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossqiangxi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_qiangxi_jianzi" bundle="effect/particle" parent="Bone_jianzi" attach="true"/>
+				<Particle time="0" asset="jidu5pre_qiangxi" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu57e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu57e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu58" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossqiangxi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_qiangxi_jianzi" bundle="effect/particle" parent="Bone_jianzi" attach="true"/>
+				<Particle time="0" asset="jidu5pre_qiangxi" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="jidu5pre_qiangxi_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu58e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu58e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu59" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossqiangxi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_qiangxi2_lhand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_qiangxi2" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu59e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu59e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu510" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfensui" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fensui_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_fensui" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu510e9" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffSpeed" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu510e5" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu511" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfensui" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fensui2" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="jidu5pre_fensui2_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="jidu5pre_fensui2_rhand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu511e9" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffSpeed" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu511e5" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu512" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossfensui" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_fensui3" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu512e9" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffSpeed" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu512e5" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldJidu514" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshuimie" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_huimie" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="bossWorldJidu514e2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldJidu515" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshuimie" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="jidu5pre_huimie2" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="bossWorldJidu515e2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+	</AniList>
+	
+	<AniList group="bossworldbossmeitatelong1">	
+		<Ani id="bossWorldMeitatelong11" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshanguangshan" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangshan" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong11e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong12" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshanguangshan" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangshan" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong12e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong13" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshanguangshan" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangshan" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong13e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong14" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossshengguangyazhi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong14e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong14e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffMagic" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong15" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossshengguangyazhi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong15e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong15e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong16" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossshengguangyazhi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong16e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong16e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffSpeed" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong17" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossmolikanchu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_kanchu" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong17e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong17e5" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong18" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossmolikanchu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_kanchu" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong18e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong18e5" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffMagic" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong19" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bossmolikanchu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_kanchu" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong19e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong19e5" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuffMagic" bundle="effect/particle" locky="true" parent=""/>
+				<Particle asset="commonDebuffAttack" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosszhufu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong110e7" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110e11" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110e14" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110e17" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110b1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong110b1Finish" state="1" finish_event="bossWorldMeitatelong110b1" AniType="Passive">
+		</Ani>
+		<Ani id="bossWorldMeitatelong111" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosszhufu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong111e7" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong111e11" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong111e14" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong111e17" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong111b1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong111b1Finish" state="1" finish_event="bossWorldMeitatelong111b1" AniType="Passive">
+		</Ani>
+		<Ani id="bossWorldMeitatelong112" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosszhufu" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu_hand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossWorldMeitatelong112e7" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112e11" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112e14" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112e17" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112b1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112b1Finish" state="1" finish_event="bossWorldMeitatelong112b1" AniType="Passive">
+		</Ani>
+		<Ani id="bossWorldMeitatelong112b2" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossWorldMeitatelong112b2Finish" state="1" finish_event="bossWorldMeitatelong112b2" AniType="Passive">
+		</Ani>
+		<Ani id="bossWorldMeitatelong114" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshuimie" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meitatelong1pre_huimie" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="bossWorldMeitatelong114e2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffMagic" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+	</AniList>	
 </AniGroupList>

@@ -9,13 +9,12 @@ public class UIQuestInfo : UIBase
     public static string ViewName = "UIQuestInfo";
 
     //public static void Open(int questId)
-    public static UIQuestInfo Open(QuestInfo quest)
+    public static UIQuestInfo Open(QuestItemInfo quest, System.Action StartEvent = null, System.Action<float> EndEvent = null)
     {
         //questItem quest = StaticDataMgr.Instance.GetQuestData(questId);
 
         UIQuestInfo mInfo = UIMgr.Instance.OpenUI_(UIQuestInfo.ViewName)as UIQuestInfo;
-        mInfo.info = quest;
-        mInfo.ShowWithData(quest);
+        mInfo.ShowWithData(quest,StartEvent,EndEvent);
         return mInfo;
     }
 
@@ -26,36 +25,81 @@ public class UIQuestInfo : UIBase
 
     public Transform rewardParent;
 
+    public Animator animator;
+    public GameObject effect;
 
-    private QuestInfo info;
-    private List<rewardItemIcon> items = new List<rewardItemIcon>();
+    private QuestItemInfo info;
+    public System.Action StartEvent;
+    public System.Action<float> EndEvent;
 
+    private List<GameObject> rewardItems = new List<GameObject>();
 
     void Start()
     {
         //TODO:
+        animator.SetTrigger("PopupIn");
         OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;
     }
-
-    public override void Init()
+    void ShowWithData(QuestItemInfo info, System.Action StartEvent, System.Action<float> EndEvent)
     {
-
-    }
-
-    public override void Clean()
-    {
-        for (int i = items.Count - 1; i >= 0; i++)
-        {
-            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
-        }
-        items.Clear();
-    }
-
-    void ShowWithData(QuestInfo info)
-    {
+        this.info = info;
+        this.StartEvent = StartEvent;
+        this.EndEvent = EndEvent;
         text_Quest.text =StaticDataMgr.Instance.GetTextByID(info.staticData.name);
         SetReward(info.staticData.rewardId);
+    }
+    //创建奖励对象
+    void SetReward(string rewardId)
+    {
+        RewardData rewardData = StaticDataMgr.Instance.GetRewardData(rewardId);
+        if (rewardData == null)
+        {
+            Logger.Log("奖励没有配置：" + rewardId);
+            return;
+        }
+        List<RewardItemData> list = new List<RewardItemData>(rewardData.itemList);
+        list.Sort(questItem.SortReward);
+        CleanReward();
+        PB.RewardItem info;
+        GameObject reward;
+        for (int i = 0; i < list.Count; i++)
+        {
+            info = list[i].protocolData;
+            if (info.type == (int)PB.itemType.ITEM)
+            {
+                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count });
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
+            }
+            else if (info.type == (int)PB.itemType.EQUIP)
+            {
+                EquipData equipData = EquipData.valueof(0, info.itemId, info.stage, info.level, BattleConst.invalidMonsterID, null);
+                ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
+            }
+            else if (info.type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), info.count);
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
+            }
+            else
+            {
+                Logger.LogError("配置错误，雷神知道怎么配"); reward = null;
+            }
+            rewardItems.Add(reward);
+        }
+    }    
+    //清理奖励列表对象
+    public void CleanReward()
+    {
+        for (int i = 0; i < rewardItems.Count; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(rewardItems[i]);
+        }
+        rewardItems.Clear();
     }
 
     void ClickConfirmButton(GameObject go)
@@ -64,43 +108,13 @@ public class UIQuestInfo : UIBase
 
         UIMgr.Instance.CloseUI_(this);
         if (!string.IsNullOrEmpty(info.staticData.speechId))
-        { 
-            UISpeech.Open(info.staticData.speechId); 
-        }
-    }
-
-    void SetReward(string rewardId)
-    {
-        List<RewardItemData> list = new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
-        list.Sort(QuestItem.SortReward);
-        for (int i = 0; i < items.Count; i++)
         {
-            if (i >= list.Count) items[i].gameObject.SetActive(false);
-            else items[i].gameObject.SetActive(true); ;
+            StartEvent();
+            UISpeech.Open(info.staticData.speechId, EndEvent);
         }
-        for (int i = items.Count; i < list.Count; i++)
+        else
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
-            if (go != null)
-            {
-                go.transform.localScale = Vector3.one;
-                go.transform.SetParent(rewardParent, false);
-                rewardItemIcon item = go.GetComponent<rewardItemIcon>();
-                items.Add(item);
-            }
-        }
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            if (list[i].protocolData.type == (int)PB.itemType.PLAYER_ATTR &&
-                int.Parse(list[i].protocolData.itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
-            {
-                items[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
-            }
-            else
-            {
-                items[i].SetItem(list[i]);
-            }
+            EndEvent(0.0f);
         }
     }
     void OnLanguageChanged()
@@ -109,4 +123,17 @@ public class UIQuestInfo : UIBase
         text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_reward_title");
         text_Finish.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
+    #region UIBase
+    public override void Init()
+    {
+        //effect.SetActive(true);
+    }
+
+    public override void Clean()
+    {
+
+    }
+
+    #endregion
+
 }

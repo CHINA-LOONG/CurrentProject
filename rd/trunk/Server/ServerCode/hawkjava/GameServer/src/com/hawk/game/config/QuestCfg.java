@@ -36,6 +36,7 @@ public class QuestCfg extends HawkConfigBase {
 	private final String icon = null;
 	private final String desc = null;
 	private final String speechId = null;
+	private final String path = null;
 
 	// assemble
 	protected int goalTypeValue = 0;

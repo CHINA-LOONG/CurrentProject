@@ -13,6 +13,7 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 	}
 	int jishu = 0 ;
 	int i = 1;
+	int huihe = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Hetong2Unit)
 	{
@@ -39,15 +40,15 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong23", out useSpell);
 				i--;
 			}
-			else if (GetAttackCount(Hetong2Unit) % 5 == 0 && GetAttackCount(Hetong2Unit) != 0) 
+			else if (huihe % 5 == 0 && huihe != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong24", out useSpell);
 			}
-			else if (GetAttackCount(Hetong2Unit) % 2 == 0 && GetAttackCount(Hetong2Unit) != 0) 
+			else if (huihe % 2 == 0 && huihe != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong22", out useSpell);
 			}
-
+			huihe ++;
 		} 
 
 		else 
@@ -69,15 +70,15 @@ public class bossxiaoxiang27Hetong2 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
-	{
-		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossxiaoxiang27Hetong2wp03" && jishu==0)
-        {
-			target.TriggerEvent("Hetong2_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-			jishu ++;
-        }
-	}
+	// public override void OnWpDead(WeakPointDeadArgs args)
+	//{
+	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+	//	if (args.wpID == "bossxiaoxiang27Hetong2wp03" && jishu==0)
+	//  {
+	//		target.TriggerEvent("Hetong2_state1to2", Time.time, null);
+	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+	//		jishu ++;
+	//  }
+	//}
 	//---------------------------------------------------------------------------------------------
 }

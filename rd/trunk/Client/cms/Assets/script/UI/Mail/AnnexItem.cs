@@ -37,7 +37,7 @@ public class AnnexItem : MonoBehaviour
         }
         else
         {
-            Logger.LogError("雷神配错了---找雷神");
+            Logger.LogError("配置错误，雷神知道怎么配");
         }
     }
 

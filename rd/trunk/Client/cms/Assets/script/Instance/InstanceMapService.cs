@@ -395,7 +395,7 @@ public class InstanceMapService : MonoBehaviour
 
     public  ChapterBoxState GetChapterBoxState(int chapter,InstanceDifficulty  diffType)
     {
-        if(null == chapterState)
+        if(null == chapterState || chapter < 1)
             return ChapterBoxState.CanNotReceiv;
         List<int> stateList = null;
         if (InstanceDifficulty.Normal == diffType)

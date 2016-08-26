@@ -2246,3 +2246,58 @@ guide_worldboss1,<color=#ffcc00>神怪入侵</color>玩法开启啦！,<color=#f
 guide_worldboss2,每个神怪都有<color=#ffcc00>克星</color>，战斗时将克星上阵，就能获得对应的<color=#ffcc00>伤害加成</color>,"Each deity has a <color=#ffcc00>nemesis</color>. If you add the nemesis to your lineup, then you can receive the corresponding <color=#ffcc00>damage bonuses</color>."
 speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for 15 minutes each. Players may only participate in 1 of the 3 battles each day.
 speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!"
+bossworldbossjidu5wp02,右手,Right Hand
+bossworldbossjidu5wp03,左手,Left Hand
+bossworldbossjidu5wp04,剪刀,Shears
+bossworldbossjidu5wp05,右翅膀,Right Wing
+bossworldbossjidu5wp06,左翅膀,Left Wing
+bossworldbossjidu5wp07,角,Horn
+bossworldbossjidu5wp08,披风右下摆,Cloak right
+bossworldbossjidu5wp09,披风左下摆,Cloak left
+bossworldbossjidu5wp10,兜帽,Hood
+jidu5hide_rhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_scissors,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_rwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_angle,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_rcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_hood,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5normal_rhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_scissors,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_rwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_angle,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_rcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_hood,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+bossworldbossmeitatelong1wp02,右翅膀,Right Wing
+bossworldbossmeitatelong1wp03,左翅膀,Left Wing
+bossworldbossmeitatelong1wp04,神秘之星,Secret Star
+bossworldbossmeitatelong1wp05,右下翅膀,Lower-right Wing
+bossworldbossmeitatelong1wp06,左下翅膀,Lower-left Wing
+bossworldbossmeitatelong1wp07,神秘之脸,Secret Face
+bossworldbossmeitatelong1wp08,右上翅膀,Upper-right Wing
+bossworldbossmeitatelong1wp09,左上翅膀,Upper-left Wing
+bossworldbossmeitatelong1wp10,神秘之架,Secret cross
+meitatelong1hide_rmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_lmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_star,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_rdwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_ldwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_face,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_ruwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_luwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_cross,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1normal_rmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_lmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_star,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_rdwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_ldwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_face,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+worldentry,神怪入侵,Deity Invasion

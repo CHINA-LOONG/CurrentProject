@@ -1831,7 +1831,7 @@ worldboss_moralestrenth,力量,STR
 worldboss_moraleintelligence,智力,INT
 worldboss_moralehealth,体力,STA
 worldboss_moralebutton,提升,Increase
-worldboss_battlebuttonyicanjia,已参与,have participated
+worldboss_battlebuttonyicanjia,已参与,Participated
 worldboss_battlebuttonweikai,未开启,Locked
 worldboss_battlebuttongo,挑战,Battle
 worldboss_battlebuttonrevive,再次挑战,Battle Again

@@ -57,7 +57,7 @@ public class WpIcon : MonoBehaviour
                 break;
             case WeakpointState.Normal1:
                 //wpIconname = GetWpIconName(wpRealData.staticData.stat1WpType);
-                wpIconname = wpRealData.staticData.state0Icon;
+                wpIconname = wpRealData.staticData.state1Icon;
                 isArmor = wpRealData.staticData.stat1WpType >= 0 && wpRealData.staticData.stat1WpType <= 2;
                 break;
             case WeakpointState.Normal2:

@@ -3,51 +3,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class QuestItem : MonoBehaviour
+public class QuestItemInfo
 {
-    public Image img_QuestIcon;
-    public Image img_Bground;
+    public QuestData serverData;
+    public QuestStaticData staticData;
+}
+
+public class questItem : MonoBehaviour
+{
     public Text text_Name;
     public Text text_Desc;
     public Text text_progress;
+
+    public Transform rewardParent;
 
     public Button btn_Todoit;
     public Button btn_Submit;
     public Text text_Todoit;
     public Text text_Submit;
+
     public Text text_Cause;
     private string causeId="";
 
-    public Transform rewardParent;
-    private List<rewardItemIcon> items = new List<rewardItemIcon>();
-    private QuestInfo info;
+    //private QuestItemInfo curData;
+    private QuestItemInfo curData;
+    public List<GameObject> rewardItems = new List<GameObject>();
+
+    public System.Action<QuestItemInfo> onClickTodoit;
+    public System.Action<QuestItemInfo> onClickSubmit;
+
+    private System.Action onClickEvent = null;
     void Start()
     {
         OnLanguageChanged();
         EventTriggerListener.Get(btn_Todoit.gameObject).onClick = OnClickTodoit;
         EventTriggerListener.Get(btn_Submit.gameObject).onClick = OnClickSubmit;
     }
-    //清理资源对象
-    public void Clean()
-    {
-        for (int i = 0; i < items.Count; i++)
-        {
-            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
-        }
-        items.Clear();
-    }
 
-    public void SetQuest(QuestInfo info)
+    public void ReLoadData(QuestItemInfo info)
     {
-        this.info = info;
-        img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(info.staticData.icon) as Sprite;
+        curData = info;
         text_Name.text = StaticDataMgr.Instance.GetTextByID(info.staticData.name);
-        //TODO: extend  need to modify
         text_Desc.text = string.Format(StaticDataMgr.Instance.GetTextByID(info.staticData.desc));
 
         text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
+        SetReward(info.staticData.rewardId);
+
         if (StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) != null &&
-            GameTimeMgr.Instance.GetTime() < StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId))
+            GameTimeMgr.Instance.GetServerTime() < StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId))
         {
             //TODO： test message；
             SetState(false, false, "quest_shijianweidao");
@@ -56,9 +59,13 @@ public class QuestItem : MonoBehaviour
         {
             SetState((info.serverData.progress >= info.staticData.goalCount), true);
         }
-
-        SetReward(info.staticData.rewardId);
-
+        if (curData.staticData.PathList != null)
+        {
+            ParseBase parse = ParseFactory.CreateParse(curData.staticData.PathList);
+            string name;
+            bool condition;
+            parse.GetResult(curData.staticData.PathList, out name, out onClickEvent, out condition);
+        }
     }
 
     void SetState(bool finish, bool accept=true, string cause = "")
@@ -78,50 +85,74 @@ public class QuestItem : MonoBehaviour
 
     void SetReward(string rewardId)
     {
-        List<RewardItemData> list =new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
+        RewardData rewardData = StaticDataMgr.Instance.GetRewardData(rewardId);
+        if (rewardData==null)
+        {
+            Logger.Log("奖励没有配置："+rewardId);
+            return;
+        }
+        List<RewardItemData> list =new List<RewardItemData>(rewardData.itemList);
         list.Sort(SortReward);
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (i >= list.Count) items[i].gameObject.SetActive(false);
-            else items[i].gameObject.SetActive(true); ;
-        }
-        for (int i = items.Count; i < list.Count; i++)
-        {
-            GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
-            if (go!=null)
-            {
-                go.transform.localScale = Vector3.one;
-                go.transform.SetParent(rewardParent, false);
-                rewardItemIcon item = go.GetComponent<rewardItemIcon>();
-                items.Add(item);
-                LanguageMgr.Instance.SetLanguageFont(go);
-            }
-        }
-
+        CleanReward();
+        PB.RewardItem info;
+        GameObject reward;
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i].protocolData.type == (int)PB.itemType.PLAYER_ATTR &&
-                int.Parse(list[i].protocolData.itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
+            info = list[i].protocolData;
+            if (info.type == (int)PB.itemType.ITEM)
             {
-                items[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
+                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count });
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
+            }
+            else if (info.type == (int)PB.itemType.EQUIP)
+            {
+                EquipData equipData = EquipData.valueof(0, info.itemId, info.stage, info.level, BattleConst.invalidMonsterID, null);
+                ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
+            }
+            else if (info.type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), info.count);
+                UIUtil.SetParentReset(icon.transform, rewardParent);
+                reward = icon.gameObject;
             }
             else
             {
-                items[i].SetItem(list[i]);
+                Logger.LogError("配置错误，雷神知道怎么配"); reward = null;
             }
+            rewardItems.Add(reward);
         }
 
+    }
+    //清理奖励列表对象
+    public void CleanReward()
+    {
+        for (int i = 0; i < rewardItems.Count; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(rewardItems[i]);
+        }
+        rewardItems.Clear();
     }
 
     void OnClickTodoit(GameObject go)
     {
-        //TODO:  
+        if (onClickEvent!=null)
+        {
+            onClickEvent();
+        }
+        if (onClickTodoit!=null)
+        {
+            onClickTodoit(curData);
+        }
     }
     void OnClickSubmit(GameObject go)
     {
-        PB.HSQuestSubmit param = new PB.HSQuestSubmit();
-        param.questId = info.serverData.questId;
-        GameApp.Instance.netManager.SendMessage(PB.code.QUEST_SUBMIT_C.GetHashCode(), param);
+        if (onClickSubmit!=null)
+        {
+            onClickSubmit(curData);
+        }
     }
 
     //sort reward item

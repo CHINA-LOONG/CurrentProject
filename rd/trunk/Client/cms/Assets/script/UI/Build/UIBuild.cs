@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Funplus;
 
 public class UIBuild : UIBase,PopupListIndextDelegate
 {
@@ -22,7 +23,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public Text huoliText;
     public GameObject huoliTipButton;
     public HuoliCountDown huoliCountdown;
-
+    public Button userCenter;
 
     public PopupList m_LangPopup;
 
@@ -63,7 +64,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
-		EventTriggerListener.Get (shopButton.gameObject).onClick = OnShopButtonClick;
+        EventTriggerListener.Get(shopButton.gameObject).onClick = OnShopButtonClick;
+        EventTriggerListener.Get(userCenter.gameObject).onClick = OnUserCenterButtonClick;
 
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
@@ -91,6 +93,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.AddListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_C.GetHashCode().ToString(), OnSettingLanguageRet);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_S.GetHashCode().ToString(), OnSettingLanguageRet);
 	}
 
 	void UnBindListener()
@@ -100,6 +104,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_C.GetHashCode().ToString(), OnSettingLanguageRet);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_S.GetHashCode().ToString(), OnSettingLanguageRet);
     }
 
 	void OnLevelChanged(int level)
@@ -174,6 +180,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnQuestButtonClick(GameObject go)
     {
         uiQuest= UIMgr.Instance.OpenUI_(UIQuest.ViewName) as UIQuest;
+        uiQuest.Refresh(0);
     }
 
     void OnMailButtonClick(GameObject go)
@@ -236,6 +243,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameApp.Instance.netManager.SendMessage(ProtocolMessage.Create(PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
     }
 
+    void OnUserCenterButtonClick(GameObject go)
+    {
+        FunplusAccount.GetInstance().ShowUserCenter();
+    }
 
     public void OnPopupListChanged(int index)
     {
@@ -245,7 +256,16 @@ public class UIBuild : UIBase,PopupListIndextDelegate
             LanguageMgr.Instance.Lang = lang;
             m_LangPopup.RefrshItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
             m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
-            //GameMain.Instance.ChangeModule<LoginModule>();
+            if (LanguageMgr.Instance.Lang == Language.Chinese)
+            {
+                PlayerPrefs.SetString("language", "zh-CN");
+                SettingLanguage();
+            }
+            else if (LanguageMgr.Instance.Lang == Language.English)
+            {
+                PlayerPrefs.SetString("language", "en");
+                SettingLanguage();
+            }
         }
     }
 
@@ -286,5 +306,21 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
         uiInstance = UIMgr.Instance.OpenUI_(InstanceMap.ViewName) as InstanceMap;
         return uiInstance;
+    }
+
+    void SettingLanguage()
+    {
+        PB.HSSettingLanguage param = new PB.HSSettingLanguage()
+        {
+            language = PlayerPrefs.GetString("language")
+        };
+        GameApp.Instance.netManager.SendMessage(PB.code.SETTING_LANGUAGE_C.GetHashCode(), param,false);
+    }
+    void OnSettingLanguageRet(ProtocolMessage msg)
+    {
+        if (msg.GetProtocolBody<PB.HSSettingLanguageRet>().language == PlayerPrefs.GetString("language"))
+        {
+            Logger.Log("设置成功");
+        }
     }
 }

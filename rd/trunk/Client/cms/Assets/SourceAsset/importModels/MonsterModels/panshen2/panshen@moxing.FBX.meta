@@ -51,6 +51,27 @@ ModelImporter:
     100086: //RootNode
     100088: wp_body
     100090: wp_eye
+    100092: Bip001 Footsteps
+    100094: Bip001 HeadNub
+    100096: Bip001 L Finger0Nub
+    100098: Bip001 L Finger1Nub
+    100100: Bip001 L Finger2Nub
+    100102: Bip001 L Finger3Nub
+    100104: Bip001 L Toe0Nub
+    100106: Bip001 R Finger0Nub
+    100108: Bip001 R Finger1Nub
+    100110: Bip001 R Finger2Nub
+    100112: Bip001 R Finger3Nub
+    100114: Bip001 R Toe0Nub
+    100116: Bip001 Xtra01Nub
+    100118: Bip001 Xtra02Nub
+    100120: Bip001 Xtra03Nub
+    100122: Bip001 Xtra04Nub
+    100124: Bip001 Xtra05Nub
+    100126: Bip001 Xtra06Nub
+    100128: Bip001 Xtra07Nub
+    100130: mesh_flower
+    100132: wp_flower
     400000: Bip001
     400002: Bip001 Head
     400004: Bip001 L Calf
@@ -97,9 +118,32 @@ ModelImporter:
     400086: //RootNode
     400088: wp_body
     400090: wp_eye
+    400092: Bip001 Footsteps
+    400094: Bip001 HeadNub
+    400096: Bip001 L Finger0Nub
+    400098: Bip001 L Finger1Nub
+    400100: Bip001 L Finger2Nub
+    400102: Bip001 L Finger3Nub
+    400104: Bip001 L Toe0Nub
+    400106: Bip001 R Finger0Nub
+    400108: Bip001 R Finger1Nub
+    400110: Bip001 R Finger2Nub
+    400112: Bip001 R Finger3Nub
+    400114: Bip001 R Toe0Nub
+    400116: Bip001 Xtra01Nub
+    400118: Bip001 Xtra02Nub
+    400120: Bip001 Xtra03Nub
+    400122: Bip001 Xtra04Nub
+    400124: Bip001 Xtra05Nub
+    400126: Bip001 Xtra06Nub
+    400128: Bip001 Xtra07Nub
+    400130: mesh_flower
+    400132: wp_flower
     4300000: mesh_body
+    4300002: mesh_flower
     9500000: //RootNode
     13700000: mesh_body
+    13700002: mesh_flower
   materials:
     importMaterials: 1
     materialName: 0

@@ -13,6 +13,7 @@ public class bossxiaoxiang21Wushi4 : BossAi {
 	}
 	int jishu = 0 ;
 	int i = 1;
+	int huihe = 0;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Wushi4Unit)
 	{
@@ -56,13 +57,14 @@ public class bossxiaoxiang21Wushi4 : BossAi {
 				//Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi43", out useSpell);
 				//i--;
 			//}
-			if (GetAttackCount(Wushi4Unit) % 7 == 0 && GetAttackCount(Wushi4Unit) !=0) 
+			if (huihe % 7 == 0 && huihe != 0 ) 
 			{
 				Wushi4SpellDic.TryGetValue ("bossxiaoxiang21Wushi44", out useSpell);
 			}
+			huihe ++;
 		}			
 		attackResult.useSpell = useSpell;
-
+		
 		return attackResult;
     }
     //---------------------------------------------------------------------------------------------

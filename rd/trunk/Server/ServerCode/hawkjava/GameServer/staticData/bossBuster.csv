@@ -1,6 +1,5 @@
 ﻿#NUM,TEXT,TEXT,TEXT,NUM,NUM,TEXT
 id,boss,lowerBuster,highBuster,level,stage,instanceId
 #id,世界boss的id,低级克星,高级克星,怪物等级,怪物品质,副本id
-1,xgPanshen2,xgWushi3,xgWushi4,60,6,pvp_scene
-2,xgKairuisi5,xgXiyiren4,xgMantuoluo2,60,6,pvp_scene
-3,xgWagui3,xgHetong3,xgWushi3,60,6,pvp_scene
+1,bossworldbossmeitatelong1,xgNvyao5,xgDujiaoshou5,60,6,worldboss2
+2,bossworldbossjidu5,xgSheshouzuo1,xgChange1,60,6,worldboss1
