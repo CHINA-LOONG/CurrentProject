@@ -6,7 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hawk.app.HawkApp;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
+import org.hawk.msg.HawkMsg;
+import org.hawk.xid.HawkXID;
 
 import com.hawk.game.config.QuestCfg;
 
@@ -31,7 +35,7 @@ public class QuestUtil {
 	/**
 	 * 添加任务
 	 */
-	public static void addQuest(QuestCfg questCfg) {
+	public static void addQuestCfg(QuestCfg questCfg) {
 		QuestGroup group = questGroupMap.get(questCfg.getGroup());
 		if (group == null) {
 			group = new QuestGroup();
@@ -74,7 +78,21 @@ public class QuestUtil {
 		return Collections.unmodifiableMap(questGroupMap);
 	}
 
+	/**
+	 * 获得某循环性任务组
+	 */
 	public static Map<Integer, QuestGroup> getCycleQuestGroupMap(int cycle) {
 		return Collections.unmodifiableMap(cycleQuestGroupMap.get(cycle));
 	}
+
+	/**
+	 * 生成任务相关数据有更新消息
+	 */
+	public static void postQuestDataUpdateMsg(HawkXID xid) {
+		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, xid);
+		if (false == HawkApp.getInstance().postMsg(msg)) {
+			HawkLog.errPrintln("post statistics update message failed: " + xid.getId());
+		}
+	}
+
 }

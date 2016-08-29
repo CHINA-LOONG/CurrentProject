@@ -47,6 +47,7 @@ shop_sale,打折,Sale
 shop_soldOut,已售,Sold Out!
 shop_oldPrice,原价,Original Price
 shop_refreshtips,今日还可刷新 {0} 次，是否确认刷新？,You can refresh <color=#ffCC00ff>{0}</color> more times today. Continue?
+shop_refreshtips1,是否确认刷新？,shifouquerenshuaxin
 shop_buy,购买,Purchase
 shop_zuanshinoenough,钻石不足，是否前往充值？,Not enough Diamonds. Would you like to get more?
 shop_timeout,商店内容已过期,Store items have already expired.
@@ -64,12 +65,14 @@ shop_isbuy,立即购买,Purchase
 shop_now, ,now
 shop_noduihuantimes,今日可买次数已经用完。,You have purchased the maximum amount for today.
 shop_buysucctip,成功购买{0}{1},Successfully purchased {0}{1}
+shop_record_001,成功购买{0},Successfully purchased {0}
 shop_succbuy,获得金币*{0} ,You have received {0} Coins!
 succbuy_baoji,暴击！获得金币*{0},Congratulations! You have received {0} Coins!
 shop_noenoughcoin,货币不足，无法购买,"Insufficient currency, unable to purchase."
 shop_cannotbuy,无法继续购买,Unable to continue purchase.
 shop_nojinbi_noduihuan,金币不足，且今日钻石兑换金币次数已经用完。,"Insufficient Coins, and today's Diamond to Coin exchanges have all been used."
-shop_refresh_error,<color=#ff0000ff>已达当前等级今日可刷新最大次数，刷新失败</color>,"<color=#ff0000ff>You have reached your current level's refresh limit for today, failed to refresh.</color>"
+shop_refresh_error,<color=#ff0000ff>刷新次数已达上限，刷新失败</color>,"<color=#ff0000ff>You have reached limit, failed to refresh.</color>"
+shop_record_006,<color=#ff0000ff>兑换次数已达上限，兑换失败</color>,"<color=#ff0000ff>You have reached limit, failed to refresh.</color>"
 xf,,
 equip_Helmet,<头盔>,<Helmet>
 equip_Weapon,<武器>,<Weapon>

@@ -8,11 +8,13 @@ import java.util.Set;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.os.HawkTime;
+import org.hawk.xid.HawkXID;
 
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.GsConst.Cycle;
+import com.hawk.game.util.QuestUtil;
 
 /**
  * 玩家统计数据包装类
@@ -102,6 +104,9 @@ public class StatisticsEntity {
 			lf2Update = false;
 			lf2Entity.notifyUpdate(async);
 		}
+
+		// 更新任务
+		QuestUtil.postQuestDataUpdateMsg(HawkXID.valueOf( GsConst.ObjType.PLAYER, getPlayerId()));
 	}
 
 	// HF method=========================================================================

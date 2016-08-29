@@ -91,9 +91,15 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "platform", nullable = false)
 	protected String platform = "";
 
-	@Column(name = "phoneInfo", nullable = false)
-	protected String phoneInfo = "";
+	@Column(name = "phoneType", nullable = false)
+	protected String phoneType = "";
 
+	@Column(name = "osVersion", nullable = false)
+	protected String osVersion = "";
+	
+	@Column(name = "osName", nullable = false)
+	protected String osName = "";
+	
 	@Column(name = "loginTime")
 	protected Calendar loginTime = null;
 
@@ -281,12 +287,28 @@ public class PlayerEntity extends HawkDBEntity {
 		this.platform = platform;
 	}
 
-	public String getPhoneInfo() {
-		return phoneInfo;
+	public String getPhoneType() {
+		return phoneType;
 	}
 
-	public void setPhoneInfo(String phoneInfo) {
-		this.phoneInfo = phoneInfo;
+	public void setPhoneType(String phoneType) {
+		this.phoneType = phoneType;
+	}
+
+	public String getOsVersion() {
+		return osVersion;
+	}
+
+	public void setOsVersion(String osVersion) {
+		this.osVersion = osVersion;
+	}
+
+	public String getOsName() {
+		return osName;
+	}
+
+	public void setOsName(String osName) {
+		this.osName = osName;
 	}
 
 	public Calendar getLoginTime() {

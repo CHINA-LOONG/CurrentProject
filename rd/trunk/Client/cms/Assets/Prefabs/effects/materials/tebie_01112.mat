@@ -136,6 +136,18 @@ Material:
         second: 0
       data:
         first:
+          name: _ForceX
+        second: .100000001
+      data:
+        first:
+          name: _ForceY
+        second: .100000001
+      data:
+        first:
+          name: _HeatTime
+        second: 0
+      data:
+        first:
           name: _AllPower
         second: .829999983
       data:
@@ -150,18 +162,6 @@ Material:
         first:
           name: _RimPower
         second: 2.28999996
-      data:
-        first:
-          name: _ForceX
-        second: .100000001
-      data:
-        first:
-          name: _ForceY
-        second: .100000001
-      data:
-        first:
-          name: _HeatTime
-        second: 0
     m_Colors:
       data:
         first:

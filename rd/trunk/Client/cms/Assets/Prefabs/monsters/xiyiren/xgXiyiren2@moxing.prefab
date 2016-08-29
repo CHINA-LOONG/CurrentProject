@@ -671,6 +671,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 449240}
   - 95: {fileID: 9505374}
+  - 65: {fileID: 6533646}
   m_Layer: 0
   m_Name: xgXiyiren2@moxing
   m_TagString: Untagged
@@ -1822,6 +1823,18 @@ Transform:
   - {fileID: 472550}
   m_Father: {fileID: 490972}
   m_RootOrder: 0
+--- !u!65 &6533646
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.20000005, y: 1.60000002, z: 1}
+  m_Center: {x: 0, y: .600000024, z: .5}
 --- !u!95 &9505374
 Animator:
   serializedVersion: 3

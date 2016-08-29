@@ -126,4 +126,8 @@ public class BattleConst
     public const float bpPhyLvl = 1.0f;
     public const float bpMagicLvl = 1.0f;
     public const float bpDotLvl = 1.0f;
+
+    public const float lifeBarDistance = 0.2f;
+
+    public static Quaternion rotYPIDegree = new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
 }

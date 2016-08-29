@@ -106,6 +106,7 @@ public class PlayerData {
 	 * 公会基本信息
 	 */
 	private PlayerAllianceEntity playerAllianceEntity = null;
+	
 	/**
 	 * 构造函数
 	 * 
@@ -550,7 +551,7 @@ public class PlayerData {
 	public void removeMailEntity(MailEntity mailEntity) {
 		mailEntityList.remove(mailEntity);
 	}
-
+	
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/

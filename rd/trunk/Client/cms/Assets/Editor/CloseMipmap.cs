@@ -60,25 +60,30 @@ public class CloseMipmap : MonoBehaviour
             {
                 prefabsWithAni.Add(prefabs_path[i]);
             }
+
         }
 
         for (int i = 0; i < prefabsWithAni.Count; ++i)
         {
-            GameObject curObj = AssetDatabase.LoadAssetAtPath(prefabs_path[i], typeof(GameObject)) as GameObject;
+            //if (prefabsWithAni[i].Contains("xgNvyao5"))
+            //{
+            //    int a = 0;
+            //}
+            GameObject curObj = AssetDatabase.LoadAssetAtPath(prefabsWithAni[i], typeof(GameObject)) as GameObject;
             if (curObj != null)
             {
                 GameObject objInstance = Instantiate(curObj);
                 Animator[] aniList = objInstance.transform.GetComponentsInChildren<Animator>();
                 for (int j = 0; j < aniList.Length; ++j)
                 {
-                    string curAniName = aniList[j].name + ".controller";
-                    AniFileInfo curAniFile;
-                    if (animatorFileList.TryGetValue(curAniName, out curAniFile) == true)
+                    RuntimeAnimatorController curController = aniList[j].runtimeAnimatorController;
+                    if (curController != null)
                     {
-                        curAniFile.refrencedPrefabList.Add(curObj.name);
-                        RuntimeAnimatorController curController = aniList[j].runtimeAnimatorController;
-                        if (curController != null)
+                        string curAniName = curController.name + ".controller";
+                        AniFileInfo curAniFile;
+                        if (animatorFileList.TryGetValue(curAniName, out curAniFile) == true)
                         {
+                            curAniFile.refrencedPrefabList.Add(curObj.name);
                             for (int clipIndex = 0; clipIndex < curController.animationClips.Length; ++clipIndex)
                             {
                                 string aniName = curController.animationClips[clipIndex].name;

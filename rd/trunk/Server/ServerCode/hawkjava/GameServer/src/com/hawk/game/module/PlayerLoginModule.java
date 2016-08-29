@@ -76,7 +76,7 @@ public class PlayerLoginModule extends PlayerModule {
 		String platInfo = protocol.getPlatform().trim().toLowerCase();
 
 		// 解析平台名称
-		// phonetype#osversion#OS#platform#channel#id#mac#rmac&rip&route
+		// phonetype#osversion#OS#platform#channel
 		String[] platInfos = platInfo.split("#");
 		String phoneType = "";
 		String osVersion = "";
@@ -97,8 +97,6 @@ public class PlayerLoginModule extends PlayerModule {
 			}
 		}
 
-		// 机器信息
-		String phoneInfo = osName + "#" + osVersion + "#" + phoneType;
 		// 整理平台名字
 		String platform = channel;
 		if (!channel.startsWith(platName)) {
@@ -110,25 +108,24 @@ public class PlayerLoginModule extends PlayerModule {
 
 		// 更新玩家设备相关信息
 		if (playerEntity != null) {
-			boolean needUpdate = false;
-			if (playerEntity.getDevice() == null || playerEntity.getDevice().length() <= 0) {
+			if (device != null && device.length() >= 0) {
 				playerEntity.setDevice(device);
-				needUpdate = true;
 			}
 
-			if (playerEntity.getPlatform() == null || playerEntity.getPlatform().length() <= 0) {
+			if (platform != null && platform.length() >= 0) {
 				playerEntity.setPlatform(platform);
-				needUpdate = true;
 			}
 
-			if (playerEntity.getPhoneInfo() == null || playerEntity.getPhoneInfo().length() <= 0) {
-				playerEntity.setPhoneInfo(phoneInfo);
-				needUpdate = true;
+			if (phoneType != null && phoneType.length() >= 0) {
+				playerEntity.setPhoneType(phoneType);
 			}
-
-			// 回写设备信息
-			if (needUpdate) {
-				playerEntity.notifyUpdate(true);
+			
+			if (osName != null && osName.length() >= 0) {
+				playerEntity.setOsName(osName);
+			}
+			
+			if (osVersion != null && osVersion.length() >= 0) {
+				playerEntity.setOsName(osVersion);
 			}
 		}
 
@@ -138,9 +135,6 @@ public class PlayerLoginModule extends PlayerModule {
 			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
 			return true;
 		}
-
-		// 记录上线时间
-		playerEntity.setLoginTime(HawkTime.getCalendar());
 
 		// 登录回复协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();

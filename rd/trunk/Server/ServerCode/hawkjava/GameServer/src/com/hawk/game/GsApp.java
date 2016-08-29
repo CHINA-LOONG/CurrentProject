@@ -46,6 +46,7 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ShopManager;
 import com.hawk.game.manager.SnapShotManager;
+import com.hawk.game.module.activity.http.ActivityHttpServer;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -181,6 +182,19 @@ public class GsApp extends HawkApp {
 			return false;
 		}
 
+		// 初始化活动服务器
+		if (ActivityHttpServer.getInstance().setup(
+							  GsConfig.getInstance().getActivityServerAddr(),
+							  GsConfig.getInstance().getActivityServerport(), 
+							  1)) 
+		{
+			HawkLog.logPrintln("install activity server success");
+		}
+		else {
+			HawkLog.logPrintln("install activity server fail");
+			return false;
+		}
+		
 		// 初始化邮件服务
 		if (GsConfig.getInstance().getEmailUser() != null && GsConfig.getInstance().getEmailUser().length() > 0) {
 			HawkLog.logPrintln("install email service......");
@@ -623,6 +637,7 @@ public class GsApp extends HawkApp {
 	public void onShutdown() {
 		HawkAccountService.getInstance().report(new HawkAccountService.UnRegitsterGameServer());
 		HawkAccountService.getInstance().stop();
+		ActivityHttpServer.getInstance().stop();
 		super.onShutdown();
 	}
 	/**

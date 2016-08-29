@@ -280,8 +280,8 @@ public class BattleProcess : MonoBehaviour
                             ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
 
                         }
-                        ItemDropManager.Instance.Fall(1, deadUnit.transform);
-                        ItemDropManager.Instance.Fall(3, deadUnit.transform);
+                        //ItemDropManager.Instance.Fall(1, deadUnit.transform);
+                        //ItemDropManager.Instance.Fall(3, deadUnit.transform);
                     }
                 }
                 if (fireFocusTarget != null && fireFocusTarget.pbUnit.guid == deadUnit.guid)

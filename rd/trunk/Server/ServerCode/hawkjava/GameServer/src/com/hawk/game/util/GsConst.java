@@ -1,12 +1,13 @@
 package com.hawk.game.util;
 
-
 /**
  * 游戏常量定义
  * 
  * @author hawk
  */
 public class GsConst {
+	// BI版本
+	public static final String BIVersion = "2.0";
 	// 没有值，无效值，不可用
 	public static final int UNUSABLE = -1;
 	// 装备在背包时monsterId
@@ -56,13 +57,13 @@ public class GsConst {
 	// 副本复活次数
 	public static final int INSTANCE_REVIVE_COUNT = 3;
 	// 副本复活消耗
-	public static final int[] INSTANCE_REVIVE_CONSUME = new int[] {15, 30, 50};
+	public static final int[] INSTANCE_REVIVE_CONSUME = new int[] { 15, 30, 50 };
 	// 上阵己方怪物最大数量
 	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
 	// 钻石兑换金币索引
 	public static final int GOLD_TO_COIN_INDEX = 1;
 	// 副本次数重置索引
-	public static final String INSTANCE_RESET_ID= "1";
+	public static final String INSTANCE_RESET_ID = "1";
 	// 最大屏蔽玩家数
 	public static final int MAX_BLOCK_COUNT = 5;
 	// 合成上一级宝石数量
@@ -220,11 +221,12 @@ public class GsConst {
 		public static final int SHOP_TOWER = 1 << 5;
 	}
 
-	public static int[] SysRefreshTime = {103, 104, 105, 106, 107, 108, 109};
-	public static int[] SysRefreshMask = {4, 4, 4, 4, 4, 4, 4};
+	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109 };
+	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4 };
 
-	public static int[] PlayerRefreshTime = {101, 102, 201, 202, 203, 204, 205, 206, 207};
-	public static int[] PlayerRefreshMask = {1, 2, 8, 8, 8, 16, 16, 16, 32};
+	public static int[] PlayerRefreshTime = { 101, 102, 201, 202, 203, 204,
+			205, 206, 207 };
+	public static int[] PlayerRefreshMask = { 1, 2, 8, 8, 8, 16, 16, 16, 32 };
 
 	/**
 	 * 属性类型定义
@@ -250,15 +252,9 @@ public class GsConst {
 	/**
 	 * equip 品级对应的打孔数量
 	 */
-	public enum EquipStagePunch
-	{
-		NONE_STAGE(0),
-		WHITE_STAGE(0),
-		GREEN_STAGE(0),
-		BLUE_STAGE(1),
-		PURPLE_STAGE(2),
-		ORANGE_STAGE(3),
-		RED_STAGE(4);
+	public enum EquipStagePunch {
+		NONE_STAGE(0), WHITE_STAGE(0), GREEN_STAGE(0), BLUE_STAGE(1), PURPLE_STAGE(
+				2), ORANGE_STAGE(3), RED_STAGE(4);
 
 		private int punchCount;
 
@@ -266,7 +262,7 @@ public class GsConst {
 			this.punchCount = count;
 		}
 
-		public int GetCount(){
+		public int GetCount() {
 			return punchCount;
 		}
 	}
@@ -274,18 +270,11 @@ public class GsConst {
 	/**
 	 * 宝石类型权重
 	 */
-	public enum GemTypeWeight
-	{
-		NONE_GEM_TYPE(0),
-		FIRST_GEM_TYPE(100),
-		SECOND_GEM_TYPE(200),
-		THIRD_GEM_TYPE(300),
-		FORTH_GEM_TYPE(400),
-		FIFTH_GEM_TYPE(500),
-		SIXTH_GEM_TYPE(600),
-		SEVENTH_GEM_TYPE(700),
-		EIGHTI_GEM_TYPE(800),
-		NINTH_GEM_TYPE(900);
+	public enum GemTypeWeight {
+		NONE_GEM_TYPE(0), FIRST_GEM_TYPE(100), SECOND_GEM_TYPE(200), THIRD_GEM_TYPE(
+				300), FORTH_GEM_TYPE(400), FIFTH_GEM_TYPE(500), SIXTH_GEM_TYPE(
+				600), SEVENTH_GEM_TYPE(700), EIGHTI_GEM_TYPE(800), NINTH_GEM_TYPE(
+				900);
 
 		private int weight;
 
@@ -293,7 +282,7 @@ public class GsConst {
 			this.weight = weight;
 		}
 
-		public float GetWeight(){
+		public float GetWeight() {
 			return weight;
 		}
 	}
@@ -301,11 +290,8 @@ public class GsConst {
 	/**
 	 * equip 品级对应的打孔数量
 	 */
-	public enum AllianceReward
-	{
-		FIRST_REWARD(500),
-		SECOND_REWARD(1500),
-		THIRD_REWARD(3000);
+	public enum AllianceReward {
+		FIRST_REWARD(500), SECOND_REWARD(1500), THIRD_REWARD(3000);
 
 		private int rewardCount;
 
@@ -313,7 +299,7 @@ public class GsConst {
 			this.rewardCount = count;
 		}
 
-		public int GetRewardCount(){
+		public int GetRewardCount() {
 			return rewardCount;
 		}
 	}
@@ -381,56 +367,51 @@ public class GsConst {
 		public static final int INSTANCE_NORMAL_TIMES = 3;
 		public static final int INSTANCE_HARD_TIMES = 4;
 		public static final int INSTANCE_ALL_TIMES = 5;
-		public static final int CHAPTER = 6;
-		public static final int LEVEL = 7;
-		public static final int MONSTER_STAGE_COUNT = 8;
-		public static final int MONSTER_LEVEL_COUNT = 9;
-		public static final int MONSTER_MIX_TIMES = 10;
-		public static final int ARENA_TIMES = 11;
-		public static final int HOLE_COIN_TIMES = 12;
-		public static final int HOLE_EXP_TIMES = 13;
-		public static final int TOWER_TIMES = 14;
-		public static final int ADVENTURE_TIMES = 15;
-		public static final int UP_SKILL_TIMES = 16;
-		public static final int UP_EQUIP_TIMES = 17;
-		public static final int BUY_COIN_TIMES = 18;
-		public static final int BUY_GIFT_TIMES = 19;
-		public static final int BUY_ITEM_TIMES = 20;
-		public static final int PAY_DIAMOND_COUNT = 21;
-		public static final int USE_FATIGUE_COUNT = 22;
-		public static final int USE_ITEM_COUNT = 23;
-		public static final int USE_DIAMOND_COUNT = 24;
-		public static final int INLAY_ALL_TIMES = 25;
-		public static final int INLAY_TYPE_TIMES = 26;
-		public static final int SYN_ALL_TIMES = 27;
-		public static final int SYN_TYPE_TIMES = 28;
-		public static final int EGG_COIN_TIMES = 29;
-		public static final int EGG_DIAMOND_TIMES = 30;
-		public static final int EGG_ALL_TIMES = 31;
-		public static final int CALL_PET_STAGE_TIMES = 32;
-		public static final int CALL_EQUIP_STAGE_TIMES = 33;
-		public static final int CALL_ITEM_TIMES = 34;
-		public static final int SOCIETY_JOIN_TIMES = 35;
-		public static final int SOCIETY_LEAVE_TIMES = 36;
-		public static final int SOCIETY_PRAY_TIMES = 37;
-		public static final int SOCIETY_BOSS_TIMES = 38;
-		public static final int SOCIETY_FATIGUE_TIMES = 39;
-		public static final int SHOP_REFRESH_TIMES = 40;
-		public static final int COIN_ARENA_COUNT = 41;
-		public static final int COIN_SOCIETY_COUNT = 42;
-		public static final int COIN_TOWER_COUNT = 43;
-		public static final int QUEST = 44;
-		public static final int QUEST_TYPE_COUNT = 45;
-		public static final int QUEST_CYCLE_COUNT = 46;
-		public static final int EQUIP_STAGE_COUNT = 47;
-		public static final int EQUIP_SLOT_TIMES = 48;
-		public static final int FREE_GOAL = 49;
-	}
-
-	// 统计数据类型
-	public static class StatisticsType {
-		public static final int LEVEL_STATISTICS = 1;
-		public static final int OTHER_STATISTICS = 2;
+		public static final int CHAPTER_NORMAL = 6;
+		public static final int CHAPTER_HARD = 7;
+		public static final int LEVEL = 8;
+		public static final int MONSTER_STAGE_COUNT = 9;
+		public static final int MONSTER_LEVEL_COUNT = 10;
+		public static final int MONSTER_MIX_TIMES = 11;
+		public static final int ARENA_TIMES = 12;
+		public static final int HOLE_COIN_TIMES = 13;
+		public static final int HOLE_EXP_TIMES = 14;
+		public static final int TOWER_INSTANCE = 15;
+		public static final int ADVENTURE_TIMES = 16;
+		public static final int UP_SKILL_TIMES = 17;
+		public static final int UP_EQUIP_TIMES = 18;
+		public static final int BUY_COIN_TIMES = 19;
+		public static final int BUY_GIFT_TIMES = 20;
+		public static final int BUY_ITEM_TIMES = 21;
+		public static final int PAY_DIAMOND_COUNT = 22;
+		public static final int USE_FATIGUE_COUNT = 23;
+		public static final int USE_ITEM_COUNT = 24;
+		public static final int USE_DIAMOND_COUNT = 25;
+		public static final int INLAY_ALL_TIMES = 26;
+		public static final int INLAY_TYPE_TIMES = 27;
+		public static final int SYN_ALL_TIMES = 28;
+		public static final int SYN_TYPE_TIMES = 29;
+		public static final int EGG_COIN_TIMES = 30;
+		public static final int EGG_DIAMOND_TIMES = 31;
+		public static final int EGG_ALL_TIMES = 32;
+		public static final int CALL_PET_STAGE_TIMES = 33;
+		public static final int CALL_EQUIP_STAGE_TIMES = 34;
+		public static final int CALL_ITEM_TIMES = 35;
+		public static final int SOCIETY_JOIN_TIMES = 36;
+		public static final int SOCIETY_LEAVE_TIMES = 37;
+		public static final int SOCIETY_PRAY_TIMES = 38;
+		public static final int SOCIETY_BOSS_TIMES = 39;
+		public static final int SOCIETY_FATIGUE_TIMES = 40;
+		public static final int SHOP_REFRESH_TIMES = 41;
+		public static final int COIN_ARENA_COUNT = 42;
+		public static final int COIN_SOCIETY_COUNT = 43;
+		public static final int COIN_TOWER_COUNT = 44;
+		public static final int QUEST = 45;
+		public static final int QUEST_TYPE_COUNT = 46;
+		public static final int QUEST_CYCLE_COUNT = 47;
+		public static final int EQUIP_STAGE_COUNT = 48;
+		public static final int EQUIP_SLOT_TIMES = 49;
+		public static final int FREE_GOAL = 50;
 	}
 
 	// 副本难度
@@ -476,7 +457,7 @@ public class GsConst {
 	// 翻译系统，文本类型
 	public static class TextType {
 		public static final String CHAT = "chat";
-		public static final String MAIL= "mail";
+		public static final String MAIL = "mail";
 	}
 
 	public static class HoleType {

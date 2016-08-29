@@ -22,6 +22,8 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.BILog.BIBehaviorAction;
+import com.hawk.game.BILog.BIGoldData;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
@@ -31,6 +33,7 @@ import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
@@ -58,6 +61,7 @@ import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
+import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.TimeUtil;
 
 /**
@@ -365,11 +369,27 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 获取手机信息
+	 * 获取手机型号
 	 * @return
 	 */
-	public String getPhoneInfo() {
-		return playerData.getPlayerEntity().getPhoneInfo();
+	public String getPhoneType() {
+		return playerData.getPlayerEntity().getPhoneType();
+	}
+
+	/**
+	 * 获取手机系统
+	 * @return
+	 */
+	public String getOsName() {
+		return playerData.getPlayerEntity().getOsName();
+	}
+
+	/**
+	 * 获取手机型号
+	 * @return
+	 */
+	public String getOsVersion() {
+		return playerData.getPlayerEntity().getOsVersion();
 	}
 
 	/**
@@ -492,7 +512,7 @@ public class Player extends HawkAppObj {
 		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
 		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + gold - (goldRemain > 0 ? goldRemain : 0));
 		playerData.getPlayerEntity().notifyUpdate(true);
-
+	
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
 				Params.valueOf("add", gold), 
@@ -664,18 +684,13 @@ public class Player extends HawkAppObj {
 		playerEntity.notifyUpdate(true);
 
 		if (true == levelup) {
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-			msg.pushParam(GsConst.StatisticsType.LEVEL_STATISTICS);
-			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post statistics update message failed: " + getName());
-			}
-			
-			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			QuestUtil.postQuestDataUpdateMsg(getXid());
+
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level update message failed: " + getName());
 			}
-			
 		}
 
 		BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
@@ -727,12 +742,6 @@ public class Player extends HawkAppObj {
 					statisticsEntity.increaseMonsterCountOverLevel(i);
 				}
 				statisticsEntity.notifyUpdate(true);
-
-				HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-				msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-				if (false == HawkApp.getInstance().postMsg(msg)) {
-					HawkLog.errPrintln("post statistics update message failed: " + getName());
-				}
 			}
 
 			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
@@ -791,12 +800,6 @@ public class Player extends HawkAppObj {
 					statisticsEntity.increaseMonsterCountOverLevel(i);
 				}
 				statisticsEntity.notifyUpdate(true);
-
-				HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-				msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-				if (false == HawkApp.getInstance().postMsg(msg)) {
-					HawkLog.errPrintln("post statistics update message failed: " + getName());
-				}
 			}
 
 			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
@@ -838,13 +841,9 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		if (true == levelup) {
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-			msg.pushParam(GsConst.StatisticsType.LEVEL_STATISTICS);
-			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post statistics update message failed: " + getName());
-			}
+			QuestUtil.postQuestDataUpdateMsg(getXid());
 
-			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level update message failed: " + getName());
@@ -1068,13 +1067,6 @@ public class Player extends HawkAppObj {
 		}
 
 		statisticsEntity.notifyUpdate(true);
-
-		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-		msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-		if (false == HawkApp.getInstance().postMsg(msg)) {
-			HawkLog.errPrintln("post statistics update message failed: " + getName());
-		}
-
 		return true;
 	}
 

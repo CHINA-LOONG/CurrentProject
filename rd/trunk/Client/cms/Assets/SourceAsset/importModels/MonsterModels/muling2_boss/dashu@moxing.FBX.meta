@@ -1,0 +1,244 @@
+fileFormatVersion: 2
+guid: 8cb004dfb16006343881f70e3e5967c2
+timeCreated: 1452241829
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bip001
+    100002: Bip001 L Clavicle
+    100004: Bip001 L Finger0
+    100006: Bip001 L Finger01
+    100008: Bip001 L Finger1
+    100010: Bip001 L Finger11
+    100012: Bip001 L Finger2
+    100014: Bip001 L Finger21
+    100016: Bip001 L Forearm
+    100018: Bip001 L Hand
+    100020: Bip001 L UpperArm
+    100022: Bip001 Neck
+    100024: Bip001 Pelvis
+    100026: Bip001 R Clavicle
+    100028: Bip001 R Finger0
+    100030: Bip001 R Finger01
+    100032: Bip001 R Finger1
+    100034: Bip001 R Finger11
+    100036: Bip001 R Finger2
+    100038: Bip001 R Finger21
+    100040: Bip001 R Forearm
+    100042: Bip001 R Hand
+    100044: Bip001 R UpperArm
+    100046: Bip001 Spine
+    100048: Bone001
+    100050: Bone003
+    100052: Bone005
+    100054: Bone007
+    100056: Bone009
+    100058: Bone011
+    100060: Bone013
+    100062: Bone015
+    100064: Bone017
+    100066: Bone019
+    100068: Bone021
+    100070: Bone022
+    100072: Bone023
+    100074: Bone025
+    100076: Bone026
+    100078: Bone028
+    100080: Bone029
+    100082: Bone031
+    100084: Bone032
+    100086: Bone034
+    100088: Bone035
+    100090: Bone037
+    100092: Bone038
+    100094: Bone040
+    100096: Bone041
+    100098: Bone043
+    100100: Bone044
+    100102: Bone045
+    100104: Bone047
+    100106: Bone048
+    100108: Bone049
+    100110: Bone051
+    100112: Bone052
+    100114: Bone053
+    100116: Bone075
+    100118: //RootNode
+    100120: e_jihuo
+    100122: e_shifa
+    100124: e_shouji
+    100126: mesh_body
+    100128: mesh_child1
+    100130: mesh_child2
+    100132: mesh_child3
+    100134: mesh_head
+    100136: mesh_hole1
+    100138: mesh_hole2
+    100140: mesh_hole3
+    100142: wp_body
+    100144: wp_child1
+    100146: wp_child2
+    100148: wp_child3
+    100150: wp_hole1
+    100152: wp_hole2
+    100154: wp_hole3
+    400000: Bip001
+    400002: Bip001 L Clavicle
+    400004: Bip001 L Finger0
+    400006: Bip001 L Finger01
+    400008: Bip001 L Finger1
+    400010: Bip001 L Finger11
+    400012: Bip001 L Finger2
+    400014: Bip001 L Finger21
+    400016: Bip001 L Forearm
+    400018: Bip001 L Hand
+    400020: Bip001 L UpperArm
+    400022: Bip001 Neck
+    400024: Bip001 Pelvis
+    400026: Bip001 R Clavicle
+    400028: Bip001 R Finger0
+    400030: Bip001 R Finger01
+    400032: Bip001 R Finger1
+    400034: Bip001 R Finger11
+    400036: Bip001 R Finger2
+    400038: Bip001 R Finger21
+    400040: Bip001 R Forearm
+    400042: Bip001 R Hand
+    400044: Bip001 R UpperArm
+    400046: Bip001 Spine
+    400048: Bone001
+    400050: Bone003
+    400052: Bone005
+    400054: Bone007
+    400056: Bone009
+    400058: Bone011
+    400060: Bone013
+    400062: Bone015
+    400064: Bone017
+    400066: Bone019
+    400068: Bone021
+    400070: Bone022
+    400072: Bone023
+    400074: Bone025
+    400076: Bone026
+    400078: Bone028
+    400080: Bone029
+    400082: Bone031
+    400084: Bone032
+    400086: Bone034
+    400088: Bone035
+    400090: Bone037
+    400092: Bone038
+    400094: Bone040
+    400096: Bone041
+    400098: Bone043
+    400100: Bone044
+    400102: Bone045
+    400104: Bone047
+    400106: Bone048
+    400108: Bone049
+    400110: Bone051
+    400112: Bone052
+    400114: Bone053
+    400116: Bone075
+    400118: //RootNode
+    400120: e_jihuo
+    400122: e_shifa
+    400124: e_shouji
+    400126: mesh_body
+    400128: mesh_child1
+    400130: mesh_child2
+    400132: mesh_child3
+    400134: mesh_head
+    400136: mesh_hole1
+    400138: mesh_hole2
+    400140: mesh_hole3
+    400142: wp_body
+    400144: wp_child1
+    400146: wp_child2
+    400148: wp_child3
+    400150: wp_hole1
+    400152: wp_hole2
+    400154: wp_hole3
+    4300000: mesh_child1
+    4300002: mesh_body
+    4300004: mesh_head
+    4300006: mesh_hole1
+    4300008: mesh_child2
+    4300010: mesh_child3
+    4300012: mesh_hole2
+    4300014: mesh_hole3
+    9500000: //RootNode
+    13700000: mesh_body
+    13700002: mesh_child1
+    13700004: mesh_child2
+    13700006: mesh_child3
+    13700008: mesh_head
+    13700010: mesh_hole1
+    13700012: mesh_hole2
+    13700014: mesh_hole3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

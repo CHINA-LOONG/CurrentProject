@@ -313,7 +313,7 @@ public class BattleObject : MonoBehaviour
                         if (curParticleData.attach == "true")
                         {
                             //curParticleData.psObject.transform.localRotation = prefab.transform.localRotation;
-                            curParticleData.psObject.transform.localRotation = Quaternion.identity;
+                            curParticleData.psObject.transform.localRotation = BattleConst.rotYPIDegree;
                             curParticleData.psObject.transform.SetParent(rootTransform, false);
                             //NOTE: xw said if attach, ignore lock
                         }
@@ -321,15 +321,21 @@ public class BattleObject : MonoBehaviour
                         {
                             //curEvent.psObject.transform.parent = transform.parent;
                             curParticleData.psObject.transform.localPosition = rootTransform.position;
-                            curParticleData.psObject.transform.localRotation = Quaternion.identity;
                             //curParticleData.psObject.transform.localRotation = rootTransform.rotation;
                             curParticleData.psObject.transform.SetParent(transform.parent, false);
                             if (curParticleData.locky == "true")
                             {
-                                curParticleData.psObject.transform.localRotation = Quaternion.identity;
+                                //curParticleData.psObject.transform.localRotation = Quaternion.identity;
                                 curParticleData.psObject.transform.localPosition = new Vector3(rootTransform.position.x, BattleController.floorHeight + BattleConst.floorHeight, rootTransform.position.z);
                             }
-
+                            if (curParticleData.ignoreRot == "true")
+                            {
+                                curParticleData.psObject.transform.localRotation = BattleConst.rotYPIDegree;
+                            }
+                            else
+                            {
+                                curParticleData.psObject.transform.localRotation = transform.rotation * BattleConst.rotYPIDegree;
+                            }
                         }
                         curParticleData.psDuration = Util.ParticleSystemLength(curParticleData.psObject.transform);
 

@@ -113,7 +113,11 @@ public class BattleUnitUI : MonoBehaviour
         //    targetTrans = headNode.transform;
         //}
 
-        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
+        Vector3 targetPos = new Vector3();
+        targetPos.x = targetTrans.position.x;
+        targetPos.y = targetTrans.position.y + BattleConst.lifeBarDistance;
+        targetPos.z = targetTrans.position.z;
+        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetPos);
         float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
         trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);
     }

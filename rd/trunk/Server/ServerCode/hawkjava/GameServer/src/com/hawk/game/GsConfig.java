@@ -54,6 +54,14 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final int reportTimeout;
 	/**
+	 * 活动服务器地址
+	 */
+	protected final String activityServerAddr;
+	/**
+	 * 活动服务器端口
+	 */
+	protected final int activityServerPort;
+	/**
 	 * ip代理地址
 	 */
 	protected final String ipProxyAddr;
@@ -96,6 +104,8 @@ public class GsConfig extends HawkAppCfg {
 		cdkTimeout = 1000;
 		accountHost = "";
 		accountTimeout = 1000;
+		activityServerAddr = "";
+		activityServerPort = 0;
 		reportHost = "";
 		reportTimeout = 1000;
 		serviceDate = "20150101";
@@ -132,6 +142,14 @@ public class GsConfig extends HawkAppCfg {
 
 	public String getAccountHost() {
 		return accountHost;
+	}
+
+	public String getActivityServerAddr() {
+		return activityServerAddr;
+	}
+
+	public int getActivityServerport() {
+		return activityServerPort;
 	}
 
 	public int getAccountTimeout() {

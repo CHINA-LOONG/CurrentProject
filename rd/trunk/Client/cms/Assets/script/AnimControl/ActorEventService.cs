@@ -29,6 +29,7 @@ public class ActorParticleData : ICloneable
     public string particleParent;
     public string locky;
     public string attach;
+    public string ignoreRot;
 
     //state data
     public GameObject psObject;
@@ -44,6 +45,7 @@ public class ActorParticleData : ICloneable
         pData.particleParent = particleParent;
         pData.locky = locky;
         pData.attach = attach;
+        pData.ignoreRot = ignoreRot;
 
         pData.psObject = null;
         pData.psDuration = 0.0f;
@@ -246,6 +248,7 @@ public class ActorEventService
                                 particleData.particleParent = particleNode.GetAttribute("parent");
                                 particleData.locky = particleNode.GetAttribute("locky");
                                 particleData.attach = particleNode.GetAttribute("attach");
+                                particleData.ignoreRot = particleNode.GetAttribute("ignore_rot");
                                 particleData.psObject = null;
                                 particleData.psDuration = 0.0f;
 

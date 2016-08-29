@@ -64,7 +64,7 @@ public class QuestCfg extends HawkConfigBase {
 	@Override
 	protected boolean assemble() {
 		// 计算QuestGroup
-		QuestUtil.addQuest(this);
+		QuestUtil.addQuestCfg(this);
 
 		// 解析目标参数，支持'|'分割的或关系
 		String[] params = goalParam.replaceAll("\\s*", "").split("\\|+");
@@ -94,9 +94,14 @@ public class QuestCfg extends HawkConfigBase {
 		case "all":
 			goalTypeValue = GsConst.QuestGoalType.INSTANCE_ALL_TIMES;
 			break;
-		// 满星通关X章节
-		case "chapter":
-			goalTypeValue = GsConst.QuestGoalType.CHAPTER;
+		// 满星通关X普通章节
+		case "chapternormal":
+			goalTypeValue = GsConst.QuestGoalType.CHAPTER_NORMAL;
+			paramClass = Integer.class;
+			break;
+		// 满星通关X精英章节
+		case "chapterhard":
+			goalTypeValue = GsConst.QuestGoalType.CHAPTER_HARD;
 			paramClass = Integer.class;
 			break;
 		// 达到X角色等级
@@ -118,21 +123,21 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.MONSTER_MIX_TIMES;
 			paramClass = String.class;
 			break;
-		// 完成竞技场次数
+		// 进行竞技场次数
 		case "arena":
 			goalTypeValue = GsConst.QuestGoalType.ARENA_TIMES;
 			break;
-		// 完成金币试炼次数
+		// 进行金币试炼次数
 		case "holecoin":
 			goalTypeValue = GsConst.QuestGoalType.HOLE_COIN_TIMES;
 			break;
-		// 完成经验试炼次数
+		// 进行经验试炼次数
 		case "holeexp":
 			goalTypeValue = GsConst.QuestGoalType.HOLE_EXP_TIMES;
 			break;
-		// 完成通天塔次数
+		// 完成通天塔中X副本
 		case "tower":
-			goalTypeValue = GsConst.QuestGoalType.TOWER_TIMES;
+			goalTypeValue = GsConst.QuestGoalType.TOWER_INSTANCE;
 			break;
 		// 完成大冒险次数
 		case "adventure":
@@ -321,12 +326,12 @@ public class QuestCfg extends HawkConfigBase {
 				return false;
 			}
 		}
-// 临时注释
-//		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
-//		if (null == rewardCfg) {
-//			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
-//			return false;
-//		}
+
+		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
+		if (null == rewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
+			return false;
+		}
 
 		return true;
 	}

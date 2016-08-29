@@ -39,6 +39,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 411304}
   - 95: {fileID: 9520646}
+  - 114: {fileID: 11489606}
+  - 114: {fileID: 11492406}
   m_Layer: 0
   m_Name: bossdajie17Zouyincao2@moxing
   m_TagString: Untagged
@@ -1574,7 +1576,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122052}
-  m_LocalRotation: {x: .224078, y: -.10483095, z: -.577983618, w: .777646661}
+  m_LocalRotation: {x: .224078029, y: -.104830965, z: -.577983677, w: .77764678}
   m_LocalPosition: {x: -.159480363, y: 0, z: 7.62939436e-08}
   m_LocalScale: {x: 1.00000012, y: 1, z: 1.00000012}
   m_Children:
@@ -1727,7 +1729,7 @@ Animator:
   m_GameObject: {fileID: 103968}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c251b4659026bbc4d8205c0a56bbbb23, type: 3}
-  m_Controller: {fileID: 9100000, guid: c882187d28696ab47af59d4d8a93e830, type: 2}
+  m_Controller: {fileID: 9100000, guid: cd71e413a3e17f944889f472ef9fc5e1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1735,6 +1737,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11489606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11492406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f7a6b2ea465fa4bbb9477f78953672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUseXgAi: 0
 --- !u!137 &13715470
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
