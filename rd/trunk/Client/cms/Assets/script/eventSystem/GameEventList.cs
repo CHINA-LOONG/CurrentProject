@@ -5,6 +5,7 @@ public class GameEventList
 {
     //Login
     public static string LoginClick = "LoginClick";//no param
+    public static string LogoutClick = "LogoutClick";//no param
     public static string ServerClick = "ServerClick";//param hashtable
     public static string createPlayerClick = "CreatePlayerClick";//no param
     public static string funplusPuid = "funplusPuid";//no param

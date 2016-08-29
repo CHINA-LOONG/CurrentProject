@@ -1,0 +1,273 @@
+package com.hawk.game.entity.statistics;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hawk.db.HawkDBEntity;
+import org.hawk.util.HawkJsonUtil;
+
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * 低频更新统计数据
+ * 
+ * @author walker
+ * 
+ */
+@Entity
+@Table(name = "statistics_lf")
+public class LfStatisticsEntity extends HawkDBEntity {
+	@Id
+	@Column(name = "playerId", unique = true)
+	protected int playerId = 0;
+
+	// 怪物图鉴
+	@Column(name = "monsterCollect", nullable = false)
+	protected String monsterCollectJson = "";
+
+	// 历史合成怪物X次数
+	@Column(name = "monsterXMixTimes", nullable = false)
+	protected String monsterXMixTimesJson = "";
+
+	// 今日副本挑战次数重置次数
+	@Column(name = "instanceResetTimesDaily", nullable = false)
+	protected int instanceResetTimesDaily = 0;
+
+	// 普通副本章节X宝箱状态
+	@Column(name = "chapterXBoxNormal", nullable = false)
+	protected String chapterXBoxNormalJson = "";
+
+	// 困难副本章节X宝箱状态
+	@Column(name = "chapterXBoxHard", nullable = false)
+	protected String chapterXBoxHardJson = "";
+
+	// 历史购买金币次数
+	@Column(name = "buyCoinTimes", nullable = false)
+	protected int buyCoinTimes = 0;
+
+	// 今日购买金币次数
+	@Column(name = "buyCoinTimesDaily", nullable = false)
+	protected int buyCoinTimesDaily = 0;
+
+	// 历史购买礼包次数
+	@Column(name = "buyGiftTimes", nullable = false)
+	protected int buyGiftTimes = 0;
+
+	// 今日购买礼包次数
+	@Column(name = "buyGiftTimesDaily", nullable = false)
+	protected int buyGiftTimesDaily = 0;
+
+	// 历史充值钻石数量
+	@Column(name = "payDiamondCount", nullable = false)
+	protected int payDiamondCount = 0;
+
+	// 今日充值钻石数量
+	@Column(name = "payDiamondCountDaily", nullable = false)
+	protected int payDiamondCountDaily = 0;
+
+	// 历史使用钻石数量
+	@Column(name = "useDiamondCount", nullable = false)
+	protected int useDiamondCount = 0;
+
+	// 今日使用钻石数量
+	@Column(name = "useDiamondCountDaily", nullable = false)
+	protected int useDiamondCountDaily = 0;
+
+	// 历史携带过品级X装备数量
+	@Column(name = "equipStageXCount", nullable = false)
+	protected String equipStageXCountJson = "";
+
+	// 今日携带过品级X装备数量
+	@Column(name = "equipStageXCountDaily", nullable = false)
+	protected String equipStageXCountDailyJson = "";
+
+	// 历史打孔次数
+	@Column(name = "equipPunchTimes", nullable = false)
+	protected int equipPunchTimes = 0;
+
+	// 今日打孔次数
+	@Column(name = "equipPunchTimesDaily", nullable = false)
+	protected int equipPunchTimesDaily = 0;
+
+	// 历史镶嵌宝石次数
+	@Column(name = "inlayAllTimes", nullable = false)
+	protected int inlayAllTimes = 0;
+
+	// 历史镶嵌类型X宝石次数
+	@Column(name = "inlayTypeXTimes", nullable = false)
+	protected String inlayTypeXTimesJson = "";
+
+	// 历史合成宝石次数
+	@Column(name = "synAllTimes", nullable = false)
+	protected int synAllTimes = 0;
+
+	// 今日合成宝石次数
+	@Column(name = "synAllTimesDaily", nullable = false)
+	protected int synAllTimesDaily = 0;
+
+	// 历史合成类型X宝石次数
+	@Column(name = "synTypeXTimes", nullable = false)
+	protected String synTypeXTimesJson = "";
+
+	@Column(name = "createTime", nullable = false)
+	protected int createTime = 0;
+	@Column(name = "updateTime")
+	protected int updateTime = 0;
+	@Column(name = "invalid", nullable = false)
+	protected boolean invalid = false;
+
+	// decode-------------------------------------------------------------------
+
+	@Transient
+	protected Set<String> monsterCollectSet = new HashSet<String>();
+	@Transient
+	boolean monsterCollectFlag = false;
+
+	@Transient
+	protected Map<String, Integer> monsterMixTimesMap = new HashMap<String, Integer>();
+	@Transient
+	boolean monsterMixTimesFlag = false;
+
+	@Transient
+	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer>();
+	@Transient
+	boolean chapterBoxNormalFlag = false;
+
+	@Transient
+	protected List<Integer> chapterBoxHardList = new ArrayList<Integer>();
+	@Transient
+	boolean chapterBoxHardFlag = false;
+
+	@Transient
+	protected List<Integer> equipStageCountList = new ArrayList<Integer>();
+	@Transient
+	boolean equipStageCountFlag = false;
+
+	@Transient
+	protected List<Integer> equipStageCountDailyList = new ArrayList<Integer>();
+	@Transient
+	boolean equipStageCountDailyFlag = false;
+
+	@Transient
+	protected List<Integer> inlayTypeTimesList = new ArrayList<Integer>();
+	@Transient
+	boolean inlayTypeTimesFlag = false;
+
+	@Transient
+	protected List<Integer> synTypeTimesList = new ArrayList<Integer>();
+	@Transient
+	boolean synTypeTimesFlag = false;
+
+	// method-------------------------------------------------------------------
+
+	protected LfStatisticsEntity() {
+
+	}
+
+	protected LfStatisticsEntity(int playerId) {
+		this.playerId = playerId;
+	}
+
+	@Override
+	public boolean decode() {
+		if (null != monsterCollectJson && false == "".equals(monsterCollectJson) && false == "null".equals(monsterCollectJson)) {
+			monsterCollectSet = HawkJsonUtil.getJsonInstance().fromJson(monsterCollectJson, new TypeToken<HashSet<String>>() {}.getType());
+		}
+		if (null != monsterXMixTimesJson && false == "".equals(monsterXMixTimesJson) && false == "null".equals(monsterXMixTimesJson)) {
+			monsterMixTimesMap = HawkJsonUtil.getJsonInstance().fromJson(monsterXMixTimesJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		}
+		if (null != chapterXBoxNormalJson && false == "".equals(chapterXBoxNormalJson) && false == "null".equals(chapterXBoxNormalJson)) {
+			chapterBoxNormalList = HawkJsonUtil.getJsonInstance().fromJson(chapterXBoxNormalJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (null != chapterXBoxHardJson && false == "".equals(chapterXBoxHardJson) && false == "null".equals(chapterXBoxHardJson)) {
+			chapterBoxHardList = HawkJsonUtil.getJsonInstance().fromJson(chapterXBoxHardJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (null != equipStageXCountJson && false == "".equals(equipStageXCountJson) && false == "null".equals(equipStageXCountJson)) {
+			equipStageCountList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXCountJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (null != equipStageXCountDailyJson && false == "".equals(equipStageXCountDailyJson) && false == "null".equals(equipStageXCountDailyJson)) {
+			equipStageCountDailyList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXCountDailyJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (null != inlayTypeXTimesJson && false == "".equals(inlayTypeXTimesJson) && false == "null".equals(inlayTypeXTimesJson)) {
+			inlayTypeTimesList = HawkJsonUtil.getJsonInstance().fromJson(inlayTypeXTimesJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (null != synTypeXTimesJson && false == "".equals(synTypeXTimesJson) && false == "null".equals(synTypeXTimesJson)) {
+			synTypeTimesList = HawkJsonUtil.getJsonInstance().fromJson(synTypeXTimesJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean encode() {
+		if (true == monsterCollectFlag) {
+			monsterCollectFlag = false;
+			monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
+		}
+		if (true == monsterMixTimesFlag) {
+			monsterMixTimesFlag = false;
+			monsterXMixTimesJson = HawkJsonUtil.getJsonInstance().toJson(monsterMixTimesMap);
+		}
+		if (true == chapterBoxNormalFlag) {
+			chapterBoxNormalFlag = false;
+			chapterXBoxNormalJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxNormalList);
+		}
+		if (true == chapterBoxHardFlag) {
+			chapterBoxHardFlag = false;
+			chapterXBoxHardJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxHardList);
+		}
+		if (true == equipStageCountFlag) {
+			equipStageCountFlag = false;
+			equipStageXCountJson = HawkJsonUtil.getJsonInstance().toJson(equipStageCountList);
+		}
+		if (true == equipStageCountDailyFlag) {
+			equipStageCountDailyFlag = false;
+			equipStageXCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(equipStageCountDailyList);
+		}
+		if (true == inlayTypeTimesFlag) {
+			inlayTypeTimesFlag = false;
+			inlayTypeXTimesJson = HawkJsonUtil.getJsonInstance().toJson(inlayTypeTimesList);
+		}
+		if (true == synTypeTimesFlag) {
+			synTypeTimesFlag = false;
+			synTypeXTimesJson = HawkJsonUtil.getJsonInstance().toJson(synTypeTimesList);
+		}
+
+		return true;
+	}
+
+	@Override
+	public int getCreateTime() {
+		return createTime;
+	}
+	@Override
+	public void setCreateTime(int createTime) {
+		this.createTime = createTime;
+	}
+	@Override
+	public int getUpdateTime() {
+		return updateTime;
+	}
+	@Override
+	public void setUpdateTime(int updateTime) {
+		this.updateTime = updateTime;
+	}
+	@Override
+	public boolean isInvalid() {
+		return invalid;
+	}
+	@Override
+	public void setInvalid(boolean invalid) {
+		this.invalid = invalid;
+	}
+}

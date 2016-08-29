@@ -63,15 +63,15 @@ public class bossdajie16Xiaochou3 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
-	{
-		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossdajie16Xiaochou3wp02" && jishu==0)
-        {
-			target.TriggerEvent("Xiaochou3_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
-			jishu ++;
-        }
-	}
+	//   public override void OnWpDead(WeakPointDeadArgs args)
+	//{
+	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+	//	if (args.wpID == "bossdajie16Xiaochou3wp02" && jishu==0)
+	//     {
+	//		target.TriggerEvent("Xiaochou3_state1to2", Time.time, null);
+	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+	//		jishu ++;
+	//    }
+	//}
 	//---------------------------------------------------------------------------------------------
 }

@@ -14,7 +14,7 @@ import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
 import com.hawk.game.player.Player;
@@ -73,7 +73,7 @@ public class BuilderUtil {
 			InstanceState.Builder instanceState = InstanceState.newBuilder();
 			instanceState.setInstanceId(entry.getKey());
 			instanceState.setStar(entry.getValue());
-			instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+			instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
 
 			builder.addInstanceState(instanceState);
 		}
@@ -110,11 +110,11 @@ public class BuilderUtil {
 			builder.addRechargeState(rechargeState);
 		}
 
-		builder.setGold2CoinTimes(statisticsEntity.getCoinOrderCountDaily());
+		builder.setGold2CoinTimes(statisticsEntity.getBuyCoinTimesDaily());
 		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
-		builder.setInstanceResetCount(statisticsEntity.getInstanceResetCountDaily());
+		builder.setInstanceResetCount(statisticsEntity.getInstanceResetTimesDaily());
 
-		for (Entry<String, Integer> entry : statisticsEntity.getItemUseCountDailyMap().entrySet()) {
+		for (Entry<String, Integer> entry : statisticsEntity.getUseItemCountDailyMap().entrySet()) {
 			ItemState.Builder itemState = ItemState.newBuilder();
 			itemState.setItemId(entry.getKey());
 			itemState.setUseCountDaily(entry.getValue());
@@ -126,7 +126,7 @@ public class BuilderUtil {
 			HoleState.Builder holeState = HoleState.newBuilder();
 			holeState.setHoleId(entry.getKey());
 			holeState.setIsOpen(entry.getValue());
-			holeState.setCountDaily(statisticsEntity.getHoleCountDaily(entry.getKey()));
+			holeState.setCountDaily(statisticsEntity.getHoleTimesDaily(entry.getKey()));
 
 			builder.addHoleState(holeState);
 		}
@@ -144,8 +144,8 @@ public class BuilderUtil {
 
 	public static HSSyncExpLeftTimes.Builder genSyncExpLeftTimesBuilder(StatisticsEntity statisticsEntity) {
 		HSSyncExpLeftTimes.Builder builder = HSSyncExpLeftTimes.newBuilder();
-		builder.setDoubleExpLeft(statisticsEntity.getDoubleExpLeftTimes());
-		builder.setTripleExpLeft(statisticsEntity.getTripleExpLeftTimes());
+		builder.setDoubleExpLeft(statisticsEntity.getDoubleExpLeft());
+		builder.setTripleExpLeft(statisticsEntity.getTripleExpLeft());
 		return builder;
 	}
 

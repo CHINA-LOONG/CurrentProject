@@ -18,7 +18,7 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
@@ -585,22 +585,8 @@ public class PlayerData {
 	 */
 	public StatisticsEntity loadStatistics() {
 		if (statisticsEntity == null) {
-			List<StatisticsEntity> resultList = HawkDBManager.getInstance().query("from StatisticsEntity where playerId = ? and invalid = 0", getId());
-			if (resultList != null && resultList.size() > 0) {
-				statisticsEntity = resultList.get(0);
-				statisticsEntity.decode();
-
-//				// 新号上报数据
-//				if (statisticsEntity.getPlatformData() != null && statisticsEntity.getPlatformData().indexOf("65535") > 0) {
-//					GsApp.getInstance().reportCmActivePlayer(player);
-//				}
-			} else {
-				statisticsEntity = new StatisticsEntity(getId());
-				statisticsEntity.notifyCreate();
-
-//				// 新号上报数据
-//				GsApp.getInstance().reportCmActivePlayer(player);
-			}
+			statisticsEntity = new StatisticsEntity();
+			statisticsEntity.load(getId());
 		}
 		return statisticsEntity;
 	}

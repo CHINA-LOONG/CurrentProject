@@ -10,6 +10,173 @@ using System.Text;
 public class CloseMipmap : MonoBehaviour
 {
     //---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
+    public class AniFileInfo
+    {
+        public AniFileInfo(string filename)
+        {
+            this.filename = filename;
+        }
+
+        public string filename;
+        public List<string> refrencedPrefabList = new List<string>();
+        public List<string> clipinfoList = new List<string>();
+    }
+    //---------------------------------------------------------------------------------------------
+    [MenuItem("Builder/Check Animator")]
+    static void CheckAnimator()
+    {
+        Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
+        profabPath.Clear();
+        string path = EditorUtility.OpenFolderPanel("选择要检查的资源路径", @"Assets/Prefabs", "");
+
+        if (string.IsNullOrEmpty(path))
+            return;
+
+        string fileName = EditorUtility.SaveFilePanel("选择log保存路径", @"Assets", "ListAniInfo", "txt");
+        if (string.IsNullOrEmpty(fileName))
+            return;
+
+        if (File.Exists(fileName))
+        {
+            File.Delete(fileName);
+        }
+        FileStream aniInfoFile = File.Open(fileName, FileMode.OpenOrCreate);
+        aniInfoFile.Close();
+
+        Dictionary<string, AniFileInfo> animatorFileList = new Dictionary<string, AniFileInfo>();
+        List<string> prefabWithAniList = new List<string>();
+        bool ignoreEnable = (path.Contains("Prefabs") == false);
+        List<string> prefabs_path = new List<string>();//Recursion(path, ".prefab", ignoreEnable);
+        GetAnimatorInfo(path, ignoreEnable, ref animatorFileList, ref prefabs_path);
+
+        List<string> prefabsWithAni = new List<string>();
+        for (int i = 0; i < prefabs_path.Count; i++)
+        {
+            prefabs_path[i] = prefabs_path[i].Replace(@"\", @"/");
+            prefabs_path[i] = prefabs_path[i].Substring(prefabs_path[i].LastIndexOf("Assets/"));
+
+            if (FindWords(prefabs_path[i], "Animator") == true)
+            {
+                prefabsWithAni.Add(prefabs_path[i]);
+            }
+        }
+
+        for (int i = 0; i < prefabsWithAni.Count; ++i)
+        {
+            GameObject curObj = AssetDatabase.LoadAssetAtPath(prefabs_path[i], typeof(GameObject)) as GameObject;
+            if (curObj != null)
+            {
+                GameObject objInstance = Instantiate(curObj);
+                Animator[] aniList = objInstance.transform.GetComponentsInChildren<Animator>();
+                for (int j = 0; j < aniList.Length; ++j)
+                {
+                    string curAniName = aniList[j].name + ".controller";
+                    AniFileInfo curAniFile;
+                    if (animatorFileList.TryGetValue(curAniName, out curAniFile) == true)
+                    {
+                        curAniFile.refrencedPrefabList.Add(curObj.name);
+                        RuntimeAnimatorController curController = aniList[j].runtimeAnimatorController;
+                        if (curController != null)
+                        {
+                            for (int clipIndex = 0; clipIndex < curController.animationClips.Length; ++clipIndex)
+                            {
+                                string aniName = curController.animationClips[clipIndex].name;
+                                curAniFile.clipinfoList.Add(aniName);
+                            }
+                        }
+                    }
+                }
+
+                DestroyImmediate(objInstance);
+            }
+            else
+            {
+                Logger.LogErrorFormat("load prefab {0} failed", prefabs_path[i]);
+            }
+
+            //DestroyImmediate(curObj, true);
+        }
+
+        StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8);
+        
+        int count = animatorFileList.Count;
+        var aniItr = animatorFileList.GetEnumerator();
+        while (aniItr.MoveNext())
+        {
+            writer.WriteLine("----------------------------------------------------------------------------");
+            writer.WriteLine(string.Format("AnimatorController name: {0}", aniItr.Current.Key));
+            writer.WriteLine("referenced prefabs:");
+            AniFileInfo aniInfo = aniItr.Current.Value;
+            int aniInfoCount = aniInfo.refrencedPrefabList.Count;
+            for (int aniIndex = 0; aniIndex < aniInfoCount; ++aniIndex)
+            {
+                writer.WriteLine("\t" + aniInfo.refrencedPrefabList[aniIndex]);
+            }
+
+            writer.WriteLine("animations:");
+            aniInfoCount = aniInfo.clipinfoList.Count;
+            for (int aniIndex = 0; aniIndex < aniInfoCount; ++aniIndex)
+            {
+                writer.WriteLine("\t" + aniInfo.clipinfoList[aniIndex]);
+            }
+        }
+
+        writer.Close();
+
+        Logger.Log("<color=#ffff00ff>check ani finish</color>");
+    }
+    //---------------------------------------------------------------------------------------------
+    static void GetAnimatorInfo(string root, bool ignoreEnable, ref Dictionary<string, AniFileInfo> aniControllerList, ref List<string> prefabList)
+    {
+        List<string> targetFiles = new List<string>();
+        DirectoryInfo rootDir = new DirectoryInfo(root);
+        FileInfo[] files = rootDir.GetFiles();
+        DirectoryInfo[] dirs = rootDir.GetDirectories();
+        foreach (var file in files)
+        {
+            string ext = file.Extension;
+            if (ext.Contains("controller"))
+            {
+                if (aniControllerList.ContainsKey(file.Name) == false)
+                {
+                    aniControllerList.Add(file.Name, new AniFileInfo(file.Name));
+                }
+                else
+                {
+                    Logger.LogErrorFormat("find same controller {0}", file.Name);
+                }
+            }
+            else if (ext.Contains(".prefab"))
+            {
+                prefabList.Add(file.FullName);
+            }
+        }
+        foreach (var dir in dirs)
+        {
+            if (ignoreEnable == false ||
+                dir.Name.Contains("Prefabs") ||
+                dir.Name.Contains("SourceAsset")
+                )
+            {
+                GetAnimatorInfo(dir.FullName, false, ref aniControllerList, ref prefabList);
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public static bool FindWords(string filename, string worlds)
+    {
+        StreamReader read = new StreamReader(filename, Encoding.UTF8);
+        string line = read.ReadToEnd();
+        read.Close();
+        return line.Contains(worlds);
+    }
+    //---------------------------------------------------------------------------------------------
+
+
+    //---------------------------------------------------------------------------------------------
+    //Close mipmap
+    //---------------------------------------------------------------------------------------------
     [MenuItem("Builder/Close Mipmap")]
     static void DoCloseMipmap()
     {
@@ -43,6 +210,11 @@ public class CloseMipmap : MonoBehaviour
         }
         Logger.LogFormat("<color=#ffff00ff>close mipmap finish, changes {0} textures</color>", index);
 	}
+    //---------------------------------------------------------------------------------------------
+
+
+    //---------------------------------------------------------------------------------------------
+    // check ui font
     //---------------------------------------------------------------------------------------------
     static List<string> profabPath = new List<string>();
     [MenuItem("Builder/Check UI Font")]
@@ -127,6 +299,10 @@ public class CloseMipmap : MonoBehaviour
             OutputFontRecurse(child, parentName + "/" + label.name, defaultFontname);
         }
     }
+
+    //---------------------------------------------------------------------------------------------
+    // check ui font
+    //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     public class FileUsedInfo
     {

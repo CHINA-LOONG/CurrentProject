@@ -336,7 +336,7 @@ public class PlayerAllianceModule extends PlayerModule {
 			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
 			return true;
 		}
-		
+
 		// 同步工会数据
 		HSAllianceDataRet.Builder allianceData = HSAllianceDataRet.newBuilder();
 		AllianceInfo.Builder allianceBuilder = AllianceUtil.getAllianceInfo(allianceEntity);
@@ -347,7 +347,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		HSAllianceSelfDataRet.Builder seleftData = HSAllianceSelfDataRet.newBuilder();
 		AllianceMember.Builder memberBuilder = AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity(), null);
 		seleftData.setSelfData(memberBuilder);
-		seleftData.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily());
+		seleftData.setPrayCount(player.getPlayerData().getStatisticsEntity().getAlliancePrayTimesDaily());
 		seleftData.setTaskCount(player.getPlayerData().getStatisticsEntity().getAllianceTaskCountDaily());
 		seleftData.setContributionReward(player.getPlayerData().getStatisticsEntity().getAllianceContriRewardDaily());
 		seleftData.setTeamID(allianceEntity.getTeamEntity(player.getId()) == null ? 0 : allianceEntity.getTeamEntity(player.getId()).getId());

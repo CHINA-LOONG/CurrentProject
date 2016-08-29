@@ -17,7 +17,7 @@ import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.SkillUpPriceCfg;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
@@ -97,8 +97,8 @@ public class PlayerMonsterModule extends PlayerModule {
 		player.consumeSkillPoint(1, Action.SKILL_UP);
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		statisticsEntity.addSkillUpCount();
-		statisticsEntity.addSkillUpCountDaily();
+		statisticsEntity.increaseUpSkillTimes();
+		statisticsEntity.increaseUpSkillTimesDaily();
 		statisticsEntity.notifyUpdate(true);
 
 		monsterEntity.setSkillLevel(skillId, newSkillLevel);

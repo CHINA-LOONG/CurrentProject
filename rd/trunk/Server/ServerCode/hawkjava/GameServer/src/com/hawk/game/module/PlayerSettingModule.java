@@ -31,7 +31,7 @@ public class PlayerSettingModule extends PlayerModule {
 		HSSettingLanguage protocol = cmd.parseProtocol(HSSettingLanguage.getDefaultInstance());
 
 		String newLang = protocol.getLanguage();
-		// TODO
+		// TODO 检测合法
 		String oldLang = player.getLanguage();
 		if (oldLang == newLang) {
 			return true;

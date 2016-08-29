@@ -9,7 +9,7 @@ import org.hawk.xid.HawkXID;
 import com.hawk.game.ServerData;
 import com.hawk.game.config.RechargeCfg;
 import com.hawk.game.entity.RechargeEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
@@ -39,7 +39,7 @@ public class ShopManager extends HawkAppObj {
 	}
 	
 	// 主线程调用
-	public boolean OnOrderNotify(Player player, String puid, String orderSerial, String platform, String productId){			
+	public boolean OnOrderNotify(Player player, String puid, String orderSerial, String platform, String productId){
 		RechargeCfg rechargeCfg = HawkConfigManager.getInstance().getConfigByKey(RechargeCfg.class, productId);
 		if (rechargeCfg == null) {
 			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_PRODUCT_NOT_EXIST, 0, 0);
@@ -51,7 +51,7 @@ public class ShopManager extends HawkAppObj {
 		boolean isMonthCard = productId.indexOf(GsConst.MONTH_CARD) >=0;
 		// 不是月卡 检测是不是首充
 		if(!isMonthCard){
-			boolean isfirstRecharge = player.getPlayerData().getStatisticsEntity().getRechargeTime(productId) == 0 ? true : false;
+			boolean isfirstRecharge = player.getPlayerData().getStatisticsEntity().getRechargeTimes(productId) == 0 ? true : false;
 			giftGoldCount = isfirstRecharge ? (int)(rechargeCfg.getGold() * rechargeCfg.getGift()) : 0;
 			goldCount = rechargeCfg.getGold();
 		}
@@ -71,7 +71,7 @@ public class ShopManager extends HawkAppObj {
 			return true;
 		}
 		
-		if (rechargeEntity.notifyCreate() == false) {		
+		if (rechargeEntity.notifyCreate() == false) {
 			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_ERROR, 0, 0);
 			return false;
 		}
@@ -101,7 +101,7 @@ public class ShopManager extends HawkAppObj {
 			}
 		}
 
-		staticsticsEntity.AddRechargeRecord(productId);
+		staticsticsEntity.increaseRechargeRecord(productId);
 		staticsticsEntity.notifyUpdate(false);
 		HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeCfg.getGold(), giftGoldCount);
 		

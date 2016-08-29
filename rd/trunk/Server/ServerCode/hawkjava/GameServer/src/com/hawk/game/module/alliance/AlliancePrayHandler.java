@@ -69,7 +69,7 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 			try {
 				if (objBase != null && objBase.isObjValid()) {
 	
-					if (player.getPlayerData().getStatisticsEntity().getAlliancePrayCountDaily() >= SysBasicCfg.getInstance().getAlliancePrayCount()) {
+					if (player.getPlayerData().getStatisticsEntity().getAlliancePrayTimesDaily() >= SysBasicCfg.getInstance().getAlliancePrayCount()) {
 						player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_PRAY_MAX_COUNT_VALUE);
 						return true;
 					}	
@@ -92,7 +92,7 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 					allianceEntity.addContribution(prayCfg.getAllianceReward());
 					allianceEntity.notifyUpdate(true);
 					
-					player.getPlayerData().getStatisticsEntity().addAlliancePrayCountDaily();
+					player.getPlayerData().getStatisticsEntity().increaseAlliancePrayTimesDaily();
 					player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 					
 					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());

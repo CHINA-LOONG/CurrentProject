@@ -11,7 +11,7 @@ import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.StoreCfg;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
@@ -203,7 +203,7 @@ public class PlayerItemModule extends PlayerModule{
 		int maxUseCount = itemCfg.getTimes();
 		int useCount = GsConst.UNUSABLE;
 		if (maxUseCount != GsConst.UNUSABLE) {
-			useCount = statisticsEntity.getItemUseCountDaily(itemId) + itemCount;
+			useCount = statisticsEntity.getUseItemCountDaily(itemId) + itemCount;
 			if (useCount > maxUseCount) {
 				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
 				return;
@@ -228,7 +228,7 @@ public class PlayerItemModule extends PlayerModule{
 		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
 
 		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setItemUseCountDaily(itemId, useCount);
+			statisticsEntity.setUseItemCountDaily(itemId, useCount);
 			statisticsEntity.notifyUpdate(true);
 		}
 
@@ -317,7 +317,7 @@ public class PlayerItemModule extends PlayerModule{
 		int maxUseCount = itemCfg.getTimes();
 		int useCount = 0;
 		if (maxUseCount != GsConst.UNUSABLE) {
-			useCount = statisticsEntity.getItemUseCountDaily(itemId) + itemCount;
+			useCount = statisticsEntity.getUseItemCountDaily(itemId) + itemCount;
 			if (useCount > maxUseCount) {
 				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
 				return;
@@ -328,7 +328,7 @@ public class PlayerItemModule extends PlayerModule{
 		ConsumeItems consumeItems = new ConsumeItems();
 		consumeItems.addItem(itemId, itemCount);
 
-		for (int i = 0 ; i < itemCount; ++i) {		
+		for (int i = 0 ; i < itemCount; ++i) {
 			consumeItems.addItemInfos(itemCfg.getNeedItemList());
 			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, itemCfg.getRewardId());
 			if (reward == null) {
@@ -349,7 +349,7 @@ public class PlayerItemModule extends PlayerModule{
 		}
 
 		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setItemUseCountDaily(itemId, useCount);
+			statisticsEntity.setUseItemCountDaily(itemId, useCount);
 			statisticsEntity.notifyUpdate(true);
 		}
 
@@ -404,7 +404,7 @@ public class PlayerItemModule extends PlayerModule{
 		int maxUseCount = itemCfg.getTimes();
 		int useCount = GsConst.UNUSABLE;
 		if (maxUseCount != GsConst.UNUSABLE) {
-			useCount = statisticsEntity.getItemUseCountDaily(itemId) + count;
+			useCount = statisticsEntity.getUseItemCountDaily(itemId) + count;
 			if (useCount > maxUseCount) {
 				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
 				return;
@@ -437,7 +437,7 @@ public class PlayerItemModule extends PlayerModule{
 			}
 			// 双倍经验 三倍经验
 			else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE || itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE) {
-				if (statisticsEntity.isExpTimeLeft() == true) {
+				if (statisticsEntity.isMultiExpLeft() == true) {
 					sendError(hsCode, Status.itemError.ITEM_EXP_LEFT_TIMES_VALUE);
 					return ;
 				}
@@ -467,7 +467,7 @@ public class PlayerItemModule extends PlayerModule{
 		}
 
 		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setItemUseCountDaily(itemId, useCount);
+			statisticsEntity.setUseItemCountDaily(itemId, useCount);
 			statisticsEntity.notifyUpdate(true);
 		}
 
@@ -542,7 +542,7 @@ public class PlayerItemModule extends PlayerModule{
 	 * @param hsCode
 	 * @param protocol
 	 */
-	private void onGemCompose(int hsCode, HSGemCompose protocol){		
+	private void onGemCompose(int hsCode, HSGemCompose protocol){
 		int count = 0;
 		int grade = 0;
 		int composeTimes = protocol.getComposeAll() ? GsConst.COMPOSE_MAX_COUNT : 1;

@@ -30,7 +30,7 @@ import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
@@ -707,7 +707,8 @@ public class Player extends HawkAppObj {
 				level = this.getLevel();
 			}
 
-			boolean levelUp = level > monster.getLevel();
+			int oldLevel = monster.getLevel();
+			boolean levelUp = level > oldLevel;
 			// 最大等级需要把经验置0
 			if (level == monsterBaseCfg.size()) {
 				monster.setExp(0);
@@ -722,28 +723,15 @@ public class Player extends HawkAppObj {
 
 			if (levelUp == true) {
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
-				boolean update = false;
-				int history = statisticsEntity.getMonsterCountOverLevel(level);
-				int cur = playerData.getMonsterCountOverLevel(level);
-				if (cur > history) {
-					statisticsEntity.setMonsterCountOverLevel(level, cur);
-					update = true;
+				for (int i = oldLevel + 1; i <= level; ++i) {
+					statisticsEntity.increaseMonsterCountOverLevel(i);
 				}
+				statisticsEntity.notifyUpdate(true);
 
-				history = statisticsEntity.getMonsterMaxLevel();
-				if (level > history) {
-					statisticsEntity.setMonsterMaxLevel(level);
-					update = true;
-				}
-
-				if (true == update) {
-					statisticsEntity.notifyUpdate(true);
-
-					HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-					msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-					if (false == HawkApp.getInstance().postMsg(msg)) {
-						HawkLog.errPrintln("post statistics update message failed: " + getName());
-					}
+				HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+				msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+				if (false == HawkApp.getInstance().postMsg(msg)) {
+					HawkLog.errPrintln("post statistics update message failed: " + getName());
 				}
 			}
 
@@ -765,14 +753,15 @@ public class Player extends HawkAppObj {
 
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
 		if (monster != null) {
+			int oldLevel = monster.getLevel();
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
-			if (monsterBaseCfg.size() == monster.getLevel()) {
+			if (monsterBaseCfg.size() == oldLevel) {
 				return ;
 			}
 
 			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 			int expRemain = monster.getExp() + exp;
-			int targetLevel = monster.getLevel();
+			int targetLevel = oldLevel;
 			float targetLevelMaxExp = monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
 			boolean levelup = false;
 
@@ -798,28 +787,15 @@ public class Player extends HawkAppObj {
 
 			if (true == levelup) {
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
-				boolean update = false;
-				int history = statisticsEntity.getMonsterCountOverLevel(targetLevel);
-				int cur = playerData.getMonsterCountOverLevel(targetLevel);
-				if (cur > history) {
-					statisticsEntity.setMonsterCountOverLevel(targetLevel, cur);
-					update = true;
+				for (int i = oldLevel + 1; i <= targetLevel; ++i) {
+					statisticsEntity.increaseMonsterCountOverLevel(i);
 				}
+				statisticsEntity.notifyUpdate(true);
 
-				history = statisticsEntity.getMonsterMaxLevel();
-				if (targetLevel > history) {
-					statisticsEntity.setMonsterMaxLevel(targetLevel);
-					update = true;
-				}
-
-				if (true == update) {
-					statisticsEntity.notifyUpdate(true);
-
-					HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-					msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-					if (false == HawkApp.getInstance().postMsg(msg)) {
-						HawkLog.errPrintln("post statistics update message failed: " + getName());
-					}
+				HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+				msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+				if (false == HawkApp.getInstance().postMsg(msg)) {
+					HawkLog.errPrintln("post statistics update message failed: " + getName());
 				}
 			}
 
@@ -1073,60 +1049,30 @@ public class Player extends HawkAppObj {
 	 */
 	public boolean onIncreaseMonster(MonsterEntity monsterEntity) {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
-		boolean update = false;
 
 		// collection
 		if (false == statisticsEntity.getMonsterCollectSet().contains(monsterEntity.getCfgId())) {
 			statisticsEntity.addMonsterCollect(monsterEntity.getCfgId());
-			update = true;
 		}
 
 		// level
 		int level = monsterEntity.getLevel();
-		int history = statisticsEntity.getMonsterCountOverLevel(level);
-		int cur = playerData.getMonsterCountOverLevel(level);
-		if (cur > history) {
-			statisticsEntity.setMonsterCountOverLevel(level, cur);
-			update = true;
-		}
-
-		history = statisticsEntity.getMonsterMaxLevel();
-		if (level > history) {
-			statisticsEntity.setMonsterMaxLevel(level);
-			update = true;
+		for (int i = 1; i <= level; ++i) {
+			statisticsEntity.increaseMonsterCountOverLevel(level);
 		}
 
 		// stage
 		int stage = monsterEntity.getStage();
-		history = statisticsEntity.getMonsterCountOverStage(stage);
-		cur = playerData.getMonsterCountOverStage(stage);
-		if (cur > history) {
-			statisticsEntity.setMonsterCountOverStage(stage, cur);
-			update = true;
+		for (int i = 0; i <= stage; ++i) {
+			statisticsEntity.increaseMonsterCountOverStage(stage);
 		}
 
-		history = statisticsEntity.getMonsterMaxStage();
-		if (stage > history) {
-			statisticsEntity.setMonsterMaxStage(stage);
-			update = true;
-		}
+		statisticsEntity.notifyUpdate(true);
 
-		// count
-		history = statisticsEntity.getMonsterMaxCount();
-		cur = playerData.getMonsterEntityMap().size();
-		if (cur > history) {
-			statisticsEntity.setMonsterMaxCount(cur);
-			update = true;
-		}
-
-		if (true == update) {
-			statisticsEntity.notifyUpdate(true);
-
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
-			msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
-			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post statistics update message failed: " + getName());
-			}
+		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+		msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+		if (false == HawkApp.getInstance().postMsg(msg)) {
+			HawkLog.errPrintln("post statistics update message failed: " + getName());
 		}
 
 		return true;
@@ -1363,7 +1309,7 @@ public class Player extends HawkAppObj {
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 
 		// 首次登陆，初始化数据
-		if (statisticsEntity.getLoginCount() == 0) {
+		if (statisticsEntity.getLoginTimes() == 0) {
 			genBirthData();
 		}
 
@@ -1388,7 +1334,7 @@ public class Player extends HawkAppObj {
 		// TEST ----------------------------------------------------------------------------------------
 		playerData.loadAllMonster();
 		// default monster
-		if (statisticsEntity.getMonsterMaxCount() == 0) {
+		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
 			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
 			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
 		}

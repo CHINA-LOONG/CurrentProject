@@ -67,7 +67,7 @@ public class PlayerShopModule extends PlayerModule{
 			return true;
 		}
 
-		int changeTimes = player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily();
+		int changeTimes = player.getPlayerData().getStatisticsEntity().getBuyCoinTimesDaily();
 		if (changeTimes >= goldChangeCfg.getMaxTimes()) {
 			sendError(HS.code.SHOP_GOLD2COIN_C_VALUE, Status.shopError.SHOP_GOLD2COIN_MAX_COUNT_VALUE);
 			return true;
@@ -103,12 +103,12 @@ public class PlayerShopModule extends PlayerModule{
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		
-		player.getPlayerData().getStatisticsEntity().addCoinOrderCount();
-		player.getPlayerData().getStatisticsEntity().addCoinOrderCountDaily();
+		player.getPlayerData().getStatisticsEntity().increaseBuyCoinTimes();
+		player.getPlayerData().getStatisticsEntity().increaseBuyCoinTimesDaily();
 		player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 		
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
-		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily());
+		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getBuyCoinTimesDaily());
 		response.setMultiple(multipleValue);
 		response.setTotalReward(coinAward);
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_GOLD2COIN_S_VALUE, response));

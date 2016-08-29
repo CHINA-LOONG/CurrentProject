@@ -17,7 +17,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.QuestCfg;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
@@ -288,27 +288,27 @@ public class PlayerQuestModule extends PlayerModule {
 		// 通关普通副本次数
 		case GsConst.QuestGoalType.INSTANCE_NORMAL_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getInstanceAllCount() - statisticsEntity.getHardCount();
+				progress = statisticsEntity.getInstanceNormalTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getInstanceAllCountDaily() - statisticsEntity.getHardCountDaily();
+				progress = statisticsEntity.getInstanceNormalTimesDaily();
 			}
 			break;
 		}
 		// 通关精英副本次数
 		case GsConst.QuestGoalType.INSTANCE_HARD_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getHardCount();
+				progress = statisticsEntity.getInstanceHardTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getHardCountDaily();
+				progress = statisticsEntity.getInstanceHardTimesDaily();
 			}
 			break;
 		}
 		// 通关副本次数
 		case GsConst.QuestGoalType.INSTANCE_ALL_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getInstanceAllCount();
+				progress = statisticsEntity.getInstanceAllTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getInstanceAllCountDaily();
+				progress = statisticsEntity.getInstanceAllTimesDaily();
 			}
 			break;
 		}
@@ -335,43 +335,32 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 		// 合成X宠物数量
 		case GsConst.QuestGoalType.MONSTER_MIX_TIMES: {
-			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getMonsterMixCount();
-			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getMonsterMixCountDaily();
-			}
 			break;
 		}
 		// 完成竞技场次数
 		case GsConst.QuestGoalType.ARENA_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getArenaCount();
+				progress = statisticsEntity.getArenaTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getArenaCountDaily();
+				progress = statisticsEntity.getArenaTimesDaily();
 			}
 			break;
 		}
-		//	完成金币试炼次数
+		// 完成金币试炼次数
 		case GsConst.QuestGoalType.HOLE_COIN_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getHoleCount();
+				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.COIN_HOLE);
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = 0;
-				for (Entry<Integer, Integer> entry : statisticsEntity.getHoleCountDailyMap().entrySet()) {
-					progress += entry.getValue();
-				}
+				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.COIN_HOLE);
 			}
 			break;
 		}
 		// 完成经验试炼次数
 		case GsConst.QuestGoalType.HOLE_EXP_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getHoleCount();
+				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.EXP_HOLE);
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = 0;
-				for (Entry<Integer, Integer> entry : statisticsEntity.getHoleCountDailyMap().entrySet()) {
-					progress += entry.getValue();
-				}
+				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.EXP_HOLE);
 			}
 			break;
 		}
@@ -382,36 +371,36 @@ public class PlayerQuestModule extends PlayerModule {
 		// 完成大冒险次数
 		case GsConst.QuestGoalType.ADVENTURE_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getAdventureCount();
+				progress = statisticsEntity.getAdventureTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getAdventureCountDaily();
+				progress = statisticsEntity.getAdventureTimesDaily();
 			}
 			break;
 		}
 		// 升级技能次数
 		case GsConst.QuestGoalType.UP_SKILL_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getSkillUpCount();
+				progress = statisticsEntity.getUpSkillTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getSkillUpCountDaily();
+				progress = statisticsEntity.getUpSkillTimesDaily();
 			}
 			break;
 		}
 		// 升级装备次数
 		case GsConst.QuestGoalType.UP_EQUIP_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getEquipUpCount();
+				progress = statisticsEntity.getUpEquipTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getEquipUpCountDaily();
+				progress = statisticsEntity.getUpEquipTimesDaily();
 			}
 			break;
 		}
 		// 购买金币次数
 		case GsConst.QuestGoalType.BUY_COIN_TIMES: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getCoinOrderCount();
+				progress = statisticsEntity.getBuyCoinTimes();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getCoinOrderCountDaily();
+				progress = statisticsEntity.getBuyCoinTimesDaily();
 			}
 			break;
 		}

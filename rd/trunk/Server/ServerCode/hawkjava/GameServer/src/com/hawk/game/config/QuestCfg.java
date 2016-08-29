@@ -113,11 +113,11 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.MONSTER_LEVEL_COUNT;
 			paramClass = Integer.class;
 			break;
-		// 合成X宠物数量
+		// 合成X宠物次数
 		case "petmix":
 			goalTypeValue = GsConst.QuestGoalType.MONSTER_MIX_TIMES;
 			paramClass = String.class;
-			break;		
+			break;
 		// 完成竞技场次数
 		case "arena":
 			goalTypeValue = GsConst.QuestGoalType.ARENA_TIMES;
@@ -159,7 +159,7 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.BUY_ITEM_TIMES;
 			paramClass = String.class;
 			break;
-		// 购买钻石数量
+		// 充值钻石数量
 		case "paydiamond":
 			goalTypeValue = GsConst.QuestGoalType.PAY_DIAMOND_COUNT;
 			break;
@@ -222,11 +222,11 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.CALL_ITEM_TIMES;
 			paramClass = String.class;
 			break;
-		// 加入公会次数
+		// 公会加入次数
 		case "societyjoin":
 			goalTypeValue = GsConst.QuestGoalType.SOCIETY_JOIN_TIMES;
 			break;
-		// 退出公会次数
+		// 公会退出次数
 		case "societyleave":
 			goalTypeValue = GsConst.QuestGoalType.SOCIETY_LEAVE_TIMES;
 			break;

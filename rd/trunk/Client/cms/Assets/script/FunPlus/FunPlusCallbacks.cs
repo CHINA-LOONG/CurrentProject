@@ -47,7 +47,7 @@ public class FunPlusCallbacks : FunplusSdk.IDelegate, FunplusAccount.IDelegate {
         void FunplusAccount.IDelegate.OnLogout()
         { 
 			MonoBehaviour.print("OnLogout --> : " );
-
+            GameEventMgr.Instance.FireEvent(GameEventList.LogoutClick);
         }
 
         void FunplusAccount.IDelegate.OnBindAccountSuccess(FunplusSession session)

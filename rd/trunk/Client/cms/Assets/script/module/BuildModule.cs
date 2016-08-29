@@ -20,14 +20,16 @@ public class BuildModule : ModuleBase
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_C.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
-	}
+        GameEventMgr.Instance.AddListener(GameEventList.LogoutClick, OnLogoutClick);
+    }
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNCINFO_C.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ASSEMBLE_FINISH_S.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
-	}
+        GameEventMgr.Instance.RemoveListener(GameEventList.LogoutClick, OnLogoutClick);
+    }
 
 	void RequestPlayerData()
 	{
@@ -114,6 +116,10 @@ public class BuildModule : ModuleBase
         UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UIBuild.ViewName));
 	}
 
+    public void OnLogoutClick()
+    {
+        GameMain.Instance.ChangeModule<LoginModule>();
+    }
 
 	//net message
 	void OnRequestPlayerSyncInfoFinished(ProtocolMessage msg)

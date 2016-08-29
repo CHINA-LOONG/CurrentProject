@@ -49,15 +49,15 @@ public class bossxiaoxiang23Panshen2 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
-	{
-		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossMinghe14Panshen2wp03" && jishu==0)
-        {
-			target.TriggerEvent("Panshen2_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-			jishu ++;
-        }
-	}
+	//  public override void OnWpDead(WeakPointDeadArgs args)
+	//	{
+	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+	//	if (args.wpID == "bossMinghe14Panshen2wp03" && jishu==0)
+		//   {
+	//		target.TriggerEvent("Panshen2_state1to2", Time.time, null);
+	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+	//		jishu ++;
+	//    }
+	//}
 	//---------------------------------------------------------------------------------------------
 }

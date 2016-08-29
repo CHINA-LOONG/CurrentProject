@@ -68,15 +68,15 @@ public class bossdajie12Mantuoluo2 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-    public override void OnWpDead(WeakPointDeadArgs args)
-	{
-		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		if (args.wpID == "bossdajie12Mantuoluo2wp02" && jishu==0)
-        {
-			target.TriggerEvent("Mantuoluo2_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
-			jishu ++;
-        }
-	}
+	//  public override void OnWpDead(WeakPointDeadArgs args)
+	//{
+	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+	//	if (args.wpID == "bossdajie12Mantuoluo2wp02" && jishu==0)
+	//     {
+	//		target.TriggerEvent("Mantuoluo2_state1to2", Time.time, null);
+	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+	//		jishu ++;
+	//    }
+	//}
 	//---------------------------------------------------------------------------------------------
 }

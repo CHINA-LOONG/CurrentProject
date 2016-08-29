@@ -27,7 +27,7 @@ import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
@@ -145,7 +145,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 次数
-		if (statisticsEntity.getInstanceCountDaily(instanceId) >= entryCfg.getCount()) {
+		if (statisticsEntity.getInstanceEnterTimesDaily(instanceId) >= entryCfg.getCount()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
 			return true;
 		}
@@ -190,7 +190,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_ENTER, hsCode);
 
 		// 次数修改
-		statisticsEntity.addInstanceCountDaily(instanceId, 1);
+		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, 1);
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
@@ -250,7 +250,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 次数
-		if (statisticsEntity.getHoleCountDaily(holeId) >= holeCfg.getCount()) {
+		if (statisticsEntity.getHoleTimesDaily(holeId) >= holeCfg.getCount()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
 			return true;
 		}
@@ -293,8 +293,8 @@ public class PlayerInstanceModule extends PlayerModule {
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.HOLE_ENTER, hsCode);
 
 		// 次数修改
-		statisticsEntity.addHoleCount();
-		statisticsEntity.addHoleCountDaily(holeId, 1);
+		statisticsEntity.increaseHoleTimes(holeId);
+		statisticsEntity.increaseHoleTimesDaily(holeId);
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
@@ -522,7 +522,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 次数
-		if (statisticsEntity.getInstanceCountDaily(instanceId) + count > entryCfg.getCount()) {
+		if (statisticsEntity.getInstanceEnterTimesDaily(instanceId) + count > entryCfg.getCount()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
 			return true;
 		}
@@ -560,7 +560,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, hsCode);
 		allReward.rewardTakeAffectAndPush(player, Action.INSTANCE_SWEEP, hsCode);
 
-		statisticsEntity.addInstanceCountDaily(instanceId, count);
+		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, count);
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceSweepRet.Builder response = HSInstanceSweepRet.newBuilder();
@@ -589,7 +589,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
-		if (0 == statisticsEntity.getInstanceCountDaily(instanceId)) {
+		if (0 == statisticsEntity.getInstanceEnterTimesDaily(instanceId)) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return true;
 		}
@@ -600,7 +600,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			return true;
 		}
 
-		int resetTimes = player.getPlayerData().getStatisticsEntity().getInstanceResetCountDaily();
+		int resetTimes = player.getPlayerData().getStatisticsEntity().getInstanceResetTimesDaily();
 //		// 如有重置次数上限
 //		if (resetCfg.getMaxTimes() != GsConst.UNUSABLE && resetTimes >= resetCfg.getMaxTimes()) {
 //			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
@@ -618,8 +618,8 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_RESET, hsCode);
 
-		statisticsEntity.setInstanceCountDaily(instanceId, 0);
-		statisticsEntity.addInstanceResetCountDaily();
+		statisticsEntity.setInstanceEnterTimesDaily(instanceId, 0);
+		statisticsEntity.increaseInstanceResetTimesDaily();
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceResetCountRet.Builder response = HSInstanceResetCountRet.newBuilder();
@@ -1010,6 +1010,12 @@ public class PlayerInstanceModule extends PlayerModule {
 				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
 					statisticsEntity.setNormalTopIndex(this.curIndex);
 				}
+
+				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
+					statisticsEntity.increaseInstanceNormalTimesDaily();
+				}
+				statisticsEntity.increaseInstanceNormalTimes();
+
 			} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
 				int oldChapter = statisticsEntity.getHardTopChapter();
 				int oldIndex = statisticsEntity.getHardTopIndex();
@@ -1021,15 +1027,11 @@ public class PlayerInstanceModule extends PlayerModule {
 				}
 
 				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
-					statisticsEntity.addHardCountDaily();
+					statisticsEntity.increaseInstanceHardTimesDaily();
 				}
-				statisticsEntity.addHardCount();
+				statisticsEntity.increaseInstanceHardTimes();
 			}
 
-			if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
-				statisticsEntity.addInstanceAllCountDaily();
-			}
-			statisticsEntity.addInstanceAllCount();
 			statisticsEntity.notifyUpdate(true);
 
 			response.setStarCount(starCount);
@@ -1090,7 +1092,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (passBattleCount == this.curBattleList.size()) {
 			if (0 == (this.refreshMask & GsConst.RefreshMask.TOWER)) {
 				StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-				statisticsEntity.addTowerFloor(this.curTowerId, 1);
+				statisticsEntity.increaseTowerFloor(this.curTowerId);
 				statisticsEntity.notifyUpdate(true);
 			}
 
@@ -1142,9 +1144,9 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 多倍怪物经验
 		int multiple = 1;
-		if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+		if (statisticsEntity.getDoubleExpLeft() > 0) {
 			multiple = 2;
-		} else if (statisticsEntity.getTripleExpLeftTimes() > 0){
+		} else if (statisticsEntity.getTripleExpLeft() > 0){
 			multiple = 3;
 		}
 
@@ -1222,10 +1224,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		completeReward.rewardTakeAffectAndPush(player,  Action.INSTANCE_SETTLE, HS.code.INSTANCE_SETTLE_C_VALUE);
 
 		// 多倍经验次数
-		if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+		if (statisticsEntity.getDoubleExpLeft() > 0) {
 			statisticsEntity.decreaseDoubleExpLeft(1);
 			player.getPlayerData().syncStatisticsExpLeftInfo();
-		} else if (statisticsEntity.getTripleExpLeftTimes() > 0) {
+		} else if (statisticsEntity.getTripleExpLeft() > 0) {
 			statisticsEntity.decreaseTripleExpLeft(1);
 			player.getPlayerData().syncStatisticsExpLeftInfo();
 		}

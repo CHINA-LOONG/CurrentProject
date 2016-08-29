@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hawk.msg.HawkMsg;
 
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.util.GsConst;
@@ -30,7 +30,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		player.updateSkillPoint();
 		player.updateFatigue();
 
-		statisticsEntity.addLoginCount();
+		statisticsEntity.increaseLoginTimes();
 		statisticsEntity.notifyUpdate(true);
 
 		// 同步统计信息
@@ -56,7 +56,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		Calendar loginTime = player.getEntity().getLoginTime();
 		Calendar logoutTime = player.getEntity().getLogoutTime();
 		long onlineTime = logoutTime.getTimeInMillis() - loginTime.getTimeInMillis();
-		statisticsEntity.addTotalOnlineTime(onlineTime);
+		statisticsEntity.increaseTotalOnlineTime(onlineTime);
 
 		statisticsEntity.notifyUpdate(false);
 		return true;
@@ -71,26 +71,37 @@ public class PlayerStatisticsModule  extends PlayerModule {
 			int mask = GsConst.PlayerRefreshMask[index];
 
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
-				statisticsEntity.clearAdventureCountDaily();
-				statisticsEntity.clearArenaCountDaily();
-				statisticsEntity.clearBossrushCountDaily();
-				statisticsEntity.clearCoinOrderCountDaily();
-				statisticsEntity.clearEquipUpCountDaily();
-				statisticsEntity.clearExploreCountDaily();
-				statisticsEntity.clearFatigueClaimCountDaily();
-				statisticsEntity.clearHardCountDaily();
-				statisticsEntity.clearInstanceAllCountDaily();
-				statisticsEntity.clearInstanceCountDaily();
-				statisticsEntity.clearInstanceResetCountDaily();
-				statisticsEntity.clearItemUseCountDaily();
-				statisticsEntity.clearMonsterMixCountDaily();
-				statisticsEntity.clearQuestCompleteDaily();
-				statisticsEntity.clearSkillUpCountDaily();
-				statisticsEntity.clearHoleCountDaily();
-				statisticsEntity.clearAlliancePrayCountDaily();
-				statisticsEntity.clearAllianceTaskCountDaily();
+				statisticsEntity.clearAdventureTimesDaily();
 				statisticsEntity.clearAllianceContriRewardDaily();
+				statisticsEntity.clearAllianceFatigueTimesDaily();
+				statisticsEntity.clearAlliancePrayTimesDaily();
+				statisticsEntity.clearAllianceTaskCountDaily();
+				statisticsEntity.clearArenaTimesDaily();
+				statisticsEntity.clearBuyCoinTimesDaily();
+				statisticsEntity.clearBuyGiftTimesDaily();
+				statisticsEntity.clearCoinAllianceCountDaily();
+				statisticsEntity.clearCoinArenaCountDaily();
+				statisticsEntity.clearEggCoinTimesDaily();
+				statisticsEntity.clearEquipPunchTimesDaily();
+				statisticsEntity.clearEquipStageCountDaily();
+				statisticsEntity.clearHoleTimesDaily();
+				statisticsEntity.clearInstanceEnterTimesDaily();
+				statisticsEntity.clearInstanceHardTimesDaily();
+				statisticsEntity.clearInstanceNormalTimesDaily();
+				statisticsEntity.clearInstanceResetTimesDaily();
+				statisticsEntity.clearPayDiamondCountDaily();
+				statisticsEntity.clearQuestComplete();
+				statisticsEntity.clearQuestCompleteDaily();
+				statisticsEntity.clearShopRefreshTimesDaily();
+				statisticsEntity.clearSynAllTimesDaily();
+				statisticsEntity.clearTowerFloorMap();
+				statisticsEntity.clearUpEquipTimesDaily();
+				statisticsEntity.clearUpSkillTimesDaily();
+				statisticsEntity.clearUseDiamondCountDaily();
+				statisticsEntity.clearUseFatigueCountDaily();
+				statisticsEntity.clearUseItemCountDaily();
 				statisticsEntity.notifyUpdate(true);
+
 				if (false == onLogin) {
 					player.getPlayerData().syncDailyRefreshInfo();
 				}

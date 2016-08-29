@@ -138,6 +138,10 @@ Material:
         first:
           name: _Emission
         second: 1
+      data:
+        first:
+          name: _AmbientRatio
+        second: .100000001
     m_Colors:
       data:
         first:
@@ -146,4 +150,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .862745106, g: .862745106, b: .862745106, a: 1}

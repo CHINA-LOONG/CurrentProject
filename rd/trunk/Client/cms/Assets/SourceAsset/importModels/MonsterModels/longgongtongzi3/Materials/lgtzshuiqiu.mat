@@ -80,16 +80,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _NoiseTex
+          name: _Illum
         second:
-          m_Texture: {fileID: 2800000, guid: f3b3b81a476b39c47be4971cbfc55822, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
+          name: _NoiseTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: f3b3b81a476b39c47be4971cbfc55822, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -143,20 +143,20 @@ Material:
         second: 0
       data:
         first:
+          name: _Emission
+        second: 1
+      data:
+        first:
           name: _ForceX
-        second: .174999997
+        second: .170000002
       data:
         first:
           name: _ForceY
-        second: .203999996
+        second: .230000004
       data:
         first:
           name: _HeatTime
-        second: .200000003
-      data:
-        first:
-          name: _Emission
-        second: 1
+        second: .300000012
     m_Colors:
       data:
         first:
@@ -169,4 +169,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .276384085, g: .414240599, b: .529411793, a: .5}
+        second: {r: .482158303, g: .53313297, b: .720588207, a: .5}

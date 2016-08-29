@@ -29,7 +29,7 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
@@ -565,7 +565,7 @@ public class GmService_Dev extends GameService {
 					InstanceState.Builder instanceState = InstanceState.newBuilder();
 					instanceState.setInstanceId(entry.getKey());
 					instanceState.setStar(entry.getValue());
-					instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+					instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
 					gmPush.addInstanceState(instanceState);
 				}
 				ChapterState.Builder chapterState = ChapterState.newBuilder();
@@ -696,7 +696,7 @@ public class GmService_Dev extends GameService {
 					InstanceState.Builder instanceState = InstanceState.newBuilder();
 					instanceState.setInstanceId(entry.getKey());
 					instanceState.setStar(entry.getValue());
-					instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+					instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
 					gmPush.addInstanceState(instanceState);
 				}
 				ChapterState.Builder chapterState = ChapterState.newBuilder();
