@@ -304,10 +304,13 @@ public class BehaviorLogger {
 		 */
 		ALLIANCE_QUEST_REWARD,
 		/**
-		/**
 		 * 公会大任务消耗
 		 */
 		ALLIANCE_TASK_REWARD,
+		/**
+		 * 公会大任务消耗
+		 */
+		ALLIANCE_BASE_REWARD,
 		/**
 		/**
 		 * gm

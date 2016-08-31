@@ -127,7 +127,7 @@ public class PopupList : MonoBehaviour
         }
         else
         {
-            Debug.LogError("error: not found this option");
+            Logger.LogError("error: not found this option");
         }
         if (mSelectedIndex==index)
         {

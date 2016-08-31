@@ -12,6 +12,7 @@ import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
@@ -21,6 +22,7 @@ import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceApply;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyRet;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.QuestUtil;
 
 public class AllianceApplyHandler implements HawkMsgHandler{
 	/**
@@ -86,6 +88,9 @@ public class AllianceApplyHandler implements HawkMsgHandler{
 			if (imCfg != null) {
 				ImManager.getInstance().postSys(imCfg, allianceEntity.getId(), player.getName());
 			}
+
+			// 更新加入公会任务
+			QuestUtil.postQuestDataUpdateMsg(player.getXid());
 
 			HSAllianceApplyRet.Builder response = HSAllianceApplyRet.newBuilder();
 			response.setAllianceId(allianceEntity.getId());

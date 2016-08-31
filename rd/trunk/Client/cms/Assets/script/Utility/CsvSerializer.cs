@@ -144,7 +144,7 @@ namespace Csv.Serialization
                     List<string> d = new List<string>();
                     while (reader.ReadRow(d))
                     {
-                        Debug.Log(d);
+                        Logger.Log(d);
                     }* /
 
                     rows = sr.ReadToEnd().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);

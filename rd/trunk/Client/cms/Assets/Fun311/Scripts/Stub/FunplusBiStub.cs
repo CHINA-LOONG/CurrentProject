@@ -21,7 +21,7 @@ namespace Funplus {
 		}
 		
 		public override void TraceEvent (string eventName, string properties) {
-			Debug.Log ("Calling FunplusBiStub.TraceEvent ().");
+			Logger.Log ("Calling FunplusBiStub.TraceEvent ().");
 		}
 		
 	}

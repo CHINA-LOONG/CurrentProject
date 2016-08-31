@@ -1,14 +1,18 @@
 package com.hawk.game.module;
 
+import java.util.Map;
+
 import org.hawk.app.HawkApp;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
+import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.PlayerAllianceEntity.BaseMonsterInfo;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.module.alliance.AllianceListHandler;
@@ -19,9 +23,13 @@ import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyList;
+import com.hawk.game.protocol.Alliance.HSAllianceBaseList;
+import com.hawk.game.protocol.Alliance.HSAllianceBaseListRet;
 import com.hawk.game.protocol.Alliance.HSAllianceContribution;
 import com.hawk.game.protocol.Alliance.HSAllianceDataRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembers;
+import com.hawk.game.protocol.Alliance.HSAllianceMyBaseList;
+import com.hawk.game.protocol.Alliance.HSAllianceMyBaseListRet;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfDataRet;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfTeam;
 import com.hawk.game.protocol.Alliance.HSAllianceSettingSyn;
@@ -32,6 +40,7 @@ import com.hawk.game.protocol.Alliance.HSAllianceTeamList;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.AllianceUtil;
+import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -75,6 +84,9 @@ public class PlayerAllianceModule extends PlayerModule {
 		listenProto(HS.code.ALLIANCE_DISSOVLE_TEAM_C_VALUE);
 		listenProto(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE);
 		listenProto(HS.code.ALLIANCE_CONTRI_REWARD_C_VALUE);
+		listenProto(HS.code.ALLIANCE_BASE_SEND_C_VALUE);
+		listenProto(HS.code.ALLIANCE_BASE_LIST_C_VALUE);
+		listenProto(HS.code.ALLIANCE_MY_BASE_LIST_C_VALUE);
 	}
 
 	/**
@@ -289,6 +301,22 @@ public class PlayerAllianceModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
+		else if (protocol.checkType(HS.code.ALLIANCE_BASE_SEND_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_BASE_SEND, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_BASE_RECALL_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_BASE_RECALL, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
 		else if (protocol.checkType(HS.code.ALLIANCE_SYN_C_VALUE)) {
 			onAllianceSyn(HS.code.ALLIANCE_SYN_C_VALUE, protocol.parseProtocol(HSAllianceSyn.getDefaultInstance()));
 			return true;
@@ -315,6 +343,14 @@ public class PlayerAllianceModule extends PlayerModule {
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE)) {
 			onAllianceContributionSyn(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE, protocol.parseProtocol(HSAllianceContribution.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_BASE_LIST_C_VALUE)) {
+			onAllianceBaseListSyn(HS.code.ALLIANCE_BASE_LIST_C_VALUE, protocol.parseProtocol(HSAllianceBaseList.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_MY_BASE_LIST_C_VALUE)) {
+			onAllianceMyBaseListSyn(HS.code.ALLIANCE_MY_BASE_LIST_C_VALUE, protocol.parseProtocol(HSAllianceMyBaseList.getDefaultInstance()));
 			return true;
 		}
 		
@@ -472,6 +508,69 @@ public class PlayerAllianceModule extends PlayerModule {
 		}
 		
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CONTRIBUTION_S_VALUE, AllianceUtil.getAllianceContributionInfo(allianceEntity)));
+		return true;
+	}
+	
+	/**
+	 * 公会驻兵同步 
+	 * @param hsCode
+	 * @param protocol
+	 * @return
+	 */
+	public boolean onAllianceBaseListSyn(int hsCode, HSAllianceBaseList protocol){
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		HSAllianceBaseListRet.Builder response = HSAllianceBaseListRet.newBuilder();
+		for (AllianceBaseEntity baseEntity : allianceEntity.getAllianceBaseEntityMap().values()) {
+			response.addMonsterInfo(BuilderUtil.genAllianceBaseMonster(baseEntity, false));
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_BASE_LIST_S_VALUE, response));
+		return true;
+	}
+	
+	/**
+	 * 我的驻兵同步
+	 * @param hsCode
+	 * @param protocol
+	 * @return
+	 */
+	public boolean onAllianceMyBaseListSyn(int hsCode, HSAllianceMyBaseList protocol){
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		PlayerAllianceEntity playerAllianceEntity = allianceEntity.getMember(player.getId());
+		if (playerAllianceEntity == null) {
+			sendError(hsCode, Status.error.SERVER_ERROR_VALUE);
+			return true;
+		}
+		
+		HSAllianceMyBaseListRet.Builder response = HSAllianceMyBaseListRet.newBuilder();
+		for (Map.Entry<Integer, BaseMonsterInfo> entry : playerAllianceEntity.getBaseMonsterInfo().entrySet()) {
+			AllianceBaseEntity baseEntity = allianceEntity.getAllianceBaseEntityMap().get(entry.getValue().getMonsterId());
+			if (baseEntity != null) {
+				response.addMonsterInfo(BuilderUtil.genAllianceBaseMonster(baseEntity, true));
+			}
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MY_BASE_LIST_S_VALUE, response));
 		return true;
 	}
 	

@@ -119,6 +119,10 @@ public class ConsumeItems {
 		return this;
 	}
 
+	public ConsumeItems addAttr(int attrType, int count) {
+		return addAttr(String.valueOf(attrType), count);
+	}
+
 	public ConsumeItems addAttr(String attrType, int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
@@ -139,31 +143,6 @@ public class ConsumeItems {
 			consumeItem.setCount(consumeItem.getCount() + count);
 		}
 		return this;
-	}
-
-	public ConsumeItems addContribution(int count) {
-		ConsumeItem.Builder consumeItem = null;
-		for (ConsumeItem.Builder consume : consumeInfo.getConsumeItemsBuilderList()) {
-			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && Integer.valueOf(consume.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-				consumeItem = consume;
-				break;
-			}
-		}
-		if (consumeItem == null) {
-			consumeItem = ConsumeItem.newBuilder();
-			consumeItem.setType(itemType.PLAYER_ATTR_VALUE);
-			consumeItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
-			consumeItem.setCount(count);
-			consumeInfo.addConsumeItems(consumeItem);
-		}
-		else {
-			consumeItem.setCount(consumeItem.getCount() + count);
-		}
-		return this;
-	}
-
-	public ConsumeItems addAttr(int attrType, int count) {
-		return addAttr(String.valueOf(attrType), count);
 	}
 
 	//目前怪物的消耗都是通过指定Id的
@@ -235,6 +214,20 @@ public class ConsumeItems {
 		return this;
 	}
 
+	public ConsumeItems addArenaCoin(int towerCoin) {
+		if (towerCoin > 0) {
+			addAttr(changeType.CHANGE_ARENA_COIN_VALUE, towerCoin);
+		}
+		return this;
+	}
+
+	public ConsumeItems addContribution(int contribution) {
+		if (contribution > 0) {
+			addAttr(changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE, contribution);
+		}
+		return this;
+	}
+
 	/**
 	 * 检测是否可消耗
 	 * 
@@ -256,10 +249,16 @@ public class ConsumeItems {
 			if(hsCode > 0) {
 				switch (result) {
 					case ConsumeCheckResult.COIN_NOT_ENOUGH:
-						player.sendError(hsCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
+						player.sendError(hsCode, Status.PlayerError.COIN_NOT_ENOUGH_VALUE);
 						break;
 					case ConsumeCheckResult.GOLD_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
+						break;
+					case ConsumeCheckResult.TOWER_COIN_NOT_ENOUGH:
+						player.sendError(hsCode, Status.PlayerError.TOWER_COIN_NOT_ENOUGH_VALUE);
+						break;
+					case ConsumeCheckResult.ARENA_COIN_NOT_ENOUGH:
+						player.sendError(hsCode, Status.PlayerError.ARENA_COIN_NOT_ENOUGH_VALUE);
 						break;
 					case ConsumeCheckResult.FATIGUE_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.FATIGUE_NOT_ENOUGH_VALUE);
@@ -316,9 +315,14 @@ public class ConsumeItems {
 						return ConsumeCheckResult.TOWER_COIN_NOT_ENOUGH;
 					}
 				}
+				else if (changeType == Const.changeType.CHANGE_ARENA_COIN_VALUE) {
+					if (player.getArenaCoin() < consumeItem.getCount()) {
+						return ConsumeCheckResult.ARENA_COIN_NOT_ENOUGH;
+					}
+				}
 				else if (changeType == Const.changeType.CHANGE_FATIGUE_VALUE) {
 					// 更新活力值
-					player.updateFatigue();
+					player.regainFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() < consumeItem.getCount()) {
 						return ConsumeCheckResult.FATIGUE_NOT_ENOUGH;
 					}
@@ -392,14 +396,18 @@ public class ConsumeItems {
 						player.consumeTowerCoin(item.getCount(), action);
 						break;
 
+					case changeType.CHANGE_ARENA_COIN_VALUE:
+						player.consumeArenaCoin(item.getCount(), action);
+						break;
+
 					case changeType.CHANGE_FATIGUE_VALUE:
 						player.consumeFatigue(item.getCount(), action);
 						break;
-						
+
 					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
 						player.consumeContribution(item.getCount(), action);
 						break;
-						
+
 					default:
 						break;
 					}

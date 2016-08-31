@@ -684,7 +684,7 @@ public final class Const {
      * <code>ALLIANCE_COTRIBUTION = 3;</code>
      *
      * <pre>
-     * 公会贡献值
+     * 公会币(贡献值)
      * </pre>
      */
     ALLIANCE_COTRIBUTION(2, 3),
@@ -692,10 +692,18 @@ public final class Const {
      * <code>TOWER_COIN = 4;</code>
      *
      * <pre>
-     * 通天塔货币
+     * 通天塔币
      * </pre>
      */
     TOWER_COIN(3, 4),
+    /**
+     * <code>ARENA_COIN = 5;</code>
+     *
+     * <pre>
+     * 竞技场币
+     * </pre>
+     */
+    ARENA_COIN(4, 5),
     ;
 
     /**
@@ -718,7 +726,7 @@ public final class Const {
      * <code>ALLIANCE_COTRIBUTION = 3;</code>
      *
      * <pre>
-     * 公会贡献值
+     * 公会币(贡献值)
      * </pre>
      */
     public static final int ALLIANCE_COTRIBUTION_VALUE = 3;
@@ -726,10 +734,18 @@ public final class Const {
      * <code>TOWER_COIN = 4;</code>
      *
      * <pre>
-     * 通天塔货币
+     * 通天塔币
      * </pre>
      */
     public static final int TOWER_COIN_VALUE = 4;
+    /**
+     * <code>ARENA_COIN = 5;</code>
+     *
+     * <pre>
+     * 竞技场币
+     * </pre>
+     */
+    public static final int ARENA_COIN_VALUE = 5;
 
 
     public final int getNumber() { return value; }
@@ -740,6 +756,7 @@ public final class Const {
         case 2: return MONEY_COIN;
         case 3: return ALLIANCE_COTRIBUTION;
         case 4: return TOWER_COIN;
+        case 5: return ARENA_COIN;
         default: return null;
       }
     }
@@ -888,6 +905,14 @@ public final class Const {
      * </pre>
      */
     CHANGE_TOWER_COIN(10, 11),
+    /**
+     * <code>CHANGE_ARENA_COIN = 12;</code>
+     *
+     * <pre>
+     * 竞技场币
+     * </pre>
+     */
+    CHANGE_ARENA_COIN(11, 12),
     ;
 
     /**
@@ -978,6 +1003,14 @@ public final class Const {
      * </pre>
      */
     public static final int CHANGE_TOWER_COIN_VALUE = 11;
+    /**
+     * <code>CHANGE_ARENA_COIN = 12;</code>
+     *
+     * <pre>
+     * 竞技场币
+     * </pre>
+     */
+    public static final int CHANGE_ARENA_COIN_VALUE = 12;
 
 
     public final int getNumber() { return value; }
@@ -995,6 +1028,7 @@ public final class Const {
         case 9: return CHANGE_GOLD_BUY;
         case 10: return CHANGE_PLAYER_CONTRIBUTION;
         case 11: return CHANGE_TOWER_COIN;
+        case 12: return CHANGE_ARENA_COIN;
         default: return null;
       }
     }
@@ -3164,6 +3198,200 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:InstanceType)
   }
 
+  /**
+   * Protobuf enum {@code SpellTyep}
+   *
+   * <pre>
+   * 技能类型
+   * </pre>
+   */
+  public enum SpellTyep
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>Spell_Type_PhyAttack = 0;</code>
+     */
+    Spell_Type_PhyAttack(0, 0),
+    /**
+     * <code>Spell_Type_MgicAttack = 1;</code>
+     */
+    Spell_Type_MgicAttack(1, 1),
+    /**
+     * <code>Spell_Type_Cure = 2;</code>
+     */
+    Spell_Type_Cure(2, 2),
+    /**
+     * <code>Spell_Type_Defense = 3;</code>
+     */
+    Spell_Type_Defense(3, 3),
+    /**
+     * <code>Spell_Type_Passive = 4;</code>
+     */
+    Spell_Type_Passive(4, 4),
+    /**
+     * <code>Spell_Type_Beneficial = 5;</code>
+     */
+    Spell_Type_Beneficial(5, 5),
+    /**
+     * <code>Spell_Type_Negative = 6;</code>
+     */
+    Spell_Type_Negative(6, 6),
+    /**
+     * <code>Spell_Type_Lazy = 7;</code>
+     */
+    Spell_Type_Lazy(7, 7),
+    /**
+     * <code>Spell_Type_PhyDaZhao = 8;</code>
+     */
+    Spell_Type_PhyDaZhao(8, 8),
+    /**
+     * <code>Spell_Type_MagicDazhao = 9;</code>
+     */
+    Spell_Type_MagicDazhao(9, 9),
+    /**
+     * <code>Spell_Type_PrepareDazhao = 10;</code>
+     */
+    Spell_Type_PrepareDazhao(10, 10),
+    /**
+     * <code>Spell_Type_Dot = 11;</code>
+     */
+    Spell_Type_Dot(11, 11),
+    /**
+     * <code>Spell_Type_Hot = 12;</code>
+     */
+    Spell_Type_Hot(12, 12),
+    /**
+     * <code>Num_Spell_Type = 13;</code>
+     */
+    Num_Spell_Type(13, 13),
+    ;
+
+    /**
+     * <code>Spell_Type_PhyAttack = 0;</code>
+     */
+    public static final int Spell_Type_PhyAttack_VALUE = 0;
+    /**
+     * <code>Spell_Type_MgicAttack = 1;</code>
+     */
+    public static final int Spell_Type_MgicAttack_VALUE = 1;
+    /**
+     * <code>Spell_Type_Cure = 2;</code>
+     */
+    public static final int Spell_Type_Cure_VALUE = 2;
+    /**
+     * <code>Spell_Type_Defense = 3;</code>
+     */
+    public static final int Spell_Type_Defense_VALUE = 3;
+    /**
+     * <code>Spell_Type_Passive = 4;</code>
+     */
+    public static final int Spell_Type_Passive_VALUE = 4;
+    /**
+     * <code>Spell_Type_Beneficial = 5;</code>
+     */
+    public static final int Spell_Type_Beneficial_VALUE = 5;
+    /**
+     * <code>Spell_Type_Negative = 6;</code>
+     */
+    public static final int Spell_Type_Negative_VALUE = 6;
+    /**
+     * <code>Spell_Type_Lazy = 7;</code>
+     */
+    public static final int Spell_Type_Lazy_VALUE = 7;
+    /**
+     * <code>Spell_Type_PhyDaZhao = 8;</code>
+     */
+    public static final int Spell_Type_PhyDaZhao_VALUE = 8;
+    /**
+     * <code>Spell_Type_MagicDazhao = 9;</code>
+     */
+    public static final int Spell_Type_MagicDazhao_VALUE = 9;
+    /**
+     * <code>Spell_Type_PrepareDazhao = 10;</code>
+     */
+    public static final int Spell_Type_PrepareDazhao_VALUE = 10;
+    /**
+     * <code>Spell_Type_Dot = 11;</code>
+     */
+    public static final int Spell_Type_Dot_VALUE = 11;
+    /**
+     * <code>Spell_Type_Hot = 12;</code>
+     */
+    public static final int Spell_Type_Hot_VALUE = 12;
+    /**
+     * <code>Num_Spell_Type = 13;</code>
+     */
+    public static final int Num_Spell_Type_VALUE = 13;
+
+
+    public final int getNumber() { return value; }
+
+    public static SpellTyep valueOf(int value) {
+      switch (value) {
+        case 0: return Spell_Type_PhyAttack;
+        case 1: return Spell_Type_MgicAttack;
+        case 2: return Spell_Type_Cure;
+        case 3: return Spell_Type_Defense;
+        case 4: return Spell_Type_Passive;
+        case 5: return Spell_Type_Beneficial;
+        case 6: return Spell_Type_Negative;
+        case 7: return Spell_Type_Lazy;
+        case 8: return Spell_Type_PhyDaZhao;
+        case 9: return Spell_Type_MagicDazhao;
+        case 10: return Spell_Type_PrepareDazhao;
+        case 11: return Spell_Type_Dot;
+        case 12: return Spell_Type_Hot;
+        case 13: return Num_Spell_Type;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SpellTyep>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<SpellTyep>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SpellTyep>() {
+            public SpellTyep findValueByNumber(int number) {
+              return SpellTyep.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(21);
+    }
+
+    private static final SpellTyep[] VALUES = values();
+
+    public static SpellTyep valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private SpellTyep(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:SpellTyep)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3184,46 +3412,56 @@ public final class Const {
       "ER_TYPE\020\002*t\n\010itemType\022\r\n\tNONE_ITEM\020\000\022\017\n\013" +
       "PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM\020",
       "\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006\022\013\n\007MO" +
-      "NSTER\020\007*U\n\tmoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\n" +
+      "NSTER\020\007*e\n\tmoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\n" +
       "MONEY_COIN\020\002\022\030\n\024ALLIANCE_COTRIBUTION\020\003\022\016" +
-      "\n\nTOWER_COIN\020\004*\200\002\n\nchangeType\022\017\n\013CHANGE_" +
-      "GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYER" +
-      "_EXP\020\003\022\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHANG" +
-      "E_MONSTER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL\020" +
-      "\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n" +
-      "\017CHANGE_GOLD_BUY\020\t\022\036\n\032CHANGE_PLAYER_CONT" +
-      "RIBUTION\020\n\022\025\n\021CHANGE_TOWER_COIN\020\013*\365\001\n\004at",
-      "tr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTEL" +
-      "LIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEA" +
-      "LTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022\022" +
-      "\n\016CRITICALWEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRIT" +
-      "ICALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREAS" +
-      "E\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DAMAGEINCREASE\020" +
-      "m*+\n\ruserCondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_BA" +
-      "TTLE\020\002*5\n\010bindType\022\014\n\010NON_BIND\020\001\022\014\n\010USE_" +
-      "BIND\020\002\022\r\n\tTAKE_BIND\020\003*b\n\010toolType\022\016\n\nCOM" +
-      "MONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003",
-      "\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020" +
-      "\007*.\n\013FragSubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFR" +
-      "AG_TOOL\020\002*`\n\016UseToolSubType\022\016\n\nUSETOOLEX" +
-      "P\020\001\022\024\n\020USETOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIP" +
-      "LEEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004*\204\001\n\tequipPar" +
-      "t\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUI" +
-      "RASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGG" +
-      "UARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE" +
-      "\020\n*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002" +
-      "\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RE",
-      "D\020\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIA" +
-      "NCESHOP\020\002\022\r\n\tTOWERSHOP\020\003*H\n\tmailState\022\n\n" +
-      "\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVER" +
-      "FLOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImType\022\010\n\004CHAT\020\001\022\013" +
-      "\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tI" +
-      "mChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD" +
-      "\020\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377\377\377\377\377\377\377" +
-      "\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014InstanceType" +
-      "\022\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANCE_HOLE\020\002\022" +
-      "\022\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE_GUILD\020\004B",
-      "\030\n\026com.hawk.game.protocol"
+      "\n\nTOWER_COIN\020\004\022\016\n\nARENA_COIN\020\005*\227\002\n\nchang" +
+      "eType\022\017\n\013CHANGE_GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022" +
+      "\025\n\021CHANGE_PLAYER_EXP\020\003\022\027\n\023CHANGE_PLAYER_" +
+      "LEVEL\020\004\022\026\n\022CHANGE_MONSTER_EXP\020\005\022\030\n\024CHANG" +
+      "E_MONSTER_LEVEL\020\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n" +
+      "\nCHANGE_FAV\020\010\022\023\n\017CHANGE_GOLD_BUY\020\t\022\036\n\032CH" +
+      "ANGE_PLAYER_CONTRIBUTION\020\n\022\025\n\021CHANGE_TOW",
+      "ER_COIN\020\013\022\025\n\021CHANGE_ARENA_COIN\020\014*\365\001\n\004att" +
+      "r\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELL" +
+      "IGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEAL" +
+      "TH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n" +
+      "\016CRITICALWEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITI" +
+      "CALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREASE" +
+      "\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DAMAGEINCREASE\020m" +
+      "*+\n\ruserCondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_BAT" +
+      "TLE\020\002*5\n\010bindType\022\014\n\010NON_BIND\020\001\022\014\n\010USE_B" +
+      "IND\020\002\022\r\n\tTAKE_BIND\020\003*b\n\010toolType\022\016\n\nCOMM",
+      "ONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022" +
+      "\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007" +
+      "*.\n\013FragSubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRA" +
+      "G_TOOL\020\002*`\n\016UseToolSubType\022\016\n\nUSETOOLEXP" +
+      "\020\001\022\024\n\020USETOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPL" +
+      "EEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004*\204\001\n\tequipPart" +
+      "\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIR" +
+      "ASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGU" +
+      "ARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020" +
+      "\n*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022",
+      "\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED" +
+      "\020\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIAN" +
+      "CESHOP\020\002\022\r\n\tTOWERSHOP\020\003*H\n\tmailState\022\n\n\006" +
+      "UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERF" +
+      "LOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n" +
+      "\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tIm" +
+      "Channel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD\020" +
+      "\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377\377\377\377\377\377\377\377" +
+      "\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014InstanceType\022" +
+      "\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANCE_HOLE\020\002\022\022",
+      "\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE_GUILD\020\004*\336" +
+      "\002\n\tSpellTyep\022\030\n\024Spell_Type_PhyAttack\020\000\022\031" +
+      "\n\025Spell_Type_MgicAttack\020\001\022\023\n\017Spell_Type_" +
+      "Cure\020\002\022\026\n\022Spell_Type_Defense\020\003\022\026\n\022Spell_" +
+      "Type_Passive\020\004\022\031\n\025Spell_Type_Beneficial\020" +
+      "\005\022\027\n\023Spell_Type_Negative\020\006\022\023\n\017Spell_Type" +
+      "_Lazy\020\007\022\030\n\024Spell_Type_PhyDaZhao\020\010\022\032\n\026Spe" +
+      "ll_Type_MagicDazhao\020\t\022\034\n\030Spell_Type_Prep" +
+      "areDazhao\020\n\022\022\n\016Spell_Type_Dot\020\013\022\022\n\016Spell" +
+      "_Type_Hot\020\014\022\022\n\016Num_Spell_Type\020\rB\030\n\026com.h",
+      "awk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

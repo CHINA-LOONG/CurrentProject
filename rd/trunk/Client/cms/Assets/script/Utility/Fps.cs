@@ -32,7 +32,7 @@ public class Fps : MonoBehaviour
         if (_timeLeft <= 0)
         {
             float fps = _accum / _frames;
-            //Debug.Log(_accum + "__" + _frames);
+            //Logger.Log(_accum + "__" + _frames);
             string fpsFormat = System.String.Format("{0:F2}FPS", fps);//保留两位小数
             m_FPS.text = fpsFormat;
 

@@ -449,7 +449,7 @@ public class InstanceMapService : MonoBehaviour
 		InstanceEntryRuntimeData runtimeInstance = GetRuntimeInstance (instanceID);
 		if (null == runtimeInstance) 
 		{
-			Debug.LogError("Error:can't find instanceid in runtime  Id = " + instanceID);
+			Logger.LogError("Error:can't find instanceid in runtime  Id = " + instanceID);
 			return;
 		}
 		if (runtimeInstance.star < star) 

@@ -21,6 +21,7 @@ import org.hawk.db.HawkDBEntity;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.hawk.game.entity.PlayerAllianceEntity.BaseMonsterInfo;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskTimeoutNotify;
@@ -138,12 +139,19 @@ public class AllianceEntity extends HawkDBEntity {
 	@Transient
 	private Set<AllianceTeamEntity> unfinishTeamTimeoutList;
 	
+	/**
+	 * 公会驻兵
+	 */
+	@Transient
+	private Map<Integer, AllianceBaseEntity> allianceBaseMap;
+	
 	public AllianceEntity() {
 		memberList = new HashMap<Integer, PlayerAllianceEntity>();
 		applyList = new TreeMap<Integer, AllianceApplyEntity>();
 		playerTeamMap = new HashMap<Integer, Integer>();
 		finishTeamList = new HashMap<>();
 		unfinishTeamList = new HashMap<>();
+		allianceBaseMap = new HashMap<>();
 		unfinishTeamTimeoutList =  new TreeSet<>(new Comparator<AllianceTeamEntity>() {
             public int compare(AllianceTeamEntity o1, AllianceTeamEntity o2) {
                 if (o1 == null || o2 == null)
@@ -316,6 +324,10 @@ public class AllianceEntity extends HawkDBEntity {
 		return unfinishTeamTimeoutList;
 	}
 	
+	public Map<Integer, AllianceBaseEntity> getAllianceBaseEntityMap(){
+		return allianceBaseMap;
+	}
+	
 	public void removeTeam(int teamId){
 		AllianceTeamEntity teamEntity = null;
 		if (finishTeamList.get(teamId) != null) {
@@ -387,6 +399,77 @@ public class AllianceEntity extends HawkDBEntity {
 			unfinishTeamTimeoutList.remove(teamEntity);
 			finishTeamList.put(taskId, teamEntity);
 		}
+	}
+	
+	/**
+	 * 添加公会驻兵
+	 * @param baseEntity
+	 * @param position
+	 */
+	public void addAllianceBase(AllianceBaseEntity baseEntity, int position){		
+		if (!allianceBaseMap.containsKey(baseEntity.getMonsterBuilder().getMonsterId())) {
+			PlayerAllianceEntity playerAllianceEntity = memberList.get(allianceBaseMap.get(baseEntity.getPlayerId()));
+			if (playerAllianceEntity != null && !playerAllianceEntity.isBasePositionHasMonster(position)) {
+				playerAllianceEntity.addAllianceBase(position, baseEntity);
+				allianceBaseMap.put(baseEntity.getMonsterBuilder().getMonsterId(), baseEntity);
+				playerAllianceEntity.notifyUpdate(true);
+			}
+		}
+	}
+
+	/**
+	 * 移除公会驻兵
+	 * @param playerId
+	 * @param position
+	 */
+	public void removeAllianceBase(int playerId, int position){
+		PlayerAllianceEntity playerAllianceEntity = memberList.get(playerId);
+		if (playerAllianceEntity != null) {
+			if (playerAllianceEntity.isBasePositionHasMonster(position)) {
+				int monsterId = playerAllianceEntity.getBaseMonsterInfo(position).getMonsterId();
+				AllianceBaseEntity allianceBaseEntity = allianceBaseMap.remove(monsterId);
+				if (allianceBaseEntity != null) {
+					allianceBaseEntity.delete();
+				}
+				playerAllianceEntity.removeAllianceBase(position);
+				playerAllianceEntity.notifyUpdate(true);
+			}
+		}
+	}
+	
+	/**
+	 * 清空公会驻兵
+	 */
+	public void clearAllianceBase(int playerId){
+		PlayerAllianceEntity playerAllianceEntity = memberList.get(playerId);
+		if (playerAllianceEntity != null) {
+			for (BaseMonsterInfo baseMonsterInfo : playerAllianceEntity.getBaseMonsterInfo().values()) {
+				AllianceBaseEntity allianceBaseEntity = allianceBaseMap.remove(baseMonsterInfo.getMonsterId());
+				if (allianceBaseEntity != null) {
+					allianceBaseEntity.delete();
+				}
+			}
+		}
+		
+		playerAllianceEntity.getBaseMonsterInfo().clear();
+		playerAllianceEntity.notifyUpdate(true);
+	}
+	
+	/**
+	 * 获取公会基地数据
+	 * @param playerId
+	 * @param position
+	 * @return
+	 */
+	public AllianceBaseEntity getAllianceBaseEntity(int playerId, int position){
+		PlayerAllianceEntity playerAllianceEntity = memberList.get(playerId);
+		if (playerAllianceEntity != null) {
+			if (playerAllianceEntity.isBasePositionHasMonster(position)) {
+				return allianceBaseMap.get(playerAllianceEntity.getBaseMonsterInfo(position).getMonsterId());
+			}
+		}
+		
+		return null;
 	}
 	
 	public String getPlayerName() {

@@ -31,13 +31,13 @@ public class LastEvenType : MonoBehaviour
 		if (Event.current.type == EventType.mouseDown)
 		{
 			eventType = EventType.MouseDown;
-			//Debug.LogError ("--------------------click");
+			//Logger.LogError ("--------------------click");
 		}
 
 		if (Event.current.type == EventType.MouseDrag)
 		{
 			eventType = EventType.MouseDrag;
-			//Debug.LogError("Drag---------------------");
+			//Logger.LogError("Drag---------------------");
 		}
 	}
 

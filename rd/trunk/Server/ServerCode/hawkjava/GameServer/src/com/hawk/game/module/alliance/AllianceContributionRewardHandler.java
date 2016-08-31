@@ -17,6 +17,7 @@ import com.hawk.game.protocol.Alliance.HSAllianceContriRewardRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceContriReward;
+import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
 
 public class AllianceContributionRewardHandler implements HawkMsgHandler{
@@ -35,13 +36,13 @@ public class AllianceContributionRewardHandler implements HawkMsgHandler{
 		HSAllianceContriReward request = protocol.parseProtocol(HSAllianceContriReward.getDefaultInstance());
 	
 		if(player.getAllianceId() == 0){
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_IN_TEAM_VALUE);
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
 			return true;
 		}
 		
 		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
 		if (allianceEntity == null) {
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
 			return true;
 		}
 		
@@ -75,7 +76,7 @@ public class AllianceContributionRewardHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if (player.getPlayerData().getStatisticsEntity().isAllianceContriRewardDaily(request.getIndex()) == true) {
+		if (AllianceUtil.isAllianceContriRewardDaily(request.getIndex()) == true) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_REWARD_ALREADY_GIVE_VALUE);
 			return true;
 		}

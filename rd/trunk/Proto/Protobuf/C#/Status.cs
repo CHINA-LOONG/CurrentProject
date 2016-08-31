@@ -44,8 +44,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_ERROR", Value=589824)]
       SHOP_ERROR = 589824,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IM_ERROR", Value=1048576)]
-      IM_ERROR = 1048576
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_ERROR", Value=655360)]
+      IM_ERROR = 655360,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_ERROR", Value=720896)]
+      SETTING_ERROR = 720896
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -96,11 +99,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=131075)]
       PUID_EXIST = 131075,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131076)]
-      COINS_NOT_ENOUGH = 131076,
+      [global::ProtoBuf.ProtoEnum(Name=@"COIN_NOT_ENOUGH", Value=131076)]
+      COIN_NOT_ENOUGH = 131076,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COINS_LIMIT", Value=131077)]
-      COINS_LIMIT = 131077,
+      [global::ProtoBuf.ProtoEnum(Name=@"COIN_LIMIT", Value=131077)]
+      COIN_LIMIT = 131077,
             
       [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131078)]
       GOLD_NOT_ENOUGH = 131078,
@@ -112,7 +115,25 @@ namespace PB
       FATIGUE_NOT_ENOUGH = 131080,
             
       [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_LIMIT", Value=131081)]
-      FATIGUE_LIMIT = 131081
+      FATIGUE_LIMIT = 131081,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_NOT_ENOUGH", Value=131082)]
+      TOWER_COIN_NOT_ENOUGH = 131082,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_LIMIT", Value=131083)]
+      TOWER_COIN_LIMIT = 131083,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_NOT_ENOUGH", Value=131084)]
+      ARENA_COIN_NOT_ENOUGH = 131084,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_LIMIT", Value=131085)]
+      ARENA_COIN_LIMIT = 131085,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_NOT_ENOUGH", Value=131086)]
+      CONTRIBUTION_NOT_ENOUGH = 131086,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_LIMIT", Value=131087)]
+      CONTRIBUTION_LIMIT = 131087
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]
@@ -163,20 +184,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
       ITEM_NOT_FOUND = 262145,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262147)]
-      ITEM_NOT_ENOUGH = 262147,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262146)]
+      ITEM_NOT_ENOUGH = 262146,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_NOT_ALLOW", Value=262148)]
-      ITEM_BUY_NOT_ALLOW = 262148,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_NOT_ALLOW", Value=262147)]
+      ITEM_BUY_NOT_ALLOW = 262147,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262149)]
-      ITEM_SELL_NOT_ALLOW = 262149,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262148)]
+      ITEM_SELL_NOT_ALLOW = 262148,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_EXP_LEFT_TIMES", Value=262150)]
-      ITEM_EXP_LEFT_TIMES = 262150,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_EXP_LEFT_TIMES", Value=262149)]
+      ITEM_EXP_LEFT_TIMES = 262149,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_COUNT", Value=262151)]
-      ITEM_USE_COUNT = 262151,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_COUNT", Value=262150)]
+      ITEM_USE_COUNT = 262150,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=266241)]
       EQUIP_NOT_FOUND = 266241,
@@ -220,8 +241,8 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=266254)]
       EQUIP_SLOT_NOT_PUNCH = 266254,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PLAYER_LEVEL_DEMAND", Value=266256)]
-      EQUIP_PLAYER_LEVEL_DEMAND = 266256
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PLAYER_LEVEL_DEMAND", Value=266255)]
+      EQUIP_PLAYER_LEVEL_DEMAND = 266255
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]
@@ -333,89 +354,104 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TARGET_NOT_JOIN", Value=524302)]
       ALLIANCE_TARGET_NOT_JOIN = 524302,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TARGET_ALREADY_JOIN", Value=524304)]
-      ALLIANCE_TARGET_ALREADY_JOIN = 524304,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TARGET_ALREADY_JOIN", Value=524303)]
+      ALLIANCE_TARGET_ALREADY_JOIN = 524303,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TECH_FULL", Value=524305)]
-      ALLIANCE_TECH_FULL = 524305,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TECH_FULL", Value=524304)]
+      ALLIANCE_TECH_FULL = 524304,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_LIMIT", Value=524306)]
-      ALLIANCE_LEVEL_LIMIT = 524306,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_LIMIT", Value=524305)]
+      ALLIANCE_LEVEL_LIMIT = 524305,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_NOT_ENOUGH", Value=524307)]
-      ALLIANCE_CONTRI_NOT_ENOUGH = 524307,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_NOT_ENOUGH", Value=524306)]
+      ALLIANCE_CONTRI_NOT_ENOUGH = 524306,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_PRAY_MAX_COUNT", Value=524308)]
-      ALLIANCE_PRAY_MAX_COUNT = 524308,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_PRAY_MAX_COUNT", Value=524307)]
+      ALLIANCE_PRAY_MAX_COUNT = 524307,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FRIZEN_TIME", Value=524309)]
-      ALLIANCE_FRIZEN_TIME = 524309,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FRIZEN_TIME", Value=524308)]
+      ALLIANCE_FRIZEN_TIME = 524308,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_FAGIGUE_COUNT", Value=524310)]
-      ALLIANCE_MAX_FAGIGUE_COUNT = 524310,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_FAGIGUE_COUNT", Value=524309)]
+      ALLIANCE_MAX_FAGIGUE_COUNT = 524309,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FAGIGUE_GIVE_ALREADY", Value=524311)]
-      ALLIANCE_FAGIGUE_GIVE_ALREADY = 524311,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FAGIGUE_GIVE_ALREADY", Value=524310)]
+      ALLIANCE_FAGIGUE_GIVE_ALREADY = 524310,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CAPACITY_NOT_ENOUGH", Value=524312)]
-      ALLIANCE_CAPACITY_NOT_ENOUGH = 524312,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CAPACITY_NOT_ENOUGH", Value=524311)]
+      ALLIANCE_CAPACITY_NOT_ENOUGH = 524311,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SAME_POSITION", Value=524313)]
-      ALLIANCE_SAME_POSITION = 524313,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SAME_POSITION", Value=524312)]
+      ALLIANCE_SAME_POSITION = 524312,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_APPLY", Value=524314)]
-      ALLIANCE_MAX_APPLY = 524314,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_APPLY", Value=524313)]
+      ALLIANCE_MAX_APPLY = 524313,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_IN_TEAM", Value=524315)]
-      ALLIANCE_ALREADY_IN_TEAM = 524315,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_IN_TEAM", Value=524314)]
+      ALLIANCE_ALREADY_IN_TEAM = 524314,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_NOT_EXIST", Value=524316)]
-      ALLIANCE_TEAM_NOT_EXIST = 524316,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_NOT_EXIST", Value=524315)]
+      ALLIANCE_TEAM_NOT_EXIST = 524315,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FINISH", Value=524317)]
-      ALLIANCE_TEAM_FINISH = 524317,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FINISH", Value=524316)]
+      ALLIANCE_TEAM_FINISH = 524316,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FULL", Value=524318)]
-      ALLIANCE_TEAM_FULL = 524318,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FULL", Value=524317)]
+      ALLIANCE_TEAM_FULL = 524317,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_FINISH", Value=524320)]
-      ALLIANCE_TASK_FINISH = 524320,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_FINISH", Value=524318)]
+      ALLIANCE_TASK_FINISH = 524318,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_IN_TEAM", Value=524321)]
-      ALLIANCE_NOT_IN_TEAM = 524321,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_IN_TEAM", Value=524319)]
+      ALLIANCE_NOT_IN_TEAM = 524319,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_EXIST", Value=524322)]
-      ALLIANCE_TASK_NOT_EXIST = 524322,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_EXIST", Value=524320)]
+      ALLIANCE_TASK_NOT_EXIST = 524320,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_BIG_TASK", Value=524323)]
-      ALLIANCE_MAX_BIG_TASK = 524323,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_BIG_TASK", Value=524321)]
+      ALLIANCE_MAX_BIG_TASK = 524321,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_SMALL_TASK", Value=524324)]
-      ALLIANCE_MAX_SMALL_TASK = 524324,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_SMALL_TASK", Value=524322)]
+      ALLIANCE_MAX_SMALL_TASK = 524322,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_NOT_EXIST", Value=524325)]
-      ALLIANCE_QUEST_NOT_EXIST = 524325,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_NOT_EXIST", Value=524323)]
+      ALLIANCE_QUEST_NOT_EXIST = 524323,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_FINISH", Value=524326)]
-      ALLIANCE_QUEST_FINISH = 524326,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_FINISH", Value=524324)]
+      ALLIANCE_QUEST_FINISH = 524324,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_FINISH", Value=524327)]
-      ALLIANCE_TASK_NOT_FINISH = 524327,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_FINISH", Value=524325)]
+      ALLIANCE_TASK_NOT_FINISH = 524325,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_CAPTAIN", Value=524328)]
-      ALLIANCE_NOT_CAPTAIN = 524328,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_CAPTAIN", Value=524326)]
+      ALLIANCE_NOT_CAPTAIN = 524326,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HAVE_MEMBER", Value=524329)]
-      ALLIANCE_HAVE_MEMBER = 524329,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HAVE_MEMBER", Value=524327)]
+      ALLIANCE_HAVE_MEMBER = 524327,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_REWARD_ALREADY_GIVE", Value=524330)]
-      ALLIANCE_REWARD_ALREADY_GIVE = 524330,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_REWARD_ALREADY_GIVE", Value=524328)]
+      ALLIANCE_REWARD_ALREADY_GIVE = 524328,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_COPY_MAIN", Value=524331)]
-      ALLIANCE_MAX_COPY_MAIN = 524331,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_COPY_MAIN", Value=524329)]
+      ALLIANCE_MAX_COPY_MAIN = 524329,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_LIST_EMPTY", Value=524332)]
-      ALLIANCE_APPLY_LIST_EMPTY = 524332
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_LIST_EMPTY", Value=524330)]
+      ALLIANCE_APPLY_LIST_EMPTY = 524330,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_MONSTER", Value=524334)]
+      ALLIANCE_BASE_HAVE_MONSTER = 524334,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_NO_MONSTER", Value=524336)]
+      ALLIANCE_BASE_HAVE_NO_MONSTER = 524336,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_POSITION_LOCK", Value=524337)]
+      ALLIANCE_BASE_POSITION_LOCK = 524337,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_MONSTER_HAVE_SEND", Value=524338)]
+      ALLIANCE_BASE_MONSTER_HAVE_SEND = 524338,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_TIME_LIMIT", Value=524339)]
+      ALLIANCE_BASE_TIME_LIMIT = 524339
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]
@@ -439,16 +475,16 @@ namespace PB
     public enum imError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=1048577)]
-      IM_CHAT_LENGTH = 1048577
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=655361)]
+      IM_CHAT_LENGTH = 655361
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"settingError")]
     public enum settingError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_FULL", Value=1114113)]
-      SETTING_BLOCK_FULL = 1114113
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_FULL", Value=720897)]
+      SETTING_BLOCK_FULL = 720897
     }
   
 }

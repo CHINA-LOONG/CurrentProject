@@ -22,13 +22,13 @@ public class UILoginDetail : UIBase {
 
         if (string.IsNullOrEmpty(GameDataMgr.Instance.UserDataAttr.guid))
         {
-            Debug.Log("重新登陆");
+            Logger.Log("重新登陆");
             return;
         }
 
         if (string.IsNullOrEmpty(nicknameField.text))
         {
-            Debug.Log("请输入用户名");
+            Logger.Log("请输入用户名");
             return;
         }
 

@@ -8960,7 +8960,7 @@ public final class Item {
    * Protobuf type {@code HSGemCompose}
    *
    * <pre>
-   * 合成道具
+   * 合成宝石
    * </pre>
    */
   public static final class HSGemCompose extends
@@ -9250,7 +9250,7 @@ public final class Item {
      * Protobuf type {@code HSGemCompose}
      *
      * <pre>
-     * 合成道具
+     * 合成宝石
      * </pre>
      */
     public static final class Builder extends
@@ -9711,7 +9711,7 @@ public final class Item {
    * Protobuf type {@code HSGemComposeRet}
    *
    * <pre>
-   * 合成道具返回
+   * 合成宝石返回
    * </pre>
    */
   public static final class HSGemComposeRet extends
@@ -9905,7 +9905,7 @@ public final class Item {
      * Protobuf type {@code HSGemComposeRet}
      *
      * <pre>
-     * 合成道具返回
+     * 合成宝石返回
      * </pre>
      */
     public static final class Builder extends

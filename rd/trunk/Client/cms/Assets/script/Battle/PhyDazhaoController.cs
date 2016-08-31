@@ -279,7 +279,7 @@ public class PhyDazhaoController : MonoBehaviour
 			}
 			yield return new WaitForEndOfFrame ();
 		}
-		//Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
+		//Logger.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
 		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
         //TODO: use level time
         casterBattleGo.unit.OnRoundEnd(Time.time, true);

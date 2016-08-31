@@ -72,6 +72,11 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, SociatyQuest> sociatyQuestDic = new Dictionary<int, SociatyQuest>();
     List<SociatyTechnologyData> sociatyTechnologyList = new List<SociatyTechnologyData>();
 
+    //¥Û√∞œ’
+    Dictionary<int, AdventureData> adventureData = new Dictionary<int, AdventureData>();
+    Dictionary<int, AdventureConditionNumData> adventureConditionNumData = new Dictionary<int, AdventureConditionNumData>();
+    Dictionary<int, AdventureConditionTypeData> adventureConditionTypeData = new Dictionary<int, AdventureConditionTypeData>();
+    Dictionary<int, AdventureTeamPriceData> adventureTeamPriceData = new Dictionary<int, AdventureTeamPriceData>();
 
     public void Init()
     {
@@ -95,7 +100,7 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<SpellProtoType>("spell");
             foreach (var item in data)
             {
-                //Debug.Log(item.id);
+                //Logger.Log(item.id);
                 spellData.Add(item.id, item);
             }
         }
@@ -224,7 +229,7 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.linkEffect = wholeData.linkEffect;
                 effectPt.chance = wholeData.chance;
 
-                //Debug.Log(effectPt.id);
+                //Logger.Log(effectPt.id);
                 try
                 {
                     effectData.Add(effectPt.id, effectPt);
@@ -589,7 +594,7 @@ public class StaticDataMgr : MonoBehaviour
                     Logger.LogError("error:found the same audio keys");
                 }
                 audioMapping.Add(item.id, item.sound);
-                Debug.Log("id:" + item.id + "\tsound:" + item.sound);
+                Logger.Log("id:" + item.id + "\tsound:" + item.sound);
             }
             #endregion
         }
@@ -634,6 +639,38 @@ public class StaticDataMgr : MonoBehaviour
             #endregion
         }
 
+        {
+            #region AdventureData
+            {
+                var data = InitTable<AdventureData>("adventure");
+                foreach (var item in data)
+                {
+                    adventureData.Add(item.id, item);
+                }
+            }
+            {
+                var data = InitTable<AdventureConditionNumData>("adventureConditionNum");
+                foreach (var item in data)
+                {
+                    adventureConditionNumData.Add(item.id, item);
+                }
+            }
+            {
+                var data = InitTable<AdventureConditionTypeData>("adventureConditionType");
+                foreach (var item in data)
+                {
+                    adventureConditionTypeData.Add(item.id, item);
+                }
+            }
+            {
+                var data = InitTable<AdventureTeamPriceData>("adventureTeamPrice");
+                foreach (var item in data)
+                {
+                    adventureTeamPriceData.Add(item.id, item);
+                }
+            }
+            #endregion
+        }
         {
             var data = InitTable<ShopAutoRefreshData>("shopAutoRefresh");
             foreach (var item in data)
@@ -1214,5 +1251,33 @@ public class StaticDataMgr : MonoBehaviour
         sociatyQuestDic.TryGetValue(id, out questData);
         return questData;
     }
+
+    public AdventureData GetAdventureData(int id)
+    {
+        AdventureData adventure = null;
+        adventureData.TryGetValue(id, out adventure);
+        return adventure;
+    }
+    public AdventureConditionNumData GetAdventureConditionNumData(int id)
+    {
+        AdventureConditionNumData adventure = null;
+        adventureConditionNumData.TryGetValue(id, out adventure);
+        return adventure;
+    }
+    public AdventureConditionTypeData GetAdventureConditionType(int id)
+    {
+        AdventureConditionTypeData adventure = null;
+        adventureConditionTypeData.TryGetValue(id, out adventure);
+        return adventure;
+    }
+    public AdventureTeamPriceData GetAdventureTeamPriceData(int id)
+    {
+        AdventureTeamPriceData adventure = null;
+        adventureTeamPriceData.TryGetValue(id, out adventure);
+        return adventure;
+    }
+
+
+
     #endregion
 }

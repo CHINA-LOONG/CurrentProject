@@ -16,6 +16,7 @@ import com.hawk.game.config.ShopCfg;
 import com.hawk.game.config.StoreCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.ShopEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ShopItemInfo;
@@ -103,10 +104,6 @@ public class PlayerShopModule extends PlayerModule{
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		
-		player.getPlayerData().getStatisticsEntity().increaseBuyCoinTimes();
-		player.getPlayerData().getStatisticsEntity().increaseBuyCoinTimesDaily();
-		player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
-		
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
 		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getBuyCoinTimesDaily());
 		response.setMultiple(multipleValue);
@@ -154,7 +151,11 @@ public class PlayerShopModule extends PlayerModule{
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_REFRESH, HS.code.SHOP_REFRESH_C_VALUE);
 		shopEntity.increaseShopRefreshNum(protocol.getType());
 		shopEntity.notifyUpdate(true);
-		
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseShopRefreshTimes();
+		statisticsEntity.notifyUpdate(true);
+
 		HSShopRefreshRet.Builder response = HSShopRefreshRet.newBuilder();
 		response.setShopData(ShopUtil.generateShopData(player, protocol.getType()));
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_S_VALUE, response));
@@ -197,20 +198,22 @@ public class PlayerShopModule extends PlayerModule{
 			return true;	
 		}
 
+		int discountPrice = (int)Math.ceil(itemInfo.getPrice() * itemInfo.getDiscount());
+		
 		ConsumeItems consume = new ConsumeItems();
 		if (protocol.getType() == Const.shopType.NORMALSHOP_VALUE) {
 			if (itemInfo.getPriceType() == Const.moneyType.MONEY_COIN_VALUE) {
-				consume.addCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+				consume.addCoin((int)(itemInfo.getCount() * discountPrice));
 			}
 			else if (itemInfo.getPriceType() == Const.moneyType.MONEY_GOLD_VALUE) {
-				consume.addGold((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+				consume.addGold((int)(itemInfo.getCount() * discountPrice));
 			}
 		}
 		else if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE) {
-			consume.addContribution((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+			consume.addContribution((int)(itemInfo.getCount() * discountPrice));
 		}
 		else if (protocol.getType() == Const.shopType.TOWERSHOP_VALUE) {
-			consume.addTowerCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+			consume.addTowerCoin((int)(itemInfo.getCount() * discountPrice));
 		}
 
 		if (consume.checkConsume(player, hsCode) == false) {
@@ -248,7 +251,8 @@ public class PlayerShopModule extends PlayerModule{
 		}
 
 		ConsumeItems consume = new ConsumeItems();
-		consume.addGold((int)(protocol.getCount() * storeCfg.getPrice() * storeCfg.getDiscount()));
+		int discountPrice = (int)Math.ceil(storeCfg.getPrice() * storeCfg.getDiscount());
+		consume.addGold((int)(protocol.getCount() * discountPrice));
 		
 		if (consume.checkConsume(player, hsCode) == false) {
 			return true;

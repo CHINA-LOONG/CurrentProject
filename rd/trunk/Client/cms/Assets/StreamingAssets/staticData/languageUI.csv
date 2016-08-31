@@ -144,7 +144,7 @@ xl_quest,薛龙_任务界面,Loong
 quest_title,任务,Mission
 quest_juqingrenwu,剧情任务,Storyline
 quest_richangrenwu,日常任务,Daily
-quest_liezhuanrenwu,列传任务,Chronicle
+quest_liezhuanrenwu,成就,Achievement
 quest_wanchengrenwu,完成任务,Mission Completed
 quest_shijianweidao,时间未到,Available Later
 quest_lijiqianwang,立即前往,Go Now
@@ -745,56 +745,60 @@ chapter8_name,大兴,daxing
 zhuxian10001,天赐神宠,Bestowed Upon You
 zhuxian10002,获得神宠,Deity Monster
 zhuxian10003,小试身手,First Test
-zhuxian10004,你需要治愈,Healing Is Needed
-zhuxian10005,药不能停,Healthy Dose
-zhuxian10006,中BOSS罢了,Halfway There
-zhuxian10007,技巧的磨砺,Sharpening Your Skills
-zhuxian10008,穿戴装备,Try It On
-zhuxian10009,逛逛商店,Browse The Shop
-zhuxian10010,训练宠物,Monster Training
-zhuxian10011,装备穿齐,Matching Outfit
-zhuxian10012,突破大街,Battle For Home
-zhuxian10013,打磨装备,Keep It Polished
-zhuxian10014,全部拿走,Perfectionist
-zhuxian10015,日常修炼,Daily Practice
-zhuxian10016,竞技生涯,Competitive Career
-zhuxian10017,装备进阶,Advanced Equipment
-zhuxian10018,训宠大师,Training Master
-zhuxian10019,能量灌注,Evolutionary Scale
-zhuxian10020,突破拦截,Interceptor 
-zhuxian10021,新的挑战,New Challenge
-zhuxian10022,限制突破,No Limits
-zhuxian10023,双重超量,Double Trouble
-zhuxian10024,冲向异界,Charging The Outerworld
-zhuxian10025,蓝色超量,Blue Power
-zhuxian10026,次元能力探秘,True Craftsman
-zhuxian10027,驾驭次元,Infused Power
-zhuxian10028,加入公会,Join Guild
-mubiao10001,抽蛋1次{0},Draw 1 time {0}
-mubiao10002,合成冰雪女王{0},Summon Chione {0}
-mubiao10003,通关1-1{0},Clear Stage 1-1 {0}
-mubiao10004,合成苗娃曼陀罗{0},Summon Mandrake {0}
-mubiao10005,使用经验药三次{0},Use EXP Potion 3 times {0}
-mubiao10006,通关1-4{0},Clear Stage 1-4 {0}
-mubiao10007,升级技能3次{0},Upgrade abilities 3 times {0}
-mubiao10008,穿戴装备{0},Equip a piece of equipment {0}
-mubiao10009,商店刷新物品1次{0},Refresh shop goods 1 time {0}
-mubiao10010,其中一只宠物升级至5{0},Level up a monster to level 5 {0}
-mubiao10011,将冰雪女王装备穿戴至少3件{0},Equip 3 equipment on Chione {0}
-mubiao10012,通关1-8{0},Clear Stage 1-8 {0}
-mubiao10013,装备强化1次{0},Upgrade a piece of equipment {0}
-mubiao10014,领取关底满星奖励{0},Collect the all stages 3-Star reward {0}
-mubiao10015,完成一个每日任务{0},Complete a daily mission {0}
-mubiao10016,竞技场,Arena
-mubiao10017,装备进阶至绿{0},Advance equipment to green {0}
-mubiao10018,升级宠物一次{0},Level up a monster {0}
-mubiao10019,进阶一只宠物至绿{0},Evolve a monster to green {0}
-mubiao10020,通关2-4{0},Clear Stage 2-4 {0}
-mubiao10021,挑战本开启完成挑战本1-1{0},Clear Stage 1-1 on Heroic {0}
-mubiao10022,宠物强化(任一宠物为绿+1){0},Evolve any monster to green +1 {0}
-mubiao10023,有2件绿色装备{0},Have 2 pieces of green equipment {0}
-mubiao10024,通关2-8{0},Clear Stage 2-8 {0}
-mubiao10025,有1件蓝色品质装备{0},Have one piece of blue equipment {0}
-mubiao10026,装备开孔{0},Open an equipment socket {0}
-mubiao10027,装备镶嵌{0},Insert a gem in equipment {0}
-mubiao10028,加入公会,Join Guild{0}
+zhuxian10004,乘胜追击,Pursuit more victories
+zhuxian10005,你需要治愈,Healing Is Needed
+zhuxian10006,流浪狼人,Werewolf the ranger
+zhuxian10007,药不能停,Healthy Dose
+zhuxian10008,中BOSS罢了,Halfway There
+zhuxian10009,技巧的磨砺,Sharpening Your Skills
+zhuxian10010,花小仙子,Flower Pixie
+zhuxian10011,穿戴装备,Try It On
+zhuxian10012,逛逛商店,Browse The Shop
+zhuxian10013,训练宠物,Monster Training
+zhuxian10014,装备穿齐,Matching Outfit
+zhuxian10015,突破大街,Battle For Home
+zhuxian10016,打磨装备,Keep It Polished
+zhuxian10017,全部拿走,Perfectionist
+zhuxian10018,日常修炼,Daily Practice
+zhuxian10019,竞技生涯,Competitive Career
+zhuxian10020,装备进阶,Advanced Equipment
+zhuxian10021,训宠大师,Training Master
+zhuxian10022,能量灌注,Evolutionary Scale
+zhuxian10023,突破拦截,Interceptor 
+zhuxian10024,新的挑战,New Challenge
+zhuxian10025,限制突破,No Limits
+zhuxian10026,双重超量,Double Trouble
+zhuxian10027,冲向异界,Charging The Outerworld
+zhuxian10028,蓝色超量,Blue Power
+zhuxian10029,次元能力探秘,True Craftsman
+zhuxian10030,驾驭次元,Infused Power
+mubiao10001,抽蛋1次,Draw 1 time 
+mubiao10002,合成冰雪女王,Summon Chione 
+mubiao10003,通关1-1,Clear Stage 1-1 
+mubiao10004,通关1-2,Clear Stage 1-2
+mubiao10005,合成苗娃曼陀罗,Summon Mandrake 
+mubiao10006,通关1-3,Clear Stage 1-3
+mubiao10007,使用经验药三次,Use EXP Potion 3 times 
+mubiao10008,通关1-4,Clear Stage 1-4 
+mubiao10009,升级技能3次,Upgrade abilities 3 times 
+mubiao10010,通关1-5,Clear Stage 1-5
+mubiao10011,穿戴装备,Equip a piece of equipment 
+mubiao10012,商店刷新物品1次,Refresh shop goods 1 time 
+mubiao10013,其中一只宠物升级至5,Level up a monster to level 5 
+mubiao10014,将冰雪女王装备穿戴至少3件,Equip 3 equipment on Chione 
+mubiao10015,通关1-8,Clear Stage 1-8 
+mubiao10016,装备强化1次,Upgrade a piece of equipment 
+mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
+mubiao10018,完成一个每日任务,Complete a daily mission 
+mubiao10019,竞技场,Arena
+mubiao10020,装备进阶至绿,Advance equipment to green 
+mubiao10021,升级宠物一次,Level up a monster 
+mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
+mubiao10023,通关2-4,Clear Stage 2-4 
+mubiao10024,挑战本开启完成挑战本1-1,Clear Stage 1-1 on Heroic 
+mubiao10025,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
+mubiao10026,有2件绿色装备,Have 2 pieces of green equipment 
+mubiao10027,通关2-8,Clear Stage 2-8 
+mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
+mubiao10029,装备开孔,Open an equipment socket 
+mubiao10030,装备镶嵌,Insert a gem in equipment 

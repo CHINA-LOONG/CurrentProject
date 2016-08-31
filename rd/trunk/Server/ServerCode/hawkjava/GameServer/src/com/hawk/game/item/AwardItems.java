@@ -142,14 +142,14 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems  addMonster(String monsterId, int count, int stage, int level, int lazy, int disposition) {
+	public AwardItems addMonster(String monsterId, int count, int stage, int level, int lazy, int disposition) {
 		for (int i = 0; i < count; i++) {
 			addMonster(monsterId, stage, level, lazy, disposition);
 		}
 		return this;
 	}
 
-	public AwardItems  addMonster(String monsterId, int stage) {
+	public AwardItems addMonster(String monsterId, int stage) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
 		rewardItem.setItemId(monsterId);
@@ -181,6 +181,10 @@ public class AwardItems {
 		return this;
 	}
 
+	public AwardItems addAttr(int attrType, int count) {
+		return addAttr(String.valueOf(attrType), count);
+	}
+
 	public AwardItems addAttr(String attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -201,31 +205,6 @@ public class AwardItems {
 			rewardItem.setCount(rewardItem.getCount() + count);
 		}
 
-		return this;
-	}
-
-	public AwardItems addAttr(int attrType, int count) {
-		return addAttr(String.valueOf(attrType), count);
-	}
-
-	public AwardItems addContribution(int count) {
-		RewardItem.Builder rewardItem = null;
-		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && Integer.valueOf(reward.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-				rewardItem = reward;
-				break;
-			}
-		}
-		if (rewardItem == null) {
-			rewardItem = RewardItem.newBuilder();
-			rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
-			rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE));
-			rewardItem.setCount(count);
-			rewardInfo.addRewardItems(rewardItem);
-		}
-		else {
-			rewardItem.setCount(rewardItem.getCount() + count);
-		}
 		return this;
 	}
 
@@ -359,6 +338,20 @@ public class AwardItems {
 		return this;
 	}
 
+	public AwardItems addArenaCoin(int arenaCoin) {
+		if (arenaCoin > 0) {
+			addAttr(changeType.CHANGE_ARENA_COIN_VALUE, arenaCoin);
+		}
+		return this;
+	}
+
+	public AwardItems addContribution(int contribution) {
+		if (contribution > 0) {
+			addAttr(changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE, contribution);
+		}
+		return this;
+	}
+
 	public AwardItems addLevel(int level) {
 		addAttr(changeType.CHANGE_PLAYER_LEVEL_VALUE, level);
 		return this;
@@ -395,13 +388,22 @@ public class AwardItems {
 			if (hsCode > 0) {
 				switch (result) {
 				case AwardCheckResult.COIN_LIMIT:
-					player.sendError(hsCode, Status.PlayerError.COINS_LIMIT_VALUE);
+					player.sendError(hsCode, Status.PlayerError.COIN_LIMIT_VALUE);
 					break;
 				case AwardCheckResult.GOLD_LIMIT:
 					player.sendError(hsCode, Status.PlayerError.GOLD_LIMIT_VALUE);
 					break;
 				case AwardCheckResult.FATIGUE_LIMIT:
 					player.sendError(hsCode, Status.PlayerError.FATIGUE_LIMIT_VALUE);
+					break;
+				case AwardCheckResult.TOWER_COIN_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.TOWER_COIN_LIMIT_VALUE);
+					break;
+				case AwardCheckResult.ARENA_COIN_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.ARENA_COIN_LIMIT_VALUE);
+					break;
+				case AwardCheckResult.CONTRIBUTION_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.CONTRIBUTION_LIMIT_VALUE);
 					break;
 				}
 			}
@@ -418,6 +420,7 @@ public class AwardItems {
 		for (RewardItem rewardItem : rewardInfo.getRewardItemsList()) {
 			if(rewardItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 				int changeType = Integer.valueOf(rewardItem.getItemId());
+
 				if (changeType == Const.changeType.CHANGE_COIN_VALUE) {
 					if(player.getCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
 						return AwardCheckResult.COIN_LIMIT;
@@ -433,9 +436,19 @@ public class AwardItems {
 						return AwardCheckResult.TOWER_COIN_LIMIT;
 					}
 				}
+				else if (changeType == Const.changeType.CHANGE_ARENA_COIN_VALUE) {
+					if(player.getArenaCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+						return AwardCheckResult.ARENA_COIN_LIMIT;
+					}
+				}
+				else if (changeType == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+					if(player.getTowerCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+						return AwardCheckResult.CONTRIBUTION_LIMIT;
+					}
+				}
 				else if (changeType == Const.changeType.CHANGE_FATIGUE_VALUE) {
 					// 更新活力值
-					player.updateFatigue();
+					player.regainFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() +  rewardItem.getCount() > GsConst.MAX_FATIGUE_COUNT) {
 						return AwardCheckResult.FATIGUE_LIMIT;
 					}
@@ -472,6 +485,10 @@ public class AwardItems {
 
 					case changeType.CHANGE_TOWER_COIN_VALUE:
 						player.increaseTowerCoin(item.getCount(), action);
+						break;
+
+					case changeType.CHANGE_ARENA_COIN_VALUE:
+						player.increaseArenaCoin(item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_FATIGUE_VALUE:
@@ -516,10 +533,11 @@ public class AwardItems {
 							}
 						}
 						break;
+
 					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
 						player.increaseContribution(item.getCount(), action);
 						break;
-						
+
 					default:
 						invalidType = true;
 						break;

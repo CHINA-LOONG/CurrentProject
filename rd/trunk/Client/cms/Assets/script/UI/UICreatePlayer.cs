@@ -20,7 +20,7 @@ public class UICreatePlayer : UIBase
 	{
         if (string.IsNullOrEmpty(nameInputFileld.text))
         {
-            Debug.LogError("input name is empty!");
+            Logger.LogError("input name is empty!");
             return;
         }
         GameEventMgr.Instance.FireEvent<string>(GameEventList.createPlayerClick, nameInputFileld.text);

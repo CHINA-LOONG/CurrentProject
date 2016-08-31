@@ -157,12 +157,12 @@ public class PlayerItemModule extends PlayerModule{
 		if (consumeItem.checkConsume(player, hsCode) == false) {
 			return ;
 		}
-	
 		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
+
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItem(itemId, itemCount);
 		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
-		
+
 		HSItemBuyRet.Builder response = HSItemBuyRet.newBuilder();
 		response.setItemId(itemId);
 		response.setItemCount(itemCount);
@@ -188,6 +188,7 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 
+		// 只处理体力药一种情况
 		if (itemCfg.getSubType() != Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return;
@@ -227,10 +228,11 @@ public class PlayerItemModule extends PlayerModule{
 		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
 		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
 
-		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setUseItemCountDaily(itemId, useCount);
-			statisticsEntity.notifyUpdate(true);
-		}
+		// 特殊情况，直接在此统计
+		statisticsEntity.increaseBuyItemTimes(itemId);
+		statisticsEntity.increaseUseItemCount(itemId, itemCount);
+		statisticsEntity.increaseUseItemCountDaily(itemId, itemCount);
+		statisticsEntity.notifyUpdate(true);
 
 		HSItemBuyAndUseRet.Builder response = HSItemBuyAndUseRet.newBuilder();
 		response.setItemId(itemId);
@@ -315,10 +317,8 @@ public class PlayerItemModule extends PlayerModule{
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		int maxUseCount = itemCfg.getTimes();
-		int useCount = 0;
 		if (maxUseCount != GsConst.UNUSABLE) {
-			useCount = statisticsEntity.getUseItemCountDaily(itemId) + itemCount;
-			if (useCount > maxUseCount) {
+			if (statisticsEntity.getUseItemCountDaily(itemId) + itemCount > maxUseCount) {
 				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
 				return;
 			}
@@ -348,11 +348,6 @@ public class PlayerItemModule extends PlayerModule{
 			awardItems.rewardTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
 		}
 
-		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setUseItemCountDaily(itemId, useCount);
-			statisticsEntity.notifyUpdate(true);
-		}
-
 		HSItemBoxUseBatchRet.Builder response = HSItemBoxUseBatchRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BOX_USE_BATCH_S_VALUE, response));
 	}
@@ -364,7 +359,11 @@ public class PlayerItemModule extends PlayerModule{
 	 */
 	private void onItemUse(int hsCode, HSItemUse protocol) {
 		String itemId = protocol.getItemId();
-		int count = protocol.getItemCount();
+		int count = 0;
+		if (true == protocol.hasItemCount()) {
+			count = protocol.getItemCount();
+		}
+
 		ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 		if(itemEntity == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND);
@@ -401,33 +400,24 @@ public class PlayerItemModule extends PlayerModule{
 		}
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		int maxUseCount = itemCfg.getTimes();
-		int useCount = GsConst.UNUSABLE;
-		if (maxUseCount != GsConst.UNUSABLE) {
-			useCount = statisticsEntity.getUseItemCountDaily(itemId) + count;
-			if (useCount > maxUseCount) {
-				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
-				return;
-			}
-		}
-
 		ConsumeItems consumeItems = new ConsumeItems();
 		AwardItems awardItems = new AwardItems();
 
-		if (useType == Const.toolType.FRAGMENTTOOL_VALUE) {
+		// 开宝箱走批量开接口
+		if (useType == Const.toolType.BOXTOOL_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return ;
+		}
+		else if (useType == Const.toolType.FRAGMENTTOOL_VALUE) {
 			// 怪物合成走怪物合成接口
 			if (itemCfg.getSubType() == Const.FragSubType.FRAG_MONSTER_VALUE) {
 				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 				return ;
 			}
-
-			consumeItems.addItem(itemId, itemCfg.getNeedCount());
+			// 物品合成
+			count = itemCfg.getNeedCount();
+			consumeItems.addItem(itemId, count);
 			awardItems.addItemInfos(itemCfg.getTargetItemList());
-		}
-		// 开宝箱走批量开接口
-		else if (useType == Const.toolType.BOXTOOL_VALUE) {
-			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
-			return ;
 		}
 		else if (useType == Const.toolType.USETOOL_VALUE) {
 			// 经验药水
@@ -441,13 +431,25 @@ public class PlayerItemModule extends PlayerModule{
 					sendError(hsCode, Status.itemError.ITEM_EXP_LEFT_TIMES_VALUE);
 					return ;
 				}
-				
-				consumeItems.addItem(itemId, 1);
+				count = 1;
+				consumeItems.addItem(itemId, count);
 			}
 			// 疲劳值
 			else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
+				count = 1;
+				consumeItems.addItem(itemId, count);
 				awardItems.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, itemCfg.getAddAttrValue());
-				consumeItems.addItem(itemId, 1);
+			}
+		}
+
+		// 每日使用次数限制
+		int maxUseCount = itemCfg.getTimes();
+		int useCount = GsConst.UNUSABLE;
+		if (maxUseCount != GsConst.UNUSABLE) {
+			useCount = statisticsEntity.getUseItemCountDaily(itemId) + count;
+			if (useCount > maxUseCount) {
+				sendError(hsCode, Status.itemError.ITEM_USE_COUNT);
+				return;
 			}
 		}
 
@@ -464,11 +466,6 @@ public class PlayerItemModule extends PlayerModule{
 		}
 		if (awardItems.hasAwardItem() == true) {
 			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE, hsCode);
-		}
-
-		if (maxUseCount != GsConst.UNUSABLE) {
-			statisticsEntity.setUseItemCountDaily(itemId, useCount);
-			statisticsEntity.notifyUpdate(true);
 		}
 
 		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ) {
@@ -587,16 +584,26 @@ public class PlayerItemModule extends PlayerModule{
 			for (GemSelect gem : protocol.getGemsList()) {
 				consumeItems.addItem(gem.getGemId(), gem.getCount());
 			}		
-			awardItems.addItem(ItemUtil.generateGem(grade + 1).getId(), GsConst.NEXT_LEVEL_GEM_COUNT);
 		}
 		
 		if (consumeItems.checkConsume(player, hsCode) == false) {
 			return;
 		}
-		
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		for (int i = 0; i < composeTimes; i++) {
+			ItemCfg gemCfg = ItemUtil.generateGem(grade + 1);
+			awardItems.addItem(gemCfg.getId(), GsConst.NEXT_LEVEL_GEM_COUNT);
+
+			statisticsEntity.increaseSynAllTimes();
+			statisticsEntity.increaseSynAllTimesDaily();
+			statisticsEntity.increaseSynTypeTimes(gemCfg.getGemType());
+		}
+		statisticsEntity.notifyUpdate(true);
+
 		consumeItems.consumeTakeAffectAndPush(player, Action.GEM_COMPOSE, hsCode);
 		awardItems.rewardTakeAffectAndPush(player, Action.GEM_COMPOSE, hsCode);
-		
+
 		HSGemComposeRet.Builder response = HSGemComposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.GEM_COMPOSE_S_VALUE, response));
 	}

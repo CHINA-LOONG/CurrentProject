@@ -106,7 +106,7 @@ namespace Funplus {
 				_delegate = accountDelegate;
 				GetWrapper ().SetGameObject (gameObjectName);
 			} else {
-				Debug.Log ("{FunplusAccount.SetGameObjectAndDelegate ()} --> Delegate has already been set");
+				Logger.Log ("{FunplusAccount.SetGameObjectAndDelegate ()} --> Delegate has already been set");
 			}
 		}
 
@@ -124,9 +124,9 @@ namespace Funplus {
 		public void OpenSession () {
 			if (_delegate == null) {
 				// set the game object and delegate first!
-				Debug.LogError ("{FunplusAccount.OpenSession ()} --> Please call SetGameObjectAndDelegate() first");
+				Logger.LogError ("{FunplusAccount.OpenSession ()} --> Please call SetGameObjectAndDelegate() first");
 			} else {
-				Debug.Log ("Try to open session");
+				Logger.Log ("Try to open session");
 				GetWrapper ().OpenSession ();
 			}
 		}

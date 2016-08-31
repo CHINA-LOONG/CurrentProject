@@ -183,11 +183,11 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicDazhaoReady_Finish" state="1" finish_event="magicDazhaoReady">
 		</Ani>
-		<Ani id="yincangxiaoguai" state="0">
+		<!--Ani id="yincangxiaoguai" state="0">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent=""/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="phyDazhaoSlowMotion" state="0">
 			<SpeedList>
 				<Speed time="0" speed_ratio="0.2" duration="2.5"/>
@@ -872,7 +872,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -899,7 +899,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -926,7 +926,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -954,17 +954,17 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicMetalColumnSlighte1" state="0" AniType="Persistent">
+		<!--Ani id="magicMetalColumnSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1.5" asset="" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicMetalColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
@@ -978,20 +978,20 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicMetalColumnMediume1" state="0" AniType="Persistent">
+		<!--Ani id="magicMetalColumnMediume1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1.5" asset="" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicMetalColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
@@ -1005,20 +1005,20 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicMetalColumnStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicMetalColumnStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1.5" asset="" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicMetalColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
@@ -1034,20 +1034,20 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicPlantBallSlighte1" state="0" AniType="Persistent">
+		<!--Ani id="magicPlantBallSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicPlantBallSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1061,20 +1061,20 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicPlantBallMediume1" state="0" AniType="Persistent">
+		<!--Ani id="magicPlantBallMediume1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicPlantBallMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1088,20 +1088,20 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicPlantBallStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicPlantBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicPlantBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1116,7 +1116,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
@@ -1140,7 +1140,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
@@ -1164,7 +1164,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
@@ -1189,7 +1189,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1216,7 +1216,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1243,7 +1243,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1271,7 +1271,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1285,17 +1285,17 @@ state = 1 Remove
 				<Audio time="1.5" name="waterp2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicWaterColumnSlighte2" state="0" AniType="Damage">
+		<!--Ani id="magicWaterColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicWaterColumnMedium" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1309,17 +1309,17 @@ state = 1 Remove
 				<Audio time="1.5" name="waterp2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicWaterColumnMediume2" state="0" AniType="Damage">
+		<!--Ani id="magicWaterColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicWaterColumnStrong" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1333,11 +1333,11 @@ state = 1 Remove
 				<Audio time="1.5" name="waterp2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicWaterColumnStronge2" state="0" AniType="Damage">
+		<!--Ani id="magicWaterColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		
 		<!--FireBall-->
 		<Ani id="magicFireBallSlight" state="0" AniType="Skill">
@@ -1345,7 +1345,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1372,7 +1372,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1399,7 +1399,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1427,7 +1427,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1441,17 +1441,17 @@ state = 1 Remove
 				<Audio time="1.5" name="firep2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicFireColumnSlighte2" state="0" AniType="Damage">
+		<!--Ani id="magicFireColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicFireColumnMedium" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1465,17 +1465,17 @@ state = 1 Remove
 				<Audio time="1.5" name="firep2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicFireColumnMediume2" state="0" AniType="Damage">
+		<!--Ani id="magicFireColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicFireColumnStrong" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1489,11 +1489,11 @@ state = 1 Remove
 				<Audio time="1.5" name="firep2"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicFireColumnStronge2" state="0" AniType="Damage">
+		<!--Ani id="magicFireColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		
 		<!--EarthBall-->
 		<Ani id="magicEarthBallSlight" state="0" AniType="Skill">
@@ -1501,7 +1501,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1525,7 +1525,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1549,7 +1549,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1574,7 +1574,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1588,17 +1588,17 @@ state = 1 Remove
 				<Audio time="1.5" name="earthp1"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicEarthColumnSlighte2" state="0" AniType="Damage">
+		<!--Ani id="magicEarthColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicEarthColumnMedium" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1612,17 +1612,17 @@ state = 1 Remove
 				<Audio time="1.5" name="earthp1"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicEarthColumnMediume2" state="0" AniType="Damage">
+		<!--Ani id="magicEarthColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicEarthColumnStrong" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1636,11 +1636,11 @@ state = 1 Remove
 				<Audio time="1.5" name="earthp1"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicEarthColumnStronge2" state="0" AniType="Damage">
+		<!--Ani id="magicEarthColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
-		</Ani>
+		</Ani-->
 		
 		<!--magicSlight-->
 		<Ani id="magicMetalSlight" state="0" AniType="Skill">
@@ -1648,7 +1648,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1667,7 +1667,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cplant"/>
@@ -1686,7 +1686,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cwater"/>
@@ -1705,7 +1705,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cfire"/>
@@ -1724,7 +1724,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -1746,7 +1746,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1765,7 +1765,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1784,7 +1784,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1803,7 +1803,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1822,7 +1822,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1841,7 +1841,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1860,7 +1860,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1879,7 +1879,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1898,7 +1898,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1924,7 +1924,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1944,7 +1944,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1964,7 +1964,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal"/>
@@ -1985,7 +1985,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2004,7 +2004,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2023,7 +2023,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2042,7 +2042,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2062,7 +2062,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2086,7 +2086,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2110,7 +2110,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2135,7 +2135,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2159,7 +2159,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2183,7 +2183,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2208,7 +2208,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2232,7 +2232,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2256,7 +2256,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2281,7 +2281,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2305,7 +2305,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2329,7 +2329,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2354,7 +2354,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2378,7 +2378,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2402,7 +2402,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2427,7 +2427,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2451,7 +2451,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2475,7 +2475,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2500,7 +2500,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2524,7 +2524,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2548,7 +2548,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2573,7 +2573,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2597,7 +2597,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2621,7 +2621,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2646,7 +2646,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2670,7 +2670,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2694,7 +2694,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2719,7 +2719,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2743,7 +2743,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -2767,7 +2767,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
@@ -3324,8 +3324,8 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="Bone001" attach="true"/>
-				<Particle asset="ultKairuisi4pre_daoguang" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="Bone001" attach="true" ignore_rot="true"/>
+				<Particle asset="ultKairuisi4pre_daoguang" bundle="effect/particle" parent="" locky="true" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -3345,8 +3345,8 @@ state = 1 Remove
 		
 		<Ani id="txKairuisi4" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="Bone001" attach="true"/>
-				<Particle asset="ultKairuisi4pre_daoguang" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultKairuisi4Pre" bundle="effect/particle" parent="Bone001" attach="true" ignore_rot="true"/>
+				<Particle asset="ultKairuisi4pre_daoguang" bundle="effect/particle" parent="" locky="true" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -3358,7 +3358,7 @@ state = 1 Remove
 	
 		<Ani id="ultHetong2Cast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultHetong2Pre" bundle="effect/particle" parent="" locky="true"/>
 				<Particle asset="ultHetong2Hit" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<MotionList>
@@ -3443,7 +3443,7 @@ state = 1 Remove
 	
 		<Ani id="ultXiaochou4Cast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultxiaochou4Pre" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle asset="ultxiaochou4Pre" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
@@ -3528,15 +3528,16 @@ state = 1 Remove
 	
 		<Ani id="ultPanshen2Cast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="" attach="" locky="ture"/>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
+				<Motion time="2.0" key="dazhao" value="true"/>
+				<Motion time="2.33" key="dazhao" value="true"/>
 				<Motion time="2.63" key="dazhao" value="true"/>
 				<Motion time="2.93" key="dazhao" value="true"/>
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
 			</MotionList>
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
@@ -3564,7 +3565,7 @@ state = 1 Remove
 	
 		<Ani id="txPanshen2" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="hook_001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
@@ -3576,7 +3577,7 @@ state = 1 Remove
 	
 		<Ani id="ultHuapo2Cast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHuapoPre01" bundle="effect/particle" parent="" attach="true" locky=""/>
+				<Particle asset="ultHuapoPre" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
@@ -3633,6 +3634,11 @@ state = 1 Remove
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
+				<Motion time="2.63" key="dazhao" value="true"/>
+				<Motion time="2.93" key="dazhao" value="true"/>
+				<Motion time="3.23" key="dazhao" value="true"/>
+				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="3.83" key="dazhao" value="true"/>
 			</MotionList>
 			<AudioList>
 				<Audio time="0" name="Wushi41"/>
@@ -3641,7 +3647,7 @@ state = 1 Remove
 		
 		<Ani id="ultWushi3" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="true" locky=""/>
@@ -3667,6 +3673,26 @@ state = 1 Remove
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wushi31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="psvWushi3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="psvWushi3e3" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffMagic" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
 			</AudioList>
 		</Ani>
 		
@@ -3717,11 +3743,12 @@ state = 1 Remove
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
+				<Motion time="2.0" key="dazhao" value="true"/>
+				<Motion time="2.33" key="dazhao" value="true"/>
 				<Motion time="2.63" key="dazhao" value="true"/>
 				<Motion time="2.93" key="dazhao" value="true"/>
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
 			</MotionList>
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
@@ -3810,9 +3837,20 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 	
-		<Ani id="ultHetong3e3" state="0" AniType="Damage">
+		<!--Ani id="ultHetong3e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="waterp2"/>
+			</AudioList>
+			<SpeedList>
+			</SpeedList>
+		</Ani-->
+		
+		<Ani id="ultHetong3e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterBall" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="waterp2"/>
@@ -3823,13 +3861,32 @@ state = 1 Remove
 		
 		<Ani id="txHetong3" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Hetong31"/>
 			</AudioList>
 		</Ani>
 		
+		<Ani id="psvHetong3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="psvHetong3e3" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffDefense" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
 	</AniList>
 	<AniList group="xgLonggongtongzi3">
 	
@@ -3846,23 +3903,12 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultLonggongtongzi3e2" state="0" AniType="Persistent">
-			<ParticleList>
-				<Particle asset="magicWaterBallp" bundle="effect/particle" parent="" locky=""/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="waterp3"/>
-			</AudioList>
-			<SpeedList>
-			</SpeedList>
-		</Ani>
-		
 		<Ani id="ultLonggongtongzi3e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicWaterBall" bundle="effect/particle" parent="" locky=""/>
+				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="watere1"/>
+				<Audio time="0" name="curep1"/>
 			</AudioList>
 			<SpeedList>
 			</SpeedList>
@@ -3917,17 +3963,18 @@ state = 1 Remove
 	</AniList>
 	<AniList group="xgLangren5">
 	
-		<Ani id="ulLangren5Cast" state="0" AniType="Skill">
+		<Ani id="ultLangren5Cast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
+				<Motion time="2.0" key="dazhao" value="true"/>
+				<Motion time="2.33" key="dazhao" value="true"/>
 				<Motion time="2.63" key="dazhao" value="true"/>
 				<Motion time="2.93" key="dazhao" value="true"/>
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
 			</MotionList>
 		</Ani>
 		
@@ -4059,8 +4106,8 @@ state = 1 Remove
 			<ParticleList>
 				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
 				<Particle asset="ultnvyao5Pre" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
-				<Particle asset="ultnvyao5Pre1" bundle="effect/particle" parent="" attach="" locky=""/>
-				<Particle asset="ultnvyao5Hit" bundle="effect/particle" parent="" attach="" locky="" ignore_rot="true"/>
+				<Particle asset="ultnvyao5Pre1" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="ultnvyao5Hit" bundle="effect/particle" parent="" attach="" locky="" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Nvyao51"/>
@@ -4199,7 +4246,7 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 	
-		<Ani id="ultKairuisi5e2" state="0" AniType="Damage">
+		<Ani id="ultKairuisi5e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="ultKairuisiHit" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
@@ -4928,9 +4975,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -4948,9 +4995,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5013,9 +5060,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5033,15 +5080,15 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 		</Ani>
 		
 		<Ani id="bossdajie13Langren32e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="" locky="true" ignore_rot="true"/>
-				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="" attach="" locky="true" ignore_rot="true"/>
+				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="hook_001" attach="" locky="" ignore_rot=""/>
+				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="hook_001" attach="" locky="" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="buff"/>
@@ -5052,15 +5099,15 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 		</Ani>
 		
 		<Ani id="bossdajie13Langren33e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="" locky="true"/>
-				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
+				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="buff"/>
@@ -5070,14 +5117,15 @@ state = 1 Remove
 		<Ani id="bossdajie13Langren34" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" key="dazhaoxuanyao" value="true"/>
+				<Motion time="2.0" key="dazhao" value="true"/>
+				<Motion time="2.33" key="dazhao" value="true"/>
 				<Motion time="2.63" key="dazhao" value="true"/>
 				<Motion time="2.93" key="dazhao" value="true"/>
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultlangren3Pre_head" bundle="effect/particle" parent="Bip001 Head" attach="true" ignore_rot="true"/>
+				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Langren51"/>
@@ -5100,9 +5148,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5204,9 +5252,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5224,9 +5272,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5296,9 +5344,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5316,9 +5364,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5404,9 +5452,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5424,9 +5472,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 				<Audio time="0" name="Zouyincao1"/>
 			</AudioList>
@@ -5478,7 +5526,6 @@ state = 1 Remove
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultWushi4Pre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5527,7 +5574,7 @@ state = 1 Remove
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
-				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultwushi3Pre" bundle="effect/particle" parent="wp_ball" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Wushi41"/>
@@ -5550,9 +5597,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5569,9 +5616,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 			</AudioList>
 		</Ani>
@@ -5734,10 +5781,10 @@ state = 1 Remove
 				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle time="1.5" asset="ultshuigui3Pre_bossbuff" bundle="effect/particle" parent="" locky="true" ignore_rot="true"/>
+				<Particle time="0" asset="ultshuigui3Pre_bossbuff" bundle="effect/particle" parent="" locky="true" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="1.5" name="buff"/>
+				<Audio time="0" name="buff"/>
 			</AudioList>
 		</Ani>
 		
@@ -6195,9 +6242,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 				<Audio time="0" name=""/>
 			</AudioList>
@@ -6216,9 +6263,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
-			<ParticleList>
+			<!--ParticleList>
 				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList>
+			</ParticleList-->
 			<AudioList>
 				<Audio time="0" name=""/>
 			</AudioList>

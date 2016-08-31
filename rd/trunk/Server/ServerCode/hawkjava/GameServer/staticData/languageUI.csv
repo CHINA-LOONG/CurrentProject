@@ -1932,3 +1932,15 @@ worldboss_record_007,活动未开始，可以在规则说明处查看活动时�
 compose_monster_target1,随机B级稀有度宠物,Random B-Class Monster
 compose_monster_target2,随机A级稀有度宠物,Random A-Class Monster
 compose_monster_target3,随机S级稀有度宠物,Random S-Class Monster
+giftspecial_jinjiea1_name,A级进阶礼包,Advancement Package
+giftspecial_jinjiea1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
+giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Advancement Package (Rare)
+giftspecial_jinjiea2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
+giftspecial_jinjieb1_name,S级进阶礼包,Advancement Package
+giftspecial_jinjieb1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
+giftspecial_jinjieb2_name,S级进阶礼包（稀有）,Advancement Package (Rare)
+giftspecial_jinjieb2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
+giftspecial_jinjiec1_name,SS级进阶礼包,Advancement Package
+giftspecial_jinjiec1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
+giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Advancement Package (Rare)
+giftspecial_jinjiec2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!

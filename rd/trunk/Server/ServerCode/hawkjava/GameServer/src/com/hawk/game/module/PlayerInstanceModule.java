@@ -151,7 +151,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力
-		if (player.updateFatigue() < entryCfg.getFatigue()) {
+		if (player.regainFatigue() < entryCfg.getFatigue()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
 			return true;
 		}
@@ -262,7 +262,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力
-		if (player.updateFatigue() < entryCfg.getFatigue()) {
+		if (player.regainFatigue() < entryCfg.getFatigue()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
 			return true;
 		}
@@ -349,7 +349,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力
-		if (player.updateFatigue() < entryCfg.getFatigue()) {
+		if (player.regainFatigue() < entryCfg.getFatigue()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
 			return true;
 		}
@@ -410,7 +410,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力
-		if (player.updateFatigue() < entryCfg.getFatigue()) {
+		if (player.regainFatigue() < entryCfg.getFatigue()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
 			return true;
 		}
@@ -1284,6 +1284,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// do nothing
+		// TODO 下线是否按失败结算
 		return true;
 	}
 

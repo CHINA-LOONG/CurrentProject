@@ -341,6 +341,10 @@ public class UIMgr : MonoBehaviour
     }
     void Update()
     {
+        if (GameMain.Instance.IsCurModule<BattleModule>())
+        {
+            curParkTime = 0f;
+        }
         if (curParkTime != 0)
         {
             if (Time.time - curParkTime >= 10.0f)

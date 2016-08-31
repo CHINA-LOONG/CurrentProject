@@ -275,7 +275,12 @@ public class BattleController : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
            // Logger.LogWarning("hit enemy gameobject....");
         }
-        else if (battleGo.camp == UnitCamp.Player && process.SwitchingPet == false && uiBattle.gameObject.activeSelf == true)
+        else if (
+            battleGo.camp == UnitCamp.Player &&
+            process.SwitchingPet == false && 
+            uiBattle.gameObject.activeSelf == true &&
+            battleGo.unit.backUp == false
+            )
         {
             //换宠
             ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();
@@ -312,6 +317,8 @@ public class BattleController : MonoBehaviour
             }
         }
 
+        ActorEventService.Instance.AddResourceGroup("common");
+
         //add scoreui
         UIScore.AddResourceRequest();
         mHuoliBeforeScore = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
@@ -330,14 +337,16 @@ public class BattleController : MonoBehaviour
         {
             resMgr.AddAssetRequest(new AssetRequest(unitRowData.assetID));
         }
+
         //TODO:add spell request
+        ActorEventService.Instance.AddResourceGroup(assetID);
     }
     //---------------------------------------------------------------------------------------------
     public void StartBattle()
     {
         mRevived = false;
         UIMgr.Instance.CloseUI_(UILoading.ViewName);
-        ResourceMgr.Instance.UnloadCachedBundles(false);
+        ResourceMgr.Instance.UnloadCachedBundles(true);
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;
@@ -754,7 +763,7 @@ public class BattleController : MonoBehaviour
             {
                 process.StartProcess(index, curBattleLevel);
             };
-            //Debug.Log("当前副本ID：" + curBattleLevel.battleProtoData.id);
+            //Logger.Log("当前副本ID：" + curBattleLevel.battleProtoData.id);
             //demo_1_level2
             if (!string.IsNullOrEmpty(curBattleLevel.battleProtoData.preStartEvent) && InstanceStar == 0)
             {

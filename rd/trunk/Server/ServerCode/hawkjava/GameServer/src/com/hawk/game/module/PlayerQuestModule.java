@@ -18,6 +18,8 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.TowerCfg;
+import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
@@ -48,7 +50,9 @@ import com.hawk.game.util.TimeUtil;
 public class PlayerQuestModule extends PlayerModule {
 	// 未激活的任务组
 	private Map<Integer, QuestGroup> inactiveQuestGroupMap = new HashMap<Integer, QuestGroup>();
-	// 上一次更新任务进度时玩家等级
+
+	// 上一次更新任务进度时任务接取条件记录
+	// 接取条件：等级
 	private int lastPlayerLevel = 0;
 
 	public PlayerQuestModule(Player player) {
@@ -134,11 +138,7 @@ public class PlayerQuestModule extends PlayerModule {
 
 		// 记录
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		if (Cycle.NORMAL_CYCLE == questCfg.getCycle()) {
-			statisticsEntity.getQuestCompleteSet().add(questId);
-		} else if (Cycle.DAILY_CYCLE == questCfg.getCycle()) {
-			statisticsEntity.getQuestCompleteDailySet().add(questId);
-		}
+		statisticsEntity.addQuestComplete(questId);
 		statisticsEntity.notifyUpdate(true);
 
 		questMap.remove(questId);
@@ -208,8 +208,6 @@ public class PlayerQuestModule extends PlayerModule {
 	private QuestCfg getGroupNewQuest(QuestGroup group) {
 		QuestCfg newQuest = null;
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
-		Set<Integer> questCompleteDailySet = statisticsEntity.getQuestCompleteDailySet();
 
 		// 逆向查看任务组任务是否已完成，找到最后一个没完成的
 		int index = group.questList.size() - 1;
@@ -217,11 +215,11 @@ public class PlayerQuestModule extends PlayerModule {
 			QuestCfg quest = group.questList.get(index);
 
 			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				if (true == questCompleteSet.contains(quest.getId())) {
+				if (true == statisticsEntity.isQuestComplete(quest.getId())) {
 					break;
 				}
 			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				if (true == questCompleteDailySet.contains(quest.getId())) {
+				if (true == statisticsEntity.isQuestDailyComplete(quest.getId())) {
 					break;
 				}
 			}
@@ -563,14 +561,14 @@ public class PlayerQuestModule extends PlayerModule {
 			}
 			break;
 		}
-		// 加入公会次数
-		case GsConst.QuestGoalType.SOCIETY_JOIN_TIMES: {
-			progress = statisticsEntity.getAllianceJoinTimes();
-			break;
-		}
-		// 退出公会次数
-		case GsConst.QuestGoalType.SOCIETY_LEAVE_TIMES: {
-			progress = statisticsEntity.getAllianceLeaveTimes();
+		// 加入过公会
+		case GsConst.QuestGoalType.SOCIETY_JOIN: {
+			// 目前有公会或无公会但曾经加入过公会
+			PlayerAllianceEntity allianceEntity = player.getPlayerData().getPlayerAllianceEntity();
+			if (0 != allianceEntity.getAllianceId()
+					|| 0 != allianceEntity.getPreAllianceId()) {
+				progress = goalCount;
+			}
 			break;
 		}
 		// 公会祈福次数
@@ -601,7 +599,7 @@ public class PlayerQuestModule extends PlayerModule {
 			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
 				progress = statisticsEntity.getShopRefreshTimes();
 			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getShopRefreshTimesDaily();
+				progress = player.getPlayerData().getShopEntity().getAllShopRefreshNum();
 			}
 			break;
 		}
@@ -630,9 +628,9 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 		// 完成X任务
 		case GsConst.QuestGoalType.QUEST: {
-			Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
 			for (Object goalQuestId : quest.getGoalParamList()) {
-				if (true == questCompleteSet.contains((Integer) goalQuestId)) {
+				if (true == statisticsEntity.isQuestComplete((Integer) goalQuestId)
+						|| true == statisticsEntity.isQuestDailyComplete((Integer) goalQuestId)) {
 					progress += 1;
 				}
 			}
@@ -641,8 +639,17 @@ public class PlayerQuestModule extends PlayerModule {
 		// 完成X类型任务数量
 		case GsConst.QuestGoalType.QUEST_TYPE_COUNT: {
 			Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
+			Set<Integer> questDailyCompleteSet = statisticsEntity.getQuestDailyCompleteSet();
+
+			// TODO 如果type和cycle确定1对1关系，可优化
 			for (Object type : quest.getGoalParamList()) {
 				for (Integer questCompleteId : questCompleteSet) {
+					QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
+					if (questCfg.getType() == (Integer) type) {
+						progress += 1;
+					}
+				}
+				for (Integer questCompleteId : questDailyCompleteSet) {
 					QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
 					if (questCfg.getType() == (Integer) type) {
 						progress += 1;
@@ -654,26 +661,35 @@ public class PlayerQuestModule extends PlayerModule {
 		// 完成X循环性任务数量
 		case GsConst.QuestGoalType.QUEST_CYCLE_COUNT: {
 			Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
+			Set<Integer> questDailyCompleteSet = statisticsEntity.getQuestDailyCompleteSet();
+
 			for (Object cycle : quest.getGoalParamList()) {
-				for (Integer questCompleteId : questCompleteSet) {
-					QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
-					if (questCfg.getCycle() == (Integer) cycle) {
-						progress += 1;
+				if (Cycle.NORMAL_CYCLE == (Integer)cycle) {
+					for (Integer questCompleteId : questCompleteSet) {
+						QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
+						if (questCfg.getCycle() == (Integer) cycle) {
+							progress += 1;
+						}
+					}
+				} else if (Cycle.DAILY_CYCLE == (Integer)cycle) {
+					for (Integer questCompleteId : questDailyCompleteSet) {
+						QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
+						if (questCfg.getCycle() == (Integer) cycle) {
+							progress += 1;
+						}
 					}
 				}
 			}
 			break;
 		}
-		// 携带过X品级装备数量
+		// 同时穿过达到X品级装备最大数量
 		case GsConst.QuestGoalType.EQUIP_STAGE_COUNT: {
+			Integer stage = (Integer) quest.getGoalParamList().get(0);
+
 			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				for (Object stage : quest.getGoalParamList()) {
-					progress += statisticsEntity.getEquipStageCount((Integer) stage);
-				}
+				progress = statisticsEntity.getEquipMaxCountOverStage(stage);
 			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				for (Object stage : quest.getGoalParamList()) {
-					progress += statisticsEntity.getEquipStageCountDaily((Integer) stage);
-				}
+				progress = statisticsEntity.getEquipMaxCountOverStageDaily(stage);
 			}
 			break;
 		}

@@ -73,7 +73,7 @@ namespace Funplus {
 				_delegate = sdkDelegate;
 				GetWrapper ().SetGameObject (gameObjectName);
 			} else {
-				Debug.LogWarning ("Delegate has already been set");
+				Logger.LogWarning ("Delegate has already been set");
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Funplus {
 		public void Install (string gameId, string gameKey, string environment) {
 			if (_delegate == null) {
 				// set the game object and delegate first!
-				Debug.LogError ("Delegate not set, please call SetGameObjectAndDelegate() first");
+				Logger.LogError ("Delegate not set, please call SetGameObjectAndDelegate() first");
 				return;
 			}
 			GetWrapper ().Install (gameId, gameKey, environment);

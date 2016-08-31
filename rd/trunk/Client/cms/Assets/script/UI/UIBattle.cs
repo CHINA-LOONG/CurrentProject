@@ -439,7 +439,7 @@ public class UIBattle : UIBase
 		if (null != m_MirrorImage)
 		{
 			InitMirrorDray();
-			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
+			//Logger.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
 		}
 		else
 		{

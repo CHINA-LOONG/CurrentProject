@@ -38,7 +38,7 @@ public class CreatePlayerModule : ModuleBase
 
     void OnCreatePlayerClick(string nickname)
     {
-        Debug.Log("create button down");
+        Logger.Log("create button down");
         PB.HSPlayerCreate requestParam = new PB.HSPlayerCreate();
         requestParam.puid = GameDataMgr.Instance.UserDataAttr.guid;
         requestParam.nickname = nickname;
@@ -56,22 +56,22 @@ public class CreatePlayerModule : ModuleBase
 
         if (msg.GetMessageType() == (int) PB.sys.ERROR_CODE)
         {
-            Debug.LogError("创建账号失败");
+            Logger.LogError("创建账号失败");
             PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
 
             if (error.errCode == (int)PB.PlayerError.PLAYER_NICKNAME_EXIST)
             {
-                Debug.LogError("昵称重复");
+                Logger.LogError("昵称重复");
             }
             else if (error.errCode == (int)PB.PlayerError.PUID_EXIST)
             {
-                Debug.LogError("账号已存在");
+                Logger.LogError("账号已存在");
             }
 
             return;
         }
 
-        Debug.Log("create player finish");
+        Logger.Log("create player finish");
         BuildModule.needSyncInfo = true;
         PlayerPrefs.SetString("testGuid", GameDataMgr.Instance.UserDataAttr.guid);       
         PB.HSPlayerCreateRet response = msg.GetProtocolBody<PB.HSPlayerCreateRet>();
@@ -100,7 +100,7 @@ public class CreatePlayerModule : ModuleBase
         }
         else
         {
-            Debug.Log("账号不存在");
+            Logger.Log("账号不存在");
         }
     }
 

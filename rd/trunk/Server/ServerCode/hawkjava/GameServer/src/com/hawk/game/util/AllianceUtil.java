@@ -1,11 +1,14 @@
 package com.hawk.game.util;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.hawk.config.HawkConfigManager;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.config.SociatyBaseCfg;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
@@ -138,6 +141,27 @@ public class AllianceUtil {
 		return ItemInfo.valueOf(techCfg.getGainExp(), GsConst.ItemParseType.PARSE_DEFAULT);
 	}
 	
+	/**
+	 * 获取驻兵配置
+	 * @param bp
+	 * @return
+	 */
+	public static SociatyBaseCfg getAllianceBaseConfig(int bp){
+		List<SociatyBaseCfg> sociatyBaseList = HawkConfigManager.getInstance().getConfigList(SociatyBaseCfg.class);
+		int i = 0;
+		for (; i < sociatyBaseList.size(); i++) {
+			if (bp < sociatyBaseList.get(i).getBpMax()) {
+				break;
+			}
+		}
+		
+		// 超过上限使用最后一个值
+		if (i == sociatyBaseList.size()) {
+			i = sociatyBaseList.size() - 1;
+		}
+		
+		return sociatyBaseList.get(i);
+	}
 	
 	/**
 	 * 公会排行比较器
@@ -436,5 +460,19 @@ public class AllianceUtil {
 		}
 		
 		return true;
+	}
+
+	/**
+	 * 公会贡献值每日领奖
+	 */
+	public static boolean isAllianceContriRewardDaily(int index) {
+		if (index == 0) {
+			return (index & 1) != 0;
+		} else if (index == 1) {
+			return (index & 2) != 0;
+		} else if (index == 2) {
+			return (index & 4) != 0;
+		}
+		return false;
 	}
 }

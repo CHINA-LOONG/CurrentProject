@@ -67,17 +67,20 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "exp", nullable = false)
 	protected int exp = 0;
 
-	@Column(name = "coin", nullable = false)
-	protected long coin = 0;
-
 	@Column(name = "goldBuy", nullable = false)
 	protected int goldBuy = 0;
 
 	@Column(name = "goldFree", nullable = false)
 	protected int goldFree = 0;
 
-	@Column(name = "towerCoin", nullable = false)
-	protected int towerCoin = 0;
+	@Column(name = "coin", nullable = false)
+	protected long coin = 0;
+
+	@Column(name = "coinTower", nullable = false)
+	protected int coinTower = 0;
+	
+	@Column(name = "coinArena", nullable = false)
+	protected int coinArena = 0;
 
 	@Column(name = "blockPlayer", nullable = false)
 	protected String blockPlayerJson = "";
@@ -210,11 +213,19 @@ public class PlayerEntity extends HawkDBEntity {
 	}
 
 	public int getTowerCoin() {
-		return towerCoin;
+		return coinTower;
 	}
 
 	public void setTowerCoin(int towerCoin) {
-		this.towerCoin = towerCoin;
+		this.coinTower = towerCoin;
+	}
+
+	public int getArenaCoin() {
+		return coinArena;
+	}
+
+	public void setArenaCoin(int arenaCoin) {
+		this.coinArena = arenaCoin;
 	}
 
 	public List<Integer> getBlockPlayerList() {

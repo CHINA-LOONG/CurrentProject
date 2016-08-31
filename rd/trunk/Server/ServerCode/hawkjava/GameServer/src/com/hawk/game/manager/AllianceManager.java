@@ -18,11 +18,13 @@ import org.hawk.xid.HawkXID;
 import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.AllianceApplyEntity;
+import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.module.alliance.AllianceAcceptQuestHandler;
 import com.hawk.game.module.alliance.AllianceApplyHandler;
+import com.hawk.game.module.alliance.AllianceBaseSendHandler;
 import com.hawk.game.module.alliance.AllianceCancleApplyHandler;
 import com.hawk.game.module.alliance.AllianceChangeOwnerHandler;
 import com.hawk.game.module.alliance.AllianceChangePosHandler;
@@ -71,7 +73,7 @@ public class AllianceManager extends HawkAppObj {
 	 * 申请列表
 	 */
 	private ConcurrentHashMap<Integer, LinkedHashSet<Integer>> playerApplyMap;
-
+	
 	/**
 	 * 玩家工会映射表
 	 */
@@ -116,6 +118,7 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.ALLIANCE_REWARD_TASK, new AllianceTaskRewardHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_DISSOLVE_TEAM, new AllianceDissolveTeamHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, new AllianceContributionRewardHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_BASE_SEND, new AllianceBaseSendHandler());
 		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
@@ -144,6 +147,7 @@ public class AllianceManager extends HawkAppObj {
 		List<PlayerAllianceEntity> allianceMembers = HawkDBManager.getInstance().query("from PlayerAllianceEntity where allianceId > 0 and invalid = 0");
 		List<AllianceApplyEntity> allianceApplyEnties = HawkDBManager.getInstance().query("from AllianceApplyEntity where invalid = 0");
 		List<AllianceTeamEntity> allianceTeams = HawkDBManager.getInstance().query("from AllianceTeamEntity where invalid = 0");
+		List<AllianceBaseEntity> allianceBases = HawkDBManager.getInstance().query("from AllianceBaseEntity where invalid = 0");
 		
 		if (allianceEntities.isEmpty() == false) {
 			for (AllianceEntity allianceEntity : allianceEntities) {
@@ -185,11 +189,34 @@ public class AllianceManager extends HawkAppObj {
 			}
 		}
 		
+		//基地派兵信息
+		for (AllianceBaseEntity allianceBase : allianceBases) {
+			AllianceEntity allianceEntity = getAlliance(allianceBase.getAllianceId());
+			if (allianceEntity != null) {
+				PlayerAllianceEntity playerAllianceEntity = allianceEntity.getMember(allianceBase.getPlayerId());
+				if (playerAllianceEntity != null) {
+					allianceBase.convertMonsterBuilder();
+					allianceEntity.getAllianceBaseEntityMap().put(allianceBase.getMonsterBuilder().getMonsterId(), allianceBase);
+				}
+			}
+		}
+		
+		//校验数据
+		for (AllianceEntity allianceEntity : allianceMap.values()) {
+			for (AllianceBaseEntity baseEntity : allianceEntity.getAllianceBaseEntityMap().values()) {
+				PlayerAllianceEntity playerAllianceEntity = allianceEntity.getMember(baseEntity.getPlayerId());
+				if (playerAllianceEntity == null || playerAllianceEntity.getBaseMonsterInfo().get(baseEntity.getPosition()) == null) {
+					baseEntity.delete(true);
+					allianceEntity.getAllianceBaseEntityMap().remove(baseEntity.getMonsterBuilder().getMonsterId());
+				}
+			}
+		}
+		
 		List<String> allianeNames = HawkDBManager.getInstance().query("select name from AllianceEntity");
 		existName = new HashSet<>();
 		if (allianeNames != null)
 			existName.addAll(allianeNames);
-
+		
 		return true;
 	}
 
@@ -247,7 +274,7 @@ public class AllianceManager extends HawkAppObj {
 	public void addAlliance(AllianceEntity allianceEntity) {
 		allianceMap.put(allianceEntity.getId(), allianceEntity);
 	}
-
+	
 	/**
 	 * 移除公会
 	 * @param allianceEntity

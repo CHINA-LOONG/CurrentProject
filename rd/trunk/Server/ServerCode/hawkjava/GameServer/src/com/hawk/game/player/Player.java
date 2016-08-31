@@ -22,8 +22,7 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hawk.game.BILog.BIBehaviorAction;
-import com.hawk.game.BILog.BIGoldData;
+import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
@@ -33,7 +32,6 @@ import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
-import com.hawk.game.log.BILogger;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
@@ -111,12 +109,12 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.INSTANCE_MODULE, new PlayerInstanceModule(this));
 		registerModule(GsConst.ModuleType.ITEM_MODULE, new PlayerItemModule(this));
 		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModule(this));
-		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerMailModule(this));
 		registerModule(GsConst.ModuleType.IM_MODULE, new PlayerImModule(this));
 		registerModule(GsConst.ModuleType.SHOP_MODULE, new PlayerShopModule(this));
 		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
-
+		// 任务模块放其它模块后，用到其它模块数据
+		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
 	}
@@ -419,11 +417,16 @@ public class Player extends HawkAppObj {
 	
 	/**
 	 * 获取通天塔币
-	 * 
-	 * @return
 	 */
 	public int getTowerCoin() {
 		return playerData.getPlayerEntity().getTowerCoin();
+	}
+
+	/**
+	 * 获取竞技场币
+	 */
+	public int getArenaCoin() {
+		return playerData.getPlayerEntity().getArenaCoin();
 	}
 
 	/**
@@ -510,7 +513,8 @@ public class Player extends HawkAppObj {
 		}
 
 		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
-		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + gold - (goldRemain > 0 ? goldRemain : 0));
+		int goldIncrease = gold - (goldRemain > 0 ? goldRemain : 0);
+		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + goldIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
 	
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
@@ -518,11 +522,11 @@ public class Player extends HawkAppObj {
 				Params.valueOf("add", gold), 
 				Params.valueOf("after", playerData.getPlayerEntity().getFreeGold()));
 
-		return goldRemain > 0 ? gold - goldRemain : gold;
+		return goldIncrease;
 	}
 
 	/**
-	 * 增加奖励钻石
+	 * 增加购买钻石
 	 * 
 	 * @param gold
 	 * @param action
@@ -533,15 +537,23 @@ public class Player extends HawkAppObj {
 		}
 
 		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
-		playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + gold - (goldRemain > 0 ? goldRemain : 0));
+		int goldIncrease = gold - (goldRemain > 0 ? goldRemain : 0);
+		playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + goldIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
+
+		if (action == Action.SHOP_RECHARGE) {
+			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+			statisticsEntity.increasePayDiamondCount(goldIncrease);
+			statisticsEntity.increasePayDiamondCountDaily(goldIncrease);
+			statisticsEntity.notifyUpdate(true);
+		}
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_BUY_VALUE), 
 				Params.valueOf("add", gold), 
 				Params.valueOf("after", playerData.getPlayerEntity().getBuyGold()));
 
-		return goldRemain > 0 ? gold - goldRemain : gold;
+		return goldIncrease;
 	}
 
 	/**
@@ -565,6 +577,11 @@ public class Player extends HawkAppObj {
 
 		playerData.getPlayerEntity().notifyUpdate(true);
 
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		statisticsEntity.increaseUseDiamondCount(gold);
+		statisticsEntity.increaseUseDiamondCountDaily(gold);
+		statisticsEntity.notifyUpdate(true);
+
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
 				Params.valueOf("sub", gold), 
@@ -583,15 +600,23 @@ public class Player extends HawkAppObj {
 		}
 
 		long coinRemain = playerData.getPlayerEntity().getCoin() + coin - GsConst.MAX_COIN_COUNT;
-		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coin - (coinRemain > 0 ? coinRemain : 0));
+		long coinIncrease = coin - (coinRemain > 0 ? coinRemain : 0);
+		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coinIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
+
+		if (action == Action.SHOP_GOLD2COIN) {
+			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+			statisticsEntity.increaseBuyCoinTimes();
+			statisticsEntity.increaseBuyCoinTimesDaily();
+			statisticsEntity.notifyUpdate(true);
+		}
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
 				Params.valueOf("add", coin), 
 				Params.valueOf("after", getCoin()));
 
-		return coinRemain > 0 ? coin - coinRemain : coin;
+		return coinIncrease;
 	}
 
 	/**
@@ -623,15 +648,19 @@ public class Player extends HawkAppObj {
 		}
 
 		int coinRemain = getTowerCoin() + towerCoin - GsConst.MAX_COIN_COUNT;
-		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() + towerCoin - (coinRemain > 0 ? coinRemain : 0));
+		int coinIncrease = towerCoin - (coinRemain > 0 ? coinRemain : 0); 
+		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() + coinIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
+
+		playerData.getStatisticsEntity().increaseCoinTowerCount(coinIncrease);
+		playerData.getStatisticsEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
 				Params.valueOf("add", towerCoin), 
 				Params.valueOf("after", getTowerCoin()));
 
-		return coinRemain > 0 ? towerCoin - coinRemain : towerCoin;
+		return coinIncrease;
 	}
 
 	/**
@@ -649,6 +678,48 @@ public class Player extends HawkAppObj {
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
 				Params.valueOf("sub", towerCoin), 
 				Params.valueOf("after", getTowerCoin()));
+	}
+
+	/**
+	 * 增加竞技场币
+	 */
+	public int increaseArenaCoin(int arenaCoin, Action action) {
+		if (arenaCoin <= 0) {
+			throw new RuntimeException("increaseArenaCoin");
+		}
+
+		int coinRemain = getArenaCoin() + arenaCoin - GsConst.MAX_COIN_COUNT;
+		int coinIncrease = arenaCoin - (coinRemain > 0 ? coinRemain : 0); 
+		playerData.getPlayerEntity().setArenaCoin(getArenaCoin() + coinIncrease);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		playerData.getStatisticsEntity().increaseCoinArenaCount(coinIncrease);
+		playerData.getStatisticsEntity().increaseCoinArenaCountDaily(coinIncrease);
+		playerData.getStatisticsEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_ARENA_COIN_VALUE), 
+				Params.valueOf("add", arenaCoin), 
+				Params.valueOf("after", getArenaCoin()));
+
+		return coinIncrease;
+	}
+
+	/**
+	 * 消费竞技场币
+	 */
+	public void consumeArenaCoin(int arenaCoin, Action action) {
+		if (arenaCoin <= 0 || arenaCoin > getArenaCoin()) {
+			throw new RuntimeException("consumeArenaCoin");
+		}
+
+		playerData.getPlayerEntity().setArenaCoin(getArenaCoin() - arenaCoin);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_ARENA_COIN_VALUE), 
+				Params.valueOf("sub", arenaCoin), 
+				Params.valueOf("after", getArenaCoin()));
 	}
 
 	/**
@@ -882,6 +953,13 @@ public class Player extends HawkAppObj {
 		}
 
 		if (itemEntity.getId() > 0) {
+			if (action == Action.ITEM_BUY
+					|| action == Action.SHOP_ITEM_BUY
+					|| action == Action.STORE_ITEM_BUY) {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+				statisticsEntity.increaseBuyItemTimes(itemId);
+				statisticsEntity.notifyUpdate(true);
+			}
 
 			BehaviorLogger.log4Service(this, Source.ITEM_ADD, action, 
 					Params.valueOf("itemId", itemId), 
@@ -902,6 +980,13 @@ public class Player extends HawkAppObj {
 		if (itemEntity != null && itemEntity.getCount() >= itemCount) {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
 			itemEntity.notifyUpdate(true);
+
+			if (action == Action.ITEM_USE) {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+				statisticsEntity.increaseUseItemCount(itemId, itemCount);
+				statisticsEntity.increaseUseItemCountDaily(itemId, itemCount);
+				statisticsEntity.notifyUpdate(true);
+			}
 
 			BehaviorLogger.log4Service(this, Source.ITEM_REMOVE, action, 
 					Params.valueOf("itemId", itemId), 
@@ -933,6 +1018,13 @@ public class Player extends HawkAppObj {
 		if (equipEntity != null) {
 			if (equipEntity.notifyCreate()) {
 				playerData.addEquipEntity(equipEntity);
+
+				if (action == Action.EQUIP_BUY
+						|| action == Action.SHOP_ITEM_BUY) {
+					StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+					statisticsEntity.increaseBuyItemTimes(equipId);
+					statisticsEntity.notifyUpdate(true);
+				}
 
 				BehaviorLogger.log4Service(this, Source.EQUIP_ADD, action, 
 						Params.valueOf("equipId", equipId), 
@@ -1004,6 +1096,12 @@ public class Player extends HawkAppObj {
 			playerData.setMonsterEntity(monsterEntity);
 			onIncreaseMonster(monsterEntity);
 
+			if (action == Action.MONSTER_COMPOSE) {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+				statisticsEntity.increaseMonsterMixTimes(monsterCfgId);
+				statisticsEntity.notifyUpdate(true);
+			}
+
 			BehaviorLogger.log4Service(this, Source.MONSTER_ADD, action, 
 					Params.valueOf("monsterCfgId", monsterCfgId), 
 					Params.valueOf("monsterId", monsterEntity.getId()));
@@ -1044,10 +1142,10 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 统计增加怪物
+	 * 统计增加的怪物
 	 */
 	public boolean onIncreaseMonster(MonsterEntity monsterEntity) {
-		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 
 		// collection
 		if (false == statisticsEntity.getMonsterCollectSet().contains(monsterEntity.getCfgId())) {
@@ -1074,11 +1172,9 @@ public class Player extends HawkAppObj {
 	 * 消耗贡献值
 	 */
 	public boolean consumeContribution(int contribution, Action action){
-		
 		if (getAllianceId() == 0) {
 			throw new RuntimeException("not in alliance");
 		}
-		
 		if (contribution <= 0 || contribution > getCoin()) {
 			throw new RuntimeException("consumeContribution");
 		}
@@ -1090,6 +1186,7 @@ public class Player extends HawkAppObj {
 				Params.valueOf("alliance", Const.changeType.CHANGE_PLAYER_CONTRIBUTION), 
 				Params.valueOf("sub", contribution), 
 				Params.valueOf("after", playerData.getPlayerAllianceEntity().getContribution()));
+
 		return true;
 	}
 
@@ -1097,7 +1194,6 @@ public class Player extends HawkAppObj {
 	 * 获取贡献值
 	 */
 	public boolean increaseContribution(int contribution, Action action){
-		
 		if (getAllianceId() == 0) {
 			throw new RuntimeException("not in alliance");
 		}
@@ -1106,10 +1202,15 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerAllianceEntity().setTotalContribution(playerData.getPlayerAllianceEntity().getTotalContribution() + contribution);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
+		playerData.getStatisticsEntity().increaseCoinAllianceCount(contribution);
+		playerData.getStatisticsEntity().increaseCoinAllianceCountDaily(contribution);
+		playerData.getStatisticsEntity().notifyUpdate(true);
+
 		BehaviorLogger.log4Service(this, Source.ALLIANCE_ATTR_CHANGE, action, 
 				Params.valueOf("alliance", Const.changeType.CHANGE_PLAYER_CONTRIBUTION), 
 				Params.valueOf("add", contribution), 
 				Params.valueOf("after", playerData.getPlayerAllianceEntity().getContribution()));
+
 		return true;
 	}
 
@@ -1159,10 +1260,11 @@ public class Player extends HawkAppObj {
 		}
 
 		// 增加前先更新
-		updateFatigue();
+		regainFatigue();
 
 		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
-		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigue - (fatigueRemain > 0 ? fatigueRemain : 0));
+		int fatigueIncrease = fatigue - (fatigueRemain > 0 ? fatigueRemain : 0);
+		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigueIncrease);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
@@ -1170,7 +1272,7 @@ public class Player extends HawkAppObj {
 				Params.valueOf("add", fatigue), 
 				Params.valueOf("after", getPlayerData().getStatisticsEntity().getFatigue()));
 
-		return fatigueRemain > 0 ? fatigue - fatigueRemain : fatigue;
+		return fatigueIncrease;
 	}
 
 	/**
@@ -1185,7 +1287,7 @@ public class Player extends HawkAppObj {
 		int oldFatigue = statisticsEntity.getFatigue();
 		int newFatigue = oldFatigue - fatigue;
 
-		// 从低于上限的时间开始增长
+		// 从低于上限的时间开始恢复
 		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
 		if (attrCfg != null) {
 			int maxFatigue = attrCfg.getFatigue();
@@ -1195,6 +1297,8 @@ public class Player extends HawkAppObj {
 		}
 
 		statisticsEntity.setFatigue(newFatigue);
+		statisticsEntity.increaseUseFatigueCount(fatigue);
+		statisticsEntity.increaseUseFatigueCountDaily(fatigue);
 		statisticsEntity.notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
@@ -1230,9 +1334,9 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 更新技能点
+	 * 恢复技能点
 	 */
-	public int updateSkillPoint() {
+	public int regainSkillPoint() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		Calendar curTime = HawkTime.getCalendar();
 		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
@@ -1252,9 +1356,9 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 更新活力值
+	 * 恢复活力值
 	 */
-	public int updateFatigue() {
+	public int regainFatigue() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		Calendar curTime = HawkTime.getCalendar();
 		Calendar beginTime = statisticsEntity.getFatigueBeginTime();
@@ -1313,9 +1417,15 @@ public class Player extends HawkAppObj {
 	 * 生成角色出生初始数据
 	 */
 	private void genBirthData() {
-		StatisticsEntity statisticsEntity = playerData.loadStatistics();
+		playerData.loadPlayer();
+		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.WELCOME);
+		if (mailCfg != null) {
+			MailUtil.SendSysMail(mailCfg, getId());
+		}
+		increaseCoin(1000, Action.CREATE_PLAYER);
+		increaseFreeGold(100, Action.CREATE_PLAYER);
 
-		// default statistics
+		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
 		if (attrCfg != null) {
 			statisticsEntity.setFatigue(attrCfg.getFatigue());
@@ -1323,12 +1433,15 @@ public class Player extends HawkAppObj {
 		statisticsEntity.setSkillPoint(10);
 		statisticsEntity.notifyUpdate(true);
 
+		playerData.loadAllItem();
+		increaseItem("20002", 30, Action.CREATE_PLAYER);
+
 		// TEST ----------------------------------------------------------------------------------------
 		playerData.loadAllMonster();
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
-			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
-			increaseMonster("xgXiaochou3", 0, Action.SYSTEM);
+			increaseMonster("xgXiaochou3", 0, Action.CREATE_PLAYER);
+			increaseMonster("xgXiaochou3", 0, Action.CREATE_PLAYER);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

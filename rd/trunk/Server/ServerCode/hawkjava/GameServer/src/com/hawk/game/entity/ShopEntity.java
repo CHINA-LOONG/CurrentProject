@@ -257,6 +257,10 @@ public class ShopEntity extends HawkDBEntity{
 		}
 	}
 
+	public int getAllShopRefreshNum() {
+		return normalRefreshNums + allianceRefreshNums + towerRefreshNums;
+	}
+
 	public int getShopRefreshNum(int type) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:

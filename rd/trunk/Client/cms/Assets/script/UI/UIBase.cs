@@ -38,7 +38,7 @@ public abstract class UIBase : MonoBehaviour
     //    {
 
 
-    //        Debug.Log("Name:" + gameObject.name + "\t" + transform.GetSiblingIndex());
+    //        Logger.Log("Name:" + gameObject.name + "\t" + transform.GetSiblingIndex());
 
     //    }
     //}

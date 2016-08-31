@@ -426,7 +426,7 @@ public class GmService_Dev extends GameService {
 		case "questclear": {
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 			statisticsEntity.clearQuestComplete();
-			statisticsEntity.clearQuestCompleteDaily();
+			statisticsEntity.clearQuestDailyComplete();
 			statisticsEntity.notifyUpdate(true);
 
 			// 重新加载并推送任务

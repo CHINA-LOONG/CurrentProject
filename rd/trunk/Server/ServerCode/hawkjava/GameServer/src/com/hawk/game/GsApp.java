@@ -115,6 +115,7 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public boolean init(String cfg) {
+		
 		GsConfig appCfg = null;
 		try {
 			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class, getWorkPath());

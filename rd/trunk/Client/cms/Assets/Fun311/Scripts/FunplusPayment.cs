@@ -85,7 +85,7 @@ namespace Funplus {
 				_delegate = paymentDelegate;
 				GetWrapper ().SetGameObject (gameObjectName);
 			} else {
-				Debug.LogWarning("{FunplusPayment.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
+				Logger.LogWarning("{FunplusPayment.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
 			}
 		}
 		
@@ -96,7 +96,7 @@ namespace Funplus {
 		public void StartHelper () {
 			if (_delegate == null) {
 				// set the game object and delegate first!
-				Debug.LogError ("{FunplusPayment.StartHelper ()} --> Please call SetGameObjectAndDelegate() first");
+				Logger.LogError ("{FunplusPayment.StartHelper ()} --> Please call SetGameObjectAndDelegate() first");
 			} else {
 				GetWrapper ().StartHelper ();
 			}

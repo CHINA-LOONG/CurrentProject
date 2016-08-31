@@ -52,7 +52,7 @@ namespace Funplus {
 				_delegate = googleiabDelegate;
 				GetWrapper ().SetGameObject (gameObjectName);
 			} else {
-				Debug.LogWarning ("{FunplusGoogleIab.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
+				Logger.LogWarning ("{FunplusGoogleIab.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
 			}
 		}
 

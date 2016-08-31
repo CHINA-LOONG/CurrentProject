@@ -25,6 +25,7 @@ public class UIPetDetails : UIBase,
     }
     public override void Clean()
     {
+        leftView.imageView.CleanImageView();
         UIMgr.Instance.DestroyUI(uiSelectEquipList);
     }
 

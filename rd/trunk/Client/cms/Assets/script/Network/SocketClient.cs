@@ -60,7 +60,7 @@ public class SocketClient : MonoBehaviour {
     /// 连接服务器
     /// </summary>
     void ConnectServer(string host, int port) {
-       // Debug.LogError("begin connect to server");
+       // Logger.LogError("begin connect to server");
         client = null;
         client = new TcpClient();
         client.SendTimeout = 1000;

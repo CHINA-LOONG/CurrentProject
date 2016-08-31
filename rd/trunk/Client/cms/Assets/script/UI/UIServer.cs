@@ -290,7 +290,7 @@ public class UIServer : UIBase {
         Hashtable CurrServerHashtable = new Hashtable();
         if (recordCurrServer == null && PlayerPrefs.GetString("_serverName") == string.Empty)
         {
-            Debug.LogError("请选择服务器");
+            Logger.LogError("请选择服务器");
             return;
         }
         else if (recordCurrServer != null )

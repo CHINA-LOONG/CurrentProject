@@ -23,7 +23,7 @@ public class EquipGemItem : MonoBehaviour
             ItemData itemData = new ItemData() { itemId = info.gemId, count = 0 };
             if (gemIcon == null)
             {
-                Debug.Log("存在宝石");
+                Logger.Log("存在宝石");
                 gemIcon = ItemIcon.CreateItemIcon(itemData,false);
                 UIUtil.SetParentReset(gemIcon.transform, (transIcon == null ? transform : transIcon.transform));
                 gemIcon.HideExceptIcon();

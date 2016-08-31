@@ -73,7 +73,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		}
 
 		// 更新技能点
-		int newSkillPoint = player.updateSkillPoint() - 1;
+		int newSkillPoint = player.regainSkillPoint() - 1;
 
 		// 验证点数
 		if (newSkillPoint < 0) {
@@ -224,6 +224,11 @@ public class PlayerMonsterModule extends PlayerModule {
 
 		monsterEntity.setStage((byte)newStage);
 		monsterEntity.notifyUpdate(true);
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity(); 
+		// newStage = oldStage+1，不需循环增加
+		statisticsEntity.increaseMonsterCountOverStage(newStage);
+		statisticsEntity.notifyUpdate(true);
 
 		HSMonsterStageUpRet.Builder response = HSMonsterStageUpRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_STAGE_UP_S, response));

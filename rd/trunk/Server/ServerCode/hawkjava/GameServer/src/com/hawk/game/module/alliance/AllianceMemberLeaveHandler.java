@@ -51,21 +51,15 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		boolean deleteAlliance = false;
+		boolean deleteAlliance = true;
 		if (allianceEntity.getMemberList().size() > 1) {
 			if (playerAllianceEntity.getPlayerId() == allianceEntity.getPlayerId()) {
 				//公会有多个成员会长不能退出
 				player.sendError(protocol.getType(), Status.allianceError.ALLIANCE__LEAVE_NOT_EMPTY_VALUE);
 				return true;
 			}
-
-			allianceEntity.removeMember(player.getId());
-		}
-		else
-		{
-			allianceEntity.getMemberList().clear();
-			allianceEntity.delete();
-			deleteAlliance = true;
+			
+			deleteAlliance = false;
 		}
 		
 		playerAllianceEntity.setPostion(GsConst.Alliance.ALLIANCE_POS_COMMON);
@@ -73,9 +67,11 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		playerAllianceEntity.setPreAllianceId(allianceEntity.getId());
 		playerAllianceEntity.setExitTime(HawkTime.getSeconds() + SysBasicCfg.getInstance().getAllianceFrizenTime());
 		playerAllianceEntity.notifyUpdate(true);
+
+		// 清理公会驻兵
+		allianceEntity.clearAllianceBase(player.getId());
 		
-		AllianceManager.getInstance().removePlayerAndAllianceMap(player.getId());
-		
+		// 清理队伍信息
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(player.getId());
 		if (teamEntity != null) {
 			teamEntity.removePlayerFromTeam(player.getId());
@@ -84,6 +80,9 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
 		}
 
+		AllianceManager.getInstance().removePlayerAndAllianceMap(player.getId());
+		allianceEntity.removeMember(player.getId());
+		
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), player.getId());
 
 		// 清理工会数据
@@ -98,6 +97,8 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 			if (teamEntity != null) {
 				teamEntity.delete();
 			}
+			
+			allianceEntity.delete();
 		}
 		
 		HSAllianceLeaveRet.Builder response = HSAllianceLeaveRet.newBuilder();

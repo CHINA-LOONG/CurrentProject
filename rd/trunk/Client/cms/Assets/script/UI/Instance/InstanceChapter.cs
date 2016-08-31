@@ -22,7 +22,7 @@ public class InstanceChapter : MonoBehaviour
 	void OnInstanceButtonClick(GameObject go)
 	{
 		var subButton = go.transform.parent.GetComponent<InstanceButton> ();
-		//Debug.LogError ("Clicked button... index = " + subButton.index);
+		//Logger.LogError ("Clicked button... index = " + subButton.index);
 		//int index = subButton.index;
 		var instanceId = subButton.instanceId;
 		var data = InstanceMapService.Instance.GetRuntimeInstance (instanceId);

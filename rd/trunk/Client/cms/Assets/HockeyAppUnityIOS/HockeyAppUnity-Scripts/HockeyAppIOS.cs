@@ -187,7 +187,7 @@ public class HockeyAppIOS : MonoBehaviour {
 				}
 				catch(ArgumentException ae)
 				{
-					if (Debug.isDebugBuild) Debug.Log("Failed to read bytes of log file: " + ae);
+					if (Logger.isDebugBuild) Logger.Log("Failed to read bytes of log file: " + ae);
 				}
 			}
 			else
@@ -198,9 +198,9 @@ public class HockeyAppIOS : MonoBehaviour {
 				}
 				catch(SystemException se)
 				{
-					if (Debug.isDebugBuild) 
+					if (Logger.isDebugBuild) 
 					{
-						Debug.Log("Failed to read bytes of log file: " + se);
+						Logger.Log("Failed to read bytes of log file: " + se);
 					}
 				}
 
@@ -255,7 +255,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		catch(Exception e)
 		{
-			if (Debug.isDebugBuild) Debug.Log("Failed to write exception log to file: " + e);
+			if (Logger.isDebugBuild) Logger.Log("Failed to write exception log to file: " + e);
 		}
 		#endif
 
@@ -297,7 +297,7 @@ public class HockeyAppIOS : MonoBehaviour {
 				} 
 				catch (Exception e) 
 				{
-					if (Debug.isDebugBuild) Debug.Log ("Failed to delete exception log: " + e);
+					if (Debug.isDebugBuild) Logger.Log ("Failed to delete exception log: " + e);
 				}
 			}
 		}

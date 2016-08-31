@@ -52,7 +52,7 @@ namespace Funplus {
 				_delegate = appleiapDelegate;
 				GetWrapper ().SetGameObject (gameObjectName);
 			} else {
-				Debug.LogWarning("{FunplusAppleIap.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
+				Logger.LogWarning("{FunplusAppleIap.SetGameObjectAndDelegate ()} --> Delegate has already been set}");
 			}
 		}
 

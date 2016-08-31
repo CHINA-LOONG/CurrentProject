@@ -355,7 +355,11 @@ public class EffectDamage : Effect
                     if (damageAmount < 0 || (noHeal == false && damageProto.isHeal == true))
                     {
                         SpellEffectArgs effectArgs = new SpellEffectArgs();
-                        if (target != null)
+                        if (wpRuntime != null)
+                        {
+                            effectArgs.wpNode = wpRuntime.staticData.node;
+                        }
+                        else if (target != null)
                         {
                             WeakPointData wp = null;
                             if (target.attackWpName != null)

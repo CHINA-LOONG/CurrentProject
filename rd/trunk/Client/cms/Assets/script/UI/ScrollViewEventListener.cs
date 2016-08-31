@@ -28,7 +28,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         if (needPressExit)  return;
-        //Debug.Log("button: OnPointerClick");
+        //Logger.Log("button: OnPointerClick");
         if (onClick != null && !press) onClick(gameObject);
     }
 
@@ -51,7 +51,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
             {
                 press = false;
                 enterPress = false;
-                //Debug.Log("button: onPressExit");
+                //Logger.Log("button: onPressExit");
                 if (onPressExit != null) onPressExit(gameObject);
             }
         }
@@ -75,7 +75,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Debug.Log("button: OnPointerDown");
+        //Logger.Log("button: OnPointerDown");
         if (onDown != null) onDown(gameObject);
 
         pressDown = true;
@@ -84,7 +84,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //Debug.Log("button: OnPointerUp");
+        //Logger.Log("button: OnPointerUp");
         if (onUp != null) onUp(gameObject);
 
         pressDown = false;

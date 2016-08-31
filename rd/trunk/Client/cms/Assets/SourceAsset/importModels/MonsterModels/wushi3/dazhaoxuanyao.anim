@@ -42665,7 +42665,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: .100000001
+  - time: .0666666701
     functionName: OnDaZhaoxuanyaoEnd
     data: 
     objectReferenceParameter: {fileID: 0}

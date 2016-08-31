@@ -118,7 +118,10 @@ namespace PB
       ALLIANCE_COTRIBUTION = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN", Value=4)]
-      TOWER_COIN = 4
+      TOWER_COIN = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN", Value=5)]
+      ARENA_COIN = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -156,7 +159,10 @@ namespace PB
       CHANGE_PLAYER_CONTRIBUTION = 10,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_TOWER_COIN", Value=11)]
-      CHANGE_TOWER_COIN = 11
+      CHANGE_TOWER_COIN = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_ARENA_COIN", Value=12)]
+      CHANGE_ARENA_COIN = 12
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]

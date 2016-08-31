@@ -29,7 +29,7 @@ public class Const
 
     public static int TimerInterval = 1;
     //游戏帧频
-    public static int GameFrameRate = 60;
+    public static int GameFrameRate = 40;
 
     //更新地址
 	public static string WebUrl = "http://192.168.199.122:9000/resource_control";

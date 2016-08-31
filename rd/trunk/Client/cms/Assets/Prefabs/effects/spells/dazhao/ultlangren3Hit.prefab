@@ -2209,7 +2209,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: c971daa5b37f6944cbb61848cc89637a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1add5c8f608d9654797be42f9ce25658, type: 3}
   m_Bones:
   - {fileID: 417062}
   - {fileID: 473700}

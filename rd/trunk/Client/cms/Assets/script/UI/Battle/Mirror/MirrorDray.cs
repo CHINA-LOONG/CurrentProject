@@ -116,7 +116,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		float rootWidth = Screen.width /UIMgr.Instance.CanvasAttr.scaleFactor ;
 		float rootHeight =   Screen.height/UIMgr.Instance.CanvasAttr.scaleFactor;
 		
-		//Debug.LogError ("Screen.Width = " + Screen.width + "  Screen.height = " + Screen.height + "scaleFactor = " + UIMgr.Instance.CanvasAttr.scaleFactor );
+		//Logger.LogError ("Screen.Width = " + Screen.width + "  Screen.height = " + Screen.height + "scaleFactor = " + UIMgr.Instance.CanvasAttr.scaleFactor );
 		RectTransform thisTransform = transform as RectTransform;
 		float myWith = thisTransform.rect.width;
 		float myHeigth = thisTransform.rect.height;
@@ -341,7 +341,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.MirrorOutWeakPoint,outFindTarget);
 			}
 
-			//Debug.LogError("finding....."+ transform.position.x);
+			//Logger.LogError("finding....."+ transform.position.x);
 			yield return new WaitForFixedUpdate();
 		}
 	}

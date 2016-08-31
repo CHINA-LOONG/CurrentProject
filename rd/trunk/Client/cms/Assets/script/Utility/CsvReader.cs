@@ -156,7 +156,7 @@ public class CsvFileReader : CsvFileCommon, IDisposable
             if (CurrLine == null || CurrPos == CurrLine.Length)
                 break;
             // Otherwise skip delimiter
-            //Debug.Assert(CurrLine[CurrPos] == Delimiter);
+            //Logger.Assert(CurrLine[CurrPos] == Delimiter);
             CurrPos++;
         }
         // Remove any unused columns from collection
@@ -175,7 +175,7 @@ public class CsvFileReader : CsvFileCommon, IDisposable
     private string ReadQuotedColumn()
     {
         // Skip opening quote character
-        //Debug.Assert(CurrPos < CurrLine.Length && CurrLine[CurrPos] == Quote);
+        //Logger.Assert(CurrPos < CurrLine.Length && CurrLine[CurrPos] == Quote);
         CurrPos++;
 
         // Parse column
@@ -211,7 +211,7 @@ public class CsvFileReader : CsvFileCommon, IDisposable
         if (CurrPos < CurrLine.Length)
         {
             // Consume closing quote
-            //Debug.Assert(CurrLine[CurrPos] == Quote);
+            //Logger.Assert(CurrLine[CurrPos] == Quote);
             CurrPos++;
             // Append any additional characters appearing before next delimiter
             builder.Append(ReadUnquotedColumn());

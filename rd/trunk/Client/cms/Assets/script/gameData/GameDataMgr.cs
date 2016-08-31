@@ -515,7 +515,7 @@ public class GameDataMgr : MonoBehaviour
         foreach (PB.HSMail mailInfo in mailSync.mailInfo)
         {
             mainPlayer.gameMailData.AddMail(mailInfo);
-            //Debug.Log("mail" + mailInfo.mailId + "\t" + mailInfo.reward.Count + "\t" + mailInfo.senderId + "\t" + mailInfo.senderName +"\t"+ mailInfo.sendTimeStamp);
+            //Logger.Log("mail" + mailInfo.mailId + "\t" + mailInfo.reward.Count + "\t" + mailInfo.senderId + "\t" + mailInfo.senderName +"\t"+ mailInfo.sendTimeStamp);
         }
         GameEventMgr.Instance.FireEvent<int>(GameEventList.MailAdd, 0);
     }

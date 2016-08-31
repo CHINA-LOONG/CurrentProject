@@ -474,7 +474,7 @@ public class BattleObject : MonoBehaviour
                 {
                     continue;
                 }
-                //Debug.LogError("Play Sound:\t" + curAudioData.audioName);
+                //Logger.LogError("Play Sound:\t" + curAudioData.audioName);
                 AudioSystemMgr.Instance.PlaySoundByName(curAudioData.audioName);
             }
 

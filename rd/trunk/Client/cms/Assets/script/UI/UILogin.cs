@@ -48,11 +48,11 @@ public class UILogin : UIBase
 	
 	void  onLoginButtonClicked(GameObject go)
 	{
-		//Debug.Log ("Login Button Click!!");
+		//Logger.Log ("Login Button Click!!");
 
         if (string.IsNullOrEmpty(playerIDFileld.text) == true)
         {
-            Debug.Log("请输入用户名");
+            Logger.Log("请输入用户名");
             return;
         }
 

@@ -11,6 +11,7 @@ import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceFatigueGive;
@@ -90,7 +91,12 @@ public class AllianceFatigueHandler  implements HawkMsgHandler{
 				MailUtil.SendSysMail(mailCfg, request.getTargetId(), selfPlayerAllianceEntity.getName(), GsConst.Alliance.SEND_FATIGUE_COUNT);
 			}
 		}
-		
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseAllianceFatigueTimes();
+		statisticsEntity.increaseAllianceFatigueTimesDaily();
+		statisticsEntity.notifyUpdate(true);
+
 		HSAllianceFatigueGiveRet.Builder repsonse = HSAllianceFatigueGiveRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_FATIGUE_GIVE_S_VALUE, repsonse));
 		return true;

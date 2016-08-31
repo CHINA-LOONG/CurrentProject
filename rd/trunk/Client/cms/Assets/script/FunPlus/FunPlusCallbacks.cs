@@ -10,25 +10,26 @@ public class FunPlusCallbacks : FunplusSdk.IDelegate, FunplusAccount.IDelegate {
 
         void FunplusSdk.IDelegate.OnSdkInstallSuccess(string message)
         {
-            MonoBehaviour.print("{Funplus SDK install success --> Message: " + message);
+            //Logger.Log("{Funplus SDK install success --> Message: " + message);
+            Logger.Log("{Funplus SDK install success --> Message: " + message);
             
         }
 
         void FunplusSdk.IDelegate.OnSdkInstallError(FunplusError error)
         {
-            MonoBehaviour.print("Funplus SDK install error --> Error: " + error.GetErrorMsg());
+            Logger.Log("Funplus SDK install error --> Error: " + error.GetErrorMsg());
         }
 
 
         void FunplusAccount.IDelegate.OnLoginSuccess(FunplusSession session)
         {
-            MonoBehaviour.print("OnLoginSuccess --> Success:" + session.GetFpid()+ session.GetSessionKey());
+            Logger.Log("OnLoginSuccess --> Success:" + session.GetFpid()+ session.GetSessionKey());
             GameEventMgr.Instance.FireEvent<String>(GameEventList.funplusPuid, session.GetFpid());
         }
 
         void FunplusAccount.IDelegate.OnLoginError(FunplusError error)
         {
-            MonoBehaviour.print("OnLoginError --> Error: " + error.GetErrorMsg());
+            Logger.Log("OnLoginError --> Error: " + error.GetErrorMsg());
         }
 
         void FunplusAccount.IDelegate.OnOpenSession(bool isLoggedIn)
@@ -46,18 +47,18 @@ public class FunPlusCallbacks : FunplusSdk.IDelegate, FunplusAccount.IDelegate {
 
         void FunplusAccount.IDelegate.OnLogout()
         { 
-			MonoBehaviour.print("OnLogout --> : " );
+			Logger.Log("OnLogout --> : " );
             GameEventMgr.Instance.FireEvent(GameEventList.LogoutClick);
         }
 
         void FunplusAccount.IDelegate.OnBindAccountSuccess(FunplusSession session)
         { 
-			MonoBehaviour.print("OnBindAccountSuccess --> : " + session.GetFpid() + session.GetSessionKey());
+			Logger.Log("OnBindAccountSuccess --> : " + session.GetFpid() + session.GetSessionKey());
         }
 
         void FunplusAccount.IDelegate.OnBindAccountError(FunplusError error)
         {
-			MonoBehaviour.print("OnBindAccountError --> Error: " + error.GetErrorMsg());
+			Logger.Log("OnBindAccountError --> Error: " + error.GetErrorMsg());
 
         }
 

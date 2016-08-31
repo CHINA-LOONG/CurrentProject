@@ -83,13 +83,13 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "useDiamondCountDaily", nullable = false)
 	protected int useDiamondCountDaily = 0;
 
-	// 历史携带过品级X装备数量
-	@Column(name = "equipStageXCount", nullable = false)
-	protected String equipStageXCountJson = "";
+	// 历史同时穿过达到品级X装备数量
+	@Column(name = "equipStageXMaxCount", nullable = false)
+	protected String equipStageXMaxCountJson = "";
 
-	// 今日携带过品级X装备数量
-	@Column(name = "equipStageXCountDaily", nullable = false)
-	protected String equipStageXCountDailyJson = "";
+	// 今日同时穿过达到品级X装备数量
+	@Column(name = "equipStageXMaxCountDaily", nullable = false)
+	protected String equipStageXMaxCountDailyJson = "";
 
 	// 历史打孔次数
 	@Column(name = "equipPunchTimes", nullable = false)
@@ -149,12 +149,12 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	boolean chapterBoxHardFlag = false;
 
 	@Transient
-	protected List<Integer> equipStageCountList = new ArrayList<Integer>();
+	protected List<Integer> equipStageMaxCountList = new ArrayList<Integer>();
 	@Transient
 	boolean equipStageCountFlag = false;
 
 	@Transient
-	protected List<Integer> equipStageCountDailyList = new ArrayList<Integer>();
+	protected List<Integer> equipStageMaxCountDailyList = new ArrayList<Integer>();
 	@Transient
 	boolean equipStageCountDailyFlag = false;
 
@@ -192,11 +192,11 @@ public class LfStatisticsEntity extends HawkDBEntity {
 		if (null != chapterXBoxHardJson && false == "".equals(chapterXBoxHardJson) && false == "null".equals(chapterXBoxHardJson)) {
 			chapterBoxHardList = HawkJsonUtil.getJsonInstance().fromJson(chapterXBoxHardJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
-		if (null != equipStageXCountJson && false == "".equals(equipStageXCountJson) && false == "null".equals(equipStageXCountJson)) {
-			equipStageCountList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXCountJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		if (null != equipStageXMaxCountJson && false == "".equals(equipStageXMaxCountJson) && false == "null".equals(equipStageXMaxCountJson)) {
+			equipStageMaxCountList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXMaxCountJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
-		if (null != equipStageXCountDailyJson && false == "".equals(equipStageXCountDailyJson) && false == "null".equals(equipStageXCountDailyJson)) {
-			equipStageCountDailyList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXCountDailyJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		if (null != equipStageXMaxCountDailyJson && false == "".equals(equipStageXMaxCountDailyJson) && false == "null".equals(equipStageXMaxCountDailyJson)) {
+			equipStageMaxCountDailyList = HawkJsonUtil.getJsonInstance().fromJson(equipStageXMaxCountDailyJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
 		if (null != inlayTypeXTimesJson && false == "".equals(inlayTypeXTimesJson) && false == "null".equals(inlayTypeXTimesJson)) {
 			inlayTypeTimesList = HawkJsonUtil.getJsonInstance().fromJson(inlayTypeXTimesJson, new TypeToken<ArrayList<Integer>>() {}.getType());
@@ -228,11 +228,11 @@ public class LfStatisticsEntity extends HawkDBEntity {
 		}
 		if (true == equipStageCountFlag) {
 			equipStageCountFlag = false;
-			equipStageXCountJson = HawkJsonUtil.getJsonInstance().toJson(equipStageCountList);
+			equipStageXMaxCountJson = HawkJsonUtil.getJsonInstance().toJson(equipStageMaxCountList);
 		}
 		if (true == equipStageCountDailyFlag) {
 			equipStageCountDailyFlag = false;
-			equipStageXCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(equipStageCountDailyList);
+			equipStageXMaxCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(equipStageMaxCountDailyList);
 		}
 		if (true == inlayTypeTimesFlag) {
 			inlayTypeTimesFlag = false;

@@ -1,5 +1,5 @@
 option java_package = "com.hawk.game.protocol";
-
+import "Protocol/Monster.proto";
 // ------------------------------------------------------- message -----------------------------------------------------
 // 工会申请
 message AllianceApply
@@ -88,6 +88,18 @@ message AllianceTeamInfo
 	required int32 teamId = 3;
 	repeated AllianceTeamMemInfo members = 4;
 	repeated AllianceTeamQuestInfo questInfos = 5;
+}
+
+message AllianceBaseMonster
+{
+	required int32 id = 1;
+	required string cfgId = 2;
+	required int32 stage = 3;
+	required int32 level = 4;
+	required int32 bp = 5;
+	optional int32 sendTime = 6;
+	optional int32 position = 7;
+	optional int32 reward = 8;
 }
 
 // -------------------------------------------------------  工会基础协议 -----------------------------------------------------
@@ -530,4 +542,47 @@ message HSAllianceTeamLeaveNotify
 message HSAllianceTaskTimeoutNotify
 {
 	required int32 taskId = 1;
+}
+
+// -------------------------------------------------------  工会驻兵协议 -----------------------------------------------------
+message HSAllianceBaseSendMonster
+{
+	required int32 monsterId = 1;
+	required int32 position = 2;
+}
+
+message HSAllianceBaseSendMonsterRet
+{
+	required int32 sendTime = 1;
+}
+
+message HSAllianceBaseRecallMonster
+{
+	required int32 position = 1;
+}
+
+message HSAllianceBaseRecallMonsterRet
+{
+	required int32 coinDefend = 1;
+	required int32 coinHire = 2;
+}
+
+message HSAllianceBaseList
+{
+
+}
+
+message HSAllianceBaseListRet
+{
+	repeated AllianceBaseMonster monsterInfo = 1;
+}
+
+message HSAllianceMyBaseList
+{
+
+}
+
+message HSAllianceMyBaseListRet
+{
+	repeated AllianceBaseMonster monsterInfo = 1;
 }

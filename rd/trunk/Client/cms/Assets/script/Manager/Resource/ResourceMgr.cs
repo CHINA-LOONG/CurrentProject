@@ -379,6 +379,15 @@ public class ResourceMgr : MonoBehaviour
         {
             Logger.LogError("load assert Error: " + request.assetName);
         }
+        if (abname == null)
+        {
+            if (assetRequestList.ContainsKey(realName))
+            {
+                assetRequestList.Remove(realName);
+            }
+            Debug.LogError("error asset" + request.assetName);
+            yield break;
+        }
         abname = abname.ToLower();
 
         LoadAssetBundleAsync(abname);

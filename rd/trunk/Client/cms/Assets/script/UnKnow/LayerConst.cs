@@ -10,6 +10,6 @@ public class LayerConst
 	{
 		WeakpointLayer =   LayerMask.NameToLayer ("WeakPointLayer");
 		WeakpointLayerMask = 1 << WeakpointLayer;
-		//Debug.LogError ("dhhel "+ WeakpointLayer);
+		//Logger.LogError ("dhhel "+ WeakpointLayer);
 	}
 }

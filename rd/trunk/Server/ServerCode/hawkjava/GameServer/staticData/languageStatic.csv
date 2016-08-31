@@ -818,7 +818,7 @@ speech_xinshoutower4,为了安全起见，我们先去拯救被囚禁在第一�
 speech_xinshoupvp1,这里是<color=#ffcc00>竞技场</color>，是代行者们磨练技巧的地方了。,This is the <color=#ffcc00>Arena</color>! Here is where all keepers battle to their master techniques.
 speech_xinshoupvp2,每次竞技会消耗<color=#ffcc00>竞技次数</color>，赢得胜利可以获得<color=#ffcc00>荣誉点</color>。,An <color=#ffcc00>Arena Entry</color> will be used each time you enter the Arena. 
 speech_xinshoupvp3,荣誉点可以在竞技商店购买<color=#ffcc00>宠物进阶材料、稀有宠物碎片</color>哦~,A victory will reward you with <color=#ffcc00>Honor Points</color> which can then be exchanged in the Arena Store for <color=#ffcc00>monster advancement materials</color> and <color=#ffcc00>rare monster fragments</color>!
-speech_xinshoucompose,<color=#ffcc00>低级的纹章或材料可以通过合成魔法变成更高级的纹章或材料</color>，有不用的材料时就来合成吧。,<color=#ffcc00>Crafting</color> allows players to <color=#ffcc00>turn low grade insignia and materials into high grade insignia and materials</color>. Simply use any of your uneeded materials.
+speech_xinshoucompose,<color=#ffcc00>低级的纹章、材料、宠物</color>可以通过<color=#ffcc00>合成魔法</color>变成<color=#ffcc00>更高级的纹章、材料、宠物碎片</color>，有不用的材料时就来合成吧。,"<color=#ffcc00>Crafting</color> allows players to turn <color=#ffcc00>low grade monsters, insignia and materials into high grade monsters, insignia and materials</color>. Simply use any of your uneeded materials."
 speech_xinshouguild1,公会是志同道合的代行者伙伴们交流信息的地方。,Joining a guild is the best way to meet and chat with other monster keepers.
 speech_xinshouguild2,在<color=#ffcc00>公会许愿池</color>，每天可以进行<color=#ffcc00>一次许愿</color>。向三位命运女神许愿的效果不同，付出越多收获越大。,"You can <color=#ffcc00>make a wish once a day at the Guild Wish</color>. Making a wish via the 3 different goddesses will yield different effects, and the more spent, the more you shall receive. "
 speech_xinshouguild3,公会会向代行者们发布一些任务。,Guilds will post quests for their members to participate in. 
@@ -836,10 +836,10 @@ speech_xinshouadventure6,当你选择好冒险的5只宠物后，点击<color=#f
 speech_xinshouadventure7,悄悄的告诉你，如果不想等待冒险时间，也可以<color=#ffcc00>通过花费钻石快速完成探险</color>~跟我来看看吧~,"I'll let you in on a little secret… If you don't want to wait for the adventure time, you can also <color=#ffcc00>spend some diamonds to speed up the exploration</color>. Let's give it a shot!"
 speech_xinshouadventure8,这里列出了你所有小队的探险情况哟，点击“<color=#ffcc00>立即完成</color>”按钮，就可以<color=#ffcc00>立即召回冒险的宠物并获得冒险奖励</color>。,"The statuses of all your adventure teams are listed here. Tap the ""<color=#ffcc00>Complete Now</color>"" button to <color=#ffcc00>immediately recall your monsters and receive the adventure rewards</color>. "
 speech_xinshoudecompose,可以将没用的<color=#ffcc00>装备和宠物分解掉</color>，转化成<color=#ffcc00>打造或者进阶材料</color>，这可是变废为宝的好方法哦~,You may <color=#ffcc00>discard any useless monsters or equipment</color> and turn them into <color=#ffcc00>forge or evolution materials</color>. This is the best way to get value from any unused items.
-speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster."
+speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~进阶需要的<color=#ffcc00>化形之书</color>在每章副本<color=#ffcc00>挑战难度</color>的<color=#ffcc00>第四和第八个本</color>掉落。,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster.Advancing monsters requires <color=#ffcc00>Books of Transformation</color>, which can acquired via <color=#ffcc00>Stage 4 or Stage 8 of Story Mode (Heroic)</color>."
 speech_xinshouxiangqian1,装备达到<color=#ffcc00>蓝色品质</color>后就可以开孔了，<color=#ffcc00>品质越高，开孔上限越高</color>。,"<color=#ffcc00>Blue</color> equipment or higher can have slots, and <color=#ffcc00>the higher the grade of the equipment, the higher the slot limit</color>."
 speech_xinshouxiangqian2,开孔后，就可以将形状对应的<color=#ffcc00>纹章镶嵌</color>进去了，纹章分为9种，给装备附加的属性各不相同。,"After opening a slot, you can <color=#ffcc00>attach the corresponding insignia</color>. There are 9 types of insignia, each boosting different stats for the equipment."
-speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，直到开到满意的形状为止~,"If you are not happy with the slots, you can re-open the slots until you are satisfied with the results."
+speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，直到开到满意的形状为止~自己试试吧~,"If you are not happy with the slots, you can re-open the slots until you are satisfied with the results.Let's give it a try!"
 speech_xinshouxiangqian4,每次开孔，开出孔的数量和形状都是随机的，运气不好的话，打开的孔也可能被重新锁上。。。自己试试吧~,"Each time you open slots, the amount and type of slots are randomized. If you are not having any luck with it, slots that have been opened can be re-locked. Let's give it a try!"
 speech_xinshoulock1,是否担心开到了心仪的孔在下次开孔时被换掉呢，<color=#ffcc00>锁孔功能</color>就可以帮到你啦！跟我看看锁孔吧~,Worried that the slots you are happy with will be changed the next time you open more? Try <color=#ffcc00>locking</color> them! Let me show you how!
 speech_xinshoulock2,在这里，可以将想保留形状的孔锁住。锁住孔后，每次开孔都会消耗一定量的<color=#ffcc00>钻石</color>来保证<color=#ffcc00>这个孔不变化</color>哦~,"Here you can save the types of slots you would like to keep. After locking a slot, opening other slots will consume a set amount of <color=#ffcc00>Diamonds</color> to ensure that <color=#ffcc00>the locked slots are not changed</color>."
@@ -863,9 +863,9 @@ speech_yincangruodian,注意到了吗？有些弱点的图标以<color=#ffcc00>�
 guide_0dazhao,<color=#ffcc00>大招</color>能量已满，<color=#ffcc00>点击</color>释放,"Power is full, <color=#ffcc00>tap</color> to cast <color=#ffcc00>ultimate ability</color>."
 guide_tips,查看形状,Notice the shape.
 guide_tips1,使用照妖镜<color=#ffcc00>查看怪物</color>,Use Mytho Lens to <color=#ffcc00>detect Monster</color>.
-guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>至
-怪物身上<color=#ffcc00>寻找弱点</color>","Drag and Hold the <color=#ffcc00>Mytho Lens</color> over the
-Monster to <color=#ffcc00>scan for weakpoint</color>. "
+guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>到她的
+<color=#ffcc00>头部</color>进行<color=#ffcc00>弱点鉴定</color>","Drag and Hold the <color=#ffcc00>Mytho Lens</color> over her
+<color=#ffcc00>head</color> to <color=#ffcc00>scan for weakpoint</color>. "
 guide_drag,拖动,Drag
 guide_hold,停留,Hold
 guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"Now, <color=#ffcc00>tap</color> the head once 
@@ -2213,9 +2213,13 @@ speech_xinyangzhilu2,闯关过程中，我方怪物的<color=#ffcc00>血量和�
 speech_xinyangzhilu3,当然，通关奖励是不会少的！除了<color=#ffcc00>基础奖励</color>外，还有<color=#ffcc00>概率获得神秘的宝箱奖励</color>哦！,"Of course, there will be great rewards upon clearing a stage! In addition to the <color=#ffcc00>basic rewards</color>, there will also be <color=#ffcc00>a chance of receiving mysterious treasure rewards</color>!"
 speech_xinyangzhilu4,还等什么！开启征战之旅吧！,What are you waiting for? Start your adventure now!
 guide_ruodian1,每个怪物都有<color=#ffcc00>弱点</color>,Every Monster's got a secret <color=#ffcc00>weakpoint</color>.
-guide_ruodian2,这是<color=#ffcc00>弱点</color>位置的<color=#ffcc00>线索</color>,Here's the <color=#ffcc00>Clue</color> of the <color=#ffcc00>weakpoint</color>.
+guide_ruodian2,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
+看起来她的<color=#ffcc00>头</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
+It appears to be her <color=#ffcc00>head</color>."
 guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it's her <color=#ffcc00>head</color>.
-guide_ruodian4,看起来<color=#ffcc00>花瓣</color>是弱点,Seems that it's the <color=#ffcc00>petal</color>.
+guide_ruodian4,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
+看起来<color=#ffcc00>花瓣</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
+It appears to be her <color=#ffcc00>petal</color>."
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.
 guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoints</color>?

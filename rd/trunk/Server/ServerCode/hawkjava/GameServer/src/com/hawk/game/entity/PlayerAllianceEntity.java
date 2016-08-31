@@ -1,6 +1,8 @@
 package com.hawk.game.entity;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -21,6 +23,34 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "player_alliance")
 public class PlayerAllianceEntity extends HawkDBEntity {
+	
+	/**
+	 * 奖励信息
+	 *
+	 */
+	public static class BaseMonsterInfo{
+		private int monsterId;
+		private int reward;
+		
+		public BaseMonsterInfo(int monsterId, int reward) {
+			super();
+			this.monsterId = monsterId;
+			this.reward = reward;
+		}
+		public int getMonsterId() {
+			return monsterId;
+		}
+		
+		public int getReward() {
+			return reward;
+		}
+
+		public void addReward(int reward) {
+			this.reward += reward;
+		}
+		
+	}
+	
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
 	@GeneratedValue(generator = "AUTO_INCREMENT")
@@ -38,6 +68,9 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	
 	@Column(name = "name")
 	private String name = null;
+	
+	@Column(name = "allianceBase")
+	private String allianceBase = null;
 
 	@Column(name = "level")
 	private int level = 0;
@@ -86,6 +119,9 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	
 	@Transient
 	protected Set<Integer> fatigueSet = new HashSet<Integer>();
+
+	@Transient
+	protected Map<Integer, BaseMonsterInfo> allianceBaseMap = new HashMap<Integer, BaseMonsterInfo>();
 	
 	public int getId() {
 		return id;
@@ -223,6 +259,27 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		this.refreshTime = refreshTime;
 	}
 	
+	public void addAllianceBase(int position, AllianceBaseEntity baseEntity){
+		BaseMonsterInfo rewardInfo = new BaseMonsterInfo(baseEntity.getMonsterBuilder().getMonsterId(), 0);
+		allianceBaseMap.put(position, rewardInfo);
+	}
+	
+	public void removeAllianceBase(int position){
+		allianceBaseMap.remove(position);
+	}
+	
+	public boolean isBasePositionHasMonster(int position){
+		return allianceBaseMap.containsKey(position);
+	}
+	
+	public BaseMonsterInfo getBaseMonsterInfo(int position){
+		return allianceBaseMap.get(position);
+	}
+	
+	public Map<Integer, BaseMonsterInfo> getBaseMonsterInfo(){
+		return allianceBaseMap;
+	}
+	
 	@Override
 	public int getCreateTime() {
 		return createTime;
@@ -267,6 +324,19 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 				fatigueSet.add(Integer.parseInt(element));
 			}
 		}
+		
+		allianceBaseMap.clear();
+		if (allianceBase != null && false == "".equals(allianceBase) && false == "null".equals(allianceBase)) {
+			String[] result = allianceBase.trim().split(" ");
+			for (String element : result) {
+				String[] monsterInfo = element.split(",");
+				if (monsterInfo.length == 3) {
+					BaseMonsterInfo rewardInfo = new BaseMonsterInfo(Integer.valueOf(monsterInfo[1]), Integer.valueOf(monsterInfo[2]));
+					allianceBaseMap.put(Integer.valueOf(monsterInfo[0]), rewardInfo);
+				}
+			}
+		}
+		
 		return true;
 	}
 	
@@ -277,6 +347,13 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 			fatigue += String.valueOf(element) + " ";
 		}
 		fatigue.trim();
+		
+		allianceBase = "";
+		for (Map.Entry<Integer, BaseMonsterInfo> entry : allianceBaseMap.entrySet()) {
+			allianceBase += entry.getKey() + "," + entry.getValue().getMonsterId() + "," + entry.getValue().getReward() + " ";
+		}
+		allianceBase.trim();
+		
 		return true;
 	}
 }

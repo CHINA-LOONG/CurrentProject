@@ -694,7 +694,7 @@ public class BattleUnitAi : MonoBehaviour {
 			}
 			else
 			{
-				//Debug.LogError("spellStyle = " + spellStyle  + "  " + subSpel.spellData.category + " attackStyle = " + attackStyle);
+				//Logger.LogError("spellStyle = " + spellStyle  + "  " + subSpel.spellData.category + " attackStyle = " + attackStyle);
 			}
 		}
 

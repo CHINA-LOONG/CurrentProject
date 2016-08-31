@@ -24,7 +24,7 @@ public class ActorParticleData : ICloneable
 {
     public float triggerTime;
     public string particleAsset;
-    public string particleBundle;
+    //public string particleBundle;
     public string particleAni;
     public string particleParent;
     public string locky;
@@ -40,7 +40,7 @@ public class ActorParticleData : ICloneable
         ActorParticleData pData = new ActorParticleData();
         pData.triggerTime = triggerTime;
         pData.particleAsset = particleAsset;
-        pData.particleBundle = particleBundle;
+        //pData.particleBundle = particleBundle;
         pData.particleAni = particleAni;
         pData.particleParent = particleParent;
         pData.locky = locky;
@@ -243,7 +243,7 @@ public class ActorEventService
                                     particleData.triggerTime = float.Parse(str);
                                 }
                                 particleData.particleAsset = particleNode.GetAttribute("asset");
-                                particleData.particleBundle = particleNode.GetAttribute("bundle");
+                                //particleData.particleBundle = particleNode.GetAttribute("bundle");
                                 particleData.particleAni = particleNode.GetAttribute("ani");
                                 particleData.particleParent = particleNode.GetAttribute("parent");
                                 particleData.locky = particleNode.GetAttribute("locky");
@@ -380,6 +380,28 @@ public class ActorEventService
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void AddResourceGroup(string groupName)
+    {
+        ResourceMgr resMgr = ResourceMgr.Instance;
+
+        ActorEventGroupData groupData;
+        if (actorEventGroupList.TryGetValue(groupName, out groupData) == true)
+        {
+            var eventItr = groupData.actorEventList.GetEnumerator();
+            while (eventItr.MoveNext())
+            {
+                ActorEventData curEventData = eventItr.Current.Value;
+                int particleCount = curEventData.actorParticleSequence.Count;
+
+                for (int i = 0; i < particleCount; ++i)
+                {
+                    if (string.IsNullOrEmpty(curEventData.actorParticleSequence[i].particleAsset) == false)
+                        resMgr.AddAssetRequest(new AssetRequest(curEventData.actorParticleSequence[i].particleAsset));
                 }
             }
         }

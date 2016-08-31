@@ -129,5 +129,5 @@ public class BattleConst
 
     public const float lifeBarDistance = 0.2f;
 
-    public static Quaternion rotYPIDegree = new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
+    public static Quaternion rotYPIDegree = Quaternion.identity;//new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
 }

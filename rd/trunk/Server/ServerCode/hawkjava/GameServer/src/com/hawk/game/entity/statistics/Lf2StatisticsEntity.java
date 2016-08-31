@@ -63,14 +63,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "callItemXTimes", nullable = false)
 	protected String callItemXTimesJson = "";
 
-	// 历史公会加入次数
-	@Column(name = "allianceJoinTimes", nullable = false)
-	protected int allianceJoinTimes = 0;
-
-	// 历史公会退出次数
-	@Column(name = "allianceLeaveTimes", nullable = false)
-	protected int allianceLeaveTimes = 0;
-
 	// 历史公会祈福次数
 	@Column(name = "alliancePrayTimes", nullable = false)
 	protected int alliancePrayTimes = 0;
@@ -102,10 +94,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	// 历史刷新商店次数
 	@Column(name = "shopRefreshTimes", nullable = false)
 	protected int shopRefreshTimes = 0;
-
-	// 今日刷新商店次数
-	@Column(name = "shopRefreshTimesDaily", nullable = false)
-	protected int shopRefreshTimesDaily = 0;
 
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)

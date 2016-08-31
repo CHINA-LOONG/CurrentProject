@@ -70,9 +70,9 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		targetPlayerAllianceEntity.setAllianceId(0);
 		targetPlayerAllianceEntity.setPreAllianceId(allianceEntity.getId());
 		targetPlayerAllianceEntity.notifyUpdate(true);
-		
-		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
-		allianceEntity.removeMember(request.getTargetId());
+
+		// 清理公会驻兵
+		allianceEntity.clearAllianceBase(request.getTargetId());
 		
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(request.getTargetId());
 		if (teamEntity != null) {
@@ -82,6 +82,9 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);	
 		}
 
+		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
+		allianceEntity.removeMember(request.getTargetId());
+		
 		// 离开公会频道
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), request.getTargetId());
 		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_KICK);

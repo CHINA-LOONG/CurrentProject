@@ -20,7 +20,7 @@ namespace Funplus {
 		}
 
 		public override void SetGameObject (string gameObjectName) {
-			Debug.Log ("Calling FunplusSdkStub.SetGameObject ().");
+			Logger.Log ("Calling FunplusSdkStub.SetGameObject ().");
 		}
 
 		public override bool IsSdkInstalled () {
@@ -40,23 +40,23 @@ namespace Funplus {
 		}
 		
 		public override void LogUserLogin (string uid) {
-			Debug.Log ("Calling FunplusSdkStub.LogUserLogin ().");
+			Logger.Log ("Calling FunplusSdkStub.LogUserLogin ().");
 		}
 		
 		public override void LogNewUser (string uid) {
-			Debug.Log ("Calling FunplusSdkStub.LogNewUser ().");
+			Logger.Log ("Calling FunplusSdkStub.LogNewUser ().");
 		}
 		
 		public override void LogUserLogout () {
-			Debug.Log ("Calling FunplusSdkStub.LogUserLogout ().");
+			Logger.Log ("Calling FunplusSdkStub.LogUserLogout ().");
 		}
 		
 		public override void LogUserInfoUpdate (string serverId, string userId, string userName, string userLevel, string userVipLevel, bool isPaidUser) {
-			Debug.Log ("Calling FunplusSdkStub.LogUserInfoUpdate ().");
+			Logger.Log ("Calling FunplusSdkStub.LogUserInfoUpdate ().");
 		}
 		
 		public override void LogPayment (string productId, string throughCargo, string purchaseData) {
-			Debug.Log ("Calling FunplusSdkStub.LogPayment ().");
+			Logger.Log ("Calling FunplusSdkStub.LogPayment ().");
 		}
 	}
 

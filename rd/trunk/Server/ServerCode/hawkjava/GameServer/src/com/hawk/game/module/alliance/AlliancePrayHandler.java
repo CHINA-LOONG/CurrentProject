@@ -13,6 +13,7 @@ import com.hawk.game.config.SociatyPrayCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
@@ -88,16 +89,18 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 					
 					AwardItems reward = new AwardItems();
 					reward.addContribution(prayCfg.getMemberReward());
-					
-					allianceEntity.addContribution(prayCfg.getAllianceReward());
-					allianceEntity.notifyUpdate(true);
-					
-					player.getPlayerData().getStatisticsEntity().increaseAlliancePrayTimesDaily();
-					player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
-					
+
 					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());
 					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());
-					
+
+					allianceEntity.addContribution(prayCfg.getAllianceReward());
+					allianceEntity.notifyUpdate(true);
+
+					StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+					statisticsEntity.increaseAlliancePrayTimes();
+					statisticsEntity.increaseAlliancePrayTimesDaily();
+					statisticsEntity.notifyUpdate(true);
+
 					HSAlliancePrayRet.Builder response = HSAlliancePrayRet.newBuilder();
 					response.setSelfContribution(playerAllianceEntity.getContribution());
 					response.setAllianceContribution(allianceEntity.getContribution());

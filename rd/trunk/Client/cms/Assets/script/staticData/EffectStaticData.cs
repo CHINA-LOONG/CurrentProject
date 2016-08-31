@@ -18,7 +18,7 @@ public class EffectStaticData
         int nRow = m_StaticTable.GetRowNumWithPrimaryKey("id", id);
         if (nRow < 0)
         {
-            Debug.LogError("Can't find effect = " + id);
+            Logger.LogError("Can't find effect = " + id);
             return null;
         }
 

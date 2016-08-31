@@ -161,6 +161,10 @@ public class GsConst {
 		public static final int ALLIANCE_DISSOLVE_TEAM = 118;
 		// 公会贡献值奖励
 		public static final int ALLIANCE_CONTRIBUTION_REWARD = 119;
+		// 公会驻兵
+		public static final int ALLIANCE_BASE_SEND = 120;
+		// 公会撤兵
+		public static final int ALLIANCE_BASE_RECALL = 121;
 
 		/**
 		 * 快照管理器消息定义
@@ -308,26 +312,27 @@ public class GsConst {
 	 * item 消耗检查内容
 	 */
 	public static class ConsumeCheckResult {
-		// 金币不足
 		public static final int COIN_NOT_ENOUGH = 1;
-		// 钻石不足
 		public static final int GOLD_NOT_ENOUGH = 2;
 		public static final int TOWER_COIN_NOT_ENOUGH = 3;
-		public static final int LEVEL_NOT_ENOUGH = 4;
-		public static final int EXP_NOT_ENOUGH = 5;
-		public static final int FATIGUE_NOT_ENOUGH = 6;
+		public static final int ARENA_COIN_NOT_ENOUGH = 4;
+		public static final int FATIGUE_NOT_ENOUGH = 5;
+		public static final int LEVEL_NOT_ENOUGH = 6;
+		public static final int EXP_NOT_ENOUGH = 7;
 		// 道具不足
-		public static final int TOOLS_NOT_ENOUGH = 7;
+		public static final int TOOLS_NOT_ENOUGH = 8;
 		// 装备不足
-		public static final int EQUIP_NOT_ENOUGH = 8;
+		public static final int EQUIP_NOT_ENOUGH = 9;
 		// 宠物不足
-		public static final int MONSTER_NOT_ENOUGH = 9;
+		public static final int MONSTER_NOT_ENOUGH = 10;
 		// 宠物锁定
-		public static final int MONSTER_LOCKED = 10;
+		public static final int MONSTER_LOCKED = 11;
 		// 未入公会
-		public static final int NOT_IN_ALLIANCE = 11;
+		public static final int NOT_IN_ALLIANCE = 12;
 		// 贡献值不足
-		public static final int CONTRIBUTION_NOT_ENOUGH = 12;
+		public static final int CONTRIBUTION_NOT_ENOUGH = 13;
+
+
 	}
 
 	/**
@@ -337,7 +342,9 @@ public class GsConst {
 		public static final int COIN_LIMIT = 1;
 		public static final int GOLD_LIMIT = 2;
 		public static final int TOWER_COIN_LIMIT = 3;
-		public static final int FATIGUE_LIMIT = 4;
+		public static final int ARENA_COIN_LIMIT = 4;
+		public static final int FATIGUE_LIMIT = 5;
+		public static final int CONTRIBUTION_LIMIT = 6;
 	}
 
 	// 循环性
@@ -397,21 +404,20 @@ public class GsConst {
 		public static final int CALL_PET_STAGE_TIMES = 33;
 		public static final int CALL_EQUIP_STAGE_TIMES = 34;
 		public static final int CALL_ITEM_TIMES = 35;
-		public static final int SOCIETY_JOIN_TIMES = 36;
-		public static final int SOCIETY_LEAVE_TIMES = 37;
-		public static final int SOCIETY_PRAY_TIMES = 38;
-		public static final int SOCIETY_BOSS_TIMES = 39;
-		public static final int SOCIETY_FATIGUE_TIMES = 40;
-		public static final int SHOP_REFRESH_TIMES = 41;
-		public static final int COIN_ARENA_COUNT = 42;
-		public static final int COIN_SOCIETY_COUNT = 43;
-		public static final int COIN_TOWER_COUNT = 44;
-		public static final int QUEST = 45;
-		public static final int QUEST_TYPE_COUNT = 46;
-		public static final int QUEST_CYCLE_COUNT = 47;
-		public static final int EQUIP_STAGE_COUNT = 48;
-		public static final int EQUIP_SLOT_TIMES = 49;
-		public static final int FREE_GOAL = 50;
+		public static final int SOCIETY_JOIN = 36;
+		public static final int SOCIETY_PRAY_TIMES = 37;
+		public static final int SOCIETY_BOSS_TIMES = 38;
+		public static final int SOCIETY_FATIGUE_TIMES = 39;
+		public static final int SHOP_REFRESH_TIMES = 40;
+		public static final int COIN_ARENA_COUNT = 41;
+		public static final int COIN_SOCIETY_COUNT = 42;
+		public static final int COIN_TOWER_COUNT = 43;
+		public static final int QUEST = 44;
+		public static final int QUEST_TYPE_COUNT = 45;
+		public static final int QUEST_CYCLE_COUNT = 46;
+		public static final int EQUIP_STAGE_COUNT = 47;
+		public static final int EQUIP_SLOT_TIMES = 48;
+		public static final int FREE_GOAL = 49;
 	}
 
 	// 副本难度
@@ -438,6 +444,11 @@ public class GsConst {
 		public static final int NOTICE_MAX_LENGTH = 300;
 		public static final int MAX_COPYMAIN_COUNT = 2;
 		public static final int SEND_FATIGUE_COUNT = 1;
+
+		public static final int SECOND_BASE_POSITION_CONTRIBUTION = 1000;
+		public static final int THIRD_BASE_POSITION_CONTRIBUTION = 2000;
+
+		public static final int BASE_MIN_TIME = 3600;
 
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";
@@ -466,6 +477,8 @@ public class GsConst {
 	}
 
 	public static class SysMail {
+		// 新手欢迎邮件
+		public static final int WELCOME = 100;
 		// 任命会长
 		public static final int ALLIANCE_OWNER = 101;
 		// 被赠送活力值

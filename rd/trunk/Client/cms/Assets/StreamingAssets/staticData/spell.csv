@@ -1,4 +1,4 @@
-﻿ee,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,TEXT,NUM,NUM,TEXT,TEXT,TEXT,TEXT
+﻿#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,TEXT,NUM,NUM,TEXT,TEXT,TEXT,TEXT
 id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust,icon,name,tips,baseTipValue,isAoe,firstSpell,tipsDescription,tipsCurlvl,tipsNextlvl
 #id,rootEffectID,????????,???????,energyCost,energyGenerate,category,levelAdjust,???,name,tips,1???tips??????,?ж???????,???ü???,tipsDescription,tipsCurlvl,tipsNextlvl
 lazy,,0,0,0,0,7,0,,,,0,0,,,,

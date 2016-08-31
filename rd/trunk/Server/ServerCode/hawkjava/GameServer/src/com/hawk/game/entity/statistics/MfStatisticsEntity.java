@@ -33,11 +33,11 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "playerId", unique = true)
 	protected int playerId = 0;
 
-	// 已完成任务
+	// 历史已完成的非周期任务
 	@Column(name = "questComplete", nullable = false)
 	protected String questCompleteJson = "";
 
-	// 每日已完成任务
+	// 今日已完成的每日任务
 	@Column(name = "questCompleteDaily", nullable = false)
 	protected String questCompleteDailyJson = "";
 
@@ -60,6 +60,7 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	// 历史竞技场次数
 	@Column(name = "arenaTimes", nullable = false)
 	protected int arenaTimes = 0;
+
 	// 今日竞技场次数
 	@Column(name = "arenaTimesDaily", nullable = false)
 	protected int arenaTimesDaily = 0;

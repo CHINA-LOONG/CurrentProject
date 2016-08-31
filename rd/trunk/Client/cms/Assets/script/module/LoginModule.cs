@@ -56,7 +56,7 @@ public class LoginModule : ModuleBase
         //yield return StartCoroutine(centerRequest);
         //if (centerRequest.Response == null || !centerRequest.Response.IsSuccess)
         //{
-        //    Debug.Log("连接中心服务器失败");
+        //    Logger.Log("连接中心服务器失败");
         //    yield break;
         //}
 
@@ -68,7 +68,7 @@ public class LoginModule : ModuleBase
         //Hashtable ht = MiniJsonExtensions.hashtableFromJson(accountServerAddress);
         //if (null == ht)
         //{
-        //   Debug.Log("账号服务器分配失败");
+        //   Logger.Log("账号服务器分配失败");
         //   yield break;
         //}
         //else
@@ -77,7 +77,7 @@ public class LoginModule : ModuleBase
         //   ip = ht["hostIp"].ToString();
         //}
 
-        //Debug.Log("连接中心服务器成功");
+        //Logger.Log("连接中心服务器成功");
 
         string path = Const.ServerUrl;//"http://" + "192.168.199.177:9101 " + "/fetch_gameServer";123.59.45.55
         HTTPRequest accountRequest = new HTTPRequest(new Uri(path), HTTPMethods.Post);
@@ -92,7 +92,7 @@ public class LoginModule : ModuleBase
         yield return StartCoroutine(accountRequest);
         if (accountRequest.Response == null || !accountRequest.Response.IsSuccess)
         {
-            Debug.Log("连接账号服务器失败");
+            Logger.Log("连接账号服务器失败");
             yield break;
         }
         string gameServerAddress = accountRequest.Response.DataAsText;
@@ -100,7 +100,7 @@ public class LoginModule : ModuleBase
         Hashtable jsonObjects = MiniJSON.jsonDecode(gameServerAddress) as Hashtable;
         if (null == jsonObjects)
         {
-            Debug.Log("游戏服务器获取失败");
+            Logger.Log("游戏服务器获取失败");
             yield break;
         }
 
@@ -143,7 +143,7 @@ public class LoginModule : ModuleBase
             }
             serverDictionary.Add(areaInfo["name"].ToString(), serverList);
         }
-        Debug.Log("连接账号服务器成功");
+        Logger.Log("连接账号服务器成功");
         UIServer uiSelectServer = UIMgr.Instance.OpenUI_(UIServer.ViewName) as UIServer;
         if (uiSelectServer != null)
         {
@@ -161,7 +161,7 @@ public class LoginModule : ModuleBase
     {
         if (1 == state)
         {
-            Debug.LogWarning("OK for net");
+            Logger.LogWarning("OK for net");
             
             if (string.IsNullOrEmpty(PlayerPrefs.GetString("testGuid")) == false)
             {
@@ -173,12 +173,12 @@ public class LoginModule : ModuleBase
             }
             else
             {
-                Debug.Log("username cant't be empty");
+                Logger.Log("username cant't be empty");
             }
         }
         else
         {
-            Debug.LogError("Error for Net");
+            Logger.LogError("Error for Net");
         }
     }
 

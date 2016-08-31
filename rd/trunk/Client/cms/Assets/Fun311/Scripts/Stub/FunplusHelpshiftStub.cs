@@ -21,11 +21,11 @@ namespace Funplus {
 		}
 
 		public override void ShowConversation () {
-			Debug.Log ("Calling FunplusHelpshiftStub.ShowConversation ().");
+			Logger.Log ("Calling FunplusHelpshiftStub.ShowConversation ().");
 		}
 
 		public override void ShowFAQs () {
-			Debug.Log ("Calling FunplusHelpshiftStub.ShowFAQs ().");
+			Logger.Log ("Calling FunplusHelpshiftStub.ShowFAQs ().");
 		}
 
 	}

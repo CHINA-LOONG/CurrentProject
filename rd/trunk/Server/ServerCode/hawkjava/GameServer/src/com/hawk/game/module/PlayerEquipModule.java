@@ -1,5 +1,7 @@
 package com.hawk.game.module;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.hawk.config.HawkConfigManager;
@@ -11,6 +13,7 @@ import com.hawk.game.config.EquipForgeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.GemInfo;
@@ -278,7 +281,7 @@ public class PlayerEquipModule extends PlayerModule{
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
-	
+
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE, hsCode);
 		if (EquipForgeCfg.getSuccessRate(equipEntity.getStage() + 1, 0) >= HawkRand.randFloat(0, 1)) {
 			equipEntity.setLevel(0);
@@ -286,16 +289,21 @@ public class PlayerEquipModule extends PlayerModule{
 			equipEntity.notifyUpdate(true);
 		}
 
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseUpEquipTimes();
+		statisticsEntity.increaseUpEquipTimesDaily();
+		statisticsEntity.notifyUpdate(true);
+
 		HSEquipIncreaseStageRet.Builder response = HSEquipIncreaseStageRet.newBuilder();
 		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
-		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));	
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));
 		
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_ADVANCE,
 				Params.valueOf("equipId", equipEntity.getItemId()),
 				Params.valueOf("Id", equipEntity.getId()),
-				Params.valueOf("after", equipEntity.getStage()));		
+				Params.valueOf("after", equipEntity.getStage()));
 	}
 	
 	/*
@@ -375,20 +383,28 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		if (!protocol.getNewGem().equals("") && !protocol.getOldGem().equals("")) {
 			equipEntity.replaceGem(protocol.getSlot(), protocol.getOldGem(), protocol.getNewGem());
+
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			statisticsEntity.increaseInlayAllTimes();
+			statisticsEntity.increaseInlayTypeTimes(protocol.getType());
+			statisticsEntity.notifyUpdate(true);
 		}
-		else if(!protocol.getNewGem().equals(""))
-		{
+		else if(!protocol.getNewGem().equals("")) {
 			equipEntity.addGem(protocol.getSlot(), protocol.getType(), protocol.getNewGem());
+
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			statisticsEntity.increaseInlayAllTimes();
+			statisticsEntity.increaseInlayTypeTimes(protocol.getType());
+			statisticsEntity.notifyUpdate(true);
 		}
-		else
-		{
+		else {
 			equipEntity.removeGem(protocol.getSlot(), protocol.getOldGem());
-		}	
-		
+		}
+
 		equipEntity.notifyUpdate(true);
 		award.rewardTakeAffectAndPush(player, Action.EQUIP_GEM, hsCode);
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_GEM, hsCode);
-		
+
 		HSEquipGemRet.Builder response = HSEquipGemRet.newBuilder();
 		for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
 			GemPunch.Builder gemPunch = GemPunch.newBuilder();
@@ -454,17 +470,23 @@ public class PlayerEquipModule extends PlayerModule{
 				gemInfo.setGemItemId(GsConst.EQUIP_GEM_NONE);
 				response.addGemItems(gemInfo);
 			}
-		} 
+		}
 		catch (HawkException e) {
 			HawkException.catchException(e);
 			return;
 		}
 		
-		equipEntity.notifyUpdate(true);		
+		equipEntity.notifyUpdate(true);
 		if (rewardItems != null) {
 			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
 		}
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseEquipPunchTimes();
+		statisticsEntity.increaseEquipPunchTimesDaily();
+		statisticsEntity.notifyUpdate(true);
+
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_PUNCH_S_VALUE, response));
 
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_PUNCH,
@@ -509,7 +531,32 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		equipEntity.setMonsterId(monsterId);
 		equipEntity.notifyUpdate(true);
-		
+
+		// 当前身上装备，从1~equipEntity.stage，达到每个品级的装备数量
+		// 与statistics比较，如果更大，则更新
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		Map<Integer, Long> monsterEquipMap = player.getPlayerData().getMonsterEquips(monsterId);
+		int stage = equipEntity.getStage();
+		int[] countOverStageList = new int[stage + 1];
+
+		for (Map.Entry<Integer, Long> entry : monsterEquipMap.entrySet()) {
+			EquipEntity monsterEquip = player.getPlayerData().getEquipById(entry.getValue());
+			for (int i = 1; i <= stage; ++i) {
+				if (monsterEquip.getStage() >= i) {
+					countOverStageList[i] += 1;
+				}
+			}
+		}
+		for (int i = 1; i <= stage; ++i) {
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStage(i)) {
+				statisticsEntity.setEquipMaxCountOverStage(i, countOverStageList[i]);
+			}
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStageDaily(i)) {
+				statisticsEntity.setEquipMaxCountOverStageDaily(i, countOverStageList[i]);
+			}
+		}
+		statisticsEntity.notifyUpdate(true);
+
 		HSEquipMonsterDressRet.Builder response = HSEquipMonsterDressRet.newBuilder();
 		response.setId(id);
 		response.setMonsterId(monsterId);
@@ -610,7 +657,32 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		oldEntity.setMonsterId(GsConst.EQUIP_NOT_DRESS);
 		oldEntity.notifyUpdate(true);
-		
+
+		// 当前身上装备，从1~equipEntity.stage，达到每个品级的装备数量
+		// 与statistics比较，如果更大，则更新
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		Map<Integer, Long> monsterEquipMap = player.getPlayerData().getMonsterEquips(monsterId);
+		int stage = newEntity.getStage();
+		int[] countOverStageList = new int[stage + 1];
+
+		for (Map.Entry<Integer, Long> entry : monsterEquipMap.entrySet()) {
+			EquipEntity monsterEquip = player.getPlayerData().getEquipById(entry.getValue());
+			for (int i = 1; i <= stage; ++i) {
+				if (monsterEquip.getStage() >= i) {
+					countOverStageList[i] += 1;
+				}
+			}
+		}
+		for (int i = 1; i <= stage; ++i) {
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStage(i)) {
+				statisticsEntity.setEquipMaxCountOverStage(i, countOverStageList[i]);
+			}
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStageDaily(i)) {
+				statisticsEntity.setEquipMaxCountOverStageDaily(i, countOverStageList[i]);
+			}
+		}
+		statisticsEntity.notifyUpdate(true);
+
 		HSEquipMonsterReplaceRet.Builder response = HSEquipMonsterReplaceRet.newBuilder();
 		response.setId(id);
 		response.setMonsterId(monsterId);

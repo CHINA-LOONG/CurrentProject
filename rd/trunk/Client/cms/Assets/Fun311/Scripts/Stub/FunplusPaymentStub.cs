@@ -21,7 +21,7 @@ namespace Funplus {
 		}
 		
 		public override void SetGameObject (string gameObjectName) {
-			Debug.Log ("Calling FunplusPaymentStub.SetGameObject ().");
+			Logger.Log ("Calling FunplusPaymentStub.SetGameObject ().");
 		}
 		
 		public override bool CanMakePurchases () {

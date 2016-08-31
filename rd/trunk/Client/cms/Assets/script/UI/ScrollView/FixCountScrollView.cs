@@ -92,7 +92,7 @@ public class FixCountScrollView : MonoBehaviour
             (m_ScrollRect.vertical && m_Grid.constraint != GridLayoutGroup.Constraint.FixedColumnCount) ||
             (m_ScrollRect.horizontal && m_Grid.constraint != GridLayoutGroup.Constraint.FixedRowCount))
         {
-            Debug.LogError("不能设置为纵横向都可以滑动,请检查ScrollRect和GridLayout配置");
+            Logger.LogError("不能设置为纵横向都可以滑动,请检查ScrollRect和GridLayout配置");
             this.enabled = false;
             return;
         }
@@ -194,7 +194,7 @@ public class FixCountScrollView : MonoBehaviour
             m_Content.anchorMin = new Vector2(0.5f, 0.5f);
             m_Content.anchorMax = new Vector2(0.5f, 0.5f);
             m_Content.pivot = new Vector2(0, 1);
-            //Debug.Log(m_ScrollView.rect);
+            //Logger.Log(m_ScrollView.rect);
             m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
 
             //四角坐标  横着数  矩形区域
@@ -224,7 +224,7 @@ public class FixCountScrollView : MonoBehaviour
         switch (m_Grid.constraint)
         {
             case GridLayoutGroup.Constraint.Flexible:
-                Debug.LogError("你不能这样做");
+                Logger.LogError("你不能这样做");
                 break;
             case GridLayoutGroup.Constraint.FixedColumnCount:
                 childCont = ((int)Mathf.Ceil((m_ScrollView.rect.size.y - m_Grid.padding.top - m_Grid.padding.bottom + m_Grid.spacing.y) / (m_Grid.cellSize.y + m_Grid.spacing.y)) + 2) * m_Grid.constraintCount;

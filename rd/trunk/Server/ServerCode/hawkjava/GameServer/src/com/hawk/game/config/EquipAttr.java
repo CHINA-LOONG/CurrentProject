@@ -17,7 +17,15 @@ public class EquipAttr extends HawkConfigBase{
 
 	private static Map<String, Map<Integer, EquipStageItem>> equipList = new HashMap<String, Map<Integer, EquipStageItem>>();
 
-	private static class EquipStageItem{
+	private static class EquipStageItem{		
+		/**
+		 * levelAttrId
+		 */
+		private String levelAttrId;
+		/**
+		 * 品级属性索引
+		 */
+		private String stageAttrId;
 		/** 
   		 * 随机属性强化列表
 		 */
@@ -47,10 +55,20 @@ public class EquipAttr extends HawkConfigBase{
 				}
 			}	
 			
+			this.stageAttrId = stageAttrId;
+			this.levelAttrId = levelAttrId;
 			this.rollCount = rollCount;		
 			return true;
 		}
 		
+		public String getLevelAttrId() {
+			return levelAttrId;
+		}
+		
+		public String getStageAttrId() {
+			return stageAttrId;
+		}
+
 		/**
 		 * roll指定次数的附加属性 0代码空roll
 		 */
@@ -167,6 +185,50 @@ public class EquipAttr extends HawkConfigBase{
 		return stageItem.rondomAddiAttr();
 	}
 
+	/**
+	 * 品级属性索引
+	 */
+	public static String getStageAttrId(String equip, int stage){
+
+		Map<Integer, EquipStageItem> equipStage = equipList.get(equip);
+		if(equipStage == null)
+		{
+			HawkLog.errPrintln("invalid equip id:" + equip);
+			return null;
+		}
+		
+		EquipStageItem stageItem = equipStage.get(stage);
+		if(stageItem == null)
+		{
+			HawkLog.errPrintln("invalid stage id: " + stage);
+			return null;
+		}
+		
+		return stageItem.getStageAttrId();
+	}
+	
+	/**
+	 * 级别属性索引
+	 */
+	public static String getLevelAttrId(String equip, int stage){
+
+		Map<Integer, EquipStageItem> equipStage = equipList.get(equip);
+		if(equipStage == null)
+		{
+			HawkLog.errPrintln("invalid equip id:" + equip);
+			return null;
+		}
+		
+		EquipStageItem stageItem = equipStage.get(stage);
+		if(stageItem == null)
+		{
+			HawkLog.errPrintln("invalid stage id: " + stage);
+			return null;
+		}
+		
+		return stageItem.getLevelAttrId();
+	}
+	
 	/**
 	 * 获取装备列表
 	 */

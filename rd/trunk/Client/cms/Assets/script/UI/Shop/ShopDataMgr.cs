@@ -200,7 +200,7 @@ public class ShopDataMgr : MonoBehaviour
 				//MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
 				ZuanshiNoEnough();
 			}
-            else if (error.errCode == (int)PB.PlayerError.COINS_NOT_ENOUGH)
+            else if (error.errCode == (int)PB.PlayerError.COIN_NOT_ENOUGH)
 			{
 				JinbiNoEnough();
 			}

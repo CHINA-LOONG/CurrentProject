@@ -23,7 +23,7 @@ namespace Funplus {
 		}
 
 		public override void SetGameObject (string gameObjectName) {
-			Debug.Log ("Calling FunplusAccountStub.SetGameObject ().");
+			Logger.Log ("Calling FunplusAccountStub.SetGameObject ().");
 		}
 		
 		public override bool IsUserLoggedIn () {
@@ -53,7 +53,7 @@ namespace Funplus {
 		}
 		
 		public override void ShowUserCenter () {
-			Debug.Log ("Calling FunplusAccountStub.ShowUserCenter().");
+			Logger.Log ("Calling FunplusAccountStub.ShowUserCenter().");
 		}
 		
 		public override void BindAccount () {

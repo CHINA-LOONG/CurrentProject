@@ -627,6 +627,30 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_REWARD_S", Value=9082)]
       ALLIANCE_INSTANCE_REWARD_S = 9082,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_SEND_C", Value=9083)]
+      ALLIANCE_BASE_SEND_C = 9083,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_SEND_S", Value=9084)]
+      ALLIANCE_BASE_SEND_S = 9084,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_RECALL_C", Value=9085)]
+      ALLIANCE_BASE_RECALL_C = 9085,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_RECALL_S", Value=9086)]
+      ALLIANCE_BASE_RECALL_S = 9086,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MY_BASE_LIST_C", Value=9087)]
+      ALLIANCE_MY_BASE_LIST_C = 9087,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MY_BASE_LIST_S", Value=9088)]
+      ALLIANCE_MY_BASE_LIST_S = 9088,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_LIST_C", Value=9089)]
+      ALLIANCE_BASE_LIST_C = 9089,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_LIST_S", Value=9090)]
+      ALLIANCE_BASE_LIST_S = 9090,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,
             

@@ -90,11 +90,11 @@ public class NetworkManager : MonoBehaviour
     {
         if (1 == state)
         {
-            Debug.LogWarning("OK for net");
+            Logger.LogWarning("OK for net");
         }
         else
         {
-            Debug.LogError("Error for Net");
+            Logger.LogError("Error for Net");
         }
     }
 

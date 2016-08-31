@@ -44,13 +44,13 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 		HSAllianceTaskCommit request = protocol.parseProtocol(HSAllianceTaskCommit.getDefaultInstance());
 		
 		if(player.getAllianceId() == 0){
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_IN_TEAM_VALUE);
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
 			return true;
 		}
 		
 		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
 		if (allianceEntity == null) {
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
 			return true;
 		}
 		

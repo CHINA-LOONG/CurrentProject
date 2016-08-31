@@ -34,10 +34,10 @@ hardTimes
 // 今日精英副本完成次数
 hardTimesDaily
 
-// 已完成任务
+// 历史已完成的非周期任务
 questComplete
 
-// 每日已完成任务
+// 今日已完成的每日任务
 questCompleteDaily
 
 // 技能点
@@ -148,11 +148,11 @@ useDiamondCount
 // 今日使用钻石数量
 useDiamondCountDaily
 
-// 历史携带过品级X装备数量
-equipStageXCount
+// 历史同时穿过达到品级X装备数量
+equipStageXMaxCount
 
-// 今日携带过品级X装备数量
-equipStageXCountDaily
+// 今日同时穿过达到品级X装备数量
+equipStageXMaxCountDaily
 
 // 历史打孔次数
 equipPunchTimes
@@ -196,12 +196,6 @@ callEquipStageXTimes
 // 历史抽到物品X次数
 callItemXTimes
 
-// 历史公会加入次数
-allianceJoinTimes
-
-// 历史公会退出次数
-allianceLeaveTimes
-
 // 历史公会祈福次数
 alliancePrayTimes
 
@@ -225,9 +219,6 @@ allianceContriRewardDaily
 
 // 历史刷新商店次数
 shopRefreshTimes
-
-// 今日刷新商店次数
-shopRefreshTimesDaily
 
 // 商品充值次数记录
 rechargeRecord

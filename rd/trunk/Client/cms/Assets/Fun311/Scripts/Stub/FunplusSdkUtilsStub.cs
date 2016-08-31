@@ -21,12 +21,12 @@ namespace Funplus {
 		}
 		
 		public override string GetTotalMemory () {
-			Debug.Log ("Calling FunplusSdkUtilsStub.GetTotalMemory ().");
+			Logger.Log ("Calling FunplusSdkUtilsStub.GetTotalMemory ().");
 			return "100";
 		}
 		
 		public override string GetAvailableMemory () {
-			Debug.Log ("Calling FunplusSdkUtilsStub.GetAvailableMemory ().");
+			Logger.Log ("Calling FunplusSdkUtilsStub.GetAvailableMemory ().");
 			return "60";
 		}
 

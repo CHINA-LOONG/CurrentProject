@@ -360,11 +360,19 @@ public class StatisticsEntity {
 	// MF method=========================================================================
 
 	// questComplete-------------------------------------------
+	public boolean isQuestComplete(int questId) {
+		return mfEntity.questCompleteSet.contains(questId);
+	}
+
 	public Set<Integer> getQuestCompleteSet() {
 		return mfEntity.questCompleteSet;
 	}
 
-	public Set<Integer> getQuestCompleteDailySet() {
+	public boolean isQuestDailyComplete(int questId) {
+		return mfEntity.questCompleteDailySet.contains(questId);
+	}
+
+	public Set<Integer> getQuestDailyCompleteSet() {
 		return mfEntity.questCompleteDailySet;
 	}
 
@@ -384,7 +392,7 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	public void clearQuestCompleteDaily() {
+	public void clearQuestDailyComplete() {
 		mfEntity.questCompleteDailySet.clear();
 		mfEntity.questCompleteDailyFlag = true;
 		mfUpdate = true;
@@ -433,9 +441,9 @@ public class StatisticsEntity {
 	}
 
 	// monsterCount--------------------------------------------
-	public List<Integer> getMonsterCountOverStageList() {
-		return mfEntity.monsterStageCountList;
-	}
+//	public List<Integer> getMonsterCountOverStageList() {
+//		return mfEntity.monsterStageCountList;
+//	}
 
 	public int getMonsterCountOverStage(int stage) {
 		// 从0开始
@@ -457,9 +465,9 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	public List<Integer> getMonsterCountOverLeveList() {
-		return mfEntity.monsterLevelCountList;
-	}
+//	public List<Integer> getMonsterCountOverLeveList() {
+//		return mfEntity.monsterLevelCountList;
+//	}
 
 	public int getMonsterCountOverLevel(int level) {
 		// 从1开始
@@ -506,9 +514,9 @@ public class StatisticsEntity {
 	}
 
 	// holeTimes-----------------------------------------------
-	public Map<Integer, Integer> getHoleTimesMap() {
-		return mfEntity.holeTimesMap;
-	}
+//	public Map<Integer, Integer> getHoleTimesMap() {
+//		return mfEntity.holeTimesMap;
+//	}
 
 	/**
 	 * @return 洞完成次数，如未完成返回0
@@ -537,9 +545,9 @@ public class StatisticsEntity {
 //		mfUpdate = true;
 //	}
 
-	public Map<Integer, Integer> getHoleTimesDailyMap() {
-		return mfEntity.holeTimesDailyMap;
-	}
+//	public Map<Integer, Integer> getHoleTimesDailyMap() {
+//		return mfEntity.holeTimesDailyMap;
+//	}
 
 	/**
 	 * @return 每日洞完成次数，如未完成返回0
@@ -685,9 +693,9 @@ public class StatisticsEntity {
 	}
 
 	// useItemCount--------------------------------------------
-	public Map<String, Integer> getUseItemCountMap() {
-		return mfEntity.useItemCountMap;
-	}
+//	public Map<String, Integer> getUseItemCountMap() {
+//		return mfEntity.useItemCountMap;
+//	}
 
 	/**
 	 * @return 物品使用次数，如未使用返回0
@@ -710,11 +718,11 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	public void setUseItemCount(String itemCfgId, int count) {
-		mfEntity.useItemCountMap.put(itemCfgId, count);
-		mfEntity.useItemCountFlag = true;
-		mfUpdate = true;
-	}
+//	public void setUseItemCount(String itemCfgId, int count) {
+//		mfEntity.useItemCountMap.put(itemCfgId, count);
+//		mfEntity.useItemCountFlag = true;
+//		mfUpdate = true;
+//	}
 
 	public Map<String, Integer> getUseItemCountDailyMap() {
 		return mfEntity.useItemCountDailyMap;
@@ -741,11 +749,11 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	public void setUseItemCountDaily(String itemCfgId, int count) {
-		mfEntity.useItemCountDailyMap.put(itemCfgId, count);
-		mfEntity.useItemCountDailyFlag = true;
-		mfUpdate = true;
-	}
+//	public void setUseItemCountDaily(String itemCfgId, int count) {
+//		mfEntity.useItemCountDailyMap.put(itemCfgId, count);
+//		mfEntity.useItemCountDailyFlag = true;
+//		mfUpdate = true;
+//	}
 
 	public void clearUseItemCountDaily() {
 		mfEntity.useItemCountDailyMap.clear();
@@ -812,12 +820,12 @@ public class StatisticsEntity {
 	}
 
 	// buyItemTimes--------------------------------------------
-	public Map<String, Integer> getBuyItemTimesMap() {
-		return mfEntity.buyItemTimesMap;
-	}
+//	public Map<String, Integer> getBuyItemTimesMap() {
+//		return mfEntity.buyItemTimesMap;
+//	}
 
 	/**
-	 * @return 物品使用次数，如未使用返回0
+	 * @return 物品购买次数，如未购买返回0
 	 */
 	public int getBuyItemTimes(String itemCfgId) {
 		Integer times = mfEntity.buyItemTimesMap.get(itemCfgId);
@@ -851,9 +859,9 @@ public class StatisticsEntity {
 	}
 
 	// monsterMixTimes-----------------------------------------
-	public Map<String, Integer> getMonsterMixTimesMap() {
-		return lfEntity.monsterMixTimesMap;
-	}
+//	public Map<String, Integer> getMonsterMixTimesMap() {
+//		return lfEntity.monsterMixTimesMap;
+//	}
 
 	/**
 	 * @return 怪物合成次数，如未合成返回0
@@ -876,11 +884,11 @@ public class StatisticsEntity {
 		lfUpdate = true;
 	}
 
-	public void setMonsterMixTimes(String monsterCfgId, int times) {
-		lfEntity.monsterMixTimesMap.put(monsterCfgId, times);
-		lfEntity.monsterMixTimesFlag = true;
-		lfUpdate = true;
-	}
+//	public void setMonsterMixTimes(String monsterCfgId, int times) {
+//		lfEntity.monsterMixTimesMap.put(monsterCfgId, times);
+//		lfEntity.monsterMixTimesFlag = true;
+//		lfUpdate = true;
+//	}
 
 	// instanceResetTimes--------------------------------------
 	public int getInstanceResetTimesDaily() {
@@ -971,6 +979,7 @@ public class StatisticsEntity {
 	}
 
 	// buyGift-------------------------------------------------
+	// TODO 大礼包功能未开发，开发后统计数据
 	public int getBuyGiftTimes() {
 		return lfEntity.buyGiftTimes;
 	}
@@ -999,8 +1008,8 @@ public class StatisticsEntity {
 		return lfEntity.payDiamondCount;
 	}
 
-	public void increasePayDiamondCount() {
-		++lfEntity.payDiamondCount;
+	public void increasePayDiamondCount(int count) {
+		lfEntity.payDiamondCount += count;
 		lfUpdate = true;
 	}
 
@@ -1008,8 +1017,8 @@ public class StatisticsEntity {
 		return lfEntity.payDiamondCountDaily;
 	}
 
-	public void increasePayDiamondCountDaily() {
-		++lfEntity.payDiamondCountDaily;
+	public void increasePayDiamondCountDaily(int count) {
+		lfEntity.payDiamondCountDaily += count;
 		lfUpdate = true;
 	}
 
@@ -1043,56 +1052,56 @@ public class StatisticsEntity {
 	}
 
 	// equipStageCount-----------------------------------------
-	public List<Integer> getEquipStageCountList() {
-		return lfEntity.equipStageCountList;
-	}
+//	public List<Integer> getEquipMaxCountOverStageList() {
+//		return lfEntity.equipStageCountList;
+//	}
 
-	public int getEquipStageCount(int stage) {
+	public int getEquipMaxCountOverStage(int stage) {
 		// 从1开始
 		int index = stage - 1;
-		if (index >= lfEntity.equipStageCountList.size()) {
+		if (index >= lfEntity.equipStageMaxCountList.size()) {
 			return 0;
 		}
-		return lfEntity.equipStageCountList.get(index);
+		return lfEntity.equipStageMaxCountList.get(index);
 	}
 
-	public void increaseEquipStageCount(int stage) {
+	public void setEquipMaxCountOverStage(int stage, int count) {
 		// 从1开始
 		int index = stage - 1;
-		for (int i = lfEntity.equipStageCountList.size(); i <= index; ++i) {
-			lfEntity.equipStageCountList.add(0);
+		for (int i = lfEntity.equipStageMaxCountList.size(); i <= index; ++i) {
+			lfEntity.equipStageMaxCountList.add(0);
 		}
-		lfEntity.equipStageCountList.set(index, lfEntity.equipStageCountList.get(index) + 1);
+		lfEntity.equipStageMaxCountList.set(index, count);
 		lfEntity.equipStageCountFlag = true;
 		lfUpdate = true;
 	}
 
-	public List<Integer> getEquipStageCountDailyList() {
-		return lfEntity.equipStageCountDailyList;
-	}
+//	public List<Integer> getEquipMaxCountOverStageDailyList() {
+//		return lfEntity.equipStageCountDailyList;
+//	}
 
-	public int getEquipStageCountDaily(int stage) {
+	public int getEquipMaxCountOverStageDaily(int stage) {
 		// 从1开始
 		int index = stage - 1;
-		if (index >= lfEntity.equipStageCountDailyList.size()) {
+		if (index >= lfEntity.equipStageMaxCountDailyList.size()) {
 			return 0;
 		}
-		return lfEntity.equipStageCountDailyList.get(index);
+		return lfEntity.equipStageMaxCountDailyList.get(index);
 	}
 
-	public void increaseEquipStageCountDaily(int stage) {
+	public void setEquipMaxCountOverStageDaily(int stage, int count) {
 		// 从1开始
 		int index = stage - 1;
-		for (int i = lfEntity.equipStageCountDailyList.size(); i <= index; ++i) {
-			lfEntity.equipStageCountDailyList.add(0);
+		for (int i = lfEntity.equipStageMaxCountDailyList.size(); i <= index; ++i) {
+			lfEntity.equipStageMaxCountDailyList.add(0);
 		}
-		lfEntity.equipStageCountDailyList.set(index, lfEntity.equipStageCountDailyList.get(index) + 1);
+		lfEntity.equipStageMaxCountDailyList.set(index, count);
 		lfEntity.equipStageCountDailyFlag = true;
 		lfUpdate = true;
 	}
 
-	public void clearEquipStageCountDaily() {
-		lfEntity.equipStageCountDailyList.clear();
+	public void clearEquipStageMaxCountDaily() {
+		lfEntity.equipStageMaxCountDailyList.clear();
 		lfEntity.equipStageCountDailyFlag = true;
 		lfUpdate = true;
 	}
@@ -1131,9 +1140,9 @@ public class StatisticsEntity {
 		lfUpdate = true;
 	}
 
-	public List<Integer> getInlayTypeTimesList() {
-		return lfEntity.inlayTypeTimesList;
-	}
+//	public List<Integer> getInlayTypeTimesList() {
+//		return lfEntity.inlayTypeTimesList;
+//	}
 
 	public int getInlayTypeTimes(int type) {
 		// 从1开始
@@ -1179,9 +1188,9 @@ public class StatisticsEntity {
 		lfUpdate = true;
 	}
 
-	public List<Integer> getSynTypeTimesList() {
-		return lfEntity.synTypeTimesList;
-	}
+//	public List<Integer> getSynTypeTimesList() {
+//		return lfEntity.synTypeTimesList;
+//	}
 
 	public int getSynTypeTimes(int type) {
 		// 从1开始
@@ -1217,6 +1226,7 @@ public class StatisticsEntity {
 	}
 
 	// eggTimes------------------------------------------------
+	// TODO 抽蛋功能未开发，开发后统计数据
 	public int getEggCoinTimes() {
 		return lf2Entity.eggCoinTimes;
 	}
@@ -1250,6 +1260,7 @@ public class StatisticsEntity {
 	}
 
 	// callMonsterTimes----------------------------------------
+	// TODO 抽蛋功能未开发，开发后统计数据
 	public List<Integer> getCallMonsterStageTimesList() {
 		return lf2Entity.callMonsterStageTimesList;
 	}
@@ -1275,6 +1286,7 @@ public class StatisticsEntity {
 	}
 
 	// callEquipTimes------------------------------------------
+	// TODO 抽蛋功能未开发，开发后统计数据
 	public List<Integer> getCallEquipStageTimesList() {
 		return lf2Entity.callEquipStageTimesList;
 	}
@@ -1300,6 +1312,7 @@ public class StatisticsEntity {
 	}
 
 	// callItemTimes-------------------------------------------
+	// TODO 抽蛋功能未开发，开发后统计数据
 	public Map<String, Integer> getCallItemTimesMap() {
 		return lf2Entity.callItemTimesMap;
 	}
@@ -1332,24 +1345,6 @@ public class StatisticsEntity {
 	}
 
 	// alliance------------------------------------------------
-	public int getAllianceJoinTimes() {
-		return lf2Entity.allianceJoinTimes;
-	}
-
-	public void increaseAllianceJoinTimes() {
-		++lf2Entity.allianceJoinTimes;
-		lf2Update = true;
-	}
-
-	public int getAllianceLeaveTimes() {
-		return lf2Entity.allianceLeaveTimes;
-	}
-
-	public void increaseAllianceLeaveTimes() {
-		++lf2Entity.allianceLeaveTimes;
-		lf2Update = true;
-	}
-
 	public int getAlliancePrayTimes() {
 		return lf2Entity.alliancePrayTimes;
 	}
@@ -1373,6 +1368,7 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
+	// TODO 公会boss功能未开发，开发后统计数据
 	public int getAllianceBossTimes() {
 		return lf2Entity.allianceBossTimes;
 	}
@@ -1441,20 +1437,6 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
-	/**
-	 * 辅助函数
-	 */
-	public boolean isAllianceContriRewardDaily(int index) {
-		if (index == 0) {
-			return (index & 1) != 0;
-		} else if (index == 1) {
-			return (index & 2) != 0;
-		} else if (index == 2) {
-			return (index & 4) != 0;
-		}
-		return false;
-	}
-
 	// shopRefresh---------------------------------------------
 	public int getShopRefreshTimes() {
 		return lf2Entity.shopRefreshTimes;
@@ -1462,20 +1444,6 @@ public class StatisticsEntity {
 
 	public void increaseShopRefreshTimes() {
 		++lf2Entity.shopRefreshTimes;
-		lf2Update = true;
-	}
-
-	public int getShopRefreshTimesDaily() {
-		return lf2Entity.shopRefreshTimesDaily;
-	}
-
-	public void increaseShopRefreshTimesDaily() {
-		++lf2Entity.shopRefreshTimesDaily;
-		lf2Update = true;
-	}
-
-	public void clearShopRefreshTimesDaily() {
-		lf2Entity.shopRefreshTimesDaily = 0;
 		lf2Update = true;
 	}
 

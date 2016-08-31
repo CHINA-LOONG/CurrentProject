@@ -27,8 +27,8 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 
 		// 登录时更新数据
-		player.updateSkillPoint();
-		player.updateFatigue();
+		player.regainSkillPoint();
+		player.regainFatigue();
 
 		statisticsEntity.increaseLoginTimes();
 		statisticsEntity.notifyUpdate(true);
@@ -41,8 +41,8 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	@Override
 	protected boolean onPlayerReconnect(HawkMsg msg) {
 		// 登录时更新数据
-		player.updateSkillPoint();
-		player.updateFatigue();
+		player.regainSkillPoint();
+		player.regainFatigue();
 
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();
@@ -83,18 +83,15 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearCoinArenaCountDaily();
 				statisticsEntity.clearEggCoinTimesDaily();
 				statisticsEntity.clearEquipPunchTimesDaily();
-				statisticsEntity.clearEquipStageCountDaily();
+				statisticsEntity.clearEquipStageMaxCountDaily();
 				statisticsEntity.clearHoleTimesDaily();
 				statisticsEntity.clearInstanceEnterTimesDaily();
 				statisticsEntity.clearInstanceHardTimesDaily();
 				statisticsEntity.clearInstanceNormalTimesDaily();
 				statisticsEntity.clearInstanceResetTimesDaily();
 				statisticsEntity.clearPayDiamondCountDaily();
-				statisticsEntity.clearQuestComplete();
-				statisticsEntity.clearQuestCompleteDaily();
-				statisticsEntity.clearShopRefreshTimesDaily();
+				statisticsEntity.clearQuestDailyComplete();
 				statisticsEntity.clearSynAllTimesDaily();
-				statisticsEntity.clearTowerFloorMap();
 				statisticsEntity.clearUpEquipTimesDaily();
 				statisticsEntity.clearUpSkillTimesDaily();
 				statisticsEntity.clearUseDiamondCountDaily();

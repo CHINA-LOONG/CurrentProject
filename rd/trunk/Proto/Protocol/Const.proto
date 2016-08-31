@@ -66,11 +66,13 @@ enum moneyType
 	// 钻石
 	MONEY_GOLD             = 1;
 	// 金币
-	MONEY_COIN             = 2;	
-	// 公会贡献值
-	ALLIANCE_COTRIBUTION   = 3;	
-	// 通天塔货币
-	TOWER_COIN             = 4;	
+	MONEY_COIN             = 2;
+	// 公会币(贡献值)
+	ALLIANCE_COTRIBUTION   = 3;
+	// 通天塔币
+	TOWER_COIN             = 4;
+	// 竞技场币
+	ARENA_COIN             = 5;
 }
 
 // 变换的数值类型
@@ -98,6 +100,8 @@ enum changeType
 	CHANGE_PLAYER_CONTRIBUTION = 10;
 	// 通天塔币
 	CHANGE_TOWER_COIN      = 11;
+	// 竞技场币
+	CHANGE_ARENA_COIN      = 12;
 }
 
 // 附加属性类型定义
@@ -306,4 +310,23 @@ enum InstanceType
 	INSTANCE_TOWER         = 3;
 	// 公会
 	INSTANCE_GUILD         = 4;
+}
+
+// 技能类型
+enum SpellTyep
+{ 
+    Spell_Type_PhyAttack 	= 0;
+    Spell_Type_MgicAttack	= 1;
+    Spell_Type_Cure			= 2;
+    Spell_Type_Defense		= 3;
+    Spell_Type_Passive		= 4;
+    Spell_Type_Beneficial	= 5;
+    Spell_Type_Negative		= 6;
+    Spell_Type_Lazy			= 7;
+    Spell_Type_PhyDaZhao	= 8;
+	Spell_Type_MagicDazhao	= 9;
+    Spell_Type_PrepareDazhao= 10;
+	Spell_Type_Dot			= 11;
+	Spell_Type_Hot			= 12;
+    Num_Spell_Type			= 13;
 }

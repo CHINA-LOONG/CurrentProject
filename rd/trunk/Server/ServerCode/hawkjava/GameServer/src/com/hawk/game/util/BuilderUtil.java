@@ -8,6 +8,7 @@ import org.hawk.util.services.HawkOrderService;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.config.ShopCfg;
+import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
@@ -18,6 +19,7 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
 import com.hawk.game.player.Player;
+import com.hawk.game.protocol.Alliance.AllianceBaseMonster;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
@@ -211,6 +213,48 @@ public class BuilderUtil {
 		return builder;
 	}
 
+	/**
+	 * 生成宠物完整镜像 包括装备和装备上的宝石
+	 * @param player
+	 * @param monsterEntity
+	 * @return
+	 */
+	public static HSMonster.Builder genCompleteMonsterBuilder(Player player, MonsterEntity monsterEntity){
+		HSMonster.Builder builder = genMonsterBuilder(monsterEntity);
+		// 组装装备
+		Map<Integer, Long> equips = player.getPlayerData().getMonsterEquips(monsterEntity.getId());
+		if (equips != null) {
+			for (long equipId : equips.values()) {
+				EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
+				if (equipEntity != null) {
+					builder.addEquipInfos(genEquipBuilder(equipEntity));
+				}
+			}
+		}
+		return builder;
+	}
+	
+	/**
+	 * 生成基地驻兵信息
+	 * @param baseEntity
+	 * @return
+	 */
+	public static AllianceBaseMonster.Builder genAllianceBaseMonster(AllianceBaseEntity baseEntity, boolean myBase){
+		AllianceBaseMonster.Builder builder = AllianceBaseMonster.newBuilder();
+		builder.setId(baseEntity.getId());
+		builder.setCfgId(baseEntity.getMonsterBuilder().getCfgId());
+		builder.setLevel(baseEntity.getMonsterBuilder().getLevel());
+		builder.setStage(baseEntity.getMonsterBuilder().getStage());
+		builder.setBp(baseEntity.getBp());
+		if (myBase == true) {
+			builder.setSendTime(baseEntity.getSendTime());
+			builder.setPosition(baseEntity.getPosition());
+			builder.setReward((HawkTime.getSeconds() - baseEntity.getSendTime()) * AllianceUtil.getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend());
+		}
+		
+		return builder;
+	}
+	
 	/**
 	 * 生成物品实体的builder信息
 	 * 

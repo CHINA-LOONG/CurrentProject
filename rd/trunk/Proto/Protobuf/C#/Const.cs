@@ -101,10 +101,7 @@ namespace PB
       GROUP = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=7)]
-      MONSTER = 7,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE", Value=8)]
-      ALLIANCE = 8
+      MONSTER = 7
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"moneyType")]
@@ -121,7 +118,10 @@ namespace PB
       ALLIANCE_COTRIBUTION = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN", Value=4)]
-      TOWER_COIN = 4
+      TOWER_COIN = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN", Value=5)]
+      ARENA_COIN = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -159,7 +159,10 @@ namespace PB
       CHANGE_PLAYER_CONTRIBUTION = 10,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_TOWER_COIN", Value=11)]
-      CHANGE_TOWER_COIN = 11
+      CHANGE_TOWER_COIN = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_ARENA_COIN", Value=12)]
+      CHANGE_ARENA_COIN = 12
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -440,6 +443,53 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_GUILD", Value=4)]
       INSTANCE_GUILD = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"SpellTyep")]
+    public enum SpellTyep
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PhyAttack", Value=0)]
+      Spell_Type_PhyAttack = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_MgicAttack", Value=1)]
+      Spell_Type_MgicAttack = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Cure", Value=2)]
+      Spell_Type_Cure = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Defense", Value=3)]
+      Spell_Type_Defense = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Passive", Value=4)]
+      Spell_Type_Passive = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Beneficial", Value=5)]
+      Spell_Type_Beneficial = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Negative", Value=6)]
+      Spell_Type_Negative = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Lazy", Value=7)]
+      Spell_Type_Lazy = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PhyDaZhao", Value=8)]
+      Spell_Type_PhyDaZhao = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_MagicDazhao", Value=9)]
+      Spell_Type_MagicDazhao = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PrepareDazhao", Value=10)]
+      Spell_Type_PrepareDazhao = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Dot", Value=11)]
+      Spell_Type_Dot = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Hot", Value=12)]
+      Spell_Type_Hot = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Num_Spell_Type", Value=13)]
+      Num_Spell_Type = 13
     }
   
 }

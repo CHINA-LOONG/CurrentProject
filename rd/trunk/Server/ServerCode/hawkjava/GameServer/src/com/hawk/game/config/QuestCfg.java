@@ -227,13 +227,9 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.CALL_ITEM_TIMES;
 			paramClass = String.class;
 			break;
-		// 公会加入次数
+		// 公会加入过
 		case "societyjoin":
-			goalTypeValue = GsConst.QuestGoalType.SOCIETY_JOIN_TIMES;
-			break;
-		// 公会退出次数
-		case "societyleave":
-			goalTypeValue = GsConst.QuestGoalType.SOCIETY_LEAVE_TIMES;
+			goalTypeValue = GsConst.QuestGoalType.SOCIETY_JOIN;
 			break;
 		// 公会祈福次数
 		case "societypray":
@@ -278,7 +274,7 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.QUEST_CYCLE_COUNT;
 			paramClass = Integer.class;
 			break;
-		// 携带过X品级装备数量
+		// 同时穿过达到X品级装备最大数量
 		case "equipstage":
 			goalTypeValue = GsConst.QuestGoalType.EQUIP_STAGE_COUNT;
 			paramClass = Integer.class;
