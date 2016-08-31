@@ -110,7 +110,7 @@ public class Spell
         needAddDazhaoDelay = false;
     }
 
-    public void Apply(float triggerTime, string wpID, bool isFirstSpell)
+    public void Apply(float triggerTime, string wpID, bool isFirstSpell, bool ignoreEvent)
     {
         //generate spell event
         SpellFireArgs args = new SpellFireArgs();
@@ -118,6 +118,7 @@ public class Spell
         args.spellID = spellData.id;
         args.casterID = casterID;
         args.targetID = targetID;
+        args.ignoreEvent = ignoreEvent;
         GameUnit caster = spellService.GetUnit(casterID);
         //args.castResult = SpellConst.spellCastOK;
 
@@ -138,7 +139,7 @@ public class Spell
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         }
         //trigger spell name event
-        if (casterID != BattleConst.battleSceneGuid)
+        if (casterID != BattleConst.battleSceneGuid && ignoreEvent == false)
         {
             if (
                 isFirstSpell ==  true ||

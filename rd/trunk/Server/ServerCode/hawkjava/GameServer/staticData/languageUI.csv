@@ -91,7 +91,7 @@ bag_tag_box,宝箱,Treasure
 bag_tag_use,消耗品,Consumable
 bag_tag_gem,纹章,Insignia
 bag_tag_item,材料,Materials
-bag_opendaoju,道具开启,Item Unlocked
+bag_opendaoju,道具开启,Open Item
 bag_buydaoju,道具购买,Item Purchase
 bag_rewardtitle,领取成功,Successfully collected
 im_chat_global,世界,Global
@@ -267,7 +267,7 @@ xl_monsterbook,,
 handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned
 handbook_shouji,图鉴,Monsterbook
-item_type_chip,碎片,Fragment
+item_type_chip,碎片,Fragments
 handbook_tips,*灵魂本源最大能替换{0:0%}的宠物碎片哟！,Lore cores can be used for up to {0:0%} of this monster's fragments.
 handbook_zhaohuan,合成,Craft
 handbook_huodeway,获得途径,Get By
@@ -275,7 +275,7 @@ handbook_petsuipian,宠物碎片,Monster Fragments
 handbook_tips1,确定进行1次合成吗？,Confirm craft once?
 handbook_record_001,碎片不足,Insufficent fragments.
 handbook_ready,可合成,Craftable:
-handbook_corefragments,灵魂本源,Lore Core
+handbook_corefragments,灵魂本源,Lore cores
 handbook_qieyehecheng,宠物合成,Crafting
 handbook_qieyejieshao,宠物介绍,Info
 xl_itemtips,,
@@ -918,7 +918,7 @@ hecheng_name,合成,Combine
 fenjie_name,分解,Discard
 dazao_name,装备打造,Equipment Forge
 saodang_name,扫荡,Raid
-saodangN_name,扫荡多次,More Raid
+saodangN_name,扫荡多次,Multiple Raids
 putongshangdian_name,普通商店,World Store
 jingjichangshangdian_name,竞技场商店,Arena Store
 jingjichang_name,竞技场,Arena
@@ -950,7 +950,7 @@ adventure_time,探险时间   <color=#ffcc00ff>{0}</color>小时,Exploration tim
 adventure_teams,探险小队,Team
 adventure_tip1,探索强化之路能够获得宠物进阶相关材料,Explore Upgrades adventure shall reward monster upgrades related material
 adventure_tip2,探索进阶之路能够获得装备打造相关材料,Explore advance adventure shall reward armor advance related material
-adventure_tip3,探索究极之路能够获得开孔石、宠物碎片,Explore greatness adventure shall reward insignia stone and monster fragment related material
+adventure_tip3,探索究极之路能够获得开孔石、宠物碎片,Explore greatness adventure shall reward insignia stone and monster fragments related material
 adventure_ing,探险中…,Exploring…
 adventure_alreadycom,已完成,Completed
 adventure_click,点击领奖,Tap to collect
@@ -1179,7 +1179,6 @@ loading_tips2,日常任务中每日共有两次免费领取活力的机会：12�
 loading_tips4,一些没有用的材料可以在背包里卖掉换钱。,Some unneeded items in your Bag can be sold for Coins.
 loading_tips5,宠物不给力？尝试一下召唤吧~,Not satisfied with your current monsters? Try summoning some more!
 loading_tips6,集齐宠物碎片能够合成宠物。,Collect monster fragments to craft more monsters!
-loading_tips7,宠物碎片不够？试试分解宠物，就能够获得灵魂本源。,Need more monster fragments? Try discarding some monsters to receive some Lore Cores.
 loading_tips8,使用信仰之力是提升宠物等级的最快方法。,Using Mytho Essences is the fastest way to increase the level of your monsters.
 loading_tips9,宠物装备可以打造，打造能够大幅提升装备战力。,Monster equipment can be forged. Forging equipment greatly increases the equipment's effectiveness in battle.
 loading_tips10,宠物有白、绿、蓝、紫、橙、红六个品质，通过进阶能够达到更高品质。,"Monsters have White, Green, Blue, Purple, Orange, and Red grades. Monster grades can be increased via Advance."
@@ -1594,14 +1593,14 @@ spell_hit_debuffImmune,免疫减益,Debuff Immune
 spell_hit_DotImmune,免疫Dot,Dot Immune
 main_icon_huodong,活动礼包,Special Package
 main_icon_xuanze,新人礼,New Player Surprise
-loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
+loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and gods exist in every country and culture. Our existence is no coincidence.
 specialgift_title,活动礼包,Special Package
 giftspecial_jinjie_name,宠物进阶,Monster Advancement
 giftspecial_suipian_name,惊喜碎片,Surprise Fragment
 pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <color=#ffcc00>10</color> ability points
 pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
 monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
-summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,<color=#ffcc00>{0}</color> times more guarantees <color=#ffcc00>Class A (or above)</color> Monster.
+summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,Summon <color=#ffcc00>{0}</color> more to get a <color=#ffcc00>Class A (or above)</color> Monster.
 giftspecial_event_title,特殊礼包购买,Purchase special package
 giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,Here you may purchase special packages that have been triggered
 giftspecial_xuanze11_desc,剩余时间 ,Time left 
@@ -1837,8 +1836,8 @@ worldboss_battlebuttongo,挑战,Battle
 worldboss_battlebuttonrevive,再次挑战,Battle Again
 worldboss_battlebuttonrevivetime,<color=#7aff00>{0}</color>秒后可再次挑战,Can battle again after <color=#7aff00>{0}</color> seconds
 worldboss_revivesure,确认立即挑战吗？,Battle now?
-worldboss_timetips,下场活动开启时间 {0} {1}:{2},Next event start time {0} {1}:{2}
-worldboss_timelefttips,本场活动将于<color=#ffcc00>{0}:{1}</color>后结束,This event will end after <color=#ffcc00>{0}:{1}</color>
+worldboss_timetips,下场活动开启时间 {0} {1:D2}:{2:D2} {3},Next event start time {0} {1:D2}:{2:D2} {3}
+worldboss_timelefttips,本场活动将于<color=#ffcc00>{0:D2}:{1:D2}</color>后结束,This event will end after <color=#ffcc00>{0:D2}:{1:D2}</color>
 worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!"
 worldboss_kexinglow,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>
 worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>

@@ -98,7 +98,7 @@ public class SpellService : MonoBehaviour
         deadList.Clear();
     }
     //---------------------------------------------------------------------------------------------
-    public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime, bool isFirstSpell = false)
+    public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime, bool isFirstSpell = false, bool ignoreEvent = false)
     {
 		mCurActionSpell = null;
         Spell curSpell;
@@ -111,7 +111,7 @@ public class SpellService : MonoBehaviour
                 curSpell.Init(this);
                 curSpell.casterID = caster.pbUnit.guid;
                 curSpell.targetID = target.pbUnit.guid;
-                curSpell.Apply(curTime, target.attackWpName, isFirstSpell);
+                curSpell.Apply(curTime, target.attackWpName, isFirstSpell, ignoreEvent);
             }
         }
         else 
@@ -127,6 +127,7 @@ public class SpellService : MonoBehaviour
                     args.spellID = null;
                     args.aniTime = SpellConst.aniDelayTime;
                     args.firstSpell = false;
+                    args.ignoreEvent = ignoreEvent;
                     TriggerEvent(GameEventList.SpellFire, args);
                 }
             }
@@ -266,10 +267,10 @@ public class SpellService : MonoBehaviour
             {
                 return;
             }
-
+            
             //trigger motion
             BattleObject caster = ObjectDataMgr.Instance.GetBattleObject(curArgs.casterID);
-            if (caster != null && string.IsNullOrEmpty(curArgs.spellID) == false)
+            if (caster != null && string.IsNullOrEmpty(curArgs.spellID) == false && curArgs.ignoreEvent == false)
             {
                 if (caster.camp == UnitCamp.Enemy || curArgs.category != (int)SpellType.Spell_Type_MagicDazhao)
                 {
@@ -402,7 +403,7 @@ public class SpellService : MonoBehaviour
                 target.TriggerEvent("bashHit", curArgs.triggerTime, null);
             }
         }
-
+        
         GameEventMgr.Instance.FireEvent<EventArgs>(eventType, args);
     }
     //---------------------------------------------------------------------------------------------

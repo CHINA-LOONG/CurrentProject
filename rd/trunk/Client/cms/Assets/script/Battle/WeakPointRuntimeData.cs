@@ -141,6 +141,10 @@ public class WeakPointRuntimeData
             //event or call
             BattleController.Instance.GetUIBattle().wpUI.UpdateWeakpointIcon(this);
         }
+        if(lastWpstate == WeakpointState.Dead)
+        {
+            hp = maxHp;
+        }
     }
 
     public  void   CheckAndShowAppraisalEffect()

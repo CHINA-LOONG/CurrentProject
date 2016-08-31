@@ -318,7 +318,7 @@ public class BattleProcess : MonoBehaviour
                 {
                     switchAction = GetSwitchAction(deadId, false);
                     //to be replace target is dead
-                    if (switchAction == null)
+                    if (switchAction == null && deadUnit.unit.backUp == false)
                     {
                         BattleObject unit = battleGroup.GetPlayerToField();
                         deadUnit.unit.backUp = true;

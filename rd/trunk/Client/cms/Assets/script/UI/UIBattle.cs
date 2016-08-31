@@ -288,7 +288,8 @@ public class UIBattle : UIBase
             vitalChangeData.vitalChangeArgs = lifeChange;
             if (lifeChange.vitalType == (int)VitalType.Vital_Type_SpellName)
             {
-                vitalChangeData.showTime = Time.time + BattleConst.intervalTime * mSpellNameList.Count;
+                float startTime = mSpellNameList.Count > 0 ? mSpellNameList[0].showTime : Time.time;
+                vitalChangeData.showTime = startTime + BattleConst.intervalTime * mSpellNameList.Count;
                 mSpellNameList.Add(vitalChangeData);
             }
             else
@@ -300,7 +301,8 @@ public class UIBattle : UIBase
                 {
                     return;
                 }
-                vitalChangeData.showTime = Time.time + BattleConst.intervalTime * mVitalChangeList.Count;
+                float startTime = mVitalChangeList.Count > 0 ? mVitalChangeList[0].showTime : Time.time;
+                vitalChangeData.showTime = startTime + BattleConst.intervalTime * mVitalChangeList.Count;
                 mVitalChangeList.Add(vitalChangeData);
             }
         }

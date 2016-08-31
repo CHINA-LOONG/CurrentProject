@@ -658,8 +658,8 @@ tips_70023_zhiyuanxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot
 tips_70024_zhiyuanxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 amutehide_lian,猜猜我在哪,Find me
 amutehide_mianju,猜猜我在哪,Find me
-amutenormal1_lian,本体,Default
-amutenormal1_shenti,保护弱点,Protect Weakness
+amutenormal1_lian,保护弱点,Protect Weakness
+amutenormal1_shenti,本体,Default
 amutenormal1_mianju,弱点,Weakness
 wpName24,脸,Face
 wpName25,胸,Body
@@ -774,22 +774,22 @@ bossxiaoxiang24Shuigui3tips,宝藏什么的我真的木有！！,宝藏什么的
 bossxiaoxiang25Kairuisi5tips,一不小心哥哥的灵魂就被吸走了,一不小心哥哥的灵魂就被吸走了
 bossxiaoxiang26Longgongtongzi3tips,龙宫至宝在我手里,龙宫至宝在我手里
 bossxiaoxiang27hetong2tips,围巾是我的最爱,围巾是我的最爱
-xiaochoutips,小丑萌萌哒,小丑萌萌哒
-mantuoluotips,曼陀罗萌萌哒,曼陀罗萌萌哒
-langrentips,狼人萌萌哒,狼人萌萌哒
-piyingtips,皮影萌萌哒,皮影萌萌哒
-huapotips,花魄萌萌哒,花魄萌萌哒
-xiyirentips,蜥蜴人萌萌哒,蜥蜴人萌萌哒
-wusihtips,舞狮萌萌哒,舞狮萌萌哒
-hetongtips,河童萌萌哒,河童萌萌哒
-longgongtongzitips,龙宫童子萌萌哒,龙宫童子萌萌哒
-shuiguitips,水鬼萌萌哒,水鬼萌萌哒
-nvyaotips,女妖萌萌哒,女妖萌萌哒
-hapitips,哈皮萌萌哒,哈皮萌萌哒
-kairuisitips,凯瑞斯萌萌哒,凯瑞斯萌萌哒
-waguitips,蛙鬼萌萌哒,蛙鬼萌萌哒
-panshentips,潘神萌萌哒,潘神萌萌哒
-ciketips,刺壳萌萌哒,刺壳萌萌哒
+xiaochoutips,我是不是萌萌哒？,Am I lovely?
+mantuoluotips,我是不是萌萌哒？,Am I lovely?
+langrentips,我是不是萌萌哒？,Am I lovely?
+piyingtips,我是不是萌萌哒？,Am I lovely?
+huapotips,我是不是萌萌哒？,Am I lovely?
+xiyirentips,我是不是萌萌哒？,Am I lovely?
+wusihtips,我是不是萌萌哒？,Am I lovely?
+hetongtips,我是不是萌萌哒？,Am I lovely?
+longgongtongzitips,我是不是萌萌哒？,Am I lovely?
+shuiguitips,我是不是萌萌哒？,Am I lovely?
+nvyaotips,我是不是萌萌哒？,Am I lovely?
+hapitips,我是不是萌萌哒？,Am I lovely?
+kairuisitips,我是不是萌萌哒？,Am I lovely?
+waguitips,我是不是萌萌哒？,Am I lovely?
+panshentips,我是不是萌萌哒？,Am I lovely?
+ciketips,我是不是萌萌哒？,Am I lovely?
 ultXiaochou3Name,惊喜箱子,Jack-In-The-Box
 ultXiaochou4Name,有勇无谋,Foolhardy
 ultKairuisi4Name,火焰风暴,Flamestorm
@@ -893,8 +893,8 @@ wpName37,胸,Body
 wpName38,左腕带,Left Cuff
 wpName39,右腕带,Right Cuff
 wpName40,胸,Body
-wpName41,左半身,Left Body
-wpName42,右半身,Right Body
+wpName41,右半身,Right Body
+wpName42,左半身,Left Body
 wpName43,头,Head
 wpName44,胸,Body
 wpName45,花瓣,Flower

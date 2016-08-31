@@ -297,9 +297,9 @@ bossdajie15Langren33b5,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateDispelJ
 bossWorldJidu54b1,5,,2,0,0,0,0.3,0,0,0,0,bufficon_buffAttack,0,,0,0,0,0,,,0,0,0,0,,-1
 bossWorldJidu55b1,5,,2,0,0,0,0.5,0,0,0,0,bufficon_buffAttack,0,,0,0,0,0,,,0,0,0,0,,-1
 bossWorldJidu56b1,5,,2,0,0,0,0.8,0,0,0,0,bufficon_buffAttack,0,,0,0,0,0,,,0,0,0,0,,-1
-bossWorldJidu57b1,1,bossdajie17Huapo27dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
-bossWorldJidu58b1,1,bossdajie17Huapo28dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
-bossWorldJidu59b1,1,bossdajie17Huapo29dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
+bossWorldJidu57b1,1,bossWorldJidu57dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
+bossWorldJidu58b1,1,bossWorldJidu58dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
+bossWorldJidu59b1,1,bossWorldJidu59dote7,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
 bossWorldJidu510b1,5,,3,0,0,0,0,0,0.5,0,0,bufficon_buffSpeed,0,,0,0,0,0,,,0,0,0,0,,-1
 bossWorldJidu510b2,13,,1,1,0,0,0,0,0,0,0,bufficon_debuffStun,0,,0,0,0,0,,,0,0,0,0,,-1
 bossWorldJidu511b1,5,,3,0,0,0,0,0,0.7,0,0,bufficon_buffSpeed,0,,0,0,0,0,,,0,0,0,0,,-1

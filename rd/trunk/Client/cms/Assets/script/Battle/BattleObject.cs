@@ -302,11 +302,18 @@ public class BattleObject : MonoBehaviour
                             {
                                 Logger.LogWarning("weak point is ignored since event configs the parent node");
                             }
-                            //Transform parentNode = transform.Find(curEvent.particleParent);
-                            GameObject parentNode = Util.FindChildByName(gameObject, curParticleData.particleParent);
-                            if (parentNode != null)
+                            if (curParticleData.particleParent == "hook_001")
                             {
-                                rootTransform = parentNode.transform;
+                                rootTransform = transform;
+                            }
+                            else
+                            {
+                                //Transform parentNode = transform.Find(curEvent.particleParent);
+                                GameObject parentNode = Util.FindChildByName(gameObject, curParticleData.particleParent);
+                                if (parentNode != null)
+                                {
+                                    rootTransform = parentNode.transform;
+                                }
                             }
                         }
 

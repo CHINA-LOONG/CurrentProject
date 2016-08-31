@@ -95,7 +95,7 @@ public class EffectApplyBuff : Effect
 
         //check is weak point damagepoint
         WeakPointRuntimeData wpRuntime = null;
-        if (string.IsNullOrEmpty(wpName) == false)
+        if (string.IsNullOrEmpty(wpName) == false && target.pbUnit.camp == UnitCamp.Enemy)
         {
             target.battleUnit.wpGroup.allWpDic.TryGetValue(wpName, out wpRuntime);
             if (wpRuntime != null && wpRuntime.staticData.isDamagePoint != 1)

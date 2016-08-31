@@ -13,6 +13,7 @@ public class SpellFireArgs : EventArgs
     public float aniTime;
     public bool firstSpell;
     public int category;
+    public bool ignoreEvent;
     //public int castResult;
 }
 //---------------------------------------------------------------------------------------------

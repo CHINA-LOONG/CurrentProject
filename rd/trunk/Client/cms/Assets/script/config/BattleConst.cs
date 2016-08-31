@@ -38,7 +38,7 @@ public class BattleConst
     public const int processContinueRet = -1;
 
     //大招 怪物炫耀时长
-    public const float dazhaoShowOffTime = 2;
+    public const float dazhaoShowOffTime = 2.5f;
     //大招慢镜头速度
     public const float dazhaoAttackTimeScale = 1.0f;
     //大招慢镜头时长 
@@ -76,7 +76,7 @@ public class BattleConst
     public const float floorHeight = 0.01f;
     public const float magicDazhaoDelay = 3.0f;
     public const float battleEndDelay = 2.0f;
-    public const float entranceTime = 1.0f;
+    public const float entranceTime = 2.0f;
     public const float reviveTime = 0.5f;
 
     //无效的宠物id -1；
@@ -115,7 +115,7 @@ public class BattleConst
     public const int maxMsg = 100;
     public const float hintImageLength = 50f;
 
-    public const float intervalTime = 0.2f;//各种弹数字间隔
+    public const float intervalTime = 0.1f;//各种弹数字间隔
     public const float battleLevelTime = 2.0f;//显示对局信息时间
     //万能碎片ID
     public const string commonFragmentID = "20001";

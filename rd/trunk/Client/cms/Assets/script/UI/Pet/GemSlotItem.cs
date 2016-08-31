@@ -56,7 +56,7 @@ public class GemSlotItem : MonoBehaviour
         }
         else   //为开孔
         {
-            imageType.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshiditu_" + curInfo.type);
+            imageType.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(UIUtil.GetBaoshidituByType(curInfo.type));
             if (curInfo.gemId.Equals(BattleConst.invalidGemID))
             {
                 Type = SlotType.Unlock;

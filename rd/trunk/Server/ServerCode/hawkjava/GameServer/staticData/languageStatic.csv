@@ -75,8 +75,8 @@ langren3normal1_lcuff,腕带是狼人保护罩的支撑,Bracer provides strong d
 langren3normal1_rcuff,腕带是狼人保护罩的支撑,Bracer provides strong defense.
 piying5normal1_lbody,右半身能够压制我方物理攻击力,Right shadow cripples all physical attack. 
 piying5normal1_rbody,左半身能够压制我方法术攻击力,Left shadow cripples all magical attack.
-piying5normal1_head,皮影的软肋就在头部,His head is his weakest links!
-huapo2normal1_flower,花魄高连击的永动机,The Petal increases the Pixie number of Strikes.
+piying5normal1_head,皮影的软肋就在头部,His head is his weakest part!
+huapo2normal1_flower,花魄高连击的永动机,The petal increases the Pixie's number of strikes.
 zouyincao2normal1_trumpet,喇叭竟是它的弱点！,The Trumpet is where it's weakpoint lies.
 wushi4normal1_horn,尖尖角竟是舞狮的弱点！,The Horn is where it's weakpoint lies.
 wushi4normal1_ball,打破它的球！压制他的法术攻击！,This Magic Ball can increase the Lion's magical abilities.
@@ -177,11 +177,11 @@ muling2hide_hole1,试试搜索三个树洞,Try searching the Tree Branches.
 muling2hide_hole2,试试搜索三个树洞,Try searching the Tree Branches.
 muling2hide_hole3,试试搜索三个树洞,Try searching the Tree Branches.
 muling2normal1_child1,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
-muling2normal1_hole1,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
+muling2normal1_hole1,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
 muling2normal1_child2,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
-muling2normal1_hole2,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
+muling2normal1_hole2,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
 muling2normal1_child3,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
-muling2normal1_hole3,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
+muling2normal1_hole3,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
 adventure_conditions1,{0}只光属性宠物,{0} light type monsters
 adventure_conditions2,{0}只木属性宠物,{0} grass type monsters
 adventure_conditions3,{0}只水属性宠物,{0} water type monsters
@@ -218,7 +218,7 @@ adventure_conditions33,{0}只暗属性特异类宠物,{0} dark type peculiar mon
 adventure_conditions34,{0}只暗属性植物类宠物,{0} dark type plant monsters
 adventure_conditions35,{0}只暗属性神类宠物,{0} dark type deity monsters
 biaoti1001,小试身手,Show your Talent
-biaoti1002,乘胜追击,Pursuit your Victory
+biaoti1002,乘胜追击,Pursuit of Victory
 biaoti1003,卖萌蘑菇,Cute Mushroom
 biaoti1004,中BOSS罢了,An Elite Boss
 biaoti1005,满月狼人,Full Moon Werewolf
@@ -226,7 +226,7 @@ biaoti1006,摇滚歌手,Rock Singer
 biaoti1007,忍者神龟,Turtle Ninja
 biaoti1008,突破大街,Street Break Out
 biaoti1009,新的挑战,A New Challenge
-biaoti1010,蜥蜴之王,King of Lizard
+biaoti1010,蜥蜴之王,Lizard King
 biaoti1011,花痴潘神,Romantic Pans
 biaoti1012,骷髅船长,Captain Skeleton
 biaoti1013,冥界使者,Death Messenger
@@ -234,7 +234,7 @@ biaoti1014,龙族公子,Prince of Ryuku
 biaoti1015,善良河童,Not Naughty Kappa
 biaoti1016,暴躁木灵,Tough Kodama
 biaoti1017,肉食动物,Carnivorous
-biaoti1018,龙族公主,Princess of Dragon
+biaoti1018,龙族公主,Dragon Princess
 biaoti1019,剧毒蜘蛛,Poisonous Spider
 biaoti1020,埃及长老,Egyptian Crocodile
 biaoti1021,绿瞳小丑,Green Eyed Joker
@@ -290,18 +290,18 @@ biaoti1070,时间领主,Master of Time
 biaoti1071,极限挑战,Extreme Challenge
 biaoti2001,花小仙子,Love of Flower
 biaoti2002,你需要治愈,Healer you need
-biaoti2003,药不能停,Never stop Mytho Essence
-biaoti2004,技巧的磨砺,Sharpen your abilities
-biaoti2005,穿戴装备,Equip an equipment
+biaoti2003,药不能停,The Power of Essence
+biaoti2004,技巧的磨砺,Sharpen Your Abilities
+biaoti2005,穿戴装备,Suit Up!
 biaoti2006,狼人随从,Team up with Werewolf
-biaoti2007,训宠大师,Dragon Trainer
-biaoti2008,衣能遮体,Get Warmer
+biaoti2007,训宠大师,Monster Trainer
+biaoti2008,衣能遮体,Getting Stronger
 biaoti5009,完美通关,Perfect Victory
-biaoti2010,打磨装备,Upgrade your Equipments
+biaoti2010,打磨装备,Stronger Equipment
 biaoti2011,日常修炼,Daily Task
 biaoti2012,重复训练,Keep Training
-biaoti2013,夜以继日,Day in Day out
-biaoti2014,锻炼宠物,Train your monsters
+biaoti2013,夜以继日,Day In Day Out
+biaoti2014,锻炼宠物,Train Your Monsters
 biaoti2015,完成愿望树,Make a Wish
 biaoti2016,竞技生涯,Career in Competition
 biaoti2017,宠物成长,Grow your monsters
@@ -363,8 +363,8 @@ biaoti3045,迎接挑战,Rise to the Occasion
 biaoti3046,迎接挑战,Rise to the Occasion
 biaoti3047,迎接挑战,Rise to the Occasion
 biaoti3048,迎接挑战,Rise to the Occasion
-biaoti4001,装备提升,Upgrade your Equipments
-biaoti4002,华丽装扮,Get really warm
+biaoti4001,装备提升,Stronger Equipment
+biaoti4002,华丽装扮,Get Really Strong
 biaoti4003,反复打磨,Quick Completion
 biaoti4004,质的飞跃,Leap of Quality
 biaoti4005,熟练打造,Master Caster
@@ -382,11 +382,11 @@ biaoti4016,高级纹章,Master Insignia Attach
 biaoti4017,打造大师,Master Forger
 biaoti8001,登录奖励,Login Reward
 biaoti8002,普通副本,Normal Stages
-biaoti8003,宠物养成,Sharpen your abilities
+biaoti8003,宠物养成,Sharpen Your Abilities
 biaoti8004,完成抽蛋,Summon
 biaoti8005,打造装备,Forge your Equipments
-biaoti8006,训练宠物,Train your monsters
-biaoti8007,完成许愿,Make many wishes
+biaoti8006,训练宠物,Train Your Monsters
+biaoti8007,完成许愿,Make Many Wishes
 biaoti8008,挑战难度,A Real Challenge
 biaoti8009,王者争霸,Challenge the Masters
 biaoti8010,点石成金,Money Exchange
@@ -473,14 +473,14 @@ mubiao2004,升级宠物技能2次,Upgrade your monsters' abilities twice
 mubiao2005,宠物穿戴1件装备,Equip an equipment once
 mubiao2006,合成宠物狼人,Craft Monster Werewolf
 mubiao2007,升级宠物至5级,Upgrade a monster to LVL 5
-mubiao2008,同一只宠物穿戴2件装备,Equip 2 equipments on one monster
+mubiao2008,同一只宠物穿戴2件装备,Equip 2 pieces of equipment on a monster
 mubiao5009,领取第一章普通难度全部星级奖励,Received rewards for All 3 Stars in Chapter 1 of Story Mode
 mubiao2010,打造装备1次,Forge your Equipment once
 mubiao2011,完成1次日常任务,Complete a daily quest
 mubiao2012,扫荡普通副本2-1,Raid Stage 2-1 (Normal)
 mubiao2013,完成3次日常任务,Complete 3 daily quests
 mubiao2014,升级宠物至10级,Upgrade a monster to LVL 10
-mubiao2015,完成1次愿望树,Complete one of the Wishing Tree Stage
+mubiao2015,完成1次愿望树,Complete a Wishing Tree stage
 mubiao2016,完成竞技场3次,Complete 3 Arena games
 mubiao2017,宠物升阶至绿色品质,Upgrade a monster to Green Quality
 mubiao2018,升级宠物至14级,Upgrade a monster to LVL 14
@@ -558,10 +558,10 @@ mubiao4014,强化打造3件装备至紫色品质,Forge 3 equipments to purple qu
 mubiao4015,合成3次2级纹章,Combine and create 3 Level 2 Insignias
 mubiao4016,合成1次3级纹章,Combine and create a Level 3 Insignia
 mubiao4017,强化打造1件装备至橙色品质,Forge an equipment to orange quality
-mubiao8001,每日首次登录后领取,Daily login reward for free
+mubiao8001,每日首次登录后领取,Daily free login reward
 mubiao8002,通关10次普通副本,Complete 10 Stages (Normal)
 mubiao8003,升级宠物技能3次,Upgrade a monster's ability 3 times
-mubiao8004,完成3次金币抽蛋,Complete  Dawn Summon 3 times
+mubiao8004,完成3次金币抽蛋,Complete Dawn Summon 3 times
 mubiao8005,打造装备1次,Forge an equipment once
 mubiao8006,使用3次信仰之力,Apply Mytho Essence 3 times
 mubiao8007,完成3次愿望树,Complete Wishing Tree Stages 3 times
@@ -788,9 +788,9 @@ speechname_binglong,冰龙,Ice Dragon
 speechname_karong,卡戎,Charon
 speechname_lisa,丽莎,Lisa
 speechname_yafogemeng,亚弗戈蒙,Aforgomon
-speech_summon1,我们打败了冰雪女王！？难道她不是希腊神话中赫赫有名的怪物吗？到底怎么回事？,We defeated Chione?! Isn't she the famous legend from Greek Mythology? What's going on?
-speech_summon2,在<color=#ffcc00>异界</color>，存在许多像我们这样的传奇妖怪正<color=#ffcc00>处于战争之中</color>！我们需要你，帮助我们<color=#ffcc00>恢复世界的秩序</color>！,"<color=#ffcc00>Mythos</color>, the world that allow legends like us to exist, is <color=#ffcc00>at war</color> now! And we need your help to <color=#ffcc00>restore order</color>!"
-speech_summon3,我在你房间中创造了一个<color=#ffcc00>魔法召唤之书</color>，你可以用它<color=#ffcc00>召唤新的怪物</color>来组建你的队伍。,Let me place a <color=#ffcc00>Magic Summon Book</color> in your room now so that you might <color=#ffcc00>collect new monster</color> to form a team.
+speech_summon1,我们打败了冰雪女王！？难道她不是希腊神话中赫赫有名的怪物吗？到底怎么回事？,We defeated Chione?! Isn't she a famous legend from Greek Mythology? What's going on?
+speech_summon2,在<color=#ffcc00>异界</color>，存在许多像我们这样的传奇妖怪正<color=#ffcc00>处于战争之中</color>！我们需要你，帮助我们<color=#ffcc00>恢复世界的秩序</color>！,"<color=#ffcc00>Mythos</color>, the world that allows legends like us to exist, is <color=#ffcc00>at war</color> now! We need your help to <color=#ffcc00>restore order</color>!"
+speech_summon3,我在你房间中创造了一个<color=#ffcc00>魔法召唤之书</color>，你可以用它<color=#ffcc00>召唤新的怪物</color>来组建你的队伍。,Let me place a <color=#ffcc00>Magic Summon Book</color> in your room now so that you might <color=#ffcc00>collect new monsters</color> to form a team.
 speech_zhenrongxuanze1,你们竟然救了我……,"Ohh, so you saved me after all…"
 speech_zhenrongxuanze2,别担心，你没事了。能通过在<color=#ffcc00>召唤之书</color>把你救回来真是太好了！,"No worries, you have been used! Its nice to see you back thru the <color=#ffcc00>Summon Book</color>."
 speech_zhenrongxuanze3,现在你们应该给我解释下状况了吧……,So now you can finally explain what all of this is about…
@@ -843,12 +843,12 @@ speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，�
 speech_xinshouxiangqian4,每次开孔，开出孔的数量和形状都是随机的，运气不好的话，打开的孔也可能被重新锁上。。。自己试试吧~,"Each time you open slots, the amount and type of slots are randomized. If you are not having any luck with it, slots that have been opened can be re-locked. Let's give it a try!"
 speech_xinshoulock1,是否担心开到了心仪的孔在下次开孔时被换掉呢，<color=#ffcc00>锁孔功能</color>就可以帮到你啦！跟我看看锁孔吧~,Worried that the slots you are happy with will be changed the next time you open more? Try <color=#ffcc00>locking</color> them! Let me show you how!
 speech_xinshoulock2,在这里，可以将想保留形状的孔锁住。锁住孔后，每次开孔都会消耗一定量的<color=#ffcc00>钻石</color>来保证<color=#ffcc00>这个孔不变化</color>哦~,"Here you can save the types of slots you would like to keep. After locking a slot, opening other slots will consume a set amount of <color=#ffcc00>Diamonds</color> to ensure that <color=#ffcc00>the locked slots are not changed</color>."
-speech_0fightqian1,你以为我堂堂九尾狐，和这个臭家伙——冰雪女王，是到你房间里玩的么！？,You think a Snow Queen and a Nine-Tail Fox come to your room for fun!?
-speech_0fightqian2,冰雪女王是来抢你的<color=#ffcc00>照妖镜</color>的！就是你那个眼镜！看我怎么收拾她！,The Snow Queen (Chione) is after you and your <color=#ffcc00>Mytho Lens</color>…..your precious eyepiece! Let me fight her off now!
+speech_0fightqian1,你以为我堂堂九尾狐，和这个臭家伙——冰雪女王，是到你房间里玩的么！？,You think a Snow Queen and a Nine-Tail Fox came to your room just for fun!?
+speech_0fightqian2,冰雪女王是来抢你的<color=#ffcc00>照妖镜</color>的！就是你那个眼镜！看我怎么收拾她！,The Snow Queen (Chione) is after you and your <color=#ffcc00>Mytho Lens</color>…..your precious eyepiece! Let's fight her off now!
 speech_0fightqian3,怎……怎么回事？啊！,Wha… What's going on? Hey!!
-speech_0fightzhong1,怎么办啊，她太强了，你根本打不过她啊！,What do we do now? She seems too strong for you!
+speech_0fightzhong1,怎么办啊，她太强了，你根本打不过她啊！,What do we do now? She seems to be too strong for us!
 speech_0fightzhong2,哼！每个怪物都有弱点，只有你的<color=#ffcc00>照妖镜</color>（眼镜）才能找到弱点！,Every Monster got a weakpoint and your <color=#ffcc00>Mytho Lens</color> (the eyepiece) can reveal it!
-speech_0fightzhong3,别担心，现在我就教你怎么用！,"Don't worry, follow my instruction now!"
+speech_0fightzhong3,别担心，现在我就教你怎么用！,"Don't worry, follow my instructions now!"
 speech_0fighthou1,呼……胜利了，没想到你还挺能干嘛。,Whew… We won! I wasn't sure if you had it in ya.
 speech_0fightjihuo,太棒了！我们找到了冰雪女王的<color=#ffcc00>弱点</color>！,Nice! We have found Chione's <color=#ffcc00>weakpoint</color>! 
 speech_0fightjihuo1,干的漂亮，一鼓作气打败冰雪女王吧！,Great Job! Let's defeat Chione now!
@@ -870,7 +870,7 @@ guide_drag,拖动,Drag
 guide_hold,停留,Hold
 guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"Now, <color=#ffcc00>tap</color> the head once 
 to <color=#ffcc00>concentrate attack</color>."
-guide_0dazhao1,注意使用<color=#ffcc00>大招</color>，尽快打败冰雪女王！,"Remember to use <color=#ffcc00>ultimate</color>
+guide_0dazhao1,注意使用<color=#ffcc00>大招</color>，尽快打败冰雪女王！,"Use your <color=#ffcc00>ultimate ability</color>
 to quickly defeat Chione!"
 guide_1PhyDazhao1,<color=#ffcc00>点击</color>释放<color=#ffcc00>大招</color>,"<color=#ffcc00>Tap</color> to cast 
 <color=#ffcc00>ultimate ability</color>"
@@ -894,12 +894,12 @@ guide_Picruodian2,<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱
 <color=#ffcc00>weakpoint info</color>."
 guide_Jihuoxiaoguai,<color=#ffcc00>点击</color>水哇鬼，<color=#ffcc00>集火</color>击杀小怪,"<color=#ffcc00>Tap</color> the Phase Frog to 
 <color=#ffcc00>concentrate your attacks</color> on it."
-guide_summon1,这里能够<color=#ffcc00>召唤</color>到宠物，成为宠物的主人,"<color=#ffcc00>Summon</color> Monster here and 
+guide_summon1,这里能够<color=#ffcc00>召唤</color>到宠物，成为宠物的主人,"<color=#ffcc00>Summon</color> Monsters here and 
 become their Monster Keeper."
 guide_summon2,使用夜之召唤,Use Dusk Summon now.
-guide_summon3,召唤一只新的宠物吧！,Press to summon a new monster.
-guide_task1,点击这里查看已完成的任务！,Press to see completed Quests!
-guide_task2,可以领取奖励了！,Collect reward now!
+guide_summon3,召唤一只新的宠物吧！,Tap to summon a new monster.
+guide_task1,点击这里查看已完成的任务！,Tap to view completed quests!
+guide_task2,可以领取奖励了！,Collect the reward now!
 guide_task3,看看这次会有什么奖励哦~,"See what kind of reward 
 you get this time!"
 guide_task4,"很棒哦~领取奖励就可以
@@ -918,8 +918,8 @@ team is much stronger!"
 guide_hechengpet5,太棒了！已经拿到足够合成<color=#ffcc00>花魄的碎片</color>了！,"Great! You now have enough 
 <color=#ffcc00>fragments to craft Flower Pixie</color>!"
 guide_hechengpet6,"除了召唤之书，合成宠物
-碎片也能获得宠物哦！","Besides summon book, you can craft 
-monster with their fragments too."
+碎片也能获得宠物哦！","Besides the Summoning Book, you can 
+also craft monster using fragements."
 guide_hechengpet7,现在就去与曼陀罗签订契约吧！,"Go and seal the monster 
 pact with Mandrake!"
 guide_hechengpet8,"记得这里吗？合成宠物
@@ -927,7 +927,7 @@ guide_hechengpet8,"记得这里吗？合成宠物
 This is where you craft monsters!"
 guide_hechengpet9,"有了曼陀罗这个奶妈，
 再也不用担心红血啦！","With a healer like Mandrake, you don't 
-have to worry about  low HP anymore!"
+have to worry about low HP anymore!"
 guide_instance1,让我们开始战斗吧！,Let's go battle!
 guide_instance2,选择第一章,Select Chapter 1.
 guide_instance3,先来试试第一个副本,Let's try the first stage.
@@ -937,7 +937,7 @@ for your team."
 guide_instance5,让我们去<color=#ffcc00>战斗</color>收集更多的宠物吧！,Go <color=#ffcc00>fight</color> and collect more monsters now!
 guide_exp1,现在就去给<color=#ffcc00>宠物升级</color>吧！,Let's go <color=#ffcc00>upgrade our monsters</color>!
 guide_exp2,升级能使宠物战力提升呢！,"Upgrading a monster increases 
-its battle point (BP)."
+its battle points (BP)."
 guide_exp3,这里列出了所有<color=#ffcc00>信仰之力</color>,All of your <color=#ffcc00>Mytho Essence</color> is listed here.
 guide_exp4,<color=#ffcc00>点击或者长按</color>可以使用信仰之力哦！,<color=#ffcc00>Tap or tap and hold</color> to use the Mytho Essence.
 guide_ability1,"跟我来看看如何给
@@ -947,11 +947,11 @@ guide_ability2,要常来这里升级宠物,Come back often to upgrade your monst
 guide_ability3,试试给这只宠物升级技能,"Try to upgrade the 
 abilities of this monster."
 guide_ability4,"第一个技能是战斗
-中<color=#ffcc00>手动施放的大招</color>","The first ability is the <color=#ffcc00>Ultimate 
-abilitiy released manually</color>."
+中<color=#ffcc00>手动施放的大招</color>","The first ability is <color=#ffcc00>the Ultimate 
+Abilitiy which is cast manually</color>."
 guide_ability5,"其他技能战斗中<color=#ffcc00>自动施放</color>，
-点击切换技能","Other abilities are <color=#ffcc00>used automatically</color> by the 
-monster itself.Try tapping on other abilities."
+点击切换技能","Other abilities are <color=#ffcc00>cast automatically</color> by the 
+monster in battle. Try tapping on the other abilities."
 guide_ability6,"大多数技能可以升级，但
 需要消耗<color=#ffcc00>金币和技能点</color>
 （点击任意位置结束）","Most abilities can be upgraded 
@@ -1037,10 +1037,10 @@ bingxuenvwang3hide_head,根据图形提示找到弱点,Looks like her head is th
 bingxuenvwang3normal_head,冰雪女王的要害,This is Chione's weakpoint.
 bossxinshouBingxuenvwang3wp02,头,Head
 speech_blt_11_1,太棒了！我们打败了花魄！但是为什么街上会有这么多妖怪呢？,Great! We defeated the Flower Pixie! But why are there monsters in the street?
-speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, the Mythos is at war!"
+speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, Mythos is at war!"
 speech_blt_11_3,总之，妖怪是依靠人类对我们的信仰生存的，所以很多妖怪来到人界，是为了获得信仰之力。,"Simply put, monsters rely on the belief of mankind to exist. That's their mytho essence. That's why many monsters have come to the real world, they want to get the power of more people believing."
 speech_blt_11_4,信仰之力，那是什么？,Mytho… essence? What do you mean?
-speech_blt_11_5,总之跟你说你也不懂，简而言之，信仰之力是我们的能量之源，而异界的信仰之力正在急剧减少。,"So basically… Ah forget it, you wouldn't get it anyway! In short, Mytho Essence is our source of energy and its running short in our Mythos."
+speech_blt_11_5,总之跟你说你也不懂，简而言之，信仰之力是我们的能量之源，而异界的信仰之力正在急剧减少。,"So basically... Ah forget it, you wouldn't get it anyway! In short, Mytho Essence is our source of energy and it's running short back on Mythos."
 speech_blt_14_1,镇上的妖怪好像形成了集团。,All the monsters in town seem to have divided into groups.
 speech_blt_14_2,是呀，现在镇上有三个大妖怪集团呢，要想说服他们不再厮杀可不容易。,"Yes, there are currently three main groups of monsters in town. It will be difficult to convince them all to stop fighting with each other."
 speech_blt_14_3,哼，闻到这些喽啰们的气味我就知道，这个地方的首领肯定是皮影。,"Hmm... from the reek of these bandits, I can tell right away that their leader is Shadow Puppet."
@@ -1062,7 +1062,7 @@ speech_blt_18_3,你就是谣言的散布者！你的目的是什么？,You're th
 speech_blt_18_4,呵呵，目的？当然是夺取信仰之力，只要有足够的信仰之力，就能通过这颗金苹果打开异界的通道，完整的守护龙就能降临人间！,"Why I am stealing all the essence, duh! With enough myth essence, this Golden Apple will open the path to Mythos, and mankind will witness the terror of a complete (but still hungry) Guardian Dragon!"
 speech_blt_18_5,金苹果，坏了！他是守护龙的代行者！,Golden Apple! Not good! That's the Guardian Dragon's keeper!
 speech_blt_18_6,真是一只见多识广的小狐狸，守护龙，上，撕裂这些挡路者！,You sure know a lot for being such a little fox! Go Guardian Dragon! Get rid of these pests!
-speech_blt_18_7,可恶，如果不是因为“墙”守护龙不会这么弱，看来我只好动用最后的王牌了……,"Damn! If it wasn't for that ""wall,"" Guardian Dragon wouldn't be so weak. It seems I will have to use my last resort…"
+speech_blt_18_7,如果不是因为“墙”守护龙不会这么弱，看来我只好动用最后的王牌了……,"If it wasn't for that ""wall,"" Guardian Dragon wouldn't be so weak. It seems I will have to use my last resort…"
 speech_blt_18_8,不好，他要让守护龙吃下金苹果！,Not good! He wants to let the Guardian Dragon eat the Golden Apple!
 speech_blt_18_9,住手！,Stop!
 speech_blt_18_10,啊！咳咳……,Ah! Arghhh…
@@ -1102,7 +1102,7 @@ speech_blt_25_5,根本不是的，我的朋友就失踪了，也没有回异界,
 speech_blt_25_6,似乎妖怪的失踪是一个神秘组织抓走的，我们根据线索来到这个神社,It seems that there is a mysterious organization behind the disappearance of these monsters. We followed the clues right to this shrine.
 speech_blt_25_7,（神秘组织……不会跟那个神秘老人有什么关系吧）,(Mysterious organization… I wonder if that mysterious old man we ran into earlier could have anything to do with it?)
 speech_blt_25_8,这个神社可能就是神秘组织的据点，我们要小心,This shrine could very well be the hideout for that mysterious organization. We should be careful.
-speech_blt_26_1,你们真厉害，刚才我们就是被神社里的幻术困住，你们竟然没事,"Wow, you guys are awesome! We were just now trapped by illusions in the shrine. I'm glad we made it in one piece."
+speech_blt_26_1,你们真厉害，刚才我们就是被神社里的幻术困住，你们竟然没事,"Wow, you guys are awesome! We were being trapped by illusions in the shrine. I'm glad we made it in one piece."
 speech_blt_26_2,幻术？什么幻术，我怎么没感觉到……,Illusions? What illusions? I didn't see anything…
 speech_blt_26_3,咦，小狐狸，这里有你的雕像！,"Hey, look little fox, it's a statue of you!"
 speech_blt_26_4,我的雕像？等等，我好像想起什么了……这里，好像是我们家族在人界的栖息地？,"A statue? Wait, this reminds me of something... This place seems to be the habitat of our family here in the real world?"
@@ -1139,13 +1139,13 @@ speech_blt_35_5,前面就是关押妖怪的地方了吧……我们快去救人�
 speech_blt_36_1,哈哈哈，欢迎来到森之牢狱！,"Hahaha, welcome to the forest! Or should I say… Prison!!!"
 speech_blt_36_2,你就是绑架妖怪的始作俑者吗！,So you are the one behind all the monster kidnappings!
 speech_blt_36_3,绑架，不要说得那么难听，我只是让这些异界逃来的可怜虫变得更加强大。,Kidnapping? It sounds bad when you put it that way… I was only just helping these worthless Mythos escapees to become stronger.
-speech_blt_36_4,混蛋！你别想跑！,You bastard! Don't even think of running!
+speech_blt_36_4,你别想跑！,Don't even think of running!
 speech_blt_36_5,跑？我怎么会跑？盛大的欢迎宴会才刚刚开始。,Running? Why would I run? Why the welcoming banquet has only just begun!
 speech_blt_36_6,啊，那是龙女！她……她也被控制了！,"Ah, Dragon Girl! She… She is being controlled!"
 speech_blt_36_7,呵呵，你能对昔日的朋友下手吗？,Ahaha! Seeing old friends reunited always brings so much emotion... I'll leave you guys to catch up. Hahaha
 speech_blt_37_1,龙女……你没事吧！,Dragon Girl… Are you ok?!
 speech_blt_37_2,别担心，他只是妖力用尽晕了过去。,"Don't worry, her powers have been drained, that's all."
-speech_blt_37_3,可恶，怎么才能把她从控制中救出来！,"Damn, how do we save her from being controlled!"
+speech_blt_37_3,怎么才能把她从控制中救出来！,How do we save her from being controlled!
 speech_blt_37_4,控制……对了！你快使用照妖镜！,Controlled… Oh that's right! Use the Mytho Lens!
 speech_blt_37_5,嗯？,Huh?
 speech_blt_37_6,对！你用照妖镜能够看到的，那些控制龙女的妖精的弱点。,Right! You can use the Mytho lens to see the weakpoints of the creatures controlling Dragon Girl.
@@ -1616,12 +1616,12 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10195_name,宠物降临 II,Monsters Arrive II
 10196_name,宠物降临 III,Monsters Arrive III
 10197_name,宠物降临 IV,Monsters Arrive IV
-10198_name,A级宠物降临 I,A Class Rarity Monster I
-10199_name,A级宠物降临 II,A Class Rarity Monster II
-10200_name,A级宠物降临 III,A Class Rarity Monster III
-10201_name,S级宠物降临 I,S Class Rarity Monster I
-10202_name,S级宠物降临 II,S Class Rarity Monster II
-10203_name,SS级宠物降临 I,SS Class Rarity Monster I
+10198_name,A级宠物降临 I,A Class Monster I
+10199_name,A级宠物降临 II,A Class Monster II
+10200_name,A级宠物降临 III,A Class Monster III
+10201_name,S级宠物降临 I,S Class Monster I
+10202_name,S级宠物降临 II,S Class Monster II
+10203_name,SS级宠物降临 I,SS Class Monster I
 10204_name,动物总动员 I,Animals Arise I
 10205_name,动物总动员 II,Animals Arise II
 10206_name,神怪总动员 I,Deities Arise I
@@ -1651,9 +1651,6 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10230_name,手打达人 IV,Endurance IV
 10231_name,手打达人 V,Endurance V
 10232_name,手打达人 VI,Endurance VI
-10233_name,惊喜盒子 I,Surprise Box I
-10234_name,惊喜盒子 II,Surprise Box II
-10235_name,惊喜盒子 III,Surprise Box III
 10001_miaoshu,等级提升至5级,Reach level 5
 10002_miaoshu,等级提升至10级,Reach level 10
 10003_miaoshu,等级提升至15级,Reach level 15
@@ -1851,12 +1848,12 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10195_miaoshu,召唤获得宠物达到20只,Summon 20 monsters
 10196_miaoshu,召唤获得宠物达到50只,Summon 50 monsters
 10197_miaoshu,召唤获得宠物达到100只,Summon 100 monsters
-10198_miaoshu,召唤获得1只A级宠物,Summon 1 A Class Rarity monster
-10199_miaoshu,召唤获得5只A级宠物,Summon 5 A Class Rarity monster
-10200_miaoshu,召唤获得10只A级宠物,Summon 10 A Class Rarity monster
-10201_miaoshu,召唤获得1只S级宠物,Summon 1 S Class Rarity monster
-10202_miaoshu,召唤获得5只S级宠物,Summon 5 S Class Rarity monster
-10203_miaoshu,召唤获得1只SS级宠物,Summon 1 SS Class Rarity monster
+10198_miaoshu,召唤获得1只A级宠物,Summon 1 A Class monster
+10199_miaoshu,召唤获得5只A级宠物,Summon 5 A Class monster
+10200_miaoshu,召唤获得10只A级宠物,Summon 10 A Class monster
+10201_miaoshu,召唤获得1只S级宠物,Summon 1 S Class monster
+10202_miaoshu,召唤获得5只S级宠物,Summon 5 S Class monster
+10203_miaoshu,召唤获得1只SS级宠物,Summon 1 SS Class monster
 10204_miaoshu,召唤获得动物类宠物达到5只,Summon 5 animal monsters
 10205_miaoshu,召唤获得动物类宠物达到10只,Summon 10 animal monsters
 10206_miaoshu,召唤获得神类宠物达到5只,Summon 5 deity monsters
@@ -1886,9 +1883,6 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10230_miaoshu,手动大招累计点击达到10000Hit,Accumulate 10000 hits using manual ultimate abilities
 10231_miaoshu,手动大招累计点击达到50000Hit,Accumulate 50000 hits using manual ultimate abilities
 10232_miaoshu,手动大招累计点击达到100000Hit,Accumulate 100000 hits using manual ultimate abilities
-10233_miaoshu,召唤获得蓝色以上道具10次,Summon equipment blue grade or above 10 times
-10234_miaoshu,召唤获得蓝色以上道具50次,Summon equipment blue grade or above 50 times
-10235_miaoshu,召唤获得蓝色以上道具100次,Summon equipment blue grade or above 100 times
 gohorselight_pvp10,大师段的<color=#ffcc00>{0}</color>称霸竞技场，<color=#ffcc00>连赢5场</color>！所向无敌！,Master <color=#ffcc00>{0}</color> is domintating the Arena with a <color=#ffcc00>5 win streak</color>. Invincible!
 gohorselight_pvprank,<color=#ffcc00>{0}</color>荣登竞技场排行榜<color=#ffcc00>前三名</color>！称霸全服指日可待！,<color=#ffcc00>{0}</color> has entered <color=#ffcc00>the top 3</color> of the Arena leaderboards! It won't be long before the whole server knows this name!
 gohorselight_pvprankweek_person,竞技场周结算完毕，恭喜<color=#ffcc00>排名前三</color>的玩家<color=#ffcc00>{0}</color>、<color=#ffcc00>{1}</color>、<color=#ffcc00>{2}</color>！,"The weekly Arena season has ended. Congratulations to <color=#ffcc00>the top 3 ranked keepers</color>! 1st place - <color=#ffcc00>{0}</color>, 2nd place - <color=#ffcc00>{1}</color>, 3rd place - <color=#ffcc00>{2}</color>!"
@@ -2176,7 +2170,7 @@ story_xiyiren,一种半人半兽的妖怪，全身披满厚厚的绿色鳞甲，
 story_panshen,西班牙神话中的牧神和森林之神。喜好音乐，可以吹奏出令众神迷醉的乐曲。潘十分自恋且喜好美色，几乎所有森林中的女神都遭遇过潘的求婚，然而迄今为止，成功率为零……,"Pan is the god of shepherds and forests. Pan likes music, and can play songs that enchants the other gods. Pan also has a narcissistic character and is obsessed beauty, almost all the goddesses of the forest have requested his hand in marriage at some point. To this day, the success rate of these requests is still nil... "
 story_zouyincao,一种热爱旋律的小精灵，人们往往不见其形便闻其声。走音草往往隐藏在森林深处，偶尔会聚集到一起合奏出奇妙的音乐。他们如同留声机一般的身体，总被人们误以为是遗弃在森林里的留声机。,"A sprite that loves the melodies of music. People tend not to see its shape, but instead hear its sound. Melody Bulbs are always hidden deep within the forests, and occasionally gather to perform music together. Their phonograph-like bodies often lead people to mistake them for abandoned phonographs in the forest."
 story_tianshizhang,拥有无尽神力的大天使，真正的光之子。,"An angel with limitless power, truly born of the light."
-story_demofei,俄罗斯传说中房子的守护神，最有特点的是他的胡子，常常和头发连在了一起。人们通常不会看到得莫非，却能够听到他的声音，不过，他的声音异常的空洞、刺耳….,"A protective house spirit from Russian folklore, its most distinct characteristic is its beard which runs along its entire face. The Domovoy is more often heard than seen with his voice that is hollow and harsh."
+story_demofei,俄罗斯传说中房子的守护神，最有特点的是他的胡子，常常和头发连在了一起。人们通常不会看到得莫非，却能够听到他的声音，不过，他的声音异常的空洞、刺耳….,"A protective house spirit from Russian folklore, its most distinct characteristic is its beard which runs along its entire face. The Demovoy is more often heard than seen with his voice that is hollow and harsh."
 story_datiangou,日本传说中的妖怪，长着长长的鼻子，手持一把羽毛扇，拥有强大的法力，传说中大天狗是山中的苦行僧死后化成。大天狗一族精于占卜之术但是同时喜欢恶作剧，经常会施展法术让进入山中的人迷路。,"A monster from Japanese legends with an unnaturally long nose and a feather fan. Tengu possess great power, and legend has it that they are ascetic monks who have died in the mountains. The Tengu are known to be skillful in divination but are prone to mischief, often using magic to cause people to become lost in the mountains."
 story_hongniu,希腊神话中的牛头怪，牛头人身，力大无比，居住在克里特岛上的迷宫中。米诺到诺斯生性残暴易怒，凡是踏入它的迷宫之地，就会招致米诺到诺斯疯狂的追杀。,"Originating from Greek mythology, the Minotaur is a strong monster with the head of a bull on the body of a man, dwelling in the maze-like Labyrinth on the island of Crete. He has a ferocious nature, and will chase down anyone that dares enter Labyrinth."
 story_huocike,精通忍术的精灵，身上长满了带有尖刺的甲壳，大意轻敌的话就会被尖刺割伤。火刺壳行动敏捷还掌握着大量忍术，是个不可多得的战斗妖怪。,A sprite that knows kung-fu and has a body with a shell covered in fiery spikes that damage any enemy that underestimates it. A Fireshell's quick movements reflect its skills in ninjutsu and are among the most effective monsters to have in battle.
@@ -2301,3 +2295,99 @@ meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate yo
 meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
 meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
 worldentry,神怪入侵,Deity Invasion
+10233_name,守护者挑战达人 I,守护者挑战达人 I
+10234_name,守护者挑战达人 II,守护者挑战达人 II
+10235_name,守护者挑战达人 III,守护者挑战达人 III
+10236_name,守护者挑战达人 IV,守护者挑战达人 IV
+10237_name,守护者通关达人 I,守护者通关达人 I
+10238_name,守护者通关达人 II,守护者通关达人 II
+10239_name,守护者通关达人 III,守护者通关达人 III
+10240_name,守护者通关达人 IV,守护者通关达人 IV
+10241_name,守护者通关达人 V,守护者通关达人 V
+10242_name,一起打boss I,一起打boss I
+10243_name,一起打boss II,一起打boss II
+10244_name,一起打boss III,一起打boss III
+10245_name,一起打boss IV,一起打boss IV
+10246_name,极限挑战 I,极限挑战 I
+10247_name,极限挑战 II,极限挑战 II
+10248_name,极限挑战 III,极限挑战 III
+10249_name,极限挑战 IV,极限挑战 IV
+10250_name,极限挑战 V,极限挑战 V
+10251_name,极限挑战 VI,极限挑战 VI
+10252_name,boss杀手 I,boss杀手 I
+10253_name,boss杀手 II,boss杀手 II
+10254_name,boss杀手 III,boss杀手 III
+10255_name,boss杀手 IV,boss杀手 IV
+10256_name,boss杀手 V,boss杀手 V
+10257_name,极限输出 I,极限输出 I
+10258_name,极限输出 II,极限输出 II
+10259_name,极限输出 III,极限输出 III
+10260_name,极限输出 IV,极限输出 IV
+10261_name,分享达人 I,分享达人 I
+10262_name,分享达人 II,分享达人 II
+10263_name,分享达人 III,分享达人 III
+10264_name,分享达人 IV,分享达人 IV
+10265_name,分享达人 V,分享达人 V
+10266_name,勇闯巅峰 I,勇闯巅峰 I
+10267_name,勇闯巅峰 II,勇闯巅峰 II
+10268_name,勇闯巅峰 III,勇闯巅峰 III
+10269_name,勇闯巅峰 IV,勇闯巅峰 IV
+10270_name,勇闯巅峰 V,勇闯巅峰 V
+10271_name,时间如金 I,时间如金 I
+10272_name,时间如金 II,时间如金 II
+10273_name,时间如金 III,时间如金 III
+10274_name,时间如金 IV,时间如金 IV
+10275_name,时间如金 V,时间如金 V
+10276_name,收集达人 I,收集达人 I
+10277_name,收集达人 II,收集达人 II
+10278_name,收集达人 III,收集达人 III
+10279_name,收集达人 IV,收集达人 IV
+10233_miaoshu,累计参与神话守护者达到5次,累计参与神话守护者达到5次
+10234_miaoshu,累计参与神话守护者达到10次,累计参与神话守护者达到10次
+10235_miaoshu,累计参与神话守护者达到50次,累计参与神话守护者达到50次
+10236_miaoshu,累计参与神话守护者达到100次,累计参与神话守护者达到100次
+10237_miaoshu,通关神话守护者达到1次,通关神话守护者达到1次
+10238_miaoshu,通关神话守护者达到5次,通关神话守护者达到5次
+10239_miaoshu,通关神话守护者达到10次,通关神话守护者达到10次
+10240_miaoshu,通关神话守护者达到20次,通关神话守护者达到20次
+10241_miaoshu,通关神话守护者达到50次,通关神话守护者达到50次
+10242_miaoshu,参与世界boss挑战达到5次,参与世界boss挑战达到5次
+10243_miaoshu,参与世界boss挑战达到10次,参与世界boss挑战达到10次
+10244_miaoshu,参与世界boss挑战达到50次,参与世界boss挑战达到50次
+10245_miaoshu,参与世界boss挑战达到100次,参与世界boss挑战达到100次
+10246_miaoshu,同一个时间段内挑战boss达到5次,同一个时间段内挑战boss达到5次
+10247_miaoshu,同一个时间段内挑战boss达到6次,同一个时间段内挑战boss达到6次
+10248_miaoshu,同一个时间段内挑战boss达到7次,同一个时间段内挑战boss达到7次
+10249_miaoshu,同一个时间段内挑战boss达到8次,同一个时间段内挑战boss达到8次
+10250_miaoshu,同一个时间段内挑战boss达到9次,同一个时间段内挑战boss达到9次
+10251_miaoshu,同一个时间段内挑战boss达到10次,同一个时间段内挑战boss达到10次
+10252_miaoshu,世界boss排名达到前50名,世界boss排名达到前50名
+10253_miaoshu,世界boss排名达到前20名,世界boss排名达到前20名
+10254_miaoshu,世界boss排名达到前10名,世界boss排名达到前10名
+10255_miaoshu,世界boss排名达到前3名,世界boss排名达到前3名
+10256_miaoshu,世界boss排名达到第1名,世界boss排名达到第1名
+10257_miaoshu,世界boss单次挑战伤害量达到100000,世界boss单次挑战伤害量达到100000
+10258_miaoshu,世界boss单次挑战伤害量达到200000,世界boss单次挑战伤害量达到200000
+10259_miaoshu,世界boss单次挑战伤害量达到500000,世界boss单次挑战伤害量达到500000
+10260_miaoshu,世界boss单次挑战伤害量达到1000000,世界boss单次挑战伤害量达到1000000
+10261_miaoshu,faceboo分享达到1次,faceboo分享达到1次
+10262_miaoshu,faceboo分享达到5次,faceboo分享达到5次
+10263_miaoshu,faceboo分享达到10次,faceboo分享达到10次
+10264_miaoshu,faceboo分享达到20次,faceboo分享达到20次
+10265_miaoshu,faceboo分享达到50次,faceboo分享达到50次
+10266_miaoshu,购买竞技场出战点数达到1次,购买竞技场出战点数达到1次
+10267_miaoshu,购买竞技场出战点数达到5次,购买竞技场出战点数达到5次
+10268_miaoshu,购买竞技场出战点数达到10次,购买竞技场出战点数达到10次
+10269_miaoshu,购买竞技场出战点数达到20次,购买竞技场出战点数达到20次
+10270_miaoshu,购买竞技场出战点数达到50次,购买竞技场出战点数达到50次
+10271_miaoshu,购买宠物技能点数达到1次,购买宠物技能点数达到1次
+10272_miaoshu,购买宠物技能点数达到5次,购买宠物技能点数达到5次
+10273_miaoshu,购买宠物技能点数达到10次,购买宠物技能点数达到10次
+10274_miaoshu,购买宠物技能点数达到20次,购买宠物技能点数达到20次
+10275_miaoshu,购买宠物技能点数达到50次,购买宠物技能点数达到50次
+10276_miaoshu,点亮宠物头像达到5个,点亮宠物头像达到5个
+10277_miaoshu,点亮宠物头像达到10个,点亮宠物头像达到10个
+10278_miaoshu,点亮宠物头像达到20个,点亮宠物头像达到20个
+10279_miaoshu,点亮宠物头像达到50个,点亮宠物头像达到50个
+story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird."
+story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…"

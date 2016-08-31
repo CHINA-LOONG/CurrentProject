@@ -141,7 +141,7 @@ public class PetDetailsAdvance : PetDetailsRight
         #region 设置升级材料
 
         unitStageData = StaticDataMgr.Instance.getUnitStageData(curData.pbUnit.stage + 1);
-        if ((UIUtil.NeedChangeGrade(curData.pbUnit.stage) == true && unitStageData.demandMonsterList.Count < 1) || unitStageData.demandItemList.Count != 1)
+        if (/*(UIUtil.NeedChangeGrade(curData.pbUnit.stage) == true && unitStageData.demandMonsterList.Count < 1) || */unitStageData.demandItemList.Count != 1)
         {
             Logger.LogError("宠物升级进阶材料配置错误");
             return;

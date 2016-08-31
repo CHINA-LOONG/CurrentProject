@@ -306,7 +306,32 @@ public class UIUtil
     {
         return true;
     }
-
+    public static string GetBaoshidituByType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                return "baoshiditu_BloodStone";
+            case 2:
+                return "baoshiditu_SageStone";
+            case 3:
+                return "baoshiditu_VitalityStone";
+            case 4:
+                return "baoshiditu_BastionStone";
+            case 5:
+                return "baoshiditu_HasteStone";
+            case 6:
+                return "baoshiditu_MendingStone";
+            case 7:
+                return "baoshiditu_VolatileStone";
+            case 8:
+                return "baoshiditu_SourceStone";
+            case 9:
+                return "baoshiditu_MorbidStone";
+            default:
+                return "other";
+        }
+    }
 
     public static void SetStageColor(Text label, GameUnit unit)
     {

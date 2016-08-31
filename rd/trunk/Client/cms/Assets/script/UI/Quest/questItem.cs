@@ -44,7 +44,7 @@ public class questItem : MonoBehaviour
     {
         curData = info;
         text_Name.text = StaticDataMgr.Instance.GetTextByID(info.staticData.name);
-        text_Desc.text = string.Format(StaticDataMgr.Instance.GetTextByID(info.staticData.desc));
+        text_Desc.text = StaticDataMgr.Instance.GetTextByID(info.staticData.desc);
 
         text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
         SetReward(info.staticData.rewardId);

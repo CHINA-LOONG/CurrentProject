@@ -10,8 +10,7 @@ public class EquipGemItem : MonoBehaviour
 
     public void Refresh(GemInfo info)
     {
-        imgIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshiditu_" + info.type);
-
+        imgIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(UIUtil.GetBaoshidituByType(info.type));
         if (info.gemId.Equals(BattleConst.invalidGemID))
         {
             if (gemIcon != null)

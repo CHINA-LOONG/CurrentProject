@@ -292,8 +292,8 @@ public class UIQuest : UIBase,
 
     void OnClickTodoit(QuestItemInfo quest)
     {
-        uiQuestInfo = UIQuestInfo.Open(quest, SubmitStartEvent, SubmitEndEvent);
-        CurrentList.Remove(quest);
+        //uiQuestInfo = UIQuestInfo.Open(quest, SubmitStartEvent, SubmitEndEvent);
+        //CurrentList.Remove(quest);
     }
     void OnClickSubmit(QuestItemInfo quest)
     {

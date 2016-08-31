@@ -23,10 +23,10 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 10026,name_10026_caihongguai3,-1,icon_guaiwuhun4,1,7,4,0,1,-1,tips_10026_caihongguai3,1,30000,2,200,1,100,1,,,,3_10027_1,3,-1,-1,,-1,-1,-1,"3_3,2_2",1
 10027,name_10027_caihongguai4,-1,icon_guaiwuhun5,1,7,5,0,1,-1,tips_10027_caihongguai4,1,40000,2,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,2_2,1
 10028,name_10028_zhufuzhili1,-1,icon_zhufuzhili1,1,8,1,0,1,-1,tips_10028_zhufuzhili1,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
-10029,name_10029_zhufuzhili2,-1,icon_zhufuzhili1,1,8,2,0,1,-1,tips_10029_zhufuzhili2,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
-10030,name_10030_zhufuzhili3,-1,icon_zhufuzhili1,1,8,3,0,1,-1,tips_10030_zhufuzhili3,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
-10031,name_10031_zhufuzhili4,-1,icon_zhufuzhili1,1,8,4,0,1,-1,tips_10031_zhufuzhili4,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
-10032,name_10032_zhufuzhili5,-1,icon_zhufuzhili1,1,8,5,0,1,-1,tips_10032_zhufuzhili5,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
+10029,name_10029_zhufuzhili2,-1,icon_zhufuzhili2,1,8,2,0,1,-1,tips_10029_zhufuzhili2,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
+10030,name_10030_zhufuzhili3,-1,icon_zhufuzhili3,1,8,3,0,1,-1,tips_10030_zhufuzhili3,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
+10031,name_10031_zhufuzhili4,-1,icon_zhufuzhili4,1,8,4,0,1,-1,tips_10031_zhufuzhili4,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
+10032,name_10032_zhufuzhili5,-1,icon_zhufuzhili5,1,8,5,0,1,-1,tips_10032_zhufuzhili5,1,-1,-1,-1,-1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"3_3,2_2",1
 20001,name_20001_suipian_common,-1,icon_wannengsuipian,2,1,1,0,1,-1,tips_20001_suipian_common,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,12_2,1
 20002,name_20002_suipian_xiaochou3,-1,icon_xgXiaochou_lan,2,1,1,0,1,-1,tips_20002_suipian_xiaochou3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"1_senlin23,1_minghe23",1
 20003,name_20003_suipian_kairuisi4,-1,icon_xgKairuisi_hong,2,1,1,0,1,-1,tips_20003_suipian_kairuisi4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0

@@ -16,7 +16,7 @@ name_10017_chongwujinjieshi,化形之书,Book of Transformation
 name_10021_gongpin,天使之羽,Angel's feather
 name_10022_gongpin,恶魔之羽,Demon's feather
 name_10023_gongpin,精灵之羽,Fairy's feather.
-name_20001_suipian_common,灵魂本源,Lore Core
+name_20001_suipian_common,灵魂本源,Lore Cores
 name_20002_suipian_xiaochou3,小丑碎片（水）,Joker Fgmt(Water)
 name_20003_suipian_kairuisi4,凯瑞斯碎片（火）,Keres Fgmt(Fire)
 name_20004_suipian_hetong2,河童碎片（木）,Kappa Fgmt(Grass)
@@ -151,9 +151,9 @@ name_40056_pvprankreward,C级宠物碎片箱子（中）,Class C Monster Fragmen
 name_40057_pvprankreward,B级宠物碎片箱子（中）,Class B Monster Fragments(Medium)
 name_40058_pvprankreward,A级宠物碎片箱子（中）,Class A Monster Fragments(Medium)
 name_40059_pvprankreward,S级宠物碎片箱子（中）,Class S Monster Fragments(Medium)
-name_40060_pvprankxianshisuipian,中级宠物碎片箱子,Average Monster Fragment Chest
-name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Advanced Monster Fragment Chest
-name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragment Chest
+name_40060_pvprankxianshisuipian,中级宠物碎片箱子,Average Monster Fragments Chest
+name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Advanced Monster Fragments Chest
+name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragments Chest
 name_40063_advanturegoldbox,钻石箱子,Diamond Chest
 name_40064_pvpbox,竞技场碎片箱子,Arena Chest
 name_40065_towerbox,通天塔碎片箱子,Tower Chest
@@ -161,9 +161,9 @@ name_40066_bfregmentda,B级宠物碎片箱子 (大),Class B Monster Fragments(Gi
 name_40067_afregmentda,A级宠物碎片箱子 (大),Class A Monster Fragments(Giant)
 name_40068_bigTaskleader601,领袖宝箱（金币）lv5,Leader Chest(coins) (lv5)
 name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies) (lv5)
-name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragment Chest
-name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragment Chest
-name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragment Chest
+name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragments Chest
+name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragments Chest
+name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest
 name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Mytho Essence
 name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Mytho Essence
 name_50004_gaojichongwujingyanyaoshui,高级信仰之力,Advanced Mytho Essence
@@ -217,7 +217,7 @@ tips_10017_chongwujinjieshi,宠物进阶材料，通过每个章节<color=#FFCC0
 tips_10021_gongpin,天使的羽翼，光明的气息，可交给公会完成任务,"A feather from an Angel, bright and radiant. You can turn it in to the Guild to complete a quest."
 tips_10022_gongpin,恶魔的羽翼，黑暗的气息，可交给公会完成任务,"A feather from an Demon, dark and mysterious. You can turn it in to the Guild to complete a quest."
 tips_10023_gongpin,精灵的羽翼，自然的气息，可交给公会完成任务,"A feather from an Fairy, natural and light. You can turn it in to the Guild to complete a quest."
-tips_20001_suipian_common,传说中的灵魂本源，可以替代宠物碎片进行合成,"The legendary Lore Core, can be used instead of monster fragments for crafting"
+tips_20001_suipian_common,传说中的灵魂本源，可以替代宠物碎片进行合成,"The legendary Lore Cores, can be used instead of monster fragments for crafting"
 tips_20002_suipian_xiaochou3,用于合成小丑（水）,To craft Joker(Water)
 tips_20003_suipian_kairuisi4,用于合成凯瑞斯（火）,To craft Keres(Fire)
 tips_20004_suipian_hetong2,用于合成河童（木）,To craft Kappa(Grass)
