@@ -38,7 +38,7 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 		HawkProtocol protocol = (HawkProtocol)msg.getParam(1);
 		HSAllianceBaseSendMonster request = protocol.parseProtocol(HSAllianceBaseSendMonster.getDefaultInstance());
 		
-		if (request.getPosition() > 3 || request.getPosition() < 1) {
+		if (request.getPosition() > 2 || request.getPosition() < 0) {
 			player.sendError(protocol.getType(), Status.error.PARAMS_INVALID_VALUE);
 			return true;
 		}
@@ -72,8 +72,8 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if ((request.getPosition() == 2 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.SECOND_BASE_POSITION_CONTRIBUTION) || 
-			(request.getPosition() == 3 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.THIRD_BASE_POSITION_CONTRIBUTION)){
+		if ((request.getPosition() == 1 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.SECOND_BASE_POSITION_CONTRIBUTION) || 
+			(request.getPosition() == 2 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.THIRD_BASE_POSITION_CONTRIBUTION)){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_BASE_POSITION_LOCK_VALUE);
 			return true;
 		}
@@ -97,6 +97,7 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 					allianceBaseEntity.setPlayerId(player.getId());
 					allianceBaseEntity.setMonsterInfo(BuilderUtil.genCompleteMonsterBuilder(player, monsterEntity));
 					allianceBaseEntity.setBp((int)MonsterUtil.calculateBP(allianceBaseEntity.getMonsterBuilder()));
+					allianceBaseEntity.setPosition(request.getPosition());
 					if (allianceBaseEntity.notifyCreate() == false) {
 						player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
 						return true;

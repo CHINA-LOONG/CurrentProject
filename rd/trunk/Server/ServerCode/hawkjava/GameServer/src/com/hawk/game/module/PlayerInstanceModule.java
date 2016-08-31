@@ -16,6 +16,7 @@ import org.hawk.os.HawkRand;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.HoleCfg;
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceChapterCfg;
@@ -31,7 +32,6 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -187,7 +187,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗1点体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_ENTER, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NORMAL_INSTANCE, hsCode);
 
 		// 次数修改
 		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, 1);
@@ -290,7 +290,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗全部体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, entryCfg.getFatigue());
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.HOLE_ENTER, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.HOLE_INSTANCE, hsCode);
 
 		// 次数修改
 		statisticsEntity.increaseHoleTimes(holeId);
@@ -377,7 +377,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗全部体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, entryCfg.getFatigue());
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.TOWER_ENTER, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.TOWER_INSTANCE, hsCode);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
 		response.setInstanceId(instanceId);
@@ -437,7 +437,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗1点体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_ENTER, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.GUILD_INSTANCE, hsCode);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
 		response.setInstanceId(instanceId);
@@ -556,9 +556,9 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 		}
 
-		consumeItem.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, hsCode);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, hsCode);
-		allReward.rewardTakeAffectAndPush(player, Action.INSTANCE_SWEEP, hsCode);
+		consumeItem.consumeTakeAffectAndPush(player, Action.RAID, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.RAID, hsCode);
+		allReward.rewardTakeAffectAndPush(player, Action.RAID, hsCode);
 
 		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, count);
 		statisticsEntity.notifyUpdate(true);
@@ -648,7 +648,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
-		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE, HS.code.INSTANCE_REVIVE_C_VALUE);
+		consume.consumeTakeAffectAndPush(player, Action.REVIVE, HS.code.INSTANCE_REVIVE_C_VALUE);
 
 		this.curReviveCount = reviveCount;
 
@@ -710,7 +710,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItemInfos(rewardCfg.getRewardList());
-		awardItems.rewardTakeAffectAndPush(player,  Action.CHAPTER_BOX, hsCode);
+		awardItems.rewardTakeAffectAndPush(player,  Action.INSTANCE_STAGE_REWARD, hsCode);
 
 		switch (difficulty) {
 		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
@@ -1037,8 +1037,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			response.setStarCount(starCount);
 
 			// 奖励
-			AwardItems completeReward = genSettleReward(0, null);
-			response.setReward(completeReward.getBuilder());
+			genSettleReward(0, null);
 		}
 
 		// 消耗剩余体力，向上取整
@@ -1047,7 +1046,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (fatigueChange > 0) {
 			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
-			consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SETTLE, hsCode);
+			consumeFatigue.consumeTakeAffectAndPush(player, Action.NORMAL_INSTANCE_REWARD, hsCode);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
@@ -1075,8 +1074,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			// 奖励
-			AwardItems completeReward = genSettleReward(moreCoinRatio, moreItemList);
-			response.setReward(completeReward.getBuilder());
+			genSettleReward(moreCoinRatio, moreItemList);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
@@ -1097,8 +1095,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			// 奖励
-			AwardItems completeReward = genSettleReward(0, null);
-			response.setReward(completeReward.getBuilder());
+			genSettleReward(0, null);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
@@ -1119,8 +1116,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 
 			// 奖励
-			AwardItems completeReward = genSettleReward(0, null);
-			response.setReward(completeReward.getBuilder());
+			genSettleReward(0, null);
 		}
 
 		// 消耗剩余体力，向上取整
@@ -1129,7 +1125,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (fatigueChange > 0) {
 			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
-			consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SETTLE, hsCode);
+			consumeFatigue.consumeTakeAffectAndPush(player, Action.GUILD_INSTANCE_REWARD, hsCode);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
@@ -1221,7 +1217,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 发放掉落奖励和完成奖励
-		completeReward.rewardTakeAffectAndPush(player,  Action.INSTANCE_SETTLE, HS.code.INSTANCE_SETTLE_C_VALUE);
+		completeReward.rewardTakeAffectAndPush(player,  Action.NORMAL_INSTANCE_REWARD, HS.code.INSTANCE_SETTLE_C_VALUE);
 
 		// 多倍经验次数
 		if (statisticsEntity.getDoubleExpLeft() > 0) {
@@ -1283,8 +1279,8 @@ public class PlayerInstanceModule extends PlayerModule {
 
 	@Override
 	protected boolean onPlayerLogout() {
+		// TODO 如掉线，是否按失败结算待定
 		// do nothing
-		// TODO 下线是否按失败结算
 		return true;
 	}
 

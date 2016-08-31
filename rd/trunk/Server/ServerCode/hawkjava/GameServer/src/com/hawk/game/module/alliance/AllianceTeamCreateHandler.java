@@ -14,13 +14,13 @@ import org.hawk.os.HawkRand;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.SociatyTaskCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet;
@@ -145,7 +145,7 @@ public class AllianceTeamCreateHandler implements HawkMsgHandler{
 					player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 					
 					allianceEntity.addAllianceTeamEntity(teamEntity);
-					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_TASK_CONSUME, protocol.getType());
+					consume.consumeTakeAffectAndPush(player, Action.GUILD_TASK_OPEN, protocol.getType());
 					
 					HSAllianceCreateTeamRet.Builder response = HSAllianceCreateTeamRet.newBuilder();
 					response.setTeamId(teamEntity.getId());

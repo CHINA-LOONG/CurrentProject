@@ -22,20 +22,29 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.BILog.BIGoldData;
+import com.hawk.game.BILog.BIGuildMemberFlowData;
+import com.hawk.game.BILog.BIItemData;
+import com.hawk.game.BILog.BIPetFlowData;
+import com.hawk.game.BILog.BIPetLevelUpData;
+import com.hawk.game.BILog.BIPlayerLevelData;
+import com.hawk.game.BILog.BITowerCoinData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BICoinData;
+import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
+import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
-import com.hawk.game.log.BehaviorLogger;
-import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Params;
-import com.hawk.game.log.BehaviorLogger.Source;
+import com.hawk.game.log.BILogger;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.module.PlayerAllianceModule;
 import com.hawk.game.module.PlayerEquipModule;
 import com.hawk.game.module.PlayerIdleModule;
@@ -516,11 +525,8 @@ public class Player extends HawkAppObj {
 		int goldIncrease = gold - (goldRemain > 0 ? goldRemain : 0);
 		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + goldIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
-	
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
-				Params.valueOf("add", gold), 
-				Params.valueOf("after", playerData.getPlayerEntity().getFreeGold()));
+		
+		BILogger.getBIData(BIGoldData.class).log(this, action, gold, 0, getGold());
 
 		return goldIncrease;
 	}
@@ -541,17 +547,14 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + goldIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		if (action == Action.SHOP_RECHARGE) {
+		if (action == Action.STORE_RECHARGE) {
 			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 			statisticsEntity.increasePayDiamondCount(goldIncrease);
 			statisticsEntity.increasePayDiamondCountDaily(goldIncrease);
 			statisticsEntity.notifyUpdate(true);
 		}
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_BUY_VALUE), 
-				Params.valueOf("add", gold), 
-				Params.valueOf("after", playerData.getPlayerEntity().getBuyGold()));
+		BILogger.getBIData(BIGoldData.class).log(this, action, gold, 0, getGold());
 
 		return goldIncrease;
 	}
@@ -582,10 +585,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.increaseUseDiamondCountDaily(gold);
 		statisticsEntity.notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
-				Params.valueOf("sub", gold), 
-				Params.valueOf("after", getGold()));
+		BILogger.getBIData(BIGoldData.class).log(this, action, 0, gold, getGold());
 	}
 
 	/**
@@ -604,18 +604,14 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coinIncrease);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		if (action == Action.SHOP_GOLD2COIN) {
+		if (action == Action.COIN_CHANGE) {
 			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 			statisticsEntity.increaseBuyCoinTimes();
 			statisticsEntity.increaseBuyCoinTimesDaily();
 			statisticsEntity.notifyUpdate(true);
 		}
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
-				Params.valueOf("add", coin), 
-				Params.valueOf("after", getCoin()));
-
+		BILogger.getBIData(BICoinData.class).log(this, action, coin, 0, getCoin());
 		return coinIncrease;
 	}
 
@@ -633,10 +629,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() - coin);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
-				Params.valueOf("sub", coin), 
-				Params.valueOf("after", getCoin()));
+		BILogger.getBIData(BICoinData.class).log(this, action, 0, coin, getCoin());
 	}
 
 	/**
@@ -655,10 +648,7 @@ public class Player extends HawkAppObj {
 		playerData.getStatisticsEntity().increaseCoinTowerCount(coinIncrease);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
-				Params.valueOf("add", towerCoin), 
-				Params.valueOf("after", getTowerCoin()));
+		BILogger.getBIData(BITowerCoinData.class).log(this, action, towerCoin, 0, getTowerCoin());
 
 		return coinIncrease;
 	}
@@ -674,10 +664,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() - towerCoin);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
-				Params.valueOf("sub", towerCoin), 
-				Params.valueOf("after", getTowerCoin()));
+		BILogger.getBIData(BITowerCoinData.class).log(this, action, 0, towerCoin, getTowerCoin());
 	}
 
 	/**
@@ -697,10 +684,7 @@ public class Player extends HawkAppObj {
 		playerData.getStatisticsEntity().increaseCoinArenaCountDaily(coinIncrease);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_ARENA_COIN_VALUE), 
-				Params.valueOf("add", arenaCoin), 
-				Params.valueOf("after", getArenaCoin()));
+		// TODO
 
 		return coinIncrease;
 	}
@@ -716,10 +700,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setArenaCoin(getArenaCoin() - arenaCoin);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_ARENA_COIN_VALUE), 
-				Params.valueOf("sub", arenaCoin), 
-				Params.valueOf("after", getArenaCoin()));
+		//TOD
 	}
 
 	/**
@@ -747,6 +728,9 @@ public class Player extends HawkAppObj {
 			playerEntity.setExp(0);
 		}
 
+		int oldLevel = playerEntity.getLevel();
+		int oldExp = playerEntity.getExp();
+		
 		if (playerEntity.getExp() >= playAttrCfg.get(level).getExp()) {
 			playerEntity.setExp(playAttrCfg.get(level).getExp() - 1);
 		}
@@ -764,11 +748,56 @@ public class Player extends HawkAppObj {
 			}
 		}
 
-		BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
-				Params.valueOf("monsterAttr", Const.changeType.CHANGE_PLAYER_EXP), 
-				Params.valueOf("level", level), 
-				Params.valueOf("after_exp", getExp()),
-				Params.valueOf("after_level", getLevel()));
+		BILogger.getBIData(BIPlayerLevelData.class).log(this, action, oldLevel, level, 0, oldExp, playerEntity.getExp());
+		
+		HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), getLevel()));
+	}
+
+	/**
+	 * 增加经验
+	 * 
+	 * @param exp
+	 */
+	public void increaseExp(int exp, Action action) {
+		if (exp <= 0) {
+			throw new RuntimeException("increaseExp");
+		}
+
+		Map<Object, PlayerAttrCfg> playAttrCfg = HawkConfigManager.getInstance().getConfigMap(PlayerAttrCfg.class);
+		if (getLevel() == playAttrCfg.size()) {
+			return ;
+		}
+
+		int expRemain = getExp() + exp;
+		int targetLevel = getLevel();
+		int oldLevel = getLevel();
+		int oldExp = getExp();
+		int targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
+		boolean levelup = false;
+		while (targetLevel != playAttrCfg.size() && expRemain >= targetLevelMaxExp) {
+			expRemain -= targetLevelMaxExp;
+			targetLevel += 1;
+			targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
+			levelup = true;
+		}
+
+		playerData.getPlayerEntity().setExp(targetLevel != playAttrCfg.size() ? expRemain : 0);
+		playerData.getPlayerEntity().setLevel(targetLevel);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		if (true == levelup) {
+			QuestUtil.postQuestDataUpdateMsg(getXid());
+
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			msg.pushParam(this);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level update message failed: " + getName());
+			}
+			
+			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
+		}
+
+		BILogger.getBIData(BIPlayerLevelData.class).log(this, action, oldLevel, getLevel(), exp, oldExp, getExp());
 	}
 
 	/**
@@ -782,14 +811,20 @@ public class Player extends HawkAppObj {
 		}
 
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
+		
 		if (monster != null && monster.getLevel() != level) {
+			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId());
+			if (monsterCfg == null) {
+				throw new RuntimeException("monster config not found " + monster.getCfgId());
+			}
+			
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
 			if (level > monsterBaseCfg.size()) {
 				level = monsterBaseCfg.size();
 			}
 
 			// gm指令不受玩家等级限制
-			if (action != Action.GM_ACTION && level > this.getLevel()) {
+			if (action != Action.GM && level > this.getLevel()) {
 				level = this.getLevel();
 			}
 
@@ -800,6 +835,7 @@ public class Player extends HawkAppObj {
 				monster.setExp(0);
 			}
 
+			int oldExp = monster.getExp();
 			if (monster.getExp() >= monsterBaseCfg.get(level).getNextExp()) {
 				monster.setExp(monsterBaseCfg.get(level).getNextExp() - 1);
 			}
@@ -815,11 +851,7 @@ public class Player extends HawkAppObj {
 				statisticsEntity.notifyUpdate(true);
 			}
 
-			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
-					Params.valueOf("monsterAttr", Const.changeType.CHANGE_MONSTER_EXP), 
-					Params.valueOf("level", level),  
-					Params.valueOf("after_exp", getMonsterExp(monsterId)),
-					Params.valueOf("after_level", getMonsterLevel(monsterId)));
+			BILogger.getBIData(BIPetLevelUpData.class).log(this, monsterId, monsterCfg, oldLevel, monster.getLevel(), 0, oldExp, monster.getExp());
 		}
 	}
 
@@ -833,7 +865,13 @@ public class Player extends HawkAppObj {
 
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
 		if (monster != null) {
+			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId());
+			if (monsterCfg == null) {
+				throw new RuntimeException("monster config not found " + monster.getCfgId());
+			}
+			
 			int oldLevel = monster.getLevel();
+			int oldExp = monster.getExp();
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
 			if (monsterBaseCfg.size() == oldLevel) {
 				return ;
@@ -873,60 +911,8 @@ public class Player extends HawkAppObj {
 				statisticsEntity.notifyUpdate(true);
 			}
 
-			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
-					Params.valueOf("monsterAttr", Const.changeType.CHANGE_MONSTER_EXP), 
-					Params.valueOf("add", exp),  
-					Params.valueOf("after_exp", getMonsterExp(monsterId)),
-					Params.valueOf("after_level", getMonsterLevel(monsterId)));
+			BILogger.getBIData(BIPetLevelUpData.class).log(this, monsterId, monsterCfg, oldLevel, monster.getLazyExp(), exp, oldExp, monster.getExp());
 		}
-	}
-
-	/**
-	 * 增加经验
-	 * 
-	 * @param exp
-	 */
-	public void increaseExp(int exp, Action action) {
-		if (exp <= 0) {
-			throw new RuntimeException("increaseExp");
-		}
-
-		Map<Object, PlayerAttrCfg> playAttrCfg = HawkConfigManager.getInstance().getConfigMap(PlayerAttrCfg.class);
-		if (getLevel() == playAttrCfg.size()) {
-			return ;
-		}
-
-		int expRemain = getExp() + exp;
-		int targetLevel = getLevel();
-		int targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
-		boolean levelup = false;
-		while (targetLevel != playAttrCfg.size() && expRemain >= targetLevelMaxExp) {
-			expRemain -= targetLevelMaxExp;
-			targetLevel += 1;
-			targetLevelMaxExp = playAttrCfg.get(targetLevel).getExp();
-			levelup = true;
-		}
-
-		playerData.getPlayerEntity().setExp(targetLevel != playAttrCfg.size() ? expRemain : 0);
-		playerData.getPlayerEntity().setLevel(targetLevel);
-		playerData.getPlayerEntity().notifyUpdate(true);
-
-		if (true == levelup) {
-			QuestUtil.postQuestDataUpdateMsg(getXid());
-
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-			msg.pushParam(this);
-			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post level update message failed: " + getName());
-			}
-			
-			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
-		}
-
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("attr", Const.changeType.CHANGE_PLAYER_EXP), 
-				Params.valueOf("add", exp), 
-				Params.valueOf("after", getExp()));
 	}
 
 
@@ -953,19 +939,25 @@ public class Player extends HawkAppObj {
 		}
 
 		if (itemEntity.getId() > 0) {
-			if (action == Action.ITEM_BUY
-					|| action == Action.SHOP_ITEM_BUY
-					|| action == Action.STORE_ITEM_BUY) {
+			if (action == Action.ENERGY_BUY 	 ||
+				action == Action.KEY_BUY 		 ||
+				action == Action.RAID_TICKEY_BUY ||
+				action == Action.NORMAL_SHOP_BUY ||
+				action == Action.GUILD_SHOP_BUY  ||
+				action == Action.TOWER_SHOP_BUY  ||
+				action == Action.STORE_BUY) 
+			{
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 				statisticsEntity.increaseBuyItemTimes(itemId);
 				statisticsEntity.notifyUpdate(true);
 			}
 
-			BehaviorLogger.log4Service(this, Source.ITEM_ADD, action, 
-					Params.valueOf("itemId", itemId), 
-					Params.valueOf("id", itemEntity.getId()), 
-					Params.valueOf("add", itemCount), 
-					Params.valueOf("after", itemEntity.getCount()));
+			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemEntity.getItemId());
+			if (itemCfg == null) {
+				throw new RuntimeException("item config not found " + itemEntity.getItemId());
+			}
+			
+			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, 0, itemCount, 0);
 
 			return itemEntity;
 		}
@@ -981,18 +973,25 @@ public class Player extends HawkAppObj {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
 			itemEntity.notifyUpdate(true);
 
-			if (action == Action.ITEM_USE) {
+			if (action == Action.BOX_USE 			||
+				action == Action.EXP_POTION_USE	    ||
+				action == Action.ENERGY_COOKIES_USE ||
+				action == Action.EXP_POTION_USE     ||
+				action == Action.KEY_USE 			||
+				action == Action.RAID_TICKET_USE)
+			{
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 				statisticsEntity.increaseUseItemCount(itemId, itemCount);
 				statisticsEntity.increaseUseItemCountDaily(itemId, itemCount);
 				statisticsEntity.notifyUpdate(true);
 			}
-
-			BehaviorLogger.log4Service(this, Source.ITEM_REMOVE, action, 
-					Params.valueOf("itemId", itemId), 
-					Params.valueOf("id", itemEntity.getId()), 
-					Params.valueOf("sub", itemCount), 
-					Params.valueOf("after", itemEntity.getCount()));
+			
+			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemEntity.getItemId());
+			if (itemCfg == null) {
+				throw new RuntimeException("item config not found " + itemEntity.getItemId());
+			}
+			
+			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, 0, 0, itemCount);
 
 			return itemEntity;
 		}
@@ -1003,7 +1002,7 @@ public class Player extends HawkAppObj {
 	 * 增加装备
 	 */
 	public EquipEntity increaseEquip(String equipId, Action action) {
-		return increaseEquip(equipId,0,0,action);
+		return increaseEquip(equipId, 0, 0, action);
 	}
 
 	/**
@@ -1019,16 +1018,21 @@ public class Player extends HawkAppObj {
 			if (equipEntity.notifyCreate()) {
 				playerData.addEquipEntity(equipEntity);
 
-				if (action == Action.EQUIP_BUY
-						|| action == Action.SHOP_ITEM_BUY) {
+				if (action == Action.GUILD_SHOP_BUY     ||
+					action == Action.NORMAL_SHOP_BUY 	||
+					action == Action.TOWER_SHOP_BUY) {
 					StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 					statisticsEntity.increaseBuyItemTimes(equipId);
 					statisticsEntity.notifyUpdate(true);
 				}
 
-				BehaviorLogger.log4Service(this, Source.EQUIP_ADD, action, 
-						Params.valueOf("equipId", equipId), 
-						Params.valueOf("id", equipEntity.getId()));
+				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipId);
+				if (itemCfg == null) {
+					throw new RuntimeException("item config not found " + equipId);
+				}
+				
+				BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, stage, 1, 0);
+				
 				return equipEntity;
 			}
 		}
@@ -1045,9 +1049,12 @@ public class Player extends HawkAppObj {
 			equipEntity.setInvalid(true);
 			equipEntity.notifyUpdate(true);
 
-			BehaviorLogger.log4Service(this, Source.EQUIP_REMOVE, action, 
-					Params.valueOf("equipId", equipEntity.getItemId()), 
-					Params.valueOf("id", equipEntity.getId()));
+			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+			if (itemCfg == null) {
+				throw new RuntimeException("item config not found " + equipEntity.getItemId());
+			}
+			
+			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, equipEntity.getStage(), 0, 1);
 
 			return true;
 		}
@@ -1075,7 +1082,7 @@ public class Player extends HawkAppObj {
 	public MonsterEntity increaseMonster(String monsterCfgId, int stage, Action action) {
 		MonsterCfg monster = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterCfgId);
 		if (null == monster) {
-			return null;
+			throw new RuntimeException("monster config not found " + monsterCfgId);
 		}
 
 		int playerId = getId();
@@ -1096,15 +1103,13 @@ public class Player extends HawkAppObj {
 			playerData.setMonsterEntity(monsterEntity);
 			onIncreaseMonster(monsterEntity);
 
-			if (action == Action.MONSTER_COMPOSE) {
+			if (action == Action.MONSTER_SUMMON) {
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 				statisticsEntity.increaseMonsterMixTimes(monsterCfgId);
 				statisticsEntity.notifyUpdate(true);
 			}
 
-			BehaviorLogger.log4Service(this, Source.MONSTER_ADD, action, 
-					Params.valueOf("monsterCfgId", monsterCfgId), 
-					Params.valueOf("monsterId", monsterEntity.getId()));
+			BILogger.getBIData(BIPetFlowData.class).log(this, action, monsterEntity.getId(), monster, stage, 1, 0, 1, 0);
 
 			return monsterEntity;
 		}
@@ -1117,8 +1122,7 @@ public class Player extends HawkAppObj {
 	public boolean consumeMonster(int id, Action action) {
 		MonsterEntity monsterEntity = playerData.getMonsterEntity(id);
 		if (null != monsterEntity) {
-			monsterEntity.setInvalid(true);
-			monsterEntity.notifyUpdate(true);
+			monsterEntity.delete();
 			playerData.removeMonsterEntity(id);
 
 			// 脱装备
@@ -1132,8 +1136,12 @@ public class Player extends HawkAppObj {
 				}
 			}
 
-			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
-					Params.valueOf("monsterId", id));
+			MonsterCfg monster = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+			if (null == monster) {
+				throw new RuntimeException("monster config not found " + monsterEntity.getCfgId());
+			}
+			
+			BILogger.getBIData(BIPetFlowData.class).log(this, action, monsterEntity.getId(), monster, monsterEntity.getStage(), monsterEntity.getLevel(), 0, 1, 0);
 
 			return true;
 		}
@@ -1179,13 +1187,25 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("consumeContribution");
 		}
 
+		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
+		if (allianeEntity == null) {
+			throw new RuntimeException("not join guild");
+		}
+		
 		playerData.getPlayerAllianceEntity().setContribution(playerData.getPlayerAllianceEntity().getContribution() - contribution);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		playerData.getPlayerAllianceEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.ALLIANCE_ATTR_CHANGE, action, 
-				Params.valueOf("alliance", Const.changeType.CHANGE_PLAYER_CONTRIBUTION), 
-				Params.valueOf("sub", contribution), 
-				Params.valueOf("after", playerData.getPlayerAllianceEntity().getContribution()));
+		BILogger.getBIData(BIGuildMemberFlowData.class).log(
+				this, 
+				action, 
+				allianeEntity.getId(),
+				allianeEntity.getName(), 
+				allianeEntity.getLevel(), 
+				allianeEntity.getLevel(), 
+				0, 
+				contribution, 
+				playerData.getPlayerAllianceEntity().getContribution()
+				);
 
 		return true;
 	}
@@ -1206,10 +1226,22 @@ public class Player extends HawkAppObj {
 		playerData.getStatisticsEntity().increaseCoinAllianceCountDaily(contribution);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.ALLIANCE_ATTR_CHANGE, action, 
-				Params.valueOf("alliance", Const.changeType.CHANGE_PLAYER_CONTRIBUTION), 
-				Params.valueOf("add", contribution), 
-				Params.valueOf("after", playerData.getPlayerAllianceEntity().getContribution()));
+		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
+		if (allianeEntity == null) {
+			throw new RuntimeException("not join guild");
+		}
+		
+		BILogger.getBIData(BIGuildMemberFlowData.class).log(
+				this, 
+				action, 
+				allianeEntity.getId(),
+				allianeEntity.getName(), 
+				allianeEntity.getLevel(), 
+				allianeEntity.getLevel(), 
+				0, 
+				contribution, 
+				playerData.getPlayerAllianceEntity().getContribution()
+				);
 
 		return true;
 	}
@@ -1217,12 +1249,11 @@ public class Player extends HawkAppObj {
 	/**
 	 * 发送邮件
 	 */
-	public boolean SendMail(MailInfo mailInfo, int receiverId, Source source, Action action) {
+	public boolean SendMail(MailInfo mailInfo, int receiverId, Action action) {
 		int mailId = MailUtil.SendMail(mailInfo, receiverId, getId(), getName());
 		if (mailId > 0) {
-			BehaviorLogger.log4Service(this, source, action, 
-					Params.valueOf("id", mailId));
-					Params.valueOf("receiverId", receiverId);
+			//TODO
+			
 			return true;
 		}
 		return false;
@@ -1244,8 +1275,8 @@ public class Player extends HawkAppObj {
 			overflowList.add(mailEntity.getId());
 			mailList.remove(0);
 
-			BehaviorLogger.log4Service(this, Source.SYS_OPERATION, Action.MAIL_OVERFLOW, 
-					Params.valueOf("id", mailEntity.getId()));
+			// TODO
+			
 		}
 
 		return overflowList;
@@ -1258,7 +1289,7 @@ public class Player extends HawkAppObj {
 		if (fatigue <= 0) {
 			throw new RuntimeException("increaseFatigue");
 		}
-
+		
 		// 增加前先更新
 		regainFatigue();
 
@@ -1267,10 +1298,7 @@ public class Player extends HawkAppObj {
 		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigueIncrease);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
-				Params.valueOf("add", fatigue), 
-				Params.valueOf("after", getPlayerData().getStatisticsEntity().getFatigue()));
+		//TODO
 
 		return fatigueIncrease;
 	}
@@ -1301,10 +1329,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.increaseUseFatigueCountDaily(fatigue);
 		statisticsEntity.notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
-				Params.valueOf("sub", fatigue), 
-				Params.valueOf("after", newFatigue));
+		// TODO
 	}
 
 	/**
@@ -1327,10 +1352,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.setSkillPoint(newSkillPoint);
 		statisticsEntity.notifyUpdate(true);
 
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("skillPoint", oldSkillPoint), 
-				Params.valueOf("sub", skillPoint), 
-				Params.valueOf("after", newSkillPoint));
+		// TODO
 	}
 
 	/**
@@ -1422,8 +1444,9 @@ public class Player extends HawkAppObj {
 		if (mailCfg != null) {
 			MailUtil.SendSysMail(mailCfg, getId());
 		}
-		increaseCoin(1000, Action.CREATE_PLAYER);
-		increaseFreeGold(100, Action.CREATE_PLAYER);
+		
+		increaseCoin(1000, Action.NULL);
+		increaseFreeGold(100, Action.NULL);
 
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
@@ -1434,14 +1457,14 @@ public class Player extends HawkAppObj {
 		statisticsEntity.notifyUpdate(true);
 
 		playerData.loadAllItem();
-		increaseItem("20002", 30, Action.CREATE_PLAYER);
+		increaseItem("20002", 30, Action.NULL);
 
 		// TEST ----------------------------------------------------------------------------------------
 		playerData.loadAllMonster();
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
-			increaseMonster("xgXiaochou3", 0, Action.CREATE_PLAYER);
-			increaseMonster("xgXiaochou3", 0, Action.CREATE_PLAYER);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

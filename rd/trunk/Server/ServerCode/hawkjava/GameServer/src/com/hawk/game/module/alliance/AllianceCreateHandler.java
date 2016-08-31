@@ -9,10 +9,10 @@ import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
@@ -130,7 +130,7 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 						return true;
 					}
 					
-					consumes.consumeTakeAffectAndPush(player, Action.ALLIANCE_CREATE_CONSUME, protocol.getType());
+					consumes.consumeTakeAffectAndPush(player, Action.GUILD_CREATE, protocol.getType());
 
 					// 加入公会频道
 					ImManager.getInstance().joinGuild(allianceEntity.getId(), player);

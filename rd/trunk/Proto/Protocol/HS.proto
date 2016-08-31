@@ -46,10 +46,11 @@ enum code
 	MONSTER_INFO_SYNC_S         = 1013;
 	ITEM_INFO_SYNC_S            = 1014;
 	EQUIP_INFO_SYNC_S           = 1015;
-	QUEST_INFO_SYNC_S           = 1016;
-	MAIL_INFO_SYNC_S            = 1017;
+	MAIL_INFO_SYNC_S            = 1016;
+	ADVENTURE_INFO_SYNC_S       = 1017;
+	QUEST_INFO_SYNC_S           = 1018;
 
-	ASSEMBLE_FINISH_S           = 1018;
+	ASSEMBLE_FINISH_S           = 1019;
 
 	// 角色
 	PLAYER_CREATE_C             = 1101;
@@ -98,6 +99,17 @@ enum code
 	HOLE_ENTER_C                = 3101;
 	TOWER_ENTER_C               = 3102;
 	GUILD_INSTANCE_ENTER_C      = 3103;
+
+	ADVENTURE_ENTER_C           = 3201;
+	ADVENTURE_ENTER_S           = 3202;
+	ADVENTURE_SETTLE_C          = 3203;
+	ADVENTURE_SETTLE_S          = 3204;
+	ADVENTURE_NEW_CONDITION_C   = 3205;
+	ADVENTURE_NEW_CONDITION_S   = 3206;
+	ADVENTURE_BUY_CONDITION_C   = 3207;
+	ADVENTURE_BUY_CONDITION_S   = 3208;
+	ADVENTURE_BUY_TEAM_C        = 3209;
+	ADVENTURE_BUY_TEAM_S        = 3210;
 
 	// 道具
 	ITEM_USE_C                  = 4001;

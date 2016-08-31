@@ -53,6 +53,9 @@ public class ImageViewModel : MonoBehaviour {
                             Vector3.zero,
                             Quaternion.identity
                             );
+        List<Renderer> rener =new List<Renderer>(GetComponentsInChildren<Renderer>(curModel));
+        rener.ForEach(delegate (Renderer item) { item.gameObject.layer = modelPos.layer; });
+        //curModel.gameObject.layer = modelPos.layer;
         curMonsterId = monsterId;
         ReSetTurn();
         return curModel;

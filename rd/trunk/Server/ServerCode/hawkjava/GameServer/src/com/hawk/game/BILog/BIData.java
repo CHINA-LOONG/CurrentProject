@@ -30,7 +30,7 @@ public class BIData {
 	/**
 	 * 组装玩家数据
 	 */
-	public void logBegin(Player player, String event)
+	protected void logBegin(Player player, String event)
 	{
 		if (player != null) {
 			// 头数据
@@ -54,7 +54,7 @@ public class BIData {
 	/**
 	 * 组装属性数据
 	 */
-	public void logEnd()
+	protected void logEnd()
 	{
 		// 组装json
 		jsonData.put("properties", jsonPropertyData);

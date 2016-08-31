@@ -1,5 +1,7 @@
 package com.hawk.game.BILog;
 
+import com.hawk.game.protocol.GM;
+
 public class BIBehaviorAction {
 	
 	public static enum BIType {
@@ -22,7 +24,7 @@ public class BIBehaviorAction {
 		/**
 		 * 宝石流水
 		 */
-		GEM_EVENT,
+		GEM_FLOW_EVENT,
 		/**
 		 * 装备穿戴流水
 		 */
@@ -264,6 +266,10 @@ public class BIBehaviorAction {
 		 * 装备锁孔
 		 */
 		EQUIP_LOCK_SLOT(6005),
+		/**
+		 * 镶嵌宝石
+		 */
+		EQUIP_GEM(6006),
 		
 		/**
 		 * 邮件获得
@@ -273,7 +279,7 @@ public class BIBehaviorAction {
 		/**
 		 * 商城充值
 		 */
-		SOTRE_RECHARGE(8001),
+		STORE_RECHARGE(8001),
 		/**
 		 * 钻石兑换金币
 		 */
@@ -384,6 +390,10 @@ public class BIBehaviorAction {
 		 * 公会基地助战
 		 */
 		GUILD_BASE_REWARD(10014),
+		/**
+		 * 公会子任务
+		 */
+		GUILD_SUB_MISSION(10015),
 		
 		/**
 		 * 抽蛋
@@ -392,7 +402,12 @@ public class BIBehaviorAction {
 		/**
 		 * 签到
 		 */
-		DAILY_SIGN(12001);
+		DAILY_SIGN(12001),
+		
+		/**
+		 * GM 命令
+		 */
+		GM(100000);
 		
 		/**
 		 * 构造函数

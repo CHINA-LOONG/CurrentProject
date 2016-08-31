@@ -6,11 +6,11 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Status;

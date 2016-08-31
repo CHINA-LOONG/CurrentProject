@@ -7,11 +7,11 @@ import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RechargeCfg;
 import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.util.GsConst;
 
@@ -88,16 +88,16 @@ public class ShopManager extends HawkAppObj {
 		{
 			// 离线玩家
 			if (player.getSession() == null) {
-				player.increaseBuyGold(rechargeEntity.getAddGold(), Action.SHOP_RECHARGE);
+				player.increaseBuyGold(rechargeEntity.getAddGold(), Action.STORE_RECHARGE);
 				if (rechargeEntity.getGiftGold() > 0) {
-					player.increaseFreeGold(rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
+					player.increaseFreeGold(rechargeEntity.getGiftGold(), Action.STORE_RECHARGE);
 				}
 			}
 			else {
 				AwardItems reward = new AwardItems();
 				reward.addFreeGold(rechargeEntity.getGiftGold());
 				reward.addBuyGold(rechargeEntity.getAddGold());
-				reward.rewardTakeAffectAndPush(player, Action.SHOP_RECHARGE, 0);
+				reward.rewardTakeAffectAndPush(player, Action.STORE_RECHARGE, 0);
 			}
 		}
 

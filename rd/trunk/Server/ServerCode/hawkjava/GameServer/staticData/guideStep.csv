@@ -124,7 +124,7 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 131,MythoPathMain,信仰之路主界面,,speech_xinyangzhilu1,,,,,,,,
 132,MythoPathMain,信仰之路主界面第一个入口,0,,gd_MythoPathMain_first,,50,,guide_road2,,,
 133,MythoPathAdjustBattleTeam,,,speech_xinyangzhilu2,,,,,,,,
-134,UIBuild,3D世界boss入口接口对象,0,,3D_instanceEntry,,100,,guide_worldboss1,,,
+134,UIBuild,3D世界boss入口接口对象,0,,3D_WorldBossEntry,,100,,guide_worldboss1,,,
 135,WorldBossMain,,,speech_worldboss1,,,,,,,,
 136,WorldBossMain,世界boss主界面的神怪克星标题,0,,gd_WorldBossMain_kexingtitle,,50,,guide_worldboss2,,,
 137,WorldBossMain,,,speech_worldboss2,,,,,,,,

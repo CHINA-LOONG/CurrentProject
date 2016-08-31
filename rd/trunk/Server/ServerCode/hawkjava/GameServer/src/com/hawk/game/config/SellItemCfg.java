@@ -61,7 +61,7 @@ public class SellItemCfg extends HawkConfigBase{
 		if (sellFixed != null && sellFixed.length() > 0 && !"0".equals(sellFixed)) {
 			String[] itemArrays = sellFixed.split(",");
 			for (String itemArray : itemArrays) {			
-				ShopItemInfo item = ShopItemInfo.valueOf(itemArray);
+				ShopItemInfo item = ShopItemInfo.generateFromConfig(itemArray);
 				if (item == null) {
 					return false;
 				}

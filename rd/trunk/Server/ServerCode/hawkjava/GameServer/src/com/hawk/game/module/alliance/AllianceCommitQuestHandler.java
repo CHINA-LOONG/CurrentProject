@@ -9,6 +9,7 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SociatyQuestCfg;
 import com.hawk.game.config.SysBasicCfg;
@@ -17,7 +18,6 @@ import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
@@ -143,11 +143,11 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 					teamEntity.setQuestFinish(request.getQuestId(), player.getId());
 					teamEntity.notifyUpdate(true);
 					
-					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_QUEST_CONSUME, protocol.getType());
+					consume.consumeTakeAffectAndPush(player, Action.GUILD_SUB_MISSION, protocol.getType());
 					
 					AwardItems reward = new AwardItems();
 					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
-					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_QUEST_REWARD, protocol.getType());
+					reward.rewardTakeAffectAndPush(player, Action.GUILD_SUB_MISSION, protocol.getType());
 					
 					int contribution = reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
 					if (contribution != 0) {

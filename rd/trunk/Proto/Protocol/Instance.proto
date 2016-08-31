@@ -52,7 +52,6 @@ message HSInstanceSettle
 message HSInstanceSettleRet
 {
 	optional int32 starCount = 1 [default = 0];
-	optional HSRewardInfo reward = 2;
 }
 
 // INSTANCE_SWEEP_C

@@ -17,6 +17,7 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
@@ -32,7 +33,6 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ImManager.ImMsg;
@@ -726,14 +726,14 @@ public class GmService_Dev extends GameService {
 			if (consume.checkConsume(player, gm.GMOPERATION_C_VALUE) == false) {
 				return;
 			}
-			consume.consumeTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
+			consume.consumeTakeAffectAndPush(player, Action.GM, HS.gm.GMOPERATION_C_VALUE);
 		}
 
 		if (award.hasAwardItem() == true) {
 			if (award.checkLimit(player, gm.GMOPERATION_C_VALUE) == false) {
 				return;
 			}
-			award.rewardTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
+			award.rewardTakeAffectAndPush(player, Action.GM, HS.gm.GMOPERATION_C_VALUE);
 		}
 
 		GMOperationRet.Builder response = GMOperationRet.newBuilder();

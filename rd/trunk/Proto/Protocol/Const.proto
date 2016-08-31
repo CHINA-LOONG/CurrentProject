@@ -313,7 +313,7 @@ enum InstanceType
 }
 
 // 技能类型
-enum SpellTyep
+enum SpellType
 { 
     Spell_Type_PhyAttack 	= 0;
     Spell_Type_MgicAttack	= 1;

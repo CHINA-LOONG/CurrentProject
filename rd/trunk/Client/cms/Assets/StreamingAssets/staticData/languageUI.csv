@@ -801,4 +801,36 @@ mubiao10026,有2件绿色装备,Have 2 pieces of green equipment
 mubiao10027,通关2-8,Clear Stage 2-8 
 mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
 mubiao10029,装备开孔,Open an equipment socket 
-mubiao10030,装备镶嵌,Insert a gem in equipment 
+mubiao10030,装备镶嵌,Insert a gem in equipment
+login_denglu_001,当前登录服务器,Current server
+login_denglu_002,切换,Change
+login_gonggao_001,公告,Announcement
+login_gengxin_001,当前版本过低，请更新后再次进入游戏！,"Current version is out of date, please update and restart the game."
+login_gengxin_002,更新,Update
+login_gengxin_003,需要更新补丁包才可以继续进行游戏，补丁包大小为{0}。（建议使用WIFI下载）,Game patch installation required. The patch size is {0}. (Using WiFi is recommended)
+login_gengxin_004,退出,Exit
+login_gengxin_005,九尾狐正在拼命帮你下载资源…,9 Tails is working hard to download resources... 
+login_gengxin_006,九尾狐正在拼命帮你拼装资源…,9 Tails is working hard to unpack resources... 
+login_server_001,服务器,Server
+login_server_002,服务器选择,Select Server
+login_server_003,推荐服务器,Recommended
+login_server_004,上次登录服务器,Last Server
+login_weihu_001,当前服务器正在维护，请稍后再试！,The current server is down for maintenance. Please wait and try again later!
+login_duankai_001,已与服务器断开连接，请重新登录！,"Disconnected from server, please re-login."
+login_dinghao_001,该账号已在其他设备上登录，请确认账号安全并重新登录！,This account is already logged in from another device. Please confirm your account is secure and re-login.
+hecheng_name,合成,合成
+fenjie_name,分解,分解
+dazao_name,装备打造,装备打造
+houbei_name,后备站位,后备站位
+saodang_name,扫荡,扫荡
+putongshangdian_name,普通商店,普通商店
+tiaozhan_name,挑战副本,挑战副本
+gengduo_name,更多精彩玩法,更多精彩玩法
+hecheng_desc,可以获得更高等级的宝石和材料！,可以获得更高等级的宝石和材料！
+fenjie_desc,分解多余的宠物和装备可以快速获得材料！,分解多余的宠物和装备可以快速获得材料！
+dazao_desc,提升战力最直接的方式。,提升战力最直接的方式。
+houbei_desc,开启了一个后备站位，可以派遣第四个宠物上场啦！,开启了一个后备站位，可以派遣第四个宠物上场啦！
+saodang_desc,扫荡是快速通关副本的唯一方法。,扫荡是快速通关副本的唯一方法。
+putongshangdian_desc,商店中可能出现意想不到的商品哦！,商店中可能出现意想不到的商品哦！
+tiaozhan_desc,去挑战难度更高的副本吧！,去挑战难度更高的副本吧！
+gengduo_desc,更多精彩玩法请期待下个版本！,更多精彩玩法请期待下个版本！

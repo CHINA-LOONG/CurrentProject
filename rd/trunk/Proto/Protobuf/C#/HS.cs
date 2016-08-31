@@ -93,14 +93,17 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1015)]
       EQUIP_INFO_SYNC_S = 1015,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1016)]
-      QUEST_INFO_SYNC_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
+      MAIL_INFO_SYNC_S = 1016,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1017)]
-      MAIL_INFO_SYNC_S = 1017,
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_INFO_SYNC_S", Value=1017)]
+      ADVENTURE_INFO_SYNC_S = 1017,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1018)]
-      ASSEMBLE_FINISH_S = 1018,
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1018)]
+      QUEST_INFO_SYNC_S = 1018,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1019)]
+      ASSEMBLE_FINISH_S = 1019,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -221,6 +224,36 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"GUILD_INSTANCE_ENTER_C", Value=3103)]
       GUILD_INSTANCE_ENTER_C = 3103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_ENTER_C", Value=3201)]
+      ADVENTURE_ENTER_C = 3201,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_ENTER_S", Value=3202)]
+      ADVENTURE_ENTER_S = 3202,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_SETTLE_C", Value=3203)]
+      ADVENTURE_SETTLE_C = 3203,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_SETTLE_S", Value=3204)]
+      ADVENTURE_SETTLE_S = 3204,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NEW_CONDITION_C", Value=3205)]
+      ADVENTURE_NEW_CONDITION_C = 3205,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NEW_CONDITION_S", Value=3206)]
+      ADVENTURE_NEW_CONDITION_S = 3206,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_CONDITION_C", Value=3207)]
+      ADVENTURE_BUY_CONDITION_C = 3207,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_CONDITION_S", Value=3208)]
+      ADVENTURE_BUY_CONDITION_S = 3208,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_TEAM_C", Value=3209)]
+      ADVENTURE_BUY_TEAM_C = 3209,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_TEAM_S", Value=3210)]
+      ADVENTURE_BUY_TEAM_S = 3210,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,

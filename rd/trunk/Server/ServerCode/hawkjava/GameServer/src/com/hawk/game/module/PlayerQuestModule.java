@@ -16,14 +16,13 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.PlayerAllianceEntity;
-import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -134,7 +133,7 @@ public class PlayerQuestModule extends PlayerModule {
 		AwardItems awardItems = AwardItems.valueOf();
 		awardItems.addExp(exp);
 		awardItems.addItemInfos(list);
-		awardItems.rewardTakeAffectAndPush(player, Action.QUEST_SUBMIT, HS.code.QUEST_SUBMIT_C_VALUE);
+		awardItems.rewardTakeAffectAndPush(player, Action.MISSION_REWARD, HS.code.QUEST_SUBMIT_C_VALUE);
 
 		// 记录
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();

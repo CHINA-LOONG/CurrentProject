@@ -1,7 +1,5 @@
 package com.hawk.game.module;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.hawk.config.HawkConfigManager;
@@ -9,23 +7,27 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BIEquipAdvanceFlow;
+import com.hawk.game.BILog.BIEquipFlowData;
+import com.hawk.game.BILog.BIEquipIntensifyData;
+import com.hawk.game.BILog.BIGemFlowData;
 import com.hawk.game.config.EquipForgeCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.GemInfo;
-import com.hawk.game.log.BehaviorLogger;
-import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Params;
-import com.hawk.game.log.BehaviorLogger.Source;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
-import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.HSEquipBuyRet;
 import com.hawk.game.protocol.Equip.HSEquipDecompose;
 import com.hawk.game.protocol.Equip.HSEquipGem;
@@ -147,7 +149,8 @@ public class PlayerEquipModule extends PlayerModule{
 	}
 
 	/*
-	 * 装备购买
+	 * 装备购买 	
+	 * 废弃的接口
 	 */
 	public void onEquipBuy(int hsCode, HSEquipBuy protocol)
 	{
@@ -180,11 +183,12 @@ public class PlayerEquipModule extends PlayerModule{
 		if (consume.checkConsume(player, hsCode) == false) {
 			return ;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_BUY, hsCode);
+	
+		consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 		
 		AwardItems awardItems = new AwardItems();
 		awardItems.addEquip(equid, equipCount, protocol.getStage(), protocol.getLevel());
-		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY, hsCode);
+		awardItems.rewardTakeAffectAndPush(player, Action.NULL, hsCode);
 
 		HSEquipBuyRet.Builder response = HSEquipBuyRet.newBuilder();
 		response.setEquipCount(equipCount);
@@ -225,23 +229,40 @@ public class PlayerEquipModule extends PlayerModule{
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
-	
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_EHANCE, hsCode);
+		
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_FORGE, hsCode);
 		if (EquipForgeCfg.getSuccessRate(equipEntity.getStage(), equipEntity.getLevel() + 1) >= HawkRand.randFloat(0, 1)) {
 			equipEntity.setLevel(equipEntity.getLevel() + 1);
 			equipEntity.notifyUpdate(true);
 		}
-		
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseUpEquipTimes();
+		statisticsEntity.increaseUpEquipTimesDaily();
+		statisticsEntity.notifyUpdate(true);
+
 		HSEquipIncreaseLevelRet.Builder response = HSEquipIncreaseLevelRet.newBuilder();
 		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_LEVEL_S, response));
 		
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_EHANCE,
-				Params.valueOf("itemId", equipEntity.getItemId()),
-				Params.valueOf("equipId", equipEntity.getId()),
-				Params.valueOf("after", equipEntity.getLevel()));	
+		MonsterCfg monsterCfg = null;
+		if (equipEntity.getMonsterId() != 0) {
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
+			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		}
+		
+		BILogger.getBIData(BIEquipIntensifyData.class).log(
+				player, 
+				itemCfg, 
+				protocol.getId(), 
+				equipEntity.getStage(), 
+				monsterCfg, 
+				equipEntity.getMonsterId(), 
+				equipEntity.getLevel() - 1, 
+				equipEntity.getLevel()
+				);
 	}
 	
 	/*
@@ -264,7 +285,7 @@ public class PlayerEquipModule extends PlayerModule{
 		if (equipEntity.getLevel() < GsConst.EQUIP_MAX_LEVEL) {
 			sendError(hsCode, Status.itemError.EQUIP_LEVEL_NOT_ENOUGH_VALUE);
 			return ;
-		}	
+		}
 		
 		if (equipEntity.getStage() >= GsConst.EQUIP_MAX_STAGE) {
 			sendError(hsCode, Status.itemError.EQUIP_MAX_STAGE_ALREADY_VALUE);
@@ -282,6 +303,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return;
 		}
 
+		int oldLevel = equipEntity.getLevel();
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE, hsCode);
 		if (EquipForgeCfg.getSuccessRate(equipEntity.getStage() + 1, 0) >= HawkRand.randFloat(0, 1)) {
 			equipEntity.setLevel(0);
@@ -289,21 +311,28 @@ public class PlayerEquipModule extends PlayerModule{
 			equipEntity.notifyUpdate(true);
 		}
 
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		statisticsEntity.increaseUpEquipTimes();
-		statisticsEntity.increaseUpEquipTimesDaily();
-		statisticsEntity.notifyUpdate(true);
-
 		HSEquipIncreaseStageRet.Builder response = HSEquipIncreaseStageRet.newBuilder();
 		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));
 		
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_ADVANCE,
-				Params.valueOf("equipId", equipEntity.getItemId()),
-				Params.valueOf("Id", equipEntity.getId()),
-				Params.valueOf("after", equipEntity.getStage()));
+		MonsterCfg monsterCfg = null;
+		if (equipEntity.getMonsterId() != 0) {
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
+			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		}
+		
+		BILogger.getBIData(BIEquipAdvanceFlow.class).log(
+				player,
+				itemCfg, 
+				protocol.getId(), 
+				monsterCfg, 
+				equipEntity.getStage(), 
+				equipEntity.getMonsterId(), 
+				oldLevel, 
+				equipEntity.getLevel()
+				);
 	}
 	
 	/*
@@ -413,12 +442,26 @@ public class PlayerEquipModule extends PlayerModule{
 			gemPunch.setGemItemId(entry.getValue().getGemId());
 			response.addGemItems(gemPunch);
 		}
+		
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_GEM_S_VALUE, response));
 		
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_GEM,
-				Params.valueOf("equipId", equipEntity.getItemId()),
-				Params.valueOf("id", equipEntity.getId()),
-				Params.valueOf("gemInfo", equipEntity.gemListToString()));
+		MonsterCfg monsterCfg = null;
+		if (equipEntity.getMonsterId() != 0) {
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
+			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		}
+		
+		// 装备BI
+		if (!protocol.getNewGem().equals("")) {
+			ItemCfg gemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, protocol.getNewGem());
+			BILogger.getBIData(BIGemFlowData.class).log(player, itemCfg, equipEntity.getId(), monsterCfg, gemCfg.getGrade(), true);
+		}
+		
+		// 卸载BI
+		if (!protocol.getOldGem().equals("")) {
+			ItemCfg gemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, protocol.getOldGem());
+			BILogger.getBIData(BIGemFlowData.class).log(player, itemCfg, equipEntity.getId(), monsterCfg, gemCfg.getGrade(), true);
+		}	
 	}
 	
 	/*
@@ -478,9 +521,9 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		equipEntity.notifyUpdate(true);
 		if (rewardItems != null) {
-			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
+			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_OPEN_SLOTS, hsCode);
 		}
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_OPEN_SLOTS, hsCode);
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		statisticsEntity.increaseEquipPunchTimes();
@@ -489,10 +532,6 @@ public class PlayerEquipModule extends PlayerModule{
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_PUNCH_S_VALUE, response));
 
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_PUNCH,
-				Params.valueOf("equipId", equipEntity.getItemId()),
-				Params.valueOf("id", equipEntity.getId()),
-				Params.valueOf("gemInfo", equipEntity.gemListToString()));
 	}
 	
 	/*
@@ -562,10 +601,17 @@ public class PlayerEquipModule extends PlayerModule{
 		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_DRESS_S_VALUE, response));
 		
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_DRESS,
-				Params.valueOf("equipId", equipEntity.getItemId()),
-				Params.valueOf("Id", equipEntity.getId()),
-				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			throw new RuntimeException("monster not found " + monsterId);
+		}
+		
+		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		if (monsterCfg == null) {
+			throw new RuntimeException("monster config not found " + monsterEntity.getCfgId());
+		}
+		
+		BILogger.getBIData(BIEquipFlowData.class).log(player, itemCfg, protocol.getId(), monsterCfg, monsterId, equipEntity.getStage(), equipEntity.getLevel(), true);
 	}
 	
 	/*
@@ -604,10 +650,17 @@ public class PlayerEquipModule extends PlayerModule{
 		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
 
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
-				Params.valueOf("equipId", equipEntity.getItemId()),
-				Params.valueOf("Id", equipEntity.getId()),
-				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			throw new RuntimeException("monster not found " + monsterId);
+		}
+		
+		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		if (monsterCfg == null) {
+			throw new RuntimeException("monster config not found " + monsterEntity.getCfgId());
+		}
+		
+		BILogger.getBIData(BIEquipFlowData.class).log(player, itemCfg, protocol.getId(), monsterCfg, monsterId, equipEntity.getStage(), equipEntity.getLevel(), false);
 	}
 	
 	/*
@@ -688,12 +741,20 @@ public class PlayerEquipModule extends PlayerModule{
 		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_REPLACE_S_VALUE, response));
 	
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_REPLACE,
-				Params.valueOf("newItemId", newEntity.getItemId()),
-				Params.valueOf("newEquipId", newEntity.getId()),
-				Params.valueOf("oldItemId", oldEntity.getItemId()),
-				Params.valueOf("oldEquipId", oldEntity.getId()),
-				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			throw new RuntimeException("monster not found " + monsterId);
+		}
+		
+		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+		if (monsterCfg == null) {
+			throw new RuntimeException("monster config not found " + monsterEntity.getCfgId());
+		}
+		
+		BILogger.getBIData(BIEquipFlowData.class).log(player, itemCfg, protocol.getId(), monsterCfg, monsterId, oldEntity.getStage(), oldEntity.getLevel(), false);
+
+		BILogger.getBIData(BIEquipFlowData.class).log(player, itemCfg, protocol.getId(), monsterCfg, monsterId, newEntity.getStage(), newEntity.getLevel(), true);
+	
 	}
 	
 	/*
@@ -725,8 +786,8 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_DECOMPOSE, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.EQUIP_DECOMPOSE, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_DISENCHANT, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.EQUIP_DISENCHANT, hsCode);
 		
 		HSEquipDecompose.Builder response = HSEquipDecompose.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_DECOMPOSE_S_VALUE, response));

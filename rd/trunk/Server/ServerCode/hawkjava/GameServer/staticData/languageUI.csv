@@ -199,7 +199,7 @@ equip_inlay_xiangqian,镶嵌,Attach
 equip_smalltitle,纹章,Insignia
 equip_inlay_openmax,纹章槽已全开,Insignia slots are full.
 equip_inlay_btnopen,开孔,Open
-equip_inlay_tips,1到{0}个孔，试试你的运气吧！,"Opens 1 to {0} Insignia Slots, give your luck a shot!"
+equip_inlay_tips,若已镶嵌纹章，纹章将全部返还到背包,Any inserted Insignias will all be returned to your Bag.
 equip_inlay_lockTips,点击开孔有机会开启纹章槽,Tap 'Open' for a chance of revealing Insignia slots.
 equip_inlay_unlockTips,点击镶嵌,Tap to attach.
 equip_inlay_xiexia,卸下,Remove
@@ -1597,9 +1597,9 @@ loading_special,各个国家都存在传说和神话。我们的存在绝非偶�
 specialgift_title,活动礼包,Special Package
 giftspecial_jinjie_name,宠物进阶,Monster Advancement
 giftspecial_suipian_name,惊喜碎片,Surprise Fragment
-pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <color=#ffcc00>10</color> ability points
+pet_detail_skill_buy10,购买<color=#ffcc00>20</color>点技能点数,Purchase <color=#ffcc00>20</color> ability points
 pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
-monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
+monster_record_017,购买20点技能点数成功,Purchased 20 ability points!
 summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,Summon <color=#ffcc00>{0}</color> more to get a <color=#ffcc00>Class A (or above)</color> Monster.
 giftspecial_event_title,特殊礼包购买,Purchase special package
 giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,Here you may purchase special packages that have been triggered
@@ -1897,7 +1897,7 @@ worldboss_record_002,士气已提升至最高！快去征战神怪吧！,Morale 
 worldboss_record_003,金币提升已达上限，试试钻石提升吧！,"Coins increased to the max, try increasing diamonds!"
 worldboss_record_004,活动已经结束，正在结算，稍后去邮箱查看奖励哦！,Event has already ended and results are being calculated. Your reward will be available in your mailbox shortly.
 worldboss_record_005,请先选择要提升的士气,Please select the morale to be increased.
-worldboss_record_006,很遗憾，本场活动已达参与人数上限，下场再来吧。,"Unfortunately, this event has already reached the max number of participants. Please come for the next event."
+worldboss_record_006,<color=#ff0000>很遗憾，本场活动已达参与人数上限，下场再来吧。</color>,"<color=#ff0000>Unfortunately, this event has already reached the max number of participants. Please come for the next event.</color>"
 gohorselight_bossstart,神怪即将降临！代行者们，准备好率领自己的宠物战队将这些怪物驱逐回神怪界了吗！,"The Deities are invading! Monster keepers, prepare to command your monsters to battle and banish these invaders back to where they came from!"
 gohorselight_bossover,恭喜<color=#ffcc00>{0}</color>获得本场神怪入侵活动的第一名，获得了丰厚的纹章等奖励！,Congratulations to <color=#ffcc00>{0}</color> who has reached 1st place in the Deity Invasion event. 
 loading_tips52,神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。,Deity Invasion will be open for battle 3 times per day. Players may participate in 1 of the 3 battles each day.
@@ -1944,3 +1944,5 @@ giftspecial_jinjiec1_name,SS级进阶礼包,Advancement Package
 giftspecial_jinjiec1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
 giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Advancement Package (Rare)
 giftspecial_jinjiec2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
+server_limit_002,当前服务器爆满，请稍后登录或选择其他服务器进行游戏！,"The server is busy now. Please try again shortly, or select another server to play on!"
+server_limit_001,当前服务器已达到注册上限，请选择其他服务器进行游戏！,The current server has already reached the max player limit. Please select another server to play on!

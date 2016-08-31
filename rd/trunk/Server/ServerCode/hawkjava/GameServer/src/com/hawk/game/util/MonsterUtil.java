@@ -26,7 +26,7 @@ public class MonsterUtil {
 	    float criticalDamgeRatio = 1.5f;
 	    float criticalRatio = 0.1f;
 	    
-		MonsterStageCfg stageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, monsterBuilder.getCfgId());
+		MonsterStageCfg stageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, monsterBuilder.getStage());
 		
 		// 体力
 		float healthModifyRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterBuilder.getCfgId()).getHealthModifyRate();
@@ -130,16 +130,16 @@ public class MonsterUtil {
         
         for (HSSkill skill : monsterBuilder.getSkillList()) {
         	int category = HawkConfigManager.getInstance().getConfigByKey(SpellCfg.class, skill.getSkillId()).getCategory();
-			if (category == Const.SpellTyep.Spell_Type_PhyDaZhao_VALUE || category == Const.SpellTyep.Spell_Type_MagicDazhao_VALUE) {
+			if (category == Const.SpellType.Spell_Type_PhyDaZhao_VALUE || category == Const.SpellType.Spell_Type_MagicDazhao_VALUE) {
 				dazhaoLvl = skill.getLevel();
 			}
-			else if (category == Const.SpellTyep.Spell_Type_PhyAttack_VALUE) {
+			else if (category == Const.SpellType.Spell_Type_PhyAttack_VALUE) {
 				phyLvl = skill.getLevel();
 			}
-			else if (category == Const.SpellTyep.Spell_Type_MgicAttack_VALUE) {
+			else if (category == Const.SpellType.Spell_Type_MgicAttack_VALUE) {
 				magicLvl = skill.getLevel();
 			}
-			else if (category == Const.SpellTyep.Spell_Type_Dot_VALUE) {
+			else if (category == Const.SpellType.Spell_Type_Dot_VALUE) {
 				dotLvl = skill.getLevel();
 			}
 		}

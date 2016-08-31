@@ -4188,20 +4188,6 @@ public final class Instance {
      * <code>optional int32 starCount = 1 [default = 0];</code>
      */
     int getStarCount();
-
-    // optional .HSRewardInfo reward = 2;
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    boolean hasReward();
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    com.hawk.game.protocol.Reward.HSRewardInfo getReward();
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getRewardOrBuilder();
   }
   /**
    * Protobuf type {@code HSInstanceSettleRet}
@@ -4263,19 +4249,6 @@ public final class Instance {
               starCount_ = input.readInt32();
               break;
             }
-            case 18: {
-              com.hawk.game.protocol.Reward.HSRewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = reward_.toBuilder();
-              }
-              reward_ = input.readMessage(com.hawk.game.protocol.Reward.HSRewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(reward_);
-                reward_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4332,43 +4305,14 @@ public final class Instance {
       return starCount_;
     }
 
-    // optional .HSRewardInfo reward = 2;
-    public static final int REWARD_FIELD_NUMBER = 2;
-    private com.hawk.game.protocol.Reward.HSRewardInfo reward_;
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    public boolean hasReward() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    public com.hawk.game.protocol.Reward.HSRewardInfo getReward() {
-      return reward_;
-    }
-    /**
-     * <code>optional .HSRewardInfo reward = 2;</code>
-     */
-    public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getRewardOrBuilder() {
-      return reward_;
-    }
-
     private void initFields() {
       starCount_ = 0;
-      reward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (hasReward()) {
-        if (!getReward().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4378,9 +4322,6 @@ public final class Instance {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, starCount_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, reward_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4394,10 +4335,6 @@ public final class Instance {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, starCount_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, reward_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4511,7 +4448,6 @@ public final class Instance {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4522,12 +4458,6 @@ public final class Instance {
         super.clear();
         starCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (rewardBuilder_ == null) {
-          reward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-        } else {
-          rewardBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -4560,14 +4490,6 @@ public final class Instance {
           to_bitField0_ |= 0x00000001;
         }
         result.starCount_ = starCount_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (rewardBuilder_ == null) {
-          result.reward_ = reward_;
-        } else {
-          result.reward_ = rewardBuilder_.build();
-        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4587,20 +4509,11 @@ public final class Instance {
         if (other.hasStarCount()) {
           setStarCount(other.getStarCount());
         }
-        if (other.hasReward()) {
-          mergeReward(other.getReward());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (hasReward()) {
-          if (!getReward().isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -4654,123 +4567,6 @@ public final class Instance {
         starCount_ = 0;
         onChanged();
         return this;
-      }
-
-      // optional .HSRewardInfo reward = 2;
-      private com.hawk.game.protocol.Reward.HSRewardInfo reward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> rewardBuilder_;
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public boolean hasReward() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public com.hawk.game.protocol.Reward.HSRewardInfo getReward() {
-        if (rewardBuilder_ == null) {
-          return reward_;
-        } else {
-          return rewardBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public Builder setReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
-        if (rewardBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          reward_ = value;
-          onChanged();
-        } else {
-          rewardBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public Builder setReward(
-          com.hawk.game.protocol.Reward.HSRewardInfo.Builder builderForValue) {
-        if (rewardBuilder_ == null) {
-          reward_ = builderForValue.build();
-          onChanged();
-        } else {
-          rewardBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public Builder mergeReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
-        if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              reward_ != com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance()) {
-            reward_ =
-              com.hawk.game.protocol.Reward.HSRewardInfo.newBuilder(reward_).mergeFrom(value).buildPartial();
-          } else {
-            reward_ = value;
-          }
-          onChanged();
-        } else {
-          rewardBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public Builder clearReward() {
-        if (rewardBuilder_ == null) {
-          reward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-          onChanged();
-        } else {
-          rewardBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public com.hawk.game.protocol.Reward.HSRewardInfo.Builder getRewardBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getRewardFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getRewardOrBuilder() {
-        if (rewardBuilder_ != null) {
-          return rewardBuilder_.getMessageOrBuilder();
-        } else {
-          return reward_;
-        }
-      }
-      /**
-       * <code>optional .HSRewardInfo reward = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> 
-          getRewardFieldBuilder() {
-        if (rewardBuilder_ == null) {
-          rewardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder>(
-                  reward_,
-                  getParentForChildren(),
-                  isClean());
-          reward_ = null;
-        }
-        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSInstanceSettleRet)
@@ -12788,29 +12584,28 @@ public final class Instance {
       "tanceEnterRet\022\022\n\ninstanceId\030\001 \002(\t\022\031\n\006bat" +
       "tle\030\002 \003(\0132\t.HSBattle\"E\n\020HSInstanceSettle" +
       "\022\027\n\017passBattleCount\030\001 \002(\005\022\030\n\020deadMonster" +
-      "Count\030\002 \002(\005\"J\n\023HSInstanceSettleRet\022\024\n\tst" +
-      "arCount\030\001 \001(\005:\0010\022\035\n\006reward\030\002 \001(\0132\r.HSRew" +
-      "ardInfo\"4\n\017HSInstanceSweep\022\022\n\ninstanceId" +
-      "\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022HSInstanceSweep" +
-      "Ret\022%\n\016completeReward\030\001 \003(\0132\r.HSRewardIn" +
-      "fo\022\"\n\013sweepReward\030\002 \001(\0132\r.HSRewardInfo\"*",
-      "\n\024HSInstanceResetCount\022\022\n\ninstanceId\030\001 \002" +
-      "(\t\"\031\n\027HSInstanceResetCountRet\"\022\n\020HSInsta" +
-      "nceRevive\"*\n\023HSInstanceReviveRet\022\023\n\013revi" +
-      "veCount\030\001 \002(\005\"5\n\014HSChapterBox\022\021\n\tchapter" +
-      "Id\030\001 \002(\005\022\022\n\ndifficulty\030\002 \002(\005\"J\n\017HSChapte" +
-      "rBoxRet\022\021\n\tchapterId\030\001 \002(\005\022\022\n\ndifficulty" +
-      "\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"J\n\013HSHoleEnter\022" +
-      "\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanceId\030\002 \002(\t\022\027\n\017b" +
-      "attleMonsterId\030\003 \003(\005\"G\n\014HSTowerEnter\022\017\n\007" +
-      "towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002(\005\022\027\n\017battleMo",
-      "nsterId\030\003 \003(\005\"C\n\024HSGuildInstanceEnter\022\022\n" +
-      "\ninstanceId\030\001 \002(\t\022\027\n\017battleMonsterId\030\002 \003" +
-      "(\005\"\022\n\020HSInstanceAssist\"0\n\023HSInstanceAssi" +
-      "stRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSIn" +
-      "stanceOpenCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSI" +
-      "nstanceOpenCardRetB\030\n\026com.hawk.game.prot" +
-      "ocol"
+      "Count\030\002 \002(\005\"+\n\023HSInstanceSettleRet\022\024\n\tst" +
+      "arCount\030\001 \001(\005:\0010\"4\n\017HSInstanceSweep\022\022\n\ni" +
+      "nstanceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022HSInst" +
+      "anceSweepRet\022%\n\016completeReward\030\001 \003(\0132\r.H" +
+      "SRewardInfo\022\"\n\013sweepReward\030\002 \001(\0132\r.HSRew" +
+      "ardInfo\"*\n\024HSInstanceResetCount\022\022\n\ninsta",
+      "nceId\030\001 \002(\t\"\031\n\027HSInstanceResetCountRet\"\022" +
+      "\n\020HSInstanceRevive\"*\n\023HSInstanceReviveRe" +
+      "t\022\023\n\013reviveCount\030\001 \002(\005\"5\n\014HSChapterBox\022\021" +
+      "\n\tchapterId\030\001 \002(\005\022\022\n\ndifficulty\030\002 \002(\005\"J\n" +
+      "\017HSChapterBoxRet\022\021\n\tchapterId\030\001 \002(\005\022\022\n\nd" +
+      "ifficulty\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"J\n\013HSH" +
+      "oleEnter\022\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanceId\030\002" +
+      " \002(\t\022\027\n\017battleMonsterId\030\003 \003(\005\"G\n\014HSTower" +
+      "Enter\022\017\n\007towerId\030\001 \002(\005\022\r\n\005floor\030\002 \002(\005\022\027\n" +
+      "\017battleMonsterId\030\003 \003(\005\"C\n\024HSGuildInstanc",
+      "eEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battleMons" +
+      "terId\030\002 \003(\005\"\022\n\020HSInstanceAssist\"0\n\023HSIns" +
+      "tanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssis" +
+      "t\"\'\n\022HSInstanceOpenCard\022\021\n\topenCount\030\001 \002" +
+      "(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026com.hawk." +
+      "game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12852,7 +12647,7 @@ public final class Instance {
           internal_static_HSInstanceSettleRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceSettleRet_descriptor,
-              new java.lang.String[] { "StarCount", "Reward", });
+              new java.lang.String[] { "StarCount", });
           internal_static_HSInstanceSweep_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_HSInstanceSweep_fieldAccessorTable = new

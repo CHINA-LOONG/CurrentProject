@@ -445,4 +445,51 @@ namespace PB
       INSTANCE_GUILD = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"SpellType")]
+    public enum SpellType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PhyAttack", Value=0)]
+      Spell_Type_PhyAttack = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_MgicAttack", Value=1)]
+      Spell_Type_MgicAttack = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Cure", Value=2)]
+      Spell_Type_Cure = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Defense", Value=3)]
+      Spell_Type_Defense = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Passive", Value=4)]
+      Spell_Type_Passive = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Beneficial", Value=5)]
+      Spell_Type_Beneficial = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Negative", Value=6)]
+      Spell_Type_Negative = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Lazy", Value=7)]
+      Spell_Type_Lazy = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PhyDaZhao", Value=8)]
+      Spell_Type_PhyDaZhao = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_MagicDazhao", Value=9)]
+      Spell_Type_MagicDazhao = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PrepareDazhao", Value=10)]
+      Spell_Type_PrepareDazhao = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Dot", Value=11)]
+      Spell_Type_Dot = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_Hot", Value=12)]
+      Spell_Type_Hot = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Num_Spell_Type", Value=13)]
+      Num_Spell_Type = 13
+    }
+  
 }

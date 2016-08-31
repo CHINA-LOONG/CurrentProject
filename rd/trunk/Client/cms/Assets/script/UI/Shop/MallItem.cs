@@ -49,7 +49,7 @@ public class MallItem : MonoBehaviour
 
 	IEnumerator  BuyItem()
 	{
-		string url = "http://123.59.45.55:9600/test";
+		string url = "http://127.0.0.1:9600/test";
 		//string url = "http://192.168.199.177:9600/test";
 
 		HTTPRequest httpRquest = null;

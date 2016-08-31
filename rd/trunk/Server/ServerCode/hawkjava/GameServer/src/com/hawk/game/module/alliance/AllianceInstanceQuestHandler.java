@@ -9,13 +9,13 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SociatyQuestCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
@@ -94,7 +94,7 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 						allianceEntity.notifyUpdate(true);
 					}
 					
-					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_QUEST_REWARD, HS.code.ALLIANCE_INSTANCE_REWARD_S_VALUE);
+					reward.rewardTakeAffectAndPush(player, Action.GUILD_INSTANCE_REWARD, HS.code.ALLIANCE_INSTANCE_REWARD_S_VALUE);
 					return true;
 				}
 			} 

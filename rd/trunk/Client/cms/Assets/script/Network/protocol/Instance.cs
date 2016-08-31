@@ -190,14 +190,6 @@ namespace PB
       get { return _starCount; }
       set { _starCount = value; }
     }
-    private HSRewardInfo _reward = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"reward", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public HSRewardInfo reward
-    {
-      get { return _reward; }
-      set { _reward = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

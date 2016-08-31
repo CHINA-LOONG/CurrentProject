@@ -1,6 +1,11 @@
 ﻿#TEXT,NUM,NUM
 name,desc,needlevel
 #功能名称,功能描述,开启等级
-背包,测试背包,1
-商店,测试商店,5
-测试,ttest,10
+hecheng_name,hecheng_desc,4
+fenjie_name,fenjie_desc,4
+dazao_name,dazao_desc,6
+houbei_name,houbei_desc,6
+saodang_name,saodang_desc,8
+putongshangdian_name,putongshangdian_desc,8
+tiaozhan_name,tiaozhan_desc,12
+gengduo_name,gengduo_desc,20

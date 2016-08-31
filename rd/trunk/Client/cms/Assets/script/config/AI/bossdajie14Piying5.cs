@@ -31,7 +31,7 @@ public class bossdajie14Piying5 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Piying5Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") != 0 )
+		if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp03") != 0 )
 		{
 			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
@@ -44,7 +44,7 @@ public class bossdajie14Piying5 : BossAi {
 					
 		} 
 
-		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") == 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") != 0 )
+		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") == 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp03") != 0 )
 		{
 			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{
@@ -56,7 +56,7 @@ public class bossdajie14Piying5 : BossAi {
 			}
 
 		}
-		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossMinghe14Piying5wp03") == 0 )
+		else if (NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp02") != 0 && NormalScript.GetWpLifeLeftRatio(Piying5Unit.battleUnit, "bossdajie14Piying5wp03") == 0 )
 		{
 			if (GetAttackCount(Piying5Unit) % 6 == 0 && GetAttackCount(Piying5Unit) != 0) 
 			{

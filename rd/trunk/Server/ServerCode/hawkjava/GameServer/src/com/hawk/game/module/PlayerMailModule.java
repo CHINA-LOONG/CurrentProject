@@ -10,10 +10,10 @@ import org.hawk.annotation.ProtocolHandler;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;

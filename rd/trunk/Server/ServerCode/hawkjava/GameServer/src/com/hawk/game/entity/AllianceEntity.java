@@ -408,7 +408,7 @@ public class AllianceEntity extends HawkDBEntity {
 	 */
 	public void addAllianceBase(AllianceBaseEntity baseEntity, int position){		
 		if (!allianceBaseMap.containsKey(baseEntity.getMonsterBuilder().getMonsterId())) {
-			PlayerAllianceEntity playerAllianceEntity = memberList.get(allianceBaseMap.get(baseEntity.getPlayerId()));
+			PlayerAllianceEntity playerAllianceEntity = memberList.get(baseEntity.getPlayerId());
 			if (playerAllianceEntity != null && !playerAllianceEntity.isBasePositionHasMonster(position)) {
 				playerAllianceEntity.addAllianceBase(position, baseEntity);
 				allianceBaseMap.put(baseEntity.getMonsterBuilder().getMonsterId(), baseEntity);

@@ -9,7 +9,7 @@ import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
-import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
@@ -82,7 +82,7 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 					AwardItems award = new AwardItems();
 					int rewardCoin = AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * (HawkTime.getSeconds()- baseEntity.getSendTime());
 					award.addCoin(rewardCoin + playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward());
-					award.rewardTakeAffectAndPush(player, Action.ALLIANCE_BASE_REWARD, protocol.getType());
+					award.rewardTakeAffectAndPush(player, Action.GUILD_BASE_REWARD, protocol.getType());
 					
 					// 回复信息
 					HSAllianceBaseRecallMonsterRet.Builder response = HSAllianceBaseRecallMonsterRet.newBuilder();

@@ -575,6 +575,7 @@ MonoBehaviour:
   textName: {fileID: 11466794}
   textType: {fileID: 11442086}
   textPart: {fileID: 11432552}
+  textBase: {fileID: 11424076}
   BasePos: {fileID: 22495404}
   GemsPos: {fileID: 22470034}
   textNotSlot: {fileID: 11412052}

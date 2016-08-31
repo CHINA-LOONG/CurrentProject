@@ -1,7 +1,5 @@
 package com.hawk.game.BILog;
 
-import org.hawk.config.HawkConfigManager;
-
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.player.Player;
@@ -17,17 +15,9 @@ public class BIItemData extends BIData{
 	 * @param count
 	 * @param itemCfg
 	 */
-	public void log(Player player, Action action, String itemId, int stage, int count, ItemCfg itemCfg) {
-		// 获取itemCfg
-		if (itemCfg == null) {
-			itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
-			if (itemCfg == null) {
-				return;
-			}
-		}
-		
+	public void log(Player player, Action action, ItemCfg itemCfg, int stage, int itemIn, int itemOut) {	
 		logBegin(player, "item_transaction");
-		jsonPropertyData.put("item_id", itemId);
+		jsonPropertyData.put("item_id", itemCfg.getId());
 		jsonPropertyData.put("item_name", itemCfg.getName());
 		if (itemCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
 			jsonPropertyData.put("item_stage", stage);
@@ -44,6 +34,8 @@ public class BIItemData extends BIData{
 		}
 		
 		jsonPropertyData.put("action", action.getBICode());
+		jsonPropertyData.put("item_out", itemOut);
+		jsonPropertyData.put("item_in", itemIn);
 		logEnd();
 	}
 }

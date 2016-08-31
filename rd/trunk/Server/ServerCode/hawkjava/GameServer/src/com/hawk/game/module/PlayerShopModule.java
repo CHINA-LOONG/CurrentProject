@@ -10,6 +10,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.GoldChangeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.ShopCfg;
@@ -20,7 +21,6 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ShopItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -101,8 +101,8 @@ public class PlayerShopModule extends PlayerModule{
 		
 		award.addCoin(coinAward);
 		
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
+		consume.consumeTakeAffectAndPush(player, Action.COIN_CHANGE, HS.code.SHOP_GOLD2COIN_C_VALUE);
+		award.rewardTakeAffectAndPush(player, Action.COIN_CHANGE, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
 		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getBuyCoinTimesDaily());
@@ -228,8 +228,19 @@ public class PlayerShopModule extends PlayerModule{
 			award.addItem(itemInfo.getItemId(), itemInfo.getCount());
 		}
 		
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
+		Action action = Action.NULL;
+		if (protocol.getType() == Const.shopType.NORMALSHOP_VALUE) {
+			action = Action.NORMAL_SHOP_BUY;
+		}
+		else if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE) {
+			action = Action.GUILD_SHOP_BUY;
+		}
+		else {
+			action = Action.TOWER_SHOP_BUY;
+		}
+		
+		consume.consumeTakeAffectAndPush(player, action, hsCode);
+		award.rewardTakeAffectAndPush(player, action, hsCode);
 		shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).setHasBuy(true);
 		shopEntity.notifyUpdate(true);
 
@@ -261,8 +272,8 @@ public class PlayerShopModule extends PlayerModule{
 		AwardItems award = new AwardItems();
 		award.addItem(storeCfg.getItemId(), protocol.getCount());
 		
-		consume.consumeTakeAffectAndPush(player, Action.STORE_ITEM_BUY, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.STORE_ITEM_BUY, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.STORE_BUY, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.STORE_BUY, hsCode);
 
 		HSStoreItemBuyRet.Builder response = HSStoreItemBuyRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_STORE_BUY_S_VALUE, response));

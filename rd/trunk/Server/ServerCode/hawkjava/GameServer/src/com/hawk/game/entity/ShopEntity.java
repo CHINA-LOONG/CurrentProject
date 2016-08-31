@@ -323,7 +323,7 @@ public class ShopEntity extends HawkDBEntity{
 		if (normalShopItems != null && normalShopItems.isEmpty() == false) {
 			String[] items = normalShopItems.trim().split(" ");
 			for (String item  : items) {
-				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				ShopItemInfo itemInfo = ShopItemInfo.generateFromDB(item);
 				if (itemInfo != null) {
 					normalShopItemsList.add(itemInfo);
 				}
@@ -334,7 +334,7 @@ public class ShopEntity extends HawkDBEntity{
 		if (allianceShopItems != null && allianceShopItems.isEmpty() == false) {
 			String[] items = allianceShopItems.trim().split(" ");
 			for (String item  : items) {
-				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				ShopItemInfo itemInfo = ShopItemInfo.generateFromDB(item);
 				if (itemInfo != null) {
 					allianceShopItemsList.add(itemInfo);
 				}
@@ -345,7 +345,7 @@ public class ShopEntity extends HawkDBEntity{
 		if (towerShopItems != null && towerShopItems.isEmpty() == false) {
 			String[] items = towerShopItems.trim().split(" ");
 			for (String item  : items) {
-				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				ShopItemInfo itemInfo = ShopItemInfo.generateFromDB(item);
 				if (itemInfo != null) {
 					towerShopItemsList.add(itemInfo);
 				}

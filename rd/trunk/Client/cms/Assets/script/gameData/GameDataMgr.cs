@@ -402,7 +402,7 @@ public class GameDataMgr : MonoBehaviour
 
         PB.HSSettingInfoSync settingInfo = msg.GetProtocolBody<PB.HSSettingInfoSync>();
         PB.HSSetting hsSetting = settingInfo.setting;
-        PlayerPrefs.SetString("language", hsSetting.language);
+        PlayerPrefs.SetString("serverLanguage", hsSetting.language);
         int count = settingInfo.setting.blockPlayerId.Count;
         for (int i = 0; i < count; ++i)
         {

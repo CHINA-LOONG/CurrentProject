@@ -3199,13 +3199,13 @@ public final class Const {
   }
 
   /**
-   * Protobuf enum {@code SpellTyep}
+   * Protobuf enum {@code SpellType}
    *
    * <pre>
    * 技能类型
    * </pre>
    */
-  public enum SpellTyep
+  public enum SpellType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>Spell_Type_PhyAttack = 0;</code>
@@ -3325,7 +3325,7 @@ public final class Const {
 
     public final int getNumber() { return value; }
 
-    public static SpellTyep valueOf(int value) {
+    public static SpellType valueOf(int value) {
       switch (value) {
         case 0: return Spell_Type_PhyAttack;
         case 1: return Spell_Type_MgicAttack;
@@ -3345,15 +3345,15 @@ public final class Const {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<SpellTyep>
+    public static com.google.protobuf.Internal.EnumLiteMap<SpellType>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<SpellTyep>
+    private static com.google.protobuf.Internal.EnumLiteMap<SpellType>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<SpellTyep>() {
-            public SpellTyep findValueByNumber(int number) {
-              return SpellTyep.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<SpellType>() {
+            public SpellType findValueByNumber(int number) {
+              return SpellType.valueOf(number);
             }
           };
 
@@ -3370,9 +3370,9 @@ public final class Const {
       return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(21);
     }
 
-    private static final SpellTyep[] VALUES = values();
+    private static final SpellType[] VALUES = values();
 
-    public static SpellTyep valueOf(
+    public static SpellType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -3384,12 +3384,12 @@ public final class Const {
     private final int index;
     private final int value;
 
-    private SpellTyep(int index, int value) {
+    private SpellType(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:SpellTyep)
+    // @@protoc_insertion_point(enum_scope:SpellType)
   }
 
 
@@ -3452,7 +3452,7 @@ public final class Const {
       "\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014InstanceType\022" +
       "\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANCE_HOLE\020\002\022\022",
       "\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE_GUILD\020\004*\336" +
-      "\002\n\tSpellTyep\022\030\n\024Spell_Type_PhyAttack\020\000\022\031" +
+      "\002\n\tSpellType\022\030\n\024Spell_Type_PhyAttack\020\000\022\031" +
       "\n\025Spell_Type_MgicAttack\020\001\022\023\n\017Spell_Type_" +
       "Cure\020\002\022\026\n\022Spell_Type_Defense\020\003\022\026\n\022Spell_" +
       "Type_Passive\020\004\022\031\n\025Spell_Type_Beneficial\020" +

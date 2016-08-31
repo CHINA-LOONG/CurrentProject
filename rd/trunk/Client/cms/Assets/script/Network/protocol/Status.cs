@@ -436,7 +436,22 @@ namespace PB
       ALLIANCE_MAX_COPY_MAIN = 524329,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_LIST_EMPTY", Value=524330)]
-      ALLIANCE_APPLY_LIST_EMPTY = 524330
+      ALLIANCE_APPLY_LIST_EMPTY = 524330,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_MONSTER", Value=524334)]
+      ALLIANCE_BASE_HAVE_MONSTER = 524334,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_NO_MONSTER", Value=524336)]
+      ALLIANCE_BASE_HAVE_NO_MONSTER = 524336,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_POSITION_LOCK", Value=524337)]
+      ALLIANCE_BASE_POSITION_LOCK = 524337,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_MONSTER_HAVE_SEND", Value=524338)]
+      ALLIANCE_BASE_MONSTER_HAVE_SEND = 524338,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_TIME_LIMIT", Value=524339)]
+      ALLIANCE_BASE_TIME_LIMIT = 524339
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

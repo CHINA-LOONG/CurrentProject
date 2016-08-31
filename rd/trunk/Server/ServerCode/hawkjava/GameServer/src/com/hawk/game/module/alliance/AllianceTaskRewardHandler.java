@@ -9,13 +9,13 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SociatyTaskCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet;
@@ -86,7 +86,7 @@ public class AllianceTaskRewardHandler implements HawkMsgHandler{
 						reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, taskCfg.getLeaderReward()).getRewardList());
 					}
 					
-					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_TASK_REWARD, protocol.getType());
+					reward.rewardTakeAffectAndPush(player, Action.GUILD_TASK_REWARD, protocol.getType());
 					
 					int contribution = reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
 					allianceEntity.addContribution(contribution);

@@ -1909,9 +1909,9 @@ namespace PB
   {
     public HSAllianceMyBaseListRet() {}
     
-    private readonly global::System.Collections.Generic.List<HSMonster> _monsterInfo = new global::System.Collections.Generic.List<HSMonster>();
+    private readonly global::System.Collections.Generic.List<AllianceBaseMonster> _monsterInfo = new global::System.Collections.Generic.List<AllianceBaseMonster>();
     [global::ProtoBuf.ProtoMember(1, Name=@"monsterInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSMonster> monsterInfo
+    public global::System.Collections.Generic.List<AllianceBaseMonster> monsterInfo
     {
       get { return _monsterInfo; }
     }

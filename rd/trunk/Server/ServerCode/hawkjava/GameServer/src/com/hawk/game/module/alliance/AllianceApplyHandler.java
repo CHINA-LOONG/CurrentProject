@@ -12,7 +12,6 @@ import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
-import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;

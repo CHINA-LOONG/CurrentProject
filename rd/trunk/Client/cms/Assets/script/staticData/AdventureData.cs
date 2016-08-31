@@ -2,6 +2,7 @@
 {
     public int id;
     public string comments;
+    public string image;
     public int type;
     public int time;
     public string level;

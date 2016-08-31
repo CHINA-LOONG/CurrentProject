@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 465440}
   - 114: {fileID: 11426412}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ImageViewModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422036}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HorizontalTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VerticalTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ModelPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - 20: {fileID: 2023414}
   - 124: {fileID: 12479760}
   - 92: {fileID: 9215478}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 401636}
   - 108: {fileID: 10815118}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

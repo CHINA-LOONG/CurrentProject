@@ -4239,7 +4239,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -4259,7 +4259,7 @@ state = 1 Remove
 		
 		<Ani id="txKairuisi5" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi51"/>
@@ -4380,7 +4380,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi1"/>
@@ -4401,7 +4401,7 @@ state = 1 Remove
 		
 		<Ani id="txKairuisi" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Kairuisi1"/>
@@ -5892,7 +5892,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang25Kairuisi53e3" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuffDefense" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="commonDebuffDefense" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff"/>
@@ -5904,7 +5904,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="wp_weapon" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0.5" name="Kairuisi51"/>
@@ -5925,7 +5925,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="wp_weapon" attach="true"/>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="Bone001" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0.5" name="Kairuisi51"/>

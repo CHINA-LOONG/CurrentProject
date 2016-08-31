@@ -6,6 +6,7 @@ import java.util.List;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.StoreCfg;
@@ -14,7 +15,6 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -157,11 +157,27 @@ public class PlayerItemModule extends PlayerModule{
 		if (consumeItem.checkConsume(player, hsCode) == false) {
 			return ;
 		}
-		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
+		
+		Action action = Action.NULL;
+		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
+			action = Action.ENERGY_BUY;
+		}
+		else if (itemCfg.getId().equals(GsConst.SWEEP_TICKET)) {
+			action = Action.RAID_TICKEY_BUY;
+		}
+		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ||
+				 itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE) {
+			action = Action.EXP_SCROLL_USE;
+		}
+		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLEXP_VALUE) {
+			action = Action.EXP_POTION_USE;
+		}
+		
+		consumeItem.consumeTakeAffectAndPush(player, action, hsCode);
 
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItem(itemId, itemCount);
-		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
+		awardItems.rewardTakeAffectAndPush(player, action, hsCode);
 
 		HSItemBuyRet.Builder response = HSItemBuyRet.newBuilder();
 		response.setItemId(itemId);
@@ -225,8 +241,8 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 
-		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
-		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
+		consumeItem.consumeTakeAffectAndPush(player, Action.ENERGY_BUY, hsCode);
+		awardItems.rewardTakeAffectAndPush(player, Action.ENERGY_COOKIES_USE, hsCode);
 
 		// 特殊情况，直接在此统计
 		statisticsEntity.increaseBuyItemTimes(itemId);
@@ -343,9 +359,9 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 
-		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+		consumeItems.consumeTakeAffectAndPush(player, Action.BOX_USE, hsCode);
 		for (AwardItems awardItems : awardItemsList) {
-			awardItems.rewardTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+			awardItems.rewardTakeAffectAndPush(player, Action.BOX_USE, hsCode);
 		}
 
 		HSItemBoxUseBatchRet.Builder response = HSItemBoxUseBatchRet.newBuilder();
@@ -453,6 +469,21 @@ public class PlayerItemModule extends PlayerModule{
 			}
 		}
 
+		Action action = Action.NULL;
+		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
+			action = Action.ENERGY_COOKIES_USE;
+		}
+		else if (itemCfg.getId().equals(GsConst.SWEEP_TICKET)) {
+			action = Action.RAID_TICKET_USE;
+		}
+		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ||
+				 itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE) {
+			action = Action.EXP_SCROLL_USE;
+		}
+		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLEXP_VALUE) {
+			action = Action.EXP_POTION_USE;
+		}
+		
 		// 检测消耗数量和奖励上限
 		if (consumeItems.hasConsumeItem() == true && consumeItems.checkConsume(player, hsCode) == false) {
 			return;
@@ -462,10 +493,10 @@ public class PlayerItemModule extends PlayerModule{
 		}
 
 		if (consumeItems.hasConsumeItem() == true) {
-			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+			consumeItems.consumeTakeAffectAndPush(player, action, hsCode);
 		}
 		if (awardItems.hasAwardItem() == true) {
-			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE, hsCode);
+			awardItems.rewardTakeAffectAndPush(player, action, hsCode);
 		}
 
 		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ) {
@@ -523,12 +554,12 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 		
-		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_COMPOSE, hsCode);
+		consumeItems.consumeTakeAffectAndPush(player, Action.MATERIAL_COMBINE, hsCode);
 		AwardItems awardItems = new AwardItems();
 		for (int i = 0; i < composeTimes; i++) {
 			awardItems.addItemInfos(itemCfg.getTargetItemList());
 		}
-		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_COMPOSE, hsCode);
+		awardItems.rewardTakeAffectAndPush(player, Action.MATERIAL_COMBINE, hsCode);
 		
 		HSItemComposeRet.Builder response = HSItemComposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_COMPOSE_S_VALUE, response));
@@ -601,8 +632,8 @@ public class PlayerItemModule extends PlayerModule{
 		}
 		statisticsEntity.notifyUpdate(true);
 
-		consumeItems.consumeTakeAffectAndPush(player, Action.GEM_COMPOSE, hsCode);
-		awardItems.rewardTakeAffectAndPush(player, Action.GEM_COMPOSE, hsCode);
+		consumeItems.consumeTakeAffectAndPush(player, Action.GEM_COMBINE, hsCode);
+		awardItems.rewardTakeAffectAndPush(player, Action.GEM_COMBINE, hsCode);
 
 		HSGemComposeRet.Builder response = HSGemComposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.GEM_COMPOSE_S_VALUE, response));

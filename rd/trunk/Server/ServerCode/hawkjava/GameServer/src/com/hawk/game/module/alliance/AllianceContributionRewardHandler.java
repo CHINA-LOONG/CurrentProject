@@ -6,11 +6,11 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceContriRewardRet;
@@ -92,7 +92,7 @@ public class AllianceContributionRewardHandler implements HawkMsgHandler{
 		
 		AwardItems award = new AwardItems();
 		award.addItemInfos(rewardCfg.getRewardList());
-		award.rewardTakeAffectAndPush(player, Action.ALLIANCE_CONTRIBUTION_REWARD, protocol.getType());
+		award.rewardTakeAffectAndPush(player, Action.GUILD_CONTRIBUTION_REWARD, protocol.getType());
 		
 		HSAllianceContriRewardRet.Builder resonse = HSAllianceContriRewardRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CONTRI_REWARD_S_VALUE, resonse));

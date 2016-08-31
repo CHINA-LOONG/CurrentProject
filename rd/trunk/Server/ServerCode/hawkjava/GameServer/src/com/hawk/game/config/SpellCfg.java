@@ -54,6 +54,70 @@ public class SpellCfg extends HawkConfigBase{
 		this.tipsNextlvl = null;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public String getRootEffectID() {
+		return rootEffectID;
+	}
+
+	public int getActionCount() {
+		return actionCount;
+	}
+
+	public int getChannelTime() {
+		return channelTime;
+	}
+
+	public int getEnergyCost() {
+		return energyCost;
+	}
+
+	public int getEnergyGenerate() {
+		return energyGenerate;
+	}
+
+	public float getLevelAdjust() {
+		return levelAdjust;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getTips() {
+		return tips;
+	}
+
+	public float getBaseTipValue() {
+		return baseTipValue;
+	}
+
+	public int getIsAoe() {
+		return isAoe;
+	}
+
+	public String getFirstSpell() {
+		return firstSpell;
+	}
+
+	public String getTipsDescription() {
+		return tipsDescription;
+	}
+
+	public String getTipsCurlvl() {
+		return tipsCurlvl;
+	}
+
+	public String getTipsNextlvl() {
+		return tipsNextlvl;
+	}
+
 	public int getCategory() {
 		return category;
 	}

@@ -9,13 +9,13 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.SociatyTaskCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet;
@@ -95,7 +95,7 @@ public class AllianceDissolveTeamHandler implements HawkMsgHandler{
 					AwardItems reward = new AwardItems();
 					reward.addFreeGold((int)(SysBasicCfg.getInstance().getAllianceDissoveGoldRate() * taskCfg.getTaskStart()));
 					teamEntity.removePlayerFromTeam(player.getId());
-					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_DISSOLVE_TEAM_REWARD, protocol.getType());
+					reward.rewardTakeAffectAndPush(player, Action.GUILD_TASK_GIVEUP, protocol.getType());
 					
 					HSAllianceDissolveTeamRet.Builder response = HSAllianceDissolveTeamRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_DISSOVLE_TEAM_S_VALUE, response));				

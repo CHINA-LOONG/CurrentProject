@@ -13,7 +13,7 @@ public class UIEquipTips : UIBase
     public Text textName;
     public Text textType;
     public Text textPart;
-
+    public Text textBase;
     public Transform BasePos;
     public Transform GemsPos;
     public Text textNotSlot;
@@ -41,6 +41,7 @@ public class UIEquipTips : UIBase
     void Start()
     {
         EventTriggerListener.Get(mask).onClick = CloseOnClick;
+        textBase.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
         textNotSlot.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
         text_GetBy.text = StaticDataMgr.Instance.GetTextByID("handbook_huodeway");
     }

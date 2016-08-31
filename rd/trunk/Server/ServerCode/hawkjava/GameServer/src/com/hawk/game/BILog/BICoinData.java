@@ -12,7 +12,7 @@ public class BICoinData extends BIData{
 	 * @param coinOut 金币减少值
 	 * @param coinBal 事件后金币存量
 	 */
-	public void log(Player player, Action action, int coinIn, int coinOut, int coinBal) {
+	public void log(Player player, Action action, long coinIn, long coinOut, long coinBal) {
 		logBegin(player, "coins_transaction");
 		jsonPropertyData.put("coins_in", coinIn);
 		jsonPropertyData.put("coins_out", coinOut);

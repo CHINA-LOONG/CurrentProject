@@ -258,12 +258,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
             m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
             if (LanguageMgr.Instance.Lang == Language.Chinese)
             {
-                PlayerPrefs.SetString("language", "zh-CN");
+                PlayerPrefs.SetString("serverLanguage", "zh-CN");
                 SettingLanguage();
             }
             else if (LanguageMgr.Instance.Lang == Language.English)
             {
-                PlayerPrefs.SetString("language", "en");
+                PlayerPrefs.SetString("serverLanguage", "en");
                 SettingLanguage();
             }
         }
@@ -312,13 +312,13 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     {
         PB.HSSettingLanguage param = new PB.HSSettingLanguage()
         {
-            language = PlayerPrefs.GetString("language")
+            language = PlayerPrefs.GetString("serverLanguage")
         };
         GameApp.Instance.netManager.SendMessage(PB.code.SETTING_LANGUAGE_C.GetHashCode(), param,false);
     }
     void OnSettingLanguageRet(ProtocolMessage msg)
     {
-        if (msg.GetProtocolBody<PB.HSSettingLanguageRet>().language == PlayerPrefs.GetString("language"))
+        if (msg.GetProtocolBody<PB.HSSettingLanguageRet>().language == PlayerPrefs.GetString("serverLanguage"))
         {
             Logger.Log("设置成功");
         }

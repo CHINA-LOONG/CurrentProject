@@ -1,0 +1,116 @@
+import "Protocol/Const.proto";
+import "Protocol/Reward.proto";
+import "Protocol/Alliance.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message HSAdventureTeam
+{
+	required int32 teamId = 1;
+	required int32 adventureId = 2;
+	required int32 endTime = 3;
+	repeated int32 monsterId = 4;
+	optional AllianceBaseMonster monsterHire = 5;
+}
+
+message HSAdventureCondition
+{
+	required int32 monsterCount = 1;
+	required int32 conditionTypeCfgId = 2;
+}
+
+message HSAdventure
+{
+	required int32 adventureId = 1;
+	repeated HSAdventureCondition condition = 2;
+}
+
+// protocol-----------------------------------------------------
+
+message HSAdventureInfoSync
+{
+	// 拥有队伍数量
+	required int32 teamCount = 1;
+	// 已冒险队伍
+	repeated HSAdventureTeam adventureTeam = 2;
+	// 未冒险任务
+	repeated HSAdventure adventure = 3;
+}
+
+// ADVENTURE_ENTER_C
+message HSAdventureEnter
+{
+	required int32 teamId = 1;
+	required int32 adventureId = 2;
+	repeated int32 monsterId = 3;
+	optional int32 monsterHireId = 4;
+}
+
+// ADVENTURE_ENTER_S
+message HSAdventureEnterRet
+{
+	required int32 teamId = 1;
+	required int32 endTime = 2;
+}
+
+// ADVENTURE_SETTLE_C
+message HSAdventureSettle
+{
+	required int32 teamId = 1;
+}
+
+// ADVENTURE_SETTLE_S
+message HSAdventureSettleRet
+{
+	required int32 teamId = 1;
+	required HSRewardInfo basicReward = 2;
+	optional HSRewardInfo extraReward = 3;
+	// 新冒险数据
+	required HSAdventure adventure = 4;
+}
+
+// ADVENTURE_NEW_CONDITION_C
+message HSAdventureNewCondition
+{
+	required int32 adventureId = 1;
+}
+
+// ADVENTURE_NEW_CONDITION_S
+message HSAdventureNewConditionRet
+{
+	// 新冒险数据
+	required HSAdventure adventure = 1;
+	// 当前变更条件次数
+	required int32 changeCount = 2;
+	// 当前正在累计变更条件次数恢复时间开始时间戳（秒）
+	required int32 changeCountBeginTime = 3;
+}
+
+// ADVENTURE_BUY_CONDITION_C
+message HSAdventureBuyCondition
+{
+
+}
+
+// ADVENTURE_BUY_CONDITION_S
+message HSAdventureBuyConditionRet
+{
+	// 当前变更条件次数
+	required int32 changeCount = 1;
+	// 当前正在累计变更条件次数恢复时间开始时间戳（秒）
+	required int32 changeCountBeginTime = 2;
+}
+
+// ADVENTURE_BUY_TEAM_C
+message HSAdventureBuyTeam
+{
+
+}
+
+// ADVENTURE_BUY_TEAM_S
+message HSAdventureBuyTeamRet
+{
+	required int32 teamId = 1;
+}

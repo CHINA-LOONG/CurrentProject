@@ -11,6 +11,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.MonsterRarityCfg;
 import com.hawk.game.config.MonsterStageCfg;
@@ -21,7 +22,6 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
@@ -92,9 +92,10 @@ public class PlayerMonsterModule extends PlayerModule {
 		if (false == consume.checkConsume(player, hsCode)) {
 			return true;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
+		
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_ABILITY_LEVEL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
 
-		player.consumeSkillPoint(1, Action.SKILL_UP);
+		player.consumeSkillPoint(1, Action.MONSTER_ABILITY_LEVEL_UP);
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		statisticsEntity.increaseUpSkillTimes();
@@ -220,7 +221,7 @@ public class PlayerMonsterModule extends PlayerModule {
 			}
 		}
 
-		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP, HS.code.MONSTER_STAGE_UP_C_VALUE);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_EVOLVE, HS.code.MONSTER_STAGE_UP_C_VALUE);
 
 		monsterEntity.setStage((byte)newStage);
 		monsterEntity.notifyUpdate(true);
@@ -304,8 +305,8 @@ public class PlayerMonsterModule extends PlayerModule {
 			return false;
 		}
 
-		consume.consumeTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_DISENCHANT, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_DISENCHANT, hsCode);
 
 		HSMonsterDecomposeRet.Builder response = HSMonsterDecomposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_DECOMPOSE_S_VALUE, response));
@@ -363,8 +364,8 @@ public class PlayerMonsterModule extends PlayerModule {
 			HawkException.catchException(e);
 		}
 
-		consume.consumeTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);
 
 		HSMonsterComposeRet.Builder response = HSMonsterComposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_COMPOSE_S_VALUE, response));

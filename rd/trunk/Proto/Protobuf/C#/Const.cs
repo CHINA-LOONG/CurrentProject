@@ -445,8 +445,8 @@ namespace PB
       INSTANCE_GUILD = 4
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"SpellTyep")]
-    public enum SpellTyep
+    [global::ProtoBuf.ProtoContract(Name=@"SpellType")]
+    public enum SpellType
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"Spell_Type_PhyAttack", Value=0)]

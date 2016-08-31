@@ -72,13 +72,22 @@ public class ShopCfg extends HawkConfigBase{
 	 */
 	public static ShopCfg getShopCfg(int type, int level){
 		List<ShopCfg> shopList = shopTypeList.get(type);
+
 		if (shopList != null) {
-			for (ShopCfg element : shopList) {
-				if (level <= element.getMaxLevel()) {
-					return element;
+			int i = 0;
+			for (; i < shopList.size(); ++i) {
+				if (level <= shopList.get(i).getMaxLevel()) {
+					break;
 				}
 			}
+			
+			if (i == shopList.size()) {
+				i--;
+			}
+			
+			return shopList.get(i);		
 		}
+		
 		return null;
 	}
 	
