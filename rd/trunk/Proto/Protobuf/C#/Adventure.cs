@@ -164,13 +164,13 @@ namespace PB
       get { return _monsterId; }
     }
   
-    private int _monsterHireId = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"monsterHireId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int monsterHireId
+    private AllianceBaseMonster _monsterHire = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"monsterHire", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public AllianceBaseMonster monsterHire
     {
-      get { return _monsterHireId; }
-      set { _monsterHireId = value; }
+      get { return _monsterHire; }
+      set { _monsterHire = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

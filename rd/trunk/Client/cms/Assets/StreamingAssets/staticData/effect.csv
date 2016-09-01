@@ -451,7 +451,7 @@ bossdajie13Langren33e3,4,1,1,0,,,,,,,,,,,,bossdajie13Langren33b1,12345,,,,1
 bossdajie13Langren33e4,2,1,1,0,,,,,bossdajie13Langren33e5,1,,,,,,,12345,,,,1
 bossdajie13Langren33e5,4,1,1,0,,,,,,,,,,,,bossdajie13Langren33b2,12345,,,,1
 bossdajie13Langren34e1,2,1,0,0,,,,,,,2.33|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;,,,,,,12345,,,,1
-bossdajie13Langren34e2,3,1,0,0,,,,,,,,0,1,0,3,,12345,,,,1
+bossdajie13Langren34e2,3,1,0,0,,,,,,,,0,0.5,0,3,,12345,,,,1
 bossdajie14Piying51e1,2,1,0,0,,,,,bossdajie14Piying51e2,1.5,,,,,,,12345,,,,1
 bossdajie14Piying51e2,3,1,0,0,,,,,,,,1,0.5,0,5,,12345,,,,1
 bossdajie14Piying52e1,1,1,0,0,,,1,bossdajie14Piying52e2,,,"""""",,,,,,12345,,,,1
@@ -566,13 +566,13 @@ bossxiaoxiang28Muling21e1,2,1,0,0,,,,,bossxiaoxiang28Muling21e2,1.7,,,,,,,12345,
 bossxiaoxiang28Muling21e2,3,1,0,0,,,,,,,,1,1.5,0,2,,12345,,,,1
 bossxiaoxiang28Muling22e1,1,1,0,0,,,1,bossxiaoxiang28Muling22e2,,,"""""",,,,,,12345,,,,1
 bossxiaoxiang28Muling22e2,2,1,0,0,,,,,bossxiaoxiang28Muling22e3,1.7,,,,,,,12345,,,,1
-bossxiaoxiang28Muling22e3,3,1,0,0,,,,,,,,1,1.5,0,2,,12345,,,,1
+bossxiaoxiang28Muling22e3,3,1,0,0,,,,,,,,1,1,0,2,,12345,,,,1
 bossxiaoxiang28Muling23e1,2,1,0,0,,,,,bossxiaoxiang28Muling23e2,1.7,,,,,,,12345,,,,1
 bossxiaoxiang28Muling23e2,3,1,0,0,,,,,,,,1,1.5,0,2,,12345,,,bossxiaoxiang28Muling23e3,1
-bossxiaoxiang28Muling23e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,1
+bossxiaoxiang28Muling23e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,0.5
 bossxiaoxiang28Muling24e1,1,1,0,0,,,1,bossxiaoxiang28Muling24e2,,,"""""",,,,,,12345,,,,1
-bossxiaoxiang28Muling24e2,2,1,0,0,,,,,bossxiaoxiang28Muling24e3,1.5,,,,,,,12345,,,,1
-bossxiaoxiang28Muling24e3,3,1,0,0,,,,,,,,1,1.5,0,2,,12345,,,,1
+bossxiaoxiang28Muling24e2,2,1,0,0,,,,,bossxiaoxiang28Muling24e3,1.5,0.5|bossxiaoxiang28Muling24e3;0.5|bossxiaoxiang28Muling24e3;,,,,,,12345,,,,1
+bossxiaoxiang28Muling24e3,3,1,0,0,,,,,,,,1,0.7,0,2,,12345,,,,1
 bossAmute1e1,2,1,0,0,,,,,bossAmute1e2,1.5,,,,,,,12345,,,,1
 bossAmute1e2,3,1,0,0,,,,,,,,1,1.5,0,3,,12345,,,,1
 bossAmute2e1,1,1,0,0,,,1,bossAmute2e2,,,"""""",,,,,,12345,,,,1

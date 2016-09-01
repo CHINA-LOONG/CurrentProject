@@ -55,7 +55,7 @@ public class UILogin : UIBase
             Logger.Log("请输入用户名");
             return;
         }
-
+        UIServer.ResetUserData(playerIDFileld.text);
         PlayerPrefs.SetString("testGuid", playerIDFileld.text);
         GameEventMgr.Instance.FireEvent(GameEventList.LoginClick);
 	}
@@ -68,6 +68,7 @@ public class UILogin : UIBase
     void OnFunPlusGetPuid(string funplusPuid) {
         if (string.IsNullOrEmpty(funplusPuid) == false)
         {
+            UIServer.ResetUserData(funplusPuid);
             PlayerPrefs.SetString("testGuid", funplusPuid);
             GameEventMgr.Instance.FireEvent(GameEventList.LoginClick);
         }

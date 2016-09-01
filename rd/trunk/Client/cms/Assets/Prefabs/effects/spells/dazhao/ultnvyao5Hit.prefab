@@ -273,8 +273,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198244}
-  m_LocalRotation: {x: 1.19209275e-07, y: -8.16595076e-08, z: -4.4781018e-08, w: 1}
-  m_LocalPosition: {x: -.120000027, y: -0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.0700529665, w: .997543275}
+  m_LocalPosition: {x: -.0729999989, y: .209000006, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 406142}
@@ -285,8 +285,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197708}
-  m_LocalRotation: {x: 1.19209275e-07, y: -8.16595076e-08, z: -4.4781018e-08, w: 1}
-  m_LocalPosition: {x: -.0420000218, y: -0, z: 0}
+  m_LocalRotation: {x: 6.12196116e-09, y: -1.07239151e-08, z: -.0700528249, w: .997543335}
+  m_LocalPosition: {x: -.0729999989, y: .209000006, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 406142}
@@ -4641,7 +4641,7 @@ ParticleSystem:
         rgba: 4294941913
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 2.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8808,7 +8808,7 @@ ParticleSystem:
         rgba: 4294918270
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 2.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10833,15 +10833,15 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 2
+  m_RenderMode: 4
   m_MaxParticleSize: 10
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 2
+  m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_SortMode: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 1c3c6ea444f95ae44bb645c794812add, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -11085,15 +11085,15 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 2
+  m_RenderMode: 4
   m_MaxParticleSize: 10
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 2
+  m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_SortMode: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 1c3c6ea444f95ae44bb645c794812add, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

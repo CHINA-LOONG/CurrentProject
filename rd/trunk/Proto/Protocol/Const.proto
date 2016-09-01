@@ -197,6 +197,8 @@ enum UseToolSubType
 	USETOOLTRIPLEEXP       = 3;
 	// 疲劳值
 	USETOOLFATIGUE         = 4;
+	// 扫荡券
+	RAIDTICKET             = 5;
 }
 
 // 装备部位定义
@@ -245,8 +247,8 @@ enum equipQuality
 enum shopType
 {
 	NORMALSHOP             = 1;
-	ALLIANCESHOP           = 2;
-	TOWERSHOP              = 3;
+	TOWERSHOP              = 2;
+	ALLIANCESHOP           = 3;
 }
 
 // 邮件状态

@@ -9,9 +9,6 @@ public class UICoinExchange : UIBase
 	public 	Text	msgTitle;
 	public	Text	msgTodayDesc;
 	
-	public	Text	msgBuyDesc1;
-	public	Text	msgBuyDesc2;
-	
 	public	Text	zuanshiText;
 	public	Text	jinbiText;
 	
@@ -57,8 +54,6 @@ public class UICoinExchange : UIBase
 		EventTriggerListener.Get (buyButton.gameObject).onClick = OnBuyButtonClick;
 		BindListener ();
 		msgTitle.text = StaticDataMgr.Instance.GetTextByID ("shop_duihuan");
-		msgBuyDesc1.text = StaticDataMgr.Instance.GetTextByID ("shop_isbuy");
-		msgBuyDesc2.text = StaticDataMgr.Instance.GetTextByID ("shop_now");
 
 		cancelButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
 		buyButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
@@ -135,6 +130,6 @@ public class UICoinExchange : UIBase
 		}
 	
 		UIIm.Instance.ShowSystemHints (immsg, (int) PB.ImType.PROMPT);
-		UIMgr.Instance.DestroyUI (this);
-	}
+        RefreshExchangeUI();
+    }
 }

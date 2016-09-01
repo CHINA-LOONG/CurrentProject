@@ -19,6 +19,10 @@ public class MonsterIcon : MonoBehaviour
 	public	Text	qualityText;
 	public Text 	nickNameText;
 
+    public Image maoxianImage;
+    public Image zhushouImage;
+    public Image lockImage;
+
 	private	List<Transform> listItems;
 
 	[HideInInspector]
@@ -160,4 +164,17 @@ public class MonsterIcon : MonoBehaviour
 	{
 		nickNameText.text = nickname;
 	}
+
+    public void ShowMaoxianImage(bool bShow = true)
+    {
+        maoxianImage.gameObject.SetActive(bShow);
+    }
+    public void ShowZhushouImage(bool bShow = true)
+    {
+        zhushouImage.gameObject.SetActive(bShow);
+    }
+    public void ShowLockImage(bool bShow = true)
+    {
+        lockImage.gameObject.SetActive(bShow);
+    }
 }

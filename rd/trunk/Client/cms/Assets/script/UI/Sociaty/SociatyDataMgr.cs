@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public delegate void NetMessageDelegate(ProtocolMessage msg);
+public delegate void AllianceBaseMonsterDelegage(List<PB.AllianceBaseMonster> listData);
 public class SociatyDataMgr : MonoBehaviour
 {
     public int allianceID = 0;
@@ -21,9 +22,14 @@ public class SociatyDataMgr : MonoBehaviour
     public PB.AllianceTeamInfo selfTeamData = null;
     public int taskCount = 0;
     public List<PB.AllianceTeamInfo> teamList = new List<PB.AllianceTeamInfo>();
-    public List<PB.HSRewardInfo> allianceInstanceReward = new List<PB.HSRewardInfo>(); 
+    public List<PB.HSRewardInfo> allianceInstanceReward = new List<PB.HSRewardInfo>();
+
+    //jidi
+    public List<PB.AllianceBaseMonster> allianceBaseMonster = new List<PB.AllianceBaseMonster>();
+    private int syncBaseMonsterTime = 0;
 
     private NetMessageDelegate callBack = null;
+    private AllianceBaseMonsterDelegage baseMonsterCallback = null;
     // Use this for initialization
     void Start ()
     {
@@ -55,6 +61,15 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_LIST_C.GetHashCode().ToString(), OnRequestBaseMOnstersFinish);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_LIST_S.GetHashCode().ToString(), OnRequestBaseMOnstersFinish);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_SEND_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_SEND_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_RECALL_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_RECALL_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 
 
@@ -88,6 +103,15 @@ public class SociatyDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_LIST_C.GetHashCode().ToString(), OnRequestBaseMOnstersFinish);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_LIST_S.GetHashCode().ToString(), OnRequestBaseMOnstersFinish);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_SEND_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_SEND_S.GetHashCode().ToString(), OnReceivSociatyMessage);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_RECALL_C.GetHashCode().ToString(), OnReceivSociatyMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_BASE_RECALL_S.GetHashCode().ToString(), OnReceivSociatyMessage);
     }
 	
     //打开公会
@@ -98,7 +122,7 @@ public class SociatyDataMgr : MonoBehaviour
             SociatyList.OpenWith(search);
         }
         else
-        {;
+        {
             if(string.IsNullOrEmpty(search))
             {
                 SociatyMain.OpenWith();
@@ -271,4 +295,65 @@ public class SociatyDataMgr : MonoBehaviour
         }
         return "";
     }
+
+    #region --------公会基地----------
+    public void GetJidiBaseMonstersAsyn(AllianceBaseMonsterDelegage callBack)
+    {
+        baseMonsterCallback = callBack;
+        if(allianceBaseMonster.Count > 0)
+        {
+            if(GameTimeMgr.Instance.GetServerTimeStamp() - syncBaseMonsterTime > 3600)//1 hour
+            {
+                RequestBaseMonsters();
+                return;
+            }
+        }
+        if (null != baseMonsterCallback)
+        {
+            baseMonsterCallback(allianceBaseMonster);
+        }
+    }
+
+    void RequestBaseMonsters()
+    {
+        PB.HSAllianceBaseList param = new PB.HSAllianceBaseList();
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_BASE_LIST_C.GetHashCode(), param);
+    }
+    void OnRequestBaseMOnstersFinish(ProtocolMessage message)
+    {
+        if (message.GetMessageType() != (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSAllianceBaseListRet msgRet = message.GetProtocolBody<PB.HSAllianceBaseListRet>();
+            if (null != msgRet)
+            {
+                allianceBaseMonster.Clear();
+                allianceBaseMonster.AddRange(msgRet.monsterInfo);
+                syncBaseMonsterTime = GameTimeMgr.Instance.GetServerTimeStamp();
+            }
+        }
+
+        if (null != baseMonsterCallback)
+        {
+            baseMonsterCallback(allianceBaseMonster);
+        }
+    }
+
+    public  void RequestZhushou(int monsterId,int position, NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceBaseSendMonster param = new PB.HSAllianceBaseSendMonster();
+        param.monsterId = monsterId;
+        param.position = position;//
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_BASE_SEND_C.GetHashCode(), param);
+    }
+
+    public void RequestRecallZhushou(int position,NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSAllianceBaseRecallMonster param = new PB.HSAllianceBaseRecallMonster();
+        param.position = position;
+        GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_BASE_RECALL_C.GetHashCode(), param);
+    }
+
+    #endregion
 }

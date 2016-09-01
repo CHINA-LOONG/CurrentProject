@@ -15478,7 +15478,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_anying" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="anying1-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15499,7 +15499,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_anying" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="anying1-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15520,7 +15520,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_anying2" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="anying1-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15540,7 +15540,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_fennu" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fennu1-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu54e6" state="0" AniType="Buff">
@@ -15568,7 +15568,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_fennu" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fennu1-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu55e6" state="0" AniType="Buff">
@@ -15596,7 +15596,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_fennu2" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fennu1-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu56e6" state="0" AniType="Buff">
@@ -15626,7 +15626,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_qiangxi" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="qiangxi02-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu57e6" state="0" AniType="Buff">
@@ -15656,7 +15656,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_qiangxi_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="qiangxi02-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu58e6" state="0" AniType="Buff">
@@ -15685,7 +15685,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_qiangxi2" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="qiangxi2-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu59e6" state="0" AniType="Buff">
@@ -15715,7 +15715,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_fensui" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fensui01-2-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu510e9" state="0" AniType="Buff">
@@ -15745,7 +15745,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="jidu5pre_fensui2_rhand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fensui02-2-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu511e9" state="0" AniType="Buff">
@@ -15773,7 +15773,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_fensui3" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="fensui03-mix"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossWorldJidu512e9" state="0" AniType="Buff">
@@ -15802,7 +15802,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_huimie" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="huimie-mix"/>
 			</AudioList>
 		</Ani>
 
@@ -15822,7 +15822,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="jidu5pre_huimie2" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="huimie2-mix"/>
 			</AudioList>
 		</Ani>
 
@@ -15836,7 +15836,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 	</AniList>
 	
-	<AniList group="bossworldbossmeitatelong1">	
+	<AniList group="bossWorldMeitatelong11">	
 		<Ani id="bossWorldMeitatelong11" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="bosshanguangshan" value="true"/>
@@ -15846,7 +15846,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangshan-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15867,7 +15867,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangshan-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15888,7 +15888,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="1" asset="meitatelong1pre_shengguangshan_hit" bundle="effect/particle" parent="1" attach="scene"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangshan-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15908,7 +15908,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangyazhi-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15937,7 +15937,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangyazhi-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15966,7 +15966,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="meitatelong1pre_shengguangyazhi" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="shengguangyazhi-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -15996,7 +15996,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="kanchu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16026,7 +16026,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="kanchu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16056,7 +16056,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_kanchu_head" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="kanchu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16088,7 +16088,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="zhufu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16141,7 +16141,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="zhufu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16194,7 +16194,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="meitatelong1pre_zhufu" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="zhufu-mix"/>
 			</AudioList>
 		</Ani>
 		
@@ -16252,7 +16252,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="meitatelong1pre_huimie" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Bingxuenvwang31"/>
+				<Audio time="0" name="huimiehei-mix"/>
 			</AudioList>
 		</Ani>
 

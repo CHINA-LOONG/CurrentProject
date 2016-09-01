@@ -195,7 +195,7 @@ public class UseHuoLi : UIBase
             StoreStaticData storeItemData = StaticDataMgr.Instance.GetStoreStaticDataWith(itemId);
             if(null != storeItemData)
             {
-                price = (int)(storeItemData.price * storeItemData.discount);
+                price = Mathf.CeilToInt(storeItemData.price * storeItemData.discount);
             }
             else
             {

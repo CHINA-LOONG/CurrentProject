@@ -85,6 +85,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		listenProto(HS.code.ALLIANCE_CONTRIBUTION_C_VALUE);
 		listenProto(HS.code.ALLIANCE_CONTRI_REWARD_C_VALUE);
 		listenProto(HS.code.ALLIANCE_BASE_SEND_C_VALUE);
+		listenProto(HS.code.ALLIANCE_BASE_RECALL_C_VALUE);
 		listenProto(HS.code.ALLIANCE_BASE_LIST_C_VALUE);
 		listenProto(HS.code.ALLIANCE_MY_BASE_LIST_C_VALUE);
 	}

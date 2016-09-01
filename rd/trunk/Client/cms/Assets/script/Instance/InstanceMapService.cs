@@ -390,6 +390,17 @@ public class InstanceMapService : MonoBehaviour
 
     public  bool    IsHardChapterOpend(int chapter)
     {
+        if(chapter <= openedMaxHardChapter)
+         return true;
+        if (!IsChapterOpened(chapter))
+            return false;
+        if(chapter == openedMaxHardChapter + 1)
+        {
+            if (IsChapterFinished(chapter - 1, InstanceDifficulty.Hard))
+            {
+                CheckAndOpenNextChapter(InstanceDifficulty.Hard, chapter);
+            }
+        }
         return chapter <= openedMaxHardChapter;
     }
 

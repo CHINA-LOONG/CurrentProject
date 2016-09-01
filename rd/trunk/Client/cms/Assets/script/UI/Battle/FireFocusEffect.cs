@@ -63,6 +63,32 @@ public class FireFocusEffect : MonoBehaviour
         //modify:xiaolong 2015-8-27 16:40:02
         //effectGo.SetActive(true);
         isActive = true;
+        //even not active, save the new target trans
+        offsetH = 0.5f;
+        if (bo.unit.isBoss)
+        {
+            offsetH = 1.1f;
+        }
+        Transform targetTrans = bo.gameObject.transform;
+        string wpName = bo.unit.attackWpName;
+        if (!bo.unit.isBoss)
+        {
+            wpName = "xgwp";
+        }
+        if (!string.IsNullOrEmpty(wpName))
+        {
+            WeakPointRuntimeData wpRuntimeData = null;
+            //WeakPointData wp = null;
+
+            if (bo.wpGroup.allWpDic.TryGetValue(wpName, out wpRuntimeData))
+            {
+                targetTrans = wpRuntimeData.wpMirrorTarget.gameObject.transform;
+                offsetH = 0.0f;
+
+            }
+        }
+        effectTargetTrans = targetTrans;
+
         if (!gameObject.activeInHierarchy)
             return;
 
@@ -75,33 +101,6 @@ public class FireFocusEffect : MonoBehaviour
         catch
         {
         }
-
-		offsetH = 0.5f;
-        if (bo.unit.isBoss) 
-		{
-			offsetH = 1.1f;
-		}
-
-        Transform targetTrans = bo.gameObject.transform;
-		string wpName = bo.unit.attackWpName;
-		if (!bo.unit.isBoss)
-		{
-			wpName = "xgwp";
-		}
-		if (!string.IsNullOrEmpty(wpName))
-        {
-			WeakPointRuntimeData wpRuntimeData = null;
-			//WeakPointData wp = null;
-
-			if(bo.wpGroup.allWpDic.TryGetValue(wpName,out wpRuntimeData))
-			{
-				targetTrans = wpRuntimeData.wpMirrorTarget.gameObject.transform;
-				offsetH = 0.0f;
-
-			}
-        }
-
-		effectTargetTrans = targetTrans;
 
         try
         {

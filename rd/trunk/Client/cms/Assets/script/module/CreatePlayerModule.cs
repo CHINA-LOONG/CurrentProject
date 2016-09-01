@@ -73,6 +73,7 @@ public class CreatePlayerModule : ModuleBase
 
         Logger.Log("create player finish");
         BuildModule.needSyncInfo = true;
+        UIServer.ResetUserData(GameDataMgr.Instance.UserDataAttr.guid);
         PlayerPrefs.SetString("testGuid", GameDataMgr.Instance.UserDataAttr.guid);       
         PB.HSPlayerCreateRet response = msg.GetProtocolBody<PB.HSPlayerCreateRet>();
         GameDataMgr.Instance.PlayerDataAttr.playerId = response.palyerID;
@@ -96,6 +97,7 @@ public class CreatePlayerModule : ModuleBase
             UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILoginDetail.ViewName));
             GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
             GameMain.Instance.ChangeModule<BuildModule>();
+            UIServer.ResetUserData(GameDataMgr.Instance.UserDataAttr.guid);
             PlayerPrefs.SetString("testGuid",GameDataMgr.Instance.UserDataAttr.guid);
         }
         else

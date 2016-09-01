@@ -107,10 +107,12 @@ public class LoginModule : ModuleBase
         Hashtable serverHashtable = jsonObjects["servers"] as Hashtable;
         Hashtable roles = jsonObjects["roles"] as Hashtable;
 
-        foreach (var item in serverHashtable.Keys)
+        ArrayList serverHashtableList = new ArrayList(serverHashtable.Values);
+        serverHashtableList.Reverse();
+        for (int i = 0; i < serverHashtableList.Count; i++)
         {
             List<UIServerData> serverList = new List<UIServerData>();
-            Hashtable areaInfo = serverHashtable[item] as Hashtable;
+            Hashtable areaInfo = serverHashtableList[i] as Hashtable;
             ArrayList servers = areaInfo["serverList"] as ArrayList;
             foreach (Hashtable item1 in servers)
             {
@@ -133,7 +135,7 @@ public class LoginModule : ModuleBase
                         if (uiServerData.serverIndex == int.Parse(index.ToString()))
                         {
                             Hashtable playerInfo = roles[index] as Hashtable;
-                            uiServerData.nickName = playerInfo["nickname"].ToString();
+                            uiServerData.nickName = playerInfo["nickname"].ToString();                            
                             uiServerData.level = int.Parse(playerInfo["level"].ToString());
                             break;
                         }

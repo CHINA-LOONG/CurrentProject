@@ -246,7 +246,7 @@ public class GmService_Dev extends GameService {
 					return;
 				}
 
-				award.addMonster(gmItemId, (int)gmValue, 0, 1, 1, 1);
+				award.addMonster(gmItemId, (int)gmValue, 0, 1, 1, monsterCfg.getDisposition());
 				actionHandled = true;
 			}
 			break;

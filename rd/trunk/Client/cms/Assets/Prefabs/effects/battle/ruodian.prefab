@@ -9730,7 +9730,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7d9ec15365f515c408953066bb87257b, type: 2}
+  - {fileID: 2100000, guid: 8aed881b792c0ce458f6d94bb86ff01e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

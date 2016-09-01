@@ -3992,7 +3992,7 @@ state = 1 Remove
 		
 		<Ani id="ultLangren5e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attacEarthCut" bundle="effect/particle" parent="" locky=""/>
+				<Particle asset="attacEarthCut" bundle="effect/particle" parent="" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -5134,7 +5134,7 @@ state = 1 Remove
 		
 		<Ani id="bossdajie13Langren34e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle time="0" asset="attackWaterCut" bundle="effect/particle" parent="" attach="" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>

@@ -288,7 +288,10 @@ namespace PB
       USETOOLTRIPLEEXP = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"USETOOLFATIGUE", Value=4)]
-      USETOOLFATIGUE = 4
+      USETOOLFATIGUE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RAIDTICKET", Value=5)]
+      RAIDTICKET = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]
@@ -356,11 +359,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"NORMALSHOP", Value=1)]
       NORMALSHOP = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=2)]
-      ALLIANCESHOP = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=2)]
+      TOWERSHOP = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=3)]
-      TOWERSHOP = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=3)]
+      ALLIANCESHOP = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]

@@ -49,6 +49,7 @@ public class UIBattle : UIBase
 	private	int	m_MaxSpeed = 3;
     private Animator animator;
     private MsgBox.PrompCostMsg reviveWnd;
+    private RectTransform mRootTrans;
     //private int reviveIndex;
     class SpellVitalChangeData
     {
@@ -107,6 +108,7 @@ public class UIBattle : UIBase
     {
         //TODO：战斗界面不会隐藏了，只会删除
         //gameObject.SetActive(true);
+        mRootTrans = transform as RectTransform;
         m_PetPanel.Hide(BattleConst.closeSwitchPetUI);
     }
 
@@ -324,15 +326,18 @@ public class UIBattle : UIBase
         //{
         //    gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
         //}
-		gameObject.SetActive (ishow);
-		if (ishow) 
-		{
-            InitMirrorDray();
+
+        //gameObject.SetActive (ishow);
+		if (ishow)
+        {
+            mRootTrans.anchoredPosition = new Vector2(0.0f, 0.0f);
+            //InitMirrorDray();
             GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		}
 		else 
 		{
-			DestroyMirrorDray();
+            mRootTrans.anchoredPosition = new Vector2(0.0f, 100000.0f);
+			//DestroyMirrorDray();
 		}
 	}
 

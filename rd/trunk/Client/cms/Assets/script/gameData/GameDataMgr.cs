@@ -596,6 +596,10 @@ public class GameDataMgr : MonoBehaviour
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;
             GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
+
+            PlayerDataAttr.TowerCoinAttr = reward.playerAttr.towerCoin;
+            PlayerDataAttr.GonghuiCoinAttr = reward.playerAttr.contribution;
+           
         }
 
         GameUnit unit = null;
@@ -701,6 +705,9 @@ public class GameDataMgr : MonoBehaviour
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;
             GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
+
+            PlayerDataAttr.TowerCoinAttr = reward.playerAttr.towerCoin;
+            PlayerDataAttr.GonghuiCoinAttr = reward.playerAttr.contribution;
         }
         GameUnit unit = null;
         foreach (PB.SynMonsterAttr item in reward.monstersAttr)

@@ -123,7 +123,9 @@ public class PetDetailsAbilities : PetDetailsRight
 
         if (spellData.category == (int)SpellType.Spell_Type_Passive ||
             spellData.category == (int)SpellType.Spell_Type_Beneficial ||
-            spellData.category == (int)SpellType.Spell_Type_Negative)
+            spellData.category == (int)SpellType.Spell_Type_Negative ||
+            string.IsNullOrEmpty(spellData.tipsCurlvl)
+            )
         {
             textLevel.gameObject.SetActive(false);
             text_Current.gameObject.SetActive(false);

@@ -219,7 +219,7 @@ public class SociatyContentInfomation : SociatyContentBase
 
     void OnJiDiButtonClick()
     {
-        UIIm.Instance.ShowSystemHints("comming Later!", (int)PB.ImType.PROMPT);
+        SociatyJidi.Open(SociatyJidiContenType.MyJidi);
     }
 
     void OnBossButtonClick()

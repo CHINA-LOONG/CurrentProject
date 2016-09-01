@@ -100,6 +100,7 @@ public class BattleProcess : MonoBehaviour
     public int mCurrentReviveCount = 0;
     //强制结果（GM）
     public int forceResult = -1;
+    bool mIsProcessFinish = false;
 
     bool switchingPet = false;
     public bool SwitchingPet
@@ -518,6 +519,7 @@ public class BattleProcess : MonoBehaviour
 
     public void StartProcess(int index, BattleLevelData battleLevelData)
     {
+        mIsProcessFinish = false;
         forceResult = -1;
         replaceDeadUnitCount = 0;
         hasInsertReplaceDeadUnitAction = false;
@@ -772,9 +774,10 @@ public class BattleProcess : MonoBehaviour
         {
             battleResult = BattleRetCode.Success;
         }
-
-        if (battleResult != BattleRetCode.Normal && insertAction.Count > 0)
+        
+        if (battleResult != BattleRetCode.Normal)
         {
+            mIsProcessFinish = true;
             for (int i = insertAction.Count - 1; i >= 0; --i)
             {
                 if (insertAction[i].type == ActionType.SwitchPet ||
@@ -1215,7 +1218,7 @@ public class BattleProcess : MonoBehaviour
 	bool	isCastDazhao	= false;//debug661 同时释放物理大招和法术大招
     public void OnUnitCastDazhao(BattleObject bo)
     {
-		if (isCastDazhao)
+		if (isCastDazhao || mIsProcessFinish)
 			return;
 		isCastDazhao = true;
 
@@ -1306,7 +1309,6 @@ public class BattleProcess : MonoBehaviour
             {
                 //OnChangeTarget(battleGo.id, weakpointName);
             }
-
         }
     }
 

@@ -1220,7 +1220,7 @@ public class Player extends HawkAppObj {
 
 		playerData.getPlayerAllianceEntity().setContribution(playerData.getPlayerAllianceEntity().getContribution() + contribution);
 		playerData.getPlayerAllianceEntity().setTotalContribution(playerData.getPlayerAllianceEntity().getTotalContribution() + contribution);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		playerData.getPlayerAllianceEntity().notifyUpdate(true);
 
 		playerData.getStatisticsEntity().increaseCoinAllianceCount(contribution);
 		playerData.getStatisticsEntity().increaseCoinAllianceCountDaily(contribution);

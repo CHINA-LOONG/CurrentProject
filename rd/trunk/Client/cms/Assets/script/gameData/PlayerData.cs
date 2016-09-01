@@ -45,6 +45,7 @@ public class PlayerData : MonoBehaviour
         set
         {
             gonghuiCoin = value;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.GonghuiCoinChanged, gonghuiCoin);
         }
     }
     private int towerCoin;//通天塔币
@@ -54,6 +55,7 @@ public class PlayerData : MonoBehaviour
         set
         {
             towerCoin = value;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.TowerCoinChanged, gonghuiCoin);
         }
     }
 	public	int	gender;

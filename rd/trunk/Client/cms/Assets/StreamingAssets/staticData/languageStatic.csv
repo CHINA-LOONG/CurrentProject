@@ -410,19 +410,19 @@ name_10017_chongwujinjieshi,宠物进阶石,Monster Advancement Stone
 name_20001_suipian_common,灵魂本源,Core Fragments
 name_20002_suipian_xiaochou3,水小丑碎片,xiaochou3suipian
 name_20003_suipian_kairuisi4,火凯瑞斯碎片,kairuisi4suipian
-name_20004_suipian_hetong2,草河童碎片,hetong2suipian
+name_20004_suipian_hetong2,木河童碎片,hetong2suipian
 name_20005_suipian_wagui3,水蛙鬼碎片,wagui3suipian
 name_20006_suipian_xiaochou4,火小丑碎片,xiaochou4suipian
 name_20007_suipian_cike4,火刺壳碎片,cike4suipian
-name_20008_suipian_panshen2,草潘神碎片,panshen2suipian
-name_20009_suipian_huapo2,草花魄碎片,huapo2suipian
+name_20008_suipian_panshen2,木潘神碎片,panshen2suipian
+name_20009_suipian_huapo2,木花魄碎片,huapo2suipian
 name_20010_suipian_wushi3,水舞狮碎片,wushi3suipian
 name_20011_suipian_wushi4,火舞狮碎片,wushi4suipian
 name_20012_suipian_xiyiren4,火蜥蜴人碎片,xiyiren4suipian
-name_20013_suipian_mantuoluo2,草曼陀罗碎片,mantuoluo2suipian
+name_20013_suipian_mantuoluo2,木曼陀罗碎片,mantuoluo2suipian
 name_20014_suipian_hetong3,水河童碎片,hetong3suipian
 name_20015_suipian_longgongtongzi3,水龙宫童子碎片,longgongtongzi3suipian
-name_20016_suipian_xiyiren2,草蜥蜴人碎片,xiyiren2suipian
+name_20016_suipian_xiyiren2,木蜥蜴人碎片,xiyiren2suipian
 name_20017_suipian_langren5,暗狼人碎片,langren5suipian
 name_20018_suipian_langren3,水狼人碎片,langren3suipian
 name_20019_suipian_shuigui3,水水鬼碎片,shuigui3suipian
@@ -1111,11 +1111,11 @@ magicdebuffEarthDotStrongTips,"给单体目标每回合造成{0}%法攻的暗属
 ultXiaochou3Tips,给群体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to all enemy targets
 ultXiaochou4Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的火属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) fire type magic damage to a single target"
 ultKairuisi4Tips,给群体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
-ultHetong2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的草属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) grass type magic damage to a single target"
+ultHetong2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的木属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) grass type magic damage to a single target"
 ultWagui3Tips,给单体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
-ultHuapo2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的草属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target"
+ultHuapo2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的木属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target"
 ultCike4Tips,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
-ultPanshen2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的草属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target"
+ultPanshen2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的木属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target"
 ultWushi4Tips,给己方全体目标提升80%力量与智力，持续3回合,Increases all allies' STR and INT by 80% for 3 turns
 ultWushi3Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的水属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) water type magic damage to a single target"
 ultXiyiren4Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的火属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) fire type physical damage to a single target"
@@ -1155,39 +1155,39 @@ psvShuigui3Tips,使用buff技能时，12.5%给被攻击者附加眩晕效果,"Wh
 bossdajie11Xiaochou41Tips,给单体目标造成100%法攻的火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
 bossdajie11Xiaochou42Tips,给群体目标造成60%法攻的火属性法术伤害,Deals (60% of magic ATK) fire type magic damage to all enemy targets
 bossdajie11Xiaochou43Tips,给单体目标连续造成6次30%法攻的火属性法术伤害,Repeatedly deals (30% of magic ATK) fire type magic damage 6 times to a single target
-bossdajie12Mantuoluo21Tips,给单体目标造成100%物攻的草属性物理伤害,Deals (100% of physical ATK) grass type physical damage to a single target
-bossdajie12Mantuoluo22Tips,给群体目标造成60%法攻的草属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
+bossdajie12Mantuoluo21Tips,给单体目标造成100%物攻的木属性物理伤害,Deals (100% of physical ATK) grass type physical damage to a single target
+bossdajie12Mantuoluo22Tips,给群体目标造成60%法攻的木属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
 bossdajie12Mantuoluo23Tips,给自身回复100%法攻的生命值,Recovers (100% of magic ATK) of your HP
 bossdajie12Mantuoluo24Tips,给自身回复大量生命值,Recovers a large amount of your HP
 bossdajie13Langren31Tips,给单体目标造成100%物攻的水属性物理伤害,Deals (1000% of physical ATK) water type physical damage to a single target
 bossdajie13Langren32Tips,降低自身受伤比,Decreases your Injury Rate
-bossdajie13Langren34Tips,给单体目标连续造成6次100%物攻的水属性物理伤害,Repeatedly deals (100% of physical ATK) water type physical damage 6 times to a single target
+bossdajie13Langren34Tips,给单体目标连续造成6次50%物攻的水属性物理伤害,Repeatedly deals (50% of physical ATK) water type physical damage 6 times to a single target
 bossdajie14Piying51Tips,给单体目标造成50%法攻的暗属性法术伤害,Deals (50% of magic ATK) dark type magic damage to a single target
 bossdajie14Piying52Tips,使群体目标力量和智力降低80%，持续3回合,Reduces STR and  INT of all enemy targets by 80% for 3 turns
 bossdajie14Piying53Tips,使群体目标力量降低80%，持续3回合,Reduces STR of all enemy targets by 80% for 3 turns
 bossdajie14Piying54Tips,给群体目标造成250%法攻的暗属性法术伤害,Deals (250% of magic ATK) dark type magic damage to all enemy targets
 bossdajie14Piying55Tips,使单体目标智力降低80%，持续3回合,Reduces INT of all enemy targets by 80% for 3 turns
-bossdajie15Huapo21Tips,给单体目标造成200%物攻的草属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossdajie15Huapo22Tips,给单体目标造成100%法攻的草属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
+bossdajie15Huapo21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
+bossdajie15Huapo22Tips,给单体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
 bossdajie15Huapo23Tips,给单体目标连续造成多次100%物攻的水属性物理伤害,Repeatedly deals numbers of(100% of physical ATK) water type physical damage to a single target.
 bossdajie16Xiaochou31Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
 bossdajie16Xiaochou33Tips,给群体目标造成120%法攻的水属性法术伤害,Deals (120% of magic ATK) water type magic damage to all enemy targets
 bossdajie16Xiaochou34Tips,给敌方目标造成水属性法术伤害,Deals water type magic damage an enemy target 
-bossdajie17Zouyincao21Tips,给单体目标造成200%物攻的草属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossdajie17Zouyincao22Tips,给群体目标造成100%法攻的草属性法术伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets
+bossdajie17Zouyincao21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
+bossdajie17Zouyincao22Tips,给群体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets
 bossdajie17Zouyincao23Tips,提升自身300%智力，持续3回合,Increases your INT by 300% for 3 turns
 bossxiaoxiang21Wushi41Tips,给单体目标造成100%法攻的火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
 bossxiaoxiang21Wushi42Tips,提升自身60%智力，持续3回合,Increase your INT by 60% for 3 turns
 bossxiaoxiang21Wushi43Tips,血量小于等于总血量25%时，提升自身40%速度,"When HP drops below 25% of your total HP amount, increase your SPD by 40%"
 bossxiaoxiang21Wushi44Tips,给群体目标造成60%法攻的火属性法术伤害,Deals (60% of magic ATK) fire type magic damage to all enemy targets
-bossxiaoxiang22Xiyiren21Tips,给单体目标造成200%物攻的草属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossxiaoxiang22Xiyiren22Tips,给单体目标造成150%法攻的草属性法术伤害,Deals (150% of magic ATK) grass type magic damage to a single target
+bossxiaoxiang22Xiyiren21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
+bossxiaoxiang22Xiyiren22Tips,给单体目标造成150%法攻的木属性法术伤害,Deals (150% of magic ATK) grass type magic damage to a single target
 bossxiaoxiang22Xiyiren23Tips,提升自身50%防御力，持续3回合,Increases your DEF by 50% for 3 turns
-bossxiaoxiang22Xiyiren24Tips,给群体目标造成150%物攻的草属性物理伤害,Deals (150% of physical ATK) grass type physical damage to all enemy targets
+bossxiaoxiang22Xiyiren24Tips,给群体目标造成150%物攻的木属性物理伤害,Deals (150% of physical ATK) grass type physical damage to all enemy targets
 bossxiaoxiang23Panshen21Tips,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
-bossxiaoxiang23Panshen22Tips,给单体目标造成100%物攻的草属性物理伤害,Deals (100% of physical ATK) grass type physical damage to a single target
+bossxiaoxiang23Panshen22Tips,给单体目标造成100%物攻的木属性物理伤害,Deals (100% of physical ATK) grass type physical damage to a single target
 bossxiaoxiang23Panshen23Tips,提升自身40%速度，持续3回合,Increases your SPD by 40% for 3 turns
-bossxiaoxiang23Panshen24Tips,给单体目标连续造成6次40%物攻的草属性物理伤害,Repeatedly deals (40% of physical ATK) grass type physical damage6 times to a single target
+bossxiaoxiang23Panshen24Tips,给单体目标连续造成6次40%物攻的木属性物理伤害,Repeatedly deals (40% of physical ATK) grass type physical damage6 times to a single target
 bossxiaoxiang24Shuigui31Tips,给单体目标造成120%法攻的水属性法术伤害,Deals (120% of magic ATK) water type magic damage to a single target
 bossxiaoxiang24Shuigui32Tips,提升自身50%智力，持续3回合,Increases your INT by 50% for 3 turns
 bossxiaoxiang24Shuigui33Tips,攻击敌方群体，造成100%法攻水法术伤害,Deals (100% of magic ATK) water type magic damage to all enemy targets
@@ -1199,10 +1199,10 @@ bossxiaoxiang26Longgongtongzi31Tips,给单体目标造成150%法攻的水属性�
 bossxiaoxiang26Longgongtongzi32Tips,给群体目标造成100%法攻的水属性法术伤害,Deals (100% of magic ATK) water type magic damage to all enemy targets
 bossxiaoxiang26Longgongtongzi33Tips,死亡时，血量回复为30%血量上限,"Upon dying, recover HP up to 30% of your total HP amount"
 bossxiaoxiang26Longgongtongzi34Tips,给自身回复80%法攻的生命值附加回复效果,Recovers (80% of magic ATK) of your HP and buffs healing effects
-bossxiaoxiang27hetong21Tips,给群体目标造成60%法攻的草属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
+bossxiaoxiang27hetong21Tips,给群体目标造成60%法攻的木属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
 bossxiaoxiang27hetong22Tips,"给单体目标每回合造成70%法攻的木属性伤害,持续3回合",Deals (70% of magic ATK) grass type damage to a single target each turn for 3 turns
 bossxiaoxiang27hetong23Tips,提升自身500%智力,Increases your INT by 500%
-bossxiaoxiang27hetong24Tips,给单体目标连续造成6次40%法攻的草属性法术伤害,Repeatedly deals (40% of magic ATK) grass type magic damage 6 times to a single target
+bossxiaoxiang27hetong24Tips,给单体目标连续造成6次40%法攻的木属性法术伤害,Repeatedly deals (40% of magic ATK) grass type magic damage 6 times to a single target
 attackMetalCutSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
 attackMetalCutMediumDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
 attackMetalCutStrongDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
@@ -1337,11 +1337,11 @@ magicdebuffEarthDotStrongDescription,"给单体目标每回合造成暗属性法
 ultXiaochou3Description,给群体目标造成水属性法术伤害,Deals water type magic damage to all enemy targets
 ultXiaochou4Description,在3秒内进行操作，每次操作给单体目标造成火属性法术伤害,"Carry out actions for 3 seconds, each action dealing fire type magic damage to a single target"
 ultKairuisi4Description,给群体目标造成火属性法术伤害,Deals fire type magic damage to all enemy targets
-ultHetong2Description,在3秒内进行操作，每次操作给单体目标造成草属性法术伤害,"Carry out actions for 3 seconds, each action dealing grass type magic damage to a single target"
+ultHetong2Description,在3秒内进行操作，每次操作给单体目标造成木属性法术伤害,"Carry out actions for 3 seconds, each action dealing grass type magic damage to a single target"
 ultWagui3Description,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
-ultHuapo2Description,在3秒内进行操作，每次操作给单体目标造成草属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
+ultHuapo2Description,在3秒内进行操作，每次操作给单体目标造成木属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
 ultCike4Description,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
-ultPanshen2Description,在3秒内进行操作，每次操作给单体目标造成草属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
+ultPanshen2Description,在3秒内进行操作，每次操作给单体目标造成木属性物理伤害,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target"
 ultWushi4Description,给己方全体目标提升力量与智力，持续一定回合,Increases all allies' STR and INT for some turns
 ultWushi3Description,在3秒内进行操作，每次操作给单体目标造成水属性法术伤害,"Carry out actions for 3 seconds, each action dealing water type magic damage to a single target"
 ultXiyiren4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target"
@@ -1363,16 +1363,16 @@ psvHetong2Description,血量小于等于总血量25%时，提升自身80%智力,
 psvWagui3Description,受到伤害时，25%降低攻击者40%速度，持续3回合,Gives an 25% chance of reducing the SPD of your attacker by 40% whenever you take damage for 3 turns
 psvHuapo2Description,使用物理技能时，10%提升自身80%力量，持续3回合,"Whenever you cast a physical ability, there is a 10% chance of increasing your STR by 80% for 3 turns "
 psvCike4Description,受到伤害时，80%嘲讽攻击者，持续2回合,Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage
-psvLangren3Description,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
-psvPanshen2Description,血量小于等于总血量25%时，提升自身40%速度,"When HP drops below 25% of your total HP amount, increase your SPD by 40%"
-psvWushi4Description,战斗开始时，提升己方全体20%智力，持续1回合,"At the start of battle, increase all allies' INT by 20% for 1 turns"
-psvWushi3Description,永久提升10%力量,Increases INT permanently by 10%
-psvXiyiren4Description,使用物理技能时，嘲讽被攻击者，持续2回合,"Whenever you cast a physical ability, casting Provoke on your target for 2 turns "
-psvXiyiren2Description,受到伤害时，10%提高自身80%智力，持续3回合,Gives an 10% chance of increasing your INT by 80% for 3 turns whenever you take damage
-psvMantuoluo2Description,战斗开始时，提升己方全体80%防御力，持续1回合,"At the start of battle, increase all allies' DEF by 80% for 1 turns"
-psvHetong3Description,永久提升10%暴击率,Increases Crit Rate permanently by 10%
-psvLonggongtongzi3Description,使用物理技能时，50%恢复自身50%法攻的生命值,"Whenever you cast a physical ability, there is a 50% chance of recovering (50% of magic ATK) HP "
-psvLangren5Description,受到伤害时，80%嘲讽攻击者，持续2回合,Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage
+psvLangren3Description,受到伤害时，80%嘲讽攻击者，持续2回合,Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage
+psvPanshen2Description,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+psvWushi4Description,血量小于等于总血量25%时，提升自身40%速度,"When HP drops below 25% of your total HP amount, increase your SPD by 40%"
+psvWushi3Description,战斗开始时，提升己方全体20%智力，持续1回合,"At the start of battle, increase all allies' INT by 20% for 1 turns"
+psvXiyiren4Description,永久提升10%力量,Increases INT permanently by 10%
+psvXiyiren2Description,使用物理技能时，嘲讽被攻击者，持续2回合,"Whenever you cast a physical ability, casting Provoke on your target for 2 turns "
+psvMantuoluo2Description,受到伤害时，10%提高自身80%智力，持续3回合,Gives an 10% chance of increasing your INT by 80% for 3 turns whenever you take damage
+psvHetong3Description,战斗开始时，提升己方全体80%防御力，持续1回合,"At the start of battle, increase all allies' DEF by 80% for 1 turns"
+psvLonggongtongzi3Description,永久提升10%暴击率,Increases Crit Rate permanently by 10%
+psvLangren5Description,使用物理技能时，50%恢复自身50%法攻的生命值,"Whenever you cast a physical ability, there is a 50% chance of recovering (50% of magic ATK) HP "
 psvKairuisi5Description,死亡时，降低敌方群体80%防御力，持续3回合,"Upon dying, reduce all enemies' DEF by 80% for 3 turns"
 psvNvyao5Description,使用法术技能时，10%降低被攻击者80%防御力，持续3回合,"Whenever you cast a magic ability, there is a 10% chance of reducing your target's DEF by 80% for 3 turns "
 psvHapi1Description,死亡时，己方全体回复60%法攻的生命值,"Upon dying, recover (60% of magic ATK) HP for all allies"
@@ -1788,7 +1788,12 @@ bossxiaoxiang28Muling21Name,抓挠,抓挠
 bossxiaoxiang28Muling22Name,震地,震地
 bossxiaoxiang28Muling23Name,木刺,木刺
 bossxiaoxiang28Muling24Name,践踏,践踏
-bossxiaoxiang28Muling21Tips,攻击敌方单体，造成{0}%法攻木法术伤害,攻击敌方单体，造成{0}%法攻木法术伤害
-bossxiaoxiang28Muling22Tips,攻击敌方群体，造成{0}%法攻木法术伤害,攻击敌方群体，造成{0}%法攻木法术伤害
-bossxiaoxiang28Muling23Tips,攻击敌方单体，造成{0}%法攻木法术伤害，XX%造成眩晕1回合,攻击敌方单体，造成{0}%法攻木法术伤害，XX%造成眩晕1回合
-bossxiaoxiang28Muling24Tips,攻击敌方群体，造成3次{0}%法攻木法术纯伤害,攻击敌方群体，造成3次{0}%法攻木法术纯伤害
+bossxiaoxiang28Muling21Tips,给单体目标造成150%法攻木属性伤害,Deals (150% of magic ATK) grass type magic damage to a single target 
+bossxiaoxiang28Muling22Tips,给群体目标造成100%法攻木属性伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets 
+bossxiaoxiang28Muling23Tips,给单体目标造成150%法攻木属性伤害中概率附加眩晕效果,Deals (150% of magic ATK) grass type magic damage to a single target with a medium chance of stunning effects
+bossxiaoxiang28Muling24Tips,给群体目标造成3次70%法攻木属性伤害,Repeatedly deals (70% of magic ATK) grass type magic damage 3 times to all enemy targets 
+bossxiaoxiang28Muling2tips,我的心是空的,My heart is empty
+bossAmute1Name,水球,Liquid Sphere
+bossAmute2Name,水龙卷,Waterspout
+bossAmute1Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
+bossAmute2Tips,给群体目标造成100%法攻水属性伤害,Deals (100% of magic ATK) water type magic damage to all enemy targets 

@@ -6,44 +6,46 @@ using System;
 public class UIServer : UIBase {
     public static string ViewName = "UIServer";
     public GameObject login;
+    public GameObject loginClick;
     public GameObject selectServerBtn;
-    public GameObject LogServerPanel;
+    public GameObject logServerPanel;
     public GameObject serverListPanel;
     public GameObject recommendServer;
-    public GameObject Close;
+    public GameObject close;
+    public GameObject lastServerBtn;
     public Animator logAnimator;
     public Animator ServerAnimator;
     public Transform IntervalItemBox;
     public Transform serverItemBox;
     public Transform serverPlayerItemBox;
     public Text lastServer;//Recommend / Last
-    public Text lastServerName;
-    public Text lasrServerType;
     public Text currServerName;
     public Text serverStageText;
     public Text currLogServerText;
     public Text changeBtnText;
     public Text selectServerText;
-    int interval = 0;
-    bool isCreateRecommend = false;
-    bool isOut = false;
     UIServerData recordCurrServer = null;
     List<GameObject> uiServerItem = new List<GameObject>();
     List<GameObject> uiServerIntervalItem = new List<GameObject>();
     List<UIServerData> serverPlayerInfo = new List<UIServerData>();
     Dictionary<string, List<UIServerData>> uiServerData;
+    int interval = 0;
+    bool isCreateRecommend = false;
+    bool isOut = false;
+    bool isSelectBox = true;
+    static UIServer mInst = null;
     //------------------------------------------------------------------------------------------------------
     void AnimatorInterval()
     {
         if (isOut)
         {
             serverListPanel.SetActive(true);
-            LogServerPanel.SetActive(false);
+            logServerPanel.SetActive(false);
         }
         else
         {
             serverListPanel.SetActive(false);
-            LogServerPanel.SetActive(true);
+            logServerPanel.SetActive(true);
         }
     }
     void OpenServerList(GameObject btn)//打开服务器列表
@@ -56,7 +58,7 @@ public class UIServer : UIBase {
             return;
         if (serverPlayerInfo.Count > 0)//有没有推荐服务器
         {
-            CreateIntervalItem("login_server_001", null, 1);
+            CreateIntervalItem(StaticDataMgr.Instance.GetTextByID("login_server_001"), null, 1);
         }
         foreach (var item in uiServerData) 
         {
@@ -92,7 +94,7 @@ public class UIServer : UIBase {
             uiServerItem[i].SetActive(false);
     }
     //------------------------------------------------------------------------------------------------------
-    void CreateIntervalItem(string stageName, string serverInterval, int serverStageType = 0)//创建服务器区
+    void CreateIntervalItem(string stageName, string serverInterval,int serverStageType = 0)//创建服务器区
     {
         ServerStageItemData stageItemData = null;
         GameObject stageItem = ResourceMgr.Instance.LoadAsset("ServerStageItem");
@@ -100,23 +102,22 @@ public class UIServer : UIBase {
         stageItem.transform.localScale = IntervalItemBox.localScale;
         ScrollViewEventListener.Get(stageItem).onClick = StageIntervalItemClick;
         stageItemData = stageItem.GetComponent<ServerStageItemData>();
-        if (serverStageType == 1)
-        {
-            stageName = StaticDataMgr.Instance.GetTextByID(stageName);
-        }
         stageItemData.stageName.text = stageName; 
         stageItemData.serverStageType = serverStageType;
         stageItemData.interval = serverInterval;
         stageItemData.selectBox.SetActive(false);
         uiServerIntervalItem.Add(stageItem);
-        if (uiServerIntervalItem.Count == uiServerData.Count)
+        if (isSelectBox)
         {
-            ServerStageItemData sSItemData = uiServerIntervalItem[uiServerIntervalItem.Count - 1].GetComponent<ServerStageItemData>();
+            ServerStageItemData sSItemData = uiServerIntervalItem[0].GetComponent<ServerStageItemData>();
             sSItemData.selectBox.SetActive(true);
             serverStageText.text = sSItemData.stageName.text;
-            SetServerItem(uiServerData[serverInterval]);
+            if (serverInterval != null)
+                SetServerItem(uiServerData[serverInterval]);
+            else
+                RecommendServer(serverPlayerInfo);
         }
-       
+        isSelectBox = false;
     }
     //------------------------------------------------------------------------------------------------------
     void StageIntervalItemClick(GameObject btn)//服务器区点击事件
@@ -199,7 +200,7 @@ public class UIServer : UIBase {
         }
         return 0;
     }
-    //------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
     public void SetCurrServer(Dictionary<string, List<UIServerData>> serverData, string serverName = null)//设置当前选择的服务器
     {
         if (serverName != null)
@@ -207,6 +208,7 @@ public class UIServer : UIBase {
              currServerName.text = serverName;
              return;
         }
+        ServerItemData serverItemData = lastServerBtn.GetComponent<ServerItemData>();
         uiServerData = serverData;
         foreach (var item in uiServerData)
         {
@@ -218,23 +220,44 @@ public class UIServer : UIBase {
                 }                
             }
             serverName = item.Value[item.Value.Count - 1].serverIndex + " - " + item.Value[item.Value.Count - 1].serverName;
-            lasrServerType.text = item.Value[item.Value.Count - 1].serverType.ToString();
+            serverItemData.sServerType.text = item.Value[item.Value.Count - 1].serverType.ToString();
         }
         serverPlayerInfo.Sort(ServerSort);//按等级最高排序
         if (PlayerPrefs.GetString("_serverName") != string.Empty)
         { 
             serverName = PlayerPrefs.GetString("_serverName");
             lastServer.text = StaticDataMgr.Instance.GetTextByID("login_server_002");
-            lasrServerType.text = PlayerPrefs.GetString("_serverType");
+            string text = serverName.Split('-')[1];
+            UIServerData serData = GetServerData(text);
+            serverItemData.sServerType.text = serData.serverType.ToString();
+            serverItemData.sHostIp = serData.hostIp;
+            serverItemData.sPort = serData.port;
         }
         else if (serverPlayerInfo.Count > 0)
         {
             serverName = serverPlayerInfo[0].serverIndex + " - " + serverPlayerInfo[0].serverName;
-            lasrServerType.text = serverPlayerInfo[0].serverType.ToString();
+            serverItemData.sServerType.text = serverPlayerInfo[0].serverType.ToString();
+            serverItemData.sHostIp = serverPlayerInfo[0].hostIp;
+            serverItemData.sPort = serverPlayerInfo[0].port;
         }
-        SetTextColor(lasrServerType);
+        SetTextColor( serverItemData.sServerType);
         currServerName.text = serverName;
-        lastServerName.text = serverName;
+        serverItemData.sServerName.text = serverName;
+    }
+    //------------------------------------------------------------------------------------------------------
+    UIServerData GetServerData(string serverId)
+    {
+        foreach (var item in uiServerData)
+        {
+            for (int i = 0; i < item.Value.Count; i++)
+            {
+                if (item.Value[i].serverName == serverId.TrimStart())
+                {
+                    return item.Value[i];
+                }
+            }
+        }
+        return null;
     }
     //------------------------------------------------------------------------------------------------------
     void SetTextColor(Text text)//设置字体颜色
@@ -285,6 +308,14 @@ public class UIServer : UIBase {
         return UIServerType.SERVER_TYPE_UNKNOW;
     }
     //------------------------------------------------------------------------------------------------------
+    public static void ResetUserData(string testGuid)
+    {
+        if (PlayerPrefs.GetString("testGuid") != testGuid)
+        {
+            PlayerPrefs.DeleteKey("_serverName");
+        }
+    }
+    //------------------------------------------------------------------------------------------------------
     void LogServer(GameObject btn)//进入游戏
     {
         Hashtable CurrServerHashtable = new Hashtable();
@@ -296,27 +327,18 @@ public class UIServer : UIBase {
         else if (recordCurrServer != null )
         {            
             PlayerPrefs.SetString("_serverName", recordCurrServer.serverName);
-            PlayerPrefs.SetString("_serverType", recordCurrServer.serverType.ToString());
-            PlayerPrefs.SetString("_hostIp", recordCurrServer.hostIp);
-            PlayerPrefs.SetInt("_port", recordCurrServer.port);
-            if (recordCurrServer.serverName != string.Empty)
-            {
-                PlayerPrefs.SetString("_nickName", recordCurrServer.nickName);
-                PlayerPrefs.SetString("_level", recordCurrServer.level.ToString());
-            }
         }
-        else if(PlayerPrefs.GetString("_serverName") != string.Empty)
+        else if (PlayerPrefs.GetString("_serverName") != string.Empty)
         {
             recordCurrServer = new UIServerData();
-            recordCurrServer.hostIp = PlayerPrefs.GetString("_hostIp");
             recordCurrServer.serverName = PlayerPrefs.GetString("_serverName");
-            recordCurrServer.serverType = GetServerType(PlayerPrefs.GetString("_serverType"));
-            recordCurrServer.port = PlayerPrefs.GetInt("_port");
-            if (PlayerPrefs.GetString("_nickName") != string.Empty)
-            {
-                recordCurrServer.nickName = PlayerPrefs.GetString("_nickName");
-                recordCurrServer.level = int.Parse(PlayerPrefs.GetString("_level"));
-            }
+            string text = recordCurrServer.serverName.Split('-')[1];
+            UIServerData serData = GetServerData(text);
+            recordCurrServer.hostIp = serData.hostIp;
+            recordCurrServer.serverType = serData.serverType;
+            recordCurrServer.port = serData.port;
+            recordCurrServer.nickName = serData.nickName;
+            recordCurrServer.level = serData.level;
         }
         if (recordCurrServer.serverType == UIServerType.Maintain ||
             recordCurrServer.serverType == UIServerType.SERVER_TYPE_UNKNOW)
@@ -341,8 +363,9 @@ public class UIServer : UIBase {
     //------------------------------------------------------------------------------------------------------
 	void Start () {
         EventTriggerListener.Get(selectServerBtn).onClick = OpenServerList;
-        EventTriggerListener.Get(login).onClick = LogServer;
-        EventTriggerListener.Get(Close).onClick = CloseServerList;
+        EventTriggerListener.Get(loginClick).onClick = LogServer;
+        EventTriggerListener.Get(close).onClick = CloseServerList;
+        EventTriggerListener.Get(lastServerBtn).onClick = ServerItemClick;
         GameObject serverItem;
         for (int i = 0; i < 10; i++)//一个分区最多10个服务器
         {

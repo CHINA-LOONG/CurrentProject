@@ -357,12 +357,7 @@ public class PlayerMonsterModule extends PlayerModule {
 			return false;
 		}
 
-		try {
-			int disposition = HawkRand.randInt(1, 6);
-			award.addMonster(cfgId, 0, 1, 1, disposition);
-		} catch (HawkException e) {
-			HawkException.catchException(e);
-		}
+		award.addMonster(cfgId, 0, 1, 1, monsterCfg.getDisposition());
 
 		consume.consumeTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);
 		award.rewardTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);

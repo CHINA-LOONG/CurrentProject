@@ -61,8 +61,6 @@ shop_30yueka,确定购买30天月卡？,Confirm purchase of 30 day Monthly Card?
 shop_chongzhi,充值,Top-Up
 shop_duihuan,用少量钻石兑换大量金币,Exchange a small amount of Diamonds for large amount of Coins.
 shop_duihuanTimes,今日可买：{0}/{1},Can purchase today: {0}/{1}
-shop_isbuy,立即购买,Purchase
-shop_now, ,now
 shop_noduihuantimes,今日可买次数已经用完。,You have purchased the maximum amount for today.
 shop_buysucctip,成功购买{0}{1},Successfully purchased {0}{1}
 shop_record_001,成功购买{0},Successfully purchased {0}
@@ -577,6 +575,25 @@ sociaty_record_065,已经领取过了哦,Already collected!
 sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1}
 sociaty_vicechairman,副会长,Elder
 sociaty_member1,成员,Member
+sociaty_mybing,我的驻兵,My Garrison
+sociaty_otherbing,基地列兵,Base Garrison
+sociaty_lishi,个人历史贡献值：{0},Total contribution: {0}
+sociaty_tipsjidichang,驻守基地的宠物可根据驻守时长获得金币，被其他玩家雇佣时也可获得金币收入,Monsters garrisoned in the Guild Base gain coins with time. They also earn coins when hired by other members.
+sociaty_addmonster,添加宠物,Add monster
+sociaty_tipslock,公会历史贡献值达到{0}解锁,Unlocked when total guild contribution reaches {0}.
+sociaty_zhushoutime,驻守时长：,Garrison time: 
+sociaty_zhushoutime1,{0}小时{1}分钟,{0} hrs {1} min
+sociaty_leijishouru,累积收入：,Accumulated income:
+sociaty_recall,立即召回,Recall
+sociaty_shouru1,驻扎收入：,Defense income:
+sociaty_shouru2,雇佣收入：,Hired monster income:
+advanture_maoxianing,冒险中,Exploring
+advanture_zhushouing,驻守中,Garrisoned
+sociaty_paibingxuanze,选择宠物,Choise monster
+sociaty_paichuqueren,派出的宠物至少要驻扎1个小时才可以召回哦，确定派出宠物？,"After being dispatched, you must wait 1 hour before monsters can be recalled. Continue?"
+sociaty_record_066,该位置未解锁,unlock
+sociaty_record_067,派出时间未满1小时，不能召回,cannt back
+sociaty_record_068,宠物已不在公会基地,not here
 ,,
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas
@@ -802,6 +819,18 @@ mubiao10027,通关2-8,Clear Stage 2-8
 mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
 mubiao10029,装备开孔,Open an equipment socket 
 mubiao10030,装备镶嵌,Insert a gem in equipment
+richang1,每日剧情副本,Daily Campaign Stages
+richang2,每日挑战副本,Daily Heroic Stages
+richang3,每日技能升级,Daily Ability Upgrade
+richang4,每日装备升级,Daily Equipment Upgrade
+richang5,每日金币购买,Daily Coin Purchase
+richang6,每日商店刷新,Daily Store Refresh
+rimubiao1,剧情副本10次,Complete 10 Campaign Stages
+rimubiao2,挑战副本3次,Complete 3 Heroic Stages
+rimubiao3,技能升级3次,Level up abilities 3 times
+rimubiao4,装备升级1次,Upgrade equipment once
+rimubiao5,购买金币1次,Purchase Coins once
+rimubiao6,刷新商店1次,Refresh the Store once
 login_denglu_001,当前登录服务器,Current server
 login_denglu_002,切换,Change
 login_gonggao_001,公告,Announcement
@@ -818,19 +847,76 @@ login_server_004,上次登录服务器,Last Server
 login_weihu_001,当前服务器正在维护，请稍后再试！,The current server is down for maintenance. Please wait and try again later!
 login_duankai_001,已与服务器断开连接，请重新登录！,"Disconnected from server, please re-login."
 login_dinghao_001,该账号已在其他设备上登录，请确认账号安全并重新登录！,This account is already logged in from another device. Please confirm your account is secure and re-login.
-hecheng_name,合成,合成
-fenjie_name,分解,分解
-dazao_name,装备打造,装备打造
-houbei_name,后备站位,后备站位
-saodang_name,扫荡,扫荡
-putongshangdian_name,普通商店,普通商店
-tiaozhan_name,挑战副本,挑战副本
-gengduo_name,更多精彩玩法,更多精彩玩法
-hecheng_desc,可以获得更高等级的宝石和材料！,可以获得更高等级的宝石和材料！
-fenjie_desc,分解多余的宠物和装备可以快速获得材料！,分解多余的宠物和装备可以快速获得材料！
-dazao_desc,提升战力最直接的方式。,提升战力最直接的方式。
-houbei_desc,开启了一个后备站位，可以派遣第四个宠物上场啦！,开启了一个后备站位，可以派遣第四个宠物上场啦！
-saodang_desc,扫荡是快速通关副本的唯一方法。,扫荡是快速通关副本的唯一方法。
-putongshangdian_desc,商店中可能出现意想不到的商品哦！,商店中可能出现意想不到的商品哦！
-tiaozhan_desc,去挑战难度更高的副本吧！,去挑战难度更高的副本吧！
-gengduo_desc,更多精彩玩法请期待下个版本！,更多精彩玩法请期待下个版本！
+hecheng_name,合成功能,Combine Function
+fenjie_name,分解功能,Disenchant Function
+dazao_name,装备打造,Equipment Forge
+houbei_name,后备站位,Reserve Position
+saodang_name,扫荡功能,Raid Function
+putongshangdian_name,普通商店,Normal Store
+tiaozhan_name,挑战副本,Heroic Stage
+gengduo_name,更多精彩玩法,More exciting game modes
+hecheng_desc,可以获得更高等级的宝石和材料！,You can receive more advanced Gems and Materials!
+fenjie_desc,分解多余的宠物和装备可以快速获得材料！,Disenchant extra monsters and equipment to quickly get more Materials!
+dazao_desc,提升战力最直接的方式。,The most direct way to increase BP.
+houbei_desc,开启了一个后备站位，可以派遣第四个宠物上场啦！,Reserve position unlocked! You can add a 4th monster to your battle team!
+saodang_desc,扫荡是快速通关副本的唯一方法。,Raids are the only way to quickly clear Stages.
+putongshangdian_desc,商店中可能出现意想不到的商品哦！,Some unexpected items may appear in the Store!
+tiaozhan_desc,去挑战难度更高的副本吧！,Go and challenge some more difficult Stages!
+gengduo_desc,更多精彩玩法请期待下个版本！,Please wait for the next version for even more exciting game modes!
+,,
+advanture_title,大冒险,Adventure
+advanture_qianghuashi,破碎的裂隙,Crumbling
+advanture_jinjieshi,干扰的裂隙,Interference
+advanture_boss,纯粹的裂隙,Purity
+advanture_time,探险时间   {0}小时,Exploration time  {0} hrs
+advanture_teams,探险小队,Exploration team
+advanture_tip1,探索强化石宝藏能够获得宠物经验药水、宠物强化石、装备强化石,"Explore upgrade stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+advanture_tip2,探索进阶石宝藏能够获得宠物经验药水、装备进阶石、宠物进阶石,"Explore evolution stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+advanture_tip3,探索BOSS巢穴能够获得宠物经验药水、BOSS宝箱,Explore the Boss Lair to get Monster EXP Potions and Boss Treasures
+advanture_ing,探险中…,Exploring…
+advanture_alreadycom,已完成,Completed
+advanture_click,点击领奖,Tap to collect
+advanture_jiadui,没有空余小队，是否添加小队？,"No open team spots, create a team?"
+advanture_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} hrs)
+advanture_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
+advanture_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
+advanture_paimonster,派遣宠物,Dispatch Monsters
+advanture_condition1,条件1,Req. 1
+advanture_condition2,条件2,Req. 2
+advanture_condition3,条件3,Req. 3
+advanture_getpercent,获得概率,Droprate
+advanture_change,变更条件,Edit Conditions
+advanture_go,探险,Explore
+advanture_foundationreward,基础奖励,Basic Rewards
+advanture_extrareward,额外奖励,Bonus Rewards
+advanture_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
+sociaty_meijiaguild,尚未加入公会,not join guild
+advanture_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
+advanture_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
+advanture_tipsmax,次数已满,(full)
+advanture_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
+advanture_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
+advanture_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?
+advanture_tipsweight,额外奖励获得概率,Bonus reward droprate
+advanture_tipsguyongxinxi,雇佣{0}的{1},Hire {0}'s {1}
+advanture_tipstanxian,确定进行探险么？,Confirm begin exploration?
+advanture_teamnum,拥有队伍：{0},Number of teams: {0}
+advanture_teamname,队伍{0},Team {0}
+advanture_free,空闲中,Idle
+advanture_goadvanture,去探险,Go Explore
+advanture_complete,立即完成,Complete Now
+advanture_addteam,扩充小队,Add Team
+advanture_completenow,立即完成探险么？,Complete exploration now?
+adventure_timeleft,剩余时间：{0},left time:{0}
+advanture_addsure,确定添加新的队伍么？,Confirm add new team?
+advanture_successful,探险成功！,Exploration Success!
+advanture_record_001,添加小队成功,New team added.
+advanture_record_002,变更次数已满，购买失败,"Change chances full, purchase failed."
+advanture_record_003,购买成功,Purchase success.
+advanture_record_004,派遣成功,Dispatch success.
+advanture_record_005,没有空闲的小队啦,No idle teams.
+advanture_record_006,变更成功,Change success.
+advanture_record_007,派遣怪物不足5只，不能探险,"5 monsters required for exploration, unable to dispatch."
+advanture_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be hired for each exploration.
+advanture_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
+adventure_record_011,探险任务已完成,complete

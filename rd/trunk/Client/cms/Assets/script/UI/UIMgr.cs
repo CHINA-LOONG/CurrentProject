@@ -360,6 +360,7 @@ public class UIMgr : MonoBehaviour
     {
         if (state == MsgBox.PrompButtonClick.OK)
         {
+            curParkTime = 0.0f;
             //重置数据
             GameDataMgr.Instance.ClearAllData();
             //跳转到登录

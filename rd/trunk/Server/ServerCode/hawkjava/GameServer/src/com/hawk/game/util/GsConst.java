@@ -165,7 +165,9 @@ public class GsConst {
 		public static final int ALLIANCE_BASE_SEND = 120;
 		// 公会撤兵
 		public static final int ALLIANCE_BASE_RECALL = 121;
-
+		// 雇用奖励
+		public static final int Alliance_HIRE_REWARD = 122;
+		
 		/**
 		 * 快照管理器消息定义
 		 */
@@ -448,7 +450,7 @@ public class GsConst {
 		public static final int SECOND_BASE_POSITION_CONTRIBUTION = 1000;
 		public static final int THIRD_BASE_POSITION_CONTRIBUTION = 2000;
 
-		public static final int BASE_MIN_TIME = 3600;
+		public static final int BASE_MIN_TIME = 180;
 
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";

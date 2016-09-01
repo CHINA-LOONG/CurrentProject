@@ -97,7 +97,7 @@ public class UIMonsterInfo : UIBase
         CharacterData cData = StaticDataMgr.Instance.GetCharacterData(monsterCharacter);
         if (null != cData)
         {
-            character.text = cData.DescAttr;
+			character.text = StaticDataMgr.Instance.GetTextByID(cData.name);
         }
         if (unitData.assetID.Contains("boss"))
         {

@@ -80,13 +80,21 @@ public class UIShop : UIBase
 	{
 		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
 		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
-	}
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
+    }
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
-	}
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
+    }
 
 	void OnRefreshButtonClilck(GameObject go)
 	{
@@ -164,20 +172,23 @@ public class UIShop : UIBase
 			OnRefreshShopUi();
 		}
 		timeNextRefresh = shopDataMgr.GetNextFreeRefreshTime (curShopType);
-	}
+        zuanshiCoinBtn.gameObject.SetActive(shopType == (int)PB.shopType.NORMALSHOP);
+    }
 
     void CheckOpendShop()
     {
-        if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForTower)
-        {
-            maxOpenShopIndex = (int)PB.shopType.TOWERSHOP;
-        }
-        else if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
+        leftButton.gameObject.SetActive(true);
+        if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
         {
             maxOpenShopIndex = (int)PB.shopType.ALLIANCESHOP;
         }
+        else if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForTower)
+        {
+            maxOpenShopIndex = (int)PB.shopType.TOWERSHOP;
+        }
         else
         {
+            leftButton.gameObject.SetActive(false);
             maxOpenShopIndex = (int)PB.shopType.NORMALSHOP;
         }
     }
@@ -191,6 +202,22 @@ public class UIShop : UIBase
 	{
 		RefreshUIWithNormalizedScrollPosition (false);
 	}
+    void OnCoinChanged(long coin)
+    {
+        RefreshUIWithNormalizedScrollPosition(false);
+    }
+    void OnZuanshiChanged(int zuanshi)
+    {
+        RefreshUIWithNormalizedScrollPosition(false);
+    }
+    void OnGonghuibiChanged(int gonghuibi)
+    {
+        RefreshUIWithNormalizedScrollPosition(false);
+    }
+    void OnTowerCoinChanged(int towerCoin)
+    {
+        RefreshUIWithNormalizedScrollPosition(false);
+    }
 
 	void	RefreshUIWithNormalizedScrollPosition(bool normallized = true)
 	{

@@ -77,6 +77,6 @@ public class GameConfig : MonoBehaviour {
     public int sociatyTeamMaxMember = 3;
 
     //功能开启等级限制
-    public int OpenLevelForGonghui = 10;//公会开发等级
-    public int OpenLevelForTower = 20;//通天塔开放等级
+    public int OpenLevelForGonghui = 20;//公会开发等级
+    public int OpenLevelForTower = 10;//通天塔开放等级
 }

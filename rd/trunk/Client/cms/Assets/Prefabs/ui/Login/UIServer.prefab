@@ -131,6 +131,7 @@ GameObject:
   - 224: {fileID: 22448462}
   - 222: {fileID: 22210916}
   - 114: {fileID: 11459824}
+  - 114: {fileID: 11494148}
   m_Layer: 5
   m_Name: LastServer
   m_TagString: Untagged
@@ -147,6 +148,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22402806}
   - 222: {fileID: 22216046}
+  - 114: {fileID: 11482868}
   m_Layer: 5
   m_Name: ChoiceBtn
   m_TagString: Untagged
@@ -320,6 +322,23 @@ GameObject:
   - 114: {fileID: 11439140}
   m_Layer: 5
   m_Name: ServerListBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &159286
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22406554}
+  - 222: {fileID: 22214320}
+  - 114: {fileID: 11467046}
+  m_Layer: 5
+  m_Name: loginClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,6 +1192,33 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &11467046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11469040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,6 +1239,33 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: aa12508a820eed141a25425719e3b5cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &11482868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1352,6 +1425,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11494148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a427eab481f74245b51fc652f8c207d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sServerName: {fileID: 11414058}
+  sServerType: {fileID: 11459708}
+  sPlayerName: {fileID: 0}
+  sPlayerLv: {fileID: 0}
+  sHostIp: 
+  sPort: 0
+  lv: 0
 --- !u!114 &11496744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1419,19 +1510,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mViewType: 0
   login: {fileID: 117814}
+  loginClick: {fileID: 159286}
   selectServerBtn: {fileID: 131868}
-  LogServerPanel: {fileID: 106284}
+  logServerPanel: {fileID: 106284}
   serverListPanel: {fileID: 105758}
   recommendServer: {fileID: 132486}
-  Close: {fileID: 108864}
+  close: {fileID: 108864}
+  lastServerBtn: {fileID: 125742}
   logAnimator: {fileID: 9585868}
   ServerAnimator: {fileID: 9576528}
   IntervalItemBox: {fileID: 22464366}
   serverItemBox: {fileID: 22463516}
   serverPlayerItemBox: {fileID: 22471442}
   lastServer: {fileID: 11406050}
-  lastServerName: {fileID: 11414058}
-  lasrServerType: {fileID: 11459708}
   currServerName: {fileID: 11420286}
   serverStageText: {fileID: 11443620}
   currLogServerText: {fileID: 11401436}
@@ -1455,6 +1546,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125742}
+--- !u!222 &22214320
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159286}
 --- !u!222 &22216046
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1621,8 +1718,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22417816}
   - {fileID: 22432804}
+  - {fileID: 22406554}
+  - {fileID: 22417816}
   m_Father: {fileID: 22428876}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -1647,6 +1745,23 @@ RectTransform:
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -294, y: -34.5999985}
   m_SizeDelta: {x: 240, y: 515}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22406554
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22405688}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22412614
 RectTransform:
@@ -1686,7 +1801,7 @@ RectTransform:
   - {fileID: 22475094}
   - {fileID: 22402806}
   m_Father: {fileID: 22405688}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 514, y: -5.96046448e-06}
@@ -1743,7 +1858,7 @@ RectTransform:
   - {fileID: 22433772}
   - {fileID: 22420000}
   m_Father: {fileID: 22405688}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: 0, y: -66}

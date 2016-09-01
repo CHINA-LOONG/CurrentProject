@@ -2241,9 +2241,14 @@ guide_hero4,选择挑战难度,Select heroic difficulty.
 guide_hero5,点击这里看看奖励多棒吧,Tap here to view the possible rewards.
 speech_hero1,挑战难度副本主要产出<color=#ffcc00>宠物进阶的相关材料、宠物碎片</color>等，三星通关挑战难度副本能够获得<color=#ffcc00>钻石</color>等丰富的奖励呢！,Heroic stages will drop <color=#ffcc00>monster advancement materials and monster fragments</color>. Clearing a heroic stage with 3-stars will give <color=#ffcc00>diamond</color> rewards!
 guide_worldboss1,<color=#ffcc00>神怪入侵</color>玩法开启啦！,<color=#ffcc00>Deity Invasion</color> unlocked!
-guide_worldboss2,每个神怪都有<color=#ffcc00>克星</color>，战斗时将克星上阵，就能获得对应的<color=#ffcc00>伤害加成</color>,"Each deity has a <color=#ffcc00>nemesis</color>. If you add the nemesis to your lineup, then you can receive the corresponding <color=#ffcc00>damage bonuses</color>."
-speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续15分钟，每天只能选择一场参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for 15 minutes each. Players may only participate in 1 of the 3 battles each day.
-speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!"
+guide_worldboss2,"每个神怪都有<color=#ffcc00>克星</color>，
+战斗时将克星上阵，
+就能获得对应的<color=#ffcc00>伤害加成</color>","Each deity has a <color=#ffcc00>nemesis</color>. 
+If you add the nemesis to your lineup, 
+then you can receive the corresponding <color=#ffcc00>damage bonuses</color>."
+speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续<color=#ffcc00>15分钟</color>，每天只能选择<color=#ffcc00>一场</color>参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for <color=#ffcc00>15 minutes</color> each. Players may only participate in <color=#ffcc00>1 of the 3 battles</color> each day.
+speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! "
+speech_worldboss3,偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!"
 bossworldbossjidu5wp02,右手,Right Hand
 bossworldbossjidu5wp03,左手,Left Hand
 bossworldbossjidu5wp04,剪刀,Shears

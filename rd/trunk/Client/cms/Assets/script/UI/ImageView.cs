@@ -9,8 +9,11 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
                                        IEndDragHandler, 
                                        IDragHandler
 {
+    [HideInInspector]
+    public ImageViewModel model;
 
-    private ImageViewModel model;
+    [HideInInspector]
+    public JidiPositionViewModel jidiPositionViewModel;
 
     private RawImage image;
     
@@ -24,6 +27,21 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
         }
         return model.ReloadData(monsterId);
     }
+    public void InitJidiPosoitonModel()
+    {
+        if (model == null)
+        {
+            model = ImageViewModel.CreateJidiPositionModel();
+            image = GetComponent<RawImage>();
+            model.Camera.targetTexture = image.texture as RenderTexture;
+            jidiPositionViewModel = model.GetComponent<JidiPositionViewModel>();
+        }
+    }
+    public BattleObject ReloadJidiPositionData(string monsterId)
+    {
+        InitJidiPosoitonModel();
+        return model.ReloadData(monsterId);
+    }
     public void CleanImageView()
     {
         if (model!=null)
@@ -31,10 +49,6 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
             model.DestroyModel();
         }
     }
-
-
-
-
 
     public void OnBeginDrag(PointerEventData eventData)
     {

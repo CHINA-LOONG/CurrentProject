@@ -194,6 +194,7 @@ MonoBehaviour:
   sPlayerLv: {fileID: 11433246}
   sHostIp: 
   sPort: 0
+  lv: 0
 --- !u!114 &11462682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,7 +303,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -13.5, y: 6.69000006}
+  m_AnchoredPosition: {x: -16.7000008, y: 6.69000006}
   m_SizeDelta: {x: 60, y: 25}
   m_Pivot: {x: 1, y: .5}
 --- !u!224 &22417504
@@ -319,7 +320,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 293.899994, y: 6.69000006}
+  m_AnchoredPosition: {x: 340.799988, y: 6.69000006}
   m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22434712
@@ -336,7 +337,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 12, y: 6.69000006}
+  m_AnchoredPosition: {x: 16, y: 6.69000006}
   m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22450624
@@ -358,7 +359,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 58}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22460804
 RectTransform:
@@ -374,7 +375,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 166.300003, y: 6.69000006}
+  m_AnchoredPosition: {x: 178.899994, y: 6.69000006}
   m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0, y: .5}
 --- !u!1001 &100100000

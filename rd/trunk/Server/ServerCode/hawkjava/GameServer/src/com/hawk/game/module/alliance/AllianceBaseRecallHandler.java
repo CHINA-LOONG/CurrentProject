@@ -75,19 +75,21 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 			try {
 				if (objBase != null && objBase.isObjValid()) {		
 					int bp = baseEntity.getBp();
+					
+					AwardItems award = new AwardItems();
+					int rewardCoin = AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * (HawkTime.getSeconds()- baseEntity.getSendTime());
+					int hireCoin = playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward();
+					award.addCoin(rewardCoin + hireCoin);
+					award.rewardTakeAffectAndPush(player, Action.GUILD_BASE_REWARD, protocol.getType());
+					
 					// 移除基地驻兵
 					allianceEntity.removeAllianceBase(player.getId(), request.getPosition());
 					baseEntity.delete();
 					
-					AwardItems award = new AwardItems();
-					int rewardCoin = AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * (HawkTime.getSeconds()- baseEntity.getSendTime());
-					award.addCoin(rewardCoin + playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward());
-					award.rewardTakeAffectAndPush(player, Action.GUILD_BASE_REWARD, protocol.getType());
-					
 					// 回复信息
 					HSAllianceBaseRecallMonsterRet.Builder response = HSAllianceBaseRecallMonsterRet.newBuilder();
 					response.setCoinDefend(rewardCoin);
-					response.setCoinHire(playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward());
+					response.setCoinHire(hireCoin);
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_BASE_RECALL_S_VALUE, response));
 					return true;
 				}

@@ -58,14 +58,14 @@ public class StoreItem : MonoBehaviour
         {
             cheapPanel.gameObject.SetActive(true);
             oldPrice.text = (storeItemData.price).ToString();
-            offText.text = offText.text = string.Format("-{0}%", (int)(storeItemData.discount * 100));
+            offText.text = offText.text = string.Format("-{0}%", Mathf.CeilToInt(storeItemData.discount * 100));
         }
     }
     private void RefreshItemIcon(ItemStaticData itemStaticData)
     {
-        if (itemStaticData.type == (int)PB.itemType.EQUIP)
+        if (itemStaticData.type == (int)PB.toolType.EQUIPTOOL)
         {
-            Logger.Log("Config Error for StoreItem, no suppot equip in store with id = " + storeItemData.itemId);
+            Logger.LogError("Config Error for StoreItem, no suppot equip in store with id = " + storeItemData.itemId);
            // EquipData equipData = EquipData.valueof(0, itemStaticData.id, itemStaticData.stage, itemStaticData.level, BattleConst.invalidMonsterID, null);
             //itemIcon.RefreshWithEquipInfo(equipData);
         }
@@ -78,7 +78,7 @@ public class StoreItem : MonoBehaviour
     }
     bool IsCoinEnough( )
     {
-        return GameDataMgr.Instance.PlayerDataAttr.gold >= storeItemData.price * storeItemData.discount;
+        return GameDataMgr.Instance.PlayerDataAttr.gold >= Mathf.CeilToInt(storeItemData.price * storeItemData.discount);
     }
 
     void OnBuyButtonClick()
@@ -87,7 +87,7 @@ public class StoreItem : MonoBehaviour
         param.itemId = storeItemData.itemId;
         param.defaultbuyCount = 1;
         param.maxCount = 20;
-        param.isShowCoinButton = true;
+        param.isShowCoinButton = false;
         BuyItem.OpenWith(param);
     }
 

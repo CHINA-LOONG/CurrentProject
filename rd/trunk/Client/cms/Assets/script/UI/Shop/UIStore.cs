@@ -24,6 +24,24 @@ public class UIStore : UIBase
         scrollView.ClearAllElement();
     }
 
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+    }
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+    }
+    void OnCoinChanged(long coin)
+    {
+        InitStoreItems();
+    }
+    void OnZuanshiChanged(int zuanshi)
+    {
+        InitStoreItems();
+    }
     void OnCloseButtonClick()
     {
         UIMgr.Instance.CloseUI_(this);

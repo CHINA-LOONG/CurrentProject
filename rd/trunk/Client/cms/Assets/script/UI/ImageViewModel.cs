@@ -14,6 +14,17 @@ public class ImageViewModel : MonoBehaviour {
         Count++;
         return model;
     }
+
+    public static ImageViewModel CreateJidiPositionModel()
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("JidiPositionViewModel");
+        UIMgr.Instance.SetModelView(go.transform, Count);
+        ImageViewModel model = go.GetComponent<ImageViewModel>();
+        model.index = Count;
+        Count++;
+        return model;
+    }
+
     public int index;
     public Transform verticalTurn;
     public Transform herizontalTurn;
@@ -66,10 +77,23 @@ public class ImageViewModel : MonoBehaviour {
     /// </summary>
     public void DestroyModel()
     {
-        ObjectDataMgr.Instance.RemoveBattleObject(curModel.guid);
+        if(null != curModel)
+        {
+            ObjectDataMgr.Instance.RemoveBattleObject(curModel.guid);
+        }
         curModel = null;
         curMonsterId = "";
         Destroy(this.gameObject);
+    }
+    //只销毁怪物对象
+    public void DestroyBattleObject()
+    {
+        if(null != curModel)
+        {
+            ObjectDataMgr.Instance.RemoveBattleObject(curModel.guid);
+            curModel = null;
+            curMonsterId = "";
+        }
     }
 
     public void ReSetTurn()

@@ -2,8 +2,10 @@ package com.hawk.game.manager;
 
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,6 +26,8 @@ import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.module.alliance.AllianceAcceptQuestHandler;
 import com.hawk.game.module.alliance.AllianceApplyHandler;
+import com.hawk.game.module.alliance.AllianceBaseHireHandler;
+import com.hawk.game.module.alliance.AllianceBaseRecallHandler;
 import com.hawk.game.module.alliance.AllianceBaseSendHandler;
 import com.hawk.game.module.alliance.AllianceCancleApplyHandler;
 import com.hawk.game.module.alliance.AllianceChangeOwnerHandler;
@@ -119,6 +123,8 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.ALLIANCE_DISSOLVE_TEAM, new AllianceDissolveTeamHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, new AllianceContributionRewardHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_BASE_SEND, new AllianceBaseSendHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_BASE_RECALL, new AllianceBaseRecallHandler());
+		listenMsg(GsConst.MsgType.Alliance_HIRE_REWARD, new AllianceBaseHireHandler());
 		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
@@ -202,12 +208,14 @@ public class AllianceManager extends HawkAppObj {
 		}
 		
 		//校验数据
-		for (AllianceEntity allianceEntity : allianceMap.values()) {
-			for (AllianceBaseEntity baseEntity : allianceEntity.getAllianceBaseEntityMap().values()) {
+		for (AllianceEntity allianceEntity : allianceMap.values()) {			
+			Iterator<Map.Entry<Integer, AllianceBaseEntity>> iterator = allianceEntity.getAllianceBaseEntityMap().entrySet().iterator();
+			while (iterator.hasNext()) {
+				AllianceBaseEntity baseEntity = iterator.next().getValue();
 				PlayerAllianceEntity playerAllianceEntity = allianceEntity.getMember(baseEntity.getPlayerId());
 				if (playerAllianceEntity == null || playerAllianceEntity.getBaseMonsterInfo().get(baseEntity.getPosition()) == null) {
 					baseEntity.delete(true);
-					allianceEntity.getAllianceBaseEntityMap().remove(baseEntity.getMonsterBuilder().getMonsterId());
+					iterator.remove();
 				}
 			}
 		}

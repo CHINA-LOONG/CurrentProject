@@ -109,7 +109,7 @@ public class BuyItem : UIBase
         StoreStaticData storeItemData = StaticDataMgr.Instance.GetStoreStaticDataWith(itemId);
         if (null != storeItemData)
         {
-            price = (int)(storeItemData.price * storeItemData.discount);
+            price = Mathf.CeilToInt(storeItemData.price * storeItemData.discount);
         }
         else
         {
@@ -144,8 +144,7 @@ public class BuyItem : UIBase
 		int needZuanshi = price * curCount;
 		if (needZuanshi > GameDataMgr.Instance.PlayerDataAttr.gold) 
 		{
-			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_005"),
-			                              (int)PB.ImType.PROMPT);
+            GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
 			return;
 		}
 		RequestByItem ();

@@ -45,7 +45,7 @@ message HSAdventureEnter
 	required int32 teamId = 1;
 	required int32 adventureId = 2;
 	repeated int32 monsterId = 3;
-	optional int32 monsterHireId = 4;
+	optional AllianceBaseMonster monsterHire = 4;
 }
 
 // ADVENTURE_ENTER_S

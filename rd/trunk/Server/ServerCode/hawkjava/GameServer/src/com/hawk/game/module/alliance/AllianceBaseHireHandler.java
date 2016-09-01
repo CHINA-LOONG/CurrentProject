@@ -46,6 +46,7 @@ public class AllianceBaseHireHandler implements HawkMsgHandler{
 			for (BaseMonsterInfo baseMonsterInfo : playerAllianceEntity.getBaseMonsterInfo().values()) {
 				if (baseMonsterInfo.getMonsterId() == monsterId) {
 					baseMonsterInfo.addReward(AllianceUtil.getAllianceBaseConfig(allianceBaseEntity.getBp()).getCoinHireget());
+					playerAllianceEntity.notifyUpdate(true);
 					break;
 				}
 			}

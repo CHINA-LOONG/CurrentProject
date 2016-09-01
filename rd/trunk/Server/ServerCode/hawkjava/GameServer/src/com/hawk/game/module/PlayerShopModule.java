@@ -203,17 +203,17 @@ public class PlayerShopModule extends PlayerModule{
 		ConsumeItems consume = new ConsumeItems();
 		if (protocol.getType() == Const.shopType.NORMALSHOP_VALUE) {
 			if (itemInfo.getPriceType() == Const.moneyType.MONEY_COIN_VALUE) {
-				consume.addCoin((int)(itemInfo.getCount() * discountPrice));
+				consume.addCoin((itemInfo.getCount() * discountPrice));
 			}
 			else if (itemInfo.getPriceType() == Const.moneyType.MONEY_GOLD_VALUE) {
-				consume.addGold((int)(itemInfo.getCount() * discountPrice));
+				consume.addGold((itemInfo.getCount() * discountPrice));
 			}
 		}
 		else if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE) {
-			consume.addContribution((int)(itemInfo.getCount() * discountPrice));
+			consume.addContribution((itemInfo.getCount() * discountPrice));
 		}
 		else if (protocol.getType() == Const.shopType.TOWERSHOP_VALUE) {
-			consume.addTowerCoin((int)(itemInfo.getCount() * discountPrice));
+			consume.addTowerCoin((itemInfo.getCount() * discountPrice));
 		}
 
 		if (consume.checkConsume(player, hsCode) == false) {

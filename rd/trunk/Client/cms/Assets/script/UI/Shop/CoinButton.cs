@@ -36,13 +36,19 @@ public class CoinButton : MonoBehaviour
 	{
 		GameEventMgr.Instance.AddListener<int> (GameEventList.ZuanshiChanged,OnZuanshiChanged);
 		GameEventMgr.Instance.AddListener<long> (GameEventList.CoinChanged,OnJinbiChanged);
+
+        GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuiBiChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
 	}
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.ZuanshiChanged,OnZuanshiChanged);
 		GameEventMgr.Instance.RemoveListener<long> (GameEventList.CoinChanged,OnJinbiChanged);
-	}
+
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuiBiChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
+    }
 	[SerializeField]
 	private	CoinType	coinType = CoinType.Jinbi;
 
@@ -86,7 +92,7 @@ public class CoinButton : MonoBehaviour
 		}
         else if (coinType == CoinType.TowerCoin)
         {
-            OTowerCoinChanged(GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr);
+            OnTowerCoinChanged(GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr);
             coinImg = "icon_towercoin";
             HideAddCoinButton(true);
         }
@@ -143,7 +149,7 @@ public class CoinButton : MonoBehaviour
 		}
 	}
 
-    void OTowerCoinChanged(int towerCoin)
+    void OnTowerCoinChanged(int towerCoin)
     {
         if (coinType == CoinType.TowerCoin)
         {

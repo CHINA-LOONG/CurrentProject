@@ -83,6 +83,8 @@ public class GameEventList
 	public static	string LevelChanged = "LeveleChanged";//param int
 	public static   string CoinChanged  = "CoinChanged";//param int jinbi
 	public static   string ZuanshiChanged = "ZuanshiChanged";
+    public static string GonghuiCoinChanged = "GonghuiCoinChanged"; //param int
+    public static string TowerCoinChanged = "TowerCoinChanged";// param int
     public static string PlayerExpChanged = "PlayerExpChanged";//param int int (oldexp，newexp)
     public static string HuoliChanged = "HuoliChanged";//param int (huoli)
 

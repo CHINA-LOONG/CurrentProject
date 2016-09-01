@@ -3667,15 +3667,19 @@ public final class Adventure {
      */
     int getMonsterId(int index);
 
-    // optional int32 monsterHireId = 4;
+    // optional .AllianceBaseMonster monsterHire = 4;
     /**
-     * <code>optional int32 monsterHireId = 4;</code>
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
      */
-    boolean hasMonsterHireId();
+    boolean hasMonsterHire();
     /**
-     * <code>optional int32 monsterHireId = 4;</code>
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
      */
-    int getMonsterHireId();
+    com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire();
+    /**
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder();
   }
   /**
    * Protobuf type {@code HSAdventureEnter}
@@ -3763,9 +3767,17 @@ public final class Adventure {
               input.popLimit(limit);
               break;
             }
-            case 32: {
+            case 34: {
+              com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = monsterHire_.toBuilder();
+              }
+              monsterHire_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceBaseMonster.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(monsterHire_);
+                monsterHire_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000004;
-              monsterHireId_ = input.readInt32();
               break;
             }
           }
@@ -3866,27 +3878,33 @@ public final class Adventure {
       return monsterId_.get(index);
     }
 
-    // optional int32 monsterHireId = 4;
-    public static final int MONSTERHIREID_FIELD_NUMBER = 4;
-    private int monsterHireId_;
+    // optional .AllianceBaseMonster monsterHire = 4;
+    public static final int MONSTERHIRE_FIELD_NUMBER = 4;
+    private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_;
     /**
-     * <code>optional int32 monsterHireId = 4;</code>
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
      */
-    public boolean hasMonsterHireId() {
+    public boolean hasMonsterHire() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 monsterHireId = 4;</code>
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
      */
-    public int getMonsterHireId() {
-      return monsterHireId_;
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
+      return monsterHire_;
+    }
+    /**
+     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
+      return monsterHire_;
     }
 
     private void initFields() {
       teamId_ = 0;
       adventureId_ = 0;
       monsterId_ = java.util.Collections.emptyList();
-      monsterHireId_ = 0;
+      monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3900,6 +3918,12 @@ public final class Adventure {
       if (!hasAdventureId()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasMonsterHire()) {
+        if (!getMonsterHire().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -3918,7 +3942,7 @@ public final class Adventure {
         output.writeInt32(3, monsterId_.get(i));
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(4, monsterHireId_);
+        output.writeMessage(4, monsterHire_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3948,7 +3972,7 @@ public final class Adventure {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, monsterHireId_);
+          .computeMessageSize(4, monsterHire_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4062,6 +4086,7 @@ public final class Adventure {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMonsterHireFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4076,7 +4101,11 @@ public final class Adventure {
         bitField0_ = (bitField0_ & ~0x00000002);
         monsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
-        monsterHireId_ = 0;
+        if (monsterHireBuilder_ == null) {
+          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+        } else {
+          monsterHireBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -4122,7 +4151,11 @@ public final class Adventure {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.monsterHireId_ = monsterHireId_;
+        if (monsterHireBuilder_ == null) {
+          result.monsterHire_ = monsterHire_;
+        } else {
+          result.monsterHire_ = monsterHireBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4155,8 +4188,8 @@ public final class Adventure {
           }
           onChanged();
         }
-        if (other.hasMonsterHireId()) {
-          setMonsterHireId(other.getMonsterHireId());
+        if (other.hasMonsterHire()) {
+          mergeMonsterHire(other.getMonsterHire());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4170,6 +4203,12 @@ public final class Adventure {
         if (!hasAdventureId()) {
           
           return false;
+        }
+        if (hasMonsterHire()) {
+          if (!getMonsterHire().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -4325,37 +4364,121 @@ public final class Adventure {
         return this;
       }
 
-      // optional int32 monsterHireId = 4;
-      private int monsterHireId_ ;
+      // optional .AllianceBaseMonster monsterHire = 4;
+      private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> monsterHireBuilder_;
       /**
-       * <code>optional int32 monsterHireId = 4;</code>
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
        */
-      public boolean hasMonsterHireId() {
+      public boolean hasMonsterHire() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 monsterHireId = 4;</code>
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
        */
-      public int getMonsterHireId() {
-        return monsterHireId_;
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
+        if (monsterHireBuilder_ == null) {
+          return monsterHire_;
+        } else {
+          return monsterHireBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional int32 monsterHireId = 4;</code>
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
        */
-      public Builder setMonsterHireId(int value) {
+      public Builder setMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (monsterHireBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          monsterHire_ = value;
+          onChanged();
+        } else {
+          monsterHireBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000008;
-        monsterHireId_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional int32 monsterHireId = 4;</code>
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
        */
-      public Builder clearMonsterHireId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        monsterHireId_ = 0;
-        onChanged();
+      public Builder setMonsterHire(
+          com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder builderForValue) {
+        if (monsterHireBuilder_ == null) {
+          monsterHire_ = builderForValue.build();
+          onChanged();
+        } else {
+          monsterHireBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
         return this;
+      }
+      /**
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       */
+      public Builder mergeMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (monsterHireBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              monsterHire_ != com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance()) {
+            monsterHire_ =
+              com.hawk.game.protocol.Alliance.AllianceBaseMonster.newBuilder(monsterHire_).mergeFrom(value).buildPartial();
+          } else {
+            monsterHire_ = value;
+          }
+          onChanged();
+        } else {
+          monsterHireBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       */
+      public Builder clearMonsterHire() {
+        if (monsterHireBuilder_ == null) {
+          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+          onChanged();
+        } else {
+          monsterHireBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder getMonsterHireBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getMonsterHireFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
+        if (monsterHireBuilder_ != null) {
+          return monsterHireBuilder_.getMessageOrBuilder();
+        } else {
+          return monsterHire_;
+        }
+      }
+      /**
+       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> 
+          getMonsterHireFieldBuilder() {
+        if (monsterHireBuilder_ == null) {
+          monsterHireBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder>(
+                  monsterHire_,
+                  getParentForChildren(),
+                  isClean());
+          monsterHire_ = null;
+        }
+        return monsterHireBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSAdventureEnter)
@@ -9321,24 +9444,25 @@ public final class Adventure {
       "\0132\025.HSAdventureCondition\"r\n\023HSAdventureI",
       "nfoSync\022\021\n\tteamCount\030\001 \002(\005\022\'\n\radventureT" +
       "eam\030\002 \003(\0132\020.HSAdventureTeam\022\037\n\tadventure" +
-      "\030\003 \003(\0132\014.HSAdventure\"a\n\020HSAdventureEnter" +
+      "\030\003 \003(\0132\014.HSAdventure\"u\n\020HSAdventureEnter" +
       "\022\016\n\006teamId\030\001 \002(\005\022\023\n\013adventureId\030\002 \002(\005\022\021\n" +
-      "\tmonsterId\030\003 \003(\005\022\025\n\rmonsterHireId\030\004 \001(\005\"" +
-      "6\n\023HSAdventureEnterRet\022\016\n\006teamId\030\001 \002(\005\022\017" +
-      "\n\007endTime\030\002 \002(\005\"#\n\021HSAdventureSettle\022\016\n\006" +
-      "teamId\030\001 \002(\005\"\217\001\n\024HSAdventureSettleRet\022\016\n" +
-      "\006teamId\030\001 \002(\005\022\"\n\013basicReward\030\002 \002(\0132\r.HSR" +
-      "ewardInfo\022\"\n\013extraReward\030\003 \001(\0132\r.HSRewar",
-      "dInfo\022\037\n\tadventure\030\004 \002(\0132\014.HSAdventure\"." +
-      "\n\027HSAdventureNewCondition\022\023\n\013adventureId" +
-      "\030\001 \002(\005\"p\n\032HSAdventureNewConditionRet\022\037\n\t" +
-      "adventure\030\001 \002(\0132\014.HSAdventure\022\023\n\013changeC" +
-      "ount\030\002 \002(\005\022\034\n\024changeCountBeginTime\030\003 \002(\005" +
-      "\"\031\n\027HSAdventureBuyCondition\"O\n\032HSAdventu" +
-      "reBuyConditionRet\022\023\n\013changeCount\030\001 \002(\005\022\034" +
-      "\n\024changeCountBeginTime\030\002 \002(\005\"\024\n\022HSAdvent" +
-      "ureBuyTeam\"\'\n\025HSAdventureBuyTeamRet\022\016\n\006t" +
-      "eamId\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\tmonsterId\030\003 \003(\005\022)\n\013monsterHire\030\004 \001(\0132\024." +
+      "AllianceBaseMonster\"6\n\023HSAdventureEnterR" +
+      "et\022\016\n\006teamId\030\001 \002(\005\022\017\n\007endTime\030\002 \002(\005\"#\n\021H" +
+      "SAdventureSettle\022\016\n\006teamId\030\001 \002(\005\"\217\001\n\024HSA" +
+      "dventureSettleRet\022\016\n\006teamId\030\001 \002(\005\022\"\n\013bas" +
+      "icReward\030\002 \002(\0132\r.HSRewardInfo\022\"\n\013extraRe",
+      "ward\030\003 \001(\0132\r.HSRewardInfo\022\037\n\tadventure\030\004" +
+      " \002(\0132\014.HSAdventure\".\n\027HSAdventureNewCond" +
+      "ition\022\023\n\013adventureId\030\001 \002(\005\"p\n\032HSAdventur" +
+      "eNewConditionRet\022\037\n\tadventure\030\001 \002(\0132\014.HS" +
+      "Adventure\022\023\n\013changeCount\030\002 \002(\005\022\034\n\024change" +
+      "CountBeginTime\030\003 \002(\005\"\031\n\027HSAdventureBuyCo" +
+      "ndition\"O\n\032HSAdventureBuyConditionRet\022\023\n" +
+      "\013changeCount\030\001 \002(\005\022\034\n\024changeCountBeginTi" +
+      "me\030\002 \002(\005\"\024\n\022HSAdventureBuyTeam\"\'\n\025HSAdve" +
+      "ntureBuyTeamRet\022\016\n\006teamId\030\001 \002(\005B\030\n\026com.h",
+      "awk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9374,7 +9498,7 @@ public final class Adventure {
           internal_static_HSAdventureEnter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureEnter_descriptor,
-              new java.lang.String[] { "TeamId", "AdventureId", "MonsterId", "MonsterHireId", });
+              new java.lang.String[] { "TeamId", "AdventureId", "MonsterId", "MonsterHire", });
           internal_static_HSAdventureEnterRet_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSAdventureEnterRet_fieldAccessorTable = new
