@@ -33,7 +33,7 @@ public class bossMinghe14Amute : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (AmuteUnit);
 
-		if (NormalScript.GetWpLifeLeft(AmuteUnit.battleUnit, "bossMinghe14Amutewp03")==0)
+		if (jishu==0)
 		{
 			
 			AmuteSpellDic.TryGetValue ("bossAmute1", out useSpell);

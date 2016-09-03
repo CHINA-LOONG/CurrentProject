@@ -22,6 +22,8 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BICoinData;
 import com.hawk.game.BILog.BIGoldData;
 import com.hawk.game.BILog.BIGuildMemberFlowData;
 import com.hawk.game.BILog.BIItemData;
@@ -29,8 +31,6 @@ import com.hawk.game.BILog.BIPetFlowData;
 import com.hawk.game.BILog.BIPetLevelUpData;
 import com.hawk.game.BILog.BIPlayerLevelData;
 import com.hawk.game.BILog.BITowerCoinData;
-import com.hawk.game.BILog.BIBehaviorAction.Action;
-import com.hawk.game.BILog.BICoinData;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.MonsterBaseCfg;
@@ -423,7 +423,7 @@ public class Player extends HawkAppObj {
 	public long getCoin() {
 		return playerData.getPlayerEntity().getCoin();
 	}
-	
+
 	/**
 	 * 获取通天塔币
 	 */
@@ -523,11 +523,12 @@ public class Player extends HawkAppObj {
 
 		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
 		int goldIncrease = gold - (goldRemain > 0 ? goldRemain : 0);
-		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + goldIncrease);
-		playerData.getPlayerEntity().notifyUpdate(true);
-		
-		BILogger.getBIData(BIGoldData.class).log(this, action, gold, 0, getGold());
+		if (0 != goldIncrease) {
+			playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + goldIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
+		}
 
+		BILogger.getBIData(BIGoldData.class).log(this, action, gold, 0, getGold());
 		return goldIncrease;
 	}
 
@@ -544,18 +545,19 @@ public class Player extends HawkAppObj {
 
 		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
 		int goldIncrease = gold - (goldRemain > 0 ? goldRemain : 0);
-		playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + goldIncrease);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		if (0 != goldIncrease) {
+			playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + goldIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
 
-		if (action == Action.STORE_RECHARGE) {
-			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
-			statisticsEntity.increasePayDiamondCount(goldIncrease);
-			statisticsEntity.increasePayDiamondCountDaily(goldIncrease);
-			statisticsEntity.notifyUpdate(true);
+			if (action == Action.STORE_RECHARGE) {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+				statisticsEntity.increasePayDiamondCount(goldIncrease);
+				statisticsEntity.increasePayDiamondCountDaily(goldIncrease);
+				statisticsEntity.notifyUpdate(true);
+			}
 		}
 
 		BILogger.getBIData(BIGoldData.class).log(this, action, gold, 0, getGold());
-
 		return goldIncrease;
 	}
 
@@ -601,8 +603,10 @@ public class Player extends HawkAppObj {
 
 		long coinRemain = playerData.getPlayerEntity().getCoin() + coin - GsConst.MAX_COIN_COUNT;
 		long coinIncrease = coin - (coinRemain > 0 ? coinRemain : 0);
-		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coinIncrease);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		if (0 != coinIncrease) {
+			playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coinIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
+		}
 
 		if (action == Action.COIN_CHANGE) {
 			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
@@ -641,15 +645,16 @@ public class Player extends HawkAppObj {
 		}
 
 		int coinRemain = getTowerCoin() + towerCoin - GsConst.MAX_COIN_COUNT;
-		int coinIncrease = towerCoin - (coinRemain > 0 ? coinRemain : 0); 
-		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() + coinIncrease);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		int coinIncrease = towerCoin - (coinRemain > 0 ? coinRemain : 0);
+		if (0 != coinIncrease) {
+			playerData.getPlayerEntity().setTowerCoin(getTowerCoin() + coinIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
 
-		playerData.getStatisticsEntity().increaseCoinTowerCount(coinIncrease);
-		playerData.getStatisticsEntity().notifyUpdate(true);
+			playerData.getStatisticsEntity().increaseCoinTowerCount(coinIncrease);
+			playerData.getStatisticsEntity().notifyUpdate(true);
+		}
 
 		BILogger.getBIData(BITowerCoinData.class).log(this, action, towerCoin, 0, getTowerCoin());
-
 		return coinIncrease;
 	}
 
@@ -676,16 +681,17 @@ public class Player extends HawkAppObj {
 		}
 
 		int coinRemain = getArenaCoin() + arenaCoin - GsConst.MAX_COIN_COUNT;
-		int coinIncrease = arenaCoin - (coinRemain > 0 ? coinRemain : 0); 
-		playerData.getPlayerEntity().setArenaCoin(getArenaCoin() + coinIncrease);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		int coinIncrease = arenaCoin - (coinRemain > 0 ? coinRemain : 0);
+		if (0 != coinIncrease) {
+			playerData.getPlayerEntity().setArenaCoin(getArenaCoin() + coinIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
 
-		playerData.getStatisticsEntity().increaseCoinArenaCount(coinIncrease);
-		playerData.getStatisticsEntity().increaseCoinArenaCountDaily(coinIncrease);
-		playerData.getStatisticsEntity().notifyUpdate(true);
+			playerData.getStatisticsEntity().increaseCoinArenaCount(coinIncrease);
+			playerData.getStatisticsEntity().increaseCoinArenaCountDaily(coinIncrease);
+			playerData.getStatisticsEntity().notifyUpdate(true);
+		}
 
-		// TODO
-
+		// TODO BI
 		return coinIncrease;
 	}
 
@@ -700,7 +706,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setArenaCoin(getArenaCoin() - arenaCoin);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
-		//TOD
+		//TODO BI
 	}
 
 	/**
@@ -730,7 +736,7 @@ public class Player extends HawkAppObj {
 
 		int oldLevel = playerEntity.getLevel();
 		int oldExp = playerEntity.getExp();
-		
+
 		if (playerEntity.getExp() >= playAttrCfg.get(level).getExp()) {
 			playerEntity.setExp(playAttrCfg.get(level).getExp() - 1);
 		}
@@ -749,7 +755,7 @@ public class Player extends HawkAppObj {
 		}
 
 		BILogger.getBIData(BIPlayerLevelData.class).log(this, action, oldLevel, level, 0, oldExp, playerEntity.getExp());
-		
+
 		HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), getLevel()));
 	}
 
@@ -793,7 +799,7 @@ public class Player extends HawkAppObj {
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level update message failed: " + getName());
 			}
-			
+
 			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
 		}
 
@@ -811,13 +817,13 @@ public class Player extends HawkAppObj {
 		}
 
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
-		
+
 		if (monster != null && monster.getLevel() != level) {
 			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId());
 			if (monsterCfg == null) {
 				throw new RuntimeException("monster config not found " + monster.getCfgId());
 			}
-			
+
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
 			if (level > monsterBaseCfg.size()) {
 				level = monsterBaseCfg.size();
@@ -869,7 +875,7 @@ public class Player extends HawkAppObj {
 			if (monsterCfg == null) {
 				throw new RuntimeException("monster config not found " + monster.getCfgId());
 			}
-			
+
 			int oldLevel = monster.getLevel();
 			int oldExp = monster.getExp();
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
@@ -956,7 +962,7 @@ public class Player extends HawkAppObj {
 			if (itemCfg == null) {
 				throw new RuntimeException("item config not found " + itemEntity.getItemId());
 			}
-			
+
 			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, 0, itemCount, 0);
 
 			return itemEntity;
@@ -976,7 +982,6 @@ public class Player extends HawkAppObj {
 			if (action == Action.BOX_USE 			||
 				action == Action.EXP_POTION_USE	    ||
 				action == Action.ENERGY_COOKIES_USE ||
-				action == Action.EXP_POTION_USE     ||
 				action == Action.KEY_USE 			||
 				action == Action.RAID_TICKET_USE)
 			{
@@ -985,12 +990,12 @@ public class Player extends HawkAppObj {
 				statisticsEntity.increaseUseItemCountDaily(itemId, itemCount);
 				statisticsEntity.notifyUpdate(true);
 			}
-			
+
 			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemEntity.getItemId());
 			if (itemCfg == null) {
 				throw new RuntimeException("item config not found " + itemEntity.getItemId());
 			}
-			
+
 			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, 0, 0, itemCount);
 
 			return itemEntity;
@@ -1030,9 +1035,9 @@ public class Player extends HawkAppObj {
 				if (itemCfg == null) {
 					throw new RuntimeException("item config not found " + equipId);
 				}
-				
+
 				BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, stage, 1, 0);
-				
+
 				return equipEntity;
 			}
 		}
@@ -1053,7 +1058,7 @@ public class Player extends HawkAppObj {
 			if (itemCfg == null) {
 				throw new RuntimeException("item config not found " + equipEntity.getItemId());
 			}
-			
+
 			BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, equipEntity.getStage(), 0, 1);
 
 			return true;
@@ -1139,7 +1144,7 @@ public class Player extends HawkAppObj {
 			if (null == monster) {
 				throw new RuntimeException("monster config not found " + monsterEntity.getCfgId());
 			}
-			
+
 			BILogger.getBIData(BIPetFlowData.class).log(this, action, monsterEntity.getId(), monster, monsterEntity.getStage(), monsterEntity.getLevel(), 0, 1, 0);
 
 			return true;
@@ -1186,26 +1191,24 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("consumeContribution");
 		}
 
-		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
-		if (allianeEntity == null) {
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
+		if (allianceEntity == null) {
 			throw new RuntimeException("not join guild");
 		}
-		
+
 		playerData.getPlayerAllianceEntity().setContribution(playerData.getPlayerAllianceEntity().getContribution() - contribution);
 		playerData.getPlayerAllianceEntity().notifyUpdate(true);
 
 		BILogger.getBIData(BIGuildMemberFlowData.class).log(
 				this, 
 				action, 
-				allianeEntity.getId(),
-				allianeEntity.getName(), 
-				allianeEntity.getLevel(), 
-				allianeEntity.getLevel(), 
+				allianceEntity, 
+				playerData.getPlayerAllianceEntity(), 
 				0, 
 				contribution, 
-				playerData.getPlayerAllianceEntity().getContribution()
+				playerData.getPlayerAllianceEntity().getPostion()
 				);
-
+		
 		return true;
 	}
 
@@ -1216,6 +1219,9 @@ public class Player extends HawkAppObj {
 		if (getAllianceId() == 0) {
 			throw new RuntimeException("not in alliance");
 		}
+		if (contribution <= 0) {
+			throw new RuntimeException("increaseContribution");
+		}
 
 		playerData.getPlayerAllianceEntity().setContribution(playerData.getPlayerAllianceEntity().getContribution() + contribution);
 		playerData.getPlayerAllianceEntity().setTotalContribution(playerData.getPlayerAllianceEntity().getTotalContribution() + contribution);
@@ -1225,23 +1231,21 @@ public class Player extends HawkAppObj {
 		playerData.getStatisticsEntity().increaseCoinAllianceCountDaily(contribution);
 		playerData.getStatisticsEntity().notifyUpdate(true);
 
-		AllianceEntity allianeEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
-		if (allianeEntity == null) {
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(getAllianceId());
+		if (allianceEntity == null) {
 			throw new RuntimeException("not join guild");
 		}
-		
+
 		BILogger.getBIData(BIGuildMemberFlowData.class).log(
 				this, 
 				action, 
-				allianeEntity.getId(),
-				allianeEntity.getName(), 
-				allianeEntity.getLevel(), 
-				allianeEntity.getLevel(), 
-				0, 
+				allianceEntity, 
+				playerData.getPlayerAllianceEntity(), 
 				contribution, 
-				playerData.getPlayerAllianceEntity().getContribution()
+				0, 
+				playerData.getPlayerAllianceEntity().getPostion()
 				);
-
+		
 		return true;
 	}
 
@@ -1251,8 +1255,7 @@ public class Player extends HawkAppObj {
 	public boolean SendMail(MailInfo mailInfo, int receiverId, Action action) {
 		int mailId = MailUtil.SendMail(mailInfo, receiverId, getId(), getName());
 		if (mailId > 0) {
-			//TODO
-			
+			//TODO BI
 			return true;
 		}
 		return false;
@@ -1274,8 +1277,7 @@ public class Player extends HawkAppObj {
 			overflowList.add(mailEntity.getId());
 			mailList.remove(0);
 
-			// TODO
-			
+			// TODO BI
 		}
 
 		return overflowList;
@@ -1288,17 +1290,18 @@ public class Player extends HawkAppObj {
 		if (fatigue <= 0) {
 			throw new RuntimeException("increaseFatigue");
 		}
-		
+
 		// 增加前先更新
 		regainFatigue();
 
 		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
 		int fatigueIncrease = fatigue - (fatigueRemain > 0 ? fatigueRemain : 0);
-		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigueIncrease);
-		playerData.getStatisticsEntity().notifyUpdate(true);
+		if (0 != fatigueIncrease) {
+			playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigueIncrease);
+			playerData.getStatisticsEntity().notifyUpdate(true);
+		}
 
-		//TODO
-
+		//TODO BI
 		return fatigueIncrease;
 	}
 
@@ -1311,24 +1314,67 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException(String.format("consumeFatigue: %d, curFatigue: %d", fatigue, statisticsEntity.getFatigue()));
 		}
 
-		int oldFatigue = statisticsEntity.getFatigue();
-		int newFatigue = oldFatigue - fatigue;
+		int old = statisticsEntity.getFatigue();
+		int cur = old - fatigue;
 
 		// 从低于上限的时间开始恢复
 		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
 		if (attrCfg != null) {
-			int maxFatigue = attrCfg.getFatigue();
-			if (oldFatigue >= maxFatigue && newFatigue < maxFatigue) {
+			int max = attrCfg.getFatigue();
+			if (old >= max && cur < max) {
 				statisticsEntity.setFatigueBeginTime(HawkTime.getCalendar());
 			}
 		}
 
-		statisticsEntity.setFatigue(newFatigue);
+		statisticsEntity.setFatigue(cur);
 		statisticsEntity.increaseUseFatigueCount(fatigue);
 		statisticsEntity.increaseUseFatigueCountDaily(fatigue);
 		statisticsEntity.notifyUpdate(true);
 
-		// TODO
+		// TODO BI
+	}
+
+	/**
+	 * 恢复活力值
+	 */
+	public int regainFatigue() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getFatigue();
+		if (old == GsConst.MAX_FATIGUE_COUNT) {
+			return old;
+		}
+
+		Calendar curTime = HawkTime.getCalendar();
+		Calendar beginTime = statisticsEntity.getFatigueBeginTime();
+
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int cur = old + delta / GsConst.FATIGUE_TIME;
+
+		if (cur > GsConst.MAX_FATIGUE_COUNT) {
+			cur = GsConst.MAX_FATIGUE_COUNT;
+		}
+
+		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
+		if (attrCfg != null) {
+			// 只有自动恢复体力受等级体力上限影响
+			int autoMaxFatigue = attrCfg.getFatigue();
+			if (old >= autoMaxFatigue) {
+				cur = old;
+			} else if (cur > autoMaxFatigue) {
+				cur = autoMaxFatigue;
+			}
+		}
+
+		if (old == cur) {
+			return cur;
+		}
+
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.FATIGUE_TIME  * 1000);
+		statisticsEntity.setFatigue(cur);
+		statisticsEntity.setFatigueBeginTime(beginTime);
+
+		statisticsEntity.notifyUpdate(true);
+		return cur;
 	}
 
 	/**
@@ -1340,18 +1386,18 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("consumeSkillPoint");
 		}
 
-		int oldSkillPoint = statisticsEntity.getSkillPoint();
-		int newSkillPoint = oldSkillPoint - skillPoint;
+		int old = statisticsEntity.getSkillPoint();
+		int cur = old - skillPoint;
 
-		// 从低于上限的时间开始增长
-		if (oldSkillPoint >= GsConst.MAX_SKILL_POINT && newSkillPoint < GsConst.MAX_SKILL_POINT) {
+		// 从低于上限的时间开始恢复
+		if (old >= GsConst.MAX_SKILL_POINT && cur < GsConst.MAX_SKILL_POINT) {
 			statisticsEntity.setSkillPointBeginTime(HawkTime.getCalendar());
 		}
 
-		statisticsEntity.setSkillPoint(newSkillPoint);
+		statisticsEntity.setSkillPoint(cur);
 		statisticsEntity.notifyUpdate(true);
 
-		// TODO
+		// TODO BI
 	}
 
 	/**
@@ -1359,56 +1405,31 @@ public class Player extends HawkAppObj {
 	 */
 	public int regainSkillPoint() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getSkillPoint();
+		if (old == GsConst.MAX_SKILL_POINT) {
+			return old;
+		}
+
 		Calendar curTime = HawkTime.getCalendar();
 		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
 
 		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
-		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
-			curSkillPoint = GsConst.MAX_SKILL_POINT;
+		int cur = old + delta / GsConst.SKILL_POINT_TIME;
+
+		if (cur > GsConst.MAX_SKILL_POINT) {
+			cur = GsConst.MAX_SKILL_POINT;
+		}
+
+		if (old == cur) {
+			return cur;
 		}
 
 		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
-		statisticsEntity.setSkillPoint(curSkillPoint);
+		statisticsEntity.setSkillPoint(cur);
 		statisticsEntity.setSkillPointBeginTime(beginTime);
 
 		statisticsEntity.notifyUpdate(true);
-		return curSkillPoint;
-	}
-
-	/**
-	 * 恢复活力值
-	 */
-	public int regainFatigue() {
-		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
-		Calendar curTime = HawkTime.getCalendar();
-		Calendar beginTime = statisticsEntity.getFatigueBeginTime();
-
-		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int oldFatigue = statisticsEntity.getFatigue();
-		int curFatigue = oldFatigue + delta / GsConst.FATIGUE_TIME;
-
-		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
-		if (attrCfg != null) {
-			// 只有自动恢复体力受等级体力上限影响
-			int autoMaxFatigue = attrCfg.getFatigue();
-			if (oldFatigue >= autoMaxFatigue) {
-				curFatigue = oldFatigue;
-			} else if (curFatigue > autoMaxFatigue) {
-				curFatigue = autoMaxFatigue;
-			}
-		}
-
-		if (curFatigue > GsConst.MAX_FATIGUE_COUNT) {
-			curFatigue = GsConst.MAX_FATIGUE_COUNT;
-		}
-
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.FATIGUE_TIME  * 1000);
-		statisticsEntity.setFatigue(curFatigue);
-		statisticsEntity.setFatigueBeginTime(beginTime);
-
-		statisticsEntity.notifyUpdate(true);
-		return curFatigue;
+		return cur;
 	}
 
 	/**
@@ -1449,9 +1470,6 @@ public class Player extends HawkAppObj {
 		}
 		statisticsEntity.setSkillPoint(10);
 		statisticsEntity.notifyUpdate(true);
-
-		playerData.loadAllItem();
-		increaseItem("20002", 30, Action.NULL);
 
 		// TEST ----------------------------------------------------------------------------------------
 		playerData.loadAllMonster();

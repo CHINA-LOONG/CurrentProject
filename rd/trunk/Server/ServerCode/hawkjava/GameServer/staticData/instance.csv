@@ -218,5 +218,5 @@ shilianta17,34,2,1.08,1.5,tongtianta,7,2,1,"[""shilianta17Level1"",""shilianta17
 shilianta18,36,2,0.8,1.4,tongtianta,7,2,1,"[""shilianta18Level1"",""shilianta18Level2""]",shilianta18Boss1,tongtiantanormal
 shilianta19,38,2.2,1.45,1.6,tongtianta,7,2,1,"[""shilianta19Level1"",""shilianta19Level2""]",shilianta19Boss1,tongtiantanormal
 shilianta20,40,2.85,1.85,2,tongtianta,7,2,1,"[""shilianta20Level1"",""shilianta20Level2""]",shilianta20Boss1,tongtianta5
-worldboss1,60,1.1,0.3,1,shijie2,7,2,1,"[""pvp_test1""]",bossWorldBoss1,instance8
-worldboss2,60,1.3,0.35,1,shijie1,7,2,1,"[""pvp_test1""]",bossWorldBoss2,instance8
+worldboss1,60,1,1,99,shijie2,7,2,1,"[""pvp_test1""]",bossWorldBoss1,instance8
+worldboss2,60,1,1,99,shijie1,7,2,1,"[""pvp_test1""]",bossWorldBoss2,instance8

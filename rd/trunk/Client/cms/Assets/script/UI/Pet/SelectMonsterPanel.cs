@@ -53,7 +53,7 @@ public class SelectMonsterPanel : UIBase
         int showCount = 0;
         foreach (GameUnit unit in mValidatePetList)
         {
-            if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked && !CheckMonsterIsSelect(unit, demandList, selectMonster))
+            if (unit.pbUnit.guid != selfId && !unit.pbUnit.IsLocked() && !CheckMonsterIsSelect(unit, demandList, selectMonster))
             {
                 GameObject go = ResourceMgr.Instance.LoadAsset("UIPetStageMonsterElement", false);
                 scrollView.AddElement(go);

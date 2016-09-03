@@ -101,7 +101,7 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Prepare;
 
 		//隐藏摄像机 
-		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
+		//GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
 		//爆点
 		casterBattleGo.TriggerEvent ("phyDazhaoReady", Time.time, null);
 		

@@ -33,7 +33,61 @@ public class PbUnit
     public int curExp;
     public int stage;//升星
     public List<PB.HSSkill> spellPbList;
-    public bool locked;
+    public int monsterState = 0;
+
+    public bool IsLocked()
+    {
+        return (int)PB.MonsterState.LOCKED == (monsterState & (int)PB.MonsterState.LOCKED);
+    }
+    /// <summary>
+    /// 是否驻守
+    /// </summary>
+    /// <returns></returns>
+    public bool IsInAllianceBase()
+    {
+        return (int)PB.MonsterState.IN_ALLIANCE_BASE == (monsterState & (int)PB.MonsterState.IN_ALLIANCE_BASE);
+    }
+   /// <summary>
+   /// 是否大冒险
+   /// </summary>
+   /// <returns></returns>
+    public bool IsInAdventure()
+    {
+        return (int)PB.MonsterState.IN_ADVENTURE == (monsterState & (int)PB.MonsterState.IN_ADVENTURE);
+    }
+    public void SetLocked(bool isLock)
+    {
+        if(isLock)
+        {
+            monsterState = (monsterState | 1);//001
+        }
+        else
+        {
+            monsterState = (monsterState & 6);//110
+        }
+    }
+    public void SetInAllianceBase(bool isIn)
+    {
+        if(isIn)
+        {
+            monsterState = (monsterState | 2);//010
+        }
+        else
+        {
+            monsterState = (monsterState & 5);//101
+        }
+    }
+    public void SetInAdventure(bool isIn)
+    {
+        if (isIn)
+        {
+            monsterState = (monsterState | 4);//100
+        }
+        else
+        {
+            monsterState = (monsterState & 3);//011
+        }
+    }
 }
 
 //[Serializable]

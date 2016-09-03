@@ -146,7 +146,7 @@ public class WeakpointUI : MonoBehaviour
         Vector3 iconPosition = UIUtil.GetSpacePos(iconRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
         float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
 
-        tipsRectTrans.anchoredPosition = new Vector2(iconPosition.x / fscale + 25 , iconPosition.y / fscale - 10);
+        tipsRectTrans.anchoredPosition = new Vector2(iconPosition.x / fscale + 75 , iconPosition.y / fscale - 10);
     }
 
     public void HideTips()

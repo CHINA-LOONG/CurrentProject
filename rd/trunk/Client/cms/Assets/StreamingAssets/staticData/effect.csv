@@ -1,7 +1,8 @@
 ﻿#TEXT,NUM,NUM,NUM,NUM,TEXT,NUM,NUM,TEXT,TEXT,FLOAT,TEXT,NUM,FLOAT,NUM,NUM,TEXT,NUM,NUM,NUM,TEXT,FLOAT
 id,effectType,casterType,targetType,energy,effectList,count,camp,searchEffect,effectStartID,startDelayTime,periodEffectList,damageType,attackFactor,isHeal,damageProperty,buffID,buffValidatorNum,dispelCategory,fixLifeRatio,linkEffect,chance
 #e1,3,1,0,0,,,,,,,,1,100,0,2,,12345,,0,linkEffect,chance
-defende1,4,1,1,0,,,,,,,,,,,,defendb1,12345,,,,1
+defende1,2,1,1,0,,,,,defende2,1,"""""",,,,,,12345,,,,1
+defende2,4,1,1,0,,,,,,,,,,,,defendb1,12345,,,,1
 attackMetalCutSlighte1,2,1,0,0,,,,,attackMetalCutSlighte2,1,"""""",,,,,,12345,,,,1
 attackMetalCutSlighte2,3,1,0,0,,,,,,,,0,1.3,0,1,,12345,,0,,1
 attackMetalCutMediume1,2,1,0,0,,,,,attackMetalCutMediume2,1,"""""",,,,,,12345,,,,1

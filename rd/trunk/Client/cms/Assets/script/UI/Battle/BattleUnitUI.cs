@@ -98,7 +98,7 @@ public class BattleUnitUI : MonoBehaviour
     void OnDazhaoClick(GameObject go)
     {
 		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoBtnClicked, Unit);
-		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
+		//GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
     }
     //---------------------------------------------------------------------------------------------
     void RefreshPos()

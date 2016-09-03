@@ -7,11 +7,14 @@ import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.BILog.BIGuildMemberFlowData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.ImSysCfg;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
@@ -99,6 +102,16 @@ public class AllianceApplyHandler implements HawkMsgHandler{
 			//AllianceManager.getInstance().broadcastNotify(allianceEntity.getId(), memberData,  0);
 			HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_JOIN_N_S_VALUE, HSAllianceJoinNotify.newBuilder().setAllianceId(allianceEntity.getId()));
 			player.sendProtocol(notify);
+			
+			BILogger.getBIData(BIGuildMemberFlowData.class).log(
+					player, 
+					Action.GUILD_JOIN,
+					allianceEntity, 
+					player.getPlayerData().getPlayerAllianceEntity(), 
+					0, 
+					0, 
+					player.getPlayerData().getPlayerAllianceEntity().getPostion()
+					);
 		} 
 		else 
 		{

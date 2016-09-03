@@ -722,9 +722,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mViewType: 1
   btn_confirm: {fileID: 11460128}
-  text_Title: {fileID: 11444418}
-  text_Finish: {fileID: 11412474}
-  text_Quest: {fileID: 11453980}
+  text_Name: {fileID: 11444418}
+  text_Desc: {fileID: 11412474}
+  text_Confrim: {fileID: 11453980}
   rewardParent: {fileID: 22454426}
   animator: {fileID: 9525614}
   effect: {fileID: 147614}

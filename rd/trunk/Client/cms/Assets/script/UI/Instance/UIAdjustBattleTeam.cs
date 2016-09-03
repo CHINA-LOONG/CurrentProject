@@ -424,6 +424,7 @@ public class UIAdjustBattleTeam : UIBase
 			icon.SetId(subUnit.pbUnit.guid.ToString());
 			icon.SetLevel(subUnit.pbUnit.level);
 			icon.SetStage(subUnit.pbUnit.stage);
+            icon.ShowMaoxianImage(subUnit.pbUnit.IsInAdventure());
 
 			playerAllIconDic.Add(icon.Id,icon);
 
@@ -491,8 +492,6 @@ public class UIAdjustBattleTeam : UIBase
             skillTips.SetSpellId(spellId, 1);
             skillTips.gameObject.SetActive(false);
         }
-        
-
         //instance name
         nameText.text = instanceEntryData.NameAttr;
 
@@ -546,7 +545,16 @@ public class UIAdjustBattleTeam : UIBase
 		MonsterIcon subIcon = go.GetComponentInParent<MonsterIcon> ();
 
 		string guid = subIcon.Id;
-		BattleTeamToPlayerWarehouse (guid);
+        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(int.Parse(guid));
+        if (null != gameUnit)
+        {
+            if (gameUnit.pbUnit.IsInAdventure())
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("arrayselect_count_005"), (int)PB.ImType.PROMPT);
+                return;
+            }
+        }
+        BattleTeamToPlayerWarehouse (guid);
 	}
 
 	void	OnPlayerWarehouseIconClick(GameObject go)

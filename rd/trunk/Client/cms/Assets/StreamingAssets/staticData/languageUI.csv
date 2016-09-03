@@ -810,7 +810,7 @@ mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward
 mubiao10018,完成一个每日任务,Complete a daily mission 
 mubiao10019,竞技场,Arena
 mubiao10020,装备进阶至绿,Advance equipment to green 
-mubiao10021,升级宠物一次,Level up a monster 
+mubiao10021,升级宠物2只至7级,Level up 2 monster to 7
 mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
 mubiao10023,通关2-4,Clear Stage 2-4 
 mubiao10024,挑战本开启完成挑战本1-1,Clear Stage 1-1 on Heroic 
@@ -838,8 +838,8 @@ linmubiao1,合成狼人,Summon Werewolf
 linmubiao2,合成花魄,Summon Flower Spirit
 zhixian20001,扫荡2-3,Raid 2-3
 zhixian20002,扫荡2-7,Raid 2-7
-zhimubiao20001,扫荡2-3 3次,Raid 2-3 three times
-zhimubiao20002,扫荡2-7 3次,Raid 2-7 three times
+zhimubiao20001,扫荡2-3(只要打过就行),Raid 2-3（even you pass）
+zhimubiao20002,扫荡2-7 (只要打过就行),Raid 2-7 （even you pass）
 login_denglu_001,当前登录服务器,Current server
 login_denglu_002,切换,Change
 login_gonggao_001,公告,Announcement

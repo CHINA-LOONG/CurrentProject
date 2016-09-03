@@ -9,10 +9,12 @@ import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIGuildFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
@@ -138,6 +140,8 @@ public class AllianceCreateHandler implements HawkMsgHandler {
 					HSAllianceCreateRet.Builder response = HSAllianceCreateRet.newBuilder();
 					response.setAllianeId(allianceEntity.getId());
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CREATE_S_VALUE, response));
+					
+					BILogger.getBIData(BIGuildFlowData.class).log(player, Action.GUILD_CREATE, allianceEntity, 0, 0, 0);
 					
 					return true;
 				}

@@ -4922,7 +4922,7 @@ state = 1 Remove
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultxiaochou4qungong_weapon" bundle="effect/particle"  parent="wp_weapon" attach="true" ignore_rot="true"/>
-				<Particle asset="ultxiaochou4qungong_pre" bundle="effect/particle"  parent="" locky="true" ignore_rot="true"/>
+				<Particle asset="ultxiaochou4qungong_pre" bundle="effect/particle"  parent="" locky="true" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="firep1"/>
@@ -5383,7 +5383,7 @@ state = 1 Remove
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultxiaochou3qungong_weapon" bundle="effect/particle"  parent="wp_weapon" attach="true"/>
-				<Particle asset="ultxiaochou3qungong_pre" bundle="effect/particle"  parent="" locky="true" ignore_rot="true"/>
+				<Particle asset="ultxiaochou3qungong_pre" bundle="effect/particle"  parent="" locky="true" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -6204,7 +6204,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang28Muling24e2" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<!--Audio time="1.5" name="plantp1"/-->
@@ -6213,7 +6213,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang28Muling24e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>

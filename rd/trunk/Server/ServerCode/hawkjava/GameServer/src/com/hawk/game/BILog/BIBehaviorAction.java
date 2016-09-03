@@ -1,9 +1,7 @@
 package com.hawk.game.BILog;
 
-import com.hawk.game.protocol.GM;
-
 public class BIBehaviorAction {
-	
+
 	public static enum BIType {
 		/**
 		 * 空类型
@@ -82,7 +80,7 @@ public class BIBehaviorAction {
 		 */
 		TOWER_COIN_EVENT,
 	}
-	
+
 	/**
 	 * 行为定义
 	 * 
@@ -92,7 +90,7 @@ public class BIBehaviorAction {
 	public static enum Action {
 		// 无明显Action操作的行为
 		NULL(0),
-	
+
 		/**
 		 * 正常战斗
 		 */
@@ -157,7 +155,7 @@ public class BIBehaviorAction {
 		 * 副本章节奖励
 		 */
 		INSTANCE_STAGE_REWARD(1016),
-		
+
 		/**
 		 * 宠物升级
 		 */
@@ -194,7 +192,7 @@ public class BIBehaviorAction {
 		 * 技能点购买
 		 */
 		MONSTER_ABILITY_POINT(2009),
-		
+
 		/**
 		 * 角色升级
 		 */
@@ -203,12 +201,12 @@ public class BIBehaviorAction {
 		 * 自然体力恢复
 		 */
 		ENERGY_RECOVER(3002),
-		
+
 		/**
 		 * 任务获得
 		 */
 		MISSION_REWARD(4001),
-		
+
 		/**
 		 * 出售道具
 		 */
@@ -245,7 +243,7 @@ public class BIBehaviorAction {
 		 * 材料合成
 		 */
 		MATERIAL_COMBINE(4009),
-		
+
 		/**
 		 * 装备强化
 		 */
@@ -270,12 +268,12 @@ public class BIBehaviorAction {
 		 * 镶嵌宝石
 		 */
 		EQUIP_GEM(6006),
-		
+
 		/**
 		 * 邮件获得
 		 */
 		MAIL_REWARD(7001),
-		
+
 		/**
 		 * 商城充值
 		 */
@@ -316,7 +314,7 @@ public class BIBehaviorAction {
 		 * 购买扫荡劵
 		 */
 		RAID_TICKEY_BUY(8010),
-		
+
 		/**
 		 * 大冒险奖励
 		 */
@@ -333,11 +331,15 @@ public class BIBehaviorAction {
 		 * 大冒险雇佣宠物
 		 */
 		ADVENTURE_HIRE_MONSTER(9004),
-		
+		/**
+		 * 大冒险购买刷新次数
+		 */
+		ADVENTURE_BUY_REFRESH(9005),
+
 		/**
 		 * 创建公会
 		 */
-		GUILD_CREATE(10001),		
+		GUILD_CREATE(10001),
 		/**
 		 * 加入公会
 		 */
@@ -394,40 +396,40 @@ public class BIBehaviorAction {
 		 * 公会子任务
 		 */
 		GUILD_SUB_MISSION(10015),
-		
+
 		/**
 		 * 抽蛋
 		 */
-		
+
 		/**
 		 * 签到
 		 */
 		DAILY_SIGN(12001),
-		
+
 		/**
 		 * GM 命令
 		 */
 		GM(100000);
-		
+
 		/**
 		 * 构造函数
 		 */
 		Action(int code){
 			this.code = code;
 		}
-		
+
 		/**
 		 * BI code
 		 */
 		private int code;
-		
+
 		/**
 		 * 获取BI code 值
 		 * @return
 		 */
-        public int getBICode(){
-            return code;
-        }
-		
+		public int getBICode(){
+			return code;
+		}
+
 	}
 }

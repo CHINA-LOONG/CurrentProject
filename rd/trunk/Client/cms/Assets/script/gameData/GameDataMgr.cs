@@ -428,7 +428,7 @@ public class GameDataMgr : MonoBehaviour
             unit.curExp = monster.exp;
             unit.stage = monster.stage;
             unit.spellPbList = monster.skill;
-            unit.locked = false;//todo:
+            unit.monsterState = monster.state;
             mainPlayer.unitPbList.Add(unit.guid, unit);
             mainPlayer.allUnitDic.Add(unit.guid, GameUnit.FromPb(unit, true));
         }
@@ -470,41 +470,23 @@ public class GameDataMgr : MonoBehaviour
     void OnQuestInfoSync(ProtocolMessage msg)
     {
         PB.HSQuestInfoSync questSync = msg.GetProtocolBody<PB.HSQuestInfoSync>();
-        Logger.Log("questCount:" + questSync.questInfo.Count);
-        mainPlayer.gameQuestData.ClearQuest();
-        foreach (PB.HSQuest questInfo in questSync.questInfo)
-        {
-            mainPlayer.gameQuestData.AddQuest(questInfo.questId, questInfo.progress);
-        }
-        GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
+        //Logger.Log("questCount:" + questSync.questInfo.Count);
+        mainPlayer.gameQuestData.QuestInfoSync(questSync.questInfo);
     }
     void OnQuestAccept(ProtocolMessage msg)
     {
         PB.HSQuestAccept questAccept = msg.GetProtocolBody<PB.HSQuestAccept>();
-        foreach (PB.HSQuest questInfo in questAccept.quest)
-        {
-            mainPlayer.gameQuestData.AddQuest(questInfo.questId, questInfo.progress);
-        }
-        GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
-    }
-    void OnQuestUpdate(ProtocolMessage msg)
-    {
-        PB.HSQuestUpdate questUpdate = msg.GetProtocolBody<PB.HSQuestUpdate>();
-
-        foreach (PB.HSQuest questInfo in questUpdate.quest)
-        {
-            mainPlayer.gameQuestData.AddQuest(questInfo.questId, questInfo.progress);
-        }
-        GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
+        mainPlayer.gameQuestData.QuestAccept(questAccept.quest);
     }
     void OnQuestRemove(ProtocolMessage msg)
     {
         PB.HSQuestRemove questRemove = msg.GetProtocolBody<PB.HSQuestRemove>();
-        foreach (int questId in questRemove.questId)
-        {
-            mainPlayer.gameQuestData.RemoveQuest(questId);
-        }
-        GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
+        mainPlayer.gameQuestData.QuestRemove(questRemove.questId);
+    }
+    void OnQuestUpdate(ProtocolMessage msg)
+    {
+        PB.HSQuestUpdate questUpdate = msg.GetProtocolBody<PB.HSQuestUpdate>();
+        mainPlayer.gameQuestData.QuestUpdate(questUpdate.quest);
     }
     //mail----------------------------------------------------------------------------------------------
     void OnMailInfoSync(ProtocolMessage msg)

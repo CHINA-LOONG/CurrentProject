@@ -136,7 +136,7 @@ public class EffectDamage : Effect
                 float spellLevelRatio = ownedSpell.level * ownedSpell.spellData.levelAdjust;
                 //弱点
                 WeakPointRuntimeData wpRuntime = null;
-                if (!string.IsNullOrEmpty(wpID))
+                if (!string.IsNullOrEmpty(wpID) && target.battleUnit.wpGroup != null)
                 {
                     target.battleUnit.wpGroup.allWpDic.TryGetValue(wpID, out wpRuntime);
                 }

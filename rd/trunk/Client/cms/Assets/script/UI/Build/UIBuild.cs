@@ -18,6 +18,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public BuildButton m_ComposeButton;
     public BuildButton m_DecomposeButton;
+    public BuildButton m_AdventureButton;
 
     public Button huoliButton;
     public Text huoliText;
@@ -53,6 +54,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UICompose uiCompose;
     [HideInInspector]
     public UIDecompose uiDecompose;
+    //[HideInInspector]
+    //public UIAdventure uiAdventure;
 
     public Text mTestShowExp;
 
@@ -69,6 +72,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
+        EventTriggerListener.Get(m_AdventureButton.gameObject).onClick = OnAdventureButtonClick;
         EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
         EventTriggerListener.Get(huoliTipButton).onClick = OnHuoliTipButtonClick;
 
@@ -89,6 +93,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void BindListener()
 	{
 		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
+        GameEventMgr.Instance.AddListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.AddListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
@@ -100,6 +105,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
+        GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
@@ -154,8 +160,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     //邮件同步，新邮件事件
     void OnMailChanged(int mail)
     {
-        //mailTips.SetActive(UIUtil.CheckHaveNewMail());
         btnMail.SetRemind(UIUtil.CheckHaveNewMail());
+    }
+    void OnQuestChanged()
+    {
+        GameQuestData questData = GameDataMgr.Instance.PlayerDataAttr.gameQuestData;
+        m_QuestButton.SetRemind(questData.StoryFinish||questData.DailyFinish||questData.OtherFinish);
     }
 
 
@@ -186,7 +196,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnQuestButtonClick(GameObject go)
     {
         uiQuest= UIMgr.Instance.OpenUI_(UIQuest.ViewName) as UIQuest;
-        uiQuest.Refresh(0);
+        uiQuest.Refresh();
     }
 
     void OnMailButtonClick(GameObject go)
@@ -201,6 +211,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnDecomposeButtonClick(GameObject go)
     {
         uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
+    }
+    void OnAdventureButtonClick(GameObject go)
+    {
+        //uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
     }
 
     void    OnHuoliButtonClick (GameObject go)
@@ -277,6 +291,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public override void Init()
     {
+        OnQuestChanged();
         OnMailChanged(0);
         OnLevelChanged(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr,false);
@@ -294,6 +309,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		UIMgr.Instance.DestroyUI (uiShop);
         UIMgr.Instance.DestroyUI(uiCompose);
         UIMgr.Instance.DestroyUI(uiDecompose);
+        //UIMgr.Instance.DestroyUI(uiAdventure);
         
         if(null != UISociatyTask.Instance)
         {

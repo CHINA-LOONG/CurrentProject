@@ -8,8 +8,6 @@ import java.util.Map;
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
-import org.hawk.os.HawkException;
-import org.hawk.os.HawkRand;
 
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.MonsterCfg;
@@ -94,7 +92,7 @@ public class PlayerMonsterModule extends PlayerModule {
 			return true;
 		}
 		
-		consume.consumeTakeAffectAndPush(player, Action.MONSTER_ABILITY_LEVEL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_ABILITY_LEVEL_UP, hsCode);
 
 		player.consumeSkillPoint(1, Action.MONSTER_ABILITY_LEVEL_UP);
 
@@ -254,10 +252,10 @@ public class PlayerMonsterModule extends PlayerModule {
 			return true;
 		}
 
-		if (monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+		if (locked && monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
 			sendError(hsCode, Status.monsterError.LOCK_ALREADY);
 			return true;
-		} else if (!monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+		} else if (!locked && !monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
 			sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
 			return true;
 		}

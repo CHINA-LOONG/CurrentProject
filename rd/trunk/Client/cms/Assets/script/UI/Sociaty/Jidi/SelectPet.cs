@@ -78,13 +78,29 @@ public class SelectPet : UIBase
             icon.SetId(subUnit.pbUnit.guid.ToString());
             icon.SetLevel(subUnit.pbUnit.level);
             icon.SetStage(subUnit.pbUnit.stage);
+            icon.ShowZhushouImage(subUnit.pbUnit.IsInAllianceBase());
+            icon.ShowMaoxianImage(subUnit.pbUnit.IsInAdventure());
         }
     }
 
     void OnMonsterClicked(GameObject go)
     {
         MonsterIcon micon = go.GetComponentInParent<MonsterIcon>();
-        if(callBack != null)
+        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(int.Parse(micon.Id));
+        if(null!=gameUnit)
+        {
+            if(gameUnit.pbUnit.IsInAdventure())
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("arrayselect_count_005"), (int)PB.ImType.PROMPT);
+                return;
+            }
+            else if (gameUnit.pbUnit.IsInAllianceBase())
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("advanture_record_009"), (int)PB.ImType.PROMPT);
+                return;
+            }
+        }
+        if (callBack != null)
         {
             callBack(int.Parse(micon.Id));
         }

@@ -21,6 +21,7 @@ public class HomeButton : MonoBehaviour
     public Color outlineNormalColor=ColorConst.outline_tabColor_normal;
     public Color outlineSelectColor=ColorConst.outline_tabColor_select;
     private Text text;
+    
     public Text Text
     {
         get 
@@ -61,6 +62,18 @@ public class HomeButton : MonoBehaviour
 			return isOn;
 		}
 	}
+
+    public Image tipImage;
+    public bool ShowTip
+    {
+        set
+        {
+            if (tipImage!=null)
+            {
+                tipImage.gameObject.SetActive(value);
+            }
+        }
+    }
 
     public void SetButtonText(string text)
     {

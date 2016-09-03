@@ -6,10 +6,13 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
+import com.hawk.game.BILog.BIGuildFlowData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.ImSysCfg;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
@@ -88,7 +91,8 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if (SociatyTechnologyCfg.levelUpContribution(request.getType(), currentLevel + 1) > allianceEntity.getContribution()) {
+		int contributionCost = SociatyTechnologyCfg.levelUpContribution(request.getType(), currentLevel + 1);		
+		if (contributionCost > allianceEntity.getContribution()) {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH_VALUE);
 			return true;
 		}
@@ -109,7 +113,7 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 		default:
 		}
 		
-		allianceEntity.setContribution(allianceEntity.getContribution() - SociatyTechnologyCfg.levelUpContribution(request.getType(), currentLevel + 1));
+		allianceEntity.setContribution(allianceEntity.getContribution() - contributionCost);
 		allianceEntity.notifyUpdate(true);
 		
 		HSLevelChangeNotify.Builder notify = HSLevelChangeNotify.newBuilder();
@@ -140,6 +144,9 @@ public class AllianceLevelUpHandler implements HawkMsgHandler{
 
 		HSAllianceLevelUpRet.Builder resonse = HSAllianceLevelUpRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_LEVEL_UP_S_VALUE, resonse));
+		
+		BILogger.getBIData(BIGuildFlowData.class).log(player, Action.GUILD_TECH_LEVELUP, allianceEntity, 0, contributionCost, request.getType());
+		
 		return true;
 	}
 }

@@ -173,8 +173,8 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 40065,name_40065_towerbox,-1,icon_tongtiantasuipian3,4,6,3,0,1,-1,tips_40065_towerbox,3,-1,-1,10,2,1,1,towerboxreward40065,,,,-1,-1,-1,,-1,-1,-1,5_3,1
 40066,name_40066_bfregmentda,-1,icon_chongwuzhengzhi2,4,4,2,0,1,-1,tips_40066_bfregmentda,3,-1,-1,10,2,1,1,bfregmentda_40066,,,,-1,-1,-1,,-1,-1,-1,,1
 40067,name_40067_afregmentda,-1,icon_chongwuzhengzhi3,4,4,3,0,1,-1,tips_40067_afregmentda,3,-1,-1,10,2,1,1,afregmentda_40067,,,,-1,-1,-1,,-1,-1,-1,,1
-40068,name_40068_bigTaskleader601,-1,icon_lingxiubaoxiang5,4,5,4,0,1,-1,tips_40068_bigTaskleader601,3,-1,-1,10,2,1,1,200009,,,,-1,-1,-1,,-1,-1,-1,7_2,1
-40069,name_40069_bigTaskleader602,-1,icon_lingxiubaoxiangbuji5,4,5,4,0,1,-1,tips_40069_bigTaskleader602,3,-1,-1,10,2,1,1,200010,,,,-1,-1,-1,,-1,-1,-1,7_2,1
+40068,name_40068_bigTaskleader601,-1,icon_lingxiubaoxiang5,4,5,5,0,1,-1,tips_40068_bigTaskleader601,3,-1,-1,10,2,1,1,200009,,,,-1,-1,-1,,-1,-1,-1,7_2,1
+40069,name_40069_bigTaskleader602,-1,icon_lingxiubaoxiangbuji5,4,5,5,0,1,-1,tips_40069_bigTaskleader602,3,-1,-1,10,2,1,1,200010,,,,-1,-1,-1,,-1,-1,-1,7_2,1
 40070,name_40070_commonfregmentda,-1,icon_chongwuzhengzhi2,4,7,2,0,1,-1,tips_40070_commonfregmentda,3,-1,-1,10,2,1,1,commonfregmentda_40070,,,,-1,-1,-1,,-1,-1,-1,,1
 40071,name_40071_rarefregmentda,-1,icon_chongwuzhengzhi3,4,7,3,0,1,-1,tips_40071_rarefregmentda,3,-1,-1,10,2,1,1,rarefregmentda_40071,,,,-1,-1,-1,,-1,-1,-1,,1
 40072,name_40072_epicfregmentda,-1,icon_chongwuzhengzhi4,4,7,4,0,1,-1,tips_40072_epicfregmentda,3,-1,-1,10,2,1,1,epicfregmentda_40072,,,,-1,-1,-1,,-1,-1,-1,,1

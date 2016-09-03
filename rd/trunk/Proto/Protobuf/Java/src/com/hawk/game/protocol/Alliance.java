@@ -10085,92 +10085,102 @@ public final class Alliance {
      */
     int getId();
 
-    // required string cfgId = 2;
+    // required int32 monsterId = 2;
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required int32 monsterId = 2;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    int getMonsterId();
+
+    // required string cfgId = 3;
+    /**
+     * <code>required string cfgId = 3;</code>
      */
     boolean hasCfgId();
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required string cfgId = 3;</code>
      */
     java.lang.String getCfgId();
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required string cfgId = 3;</code>
      */
     com.google.protobuf.ByteString
         getCfgIdBytes();
 
-    // required int32 stage = 3;
+    // required int32 stage = 4;
     /**
-     * <code>required int32 stage = 3;</code>
+     * <code>required int32 stage = 4;</code>
      */
     boolean hasStage();
     /**
-     * <code>required int32 stage = 3;</code>
+     * <code>required int32 stage = 4;</code>
      */
     int getStage();
 
-    // required int32 level = 4;
+    // required int32 level = 5;
     /**
-     * <code>required int32 level = 4;</code>
+     * <code>required int32 level = 5;</code>
      */
     boolean hasLevel();
     /**
-     * <code>required int32 level = 4;</code>
+     * <code>required int32 level = 5;</code>
      */
     int getLevel();
 
-    // required int32 bp = 5;
+    // required int32 bp = 6;
     /**
-     * <code>required int32 bp = 5;</code>
+     * <code>required int32 bp = 6;</code>
      */
     boolean hasBp();
     /**
-     * <code>required int32 bp = 5;</code>
+     * <code>required int32 bp = 6;</code>
      */
     int getBp();
 
-    // optional int32 sendTime = 6;
+    // optional int32 sendTime = 7;
     /**
-     * <code>optional int32 sendTime = 6;</code>
+     * <code>optional int32 sendTime = 7;</code>
      */
     boolean hasSendTime();
     /**
-     * <code>optional int32 sendTime = 6;</code>
+     * <code>optional int32 sendTime = 7;</code>
      */
     int getSendTime();
 
-    // optional int32 position = 7;
+    // optional int32 position = 8;
     /**
-     * <code>optional int32 position = 7;</code>
+     * <code>optional int32 position = 8;</code>
      */
     boolean hasPosition();
     /**
-     * <code>optional int32 position = 7;</code>
+     * <code>optional int32 position = 8;</code>
      */
     int getPosition();
 
-    // optional int32 reward = 8;
+    // optional int32 reward = 9;
     /**
-     * <code>optional int32 reward = 8;</code>
+     * <code>optional int32 reward = 9;</code>
      */
     boolean hasReward();
     /**
-     * <code>optional int32 reward = 8;</code>
+     * <code>optional int32 reward = 9;</code>
      */
     int getReward();
 
-    // required string nickname = 9;
+    // required string nickname = 10;
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     boolean hasNickname();
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     java.lang.String getNickname();
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     com.google.protobuf.ByteString
         getNicknameBytes();
@@ -10231,43 +10241,48 @@ public final class Alliance {
               id_ = input.readInt32();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              cfgId_ = input.readBytes();
+              monsterId_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 26: {
               bitField0_ |= 0x00000004;
-              stage_ = input.readInt32();
+              cfgId_ = input.readBytes();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              level_ = input.readInt32();
+              stage_ = input.readInt32();
               break;
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              bp_ = input.readInt32();
+              level_ = input.readInt32();
               break;
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              sendTime_ = input.readInt32();
+              bp_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              position_ = input.readInt32();
+              sendTime_ = input.readInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
+              position_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
               reward_ = input.readInt32();
               break;
             }
-            case 74: {
-              bitField0_ |= 0x00000100;
+            case 82: {
+              bitField0_ |= 0x00000200;
               nickname_ = input.readBytes();
               break;
             }
@@ -10327,17 +10342,33 @@ public final class Alliance {
       return id_;
     }
 
-    // required string cfgId = 2;
-    public static final int CFGID_FIELD_NUMBER = 2;
-    private java.lang.Object cfgId_;
+    // required int32 monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private int monsterId_;
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required int32 monsterId = 2;</code>
      */
-    public boolean hasCfgId() {
+    public boolean hasMonsterId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required int32 monsterId = 2;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required string cfgId = 3;
+    public static final int CFGID_FIELD_NUMBER = 3;
+    private java.lang.Object cfgId_;
+    /**
+     * <code>required string cfgId = 3;</code>
+     */
+    public boolean hasCfgId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string cfgId = 3;</code>
      */
     public java.lang.String getCfgId() {
       java.lang.Object ref = cfgId_;
@@ -10354,7 +10385,7 @@ public final class Alliance {
       }
     }
     /**
-     * <code>required string cfgId = 2;</code>
+     * <code>required string cfgId = 3;</code>
      */
     public com.google.protobuf.ByteString
         getCfgIdBytes() {
@@ -10370,113 +10401,113 @@ public final class Alliance {
       }
     }
 
-    // required int32 stage = 3;
-    public static final int STAGE_FIELD_NUMBER = 3;
+    // required int32 stage = 4;
+    public static final int STAGE_FIELD_NUMBER = 4;
     private int stage_;
     /**
-     * <code>required int32 stage = 3;</code>
+     * <code>required int32 stage = 4;</code>
      */
     public boolean hasStage() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 stage = 3;</code>
+     * <code>required int32 stage = 4;</code>
      */
     public int getStage() {
       return stage_;
     }
 
-    // required int32 level = 4;
-    public static final int LEVEL_FIELD_NUMBER = 4;
+    // required int32 level = 5;
+    public static final int LEVEL_FIELD_NUMBER = 5;
     private int level_;
     /**
-     * <code>required int32 level = 4;</code>
+     * <code>required int32 level = 5;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 level = 4;</code>
+     * <code>required int32 level = 5;</code>
      */
     public int getLevel() {
       return level_;
     }
 
-    // required int32 bp = 5;
-    public static final int BP_FIELD_NUMBER = 5;
+    // required int32 bp = 6;
+    public static final int BP_FIELD_NUMBER = 6;
     private int bp_;
     /**
-     * <code>required int32 bp = 5;</code>
+     * <code>required int32 bp = 6;</code>
      */
     public boolean hasBp() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required int32 bp = 5;</code>
+     * <code>required int32 bp = 6;</code>
      */
     public int getBp() {
       return bp_;
     }
 
-    // optional int32 sendTime = 6;
-    public static final int SENDTIME_FIELD_NUMBER = 6;
+    // optional int32 sendTime = 7;
+    public static final int SENDTIME_FIELD_NUMBER = 7;
     private int sendTime_;
     /**
-     * <code>optional int32 sendTime = 6;</code>
+     * <code>optional int32 sendTime = 7;</code>
      */
     public boolean hasSendTime() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 sendTime = 6;</code>
+     * <code>optional int32 sendTime = 7;</code>
      */
     public int getSendTime() {
       return sendTime_;
     }
 
-    // optional int32 position = 7;
-    public static final int POSITION_FIELD_NUMBER = 7;
+    // optional int32 position = 8;
+    public static final int POSITION_FIELD_NUMBER = 8;
     private int position_;
     /**
-     * <code>optional int32 position = 7;</code>
+     * <code>optional int32 position = 8;</code>
      */
     public boolean hasPosition() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional int32 position = 7;</code>
+     * <code>optional int32 position = 8;</code>
      */
     public int getPosition() {
       return position_;
     }
 
-    // optional int32 reward = 8;
-    public static final int REWARD_FIELD_NUMBER = 8;
+    // optional int32 reward = 9;
+    public static final int REWARD_FIELD_NUMBER = 9;
     private int reward_;
     /**
-     * <code>optional int32 reward = 8;</code>
+     * <code>optional int32 reward = 9;</code>
      */
     public boolean hasReward() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional int32 reward = 8;</code>
+     * <code>optional int32 reward = 9;</code>
      */
     public int getReward() {
       return reward_;
     }
 
-    // required string nickname = 9;
-    public static final int NICKNAME_FIELD_NUMBER = 9;
+    // required string nickname = 10;
+    public static final int NICKNAME_FIELD_NUMBER = 10;
     private java.lang.Object nickname_;
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     public boolean hasNickname() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     public java.lang.String getNickname() {
       java.lang.Object ref = nickname_;
@@ -10493,7 +10524,7 @@ public final class Alliance {
       }
     }
     /**
-     * <code>required string nickname = 9;</code>
+     * <code>required string nickname = 10;</code>
      */
     public com.google.protobuf.ByteString
         getNicknameBytes() {
@@ -10511,6 +10542,7 @@ public final class Alliance {
 
     private void initFields() {
       id_ = 0;
+      monsterId_ = 0;
       cfgId_ = "";
       stage_ = 0;
       level_ = 0;
@@ -10526,6 +10558,10 @@ public final class Alliance {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -10560,28 +10596,31 @@ public final class Alliance {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getCfgIdBytes());
+        output.writeInt32(2, monsterId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, stage_);
+        output.writeBytes(3, getCfgIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, level_);
+        output.writeInt32(4, stage_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, bp_);
+        output.writeInt32(5, level_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, sendTime_);
+        output.writeInt32(6, bp_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, position_);
+        output.writeInt32(7, sendTime_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, reward_);
+        output.writeInt32(8, position_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeBytes(9, getNicknameBytes());
+        output.writeInt32(9, reward_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(10, getNicknameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -10598,35 +10637,39 @@ public final class Alliance {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getCfgIdBytes());
+          .computeInt32Size(2, monsterId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, stage_);
+          .computeBytesSize(3, getCfgIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, level_);
+          .computeInt32Size(4, stage_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, bp_);
+          .computeInt32Size(5, level_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, sendTime_);
+          .computeInt32Size(6, bp_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, position_);
+          .computeInt32Size(7, sendTime_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, reward_);
+          .computeInt32Size(8, position_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(9, getNicknameBytes());
+          .computeInt32Size(9, reward_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getNicknameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10746,22 +10789,24 @@ public final class Alliance {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        cfgId_ = "";
+        monsterId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        stage_ = 0;
+        cfgId_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        level_ = 0;
+        stage_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        bp_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        sendTime_ = 0;
+        bp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        position_ = 0;
+        sendTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        reward_ = 0;
+        position_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        nickname_ = "";
+        reward_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -10797,33 +10842,37 @@ public final class Alliance {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.cfgId_ = cfgId_;
+        result.monsterId_ = monsterId_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.stage_ = stage_;
+        result.cfgId_ = cfgId_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.level_ = level_;
+        result.stage_ = stage_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.bp_ = bp_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.sendTime_ = sendTime_;
+        result.bp_ = bp_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.position_ = position_;
+        result.sendTime_ = sendTime_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.reward_ = reward_;
+        result.position_ = position_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
+        }
+        result.reward_ = reward_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
         }
         result.nickname_ = nickname_;
         result.bitField0_ = to_bitField0_;
@@ -10845,8 +10894,11 @@ public final class Alliance {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
         if (other.hasCfgId()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           cfgId_ = other.cfgId_;
           onChanged();
         }
@@ -10869,7 +10921,7 @@ public final class Alliance {
           setReward(other.getReward());
         }
         if (other.hasNickname()) {
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
           nickname_ = other.nickname_;
           onChanged();
         }
@@ -10879,6 +10931,10 @@ public final class Alliance {
 
       public final boolean isInitialized() {
         if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasMonsterId()) {
           
           return false;
         }
@@ -10957,16 +11013,49 @@ public final class Alliance {
         return this;
       }
 
-      // required string cfgId = 2;
-      private java.lang.Object cfgId_ = "";
+      // required int32 monsterId = 2;
+      private int monsterId_ ;
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required int32 monsterId = 2;</code>
        */
-      public boolean hasCfgId() {
+      public boolean hasMonsterId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string cfgId = 3;
+      private java.lang.Object cfgId_ = "";
+      /**
+       * <code>required string cfgId = 3;</code>
+       */
+      public boolean hasCfgId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string cfgId = 3;</code>
        */
       public java.lang.String getCfgId() {
         java.lang.Object ref = cfgId_;
@@ -10980,7 +11069,7 @@ public final class Alliance {
         }
       }
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required string cfgId = 3;</code>
        */
       public com.google.protobuf.ByteString
           getCfgIdBytes() {
@@ -10996,249 +11085,249 @@ public final class Alliance {
         }
       }
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required string cfgId = 3;</code>
        */
       public Builder setCfgId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         cfgId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required string cfgId = 3;</code>
        */
       public Builder clearCfgId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         cfgId_ = getDefaultInstance().getCfgId();
         onChanged();
         return this;
       }
       /**
-       * <code>required string cfgId = 2;</code>
+       * <code>required string cfgId = 3;</code>
        */
       public Builder setCfgIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         cfgId_ = value;
         onChanged();
         return this;
       }
 
-      // required int32 stage = 3;
+      // required int32 stage = 4;
       private int stage_ ;
       /**
-       * <code>required int32 stage = 3;</code>
+       * <code>required int32 stage = 4;</code>
        */
       public boolean hasStage() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 stage = 3;</code>
+       * <code>required int32 stage = 4;</code>
        */
       public int getStage() {
         return stage_;
       }
       /**
-       * <code>required int32 stage = 3;</code>
+       * <code>required int32 stage = 4;</code>
        */
       public Builder setStage(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         stage_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 stage = 3;</code>
+       * <code>required int32 stage = 4;</code>
        */
       public Builder clearStage() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         stage_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 level = 4;
+      // required int32 level = 5;
       private int level_ ;
       /**
-       * <code>required int32 level = 4;</code>
+       * <code>required int32 level = 5;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 level = 4;</code>
+       * <code>required int32 level = 5;</code>
        */
       public int getLevel() {
         return level_;
       }
       /**
-       * <code>required int32 level = 4;</code>
+       * <code>required int32 level = 5;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         level_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level = 4;</code>
+       * <code>required int32 level = 5;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         level_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 bp = 5;
+      // required int32 bp = 6;
       private int bp_ ;
       /**
-       * <code>required int32 bp = 5;</code>
+       * <code>required int32 bp = 6;</code>
        */
       public boolean hasBp() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required int32 bp = 5;</code>
+       * <code>required int32 bp = 6;</code>
        */
       public int getBp() {
         return bp_;
       }
       /**
-       * <code>required int32 bp = 5;</code>
+       * <code>required int32 bp = 6;</code>
        */
       public Builder setBp(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         bp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 bp = 5;</code>
+       * <code>required int32 bp = 6;</code>
        */
       public Builder clearBp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         bp_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 sendTime = 6;
+      // optional int32 sendTime = 7;
       private int sendTime_ ;
       /**
-       * <code>optional int32 sendTime = 6;</code>
+       * <code>optional int32 sendTime = 7;</code>
        */
       public boolean hasSendTime() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional int32 sendTime = 6;</code>
+       * <code>optional int32 sendTime = 7;</code>
        */
       public int getSendTime() {
         return sendTime_;
       }
       /**
-       * <code>optional int32 sendTime = 6;</code>
+       * <code>optional int32 sendTime = 7;</code>
        */
       public Builder setSendTime(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         sendTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sendTime = 6;</code>
+       * <code>optional int32 sendTime = 7;</code>
        */
       public Builder clearSendTime() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         sendTime_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 position = 7;
+      // optional int32 position = 8;
       private int position_ ;
       /**
-       * <code>optional int32 position = 7;</code>
+       * <code>optional int32 position = 8;</code>
        */
       public boolean hasPosition() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional int32 position = 7;</code>
+       * <code>optional int32 position = 8;</code>
        */
       public int getPosition() {
         return position_;
       }
       /**
-       * <code>optional int32 position = 7;</code>
+       * <code>optional int32 position = 8;</code>
        */
       public Builder setPosition(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         position_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 position = 7;</code>
+       * <code>optional int32 position = 8;</code>
        */
       public Builder clearPosition() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         position_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 reward = 8;
+      // optional int32 reward = 9;
       private int reward_ ;
       /**
-       * <code>optional int32 reward = 8;</code>
+       * <code>optional int32 reward = 9;</code>
        */
       public boolean hasReward() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 reward = 8;</code>
+       * <code>optional int32 reward = 9;</code>
        */
       public int getReward() {
         return reward_;
       }
       /**
-       * <code>optional int32 reward = 8;</code>
+       * <code>optional int32 reward = 9;</code>
        */
       public Builder setReward(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         reward_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 reward = 8;</code>
+       * <code>optional int32 reward = 9;</code>
        */
       public Builder clearReward() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         reward_ = 0;
         onChanged();
         return this;
       }
 
-      // required string nickname = 9;
+      // required string nickname = 10;
       private java.lang.Object nickname_ = "";
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public boolean hasNickname() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public java.lang.String getNickname() {
         java.lang.Object ref = nickname_;
@@ -11252,7 +11341,7 @@ public final class Alliance {
         }
       }
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public com.google.protobuf.ByteString
           getNicknameBytes() {
@@ -11268,36 +11357,36 @@ public final class Alliance {
         }
       }
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public Builder setNickname(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         nickname_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public Builder clearNickname() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         nickname_ = getDefaultInstance().getNickname();
         onChanged();
         return this;
       }
       /**
-       * <code>required string nickname = 9;</code>
+       * <code>required string nickname = 10;</code>
        */
       public Builder setNicknameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         nickname_ = value;
         onChanged();
         return this;
@@ -49676,104 +49765,105 @@ public final class Alliance {
       "\n\020AllianceTeamInfo\022\021\n\tstartTime\030\001 \002(\005\022\016\n" +
       "\006taskId\030\002 \002(\005\022\016\n\006teamId\030\003 \002(\005\022%\n\007members",
       "\030\004 \003(\0132\024.AllianceTeamMemInfo\022*\n\nquestInf" +
-      "os\030\005 \003(\0132\026.AllianceTeamQuestInfo\"\240\001\n\023All" +
-      "ianceBaseMonster\022\n\n\002id\030\001 \002(\005\022\r\n\005cfgId\030\002 " +
-      "\002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\n\n\002bp\030" +
-      "\005 \002(\005\022\020\n\010sendTime\030\006 \001(\005\022\020\n\010position\030\007 \001(" +
-      "\005\022\016\n\006reward\030\010 \001(\005\022\020\n\010nickname\030\t \002(\t\"0\n\020H" +
-      "SAllianceCreate\022\014\n\004name\030\001 \002(\t\022\016\n\006notice\030" +
-      "\002 \002(\t\"(\n\023HSAllianceCreateRet\022\021\n\tallianeI" +
-      "d\030\001 \002(\005\"!\n\016HSAllianceList\022\017\n\007reqPage\030\001 \002" +
-      "(\005\"Q\n\021HSAllianceListRet\022\021\n\ttotalPage\030\001 \002",
-      "(\005\022)\n\014allianceList\030\002 \003(\0132\023.AllianceSimpl" +
-      "eInfo\"$\n\020HSAllianceSearch\022\020\n\010nameOrId\030\001 " +
-      "\002(\t\":\n\023HSAllianceSearchRet\022#\n\006result\030\001 \003" +
-      "(\0132\023.AllianceSimpleInfo\"\"\n\020HSAllianceNot" +
-      "ice\022\016\n\006notice\030\001 \002(\t\"\025\n\023HSAllianceNoticeR" +
-      "et\"%\n\017HSAllianceApply\022\022\n\nallianceId\030\001 \002(" +
-      "\005\"(\n\022HSAllianceApplyRet\022\022\n\nallianceId\030\001 " +
-      "\002(\005\"G\n\024HSAllianceHanleApply\022\020\n\010playerId\030" +
-      "\001 \001(\005\022\016\n\006accept\030\002 \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027" +
-      "HSAllianceHanleApplyRet\"+\n\025HSAllianceCan",
-      "cleApply\022\022\n\nallianceId\030\001 \002(\005\"\032\n\030HSAllian" +
-      "ceCancleApplyRet\"8\n\023HSAllianceChangePos\022" +
-      "\020\n\010playerId\030\001 \002(\005\022\017\n\007postion\030\002 \002(\005\"\030\n\026HS" +
-      "AllianceChangePosRet\"\021\n\017HSAllianceLeave\"" +
-      "\024\n\022HSAllianceLeaveRet\")\n\025HSAllianceChang" +
-      "eOwner\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceCh" +
-      "angeOwnerRet\"%\n\021HSAllianceMemKick\022\020\n\010tar" +
-      "getId\030\001 \002(\005\"\026\n\024HSAllianceMemKickRet\"!\n\021H" +
-      "SAllianceLevelUp\022\014\n\004type\030\001 \002(\005\"\026\n\024HSAlli" +
-      "anceLevelUpRet\"#\n\016HSAlliancePray\022\021\n\tpray",
-      "Index\030\001 \002(\005\"K\n\021HSAlliancePrayRet\022\030\n\020self" +
-      "Contribution\030\001 \002(\005\022\034\n\024allianceContributi" +
-      "on\030\002 \002(\005\"7\n\021HSAllianceSettion\022\020\n\010minLeve" +
-      "l\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\026\n\024HSAllianceS" +
-      "ettionRet\")\n\025HSAllianceFatigueGive\022\020\n\010ta" +
-      "rgetId\030\001 \002(\005\"\032\n\030HSAllianceFatigueGiveRet" +
-      "\"\017\n\rHSAllianceSyn\"\022\n\020HSAllianceSynRet\"\020\n" +
-      "\016HSAllianceData\"8\n\021HSAllianceDataRet\022#\n\014" +
-      "allianceData\030\001 \002(\0132\r.AllianceInfo\"\026\n\024HSA" +
-      "llianceSettingSyn\"=\n\027HSAllianceSettingSy",
-      "nRet\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010" +
-      "\"\024\n\022HSAllianceSelfData\"\214\001\n\025HSAllianceSel" +
-      "fDataRet\022!\n\010selfData\030\001 \002(\0132\017.AllianceMem" +
-      "ber\022\032\n\022contributionReward\030\002 \002(\005\022\021\n\tprayC" +
-      "ount\030\003 \002(\005\022\021\n\ttaskCount\030\004 \002(\005\022\016\n\006teamID\030" +
-      "\005 \002(\005\"\023\n\021HSAllianceMembers\";\n\024HSAlliance" +
-      "MembersRet\022#\n\nmemberList\030\001 \003(\0132\017.Allianc" +
-      "eMember\"\025\n\023HSAllianceApplyList\"7\n\026HSAlli" +
-      "anceApplyListRet\022\035\n\005apply\030\001 \003(\0132\016.Allian" +
-      "ceApply\"\030\n\026HSAllianceContribution\"f\n\031HSA",
-      "llianceContributionRet\022\024\n\014contribution\030\001" +
-      " \002(\005\022\031\n\021contributionToday\030\002 \002(\005\022\030\n\020contr" +
-      "ibution3day\030\003 \002(\005\"\'\n\026HSAllianceContriRew" +
-      "ard\022\r\n\005index\030\001 \002(\005\"\033\n\031HSAllianceContriRe" +
-      "wardRet\"6\n\025HSAllianceApplyNotify\022\035\n\005appl" +
-      "y\030\001 \002(\0132\016.AllianceApply\">\n\033HSAllianceRem" +
-      "oveApplyNotify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005clea" +
-      "r\030\002 \002(\010\"(\n\026HSAllianceNoticeNotify\022\016\n\006not" +
-      "ice\030\001 \002(\t\"8\n\021HSMemberAddNotify\022#\n\nmember" +
-      "Data\030\001 \003(\0132\017.AllianceMember\"(\n\024HSMemberR",
-      "emoveNotify\022\020\n\010playerId\030\001 \002(\005\";\n\027HSMembe" +
-      "rPosChangeNotify\022\020\n\010playerId\030\001 \002(\005\022\016\n\006ne" +
-      "wPos\030\002 \002(\005\"&\n\023HSChangeOwnerNotify\022\017\n\007own" +
-      "erId\030\001 \002(\005\"H\n\023HSLevelChangeNotify\022\014\n\004typ" +
-      "e\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\024\n\014contribution\030\003" +
-      " \002(\005\"*\n\024HSAllianceJoinNotify\022\022\n\nalliance" +
-      "Id\030\001 \002(\005\"\027\n\025HSAllianceLeaveNotify\"&\n\024HSA" +
-      "llianceCreateTeam\022\016\n\006taskId\030\001 \002(\005\")\n\027HSA" +
-      "llianceCreateTeamRet\022\016\n\006teamId\030\001 \002(\005\"$\n\022" +
-      "HSAllianceJoinTeam\022\016\n\006teamId\030\001 \002(\005\"\'\n\025HS",
-      "AllianceJoinTeamRet\022\016\n\006teamId\030\001 \002(\005\"\'\n\024H" +
-      "SAllianceTaskAccept\022\017\n\007questId\030\001 \002(\005\"\031\n\027" +
-      "HSAllianceTaskAcceptRet\"\'\n\024HSAllianceTas" +
-      "kCommit\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTa" +
-      "skCommitRet\"\026\n\024HSAllianceTaskReward\"\031\n\027H" +
-      "SAllianceTaskRewardRet\"\030\n\026HSAllianceDiss" +
-      "olveTeam\"\033\n\031HSAllianceDissolveTeamRet\"\024\n" +
-      "\022HSAllianceTeamList\"A\n\025HSAllianceTeamLis" +
-      "tRet\022(\n\rallianceTeams\030\001 \003(\0132\021.AllianceTe" +
-      "amInfo\"\024\n\022HSAllianceSelfTeam\"<\n\025HSAllian",
-      "ceSelfTeamRet\022#\n\010selfTeam\030\001 \002(\0132\021.Allian" +
-      "ceTeamInfo\"T\n\037HSAllianceTeamQuestFinishN" +
-      "otify\022\016\n\006teamId\030\001 \002(\005\022\017\n\007questId\030\002 \002(\005\022\020" +
-      "\n\010playerId\030\003 \002(\005\"@\n\030HSAllianceTeamJoinNo" +
-      "tify\022$\n\006member\030\001 \002(\0132\024.AllianceTeamMemIn" +
-      "fo\"-\n\031HSAllianceTeamLeaveNotify\022\020\n\010playe" +
-      "rId\030\001 \002(\005\"-\n\033HSAllianceTaskTimeoutNotify" +
-      "\022\016\n\006taskId\030\001 \002(\005\"@\n\031HSAllianceBaseSendMo" +
-      "nster\022\021\n\tmonsterId\030\001 \002(\005\022\020\n\010position\030\002 \002" +
-      "(\005\"0\n\034HSAllianceBaseSendMonsterRet\022\020\n\010se",
-      "ndTime\030\001 \002(\005\"/\n\033HSAllianceBaseRecallMons" +
-      "ter\022\020\n\010position\030\001 \002(\005\"F\n\036HSAllianceBaseR" +
-      "ecallMonsterRet\022\022\n\ncoinDefend\030\001 \002(\005\022\020\n\010c" +
-      "oinHire\030\002 \002(\005\"\024\n\022HSAllianceBaseList\"B\n\025H" +
-      "SAllianceBaseListRet\022)\n\013monsterInfo\030\001 \003(" +
-      "\0132\024.AllianceBaseMonster\"\026\n\024HSAllianceMyB" +
-      "aseList\"D\n\027HSAllianceMyBaseListRet\022)\n\013mo" +
-      "nsterInfo\030\001 \003(\0132\024.AllianceBaseMonsterB\030\n" +
-      "\026com.hawk.game.protocol"
+      "os\030\005 \003(\0132\026.AllianceTeamQuestInfo\"\263\001\n\023All" +
+      "ianceBaseMonster\022\n\n\002id\030\001 \002(\005\022\021\n\tmonsterI" +
+      "d\030\002 \002(\005\022\r\n\005cfgId\030\003 \002(\t\022\r\n\005stage\030\004 \002(\005\022\r\n" +
+      "\005level\030\005 \002(\005\022\n\n\002bp\030\006 \002(\005\022\020\n\010sendTime\030\007 \001" +
+      "(\005\022\020\n\010position\030\010 \001(\005\022\016\n\006reward\030\t \001(\005\022\020\n\010" +
+      "nickname\030\n \002(\t\"0\n\020HSAllianceCreate\022\014\n\004na" +
+      "me\030\001 \002(\t\022\016\n\006notice\030\002 \002(\t\"(\n\023HSAllianceCr" +
+      "eateRet\022\021\n\tallianeId\030\001 \002(\005\"!\n\016HSAlliance" +
+      "List\022\017\n\007reqPage\030\001 \002(\005\"Q\n\021HSAllianceListR",
+      "et\022\021\n\ttotalPage\030\001 \002(\005\022)\n\014allianceList\030\002 " +
+      "\003(\0132\023.AllianceSimpleInfo\"$\n\020HSAllianceSe" +
+      "arch\022\020\n\010nameOrId\030\001 \002(\t\":\n\023HSAllianceSear" +
+      "chRet\022#\n\006result\030\001 \003(\0132\023.AllianceSimpleIn" +
+      "fo\"\"\n\020HSAllianceNotice\022\016\n\006notice\030\001 \002(\t\"\025" +
+      "\n\023HSAllianceNoticeRet\"%\n\017HSAllianceApply" +
+      "\022\022\n\nallianceId\030\001 \002(\005\"(\n\022HSAllianceApplyR" +
+      "et\022\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAllianceHanl" +
+      "eApply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006accept\030\002 \002(\010" +
+      "\022\r\n\005isAll\030\003 \002(\010\"\031\n\027HSAllianceHanleApplyR",
+      "et\"+\n\025HSAllianceCancleApply\022\022\n\nallianceI" +
+      "d\030\001 \002(\005\"\032\n\030HSAllianceCancleApplyRet\"8\n\023H" +
+      "SAllianceChangePos\022\020\n\010playerId\030\001 \002(\005\022\017\n\007" +
+      "postion\030\002 \002(\005\"\030\n\026HSAllianceChangePosRet\"" +
+      "\021\n\017HSAllianceLeave\"\024\n\022HSAllianceLeaveRet" +
+      "\")\n\025HSAllianceChangeOwner\022\020\n\010targetId\030\001 " +
+      "\002(\005\"\032\n\030HSAllianceChangeOwnerRet\"%\n\021HSAll" +
+      "ianceMemKick\022\020\n\010targetId\030\001 \002(\005\"\026\n\024HSAlli" +
+      "anceMemKickRet\"!\n\021HSAllianceLevelUp\022\014\n\004t" +
+      "ype\030\001 \002(\005\"\026\n\024HSAllianceLevelUpRet\"#\n\016HSA",
+      "lliancePray\022\021\n\tprayIndex\030\001 \002(\005\"K\n\021HSAlli" +
+      "ancePrayRet\022\030\n\020selfContribution\030\001 \002(\005\022\034\n" +
+      "\024allianceContribution\030\002 \002(\005\"7\n\021HSAllianc" +
+      "eSettion\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002" +
+      " \002(\010\"\026\n\024HSAllianceSettionRet\")\n\025HSAllian" +
+      "ceFatigueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAll" +
+      "ianceFatigueGiveRet\"\017\n\rHSAllianceSyn\"\022\n\020" +
+      "HSAllianceSynRet\"\020\n\016HSAllianceData\"8\n\021HS" +
+      "AllianceDataRet\022#\n\014allianceData\030\001 \002(\0132\r." +
+      "AllianceInfo\"\026\n\024HSAllianceSettingSyn\"=\n\027",
+      "HSAllianceSettingSynRet\022\020\n\010minLevel\030\001 \002(" +
+      "\005\022\020\n\010autoJoin\030\002 \002(\010\"\024\n\022HSAllianceSelfDat" +
+      "a\"\214\001\n\025HSAllianceSelfDataRet\022!\n\010selfData\030" +
+      "\001 \002(\0132\017.AllianceMember\022\032\n\022contributionRe" +
+      "ward\030\002 \002(\005\022\021\n\tprayCount\030\003 \002(\005\022\021\n\ttaskCou" +
+      "nt\030\004 \002(\005\022\016\n\006teamID\030\005 \002(\005\"\023\n\021HSAllianceMe" +
+      "mbers\";\n\024HSAllianceMembersRet\022#\n\nmemberL" +
+      "ist\030\001 \003(\0132\017.AllianceMember\"\025\n\023HSAlliance" +
+      "ApplyList\"7\n\026HSAllianceApplyListRet\022\035\n\005a" +
+      "pply\030\001 \003(\0132\016.AllianceApply\"\030\n\026HSAlliance",
+      "Contribution\"f\n\031HSAllianceContributionRe" +
+      "t\022\024\n\014contribution\030\001 \002(\005\022\031\n\021contributionT" +
+      "oday\030\002 \002(\005\022\030\n\020contribution3day\030\003 \002(\005\"\'\n\026" +
+      "HSAllianceContriReward\022\r\n\005index\030\001 \002(\005\"\033\n" +
+      "\031HSAllianceContriRewardRet\"6\n\025HSAlliance" +
+      "ApplyNotify\022\035\n\005apply\030\001 \002(\0132\016.AllianceApp" +
+      "ly\">\n\033HSAllianceRemoveApplyNotify\022\020\n\010pla" +
+      "yerId\030\001 \001(\005\022\r\n\005clear\030\002 \002(\010\"(\n\026HSAlliance" +
+      "NoticeNotify\022\016\n\006notice\030\001 \002(\t\"8\n\021HSMember" +
+      "AddNotify\022#\n\nmemberData\030\001 \003(\0132\017.Alliance",
+      "Member\"(\n\024HSMemberRemoveNotify\022\020\n\010player" +
+      "Id\030\001 \002(\005\";\n\027HSMemberPosChangeNotify\022\020\n\010p" +
+      "layerId\030\001 \002(\005\022\016\n\006newPos\030\002 \002(\005\"&\n\023HSChang" +
+      "eOwnerNotify\022\017\n\007ownerId\030\001 \002(\005\"H\n\023HSLevel" +
+      "ChangeNotify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002 \002(" +
+      "\005\022\024\n\014contribution\030\003 \002(\005\"*\n\024HSAllianceJoi" +
+      "nNotify\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025HSAllianc" +
+      "eLeaveNotify\"&\n\024HSAllianceCreateTeam\022\016\n\006" +
+      "taskId\030\001 \002(\005\")\n\027HSAllianceCreateTeamRet\022" +
+      "\016\n\006teamId\030\001 \002(\005\"$\n\022HSAllianceJoinTeam\022\016\n",
+      "\006teamId\030\001 \002(\005\"\'\n\025HSAllianceJoinTeamRet\022\016" +
+      "\n\006teamId\030\001 \002(\005\"\'\n\024HSAllianceTaskAccept\022\017" +
+      "\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskAcceptR" +
+      "et\"\'\n\024HSAllianceTaskCommit\022\017\n\007questId\030\001 " +
+      "\002(\005\"\031\n\027HSAllianceTaskCommitRet\"\026\n\024HSAlli" +
+      "anceTaskReward\"\031\n\027HSAllianceTaskRewardRe" +
+      "t\"\030\n\026HSAllianceDissolveTeam\"\033\n\031HSAllianc" +
+      "eDissolveTeamRet\"\024\n\022HSAllianceTeamList\"A" +
+      "\n\025HSAllianceTeamListRet\022(\n\rallianceTeams" +
+      "\030\001 \003(\0132\021.AllianceTeamInfo\"\024\n\022HSAllianceS",
+      "elfTeam\"<\n\025HSAllianceSelfTeamRet\022#\n\010self" +
+      "Team\030\001 \002(\0132\021.AllianceTeamInfo\"T\n\037HSAllia" +
+      "nceTeamQuestFinishNotify\022\016\n\006teamId\030\001 \002(\005" +
+      "\022\017\n\007questId\030\002 \002(\005\022\020\n\010playerId\030\003 \002(\005\"@\n\030H" +
+      "SAllianceTeamJoinNotify\022$\n\006member\030\001 \002(\0132" +
+      "\024.AllianceTeamMemInfo\"-\n\031HSAllianceTeamL" +
+      "eaveNotify\022\020\n\010playerId\030\001 \002(\005\"-\n\033HSAllian" +
+      "ceTaskTimeoutNotify\022\016\n\006taskId\030\001 \002(\005\"@\n\031H" +
+      "SAllianceBaseSendMonster\022\021\n\tmonsterId\030\001 " +
+      "\002(\005\022\020\n\010position\030\002 \002(\005\"0\n\034HSAllianceBaseS",
+      "endMonsterRet\022\020\n\010sendTime\030\001 \002(\005\"/\n\033HSAll" +
+      "ianceBaseRecallMonster\022\020\n\010position\030\001 \002(\005" +
+      "\"F\n\036HSAllianceBaseRecallMonsterRet\022\022\n\nco" +
+      "inDefend\030\001 \002(\005\022\020\n\010coinHire\030\002 \002(\005\"\024\n\022HSAl" +
+      "lianceBaseList\"B\n\025HSAllianceBaseListRet\022" +
+      ")\n\013monsterInfo\030\001 \003(\0132\024.AllianceBaseMonst" +
+      "er\"\026\n\024HSAllianceMyBaseList\"D\n\027HSAlliance" +
+      "MyBaseListRet\022)\n\013monsterInfo\030\001 \003(\0132\024.All" +
+      "ianceBaseMonsterB\030\n\026com.hawk.game.protoc" +
+      "ol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -49827,7 +49917,7 @@ public final class Alliance {
           internal_static_AllianceBaseMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceBaseMonster_descriptor,
-              new java.lang.String[] { "Id", "CfgId", "Stage", "Level", "Bp", "SendTime", "Position", "Reward", "Nickname", });
+              new java.lang.String[] { "Id", "MonsterId", "CfgId", "Stage", "Level", "Bp", "SendTime", "Position", "Reward", "Nickname", });
           internal_static_HSAllianceCreate_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_HSAllianceCreate_fieldAccessorTable = new

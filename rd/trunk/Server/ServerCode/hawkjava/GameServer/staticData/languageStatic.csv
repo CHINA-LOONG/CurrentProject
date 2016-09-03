@@ -2304,99 +2304,103 @@ meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate yo
 meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
 meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
 worldentry,神怪入侵,Deity Invasion
-10233_name,守护者挑战达人 I,守护者挑战达人 I
-10234_name,守护者挑战达人 II,守护者挑战达人 II
-10235_name,守护者挑战达人 III,守护者挑战达人 III
-10236_name,守护者挑战达人 IV,守护者挑战达人 IV
-10237_name,守护者通关达人 I,守护者通关达人 I
-10238_name,守护者通关达人 II,守护者通关达人 II
-10239_name,守护者通关达人 III,守护者通关达人 III
-10240_name,守护者通关达人 IV,守护者通关达人 IV
-10241_name,守护者通关达人 V,守护者通关达人 V
-10242_name,一起打boss I,一起打boss I
-10243_name,一起打boss II,一起打boss II
-10244_name,一起打boss III,一起打boss III
-10245_name,一起打boss IV,一起打boss IV
-10246_name,极限挑战 I,极限挑战 I
-10247_name,极限挑战 II,极限挑战 II
-10248_name,极限挑战 III,极限挑战 III
-10249_name,极限挑战 IV,极限挑战 IV
-10250_name,极限挑战 V,极限挑战 V
-10251_name,极限挑战 VI,极限挑战 VI
-10252_name,boss杀手 I,boss杀手 I
-10253_name,boss杀手 II,boss杀手 II
-10254_name,boss杀手 III,boss杀手 III
-10255_name,boss杀手 IV,boss杀手 IV
-10256_name,boss杀手 V,boss杀手 V
-10257_name,极限输出 I,极限输出 I
-10258_name,极限输出 II,极限输出 II
-10259_name,极限输出 III,极限输出 III
-10260_name,极限输出 IV,极限输出 IV
-10261_name,分享达人 I,分享达人 I
-10262_name,分享达人 II,分享达人 II
-10263_name,分享达人 III,分享达人 III
-10264_name,分享达人 IV,分享达人 IV
-10265_name,分享达人 V,分享达人 V
-10266_name,勇闯巅峰 I,勇闯巅峰 I
-10267_name,勇闯巅峰 II,勇闯巅峰 II
-10268_name,勇闯巅峰 III,勇闯巅峰 III
-10269_name,勇闯巅峰 IV,勇闯巅峰 IV
-10270_name,勇闯巅峰 V,勇闯巅峰 V
-10271_name,时间如金 I,时间如金 I
-10272_name,时间如金 II,时间如金 II
-10273_name,时间如金 III,时间如金 III
-10274_name,时间如金 IV,时间如金 IV
-10275_name,时间如金 V,时间如金 V
-10276_name,收集达人 I,收集达人 I
-10277_name,收集达人 II,收集达人 II
-10278_name,收集达人 III,收集达人 III
-10279_name,收集达人 IV,收集达人 IV
-10233_miaoshu,累计参与神话守护者达到5次,累计参与神话守护者达到5次
-10234_miaoshu,累计参与神话守护者达到10次,累计参与神话守护者达到10次
-10235_miaoshu,累计参与神话守护者达到50次,累计参与神话守护者达到50次
-10236_miaoshu,累计参与神话守护者达到100次,累计参与神话守护者达到100次
-10237_miaoshu,通关神话守护者达到1次,通关神话守护者达到1次
-10238_miaoshu,通关神话守护者达到5次,通关神话守护者达到5次
-10239_miaoshu,通关神话守护者达到10次,通关神话守护者达到10次
-10240_miaoshu,通关神话守护者达到20次,通关神话守护者达到20次
-10241_miaoshu,通关神话守护者达到50次,通关神话守护者达到50次
-10242_miaoshu,参与世界boss挑战达到5次,参与世界boss挑战达到5次
-10243_miaoshu,参与世界boss挑战达到10次,参与世界boss挑战达到10次
-10244_miaoshu,参与世界boss挑战达到50次,参与世界boss挑战达到50次
-10245_miaoshu,参与世界boss挑战达到100次,参与世界boss挑战达到100次
-10246_miaoshu,同一个时间段内挑战boss达到5次,同一个时间段内挑战boss达到5次
-10247_miaoshu,同一个时间段内挑战boss达到6次,同一个时间段内挑战boss达到6次
-10248_miaoshu,同一个时间段内挑战boss达到7次,同一个时间段内挑战boss达到7次
-10249_miaoshu,同一个时间段内挑战boss达到8次,同一个时间段内挑战boss达到8次
-10250_miaoshu,同一个时间段内挑战boss达到9次,同一个时间段内挑战boss达到9次
-10251_miaoshu,同一个时间段内挑战boss达到10次,同一个时间段内挑战boss达到10次
-10252_miaoshu,世界boss排名达到前50名,世界boss排名达到前50名
-10253_miaoshu,世界boss排名达到前20名,世界boss排名达到前20名
-10254_miaoshu,世界boss排名达到前10名,世界boss排名达到前10名
-10255_miaoshu,世界boss排名达到前3名,世界boss排名达到前3名
-10256_miaoshu,世界boss排名达到第1名,世界boss排名达到第1名
-10257_miaoshu,世界boss单次挑战伤害量达到100000,世界boss单次挑战伤害量达到100000
-10258_miaoshu,世界boss单次挑战伤害量达到200000,世界boss单次挑战伤害量达到200000
-10259_miaoshu,世界boss单次挑战伤害量达到500000,世界boss单次挑战伤害量达到500000
-10260_miaoshu,世界boss单次挑战伤害量达到1000000,世界boss单次挑战伤害量达到1000000
-10261_miaoshu,faceboo分享达到1次,faceboo分享达到1次
-10262_miaoshu,faceboo分享达到5次,faceboo分享达到5次
-10263_miaoshu,faceboo分享达到10次,faceboo分享达到10次
-10264_miaoshu,faceboo分享达到20次,faceboo分享达到20次
-10265_miaoshu,faceboo分享达到50次,faceboo分享达到50次
-10266_miaoshu,购买竞技场出战点数达到1次,购买竞技场出战点数达到1次
-10267_miaoshu,购买竞技场出战点数达到5次,购买竞技场出战点数达到5次
-10268_miaoshu,购买竞技场出战点数达到10次,购买竞技场出战点数达到10次
-10269_miaoshu,购买竞技场出战点数达到20次,购买竞技场出战点数达到20次
-10270_miaoshu,购买竞技场出战点数达到50次,购买竞技场出战点数达到50次
-10271_miaoshu,购买宠物技能点数达到1次,购买宠物技能点数达到1次
-10272_miaoshu,购买宠物技能点数达到5次,购买宠物技能点数达到5次
-10273_miaoshu,购买宠物技能点数达到10次,购买宠物技能点数达到10次
-10274_miaoshu,购买宠物技能点数达到20次,购买宠物技能点数达到20次
-10275_miaoshu,购买宠物技能点数达到50次,购买宠物技能点数达到50次
-10276_miaoshu,点亮宠物头像达到5个,点亮宠物头像达到5个
-10277_miaoshu,点亮宠物头像达到10个,点亮宠物头像达到10个
-10278_miaoshu,点亮宠物头像达到20个,点亮宠物头像达到20个
-10279_miaoshu,点亮宠物头像达到50个,点亮宠物头像达到50个
+10233_name,守护者挑战达人 I,Guardian Challenger I
+10234_name,守护者挑战达人 II,Guardian Challenger II
+10235_name,守护者挑战达人 III,Guardian Challenger III
+10236_name,守护者挑战达人 IV,Guardian Challenger IV
+10237_name,守护者通关达人 I,Guardian Slayer I
+10238_name,守护者通关达人 II,Guardian Slayer II
+10239_name,守护者通关达人 III,Guardian Slayer III
+10240_name,守护者通关达人 IV,Guardian Slayer IV
+10241_name,守护者通关达人 V,Guardian Slayer V
+10242_name,一起打boss I,Battle Together I
+10243_name,一起打boss II,Battle Together II
+10244_name,一起打boss III,Battle Together III
+10245_name,一起打boss IV,Battle Together IV
+10246_name,极限挑战 I,Extreme Challenge I
+10247_name,极限挑战 II,Extreme Challenge II
+10248_name,极限挑战 III,Extreme Challenge III
+10249_name,极限挑战 IV,Extreme Challenge IV
+10250_name,极限挑战 V,Extreme Challenge V
+10251_name,极限挑战 VI,Extreme Challenge VI
+10252_name,boss杀手 I,Boss Slayer I
+10253_name,boss杀手 II,Boss Slayer II
+10254_name,boss杀手 III,Boss Slayer III
+10255_name,boss杀手 IV,Boss Slayer IV
+10256_name,boss杀手 V,Boss Slayer V
+10257_name,极限输出 I,Massive DPS I
+10258_name,极限输出 II,Massive DPS II
+10259_name,极限输出 III,Massive DPS III
+10260_name,极限输出 IV,Massive DPS IV
+10261_name,分享达人 I,Share the Fun I
+10262_name,分享达人 II,Share the Fun II
+10263_name,分享达人 III,Share the Fun III
+10264_name,分享达人 IV,Share the Fun IV
+10265_name,分享达人 V,Share the Fun V
+10266_name,勇闯巅峰 I,Brave the Arena I
+10267_name,勇闯巅峰 II,Brave the Arena II
+10268_name,勇闯巅峰 III,Brave the Arena III
+10269_name,勇闯巅峰 IV,Brave the Arena IV
+10270_name,勇闯巅峰 V,Brave the Arena V
+10271_name,时间如金 I,Pure Skill I
+10272_name,时间如金 II,Pure Skill II
+10273_name,时间如金 III,Pure Skill III
+10274_name,时间如金 IV,Pure Skill IV
+10275_name,时间如金 V,Pure Skill V
+10276_name,收集达人 I,Avatar Collector I
+10277_name,收集达人 II,Avatar Collector II
+10278_name,收集达人 III,Avatar Collector III
+10279_name,收集达人 IV,Avatar Collector IV
+10233_miaoshu,累计参与神话守护者达到5次,Participate in Myth Guardians mode 5 times.
+10234_miaoshu,累计参与神话守护者达到10次,Participate in Myth Guardians mode 10 times.
+10235_miaoshu,累计参与神话守护者达到50次,Participate in Myth Guardians mode 50 times.
+10236_miaoshu,累计参与神话守护者达到100次,Participate in Myth Guardians mode 100 times.
+10237_miaoshu,通关神话守护者达到1次,Clear Legend Guardian mode once.
+10238_miaoshu,通关神话守护者达到5次,Clear Legend Guardian mode 5 times.
+10239_miaoshu,通关神话守护者达到10次,Clear Legend Guardian mode 10 times.
+10240_miaoshu,通关神话守护者达到20次,Clear Legend Guardian mode 20 times.
+10241_miaoshu,通关神话守护者达到50次,Clear Legend Guardian mode 50 times.
+10242_miaoshu,参与神怪入侵挑战达到5次,Participate in Deity Invasion mode 5 times.
+10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.
+10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.
+10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.
+10246_miaoshu,同一个时间段内挑战boss达到5次,Battle a boss 5 times in a single time period.
+10247_miaoshu,同一个时间段内挑战boss达到6次,Battle a boss 6 times in a single time period.
+10248_miaoshu,同一个时间段内挑战boss达到7次,Battle a boss 7 times in a single time period.
+10249_miaoshu,同一个时间段内挑战boss达到8次,Battle a boss 8 times in a single time period.
+10250_miaoshu,同一个时间段内挑战boss达到9次,Battle a boss 9 times in a single time period.
+10251_miaoshu,同一个时间段内挑战boss达到10次,Battle a boss 10 times in a single time period.
+10252_miaoshu,世界boss排名达到前50名,Reach the top 50 in Deity Invasion rankings.
+10253_miaoshu,世界boss排名达到前20名,Reach the top 20 in Deity Invasion rankings.
+10254_miaoshu,世界boss排名达到前10名,Reach the top 10 in Deity Invasion rankings.
+10255_miaoshu,世界boss排名达到前3名,Reach the top 3 in Deity Invasion rankings.
+10256_miaoshu,世界boss排名达到第1名,Reach the top 1 in Deity Invasion rankings.
+10257_miaoshu,世界boss单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.
+10258_miaoshu,世界boss单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.
+10259_miaoshu,世界boss单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.
+10260_miaoshu,世界boss单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.
+10261_miaoshu,faceboo分享达到1次,Share via Facebook once.
+10262_miaoshu,faceboo分享达到5次,Share via Facebook 5 times.
+10263_miaoshu,faceboo分享达到10次,Share via Facebook 10 times.
+10264_miaoshu,faceboo分享达到20次,Share via Facebook 20 times.
+10265_miaoshu,faceboo分享达到50次,Share via Facebook 50 times.
+10266_miaoshu,购买竞技场出战点数达到1次,Purchase Arena Entries once.
+10267_miaoshu,购买竞技场出战点数达到5次,Purchase Arena Entries 5 times.
+10268_miaoshu,购买竞技场出战点数达到10次,Purchase Arena Entries 10 times.
+10269_miaoshu,购买竞技场出战点数达到20次,Purchase Arena Entries 20 times.
+10270_miaoshu,购买竞技场出战点数达到50次,Purchase Arena Entries 50 times.
+10271_miaoshu,购买宠物技能点数达到1次,Purchase Monster Ability Points once.
+10272_miaoshu,购买宠物技能点数达到5次,Purchase Monster Ability Points 5 times.
+10273_miaoshu,购买宠物技能点数达到10次,Purchase Monster Ability Points 10 times.
+10274_miaoshu,购买宠物技能点数达到20次,Purchase Monster Ability Points 20 times.
+10275_miaoshu,购买宠物技能点数达到50次,Purchase Monster Ability Points 50 times.
+10276_miaoshu,点亮宠物头像达到5个,Accumulate 5 Monster Avatars.
+10277_miaoshu,点亮宠物头像达到10个,Accumulate 10 Monster Avatars.
+10278_miaoshu,点亮宠物头像达到20个,Accumulate 20 Monster Avatars.
+10279_miaoshu,点亮宠物头像达到50个,Accumulate 50 Monster Avatars.
 story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird."
 story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…"
+biaoti8023,挑战守护者,挑战守护者
+biaoti8024,抵御入侵者,抵御入侵者
+mubiao8023,完成1次神话守护者,完成1次神话守护者
+mubiao8024,完成1次神怪入侵,完成1次神怪入侵

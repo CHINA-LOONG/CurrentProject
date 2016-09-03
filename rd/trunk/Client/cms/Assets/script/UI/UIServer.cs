@@ -219,8 +219,8 @@ public class UIServer : UIBase {
                     serverPlayerInfo.Add(item.Value[i]);
                 }                
             }
-            serverName = item.Value[item.Value.Count - 1].serverIndex + " - " + item.Value[item.Value.Count - 1].serverName;
-            serverItemData.sServerType.text = item.Value[item.Value.Count - 1].serverType.ToString();
+            serverName = item.Value[0].serverIndex + " - " + item.Value[0].serverName;
+            serverItemData.sServerType.text = item.Value[0].serverType.ToString();
         }
         serverPlayerInfo.Sort(ServerSort);//按等级最高排序
         if (PlayerPrefs.GetString("_serverName") != string.Empty)
@@ -243,6 +243,7 @@ public class UIServer : UIBase {
         SetTextColor( serverItemData.sServerType);
         currServerName.text = serverName;
         serverItemData.sServerName.text = serverName;
+        PlayerPrefs.SetString("_serverName", serverName);
     }
     //------------------------------------------------------------------------------------------------------
     UIServerData GetServerData(string serverId)

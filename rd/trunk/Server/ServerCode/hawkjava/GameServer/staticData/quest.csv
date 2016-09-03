@@ -186,6 +186,8 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 8014,23,2,公会许愿,biaoti8014,mubiao8014,task_rmb_icon,20,2,-1,-1,societypray,,1,80014,0,0,,7_6
 8012,21,2,完成大冒险,biaoti8012,mubiao8012,task_rmb_icon,22,2,-1,-1,adventure,,1,80012,0,0,,13_1
 8015,24,2,完成15个每日,biaoti8015,mubiao8015,task_rmb_icon,22,2,-1,-1,questtype-x,2,15,80015,0,0,,
+8023,24,2,完成1次神话挑战者,biaoti8023,mubiao8023,task_rmb_icon,12,2,-1,-1,mythoenter,,1,80023,0,0,,13_5
+8024,24,2,完成1次神怪入侵,biaoti8024,mubiao8024,task_rmb_icon,28,2,-1,-1,bossenter,,1,80024,0,0,,13_6
 9001,1000,2,午饭,tili1,tilitips1,task_rmb_icon,1,2,301,302,free,,1,tili1,0,0,,
 9002,1000,2,晚饭,tili2,tilitips2,task_rmb_icon,1,2,303,304,free,,1,tili2,0,0,,
 101,51,3,等级提升至5,10001_name,10001_miaoshu,task_rmb_icon,1,1,-1,-1,level,,5,10001_reward,0,0,,

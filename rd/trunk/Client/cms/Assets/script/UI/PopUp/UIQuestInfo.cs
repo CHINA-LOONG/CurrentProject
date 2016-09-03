@@ -9,7 +9,7 @@ public class UIQuestInfo : UIBase
     public static string ViewName = "UIQuestInfo";
 
     //public static void Open(int questId)
-    public static UIQuestInfo Open(QuestItemInfo quest, System.Action StartEvent = null, System.Action<float> EndEvent = null)
+    public static UIQuestInfo Open(QuestData quest, System.Action StartEvent = null, System.Action<float> EndEvent = null)
     {
         //questItem quest = StaticDataMgr.Instance.GetQuestData(questId);
 
@@ -19,16 +19,16 @@ public class UIQuestInfo : UIBase
     }
 
     public Button btn_confirm;
-    public Text text_Title;
-    public Text text_Finish;
-    public Text text_Quest;
+    public Text text_Name;
+    public Text text_Desc;
+    public Text text_Confrim;
 
     public Transform rewardParent;
 
     public Animator animator;
     public GameObject effect;
 
-    private QuestItemInfo info;
+    private QuestData info;
     public System.Action StartEvent;
     public System.Action<float> EndEvent;
 
@@ -41,12 +41,13 @@ public class UIQuestInfo : UIBase
         OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;
     }
-    void ShowWithData(QuestItemInfo info, System.Action StartEvent, System.Action<float> EndEvent)
+    void ShowWithData(QuestData info, System.Action StartEvent, System.Action<float> EndEvent)
     {
         this.info = info;
         this.StartEvent = StartEvent;
         this.EndEvent = EndEvent;
-        text_Quest.text =StaticDataMgr.Instance.GetTextByID(info.staticData.name);
+        text_Name.text =StaticDataMgr.Instance.GetTextByID(info.staticData.name);
+        text_Desc.text = StaticDataMgr.Instance.GetTextByID(info.staticData.desc);
         SetReward(info.staticData.rewardId);
     }
     //创建奖励对象
@@ -120,9 +121,9 @@ public class UIQuestInfo : UIBase
     void OnLanguageChanged()
     {
         //TODO: change language
-        text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_reward_title");
-        text_Finish.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+        text_Confrim.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
+
     #region UIBase
     public override void Init()
     {

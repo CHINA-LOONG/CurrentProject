@@ -81,6 +81,11 @@ public class GameConfig : MonoBehaviour {
     public int sociatyTaskMaxCount = 3;
     public int sociatyTeamMaxMember = 3;
 
+    //公会基地
+    public int JidiPosition0Contribution = 0;
+    public int JidiPosition1Contribution = 0;
+    public int JidiPosition2Contribution = 0;
+
     //功能开启等级限制
     public int OpenLevelForGonghui = 20;//公会开发等级
     public int OpenLevelForTower = 10;//通天塔开放等级

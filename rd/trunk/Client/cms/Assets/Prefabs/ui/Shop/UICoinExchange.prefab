@@ -35,6 +35,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &116246
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22428450}
+  - 222: {fileID: 22277032}
+  m_Layer: 5
+  m_Name: effectPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &116828
 GameObject:
   m_ObjectHideFlags: 1
@@ -534,6 +550,7 @@ MonoBehaviour:
   jinbiText: {fileID: 11484644}
   cancelButton: {fileID: 11448066}
   buyButton: {fileID: 11433932}
+  effectParent: {fileID: 22428450}
 --- !u!114 &11447632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,6 +874,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199402}
+--- !u!222 &22277032
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116246}
 --- !u!222 &22293028
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -950,6 +973,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22428450
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22440676}
+  m_RootOrder: 10
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -13, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22440676
 RectTransform:
   m_ObjectHideFlags: 1
@@ -970,6 +1010,7 @@ RectTransform:
   - {fileID: 22421136}
   - {fileID: 22416666}
   - {fileID: 22444692}
+  - {fileID: 22428450}
   m_Father: {fileID: 22428078}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}

@@ -139,7 +139,7 @@ public class PetDetailsAbilities : PetDetailsRight
             textLevel.gameObject.SetActive(true);
             text_Current.gameObject.SetActive(true);
             textLevel.text = string.Format("LVL({0}/{1})", spell.level, GameConfig.MaxMonsterLevel);
-            textCurrentDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsCurlvl), spellData.baseTipValue + spell.level * spellData.levelAdjust);
+            textCurrentDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsCurlvl), (spellData.baseTipValue + ((spell.level-1) * spellData.levelAdjust)*100).ToString("G"));
             if (spell.level >= GameConfig.MaxMonsterLevel)
             {
                 text_MaxLevel.gameObject.SetActive(true);
@@ -152,7 +152,7 @@ public class PetDetailsAbilities : PetDetailsRight
                 text_MaxLevel.gameObject.SetActive(false);
                 text_Next.gameObject.SetActive(true);
                 objLevelUP.SetActive(true);
-                textNextDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsNextlvl), spellData.baseTipValue + (spell.level + 1) * spellData.levelAdjust);
+                textNextDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(spellData.tipsNextlvl), ((spellData.baseTipValue + spell.level * spellData.levelAdjust)*100).ToString("G"));
                 textCoin.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
                 //判断金币
                 if (StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1) > GameDataMgr.Instance.PlayerDataAttr.coin)

@@ -151,14 +151,17 @@ public class JidiPetPosition : MonoBehaviour
         PB.HSAllianceBaseSendMonsterRet msgRet = message.GetProtocolBody<PB.HSAllianceBaseSendMonsterRet>();
         PB.AllianceBaseMonster zhushouMonster = new PB.AllianceBaseMonster();
         zhushouMonster.id = selectZhushouGuid;
+        zhushouMonster.monsterId = selectZhushouGuid;
         zhushouMonster.sendTime = msgRet.sendTime;
 
-        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(zhushouMonster.id);
+        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(selectZhushouGuid);
         zhushouMonster.bp = gameUnit.mBp;
         zhushouMonster.cfgId = gameUnit.pbUnit.id;
         zhushouMonster.stage = gameUnit.pbUnit.stage;
         zhushouMonster.level = gameUnit.pbUnit.level;
         zhushouMonster.position = positionIndex;
+
+        gameUnit.pbUnit.SetInAllianceBase(true);
 
         SociatyMyJidi.Instance.UpdatePositionData(positionIndex, zhushouMonster);
         SetPetData(zhushouMonster);
@@ -183,6 +186,12 @@ public class JidiPetPosition : MonoBehaviour
             SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
             return;
         }
+        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(petData.monsterId);
+        if (gameUnit != null)
+        {
+            gameUnit.pbUnit.SetInAllianceBase(false);
+        }
+
         PB.HSAllianceBaseRecallMonsterRet msgRet = message.GetProtocolBody<PB.HSAllianceBaseRecallMonsterRet>();
         JidiRewardConform.OpenWith(msgRet.coinDefend, msgRet.coinHire);
         SetPetData(null);
@@ -193,15 +202,15 @@ public class JidiPetPosition : MonoBehaviour
     {
         if(0==index)
         {
-            return 0;
+            return GameConfig.Instance.JidiPosition0Contribution;
         }
         else if ( 1== index)
         {
-            return 1000;
+            return GameConfig.Instance.JidiPosition1Contribution;
         }
         else
         {
-            return 2000;
+            return GameConfig.Instance.JidiPosition2Contribution;
         }
     }
 }

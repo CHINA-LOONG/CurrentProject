@@ -89,7 +89,7 @@ public class UIBattle : UIBase
             BattleController.Instance.BattleGroup.EnemyFieldList
             );
 
-        m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
+        m_BattleSpeed = PlayerPrefs.GetFloat("battleSpeed");
         if (Mathf.Abs(m_BattleSpeed) <= BattleConst.floatZero)
         {
             m_BattleSpeed = 1.0f;
@@ -327,6 +327,7 @@ public class UIBattle : UIBase
         if (isShow == true)
         {
             mirrorTrans.anchoredPosition -= BattleConst.uiFarDistance;
+            OnSetMirrorModeState(false, false);
         }
         else
         {

@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class QuestItemInfo
-{
-    public QuestData serverData;
-    public QuestStaticData staticData;
-}
+//public class QuestItemInfo
+//{
+//    public QuestData serverData;
+//    public QuestStaticData staticData;
+//}
 
 public class questItem : MonoBehaviour
 {
@@ -26,11 +26,11 @@ public class questItem : MonoBehaviour
     private string causeId="";
 
     //private QuestItemInfo curData;
-    private QuestItemInfo curData;
+    private QuestData curData;
     public List<GameObject> rewardItems = new List<GameObject>();
 
-    public System.Action<QuestItemInfo> onClickTodoit;
-    public System.Action<QuestItemInfo> onClickSubmit;
+    public System.Action<QuestData> onClickTodoit;
+    public System.Action<QuestData> onClickSubmit;
 
     private System.Action onClickEvent = null;
     void Start()
@@ -40,13 +40,13 @@ public class questItem : MonoBehaviour
         EventTriggerListener.Get(btn_Submit.gameObject).onClick = OnClickSubmit;
     }
 
-    public void ReLoadData(QuestItemInfo info)
+    public void ReLoadData(QuestData info)
     {
         curData = info;
         text_Name.text = StaticDataMgr.Instance.GetTextByID(info.staticData.name);
         text_Desc.text = StaticDataMgr.Instance.GetTextByID(info.staticData.desc);
 
-        text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
+        text_progress.text = info.progress + "/" + info.staticData.goalCount;
         SetReward(info.staticData.rewardId);
 
         if (StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) != null &&
@@ -57,7 +57,7 @@ public class questItem : MonoBehaviour
         }
         else
         {
-            SetState((info.serverData.progress >= info.staticData.goalCount), true);
+            SetState((info.progress >= info.staticData.goalCount), true);
         }
         if (curData.staticData.PathList != null)
         {
@@ -67,7 +67,6 @@ public class questItem : MonoBehaviour
             parse.GetResult(curData.staticData.PathList, out name, out onClickEvent, out condition);
         }
     }
-
     void SetState(bool finish, bool accept=true, string cause = "")
     {
         btn_Todoit.gameObject.SetActive(false);
@@ -79,8 +78,10 @@ public class questItem : MonoBehaviour
             causeId = cause;
             text_Cause.text = StaticDataMgr.Instance.GetTextByID(causeId); 
         }
-        else if (finish) btn_Submit.gameObject.SetActive(true);
-        else btn_Todoit.gameObject.SetActive(true);
+        else if (finish)
+            btn_Submit.gameObject.SetActive(true);
+        else if (!string.IsNullOrEmpty(curData.staticData.path))
+            btn_Todoit.gameObject.SetActive(true);
     }
 
     void SetReward(string rewardId)
@@ -167,7 +168,7 @@ public class questItem : MonoBehaviour
             {
                 result = -1;
             }
-            else
+            else if (int.Parse(a.protocolData.itemId) > int.Parse(b.protocolData.itemId))
             {
                 result = 1;
             }
@@ -178,7 +179,7 @@ public class questItem : MonoBehaviour
             {
                 result = -1;
             }
-            else
+            else if (a.protocolData.type > b.protocolData.type)
             {
                 result = 1;
             }

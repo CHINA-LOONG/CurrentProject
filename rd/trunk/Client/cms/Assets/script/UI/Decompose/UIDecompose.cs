@@ -324,7 +324,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
             monsterInfos.Clear();
             foreach (var item in allMonster)
             {
-                if (item.Value.pbUnit.locked || CheckMainMonster(item.Value))
+                if (item.Value.pbUnit.IsLocked() || CheckMainMonster(item.Value))
                 {
                     continue;
                 }

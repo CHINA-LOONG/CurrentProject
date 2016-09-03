@@ -8,13 +8,6 @@ public class UIQuest : UIBase,
 {
     public static string ViewName = "UIQuest";
 
-    enum QuestType
-    {
-        StoryType,
-        DailyType,
-        OtherType
-    }
-
     public Button btn_Close;
     public Text text_Title;
 
@@ -48,13 +41,9 @@ public class UIQuest : UIBase,
         }
     }
 
-    private List<questItem> items = new List<questItem>();
-
-    private Dictionary<int, QuestItemInfo> QuestList = new Dictionary<int, QuestItemInfo>();
-    private List<QuestItemInfo> StoryList = new List<QuestItemInfo>();
-    private List<QuestItemInfo> DailyList = new List<QuestItemInfo>();
-    private List<QuestItemInfo> OtherList = new List<QuestItemInfo>();
-    private List<QuestItemInfo> CurrentList;
+    public List<HomeButton> tabControl = new List<HomeButton>();
+    
+    private List<QuestData> CurrentList;
 
     void Start()
     {
@@ -65,6 +54,20 @@ public class UIQuest : UIBase,
     public void Refresh(int select=-1)
     {
         selIndex = (select == -1 ? selIndex : select);
+
+        #region 控制开放等级
+
+        tabControl[0].gameObject.SetActive(UIUtil.CheckIsStoryQuestOpened());
+        tabControl[2].gameObject.SetActive(UIUtil.CheckIsDailyQuestOpened());
+        if (selIndex==2&&!UIUtil.CheckIsDailyQuestOpened())
+        {
+            selIndex = 0;
+        }
+        if (selIndex==0&&!UIUtil.CheckIsStoryQuestOpened())
+        {
+            selIndex = 1;
+        }
+        #endregion
 
         if (tabIndex!=selIndex)
         {
@@ -78,83 +81,33 @@ public class UIQuest : UIBase,
 
     void ReLoadData(int index,bool record=false)
     {
-        switch ((QuestType)index)
+        GameQuestData questData = GameDataMgr.Instance.PlayerDataAttr.gameQuestData;
+        tabControl[0].ShowTip = questData.StoryFinish;
+        tabControl[1].ShowTip = questData.DailyFinish;
+        tabControl[2].ShowTip = questData.OtherFinish;
+
+        switch ((QuestType)(index+1))
         {
             case QuestType.StoryType:
-                CurrentList = new List<QuestItemInfo>(StoryList);
+                CurrentList = new List<QuestData>(questData.StoryList);
                 break;
             case QuestType.DailyType:
-                CurrentList = new List<QuestItemInfo>(DailyList);
+                CurrentList = new List<QuestData>(questData.DailyList);
                 break;
             case QuestType.OtherType:
-                CurrentList = new List<QuestItemInfo>(OtherList);
+                CurrentList = new List<QuestData>(questData.OtherList);
                 break;
             default:
                 Logger.LogError("选择类型错误");
                 return;
         }
+        CurrentList.Sort();
         scrollView.InitContentSize(CurrentList.Count, this, record);
-    }
-
-    void RefreshScrollList()
-    {
-        scrollView.InitContentSize(CurrentList.Count, this);
     }
 
     public void OnQuestChanged()
     {
-        Dictionary<int, QuestData> list = GameDataMgr.Instance.PlayerDataAttr.gameQuestData.questList;
-        QuestList.Clear();
-        StoryList.Clear();
-        DailyList.Clear();
-        OtherList.Clear();
-        Dictionary<int, QuestItemInfo> groupUsedTime = new Dictionary<int, QuestItemInfo>();
-        foreach (KeyValuePair<int, QuestData> item in list)
-        {
-            QuestItemInfo info = new QuestItemInfo();
-            info.serverData = item.Value;
-            info.staticData = StaticDataMgr.Instance.GetQuestData(item.Value.questId);
-
-            if (info.staticData == null) continue;
-            QuestList.Add(info.serverData.questId, info);
-
-            TimeStaticData beginTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId);
-            TimeStaticData endTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeEndId);
-            if (beginTime != null && endTime != null)
-            {
-                if (endTime < GameTimeMgr.Instance.GetServerTime()) continue;//任务已经结束
-                //保证每个时间任务组仅且只显示一个任务
-                if (groupUsedTime.ContainsKey(info.staticData.group))
-                {
-                    if (beginTime < StaticDataMgr.Instance.GetTimeData(groupUsedTime[info.staticData.group].staticData.timeBeginId))
-                    {
-                        groupUsedTime[info.staticData.group] = info;
-                    }
-                }
-                else
-                {
-                    groupUsedTime.Add(info.staticData.group, info);
-                }
-                continue;//时间任务不计入其他任务类型
-            }
-
-            if ((QuestType)(info.staticData.type - 1) == QuestType.StoryType)
-                StoryList.Add(info);
-            else if ((QuestType)(info.staticData.type - 1) == QuestType.DailyType)
-                DailyList.Add(info);
-            else if ((QuestType)(info.staticData.type - 1) == QuestType.OtherType)
-                OtherList.Add(info);
-        }
-        //把包含时间的任务分发到对应的任务类型中去
-        foreach (QuestItemInfo item in groupUsedTime.Values)
-        {
-            if ((QuestType)(item.staticData.type - 1) == QuestType.StoryType)
-                StoryList.Add(item);
-            else if ((QuestType)(item.staticData.type - 1) == QuestType.DailyType)
-                DailyList.Add(item);
-            else if ((QuestType)(item.staticData.type - 1) == QuestType.OtherType)
-                OtherList.Add(item);
-        }
+        ReLoadData(tabIndex, true);
     }
     
     void OnSubmitReturn(ProtocolMessage msg)
@@ -165,25 +118,24 @@ public class UIQuest : UIBase,
             return;
         }
         PB.HSQuestSubmitRet result = msg.GetProtocolBody<PB.HSQuestSubmitRet>();
-        QuestItemInfo item = null;
-        QuestList.TryGetValue(result.questId, out item);
-        if (item != null)
+
+        QuestData quest = GameDataMgr.Instance.PlayerDataAttr.gameQuestData.GetQuestById(result.questId);
+        if (quest != null)
         {
-            uiQuestInfo = UIQuestInfo.Open(QuestList[result.questId], SubmitStartEvent,SubmitEndEvent);
-            CurrentList.Remove(item);
-            GameDataMgr.Instance.PlayerDataAttr.gameQuestData.RemoveQuest(result.questId);
-            GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
+            System.Action startEvent = () =>
+            {
+                scrollView.InitContentSize(CurrentList.Count, this, true);
+            };
+            System.Action<float> endEvent = (time) =>
+            {
+                int questId = quest.questId;
+                GameDataMgr.Instance.PlayerDataAttr.gameQuestData.QuestRemove(new List<int>() { quest.questId });
+                CheckPlayerData();
+            };
+            uiQuestInfo = UIQuestInfo.Open(quest, startEvent, endEvent);
+            CurrentList.Remove(quest);
         }
     }
-    void SubmitStartEvent()
-    {
-        scrollView.InitContentSize(CurrentList.Count, this,true);
-    }
-    void SubmitEndEvent(float delay)
-    {
-        ReLoadData(tabIndex,true);
-    }
-
 
     void ClickCloseButton(GameObject go)
     {
@@ -233,12 +185,34 @@ public class UIQuest : UIBase,
         text_other.text = StaticDataMgr.Instance.GetTextByID("quest_liezhuanrenwu");
     }
 
+    #region 检测玩家等级疲劳值变化
+
+    private int playerLevel;
+    private int playerFatigue;
+
+    void SavePlayerData()
+    {
+        playerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
+        playerFatigue = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
+    }
+
+    void CheckPlayerData()
+    {
+        if (playerLevel != GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        {
+            LevelUp.OpenWith(playerLevel,
+                             GameDataMgr.Instance.PlayerDataAttr.LevelAttr,
+                             playerFatigue,
+                             GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+        }
+    }
+    
+    #endregion
+
     #region UIBase
     //初始化状态
     public override void Init()
     {
-        OnQuestChanged();
-
         if (animator != null)
         {
             animator.SetTrigger("TriggerIn");
@@ -270,7 +244,6 @@ public class UIQuest : UIBase,
         questItem quest = item.GetComponent<questItem>();
         quest.ReLoadData(CurrentList[index]);
     }
-
     public Transform CreateData(Transform parent, int index = 0)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("questItem");
@@ -284,52 +257,36 @@ public class UIQuest : UIBase,
         }
         return null;
     }
-
     public void CleanData(List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }
 
-    void OnClickTodoit(QuestItemInfo quest)
+    void OnClickTodoit(QuestData quest)
     {
-        //uiQuestInfo = UIQuestInfo.Open(quest, SubmitStartEvent, SubmitEndEvent);
-        //CurrentList.Remove(quest);
+        //用于测试领取奖励
+        //if (quest != null)
+        //{
+        //    System.Action startEvent = () =>
+        //    {
+        //        scrollView.InitContentSize(CurrentList.Count, this, true);
+        //    };
+        //    System.Action<float> endEvent = (time) =>
+        //    {
+        //        int questId = quest.questId;
+        //        GameDataMgr.Instance.PlayerDataAttr.gameQuestData.QuestRemove(new List<int>() { quest.questId });
+        //    };
+        //    uiQuestInfo = UIQuestInfo.Open(quest, startEvent, endEvent);
+        //    CurrentList.Remove(quest);
+        //}
     }
-    void OnClickSubmit(QuestItemInfo quest)
+    void OnClickSubmit(QuestData quest)
     {
         PB.HSQuestSubmit param = new PB.HSQuestSubmit();
-        param.questId = quest.serverData.questId;
+        param.questId = quest.questId;
         GameApp.Instance.netManager.SendMessage(PB.code.QUEST_SUBMIT_C.GetHashCode(), param);
+        SavePlayerData();
     }
 
     #endregion
-
-    public static int SortQuest(QuestItemInfo a, QuestItemInfo b)
-    {
-        int result = 0;
-        if (((a.serverData.progress >= a.staticData.goalCount) && (b.serverData.progress >= b.staticData.goalCount)) ||
-            ((a.serverData.progress < a.staticData.goalCount) && (b.serverData.progress < b.staticData.goalCount)))
-        {
-            if (a.serverData.questId < b.serverData.questId)
-            {
-                result = -1;
-            }
-            else
-            {
-                result = 1;
-            }
-        }
-        else
-        {
-            if (a.serverData.progress >= a.staticData.goalCount)
-            {
-                result = -1;
-            }
-            else
-            {
-                result = 1;
-            }
-        }
-        return result;
-    }
 }

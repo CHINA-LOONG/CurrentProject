@@ -303,6 +303,7 @@ public class UIUtil
         return false;
     }
 
+
     public static bool CheckIsComposeOpened()
     {
         return true;
@@ -310,6 +311,23 @@ public class UIUtil
     public static bool CheckIsDecomposeOpened()
     {
         return true;
+    }
+
+    public static bool CheckIsStoryQuestOpened()
+    {
+        if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= BattleConst.storyQuest)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static bool CheckIsDailyQuestOpened()
+    {
+        if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= BattleConst.dailyQuest)
+        {
+            return true;
+        }
+        return false;
     }
     public static string GetBaoshidituByType(int type)
     {

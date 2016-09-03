@@ -127,9 +127,14 @@ public class BattleConst
     public const float bpMagicLvl = 1.0f;
     public const float bpDotLvl = 1.0f;
 
-    public const float lifeBarDistance = 0.2f;
+    public const float lifeBarDistance = 0.15f;
     public const float floatZero = 0.00001f;
 
     public static Vector2 uiFarDistance = new Vector2(0.0f, 100000.0f);
     public static Quaternion rotYPIDegree = Quaternion.identity;//new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
+
+    //任务相关
+    //任务开放等级
+    public const int storyQuest = 1;
+    public const int dailyQuest = 10;
 }

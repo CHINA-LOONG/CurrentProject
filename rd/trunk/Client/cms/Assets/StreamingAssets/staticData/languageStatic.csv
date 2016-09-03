@@ -180,7 +180,7 @@ physicdebuffDotStrongName,撕裂（强）,Tear (Strong)
 magicdebuffDotSlightName,撕裂（弱）,Tear (Weak)
 magicdebuffDotMediumName,撕裂（中）,Tear (Normal)
 magicdebuffDotStrongName,撕裂（强）,Tear (Strong)
-defendName,防御,defence
+defendName,防御,Defense
 attackMetalCutSlightName,弱攻击,Weak Attack
 attackMetalCutMediumName,攻击,Attack
 attackMetalCutStrongName,强力攻击,Strong Attack
@@ -416,22 +416,22 @@ name_20005_suipian_wagui3,水蛙鬼碎片,wagui3suipian
 name_20006_suipian_xiaochou4,火小丑碎片,xiaochou4suipian
 name_20007_suipian_cike4,火刺壳碎片,cike4suipian
 name_20008_suipian_panshen2,木潘神碎片,panshen2suipian
-name_20009_suipian_huapo2,木花魄碎片,huapo2suipian
+name_20009_suipian_huapo2,花魄碎片,Flower Pixie Fragment
 name_20010_suipian_wushi3,水舞狮碎片,wushi3suipian
 name_20011_suipian_wushi4,火舞狮碎片,wushi4suipian
 name_20012_suipian_xiyiren4,火蜥蜴人碎片,xiyiren4suipian
-name_20013_suipian_mantuoluo2,木曼陀罗碎片,mantuoluo2suipian
+name_20013_suipian_mantuoluo2,苗娃曼陀罗碎片,Mandrake Fragment
 name_20014_suipian_hetong3,水河童碎片,hetong3suipian
 name_20015_suipian_longgongtongzi3,水龙宫童子碎片,longgongtongzi3suipian
 name_20016_suipian_xiyiren2,木蜥蜴人碎片,xiyiren2suipian
 name_20017_suipian_langren5,暗狼人碎片,langren5suipian
-name_20018_suipian_langren3,水狼人碎片,langren3suipian
+name_20018_suipian_langren3,狼人碎片,Werewolf Fragment
 name_20019_suipian_shuigui3,水水鬼碎片,shuigui3suipian
 name_20020_suipian_nvyao5,暗女妖碎片,nvyao5suipian
 name_20021_suipian_hapi1,光哈皮碎片,hapi1suipian
 name_20022_suipian_piying5,暗皮影碎片,piying5suipian
 name_20023_suipian_kairuisi5,暗凯瑞斯碎片,kairuisi5suipian
-name_20024_suipian_bingxuenvwang3,水冰雪女王碎片,bingxuenvwang3suipian
+name_20024_suipian_bingxuenvwang3,冰雪女王碎片,Chione Fragment
 name_30011_BloodStone_1,一级血魄石,Blood Stone(LV1)
 name_30012_BloodStone_2,二级血魄石,Blood Stone(LV2)
 name_30013_BloodStone_3,三级血魄石,Blood Stone(LV3)
@@ -552,22 +552,22 @@ tips_20005_suipian_wagui3,测试用tips,test Open Sockets: Reveals a Gem slot af
 tips_20006_suipian_xiaochou4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20007_suipian_cike4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20008_suipian_panshen2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20009_suipian_huapo2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20009_suipian_huapo2,用于合成木属性花魄,To combine Grass Flower Pixie
 tips_20010_suipian_wushi3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20011_suipian_wushi4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20012_suipian_xiyiren4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20013_suipian_mantuoluo2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20013_suipian_mantuoluo2,用于合成木属性苗娃曼陀罗,To combine Grass Mandrake
 tips_20014_suipian_hetong3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20015_suipian_longgongtongzi3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20016_suipian_xiyiren2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20017_suipian_langren5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20018_suipian_langren3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20018_suipian_langren3,用于合成水属性狼人,To combine Water Werewolf
 tips_20019_suipian_shuigui3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20020_suipian_nvyao5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20021_suipian_hapi1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20022_suipian_piying5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20023_suipian_kairuisi5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20024_suipian_bingxuenvwang3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20024_suipian_bingxuenvwang3,用于合成水属性冰雪女王,To combine Water Chione
 tips_30011_BloodStone_1,镶嵌在装备上可获得：体力 + 10,insert the gem into a equipment available ：STA + 10
 tips_30012_BloodStone_2,镶嵌在装备上可获得：体力 + 20,insert the gem into a equipment available ：STA + 20
 tips_30013_BloodStone_3,镶嵌在装备上可获得：体力 + 40,insert the gem into a equipment available ：STA + 40
@@ -764,9 +764,9 @@ bossxiaoxiang28Muling2,树灵,Kodama
 attackCutSlightTipsDescription,给单体目标造成一定比例物攻的物理伤害,Deals (proportion of physical ATK) physical damage to a single target
 attackCutSlightTipsCurlvl,造成{0}伤害,Makes {0} damage
 attackCutSlightTipsNextlvl,造成{0}伤害,Makes {0} damage
-bossdajie11Xiaochou4tips,人家是偶像，靠脸吃饭哒，打人能不打脸不。。。,人家是偶像，靠脸吃饭哒，打人能不打脸不。。。
+bossdajie11Xiaochou4tips,人家是偶像，靠脸吃饭哒，打人能不打脸不,人家是偶像，靠脸吃饭哒，打人能不打脸不。。。
 bossdajie12Mantuoluo2tips,根茎是植物的生命之源,根茎是植物的生命之源
-bossdajie13Langren3tips,手腕带了厚重的铁环，只是为了锻炼么。。。,手腕带了厚重的铁环，只是为了锻炼么。。。
+bossdajie13Langren3tips,手腕带了厚重的铁环，只是为了锻炼么,手腕带了厚重的铁环，只是为了锻炼么。。。
 bossdajie14Piying5tips,我们是三兄弟！,我们是三兄弟！
 bossdajie15Huapo2tips,花瓣就是我的武器,花瓣就是我的武器
 bossdajie16Xiaochou3tips,看我用我的大锤给你们轰塌！,看我用我的大锤给你们轰塌！

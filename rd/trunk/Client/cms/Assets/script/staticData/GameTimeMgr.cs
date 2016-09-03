@@ -45,45 +45,22 @@ public class GameTimeMgr
 
 		return serverTime;
 	}
-
     public DateTime GetServerDateTime()
     {
-        int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
+        int serverTimeStamp = GetServerTimeStamp();
         DateTime serverDateTime = GetTime(serverTimeStamp);
         return serverDateTime;
     }
-
     public  int GetServerTimeStamp()
     {
         int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
         return serverTimeStamp;
     }
 
-    public int GetYear()
+    public static int GetTimeStamp(DateTime time)
     {
-        return Now.Year;
+        return (int)(time - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalSeconds;
     }
-    public int GetMonth()
-    {
-        return Now.Month;
-    }
-    public int GetDay()
-    {
-        return Now.Day;
-    }
-    public int GetHour()
-    {
-        return Now.Hour;
-    }
-    public int GetMinute()
-    {
-        return Now.Minute;
-    }
-    public int GetSecond()
-    {
-        return Now.Second;
-    }
-
     public static DateTime GetTime(long timestamp)
     {
         DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));

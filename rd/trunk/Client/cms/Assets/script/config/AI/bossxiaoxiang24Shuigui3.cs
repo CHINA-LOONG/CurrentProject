@@ -32,7 +32,7 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Shuigui3Unit);
 
-		if (NormalScript.GetWpLifeLeft(Shuigui3Unit.battleUnit, "bossxiaoxiang24Shuigui3wp02")==0)
+		if (jishu1==1)
 		{
 			
 			if (GetAttackCount(Shuigui3Unit) % 7 == 0 && GetAttackCount(Shuigui3Unit) != 0) 

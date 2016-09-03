@@ -808,7 +808,8 @@ public class BattleController : MonoBehaviour
 
         MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
-		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
+        //no use now, only the last process has mirror
+		//GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
 		process.HideFireFocus ();
 
         //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
@@ -938,8 +939,6 @@ public class BattleController : MonoBehaviour
         MagicDazhaoController.Instance.ClearAll();
         PhyDazhaoController.Instance.ClearAll();
         process.HideFireFocus();
-
-
 
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
         instanceParam.deadMonsterCount = 0;

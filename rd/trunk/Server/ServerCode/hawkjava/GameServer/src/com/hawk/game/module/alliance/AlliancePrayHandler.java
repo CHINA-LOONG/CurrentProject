@@ -9,6 +9,7 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.BILog.BIGuildFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.SociatyPrayCfg;
 import com.hawk.game.config.SysBasicCfg;
@@ -17,6 +18,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.HS;
@@ -105,6 +107,15 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 					response.setSelfContribution(playerAllianceEntity.getContribution());
 					response.setAllianceContribution(allianceEntity.getContribution());
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_PRAY_S_VALUE, response));
+					
+					BILogger.getBIData(BIGuildFlowData.class).log(
+							player, 
+							Action.GUILD_PRAY, 
+							allianceEntity, 
+							prayCfg.getAllianceReward(), 
+							0, 
+							0
+							);
 				}
 			} finally {
 				if (objBase != null) {

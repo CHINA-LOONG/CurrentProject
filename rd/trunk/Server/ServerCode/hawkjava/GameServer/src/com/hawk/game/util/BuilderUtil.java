@@ -242,6 +242,7 @@ public class BuilderUtil {
 	public static AllianceBaseMonster.Builder genAllianceBaseMonster(AllianceBaseEntity baseEntity, boolean myBase){
 		AllianceBaseMonster.Builder builder = AllianceBaseMonster.newBuilder();
 		builder.setId(baseEntity.getId());
+		builder.setMonsterId(baseEntity.getMonsterBuilder().getMonsterId());
 		builder.setCfgId(baseEntity.getMonsterBuilder().getCfgId());
 		builder.setLevel(baseEntity.getMonsterBuilder().getLevel());
 		builder.setStage(baseEntity.getMonsterBuilder().getStage());

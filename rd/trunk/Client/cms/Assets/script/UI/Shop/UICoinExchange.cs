@@ -14,6 +14,8 @@ public class UICoinExchange : UIBase
 	
 	public	Button	cancelButton;
 	public	Button	buyButton;
+
+    public Transform effectParent;
 	
 	bool	isFirst = true;
 
@@ -125,17 +127,8 @@ public class UICoinExchange : UIBase
 		PB.HSShopGold2CoinRet msgret = msg.GetProtocolBody<PB.HSShopGold2CoinRet> ();
 		int getJinbi = msgret.totalReward;
 		StatisticsDataMgr.Instance.gold2coinExchargeTimes = msgret.changeCount;
-		string immsg = null;
-		if(msgret.multiple > 1)
-		{
-			immsg = string.Format(StaticDataMgr.Instance.GetTextByID("succbuy_baoji"),getJinbi);
-		}
-		else
-		{
-			immsg = string.Format(StaticDataMgr.Instance.GetTextByID("shop_succbuy"),getJinbi);
-		}
-	
-		UIIm.Instance.ShowSystemHints (immsg, (int) PB.ImType.PROMPT);
+
+        ExchangeCoinlEffect.CreateWith(effectParent, msgret.multiple > 1, getJinbi);
         RefreshExchangeUI();
     }
 }

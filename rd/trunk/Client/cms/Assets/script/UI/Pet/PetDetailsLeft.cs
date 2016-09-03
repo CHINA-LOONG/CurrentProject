@@ -42,10 +42,10 @@ public class PetDetailsLeft : MonoBehaviour,
     public Text textDisDesc;
     public bool IsLocked
     {
-        get { return curData.pbUnit.locked; }
+        get { return curData.pbUnit.IsLocked(); }
         set
         {
-            curData.pbUnit.locked = value;
+            curData.pbUnit.SetLocked(value);
             {
                 string normal;
                 string pressed;
@@ -98,7 +98,7 @@ public class PetDetailsLeft : MonoBehaviour,
         RefreshEquip(curData);
 
         textZhanli.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli") + curData.mBp;
-        IsLocked = curData.pbUnit.locked;
+        IsLocked = curData.pbUnit.IsLocked();
         RefreshLevelExp(curData.pbUnit.level, curData.pbUnit.curExp);
 
         dispositionData = StaticDataMgr.Instance.GetCharacterData(curUnitData.disposition);
@@ -165,7 +165,7 @@ public class PetDetailsLeft : MonoBehaviour,
     {
         PB.HSMonsterLock param = new PB.HSMonsterLock();
         param.monsterId = curData.pbUnit.guid;
-        param.locked = !curData.pbUnit.locked;
+        param.locked = !curData.pbUnit.IsLocked();
         GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_LOCK_C.GetHashCode(), param,false);
     }
     void OnClickAddExpBtn()

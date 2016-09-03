@@ -93,14 +93,15 @@ message AllianceTeamInfo
 message AllianceBaseMonster
 {
 	required int32 id = 1;
-	required string cfgId = 2;
-	required int32 stage = 3;
-	required int32 level = 4;
-	required int32 bp = 5;
-	optional int32 sendTime = 6;
-	optional int32 position = 7;
-	optional int32 reward = 8;
-	required string nickname = 9;
+	required int32 monsterId = 2;
+	required string cfgId = 3;
+	required int32 stage = 4;
+	required int32 level = 5;
+	required int32 bp = 6;
+	optional int32 sendTime = 7;
+	optional int32 position = 8;
+	optional int32 reward = 9;
+	required string nickname = 10;
 }
 
 // -------------------------------------------------------  工会基础协议 -----------------------------------------------------

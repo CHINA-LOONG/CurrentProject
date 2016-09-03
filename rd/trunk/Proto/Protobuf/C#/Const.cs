@@ -288,7 +288,10 @@ namespace PB
       USETOOLTRIPLEEXP = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"USETOOLFATIGUE", Value=4)]
-      USETOOLFATIGUE = 4
+      USETOOLFATIGUE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RAIDTICKET", Value=5)]
+      RAIDTICKET = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]
@@ -356,11 +359,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"NORMALSHOP", Value=1)]
       NORMALSHOP = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=2)]
-      ALLIANCESHOP = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=2)]
+      TOWERSHOP = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=3)]
-      TOWERSHOP = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=3)]
+      ALLIANCESHOP = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]
@@ -490,6 +493,20 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"Num_Spell_Type", Value=13)]
       Num_Spell_Type = 13
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"MonsterState")]
+    public enum MonsterState
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOCKED", Value=1)]
+      LOCKED = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_ALLIANCE_BASE", Value=2)]
+      IN_ALLIANCE_BASE = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_ADVENTURE", Value=4)]
+      IN_ADVENTURE = 4
     }
   
 }
