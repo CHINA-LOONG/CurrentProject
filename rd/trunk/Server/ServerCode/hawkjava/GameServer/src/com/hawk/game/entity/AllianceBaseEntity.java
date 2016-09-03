@@ -27,6 +27,9 @@ public class AllianceBaseEntity extends HawkDBEntity{
 	
 	@Column(name = "playerId")
 	private int playerId = 0;
+	
+	@Column(name = "nickname")
+	private String nickname = null;
 
 	@Column(name = "bp")
 	private int bp = 0;
@@ -77,6 +80,14 @@ public class AllianceBaseEntity extends HawkDBEntity{
 
 	public void setPlayerId(int playerId) {
 		this.playerId = playerId;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public int getBp() {

@@ -872,7 +872,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			if (monsterEntity == null) {
 				return Status.monsterError.MONSTER_NOT_EXIST_VALUE;
 			}
-			if (true == player.isMonsterBusy(monsterId)) {
+			if (monsterEntity.isStateSet(Const.MonsterState.IN_ADVENTURE_VALUE)) {
 				return Status.monsterError.MONSTER_BUSY_VALUE;
 			}
 		}

@@ -10159,6 +10159,21 @@ public final class Alliance {
      * <code>optional int32 reward = 8;</code>
      */
     int getReward();
+
+    // required string nickname = 9;
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
   }
   /**
    * Protobuf type {@code AllianceBaseMonster}
@@ -10249,6 +10264,11 @@ public final class Alliance {
             case 64: {
               bitField0_ |= 0x00000080;
               reward_ = input.readInt32();
+              break;
+            }
+            case 74: {
+              bitField0_ |= 0x00000100;
+              nickname_ = input.readBytes();
               break;
             }
           }
@@ -10446,6 +10466,49 @@ public final class Alliance {
       return reward_;
     }
 
+    // required string nickname = 9;
+    public static final int NICKNAME_FIELD_NUMBER = 9;
+    private java.lang.Object nickname_;
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nickname = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0;
       cfgId_ = "";
@@ -10455,6 +10518,7 @@ public final class Alliance {
       sendTime_ = 0;
       position_ = 0;
       reward_ = 0;
+      nickname_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10478,6 +10542,10 @@ public final class Alliance {
         return false;
       }
       if (!hasBp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNickname()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -10511,6 +10579,9 @@ public final class Alliance {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(8, reward_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(9, getNicknameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -10552,6 +10623,10 @@ public final class Alliance {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, reward_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(9, getNicknameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10685,6 +10760,8 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00000040);
         reward_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -10745,6 +10822,10 @@ public final class Alliance {
           to_bitField0_ |= 0x00000080;
         }
         result.reward_ = reward_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.nickname_ = nickname_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10787,6 +10868,11 @@ public final class Alliance {
         if (other.hasReward()) {
           setReward(other.getReward());
         }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000100;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -10809,6 +10895,10 @@ public final class Alliance {
           return false;
         }
         if (!hasBp()) {
+          
+          return false;
+        }
+        if (!hasNickname()) {
           
           return false;
         }
@@ -11135,6 +11225,80 @@ public final class Alliance {
       public Builder clearReward() {
         bitField0_ = (bitField0_ & ~0x00000080);
         reward_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string nickname = 9;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 9;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        nickname_ = value;
         onChanged();
         return this;
       }
@@ -49512,104 +49676,104 @@ public final class Alliance {
       "\n\020AllianceTeamInfo\022\021\n\tstartTime\030\001 \002(\005\022\016\n" +
       "\006taskId\030\002 \002(\005\022\016\n\006teamId\030\003 \002(\005\022%\n\007members",
       "\030\004 \003(\0132\024.AllianceTeamMemInfo\022*\n\nquestInf" +
-      "os\030\005 \003(\0132\026.AllianceTeamQuestInfo\"\216\001\n\023All" +
+      "os\030\005 \003(\0132\026.AllianceTeamQuestInfo\"\240\001\n\023All" +
       "ianceBaseMonster\022\n\n\002id\030\001 \002(\005\022\r\n\005cfgId\030\002 " +
       "\002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\n\n\002bp\030" +
       "\005 \002(\005\022\020\n\010sendTime\030\006 \001(\005\022\020\n\010position\030\007 \001(" +
-      "\005\022\016\n\006reward\030\010 \001(\005\"0\n\020HSAllianceCreate\022\014\n" +
-      "\004name\030\001 \002(\t\022\016\n\006notice\030\002 \002(\t\"(\n\023HSAllianc" +
-      "eCreateRet\022\021\n\tallianeId\030\001 \002(\005\"!\n\016HSAllia" +
-      "nceList\022\017\n\007reqPage\030\001 \002(\005\"Q\n\021HSAllianceLi" +
-      "stRet\022\021\n\ttotalPage\030\001 \002(\005\022)\n\014allianceList",
-      "\030\002 \003(\0132\023.AllianceSimpleInfo\"$\n\020HSAllianc" +
-      "eSearch\022\020\n\010nameOrId\030\001 \002(\t\":\n\023HSAllianceS" +
-      "earchRet\022#\n\006result\030\001 \003(\0132\023.AllianceSimpl" +
-      "eInfo\"\"\n\020HSAllianceNotice\022\016\n\006notice\030\001 \002(" +
-      "\t\"\025\n\023HSAllianceNoticeRet\"%\n\017HSAllianceAp" +
-      "ply\022\022\n\nallianceId\030\001 \002(\005\"(\n\022HSAllianceApp" +
-      "lyRet\022\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAllianceH" +
-      "anleApply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006accept\030\002 " +
-      "\002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027HSAllianceHanleApp" +
-      "lyRet\"+\n\025HSAllianceCancleApply\022\022\n\nallian",
-      "ceId\030\001 \002(\005\"\032\n\030HSAllianceCancleApplyRet\"8" +
-      "\n\023HSAllianceChangePos\022\020\n\010playerId\030\001 \002(\005\022" +
-      "\017\n\007postion\030\002 \002(\005\"\030\n\026HSAllianceChangePosR" +
-      "et\"\021\n\017HSAllianceLeave\"\024\n\022HSAllianceLeave" +
-      "Ret\")\n\025HSAllianceChangeOwner\022\020\n\010targetId" +
-      "\030\001 \002(\005\"\032\n\030HSAllianceChangeOwnerRet\"%\n\021HS" +
-      "AllianceMemKick\022\020\n\010targetId\030\001 \002(\005\"\026\n\024HSA" +
-      "llianceMemKickRet\"!\n\021HSAllianceLevelUp\022\014" +
-      "\n\004type\030\001 \002(\005\"\026\n\024HSAllianceLevelUpRet\"#\n\016" +
-      "HSAlliancePray\022\021\n\tprayIndex\030\001 \002(\005\"K\n\021HSA",
-      "lliancePrayRet\022\030\n\020selfContribution\030\001 \002(\005" +
-      "\022\034\n\024allianceContribution\030\002 \002(\005\"7\n\021HSAlli" +
-      "anceSettion\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoi" +
-      "n\030\002 \002(\010\"\026\n\024HSAllianceSettionRet\")\n\025HSAll" +
-      "ianceFatigueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HS" +
-      "AllianceFatigueGiveRet\"\017\n\rHSAllianceSyn\"" +
-      "\022\n\020HSAllianceSynRet\"\020\n\016HSAllianceData\"8\n" +
-      "\021HSAllianceDataRet\022#\n\014allianceData\030\001 \002(\013" +
-      "2\r.AllianceInfo\"\026\n\024HSAllianceSettingSyn\"" +
-      "=\n\027HSAllianceSettingSynRet\022\020\n\010minLevel\030\001",
-      " \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\024\n\022HSAllianceSelf" +
-      "Data\"\214\001\n\025HSAllianceSelfDataRet\022!\n\010selfDa" +
-      "ta\030\001 \002(\0132\017.AllianceMember\022\032\n\022contributio" +
-      "nReward\030\002 \002(\005\022\021\n\tprayCount\030\003 \002(\005\022\021\n\ttask" +
-      "Count\030\004 \002(\005\022\016\n\006teamID\030\005 \002(\005\"\023\n\021HSAllianc" +
-      "eMembers\";\n\024HSAllianceMembersRet\022#\n\nmemb" +
-      "erList\030\001 \003(\0132\017.AllianceMember\"\025\n\023HSAllia" +
-      "nceApplyList\"7\n\026HSAllianceApplyListRet\022\035" +
-      "\n\005apply\030\001 \003(\0132\016.AllianceApply\"\030\n\026HSAllia" +
-      "nceContribution\"f\n\031HSAllianceContributio",
-      "nRet\022\024\n\014contribution\030\001 \002(\005\022\031\n\021contributi" +
-      "onToday\030\002 \002(\005\022\030\n\020contribution3day\030\003 \002(\005\"" +
-      "\'\n\026HSAllianceContriReward\022\r\n\005index\030\001 \002(\005" +
-      "\"\033\n\031HSAllianceContriRewardRet\"6\n\025HSAllia" +
-      "nceApplyNotify\022\035\n\005apply\030\001 \002(\0132\016.Alliance" +
-      "Apply\">\n\033HSAllianceRemoveApplyNotify\022\020\n\010" +
-      "playerId\030\001 \001(\005\022\r\n\005clear\030\002 \002(\010\"(\n\026HSAllia" +
-      "nceNoticeNotify\022\016\n\006notice\030\001 \002(\t\"8\n\021HSMem" +
-      "berAddNotify\022#\n\nmemberData\030\001 \003(\0132\017.Allia" +
-      "nceMember\"(\n\024HSMemberRemoveNotify\022\020\n\010pla",
-      "yerId\030\001 \002(\005\";\n\027HSMemberPosChangeNotify\022\020" +
-      "\n\010playerId\030\001 \002(\005\022\016\n\006newPos\030\002 \002(\005\"&\n\023HSCh" +
-      "angeOwnerNotify\022\017\n\007ownerId\030\001 \002(\005\"H\n\023HSLe" +
-      "velChangeNotify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002" +
-      " \002(\005\022\024\n\014contribution\030\003 \002(\005\"*\n\024HSAlliance" +
-      "JoinNotify\022\022\n\nallianceId\030\001 \002(\005\"\027\n\025HSAlli" +
-      "anceLeaveNotify\"&\n\024HSAllianceCreateTeam\022" +
-      "\016\n\006taskId\030\001 \002(\005\")\n\027HSAllianceCreateTeamR" +
-      "et\022\016\n\006teamId\030\001 \002(\005\"$\n\022HSAllianceJoinTeam" +
-      "\022\016\n\006teamId\030\001 \002(\005\"\'\n\025HSAllianceJoinTeamRe",
-      "t\022\016\n\006teamId\030\001 \002(\005\"\'\n\024HSAllianceTaskAccep" +
-      "t\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTaskAcce" +
-      "ptRet\"\'\n\024HSAllianceTaskCommit\022\017\n\007questId" +
-      "\030\001 \002(\005\"\031\n\027HSAllianceTaskCommitRet\"\026\n\024HSA" +
-      "llianceTaskReward\"\031\n\027HSAllianceTaskRewar" +
-      "dRet\"\030\n\026HSAllianceDissolveTeam\"\033\n\031HSAlli" +
-      "anceDissolveTeamRet\"\024\n\022HSAllianceTeamLis" +
-      "t\"A\n\025HSAllianceTeamListRet\022(\n\rallianceTe" +
-      "ams\030\001 \003(\0132\021.AllianceTeamInfo\"\024\n\022HSAllian" +
-      "ceSelfTeam\"<\n\025HSAllianceSelfTeamRet\022#\n\010s",
-      "elfTeam\030\001 \002(\0132\021.AllianceTeamInfo\"T\n\037HSAl" +
-      "lianceTeamQuestFinishNotify\022\016\n\006teamId\030\001 " +
-      "\002(\005\022\017\n\007questId\030\002 \002(\005\022\020\n\010playerId\030\003 \002(\005\"@" +
-      "\n\030HSAllianceTeamJoinNotify\022$\n\006member\030\001 \002" +
-      "(\0132\024.AllianceTeamMemInfo\"-\n\031HSAllianceTe" +
-      "amLeaveNotify\022\020\n\010playerId\030\001 \002(\005\"-\n\033HSAll" +
-      "ianceTaskTimeoutNotify\022\016\n\006taskId\030\001 \002(\005\"@" +
-      "\n\031HSAllianceBaseSendMonster\022\021\n\tmonsterId" +
-      "\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\"0\n\034HSAllianceBa" +
-      "seSendMonsterRet\022\020\n\010sendTime\030\001 \002(\005\"/\n\033HS",
-      "AllianceBaseRecallMonster\022\020\n\010position\030\001 " +
-      "\002(\005\"F\n\036HSAllianceBaseRecallMonsterRet\022\022\n" +
-      "\ncoinDefend\030\001 \002(\005\022\020\n\010coinHire\030\002 \002(\005\"\024\n\022H" +
-      "SAllianceBaseList\"B\n\025HSAllianceBaseListR" +
-      "et\022)\n\013monsterInfo\030\001 \003(\0132\024.AllianceBaseMo" +
-      "nster\"\026\n\024HSAllianceMyBaseList\"D\n\027HSAllia" +
-      "nceMyBaseListRet\022)\n\013monsterInfo\030\001 \003(\0132\024." +
-      "AllianceBaseMonsterB\030\n\026com.hawk.game.pro" +
-      "tocol"
+      "\005\022\016\n\006reward\030\010 \001(\005\022\020\n\010nickname\030\t \002(\t\"0\n\020H" +
+      "SAllianceCreate\022\014\n\004name\030\001 \002(\t\022\016\n\006notice\030" +
+      "\002 \002(\t\"(\n\023HSAllianceCreateRet\022\021\n\tallianeI" +
+      "d\030\001 \002(\005\"!\n\016HSAllianceList\022\017\n\007reqPage\030\001 \002" +
+      "(\005\"Q\n\021HSAllianceListRet\022\021\n\ttotalPage\030\001 \002",
+      "(\005\022)\n\014allianceList\030\002 \003(\0132\023.AllianceSimpl" +
+      "eInfo\"$\n\020HSAllianceSearch\022\020\n\010nameOrId\030\001 " +
+      "\002(\t\":\n\023HSAllianceSearchRet\022#\n\006result\030\001 \003" +
+      "(\0132\023.AllianceSimpleInfo\"\"\n\020HSAllianceNot" +
+      "ice\022\016\n\006notice\030\001 \002(\t\"\025\n\023HSAllianceNoticeR" +
+      "et\"%\n\017HSAllianceApply\022\022\n\nallianceId\030\001 \002(" +
+      "\005\"(\n\022HSAllianceApplyRet\022\022\n\nallianceId\030\001 " +
+      "\002(\005\"G\n\024HSAllianceHanleApply\022\020\n\010playerId\030" +
+      "\001 \001(\005\022\016\n\006accept\030\002 \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027" +
+      "HSAllianceHanleApplyRet\"+\n\025HSAllianceCan",
+      "cleApply\022\022\n\nallianceId\030\001 \002(\005\"\032\n\030HSAllian" +
+      "ceCancleApplyRet\"8\n\023HSAllianceChangePos\022" +
+      "\020\n\010playerId\030\001 \002(\005\022\017\n\007postion\030\002 \002(\005\"\030\n\026HS" +
+      "AllianceChangePosRet\"\021\n\017HSAllianceLeave\"" +
+      "\024\n\022HSAllianceLeaveRet\")\n\025HSAllianceChang" +
+      "eOwner\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceCh" +
+      "angeOwnerRet\"%\n\021HSAllianceMemKick\022\020\n\010tar" +
+      "getId\030\001 \002(\005\"\026\n\024HSAllianceMemKickRet\"!\n\021H" +
+      "SAllianceLevelUp\022\014\n\004type\030\001 \002(\005\"\026\n\024HSAlli" +
+      "anceLevelUpRet\"#\n\016HSAlliancePray\022\021\n\tpray",
+      "Index\030\001 \002(\005\"K\n\021HSAlliancePrayRet\022\030\n\020self" +
+      "Contribution\030\001 \002(\005\022\034\n\024allianceContributi" +
+      "on\030\002 \002(\005\"7\n\021HSAllianceSettion\022\020\n\010minLeve" +
+      "l\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\026\n\024HSAllianceS" +
+      "ettionRet\")\n\025HSAllianceFatigueGive\022\020\n\010ta" +
+      "rgetId\030\001 \002(\005\"\032\n\030HSAllianceFatigueGiveRet" +
+      "\"\017\n\rHSAllianceSyn\"\022\n\020HSAllianceSynRet\"\020\n" +
+      "\016HSAllianceData\"8\n\021HSAllianceDataRet\022#\n\014" +
+      "allianceData\030\001 \002(\0132\r.AllianceInfo\"\026\n\024HSA" +
+      "llianceSettingSyn\"=\n\027HSAllianceSettingSy",
+      "nRet\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010" +
+      "\"\024\n\022HSAllianceSelfData\"\214\001\n\025HSAllianceSel" +
+      "fDataRet\022!\n\010selfData\030\001 \002(\0132\017.AllianceMem" +
+      "ber\022\032\n\022contributionReward\030\002 \002(\005\022\021\n\tprayC" +
+      "ount\030\003 \002(\005\022\021\n\ttaskCount\030\004 \002(\005\022\016\n\006teamID\030" +
+      "\005 \002(\005\"\023\n\021HSAllianceMembers\";\n\024HSAlliance" +
+      "MembersRet\022#\n\nmemberList\030\001 \003(\0132\017.Allianc" +
+      "eMember\"\025\n\023HSAllianceApplyList\"7\n\026HSAlli" +
+      "anceApplyListRet\022\035\n\005apply\030\001 \003(\0132\016.Allian" +
+      "ceApply\"\030\n\026HSAllianceContribution\"f\n\031HSA",
+      "llianceContributionRet\022\024\n\014contribution\030\001" +
+      " \002(\005\022\031\n\021contributionToday\030\002 \002(\005\022\030\n\020contr" +
+      "ibution3day\030\003 \002(\005\"\'\n\026HSAllianceContriRew" +
+      "ard\022\r\n\005index\030\001 \002(\005\"\033\n\031HSAllianceContriRe" +
+      "wardRet\"6\n\025HSAllianceApplyNotify\022\035\n\005appl" +
+      "y\030\001 \002(\0132\016.AllianceApply\">\n\033HSAllianceRem" +
+      "oveApplyNotify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005clea" +
+      "r\030\002 \002(\010\"(\n\026HSAllianceNoticeNotify\022\016\n\006not" +
+      "ice\030\001 \002(\t\"8\n\021HSMemberAddNotify\022#\n\nmember" +
+      "Data\030\001 \003(\0132\017.AllianceMember\"(\n\024HSMemberR",
+      "emoveNotify\022\020\n\010playerId\030\001 \002(\005\";\n\027HSMembe" +
+      "rPosChangeNotify\022\020\n\010playerId\030\001 \002(\005\022\016\n\006ne" +
+      "wPos\030\002 \002(\005\"&\n\023HSChangeOwnerNotify\022\017\n\007own" +
+      "erId\030\001 \002(\005\"H\n\023HSLevelChangeNotify\022\014\n\004typ" +
+      "e\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\024\n\014contribution\030\003" +
+      " \002(\005\"*\n\024HSAllianceJoinNotify\022\022\n\nalliance" +
+      "Id\030\001 \002(\005\"\027\n\025HSAllianceLeaveNotify\"&\n\024HSA" +
+      "llianceCreateTeam\022\016\n\006taskId\030\001 \002(\005\")\n\027HSA" +
+      "llianceCreateTeamRet\022\016\n\006teamId\030\001 \002(\005\"$\n\022" +
+      "HSAllianceJoinTeam\022\016\n\006teamId\030\001 \002(\005\"\'\n\025HS",
+      "AllianceJoinTeamRet\022\016\n\006teamId\030\001 \002(\005\"\'\n\024H" +
+      "SAllianceTaskAccept\022\017\n\007questId\030\001 \002(\005\"\031\n\027" +
+      "HSAllianceTaskAcceptRet\"\'\n\024HSAllianceTas" +
+      "kCommit\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianceTa" +
+      "skCommitRet\"\026\n\024HSAllianceTaskReward\"\031\n\027H" +
+      "SAllianceTaskRewardRet\"\030\n\026HSAllianceDiss" +
+      "olveTeam\"\033\n\031HSAllianceDissolveTeamRet\"\024\n" +
+      "\022HSAllianceTeamList\"A\n\025HSAllianceTeamLis" +
+      "tRet\022(\n\rallianceTeams\030\001 \003(\0132\021.AllianceTe" +
+      "amInfo\"\024\n\022HSAllianceSelfTeam\"<\n\025HSAllian",
+      "ceSelfTeamRet\022#\n\010selfTeam\030\001 \002(\0132\021.Allian" +
+      "ceTeamInfo\"T\n\037HSAllianceTeamQuestFinishN" +
+      "otify\022\016\n\006teamId\030\001 \002(\005\022\017\n\007questId\030\002 \002(\005\022\020" +
+      "\n\010playerId\030\003 \002(\005\"@\n\030HSAllianceTeamJoinNo" +
+      "tify\022$\n\006member\030\001 \002(\0132\024.AllianceTeamMemIn" +
+      "fo\"-\n\031HSAllianceTeamLeaveNotify\022\020\n\010playe" +
+      "rId\030\001 \002(\005\"-\n\033HSAllianceTaskTimeoutNotify" +
+      "\022\016\n\006taskId\030\001 \002(\005\"@\n\031HSAllianceBaseSendMo" +
+      "nster\022\021\n\tmonsterId\030\001 \002(\005\022\020\n\010position\030\002 \002" +
+      "(\005\"0\n\034HSAllianceBaseSendMonsterRet\022\020\n\010se",
+      "ndTime\030\001 \002(\005\"/\n\033HSAllianceBaseRecallMons" +
+      "ter\022\020\n\010position\030\001 \002(\005\"F\n\036HSAllianceBaseR" +
+      "ecallMonsterRet\022\022\n\ncoinDefend\030\001 \002(\005\022\020\n\010c" +
+      "oinHire\030\002 \002(\005\"\024\n\022HSAllianceBaseList\"B\n\025H" +
+      "SAllianceBaseListRet\022)\n\013monsterInfo\030\001 \003(" +
+      "\0132\024.AllianceBaseMonster\"\026\n\024HSAllianceMyB" +
+      "aseList\"D\n\027HSAllianceMyBaseListRet\022)\n\013mo" +
+      "nsterInfo\030\001 \003(\0132\024.AllianceBaseMonsterB\030\n" +
+      "\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -49663,7 +49827,7 @@ public final class Alliance {
           internal_static_AllianceBaseMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceBaseMonster_descriptor,
-              new java.lang.String[] { "Id", "CfgId", "Stage", "Level", "Bp", "SendTime", "Position", "Reward", });
+              new java.lang.String[] { "Id", "CfgId", "Stage", "Level", "Bp", "SendTime", "Position", "Reward", "Nickname", });
           internal_static_HSAllianceCreate_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_HSAllianceCreate_fieldAccessorTable = new

@@ -45,8 +45,8 @@ public class UIBattle : UIBase
 
     public MirrorDray m_MirrorDray = null;
 
-    private int m_BattleSpeed = 1;
-	private	int	m_MaxSpeed = 3;
+    private float m_BattleSpeed = 1.0f;
+	private	float m_MaxSpeed = 2.2f;
     private Animator animator;
     private MsgBox.PrompCostMsg reviveWnd;
     private RectTransform mRootTrans;
@@ -90,9 +90,9 @@ public class UIBattle : UIBase
             );
 
         m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
-        if (m_BattleSpeed == 0)
+        if (Mathf.Abs(m_BattleSpeed) <= BattleConst.floatZero)
         {
-            m_BattleSpeed = 1;
+            m_BattleSpeed = 1.0f;
         }
         GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
@@ -320,26 +320,54 @@ public class UIBattle : UIBase
         m_PlayerGroupUI.SetBattleUnitVisible(id, visible);
     }
 
+    public void ShowDazhaoReleateUI(bool isShow)
+    {
+        m_ButtonSpeed.gameObject.SetActive(isShow);
+        RectTransform mirrorTrans = mirrorUI.gameObject.transform as RectTransform;
+        if (isShow == true)
+        {
+            mirrorTrans.anchoredPosition -= BattleConst.uiFarDistance;
+        }
+        else
+        {
+            mirrorTrans.anchoredPosition += BattleConst.uiFarDistance;
+        }
+    }
 	public void ShowUI(bool ishow)
     {
         //if (ishow == false)
         //{
         //    gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
         //}
+        bool isbossBattle = BattleController.Instance.battleType == BattleType.Boss;
+        if (mirrorUI != null)
+        {
+            mirrorUI.gameObject.SetActive(isbossBattle);
+        }
 
         //gameObject.SetActive (ishow);
-		if (ishow)
-        {
-            mRootTrans.anchoredPosition = new Vector2(0.0f, 0.0f);
+		if (ishow) 
+		{
             //InitMirrorDray();
+            mRootTrans.anchoredPosition = Vector2.zero;
             GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		}
 		else 
 		{
-            mRootTrans.anchoredPosition = new Vector2(0.0f, 100000.0f);
+            mRootTrans.anchoredPosition = BattleConst.uiFarDistance;
 			//DestroyMirrorDray();
-		}
-	}
+        }
+
+        if (null != m_MirrorDray)
+        {
+            m_MirrorDray.gameObject.SetActive(isbossBattle);
+        }
+        if (m_MirrorImage != null)
+        {
+            m_MirrorImage.gameObject.SetActive(isbossBattle);
+        }
+        
+    }
 
     void Update()
     {
@@ -408,7 +436,6 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.AddListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.AddListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
 		GameEventMgr.Instance.AddListener<bool,bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
-        GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
@@ -420,7 +447,6 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.RemoveListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
         GameEventMgr.Instance.RemoveListener<bool,bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
-        GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
@@ -450,7 +476,7 @@ public class UIBattle : UIBase
 		{
 			Logger.LogError("You Should set MirrorImage in the UIBattle prefab!");
 		}
-
+        /*
         GameObject go = ResourceMgr.Instance.LoadAsset("MirrorFindMonsterInfo");
 		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (m_MirrorImage.gameObject.transform,false);
@@ -459,7 +485,7 @@ public class UIBattle : UIBase
 		mminfo.Init ();
 
 		//m_MirrorImage.gameObject.SetActive(false);
-
+        */
 		//
 	}
 
@@ -486,7 +512,9 @@ public class UIBattle : UIBase
 	}
 
 	void DestroyMirrorDray()
-	{		
+	{
+        if (null == mirrorUI)
+            return;
 		var v = mirrorUI.GetComponentsInChildren<Animator> (true);
 		if (v != null && v.Length > 0)
 		{
@@ -528,10 +556,10 @@ public class UIBattle : UIBase
         if (BattleController.Instance.processStart == false)
             return;
 
-        m_BattleSpeed++;
+        m_BattleSpeed += 0.6f;
 		if (m_BattleSpeed > m_MaxSpeed)
         {
-            m_BattleSpeed = 1;
+            m_BattleSpeed = 1.0f;
         }
 
         PlayerPrefs.SetFloat("battleSpeed", m_BattleSpeed);
@@ -545,7 +573,7 @@ public class UIBattle : UIBase
 		for (int i = 0; i < m_SpeedNumImageList.Count; ++i)
 		{
 			subImg = m_SpeedNumImageList[i] as Image;
-			if (i + 1 == m_BattleSpeed)
+			if (Mathf.Abs(m_BattleSpeed - 1.0f - 0.6f * i) <= BattleConst.floatZero)
 			{
 				subImg.gameObject.SetActive(true);
 			}
@@ -585,7 +613,10 @@ public class UIBattle : UIBase
 		}
 		*/
 		//
-		m_MirrorDray.OnSetMirrorModeState (isMirrorMode, isMirrExitEffect);
+        if(null != m_MirrorDray)
+        {
+            m_MirrorDray.OnSetMirrorModeState(isMirrorMode, isMirrExitEffect);
+        }
 	}
     void OnTuoguanButtonClick(GameObject go)
     {
@@ -627,9 +658,9 @@ public class UIBattle : UIBase
 		dazhaoTip.Hide ();
     }
 
-	void OnChangeUIState(UiState uiState)
-	{
-		animator.SetInteger (AniControl.battleUIState, (int)uiState);
-	}
+	//void OnChangeUIState(UiState uiState)
+	//{
+		//animator.SetInteger (AniControl.battleUIState, (int)uiState);
+	//}
 #endregion
 }

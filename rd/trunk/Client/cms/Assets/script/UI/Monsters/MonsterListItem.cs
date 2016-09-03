@@ -26,6 +26,19 @@ public class MonsterListItem : MonoBehaviour
         ScrollViewEventListener.Get(/*btnCollect.*/gameObject).onClick = OnClickItem;
     }
 
+
+    public void MonsterIconLoadCallback(GameObject icon, System.EventArgs args)
+    {
+        iconMonster = icon.GetComponent<MonsterIcon>();
+        UIUtil.SetParentReset(iconMonster.transform, posIcon);
+        //TODO: duplicate code
+        iconMonster.SetId(curData.pbUnit.guid.ToString());
+        iconMonster.SetMonsterStaticId(curData.pbUnit.id);
+        iconMonster.SetStage(curData.pbUnit.stage);
+        iconMonster.SetLevel(curData.pbUnit.level);
+        iconMonster.iconButton.gameObject.SetActive(false);
+    }
+
     public void ReloadData(GameUnit unit)
     {
         curData = unit;
@@ -34,21 +47,20 @@ public class MonsterListItem : MonoBehaviour
 
         if (iconMonster == null)
         {
-            iconMonster = MonsterIcon.CreateIcon();
-            UIUtil.SetParentReset(iconMonster.transform, posIcon);
+            MonsterIcon.CreateIconAsync(MonsterIconLoadCallback);        
+            //iconMonster = MonsterIcon.CreateIcon();
+            //UIUtil.SetParentReset(iconMonster.transform, posIcon);
         }
         else
         {
             iconMonster.gameObject.SetActive(true);
             iconMonster.Init();
+            iconMonster.SetId(curData.pbUnit.guid.ToString());
+            iconMonster.SetMonsterStaticId(curData.pbUnit.id);
+            iconMonster.SetStage(curData.pbUnit.stage);
+            iconMonster.SetLevel(curData.pbUnit.level);
+            iconMonster.iconButton.gameObject.SetActive(false);
         }
-        iconMonster.SetId(curData.pbUnit.guid.ToString());
-        iconMonster.SetMonsterStaticId(curData.pbUnit.id);
-        iconMonster.SetStage(curData.pbUnit.stage);
-        iconMonster.SetLevel(curData.pbUnit.level);
-        iconMonster.iconButton.gameObject.SetActive(false);
-
-
 
         UnitData petData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
         for (int i = 0; i < unit.equipList.Length; i++)

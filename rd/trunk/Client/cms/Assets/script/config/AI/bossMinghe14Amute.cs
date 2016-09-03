@@ -33,7 +33,7 @@ public class bossMinghe14Amute : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (AmuteUnit);
 
-		if (NormalScript.GetWpLifeLeftRatio(AmuteUnit.battleUnit, "bossMinghe14Amutewp03")==0)
+		if (NormalScript.GetWpLifeLeft(AmuteUnit.battleUnit, "bossMinghe14Amutewp03")==0)
 		{
 			
 			AmuteSpellDic.TryGetValue ("bossAmute1", out useSpell);
@@ -64,7 +64,7 @@ public class bossMinghe14Amute : BossAi {
 		if (args.wpID == "bossMinghe14Amutewp03" && jishu==0)
         {
 			target.TriggerEvent("Amute_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu ++;
         }
 	}

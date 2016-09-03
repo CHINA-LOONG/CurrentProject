@@ -27,6 +27,11 @@ public class GameConfig : MonoBehaviour {
     public float RecoveryMirrorEnegyUnit = 2;//每200毫秒恢复能量数值
     public float ConsumMirrorEnegyUnit = 4;//
 
+    public float RecoveryMirrorEnegyUnitOne = 2;//每200毫秒恢复能量数值
+    public float ConsumMirrorEnegyUnitOne = 4;//
+    public float RecoveryMirrorEnegyUnitTwo = 2;//每200毫秒恢复能量数值
+    public float ConsumMirrorEnegyUnitTwo = 2.5f;//
+
     //battle
     public  DG.Tweening.Ease InPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;
     public  DG.Tweening.Ease OutPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;
@@ -60,11 +65,11 @@ public class GameConfig : MonoBehaviour {
     //活力值恢复
     public int RestoreHuoLiNeedSeconds = 600;
 
-    public int FirstBackupOpenNeedLevel = 5;
+    public int FirstBackupOpenNeedLevel = 6;
     public int SecondBackupOpenNeedLevel = 10;
 
     public string saodangQuanId = "10003";
-    public int saodangOpenLevelForOneTimes = 15;//扫荡1次开启等级
+    public int saodangOpenLevelForOneTimes = 8;//扫荡1次开启等级
     public int saodangOpenLevelForTenTimes = 20;//扫荡10次开启等级
 
     //公会

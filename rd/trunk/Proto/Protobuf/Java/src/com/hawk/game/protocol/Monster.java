@@ -712,15 +712,15 @@ public final class Monster {
     com.hawk.game.protocol.Equip.EquipInfoOrBuilder getEquipInfosOrBuilder(
         int index);
 
-    // optional bool locked = 11 [default = false];
+    // optional int32 state = 11;
     /**
-     * <code>optional bool locked = 11 [default = false];</code>
+     * <code>optional int32 state = 11;</code>
      */
-    boolean hasLocked();
+    boolean hasState();
     /**
-     * <code>optional bool locked = 11 [default = false];</code>
+     * <code>optional int32 state = 11;</code>
      */
-    boolean getLocked();
+    int getState();
   }
   /**
    * Protobuf type {@code HSMonster}
@@ -831,7 +831,7 @@ public final class Monster {
             }
             case 88: {
               bitField0_ |= 0x00000100;
-              locked_ = input.readBool();
+              state_ = input.readInt32();
               break;
             }
           }
@@ -1107,20 +1107,20 @@ public final class Monster {
       return equipInfos_.get(index);
     }
 
-    // optional bool locked = 11 [default = false];
-    public static final int LOCKED_FIELD_NUMBER = 11;
-    private boolean locked_;
+    // optional int32 state = 11;
+    public static final int STATE_FIELD_NUMBER = 11;
+    private int state_;
     /**
-     * <code>optional bool locked = 11 [default = false];</code>
+     * <code>optional int32 state = 11;</code>
      */
-    public boolean hasLocked() {
+    public boolean hasState() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional bool locked = 11 [default = false];</code>
+     * <code>optional int32 state = 11;</code>
      */
-    public boolean getLocked() {
-      return locked_;
+    public int getState() {
+      return state_;
     }
 
     private void initFields() {
@@ -1134,7 +1134,7 @@ public final class Monster {
       disposition_ = 0;
       skill_ = java.util.Collections.emptyList();
       equipInfos_ = java.util.Collections.emptyList();
-      locked_ = false;
+      state_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1223,7 +1223,7 @@ public final class Monster {
         output.writeMessage(10, equipInfos_.get(i));
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeBool(11, locked_);
+        output.writeInt32(11, state_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1276,7 +1276,7 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(11, locked_);
+          .computeInt32Size(11, state_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1424,7 +1424,7 @@ public final class Monster {
         } else {
           equipInfosBuilder_.clear();
         }
-        locked_ = false;
+        state_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
@@ -1507,7 +1507,7 @@ public final class Monster {
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.locked_ = locked_;
+        result.state_ = state_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1602,8 +1602,8 @@ public final class Monster {
             }
           }
         }
-        if (other.hasLocked()) {
-          setLocked(other.getLocked());
+        if (other.hasState()) {
+          setState(other.getState());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2461,35 +2461,35 @@ public final class Monster {
         return equipInfosBuilder_;
       }
 
-      // optional bool locked = 11 [default = false];
-      private boolean locked_ ;
+      // optional int32 state = 11;
+      private int state_ ;
       /**
-       * <code>optional bool locked = 11 [default = false];</code>
+       * <code>optional int32 state = 11;</code>
        */
-      public boolean hasLocked() {
+      public boolean hasState() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional bool locked = 11 [default = false];</code>
+       * <code>optional int32 state = 11;</code>
        */
-      public boolean getLocked() {
-        return locked_;
+      public int getState() {
+        return state_;
       }
       /**
-       * <code>optional bool locked = 11 [default = false];</code>
+       * <code>optional int32 state = 11;</code>
        */
-      public Builder setLocked(boolean value) {
+      public Builder setState(int value) {
         bitField0_ |= 0x00000400;
-        locked_ = value;
+        state_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool locked = 11 [default = false];</code>
+       * <code>optional int32 state = 11;</code>
        */
-      public Builder clearLocked() {
+      public Builder clearState() {
         bitField0_ = (bitField0_ & ~0x00000400);
-        locked_ = false;
+        state_ = 0;
         onChanged();
         return this;
       }
@@ -12339,40 +12339,39 @@ public final class Monster {
       "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
       ".proto\032\024Protocol/Skill.proto\032\024Protocol/E" +
       "quip.proto\"?\n\016SynMonsterAttr\022\021\n\tmonsterI" +
-      "d\030\001 \002(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\"\334\001\n\t" +
+      "d\030\001 \002(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\"\324\001\n\t" +
       "HSMonster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 " +
       "\002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp" +
       "\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\017\n\007lazyExp\030\007 \002(\005\022\023\n" +
       "\013disposition\030\010 \002(\005\022\027\n\005skill\030\t \003(\0132\010.HSSk" +
-      "ill\022\036\n\nequipInfos\030\n \003(\0132\n.EquipInfo\022\025\n\006l" +
-      "ocked\030\013 \001(\010:\005false\"4\n\021HSMonsterInfoSync\022",
-      "\037\n\013monsterInfo\030\001 \003(\0132\n.HSMonster\"W\n\014HSMo" +
-      "nsterAdd\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022*\n" +
-      "\006reason\030\002 \001(\0162\r.RewardReason:\013SYS_PRESEN" +
-      "T\"\205\001\n\016HSMonsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005s" +
-      "tage\030\002 \001(\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004lazy\030" +
-      "\004 \001(\005:\0011\022\026\n\013disposition\030\005 \001(\005:\0011\022\027\n\005skil" +
-      "l\030\006 \003(\0132\010.HSSkill\"#\n\021HSMonsterCatchRet\022\016" +
-      "\n\006status\030\001 \002(\005\"#\n\016HSMonsterBreak\022\021\n\tmons" +
-      "terId\030\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006stat" +
-      "us\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonster",
-      "Feed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonsterId" +
-      "\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002" +
-      "(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003" +
-      " \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"6\n\020HSMo" +
-      "nsterSkillUp\022\021\n\tmonsterId\030\001 \002(\005\022\017\n\007skill" +
-      "Id\030\002 \002(\t\"F\n\023HSMonsterSkillUpRet\022\022\n\nskill" +
-      "Point\030\001 \002(\005\022\033\n\023skillPointTimeStamp\030\002 \002(\005" +
-      "\"?\n\020HSMonsterStageUp\022\021\n\tmonsterId\030\001 \002(\005\022" +
-      "\030\n\020consumeMonsterId\030\002 \003(\005\"\025\n\023HSMonsterSt" +
-      "ageUpRet\"2\n\rHSMonsterLock\022\021\n\tmonsterId\030\001",
-      " \002(\005\022\016\n\006locked\030\002 \002(\010\"5\n\020HSMonsterLockRet" +
-      "\022\021\n\tmonsterId\030\001 \002(\005\022\016\n\006locked\030\002 \002(\010\"\'\n\022H" +
-      "SMonsterDecompose\022\021\n\tmonsterId\030\001 \003(\005\"\027\n\025" +
-      "HSMonsterDecomposeRet\"4\n\020HSMonsterCompos" +
-      "e\022\r\n\005cfgId\030\001 \002(\t\022\021\n\tuseCommon\030\002 \002(\010\"\025\n\023H" +
-      "SMonsterComposeRetB\030\n\026com.hawk.game.prot" +
-      "ocol"
+      "ill\022\036\n\nequipInfos\030\n \003(\0132\n.EquipInfo\022\r\n\005s" +
+      "tate\030\013 \001(\005\"4\n\021HSMonsterInfoSync\022\037\n\013monst",
+      "erInfo\030\001 \003(\0132\n.HSMonster\"W\n\014HSMonsterAdd" +
+      "\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022*\n\006reason\030" +
+      "\002 \001(\0162\r.RewardReason:\013SYS_PRESENT\"\205\001\n\016HS" +
+      "MonsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001" +
+      "(\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011" +
+      "\022\026\n\013disposition\030\005 \001(\005:\0011\022\027\n\005skill\030\006 \003(\0132" +
+      "\010.HSSkill\"#\n\021HSMonsterCatchRet\022\016\n\006status" +
+      "\030\001 \002(\005\"#\n\016HSMonsterBreak\022\021\n\tmonsterId\030\001 " +
+      "\002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006status\030\001 \002(\005" +
+      "\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021\n\t",
+      "monsterId\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005\"h" +
+      "\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmo" +
+      "nsterId\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003 \002(\005\022\013\n\003" +
+      "exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"6\n\020HSMonsterSki" +
+      "llUp\022\021\n\tmonsterId\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\t" +
+      "\"F\n\023HSMonsterSkillUpRet\022\022\n\nskillPoint\030\001 " +
+      "\002(\005\022\033\n\023skillPointTimeStamp\030\002 \002(\005\"?\n\020HSMo" +
+      "nsterStageUp\022\021\n\tmonsterId\030\001 \002(\005\022\030\n\020consu" +
+      "meMonsterId\030\002 \003(\005\"\025\n\023HSMonsterStageUpRet" +
+      "\"2\n\rHSMonsterLock\022\021\n\tmonsterId\030\001 \002(\005\022\016\n\006",
+      "locked\030\002 \002(\010\"5\n\020HSMonsterLockRet\022\021\n\tmons" +
+      "terId\030\001 \002(\005\022\016\n\006locked\030\002 \002(\010\"\'\n\022HSMonster" +
+      "Decompose\022\021\n\tmonsterId\030\001 \003(\005\"\027\n\025HSMonste" +
+      "rDecomposeRet\"4\n\020HSMonsterCompose\022\r\n\005cfg" +
+      "Id\030\001 \002(\t\022\021\n\tuseCommon\030\002 \002(\010\"\025\n\023HSMonster" +
+      "ComposeRetB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12390,7 +12389,7 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
-              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", "EquipInfos", "Locked", });
+              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", "EquipInfos", "State", });
           internal_static_HSMonsterInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSMonsterInfoSync_fieldAccessorTable = new

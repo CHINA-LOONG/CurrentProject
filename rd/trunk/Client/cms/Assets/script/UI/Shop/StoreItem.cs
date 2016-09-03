@@ -39,7 +39,7 @@ public class StoreItem : MonoBehaviour
         }
         RefreshItemIcon(itemStaticData);
         itemName.text = itemStaticData.NameAttr;
-        priceText.text = string.Format("{0}", (int)(storeItemData.price  * storeItemData.discount));
+        priceText.text = string.Format("{0}", Mathf.Ceil(storeItemData.price  * storeItemData.discount));
 
         if (IsCoinEnough())
         {
@@ -58,7 +58,7 @@ public class StoreItem : MonoBehaviour
         {
             cheapPanel.gameObject.SetActive(true);
             oldPrice.text = (storeItemData.price).ToString();
-            offText.text = offText.text = string.Format("-{0}%", Mathf.CeilToInt(storeItemData.discount * 100));
+            offText.text = offText.text = string.Format("{0}%", Mathf.CeilToInt(storeItemData.discount * 100));
         }
     }
     private void RefreshItemIcon(ItemStaticData itemStaticData)
@@ -86,7 +86,7 @@ public class StoreItem : MonoBehaviour
         BuyItem.BuyItemParam param = new BuyItem.BuyItemParam();
         param.itemId = storeItemData.itemId;
         param.defaultbuyCount = 1;
-        param.maxCount = 20;
+        param.maxCount = 50;
         param.isShowCoinButton = false;
         BuyItem.OpenWith(param);
     }

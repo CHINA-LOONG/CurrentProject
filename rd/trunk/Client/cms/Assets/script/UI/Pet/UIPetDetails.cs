@@ -83,7 +83,7 @@ public class UIPetDetails : UIBase,
         btnStage.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
         btnRoles.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_roles");
         btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_advance");
-
+        btnDetails.gameObject.SetActive(false);
         btnRoles.gameObject.SetActive(false);
 
         leftView.IPetDetailsLeftDelegate = this;

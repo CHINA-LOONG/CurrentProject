@@ -45,7 +45,6 @@ public class UIShop : UIBase
 			ResourceMgr.Instance.DestroyAsset(listShopItem[i].gameObject);
 		}
 		listShopItem.Clear ();
-		UnBindListener ();
 	}
 
 	#endregion
@@ -70,13 +69,10 @@ public class UIShop : UIBase
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick ;
 		EventTriggerListener.Get (leftButton.gameObject).onClick = OnLeftButtonClick ;
 		EventTriggerListener.Get (rightButton.gameObject).onClick = OnRightButtonClick ;
-
-		BindListener ();
-		
 		isInit = true;
 	}
 
-	void BindListener()
+	void OnEnable()
 	{
 		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
 		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
@@ -86,14 +82,14 @@ public class UIShop : UIBase
         GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
     }
 	
-	void UnBindListener()
+	void OnDisable()
 	{
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
         GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
-        GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
-        GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
     }
 
 	void OnRefreshButtonClilck(GameObject go)
@@ -178,6 +174,7 @@ public class UIShop : UIBase
     void CheckOpendShop()
     {
         leftButton.gameObject.SetActive(true);
+        rightButton.gameObject.SetActive(true);
         if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
         {
             maxOpenShopIndex = (int)PB.shopType.ALLIANCESHOP;
@@ -189,6 +186,7 @@ public class UIShop : UIBase
         else
         {
             leftButton.gameObject.SetActive(false);
+            rightButton.gameObject.SetActive(false);
             maxOpenShopIndex = (int)PB.shopType.NORMALSHOP;
         }
     }

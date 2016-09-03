@@ -90,7 +90,7 @@ public class ShopItem : MonoBehaviour
         {
             cheapPanel.gameObject.SetActive(true);
             oldPrice.text = (itemData.price * itemData.count).ToString();
-            offText.text = string.Format("-{0}%", Mathf.CeilToInt(shopItemData.discount * 100));
+            offText.text = string.Format("{0}%", Mathf.CeilToInt(shopItemData.discount * 100));
 
             Sprite oldSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType, itemData.priceType)) as Sprite;
             if (null != oldSp)

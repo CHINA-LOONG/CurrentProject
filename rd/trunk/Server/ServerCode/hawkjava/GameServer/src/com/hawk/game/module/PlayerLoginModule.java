@@ -144,9 +144,6 @@ public class PlayerLoginModule extends PlayerModule {
 		// 发送登录成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
 
-		// 同步玩家信息
-		player.getPlayerData().syncPlayerInfo();
-
 		// 通知玩家其他模块玩家登录成功
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LOGIN, player.getXid());
 		if (!HawkApp.getInstance().postMsg(msg))

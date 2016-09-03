@@ -138,6 +138,7 @@ public class QuestCfg extends HawkConfigBase {
 		// 完成通天塔中X副本
 		case "tower":
 			goalTypeValue = GsConst.QuestGoalType.TOWER_INSTANCE;
+			paramClass = String.class;
 			break;
 		// 完成大冒险次数
 		case "adventure":

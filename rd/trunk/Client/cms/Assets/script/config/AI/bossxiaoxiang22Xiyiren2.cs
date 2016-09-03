@@ -55,7 +55,7 @@ public class bossxiaoxiang22Xiyiren2 : BossAi {
 		if (args.wpID == "bossxiaoxiang22Xiyiren2wp03" && jishu==0)
         {
 			target.TriggerEvent("Xiyiren2_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu ++;
         }
 	}

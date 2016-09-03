@@ -248,7 +248,7 @@ public class PlayerEquipModule extends PlayerModule{
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_LEVEL_S, response));
 		
 		MonsterCfg monsterCfg = null;
-		if (equipEntity.getMonsterId() != 0) {
+		if (equipEntity.getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
 			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
 		}
@@ -316,13 +316,15 @@ public class PlayerEquipModule extends PlayerModule{
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));
-		
+
 		MonsterCfg monsterCfg = null;
-		if (equipEntity.getMonsterId() != 0) {
+		if (equipEntity.getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
 			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
+
+			updateEquipStageStatistics(equipEntity.getMonsterId(), equipEntity.getStage());
 		}
-		
+
 		BILogger.getBIData(BIEquipAdvanceFlow.class).log(
 				player,
 				itemCfg, 
@@ -446,7 +448,7 @@ public class PlayerEquipModule extends PlayerModule{
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_GEM_S_VALUE, response));
 		
 		MonsterCfg monsterCfg = null;
-		if (equipEntity.getMonsterId() != 0) {
+		if (equipEntity.getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(equipEntity.getMonsterId());
 			monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterEntity.getCfgId());
 		}
@@ -571,30 +573,7 @@ public class PlayerEquipModule extends PlayerModule{
 		equipEntity.setMonsterId(monsterId);
 		equipEntity.notifyUpdate(true);
 
-		// 当前身上装备，从1~equipEntity.stage，达到每个品级的装备数量
-		// 与statistics比较，如果更大，则更新
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		Map<Integer, Long> monsterEquipMap = player.getPlayerData().getMonsterEquips(monsterId);
-		int stage = equipEntity.getStage();
-		int[] countOverStageList = new int[stage + 1];
-
-		for (Map.Entry<Integer, Long> entry : monsterEquipMap.entrySet()) {
-			EquipEntity monsterEquip = player.getPlayerData().getEquipById(entry.getValue());
-			for (int i = 1; i <= stage; ++i) {
-				if (monsterEquip.getStage() >= i) {
-					countOverStageList[i] += 1;
-				}
-			}
-		}
-		for (int i = 1; i <= stage; ++i) {
-			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStage(i)) {
-				statisticsEntity.setEquipMaxCountOverStage(i, countOverStageList[i]);
-			}
-			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStageDaily(i)) {
-				statisticsEntity.setEquipMaxCountOverStageDaily(i, countOverStageList[i]);
-			}
-		}
-		statisticsEntity.notifyUpdate(true);
+		updateEquipStageStatistics(monsterId, equipEntity.getStage());
 
 		HSEquipMonsterDressRet.Builder response = HSEquipMonsterDressRet.newBuilder();
 		response.setId(id);
@@ -711,30 +690,7 @@ public class PlayerEquipModule extends PlayerModule{
 		oldEntity.setMonsterId(GsConst.EQUIP_NOT_DRESS);
 		oldEntity.notifyUpdate(true);
 
-		// 当前身上装备，从1~equipEntity.stage，达到每个品级的装备数量
-		// 与statistics比较，如果更大，则更新
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		Map<Integer, Long> monsterEquipMap = player.getPlayerData().getMonsterEquips(monsterId);
-		int stage = newEntity.getStage();
-		int[] countOverStageList = new int[stage + 1];
-
-		for (Map.Entry<Integer, Long> entry : monsterEquipMap.entrySet()) {
-			EquipEntity monsterEquip = player.getPlayerData().getEquipById(entry.getValue());
-			for (int i = 1; i <= stage; ++i) {
-				if (monsterEquip.getStage() >= i) {
-					countOverStageList[i] += 1;
-				}
-			}
-		}
-		for (int i = 1; i <= stage; ++i) {
-			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStage(i)) {
-				statisticsEntity.setEquipMaxCountOverStage(i, countOverStageList[i]);
-			}
-			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStageDaily(i)) {
-				statisticsEntity.setEquipMaxCountOverStageDaily(i, countOverStageList[i]);
-			}
-		}
-		statisticsEntity.notifyUpdate(true);
+		updateEquipStageStatistics(monsterId, newEntity.getStage());
 
 		HSEquipMonsterReplaceRet.Builder response = HSEquipMonsterReplaceRet.newBuilder();
 		response.setId(id);
@@ -792,5 +748,41 @@ public class PlayerEquipModule extends PlayerModule{
 		HSEquipDecompose.Builder response = HSEquipDecompose.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_DECOMPOSE_S_VALUE, response));
 		return ;
+	}
+
+	/**
+	 * 穿新装备或已穿装备stage发生变化后，更新统计数据
+	 * @param monsterId 穿装备的怪物id
+	 * @param stage 发生变化的装备的品级
+	 */
+	private void updateEquipStageStatistics(int monsterId, int newStage) {
+		// 当前身上装备，从1~equipEntity.stage，达到每个品级的装备数量
+		// 与statistics比较，如果更大，则更新
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		Map<Integer, Long> monsterEquipMap = player.getPlayerData().getMonsterEquips(monsterId);
+		int[] countOverStageList = new int[newStage + 1];
+
+		for (Map.Entry<Integer, Long> entry : monsterEquipMap.entrySet()) {
+			EquipEntity monsterEquip = player.getPlayerData().getEquipById(entry.getValue());
+			for (int i = 1; i <= newStage; ++i) {
+				if (monsterEquip.getStage() >= i) {
+					countOverStageList[i] += 1;
+				}
+			}
+		}
+		boolean update = false;
+		for (int i = 1; i <= newStage; ++i) {
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStage(i)) {
+				statisticsEntity.setEquipMaxCountOverStage(i, countOverStageList[i]);
+				update = true;
+			}
+			if (countOverStageList[i] > statisticsEntity.getEquipMaxCountOverStageDaily(i)) {
+				statisticsEntity.setEquipMaxCountOverStageDaily(i, countOverStageList[i]);
+				update = true;
+			}
+		}
+		if (true == update) {
+			statisticsEntity.notifyUpdate(true);
+		}
 	}
 }

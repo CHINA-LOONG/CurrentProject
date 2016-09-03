@@ -280,6 +280,15 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		return allianceBaseMap;
 	}
 	
+	public boolean ismonsterSendtoBase(int monsterId){
+		for (BaseMonsterInfo baseMonster : allianceBaseMap.values()) {
+			if (monsterId == baseMonster.getMonsterId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	@Override
 	public int getCreateTime() {
 		return createTime;

@@ -34,7 +34,8 @@ public class MoreButton : MonoBehaviour
     {
         InitListButtons();
         EventTriggerListener.Get(moreButton.gameObject).onClick = OnMoreButtonClicked;
-	}
+        OnMoreButtonClicked(null);
+    }
 
     void    InitListButtons()
     {

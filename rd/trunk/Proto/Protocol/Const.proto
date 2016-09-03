@@ -301,6 +301,7 @@ enum ChapterBoxState
 	OPEN                   = 1;
 }
 
+
 // 副本类型
 enum InstanceType
 {
@@ -331,4 +332,12 @@ enum SpellType
 	Spell_Type_Dot			= 11;
 	Spell_Type_Hot			= 12;
     Num_Spell_Type			= 13;
+}
+
+// 宠物锁定状态
+enum MonsterState
+{	
+	LOCKED = 1;
+	IN_ALLIANCE_BASE = 2;
+	IN_ADVENTURE = 4;
 }

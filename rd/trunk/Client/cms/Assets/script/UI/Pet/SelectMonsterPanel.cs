@@ -21,6 +21,7 @@ public class SelectMonsterPanel : UIBase
     private MonsterIcon avatar;
     public Text textEmpty;
 
+    private List<GameUnit> mValidatePetList = new List<GameUnit>();
 
     List<int> m_currentSelectMonster = null;
     ItemInfo m_itemInfo = null;
@@ -44,9 +45,13 @@ public class SelectMonsterPanel : UIBase
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
 
-        List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId), itemInfo.stage);
+        GameDataMgr.Instance.PlayerDataAttr.GetAllPet(
+            (itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId),
+            itemInfo.stage,
+            ref mValidatePetList
+            );
         int showCount = 0;
-        foreach (GameUnit unit in petList)
+        foreach (GameUnit unit in mValidatePetList)
         {
             if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked && !CheckMonsterIsSelect(unit, demandList, selectMonster))
             {

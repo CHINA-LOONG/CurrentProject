@@ -12,11 +12,13 @@ import com.hawk.game.GsApp;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceBaseRecallMonster;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceBaseRecallMonsterRet;
@@ -74,17 +76,26 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 			HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
 			try {
 				if (objBase != null && objBase.isObjValid()) {		
-					int bp = baseEntity.getBp();
+
+					MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getMonsterId());
+					if (monsterEntity == null) {
+						player.sendError(protocol.getType(), Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+						return true;
+					}
 					
+					int bp = baseEntity.getBp();
 					AwardItems award = new AwardItems();
 					int rewardCoin = AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * (HawkTime.getSeconds()- baseEntity.getSendTime());
 					int hireCoin = playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward();
 					award.addCoin(rewardCoin + hireCoin);
 					award.rewardTakeAffectAndPush(player, Action.GUILD_BASE_REWARD, protocol.getType());
-					
+
 					// 移除基地驻兵
 					allianceEntity.removeAllianceBase(player.getId(), request.getPosition());
 					baseEntity.delete();
+					
+					monsterEntity.removeState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
+					monsterEntity.notifyUpdate(true);
 					
 					// 回复信息
 					HSAllianceBaseRecallMonsterRet.Builder response = HSAllianceBaseRecallMonsterRet.newBuilder();

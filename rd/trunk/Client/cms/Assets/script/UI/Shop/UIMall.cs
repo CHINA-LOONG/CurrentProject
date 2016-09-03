@@ -5,13 +5,18 @@ using System.Collections.Generic;
 
 public class UIMall : UIBase 
 {
-	public static string ViewName = "UIMall";
+    public static string ViewName = "UIMall";
 
 	public	Text	mallNameText;
 	public	Button	closeButton;
     public Button storeButton;
 	public	ScrollView	itemScrollView;
 	// Use this for initialization
+    public static void OpenWith(bool showStoreButton)
+    {
+        UIMall mall = (UIMall)UIMgr.Instance.OpenUI_(ViewName, false);
+        mall.ShowStoreButton(showStoreButton);
+    }
 	void Start () 
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
@@ -32,6 +37,10 @@ public class UIMall : UIBase
 		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_chongzhi");
         UIUtil.SetButtonTitle(storeButton.transform, StaticDataMgr.Instance.GetTextByID("shop_store"));
 	}
+    public void ShowStoreButton(bool isShow)
+    {
+        storeButton.gameObject.SetActive(isShow);
+    }
 	
 	public override void Clean()
 	{

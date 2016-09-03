@@ -31,7 +31,7 @@ public class bossdajie15Huapo2 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Huapo2Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Huapo2Unit.battleUnit, "bossdajie15Huapo2wp02")==0)
+		if (NormalScript.GetWpLifeLeft(Huapo2Unit.battleUnit, "bossdajie15Huapo2wp02")==0)
 		{
 			
 			if (GetAttackCount(Huapo2Unit) % 6 == 0 && GetAttackCount(Huapo2Unit) != 0) 

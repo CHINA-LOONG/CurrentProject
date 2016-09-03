@@ -117,8 +117,8 @@ public class CoinButton : MonoBehaviour
 	{
 		if (coinType == CoinType.Zuanshi)
 		{
-			UIMgr.Instance.OpenUI_ (UIMall.ViewName, false);
-		}
+            UIMall.OpenWith(true);
+        }
 		else if (coinType == CoinType.Jinbi) 
 		{
 			UICoinExchange.Open();

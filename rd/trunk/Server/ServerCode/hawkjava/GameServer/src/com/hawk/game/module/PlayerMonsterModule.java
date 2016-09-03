@@ -24,6 +24,7 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Monster.HSMonsterCompose;
 import com.hawk.game.protocol.Monster.HSMonsterComposeRet;
@@ -185,7 +186,7 @@ public class PlayerMonsterModule extends PlayerModule {
 				}
 
 				// 验证怪物锁定
-				if (true == consumeMonsterEntity.isLocked()) {
+				if (consumeMonsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
 					sendError(hsCode, Status.monsterError.LOCK_ALREADY_VALUE);
 					return true;
 				}
@@ -253,17 +254,21 @@ public class PlayerMonsterModule extends PlayerModule {
 			return true;
 		}
 
-		if (monsterEntity.isLocked() == locked) {
-			if (locked == true) {
-				sendError(hsCode, Status.monsterError.LOCK_ALREADY);
-				return true;
-			} else {
-				sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
-				return true;
-			}
+		if (monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+			sendError(hsCode, Status.monsterError.LOCK_ALREADY);
+			return true;
+		} else if (!monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+			sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
+			return true;
 		}
 
-		monsterEntity.setLocked(locked);
+		if (locked) {
+			monsterEntity.addState(Const.MonsterState.LOCKED_VALUE);
+		}
+		else {
+			monsterEntity.removeState(Const.MonsterState.LOCKED_VALUE);
+		}
+		
 		monsterEntity.notifyUpdate(true);
 
 		/// TODO

@@ -180,6 +180,7 @@ physicdebuffDotStrongName,撕裂（强）,Tear (Strong)
 magicdebuffDotSlightName,撕裂（弱）,Tear (Weak)
 magicdebuffDotMediumName,撕裂（中）,Tear (Normal)
 magicdebuffDotStrongName,撕裂（强）,Tear (Strong)
+defendName,防御,defence
 attackMetalCutSlightName,弱攻击,Weak Attack
 attackMetalCutMediumName,攻击,Attack
 attackMetalCutStrongName,强力攻击,Strong Attack
@@ -358,24 +359,24 @@ ultHapiName,烟消云散,Dissipation
 psvHapiName,洞察,Clairvoyance
 ultZouyincaoName,提神号角,Bright Horn
 psvZouyincaoName,顺风,Tailwind
-pet_character_1,勇敢,Valor
-pet_character_2,聪慧,Spiritual
-pet_character_3,狡猾,Mischievous
-pet_character_4,互助,Collaborate
-pet_character_5,善良,Compassion
-pet_character_6,谨慎,Humility
-Valor,勇敢,Valor
-Spiritual,聪慧,Spiritual
-Mischievous,狡猾,Mischievous
-Collaborate,互助,Collaborate
-Compassion,善良,Compassion
-Humility,谨慎,Humility
-descrip_valor,勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述勇敢描述,Attack - Physical  description
-descrip_spiritual,聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述聪慧描述,Attack - Magical   description
-descrip_mischievous,狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述狡猾描述,Support - Harmful Effects   description
-descrip_collaborate,互助描述互助描述互助描述互助描述互助描述互助描述互助描述,Support - Beneficial Effects   description
-descrip_compassion,善良描述善良描述善良描述善良描述善良描述善良描述善良描述,Healer   description
-descrip_humility,谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述谨慎描述,Defense   description
+pet_character_1,物理输出,PHYS ATK
+pet_character_2,法术输出,MAGIC ATK
+pet_character_3,减益支援,Harmful
+pet_character_4,增益支援,Beneficial
+pet_character_5,治疗,Healer
+pet_character_6,肉盾,Tank
+Valor,物理输出,PHYS ATK
+Spiritual,法术输出,MAGIC ATK
+Mischievous,减益支援,Harmful
+Collaborate,增益支援,Beneficial
+Compassion,治疗,Healer
+Humility,肉盾,Tank
+descrip_valor,善于使用物理攻击的英勇战士,Brave attacker mainly using physical attack
+descrip_spiritual,善于运用魔法能量的智慧学者,Intellectual attacker using magical power
+descrip_mischievous,善于给敌方添加减益效果的调皮支援,Mischievous by adding debuff to enemies
+descrip_collaborate,善于给己方添加增益效果的强力辅助,Support your team with a beneficial buffs
+descrip_compassion,善于恢复己方血量的善良祭祀,Compassionate in healing your team most of the time
+descrip_humility,善于吸引敌方伤害保护队友的坚毅肉盾,Attracts enemies' damages and defend your team
 miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
 miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
 miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
@@ -430,6 +431,7 @@ name_20020_suipian_nvyao5,暗女妖碎片,nvyao5suipian
 name_20021_suipian_hapi1,光哈皮碎片,hapi1suipian
 name_20022_suipian_piying5,暗皮影碎片,piying5suipian
 name_20023_suipian_kairuisi5,暗凯瑞斯碎片,kairuisi5suipian
+name_20024_suipian_bingxuenvwang3,水冰雪女王碎片,bingxuenvwang3suipian
 name_30011_BloodStone_1,一级血魄石,Blood Stone(LV1)
 name_30012_BloodStone_2,二级血魄石,Blood Stone(LV2)
 name_30013_BloodStone_3,三级血魄石,Blood Stone(LV3)
@@ -565,6 +567,7 @@ tips_20020_suipian_nvyao5,测试用tips,test Open Sockets: Reveals a Gem slot af
 tips_20021_suipian_hapi1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20022_suipian_piying5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20023_suipian_kairuisi5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20024_suipian_bingxuenvwang3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30011_BloodStone_1,镶嵌在装备上可获得：体力 + 10,insert the gem into a equipment available ：STA + 10
 tips_30012_BloodStone_2,镶嵌在装备上可获得：体力 + 20,insert the gem into a equipment available ：STA + 20
 tips_30013_BloodStone_3,镶嵌在装备上可获得：体力 + 40,insert the gem into a equipment available ：STA + 40
@@ -756,6 +759,7 @@ xgIfrit,伊芙利特,Ifrit
 xgSenlinyaoji,森林妖姬,Dryad
 xgDatiangou,大天狗,Tengu
 xgAnpusha,安普沙,Empusa
+xgBingxuenvwang,冰雪女王,Chione
 bossxiaoxiang28Muling2,树灵,Kodama
 attackCutSlightTipsDescription,给单体目标造成一定比例物攻的物理伤害,Deals (proportion of physical ATK) physical damage to a single target
 attackCutSlightTipsCurlvl,造成{0}伤害,Makes {0} damage
@@ -850,7 +854,7 @@ bossdajie14Piying53Name,力量压制,Crushing Force
 bossdajie14Piying54Name,黑暗风暴,Shadowstorm
 bossdajie14Piying55Name,智力压制,Crushing Intellect
 bossdajie15Huapo21Name,花刺,Thorns
-bossdajie15Huapo22Name,花毒,Toxin
+bossdajie15Huapo22Name,花舞,Flower dance
 bossdajie15Huapo23Name,花刺扫射,Spike Spray
 bossdajie16Xiaochou31Name,水球,Liquid Sphere
 bossdajie16Xiaochou33Name,水浪,Tidal Wave
@@ -933,7 +937,7 @@ piying5hide_head,猜猜我在哪,Find me
 huapo2hide_flower,猜猜我在哪,Find me
 xiaochou3hide_weapon,猜猜我在哪,Find me
 zouyincao2hide_trumpet,猜猜我在哪,Find me
-wushi4hide_horn,别碰我的角,Don't touch my horn!
+wushi4hide_horn,我的角很脆弱,My horn is where I become fragile.
 wushi4hide_ball,龙珠将给我带来攻击加成,Magic ball gives me ATK power!
 xiyiren2hide_hand,我的手很脆弱,Hands are very delicate.
 xiyiren2hide_claw,爪子能保护好我,Claws are good protectors.
@@ -965,7 +969,7 @@ xiaochou3normal1_weapon,提高智力,Increase Intelligence
 zouyincao2normal1_body,本体,Default
 zouyincao2normal1_trumpet,提高智力,Increase Intelligence
 wushi4normal1_body,本体,Default
-wushi4normal1_horn,别碰我的角,Don't touch my horns!
+wushi4normal1_horn,我的角很脆弱,My horn is where I become fragile.
 wushi4normal1_ball,龙珠将给我带来攻击加成,Magic ball gives me ATK power!
 xiyiren2normal1_body,本体,Default
 xiyiren2normal1_hand,我的手很脆弱,Hands are very delicate.
@@ -1159,13 +1163,13 @@ bossdajie12Mantuoluo21Tips,给单体目标造成100%物攻的木属性物理伤�
 bossdajie12Mantuoluo22Tips,给群体目标造成60%法攻的木属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
 bossdajie12Mantuoluo23Tips,给自身回复100%法攻的生命值,Recovers (100% of magic ATK) of your HP
 bossdajie12Mantuoluo24Tips,给自身回复大量生命值,Recovers a large amount of your HP
-bossdajie13Langren31Tips,给单体目标造成100%物攻的水属性物理伤害,Deals (1000% of physical ATK) water type physical damage to a single target
+bossdajie13Langren31Tips,给单体目标造成100%物攻的水属性物理伤害,Deals (100% of physical ATK) water type physical damage to a single target
 bossdajie13Langren32Tips,降低自身受伤比,Decreases your Injury Rate
-bossdajie13Langren34Tips,给单体目标连续造成6次50%物攻的水属性物理伤害,Repeatedly deals (50% of physical ATK) water type physical damage 6 times to a single target
+bossdajie13Langren34Tips,给单体目标连续造成6次75%物攻的水属性物理伤害,Repeatedly deals (75% of physical ATK) water type physical damage 6 times to a single target
 bossdajie14Piying51Tips,给单体目标造成50%法攻的暗属性法术伤害,Deals (50% of magic ATK) dark type magic damage to a single target
 bossdajie14Piying52Tips,使群体目标力量和智力降低80%，持续3回合,Reduces STR and  INT of all enemy targets by 80% for 3 turns
 bossdajie14Piying53Tips,使群体目标力量降低80%，持续3回合,Reduces STR of all enemy targets by 80% for 3 turns
-bossdajie14Piying54Tips,给群体目标造成250%法攻的暗属性法术伤害,Deals (250% of magic ATK) dark type magic damage to all enemy targets
+bossdajie14Piying54Tips,给群体目标造成200%法攻的暗属性法术伤害,Deals (200% of magic ATK) dark type magic damage to all enemy targets
 bossdajie14Piying55Tips,使单体目标智力降低80%，持续3回合,Reduces INT of all enemy targets by 80% for 3 turns
 bossdajie15Huapo21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
 bossdajie15Huapo22Tips,给单体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
@@ -1346,7 +1350,7 @@ ultWushi4Description,给己方全体目标提升力量与智力，持续一定�
 ultWushi3Description,在3秒内进行操作，每次操作给单体目标造成水属性法术伤害,"Carry out actions for 3 seconds, each action dealing water type magic damage to a single target"
 ultXiyiren4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target"
 ultXiyiren2Description,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
-ultMantuoluo2Description,给单体目标回复生命值,Recovers HP for a single target 
+ultMantuoluo2Description,给群体目标回复生命值,Recovers HP for all allies
 ultHetong3Description,给群体目标造成水属性法术伤害,Deals water type magic damage to all enemy targets
 ultLonggongtongzi3Description,给群体目标回复生命值,Recovers HP for all allies
 ultLangren5Description,在3秒内进行操作，每次操作给单体目标造成暗属性物理伤害,"Carry out actions for 3 seconds, each action dealing dark type physical damage to a single target"

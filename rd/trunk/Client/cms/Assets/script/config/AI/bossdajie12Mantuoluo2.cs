@@ -31,7 +31,7 @@ public class bossdajie12Mantuoluo2 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Mantuoluo2Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Mantuoluo2Unit.battleUnit, "bossdajie12Mantuoluo2wp02") != 0)
+		if (NormalScript.GetWpLifeLeft(Mantuoluo2Unit.battleUnit, "bossdajie12Mantuoluo2wp02") != 0)
 		{
 			if (GetUnitHp(Mantuoluo2Unit) <= (GetUnitMaxHp(Mantuoluo2Unit) * 0.5 ) && GetAttackCount(Mantuoluo2Unit) != 0)
 			{

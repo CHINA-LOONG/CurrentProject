@@ -16,6 +16,7 @@ public class SelectPet : UIBase
     private SelectPetDelegate callBack;
 
     public static SelectPet Instance = null;
+    private List<GameUnit> mListUnit = new List<GameUnit>();
     public static void Open(SelectPetDelegate callBack)
     {
         Close();
@@ -45,6 +46,9 @@ public class SelectPet : UIBase
     void Start ()
     {
         closeButton.onClick.AddListener(OnCloseButtonClick);
+        titleText.text = StaticDataMgr.Instance.GetTextByID("sociaty_paibingxuanze");
+        zhushouText.text = StaticDataMgr.Instance.GetTextByID("advanture_zhushouing");
+        maoxianText.text = StaticDataMgr.Instance.GetTextByID("advanture_maoxianing");
 	}
     public void SetCallBack(SelectPetDelegate callBack)
     {
@@ -58,12 +62,13 @@ public class SelectPet : UIBase
 	
     void RefreshUI()
     {
-        List<GameUnit> listUnit = GameDataMgr.Instance.PlayerDataAttr.GetAllPet();
-        listUnit.Sort();
+        GameDataMgr.Instance.PlayerDataAttr.GetAllPet(ref mListUnit);
+        mListUnit.Sort();
         GameUnit subUnit = null;
-        for (int i = 0; i < listUnit.Count; ++i)
+        int count = mListUnit.Count;
+        for (int i = 0; i < count; ++i)
         {
-            subUnit = listUnit[i];
+            subUnit = mListUnit[i];
             string monsterId = subUnit.pbUnit.id;
 
             MonsterIcon icon = MonsterIcon.CreateIcon();

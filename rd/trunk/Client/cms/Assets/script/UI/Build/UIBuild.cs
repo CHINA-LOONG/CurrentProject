@@ -169,10 +169,16 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void PetButtonClick(GameObject go)
     {
         //uiPetList= UIMgr.Instance.OpenUI_(UIPetList.ViewName) as UIPetList;
-        uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
+        //uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
+        UIMgr.Instance.OpenUIAsync(UIMonsters.ViewName, true, PetLoadCallback);
+    }
+    public void PetLoadCallback(GameObject instance, System.EventArgs args)
+    {
+        uiMonsters = instance.GetComponent<UIBase>() as UIMonsters;
     }
 
-	void OnInstanceButtonClick(GameObject go)
+
+    void OnInstanceButtonClick(GameObject go)
 	{
         OpenInstanceUI();
 	}

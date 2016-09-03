@@ -31,7 +31,7 @@ public class bossdajie16Xiaochou3 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Xiaochou3Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Xiaochou3Unit.battleUnit, "bossdajie16Xiaochou3wp02")== 0)
+		if (NormalScript.GetWpLifeLeft(Xiaochou3Unit.battleUnit, "bossdajie16Xiaochou3wp02")== 0)
 		{
 			
 			Xiaochou3SpellDic.TryGetValue ("bossdajie16Xiaochou32", out useSpell);

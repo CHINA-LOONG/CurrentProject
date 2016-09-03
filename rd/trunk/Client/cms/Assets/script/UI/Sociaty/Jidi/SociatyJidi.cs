@@ -12,6 +12,7 @@ public class SociatyJidi : UIBase, TabButtonDelegate
 {
     public static string ViewName = "SociatyJidi";
     public Text title;
+    public Text contributionText;
     public Button closeButton;
     public TabButtonGroup tabBtnGroup;
     public RectTransform contentParent;
@@ -60,16 +61,6 @@ public class SociatyJidi : UIBase, TabButtonDelegate
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
 
-    void OnEnable()
-    {
-        //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
-    }
-    //---------------------------------------------------------------------------------------------
-    void OnDisable()
-    {
-        //GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
-    }
-
     public void InitType(int initType)
     {
         tabBtnGroup.InitWithDelegate(this);
@@ -94,6 +85,8 @@ public class SociatyJidi : UIBase, TabButtonDelegate
             ShowMyJidi(false);
             ShowJidiMembers(true);
         }
+        contributionText.text = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_lishi"),
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceSelfData.totalContribution);
     }
 
     void ShowMyJidi(bool bshow)

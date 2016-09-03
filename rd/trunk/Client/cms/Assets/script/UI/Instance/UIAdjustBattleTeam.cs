@@ -80,8 +80,9 @@ public class UIAdjustBattleTeam : UIBase
     private bool isOpenSaodangOneTimes = false;
     private bool isOpenSaodangTenTimes = false;
     private bool isFirst = true;
+    private List<GameUnit> mPetList = new List<GameUnit>();
 
-	private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
+    private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
     
@@ -223,8 +224,8 @@ public class UIAdjustBattleTeam : UIBase
                 isOpenSaodangTenTimes = true;
             }
         }
-        StartCoroutine( RefreshUICo ());
-	}
+        RefreshUICo();
+    }
 
     void    FirstBackupClicked()
     {
@@ -250,16 +251,16 @@ public class UIAdjustBattleTeam : UIBase
         return GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.SecondBackupOpenNeedLevel;
     }
 
-    IEnumerator RefreshUICo()
+    void RefreshUICo()
 	{
-        yield return StartCoroutine(ClearAllCo());
-		yield return StartCoroutine (RefreshEnmeyIcons());
-		yield return StartCoroutine (RefreshPlayerIcons());
-        yield return StartCoroutine(RefreshDropInfo());
-        yield return StartCoroutine(RefreshTitleAndOthers());
-	}
+        ClearAllCo();
+        RefreshEnmeyIcons();
+        RefreshPlayerIcons();
+        RefreshDropInfo();
+        RefreshTitleAndOthers();
+    }
 
-    IEnumerator ClearAllCo()
+    void ClearAllCo()
     {
         CleanAllEnemyIcons();//清空敌方怪物列表
         CleanAllPlayersIcons();
@@ -269,11 +270,10 @@ public class UIAdjustBattleTeam : UIBase
         rapid1Button.gameObject.SetActive(false);
         rapid10Button.gameObject.SetActive(false);
         resetTimesButton.gameObject.SetActive(false);
-       yield break;
     }
 
 
-	IEnumerator RefreshEnmeyIcons()
+	void RefreshEnmeyIcons()
 	{
         CleanAllEnemyIcons();//清空敌方怪物列表
         int enmeyCount = enemyList.Count;
@@ -329,7 +329,6 @@ public class UIAdjustBattleTeam : UIBase
 				subBg.gameObject.SetActive(false);
 			}
 		}
-		yield return new WaitForEndOfFrame ();
 	}
     void CleanAllEnemyIcons()
     {
@@ -340,10 +339,9 @@ public class UIAdjustBattleTeam : UIBase
         enemyIcons.Clear();
     }
 
-	IEnumerator RefreshPlayerIcons()
+	void RefreshPlayerIcons()
 	{
 		InitPlayerTeamIcons ();
-		yield return new WaitForEndOfFrame ();
 		InitAllPlayerPetsIcons ();
 	}
 
@@ -409,12 +407,12 @@ public class UIAdjustBattleTeam : UIBase
         //清理所有宠物Icon
         CleanAllPlayerPetsIcons();
 
-		List<GameUnit> listUnit = GameDataMgr.Instance.PlayerDataAttr.GetAllPet ();
-        listUnit.Sort();
+		GameDataMgr.Instance.PlayerDataAttr.GetAllPet (ref mPetList);
+        mPetList.Sort();
 		GameUnit subUnit = null;
-		for (int i =0; i< listUnit.Count; ++i) 
+		for (int i =0; i< mPetList.Count; ++i) 
 		{
-            subUnit = listUnit[i];
+            subUnit = mPetList[i];
 			string monsterId = subUnit.pbUnit.id;
 
 			MonsterIcon icon = MonsterIcon.CreateIcon();
@@ -445,16 +443,14 @@ public class UIAdjustBattleTeam : UIBase
         playerAllIconDic.Clear();
     }
 
-    IEnumerator RefreshDropInfo()
+    void RefreshDropInfo()
     {
-        yield return new WaitForEndOfFrame();
         ClearAllDropObject();
-
         string rewardId = instanceEntryData.reward;
 
         RewardData rewardData = StaticDataMgr.Instance.GetRewardData(rewardId);
         if (rewardData == null || rewardData.itemList == null)
-            yield break;
+            return;
 
         for(int i =0; i< rewardData.itemList.Count;++i)
         {
@@ -479,10 +475,8 @@ public class UIAdjustBattleTeam : UIBase
         dropObjectList.Clear();
     }
 
-   IEnumerator RefreshTitleAndOthers()
+   void RefreshTitleAndOthers()
     {
-        yield return new WaitForEndOfFrame();
-
         //buffImage
         string spellId = instanceEntryData.instanceSpell;
         if(string.IsNullOrEmpty(spellId))
@@ -754,7 +748,7 @@ public class UIAdjustBattleTeam : UIBase
        // PB.HSInstanceResetCountRet retData = message.GetProtocolBody<PB.HSInstanceResetCountRet>();
         InstanceMapService.Instance.instanceResetTimes++;
         InstanceMapService.Instance.ResetCountDaily(instanceId);
-        StartCoroutine(RefreshTitleAndOthers());
+        RefreshTitleAndOthers();
     }
 #endregion
     #region   扫荡相关
@@ -892,7 +886,7 @@ public class UIAdjustBattleTeam : UIBase
         PB.HSInstanceSweepRet sweetRet = message.GetProtocolBody<PB.HSInstanceSweepRet>();
 
         InstanceMapService.Instance.AddCountDaily(instanceId, sweetRet.completeReward.Count);
-        StartCoroutine(RefreshTitleAndOthers());
+        RefreshTitleAndOthers();
         List<PB.HSRewardInfo> listReward = new List<PB.HSRewardInfo>();
         listReward.AddRange(sweetRet.completeReward);
         listReward.Add(sweetRet.sweepReward);
@@ -1083,6 +1077,17 @@ public class UIAdjustBattleTeam : UIBase
             }
             isBattleClick = false;
             return;
+        }
+
+        if(instanceEntryData.chapter == 1)
+        {
+            GameConfig.Instance.RecoveryMirrorEnegyUnit = GameConfig.Instance.RecoveryMirrorEnegyUnitOne;
+            GameConfig.Instance.ConsumMirrorEnegyUnit = GameConfig.Instance.ConsumMirrorEnegyUnitOne;
+        }
+        else if (instanceEntryData.chapter == 2)
+        {
+            GameConfig.Instance.RecoveryMirrorEnegyUnit = GameConfig.Instance.RecoveryMirrorEnegyUnitTwo;
+            GameConfig.Instance.ConsumMirrorEnegyUnit = GameConfig.Instance.ConsumMirrorEnegyUnitTwo;
         }
         
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();

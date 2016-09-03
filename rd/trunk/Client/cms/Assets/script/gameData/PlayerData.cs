@@ -228,24 +228,27 @@ public class PlayerData : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-	public List<GameUnit> GetAllPet()
+	public void GetAllPet(ref List<GameUnit> allPet)
 	{
-		List<GameUnit> allPet = new List<GameUnit> ();
+        allPet.Clear();
 		allPet.AddRange (allUnitDic.Values);
-		return allPet;
-	}
+    }
     //---------------------------------------------------------------------------------------------
-    public List<GameUnit> GetAllPet(string monsterId, int stage)
+    public int GetPetCount()
     {
-        List<GameUnit> allPet = new List<GameUnit>();
+        return allUnitDic.Count;
+    }
+    //---------------------------------------------------------------------------------------------
+    public void GetAllPet(string monsterId, int stage, ref List<GameUnit> petList)
+    {
+        petList.Clear();
         foreach (GameUnit unit in allUnitDic.Values)
         {
             if (unit.pbUnit.id.Equals(monsterId) == true && unit.pbUnit.stage >= stage)
             {
-                allPet.Add(unit);
+                petList.Add(unit);
             }
         }
-        return allPet;
     }
     //---------------------------------------------------------------------------------------------
 	public GameUnit GetPetWithKey(int guid)

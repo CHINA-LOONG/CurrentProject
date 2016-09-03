@@ -2390,7 +2390,6 @@ GameObject:
   - 114: {fileID: 11475764}
   - 114: {fileID: 11462258}
   - 114: {fileID: 11463510}
-  - 95: {fileID: 9538382}
   m_Layer: 5
   m_Name: UIBattle
   m_TagString: Untagged
@@ -2587,23 +2586,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 22404724}
   m_RootOrder: 1
---- !u!95 &9538382
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194642}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 55f3925b5077e3d49b7d4600d47812e7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9544472
 Animator:
   serializedVersion: 3

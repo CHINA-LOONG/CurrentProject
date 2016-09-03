@@ -91,6 +91,8 @@ public class ColorConst
     public static Color server_color_full = new Color(1f, 0f, 0f, 1f);
     public static Color server_color_hot = new Color(1f, 204f / 255f, 0f, 1f);
     public static Color server_color_Maintain = new Color(143f/255f, 143f / 255f, 143f/255f, 1f);
+    //合成碎片足够颜色
+    public static Color text_color_fullFragment = new Color(140f / 255f, 15f / 255f, 1f, 1f);
     public static string colorTo_Hstr(Color color)
     {
         string strColor = "#";

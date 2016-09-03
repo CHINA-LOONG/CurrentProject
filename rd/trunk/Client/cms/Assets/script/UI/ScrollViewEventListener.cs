@@ -39,7 +39,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
         {
             if (pressDown && !enterPress)
             {
-                if (Time.time - pressTime > 1.0f)
+                if (Time.time - pressTime > 0.5f)
                 {
                     onPressEnter(gameObject);
                     press = true;

@@ -316,7 +316,7 @@ ultXiaochou3e2,2,1,0,0,,,,,ultXiaochou3e3,0,,,,,,,12345,,,,1
 ultXiaochou3e3,3,1,0,0,,,,,,,,1,1.3,0,3,,12345,,,,1
 ultXiaochou4e1,5,1,0,0,,,,,,,IsEnemy|ultXiaochou4e3;Default|ultXiaochou4e2;,,,,,,12345,,,,1
 ultXiaochou4e2,3,1,0,0,,,,,,,,1,0.2,0,4,,12345,,,,1
-ultXiaochou4e3,2,1,0,0,,,,,ultXiaochou4Cast,0,2.1|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;,,,,,,12345,,,,1
+ultXiaochou4e3,2,1,0,0,,,,,ultXiaochou4Cast,0,2.33|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;0.3|ultXiaochou4e2;,,,,,,12345,,,,1
 ultXiaochou4Cast,2,1,1,0,,,,,,,,,,,,,12345,,,,1
 ultKairuisi4e1,1,1,0,0,,,1,ultKairuisi4e2,,,"""""",,,,,,12345,,,,1
 ultKairuisi4e2,2,1,0,0,,,,,ultKairuisi4e3,0,,,,,,,12345,,,,1
@@ -345,7 +345,7 @@ ultWushi4e4,4,1,0,0,,,,,,,,,,,,buffAttackb1,12345,,,,1
 ultWushi4e5,4,1,0,0,,,,,,,,,,,,buffMagicb1,12345,,,,1
 ultWushi3e1,5,1,0,0,,,,,,,IsEnemy|ultWushi3e3;Default|ultWushi3e2;,,,,,,12345,,,,1
 ultWushi3e2,3,1,0,0,,,,,,,,1,0.2,0,3,,12345,,,,1
-ultWushi3e3,2,1,0,0,,,,,ultWushi3Cast,0,2|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2,,,,,,12345,,,,1
+ultWushi3e3,2,1,0,0,,,,,ultWushi3Cast,0,2.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2;0.3|ultWushi3e2,,,,,,12345,,,,1
 ultWushi3Cast,2,1,1,0,,,,,,,,,,,,,12345,,,,1
 ultXiyiren4e1,5,1,0,0,,,,,,,IsEnemy|ultXiyiren4e3;Default|ultXiyiren4e2;,,,,,,12345,,,,1
 ultXiyiren4e2,3,1,0,0,,,,,,,,0,0.2,0,4,,12345,,,,1
@@ -427,7 +427,7 @@ bossdajie11Xiaochou41e2,3,1,0,0,,,,,,,,1,1,0,4,,12345,,,,1
 bossdajie11Xiaochou42e1,1,1,0,0,,,1,bossdajie11Xiaochou42e2,,,"""""",,,,,,12345,,,,1
 bossdajie11Xiaochou42e2,2,1,0,0,,,,,bossdajie11Xiaochou42e3,1.5,,,,,,,12345,,,,1
 bossdajie11Xiaochou42e3,3,1,0,0,,,,,,,,1,0.6,0,4,,12345,,,,1
-bossdajie11Xiaochou43e1,2,1,0,0,,,,,bossdajie11Xiaochou43e2,2.33,0|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;,,,,,,12345,,,,1
+bossdajie11Xiaochou43e1,2,1,0,0,,,,,bossdajie11Xiaochou43e2,2.33,0|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;0.3|bossdajie11Xiaochou43e2;,,,,,,12345,,,,1
 bossdajie11Xiaochou43e2,3,1,0,0,,,,,,,,1,0.3,0,4,,12345,,,,1
 bossdajie12Mantuoluo21e1,2,1,0,0,,,,,bossdajie12Mantuoluo21e2,1,,,,,,,12345,,,,1
 bossdajie12Mantuoluo21e2,3,1,0,0,,,,,,,,0,1,0,2,,12345,,,,1
@@ -451,7 +451,7 @@ bossdajie13Langren33e3,4,1,1,0,,,,,,,,,,,,bossdajie13Langren33b1,12345,,,,1
 bossdajie13Langren33e4,2,1,1,0,,,,,bossdajie13Langren33e5,1,,,,,,,12345,,,,1
 bossdajie13Langren33e5,4,1,1,0,,,,,,,,,,,,bossdajie13Langren33b2,12345,,,,1
 bossdajie13Langren34e1,2,1,0,0,,,,,,,2.33|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;0.3|bossdajie13Langren34e2;,,,,,,12345,,,,1
-bossdajie13Langren34e2,3,1,0,0,,,,,,,,0,0.5,0,3,,12345,,,,1
+bossdajie13Langren34e2,3,1,0,0,,,,,,,,0,0.75,0,3,,12345,,,,1
 bossdajie14Piying51e1,2,1,0,0,,,,,bossdajie14Piying51e2,1.5,,,,,,,12345,,,,1
 bossdajie14Piying51e2,3,1,0,0,,,,,,,,1,0.5,0,5,,12345,,,,1
 bossdajie14Piying52e1,1,1,0,0,,,1,bossdajie14Piying52e2,,,"""""",,,,,,12345,,,,1
@@ -465,7 +465,7 @@ bossdajie14Piying53e2,2,1,0,0,,,,,bossdajie14Piying53e3,1,,,,,,,12345,,,,1
 bossdajie14Piying53e3,4,1,0,0,,,,,,,,,,,,bossdajie14Piying52b1,12345,,,,1
 bossdajie14Piying54e1,1,1,0,0,,,1,bossdajie14Piying54e2,,,"""""",,,,,,12345,,,,1
 bossdajie14Piying54e2,2,1,0,0,,,,,bossdajie14Piying54e3,2.33,,,,,,,12345,,,,1
-bossdajie14Piying54e3,3,1,0,0,,,,,,,,1,2.5,0,5,,12345,,,,1
+bossdajie14Piying54e3,3,1,0,0,,,,,,,,1,2,0,5,,12345,,,,1
 bossdajie14Piying55e1,1,1,0,0,,,1,bossdajie14Piying55e2,,,"""""",,,,,,12345,,,,1
 bossdajie14Piying55e2,2,1,0,0,,,,,bossdajie14Piying55e3,1,,,,,,,12345,,,,1
 bossdajie14Piying55e3,4,1,0,0,,,,,,,,,,,,bossdajie14Piying52b2,12345,,,,1
@@ -571,8 +571,8 @@ bossxiaoxiang28Muling23e1,2,1,0,0,,,,,bossxiaoxiang28Muling23e2,1.7,,,,,,,12345,
 bossxiaoxiang28Muling23e2,3,1,0,0,,,,,,,,1,1.5,0,2,,12345,,,bossxiaoxiang28Muling23e3,1
 bossxiaoxiang28Muling23e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,0.5
 bossxiaoxiang28Muling24e1,1,1,0,0,,,1,bossxiaoxiang28Muling24e2,,,"""""",,,,,,12345,,,,1
-bossxiaoxiang28Muling24e2,2,1,0,0,,,,,bossxiaoxiang28Muling24e3,1.5,0.5|bossxiaoxiang28Muling24e3;0.5|bossxiaoxiang28Muling24e3;,,,,,,12345,,,,1
-bossxiaoxiang28Muling24e3,3,1,0,0,,,,,,,,1,0.7,0,2,,12345,,,,1
+bossxiaoxiang28Muling24e2,2,1,0,0,,,,,bossxiaoxiang28Muling24e3,0.35,0.35|bossxiaoxiang28Muling24e3;0.8|bossxiaoxiang28Muling24e3;,,,,,,12345,,,,1
+bossxiaoxiang28Muling24e3,3,1,0,0,,,,,,,,1,0.65,0,2,,12345,,,,1
 bossAmute1e1,2,1,0,0,,,,,bossAmute1e2,1.5,,,,,,,12345,,,,1
 bossAmute1e2,3,1,0,0,,,,,,,,1,1.5,0,3,,12345,,,,1
 bossAmute2e1,1,1,0,0,,,1,bossAmute2e2,,,"""""",,,,,,12345,,,,1

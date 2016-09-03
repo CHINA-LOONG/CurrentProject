@@ -33,7 +33,7 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Hetong2Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Hetong2Unit.battleUnit, "bossxiaoxiang27Hetong2wp03")==0)
+		if (NormalScript.GetWpLifeLeft(Hetong2Unit.battleUnit, "bossxiaoxiang27Hetong2wp03")==0)
 		{
 			if (i == 1) 
 			{

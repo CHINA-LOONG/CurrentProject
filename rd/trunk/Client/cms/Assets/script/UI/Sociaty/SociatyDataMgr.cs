@@ -308,6 +308,11 @@ public class SociatyDataMgr : MonoBehaviour
                 return;
             }
         }
+        else
+        {
+            RequestBaseMonsters();
+            return;
+        }
         if (null != baseMonsterCallback)
         {
             baseMonsterCallback(allianceBaseMonster);
@@ -321,6 +326,7 @@ public class SociatyDataMgr : MonoBehaviour
     }
     void OnRequestBaseMOnstersFinish(ProtocolMessage message)
     {
+        UINetRequest.Close();
         if (message.GetMessageType() != (int)PB.sys.ERROR_CODE)
         {
             PB.HSAllianceBaseListRet msgRet = message.GetProtocolBody<PB.HSAllianceBaseListRet>();

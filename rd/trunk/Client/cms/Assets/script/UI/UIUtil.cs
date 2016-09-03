@@ -161,12 +161,17 @@ public class UIUtil
         }
 
         ItemInfo itemInfo = null;
-        List<GameUnit> petList = null;
+        List<GameUnit> petList = new List<GameUnit>();
 
         for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
         {
             itemInfo = unitStageData.demandMonsterList[i];
-            petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId)?unit.pbUnit.id:itemInfo.itemId), itemInfo.stage);
+            GameDataMgr.Instance.PlayerDataAttr.GetAllPet(
+                (itemInfo.itemId.Equals(BattleConst.stageSelfId)?unit.pbUnit.id:itemInfo.itemId),
+                itemInfo.stage,
+                ref petList
+                );
+
             petList.Remove(unit);
             if (petList.Count < unitStageData.demandMonsterList[i].count)
             {

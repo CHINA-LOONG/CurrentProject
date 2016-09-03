@@ -202,7 +202,7 @@ public class BuilderUtil {
 		builder.setLazy(monsterEntity.getLazy());
 		builder.setLazyExp(monsterEntity.getLazyExp());
 		builder.setDisposition(monsterEntity.getDisposition());
-		builder.setLocked(monsterEntity.isLocked());
+		builder.setState(monsterEntity.getState());
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
 		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
@@ -246,6 +246,7 @@ public class BuilderUtil {
 		builder.setLevel(baseEntity.getMonsterBuilder().getLevel());
 		builder.setStage(baseEntity.getMonsterBuilder().getStage());
 		builder.setBp(baseEntity.getBp());
+		builder.setNickname(baseEntity.getNickname());
 		if (myBase == true) {
 			builder.setSendTime(baseEntity.getSendTime());
 			builder.setPosition(baseEntity.getPosition());

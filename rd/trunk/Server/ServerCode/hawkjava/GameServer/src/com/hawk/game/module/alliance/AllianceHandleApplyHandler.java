@@ -137,6 +137,9 @@ public class AllianceHandleApplyHandler implements HawkMsgHandler{
 				}
 				else{
 					targetPlayerAllianceEntity.setPostion(GsConst.Alliance.ALLIANCE_POS_COMMON);
+					if (targetPlayerAllianceEntity.getPreAllianceId() != allianceEntity.getId()) {
+						targetPlayerAllianceEntity.setTotalContribution(0);
+					}
 					targetPlayerAllianceEntity.setAllianceId(allianceEntity.getId());
 					targetPlayerAllianceEntity.notifyUpdate(true);
 					allianceEntity.addMember(targetId, targetPlayerAllianceEntity);

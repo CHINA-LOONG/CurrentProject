@@ -73,6 +73,7 @@ public class DazhaofocusController : MonoBehaviour
 		StartCoroutine (MonsterShowoffCo ());
 
 		UIBattle.Instance.ShowUI (false);
+        UIBattle.Instance.ShowDazhaoReleateUI(false);
 	}
 
 	IEnumerator MonsterShowoffCo()
@@ -146,9 +147,13 @@ public class DazhaofocusController : MonoBehaviour
 		gameObject.SetActive (false);
 
 		GameEventMgr.Instance.FireEvent (GameEventList.MonsterShowoffOver);
-
-        UIBattle.Instance.ShowUI(true);
+        
         UIBattle.Instance.gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
-		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
-	}
+        UIBattle.Instance.ShowUI(true);
+        if (isMagicDazhao == true)
+        {
+            UIBattle.Instance.ShowDazhaoReleateUI(true);
+        }
+        //GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
+    }
 }

@@ -78,7 +78,7 @@ public class UICoinExchange : UIBase
 	void	RefreshExchangeUI()
 	{
 		GoldChargeData	item = StaticDataMgr.Instance.GetGoldChageStaticData(GameConfig.Instance.GoldExchangeId);
-		int curExchange = StatisticsDataMgr.Instance.gold2coinExchargeTimes + 1;
+		int curExchange = StatisticsDataMgr.Instance.gold2coinExchargeTimes ;
 		int zuanshi = item.GetBaseZuanshiWithTime (curExchange);;
 		int jinbi = item.GetBaseJinBiWithTime (curExchange);
 
@@ -97,7 +97,13 @@ public class UICoinExchange : UIBase
 	
 	void OnBuyButtonClick(GameObject go)
 	{
-		PB.HSShopGold2Coin param = new PB.HSShopGold2Coin ();
+        int curExchange = StatisticsDataMgr.Instance.gold2coinExchargeTimes;
+        if(curExchange == MaxExchangeCount)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_record_006"), (int)PB.ImType.PROMPT);
+            return;
+        }
+        PB.HSShopGold2Coin param = new PB.HSShopGold2Coin ();
         GameApp.Instance.netManager.SendMessage(PB.code.SHOP_GOLD2COIN_C.GetHashCode(), param);
 	}
 

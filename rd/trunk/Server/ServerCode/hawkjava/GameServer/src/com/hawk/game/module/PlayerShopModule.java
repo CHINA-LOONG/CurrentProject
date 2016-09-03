@@ -198,6 +198,11 @@ public class PlayerShopModule extends PlayerModule{
 			return true;	
 		}
 
+		if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE && player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
 		int discountPrice = (int)Math.ceil(itemInfo.getPrice() * itemInfo.getDiscount());
 		
 		ConsumeItems consume = new ConsumeItems();

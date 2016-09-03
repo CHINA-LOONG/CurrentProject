@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class SociatyMyJidi : MonoBehaviour
 {
-    public Text contributionText;
+    
     public JidiPetPosition[] petPositionArray;
 
     private PB.AllianceBaseMonster[] baseMonsterArray = new PB.AllianceBaseMonster[3];

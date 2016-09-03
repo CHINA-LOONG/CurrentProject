@@ -31,6 +31,18 @@ public class UIMonsters : UIBase,
     public Text textCollect;
     public Text textComFragments;
 
+    //test only
+    //void OnBecameVisible()
+    //{
+    //    enabled = true;
+    //}
+
+    //void OnBecameInvisible()
+    //{
+    //    enabled = false;
+    //}
+
+
 
     public enum UIType
     {
@@ -107,6 +119,8 @@ public class UIMonsters : UIBase,
         get { return uiMonsterCompose; }
     }
 
+    private List<GameUnit> mPetList = new List<GameUnit>();
+
     public override void Init()
     {
         tabIndex1st = -1;
@@ -115,7 +129,7 @@ public class UIMonsters : UIBase,
         tabIndex2nd = -1;
         selIndex2nd = 0;
 
-        if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
+        if (GameDataMgr.Instance.PlayerDataAttr.GetPetCount() >= GameConfig.MaxMonsterCount)
         {
             MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
                        StaticDataMgr.Instance.GetTextByID("pet_tip_full1"),
@@ -246,19 +260,20 @@ public class UIMonsters : UIBase,
     {
         int curType = GetTypeByIndex(index);
 
-        List<GameUnit> list = GameDataMgr.Instance.PlayerDataAttr.GetAllPet();
+        GameDataMgr.Instance.PlayerDataAttr.GetAllPet(ref mPetList);
         OwnedList.Clear();
         if (0 == curType)
         {
-            OwnedList.AddRange(list);
+            OwnedList.AddRange(mPetList);
         }
         else
         {
-            for (int i = 0; i < list.Count; i++)
+            int petCount = mPetList.Count;
+            for (int i = 0; i < petCount; i++)
             {
-                if (list[i].property == curType)
+                if (mPetList[i].property == curType)
                 {
-                    OwnedList.Add(list[i]);
+                    OwnedList.Add(mPetList[i]);
                 }
             }
         }
@@ -287,6 +302,7 @@ public class UIMonsters : UIBase,
                 {
                     CollectList.Add(list[i]);
                 }
+
             }
         }
         scrollView_Collect.InitContentSize(CollectList.Count, this);

@@ -1097,7 +1097,6 @@ public class Player extends HawkAppObj {
 		for (String skillId : skillList) {
 			monsterEntity.setSkillLevel(skillId, 1);
 		}
-		monsterEntity.setLocked(false);
 
 		if (true == monsterEntity.notifyCreate()) {
 			playerData.setMonsterEntity(monsterEntity);
@@ -1413,14 +1412,6 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 宠物是否可上阵
-	 */
-	public boolean isMonsterBusy(int monsterId) {
-		// TODO
-		return false;
-	}
-
-	/**
 	 * 登录
 	 */
 	private void onLogin() {
@@ -1433,6 +1424,9 @@ public class Player extends HawkAppObj {
 
 		// 登录时刷新
 		onPlayerRefresh(HawkTime.getMillisecond(), true);
+
+		// 同步玩家信息
+		playerData.syncPlayerInfo();
 	}
 
 	/**
@@ -1444,7 +1438,7 @@ public class Player extends HawkAppObj {
 		if (mailCfg != null) {
 			MailUtil.SendSysMail(mailCfg, getId());
 		}
-		
+
 		increaseCoin(1000, Action.NULL);
 		increaseFreeGold(100, Action.NULL);
 
@@ -1463,7 +1457,6 @@ public class Player extends HawkAppObj {
 		playerData.loadAllMonster();
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
-			increaseMonster("xgXiaochou3", 0, Action.NULL);
 			increaseMonster("xgXiaochou3", 0, Action.NULL);
 		}
 		// TEST END-------------------------------------------------------------------------------------

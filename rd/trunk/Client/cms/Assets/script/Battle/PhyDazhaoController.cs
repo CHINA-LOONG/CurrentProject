@@ -102,7 +102,6 @@ public class PhyDazhaoController : MonoBehaviour
 
 		//隐藏摄像机 
 		GameEventMgr.Instance.FireEvent<bool,bool> (GameEventList.SetMirrorModeState, false,false);
-		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
 		casterBattleGo.TriggerEvent ("phyDazhaoReady", Time.time, null);
 		
@@ -130,7 +129,6 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Start;
 		dazhaoStartTime = Time.time;
 		GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
-		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		if (dazhaoSpell != null)
 		{
 			dazhaoLeftTime = dazhaoSpell.spellData.channelTime;
@@ -284,7 +282,6 @@ public class PhyDazhaoController : MonoBehaviour
         //TODO: use level time
         casterBattleGo.unit.OnRoundEnd(Time.time, true);
 		BattleCameraAni.MotionToDefault ().OnComplete (OnExitDazhao);
-		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);
 
 		//if (null != dazhaoExitCheck)
 		//{
@@ -294,8 +291,9 @@ public class PhyDazhaoController : MonoBehaviour
 	}
 
 	void OnExitDazhao()
-	{
-		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
+    {
+        UIBattle.Instance.ShowDazhaoReleateUI(true);
+        GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
 		StopCoroutine ("LeftTimeCo");
 	}

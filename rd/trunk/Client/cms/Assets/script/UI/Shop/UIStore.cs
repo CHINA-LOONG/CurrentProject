@@ -49,7 +49,7 @@ public class UIStore : UIBase
     void OnPayButtonClick()
     {
         UIMgr.Instance.CloseUI_(this);
-        UIMgr.Instance.OpenUI_(UIMall.ViewName, false);
+        UIMall.OpenWith(true);
     }
 
     void InitStoreItems()

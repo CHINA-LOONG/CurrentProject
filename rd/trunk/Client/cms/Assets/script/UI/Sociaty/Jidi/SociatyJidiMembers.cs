@@ -21,11 +21,7 @@ public class SociatyJidiMembers : MonoBehaviour
             return instance;
         }
     }
-	// Use this for initialization
-	void Start ()
-    {
-	
-	}
+
     public void Clear()
     {
         SociatyJidiMemberItem subItem = null;
@@ -40,16 +36,22 @@ public class SociatyJidiMembers : MonoBehaviour
 
     public void RequestData()
     {
+        GameDataMgr.Instance.SociatyDataMgrAttr.GetJidiBaseMonstersAsyn(OnRequestDataFinish);
+    }
+    void OnRequestDataFinish(List<PB.AllianceBaseMonster> listData)
+    {
         RefreshUI();
     }
-    
+
     private void RefreshUI()
     {
         Clear();
-        //test
-        for(int i = 0;i< 60;++i)
+        List<PB.AllianceBaseMonster> listMonster = GameDataMgr.Instance.SociatyDataMgrAttr.allianceBaseMonster;
+        PB.AllianceBaseMonster subMonster = null;
+        for(int i = 0;i< listMonster.Count; ++i)
         {
-            SociatyJidiMemberItem subItem = SociatyJidiMemberItem.CreateWith();
+            subMonster = listMonster[i];
+            SociatyJidiMemberItem subItem = SociatyJidiMemberItem.CreateWith(subMonster);
             listMembers.Add(subItem);
             scrollView.AddElement(subItem.gameObject);
         }

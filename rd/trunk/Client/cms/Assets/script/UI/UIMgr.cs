@@ -3,6 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+public class LoadUIEventArgs : System.EventArgs
+{
+    public LoadUIEventArgs(
+        AssetLoadedCallBack assetCallBack,
+        string uiName,
+        bool cache
+        )
+    {
+        this.assetCallBack = assetCallBack;
+        this.uiName = uiName;
+        this.cache = cache;
+    }
+
+    public bool cache;
+    public string uiName;
+    public AssetLoadedCallBack assetCallBack;
+}
+
 public class UIMgr : MonoBehaviour
 {
     [SerializeField]
@@ -36,6 +54,7 @@ public class UIMgr : MonoBehaviour
 
     private static GameObject uiRootNormal;
     private static GameObject uiRootTop;
+    private HashSet<string> mRequestUIList = new HashSet<string>();
 
     public MainStageController MainstageInstance
     {
@@ -148,6 +167,37 @@ public class UIMgr : MonoBehaviour
         {
             return null;
         }
+        SetUIInternal(ref uiItem, ui, uiName, cache);
+
+        return uiItem;
+    }
+    public UIBase OpenUI_(string uiName, bool cache = true)
+    {
+        UIBase uiItem = null;
+        if (cache)
+        {
+            uiItem = GetUI(uiName);
+            if (uiItem != null)
+            {
+                uiItem.gameObject.SetActive(true);
+            }
+        }
+        if (uiItem == null)
+        {
+            uiItem = CreateUI(uiName, cache);
+        }
+        uiItem.transform.SetAsLastSibling();
+        uiItem.Init();
+        //显示管理
+        if (!string.Equals(uiName, UINetRequest.ViewName))
+        {
+            AddedToStack(uiItem);
+        }
+        return uiItem;
+    }
+
+    private void SetUIInternal(ref UIBase uiItem, GameObject ui, string uiName, bool cache)
+    {
         uiItem = ui.GetComponent<UIBase>();
         ui.name = uiName;
         if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
@@ -176,10 +226,33 @@ public class UIMgr : MonoBehaviour
                 uiList.Add(uiName, uiItem);
             }
         }
-
-        return uiItem;
     }
-    public UIBase OpenUI_(string uiName, bool cache = true)
+
+    public void OpenUICallback(GameObject ui, System.EventArgs args)
+    {
+        LoadUIEventArgs uiEventArgs = args as LoadUIEventArgs;
+        if (null != ui && uiEventArgs != null)
+        {
+            UIBase uiItem = null;
+            SetUIInternal(ref uiItem, ui, uiEventArgs.uiName, uiEventArgs.cache);
+            uiItem.transform.SetAsLastSibling();
+            uiItem.Init();
+            //显示管理
+            if (string.Equals(uiEventArgs.uiName, UINetRequest.ViewName) == false)
+            {
+                AddedToStack(uiItem);
+            }
+
+            if (uiEventArgs.assetCallBack != null)
+            {
+                uiEventArgs.assetCallBack(ui, args);
+            }
+
+            mRequestUIList.Remove(uiEventArgs.uiName);
+        }
+    }
+
+    public void OpenUIAsync(string uiName, bool cache = true, AssetLoadedCallBack callback = null)
     {
         UIBase uiItem = null;
         if (cache)
@@ -192,16 +265,15 @@ public class UIMgr : MonoBehaviour
         }
         if (uiItem == null)
         {
-            uiItem = CreateUI(uiName, cache);
+            if (mRequestUIList.Contains(uiName) == false)
+            {
+                mRequestUIList.Add(uiName);
+                AssetRequest requestUI = new AssetRequest(uiName);
+                requestUI.assetCallBack = OpenUICallback;
+                requestUI.args = new LoadUIEventArgs(callback, uiName, cache);
+                ResourceMgr.Instance.LoadAssetAsyn(requestUI);
+            }
         }
-        uiItem.transform.SetAsLastSibling();
-        uiItem.Init();
-        //显示管理
-        if (!string.Equals(uiName, UINetRequest.ViewName))
-        {
-            AddedToStack(uiItem);
-        }
-        return uiItem;
     }
 
     public void CloseUI_(string uiName)

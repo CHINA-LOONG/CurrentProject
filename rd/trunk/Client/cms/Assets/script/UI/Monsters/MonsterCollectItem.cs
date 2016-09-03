@@ -60,6 +60,14 @@ public class MonsterCollectItem : MonoBehaviour
         int need = unit.fragmentCount;
         int count = (fragment == null ? 0 : fragment.count);
         textCount.text = string.Format("{0}/{1}", count, need);
+        if (count>=need)
+        {
+            textCount.color = ColorConst.text_color_fullFragment;
+        }
+        else
+        {
+            textCount.color = ColorConst.system_color_white;
+        }
     }
 
     void OnClickItem(GameObject go)

@@ -276,7 +276,7 @@ public class ShopDataMgr : MonoBehaviour
 	{
 		if (state == (int)MsgBox.PrompButtonClick.OK)
 		{
-			UIMgr.Instance.OpenUI_(UIMall.ViewName,false);
+            UIMall.OpenWith(false);
 		}
 	}
 

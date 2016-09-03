@@ -16,6 +16,7 @@ import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
+import com.hawk.game.protocol.Const;
 
 /**
  * 怪物基础数据
@@ -59,8 +60,8 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "skillList", nullable = false)
 	private String skillJson = "";
 	
-	@Column(name = "locked", nullable = false)
-	protected boolean locked = false;
+	@Column(name = "state", nullable = false)
+	protected int state = 0;
 
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -174,14 +175,26 @@ public class MonsterEntity extends HawkDBEntity {
 		skillMap.put(skillId, level);
 	}
 
-	public boolean isLocked() {
-		return locked;
+	public int getState() {
+		return state;
 	}
 
-	public void setLocked(boolean locked) {
-		this.locked = locked;
+	public void addState(int state) {
+		this.state |= state;
 	}
 
+	public void removeState(int state){
+		this.state &= ~state;
+	}
+	
+	public boolean isStateSet(int state){
+		return (this.state & state) == state;
+	}
+	
+	public boolean canMonsterDecompose(){
+		return (state | Const.MonsterState.LOCKED_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE | Const.MonsterState.IN_ALLIANCE_BASE_VALUE)!= 0;
+	}
+	
 	@Override
 	public boolean decode() {
 		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {

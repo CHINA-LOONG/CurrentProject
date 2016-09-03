@@ -1937,6 +1937,14 @@ public final class Const {
      * </pre>
      */
     USETOOLFATIGUE(3, 4),
+    /**
+     * <code>RAIDTICKET = 5;</code>
+     *
+     * <pre>
+     * 扫荡券
+     * </pre>
+     */
+    RAIDTICKET(4, 5),
     ;
 
     /**
@@ -1971,6 +1979,14 @@ public final class Const {
      * </pre>
      */
     public static final int USETOOLFATIGUE_VALUE = 4;
+    /**
+     * <code>RAIDTICKET = 5;</code>
+     *
+     * <pre>
+     * 扫荡券
+     * </pre>
+     */
+    public static final int RAIDTICKET_VALUE = 5;
 
 
     public final int getNumber() { return value; }
@@ -1981,6 +1997,7 @@ public final class Const {
         case 2: return USETOOLDOUBLEEXP;
         case 3: return USETOOLTRIPLEEXP;
         case 4: return USETOOLFATIGUE;
+        case 5: return RAIDTICKET;
         default: return null;
       }
     }
@@ -2454,13 +2471,13 @@ public final class Const {
      */
     NORMALSHOP(0, 1),
     /**
-     * <code>ALLIANCESHOP = 2;</code>
+     * <code>TOWERSHOP = 2;</code>
      */
-    ALLIANCESHOP(1, 2),
+    TOWERSHOP(1, 2),
     /**
-     * <code>TOWERSHOP = 3;</code>
+     * <code>ALLIANCESHOP = 3;</code>
      */
-    TOWERSHOP(2, 3),
+    ALLIANCESHOP(2, 3),
     ;
 
     /**
@@ -2468,13 +2485,13 @@ public final class Const {
      */
     public static final int NORMALSHOP_VALUE = 1;
     /**
-     * <code>ALLIANCESHOP = 2;</code>
+     * <code>TOWERSHOP = 2;</code>
      */
-    public static final int ALLIANCESHOP_VALUE = 2;
+    public static final int TOWERSHOP_VALUE = 2;
     /**
-     * <code>TOWERSHOP = 3;</code>
+     * <code>ALLIANCESHOP = 3;</code>
      */
-    public static final int TOWERSHOP_VALUE = 3;
+    public static final int ALLIANCESHOP_VALUE = 3;
 
 
     public final int getNumber() { return value; }
@@ -2482,8 +2499,8 @@ public final class Const {
     public static shopType valueOf(int value) {
       switch (value) {
         case 1: return NORMALSHOP;
-        case 2: return ALLIANCESHOP;
-        case 3: return TOWERSHOP;
+        case 2: return TOWERSHOP;
+        case 3: return ALLIANCESHOP;
         default: return null;
       }
     }
@@ -3392,6 +3409,101 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:SpellType)
   }
 
+  /**
+   * Protobuf enum {@code MonsterState}
+   *
+   * <pre>
+   * 宠物锁定状态
+   * </pre>
+   */
+  public enum MonsterState
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>LOCKED = 1;</code>
+     */
+    LOCKED(0, 1),
+    /**
+     * <code>IN_ALLIANCE_BASE = 2;</code>
+     */
+    IN_ALLIANCE_BASE(1, 2),
+    /**
+     * <code>IN_ADVENTURE = 4;</code>
+     */
+    IN_ADVENTURE(2, 4),
+    ;
+
+    /**
+     * <code>LOCKED = 1;</code>
+     */
+    public static final int LOCKED_VALUE = 1;
+    /**
+     * <code>IN_ALLIANCE_BASE = 2;</code>
+     */
+    public static final int IN_ALLIANCE_BASE_VALUE = 2;
+    /**
+     * <code>IN_ADVENTURE = 4;</code>
+     */
+    public static final int IN_ADVENTURE_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static MonsterState valueOf(int value) {
+      switch (value) {
+        case 1: return LOCKED;
+        case 2: return IN_ALLIANCE_BASE;
+        case 4: return IN_ADVENTURE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<MonsterState>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<MonsterState>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MonsterState>() {
+            public MonsterState findValueByNumber(int number) {
+              return MonsterState.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(22);
+    }
+
+    private static final MonsterState[] VALUES = values();
+
+    public static MonsterState valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private MonsterState(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:MonsterState)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3434,34 +3546,36 @@ public final class Const {
       "ONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022" +
       "\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007" +
       "*.\n\013FragSubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRA" +
-      "G_TOOL\020\002*`\n\016UseToolSubType\022\016\n\nUSETOOLEXP" +
+      "G_TOOL\020\002*p\n\016UseToolSubType\022\016\n\nUSETOOLEXP" +
       "\020\001\022\024\n\020USETOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPL" +
-      "EEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004*\204\001\n\tequipPart" +
-      "\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIR" +
-      "ASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGU" +
-      "ARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020" +
-      "\n*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022",
-      "\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED" +
-      "\020\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIAN" +
-      "CESHOP\020\002\022\r\n\tTOWERSHOP\020\003*H\n\tmailState\022\n\n\006" +
-      "UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERF" +
-      "LOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n" +
-      "\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tIm" +
-      "Channel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD\020" +
-      "\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377\377\377\377\377\377\377\377" +
-      "\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014InstanceType\022" +
-      "\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANCE_HOLE\020\002\022\022",
-      "\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE_GUILD\020\004*\336" +
-      "\002\n\tSpellType\022\030\n\024Spell_Type_PhyAttack\020\000\022\031" +
-      "\n\025Spell_Type_MgicAttack\020\001\022\023\n\017Spell_Type_" +
-      "Cure\020\002\022\026\n\022Spell_Type_Defense\020\003\022\026\n\022Spell_" +
-      "Type_Passive\020\004\022\031\n\025Spell_Type_Beneficial\020" +
-      "\005\022\027\n\023Spell_Type_Negative\020\006\022\023\n\017Spell_Type" +
-      "_Lazy\020\007\022\030\n\024Spell_Type_PhyDaZhao\020\010\022\032\n\026Spe" +
-      "ll_Type_MagicDazhao\020\t\022\034\n\030Spell_Type_Prep" +
-      "areDazhao\020\n\022\022\n\016Spell_Type_Dot\020\013\022\022\n\016Spell" +
-      "_Type_Hot\020\014\022\022\n\016Num_Spell_Type\020\rB\030\n\026com.h",
-      "awk.game.protocol"
+      "EEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004\022\016\n\nRAIDTICKET" +
+      "\020\005*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010" +
+      "\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WE" +
+      "APON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOV" +
+      "E\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WHI",
+      "TE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n" +
+      "\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMAL" +
+      "SHOP\020\001\022\r\n\tTOWERSHOP\020\002\022\020\n\014ALLIANCESHOP\020\003*" +
+      "H\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RE" +
+      "CEIVE\020\003\022\014\n\010OVERFLOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImT" +
+      "ype\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n" +
+      "\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005W" +
+      "ORLD\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007" +
+      "INVALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*" +
+      "]\n\014InstanceType\022\022\n\016INSTANCE_STORY\020\001\022\021\n\rI",
+      "NSTANCE_HOLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n\016IN" +
+      "STANCE_GUILD\020\004*\336\002\n\tSpellType\022\030\n\024Spell_Ty" +
+      "pe_PhyAttack\020\000\022\031\n\025Spell_Type_MgicAttack\020" +
+      "\001\022\023\n\017Spell_Type_Cure\020\002\022\026\n\022Spell_Type_Def" +
+      "ense\020\003\022\026\n\022Spell_Type_Passive\020\004\022\031\n\025Spell_" +
+      "Type_Beneficial\020\005\022\027\n\023Spell_Type_Negative" +
+      "\020\006\022\023\n\017Spell_Type_Lazy\020\007\022\030\n\024Spell_Type_Ph" +
+      "yDaZhao\020\010\022\032\n\026Spell_Type_MagicDazhao\020\t\022\034\n" +
+      "\030Spell_Type_PrepareDazhao\020\n\022\022\n\016Spell_Typ" +
+      "e_Dot\020\013\022\022\n\016Spell_Type_Hot\020\014\022\022\n\016Num_Spell",
+      "_Type\020\r*B\n\014MonsterState\022\n\n\006LOCKED\020\001\022\024\n\020I" +
+      "N_ALLIANCE_BASE\020\002\022\020\n\014IN_ADVENTURE\020\004B\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

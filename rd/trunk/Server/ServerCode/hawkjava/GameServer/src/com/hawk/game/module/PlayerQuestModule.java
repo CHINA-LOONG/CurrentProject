@@ -389,7 +389,7 @@ public class PlayerQuestModule extends PlayerModule {
 				int floor = statisticsEntity.getTowerFloor(towerId);
 
 				for (int i = 0; i < floor; ++i) {
-					if (instanceId == instanceList[i]) {
+					if (instanceId.equals(instanceList[i])) {
 						progress = goalCount;
 						break;
 					}

@@ -21,7 +21,10 @@ public class JidiRewardConform : UIBase
     // Use this for initialization
     void Start ()
     {
+        zhuzhaLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_shouru1");
+        maoxianLabelText.text = StaticDataMgr.Instance.GetTextByID("sociaty_shouru2");
         conformButton.onClick.AddListener(OnConformButtonClick);
+        UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
 	}
 
     public void RefreshWith(int zhushouReward,int maoxianReward)

@@ -530,9 +530,17 @@ public class PlayerAllianceModule extends PlayerModule {
 			return true;
 		}
 		
+		PlayerAllianceEntity playerEntity = allianceEntity.getMember(player.getId());
+		if (playerEntity == null) {
+			sendError(hsCode, Status.error.SERVER_ERROR_VALUE);
+			return true;
+		}
+		
 		HSAllianceBaseListRet.Builder response = HSAllianceBaseListRet.newBuilder();
 		for (AllianceBaseEntity baseEntity : allianceEntity.getAllianceBaseEntityMap().values()) {
-			response.addMonsterInfo(BuilderUtil.genAllianceBaseMonster(baseEntity, false));
+			if (!playerEntity.ismonsterSendtoBase(baseEntity.getMonsterBuilder().getMonsterId())) {
+				response.addMonsterInfo(BuilderUtil.genAllianceBaseMonster(baseEntity, false));
+			}	
 		}
 		
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_BASE_LIST_S_VALUE, response));

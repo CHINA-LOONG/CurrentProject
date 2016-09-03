@@ -25,7 +25,7 @@ message HSMonster
 	required int32 disposition = 8;
 	repeated HSSkill skill = 9;
 	repeated EquipInfo equipInfos = 10;
-	optional bool locked = 11 [default = false];
+	optional int32 state = 11;
 }
 
 // protocol-----------------------------------------------------

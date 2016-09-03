@@ -32,7 +32,7 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Shuigui3Unit);
 
-		if (NormalScript.GetWpLifeLeftRatio(Shuigui3Unit.battleUnit, "bossxiaoxiang24Shuigui3wp02")==0)
+		if (NormalScript.GetWpLifeLeft(Shuigui3Unit.battleUnit, "bossxiaoxiang24Shuigui3wp02")==0)
 		{
 			
 			if (GetAttackCount(Shuigui3Unit) % 7 == 0 && GetAttackCount(Shuigui3Unit) != 0) 
@@ -74,14 +74,14 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 		else if (args.wpID == "bossxiaoxiang24Shuigui3wp04" && (jishu==0&&jishu1==0))
 	    {
 			target.TriggerEvent("Shuigui3_state1to2", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu ++;
 	    }
 		else 
 			if (args.wpID == "bossxiaoxiang24Shuigui3wp04" && (jishu==0&&jishu1==1))
 		{
 			target.TriggerEvent("Shuigui3_state1to3", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu ++;
 		}
 

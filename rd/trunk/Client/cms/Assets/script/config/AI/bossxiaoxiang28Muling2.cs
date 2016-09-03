@@ -13,7 +13,8 @@ public class bossxiaoxiang28Muling2 : BossAi {
 	}
 	int jishu = 0 ;
 	int jishu1 = 0 ;
-
+	float randomNum = Random.Range (0.0f, 1.0f);
+	
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit ShujingUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
@@ -32,15 +33,15 @@ public class bossxiaoxiang28Muling2 : BossAi {
 		wpList = GetAliveWeakPointList (ShujingUnit);
 		
 		ShujingSpellDic.TryGetValue ("bossxiaoxiang28Muling21", out useSpell);
-		if (GetAttackCount(ShujingUnit) % 10 == 0) 
+		if (GetAttackCount(ShujingUnit) % 10 == 0 && GetAttackCount(ShujingUnit) != 0 ) 
 		{
 			ShujingSpellDic.TryGetValue ("bossxiaoxiang28Muling24", out useSpell);
 		}
-		else if (GetAttackCount(ShujingUnit) % 5 == 0) 
+		else if (GetAttackCount(ShujingUnit) % 5 == 0 && GetAttackCount(ShujingUnit) != 0) 
 		{
 			ShujingSpellDic.TryGetValue ("bossxiaoxiang28Muling23", out useSpell);
 		}
-		else if (GetAttackCount(ShujingUnit) % 3 == 0) 
+		else if (GetAttackCount(ShujingUnit) % 3 == 0 && GetAttackCount(ShujingUnit) != 0) 
 		{
 			ShujingSpellDic.TryGetValue ("bossxiaoxiang28Muling22", out useSpell);
 		}			
@@ -49,44 +50,31 @@ public class bossxiaoxiang28Muling2 : BossAi {
 		return attackResult;
     }
     //---------------------------------------------------------------------------------------------
-    
 	//---------------------------------------------------------------------------------------------
 	public override void OnWpDead(WeakPointDeadArgs args)
 	{
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-		
-		if (args.wpID == "bossxiaoxiang28Muling2wp03" && jishu <= 2) 
-		{
-			if (UnityEngine.Random.Range (0.0f, 1.0f) <= 0.33 && UnityEngine.Random.Range (0.0f, 1.0f) > 0)
-			{
-				target.TriggerEvent ("xiaoren3_state3to1", Time.time, null);
-				BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (3.0f);
-				jishu ++;
-			}
+
+		Logger.Log (randomNum);
+		if (args.wpID == "bossxiaoxiang28Muling2wp03" && jishu <= 2 && randomNum <= 0.33 && randomNum > 0) {
+			target.TriggerEvent ("xiaoren3_state3to1", Time.time, null);
+			BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (1.5f);
+			jishu ++;
 		}
+
 		
-		else if (args.wpID == "bossxiaoxiang28Muling2wp05" && jishu <= 2)
-		{
-			if  (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.66 && UnityEngine.Random.Range(0.0f, 1.0f) > 0.33)
-			{
-				target.TriggerEvent ("xiaoren2_state3to1", Time.time, null);
-				BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (3.0f);
-				jishu ++;
-			}
-			
+		else if (args.wpID == "bossxiaoxiang28Muling2wp05" && jishu <= 2 && randomNum <= 0.66 && randomNum > 0.33) {
+			target.TriggerEvent ("xiaoren1_state3to1", Time.time, null);
+			BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (1.5f);
+			jishu ++;
 		}
+
 		
-		else
-			if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.66 && UnityEngine.Random.Range(0.0f, 1.0f) > 0.33)
-		{
-			if (args.wpID == "bossxiaoxiang28Muling2wp07" && jishu<=2)
-			{
-				target.TriggerEvent("xiaoren1_state3to1", Time.time, null);
-				BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
-				jishu ++;
-			}
+		if (args.wpID == "bossxiaoxiang28Muling2wp07" && jishu <= 2 && randomNum <= 1.0 && randomNum > 0.66) { 
+			target.TriggerEvent ("xiaoren2_state3to1", Time.time, null);
+			BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (1.5f);
+			jishu ++;
 		}
-		
 	}
 	//---------------------------------------------------------------------------------------------
 
@@ -98,16 +86,18 @@ public class bossxiaoxiang28Muling2 : BossAi {
 		{
 			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 			target.TriggerEvent("xiaoren_chongzhi",Time.time,null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu1 ++;
+			randomNum = Random.Range (0.0f, 1.0f);
 		}
 
 		else if (args.vitalCurrent <= args.vitalMax*0.66 && args.vitalType == (int)VitalType.Vital_Type_Default && jishu1==0)
 		{
 			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 			target.TriggerEvent("xiaoren_chongzhi",Time.time,null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu1 ++;
+			randomNum = Random.Range (0.0f, 1.0f);
 		}
 		
 	}

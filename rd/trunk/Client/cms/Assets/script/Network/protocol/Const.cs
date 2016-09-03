@@ -495,4 +495,18 @@ namespace PB
       Num_Spell_Type = 13
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"MonsterState")]
+    public enum MonsterState
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOCKED", Value=1)]
+      LOCKED = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_ALLIANCE_BASE", Value=2)]
+      IN_ALLIANCE_BASE = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_ADVENTURE", Value=4)]
+      IN_ADVENTURE = 4
+    }
+  
 }

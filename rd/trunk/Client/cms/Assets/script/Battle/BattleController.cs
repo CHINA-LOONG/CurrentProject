@@ -57,7 +57,7 @@ public class BattleController : MonoBehaviour
             {
                 mirrorEnegy = GameConfig.Instance.MirrorMaxEnegy;
             }
-            if (uiBattle != null)
+            if (uiBattle != null && uiBattle.m_MirrorDray != null)
             {
                 uiBattle.m_MirrorDray.UpdateMirrorEnegy();
             }
@@ -346,7 +346,7 @@ public class BattleController : MonoBehaviour
     {
         mRevived = false;
         UIMgr.Instance.CloseUI_(UILoading.ViewName);
-        ResourceMgr.Instance.UnloadCachedBundles(true);
+        //ResourceMgr.Instance.UnloadCachedBundles(true);
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;

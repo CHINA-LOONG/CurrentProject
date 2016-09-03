@@ -34,23 +34,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &115068
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 22452402}
-  - 222: {fileID: 22202136}
-  - 114: {fileID: 11476548}
-  m_Layer: 5
-  m_Name: contributionText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &117910
 GameObject:
   m_ObjectHideFlags: 1
@@ -2047,38 +2030,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\u5386\u53F2\u8D21\u732E\u7F6E\u8FBE\u5230\u3002\u3002\u3002"
---- !u!114 &11476548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 24
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: history contribution:39938
 --- !u!114 &11479098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2307,7 +2258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03d1749e3a999e4ab4eb049619d3ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contributionText: {fileID: 11476548}
+  contributionText: {fileID: 0}
   petPositionArray:
   - {fileID: 11418080}
   - {fileID: 11415240}
@@ -2350,12 +2301,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179780}
---- !u!222 &22202136
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115068}
 --- !u!222 &22204926
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2886,7 +2831,7 @@ RectTransform:
   - {fileID: 22468202}
   - {fileID: 22483242}
   m_Father: {fileID: 22444240}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2919,7 +2864,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22452402}
   - {fileID: 22473378}
   - {fileID: 22443956}
   - {fileID: 22453970}
@@ -2964,23 +2908,6 @@ RectTransform:
   m_AnchoredPosition: {x: -79.6499863, y: -164.600006}
   m_SizeDelta: {x: 103.199997, y: 30}
   m_Pivot: {x: .5, y: .5}
---- !u!224 &22452402
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115068}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 22444240}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 124, y: 554}
-  m_SizeDelta: {x: 311, y: 36}
-  m_Pivot: {x: 0, y: .5}
 --- !u!224 &22453970
 RectTransform:
   m_ObjectHideFlags: 1
@@ -2996,7 +2923,7 @@ RectTransform:
   - {fileID: 22423130}
   - {fileID: 22492792}
   m_Father: {fileID: 22444240}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 279.5, y: 0}
@@ -3190,7 +3117,7 @@ RectTransform:
   - {fileID: 22440748}
   - {fileID: 22406572}
   m_Father: {fileID: 22444240}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -284, y: 15}

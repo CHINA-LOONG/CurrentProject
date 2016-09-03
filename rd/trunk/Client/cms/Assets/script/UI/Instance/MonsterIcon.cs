@@ -41,7 +41,28 @@ public class MonsterIcon : MonoBehaviour
         return micon;
     }
 
-	void Awake()
+    public static void CreateIconAsync(AssetLoadedCallBack callback)
+    {
+        AssetRequest requestUI = new AssetRequest("monsterIcon");
+        requestUI.assetCallBack = CreateIconCallback;
+        requestUI.args = new LoadUIEventArgs(callback, "monsterIcon", false);
+        ResourceMgr.Instance.LoadAssetAsyn(requestUI);
+    }
+    public static void CreateIconCallback(GameObject monsterIcon, System.EventArgs args)
+    {
+        LoadUIEventArgs uiEventArgs = args as LoadUIEventArgs;
+        if (null != monsterIcon && uiEventArgs != null)
+        {
+            MonsterIcon icon = monsterIcon.GetComponent<MonsterIcon>();
+            icon.Init();
+            if (uiEventArgs.assetCallBack != null)
+            {
+                uiEventArgs.assetCallBack(monsterIcon, args);
+            }
+        }
+    }
+
+    void Awake()
 	{
 		nickNameText.text = "";
 	}

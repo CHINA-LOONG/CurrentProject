@@ -15,6 +15,7 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceBaseSendMonster;
@@ -91,6 +92,11 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 						return true;
 					}
 					
+					if (monsterEntity.isStateSet(Const.MonsterState.IN_ADVENTURE_VALUE) == true) {
+						player.sendError(protocol.getType(), Status.monsterError.MONSTER_LOCKED_VALUE);
+						return true;
+					}
+					
 					AllianceBaseEntity allianceBaseEntity = new AllianceBaseEntity();
 					allianceBaseEntity.setSendTime(HawkTime.getSeconds());
 					allianceBaseEntity.setAllianceId(allianceEntity.getId());
@@ -98,6 +104,7 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 					allianceBaseEntity.setMonsterInfo(BuilderUtil.genCompleteMonsterBuilder(player, monsterEntity));
 					allianceBaseEntity.setBp((int)MonsterUtil.calculateBP(allianceBaseEntity.getMonsterBuilder()));
 					allianceBaseEntity.setPosition(request.getPosition());
+					allianceBaseEntity.setNickname(player.getName());
 					if (allianceBaseEntity.notifyCreate() == false) {
 						player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
 						return true;
@@ -105,7 +112,8 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 					
 					// 添加基地驻兵
 					allianceEntity.addAllianceBase(allianceBaseEntity, request.getPosition());
-					
+					monsterEntity.addState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
+					monsterEntity.notifyUpdate(true);
 					// 回复信息
 					HSAllianceBaseSendMonsterRet.Builder response = HSAllianceBaseSendMonsterRet.newBuilder();
 					response.setSendTime(allianceBaseEntity.getSendTime());

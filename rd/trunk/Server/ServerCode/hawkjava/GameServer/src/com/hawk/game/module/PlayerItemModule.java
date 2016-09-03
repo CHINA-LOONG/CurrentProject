@@ -152,8 +152,10 @@ public class PlayerItemModule extends PlayerModule{
 			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
 			return ;
 		}
+		
 		ConsumeItems consumeItem = new ConsumeItems();
-		consumeItem.addGold((int) (storeCfg.getPrice() * storeCfg.getDiscount() * itemCount));
+		int price = (int)Math.ceil(storeCfg.getPrice() * storeCfg.getDiscount());
+		consumeItem.addGold((int) (price * itemCount));
 		if (consumeItem.checkConsume(player, hsCode) == false) {
 			return ;
 		}

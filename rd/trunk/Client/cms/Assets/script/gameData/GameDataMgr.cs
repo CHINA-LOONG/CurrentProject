@@ -428,7 +428,7 @@ public class GameDataMgr : MonoBehaviour
             unit.curExp = monster.exp;
             unit.stage = monster.stage;
             unit.spellPbList = monster.skill;
-            unit.locked = monster.locked;
+            unit.locked = false;//todo:
             mainPlayer.unitPbList.Add(unit.guid, unit);
             mainPlayer.allUnitDic.Add(unit.guid, GameUnit.FromPb(unit, true));
         }

@@ -125,6 +125,10 @@ public class MonsterCfg extends HawkConfigBase {
 		return nickName;
 	}
 
+	public int getType() {
+		return type;
+	}
+
 	public int getRarity() {
 		return rarity;
 	}
