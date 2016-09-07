@@ -98,7 +98,7 @@ public class GameQuestData
         return quest;
     }
 
-    public void ClearQuest()
+    public void ClearData()
     {
         questList.Clear();
 
@@ -109,7 +109,7 @@ public class GameQuestData
     //同步所有任务
     public void QuestInfoSync(List<PB.HSQuest> questSync)
     {
-        ClearQuest();
+        ClearData();
 
         Dictionary<int, QuestData> groupUsedTime = new Dictionary<int, QuestData>();
         foreach (var questInfo in questSync)

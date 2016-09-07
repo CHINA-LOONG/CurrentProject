@@ -71,6 +71,7 @@ public class HawkMsgRpc {
 			rpcInvokerMap.put(rpcId, invoker);
 			return HawkApp.getInstance().postMsg(msg);
 		}
+		
 		return false;
 	}
 	

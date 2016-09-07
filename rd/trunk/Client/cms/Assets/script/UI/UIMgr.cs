@@ -261,6 +261,13 @@ public class UIMgr : MonoBehaviour
             if (uiItem != null)
             {
                 uiItem.gameObject.SetActive(true);
+                uiItem.transform.SetAsLastSibling();
+                uiItem.Init();
+                //显示管理
+                if (string.Equals(uiName, UINetRequest.ViewName) == false)
+                {
+                    AddedToStack(uiItem);
+                }
             }
         }
         if (uiItem == null)
@@ -359,11 +366,9 @@ public class UIMgr : MonoBehaviour
         {
             stackList.Remove(uiItem);
         }
-        else
-        {
-            stackList.Add(uiItem);
+        stackList.Add(uiItem);
             //Logger.LogError("add ：" + uiItem.gameObject.name);
-        }
+
     }
     public void RemoveFromStack(UIBase uiItem)
     {
@@ -398,7 +403,7 @@ public class UIMgr : MonoBehaviour
         GameDataMgr.Instance.GetNextTowerFloor(out nextInstance, out nextFloor);
         if (nextInstance != null)
         {
-            UIAdjustBattleTeam.OpenWith(nextInstance, 0, InstanceType.Tower, nextFloor);
+            UIAdjustBattleTeam.OpenWith(nextInstance, 0, false,InstanceType.Tower, nextFloor);
         }
     }
 

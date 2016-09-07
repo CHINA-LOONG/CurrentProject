@@ -85,13 +85,17 @@ public class UIAdjustBattleTeam : UIBase
     private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
-    
-    public  static void OpenWith(string instanceId,int star, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
+    private bool showInstanceListExit = true;
+
+    private int oldPlayerLevel = 0;
+    private int oldHuoliValue = 0;
+
+    public  static void OpenWith(string instanceId,int star,bool showInstanceListWhenExit, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
     {
         UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
         uiadust.FirstInit();
         uiadust.towerFloor = towerFloor;
-        uiadust.SetData(instanceId, star, insType);
+        uiadust.SetData(instanceId, star, showInstanceListWhenExit, insType);
 
         UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
         if (uiBuild != null)
@@ -180,8 +184,9 @@ public class UIAdjustBattleTeam : UIBase
         GameEventMgr.Instance.RemoveListener(GameEventList.RefreshSaodangTimes, RefreshSaodangTimes);
     }
 
-	public void SetData(string instanceId,int star, InstanceType insType = InstanceType.Normal)
+	public void SetData(string instanceId,int star, bool showInstanceListWhenExit, InstanceType insType = InstanceType.Normal)
     {
+        this.showInstanceListExit = showInstanceListWhenExit;
         GameDataMgr.Instance.curInstanceType = (int)insType;
         this.instanceId = instanceId;
         instanceEntryData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
@@ -459,7 +464,7 @@ public class UIAdjustBattleTeam : UIBase
                 break;
 
             var subRewardData = rewardData.itemList[i];
-            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData.protocolData, dropList[i],true,true);
+            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData.protocolData, dropList[i],true,false);
             if(null != go)
             {
                 dropObjectList.Add(go);
@@ -873,9 +878,11 @@ public class UIAdjustBattleTeam : UIBase
 
         return retState ;
     }
-
     void RequestSaodang(int times)
     {
+        oldPlayerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
+        oldHuoliValue = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
+
         PB.HSInstanceSweep param = new PB.HSInstanceSweep();
         param.instanceId = instanceId;
         param.count = times;
@@ -900,6 +907,11 @@ public class UIAdjustBattleTeam : UIBase
         listReward.Add(sweetRet.sweepReward);
         //扫荡结果
         SaodangResult.OpenWith(listReward);
+        int newPlayerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
+        if (newPlayerLevel > oldPlayerLevel)
+        {
+            LevelUp.OpenWith(oldPlayerLevel,newPlayerLevel,oldHuoliValue,GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+        }
     }
 #endregion
     #region      取消战斗
@@ -907,7 +919,10 @@ public class UIAdjustBattleTeam : UIBase
     {
         if (isBattleClick) return;
 
-        GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
+        if(showInstanceListExit)
+        {
+            GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
+        }
         UIMgr.Instance.CloseUI_(this);
     }
     #endregion

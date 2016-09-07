@@ -69,14 +69,14 @@ public class UIQuestInfo : UIBase
             info = list[i].protocolData;
             if (info.type == (int)PB.itemType.ITEM)
             {
-                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count });
+                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count },true,false);
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }
             else if (info.type == (int)PB.itemType.EQUIP)
             {
                 EquipData equipData = EquipData.valueof(0, info.itemId, info.stage, info.level, BattleConst.invalidMonsterID, null);
-                ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+                ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true,false);
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }

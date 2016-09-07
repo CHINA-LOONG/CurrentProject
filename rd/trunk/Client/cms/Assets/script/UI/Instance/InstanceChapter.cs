@@ -39,6 +39,6 @@ public class InstanceChapter : MonoBehaviour
 		{
 			uiBuild.uiAdjustBattleTeam = adjustUi;
 		}
-		adjustUi.SetData (data.instanceId, data.star);
+		adjustUi.SetData (data.instanceId, data.star,true);
 	}
 }

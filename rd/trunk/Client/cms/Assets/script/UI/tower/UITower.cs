@@ -264,7 +264,7 @@ public class UITower : UIBase
 		if (towerItemData.currType == TowerItemType.Item_Type_Curr)
         {
             int curTowerFloor = int.Parse(towerItemData.towerNum.text);
-            UIAdjustBattleTeam.OpenWith(towerItemData.itemTowerID, 0, InstanceType.Tower, curTowerFloor);
+            UIAdjustBattleTeam.OpenWith(towerItemData.itemTowerID, 0,false, InstanceType.Tower, curTowerFloor);
         }
 		else if(towerItemData.currType == TowerItemType.Item_Type_not || towerItemData.currType == TowerItemType.Item_Type_end)
 		{

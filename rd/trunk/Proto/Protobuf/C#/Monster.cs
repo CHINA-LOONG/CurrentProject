@@ -121,13 +121,13 @@ namespace PB
       get { return _equipInfos; }
     }
   
-    private bool _locked = (bool)false;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"locked", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool locked
+    private int _state = default(int);
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"state", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int state
     {
-      get { return _locked; }
-      set { _locked = value; }
+      get { return _state; }
+      set { _state = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

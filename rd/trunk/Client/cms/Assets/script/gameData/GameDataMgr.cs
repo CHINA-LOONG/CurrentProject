@@ -105,7 +105,9 @@ public class GameDataMgr : MonoBehaviour
     //--------------------------------------------------------------------------------------------
     public void ClearAllData()//重新登录重置删除数据
     {
-
+        mainPlayer.ClearData();
+        shopDataMgr.ClearData();
+        sociatyDataMgr.ClearData();
     }
     //---------------------------------------------------------------------------------------------
     public void Init()

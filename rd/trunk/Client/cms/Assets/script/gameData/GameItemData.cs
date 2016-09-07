@@ -107,7 +107,12 @@ public class GameItemData
         ItemStaticData itemStData = StaticDataMgr.Instance.GetItemData(itemId);
         return itemStData.times;
     }
-   
+
+    public void ClearData()
+    {
+        itemList.Clear();
+        itemStateDic.Clear();
+    }
 }
 
 public class ItemDataInfo

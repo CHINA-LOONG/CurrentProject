@@ -126,7 +126,9 @@ public class JidiPetPosition : MonoBehaviour
         }
         else if (positionState == PositionState.Locked)
         {
-
+            string lockMsg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tipslock"),
+                GetOpenContributionWithIndex(positionIndex));
+            UIIm.Instance.ShowSystemHints(lockMsg, (int)PB.ImType.PROMPT);
         }
     }
     void OnSelectPet(int petGuid)

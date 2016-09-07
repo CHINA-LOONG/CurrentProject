@@ -497,36 +497,43 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
     private string _cfgId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string cfgId
     {
       get { return _cfgId; }
       set { _cfgId = value; }
     }
     private int _stage;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int stage
     {
       get { return _stage; }
       set { _stage = value; }
     }
     private int _level;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int level
     {
       get { return _level; }
       set { _level = value; }
     }
     private int _bp;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"bp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"bp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int bp
     {
       get { return _bp; }
       set { _bp = value; }
     }
     private int _sendTime = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"sendTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"sendTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int sendTime
     {
@@ -534,7 +541,7 @@ namespace PB
       set { _sendTime = value; }
     }
     private int _position = default(int);
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"position", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"position", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int position
     {
@@ -542,12 +549,19 @@ namespace PB
       set { _position = value; }
     }
     private int _reward = default(int);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"reward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"reward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int reward
     {
       get { return _reward; }
       set { _reward = value; }
+    }
+    private string _nickname;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

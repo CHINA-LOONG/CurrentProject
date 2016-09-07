@@ -396,12 +396,12 @@ public class StoreParse : ParseBase
         if (condition)
         {
             base.ClickCallBack();
-            //TODO:
+            FoundMgr.Instance.GoToUIStore();
             Logger.Log("商城");
         }
         else
         {
-
+            //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_notopen4"), (int)PB.ImType.PROMPT);
         }
     }
 
@@ -409,7 +409,7 @@ public class StoreParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = false;
+        condition = true;
         //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("shop_store"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));

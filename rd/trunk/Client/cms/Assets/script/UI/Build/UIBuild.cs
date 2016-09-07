@@ -51,6 +51,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     [HideInInspector]
     public UIShop uiShop;
     [HideInInspector]
+    public UIStore uiStore;
+    [HideInInspector]
     public UICompose uiCompose;
     [HideInInspector]
     public UIDecompose uiDecompose;
@@ -233,6 +235,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		uiShop.RefreshShopData (shopType);
 		return uiShop;
 	}
+    public UIStore OpenStore()
+    {
+        uiStore= UIMgr.Instance.OpenUI_(UIStore.ViewName) as UIStore;
+        return uiStore;
+    }
+
 
 	void OnShopButtonClick( GameObject go)
 	{
@@ -307,6 +315,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiMonsters);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
 		UIMgr.Instance.DestroyUI (uiShop);
+        UIMgr.Instance.DestroyUI(uiStore);
         UIMgr.Instance.DestroyUI(uiCompose);
         UIMgr.Instance.DestroyUI(uiDecompose);
         //UIMgr.Instance.DestroyUI(uiAdventure);

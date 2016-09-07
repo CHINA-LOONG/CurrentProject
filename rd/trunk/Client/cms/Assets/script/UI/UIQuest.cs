@@ -124,16 +124,18 @@ public class UIQuest : UIBase,
         {
             System.Action startEvent = () =>
             {
+                CurrentList.Remove(quest);
                 scrollView.InitContentSize(CurrentList.Count, this, true);
             };
             System.Action<float> endEvent = (time) =>
             {
+                GameEventMgr.Instance.AddListener(GameEventList.QuestChanged, OnQuestChanged);
                 int questId = quest.questId;
                 GameDataMgr.Instance.PlayerDataAttr.gameQuestData.QuestRemove(new List<int>() { quest.questId });
                 CheckPlayerData();
             };
+            GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
             uiQuestInfo = UIQuestInfo.Open(quest, startEvent, endEvent);
-            CurrentList.Remove(quest);
         }
     }
 

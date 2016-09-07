@@ -193,7 +193,7 @@ public class SociatyContentMember : SociatyContentBase
             SociatyErrorMsg.ShowImWithErrorCode(error.errCode);
             return;
         }
-        sociatyDataMgr.ClearSociaty();
+        sociatyDataMgr.ClearData();
         SociatyMain.Instance.Close();
         UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_020"), (int)PB.ImType.PROMPT);
     }

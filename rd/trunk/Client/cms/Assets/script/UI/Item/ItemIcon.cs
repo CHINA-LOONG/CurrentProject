@@ -3,7 +3,29 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+public class LoadItemIconEventArgs : System.EventArgs
+{
+    public LoadItemIconEventArgs(
+        AssetLoadedCallBack assetCallBack,
+        ItemData itemData,
+        EquipData equipData,
+        bool showTips,
+        bool showGetby
+        )
+    {
+        this.assetCallBack = assetCallBack;
+        this.showTips = showTips;
+        this.equipData = equipData;
+        this.showGetby = showGetby;
+        this.itemData = itemData;
+    }
 
+    public ItemData itemData;
+    public EquipData equipData;
+    public bool showTips;
+    public bool showGetby;
+    public AssetLoadedCallBack assetCallBack;
+}
 public class ItemIcon : MonoBehaviour 
 {
 	protected	enum IconType:int
@@ -17,6 +39,43 @@ public class ItemIcon : MonoBehaviour
 	}
 
     #region ----------------Create Method
+    public static void CreateItemIconIconAsync(
+        ItemData itemInfo,
+        bool showTips = true,
+        bool showGetby = true,
+        AssetLoadedCallBack callback = null
+        )
+    {
+        AssetRequest requestUI = new AssetRequest("ItemIcon");
+        requestUI.assetCallBack = CreateItemIconCallback;
+        requestUI.args = new LoadItemIconEventArgs(callback, itemInfo, null, showTips, showGetby);
+        ResourceMgr.Instance.LoadAssetAsyn(requestUI);
+    }
+    public static void CreateItemIconIconAsync(
+        EquipData equipInfo,
+        bool showTips = true,
+        bool showGetby = true,
+        AssetLoadedCallBack callback = null
+        )
+    {
+        AssetRequest requestUI = new AssetRequest("ItemIcon");
+        requestUI.assetCallBack = CreateItemIconCallback;
+        requestUI.args = new LoadItemIconEventArgs(callback, null, equipInfo, showTips, showGetby);
+        ResourceMgr.Instance.LoadAssetAsyn(requestUI);
+    }
+    public static void CreateItemIconCallback(GameObject itemIcon, System.EventArgs args)
+    {
+        LoadItemIconEventArgs itemIconArgs = args as LoadItemIconEventArgs;
+        if (null != itemIcon && itemIconArgs != null)
+        {
+            ItemIcon icon = itemIcon.GetComponent<ItemIcon>();
+            icon.RefreshWithItemInfo(itemIconArgs.itemData, itemIconArgs.showTips, itemIconArgs.showGetby);
+            if (itemIconArgs.assetCallBack != null)
+            {
+                itemIconArgs.assetCallBack(itemIcon, args);
+            }
+        }
+    }
     /// <summary>
     /// 创建物品ICON  设置点击处理
     /// </summary>

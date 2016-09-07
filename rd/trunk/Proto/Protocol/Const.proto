@@ -301,7 +301,6 @@ enum ChapterBoxState
 	OPEN                   = 1;
 }
 
-
 // 副本类型
 enum InstanceType
 {
@@ -317,26 +316,26 @@ enum InstanceType
 
 // 技能类型
 enum SpellType
-{ 
-    Spell_Type_PhyAttack 	= 0;
-    Spell_Type_MgicAttack	= 1;
-    Spell_Type_Cure			= 2;
-    Spell_Type_Defense		= 3;
-    Spell_Type_Passive		= 4;
-    Spell_Type_Beneficial	= 5;
-    Spell_Type_Negative		= 6;
-    Spell_Type_Lazy			= 7;
-    Spell_Type_PhyDaZhao	= 8;
-	Spell_Type_MagicDazhao	= 9;
-    Spell_Type_PrepareDazhao= 10;
-	Spell_Type_Dot			= 11;
-	Spell_Type_Hot			= 12;
-    Num_Spell_Type			= 13;
+{
+	Spell_Type_PhyAttack     = 0;
+	Spell_Type_MgicAttack    = 1;
+	Spell_Type_Cure          = 2;
+	Spell_Type_Defense       = 3;
+	Spell_Type_Passive       = 4;
+	Spell_Type_Beneficial    = 5;
+	Spell_Type_Negative      = 6;
+	Spell_Type_Lazy          = 7;
+	Spell_Type_PhyDaZhao     = 8;
+	Spell_Type_MagicDazhao   = 9;
+	Spell_Type_PrepareDazhao = 10;
+	Spell_Type_Dot           = 11;
+	Spell_Type_Hot           = 12;
+	Num_Spell_Type           = 13;
 }
 
 // 宠物锁定状态
 enum MonsterState
-{	
+{
 	LOCKED = 1;
 	IN_ALLIANCE_BASE = 2;
 	IN_ADVENTURE = 4;

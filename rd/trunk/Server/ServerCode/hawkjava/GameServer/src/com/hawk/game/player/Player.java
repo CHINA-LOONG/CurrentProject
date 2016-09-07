@@ -212,8 +212,6 @@ public class Player extends HawkAppObj {
 		builder.setReason(reason);
 		HawkProtocol protocol = HawkProtocol.valueOf(code.KICKOUT_S_VALUE, builder);
 		sendProtocol(protocol);
-		session.setAppObject(null);
-		session = null;
 	}
 	/**
 	 * 玩家消息预处理

@@ -13,7 +13,7 @@ public class HawkAppCfg extends HawkConfigBase {
 	 * 管理员
 	 */
 	protected final String admin;
-		/**
+	/**
 	 * 游戏名
 	 */
 	protected final String gameId;

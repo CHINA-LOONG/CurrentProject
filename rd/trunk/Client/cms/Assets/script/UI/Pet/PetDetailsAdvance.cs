@@ -184,7 +184,7 @@ public class PetDetailsAdvance : PetDetailsRight
         }
         int current = Mathf.Clamp((itemData == null ? 0 : itemData.count), 0, 9999);
         int need = unitStageData.demandItemList[0].count;
-        enoughItem = current > need;
+        enoughItem = current >= need;
         Color color;
         if (enoughItem)
         {

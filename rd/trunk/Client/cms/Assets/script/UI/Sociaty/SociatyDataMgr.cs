@@ -139,7 +139,7 @@ public class SociatyDataMgr : MonoBehaviour
         UISociatyTask.Open(taskType, otherTeamId);
     }
 
-    public void ClearSociaty()
+    public void ClearData()
     {
         allianceMemberList.Clear();
         allianceID = 0;

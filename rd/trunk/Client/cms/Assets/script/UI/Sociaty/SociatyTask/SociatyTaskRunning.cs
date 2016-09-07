@@ -599,7 +599,7 @@ public class SociatyTaskRunning : MonoBehaviour
         if (null == questStData)
             return;
         SociatyQuestType questType = (SociatyQuestType)questStData.goalType;
-        UIAdjustBattleTeam.OpenWith(questStData.goalParam, 0, InstanceType.Guild);
+        UIAdjustBattleTeam.OpenWith(questStData.goalParam, 0,false, InstanceType.Guild);
     }
 
     void OnRequestCommitQuestFinish(ProtocolMessage message)

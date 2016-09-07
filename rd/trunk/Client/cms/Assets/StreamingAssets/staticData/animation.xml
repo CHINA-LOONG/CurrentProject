@@ -109,7 +109,7 @@ state = 1 Remove
 				<Motion ani="" key="toulan" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="defendb1" state="0">
+		<Ani id="defende1" state="0">
 			<MotionList>
 				<Motion ani="" key="fangyu" value="true"/>
 			</MotionList>
@@ -2805,7 +2805,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="psvCuree1" state="0" AniType="Passive">
 			<ParticleList>
-				<Particle asset="magicCureMedium" bundle="effect/particle" ani="" locky="true" parent=""/>
+				<Particle asset="magicCureSlight" bundle="effect/particle" ani="" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="phyReduceb1" state="0" AniType="Passive">
@@ -4286,7 +4286,7 @@ state = 1 Remove
 
 		<Ani id="ultMomoe2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicCureMedium" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1"/>
@@ -4683,7 +4683,7 @@ state = 1 Remove
 		
 		<Ani id="ultMantuoluoe3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicCureMedium" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1"/>
@@ -5570,7 +5570,7 @@ state = 1 Remove
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="Bip001 Head" attach="true"/>
+				<Particle asset="ultwushi3Hit" bundle="effect/particle" parent="Bip001 Head" locky="true"/>
 				<Particle time="0" asset="utlwushi4_bossbuff_woball" bundle="effect/particle" parent="wp_ball" attach="true"/>
 			</ParticleList>
 			<AudioList>

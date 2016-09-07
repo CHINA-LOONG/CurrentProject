@@ -83,8 +83,8 @@ public class GameConfig : MonoBehaviour {
 
     //公会基地
     public int JidiPosition0Contribution = 0;
-    public int JidiPosition1Contribution = 0;
-    public int JidiPosition2Contribution = 0;
+    public int JidiPosition1Contribution = 1000;
+    public int JidiPosition2Contribution = 2000;
 
     //功能开启等级限制
     public int OpenLevelForGonghui = 20;//公会开发等级

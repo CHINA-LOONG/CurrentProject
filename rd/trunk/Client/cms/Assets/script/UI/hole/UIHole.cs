@@ -124,7 +124,7 @@ public class UIHole : UIBase
         }
         else
         {
-            UIAdjustBattleTeam.OpenWith(holeItemData.fbID, 0, InstanceType.Hole);
+            UIAdjustBattleTeam.OpenWith(holeItemData.fbID, 0,false, InstanceType.Hole);
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------

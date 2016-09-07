@@ -48,7 +48,7 @@ public class HawkCdkService {
 	 */
 	private String gameName = "";
 	private String platform = "";
-	private String chanel = "";
+	private String channel = "";
 	private int serverId = 0;
 	private String token = "";
 
@@ -101,11 +101,11 @@ public class HawkCdkService {
 	 * 
 	 * @return
 	 */
-	public boolean install(String gameName, String platform, String chanle, int serverId, String host, int timeout) {
+	public boolean install(String gameName, String platform, String channel, int serverId, String host, int timeout) {
 		try {
 			this.gameName = gameName;
 			this.platform = platform;
-			this.chanel = chanle;
+			this.channel = channel;
 			this.serverId = serverId;
 			
 			if (httpClient == null) {

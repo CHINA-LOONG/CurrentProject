@@ -1,8 +1,8 @@
 ﻿#NUM,TEXT,NUM,TEXT,TEXT,NUM,TEXT,TEXT
 chapter,name,normalLevel,normalReward,normalDrop,hardLevel,hardReward,hardDrop
 #章节Id,章节名称,难度1等级,难度1满星rewardId,难度1掉落rewardId,难度2等级,难度2满星rewardId,难度2掉落rewardId
-1,chapter1_name,1,31001,41001,10,32001,42001
-2,chapter2_name,5,31002,41002,10,32002,42002
+1,chapter1_name,1,31001,41001,10,31003,42001
+2,chapter2_name,5,31002,41002,10,31004,42002
 3,chapter3_name,10,31003,32003,15,32003,10001
 4,chapter4_name,15,31004,32004,20,32004,10001
 5,chapter5_name,20,110001,110001,22,110001,110001

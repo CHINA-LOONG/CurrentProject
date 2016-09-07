@@ -699,7 +699,7 @@ meidusha2,压制,yazhi
 meidusha3,拍打攻击,paida
 meidusha4,石化光线,shihua！
 meidushatips,头可断，发型不能乱！在我面前，你只有两个选择！,face can dead
-amutetips,谁也不会看到我的真面目！,who can see my face？
+amutetips,谁也不会看到我的真面目！,Do you know what my face really looks like?
 huapotips1,可以进行{0}次操作，每次给单体目标造成{1}%法术伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
 huapotips2,使用法术技能时，50%几率提升自身10%力量,Gives a 50% chance of increasing your strength by 10% whenever casting a Magic ability  for 1 turns
 longgongtongzitips1,给全体目标回复{0}%法攻的生命值并附带法术吸收护盾,Recovers ({0}% of magic ATK) HP for all targets and summons a shield that abosrbs magic damage
@@ -764,20 +764,20 @@ bossxiaoxiang28Muling2,树灵,Kodama
 attackCutSlightTipsDescription,给单体目标造成一定比例物攻的物理伤害,Deals (proportion of physical ATK) physical damage to a single target
 attackCutSlightTipsCurlvl,造成{0}伤害,Makes {0} damage
 attackCutSlightTipsNextlvl,造成{0}伤害,Makes {0} damage
-bossdajie11Xiaochou4tips,人家是偶像，靠脸吃饭哒，打人能不打脸不,人家是偶像，靠脸吃饭哒，打人能不打脸不。。。
-bossdajie12Mantuoluo2tips,根茎是植物的生命之源,根茎是植物的生命之源
-bossdajie13Langren3tips,手腕带了厚重的铁环，只是为了锻炼么,手腕带了厚重的铁环，只是为了锻炼么。。。
-bossdajie14Piying5tips,我们是三兄弟！,我们是三兄弟！
-bossdajie15Huapo2tips,花瓣就是我的武器,花瓣就是我的武器
-bossdajie16Xiaochou3tips,看我用我的大锤给你们轰塌！,看我用我的大锤给你们轰塌！
-bossdajie17Zouyincao2tips,看我动感光波！！,看我动感光波！！
-bossxiaoxiang21Wushi4tips,球呢！？我的球呢！,球呢！？我的球呢！
-bossxiaoxiang22Xiyiren2tips,自从我手上中了一箭,自从我手上中了一箭
-bossxiaoxiang23Panshen2tips,我其实一直在盯着你！,我其实一直在盯着你！
-bossxiaoxiang24Shuigui3tips,宝藏什么的我真的木有！！,宝藏什么的我真的木有！！
-bossxiaoxiang25Kairuisi5tips,一不小心哥哥的灵魂就被吸走了,一不小心哥哥的灵魂就被吸走了
-bossxiaoxiang26Longgongtongzi3tips,龙宫至宝在我手里,龙宫至宝在我手里
-bossxiaoxiang27hetong2tips,围巾是我的最爱,围巾是我的最爱
+bossdajie11Xiaochou4tips,人家是偶像，靠脸吃饭哒，打人能不打脸不,"I gotta look good for my job, so watch the makeup!"
+bossdajie12Mantuoluo2tips,根茎是植物的生命之源,Home is where your roots are!
+bossdajie13Langren3tips,手腕带了厚重的铁环，只是为了锻炼么,These big iron bracers are a part of my new workout routine!
+bossdajie14Piying5tips,我们是三兄弟！,What is origami?
+bossdajie15Huapo2tips,花瓣就是我的武器,You ever been punched by a flower?
+bossdajie16Xiaochou3tips,看我用我的大锤给你们轰塌！,This hammer is no joke!
+bossdajie17Zouyincao2tips,看我动感光波！！,I'm into underground music!
+bossxiaoxiang21Wushi4tips,球呢！？我的球呢！,This ball isn't just for playing fetch!
+bossxiaoxiang22Xiyiren2tips,自从我手上中了一箭,Not only Wolverine has cool claws.
+bossxiaoxiang23Panshen2tips,请你接受我的心,Please accept my love!
+bossxiaoxiang24Shuigui3tips,宝藏什么的我真的木有！！,What? You think all bosses have treasure?
+bossxiaoxiang25Kairuisi5tips,一不小心哥哥的灵魂就被吸走了,A soul a day keeps the doctor away!
+bossxiaoxiang26Longgongtongzi3tips,龙宫至宝在我手里,See this ball? It is made of tears from adventurers before you!
+bossxiaoxiang27hetong2tips,围巾是我的最爱,I'll knit you a scarf you'll never forget!
 xiaochoutips,我是不是萌萌哒？,Am I lovely?
 mantuoluotips,我是不是萌萌哒？,Am I lovely?
 langrentips,我是不是萌萌哒？,Am I lovely?
@@ -1796,7 +1796,7 @@ bossxiaoxiang28Muling21Tips,给单体目标造成150%法攻木属性伤害,Deals
 bossxiaoxiang28Muling22Tips,给群体目标造成100%法攻木属性伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets 
 bossxiaoxiang28Muling23Tips,给单体目标造成150%法攻木属性伤害中概率附加眩晕效果,Deals (150% of magic ATK) grass type magic damage to a single target with a medium chance of stunning effects
 bossxiaoxiang28Muling24Tips,给群体目标造成3次70%法攻木属性伤害,Repeatedly deals (70% of magic ATK) grass type magic damage 3 times to all enemy targets 
-bossxiaoxiang28Muling2tips,我的心是空的,My heart is empty
+bossxiaoxiang28Muling2tips,我的心是空的,"Besides the termites, my heart is completely hollow!"
 bossAmute1Name,水球,Liquid Sphere
 bossAmute2Name,水龙卷,Waterspout
 bossAmute1Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 

@@ -5,15 +5,18 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class bossxiaoxiang28Muling2 : BossAi {
+	int jishu;
+	int jishu1;
+	float randomNum;
 
 	// Use this for initialization
 	void Start () 
 	{
+		jishu = 0 ;
+		jishu1 = 0 ;
+		randomNum = Random.Range (0.0f, 1.0f);
 	
 	}
-	int jishu = 0 ;
-	int jishu1 = 0 ;
-	float randomNum = Random.Range (0.0f, 1.0f);
 	
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit ShujingUnit)
 	{
@@ -56,7 +59,7 @@ public class bossxiaoxiang28Muling2 : BossAi {
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 
 		Logger.Log (randomNum);
-		if (args.wpID == "bossxiaoxiang28Muling2wp03" && jishu <= 2 && randomNum <= 0.33 && randomNum > 0) {
+		if (args.wpID == "bossxiaoxiang28Muling2wp03" && jishu <= 2 && randomNum <= 0.33 && randomNum >= -1.0) {
 			target.TriggerEvent ("xiaoren3_state3to1", Time.time, null);
 			BattleController.Instance.GetUIBattle ().wpUI.ChangeBatch (1.5f);
 			jishu ++;

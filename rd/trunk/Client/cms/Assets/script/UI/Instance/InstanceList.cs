@@ -328,13 +328,34 @@ public class InstanceList : UIBase
         insDifficulty = (InstanceDifficulty)index;
        if(index == (int)InstanceDifficulty.Hard)
         {
-            if(!InstanceMapService.Instance.IsHardChapterOpend(chapterIndex))
+            if (InstanceMapService.Instance.IsHardChapterOpend(chapterIndex))
             {
-				UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("select_tiaozhan"), (int)PB.ImType.PROMPT);
+                UpdateUI(false);
+                return;
+            }
+
+            if (!InstanceMapService.Instance.IsChapterFinished(chapterIndex-1,InstanceDifficulty.Hard))
+            {
+				UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_001"), (int)PB.ImType.PROMPT);
                 difficultyDropDown.value = 0;
                 return;
             }
+            if (!InstanceMapService.Instance.IsChapterFinished(chapterIndex,InstanceDifficulty.Normal ))
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_004"), (int)PB.ImType.PROMPT);
+                difficultyDropDown.value = 0;
+                return;
+            }
+            Chapter chapter = StaticDataMgr.Instance.GetChapterData(chapterIndex);
+            if (null != chapter)
+            {
+                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("instanceselect_open_002"), chapter.hardLevel), (int)PB.ImType.PROMPT);
+                return;
+            }
         }
-        UpdateUI(false);
+       else
+        {
+            UpdateUI(false);
+        }
     }
 }

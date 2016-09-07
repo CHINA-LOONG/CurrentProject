@@ -486,7 +486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 121706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f76e088d9bbd3a45ac8c49e03764b50, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dd7eee7d96ec6e4e9920dab948582e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particleScale: 2
@@ -16562,7 +16562,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: particleScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121706}

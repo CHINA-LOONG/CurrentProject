@@ -11,8 +11,8 @@ message HSAdventureTeam
 	required int32 teamId = 1;
 	required int32 adventureId = 2;
 	required int32 endTime = 3;
-	repeated int32 monsterId = 4;
-	optional AllianceBaseMonster monsterHire = 5;
+	repeated int32 selfMonsterId = 4;
+	optional AllianceBaseMonster hireMonster = 5;
 }
 
 message HSAdventureCondition
@@ -23,8 +23,9 @@ message HSAdventureCondition
 
 message HSAdventure
 {
-	required int32 adventureId = 1;
-	repeated HSAdventureCondition condition = 2;
+	required int32 type = 1;
+	required int32 gear = 2;
+	repeated HSAdventureCondition condition = 3;
 }
 
 // protocol-----------------------------------------------------
@@ -34,18 +35,19 @@ message HSAdventureInfoSync
 	// 拥有队伍数量
 	required int32 teamCount = 1;
 	// 已冒险队伍
-	repeated HSAdventureTeam adventureTeam = 2;
+	repeated HSAdventureTeam busyTeam = 2;
 	// 未冒险任务
-	repeated HSAdventure adventure = 3;
+	repeated HSAdventure idleAdventure = 3;
 }
 
 // ADVENTURE_ENTER_C
 message HSAdventureEnter
 {
 	required int32 teamId = 1;
-	required int32 adventureId = 2;
-	repeated int32 monsterId = 3;
-	optional AllianceBaseMonster monsterHire = 4;
+	required int32 type = 2;
+	required int32 gear = 3;
+	repeated int32 selfMonsterId = 4;
+	optional AllianceBaseMonster hireMonster = 5;
 }
 
 // ADVENTURE_ENTER_S
@@ -74,7 +76,8 @@ message HSAdventureSettleRet
 // ADVENTURE_NEW_CONDITION_C
 message HSAdventureNewCondition
 {
-	required int32 adventureId = 1;
+	required int32 type = 1;
+	required int32 gear = 2;
 }
 
 // ADVENTURE_NEW_CONDITION_S

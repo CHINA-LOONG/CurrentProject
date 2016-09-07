@@ -3,52 +3,16 @@ using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
-//public class ShowCheckResult : EditorWindow 
-//{
-//    public List<string> fileName = new List<string>();
-//    CheckResources window;
-//    static ShowCheckResult mInst = null;
-//    public static ShowCheckResult Instance
-//    {
-//        get
-//        {
-//            return mInst;
-//        }
-//    }
-//    void Start()
-//    {
-//        mInst = this;
-//    }
-//    void Update()
-//    { 
-        
-//    }
-//    public void ShowStart()
-//    {
-//        Rect wr = new Rect(0, 0, 500, 500);
-//        window = (CheckResources)EditorWindow.GetWindowWithRect(typeof(CheckResources), wr, true, "资源检查");
-//        window.Show();
-//        //StartCoroutine(RenovateMsg(""));
-//    }
-//    IEnumerator RenovateMsg(string text)
-//    {
-//        yield return new WaitForEndOfFrame();
-//        this.ShowNotification(new GUIContent(text));
-//        yield return new WaitForSeconds(1f);
-//        this.RemoveNotification();
-//    }
-//}
-
 public class CheckResources : EditorWindow
 {
     //---------------------------------------------------------------------------------------------
-    static string resourcesName;
-    static string metaGuid;
-    static string objectPath;
-    static List<string> fileName = new List<string>();
-    static CheckResources window;
+    private static string resourcesName;
+    private static string metaGuid;
+    private static string objectPath;
+    private static List<string> fileName = new List<string>();
+    private static CheckResources window;
     [MenuItem("Assets/Check Resources")]
-    static void das()
+    private static void das()
     {
         fileName.Clear();
         foreach (Object o in Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets))
@@ -59,7 +23,7 @@ public class CheckResources : EditorWindow
         Recursive("Assets");
     }
     //---------------------------------------------------------------------------------------------
-    static void Recursive(string path)
+    private static void Recursive(string path)
     {
         string[] names = Directory.GetFiles(path);
         string[] dirs = Directory.GetDirectories(path);
@@ -67,11 +31,11 @@ public class CheckResources : EditorWindow
         foreach (string filename in names)
         {
             string ext = Path.GetExtension(filename);
-            if (filename.Contains("Editor") ||filename.Contains("Font") ||
+            if (filename.Contains("Editor") || filename.Contains("Font") ||
                 filename.Contains("Fun311") || filename.Contains("HockeyAppUnityIOS") || filename.Contains("Resources") ||
                 filename.Contains("Materials") || filename.Contains("Plugins") || filename.Contains("script")
                 || filename.Contains("Shader") || filename.Contains("StreamingAssets")) continue;
-            if (filename.Contains(resourcesName) == true )
+            if (filename.Contains(resourcesName) == true)
             {
                 if (!filename.Replace('\\', '/').Contains(objectPath)) continue;
                 if (ext.Equals(".meta"))
@@ -101,7 +65,7 @@ public class CheckResources : EditorWindow
         }
     }
     //---------------------------------------------------------------------------------------------
-    static void ReadMeta(string path)
+    private static void ReadMeta(string path)
     {
         string[] names = Directory.GetFiles(path);
         string[] dirs = Directory.GetDirectories(path);
@@ -160,3 +124,4 @@ public class CheckResources : EditorWindow
         this.Repaint();
     }
 }
+

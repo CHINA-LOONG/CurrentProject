@@ -252,5 +252,9 @@ public class GameEquipData
         }
         return null;
     }
+    public void ClearData()
+    {
+        equipList.Clear();
+    }
 }
 

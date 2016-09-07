@@ -2388,10 +2388,11 @@ MonoBehaviour:
   checkedEffectPanel: {fileID: 22403330}
   useDefault: 0
   textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
-  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
-  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0980392173, g: .0588235296, b: .0627451017, a: 1}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11417042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3062,10 +3063,11 @@ MonoBehaviour:
   checkedEffectPanel: {fileID: 22472248}
   useDefault: 0
   textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
-  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
-  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0980392173, g: .0588235296, b: .0627451017, a: 1}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11438280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4241,10 +4243,11 @@ MonoBehaviour:
   checkedEffectPanel: {fileID: 22460714}
   useDefault: 0
   textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
-  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
-  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0980392173, g: .0588235296, b: .0627451017, a: 1}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11479070
 MonoBehaviour:
   m_ObjectHideFlags: 1

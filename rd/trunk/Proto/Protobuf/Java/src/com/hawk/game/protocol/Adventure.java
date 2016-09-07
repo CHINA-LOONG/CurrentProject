@@ -41,33 +41,33 @@ public final class Adventure {
      */
     int getEndTime();
 
-    // repeated int32 monsterId = 4;
+    // repeated int32 selfMonsterId = 4;
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    java.util.List<java.lang.Integer> getMonsterIdList();
+    java.util.List<java.lang.Integer> getSelfMonsterIdList();
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    int getMonsterIdCount();
+    int getSelfMonsterIdCount();
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    int getMonsterId(int index);
+    int getSelfMonsterId(int index);
 
-    // optional .AllianceBaseMonster monsterHire = 5;
+    // optional .AllianceBaseMonster hireMonster = 5;
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    boolean hasMonsterHire();
+    boolean hasHireMonster();
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire();
+    com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster();
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder();
+    com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder();
   }
   /**
    * Protobuf type {@code HSAdventureTeam}
@@ -137,21 +137,21 @@ public final class Adventure {
             }
             case 32: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                monsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              monsterId_.add(input.readInt32());
+              selfMonsterId_.add(input.readInt32());
               break;
             }
             case 34: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
-                monsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
                 mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                monsterId_.add(input.readInt32());
+                selfMonsterId_.add(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -159,12 +159,12 @@ public final class Adventure {
             case 42: {
               com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder subBuilder = null;
               if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = monsterHire_.toBuilder();
+                subBuilder = hireMonster_.toBuilder();
               }
-              monsterHire_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceBaseMonster.PARSER, extensionRegistry);
+              hireMonster_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceBaseMonster.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(monsterHire_);
-                monsterHire_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(hireMonster_);
+                hireMonster_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000008;
               break;
@@ -178,7 +178,7 @@ public final class Adventure {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          monsterId_ = java.util.Collections.unmodifiableList(monsterId_);
+          selfMonsterId_ = java.util.Collections.unmodifiableList(selfMonsterId_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -260,57 +260,57 @@ public final class Adventure {
       return endTime_;
     }
 
-    // repeated int32 monsterId = 4;
-    public static final int MONSTERID_FIELD_NUMBER = 4;
-    private java.util.List<java.lang.Integer> monsterId_;
+    // repeated int32 selfMonsterId = 4;
+    public static final int SELFMONSTERID_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> selfMonsterId_;
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
     public java.util.List<java.lang.Integer>
-        getMonsterIdList() {
-      return monsterId_;
+        getSelfMonsterIdList() {
+      return selfMonsterId_;
     }
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    public int getMonsterIdCount() {
-      return monsterId_.size();
+    public int getSelfMonsterIdCount() {
+      return selfMonsterId_.size();
     }
     /**
-     * <code>repeated int32 monsterId = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    public int getMonsterId(int index) {
-      return monsterId_.get(index);
+    public int getSelfMonsterId(int index) {
+      return selfMonsterId_.get(index);
     }
 
-    // optional .AllianceBaseMonster monsterHire = 5;
-    public static final int MONSTERHIRE_FIELD_NUMBER = 5;
-    private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_;
+    // optional .AllianceBaseMonster hireMonster = 5;
+    public static final int HIREMONSTER_FIELD_NUMBER = 5;
+    private com.hawk.game.protocol.Alliance.AllianceBaseMonster hireMonster_;
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    public boolean hasMonsterHire() {
+    public boolean hasHireMonster() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
-      return monsterHire_;
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster() {
+      return hireMonster_;
     }
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
      */
-    public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
-      return monsterHire_;
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder() {
+      return hireMonster_;
     }
 
     private void initFields() {
       teamId_ = 0;
       adventureId_ = 0;
       endTime_ = 0;
-      monsterId_ = java.util.Collections.emptyList();
-      monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      selfMonsterId_ = java.util.Collections.emptyList();
+      hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -329,8 +329,8 @@ public final class Adventure {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (hasMonsterHire()) {
-        if (!getMonsterHire().isInitialized()) {
+      if (hasHireMonster()) {
+        if (!getHireMonster().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -351,11 +351,11 @@ public final class Adventure {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, endTime_);
       }
-      for (int i = 0; i < monsterId_.size(); i++) {
-        output.writeInt32(4, monsterId_.get(i));
+      for (int i = 0; i < selfMonsterId_.size(); i++) {
+        output.writeInt32(4, selfMonsterId_.get(i));
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(5, monsterHire_);
+        output.writeMessage(5, hireMonster_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -380,16 +380,16 @@ public final class Adventure {
       }
       {
         int dataSize = 0;
-        for (int i = 0; i < monsterId_.size(); i++) {
+        for (int i = 0; i < selfMonsterId_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(monsterId_.get(i));
+            .computeInt32SizeNoTag(selfMonsterId_.get(i));
         }
         size += dataSize;
-        size += 1 * getMonsterIdList().size();
+        size += 1 * getSelfMonsterIdList().size();
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, monsterHire_);
+          .computeMessageSize(5, hireMonster_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -499,7 +499,7 @@ public final class Adventure {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMonsterHireFieldBuilder();
+          getHireMonsterFieldBuilder();
         }
       }
       private static Builder create() {
@@ -514,12 +514,12 @@ public final class Adventure {
         bitField0_ = (bitField0_ & ~0x00000002);
         endTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        monsterId_ = java.util.Collections.emptyList();
+        selfMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000008);
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
         } else {
-          monsterHireBuilder_.clear();
+          hireMonsterBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
@@ -563,17 +563,17 @@ public final class Adventure {
         }
         result.endTime_ = endTime_;
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          monsterId_ = java.util.Collections.unmodifiableList(monsterId_);
+          selfMonsterId_ = java.util.Collections.unmodifiableList(selfMonsterId_);
           bitField0_ = (bitField0_ & ~0x00000008);
         }
-        result.monsterId_ = monsterId_;
+        result.selfMonsterId_ = selfMonsterId_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000008;
         }
-        if (monsterHireBuilder_ == null) {
-          result.monsterHire_ = monsterHire_;
+        if (hireMonsterBuilder_ == null) {
+          result.hireMonster_ = hireMonster_;
         } else {
-          result.monsterHire_ = monsterHireBuilder_.build();
+          result.hireMonster_ = hireMonsterBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -600,18 +600,18 @@ public final class Adventure {
         if (other.hasEndTime()) {
           setEndTime(other.getEndTime());
         }
-        if (!other.monsterId_.isEmpty()) {
-          if (monsterId_.isEmpty()) {
-            monsterId_ = other.monsterId_;
+        if (!other.selfMonsterId_.isEmpty()) {
+          if (selfMonsterId_.isEmpty()) {
+            selfMonsterId_ = other.selfMonsterId_;
             bitField0_ = (bitField0_ & ~0x00000008);
           } else {
-            ensureMonsterIdIsMutable();
-            monsterId_.addAll(other.monsterId_);
+            ensureSelfMonsterIdIsMutable();
+            selfMonsterId_.addAll(other.selfMonsterId_);
           }
           onChanged();
         }
-        if (other.hasMonsterHire()) {
-          mergeMonsterHire(other.getMonsterHire());
+        if (other.hasHireMonster()) {
+          mergeHireMonster(other.getHireMonster());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -630,8 +630,8 @@ public final class Adventure {
           
           return false;
         }
-        if (hasMonsterHire()) {
-          if (!getMonsterHire().isInitialized()) {
+        if (hasHireMonster()) {
+          if (!getHireMonster().isInitialized()) {
             
             return false;
           }
@@ -757,187 +757,187 @@ public final class Adventure {
         return this;
       }
 
-      // repeated int32 monsterId = 4;
-      private java.util.List<java.lang.Integer> monsterId_ = java.util.Collections.emptyList();
-      private void ensureMonsterIdIsMutable() {
+      // repeated int32 selfMonsterId = 4;
+      private java.util.List<java.lang.Integer> selfMonsterId_ = java.util.Collections.emptyList();
+      private void ensureSelfMonsterIdIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          monsterId_ = new java.util.ArrayList<java.lang.Integer>(monsterId_);
+          selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>(selfMonsterId_);
           bitField0_ |= 0x00000008;
          }
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
       public java.util.List<java.lang.Integer>
-          getMonsterIdList() {
-        return java.util.Collections.unmodifiableList(monsterId_);
+          getSelfMonsterIdList() {
+        return java.util.Collections.unmodifiableList(selfMonsterId_);
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public int getMonsterIdCount() {
-        return monsterId_.size();
+      public int getSelfMonsterIdCount() {
+        return selfMonsterId_.size();
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public int getMonsterId(int index) {
-        return monsterId_.get(index);
+      public int getSelfMonsterId(int index) {
+        return selfMonsterId_.get(index);
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder setMonsterId(
+      public Builder setSelfMonsterId(
           int index, int value) {
-        ensureMonsterIdIsMutable();
-        monsterId_.set(index, value);
+        ensureSelfMonsterIdIsMutable();
+        selfMonsterId_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder addMonsterId(int value) {
-        ensureMonsterIdIsMutable();
-        monsterId_.add(value);
+      public Builder addSelfMonsterId(int value) {
+        ensureSelfMonsterIdIsMutable();
+        selfMonsterId_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder addAllMonsterId(
+      public Builder addAllSelfMonsterId(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureMonsterIdIsMutable();
-        super.addAll(values, monsterId_);
+        ensureSelfMonsterIdIsMutable();
+        super.addAll(values, selfMonsterId_);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 4;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder clearMonsterId() {
-        monsterId_ = java.util.Collections.emptyList();
+      public Builder clearSelfMonsterId() {
+        selfMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
 
-      // optional .AllianceBaseMonster monsterHire = 5;
-      private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      // optional .AllianceBaseMonster hireMonster = 5;
+      private com.hawk.game.protocol.Alliance.AllianceBaseMonster hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> monsterHireBuilder_;
+          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> hireMonsterBuilder_;
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public boolean hasMonsterHire() {
+      public boolean hasHireMonster() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
-        if (monsterHireBuilder_ == null) {
-          return monsterHire_;
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster() {
+        if (hireMonsterBuilder_ == null) {
+          return hireMonster_;
         } else {
-          return monsterHireBuilder_.getMessage();
+          return hireMonsterBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder setMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
-        if (monsterHireBuilder_ == null) {
+      public Builder setHireMonster(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (hireMonsterBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          monsterHire_ = value;
+          hireMonster_ = value;
           onChanged();
         } else {
-          monsterHireBuilder_.setMessage(value);
+          hireMonsterBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder setMonsterHire(
+      public Builder setHireMonster(
           com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder builderForValue) {
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = builderForValue.build();
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = builderForValue.build();
           onChanged();
         } else {
-          monsterHireBuilder_.setMessage(builderForValue.build());
+          hireMonsterBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder mergeMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
-        if (monsterHireBuilder_ == null) {
+      public Builder mergeHireMonster(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (hireMonsterBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              monsterHire_ != com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance()) {
-            monsterHire_ =
-              com.hawk.game.protocol.Alliance.AllianceBaseMonster.newBuilder(monsterHire_).mergeFrom(value).buildPartial();
+              hireMonster_ != com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance()) {
+            hireMonster_ =
+              com.hawk.game.protocol.Alliance.AllianceBaseMonster.newBuilder(hireMonster_).mergeFrom(value).buildPartial();
           } else {
-            monsterHire_ = value;
+            hireMonster_ = value;
           }
           onChanged();
         } else {
-          monsterHireBuilder_.mergeFrom(value);
+          hireMonsterBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder clearMonsterHire() {
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      public Builder clearHireMonster() {
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
           onChanged();
         } else {
-          monsterHireBuilder_.clear();
+          hireMonsterBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder getMonsterHireBuilder() {
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder getHireMonsterBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
-        return getMonsterHireFieldBuilder().getBuilder();
+        return getHireMonsterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
-        if (monsterHireBuilder_ != null) {
-          return monsterHireBuilder_.getMessageOrBuilder();
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder() {
+        if (hireMonsterBuilder_ != null) {
+          return hireMonsterBuilder_.getMessageOrBuilder();
         } else {
-          return monsterHire_;
+          return hireMonster_;
         }
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 5;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> 
-          getMonsterHireFieldBuilder() {
-        if (monsterHireBuilder_ == null) {
-          monsterHireBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          getHireMonsterFieldBuilder() {
+        if (hireMonsterBuilder_ == null) {
+          hireMonsterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder>(
-                  monsterHire_,
+                  hireMonster_,
                   getParentForChildren(),
                   isClean());
-          monsterHire_ = null;
+          hireMonster_ = null;
         }
-        return monsterHireBuilder_;
+        return hireMonsterBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSAdventureTeam)
@@ -1447,37 +1447,47 @@ public final class Adventure {
   public interface HSAdventureOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 adventureId = 1;
+    // required int32 type = 1;
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    boolean hasAdventureId();
+    boolean hasType();
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    int getAdventureId();
+    int getType();
 
-    // repeated .HSAdventureCondition condition = 2;
+    // required int32 gear = 2;
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>required int32 gear = 2;</code>
+     */
+    boolean hasGear();
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    int getGear();
+
+    // repeated .HSAdventureCondition condition = 3;
+    /**
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition> 
         getConditionList();
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     com.hawk.game.protocol.Adventure.HSAdventureCondition getCondition(int index);
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     int getConditionCount();
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder> 
         getConditionOrBuilderList();
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder getConditionOrBuilder(
         int index);
@@ -1535,13 +1545,18 @@ public final class Adventure {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              adventureId_ = input.readInt32();
+              type_ = input.readInt32();
               break;
             }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+            case 16: {
+              bitField0_ |= 0x00000002;
+              gear_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 condition_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureCondition>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000004;
               }
               condition_.add(input.readMessage(com.hawk.game.protocol.Adventure.HSAdventureCondition.PARSER, extensionRegistry));
               break;
@@ -1554,7 +1569,7 @@ public final class Adventure {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           condition_ = java.util.Collections.unmodifiableList(condition_);
         }
         this.unknownFields = unknownFields.build();
@@ -1589,52 +1604,68 @@ public final class Adventure {
     }
 
     private int bitField0_;
-    // required int32 adventureId = 1;
-    public static final int ADVENTUREID_FIELD_NUMBER = 1;
-    private int adventureId_;
+    // required int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    public boolean hasAdventureId() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    public int getAdventureId() {
-      return adventureId_;
+    public int getType() {
+      return type_;
     }
 
-    // repeated .HSAdventureCondition condition = 2;
-    public static final int CONDITION_FIELD_NUMBER = 2;
+    // required int32 gear = 2;
+    public static final int GEAR_FIELD_NUMBER = 2;
+    private int gear_;
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    public boolean hasGear() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    public int getGear() {
+      return gear_;
+    }
+
+    // repeated .HSAdventureCondition condition = 3;
+    public static final int CONDITION_FIELD_NUMBER = 3;
     private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition> condition_;
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition> getConditionList() {
       return condition_;
     }
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder> 
         getConditionOrBuilderList() {
       return condition_;
     }
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     public int getConditionCount() {
       return condition_.size();
     }
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     public com.hawk.game.protocol.Adventure.HSAdventureCondition getCondition(int index) {
       return condition_.get(index);
     }
     /**
-     * <code>repeated .HSAdventureCondition condition = 2;</code>
+     * <code>repeated .HSAdventureCondition condition = 3;</code>
      */
     public com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder getConditionOrBuilder(
         int index) {
@@ -1642,7 +1673,8 @@ public final class Adventure {
     }
 
     private void initFields() {
-      adventureId_ = 0;
+      type_ = 0;
+      gear_ = 0;
       condition_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -1650,7 +1682,11 @@ public final class Adventure {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasAdventureId()) {
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGear()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1668,10 +1704,13 @@ public final class Adventure {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, adventureId_);
+        output.writeInt32(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, gear_);
       }
       for (int i = 0; i < condition_.size(); i++) {
-        output.writeMessage(2, condition_.get(i));
+        output.writeMessage(3, condition_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1684,11 +1723,15 @@ public final class Adventure {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, adventureId_);
+          .computeInt32Size(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, gear_);
       }
       for (int i = 0; i < condition_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, condition_.get(i));
+          .computeMessageSize(3, condition_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1807,11 +1850,13 @@ public final class Adventure {
 
       public Builder clear() {
         super.clear();
-        adventureId_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        gear_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (conditionBuilder_ == null) {
           condition_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           conditionBuilder_.clear();
         }
@@ -1846,11 +1891,15 @@ public final class Adventure {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.adventureId_ = adventureId_;
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.gear_ = gear_;
         if (conditionBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             condition_ = java.util.Collections.unmodifiableList(condition_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.condition_ = condition_;
         } else {
@@ -1872,14 +1921,17 @@ public final class Adventure {
 
       public Builder mergeFrom(com.hawk.game.protocol.Adventure.HSAdventure other) {
         if (other == com.hawk.game.protocol.Adventure.HSAdventure.getDefaultInstance()) return this;
-        if (other.hasAdventureId()) {
-          setAdventureId(other.getAdventureId());
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasGear()) {
+          setGear(other.getGear());
         }
         if (conditionBuilder_ == null) {
           if (!other.condition_.isEmpty()) {
             if (condition_.isEmpty()) {
               condition_ = other.condition_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureConditionIsMutable();
               condition_.addAll(other.condition_);
@@ -1892,7 +1944,7 @@ public final class Adventure {
               conditionBuilder_.dispose();
               conditionBuilder_ = null;
               condition_ = other.condition_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000004);
               conditionBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getConditionFieldBuilder() : null;
@@ -1906,7 +1958,11 @@ public final class Adventure {
       }
 
       public final boolean isInitialized() {
-        if (!hasAdventureId()) {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasGear()) {
           
           return false;
         }
@@ -1938,46 +1994,79 @@ public final class Adventure {
       }
       private int bitField0_;
 
-      // required int32 adventureId = 1;
-      private int adventureId_ ;
+      // required int32 type = 1;
+      private int type_ ;
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public boolean hasAdventureId() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public int getAdventureId() {
-        return adventureId_;
+      public int getType() {
+        return type_;
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public Builder setAdventureId(int value) {
+      public Builder setType(int value) {
         bitField0_ |= 0x00000001;
-        adventureId_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public Builder clearAdventureId() {
+      public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        adventureId_ = 0;
+        type_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated .HSAdventureCondition condition = 2;
+      // required int32 gear = 2;
+      private int gear_ ;
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public boolean hasGear() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public int getGear() {
+        return gear_;
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public Builder setGear(int value) {
+        bitField0_ |= 0x00000002;
+        gear_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public Builder clearGear() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        gear_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .HSAdventureCondition condition = 3;
       private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition> condition_ =
         java.util.Collections.emptyList();
       private void ensureConditionIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           condition_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureCondition>(condition_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -1985,7 +2074,7 @@ public final class Adventure {
           com.hawk.game.protocol.Adventure.HSAdventureCondition, com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder, com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder> conditionBuilder_;
 
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition> getConditionList() {
         if (conditionBuilder_ == null) {
@@ -1995,7 +2084,7 @@ public final class Adventure {
         }
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public int getConditionCount() {
         if (conditionBuilder_ == null) {
@@ -2005,7 +2094,7 @@ public final class Adventure {
         }
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public com.hawk.game.protocol.Adventure.HSAdventureCondition getCondition(int index) {
         if (conditionBuilder_ == null) {
@@ -2015,7 +2104,7 @@ public final class Adventure {
         }
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder setCondition(
           int index, com.hawk.game.protocol.Adventure.HSAdventureCondition value) {
@@ -2032,7 +2121,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder setCondition(
           int index, com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder builderForValue) {
@@ -2046,7 +2135,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder addCondition(com.hawk.game.protocol.Adventure.HSAdventureCondition value) {
         if (conditionBuilder_ == null) {
@@ -2062,7 +2151,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder addCondition(
           int index, com.hawk.game.protocol.Adventure.HSAdventureCondition value) {
@@ -2079,7 +2168,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder addCondition(
           com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder builderForValue) {
@@ -2093,7 +2182,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder addCondition(
           int index, com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder builderForValue) {
@@ -2107,7 +2196,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder addAllCondition(
           java.lang.Iterable<? extends com.hawk.game.protocol.Adventure.HSAdventureCondition> values) {
@@ -2121,12 +2210,12 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder clearCondition() {
         if (conditionBuilder_ == null) {
           condition_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           conditionBuilder_.clear();
@@ -2134,7 +2223,7 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public Builder removeCondition(int index) {
         if (conditionBuilder_ == null) {
@@ -2147,14 +2236,14 @@ public final class Adventure {
         return this;
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder getConditionBuilder(
           int index) {
         return getConditionFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder getConditionOrBuilder(
           int index) {
@@ -2164,7 +2253,7 @@ public final class Adventure {
         }
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder> 
            getConditionOrBuilderList() {
@@ -2175,14 +2264,14 @@ public final class Adventure {
         }
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder addConditionBuilder() {
         return getConditionFieldBuilder().addBuilder(
             com.hawk.game.protocol.Adventure.HSAdventureCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder addConditionBuilder(
           int index) {
@@ -2190,7 +2279,7 @@ public final class Adventure {
             index, com.hawk.game.protocol.Adventure.HSAdventureCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventureCondition condition = 2;</code>
+       * <code>repeated .HSAdventureCondition condition = 3;</code>
        */
       public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder> 
            getConditionBuilderList() {
@@ -2203,7 +2292,7 @@ public final class Adventure {
           conditionBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Adventure.HSAdventureCondition, com.hawk.game.protocol.Adventure.HSAdventureCondition.Builder, com.hawk.game.protocol.Adventure.HSAdventureConditionOrBuilder>(
                   condition_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           condition_ = null;
@@ -2243,94 +2332,94 @@ public final class Adventure {
      */
     int getTeamCount();
 
-    // repeated .HSAdventureTeam adventureTeam = 2;
+    // repeated .HSAdventureTeam busyTeam = 2;
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
     java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> 
-        getAdventureTeamList();
+        getBusyTeamList();
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    com.hawk.game.protocol.Adventure.HSAdventureTeam getAdventureTeam(int index);
+    com.hawk.game.protocol.Adventure.HSAdventureTeam getBusyTeam(int index);
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    int getAdventureTeamCount();
+    int getBusyTeamCount();
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
     java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> 
-        getAdventureTeamOrBuilderList();
+        getBusyTeamOrBuilderList();
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getAdventureTeamOrBuilder(
+    com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getBusyTeamOrBuilder(
         int index);
 
-    // repeated .HSAdventure adventure = 3;
+    // repeated .HSAdventure idleAdventure = 3;
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
     java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> 
-        getAdventureList();
+        getIdleAdventureList();
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    com.hawk.game.protocol.Adventure.HSAdventure getAdventure(int index);
+    com.hawk.game.protocol.Adventure.HSAdventure getIdleAdventure(int index);
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    int getAdventureCount();
+    int getIdleAdventureCount();
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
     java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> 
-        getAdventureOrBuilderList();
+        getIdleAdventureOrBuilderList();
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getAdventureOrBuilder(
+    com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getIdleAdventureOrBuilder(
         int index);
   }
   /**
@@ -2391,18 +2480,18 @@ public final class Adventure {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                adventureTeam_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureTeam>();
+                busyTeam_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureTeam>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              adventureTeam_.add(input.readMessage(com.hawk.game.protocol.Adventure.HSAdventureTeam.PARSER, extensionRegistry));
+              busyTeam_.add(input.readMessage(com.hawk.game.protocol.Adventure.HSAdventureTeam.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                adventure_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventure>();
+                idleAdventure_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventure>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              adventure_.add(input.readMessage(com.hawk.game.protocol.Adventure.HSAdventure.PARSER, extensionRegistry));
+              idleAdventure_.add(input.readMessage(com.hawk.game.protocol.Adventure.HSAdventure.PARSER, extensionRegistry));
               break;
             }
           }
@@ -2414,10 +2503,10 @@ public final class Adventure {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          adventureTeam_ = java.util.Collections.unmodifiableList(adventureTeam_);
+          busyTeam_ = java.util.Collections.unmodifiableList(busyTeam_);
         }
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          adventure_ = java.util.Collections.unmodifiableList(adventure_);
+          idleAdventure_ = java.util.Collections.unmodifiableList(idleAdventure_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2475,122 +2564,122 @@ public final class Adventure {
       return teamCount_;
     }
 
-    // repeated .HSAdventureTeam adventureTeam = 2;
-    public static final int ADVENTURETEAM_FIELD_NUMBER = 2;
-    private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> adventureTeam_;
+    // repeated .HSAdventureTeam busyTeam = 2;
+    public static final int BUSYTEAM_FIELD_NUMBER = 2;
+    private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> busyTeam_;
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> getAdventureTeamList() {
-      return adventureTeam_;
+    public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> getBusyTeamList() {
+      return busyTeam_;
     }
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
     public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> 
-        getAdventureTeamOrBuilderList() {
-      return adventureTeam_;
+        getBusyTeamOrBuilderList() {
+      return busyTeam_;
     }
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    public int getAdventureTeamCount() {
-      return adventureTeam_.size();
+    public int getBusyTeamCount() {
+      return busyTeam_.size();
     }
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    public com.hawk.game.protocol.Adventure.HSAdventureTeam getAdventureTeam(int index) {
-      return adventureTeam_.get(index);
+    public com.hawk.game.protocol.Adventure.HSAdventureTeam getBusyTeam(int index) {
+      return busyTeam_.get(index);
     }
     /**
-     * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+     * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
      *
      * <pre>
      * 已冒险队伍
      * </pre>
      */
-    public com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getAdventureTeamOrBuilder(
+    public com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getBusyTeamOrBuilder(
         int index) {
-      return adventureTeam_.get(index);
+      return busyTeam_.get(index);
     }
 
-    // repeated .HSAdventure adventure = 3;
-    public static final int ADVENTURE_FIELD_NUMBER = 3;
-    private java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> adventure_;
+    // repeated .HSAdventure idleAdventure = 3;
+    public static final int IDLEADVENTURE_FIELD_NUMBER = 3;
+    private java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> idleAdventure_;
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    public java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> getAdventureList() {
-      return adventure_;
+    public java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> getIdleAdventureList() {
+      return idleAdventure_;
     }
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
     public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> 
-        getAdventureOrBuilderList() {
-      return adventure_;
+        getIdleAdventureOrBuilderList() {
+      return idleAdventure_;
     }
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    public int getAdventureCount() {
-      return adventure_.size();
+    public int getIdleAdventureCount() {
+      return idleAdventure_.size();
     }
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    public com.hawk.game.protocol.Adventure.HSAdventure getAdventure(int index) {
-      return adventure_.get(index);
+    public com.hawk.game.protocol.Adventure.HSAdventure getIdleAdventure(int index) {
+      return idleAdventure_.get(index);
     }
     /**
-     * <code>repeated .HSAdventure adventure = 3;</code>
+     * <code>repeated .HSAdventure idleAdventure = 3;</code>
      *
      * <pre>
      * 未冒险任务
      * </pre>
      */
-    public com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getAdventureOrBuilder(
+    public com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getIdleAdventureOrBuilder(
         int index) {
-      return adventure_.get(index);
+      return idleAdventure_.get(index);
     }
 
     private void initFields() {
       teamCount_ = 0;
-      adventureTeam_ = java.util.Collections.emptyList();
-      adventure_ = java.util.Collections.emptyList();
+      busyTeam_ = java.util.Collections.emptyList();
+      idleAdventure_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2601,14 +2690,14 @@ public final class Adventure {
         memoizedIsInitialized = 0;
         return false;
       }
-      for (int i = 0; i < getAdventureTeamCount(); i++) {
-        if (!getAdventureTeam(i).isInitialized()) {
+      for (int i = 0; i < getBusyTeamCount(); i++) {
+        if (!getBusyTeam(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      for (int i = 0; i < getAdventureCount(); i++) {
-        if (!getAdventure(i).isInitialized()) {
+      for (int i = 0; i < getIdleAdventureCount(); i++) {
+        if (!getIdleAdventure(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -2623,11 +2712,11 @@ public final class Adventure {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, teamCount_);
       }
-      for (int i = 0; i < adventureTeam_.size(); i++) {
-        output.writeMessage(2, adventureTeam_.get(i));
+      for (int i = 0; i < busyTeam_.size(); i++) {
+        output.writeMessage(2, busyTeam_.get(i));
       }
-      for (int i = 0; i < adventure_.size(); i++) {
-        output.writeMessage(3, adventure_.get(i));
+      for (int i = 0; i < idleAdventure_.size(); i++) {
+        output.writeMessage(3, idleAdventure_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -2642,13 +2731,13 @@ public final class Adventure {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, teamCount_);
       }
-      for (int i = 0; i < adventureTeam_.size(); i++) {
+      for (int i = 0; i < busyTeam_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, adventureTeam_.get(i));
+          .computeMessageSize(2, busyTeam_.get(i));
       }
-      for (int i = 0; i < adventure_.size(); i++) {
+      for (int i = 0; i < idleAdventure_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, adventure_.get(i));
+          .computeMessageSize(3, idleAdventure_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2758,8 +2847,8 @@ public final class Adventure {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getAdventureTeamFieldBuilder();
-          getAdventureFieldBuilder();
+          getBusyTeamFieldBuilder();
+          getIdleAdventureFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2770,17 +2859,17 @@ public final class Adventure {
         super.clear();
         teamCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (adventureTeamBuilder_ == null) {
-          adventureTeam_ = java.util.Collections.emptyList();
+        if (busyTeamBuilder_ == null) {
+          busyTeam_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          adventureTeamBuilder_.clear();
+          busyTeamBuilder_.clear();
         }
-        if (adventureBuilder_ == null) {
-          adventure_ = java.util.Collections.emptyList();
+        if (idleAdventureBuilder_ == null) {
+          idleAdventure_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
         } else {
-          adventureBuilder_.clear();
+          idleAdventureBuilder_.clear();
         }
         return this;
       }
@@ -2814,23 +2903,23 @@ public final class Adventure {
           to_bitField0_ |= 0x00000001;
         }
         result.teamCount_ = teamCount_;
-        if (adventureTeamBuilder_ == null) {
+        if (busyTeamBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            adventureTeam_ = java.util.Collections.unmodifiableList(adventureTeam_);
+            busyTeam_ = java.util.Collections.unmodifiableList(busyTeam_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.adventureTeam_ = adventureTeam_;
+          result.busyTeam_ = busyTeam_;
         } else {
-          result.adventureTeam_ = adventureTeamBuilder_.build();
+          result.busyTeam_ = busyTeamBuilder_.build();
         }
-        if (adventureBuilder_ == null) {
+        if (idleAdventureBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            adventure_ = java.util.Collections.unmodifiableList(adventure_);
+            idleAdventure_ = java.util.Collections.unmodifiableList(idleAdventure_);
             bitField0_ = (bitField0_ & ~0x00000004);
           }
-          result.adventure_ = adventure_;
+          result.idleAdventure_ = idleAdventure_;
         } else {
-          result.adventure_ = adventureBuilder_.build();
+          result.idleAdventure_ = idleAdventureBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2851,55 +2940,55 @@ public final class Adventure {
         if (other.hasTeamCount()) {
           setTeamCount(other.getTeamCount());
         }
-        if (adventureTeamBuilder_ == null) {
-          if (!other.adventureTeam_.isEmpty()) {
-            if (adventureTeam_.isEmpty()) {
-              adventureTeam_ = other.adventureTeam_;
+        if (busyTeamBuilder_ == null) {
+          if (!other.busyTeam_.isEmpty()) {
+            if (busyTeam_.isEmpty()) {
+              busyTeam_ = other.busyTeam_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureAdventureTeamIsMutable();
-              adventureTeam_.addAll(other.adventureTeam_);
+              ensureBusyTeamIsMutable();
+              busyTeam_.addAll(other.busyTeam_);
             }
             onChanged();
           }
         } else {
-          if (!other.adventureTeam_.isEmpty()) {
-            if (adventureTeamBuilder_.isEmpty()) {
-              adventureTeamBuilder_.dispose();
-              adventureTeamBuilder_ = null;
-              adventureTeam_ = other.adventureTeam_;
+          if (!other.busyTeam_.isEmpty()) {
+            if (busyTeamBuilder_.isEmpty()) {
+              busyTeamBuilder_.dispose();
+              busyTeamBuilder_ = null;
+              busyTeam_ = other.busyTeam_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              adventureTeamBuilder_ = 
+              busyTeamBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getAdventureTeamFieldBuilder() : null;
+                   getBusyTeamFieldBuilder() : null;
             } else {
-              adventureTeamBuilder_.addAllMessages(other.adventureTeam_);
+              busyTeamBuilder_.addAllMessages(other.busyTeam_);
             }
           }
         }
-        if (adventureBuilder_ == null) {
-          if (!other.adventure_.isEmpty()) {
-            if (adventure_.isEmpty()) {
-              adventure_ = other.adventure_;
+        if (idleAdventureBuilder_ == null) {
+          if (!other.idleAdventure_.isEmpty()) {
+            if (idleAdventure_.isEmpty()) {
+              idleAdventure_ = other.idleAdventure_;
               bitField0_ = (bitField0_ & ~0x00000004);
             } else {
-              ensureAdventureIsMutable();
-              adventure_.addAll(other.adventure_);
+              ensureIdleAdventureIsMutable();
+              idleAdventure_.addAll(other.idleAdventure_);
             }
             onChanged();
           }
         } else {
-          if (!other.adventure_.isEmpty()) {
-            if (adventureBuilder_.isEmpty()) {
-              adventureBuilder_.dispose();
-              adventureBuilder_ = null;
-              adventure_ = other.adventure_;
+          if (!other.idleAdventure_.isEmpty()) {
+            if (idleAdventureBuilder_.isEmpty()) {
+              idleAdventureBuilder_.dispose();
+              idleAdventureBuilder_ = null;
+              idleAdventure_ = other.idleAdventure_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              adventureBuilder_ = 
+              idleAdventureBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getAdventureFieldBuilder() : null;
+                   getIdleAdventureFieldBuilder() : null;
             } else {
-              adventureBuilder_.addAllMessages(other.adventure_);
+              idleAdventureBuilder_.addAllMessages(other.idleAdventure_);
             }
           }
         }
@@ -2912,14 +3001,14 @@ public final class Adventure {
           
           return false;
         }
-        for (int i = 0; i < getAdventureTeamCount(); i++) {
-          if (!getAdventureTeam(i).isInitialized()) {
+        for (int i = 0; i < getBusyTeamCount(); i++) {
+          if (!getBusyTeam(i).isInitialized()) {
             
             return false;
           }
         }
-        for (int i = 0; i < getAdventureCount(); i++) {
-          if (!getAdventure(i).isInitialized()) {
+        for (int i = 0; i < getIdleAdventureCount(); i++) {
+          if (!getIdleAdventure(i).isInitialized()) {
             
             return false;
           }
@@ -2995,628 +3084,628 @@ public final class Adventure {
         return this;
       }
 
-      // repeated .HSAdventureTeam adventureTeam = 2;
-      private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> adventureTeam_ =
+      // repeated .HSAdventureTeam busyTeam = 2;
+      private java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> busyTeam_ =
         java.util.Collections.emptyList();
-      private void ensureAdventureTeamIsMutable() {
+      private void ensureBusyTeamIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          adventureTeam_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureTeam>(adventureTeam_);
+          busyTeam_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventureTeam>(busyTeam_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Adventure.HSAdventureTeam, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder, com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> adventureTeamBuilder_;
+          com.hawk.game.protocol.Adventure.HSAdventureTeam, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder, com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> busyTeamBuilder_;
 
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> getAdventureTeamList() {
-        if (adventureTeamBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(adventureTeam_);
+      public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam> getBusyTeamList() {
+        if (busyTeamBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(busyTeam_);
         } else {
-          return adventureTeamBuilder_.getMessageList();
+          return busyTeamBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public int getAdventureTeamCount() {
-        if (adventureTeamBuilder_ == null) {
-          return adventureTeam_.size();
+      public int getBusyTeamCount() {
+        if (busyTeamBuilder_ == null) {
+          return busyTeam_.size();
         } else {
-          return adventureTeamBuilder_.getCount();
+          return busyTeamBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureTeam getAdventureTeam(int index) {
-        if (adventureTeamBuilder_ == null) {
-          return adventureTeam_.get(index);
+      public com.hawk.game.protocol.Adventure.HSAdventureTeam getBusyTeam(int index) {
+        if (busyTeamBuilder_ == null) {
+          return busyTeam_.get(index);
         } else {
-          return adventureTeamBuilder_.getMessage(index);
+          return busyTeamBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder setAdventureTeam(
+      public Builder setBusyTeam(
           int index, com.hawk.game.protocol.Adventure.HSAdventureTeam value) {
-        if (adventureTeamBuilder_ == null) {
+        if (busyTeamBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.set(index, value);
+          ensureBusyTeamIsMutable();
+          busyTeam_.set(index, value);
           onChanged();
         } else {
-          adventureTeamBuilder_.setMessage(index, value);
+          busyTeamBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder setAdventureTeam(
+      public Builder setBusyTeam(
           int index, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder builderForValue) {
-        if (adventureTeamBuilder_ == null) {
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.set(index, builderForValue.build());
+        if (busyTeamBuilder_ == null) {
+          ensureBusyTeamIsMutable();
+          busyTeam_.set(index, builderForValue.build());
           onChanged();
         } else {
-          adventureTeamBuilder_.setMessage(index, builderForValue.build());
+          busyTeamBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder addAdventureTeam(com.hawk.game.protocol.Adventure.HSAdventureTeam value) {
-        if (adventureTeamBuilder_ == null) {
+      public Builder addBusyTeam(com.hawk.game.protocol.Adventure.HSAdventureTeam value) {
+        if (busyTeamBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.add(value);
+          ensureBusyTeamIsMutable();
+          busyTeam_.add(value);
           onChanged();
         } else {
-          adventureTeamBuilder_.addMessage(value);
+          busyTeamBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder addAdventureTeam(
+      public Builder addBusyTeam(
           int index, com.hawk.game.protocol.Adventure.HSAdventureTeam value) {
-        if (adventureTeamBuilder_ == null) {
+        if (busyTeamBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.add(index, value);
+          ensureBusyTeamIsMutable();
+          busyTeam_.add(index, value);
           onChanged();
         } else {
-          adventureTeamBuilder_.addMessage(index, value);
+          busyTeamBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder addAdventureTeam(
+      public Builder addBusyTeam(
           com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder builderForValue) {
-        if (adventureTeamBuilder_ == null) {
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.add(builderForValue.build());
+        if (busyTeamBuilder_ == null) {
+          ensureBusyTeamIsMutable();
+          busyTeam_.add(builderForValue.build());
           onChanged();
         } else {
-          adventureTeamBuilder_.addMessage(builderForValue.build());
+          busyTeamBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder addAdventureTeam(
+      public Builder addBusyTeam(
           int index, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder builderForValue) {
-        if (adventureTeamBuilder_ == null) {
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.add(index, builderForValue.build());
+        if (busyTeamBuilder_ == null) {
+          ensureBusyTeamIsMutable();
+          busyTeam_.add(index, builderForValue.build());
           onChanged();
         } else {
-          adventureTeamBuilder_.addMessage(index, builderForValue.build());
+          busyTeamBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder addAllAdventureTeam(
+      public Builder addAllBusyTeam(
           java.lang.Iterable<? extends com.hawk.game.protocol.Adventure.HSAdventureTeam> values) {
-        if (adventureTeamBuilder_ == null) {
-          ensureAdventureTeamIsMutable();
-          super.addAll(values, adventureTeam_);
+        if (busyTeamBuilder_ == null) {
+          ensureBusyTeamIsMutable();
+          super.addAll(values, busyTeam_);
           onChanged();
         } else {
-          adventureTeamBuilder_.addAllMessages(values);
+          busyTeamBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder clearAdventureTeam() {
-        if (adventureTeamBuilder_ == null) {
-          adventureTeam_ = java.util.Collections.emptyList();
+      public Builder clearBusyTeam() {
+        if (busyTeamBuilder_ == null) {
+          busyTeam_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          adventureTeamBuilder_.clear();
+          busyTeamBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public Builder removeAdventureTeam(int index) {
-        if (adventureTeamBuilder_ == null) {
-          ensureAdventureTeamIsMutable();
-          adventureTeam_.remove(index);
+      public Builder removeBusyTeam(int index) {
+        if (busyTeamBuilder_ == null) {
+          ensureBusyTeamIsMutable();
+          busyTeam_.remove(index);
           onChanged();
         } else {
-          adventureTeamBuilder_.remove(index);
+          busyTeamBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder getAdventureTeamBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder getBusyTeamBuilder(
           int index) {
-        return getAdventureTeamFieldBuilder().getBuilder(index);
+        return getBusyTeamFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getAdventureTeamOrBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder getBusyTeamOrBuilder(
           int index) {
-        if (adventureTeamBuilder_ == null) {
-          return adventureTeam_.get(index);  } else {
-          return adventureTeamBuilder_.getMessageOrBuilder(index);
+        if (busyTeamBuilder_ == null) {
+          return busyTeam_.get(index);  } else {
+          return busyTeamBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
       public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> 
-           getAdventureTeamOrBuilderList() {
-        if (adventureTeamBuilder_ != null) {
-          return adventureTeamBuilder_.getMessageOrBuilderList();
+           getBusyTeamOrBuilderList() {
+        if (busyTeamBuilder_ != null) {
+          return busyTeamBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(adventureTeam_);
+          return java.util.Collections.unmodifiableList(busyTeam_);
         }
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder addAdventureTeamBuilder() {
-        return getAdventureTeamFieldBuilder().addBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder addBusyTeamBuilder() {
+        return getBusyTeamFieldBuilder().addBuilder(
             com.hawk.game.protocol.Adventure.HSAdventureTeam.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder addAdventureTeamBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder addBusyTeamBuilder(
           int index) {
-        return getAdventureTeamFieldBuilder().addBuilder(
+        return getBusyTeamFieldBuilder().addBuilder(
             index, com.hawk.game.protocol.Adventure.HSAdventureTeam.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventureTeam adventureTeam = 2;</code>
+       * <code>repeated .HSAdventureTeam busyTeam = 2;</code>
        *
        * <pre>
        * 已冒险队伍
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder> 
-           getAdventureTeamBuilderList() {
-        return getAdventureTeamFieldBuilder().getBuilderList();
+           getBusyTeamBuilderList() {
+        return getBusyTeamFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.hawk.game.protocol.Adventure.HSAdventureTeam, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder, com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder> 
-          getAdventureTeamFieldBuilder() {
-        if (adventureTeamBuilder_ == null) {
-          adventureTeamBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getBusyTeamFieldBuilder() {
+        if (busyTeamBuilder_ == null) {
+          busyTeamBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Adventure.HSAdventureTeam, com.hawk.game.protocol.Adventure.HSAdventureTeam.Builder, com.hawk.game.protocol.Adventure.HSAdventureTeamOrBuilder>(
-                  adventureTeam_,
+                  busyTeam_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
-          adventureTeam_ = null;
+          busyTeam_ = null;
         }
-        return adventureTeamBuilder_;
+        return busyTeamBuilder_;
       }
 
-      // repeated .HSAdventure adventure = 3;
-      private java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> adventure_ =
+      // repeated .HSAdventure idleAdventure = 3;
+      private java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> idleAdventure_ =
         java.util.Collections.emptyList();
-      private void ensureAdventureIsMutable() {
+      private void ensureIdleAdventureIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          adventure_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventure>(adventure_);
+          idleAdventure_ = new java.util.ArrayList<com.hawk.game.protocol.Adventure.HSAdventure>(idleAdventure_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Adventure.HSAdventure, com.hawk.game.protocol.Adventure.HSAdventure.Builder, com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> adventureBuilder_;
+          com.hawk.game.protocol.Adventure.HSAdventure, com.hawk.game.protocol.Adventure.HSAdventure.Builder, com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> idleAdventureBuilder_;
 
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> getAdventureList() {
-        if (adventureBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(adventure_);
+      public java.util.List<com.hawk.game.protocol.Adventure.HSAdventure> getIdleAdventureList() {
+        if (idleAdventureBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(idleAdventure_);
         } else {
-          return adventureBuilder_.getMessageList();
+          return idleAdventureBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public int getAdventureCount() {
-        if (adventureBuilder_ == null) {
-          return adventure_.size();
+      public int getIdleAdventureCount() {
+        if (idleAdventureBuilder_ == null) {
+          return idleAdventure_.size();
         } else {
-          return adventureBuilder_.getCount();
+          return idleAdventureBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventure getAdventure(int index) {
-        if (adventureBuilder_ == null) {
-          return adventure_.get(index);
+      public com.hawk.game.protocol.Adventure.HSAdventure getIdleAdventure(int index) {
+        if (idleAdventureBuilder_ == null) {
+          return idleAdventure_.get(index);
         } else {
-          return adventureBuilder_.getMessage(index);
+          return idleAdventureBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder setAdventure(
+      public Builder setIdleAdventure(
           int index, com.hawk.game.protocol.Adventure.HSAdventure value) {
-        if (adventureBuilder_ == null) {
+        if (idleAdventureBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureIsMutable();
-          adventure_.set(index, value);
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.set(index, value);
           onChanged();
         } else {
-          adventureBuilder_.setMessage(index, value);
+          idleAdventureBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder setAdventure(
+      public Builder setIdleAdventure(
           int index, com.hawk.game.protocol.Adventure.HSAdventure.Builder builderForValue) {
-        if (adventureBuilder_ == null) {
-          ensureAdventureIsMutable();
-          adventure_.set(index, builderForValue.build());
+        if (idleAdventureBuilder_ == null) {
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.set(index, builderForValue.build());
           onChanged();
         } else {
-          adventureBuilder_.setMessage(index, builderForValue.build());
+          idleAdventureBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder addAdventure(com.hawk.game.protocol.Adventure.HSAdventure value) {
-        if (adventureBuilder_ == null) {
+      public Builder addIdleAdventure(com.hawk.game.protocol.Adventure.HSAdventure value) {
+        if (idleAdventureBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureIsMutable();
-          adventure_.add(value);
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.add(value);
           onChanged();
         } else {
-          adventureBuilder_.addMessage(value);
+          idleAdventureBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder addAdventure(
+      public Builder addIdleAdventure(
           int index, com.hawk.game.protocol.Adventure.HSAdventure value) {
-        if (adventureBuilder_ == null) {
+        if (idleAdventureBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAdventureIsMutable();
-          adventure_.add(index, value);
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.add(index, value);
           onChanged();
         } else {
-          adventureBuilder_.addMessage(index, value);
+          idleAdventureBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder addAdventure(
+      public Builder addIdleAdventure(
           com.hawk.game.protocol.Adventure.HSAdventure.Builder builderForValue) {
-        if (adventureBuilder_ == null) {
-          ensureAdventureIsMutable();
-          adventure_.add(builderForValue.build());
+        if (idleAdventureBuilder_ == null) {
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.add(builderForValue.build());
           onChanged();
         } else {
-          adventureBuilder_.addMessage(builderForValue.build());
+          idleAdventureBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder addAdventure(
+      public Builder addIdleAdventure(
           int index, com.hawk.game.protocol.Adventure.HSAdventure.Builder builderForValue) {
-        if (adventureBuilder_ == null) {
-          ensureAdventureIsMutable();
-          adventure_.add(index, builderForValue.build());
+        if (idleAdventureBuilder_ == null) {
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.add(index, builderForValue.build());
           onChanged();
         } else {
-          adventureBuilder_.addMessage(index, builderForValue.build());
+          idleAdventureBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder addAllAdventure(
+      public Builder addAllIdleAdventure(
           java.lang.Iterable<? extends com.hawk.game.protocol.Adventure.HSAdventure> values) {
-        if (adventureBuilder_ == null) {
-          ensureAdventureIsMutable();
-          super.addAll(values, adventure_);
+        if (idleAdventureBuilder_ == null) {
+          ensureIdleAdventureIsMutable();
+          super.addAll(values, idleAdventure_);
           onChanged();
         } else {
-          adventureBuilder_.addAllMessages(values);
+          idleAdventureBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder clearAdventure() {
-        if (adventureBuilder_ == null) {
-          adventure_ = java.util.Collections.emptyList();
+      public Builder clearIdleAdventure() {
+        if (idleAdventureBuilder_ == null) {
+          idleAdventure_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
-          adventureBuilder_.clear();
+          idleAdventureBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public Builder removeAdventure(int index) {
-        if (adventureBuilder_ == null) {
-          ensureAdventureIsMutable();
-          adventure_.remove(index);
+      public Builder removeIdleAdventure(int index) {
+        if (idleAdventureBuilder_ == null) {
+          ensureIdleAdventureIsMutable();
+          idleAdventure_.remove(index);
           onChanged();
         } else {
-          adventureBuilder_.remove(index);
+          idleAdventureBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventure.Builder getAdventureBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventure.Builder getIdleAdventureBuilder(
           int index) {
-        return getAdventureFieldBuilder().getBuilder(index);
+        return getIdleAdventureFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getAdventureOrBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventureOrBuilder getIdleAdventureOrBuilder(
           int index) {
-        if (adventureBuilder_ == null) {
-          return adventure_.get(index);  } else {
-          return adventureBuilder_.getMessageOrBuilder(index);
+        if (idleAdventureBuilder_ == null) {
+          return idleAdventure_.get(index);  } else {
+          return idleAdventureBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
       public java.util.List<? extends com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> 
-           getAdventureOrBuilderList() {
-        if (adventureBuilder_ != null) {
-          return adventureBuilder_.getMessageOrBuilderList();
+           getIdleAdventureOrBuilderList() {
+        if (idleAdventureBuilder_ != null) {
+          return idleAdventureBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(adventure_);
+          return java.util.Collections.unmodifiableList(idleAdventure_);
         }
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventure.Builder addAdventureBuilder() {
-        return getAdventureFieldBuilder().addBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventure.Builder addIdleAdventureBuilder() {
+        return getIdleAdventureFieldBuilder().addBuilder(
             com.hawk.game.protocol.Adventure.HSAdventure.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
-      public com.hawk.game.protocol.Adventure.HSAdventure.Builder addAdventureBuilder(
+      public com.hawk.game.protocol.Adventure.HSAdventure.Builder addIdleAdventureBuilder(
           int index) {
-        return getAdventureFieldBuilder().addBuilder(
+        return getIdleAdventureFieldBuilder().addBuilder(
             index, com.hawk.game.protocol.Adventure.HSAdventure.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSAdventure adventure = 3;</code>
+       * <code>repeated .HSAdventure idleAdventure = 3;</code>
        *
        * <pre>
        * 未冒险任务
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Adventure.HSAdventure.Builder> 
-           getAdventureBuilderList() {
-        return getAdventureFieldBuilder().getBuilderList();
+           getIdleAdventureBuilderList() {
+        return getIdleAdventureFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.hawk.game.protocol.Adventure.HSAdventure, com.hawk.game.protocol.Adventure.HSAdventure.Builder, com.hawk.game.protocol.Adventure.HSAdventureOrBuilder> 
-          getAdventureFieldBuilder() {
-        if (adventureBuilder_ == null) {
-          adventureBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdleAdventureFieldBuilder() {
+        if (idleAdventureBuilder_ == null) {
+          idleAdventureBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Adventure.HSAdventure, com.hawk.game.protocol.Adventure.HSAdventure.Builder, com.hawk.game.protocol.Adventure.HSAdventureOrBuilder>(
-                  adventure_,
+                  idleAdventure_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
-          adventure_ = null;
+          idleAdventure_ = null;
         }
-        return adventureBuilder_;
+        return idleAdventureBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSAdventureInfoSync)
@@ -3643,43 +3732,53 @@ public final class Adventure {
      */
     int getTeamId();
 
-    // required int32 adventureId = 2;
+    // required int32 type = 2;
     /**
-     * <code>required int32 adventureId = 2;</code>
+     * <code>required int32 type = 2;</code>
      */
-    boolean hasAdventureId();
+    boolean hasType();
     /**
-     * <code>required int32 adventureId = 2;</code>
+     * <code>required int32 type = 2;</code>
      */
-    int getAdventureId();
+    int getType();
 
-    // repeated int32 monsterId = 3;
+    // required int32 gear = 3;
     /**
-     * <code>repeated int32 monsterId = 3;</code>
+     * <code>required int32 gear = 3;</code>
      */
-    java.util.List<java.lang.Integer> getMonsterIdList();
+    boolean hasGear();
     /**
-     * <code>repeated int32 monsterId = 3;</code>
+     * <code>required int32 gear = 3;</code>
      */
-    int getMonsterIdCount();
-    /**
-     * <code>repeated int32 monsterId = 3;</code>
-     */
-    int getMonsterId(int index);
+    int getGear();
 
-    // optional .AllianceBaseMonster monsterHire = 4;
+    // repeated int32 selfMonsterId = 4;
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    boolean hasMonsterHire();
+    java.util.List<java.lang.Integer> getSelfMonsterIdList();
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire();
+    int getSelfMonsterIdCount();
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder();
+    int getSelfMonsterId(int index);
+
+    // optional .AllianceBaseMonster hireMonster = 5;
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    boolean hasHireMonster();
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster();
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder();
   }
   /**
    * Protobuf type {@code HSAdventureEnter}
@@ -3743,41 +3842,46 @@ public final class Adventure {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              adventureId_ = input.readInt32();
+              type_ = input.readInt32();
               break;
             }
             case 24: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                monsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              monsterId_.add(input.readInt32());
+              bitField0_ |= 0x00000004;
+              gear_ = input.readInt32();
               break;
             }
-            case 26: {
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              selfMonsterId_.add(input.readInt32());
+              break;
+            }
+            case 34: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
-                monsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000004;
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                monsterId_.add(input.readInt32());
+                selfMonsterId_.add(input.readInt32());
               }
               input.popLimit(limit);
               break;
             }
-            case 34: {
+            case 42: {
               com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = monsterHire_.toBuilder();
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = hireMonster_.toBuilder();
               }
-              monsterHire_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceBaseMonster.PARSER, extensionRegistry);
+              hireMonster_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceBaseMonster.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(monsterHire_);
-                monsterHire_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(hireMonster_);
+                hireMonster_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -3788,8 +3892,8 @@ public final class Adventure {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          monsterId_ = java.util.Collections.unmodifiableList(monsterId_);
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          selfMonsterId_ = java.util.Collections.unmodifiableList(selfMonsterId_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3839,72 +3943,89 @@ public final class Adventure {
       return teamId_;
     }
 
-    // required int32 adventureId = 2;
-    public static final int ADVENTUREID_FIELD_NUMBER = 2;
-    private int adventureId_;
+    // required int32 type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
     /**
-     * <code>required int32 adventureId = 2;</code>
+     * <code>required int32 type = 2;</code>
      */
-    public boolean hasAdventureId() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 adventureId = 2;</code>
+     * <code>required int32 type = 2;</code>
      */
-    public int getAdventureId() {
-      return adventureId_;
+    public int getType() {
+      return type_;
     }
 
-    // repeated int32 monsterId = 3;
-    public static final int MONSTERID_FIELD_NUMBER = 3;
-    private java.util.List<java.lang.Integer> monsterId_;
+    // required int32 gear = 3;
+    public static final int GEAR_FIELD_NUMBER = 3;
+    private int gear_;
     /**
-     * <code>repeated int32 monsterId = 3;</code>
+     * <code>required int32 gear = 3;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getMonsterIdList() {
-      return monsterId_;
-    }
-    /**
-     * <code>repeated int32 monsterId = 3;</code>
-     */
-    public int getMonsterIdCount() {
-      return monsterId_.size();
-    }
-    /**
-     * <code>repeated int32 monsterId = 3;</code>
-     */
-    public int getMonsterId(int index) {
-      return monsterId_.get(index);
-    }
-
-    // optional .AllianceBaseMonster monsterHire = 4;
-    public static final int MONSTERHIRE_FIELD_NUMBER = 4;
-    private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_;
-    /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
-     */
-    public boolean hasMonsterHire() {
+    public boolean hasGear() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     * <code>required int32 gear = 3;</code>
      */
-    public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
-      return monsterHire_;
+    public int getGear() {
+      return gear_;
+    }
+
+    // repeated int32 selfMonsterId = 4;
+    public static final int SELFMONSTERID_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> selfMonsterId_;
+    /**
+     * <code>repeated int32 selfMonsterId = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getSelfMonsterIdList() {
+      return selfMonsterId_;
     }
     /**
-     * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+     * <code>repeated int32 selfMonsterId = 4;</code>
      */
-    public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
-      return monsterHire_;
+    public int getSelfMonsterIdCount() {
+      return selfMonsterId_.size();
+    }
+    /**
+     * <code>repeated int32 selfMonsterId = 4;</code>
+     */
+    public int getSelfMonsterId(int index) {
+      return selfMonsterId_.get(index);
+    }
+
+    // optional .AllianceBaseMonster hireMonster = 5;
+    public static final int HIREMONSTER_FIELD_NUMBER = 5;
+    private com.hawk.game.protocol.Alliance.AllianceBaseMonster hireMonster_;
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    public boolean hasHireMonster() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster() {
+      return hireMonster_;
+    }
+    /**
+     * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder() {
+      return hireMonster_;
     }
 
     private void initFields() {
       teamId_ = 0;
-      adventureId_ = 0;
-      monsterId_ = java.util.Collections.emptyList();
-      monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      type_ = 0;
+      gear_ = 0;
+      selfMonsterId_ = java.util.Collections.emptyList();
+      hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3915,12 +4036,16 @@ public final class Adventure {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasAdventureId()) {
+      if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (hasMonsterHire()) {
-        if (!getMonsterHire().isInitialized()) {
+      if (!hasGear()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasHireMonster()) {
+        if (!getHireMonster().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3936,13 +4061,16 @@ public final class Adventure {
         output.writeInt32(1, teamId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, adventureId_);
-      }
-      for (int i = 0; i < monsterId_.size(); i++) {
-        output.writeInt32(3, monsterId_.get(i));
+        output.writeInt32(2, type_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(4, monsterHire_);
+        output.writeInt32(3, gear_);
+      }
+      for (int i = 0; i < selfMonsterId_.size(); i++) {
+        output.writeInt32(4, selfMonsterId_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(5, hireMonster_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3959,20 +4087,24 @@ public final class Adventure {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, adventureId_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < monsterId_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(monsterId_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getMonsterIdList().size();
+          .computeInt32Size(2, type_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, monsterHire_);
+          .computeInt32Size(3, gear_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < selfMonsterId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(selfMonsterId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getSelfMonsterIdList().size();
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, hireMonster_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4086,7 +4218,7 @@ public final class Adventure {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMonsterHireFieldBuilder();
+          getHireMonsterFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4097,16 +4229,18 @@ public final class Adventure {
         super.clear();
         teamId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        adventureId_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        monsterId_ = java.util.Collections.emptyList();
+        gear_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
-        } else {
-          monsterHireBuilder_.clear();
-        }
+        selfMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+        } else {
+          hireMonsterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -4142,19 +4276,23 @@ public final class Adventure {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.adventureId_ = adventureId_;
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          monsterId_ = java.util.Collections.unmodifiableList(monsterId_);
-          bitField0_ = (bitField0_ & ~0x00000004);
-        }
-        result.monsterId_ = monsterId_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        if (monsterHireBuilder_ == null) {
-          result.monsterHire_ = monsterHire_;
+        result.gear_ = gear_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          selfMonsterId_ = java.util.Collections.unmodifiableList(selfMonsterId_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.selfMonsterId_ = selfMonsterId_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (hireMonsterBuilder_ == null) {
+          result.hireMonster_ = hireMonster_;
         } else {
-          result.monsterHire_ = monsterHireBuilder_.build();
+          result.hireMonster_ = hireMonsterBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4175,21 +4313,24 @@ public final class Adventure {
         if (other.hasTeamId()) {
           setTeamId(other.getTeamId());
         }
-        if (other.hasAdventureId()) {
-          setAdventureId(other.getAdventureId());
+        if (other.hasType()) {
+          setType(other.getType());
         }
-        if (!other.monsterId_.isEmpty()) {
-          if (monsterId_.isEmpty()) {
-            monsterId_ = other.monsterId_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+        if (other.hasGear()) {
+          setGear(other.getGear());
+        }
+        if (!other.selfMonsterId_.isEmpty()) {
+          if (selfMonsterId_.isEmpty()) {
+            selfMonsterId_ = other.selfMonsterId_;
+            bitField0_ = (bitField0_ & ~0x00000008);
           } else {
-            ensureMonsterIdIsMutable();
-            monsterId_.addAll(other.monsterId_);
+            ensureSelfMonsterIdIsMutable();
+            selfMonsterId_.addAll(other.selfMonsterId_);
           }
           onChanged();
         }
-        if (other.hasMonsterHire()) {
-          mergeMonsterHire(other.getMonsterHire());
+        if (other.hasHireMonster()) {
+          mergeHireMonster(other.getHireMonster());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4200,12 +4341,16 @@ public final class Adventure {
           
           return false;
         }
-        if (!hasAdventureId()) {
+        if (!hasType()) {
           
           return false;
         }
-        if (hasMonsterHire()) {
-          if (!getMonsterHire().isInitialized()) {
+        if (!hasGear()) {
+          
+          return false;
+        }
+        if (hasHireMonster()) {
+          if (!getHireMonster().isInitialized()) {
             
             return false;
           }
@@ -4265,220 +4410,253 @@ public final class Adventure {
         return this;
       }
 
-      // required int32 adventureId = 2;
-      private int adventureId_ ;
+      // required int32 type = 2;
+      private int type_ ;
       /**
-       * <code>required int32 adventureId = 2;</code>
+       * <code>required int32 type = 2;</code>
        */
-      public boolean hasAdventureId() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 adventureId = 2;</code>
+       * <code>required int32 type = 2;</code>
        */
-      public int getAdventureId() {
-        return adventureId_;
+      public int getType() {
+        return type_;
       }
       /**
-       * <code>required int32 adventureId = 2;</code>
+       * <code>required int32 type = 2;</code>
        */
-      public Builder setAdventureId(int value) {
+      public Builder setType(int value) {
         bitField0_ |= 0x00000002;
-        adventureId_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 adventureId = 2;</code>
+       * <code>required int32 type = 2;</code>
        */
-      public Builder clearAdventureId() {
+      public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        adventureId_ = 0;
+        type_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated int32 monsterId = 3;
-      private java.util.List<java.lang.Integer> monsterId_ = java.util.Collections.emptyList();
-      private void ensureMonsterIdIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          monsterId_ = new java.util.ArrayList<java.lang.Integer>(monsterId_);
-          bitField0_ |= 0x00000004;
+      // required int32 gear = 3;
+      private int gear_ ;
+      /**
+       * <code>required int32 gear = 3;</code>
+       */
+      public boolean hasGear() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 gear = 3;</code>
+       */
+      public int getGear() {
+        return gear_;
+      }
+      /**
+       * <code>required int32 gear = 3;</code>
+       */
+      public Builder setGear(int value) {
+        bitField0_ |= 0x00000004;
+        gear_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 gear = 3;</code>
+       */
+      public Builder clearGear() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        gear_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 selfMonsterId = 4;
+      private java.util.List<java.lang.Integer> selfMonsterId_ = java.util.Collections.emptyList();
+      private void ensureSelfMonsterIdIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          selfMonsterId_ = new java.util.ArrayList<java.lang.Integer>(selfMonsterId_);
+          bitField0_ |= 0x00000008;
          }
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
       public java.util.List<java.lang.Integer>
-          getMonsterIdList() {
-        return java.util.Collections.unmodifiableList(monsterId_);
+          getSelfMonsterIdList() {
+        return java.util.Collections.unmodifiableList(selfMonsterId_);
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public int getMonsterIdCount() {
-        return monsterId_.size();
+      public int getSelfMonsterIdCount() {
+        return selfMonsterId_.size();
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public int getMonsterId(int index) {
-        return monsterId_.get(index);
+      public int getSelfMonsterId(int index) {
+        return selfMonsterId_.get(index);
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder setMonsterId(
+      public Builder setSelfMonsterId(
           int index, int value) {
-        ensureMonsterIdIsMutable();
-        monsterId_.set(index, value);
+        ensureSelfMonsterIdIsMutable();
+        selfMonsterId_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder addMonsterId(int value) {
-        ensureMonsterIdIsMutable();
-        monsterId_.add(value);
+      public Builder addSelfMonsterId(int value) {
+        ensureSelfMonsterIdIsMutable();
+        selfMonsterId_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder addAllMonsterId(
+      public Builder addAllSelfMonsterId(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureMonsterIdIsMutable();
-        super.addAll(values, monsterId_);
+        ensureSelfMonsterIdIsMutable();
+        super.addAll(values, selfMonsterId_);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 monsterId = 3;</code>
+       * <code>repeated int32 selfMonsterId = 4;</code>
        */
-      public Builder clearMonsterId() {
-        monsterId_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+      public Builder clearSelfMonsterId() {
+        selfMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
 
-      // optional .AllianceBaseMonster monsterHire = 4;
-      private com.hawk.game.protocol.Alliance.AllianceBaseMonster monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      // optional .AllianceBaseMonster hireMonster = 5;
+      private com.hawk.game.protocol.Alliance.AllianceBaseMonster hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> monsterHireBuilder_;
+          com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> hireMonsterBuilder_;
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public boolean hasMonsterHire() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+      public boolean hasHireMonster() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonster getMonsterHire() {
-        if (monsterHireBuilder_ == null) {
-          return monsterHire_;
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster getHireMonster() {
+        if (hireMonsterBuilder_ == null) {
+          return hireMonster_;
         } else {
-          return monsterHireBuilder_.getMessage();
+          return hireMonsterBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder setMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
-        if (monsterHireBuilder_ == null) {
+      public Builder setHireMonster(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (hireMonsterBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          monsterHire_ = value;
+          hireMonster_ = value;
           onChanged();
         } else {
-          monsterHireBuilder_.setMessage(value);
+          hireMonsterBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder setMonsterHire(
+      public Builder setHireMonster(
           com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder builderForValue) {
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = builderForValue.build();
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = builderForValue.build();
           onChanged();
         } else {
-          monsterHireBuilder_.setMessage(builderForValue.build());
+          hireMonsterBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder mergeMonsterHire(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
-        if (monsterHireBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              monsterHire_ != com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance()) {
-            monsterHire_ =
-              com.hawk.game.protocol.Alliance.AllianceBaseMonster.newBuilder(monsterHire_).mergeFrom(value).buildPartial();
+      public Builder mergeHireMonster(com.hawk.game.protocol.Alliance.AllianceBaseMonster value) {
+        if (hireMonsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              hireMonster_ != com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance()) {
+            hireMonster_ =
+              com.hawk.game.protocol.Alliance.AllianceBaseMonster.newBuilder(hireMonster_).mergeFrom(value).buildPartial();
           } else {
-            monsterHire_ = value;
+            hireMonster_ = value;
           }
           onChanged();
         } else {
-          monsterHireBuilder_.mergeFrom(value);
+          hireMonsterBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public Builder clearMonsterHire() {
-        if (monsterHireBuilder_ == null) {
-          monsterHire_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
+      public Builder clearHireMonster() {
+        if (hireMonsterBuilder_ == null) {
+          hireMonster_ = com.hawk.game.protocol.Alliance.AllianceBaseMonster.getDefaultInstance();
           onChanged();
         } else {
-          monsterHireBuilder_.clear();
+          hireMonsterBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder getMonsterHireBuilder() {
-        bitField0_ |= 0x00000008;
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder getHireMonsterBuilder() {
+        bitField0_ |= 0x00000010;
         onChanged();
-        return getMonsterHireFieldBuilder().getBuilder();
+        return getHireMonsterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
-      public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getMonsterHireOrBuilder() {
-        if (monsterHireBuilder_ != null) {
-          return monsterHireBuilder_.getMessageOrBuilder();
+      public com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder getHireMonsterOrBuilder() {
+        if (hireMonsterBuilder_ != null) {
+          return hireMonsterBuilder_.getMessageOrBuilder();
         } else {
-          return monsterHire_;
+          return hireMonster_;
         }
       }
       /**
-       * <code>optional .AllianceBaseMonster monsterHire = 4;</code>
+       * <code>optional .AllianceBaseMonster hireMonster = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder> 
-          getMonsterHireFieldBuilder() {
-        if (monsterHireBuilder_ == null) {
-          monsterHireBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          getHireMonsterFieldBuilder() {
+        if (hireMonsterBuilder_ == null) {
+          hireMonsterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.hawk.game.protocol.Alliance.AllianceBaseMonster, com.hawk.game.protocol.Alliance.AllianceBaseMonster.Builder, com.hawk.game.protocol.Alliance.AllianceBaseMonsterOrBuilder>(
-                  monsterHire_,
+                  hireMonster_,
                   getParentForChildren(),
                   isClean());
-          monsterHire_ = null;
+          hireMonster_ = null;
         }
-        return monsterHireBuilder_;
+        return hireMonsterBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSAdventureEnter)
@@ -6500,15 +6678,25 @@ public final class Adventure {
   public interface HSAdventureNewConditionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 adventureId = 1;
+    // required int32 type = 1;
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    boolean hasAdventureId();
+    boolean hasType();
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    int getAdventureId();
+    int getType();
+
+    // required int32 gear = 2;
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    boolean hasGear();
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    int getGear();
   }
   /**
    * Protobuf type {@code HSAdventureNewCondition}
@@ -6567,7 +6755,12 @@ public final class Adventure {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              adventureId_ = input.readInt32();
+              type_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              gear_ = input.readInt32();
               break;
             }
           }
@@ -6610,31 +6803,52 @@ public final class Adventure {
     }
 
     private int bitField0_;
-    // required int32 adventureId = 1;
-    public static final int ADVENTUREID_FIELD_NUMBER = 1;
-    private int adventureId_;
+    // required int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    public boolean hasAdventureId() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 adventureId = 1;</code>
+     * <code>required int32 type = 1;</code>
      */
-    public int getAdventureId() {
-      return adventureId_;
+    public int getType() {
+      return type_;
+    }
+
+    // required int32 gear = 2;
+    public static final int GEAR_FIELD_NUMBER = 2;
+    private int gear_;
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    public boolean hasGear() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 gear = 2;</code>
+     */
+    public int getGear() {
+      return gear_;
     }
 
     private void initFields() {
-      adventureId_ = 0;
+      type_ = 0;
+      gear_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasAdventureId()) {
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGear()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6646,7 +6860,10 @@ public final class Adventure {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, adventureId_);
+        output.writeInt32(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, gear_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6659,7 +6876,11 @@ public final class Adventure {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, adventureId_);
+          .computeInt32Size(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, gear_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6781,8 +7002,10 @@ public final class Adventure {
 
       public Builder clear() {
         super.clear();
-        adventureId_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        gear_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6814,7 +7037,11 @@ public final class Adventure {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.adventureId_ = adventureId_;
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.gear_ = gear_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6831,15 +7058,22 @@ public final class Adventure {
 
       public Builder mergeFrom(com.hawk.game.protocol.Adventure.HSAdventureNewCondition other) {
         if (other == com.hawk.game.protocol.Adventure.HSAdventureNewCondition.getDefaultInstance()) return this;
-        if (other.hasAdventureId()) {
-          setAdventureId(other.getAdventureId());
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasGear()) {
+          setGear(other.getGear());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasAdventureId()) {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasGear()) {
           
           return false;
         }
@@ -6865,35 +7099,68 @@ public final class Adventure {
       }
       private int bitField0_;
 
-      // required int32 adventureId = 1;
-      private int adventureId_ ;
+      // required int32 type = 1;
+      private int type_ ;
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public boolean hasAdventureId() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public int getAdventureId() {
-        return adventureId_;
+      public int getType() {
+        return type_;
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public Builder setAdventureId(int value) {
+      public Builder setType(int value) {
         bitField0_ |= 0x00000001;
-        adventureId_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 adventureId = 1;</code>
+       * <code>required int32 type = 1;</code>
        */
-      public Builder clearAdventureId() {
+      public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        adventureId_ = 0;
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 gear = 2;
+      private int gear_ ;
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public boolean hasGear() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public int getGear() {
+        return gear_;
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public Builder setGear(int value) {
+        bitField0_ |= 0x00000002;
+        gear_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 gear = 2;</code>
+       */
+      public Builder clearGear() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        gear_ = 0;
         onChanged();
         return this;
       }
@@ -9434,35 +9701,36 @@ public final class Adventure {
     java.lang.String[] descriptorData = {
       "\n\030Protocol/Adventure.proto\032\024Protocol/Con" +
       "st.proto\032\025Protocol/Reward.proto\032\027Protoco" +
-      "l/Alliance.proto\"\205\001\n\017HSAdventureTeam\022\016\n\006" +
+      "l/Alliance.proto\"\211\001\n\017HSAdventureTeam\022\016\n\006" +
       "teamId\030\001 \002(\005\022\023\n\013adventureId\030\002 \002(\005\022\017\n\007end" +
-      "Time\030\003 \002(\005\022\021\n\tmonsterId\030\004 \003(\005\022)\n\013monster" +
-      "Hire\030\005 \001(\0132\024.AllianceBaseMonster\"H\n\024HSAd" +
-      "ventureCondition\022\024\n\014monsterCount\030\001 \002(\005\022\032" +
-      "\n\022conditionTypeCfgId\030\002 \002(\005\"L\n\013HSAdventur" +
-      "e\022\023\n\013adventureId\030\001 \002(\005\022(\n\tcondition\030\002 \003(" +
-      "\0132\025.HSAdventureCondition\"r\n\023HSAdventureI",
-      "nfoSync\022\021\n\tteamCount\030\001 \002(\005\022\'\n\radventureT" +
-      "eam\030\002 \003(\0132\020.HSAdventureTeam\022\037\n\tadventure" +
-      "\030\003 \003(\0132\014.HSAdventure\"u\n\020HSAdventureEnter" +
-      "\022\016\n\006teamId\030\001 \002(\005\022\023\n\013adventureId\030\002 \002(\005\022\021\n" +
-      "\tmonsterId\030\003 \003(\005\022)\n\013monsterHire\030\004 \001(\0132\024." +
-      "AllianceBaseMonster\"6\n\023HSAdventureEnterR" +
-      "et\022\016\n\006teamId\030\001 \002(\005\022\017\n\007endTime\030\002 \002(\005\"#\n\021H" +
-      "SAdventureSettle\022\016\n\006teamId\030\001 \002(\005\"\217\001\n\024HSA" +
-      "dventureSettleRet\022\016\n\006teamId\030\001 \002(\005\022\"\n\013bas" +
-      "icReward\030\002 \002(\0132\r.HSRewardInfo\022\"\n\013extraRe",
-      "ward\030\003 \001(\0132\r.HSRewardInfo\022\037\n\tadventure\030\004" +
-      " \002(\0132\014.HSAdventure\".\n\027HSAdventureNewCond" +
-      "ition\022\023\n\013adventureId\030\001 \002(\005\"p\n\032HSAdventur" +
-      "eNewConditionRet\022\037\n\tadventure\030\001 \002(\0132\014.HS" +
-      "Adventure\022\023\n\013changeCount\030\002 \002(\005\022\034\n\024change" +
-      "CountBeginTime\030\003 \002(\005\"\031\n\027HSAdventureBuyCo" +
-      "ndition\"O\n\032HSAdventureBuyConditionRet\022\023\n" +
-      "\013changeCount\030\001 \002(\005\022\034\n\024changeCountBeginTi" +
-      "me\030\002 \002(\005\"\024\n\022HSAdventureBuyTeam\"\'\n\025HSAdve" +
-      "ntureBuyTeamRet\022\016\n\006teamId\030\001 \002(\005B\030\n\026com.h",
-      "awk.game.protocol"
+      "Time\030\003 \002(\005\022\025\n\rselfMonsterId\030\004 \003(\005\022)\n\013hir" +
+      "eMonster\030\005 \001(\0132\024.AllianceBaseMonster\"H\n\024" +
+      "HSAdventureCondition\022\024\n\014monsterCount\030\001 \002" +
+      "(\005\022\032\n\022conditionTypeCfgId\030\002 \002(\005\"S\n\013HSAdve" +
+      "nture\022\014\n\004type\030\001 \002(\005\022\014\n\004gear\030\002 \002(\005\022(\n\tcon" +
+      "dition\030\003 \003(\0132\025.HSAdventureCondition\"q\n\023H",
+      "SAdventureInfoSync\022\021\n\tteamCount\030\001 \002(\005\022\"\n" +
+      "\010busyTeam\030\002 \003(\0132\020.HSAdventureTeam\022#\n\ridl" +
+      "eAdventure\030\003 \003(\0132\014.HSAdventure\"\200\001\n\020HSAdv" +
+      "entureEnter\022\016\n\006teamId\030\001 \002(\005\022\014\n\004type\030\002 \002(" +
+      "\005\022\014\n\004gear\030\003 \002(\005\022\025\n\rselfMonsterId\030\004 \003(\005\022)" +
+      "\n\013hireMonster\030\005 \001(\0132\024.AllianceBaseMonste" +
+      "r\"6\n\023HSAdventureEnterRet\022\016\n\006teamId\030\001 \002(\005" +
+      "\022\017\n\007endTime\030\002 \002(\005\"#\n\021HSAdventureSettle\022\016" +
+      "\n\006teamId\030\001 \002(\005\"\217\001\n\024HSAdventureSettleRet\022" +
+      "\016\n\006teamId\030\001 \002(\005\022\"\n\013basicReward\030\002 \002(\0132\r.H",
+      "SRewardInfo\022\"\n\013extraReward\030\003 \001(\0132\r.HSRew" +
+      "ardInfo\022\037\n\tadventure\030\004 \002(\0132\014.HSAdventure" +
+      "\"5\n\027HSAdventureNewCondition\022\014\n\004type\030\001 \002(" +
+      "\005\022\014\n\004gear\030\002 \002(\005\"p\n\032HSAdventureNewConditi" +
+      "onRet\022\037\n\tadventure\030\001 \002(\0132\014.HSAdventure\022\023" +
+      "\n\013changeCount\030\002 \002(\005\022\034\n\024changeCountBeginT" +
+      "ime\030\003 \002(\005\"\031\n\027HSAdventureBuyCondition\"O\n\032" +
+      "HSAdventureBuyConditionRet\022\023\n\013changeCoun" +
+      "t\030\001 \002(\005\022\034\n\024changeCountBeginTime\030\002 \002(\005\"\024\n" +
+      "\022HSAdventureBuyTeam\"\'\n\025HSAdventureBuyTea",
+      "mRet\022\016\n\006teamId\030\001 \002(\005B\030\n\026com.hawk.game.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9474,7 +9742,7 @@ public final class Adventure {
           internal_static_HSAdventureTeam_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureTeam_descriptor,
-              new java.lang.String[] { "TeamId", "AdventureId", "EndTime", "MonsterId", "MonsterHire", });
+              new java.lang.String[] { "TeamId", "AdventureId", "EndTime", "SelfMonsterId", "HireMonster", });
           internal_static_HSAdventureCondition_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_HSAdventureCondition_fieldAccessorTable = new
@@ -9486,19 +9754,19 @@ public final class Adventure {
           internal_static_HSAdventure_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventure_descriptor,
-              new java.lang.String[] { "AdventureId", "Condition", });
+              new java.lang.String[] { "Type", "Gear", "Condition", });
           internal_static_HSAdventureInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_HSAdventureInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureInfoSync_descriptor,
-              new java.lang.String[] { "TeamCount", "AdventureTeam", "Adventure", });
+              new java.lang.String[] { "TeamCount", "BusyTeam", "IdleAdventure", });
           internal_static_HSAdventureEnter_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_HSAdventureEnter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureEnter_descriptor,
-              new java.lang.String[] { "TeamId", "AdventureId", "MonsterId", "MonsterHire", });
+              new java.lang.String[] { "TeamId", "Type", "Gear", "SelfMonsterId", "HireMonster", });
           internal_static_HSAdventureEnterRet_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSAdventureEnterRet_fieldAccessorTable = new
@@ -9522,7 +9790,7 @@ public final class Adventure {
           internal_static_HSAdventureNewCondition_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureNewCondition_descriptor,
-              new java.lang.String[] { "AdventureId", });
+              new java.lang.String[] { "Type", "Gear", });
           internal_static_HSAdventureNewConditionRet_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_HSAdventureNewConditionRet_fieldAccessorTable = new

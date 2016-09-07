@@ -61,9 +61,14 @@ public class ShopDataMgr : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SHOP_REFRESH_TIMES.GetHashCode ().ToString (), OnShopRefreshItemsChanged);
 	}
 
-    public bool IsShopOpen(int shopType)
+    public void ClearData()
     {
-        return true;
+        shopDataDic.Clear();
+        if(null != listRechageState)
+        {
+            listRechageState.Clear();
+        }
+        lastRefreshTime = null;
     }
 	public	bool	IsNeedUpdateShopData()
 	{

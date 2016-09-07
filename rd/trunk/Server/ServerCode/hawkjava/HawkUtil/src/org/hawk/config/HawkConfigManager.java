@@ -214,7 +214,6 @@ public class HawkConfigManager {
 				return false;
 			}
 		}
-
 		return true;
 	}
 

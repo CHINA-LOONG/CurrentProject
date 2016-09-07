@@ -137,7 +137,6 @@ public class PlayerLoginModule extends PlayerModule {
 		response.setStatus(error.NONE_ERROR_VALUE);
 		 
 		// 绑定会话
-		player.setSession(session);
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 

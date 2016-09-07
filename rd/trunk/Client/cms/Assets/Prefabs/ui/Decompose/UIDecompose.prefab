@@ -2103,6 +2103,11 @@ MonoBehaviour:
   button: {fileID: 11449632}
   normalEffectPanel: {fileID: 22411874}
   checkedEffectPanel: {fileID: 22498514}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11450836
 MonoBehaviour:
@@ -2128,11 +2133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9560e5a35528e3648b87d15f394e2788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalImage: {fileID: 11463138}
+  normalImage: {fileID: 11416662}
   checkedImage: {fileID: 11416662}
   button: {fileID: 11490628}
   normalEffectPanel: {fileID: 22475170}
   checkedEffectPanel: {fileID: 22480450}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11453862
 MonoBehaviour:

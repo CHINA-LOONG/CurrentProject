@@ -151,6 +151,11 @@ public class PlayerData : MonoBehaviour
     public GameQuestData gameQuestData = new GameQuestData();
     //邮件
     public GameMailData gameMailData = new GameMailData();
+
+    public int[,] equipTypePart = new int[BattleConst.equipTypeCount, (int)PartType.NUM_EQUIP_PART] { {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 }};
     //---------------------------------------------------------------------------------------------
     public void InitMainUnitList()
     {
@@ -177,6 +182,35 @@ public class PlayerData : MonoBehaviour
             else
             {
                 Logger.LogErrorFormat("can not find monster id={0}", unitID);
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void ClearData()
+    {
+        mainUnitID.Clear();
+        BattleObject subObj = null;
+        for (int i =0;i< mainUnitList.Count;++i)
+        {
+            subObj = mainUnitList[i];
+            ObjectDataMgr.Instance.RemoveBattleObject(subObj.guid);
+        }
+		mainUnitList.Clear();
+        unitPbList.Clear();
+        allUnitDic.Clear();
+        petCollect.Clear();
+        collectUnit.Clear();
+        mBlockPlayerList.Clear();
+        gameItemData.ClearData();
+        gameEquipData.ClearData();
+        gameQuestData.ClearData();
+        gameMailData.ClearMail();
+
+        for (int i = 0; i < BattleConst.equipTypeCount; ++i)
+        {
+            for (int j = 0; j < (int)PartType.NUM_EQUIP_PART; j++)
+            {
+                equipTypePart[i, j] = 0;
             }
         }
     }
@@ -351,10 +385,6 @@ public class PlayerData : MonoBehaviour
 
     //---------------------------------------------------------------------------------------------
 
-    public int[,] equipTypePart = new int[BattleConst.equipTypeCount, (int)PartType.NUM_EQUIP_PART] { {0,0,0,0,0,0 },
-                                                                                                    {0,0,0,0,0,0 },
-                                                                                                    {0,0,0,0,0,0 },
-                                                                                                    {0,0,0,0,0,0 }};
     //获得或卸下装备
     public void AddEquipTypePart(long equipId)
     {

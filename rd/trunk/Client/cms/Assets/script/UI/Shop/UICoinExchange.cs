@@ -81,8 +81,8 @@ public class UICoinExchange : UIBase
 	{
 		GoldChargeData	item = StaticDataMgr.Instance.GetGoldChageStaticData(GameConfig.Instance.GoldExchangeId);
 		int curExchange = StatisticsDataMgr.Instance.gold2coinExchargeTimes ;
-		int zuanshi = item.GetBaseZuanshiWithTime (curExchange);;
-		int jinbi = item.GetBaseJinBiWithTime (curExchange);
+		int zuanshi = item.GetBaseZuanshiWithTime (curExchange + 1);;
+		int jinbi = item.GetBaseJinBiWithTime (curExchange + 1);
 
 		zuanshiText.text = zuanshi.ToString ();
 		jinbiText.text =  jinbi.ToString ();

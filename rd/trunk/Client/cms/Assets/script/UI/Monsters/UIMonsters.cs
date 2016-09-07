@@ -281,6 +281,13 @@ public class UIMonsters : UIBase,
 
         scrollView_Owend.InitContentSize(OwnedList.Count, this);
     }
+    private void CollectIconLoadCallback(GameObject icon, System.EventArgs args)
+    {
+        iconFragment = icon.GetComponent<ItemIcon>();
+        UIUtil.SetParentReset(icon.transform, iconPos);
+        iconFragment.HideExceptIcon();
+    }
+
     void ReLoadCollectData(int index)
     {
         int curType = GetTypeByIndex(index);
@@ -309,9 +316,13 @@ public class UIMonsters : UIBase,
 
         if (iconFragment==null)
         {
-            iconFragment = ItemIcon.CreateItemIcon(new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 });
-            UIUtil.SetParentReset(iconFragment.transform, iconPos);
-            iconFragment.HideExceptIcon();
+            //iconFragment = ItemIcon.CreateItemIcon();
+            ItemIcon.CreateItemIconIconAsync(
+                new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 },
+                false,
+                false,
+                CollectIconLoadCallback
+                );
         }
         ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
         textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());

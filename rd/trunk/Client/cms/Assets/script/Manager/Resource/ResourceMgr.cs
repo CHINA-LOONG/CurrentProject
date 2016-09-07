@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using PathologicalGames;
+//using PathologicalGames;
 
 //---------------------------------------------------------------------------------------------
 // call backs
@@ -72,6 +72,9 @@ public class ResourceMgr : MonoBehaviour
     //pooled prefab
     private Dictionary<string, GameObject> battlePoolList = new Dictionary<string,GameObject>();
     public Dictionary<string, AssetRequest> assetRequestList = new Dictionary<string, AssetRequest>();
+
+    //test
+    private Dictionary<string, Object> objPoolList = new Dictionary<string, Object>();
 
     void Awake()
     {
@@ -204,6 +207,7 @@ public class ResourceMgr : MonoBehaviour
         }
         if (clearPoolList == true)
         {
+            objPoolList.Clear();
             battlePoolList.Clear();
             if (assetRequestList.Count > 0)
             {
@@ -324,7 +328,7 @@ public class ResourceMgr : MonoBehaviour
 
         if (battlePoolList.ContainsKey(realName))
             return;
-
+        
         assetRequestList.Add(realName, request);
     }
     //---------------------------------------------------------------------------------------------
@@ -432,8 +436,22 @@ public class ResourceMgr : MonoBehaviour
         AssetBundle bundle = LoadAssetBundle(abname, true);
 
         //T obj = bundle.LoadAsset<T>(assetname);
+        Object obj = null;
+        if (typeof(T) == typeof(Sprite))
+        {
+            if (objPoolList.TryGetValue(assetname, out obj) == true)
+            {
+                return Instantiate(obj) as T;
+            }
+            else
+            {
+                obj = bundle.LoadAsset<T>(assetname);
+                objPoolList.Add(assetname, obj);
+            }
+        }
 
-        return bundle.LoadAsset<T>(assetname);
+        return obj as T;
+        //return bundle.LoadAsset<T>(assetname);
         ////TODO: pool object too
         //T prefab = bundle.LoadAsset<T>(assetname);
         //T obj = Object.Instantiate(prefab);
@@ -597,7 +615,7 @@ public class ResourceMgr : MonoBehaviour
         LoadedAssetBundle bundle;
         if (loadedAssetBundleList.TryGetValue(assetBundleName, out bundle))
         {
-            if (--bundle.referencedCount == 0)
+            if (--bundle.referencedCount == 0 && bundle.ignoreReferenceCount == false)
             {
                 bundle.assetBundle.Unload(false);
                 loadedAssetBundleList.Remove(assetBundleName);

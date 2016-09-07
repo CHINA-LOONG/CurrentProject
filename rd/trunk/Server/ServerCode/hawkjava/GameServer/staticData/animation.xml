@@ -15484,7 +15484,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu51e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15505,7 +15505,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu52e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15526,7 +15526,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu53e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15640,7 +15640,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu57e4" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15670,7 +15670,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu58e4" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15699,7 +15699,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu59e4" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15729,7 +15729,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu510e5" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15759,7 +15759,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu511e5" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -15787,7 +15787,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossWorldJidu512e5" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>

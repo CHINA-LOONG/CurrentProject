@@ -31,7 +31,7 @@ public class FoundMgr
     public void GoToUIStage(InstanceEntry entry)
     {
         InstanceEntryRuntimeData runtime = InstanceMapService.Instance.GetRuntimeInstance(entry.id);
-        UIAdjustBattleTeam.OpenWith(entry.id, runtime.star, (InstanceType)entry.type);
+        UIAdjustBattleTeam.OpenWith(entry.id, runtime.star,false, (InstanceType)entry.type);
     }
     //合成
     public void GoToUICompose(int index)
@@ -77,7 +77,14 @@ public class FoundMgr
     //商城
     public void GoToUIStore()
     {
-        Logger.Log("打开分解界面");
+        if (curUIPanel as UIStore == null)
+        {
+            uibuild.OpenStore();
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+        }
     }
     //日常
     public void GoToDaily()

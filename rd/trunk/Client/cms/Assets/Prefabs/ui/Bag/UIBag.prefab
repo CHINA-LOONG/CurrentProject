@@ -1012,6 +1012,11 @@ MonoBehaviour:
   button: {fileID: 11429332}
   normalEffectPanel: {fileID: 22431686}
   checkedEffectPanel: {fileID: 22498198}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: .980392158}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11411120
 MonoBehaviour:
@@ -1357,6 +1362,11 @@ MonoBehaviour:
   button: {fileID: 11461578}
   normalEffectPanel: {fileID: 22486118}
   checkedEffectPanel: {fileID: 22464548}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: .980392158}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11436310
 MonoBehaviour:
@@ -1844,6 +1854,11 @@ MonoBehaviour:
   button: {fileID: 11456708}
   normalEffectPanel: {fileID: 22449044}
   checkedEffectPanel: {fileID: 22439506}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: .980392158}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11466664
 MonoBehaviour:
@@ -1915,6 +1930,11 @@ MonoBehaviour:
   button: {fileID: 11441238}
   normalEffectPanel: {fileID: 22458398}
   checkedEffectPanel: {fileID: 22443978}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: .980392158}
+  outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
 --- !u!114 &11468692
 MonoBehaviour:

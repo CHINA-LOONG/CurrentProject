@@ -228,6 +228,8 @@ public class DecomposeItem : MonoBehaviour
 
         proIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + curMonster.property) as Sprite;
 
+        textMonsterBP.text = data.mBp.ToString();
+
         if (monsterIcon==null)
         {
             monsterIcon = MonsterIcon.CreateIcon();

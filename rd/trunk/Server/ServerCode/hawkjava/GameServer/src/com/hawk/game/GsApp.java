@@ -731,14 +731,17 @@ public class GsApp extends HawkApp {
 			if (objBase != null) {
 				// 已存在会话的情况下, 踢出玩家
 				Player player = (Player) objBase.getImpl();
-				if (player != null && player.getSession() != null && player.getSession() != session) {
+				if (player != null && player.getSession() != null && player.getSession() != session) {	
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
+					player.getSession().close(false);
+					player.getSession().setAppObject(null);
 				}
 
 				// 设置玩家puid
 				player.getPlayerData().setPuid(puid);
 				// 绑定会话对象
 				session.setAppObject(objBase.getImpl());
+				player.setSession(session);
 			}
 		} finally {
 			if (objBase != null) {

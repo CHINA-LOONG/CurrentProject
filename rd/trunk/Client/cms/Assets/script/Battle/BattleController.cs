@@ -187,14 +187,18 @@ public class BattleController : MonoBehaviour
 		}
         int changeStep = 0;
         //mirror enegy
-        if(mirrorState == MirrorState.Recover)
+        if(battleType == BattleType.Boss)
         {
-            changeStep = 1;
+            if (mirrorState == MirrorState.Recover)
+            {
+                changeStep = 1;
+            }
+            else if (mirrorState == MirrorState.Consum)
+            {
+                changeStep = -1;
+            }
         }
-        else if (mirrorState == MirrorState.Consum)
-        {
-            changeStep = -1;
-        }
+        
         if(changeStep != 0)
         {
             double curTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
@@ -318,6 +322,11 @@ public class BattleController : MonoBehaviour
         }
 
         ActorEventService.Instance.AddResourceGroup("common");
+        ActorEventService.Instance.AddResourceGroup("commonAttack");
+        ActorEventService.Instance.AddResourceGroup("commonBuff");
+        ActorEventService.Instance.AddResourceGroup("cure");
+        ActorEventService.Instance.AddResourceGroup("commonDeBuff");
+        ActorEventService.Instance.AddResourceGroup("commonPassive");
 
         //add scoreui
         UIScore.AddResourceRequest();

@@ -2164,45 +2164,45 @@ public final class Status {
      */
     ALLIANCE_APPLY_LIST_EMPTY(41, 524330),
     /**
-     * <code>ALLIANCE_BASE_HAVE_MONSTER = 524334;</code>
+     * <code>ALLIANCE_BASE_HAVE_MONSTER = 524331;</code>
      *
      * <pre>
-     * 基地对应位置以派兵
+     * 基地对应位置已经派兵
      * </pre>
      */
-    ALLIANCE_BASE_HAVE_MONSTER(42, 524334),
+    ALLIANCE_BASE_HAVE_MONSTER(42, 524331),
     /**
-     * <code>ALLIANCE_BASE_HAVE_NO_MONSTER = 524336;</code>
+     * <code>ALLIANCE_BASE_HAVE_NO_MONSTER = 524332;</code>
      *
      * <pre>
      * 基地对应位置没有派兵
      * </pre>
      */
-    ALLIANCE_BASE_HAVE_NO_MONSTER(43, 524336),
+    ALLIANCE_BASE_HAVE_NO_MONSTER(43, 524332),
     /**
-     * <code>ALLIANCE_BASE_POSITION_LOCK = 524337;</code>
+     * <code>ALLIANCE_BASE_POSITION_LOCK = 524333;</code>
      *
      * <pre>
      * 基地对应位置被锁定
      * </pre>
      */
-    ALLIANCE_BASE_POSITION_LOCK(44, 524337),
+    ALLIANCE_BASE_POSITION_LOCK(44, 524333),
     /**
-     * <code>ALLIANCE_BASE_MONSTER_HAVE_SEND = 524338;</code>
+     * <code>ALLIANCE_BASE_MONSTER_HAVE_SEND = 524334;</code>
      *
      * <pre>
      * 基地宠物已派出
      * </pre>
      */
-    ALLIANCE_BASE_MONSTER_HAVE_SEND(45, 524338),
+    ALLIANCE_BASE_MONSTER_HAVE_SEND(45, 524334),
     /**
-     * <code>ALLIANCE_BASE_TIME_LIMIT = 524339;</code>
+     * <code>ALLIANCE_BASE_TIME_LIMIT = 524335;</code>
      *
      * <pre>
      * 基地宠物最小时间限制
      * </pre>
      */
-    ALLIANCE_BASE_TIME_LIMIT(46, 524339),
+    ALLIANCE_BASE_TIME_LIMIT(46, 524335),
     ;
 
     /**
@@ -2542,45 +2542,45 @@ public final class Status {
      */
     public static final int ALLIANCE_APPLY_LIST_EMPTY_VALUE = 524330;
     /**
-     * <code>ALLIANCE_BASE_HAVE_MONSTER = 524334;</code>
+     * <code>ALLIANCE_BASE_HAVE_MONSTER = 524331;</code>
      *
      * <pre>
-     * 基地对应位置以派兵
+     * 基地对应位置已经派兵
      * </pre>
      */
-    public static final int ALLIANCE_BASE_HAVE_MONSTER_VALUE = 524334;
+    public static final int ALLIANCE_BASE_HAVE_MONSTER_VALUE = 524331;
     /**
-     * <code>ALLIANCE_BASE_HAVE_NO_MONSTER = 524336;</code>
+     * <code>ALLIANCE_BASE_HAVE_NO_MONSTER = 524332;</code>
      *
      * <pre>
      * 基地对应位置没有派兵
      * </pre>
      */
-    public static final int ALLIANCE_BASE_HAVE_NO_MONSTER_VALUE = 524336;
+    public static final int ALLIANCE_BASE_HAVE_NO_MONSTER_VALUE = 524332;
     /**
-     * <code>ALLIANCE_BASE_POSITION_LOCK = 524337;</code>
+     * <code>ALLIANCE_BASE_POSITION_LOCK = 524333;</code>
      *
      * <pre>
      * 基地对应位置被锁定
      * </pre>
      */
-    public static final int ALLIANCE_BASE_POSITION_LOCK_VALUE = 524337;
+    public static final int ALLIANCE_BASE_POSITION_LOCK_VALUE = 524333;
     /**
-     * <code>ALLIANCE_BASE_MONSTER_HAVE_SEND = 524338;</code>
+     * <code>ALLIANCE_BASE_MONSTER_HAVE_SEND = 524334;</code>
      *
      * <pre>
      * 基地宠物已派出
      * </pre>
      */
-    public static final int ALLIANCE_BASE_MONSTER_HAVE_SEND_VALUE = 524338;
+    public static final int ALLIANCE_BASE_MONSTER_HAVE_SEND_VALUE = 524334;
     /**
-     * <code>ALLIANCE_BASE_TIME_LIMIT = 524339;</code>
+     * <code>ALLIANCE_BASE_TIME_LIMIT = 524335;</code>
      *
      * <pre>
      * 基地宠物最小时间限制
      * </pre>
      */
-    public static final int ALLIANCE_BASE_TIME_LIMIT_VALUE = 524339;
+    public static final int ALLIANCE_BASE_TIME_LIMIT_VALUE = 524335;
 
 
     public final int getNumber() { return value; }
@@ -2629,11 +2629,11 @@ public final class Status {
         case 524328: return ALLIANCE_REWARD_ALREADY_GIVE;
         case 524329: return ALLIANCE_MAX_COPY_MAIN;
         case 524330: return ALLIANCE_APPLY_LIST_EMPTY;
-        case 524334: return ALLIANCE_BASE_HAVE_MONSTER;
-        case 524336: return ALLIANCE_BASE_HAVE_NO_MONSTER;
-        case 524337: return ALLIANCE_BASE_POSITION_LOCK;
-        case 524338: return ALLIANCE_BASE_MONSTER_HAVE_SEND;
-        case 524339: return ALLIANCE_BASE_TIME_LIMIT;
+        case 524331: return ALLIANCE_BASE_HAVE_MONSTER;
+        case 524332: return ALLIANCE_BASE_HAVE_NO_MONSTER;
+        case 524333: return ALLIANCE_BASE_POSITION_LOCK;
+        case 524334: return ALLIANCE_BASE_MONSTER_HAVE_SEND;
+        case 524335: return ALLIANCE_BASE_TIME_LIMIT;
         default: return null;
       }
     }
@@ -2979,6 +2979,189 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:settingError)
   }
 
+  /**
+   * Protobuf enum {@code adventureError}
+   */
+  public enum adventureError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ADVENTURE_TEAM_COUNT = 786433;</code>
+     *
+     * <pre>
+     * 队伍数量已达最大值
+     * </pre>
+     */
+    ADVENTURE_TEAM_COUNT(0, 786433),
+    /**
+     * <code>ADVENTURE_CHANGE_ZERO = 786434;</code>
+     *
+     * <pre>
+     * 没有刷新条件次数
+     * </pre>
+     */
+    ADVENTURE_CHANGE_ZERO(1, 786434),
+    /**
+     * <code>ADVENTURE_CHANGE_NOT_ZERO = 786435;</code>
+     *
+     * <pre>
+     * 还有刷新条件次数
+     * </pre>
+     */
+    ADVENTURE_CHANGE_NOT_ZERO(2, 786435),
+    /**
+     * <code>ADVENTURE_MONSTER_COUNT = 786436;</code>
+     *
+     * <pre>
+     * 上阵怪物数错误
+     * </pre>
+     */
+    ADVENTURE_MONSTER_COUNT(3, 786436),
+    /**
+     * <code>ADVENTURE_TEAM_NOT_OPEN = 786437;</code>
+     *
+     * <pre>
+     * 队伍未解锁
+     * </pre>
+     */
+    ADVENTURE_TEAM_NOT_OPEN(4, 786437),
+    /**
+     * <code>ADVENTURE_TEAM_BUSY = 786438;</code>
+     *
+     * <pre>
+     * 队伍已在冒险中
+     * </pre>
+     */
+    ADVENTURE_TEAM_BUSY(5, 786438),
+    /**
+     * <code>ADVENTURE_TEAM_IDLE = 786439;</code>
+     *
+     * <pre>
+     * 队伍未加入冒险
+     * </pre>
+     */
+    ADVENTURE_TEAM_IDLE(6, 786439),
+    ;
+
+    /**
+     * <code>ADVENTURE_TEAM_COUNT = 786433;</code>
+     *
+     * <pre>
+     * 队伍数量已达最大值
+     * </pre>
+     */
+    public static final int ADVENTURE_TEAM_COUNT_VALUE = 786433;
+    /**
+     * <code>ADVENTURE_CHANGE_ZERO = 786434;</code>
+     *
+     * <pre>
+     * 没有刷新条件次数
+     * </pre>
+     */
+    public static final int ADVENTURE_CHANGE_ZERO_VALUE = 786434;
+    /**
+     * <code>ADVENTURE_CHANGE_NOT_ZERO = 786435;</code>
+     *
+     * <pre>
+     * 还有刷新条件次数
+     * </pre>
+     */
+    public static final int ADVENTURE_CHANGE_NOT_ZERO_VALUE = 786435;
+    /**
+     * <code>ADVENTURE_MONSTER_COUNT = 786436;</code>
+     *
+     * <pre>
+     * 上阵怪物数错误
+     * </pre>
+     */
+    public static final int ADVENTURE_MONSTER_COUNT_VALUE = 786436;
+    /**
+     * <code>ADVENTURE_TEAM_NOT_OPEN = 786437;</code>
+     *
+     * <pre>
+     * 队伍未解锁
+     * </pre>
+     */
+    public static final int ADVENTURE_TEAM_NOT_OPEN_VALUE = 786437;
+    /**
+     * <code>ADVENTURE_TEAM_BUSY = 786438;</code>
+     *
+     * <pre>
+     * 队伍已在冒险中
+     * </pre>
+     */
+    public static final int ADVENTURE_TEAM_BUSY_VALUE = 786438;
+    /**
+     * <code>ADVENTURE_TEAM_IDLE = 786439;</code>
+     *
+     * <pre>
+     * 队伍未加入冒险
+     * </pre>
+     */
+    public static final int ADVENTURE_TEAM_IDLE_VALUE = 786439;
+
+
+    public final int getNumber() { return value; }
+
+    public static adventureError valueOf(int value) {
+      switch (value) {
+        case 786433: return ADVENTURE_TEAM_COUNT;
+        case 786434: return ADVENTURE_CHANGE_ZERO;
+        case 786435: return ADVENTURE_CHANGE_NOT_ZERO;
+        case 786436: return ADVENTURE_MONSTER_COUNT;
+        case 786437: return ADVENTURE_TEAM_NOT_OPEN;
+        case 786438: return ADVENTURE_TEAM_BUSY;
+        case 786439: return ADVENTURE_TEAM_IDLE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<adventureError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<adventureError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<adventureError>() {
+            public adventureError findValueByNumber(int number) {
+              return adventureError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(12);
+    }
+
+    private static final adventureError[] VALUES = values();
+
+    public static adventureError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private adventureError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:adventureError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3075,16 +3258,22 @@ public final class Status {
       "ER\020\247\200 \022\"\n\034ALLIANCE_REWARD_ALREADY_GIVE\020\250" +
       "\200 \022\034\n\026ALLIANCE_MAX_COPY_MAIN\020\251\200 \022\037\n\031ALLI" +
       "ANCE_APPLY_LIST_EMPTY\020\252\200 \022 \n\032ALLIANCE_BA" +
-      "SE_HAVE_MONSTER\020\256\200 \022#\n\035ALLIANCE_BASE_HAV" +
-      "E_NO_MONSTER\020\260\200 \022!\n\033ALLIANCE_BASE_POSITI" +
-      "ON_LOCK\020\261\200 \022%\n\037ALLIANCE_BASE_MONSTER_HAV",
-      "E_SEND\020\262\200 \022\036\n\030ALLIANCE_BASE_TIME_LIMIT\020\263" +
+      "SE_HAVE_MONSTER\020\253\200 \022#\n\035ALLIANCE_BASE_HAV" +
+      "E_NO_MONSTER\020\254\200 \022!\n\033ALLIANCE_BASE_POSITI" +
+      "ON_LOCK\020\255\200 \022%\n\037ALLIANCE_BASE_MONSTER_HAV",
+      "E_SEND\020\256\200 \022\036\n\030ALLIANCE_BASE_TIME_LIMIT\020\257" +
       "\200 *\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT" +
       "\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHO" +
       "P_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COI" +
       "N_MAX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LE" +
       "NGTH\020\201\200(*(\n\014settingError\022\030\n\022SETTING_BLOC" +
-      "K_FULL\020\201\200,B\030\n\026com.hawk.game.protocol"
+      "K_FULL\020\201\200,*\336\001\n\016adventureError\022\032\n\024ADVENTU" +
+      "RE_TEAM_COUNT\020\201\2000\022\033\n\025ADVENTURE_CHANGE_ZE" +
+      "RO\020\202\2000\022\037\n\031ADVENTURE_CHANGE_NOT_ZERO\020\203\2000\022" +
+      "\035\n\027ADVENTURE_MONSTER_COUNT\020\204\2000\022\035\n\027ADVENT",
+      "URE_TEAM_NOT_OPEN\020\205\2000\022\031\n\023ADVENTURE_TEAM_" +
+      "BUSY\020\206\2000\022\031\n\023ADVENTURE_TEAM_IDLE\020\207\2000B\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

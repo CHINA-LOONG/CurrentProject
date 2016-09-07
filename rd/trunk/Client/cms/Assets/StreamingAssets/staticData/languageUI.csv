@@ -821,13 +821,13 @@ mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment
 mubiao10029,装备开孔,Open an equipment socket 
 mubiao10030,装备镶嵌,Insert a gem in equipment
 richang1,每日剧情副本,Daily Campaign Stages
-richang2,每日挑战副本,Daily Heroic Stages
+richang2,每日通关挑战副本,Daily Heroic Stages
 richang3,每日技能升级,Daily Ability Upgrade
 richang4,每日装备升级,Daily Equipment Upgrade
 richang5,每日金币购买,Daily Coin Purchase
 richang6,每日商店刷新,Daily Store Refresh
 rimubiao1,剧情副本10次,Complete 10 Campaign Stages
-rimubiao2,挑战副本3次,Complete 3 Heroic Stages
+rimubiao2,英雄副本3次,Complete 3 Heroic Stages
 rimubiao3,技能升级3次,Level up abilities 3 times
 rimubiao4,装备升级1次,Upgrade equipment once
 rimubiao5,购买金币1次,Purchase Coins once
@@ -838,8 +838,8 @@ linmubiao1,合成狼人,Summon Werewolf
 linmubiao2,合成花魄,Summon Flower Spirit
 zhixian20001,扫荡2-3,Raid 2-3
 zhixian20002,扫荡2-7,Raid 2-7
-zhimubiao20001,扫荡2-3(只要打过就行),Raid 2-3（even you pass）
-zhimubiao20002,扫荡2-7 (只要打过就行),Raid 2-7 （even you pass）
+zhimubiao20001,通关2-3,Raid 2-3（even you pass）
+zhimubiao20002,通关2-3,Raid 2-7 （even you pass）
 login_denglu_001,当前登录服务器,Current server
 login_denglu_002,切换,Change
 login_gonggao_001,公告,Announcement

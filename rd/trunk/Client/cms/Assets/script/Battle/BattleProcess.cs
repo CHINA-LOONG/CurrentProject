@@ -851,6 +851,7 @@ public class BattleProcess : MonoBehaviour
 
     public void ReviveSuccess(int reviveCount)
     {
+        mIsProcessFinish = false;
         BattleController.Instance.MirrorEnegyAttr = GameConfig.Instance.MirrorMaxEnegy;
         lastSwitchTime = -BattleConst.switchPetCD;
         mCurrentReviveCount = reviveCount;
