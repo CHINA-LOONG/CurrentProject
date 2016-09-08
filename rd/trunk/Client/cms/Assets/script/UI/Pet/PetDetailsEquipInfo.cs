@@ -105,7 +105,7 @@ public class PetDetailsEquipInfo : PetDetailsRight,
             EquipIcon.RefreshWithEquipInfo(curData);
         }
 
-        UIUtil.SetStageColor(textName, itemData.name, curData.stage, curData.level);
+        UIUtil.SetStageColor(textName, itemData.NameAttr, curData.stage, curData.level);
         UIUtil.SetEquipType(textType, itemData.subType);
         UIUtil.SetEquipPart(textPart, itemData.part);
 

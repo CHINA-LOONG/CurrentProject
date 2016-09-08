@@ -242,9 +242,9 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         decomposeView.btnWhite.onClick.AddListener(OnClickWhiteBtn);
         decomposeView.btnGreen.onClick.AddListener(OnClickGreenBtn);
         decomposeView.btnBlue.onClick.AddListener(OnClickBlueBtn);
-        UIUtil.SetStageColor(decomposeView.text_White, "decompose_white", 1);
-        UIUtil.SetStageColor(decomposeView.text_Green, "decompose_green", 2);
-        UIUtil.SetStageColor(decomposeView.text_Blue, "decompose_blue", 3);
+        UIUtil.SetStageColor(decomposeView.text_White, StaticDataMgr.Instance.GetTextByID("decompose_white"), 1);
+        UIUtil.SetStageColor(decomposeView.text_Green, StaticDataMgr.Instance.GetTextByID("decompose_green"), 2);
+        UIUtil.SetStageColor(decomposeView.text_Blue, StaticDataMgr.Instance.GetTextByID("decompose_blue"), 3);
 
         decomposeList.text_Material.text = StaticDataMgr.Instance.GetTextByID("decompose_material");
     }
@@ -749,7 +749,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
                     else
                     {
                         tips += string.Format(tips1,
-                                              StaticDataMgr.Instance.GetTextByID(itemData.name),
+                                              itemData.NameAttr,
                                               info.count);
                     }
                 }
@@ -801,13 +801,13 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         Refresh();
     }
 
-    public void ReloadData(Transform item, int index)
+    public void IScrollViewReloadItem(Transform item, int index)
     {
         DecomposeItem material = item.GetComponent<DecomposeItem>();
         material.ReloadData(decomposeList.itemsInfo[index]);
     }
 
-    public Transform CreateData(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("DecomposeItem");
         if (go != null)
@@ -820,7 +820,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         return null;
     }
 
-    public void CleanData(List<Transform> itemList)
+    public void IScrollViewCleanItem(List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

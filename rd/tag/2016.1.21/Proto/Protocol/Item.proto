@@ -1,0 +1,125 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- struct -------------------------------------------------------
+
+message ItemSell
+{
+	required string itemId = 1;
+	required int32  count = 2;
+}
+
+message GemSelect
+{
+	required string gemId = 1;
+	required int32  count = 2;
+}
+
+// 用于同步物品信息
+message ItemInfo
+{
+	required int64  id = 1;
+	required string  itemId = 2;
+	required int32  count = 3;
+	required int32  status = 4;
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
+// 同步所有物品信息
+message HSItemInfoSync
+{
+	repeated ItemInfo itemInfos = 1;
+}
+
+// 使用道具
+message HSItemUse
+{
+	required string itemId = 1;
+	optional int32  itemCount = 2;
+	optional int32  targetID = 3;
+}
+
+// 使用道具返回
+message HSItemUseRet
+{
+	required string itemId = 1;
+	required int32  useCountDaily = 2;
+}
+
+// 批量使用宝箱
+message HSItemBoxUseBatch
+{
+	required string itemId = 1;
+	required int32  itemCount = 2;
+}
+
+// 批量使用宝箱返回
+message HSItemBoxUseBatchRet
+{
+
+}
+
+// 批量卖物品
+message HSItemSellBatch
+{
+	repeated ItemSell items = 1;
+}
+
+// 批量卖物品返回
+message HSItemSellBatchRet
+{
+
+}
+
+// 购买道具
+message HSItemBuy
+{
+	required string itemId = 1;	
+	required int32 itemCount = 2;
+}
+
+// 购买道具返回
+message HSItemBuyRet
+{
+	required string itemId = 1;	
+	required int32 itemCount = 2;
+}
+
+// 购买并且使用道具
+message HSItemBuyAndUse
+{
+	required string itemId = 1;	
+	required int32 itemCount = 2;
+}
+
+// 购买并且使用道具返回
+message HSItemBuyAndUseRet
+{
+	required string itemId = 1;
+	required int32  useCountDaily = 2;
+}
+
+// 合成道具
+message HSItemCompose
+{
+	required string itemId = 1;
+	required bool  composeAll = 2;
+}
+
+// 合成道具返回
+message HSItemComposeRet
+{
+}
+
+// 合成宝石
+message HSGemCompose
+{
+	repeated GemSelect gems = 1;
+	required bool  composeAll = 2;
+}
+
+// 合成宝石返回
+message HSGemComposeRet
+{
+
+}

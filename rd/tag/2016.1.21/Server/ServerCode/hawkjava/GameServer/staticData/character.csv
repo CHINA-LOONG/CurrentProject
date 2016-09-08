@@ -1,0 +1,9 @@
+﻿#NUM,TEXT,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+index,name,desc,picture,physicsWeight,magicWeight,cureMagicWeight,gainWeight,negativeWeight,defenseWeight,tauntDefenseWeight
+#性格ID,性格名称,性格描述,性格图片,物理攻击权重,法术攻击权重,治疗法术权重，与法术攻击权重互斥,增益效果攻击权重,减益效果权重，和gainWeight互斥,防御效果权重,有自身嘲讽buff防御的权重，与防御互斥
+1,Valor,descrip_valor,icon_phydps,8000,1000,1,1000,1000,1,0
+2,Spiritual,descrip_spiritual,icon_magdps,1000,8000,1,1000,1000,1,0
+3,Mischievous,descrip_mischievous,icon_support,1000,1000,1,1,8000,1,0
+4,Collaborate,descrip_collaborate,icon_support,1000,1000,1,8000,1,1,0
+5,Compassion,descrip_compassion,icon_heal,1000,1000,8000,1000,1000,1,0
+6,Humility,descrip_humility,icon_tank,3000,3000,1,3000,3000,1000,6000

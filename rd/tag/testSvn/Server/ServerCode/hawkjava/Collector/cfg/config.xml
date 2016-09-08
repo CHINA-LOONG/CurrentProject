@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<httpserver>
+		<addr>0.0.0.0</addr>
+		<port>9001</port>
+		<pool>4</pool>
+		<token></token>
+	</httpserver>
+	
+	<zmqserver>
+		<addr>tcp://0.0.0.0:9002</addr>
+		<pool>2</pool>
+	</zmqserver>
+	
+	<database>
+		<dbHost>192.168.199.122:3306</dbHost>
+		<userName>root</userName>
+		<passWord>root</passWord>
+		<threads>2</threads>
+	</database>	
+</config>

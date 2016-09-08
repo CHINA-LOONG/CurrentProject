@@ -1,0 +1,6 @@
+﻿#NUM,TEXT
+rarity,reward
+#等级,升级所需经验
+0,composemonster_c
+1,composemonster_b
+2,composemonster_a

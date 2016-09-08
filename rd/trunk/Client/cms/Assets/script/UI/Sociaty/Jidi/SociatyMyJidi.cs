@@ -7,6 +7,7 @@ public class SociatyMyJidi : MonoBehaviour
 {
     
     public JidiPetPosition[] petPositionArray;
+    public Text tipsText;
 
     private PB.AllianceBaseMonster[] baseMonsterArray = new PB.AllianceBaseMonster[3];
     private static SociatyMyJidi instance = null;
@@ -78,6 +79,7 @@ public class SociatyMyJidi : MonoBehaviour
 
     void RefreshUi()
     {
+        tipsText.text = StaticDataMgr.Instance.GetTextByID("sociaty_tipsjidichang");
         for (int i = 0; i < petPositionArray.Length; ++i)
         {
             JidiPetPosition subPosition = petPositionArray[i];

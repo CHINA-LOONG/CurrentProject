@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<httpserver>
+		<addr>0.0.0.0</addr>
+		<port>8080</port>
+		<pool>4</pool>
+		<token></token>
+		<user></user>
+	</httpserver>
+</config>

@@ -36,6 +36,8 @@ enum error
 	CONFIG_NOT_FOUND           = 0x00000007;
 	// 无效请求
 	UNSUPPORT_ACTION           = 0x00000008;
+	// 登陆太频繁
+	LOGIN_INTERVAL_SHORT       = 0x00000009;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
 }

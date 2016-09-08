@@ -24,14 +24,12 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogin() {
 		// 加载统计数据
-		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
+		player.getPlayerData().loadStatistics();
 
 		// 登录时更新数据
 		player.regainSkillPoint();
 		player.regainFatigue();
-
-		statisticsEntity.increaseLoginTimes();
-		statisticsEntity.notifyUpdate(true);
+		player.regainAdventureChangeTimes();
 
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();
@@ -43,6 +41,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		// 登录时更新数据
 		player.regainSkillPoint();
 		player.regainFatigue();
+		player.regainAdventureChangeTimes();
 
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();

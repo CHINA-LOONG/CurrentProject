@@ -124,8 +124,8 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, new AllianceContributionRewardHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_BASE_SEND, new AllianceBaseSendHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_BASE_RECALL, new AllianceBaseRecallHandler());
-		listenMsg(GsConst.MsgType.Alliance_HIRE_REWARD, new AllianceBaseHireHandler());
-		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
+		listenMsg(GsConst.MsgType.ALLIANCE_HIRE_REWARD, new AllianceBaseHireHandler());
+		listenMsg(GsConst.MsgType.PLAYER_LEVEL_UP);
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
 		playerApplyMap = new ConcurrentHashMap<Integer, LinkedHashSet<Integer>>();
@@ -236,7 +236,7 @@ public class AllianceManager extends HawkAppObj {
 	 */
 	@Override
 	public boolean onMessage(HawkMsg msg) {
-		if(msg.getMsg() == GsConst.MsgType.PLAYER_LEVEL_CHANGE){
+		if(msg.getMsg() == GsConst.MsgType.PLAYER_LEVEL_UP){
 			onPlayerLevelChange(msg);
 			return true;
 		}

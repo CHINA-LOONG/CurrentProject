@@ -1,0 +1,931 @@
+﻿#TEXT,TEXT,TEXT
+id,chinese,english
+#文字Id,文字内容,文字内容
+ui_english,English,English
+ui_chinese,简体中文,Chinese
+ui_fanhui,返回,Back
+ui_queding,确定,OK
+ui_quxiao,取消,Cancel
+ui_battle_again,再次挑战,Retry
+ui_battle_next,下一关,Next Stage
+spell_wuli_name,物理技能,PHYS ATK
+spell_magic_name,法术技能,MAGIC ATK
+spell_beidong_name,被动技能,Passive Ability
+spell_buff_name,buff技能,Buff Ability
+spell_dazhao_name,大招技能,Ultimate
+ui_tishi,提示,Notice
+instance_wofangzhenrong,我方阵容,My Monsters
+instance_difangzhenrong,敌方阵容,Enemies
+instance_jiangliList,可获得奖励,Drop Info
+instance_tilixiaohao,体力消耗:{0},Use Power:{0}
+instance_tiaozhancishu,可挑战次数:{0}/{1},Times:{0}/{1}
+instance_saodang,扫荡,Raid
+instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
+instance_saodang10,扫荡{0}次,Raid {0}
+instance_yingzhan,应战,Fight
+instance_shangzhen,上阵,First Team
+instance_houbei,后备,Backups
+instance_yongyou,拥有,Monsters Available
+instance_haoyou,好友,Friend
+instance_kaishizhandou,开始战斗,Start Battle
+instance_quxiaozhandou,取消战斗,Cancel
+instance_zhenrongtiaozheng,阵容调整,Line-up
+tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
+spell_yongyoujineng_normal,一般技能,Normal Skills
+spell_yongyoujineng_special,特殊技能,Special Skills
+dazhao_jieduan,请,Please
+dazhao_click,点击,tap on
+dazhao_shifang,怪物,a monster
+dazhao_huazhenshibai,画阵失败，请重试,"Failed,please try again"
+shop_putong,普通商店,Normal Store
+shop_gonghui,公会商店,Guild Store
+shop_nextrefresh,下次自动刷新时间：,Next Refresh: 
+shop_today,今日,Today
+shop_tommorow,明日,Tomorrow
+shop_refresh,刷新,Refresh
+shop_sale,打折,Sale
+shop_soldOut,已售,Sold Out!
+shop_oldPrice,原价,Original Price
+shop_refreshtips,今日还可刷新 {0} 次，是否确认刷新？,You can refresh <color=#ffCC00ff>{0}</color> more times today. Continue?
+shop_refreshtips1,是否确认刷新？,Confirm refresh shop goods?
+shop_buy,购买,Purchase
+shop_zuanshinoenough,钻石不足，是否前往充值？,Not enough Diamonds. Would you like to get more?
+shop_timeout,商店内容已过期,Store items have already expired.
+shop_store,商城,Store
+shop_yueka,月卡,Monthly Card
+shop_shouchongsong,首充赠送{0}钻石,Receive an extra{0}Diamonds with purchase.
+shop_tequanleft,特权剩余时间：{0}天,Benefits Time Remaining: {0} Day(s)
+shop_buyyueka,月卡购买,Get Monthly Card
+shop_buyfinish,已购买,Purchased
+shop_30yueka,确定购买30天月卡？,Confirm purchase of 30 day Monthly Card?
+shop_chongzhi,充值,Top-Up
+shop_duihuan,用少量钻石兑换大量金币,Exchange a small amount of Diamonds for large amount of Coins.
+shop_duihuanTimes,今日可买：{0}/{1},Can purchase today: {0}/{1}
+shop_noduihuantimes,今日可买次数已经用完。,You have purchased the maximum amount for today.
+shop_buysucctip,成功购买{0}{1},Successfully purchased {0}{1}
+shop_record_001,成功购买{0},Successfully purchased {0}
+shop_succbuy,获得金币*{0} ,You have received {0} Coins!
+succbuy_baoji,暴击！获得金币*{0},Congratulations! You have received {0} Coins!
+shop_noenoughcoin,货币不足，无法购买,"Insufficient currency, unable to purchase."
+shop_cannotbuy,无法继续购买,Unable to continue purchase.
+shop_nojinbi_noduihuan,金币不足，且今日钻石兑换金币次数已经用完。,"Insufficient Coins, and today's Diamond to Coin exchanges have all been used."
+shop_refresh_error,<color=#ff0000ff>刷新次数已达上限，刷新失败</color>,"<color=#ff0000ff>Refresh limit reached, failed to refresh.</color>"
+shop_record_006,<color=#ff0000ff>兑换次数已达上限，兑换失败</color>,"<color=#ff0000ff>Exchange limit reached, failed to exchange.</color>"
+shop_record_003,货币不足，无法购买,"Insufficient currency, unable to purchase."
+xf,,
+equip_Helmet,<头盔>,<Helmet>
+equip_Weapon,<武器>,<Weapon>
+equip_Armor,<护甲>,<Armor>
+equip_Bracer,<护腕>,<Bracer>
+equip_Ring,<戒指>,<Ring>
+equip_Jewelry,<饰品>,<Accessory>
+equip_gem_NotSet,未镶嵌,Not Embedded
+equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
+equip_Change,更换,Change
+item_type,类型:,Type:
+item_demandLevel,需求等级:,Req. LVL:
+bag_tag_box,宝箱,Treasure
+bag_tag_use,消耗品,Consumable
+bag_tag_gem,宝石,Gem
+bag_tag_item,材料,Material
+im_chat_global,世界,Global
+im_chat_guild,公会,Guild
+im_chat_send,发送,Send
+im_chat_system,系统,System
+im_chat_enter,请输入信息,Please enter message
+im_chatSettings,频道设置,Chat Settings
+im_blockGlobal,屏蔽世界频道所有发言,Block all Global Chat messages
+im_blockGuild,屏蔽公会频道所有发言,Block all Guild Chat messages
+im_noGuild,未加入公会,No guild
+im_invite,查看公会,View Guild
+im_block,屏蔽,Block
+im_block_chat,确定屏蔽聊天么？,Confirm block chat?
+im_block_cancel,（可以在系统设置取消屏蔽）,(Blocked chats can be managed in system settings)
+im_record_001,您发送过于频繁，请稍后再试,You have sent messages too frequently. Please try again later.
+im_record_002,您还没有公会,You have not joined a Guild.
+im_record_003,屏蔽聊天成功,Chat is now blocked.
+im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
+im_record_005,目标还没有公会,Currently not in a guild.
+im_record_006,战斗中无法查看,Unable to check during battle.
+ss,,
+bag_title,背包,Bag
+bag_shengyu,剩余:{0},Remain:{0}
+ui_chushou,出售,Sell
+bag_usenum,使用个数,Use amount
+bag_buynum,购买个数,Purchase amount
+bag_sum,总计,Total
+ui_sellforsure,是否出售这些物品,Confirm sell these items?
+ui_sellforsuretips,*若金币达到上限，出售将无法继续获得金币,"*If coin limit is reached when selling items, then no more coins will be received."
+ui_sellsum,总计出售,Sell total
+ui_chexiao,撤销,Undo
+bag_record_001,您已成功使用活力药,You have successfully used a Energy Potion.
+bag_record_002,今日该活力药使用次数已达上限，无法继续使用,"You have reached the Energy Potion limit for today, unable to use."
+bag_record_003,您已有多倍经验状态,You already have EXP Boost status.
+bag_record_004,您已成功使用多倍经验药,You have successfully used an EXP Boost Potion.
+bag_record_005,钻石不足，请充值,"Insufficient Diamonds, please purchase more."
+bag_record_006,无可出售道具,No sellable items at this time.
+bag_record_007,请选择出售道具,Please select items to sell.
+zz,,
+spell_hit_miss,未命中,Miss
+spell_hit_immune,免疫,Immune
+spell_hit_interrupt,被打断,Interrupt
+spell_shield,吸收,Absorbed
+spell_first_spell,先置攻击,First Strike
+spell_stun,眩晕,Stun
+spell_hit_noheal,禁止恢复,Healing Disabled
+spell_hit_physicalImmune,物理免疫,Physical Immune
+spell_hit_magicImmune,法术免疫,Magic Immune
+spell_kezhi,克制,Crushing
+spell_critical,暴击,Critical
+gain_pet,恭喜！你获得了,Congratulations! You received 
+battle_revive,是否现在复活继续进行战斗？,Revive now and continue battle?
+xl_quest,薛龙_任务界面,Loong
+quest_title,任务,Mission
+quest_juqingrenwu,剧情任务,Storyline
+quest_richangrenwu,日常任务,Daily
+quest_liezhuanrenwu,成就,Achievement
+quest_wanchengrenwu,完成任务,Mission Completed
+quest_shijianweidao,时间未到,Available Later
+quest_lijiqianwang,立即前往,Go Now
+quest_lingqujiangli,领取奖励,Collect
+quest_reward_title,任务奖励,Mission Reward
+,,
+xl_mail,薛龙_邮箱界面,
+mail_title,邮箱,Inbox
+mail_tab1,系统邮件,System
+mail_yijianlingqu,一键领取,Collect All
+mail_fujian,附件,Attachments
+mail_laizi,来自:,From:
+mail_shouqu,收取,Collect
+mail_record_001,没有可操作的邮件哦！,Currently no mail to be collected.
+mail_record_002,收取成功！,Collected.
+mail_record_003,金币要装不下啦，收取失败！,Coin limit reached. Failed to collect.
+mail_record_004,钻石要装不下啦，收取失败！,Diamond limit reached. Failed to collect.
+mail_record_005,邮件已过期,Mail has already expired.
+mail_youxiangjiangman,<color=#ff0000ff>邮箱即将爆仓，请及时收取邮件</color>,"<color=#ff0000ff>Your inbox is almost full,be sure to promptly collect mails!</color>"
+mail_youxiangyiman,<color=#ff0000ff>邮箱已经爆仓，快快收取邮件</color>,"<color=#ff0000ff>Your inbox is full,go collect some mails!</color>"
+mail_CollectedAll,全部收取成功！,Collected all!
+mail_zidongshantips,邮件将在领取附件后自动删除,Mails are automatically deleted after attachments are collected.
+mail_shouquall,确认收取所有邮件吗？,Confirm collect all mails?
+mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,"* If Coin/Diamond limit is reached, any exceeding amount will not be collected."
+,,
+,,
+xl_equip_forge,薛龙_装备强化进阶,
+equip_forge_xiaohao,消耗材料,Materials Consumed
+equip_forge_dazao,打造,Forge
+equip_forge_Xxdazao,强化打造,Advance
+equip_forge_levelTips,打造是有一定成功率的，打造失败将损失打造材料,"Forging has a set success rate. If it fails, the materials will be lost."
+equip_forge_stateTips,强化打造是不会失败的，放心打造吧,"Advancing equipment cannot fail, don't worry!"
+equip_level_limits,角色升级后才能继续打造！,Increase your character level to continue forging!
+equip_fully_forged,恭喜，装备打造已满,Congratulations! Equipment has been fully forged.
+im_forge_success,打造成功,Forge success!
+im_forge_failed,打造失败,Forge failed.
+im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
+equip_inlay_xiangqian,镶嵌,Embed
+equip_smalltitle,宝石,Gem
+equip_inlay_openmax,宝石槽已全开,Gem slots are full.
+equip_inlay_btnopen,开孔,Open
+equip_inlay_tips,1到{0}个孔，试试你的运气吧！,"Opens one to {0} Gem Slots, give your luck a shot!"
+equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
+equip_inlay_unlockTips,点击镶嵌,Tap to embed.
+equip_inlay_xiexia,卸下,Remove
+equip_select_gem,请从右侧宝石列表选择镶嵌的宝石,Please select a Gem from the list on the right.
+equip_confirm_open,确定开孔么？,Confirm Open Sockets?
+equip_random_open,开孔将随机开启不同数量的宝石槽,Opening Sockets will randomly reveal different amounts of Gem slots.
+equip_return_gem,若已镶嵌宝石，宝石将全部返还到背包,Any inserted Gems will all be returned to your Bag.
+xl_equip_list,薛龙_装备列表界面,
+equip_title,装备列表,Amories
+equip_List_zhuangbeileixing,装备类型,Type
+equip_List_xianzhidengji,等级限制,Level
+equip_List_zhuangbei,装备,Equip
+xl_gem_list,薛龙_宝石列表界面,
+gem_title,宝石列表,Gems
+equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
+equip_gem_casting,宝石属性,Gem Attributes
+xl_pet_exp,,
+exp_use,使用,Use
+xl_pet_attr,,
+detail_title,宠物属性,Monster Attributes
+detail_endurance,耐力,EDR
+detail_blood,战后回血,REC
+detail_life,生命值,HP
+detail_physatk,物理攻击力,PHYS ATK
+detail_magicatk,法术攻击力,MAGIC ATK
+detail_injuryratio,受伤比,INJ %
+xl_compose,,
+compose_title,合成,Combine
+compose_chmaterial,选择合成原料,Select combine materials
+compose_preview,合成预览,Combine preview
+compose_gemrandom,随机{0}级宝石,Random level {0} Gem
+compose_unload,全卸,Remove All
+compose_tips1,*合成5个同级宝石可获得高一级的宝石,"*Combine 5 same level Gems, and receive 1 higher level Gem"
+compose_tips2,*若干个同种类材料可合成更高等级该种类材料,*Several same type materials can be combined for a higher level material
+compose_tips3,*{0}个同种类材料可合成更高等级该种类材料,*Combine {0} of the same material for a higher level material
+compose_btnone,合成一个,Combine One
+compose_btnten,合成十个,Combine Ten
+compose_success,合成成功,Combination successful!
+compose_tishi,没有可操作的目标,No items to act on
+xl_decompose,,
+decompose_title,分解,Disenchant
+decompose_equip,装备,Equipment
+decompose_monster,宠物,Monsters
+decompose_material,选择分解原料,Select disenchant materials
+decompose_preview,分解预览,Disenchant preview
+decompose_choise,请选择要分解的装备,Select equipment to disenchant
+decompose_tips1,*分解装备将获得装备打造材料,*Disenchanting equipment yields the materials used to create it
+decompose_tips2,*装备镶嵌的宝石将自动返还到背包,*Any embedded Gems will automatically be returned to your Bag
+decompose_tips3,*分解宠物将获得宠物进阶材料,*Disenchanting monsters yields evolution materials
+decompose_tips4,*宠物佩戴的装备将自动返还到背包,*Any equipment on the monster will be automatically returned to your Bag
+decompose_choice,筛选,Filter
+decompose_white,白色品质,White Grade
+decompose_green,绿色品质,Green Grade
+decompose_blue,蓝色品质,Blue Grade
+decompose_coin1,金币,coin
+decompose_sure,确定分解操作么？,Confirm disenchantment?
+decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
+compose_record_001,分解成功,Disenchantment success!
+compose_record_002,获得,Received 
+compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
+compose_record_004,没有筛选到目标,No filter results.
+compose_record_005,请先选择分解原料,Please choose disenchantment material first.
+compose_record_006,原料不足,Insufficent materials.
+xl_monsterbook,,
+handbook_btn,图鉴,Monsterbook
+handbook_owned,拥有宠物,Owned
+handbook_shouji,收集宠物,Collected
+item_type_chip,碎片,Fragment
+handbook_tips,*万能碎片最大只能替换{0:0%}的宠物碎片哟！,Core Fragments can be used for up to {0:0%} of a Monster's Fragments.
+handbook_zhaohuan,召唤,Summon
+handbook_huodeway,获得途径,Get By
+handbook_petsuipian,宠物碎片,Monster Fragments
+handbook_tips1,确定进行1次召唤吗？,Confirm summon once?
+handbook_record_001,碎片不足,Insufficent fragments.
+,,
+xl_itemtips,,
+tips_main1,副本,Stage
+shop_main,商店,Shop
+tips_main5,日常,Daily
+tips_main6,抽奖,Lucky Draw
+sociaty_title,公会,Guild
+sociaty_boss,公会BOSS,Guild Boss
+sociaty_task,公会任务,Guild Mission
+record_item_found1,条件尚未达成,Conditions have not been met.
+record_item_found2,目标功能已经打开.,Target function is already open.
+record_notopen1,副本未开启,This stage has not been opened yet.
+record_notopen2,合成功能未开启,The combine function has not been opened yet.
+record_notopen3,分解功能未开启,The disenchant function has not been opened yet.
+record_notopen4,该商店未开启,This shop has not been opened yet.
+record_notopen5,尚未加入公会,You have not joined a Guild yet.
+compose_item,材料合成,材料合成
+compose_gem,宝石合成,宝石合成
+decompose_item,道具分解,道具分解
+tips_monster,宠物分解,宠物分解
+tips_go,进入,go to
+,,
+xl_common,公用部分,
+pet_detail_skill_level,等级:,LVL:
+equip_forge_zhanli,战力:,BP:
+common_attr_strenth,力量,STR
+common_attr_defence,防御,DEF
+common_attr_intelligence,智力,INT
+common_attr_speed,速度,SPD
+common_attr_health,体力,STA
+common_attr_critical_ratio,暴击率,Crit Rate
+common_attr_critical_dmg,暴击伤害,Crit DMG
+common_attr_heal_ratio,受治疗量,Heal AMNT
+common_attr_energy,前置能量,Start ENG
+common_type_defence,防御型,Defense Type
+common_type_physical,物理型,PHYS Type
+common_type_magic,法术型,Magic Type
+common_type_support,支援型,Support Type
+monstertype1,动物,Animal
+monstertype2,人物,Human
+monstertype3,特异,Peculiar
+monstertype4,植物,Plant
+monstertype5,神,Deity
+list_empty,别找了，啥也没有…,Nothing to see here…
+,,
+zs_modify:xl,,
+pet_list_type,(圣兽),(shengshou)
+pet_list_option_all,全部,ALL
+pet_list_option_property1,火属性,Fire
+pet_list_option_property2,木属性,Grass
+pet_list_option_property3,水属性,Water
+pet_list_option_property4,光属性,Light
+pet_list_option_property5,暗属性,Dark
+pet_detail,,
+pet_detail_left_detail_attr,详细属性,Details
+pet_detail_left_skill,技能,Abilities
+pet_detail_left_advance,进化,Evolve
+pet_detail_roles,性格,roles
+im_monster_lock,宠物锁定成功,Monster is now locked.
+im_monster_unlock,宠物解锁成功,Monster is now unlocked.
+pet_detail_skill_current_level,本级:,Current:
+pet_detail_skill_next_level,下一级:,Next LVL:
+pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
+pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
+pet_detail_skill_current_huifu,({0}之后回复1点),({0}till 1 point)
+pet_detail_skill_max_point,(点数已满),(Full)
+pet_detail_skill_cannt_level,该技能不可升级,This ability cannot be leveled up.
+pet_detail_stage_attr,基础属性,Base Attributes
+pet_detail_stage_demand_level,需求等级,Req. LVL
+pet_detail_stage_demand_item,需求材料,Req. Materials
+pet_detail_stage,进阶,Advance
+pet_detail_stage_full,恭喜！进阶已完成!,Congratulations! Advancement complete!
+pet_detail_stage_monster,需要的怪物,Req. Monsters:
+monster_record_002,宠物等级不得高于角色等级！,Monster level cannot exceed character level.
+monster_record_004,需求道具不足,Insufficient amount of required items.
+monster_record_005,战力上升{0},BP increase {0}
+monster_record_006,宠物锁定成功,Monster is now locked.
+monster_record_007,打造成功,Forge success!
+monster_record_008,打造失败,Forge failed.
+monster_record_009,宠物解锁成功,Monster is now unlocked.
+monster_record_010,角色升级后才能继续打造！,Increase your character level to continue forging!
+monster_record_011,宠物等级不足,Monster level too low.
+monster_record_012,暂未开放,Currently unavailable
+monster_record_013,请提升宠物等级,Please level up your monster.
+monster_record_014,技能点不足,Insufficient Ability Points.
+monster_record_015,战力下降{0},BP decrease {0}
+pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
+pet_list_title,宠物,Monsters
+pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
+pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
+pet_skill_point_not_enough,技能点不足,skill point not enough
+exp_title,经验药,EXP Potion
+exp_monsterlevel,当前等级：LVL,Current：LVL
+exp_level,可升级到：LVL,Can reach: LVL
+exp_changan,长按可快速使用,Tap and hold to use multiple.
+coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
+gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."
+drop_info,掉落信息,Drop Info
+instanceselect_open_001,需要通关前一章副本才能开启该章节哦！,The stages in the previous chapter must be cleared to unlock this chapter!
+instanceselect_open_002,需要达到{0}级才能开启该章节哦！,Reach Player Level {0} to unlock this chapter!
+instanceselect_open_003,"需要通关之前的副本才可以进行该副本的挑战！
+",First clear the previous stages to unlock this stage!
+instanceselect_open_004,需要通关全部普通副本后才能开启挑战难度哦！,You must clear all stages on Normal to unlock Heroic Difficulty!
+instanceselect_reward_001,该章节内所有副本均为3颗星就能领取奖励哦！,Achieve a 3 star rating on all stages in this chapter for a reward!
+instanceselect_reward_002,你已经领取过满星奖励了哦！,You have already collected the star completion reward.
+select_tiaozhan,通关上一个难度级别的全部副本才可以进行挑战难度！,Clear all stages on Normal to unlock Heroic difficulty for this stage!
+select_next,需要通关之前的副本才可以进行该副本的挑战！,You must clear the previous stages to unlock this stage!
+arrayselect_chongzhi_anniu,重置,Reset
+arrayselect_saodangquan,扫荡券,
+main_levelup_pilao,当前活力,Current Energy
+main_levelup_shangxian,活力上限,Energy Limit
+main_levelup_dengji,恭喜您提升到{0}级,"Congratulations, you are now level {0}!"
+main_levelup_kaiqi,已开启,Unlocked
+main_levelup_weikaiqi,{0}级开启,Unlocks at LVL {0}
+diffculty_normal,普通,Normal
+diffculty_hard,挑战,Heroic
+energy_ hint,活力值增加 :,Time to next energy :
+energy_button_use,使用,Use
+energy_button_buy&use,购买使用,Buy & Use
+energy_times_enough,已达到上限,Limit reached
+energy_times,本日剩余次数 {0},Remaining today {0}
+energy_supple,补充活力,Add Energy
+energy_hint_unhint,本次登录不再提示该界面,Don't show again for current session.
+energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?
+energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe
+energy_get, 获得 {0} 点活力,get {0} energy
+im_recordhuoli_002,活力值已达到最大数量,Energy to the greatest numbe
+arrayselect_saodang_reward,额外奖励,Bonus Rewards
+arrayselect_saodang_num,第 {0} 战,Battle {0}
+arrayselect_chongzhi,重置当前副本挑战次数,Reset amount of tries for this stage?
+arrayselect_chongzhiTimes,今日已重置 {0} 次,Resets today:
+arrayselect_count_001,今日剩余挑战次数不足，无法进行挑战,No more tries remaining today. Unable to enter.
+arrayselect_count_002,未上阵首发宠物，无法开始挑战,No starting monsters selected. Unable to start the battle.
+arrayselect_count_003,上阵宠物已满,Your monsters lineup is already full.
+arrayselect_count_004,等级达到 {0} 级就能开启这个站位哦,Player Level {0} is required to unlock this position.
+arrayselect_count_005,该宠物正在进行大冒险，无法上阵哦,This monster is currently on an adventure. Unable to enter battle now.
+unkonwCharacter,未知,Unknow
+zhanli:{0},战力：{0},BP:{0}
+battle_zhaoyaojing_001,照妖镜还未准备好，请稍后再试,"The Monster Detector is not ready yet, please wait and try again."
+battle_zhaoyaojing_002,照妖镜能量已耗尽，请稍后再试,"Out of Monster Detector Energy, please wait and try again."
+sociaty_shuruxianshi,输入公会名称或者公会ID,Search Guild Name or Guild ID
+sociaty_shuruxianshi1,搜索公会,Search Guild
+sociaty_search,搜索,Search
+sociaty_id,公会ID,Guild ID
+sociaty_name,公会名称,Name
+sociaty_level,等级,Lvl
+sociaty_chairman,会长,Guild Master
+sociaty_peoplenum,人数,Members
+sociaty_qiliveness,3日贡献值,3 Day Pts.
+sociaty_applylevel,申请等级,Lvl Req.
+sociaty_operate,操作,Action
+sociaty_shenqing,申请加入,Apply
+sociaty_cancelshenqing,取消申请,Cancel
+sociaty_notice,公会公告,Announcement
+sociaty_buildbtn,创建公会,Create
+sociaty_tips1,"该公会不需批准，满足条件立即加入，是否确定操作？
+（退出公会12小时后才能加入其他公会）","This guild doesn't require approval to join. If all requirements are met, you may join immediately. Continue?
+(You must wait 12 hours after leaving a Guild before you may join another.)"
+sociaty_buildtitle,创建公会,Guild Creation
+sociaty_buildlimit,（只能输入字母、数字和中文汉字）,(Alphanumeric and Chinese characters only.)
+sociaty_reqcoin,消耗,Cost
+sociaty_information,公会信息,Info
+sociaty_member,成员列表,Members
+sociaty_technology,公会科技,Tech
+sociaty_log,公会日志,Log
+sociaty_other,其他公会,Other
+sociaty_chairmanname,会长：,Guild Master:
+sociaty_id1,公会ID：,Guild ID:
+sociaty_peoplenum1,成员数量：,Member Count:
+sociaty_onecontribution,个人贡献值：,Your Guild Pts:
+sociaty_comcontribution,公会贡献值：,Guild Pts Total:
+sociaty_oneliveness,公会今日贡献值：,Today's Guild Pts:
+sociaty_revisenotice,修改公告,Edit
+sociaty_activity,公会活动,Guild Event
+sociaty_pray,公会许愿,Guild Wish
+sociaty_jidi,公会基地,Guild Base
+sociaty_beiqingli,很遗憾，您已被请出公会,"Unfortunately, you were removed from the guild."
+sociaty_shouren,招收成员,Recruitment
+sociaty_shourenbianji,收人啦！快来点我，立即申请加入吧！,We are recruiting! Tap here to apply!
+sociaty_membername,成员名称,Name
+sociaty_job,职位,Role
+sociaty_contributionall,历史贡献值,Guild Pts.
+sociaty_last,最后上线,Last Online
+sociaty_songhuo,赠活力值,Send Energy
+sociaty_gang,刚刚,Just now
+sociaty_minite,{0}分钟前,{0} min ago
+sociaty_hour,{0}小时前,{0} hrs ago
+sociaty_day,{0}天前,{0} days ago
+sociaty_zaixian,在线,Online
+sociaty_quit,退出公会,Leave Guild
+sociaty_newapply,新的申请,Application
+sociaty_yield,移交会长,Transfer Master Role
+sociaty_yieldfu,任命副会长,Promote Elder
+sociaty_yieldfujie,解除副会长,Demote Elder
+sociaty_expel,请离公会,Remove From Guild
+sociaty_tips3,确定将会长移交给{0}？,You are transfering Guild Master role to {0} Continue?
+sociaty_tips4,确定任命{0}为副会长？,You are promoting XXX to Guild Elder. Continue?
+sociaty_jiechu,确定解除{0}副会长职务？,You are removing {0} from the guild. Continue?
+sociaty_tips5,确定将{0}请离公会？,Confirm leave guild?
+sociaty_tips6,确定退出公会？,Confirm leave guild?
+sociaty_tips2,（退出公会12小时后才能加入其他公会）,(You must wait 12 hours after leaving a Guild before you may join another.)
+sociaty_refuse,拒绝,Refuse
+sociaty_approve,批准,Accept
+sociaty_setup,申请设置,Settings
+sociaty_approveall,全部批准,Accept All
+sociaty_refuseall,全部拒绝,Refuse All
+sociaty_type,公会类型：,Guild Type:
+sociaty_type1,需要批准才能加入,Application required
+sociaty_type2,所有人都可以加入,Anyone can join
+sociaty_minlevel,最低人物等级：,Level Req:
+sociaty_tips7,设置后，该公会将收不到低于设置要求的申请,"Once set, the guild cannot receive applications from players below the Level Requirement."
+sociaty_levelname,公会等级,Guild Lvl
+sociaty_peoplenum2,公会人数,Member Count
+sociaty_coinup,米达斯宫增益,Palace of Midas Gains
+sociaty_expup,至福乐土增益,Fields of Elysium Gains
+sociaty_leveltips,限制公会科技可提升最大等级,Increases guild's level limit.
+sociaty_peopletips,提升公会最大人数,Increases guild's member limit.
+sociaty_cointips,增加米达斯宫的金币获得量,Increases Coins gained from Palace of Midas.
+sociaty_exptips,至福乐土额外获得经验药,Grants bonus EXP while playing Fields of Elysium.
+sociaty_nowlevel,本级效果：,Current:
+sociaty_leveltipsmiaoshu1,{0}级,LVL {0}
+sociaty_peopletipsmiaoshu1,{0}人,{0} Members
+sociaty_maxlevel,已满级,Max
+sociaty_startlevel,公会{0}级可开启,Unlocked at Guild Lvl {0}
+sociaty_limitlevel,公会{0}级可升级,Upgradable at guild lvl {0}
+sociaty_levelupup,升级,Upgrade
+sociaty_X1dang,思之许愿,Wish Thinker
+sociaty_X2dang,酿之许愿,Wish Brewer
+sociaty_X3dang,梦之许愿,Wish Dreamer
+sociaty_qifubtn,许愿,Wish
+sociaty_myteam,我的队伍,My Team
+sociaty_otherteam,其他队伍,Other Teams
+sociaty_tasknum,今日剩余次数：{0},Remaining today: {0}
+sociaty_teamreward,奖励,Rewards
+sociaty_start,{0} 开启,{0} Open
+sociaty_taskopenlevel,开启等级：LVL{0},Unlock level:LVL{0}
+sociaty_spendtips,确定开启公会任务吗？,Confirm open Guild Mission?
+sociaty_myteam1,我的小队,My team
+sociaty_shengyutime,剩余时间：{0:D2}:{1:D2}:{2:D2},Time remaining:{0:D2}:{1:D2}:{2:D2}
+sociaty_tasktarget,任务目标,Objective
+sociaty_daojutarget,提交{0}个{1},Retrieve {0} of {1}
+sociaty_cointarget,提交{0}个金币,Retrieve {0} Coins
+sociaty_fubentarget,通关{0}副本,Clear Stage {0}
+sociaty_rewardtitle,任务奖励,Mission Reward
+sociaty_commit,提交,Submit
+sociaty_gogogo,立即前往,Go Now
+sociaty_completename,玩家{0}已完成,Completed by {0}
+sociaty_renbuzai,完成人已不在公会,The member who completed is no longer in this Guild.
+sociaty_giveup,放弃任务,Abandon
+sociaty_findfriends,招募伙伴,Recruit
+sociaty_taskfail,时间已到，任务失败,Time's up! Mission failed.
+sociaty_giveuptips,确定要放弃公会任务吗？,Confirm abandon Guild Mission?
+sociaty_giveuptips1,（放弃将返还80%的开启费用，但会消耗1次任务次数）,"(Abandoning returns 80% of initial cost, but will use up 1 mission chance.)"
+sociaty_enqueue,入队,Join Squad
+sociaty_jiarutips,确定加入小队么？,Confirm join squad?
+sociaty_jiarutips1,（加入小队后，完成任务才能退出哦）,(You may only exit after the mission is completed.)
+sociaty_record_001,没有找到相应的公会，请重新输入,"Guild not found, please try again."
+sociaty_record_002,公会人数已满,Guild is full.
+sociaty_record_003,申请成功，等待公会批准,"Application sent, pending approval."
+sociaty_record_004,取消申请成功,Cancelled application request.
+sociaty_record_005,公会名称不能为空,Guild name cannot be empty.
+sociaty_record_006,公会名称已存在，换一个试试吧,"Guild name taken, please try another."
+sociaty_record_007,公会公告不能为空,Guild announcement cannot be empty.
+sociaty_record_008,该公会的设置已更改，请重新操作,"Guild settings have changed, please retry."
+sociaty_record_009,金币不足，快去赚钱吧,Insufficient Coins. Go earn some more!
+sociaty_record_010,公会已解散，试试其他公会吧,"Guild already disbanded, please try another."
+sociaty_record_011,活跃度未达标，快去叫小伙伴们一起参加公会活动吧,Activity level requirement not met. Rally the members and join some events.
+sociaty_record_013,移交会长成功，您的身份已变更为会员,Transfer of Guild Master role successful. You are now just a member.
+sociaty_record_014,操作失败，该玩家已不在公会,Action failed. The player is no longer in the guild.
+sociaty_record_015,操作失败，该玩家已为副会长,Action failed. The player is already a Guild Elder.
+sociaty_record_016,{0}已被任命为副会长,{0} has been promoted to Guild Elder.
+sociaty_record_017,{0}已被请离公会,{0} has been removed from the guild.
+sociaty_record_018,您没有操作权限,You do not have the power to do this.
+sociaty_record_019,请先移交会长，才能退出公会,Please tranfer the role of Guild Master before leaving.
+sociaty_record_020,退出公会成功,You have left the guild.
+sociaty_record_022,{0}加入公会,{0} has joined the guild.
+sociaty_record_023,公会容纳不下这么多人啦,The guild cannot fit that many members.
+sociaty_record_024,没有可领取的活力值,No Guild Points to be collected.
+sociaty_record_025,公会等级已变更,Guild Lvl has changed.
+sociaty_record_026,公会贡献值不足，升级失败,"Insufficient Guild Points, upgrade failed."
+sociaty_record_027,今日许愿次数已用完,Today's Wishes have already all been used.
+sociaty_record_028,许愿所需货币不足,Insufficient currency required for the Wish.
+sociaty_record_029,许愿成功！个人贡献值+{0}，公会贡献值+{1},"Wish successful! Your Guild Points +{0}, Guild Points Total +{1}"
+sociaty_record_030,今日任务次数已用完,Today's mission chances have all been used.
+sociaty_record_031,等级不足，快去提升自己的等级吧,Insufficient level. Get out there and level up!
+sociaty_record_032,您正在公会任务小队中，不能退出公会,You are in a Guild Mission Squad. Unable to leave guild.
+sociaty_record_033,该任务已被其他玩家完成,This mission has already been completed by another player.
+sociaty_record_034,任务目标不足,Mission conditions have not been met.
+sociaty_record_035,该小队任务已全部完成，您不能加入了哟,This squad's missions have all been completed. Unable to join.
+sociaty_record_036,您已有队伍，请完成任务后再加入其他队伍,You are already in a team. Complete the current missions before joining another team.
+sociaty_record_037,距离您上次退出公会还未满12小时，无法加入新的公会,12 hours have not passed since you left a guild. Unable to join another guild yet.
+sociaty_record_038,您未达到该公会限制的最低等级,You do not meet this guild's minimum level requirement.
+sociaty_record_040,副会长人数已达最大，任命失败,The guild has reached the max number of Elders. Unable to promote.
+sociaty_record_041,{0}已被解除副会长,{0} has been demoted from Guild Elder.
+sociaty_record_042,公会科技等级已变更,Guild Tech Lvl has changed.
+sociaty_record_044,小队人数已满了哟,Squad is full.
+sociaty_record_045,数据已过期,Data has expired.
+sociaty_record_046,请先升级科技,Please level up your guild tech first.
+sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.
+sociaty_record_048,已达可完成的队内任务上限,Team missions limit reached.
+sociaty_record_052,快来加入我的小队：{0},Come join my squad: {0}
+sociaty_record_053,{0}升至{1}级,{0} is now Lvl {1}.
+sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
+sociaty_record_056,存在非法字符,Contains illegal characters.
+sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.
+sociaty_record_058,请先选择一个任务,Please select a mission first.
+sociaty_record_059,公告名称输入过长,Announcement title is too long.
+sociaty_record_060,已有成员加入，不能放弃,"Members have already joined, unable to abandon."
+sociaty_record_061,公会公告输入过长,Announcement content is too long.
+sociaty_record_062,输入内容过长,Content entered is too long.
+sociaty_record_063,招募成功,Successfully recruited!
+sociaty_record_064,全部批准成功,Successfully approved all.
+sociaty_record_065,已经领取过了哦,Already collected!
+sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1}
+sociaty_vicechairman,副会长,Elder
+sociaty_member1,成员,Member
+sociaty_mybing,我的驻兵,My Garrison
+sociaty_otherbing,基地列兵,Base Garrison
+sociaty_lishi,个人历史贡献值：{0},Total contribution: {0}
+sociaty_tipsjidichang,驻守基地的宠物可根据驻守时长获得金币，被其他玩家雇佣时也可获得金币收入,Monsters garrisoned in the Guild Base gain coins with time. They also earn coins when hired by other members.
+sociaty_addmonster,添加宠物,Add monster
+sociaty_tipslock,公会历史贡献值达到{0}解锁,Unlocked when total guild contribution reaches {0}.
+sociaty_zhushoutime,驻守时长：,Garrison time: 
+sociaty_zhushoutime1,{0}小时{1}分钟,{0} hrs {1} min
+sociaty_leijishouru,累积收入：,Accumulated income:
+sociaty_recall,立即召回,Recall
+sociaty_shouru1,驻扎收入：,Defense income:
+sociaty_shouru2,雇佣收入：,Hired monster income:
+advanture_maoxianing,冒险中,Exploring
+advanture_zhushouing,驻守中,Garrisoned
+sociaty_paibingxuanze,选择宠物,Choise monster
+sociaty_paichuqueren,派出的宠物至少要驻扎1个小时才可以召回哦，确定派出宠物？,"After being dispatched, you must wait 1 hour before monsters can be recalled. Continue?"
+sociaty_record_066,该位置未解锁,unlock
+sociaty_record_067,派出时间未满1小时，不能召回,cannt back
+sociaty_record_068,宠物已不在公会基地,not here
+,,
+tower_instance_title,愿望树,The Wishing Tree
+tower_gold_name,米达斯宫,Palace of Midas
+tower_exp_name,至福乐土,Fields of Elysium
+tower_instance_time,开启时间：,Starting time:
+tower_instance_drop,掉落物品：,Possible drops:
+tower_gold_time,每周二、四、六、和周日,"Every Tuesday, Thursday, Saturday, and Sunday"
+tower_exp_time,每周一、三、五、和周日,"Every Monday, Wednesday, Friday, and Sunday"
+tower_instance_count,剩余次数：{0},Remaining tries:
+tower_difficulty_title,选择难度,Select Difficulty
+tower_difficulty_1,难度I,Newbie
+tower_difficulty_2,难度II,Easy
+tower_difficulty_3,难度III,Normal
+tower_difficulty_4,难度IV,Hard
+tower_record_001,该副本今日不开启,This stage is not open today.
+tower_record_002,今日已达到最大次数,Already reached the maximum number for today.
+tower_record_003,该难度将在玩家{0}级时开启,This difficulty unlocks at Player Level {0}.
+tower_record_004,该副本已关闭,This stage is already closed.
+towerBoss_instance_title,通天塔,Towers Of Trials 
+towerBoss_instance_name1,试炼之塔（20层）,Tower Of Gauntlets (Floor 20)
+towerBoss_instance_name2,绝望之塔（30层）,Tower Of Despair (Floor 30)
+towerBoss_instance_name3,死亡之塔（40层）,Tower Of Death (Floor 40)
+towerBoss_instance_level,开启等级：,Unlock level:
+towerBoss_instance_fatigue,每层消耗活力值：,Energy required per floor:
+towerBoss_instance_shop,通天塔商店,Tower Shop
+towerBoss_instance_time,刷新时间剩余:{0}天,Time until refresh: {0} days
+towerBoss_instance_reward,Stage奖励,Stage Reward
+towerBoss_record_001,玩家等级不足，无法进入,Player has not reached the required level. Unable to enter.
+towerBoss_record_002,已通关该层,This floor has already been cleared.
+towerBoss_record_003,尚未通关之前的层数,The previous floors must be cleared first.
+towerBoss_record_004,副本进度已重置,Stage progress has already been reset.
+towerBoss_1_1,试炼之塔 - 1,Tower Of Gauntlets - 1
+towerBoss_1_2,试炼之塔 - 2,Tower Of Gauntlets - 2
+towerBoss_1_3,试炼之塔 - 3,Tower Of Gauntlets - 3
+towerBoss_1_4,试炼之塔 - 4,Tower Of Gauntlets - 4
+towerBoss_1_5,试炼之塔 - 5,Tower Of Gauntlets - 5
+towerBoss_1_6,试炼之塔 - 6,Tower Of Gauntlets - 6
+towerBoss_1_7,试炼之塔 - 7,Tower Of Gauntlets - 7
+towerBoss_1_8,试炼之塔 - 8,Tower Of Gauntlets - 8
+towerBoss_1_9,试炼之塔 - 9,Tower Of Gauntlets - 9
+towerBoss_1_10,试炼之塔 - 10,Tower Of Gauntlets - 10
+towerBoss_1_11,试炼之塔 - 11,Tower Of Gauntlets - 11
+towerBoss_1_12,试炼之塔 - 12,Tower Of Gauntlets - 12
+towerBoss_1_13,试炼之塔 - 13,Tower Of Gauntlets - 13
+towerBoss_1_14,试炼之塔 - 14,Tower Of Gauntlets - 14
+towerBoss_1_15,试炼之塔 - 15,Tower Of Gauntlets - 15
+towerBoss_1_16,试炼之塔 - 16,Tower Of Gauntlets - 16
+towerBoss_1_17,试炼之塔 - 17,Tower Of Gauntlets - 17
+towerBoss_1_18,试炼之塔 - 18,Tower Of Gauntlets - 18
+towerBoss_1_19,试炼之塔 - 19,Tower Of Gauntlets - 19
+towerBoss_1_20,试炼之塔 - 20,Tower Of Gauntlets - 20
+towerBoss_2_1,绝望之塔 - 1,Tower Of Despair - 1
+towerBoss_2_2,绝望之塔 - 2,Tower Of Despair - 2
+towerBoss_2_3,绝望之塔 - 3,Tower Of Despair - 3
+towerBoss_2_4,绝望之塔 - 4,Tower Of Despair - 4
+towerBoss_2_5,绝望之塔 - 5,Tower Of Despair - 5
+towerBoss_2_6,绝望之塔 - 6,Tower Of Despair - 6
+towerBoss_2_7,绝望之塔 - 7,Tower Of Despair - 7
+towerBoss_2_8,绝望之塔 - 8,Tower Of Despair - 8
+towerBoss_2_9,绝望之塔 - 9,Tower Of Despair - 9
+towerBoss_2_10,绝望之塔 - 10,Tower Of Despair - 10
+towerBoss_2_11,绝望之塔 - 11,Tower Of Despair - 11
+towerBoss_2_12,绝望之塔 - 12,Tower Of Despair - 12
+towerBoss_2_13,绝望之塔 - 13,Tower Of Despair - 13
+towerBoss_2_14,绝望之塔 - 14,Tower Of Despair - 14
+towerBoss_2_15,绝望之塔 - 15,Tower Of Despair - 15
+towerBoss_2_16,绝望之塔 - 16,Tower Of Despair - 16
+towerBoss_2_17,绝望之塔 - 17,Tower Of Despair - 17
+towerBoss_2_18,绝望之塔 - 18,Tower Of Despair - 18
+towerBoss_2_19,绝望之塔 - 19,Tower Of Despair - 19
+towerBoss_2_20,绝望之塔 - 20,Tower Of Despair - 20
+towerBoss_2_21,绝望之塔 - 21,Tower Of Despair - 21
+towerBoss_2_22,绝望之塔 - 22,Tower Of Despair - 22
+towerBoss_2_23,绝望之塔 - 23,Tower Of Despair - 23
+towerBoss_2_24,绝望之塔 - 24,Tower Of Despair - 24
+towerBoss_2_25,绝望之塔 - 25,Tower Of Despair - 25
+towerBoss_2_26,绝望之塔 - 26,Tower Of Despair - 26
+towerBoss_2_27,绝望之塔 - 27,Tower Of Despair - 27
+towerBoss_2_28,绝望之塔 - 28,Tower Of Despair - 28
+towerBoss_2_29,绝望之塔 - 29,Tower Of Despair - 29
+towerBoss_2_30,绝望之塔 - 30,Tower Of Despair - 30
+towerBoss_3_1,死亡之塔 - 1,Tower Of Death - 1
+towerBoss_3_2,死亡之塔 - 2,Tower Of Death - 2
+towerBoss_3_3,死亡之塔 - 3,Tower Of Death - 3
+towerBoss_3_4,死亡之塔 - 4,Tower Of Death - 4
+towerBoss_3_5,死亡之塔 - 5,Tower Of Death - 5
+towerBoss_3_6,死亡之塔 - 6,Tower Of Death - 6
+towerBoss_3_7,死亡之塔 - 7,Tower Of Death - 7
+towerBoss_3_8,死亡之塔 - 8,Tower Of Death - 8
+towerBoss_3_9,死亡之塔 - 9,Tower Of Death - 9
+towerBoss_3_10,死亡之塔 - 10,Tower Of Death - 10
+towerBoss_3_11,死亡之塔 - 11,Tower Of Death - 11
+towerBoss_3_12,死亡之塔 - 12,Tower Of Death - 12
+towerBoss_3_13,死亡之塔 - 13,Tower Of Death - 13
+towerBoss_3_14,死亡之塔 - 14,Tower Of Death - 14
+towerBoss_3_15,死亡之塔 - 15,Tower Of Death - 15
+towerBoss_3_16,死亡之塔 - 16,Tower Of Death - 16
+towerBoss_3_17,死亡之塔 - 17,Tower Of Death - 17
+towerBoss_3_18,死亡之塔 - 18,Tower Of Death - 18
+towerBoss_3_19,死亡之塔 - 19,Tower Of Death - 19
+towerBoss_3_20,死亡之塔 - 20,Tower Of Death - 20
+towerBoss_3_21,死亡之塔 - 21,Tower Of Death - 21
+towerBoss_3_22,死亡之塔 - 22,Tower Of Death - 22
+towerBoss_3_23,死亡之塔 - 23,Tower Of Death - 23
+towerBoss_3_24,死亡之塔 - 24,Tower Of Death - 24
+towerBoss_3_25,死亡之塔 - 25,Tower Of Death - 25
+towerBoss_3_26,死亡之塔 - 26,Tower Of Death - 26
+towerBoss_3_27,死亡之塔 - 27,Tower Of Death - 27
+towerBoss_3_28,死亡之塔 - 28,Tower Of Death - 28
+towerBoss_3_29,死亡之塔 - 29,Tower Of Death - 29
+towerBoss_3_30,死亡之塔 - 30,Tower Of Death - 30
+towerBoss_3_31,死亡之塔 - 31,Tower Of Death - 31
+towerBoss_3_32,死亡之塔 - 32,Tower Of Death - 32
+towerBoss_3_33,死亡之塔 - 33,Tower Of Death - 33
+towerBoss_3_34,死亡之塔 - 34,Tower Of Death - 34
+towerBoss_3_35,死亡之塔 - 35,Tower Of Death - 35
+towerBoss_3_36,死亡之塔 - 36,Tower Of Death - 36
+towerBoss_3_37,死亡之塔 - 37,Tower Of Death - 37
+towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
+towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
+towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
+im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
+im_battle_001,正在进行换怪，不能施放大招,"Swapping monsters, unable to cast ult now."
+im_spell_001,当前宠物处于眩晕状态，无法释放大招,"Monster is currently stunned, unable to cast ult now."
+passive,被动,Passive
+Street - 1,大街 - 1 - 普通,Street - 1 - Normal
+Street - 2,大街 - 2 - 普通,Street - 2 - Normal
+Street - 3,大街 - 3 - 普通,Street - 3 - Normal
+Street - 4,大街 - 4 - 普通,Street - 4 - Normal
+Street - 5,大街 - 5 - 普通,Street - 5 - Normal
+Street - 6,大街 - 6 - 普通,Street - 6 - Normal
+Street - 7,大街 - 7 - 普通,Street - 7 - Normal
+Street - 8,大街 - 8 - 普通,Street - 8 - Normal
+Street1 - 1,大街 - 1 - 挑战,Street - 1 - Heroic
+Street1 - 2,大街 - 2 - 挑战,Street - 2 - Heroic
+Street1 - 3,大街 - 3 - 挑战,Street - 3 - Heroic
+Street1 - 4,大街 - 4 - 挑战,Street - 4 - Heroic
+Street1 - 5,大街 - 5 - 挑战,Street - 5 - Heroic
+Street1 - 6,大街 - 6 - 挑战,Street - 6 - Heroic
+Street1 - 7,大街 - 7 - 挑战,Street - 7 - Heroic
+Street1 - 8,大街 - 8 - 挑战,Street - 8 - Heroic
+Alley - 1,小巷 - 1 - 普通,Alley - 1 - Normal
+Alley - 2,小巷 - 2 - 普通,Alley - 2 - Normal
+Alley - 3,小巷 - 3 - 普通,Alley - 3 - Normal
+Alley - 4,小巷 - 4 - 普通,Alley - 4 - Normal
+Alley - 5,小巷 - 5 - 普通,Alley - 5 - Normal
+Alley - 6,小巷 - 6 - 普通,Alley - 6 - Normal
+Alley - 7,小巷 - 7 - 普通,Alley - 7 - Normal
+Alley - 8,小巷 - 8 - 普通,Alley - 8 - Normal
+Alley1 - 1,小巷 - 1 - 挑战,Alley - 1 - Heroic
+Alley1 - 2,小巷 - 2 - 挑战,Alley - 2 - Heroic
+Alley1 - 3,小巷 - 3 - 挑战,Alley - 3 - Heroic
+Alley1 - 4,小巷 - 4 - 挑战,Alley - 4 - Heroic
+Alley1 - 5,小巷 - 5 - 挑战,Alley - 5 - Heroic
+Alley1 - 6,小巷 - 6 - 挑战,Alley - 6 - Heroic
+Alley1 - 7,小巷 - 7 - 挑战,Alley - 7 - Heroic
+Alley1 - 8,小巷 - 8 - 挑战,Alley - 8 - Heroic
+chapter1_name,大街,Street
+chapter2_name,小巷,Alley
+chapter3_name,东邪,dong
+chapter4_name,西毒,xi
+chapter5_name,南拳,nan
+chapter6_name,北郊,bei
+chapter7_name,昌平,changping
+chapter8_name,大兴,daxing
+zhuxian10001,天赐神宠,Bestowed Upon You
+zhuxian10002,获得神宠,Deity Monster
+zhuxian10003,小试身手,First Test
+zhuxian10004,乘胜追击,Pursuit more victories
+zhuxian10005,你需要治愈,Healing Is Needed
+zhuxian10006,流浪狼人,Werewolf the ranger
+zhuxian10007,药不能停,Healthy Dose
+zhuxian10008,中BOSS罢了,Halfway There
+zhuxian10009,技巧的磨砺,Sharpening Your Skills
+zhuxian10010,花小仙子,Flower Pixie
+zhuxian10011,穿戴装备,Try It On
+zhuxian10012,逛逛商店,Browse The Shop
+zhuxian10013,训练宠物,Monster Training
+zhuxian10014,装备穿齐,Matching Outfit
+zhuxian10015,突破大街,Battle For Home
+zhuxian10016,打磨装备,Keep It Polished
+zhuxian10017,全部拿走,Perfectionist
+zhuxian10018,日常修炼,Daily Practice
+zhuxian10019,竞技生涯,Competitive Career
+zhuxian10020,装备进阶,Advanced Equipment
+zhuxian10021,训宠大师,Training Master
+zhuxian10022,能量灌注,Evolutionary Scale
+zhuxian10023,突破拦截,Interceptor 
+zhuxian10024,新的挑战,New Challenge
+zhuxian10025,限制突破,No Limits
+zhuxian10026,双重超量,Double Trouble
+zhuxian10027,冲向异界,Charging The Outerworld
+zhuxian10028,蓝色超量,Blue Power
+zhuxian10029,次元能力探秘,True Craftsman
+zhuxian10030,驾驭次元,Infused Power
+mubiao10001,抽蛋1次,Draw 1 time 
+mubiao10002,合成冰雪女王,Summon Chione 
+mubiao10003,通关1-1,Clear Stage 1-1 
+mubiao10004,通关1-2,Clear Stage 1-2
+mubiao10005,合成苗娃曼陀罗,Summon Mandrake 
+mubiao10006,通关1-3,Clear Stage 1-3
+mubiao10007,使用经验药三次,Use EXP Potion 3 times 
+mubiao10008,通关1-4,Clear Stage 1-4 
+mubiao10009,升级技能3次,Upgrade abilities 3 times 
+mubiao10010,通关1-5,Clear Stage 1-5
+mubiao10011,穿戴装备,Equip a piece of equipment 
+mubiao10012,商店刷新物品1次,Refresh shop goods 1 time 
+mubiao10013,其中一只宠物升级至5,Level up a monster to level 5 
+mubiao10014,将冰雪女王装备穿戴至少3件,Equip 3 equipment on Chione 
+mubiao10015,通关1-8,Clear Stage 1-8 
+mubiao10016,装备强化1次,Upgrade a piece of equipment 
+mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
+mubiao10018,完成一个每日任务,Complete a daily mission 
+mubiao10019,竞技场,Arena
+mubiao10020,装备进阶至绿,Advance equipment to green 
+mubiao10021,升级宠物2只至7级,Level up 2 monster to 7
+mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
+mubiao10023,通关2-4,Clear Stage 2-4 
+mubiao10024,挑战本开启完成挑战本1-1,Clear Stage 1-1 on Heroic 
+mubiao10025,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
+mubiao10026,有2件绿色装备,Have 2 pieces of green equipment 
+mubiao10027,通关2-8,Clear Stage 2-8 
+mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
+mubiao10029,装备开孔,Open an equipment socket 
+mubiao10030,装备镶嵌,Insert a gem in equipment
+richang1,每日剧情副本,Daily Campaign Stages
+richang2,每日通关挑战副本,Daily Heroic Stages
+richang3,每日技能升级,Daily Ability Upgrade
+richang4,每日装备升级,Daily Equipment Upgrade
+richang5,每日金币购买,Daily Coin Purchase
+richang6,每日商店刷新,Daily Store Refresh
+rimubiao1,剧情副本10次,Complete 10 Campaign Stages
+rimubiao2,通关挑战副本3次,Complete 3 Heroic Stages
+rimubiao3,技能升级3次,Level up abilities 3 times
+rimubiao4,装备升级1次,Upgrade equipment once
+rimubiao5,购买金币1次,Purchase Coins once
+rimubiao6,刷新商店1次,Refresh the Store once
+linshi1,合成狼人,Summon Werewolf
+linshi2,合成花魄,Summon Flower Spirit
+linmubiao1,合成狼人,Summon Werewolf
+linmubiao2,合成花魄,Summon Flower Spirit
+zhixian20001,扫荡2-3,Raid 2-3
+zhixian20002,扫荡2-7,Raid 2-7
+zhimubiao20001,通关2-3,Raid 2-3（even you pass）
+zhimubiao20002,通关2-7,Raid 2-7 （even you pass）
+login_denglu_001,当前登录服务器,Current server
+login_denglu_002,切换,Change
+login_gonggao_001,公告,Announcement
+login_gengxin_001,当前版本过低，请更新后再次进入游戏！,"Current version is out of date, please update and restart the game."
+login_gengxin_002,更新,Update
+login_gengxin_003,需要更新补丁包才可以继续进行游戏，补丁包大小为{0}。（建议使用WIFI下载）,Game patch installation required. The patch size is {0}. (Using WiFi is recommended)
+login_gengxin_004,退出,Exit
+login_gengxin_005,九尾狐正在拼命帮你下载资源…,9 Tails is working hard to download resources... 
+login_gengxin_006,九尾狐正在拼命帮你拼装资源…,9 Tails is working hard to unpack resources... 
+login_server_001,服务器,Server
+login_server_002,服务器选择,Select Server
+login_server_003,推荐服务器,Recommended
+login_server_004,上次登录服务器,Last Server
+login_weihu_001,当前服务器正在维护，请稍后再试！,The current server is down for maintenance. Please wait and try again later!
+login_duankai_001,已与服务器断开连接，请重新登录！,"Disconnected from server, please re-login."
+login_dinghao_001,该账号已在其他设备上登录，请确认账号安全并重新登录！,This account is already logged in from another device. Please confirm your account is secure and re-login.
+hecheng_name,合成功能,Combine Function
+fenjie_name,分解功能,Disenchant Function
+dazao_name,装备打造,Equipment Forge
+houbei_name,后备站位,Reserve Position
+saodang_name,扫荡功能,Raid Function
+putongshangdian_name,普通商店,Normal Store
+tiaozhan_name,挑战副本,Heroic Stage
+gengduo_name,更多精彩玩法,More exciting content
+hecheng_desc,可以获得更高等级的宝石和材料！,You can receive more advanced Gems and Materials!
+fenjie_desc,分解多余的宠物和装备可以快速获得材料！,Disenchant extra monsters and equipment to quickly get more Materials!
+dazao_desc,提升战力最直接的方式。,The most direct way to increase BP.
+houbei_desc,开启了一个后备站位，可以派遣第四个宠物上场啦！,Reserve position unlocked! You can add a 4th monster to your battle team!
+saodang_desc,扫荡是快速通关副本的唯一方法。,Raids are the only way to quickly clear Stages.
+putongshangdian_desc,商店中可能出现意想不到的商品哦！,Some unexpected items may appear in the Store!
+tiaozhan_desc,去挑战难度更高的副本吧！,Go and challenge some more difficult Stages!
+gengduo_desc,更多精彩玩法请期待下个版本！,Please wait for the next version for even more exciting game modes!
+,,
+advanture_title,大冒险,Adventure
+advanture_qianghuashi,破碎的裂隙,Crumbling
+advanture_jinjieshi,干扰的裂隙,Interference
+advanture_boss,纯粹的裂隙,Purity
+advanture_time,探险时间   {0}小时,Exploration time  {0} hrs
+advanture_teams,探险小队,Exploration team
+advanture_tip1,探索强化石宝藏能够获得宠物经验药水、宠物强化石、装备强化石,"Explore upgrade stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+advanture_tip2,探索进阶石宝藏能够获得宠物经验药水、装备进阶石、宠物进阶石,"Explore evolution stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+advanture_tip3,探索BOSS巢穴能够获得宠物经验药水、BOSS宝箱,Explore the Boss Lair to get Monster EXP Potions and Boss Treasures
+advanture_ing,探险中…,Exploring…
+advanture_alreadycom,已完成,Completed
+advanture_click,点击领奖,Tap to collect
+advanture_jiadui,没有空余小队，是否添加小队？,"No open team spots, create a team?"
+advanture_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} hrs)
+advanture_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
+advanture_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
+advanture_paimonster,派遣宠物,Dispatch Monsters
+advanture_condition1,条件1,Req. 1
+advanture_condition2,条件2,Req. 2
+advanture_condition3,条件3,Req. 3
+advanture_getpercent,获得概率,Droprate
+advanture_change,变更条件,Edit Conditions
+advanture_go,探险,Explore
+advanture_foundationreward,基础奖励,Basic Rewards
+advanture_extrareward,额外奖励,Bonus Rewards
+advanture_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
+sociaty_meijiaguild,尚未加入公会,not join guild
+advanture_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
+advanture_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
+advanture_tipsmax,次数已满,(full)
+advanture_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
+advanture_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
+advanture_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?
+advanture_tipsweight,额外奖励获得概率,Bonus reward droprate
+advanture_tipsguyongxinxi,雇佣{0}的{1},Hire {0}'s {1}
+advanture_tipstanxian,确定进行探险么？,Confirm begin exploration?
+advanture_teamnum,拥有队伍：{0},Number of teams: {0}
+advanture_teamname,队伍{0},Team {0}
+advanture_free,空闲中,Idle
+advanture_goadvanture,去探险,Go Explore
+advanture_complete,立即完成,Complete Now
+advanture_addteam,扩充小队,Add Team
+advanture_completenow,立即完成探险么？,Complete exploration now?
+adventure_timeleft,剩余时间：{0},left time:{0}
+advanture_addsure,确定添加新的队伍么？,Confirm add new team?
+advanture_successful,探险成功！,Exploration Success!
+advanture_record_001,添加小队成功,New team added.
+advanture_record_002,变更次数已满，购买失败,"Change chances full, purchase failed."
+advanture_record_003,购买成功,Purchase success.
+advanture_record_004,派遣成功,Dispatch success.
+advanture_record_005,没有空闲的小队啦,No idle teams.
+advanture_record_006,变更成功,Change success.
+advanture_record_007,派遣怪物不足5只，不能探险,"5 monsters required for exploration, unable to dispatch."
+advanture_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be hired for each exploration.
+advanture_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
+adventure_record_011,探险任务已完成,complete

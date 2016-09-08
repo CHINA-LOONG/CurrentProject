@@ -103,8 +103,16 @@ public class UnitData
 	{
 		get
 		{
-			return StaticDataMgr.Instance.GetTextByID(nickName);
+			return StaticDataMgr.Instance.GetTextByID(nickName,LanguageType.PetLanguage);
 		}
 	}
+
+    public string SayAttr
+    {
+        get
+        {
+            return StaticDataMgr.Instance.GetTextByID(say, LanguageType.PetLanguage);
+        }
+    }
 
 }

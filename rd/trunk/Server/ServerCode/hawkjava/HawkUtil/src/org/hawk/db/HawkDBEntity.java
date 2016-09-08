@@ -88,7 +88,7 @@ public abstract class HawkDBEntity {
 	}
 	
 	/**
-	 * 同步删除对象
+	 * 异步删除对象
 	 */
 	public void delete() {
 		delete(true);

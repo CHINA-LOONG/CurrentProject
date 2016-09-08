@@ -26,7 +26,7 @@ public class MonsterCollectItem : MonoBehaviour
     {
         curData = unit;
 
-        textName.text = StaticDataMgr.Instance.GetTextByID(curData.unit.nickName);
+        textName.text = curData.unit.NickNameAttr;
         iconMonster = InitMonsterIcon();
         iconMonster.SetId("");
         iconMonster.SetMonsterStaticId(curData.unit.id);

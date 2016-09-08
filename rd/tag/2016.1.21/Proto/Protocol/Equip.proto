@@ -1,0 +1,176 @@
+option java_package = "com.hawk.game.protocol";
+
+import "Protocol/Attribute.proto";
+
+message GemPunch
+{
+	// 宝石槽位
+	required int32 slot = 1;	
+	// 宝石形状
+	required int32 type = 2;
+	// 宝石id
+	required string gemItemId = 3;
+}
+
+message EquipInfo
+{
+	required int64  id = 1;
+	required string  equipId = 2;
+	//装备品级
+	required int32  stage = 3;
+	//装备强化等级
+	required int32  level = 4;
+	//宝石信息
+	repeated GemPunch gemItems = 5;
+	//附加属性信息
+	repeated Attr  attrDatas = 6;
+	required int32   monsterId = 7;
+	required int32  status = 8;
+	optional int32 expireTime = 9;
+}
+
+//装备信息同步
+message HSEquipInfoSync
+{
+	repeated EquipInfo equipInfos = 1;
+}
+
+// 装备购买道具
+message HSEquipBuy
+{
+	required string equipId = 1;	
+	required int32 equipCount = 2;
+	required int32 stage = 3;
+	required int32 level = 4;
+}
+
+// 装备购买道具
+message HSEquipBuyRet
+{
+	required string equipId = 1;	
+	required int32 equipCount = 2;
+}
+
+// 合成装备
+message HSEquipCompose
+{
+	required string equipId = 1;
+	required int32 relatedItemId = 2;
+}
+
+// 合成装备返回
+message HSEquipComposeRet
+{
+	required string equipId = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}
+
+// 装备分解
+message HSEquipDecompose
+{
+	repeated int64 equipId = 1;
+}
+
+// 装备分解返回
+message HSEquipDeComposeRet
+{
+
+}
+
+// 装备升级
+message HSEquipIncreaseLevel
+{
+	required int64 id= 1;
+}
+
+// 装备升级返回
+message HSEquipIncreaseLevelRet
+{
+	required int64 id = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}
+
+// 装备进阶
+message HSEquipIncreaseStage
+{
+	required int64 id = 1;
+}
+
+// 装备进阶返回
+message HSEquipIncreaseStageRet
+{
+	required int64 id = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}
+
+// 装备打孔
+message HSEquipPunch
+{
+	required int64 id = 1;
+}
+
+// 装备打孔返回
+message HSEquipPunchRet
+{
+	repeated GemPunch gemItems = 1;
+}
+
+// 镶嵌宝石
+message HSEquipGem
+{
+	required int64 id = 1;
+	required int32 slot = 2;
+	required int32 type = 3;
+	optional string newGem = 4;
+	optional string oldGem = 5;
+}
+
+// 镶嵌宝石返回
+message HSEquipGemRet
+{
+	repeated GemPunch gemItems = 1;
+}
+
+// 装备穿戴
+message HSEquipMonsterDress
+{
+	required int64 id  = 1;
+	required int32 monsterId = 2;
+}
+
+// 装备穿戴返回
+message HSEquipMonsterDressRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备卸载
+message HSEquipMonsterUndress
+{
+	required int64 id  = 1;
+}
+
+// 装备卸载返回
+message HSEquipMonsterUndressRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备替换 
+message HSEquipMonsterReplace
+{
+	required int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备替换返回
+message HSEquipMonsterReplaceRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}

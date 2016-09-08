@@ -479,7 +479,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
                     composeView.itemIcon.RefreshWithItemInfo(data);
                 }
                 ItemStaticData staticData = StaticDataMgr.Instance.GetItemData(data.itemId);
-                composeView.text_targetName.text = StaticDataMgr.Instance.GetTextByID(staticData.name);
+                composeView.text_targetName.text = staticData.NameAttr;
             }
         }
     }
@@ -626,13 +626,13 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         Refresh();
     }
 
-    public void ReloadData(Transform item, int index)
+    public void IScrollViewReloadItem(Transform item, int index)
     {
         ComposeItem material = item.GetComponent<ComposeItem>();
         material.ReloadData(composeList.ItemInfo[infos[index].itemData.itemId]);
     }
 
-    public Transform CreateData(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("ComposeItem");
         if (go != null)
@@ -645,7 +645,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         return null;
 }
 
-    public void CleanData(List<Transform> itemList)
+    public void IScrollViewCleanItem(List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

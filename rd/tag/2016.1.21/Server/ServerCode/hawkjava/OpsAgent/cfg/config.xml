@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<basic>
+		<debug>1</debug>
+		<ops>tcp://123.59.64.163:9009</ops>
+		<agent>tcp://127.0.0.1:10001</agent>
+	</basic>
+</config>

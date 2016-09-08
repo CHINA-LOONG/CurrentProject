@@ -1225,6 +1225,30 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
+	// adventureChange----------------------------------------------
+	public int getAdventureChange() {
+		return lf2Entity.adventureChange;
+	}
+
+	public void setAdventureChange(int times) {
+		lf2Entity.adventureChange = times;
+		lf2Update = true;
+	}
+
+	public void increaseAdventureChange() {
+		++lf2Entity.adventureChange;
+		lf2Update = true;
+	}
+
+	public Calendar getAdventureChangeBeginTime() {
+		return lf2Entity.adventureChangeBeginTime;
+	}
+
+	public void setAdventureChangeBeginTime(Calendar time) {
+		lf2Entity.adventureChangeBeginTime = time;
+		lf2Update = true;
+	}
+
 	// eggTimes------------------------------------------------
 	// TODO 抽蛋功能未开发，开发后统计数据
 	public int getEggCoinTimes() {

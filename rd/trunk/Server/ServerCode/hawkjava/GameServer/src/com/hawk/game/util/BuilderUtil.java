@@ -8,6 +8,8 @@ import org.hawk.util.services.HawkOrderService;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.config.ShopCfg;
+import com.hawk.game.entity.AdventureEntity;
+import com.hawk.game.entity.AdventureTeamEntity;
 import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -19,6 +21,9 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
 import com.hawk.game.player.Player;
+import com.hawk.game.protocol.Adventure.HSAdventure;
+import com.hawk.game.protocol.Adventure.HSAdventureCondition;
+import com.hawk.game.protocol.Adventure.HSAdventureTeam;
 import com.hawk.game.protocol.Alliance.AllianceBaseMonster;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
@@ -27,7 +32,9 @@ import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
+import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
+import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Statistics.HSSyncDailyRefresh;
@@ -35,12 +42,11 @@ import com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes;
 import com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh;
 import com.hawk.game.protocol.Statistics.HSSyncShopRefresh;
 import com.hawk.game.protocol.Statistics.HoleState;
-import com.hawk.game.protocol.Statistics.ItemState;
-import com.hawk.game.protocol.Player.PlayerInfo;
-import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
+import com.hawk.game.protocol.Statistics.ItemState;
 import com.hawk.game.protocol.Statistics.RechargeState;
 import com.hawk.game.protocol.Statistics.TowerState;
+import com.hawk.game.util.AdventureUtil.AdventureCondition;
 
 public class BuilderUtil {
 
@@ -94,6 +100,8 @@ public class BuilderUtil {
 		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
 		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+//		builder.setAdventureChange(statisticsEntity.getAdventureChange());
+//		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
 		builder.setTimeStamp(HawkTime.getSeconds());
 
 		// 设置订单服务器key
@@ -101,7 +109,7 @@ public class BuilderUtil {
 		if (statisticsEntity.getMonthCardEndTime() == null || HawkTime.getCalendar().compareTo(statisticsEntity.getMonthCardEndTime()) > 0) {
 			builder.setMonthCardLeft(0);
 		}
-		else {		
+		else {
 			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
 		}
 
@@ -233,7 +241,7 @@ public class BuilderUtil {
 		}
 		return builder;
 	}
-	
+
 	/**
 	 * 生成基地驻兵信息
 	 * @param baseEntity
@@ -253,10 +261,10 @@ public class BuilderUtil {
 			builder.setPosition(baseEntity.getPosition());
 			builder.setReward((HawkTime.getSeconds() - baseEntity.getSendTime()) * AllianceUtil.getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend());
 		}
-		
+
 		return builder;
 	}
-	
+
 	/**
 	 * 生成物品实体的builder信息
 	 * 
@@ -324,4 +332,29 @@ public class BuilderUtil {
 		return builder;
 	}
 
+	public static HSAdventureTeam.Builder genAdventureTeamBuilder(AdventureTeamEntity teamEntity) {
+		HSAdventureTeam.Builder builder = HSAdventureTeam.newBuilder();
+		builder.setTeamId(teamEntity.getTeamId());
+		builder.setAdventureId(teamEntity.getAdventureId());
+		builder.setEndTime(teamEntity.getEndTime());
+		builder.addAllSelfMonsterId(teamEntity.getSelfMonsterList());
+		if (null != teamEntity.getHireMonster()) {
+			builder.setHireMonster(teamEntity.getHireMonster());
+		}
+		return builder;
+	}
+
+	public static HSAdventure.Builder genAdventureBuilder(AdventureEntity adventureEntity) {
+		HSAdventure.Builder builder = HSAdventure.newBuilder();
+		builder.setAdventureId(adventureEntity.getAdventureId());
+
+		for (AdventureCondition condition : adventureEntity.getConditionList()) {
+			HSAdventureCondition.Builder conditionBuilder = HSAdventureCondition.newBuilder();
+			conditionBuilder.setMonsterCount(condition.monsterCount);
+			conditionBuilder.setConditionTypeCfgId(condition.conditionTypeCfgId);
+			builder.addCondition(conditionBuilder);
+		}
+
+		return builder;
+	}
 }

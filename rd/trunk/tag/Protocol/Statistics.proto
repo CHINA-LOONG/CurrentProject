@@ -1,0 +1,120 @@
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message InstanceState
+{
+	required string instanceId = 1;
+	required int32 star = 2;
+	optional int32 countDaily = 3;
+}
+
+message ChapterState
+{
+	// 完成的最高普通副本的章节
+	required int32 normalTopChapter = 1;
+	// 完成的最高普通副本的索引
+	required int32 normalTopIndex = 2;
+
+	// 完成的最高困难副本的章节
+	required int32 hardTopChapter = 3;
+	// 完成的最高困难副本的索引
+	required int32 hardTopIndex = 4;
+
+	// 普通章节宝箱状态列表
+	repeated int32 normalBoxState = 5;
+	// 困难章节宝箱状态列表
+	repeated int32 hardBoxState = 6;
+}
+
+message RechargeState
+{
+	required string productId = 1;
+	required int32  buyTimes = 2;
+}
+
+message ItemState
+{
+	required string itemId = 1;
+	required int32 useCountDaily = 2;
+}
+
+message HoleState
+{
+	required int32 holeId = 1;
+	required bool isOpen = 2;
+	optional int32 countDaily = 3 [default = 0];
+}
+
+message TowerState
+{
+	required int32 towerId = 1;
+	required int32 floor = 2;
+}
+
+// protocol-----------------------------------------------------
+
+message HSStatisticsInfoSync
+{
+	// 副本状态
+	repeated InstanceState instanceState = 1;
+	// 章节状态
+	required ChapterState chapterState = 2;
+	// 宠物图鉴
+	repeated string monsterCollect = 3;
+	// 当前活力值
+	required int32 fatigue = 4;
+	// 当前正在累计活力值恢复时间开始时间戳（秒）
+	required int32 fatigueBeginTime = 5;
+	// 当前技能点
+	required int32 skillPoint = 6;
+	// 当前正在累计技能点恢复时间开始时间戳（秒）
+	required int32 skillPointBeginTime = 7;
+	// 服务器时间戳
+	optional int32 timeStamp = 8;
+	// 订单服务器key
+	required string orderServerKey = 9;
+	// 商城购买状态
+	repeated RechargeState rechargeState = 10;
+	// 月卡剩余时间
+	required int32 monthCardLeft = 11;
+	// 今日钻石购买金币次数
+	required int32 gold2CoinTimes = 12;
+	// 多倍经验剩余次数
+	required HSSyncExpLeftTimes expLeftTimes = 13;
+	// 今日物品使用次数
+	repeated ItemState itemState = 14;
+	// 今日副本挑战重置次数
+	required int32 instanceResetCount = 15;
+	// 洞开启状态
+	repeated HoleState holeState = 16;
+	// 塔完成层数
+	repeated TowerState towerState = 17;
+}
+
+// SYNC_DAILY_REFRESH_S
+message HSSyncDailyRefresh
+{
+	repeated HoleState holeState = 1;
+}
+
+// SYNC_MONTHLY_REFRESH_S
+message HSSyncMonthlyRefresh
+{
+}
+
+// SYNC_SHOP_REFRESH_S
+message HSSyncShopRefresh
+{
+	// 商店类型
+	required int32 shopType = 1;
+}
+
+// SYNC_EXP_LEFT_TIMES_S
+message HSSyncExpLeftTimes
+{
+	// 双倍经验剩余次数
+	required int32  doubleExpLeft = 1;
+	// 三倍经验剩余次数
+	required int32  tripleExpLeft = 2;
+}

@@ -50,16 +50,16 @@ public class MonsterEntity extends HawkDBEntity {
 
 	@Column(name = "lazy", nullable = false)
 	protected byte lazy = 0;
-	
+
 	@Column(name = "lazyExp", nullable = false)
 	protected int lazyExp = 0;
-	
+
 	@Column(name = "disposition", nullable = false)
 	protected byte disposition = 0;
 
 	@Column(name = "skillList", nullable = false)
 	private String skillJson = "";
-	
+
 	@Column(name = "state", nullable = false)
 	protected int state = 0;
 
@@ -146,7 +146,7 @@ public class MonsterEntity extends HawkDBEntity {
 	public void setLazy(byte lazy) {
 		this.lazy = lazy;
 	}
-	
+
 	public int getLazyExp() {
 		return lazyExp;
 	}
@@ -154,7 +154,7 @@ public class MonsterEntity extends HawkDBEntity {
 	public void setLazyExp(int lazyExp) {
 		this.lazyExp = lazyExp;
 	}
-	
+
 	public byte getDisposition() {
 		return disposition;
 	}
@@ -186,15 +186,15 @@ public class MonsterEntity extends HawkDBEntity {
 	public void removeState(int state){
 		this.state &= ~state;
 	}
-	
+
 	public boolean isStateSet(int state){
-		return (this.state & state) == state;
+		return 0 != (this.state & state);
 	}
-	
+
 	public boolean canMonsterDecompose(){
 		return (state | Const.MonsterState.LOCKED_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE | Const.MonsterState.IN_ALLIANCE_BASE_VALUE)!= 0;
 	}
-	
+
 	@Override
 	public boolean decode() {
 		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {
@@ -208,7 +208,7 @@ public class MonsterEntity extends HawkDBEntity {
 		skillJson = HawkJsonUtil.getJsonInstance().toJson(skillMap);
 		return true;
 	}
-	
+
 	@Override
 	public int getCreateTime() {
 		return createTime;

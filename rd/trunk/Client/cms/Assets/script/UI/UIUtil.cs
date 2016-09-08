@@ -390,10 +390,10 @@ public class UIUtil
             outline = label.gameObject.AddComponent<Outline>();
         }
         outline.effectColor = ColorConst.GetStageOutLineColor(itemData.grade);
-        label.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+        label.text = itemData.NameAttr;
     }
 
-    public static void SetStageColor(Text label, string textId, int stage, int level = 0)
+    public static void SetStageColor(Text label, string txtMsg, int stage, int level = 0)
     {
         label.color = ColorConst.GetStageTextColor(stage);
 
@@ -406,11 +406,11 @@ public class UIUtil
 
         if (level == 0)
         {
-            label.text = StaticDataMgr.Instance.GetTextByID(textId);
+            label.text = txtMsg;
         }
         else
         {
-            label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetTextByID(textId), level);
+            label.text = string.Format("{0} +{1}", txtMsg, level);
         }
 
     }

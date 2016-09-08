@@ -19,7 +19,7 @@ public class InstanceUtil {
 	/**
 	 * @key chapterId
 	 */
-	public static Map<Integer, InstanceChapter> chapterMap = new HashMap<>();
+	private static Map<Integer, InstanceChapter> chapterMap = new HashMap<>();
 
 	// 构造阶段---------------------------------------------------------------------
 

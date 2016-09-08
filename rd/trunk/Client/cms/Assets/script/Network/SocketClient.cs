@@ -255,6 +255,7 @@ public class SocketClient : MonoBehaviour {
     /// 发送连接请求
     /// </summary>
     public static void SendConnect() {
+        _events.Enqueue(new KeyValuePair<NetActionType, ProtocolMessage>(NetActionType.Logout, null));
 		_events.Enqueue(new KeyValuePair<NetActionType, ProtocolMessage>(NetActionType.Connect, null));
     }
 

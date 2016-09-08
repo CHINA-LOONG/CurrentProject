@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="com_funplus_sdk_account_white">#ffffff</color>
+    <color name="com_funplus_sdk_account_black">#000000</color>
+    <color name="com_funplus_sdk_account_red">#ff0000</color>
+    <color name="com_funplus_sdk_account_popup_bg_color">#efeff4</color>
+    <color name="com_funplus_sdk_account_popup_border_color">#dddddd</color>
+    <color name="com_funplus_sdk_account_dashed_line_color">#dddddd</color>
+    <color name="com_funplus_sdk_account_input_border_color">#cccccc</color>
+    <color name="com_funplus_sdk_account_input_hint_color">#dddddd</color>
+    <color name="com_funplus_sdk_account_submit_button_light_color">#4ea6e8</color>
+    <color name="com_funplus_sdk_account_submit_button_dark_color">#27a7fc</color>
+    <color name="com_funplus_sdk_account_cancel_button_light_color">#FBAA3C</color>
+    <color name="com_funplus_sdk_account_cancel_button_dark_color">#F8941C</color>
+    <color name="com_funplus_sdk_account_fp_dark_blue">#19a5ff</color>
+    <color name="com_funplus_sdk_account_fp_light_blue">#3fb6ff</color>
+    <color name="com_funplus_sdk_account_fb_dark_blue">#3C5A96</color>
+    <color name="com_funplus_sdk_account_fb_light_blue">#637BAB</color>
+    <color name="com_funplus_sdk_account_vk_dark_blue">#4E76A1</color>
+    <color name="com_funplus_sdk_account_vk_light_blue">#7292B4</color>
+    <color name="com_funplus_sdk_account_wx_dark_green">#1BCE29</color>
+    <color name="com_funplus_sdk_account_wx_light_green">#49D854</color>
+    <color name="com_funplus_sdk_account_gp_dark_red">#DD4C3E</color>
+    <color name="com_funplus_sdk_account_gp_light_red">#E47065</color>
+    <color name="com_funplus_sdk_account_login_success_popup_bg_color">#cccccc</color>
+    <color name="com_funplus_sdk_account_login_success_popup_border_color">#dddddd</color>
+</resources>

@@ -36,25 +36,39 @@ public class SpellProtoType
 	{
 		get
 		{
-			if(!string.IsNullOrEmpty(tips))
-			{
-				return StaticDataMgr.Instance.GetTextByID(tips);
-			}
-			else
-			{
-				return "";
-			}
-		}
+            return StaticDataMgr.Instance.GetTextByID(tips,LanguageType.SkillLanguage);
+        }
 	}
 	public string NameAttr
 	{
 		get
 		{
-			return StaticDataMgr.Instance.GetTextByID(name);
+			return StaticDataMgr.Instance.GetTextByID(name, LanguageType.SkillLanguage);
 		}
 	}
+    public string TipsDescriptionAttr
+    {
+        get
+        {
+            return StaticDataMgr.Instance.GetTextByID(tipsDescription, LanguageType.SkillLanguage);
+        }
+    }
+    public string TipsCurlvlAttr
+    {
+        get
+        {
+            return StaticDataMgr.Instance.GetTextByID(tipsCurlvl, LanguageType.SkillLanguage);
+        }
+    }
+    public string TipsNextlvlAttr
+    {
+        get
+        {
+            return StaticDataMgr.Instance.GetTextByID(tipsNextlvl, LanguageType.SkillLanguage);
+        }
+    }
 
-	public	string GetTips(int level)
+    public	string GetTips(int level)
 	{
 		if (string.IsNullOrEmpty (TipAttr))
 			return "";
@@ -79,11 +93,6 @@ public class SpellProtoType
 			return TipAttr;
 		}
 	}
-
-    public string GetTypeName()
-    {
-		return SkilTips.GetCategoryDesc (category);
-    }
 }
 
 public class Spell
@@ -160,7 +169,7 @@ public class Spell
                 spellNameArgs.triggerTime = triggerTime;
                 spellNameArgs.casterID = casterID;
                 spellNameArgs.targetID = casterID;
-                spellNameArgs.wpNode = spellData.name;
+                spellNameArgs.wpNode = spellData.NameAttr;
                 spellNameArgs.vitalChange = spellData.energyGenerate;
                 spellNameArgs.vitalCurrent = caster.energy;
                 spellNameArgs.vitalMax = 0;

@@ -10,7 +10,7 @@ public class BuildModule : ModuleBase
         get { return mCurrentInitState; }
     }
     private int mCurrentInitState = -1;
-
+    private object mParam = null;
 	void Start()
 	{
 	}
@@ -44,12 +44,62 @@ public class BuildModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
+        mParam = param;
+    }
+    public override void OnExecute()
+    {
+
+    }
+
+    public override void OnEnter(object param)
+	{
+		BindListener();
+        if (needSyncInfo)
+        {
+            needSyncInfo = false;
+            RequestPlayerData();
+        }
+        //ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
+
+        UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+        if (loading != null)
+        {
+            //add resource request
+            AddResRequest();
+            loading.SetLoadingCallback(LoadResourceFinish);
+            loading.UpdateTotalAssetCount();
+        }
+    }
+    private void AddResRequest()
+    {
+        ResourceMgr resMgr = ResourceMgr.Instance;
+        resMgr.AddAssetRequest(new AssetRequest(UIBuild.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIQuest.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIMail.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIInstance.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIMonsters.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIPetDetails.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIMonsterCompose.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIAdjustBattleTeam.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIShop.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIStore.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UICompose.ViewName));
+        resMgr.AddAssetRequest(new AssetRequest(UIDecompose.ViewName));
+
+    }
+    public override IEnumerator LoadResourceFinish()
+    {
+        ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
+        //wait for ui
+        yield return new WaitForFixedUpdate();
+        UIMgr.Instance.CloseUI_(UILoading.ViewName);
+
+        UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
         UIIm imUI = UIMgr.Instance.OpenUI_(UIIm.ViewName) as UIIm;
         imUI.transform.SetAsLastSibling();
-        if (param != null)
+        if (mParam != null)
         {
-            mCurrentInitState = System.Convert.ToInt32(param);
+            mCurrentInitState = System.Convert.ToInt32(mParam);
             int curInstanceType = GameDataMgr.Instance.curInstanceType;
             //exit from normal instance
             if (curInstanceType == (int)InstanceType.Normal)
@@ -87,28 +137,12 @@ public class BuildModule : ModuleBase
                         break;
                 }
             }
-            else  if(curInstanceType == (int)InstanceType.Guild)
+            else if (curInstanceType == (int)InstanceType.Guild)
             {
                 GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociatyTaskWithTeam(SociatyTaskContenType.MyTeam);
             }
         }
-	}
-	
-	public override void OnEnter(object param)
-	{
-		BindListener();
-        if (needSyncInfo)
-        {
-            needSyncInfo = false;
-            RequestPlayerData();
-        }
-        ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
     }
-	
-	public override void OnExecute()
-	{
-		
-	}
 	
 	public override void OnExit()
 	{
@@ -123,11 +157,10 @@ public class BuildModule : ModuleBase
 
 	//net message
 	void OnRequestPlayerSyncInfoFinished(ProtocolMessage msg)
-	{
-
-        UINetRequest.Close();
+	{    
         if (msg.GetMessageType() == (int) PB.sys.ERROR_CODE)
         {
+            UINetRequest.Close();
             return;
         }
 
@@ -135,10 +168,11 @@ public class BuildModule : ModuleBase
 		if (msgType == PB.code.SYNCINFO_S.GetHashCode ())
 		{
 			PB.HSSyncInfoRet  response = msg.GetProtocolBody<PB.HSSyncInfoRet>();
+            Logger.LogWarning("player info sync begin!");
 		}
 		else if ( msgType == PB.code.ASSEMBLE_FINISH_S.GetHashCode() )
 		{           
-            //UINetRequest.Close();
+            UINetRequest.Close();
 
 			//消息同步完成
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();

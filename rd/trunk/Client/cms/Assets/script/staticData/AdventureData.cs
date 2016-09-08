@@ -1,13 +1,39 @@
-﻿public class AdventureData
+﻿
+public enum AdventureType
+{
+    QIANGHUA,
+    JINJIE,
+    BOSS
+}
+public class AdventureData
 {
     public int id;
     public string comments;
     public string image;
     public int type;
     public int time;
-    public string level;
+    public string level;   //12,20
     public string basicReward;
     public string extraReward;
+
+    public int minLevel;
+    public int maxLevel;
+
+    public AdventureType Type
+    {
+        get { return (AdventureType)type; }
+    }
+    //在读取配置表单的时候调用，有些需要解析字符串获取数值
+    public void InitData()
+    {
+        string[]level=this.level.Split(',');
+        if (level.Length!=2)
+        {
+            Logger.LogError("大冒险等级限制配置错误");
+        }
+        minLevel = int.Parse(level[0]);
+        maxLevel = int.Parse(level[1]);
+    }
 }
 
 public class AdventureConditionNumData

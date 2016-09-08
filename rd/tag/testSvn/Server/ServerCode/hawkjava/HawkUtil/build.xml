@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="HawkUtil">
+    <property environment="env"/>
+    <property name="AccountServer.location" value="../AccountServer"/>
+    <property name="CdkServer.location" value="../CdkServer"/>
+    <property name="ChatMonitor.location" value="../ChatMonitor"/>
+    <property name="Collector.location" value="../Collector"/>
+    <property name="DBMerge.location" value="../DBMerge"/>
+    <property name="GameClient.location" value="../GameClient"/>
+    <property name="GameServer.location" value="../GameServer"/>
+    <property name="GameService.location" value="../GameService"/>
+    <property name="Http2Tcp.location" value="../Http2Tcp"/>
+    <property name="IpServer.location" value="../IpServer"/>
+    <property name="OpsAgent.location" value="../OpsAgent"/>
+    <property name="OpsManager.location" value="../OpsManager"/>
+    <property name="OrderServer.location" value="../OrderServer"/>
+    <property name="ShellAgent.location" value="../ShellAgent"/>
+    <property name="ShellCommand.location" value="../ShellCommand"/>
+    <property name="VersionServer.location" value="../VersionServer"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="HawkUtil.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/zmq.jar"/>
+        <pathelement location="lib/memcached.jar"/>
+        <pathelement location="lib/protobuf-java-2.5.0.jar"/>
+        <pathelement location="lib/mina-core-2.0.7.jar"/>
+        <pathelement location="lib/tools.jar"/>
+        <pathelement location="lib/dom4j-1.6.1.jar"/>
+        <pathelement location="lib/log4j-1.2.17.jar"/>
+        <pathelement location="lib/slf4j-api-1.7.6.jar"/>
+        <pathelement location="lib/slf4j-log4j12-1.7.6.jar"/>
+        <pathelement location="lib/commons-collections-3.1.jar"/>
+        <pathelement location="lib/json-lib-2.4-jdk15.jar"/>
+        <pathelement location="lib/mysql-connector-java-5.1.29-bin.jar"/>
+        <pathelement location="lib/commons-configuration-1.9.jar"/>
+        <pathelement location="lib/commons-lang-2.6.jar"/>
+        <pathelement location="lib/antlr-2.7.6.jar"/>
+        <pathelement location="lib/c3p0-0.9.1.jar"/>
+        <pathelement location="lib/jta-1.1.jar"/>
+        <pathelement location="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+        <pathelement location="lib/hibernate3.jar"/>
+        <pathelement location="lib/javassist-3.12.0.GA.jar"/>
+        <pathelement location="lib/commons-beanutils-1.9.1.jar"/>
+        <pathelement location="lib/ezmorph-1.0.6.jar"/>
+        <pathelement location="lib/commons-email-1.3.3.jar"/>
+        <pathelement location="lib/activation.jar"/>
+        <pathelement location="lib/mail.jar"/>
+        <pathelement location="lib/gson-1.6.jar"/>
+        <pathelement location="lib/jedis-2.6.0.jar"/>
+        <pathelement location="lib/commons-pool2-2.2.jar"/>
+        <pathelement location="lib/protobuf-java-format-1.2.jar"/>
+        <pathelement location="lib/javacsv.jar"/>
+        <pathelement location="lib/commons-codec-1.9.jar"/>
+        <pathelement location="lib/commons-logging-1.2.jar"/>
+        <pathelement location="lib/httpasyncclient-4.1.jar"/>
+        <pathelement location="lib/httpasyncclient-cache-4.1.jar"/>
+        <pathelement location="lib/httpclient-4.4.1.jar"/>
+        <pathelement location="lib/httpclient-cache-4.4.1.jar"/>
+        <pathelement location="lib/httpcore-4.4.1.jar"/>
+        <pathelement location="lib/httpcore-nio-4.4.1.jar"/>
+        <pathelement location="lib/concurrentlinkedhashmap-lru-1.4.jar"/>
+        <pathelement location="lib/notnoop-javaapns-1.0.0.beta3.jar"/>
+        <pathelement location="lib/google-gcm-151226.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="HawkUtil.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${ChatMonitor.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${ChatMonitor.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${DBMerge.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${DBMerge.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${GameService.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${GameService.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${Http2Tcp.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Http2Tcp.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OpsAgent.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OpsAgent.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OpsManager.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OpsManager.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OrderServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OrderServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${ShellCommand.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${ShellCommand.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="build"/>
+    </target>
+</project>

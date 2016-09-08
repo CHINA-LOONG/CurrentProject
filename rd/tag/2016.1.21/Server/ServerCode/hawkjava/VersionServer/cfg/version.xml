@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<version>
+		<ios>
+		    <vid_1 version="1" subversion="1.1" name="1.1.0" size = "679.2"/>
+		    <vid_2 version="1" subversion="1.2" name="1.2.0" size = "679.2"/>
+		    <vid_3 version="1" subversion="1.2.1" name="1.2.1" size = "679.2"/>
+		    
+		    <vid_4 version="2" subversion="2.1" name="2.1.0" size = "679.2"/>
+		    <vid_5 version="2" subversion="2.2" name="2.2.0" size = "679.2"/>
+		    <vid_6 version="2" subversion="2.2.1" name="2.2.1" size = "679.2"/>
+		        
+		    <vid_7 version="3" subversion="3.1" name="3.1.0" size = "679.2"/>
+		    <vid_8 version="3" subversion="3.2" name="3.2.0" size = "679.2"/>
+		    <vid_9 version="3" subversion="3.2.1" name="3.2.1" size = "679.2"/>    
+		</ios>
+		
+		<android>
+		    <vid_1 version="1" subversion="1.1" name="1.1.0" size = "679.2"/>
+		    <vid_2 version="1" subversion="1.2" name="1.2.0" size = "679.2"/>
+		    <vid_3 version="1" subversion="1.2.1" name="1.2.1" size = "679.2"/>
+		    
+		    <vid_4 version="2" subversion="2.1" name="2.1.0" size = "679.2"/>
+		    <vid_5 version="2" subversion="2.2" name="2.2.0" size = "679.2"/>
+		    <vid_6 version="2" subversion="2.2.1" name="2.2.1" size = "679.2"/>
+		        
+		    <vid_7 version="3" subversion="3.1" name="3.1.0" size = "679.2"/>
+		    <vid_8 version="3" subversion="3.2" name="3.2.0" size = "679.2"/>
+		    <vid_9 version="3" subversion="3.2.1" name="3.2.1" size = "679.2"/>    
+		</android>
+</version>

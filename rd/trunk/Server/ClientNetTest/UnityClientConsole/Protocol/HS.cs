@@ -93,14 +93,17 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1015)]
       EQUIP_INFO_SYNC_S = 1015,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1016)]
-      QUEST_INFO_SYNC_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
+      MAIL_INFO_SYNC_S = 1016,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1017)]
-      MAIL_INFO_SYNC_S = 1017,
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_INFO_SYNC_S", Value=1017)]
+      ADVENTURE_INFO_SYNC_S = 1017,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1018)]
-      ASSEMBLE_FINISH_S = 1018,
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1018)]
+      QUEST_INFO_SYNC_S = 1018,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1019)]
+      ASSEMBLE_FINISH_S = 1019,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -221,6 +224,39 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"GUILD_INSTANCE_ENTER_C", Value=3103)]
       GUILD_INSTANCE_ENTER_C = 3103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_ENTER_C", Value=3201)]
+      ADVENTURE_ENTER_C = 3201,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_ENTER_S", Value=3202)]
+      ADVENTURE_ENTER_S = 3202,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_SETTLE_C", Value=3203)]
+      ADVENTURE_SETTLE_C = 3203,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_SETTLE_S", Value=3204)]
+      ADVENTURE_SETTLE_S = 3204,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NEW_CONDITION_C", Value=3205)]
+      ADVENTURE_NEW_CONDITION_C = 3205,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NEW_CONDITION_S", Value=3206)]
+      ADVENTURE_NEW_CONDITION_S = 3206,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_CONDITION_C", Value=3207)]
+      ADVENTURE_BUY_CONDITION_C = 3207,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_CONDITION_S", Value=3208)]
+      ADVENTURE_BUY_CONDITION_S = 3208,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_TEAM_C", Value=3209)]
+      ADVENTURE_BUY_TEAM_C = 3209,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_TEAM_S", Value=3210)]
+      ADVENTURE_BUY_TEAM_S = 3210,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_CONDITION_PUSH_S", Value=3211)]
+      ADVENTURE_CONDITION_PUSH_S = 3211,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
@@ -624,6 +660,33 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_REWARD_S", Value=9081)]
       ALLIANCE_CONTRI_REWARD_S = 9081,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_REWARD_S", Value=9082)]
+      ALLIANCE_INSTANCE_REWARD_S = 9082,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_SEND_C", Value=9083)]
+      ALLIANCE_BASE_SEND_C = 9083,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_SEND_S", Value=9084)]
+      ALLIANCE_BASE_SEND_S = 9084,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_RECALL_C", Value=9085)]
+      ALLIANCE_BASE_RECALL_C = 9085,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_RECALL_S", Value=9086)]
+      ALLIANCE_BASE_RECALL_S = 9086,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MY_BASE_LIST_C", Value=9087)]
+      ALLIANCE_MY_BASE_LIST_C = 9087,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MY_BASE_LIST_S", Value=9088)]
+      ALLIANCE_MY_BASE_LIST_S = 9088,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_LIST_C", Value=9089)]
+      ALLIANCE_BASE_LIST_C = 9089,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_LIST_S", Value=9090)]
+      ALLIANCE_BASE_LIST_S = 9090,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,
             
@@ -653,6 +716,18 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEAVE_N_S", Value=9109)]
       ALLIANCE_LEAVE_N_S = 9109,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_FINISH_N_S", Value=9110)]
+      ALLIANCE_QUEST_FINISH_N_S = 9110,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEMA_JOIN_N_S", Value=9111)]
+      ALLIANCE_TEMA_JOIN_N_S = 9111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEMA_LEAVE_N_S", Value=9112)]
+      ALLIANCE_TEMA_LEAVE_N_S = 9112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_TIMEOUT_N_S", Value=9113)]
+      ALLIANCE_TASK_TIMEOUT_N_S = 9113,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,

@@ -72,7 +72,7 @@ public class BagItem : MonoBehaviour
 		sellPanel.gameObject.SetActive (bstate == BagState.Sell && itemStaticData.sellPrice > 0);
 
 		itemIcon.RefreshWithItemInfo (itemData);
-		UIUtil.SetStageColor (itemName, itemStaticData.name, itemStaticData.grade);
+		UIUtil.SetStageColor (itemName, itemStaticData.NameAttr, itemStaticData.grade);
 
 		if (bagType == BagType.BaoXiang)
 		{
@@ -110,7 +110,7 @@ public class BagItem : MonoBehaviour
 			Logger.LogError(string.Format("can't find itemid = {0} for baoxiang need item", stdata.needItem));
 			return;
 		}
-		UIUtil.SetStageColor (needItemName, needItemStData.name, needItemStData.grade);
+		UIUtil.SetStageColor (needItemName, needItemStData.NameAttr, needItemStData.grade);
 
 		int itemCount = 0;
 

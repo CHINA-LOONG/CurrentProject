@@ -1,0 +1,155 @@
+import "Protocol/Const.proto";
+import "Protocol/Reward.proto";
+import "Protocol/Consume.proto";
+import "Protocol/Monster.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message HSAssist  //未定
+{
+	required int32 playerId = 1;
+	required int32 playerLevel = 2;
+	required int32 playerPower = 3;
+	required string playerName = 4;
+	required bool isFriend = 5;
+	required HSMonster monster = 6;
+}
+
+message HSBattle
+{
+	required string battleCfgId = 1;
+	repeated string monsterCfgId = 2;
+	repeated HSRewardInfo monsterDrop = 3;
+}
+
+// protocol-----------------------------------------------------
+
+// INSTANCE_ENTER_C
+message HSInstanceEnter
+{
+	required string instanceId = 1;
+	repeated int32 battleMonsterId = 2;
+	optional int32 friendId = 3;
+}
+
+// INSTANCE_ENTER_S
+message HSInstanceEnterRet
+{
+	required string instanceId = 1;
+	repeated HSBattle battle = 2;
+}
+
+// INSTANCE_SETTLE_C
+message HSInstanceSettle
+{
+	required int32 passBattleCount = 1;
+	required int32 deadMonsterCount = 2;
+}
+
+// INSTANCE_SETTLE_S
+message HSInstanceSettleRet
+{
+	optional int32 starCount = 1 [default = 0];
+}
+
+// INSTANCE_SWEEP_C
+message HSInstanceSweep
+{
+	required string instanceId = 1;
+	required int32 count = 2;
+}
+
+// INSTANCE_SWEEP_S
+message HSInstanceSweepRet
+{
+	repeated HSRewardInfo completeReward = 1;
+	optional HSRewardInfo sweepReward = 2;
+}
+
+// INSTANCE_RESET_COUNT_C
+message HSInstanceResetCount
+{
+	required string instanceId = 1;
+}
+
+// INSTANCE_RESET_COUNT_S
+message HSInstanceResetCountRet
+{
+}
+
+// INSTANCE_REVIVE_C
+message HSInstanceRevive
+{
+	
+}
+
+// INSTANCE_REVIVE_S
+message HSInstanceReviveRet
+{
+	required int32 reviveCount = 1;
+}
+
+// CHAPTER_BOX_C
+message HSChapterBox
+{
+	required int32 chapterId = 1;
+	required int32 difficulty = 2;
+}
+
+// CHAPTER_BOX_S
+message HSChapterBoxRet
+{
+	required int32 chapterId = 1;
+	required int32 difficulty = 2;
+	required int32 boxState = 3;
+}
+
+// HOLE_ENTER_C
+message HSHoleEnter
+{
+	required int32 holeId = 1;
+	required string instanceId = 2;
+	repeated int32 battleMonsterId = 3;
+}
+
+// TOWER_ENTER_C
+message HSTowerEnter
+{
+	required int32 towerId = 1;
+	required int32 floor = 2;
+	repeated int32 battleMonsterId = 3;
+}
+
+// GUILD_INSTANCE_ENTER_C
+message HSGuildInstanceEnter
+{
+	required string instanceId = 1;
+	repeated int32 battleMonsterId = 2;
+}
+
+// --未使用--------------------------------------------------------
+
+// INSTANCE_ASSIST_C
+message HSInstanceAssist
+{
+
+}
+
+// INSTANCE_ASSIST_S
+message HSInstanceAssistRet
+{
+	repeated HSAssist assist = 1;
+}
+
+// INSTANCE_OPEN_CARD_C
+message HSInstanceOpenCard
+{
+	required int32 openCount = 1;
+}
+
+// INSTANCE_OPEN_CARD_S
+message HSInstanceOpenCardRet
+{
+}

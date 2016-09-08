@@ -11,6 +11,8 @@ import org.hawk.db.HawkDBManager;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.entity.AdventureEntity;
+import com.hawk.game.entity.AdventureTeamEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
@@ -20,6 +22,7 @@ import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.protocol.Adventure.HSAdventureInfoSync;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
@@ -76,12 +79,12 @@ public class PlayerData {
 	 * 装备列表
 	 */
 	private Map<Long, EquipEntity> equipEntityMap = null;
-	
+
 	/**
 	 * 玩家数据快照
 	 */
 	private SnapshotInfo.Builder onlinePlayerSnapshot = null;
-	
+
 	/**
 	 * 穿戴装备列表
 	 */
@@ -101,12 +104,22 @@ public class PlayerData {
 	 * 角色商城数据
 	 */
 	private ShopEntity shopEntity = null;
-	
+
 	/**
 	 * 公会基本信息
 	 */
 	private PlayerAllianceEntity playerAllianceEntity = null;
-	
+
+	/**
+	 * 大冒险列表
+	 */
+	private List<AdventureEntity> adventureEntityList = null;
+
+	/**
+	 * 大冒险队伍列表
+	 */
+	private Map<Integer, AdventureTeamEntity> adventureTeamEntityMap = null;
+
 	/**
 	 * 构造函数
 	 * 
@@ -166,7 +179,7 @@ public class PlayerData {
 	public int getLevel() {
 		return playerEntity.getLevel();
 	}
-	
+
 	/**
 	 * 获取玩家基础数据
 	 */
@@ -265,7 +278,7 @@ public class PlayerData {
 	public Map<Integer, Long> getMonsterEquips(int monsterId) {
 		return dressedEquipMap.get(monsterId);
 	}
-	
+
 	/**
 	 * 添加装备  不修改entity
 	 * 
@@ -444,7 +457,7 @@ public class PlayerData {
 	public void setQuest(HSQuest quest) {
 		questMap.put(quest.getQuestId(), quest);
 	}
-	
+
 	/**
 	 * 获取道具列表
 	 * 
@@ -551,7 +564,51 @@ public class PlayerData {
 	public void removeMailEntity(MailEntity mailEntity) {
 		mailEntityList.remove(mailEntity);
 	}
-	
+
+	/**
+	 * 获取大冒险列表
+	 */
+	public List<AdventureEntity> getAdventureEntityList() {
+		return adventureEntityList;
+	}
+
+	public AdventureEntity getAdventureEntity(int advenId) {
+		for (AdventureEntity entity : adventureEntityList) {
+			if (advenId == entity.getAdventureId()) {
+				return entity;
+			}
+		}
+		return null;
+	}
+
+	public AdventureEntity getAdventureEntity(int type, int gear) {
+		for (AdventureEntity entity : adventureEntityList) {
+			if (type == entity.getType() && gear == entity.getGear()) {
+				return entity;
+			}
+		}
+		return null;
+	}
+
+	public void addAdventureEntity(AdventureEntity adventureEntity) {
+		adventureEntityList.add(adventureEntity);
+	}
+
+	/**
+	 * 获取大冒险队伍列表
+	 */
+	public Map<Integer, AdventureTeamEntity> getAdventureTeamEntityMap() {
+		return adventureTeamEntityMap;
+	}
+
+	public AdventureTeamEntity getAdventureTeamEntity(int teamId) {
+		return adventureTeamEntityMap.get(teamId);
+	}
+
+	public void addAdventureTeamEntity(AdventureTeamEntity teamEntity) {
+		adventureTeamEntityMap.put(teamEntity.getTeamId(), teamEntity);
+	}
+
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -708,6 +765,34 @@ public class PlayerData {
 		return playerAllianceEntity;
 	}
 
+	public void loadAllAdventure() {
+		if (adventureEntityList == null) {
+			adventureEntityList = HawkDBManager.getInstance().query("from AdventureEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (adventureEntityList == null) {
+				adventureEntityList = new ArrayList<>();
+				return;
+			}
+			if (adventureEntityList.size() > 0) {
+				for (AdventureEntity entity : adventureEntityList) {
+					entity.decode();
+				}
+			}
+		}
+	}
+
+	public void loadAllAdventureTeam() {
+		if (adventureTeamEntityMap == null) {
+			adventureTeamEntityMap = new HashMap<>();
+			List<AdventureTeamEntity> resultList = HawkDBManager.getInstance().query("from AdventureTeamEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (resultList != null && resultList.size() > 0) {
+				for (AdventureTeamEntity teamEntity : resultList) {
+					teamEntity.decode();
+					adventureTeamEntityMap.put(teamEntity.getTeamId(), teamEntity);
+				}
+			}
+		}
+	}
+
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/
@@ -822,7 +907,7 @@ public class PlayerData {
 				}
 			}
 		}
-		
+
 		if (builder.getItemInfosCount() > 0) {
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder));
 		}
@@ -876,7 +961,33 @@ public class PlayerData {
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MAIL_INFO_SYNC_S, builder);
 		player.sendProtocol(protocol);
 	}
-	
+
+	/**
+	 * 同步大冒险信息
+	 */
+	public void syncAdventureInfo() {
+		HSAdventureInfoSync.Builder builder = HSAdventureInfoSync.newBuilder();
+		builder.setTeamCount(adventureTeamEntityMap.size());
+
+		List<Integer> busyAdventureList = new ArrayList<Integer> ();
+
+		for (AdventureTeamEntity teamEntity : adventureTeamEntityMap.values()) {
+			if (0 != teamEntity.getAdventureId()) {
+				builder.addBusyTeam(BuilderUtil.genAdventureTeamBuilder(teamEntity));
+				busyAdventureList.add(teamEntity.getAdventureId());
+			}
+		}
+
+		for (AdventureEntity advenEntity : adventureEntityList) {
+			if (false == busyAdventureList.contains(advenEntity.getAdventureId())) {
+				builder.addIdleAdventure(BuilderUtil.genAdventureBuilder(advenEntity));
+			}
+		}
+
+		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ADVENTURE_INFO_SYNC_S, builder);
+		player.sendProtocol(protocol);
+	}
+
 	/**
 	 * 获取在线玩家快照数据
 	 * @return
@@ -887,7 +998,7 @@ public class PlayerData {
 		}
 		return onlinePlayerSnapshot;
 	}
-	
+
 	/**
 	 * 刷新在线玩家快照数据
 	 */

@@ -1,0 +1,12 @@
+﻿#NUM,TEXT,TEXT
+index,name,closedbook
+#关卡,关卡名字,关闭的书
+1,mythopathlevel1,xinyangzhishu_rukou_1
+2,mythopathlevel2,xinyangzhishu_rukou_2
+3,mythopathlevel3,xinyangzhishu_rukou_3
+4,mythopathlevel4,xinyangzhishu_rukou_4
+5,mythopathlevel5,xinyangzhishu_rukou_5
+6,mythopathlevel6,xinyangzhishu_rukou_6
+7,mythopathlevel7,xinyangzhishu_rukou_7
+8,mythopathlevel8,xinyangzhishu_rukou_8
+9,mythopathlevel9,xinyangzhishu_rukou_9

@@ -1,0 +1,19 @@
+﻿#NUM,TEXT,NUM,TEXT
+id,condition,successStepIndex,battleStepIDList
+#教程id(从100开始),开启条件,过了这步 就算教程成功(从1开始数),是否显示照妖镜对话id
+101,0,1,"[""g1_s1"",""g1_s2"",""g1_s2_1"",""g1_s3"",""g1_s4"",""g1_s4_1"",""g1_s4_3"",""g1_s4_4"",""g1_s5"",""g1_s6"",""g1_s7"",""g1_s8"",""g1_s9""]"
+103,GBV_Phy_EnergyFull,2,"[""g2_s1"",""g2_s2""]"
+104,GBV_MirrorHint,1,"[""g3_s1""]"
+105,GBV_MirrorHint1,1,"[""g4_s1""]"
+106,GBV_ChangePet,1,"[""g5_s1""]"
+107,GBV_ChangePetLowLife,1,"[""g6_s1""]"
+108,GBV_Magic_EnergyFull,1,"[""g7_s1""]"
+117,GBV_Weakpointpicture,1,"[""g15_s1"",""g16_s1_1"",""g16_s1_3"",""g16_s1_4""]"
+109,GBV_FindBossWeakpoint,2,"[""g8_s1""]"
+110,GBV_FindBossWeakpoint1,1,"[""g9_s1""]"
+111,GBV_CompleteGuide,1,"[""g10_s1""]"
+112,GBV_Element,1,"[""g11_s1""]"
+116,GBV_Element,1,"[""g11_s2""]"
+113,GBV_Element1,1,"[""g12_s1""]"
+114,GBV_WeakpointMany,1,"[""g13_s1""]"
+115,GBV_WeakpointHide,1,"[""g14_s1""]"

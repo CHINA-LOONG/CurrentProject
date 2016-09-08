@@ -58,7 +58,7 @@ public class EquipListItem : MonoBehaviour
         {
             equipIcon.RefreshWithEquipInfo(info.equipData,true);
         }
-        UIUtil.SetStageColor(textName, info.itemInfo.name, info.equipData.stage);
+        UIUtil.SetStageColor(textName, info.itemInfo.NameAttr, info.equipData.stage);
 
         UIUtil.SetEquipPart(textType, info.itemInfo.part);
 

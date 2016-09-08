@@ -88,9 +88,10 @@ public class GameEventList
     public static string HuoliChanged = "HuoliChanged";//param int (huoli)
 
     public static string RefreshUseHuoliWithZeroClock = "RefreshUseHuoliWithZeroClock";//0点刷新
-
+    //Quest
     public static string QuestChanged = "QuestChanged";
-
+    //Adventure
+    public static string AdventureChange = "AdventureChange";
     //Mail
     public static string MailAdd = "MailAdd";
     public static string MailRead = "MailRead";

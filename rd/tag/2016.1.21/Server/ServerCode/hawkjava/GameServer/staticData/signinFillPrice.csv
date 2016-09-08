@@ -1,0 +1,4 @@
+﻿#NUM,NUM,NUM,NUM
+consume,consumeAdd,doubleTimes,ceiling
+#基础消耗,次数消耗加成,翻倍次数,上限
+20,20,5,400

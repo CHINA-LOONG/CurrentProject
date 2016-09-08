@@ -1,0 +1,186 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="No error";
+
+"ErrorUnspecific_9999"="Error unspecified";
+
+"FPErrorNotInstall_0100"="SDK install failed";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Failed to connect to config server";
+
+"FPErrorInvalidConfigRequestData_0102"="Config server request data failed";
+
+"FPErrorFailedToParseConfig_0103"="Parse config failed";
+
+"FPErrorInvliadConfigData_0104"="Invalid game config";
+
+"FPErrorWrongSignature_1101"="Signature incorrect";
+
+"FPErrorFailedCreateID_1102"="Failed to create FunPlus ID, please try again later";
+
+"FPErrorWrongGameID_1103"="Incorrect game ID";
+
+"FPErrorWrongEmail_1104"="Invalid email";
+
+"FPErrorWrongPassword_1105"="Incorrect password";
+
+"FPErrorWrongGUID_1106"="Invalid GUID";
+
+"FPErrorEmailExisted_1107"="Email has already been used";
+
+"FPErrorFailedCreateAccount_1108"="Failed to create account";
+
+"FPErrorAccountBound_1109"="This account has already been bound";
+
+"FPErrorEmailNotFound_1110"="Unable to find email.";
+
+"FPErrorLoginFailed_1111"="Login failed";
+
+"FPErrorPasswordLength_1112"="Password length error";
+
+"FPErrorFailedResetPassword_1113"="Reset password failed";
+
+"FPErrorWrongResetPasswordToken_1114"="";
+
+"FPErrorEmptyResetPasswordToken_1115"="";
+
+"FPErrorPasswordNotChanged_1116"="New password is similar to old one";
+
+"FPErrorFailedChangePassword_1117"="Change password failed";
+
+"FPErrorFailedAccountNotFound_1118"="Account not found";
+
+"FPErrorFailedResetPasswordEmail_1119"="";
+
+"FPErrorFailedWrongGameSetting_1120"="Invalid game settings";
+
+"FPErrorFailedResetPasswordTemp_1121"="";
+
+"FPErrorEmptyFPID_1122"="Empty FPID";
+
+"FPErrorWrongPlatformId_1123"="Incorrect platform ID";
+
+"FPErrorFailedToBindWithSocialID_1124"="Bind with Social ID failed";
+
+"FPErrorReachLoginLimit_1125"="Login limit exceeded";
+
+"FPErrorEmailTooLong_1126"="Email too long";
+
+"FPErrorEmptySession_1127"="Session is empty";
+
+"FPErrorSessionNotFound_1128"="Session not found";
+
+"FPErrorSessionExpired_1129"="Session expired";
+
+"FPErrorSessionAppMismatch_1130"="Session and current game ID mismatch";
+
+"FPErrorWrongPlatformToken_1131"="Platform token error";
+
+"FPErrorWrongPlatformType_1132"="Platform type error";
+
+"FPErrorInvalidPlatformToken_1133"="Platform token invalid";
+
+"FPErrorUnknownAccountType_1200"="Account type unknown";
+
+"FPErrorNotLoggedIn_1201"="User not logged in";
+
+"FPErrorAlreadyLoggedIn_1202"="User already logged in";
+
+"FPErrorIoginInProgress_1203"="Another login currently in progress";
+
+"FPErrorWrongLoginParams_1204"="Login parameters invalid";
+
+"FPErrorFailedLoginAccount_1205"="Login failed";
+
+"FPErrorAccountBoundToOther_1206"="Bind account failed";
+
+"FPErrorFailedToConnectAccountServer_1207"="Conect to account server failed";
+
+"FPErrorFailedToParseAccountResponse_1208"="Failed to parse account response data";
+
+"FPErrorWechatClientIssue_2000"="WeChat: Client error";
+
+"FPErrorWechatUserCancel_2001"="WeChat: User cancelled action";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: User login failed";
+
+"FPErrorWechatDiffId_2003"="WeChat: Inconsistent WeChat accounts";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Not in White List";
+
+"FPErrorWechatAccountBoundToOther_2005"="WeChat: FunPlus ID is already bound to another account";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: User not logged in";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: User login failed";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Get user data failed";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Send game invite failed";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: User cancelled action";
+
+"FPErrorFacebookException_2105"="Facebook: Undefined exception";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Facebook: FunPlus ID is already bound to another account";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Get friends data failed";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Friends permission required";
+
+"FPErrorVkNotLoggedIn_2200"="VK: User not logged in";
+
+"FPErrorVkLoginFailed_2201"="VK: User login failed";
+
+"FPErrorVkCaptchaError_2202"="VK: Captcha error";
+
+"FPErrorVkAccessDenied_2203"="VK: Access denied";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Accept user token failed";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Get user token failed";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Token renew failed";
+
+"FPErrorVkException_2207"="VK: Undefined exception";
+
+"FPErrorVkUserCanceledAction_2208"="VK: User cancelled action";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Get user data failed";
+
+"FPErrorVkAccountBoundToOther_2210"="VK: FunPlus ID is already bound to another account";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Get friends data failed";
+
+"FPErrorGooglePlusCurrentPersonIsNull_2300"="Google Plus: Get current user failed";
+
+"FPErrorGoolePlusGetAccessTokenFailed_2301"="Google Plus: Get user token failed";
+
+"FPErrorGoolePlusConnectionFailed_2302"="Google Plus: Connection failed";
+
+"FPErrorGooglePlusAccountBoundToOther_2303"="Google Plus: FunPlus ID is already bound to another account";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Connection to payment server failed";
+
+"FPErrorInvalidPaymentRequestData_3001"="Payment request data invalid";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Failed to parse payment response data";
+
+"FPErrorPaymentResponseError_3003"="Payment server response invalid";
+
+"FPErrorInitGoogleIab_3100"="Google Lab: Initialization error";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google Lab: Purchase failed";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google Lab: Google account not configured";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google Lab: Unable to complete purchase";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Purchase failed";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Product info invalid";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Product ID invalid";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Local roots not found";
+

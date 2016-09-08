@@ -827,7 +827,7 @@ richang4,每日装备升级,Daily Equipment Upgrade
 richang5,每日金币购买,Daily Coin Purchase
 richang6,每日商店刷新,Daily Store Refresh
 rimubiao1,剧情副本10次,Complete 10 Campaign Stages
-rimubiao2,英雄副本3次,Complete 3 Heroic Stages
+rimubiao2,通关挑战副本3次,Complete 3 Heroic Stages
 rimubiao3,技能升级3次,Level up abilities 3 times
 rimubiao4,装备升级1次,Upgrade equipment once
 rimubiao5,购买金币1次,Purchase Coins once
@@ -839,7 +839,7 @@ linmubiao2,合成花魄,Summon Flower Spirit
 zhixian20001,扫荡2-3,Raid 2-3
 zhixian20002,扫荡2-7,Raid 2-7
 zhimubiao20001,通关2-3,Raid 2-3（even you pass）
-zhimubiao20002,通关2-3,Raid 2-7 （even you pass）
+zhimubiao20002,通关2-7,Raid 2-7 （even you pass）
 login_denglu_001,当前登录服务器,Current server
 login_denglu_002,切换,Change
 login_gonggao_001,公告,Announcement
@@ -863,7 +863,7 @@ houbei_name,后备站位,Reserve Position
 saodang_name,扫荡功能,Raid Function
 putongshangdian_name,普通商店,Normal Store
 tiaozhan_name,挑战副本,Heroic Stage
-gengduo_name,更多精彩玩法,More exciting game modes
+gengduo_name,更多精彩玩法,More exciting content
 hecheng_desc,可以获得更高等级的宝石和材料！,You can receive more advanced Gems and Materials!
 fenjie_desc,分解多余的宠物和装备可以快速获得材料！,Disenchant extra monsters and equipment to quickly get more Materials!
 dazao_desc,提升战力最直接的方式。,The most direct way to increase BP.
@@ -873,59 +873,59 @@ putongshangdian_desc,商店中可能出现意想不到的商品哦！,Some unexp
 tiaozhan_desc,去挑战难度更高的副本吧！,Go and challenge some more difficult Stages!
 gengduo_desc,更多精彩玩法请期待下个版本！,Please wait for the next version for even more exciting game modes!
 ,,
-advanture_title,大冒险,Adventure
-advanture_qianghuashi,破碎的裂隙,Crumbling
-advanture_jinjieshi,干扰的裂隙,Interference
-advanture_boss,纯粹的裂隙,Purity
-advanture_time,探险时间   {0}小时,Exploration time  {0} hrs
-advanture_teams,探险小队,Exploration team
-advanture_tip1,探索强化石宝藏能够获得宠物经验药水、宠物强化石、装备强化石,"Explore upgrade stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
-advanture_tip2,探索进阶石宝藏能够获得宠物经验药水、装备进阶石、宠物进阶石,"Explore evolution stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
-advanture_tip3,探索BOSS巢穴能够获得宠物经验药水、BOSS宝箱,Explore the Boss Lair to get Monster EXP Potions and Boss Treasures
-advanture_ing,探险中…,Exploring…
-advanture_alreadycom,已完成,Completed
-advanture_click,点击领奖,Tap to collect
-advanture_jiadui,没有空余小队，是否添加小队？,"No open team spots, create a team?"
-advanture_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} hrs)
-advanture_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
-advanture_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
-advanture_paimonster,派遣宠物,Dispatch Monsters
-advanture_condition1,条件1,Req. 1
-advanture_condition2,条件2,Req. 2
-advanture_condition3,条件3,Req. 3
-advanture_getpercent,获得概率,Droprate
-advanture_change,变更条件,Edit Conditions
-advanture_go,探险,Explore
-advanture_foundationreward,基础奖励,Basic Rewards
-advanture_extrareward,额外奖励,Bonus Rewards
-advanture_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
+adventure_title,大冒险,Adventure
+adventure_qianghuashi,破碎的裂隙,Crumbling
+adventure_jinjieshi,干扰的裂隙,Interference
+adventure_boss,纯粹的裂隙,Purity
+adventure_time,探险时间   <color=#ffcc00ff>{0}</color>小时,Exploration time  <color=#ffcc00ff>{0}</color> hrs
+adventure_teams,探险小队,Exploration team
+adventure_tip1,探索强化石宝藏能够获得宠物经验药水、宠物强化石、装备强化石,"Explore upgrade stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+adventure_tip2,探索进阶石宝藏能够获得宠物经验药水、装备进阶石、宠物进阶石,"Explore evolution stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
+adventure_tip3,探索BOSS巢穴能够获得宠物经验药水、BOSS宝箱,Explore the Boss Lair to get Monster EXP Potions and Boss Treasures
+adventure_ing,探险中…,Exploring…
+adventure_alreadycom,已完成,Completed
+adventure_click,点击领奖,Tap to collect
+adventure_jiadui,没有空余小队，是否添加小队？,"No open team spots, create a team?"
+adventure_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} hrs)
+adventure_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
+adventure_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
+adventure_paimonster,派遣宠物,Dispatch Monsters
+adventure_condition1,条件1,Req. 1
+adventure_condition2,条件2,Req. 2
+adventure_condition3,条件3,Req. 3
+adventure_getpercent,获得概率,Droprate
+adventure_change,变更条件,Edit Conditions
+adventure_go,探险,Explore
+adventure_foundationreward,基础奖励,Basic Rewards
+adventure_extrareward,额外奖励,Bonus Rewards
+adventure_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
 sociaty_meijiaguild,尚未加入公会,not join guild
-advanture_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
-advanture_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
-advanture_tipsmax,次数已满,(full)
-advanture_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
-advanture_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
-advanture_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?
-advanture_tipsweight,额外奖励获得概率,Bonus reward droprate
-advanture_tipsguyongxinxi,雇佣{0}的{1},Hire {0}'s {1}
-advanture_tipstanxian,确定进行探险么？,Confirm begin exploration?
-advanture_teamnum,拥有队伍：{0},Number of teams: {0}
-advanture_teamname,队伍{0},Team {0}
-advanture_free,空闲中,Idle
-advanture_goadvanture,去探险,Go Explore
-advanture_complete,立即完成,Complete Now
-advanture_addteam,扩充小队,Add Team
-advanture_completenow,立即完成探险么？,Complete exploration now?
+adventure_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
+adventure_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
+adventure_tipsmax,次数已满,(full)
+adventure_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
+adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
+adventure_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?
+adventure_tipsweight,额外奖励获得概率,Bonus reward droprate
+adventure_tipsguyongxinxi,雇佣{0}的{1},Hire {0}'s {1}
+adventure_tipstanxian,确定进行探险么？,Confirm begin exploration?
+adventure_teamnum,拥有队伍：{0},Number of teams: {0}
+adventure_teamname,队伍{0},Team {0}
+adventure_free,空闲中,Idle
+adventure_goadventure,去探险,Go Explore
+adventure_complete,立即完成,Complete Now
+adventure_addteam,扩充小队,Add Team
+adventure_completenow,立即完成探险么？,Complete exploration now?
 adventure_timeleft,剩余时间：{0},left time:{0}
-advanture_addsure,确定添加新的队伍么？,Confirm add new team?
-advanture_successful,探险成功！,Exploration Success!
-advanture_record_001,添加小队成功,New team added.
-advanture_record_002,变更次数已满，购买失败,"Change chances full, purchase failed."
-advanture_record_003,购买成功,Purchase success.
-advanture_record_004,派遣成功,Dispatch success.
-advanture_record_005,没有空闲的小队啦,No idle teams.
-advanture_record_006,变更成功,Change success.
-advanture_record_007,派遣怪物不足5只，不能探险,"5 monsters required for exploration, unable to dispatch."
-advanture_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be hired for each exploration.
-advanture_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
+adventure_addsure,确定添加新的队伍么？,Confirm add new team?
+adventure_successful,探险成功！,Exploration Success!
+adventure_record_001,添加小队成功,New team added.
+adventure_record_002,变更次数已满，购买失败,"Change chances full, purchase failed."
+adventure_record_003,购买成功,Purchase success.
+adventure_record_004,派遣成功,Dispatch success.
+adventure_record_005,没有空闲的小队啦,No idle teams.
+adventure_record_006,变更成功,Change success.
+adventure_record_007,派遣怪物不足5只，不能探险,"5 monsters required for exploration, unable to dispatch."
+adventure_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be hired for each exploration.
+adventure_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
 adventure_record_011,探险任务已完成,complete

@@ -1,0 +1,2406 @@
+﻿#TEXT,TEXT,TEXT
+id,chinese,english
+#文字Id,文字内容,文字内容
+pet_character_1,物理输出,Physical DPS
+pet_character_2,法术输出,Magic DPS
+pet_character_3,支援,Support
+pet_character_4,支援,Support
+pet_character_5,治疗,Healer
+pet_character_6,肉盾,Tank
+Valor,物理输出,Physical DPS
+Spiritual,法术输出,Magic DPS
+Mischievous,支援,Support
+Collaborate,支援,Support
+Compassion,治疗,Healer
+Humility,肉盾,Tank
+descrip_valor,力量的化身，善于运用物理技能对敌方造成物理伤害，是队伍的主要输出,The epitome of strength; excels at using physical abilities to deal physical damage to the enemy. An important part of your team's DPS.
+descrip_spiritual,智慧的代表，善于运用法术技能对敌方造成法术伤害，是队伍的主要输出,The representative of wisdom; excels at using magic abilities to deal magic damage to the enemy. An important part of your team's DPS.
+descrip_mischievous,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle
+descrip_collaborate,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle
+descrip_compassion,善于运用治疗技能，可以恢复队伍的生命和状态,Uses healing abilities to recover HP and increase survivability
+descrip_humility,善于运用嘲讽技能，主要为队伍承担伤害,Provokes enemies and absorbs large amounts of enemy damage
+miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
+wpName24,脸,Face
+wpName26,面具,Mask
+wpName34,头,Head
+wpName36,根部,Root
+wpName38,左腕带,Left Bracer
+wpName39,右腕带,Right Bracer
+wpName41,右半身,Right Shadow
+wpName42,左半身,Left Shadow
+wpName43,头,Head
+wpName45,花瓣,Petal
+wpName47,锤子,Hammer
+wpName49,喇叭,Trumpet
+wpName51,角,Horn
+wpName52,球,Ball
+wpName54,手,Claw
+wpName55,爪,Bracelet
+wpName57,玫瑰,Rose
+wpName59,宝箱,Box
+wpName60,头顶,Skull
+wpName61,乌鸦,Crow
+wpName63,头,Head
+wpName64,镰刀,Sickle
+wpName66,头,Head
+wpName67,球,Magical Ball
+wpName69,头顶,Skull
+wpName70,围巾,Scarf
+xiaochou4hide_head,猜猜我在哪,Find me
+mantuoluo2hide_root,曼陀罗看似在用根部吸取养分,Mandrake's Root is her secret to Massive Recovery.
+langren3hide_lcuff,狼人左手的腕带,His Bracer seems to be his secret.
+langren3hide_rcuff,狼人右手的腕带,His Bracer seems to be his secret.
+piying5hide_lbody,三个秘密——右半身的秘密,Three secrets? One on his right Shadow?
+piying5hide_rbody,三个秘密——左半身的秘密,Three secrets? One on his left Shadow?
+piying5hide_head,三个秘密——头部神秘的眼罩,Three secrets? Could it in be his head?
+huapo2hide_flower,空中漂浮的花瓣，隐藏着怎样的秘密？,Notice the Petal hovering around?
+zouyincao2hide_trumpet,疯狂舞动的喇叭,The secret is in its Crazy Trumpet.
+wushi4hide_horn,舞狮头顶尖尖角,This shape looks like a horn?
+wushi4hide_ball,舞狮看起来很喜欢他的球呢,It seems to love the Magic Ball.
+xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?
+xiyiren2hide_claw,锋利的爪子,Attack its Bracelet could be where its secret lies.
+panshen2hide_eye,口中的玫瑰，散发着迷人的香气,The rose in his mouth is emitting a strange scent.
+shuigui3hide_box,船长脚边的宝箱好像有些奇怪！,Something interesting besides the captain.
+shuigui3hide_skull,船长的头顶已经失去了保护,His Skull seems exposed.
+shuigui3hide_bird,注意到船长头顶的乌鸦了么？,Notice there is a Crow on his head?
+kairuisi5hide_head,帽子下掩藏的头部会是他的弱点么？,This shape looks like her hood?
+kairuisi5hide_weapon,手中挥舞的镰刀,How about her Sickle？
+longgongtongzi3hide_head,十分诡异的头部,Is this his head？
+longgongtongzi3hide_ball,梦幻的水晶球,Looks like it's the Magical Ball
+hetong2hide_head,河童的头？少了点什么…,What is missing on his head?
+hetong2hide_scarf,河童身上也有秘密,Looks a secret on his body
+xiaochou4normal1_head,弱点,Weakpoint
+mantuoluo2normal1_root,根部是强大回血力量的源泉,Attack her root to stop Mandrake from healing herself.
+langren3normal1_lcuff,腕带是狼人保护罩的支撑,Bracer provides strong defense.
+langren3normal1_rcuff,腕带是狼人保护罩的支撑,Bracer provides strong defense.
+piying5normal1_lbody,右半身能够压制我方物理攻击力,Right shadow cripples all physical attack. 
+piying5normal1_rbody,左半身能够压制我方法术攻击力,Left shadow cripples all magical attack.
+piying5normal1_head,皮影的软肋就在头部,His head is his weakest part!
+huapo2normal1_flower,花魄高连击的永动机,The petal increases the Pixie's number of strikes.
+zouyincao2normal1_trumpet,喇叭竟是它的弱点！,The Trumpet is where it's weakpoint lies.
+wushi4normal1_horn,尖尖角竟是舞狮的弱点！,The Horn is where it's weakpoint lies.
+wushi4normal1_ball,打破它的球！压制他的法术攻击！,This Magic Ball can increase the Lion's magical abilities.
+xiyiren2normal1_hand,蜥蜴人的薄弱所在,His Claw is his weakpoint.
+xiyiren2normal1_claw,干掉爪子！看看爪子下隐藏着怎样的黑手！,Destroy the Bracelet to reveal another secret.
+panshen2normal1_eye,攻击玫瑰会让潘神心碎,Let's break his heart by attacking the Rose.
+shuigui3normal1_box,击破宝箱，船长会丧失眩晕我方的能力,This Magic Chest Box can increase in Stunning Effect
+siwangtashuigui3normal1_box,附加炸弹效果,Increases bomb effect
+shuigui3normal1_skull,船长的头顶，不堪一击….,Attack his Skull now.
+shuigui3normal1_bird,乌鸦似乎在保护着什么…打掉它看看,The Crow could be protect his weakpoint.
+kairuisi5normal1_head,凯瑞斯的软肋,This is her weakpoint.
+kairuisi5normal1_weapon,镰刀不仅提升法术攻击，还能够治疗凯瑞斯！,This Sickle increases her attack and healing power.
+longgongtongzi3normal1_head,龙宫童子的头部十分脆弱,His head is his weakpoint.
+longgongtongzi3normal1_ball,水晶球是龙宫童子重生的魔力支撑,The Magic Ball has strong healing effect.
+hetong2normal1_head,看起来是个河童的破绽,This is his weakpoint
+hetong2normal1_scarf,最好不要碰它,Don't touch it
+bigTaskname201,富商的委托,Merchant's Task
+bigTaskname202,公会的委托,Guild Task
+bigTaskname301,收藏家的委托,Collector's Task
+bigTaskname302,代行者的委托,Keeper's Task
+bigTaskname401,书商的委托,Bookseller's Task
+bigTaskname402,会长的委托,Guild Leader's Task
+bigTaskname501,神秘的委托,Mysterious Task
+bigTaskname502,来自异界的委托,Task From Mythos
+bigTaskname601,神社的委托,Shrine's Task
+bigTaskname602,雪之国的委托,Snow Kingdom's Task
+bigTaskdesc1,（主产金币）,(Produces Coins)
+bigTaskdesc2,（主产补给品）,(Produces Supplies)
+smallTarget10001,提交5000金币,Retrieve 5000 Coins
+smallTarget10002,提交6000金币,Retrieve 6000 Coins
+smallTarget10003,提交7500金币,Retrieve 7500 Coins
+smallTarget10004,提交9000金币,Retrieve 9000 Coins
+smallTarget10005,提交10000金币,Retrieve 10000 Coins
+smallTarget10006,提交10000金币,Retrieve 10000 Coins
+smallTarget10007,提交11000金币,Retrieve 11000 Coins
+smallTarget10008,提交12500金币,Retrieve 12500 Coins
+smallTarget10009,提交13500金币,Retrieve 13500 Coins
+smallTarget10010,提交15000金币,Retrieve 15000 Coins
+smallTarget10011,提交15000金币,Retrieve 15000 Coins
+smallTarget10012,提交16000金币,Retrieve 16000 Coins
+smallTarget10013,提交17500金币,Retrieve 17500 Coins
+smallTarget10014,提交19000金币,Retrieve 19000 Coins
+smallTarget10015,提交20000金币,Retrieve 20000 Coins
+smallTarget10016,提交17500金币,Retrieve 17500 Coins
+smallTarget10017,提交20000金币,Retrieve 20000 Coins
+smallTarget10018,提交22500金币,Retrieve 22500 Coins
+smallTarget10019,提交25000金币,Retrieve 25000 Coins
+smallTarget10020,提交22500金币,Retrieve 22500 Coins
+smallTarget10021,提交25000金币,Retrieve 25000 Coins
+smallTarget10022,提交27500金币,Retrieve 27500 Coins
+smallTarget10023,提交30000金币,Retrieve 30000 Coins
+smallTarget10024,提交32500金币,Retrieve 32500 Coins
+smallTarget10025,提交35000金币,Retrieve 35000 Coins
+smallTarget20001,提交1个天使之羽,Retrieve 1 of Angel's feather
+smallTarget20002,提交2个天使之羽,Retrieve 2 of Angel's feather
+smallTarget20003,提交1个恶魔之羽,Retrieve 1 of Demon's feather
+smallTarget20004,提交2个恶魔之羽,Retrieve 2 of Demon's feather
+smallTarget20005,提交1个精灵之羽,Retrieve 1 of Fairy's feather
+smallTarget20006,提交2个天使之羽,Retrieve 2 of Angel's feather
+smallTarget20007,提交3个天使之羽,Retrieve 3 of Angel's feather
+smallTarget20008,提交2个恶魔之羽,Retrieve 2 of Demon's feather
+smallTarget20009,提交3个恶魔之羽,Retrieve 3 of Demon's feather
+smallTarget20010,提交1个精灵之羽,Retrieve 1 of Fairy's feather
+smallTarget20011,提交2个精灵之羽,Retrieve 2 of Fairy's feather
+smallTarget20012,提交3个天使之羽,Retrieve 3 of Angel's feather
+smallTarget20013,提交4个天使之羽,Retrieve 4 of Angel's feather
+smallTarget20014,提交3个恶魔之羽,Retrieve 3 of Demon's feather
+smallTarget20015,提交4个恶魔之羽,Retrieve 4 of Demon's feather
+smallTarget20016,提交2个精灵之羽,Retrieve 2 of Fairy's feather
+smallTarget20017,提交3个精灵之羽,Retrieve 3 of Fairy's feather
+smallTarget20018,提交4个天使之羽,Retrieve 4 of Angel's feather
+smallTarget20019,提交5个天使之羽,Retrieve 5 of Angel's feather
+smallTarget20020,提交4个恶魔之羽,Retrieve 4 of Demon's feather
+smallTarget20021,提交5个恶魔之羽,Retrieve 5 of Demon's feather
+smallTarget20022,提交3个精灵之羽,Retrieve 3 of Fairy's feather
+smallTarget20023,提交8个天使之羽,Retrieve 8 of Fairy's feather
+smallTarget20024,提交8个恶魔之羽,Retrieve 8 of Angel's feather
+smallTarget20025,提交4个精灵之羽,Retrieve 4 of Demon's feather
+smallTarget20026,提交7个天使之羽,Retrieve 7 of Fairy's feather
+smallTarget20027,提交7个恶魔之羽,Retrieve 7 of Angel's feather
+smallTarget20028,提交3个精灵之羽,Retrieve 3 of Demon's feather
+smallTarget20029,提交6个天使之羽,Retrieve 6 of Fairy's feather
+smallTarget20030,提交6个恶魔之羽,Retrieve 6 of Angel's feather
+smallTarget30001,成功通关副本,Clear Stage
+taskDesc1,天使之羽洁白明亮,Angel Feathers are pure and bright
+taskDesc2,恶魔之羽存在一生,Demon Feathers extinguish all life
+taskDesc3,精灵之羽不错吧,Fairy Feathers are delicate and fine
+taskDesc4,金币用处多,The uses of gold are many
+taskDesc5,成功之路,Victory path is the one to follow
+wpName71,树干,Trunk
+wpName72,精灵,Kodami
+wpName73,左侧树洞,Left Branch
+wpName74,精灵,Kodami
+wpName75,中间树洞,Middle Branch
+wpName76,精灵,Kodami
+wpName77,右侧树洞,Right Branch
+muling2hide_hole1,试试搜索三个树洞,Try searching the Tree Branches.
+muling2hide_hole2,试试搜索三个树洞,Try searching the Tree Branches.
+muling2hide_hole3,试试搜索三个树洞,Try searching the Tree Branches.
+muling2normal1_child1,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole1,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
+muling2normal1_child2,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole2,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
+muling2normal1_child3,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole3,树洞里隐藏着什么呢？,What could be hiding under these tree branches?
+adventure_conditions1,{0}只光属性宠物,{0} light type monsters
+adventure_conditions2,{0}只木属性宠物,{0} grass type monsters
+adventure_conditions3,{0}只水属性宠物,{0} water type monsters
+adventure_conditions4,{0}只火属性宠物,{0} fire type monsters
+adventure_conditions5,{0}只暗属性宠物,{0} dark type monsters
+adventure_conditions6,{0}只动物类宠物,{0} animal type monsters
+adventure_conditions7,{0}只人物类宠物,{0} human type monsters
+adventure_conditions8,{0}只特异类宠物,{0} peculiar type monsters
+adventure_conditions9,{0}只植物类宠物,{0} plant type monsters
+adventure_conditions10,{0}只神类宠物,{0} deity type monsters
+adventure_conditions11,{0}只光属性动物类宠物,{0} light type animal monsters
+adventure_conditions12,{0}只光属性人物类宠物,{0} light type human monsters
+adventure_conditions13,{0}只光属性特异类宠物,{0} light type peculiar monsters
+adventure_conditions14,{0}只光属性植物类宠物,{0} light type plant monsters
+adventure_conditions15,{0}只光属性神类宠物,{0} light type deity monsters
+adventure_conditions16,{0}只木属性动物类宠物,{0} grass type animal monsters
+adventure_conditions17,{0}只木属性人物类宠物,{0} grass type human monsters
+adventure_conditions18,{0}只木属性特异类宠物,{0} grass type peculiar monsters
+adventure_conditions19,{0}只木属性植物类宠物,{0} grass type plant monsters
+adventure_conditions20,{0}只木属性神类宠物,{0} grass type deity monsters
+adventure_conditions21,{0}只水属性动物类宠物,{0} water type animal monsters
+adventure_conditions22,{0}只水属性人物类宠物,{0} water type human monsters
+adventure_conditions23,{0}只水属性特异类宠物,{0} water type peculiar monsters
+adventure_conditions24,{0}只水属性植物类宠物,{0} water type plant monsters
+adventure_conditions25,{0}只水属性神类宠物,{0} water type deity monsters
+adventure_conditions26,{0}只火属性动物类宠物,{0} fire type animal monsters
+adventure_conditions27,{0}只火属性人物类宠物,{0} fire type human monsters
+adventure_conditions28,{0}只火属性特异类宠物,{0} fire type peculiar monsters
+adventure_conditions29,{0}只火属性植物类宠物,{0} fire type plant monsters
+adventure_conditions30,{0}只火属性神类宠物,{0} fire type deity monsters
+adventure_conditions31,{0}只暗属性动物类宠物,{0} dark type animal monsters
+adventure_conditions32,{0}只暗属性人物类宠物,{0} dark type human monsters
+adventure_conditions33,{0}只暗属性特异类宠物,{0} dark type peculiar monsters
+adventure_conditions34,{0}只暗属性植物类宠物,{0} dark type plant monsters
+adventure_conditions35,{0}只暗属性神类宠物,{0} dark type deity monsters
+biaoti1001,小试身手,Show your Talent
+biaoti1002,乘胜追击,Pursuit of Victory
+biaoti1003,卖萌蘑菇,Cute Mushroom
+biaoti1004,中BOSS罢了,An Elite Boss
+biaoti1005,满月狼人,Full Moon Werewolf
+biaoti1006,摇滚歌手,Rock Singer
+biaoti1007,忍者神龟,Turtle Ninja
+biaoti1008,突破大街,Street Break Out
+biaoti1009,新的挑战,A New Challenge
+biaoti1010,蜥蜴之王,Lizard King
+biaoti1011,花痴潘神,Romantic Pans
+biaoti1012,骷髅船长,Captain Skeleton
+biaoti1013,冥界使者,Death Messenger
+biaoti1014,龙族公子,Prince of Ryuku
+biaoti1015,善良河童,Not Naughty Kappa
+biaoti1016,暴躁木灵,Tough Kodama
+biaoti1017,肉食动物,Carnivorous
+biaoti1018,龙族公主,Dragon Princess
+biaoti1019,剧毒蜘蛛,Poisonous Spider
+biaoti1020,埃及长老,Egyptian Crocodile
+biaoti1021,绿瞳小丑,Green Eyed Joker
+biaoti1022,家园卫士,Home Protector
+biaoti1023,鸟身女妖,Birdwoman
+biaoti1024,蛇发女妖,Hair of Snakes
+biaoti1025,斗牛士,Bull Matador
+biaoti1026,相思成病,Love Sick
+biaoti1027,赤色天空,Blazing Skies
+biaoti1028,天狗啸天,Roar from the Sky
+biaoti1029,地狱之犬,Hound of Hades
+biaoti1030,四翼天使,Four Winged Angel
+biaoti1031,地狱使者,Inferno Messenger
+biaoti1032,神级制造师,God of Craft
+biaoti1033,潜心修炼,Deep Meditation
+biaoti1034,暗夜猎手,Night Hunter
+biaoti1035,痛苦之源,Source of Pain
+biaoti1036,蓝瞳小丑,Blue Eyed Joker
+biaoti1037,重塑大师,Morphing Master
+biaoti1038,星辰射手,Archer of Skies
+biaoti1039,蓝色火焰,Blue Flame
+biaoti1040,肉食动物,Carnivorous
+biaoti1041,冰霜领主,Frosthold Master
+biaoti1042,小有成就,A Great achievement
+biaoti1043,珍稀物种,Rare Species
+biaoti1044,致命诱惑,Lethal Temptation
+biaoti1045,地狱使者,Inferno Messenger
+biaoti1046,暗黑法师,Dark Witch
+biaoti1047,黑白两面,Good or Evil
+biaoti1048,地狱之犬,Inferno Pet
+biaoti1049,月之女神,Goddess of Moon
+biaoti1050,幻影利刃,Phantom Blade
+biaoti1051,精英选手,A Real Achievement
+biaoti1052,天使面具,Masked Angel
+biaoti1053,咒怨女妖,Furious Banshee
+biaoti1054,恐怖蜘蛛,Twisted Spider
+biaoti1055,皮影兄弟,Absorbing Puppet
+biaoti1056,突破自我,Super Breakthrough
+biaoti1057,圣洁之星,Purified Archer
+biaoti1058,轻盈木棉,Light but Powerful
+biaoti1059,真龙血统,Dragon's Heritage
+biaoti1060,精灵王子,Prince from the Forest
+biaoti1061,小有成就,Excellent Achievement
+biaoti1062,木守护兽,Element Guardian (Grass)
+biaoti1063,火守护兽,Element Guardian (Fire)
+biaoti1064,水守护兽,Element Guardian (Water)
+biaoti1065,暗守护兽,Element Guardian (Dark)
+biaoti1066,非凡挑战,Almost there
+biaoti1067,光守护兽,Element Guardian (Light)
+biaoti1068,懒惰君主,King of Sloth
+biaoti1069,暴怒君主,King of Wrath
+biaoti1070,时间领主,Master of Time
+biaoti1071,极限挑战,Extreme Challenge
+biaoti2001,花小仙子,Love of Flower
+biaoti2002,你需要治愈,Healer you need
+biaoti2003,药不能停,The Power of Essence
+biaoti2004,技巧的磨砺,Sharpen Your Abilities
+biaoti2005,穿戴装备,Suit Up!
+biaoti2006,狼人随从,Team up with Werewolf
+biaoti2007,训宠大师,Monster Trainer
+biaoti2008,衣能遮体,Getting Stronger
+biaoti5009,完美通关,Perfect Victory
+biaoti2010,打磨装备,Stronger Equipment
+biaoti2011,日常修炼,Daily Task
+biaoti2012,重复训练,Keep Training
+biaoti2013,夜以继日,Day In Day Out
+biaoti2014,锻炼宠物,Train Your Monsters
+biaoti2015,完成愿望树,Make a Wish
+biaoti2016,竞技生涯,Career in Competition
+biaoti2017,宠物成长,Grow your monsters
+biaoti2018,训宠大神,Master Trainer
+biaoti2019,精通饲养,Master Raiser
+biaoti2020,魔鬼训练,Superb Trainer
+biaoti2021,独当一面,Whiplash Trainer
+biaoti2022,精英宠物,Elite monster
+biaoti2023,强力宠物,Elite Monster
+biaoti2024,精英小队,Elite Squad
+biaoti2025,高阶宠物,Advanced Monster
+biaoti2026,训宠达人,Advanced Trainer
+biaoti2027,近乎完美,Almost Perfect
+biaoti3001,迎接挑战,Rise to the Occasion
+biaoti3002,迎接挑战,Rise to the Occasion
+biaoti3003,迎接挑战,Rise to the Occasion
+biaoti3004,迎接挑战,Rise to the Occasion
+biaoti3005,迎接挑战,Rise to the Occasion
+biaoti3006,迎接挑战,Rise to the Occasion
+biaoti3007,迎接挑战,Rise to the Occasion
+biaoti3008,迎接挑战,Rise to the Occasion
+biaoti3009,迎接挑战,Rise to the Occasion
+biaoti3010,迎接挑战,Rise to the Occasion
+biaoti3011,迎接挑战,Rise to the Occasion
+biaoti3012,迎接挑战,Rise to the Occasion
+biaoti3013,迎接挑战,Rise to the Occasion
+biaoti3014,迎接挑战,Rise to the Occasion
+biaoti3015,迎接挑战,Rise to the Occasion
+biaoti3016,迎接挑战,Rise to the Occasion
+biaoti3017,迎接挑战,Rise to the Occasion
+biaoti3018,迎接挑战,Rise to the Occasion
+biaoti3019,迎接挑战,Rise to the Occasion
+biaoti3020,迎接挑战,Rise to the Occasion
+biaoti3021,迎接挑战,Rise to the Occasion
+biaoti3022,迎接挑战,Rise to the Occasion
+biaoti3023,迎接挑战,Rise to the Occasion
+biaoti3024,迎接挑战,Rise to the Occasion
+biaoti3025,迎接挑战,Rise to the Occasion
+biaoti3026,迎接挑战,Rise to the Occasion
+biaoti3027,迎接挑战,Rise to the Occasion
+biaoti3028,迎接挑战,Rise to the Occasion
+biaoti3029,迎接挑战,Rise to the Occasion
+biaoti3030,迎接挑战,Rise to the Occasion
+biaoti3031,迎接挑战,Rise to the Occasion
+biaoti3032,迎接挑战,Rise to the Occasion
+biaoti3033,迎接挑战,Rise to the Occasion
+biaoti3034,迎接挑战,Rise to the Occasion
+biaoti3035,迎接挑战,Rise to the Occasion
+biaoti3036,迎接挑战,Rise to the Occasion
+biaoti3037,迎接挑战,Rise to the Occasion
+biaoti3038,迎接挑战,Rise to the Occasion
+biaoti3039,迎接挑战,Rise to the Occasion
+biaoti3040,迎接挑战,Rise to the Occasion
+biaoti3041,迎接挑战,Rise to the Occasion
+biaoti3042,迎接挑战,Rise to the Occasion
+biaoti3043,迎接挑战,Rise to the Occasion
+biaoti3044,迎接挑战,Rise to the Occasion
+biaoti3045,迎接挑战,Rise to the Occasion
+biaoti3046,迎接挑战,Rise to the Occasion
+biaoti3047,迎接挑战,Rise to the Occasion
+biaoti3048,迎接挑战,Rise to the Occasion
+biaoti4001,装备提升,Stronger Equipment
+biaoti4002,华丽装扮,Get Really Strong
+biaoti4003,反复打磨,Quick Completion
+biaoti4004,质的飞跃,Leap of Quality
+biaoti4005,熟练打造,Master Caster
+biaoti4006,稀有装备,A Rare Equipment
+biaoti4007,装备开孔,Open Slot
+biaoti4008,初识镶嵌,Amateur Insignia Attach
+biaoti4009,精通打造,Immediate Equipment Forger
+biaoti4010,反复开孔,Immediate Slot Opener
+biaoti4011,熟练打造,Master Caster
+biaoti4012,高阶装备,Elite Equipment Forger
+biaoti4013,纹章融合I,Insignia Crafter I
+biaoti4014,打造大师,Advanced Forger
+biaoti4015,纹章融合II,Insignia Crafter II
+biaoti4016,高级纹章,Master Insignia Attach
+biaoti4017,打造大师,Master Forger
+biaoti8001,登录奖励,Login Reward
+biaoti8002,普通副本,Normal Stages
+biaoti8003,宠物养成,Sharpen Your Abilities
+biaoti8004,完成抽蛋,Summon
+biaoti8005,打造装备,Forge your Equipments
+biaoti8006,训练宠物,Train Your Monsters
+biaoti8007,完成许愿,Make Many Wishes
+biaoti8008,挑战难度,A Real Challenge
+biaoti8009,王者争霸,Challenge the Masters
+biaoti8010,点石成金,Money Exchange
+biaoti8011,活力充沛,Always Energetic
+biaoti8012,外出修炼,Adventurer
+biaoti8013,友好赠与,Friendly Giver
+biaoti8014,公会许愿,Guild Wish
+biaoti8015,完美一天,A Perfect Day
+mubiao1001,通关普通副本1-1,Complete Stage 1-1 (Normal)
+mubiao1002,通关普通副本1-2,Complete Stage 1-2 (Normal)
+mubiao1003,通关普通副本1-3,Complete Stage 1-3 (Normal)
+mubiao1004,通关普通副本1-4,Complete Stage 1-4 (Normal)
+mubiao1005,通关普通副本1-5,Complete Stage 1-5 (Normal)
+mubiao1006,通关普通副本1-6,Complete Stage 1-6 (Normal)
+mubiao1007,通关普通副本1-7,Complete Stage 1-7 (Normal)
+mubiao1008,通关普通副本1-8,Complete Stage 1-8 (Normal)
+mubiao1009,通关普通副本2-1,Complete Stage 2-1 (Normal)
+mubiao1010,通关普通副本2-2,Complete Stage 2-2 (Normal)
+mubiao1011,通关普通副本2-3,Complete Stage 2-3 (Normal)
+mubiao1012,通关普通副本2-4,Complete Stage 2-4 (Normal)
+mubiao1013,通关普通副本2-5,Complete Stage 2-5 (Normal)
+mubiao1014,通关普通副本2-6,Complete Stage 2-6 (Normal)
+mubiao1015,通关普通副本2-7,Complete Stage 2-7 (Normal)
+mubiao1016,通关普通副本2-8,Complete Stage 2-8 (Normal)
+mubiao1017,通关普通副本3-1,Complete Stage 3-1 (Normal)
+mubiao1018,通关普通副本3-2,Complete Stage 3-2 (Normal)
+mubiao1019,通关普通副本3-3,Complete Stage 3-3 (Normal)
+mubiao1020,通关普通副本3-4,Complete Stage 3-4 (Normal)
+mubiao1021,通关普通副本3-5,Complete Stage 3-5 (Normal)
+mubiao1022,通关普通副本3-6,Complete Stage 3-6 (Normal)
+mubiao1023,通关普通副本3-7,Complete Stage 3-7 (Normal)
+mubiao1024,通关普通副本3-8,Complete Stage 3-8 (Normal)
+mubiao1025,通关普通副本4-1,Complete Stage 4-1 (Normal)
+mubiao1026,通关普通副本4-2,Complete Stage 4-2 (Normal)
+mubiao1027,通关普通副本4-3,Complete Stage 4-3 (Normal)
+mubiao1028,通关普通副本4-4,Complete Stage 4-4 (Normal)
+mubiao1029,通关普通副本4-5,Complete Stage 4-5 (Normal)
+mubiao1030,通关普通副本4-6,Complete Stage 4-6 (Normal)
+mubiao1031,通关普通副本4-7,Complete Stage 4-7 (Normal)
+mubiao1032,通关普通副本4-8,Complete Stage 4-8 (Normal)
+mubiao1033,玩家等级达到25级,Achieving player's LVL 25
+mubiao1034,通关普通副本5-1,Complete Stage 5-1 (Normal)
+mubiao1035,通关普通副本5-2,Complete Stage 5-2 (Normal)
+mubiao1036,通关普通副本5-3,Complete Stage 5-3 (Normal)
+mubiao1037,通关普通副本5-4,Complete Stage 5-4 (Normal)
+mubiao1038,通关普通副本5-5,Complete Stage 5-5 (Normal)
+mubiao1039,通关普通副本5-6,Complete Stage 5-6 (Normal)
+mubiao1040,通关普通副本5-7,Complete Stage 5-7 (Normal)
+mubiao1041,通关普通副本5-8,Complete Stage 5-8 (Normal)
+mubiao1042,玩家等级达到32级,Achieving player's LVL 32
+mubiao1043,通关普通副本6-1,Complete Stage 6-1 (Normal)
+mubiao1044,通关普通副本6-2,Complete Stage 6-2 (Normal)
+mubiao1045,通关普通副本6-3,Complete Stage 6-3 (Normal)
+mubiao1046,通关普通副本6-4,Complete Stage 6-4 (Normal)
+mubiao1047,通关普通副本6-5,Complete Stage 6-5 (Normal)
+mubiao1048,通关普通副本6-6,Complete Stage 6-6 (Normal)
+mubiao1049,通关普通副本6-7,Complete Stage 6-7 (Normal)
+mubiao1050,通关普通副本6-8,Complete Stage 6-8 (Normal)
+mubiao1051,玩家等级达到40级,Achieving player's LVL 40
+mubiao1052,通关普通副本7-1,Complete Stage 7-1 (Normal)
+mubiao1053,通关普通副本7-2,Complete Stage 7-2 (Normal)
+mubiao1054,通关普通副本7-3,Complete Stage 7-3 (Normal)
+mubiao1055,通关普通副本7-4,Complete Stage 7-4 (Normal)
+mubiao1056,玩家等级达到45级,Achieving player's LVL 45
+mubiao1057,通关普通副本7-5,Complete Stage 7-5 (Normal)
+mubiao1058,通关普通副本7-6,Complete Stage 7-6 (Normal)
+mubiao1059,通关普通副本7-7,Complete Stage 7-7 (Normal)
+mubiao1060,通关普通副本7-8,Complete Stage 7-8 (Normal)
+mubiao1061,玩家等级达到50级,Achieving player's LVL 50
+mubiao1062,通关普通副本8-1,Complete Stage 8-1 (Normal)
+mubiao1063,通关普通副本8-2,Complete Stage 8-2 (Normal)
+mubiao1064,通关普通副本8-3,Complete Stage 8-3 (Normal)
+mubiao1065,通关普通副本8-4,Complete Stage 8-4 (Normal)
+mubiao1066,玩家等级达到55级,Achieving player's LVL 55
+mubiao1067,通关普通副本8-5,Complete Stage 8-5 (Normal)
+mubiao1068,通关普通副本8-6,Complete Stage 8-6 (Normal)
+mubiao1069,通关普通副本8-7,Complete Stage 8-7 (Normal)
+mubiao1070,通关普通副本8-8,Complete Stage 8-8 (Normal)
+mubiao1071,玩家等级达到60级,Achieving player's LVL 60
+mubiao2001,合成宠物花魄,Craft Monster Flower Pixie
+mubiao2002,合成宠物曼陀罗,Craft Monster Mandrake
+mubiao2003,使用一次信仰之力,Use Mytho Essence once
+mubiao2004,升级宠物技能2次,Upgrade your monsters' abilities twice
+mubiao2005,宠物穿戴1件装备,Equip an equipment once
+mubiao2006,合成宠物狼人,Craft Monster Werewolf
+mubiao2007,升级宠物至5级,Upgrade a monster to LVL 5
+mubiao2008,同一只宠物穿戴2件装备,Equip 2 pieces of equipment on a monster
+mubiao5009,领取第一章普通难度全部星级奖励,Received rewards for All 3 Stars in Chapter 1 of Story Mode
+mubiao2010,打造装备1次,Forge your Equipment once
+mubiao2011,完成1次日常任务,Complete a daily quest
+mubiao2012,扫荡普通副本2-1,Raid Stage 2-1 (Normal)
+mubiao2013,完成3次日常任务,Complete 3 daily quests
+mubiao2014,升级宠物至10级,Upgrade a monster to LVL 10
+mubiao2015,完成1次愿望树,Complete a Wishing Tree stage
+mubiao2016,完成竞技场3次,Complete 3 Arena games
+mubiao2017,宠物升阶至绿色品质,Upgrade a monster to Green Quality
+mubiao2018,升级宠物至14级,Upgrade a monster to LVL 14
+mubiao2019,2只宠物升阶至绿色品质,Upgrade 2 monster to Green Quality
+mubiao2020,升级宠物至17级,Upgrade a monster to LVL 17
+mubiao2021,升级宠物至20级,Upgrade a monster to LVL 20
+mubiao2022,宠物升阶至蓝色品质,Upgrade a monster to Blue Quality
+mubiao2023,升级宠物至30级,Upgrade a monster to LVL 30
+mubiao2024,2只宠物升阶至蓝色品质,Upgrade 2 monster to Blue Quality
+mubiao2025,1只宠物升阶至紫色品质,Upgrade a monster to Purple Quality
+mubiao2026,升级宠物至45级,Upgrade a monster to LVL 45
+mubiao2027,1只宠物升阶至橙色品质,Upgrade a monster to Orange Quality
+mubiao3001,通关挑战副本1-1,Complete Stage 1-1 (Heroic)
+mubiao3002,通关挑战副本1-2,Complete Stage 1-2 (Heroic)
+mubiao3003,通关挑战副本1-3,Complete Stage 1-3 (Heroic)
+mubiao3004,通关挑战副本1-4,Complete Stage 1-4 (Heroic)
+mubiao3005,通关挑战副本1-5,Complete Stage 1-5 (Heroic)
+mubiao3006,通关挑战副本1-6,Complete Stage 1-6 (Heroic)
+mubiao3007,通关挑战副本1-7,Complete Stage 1-7 (Heroic)
+mubiao3008,通关挑战副本1-8,Complete Stage 1-8 (Heroic)
+mubiao3009,通关挑战副本2-1,Complete Stage 2-1 (Heroic)
+mubiao3010,通关挑战副本2-2,Complete Stage 2-2 (Heroic)
+mubiao3011,通关挑战副本2-3,Complete Stage 2-3 (Heroic)
+mubiao3012,通关挑战副本2-4,Complete Stage 2-4 (Heroic)
+mubiao3013,通关挑战副本2-5,Complete Stage 2-5 (Heroic)
+mubiao3014,通关挑战副本2-6,Complete Stage 2-6 (Heroic)
+mubiao3015,通关挑战副本2-7,Complete Stage 2-7 (Heroic)
+mubiao3016,通关挑战副本2-8,Complete Stage 2-8 (Heroic)
+mubiao3017,通关挑战副本3-1,Complete Stage 3-1 (Heroic)
+mubiao3018,通关挑战副本3-2,Complete Stage 3-2 (Heroic)
+mubiao3019,通关挑战副本3-3,Complete Stage 3-3 (Heroic)
+mubiao3020,通关挑战副本3-4,Complete Stage 3-4 (Heroic)
+mubiao3021,通关挑战副本3-5,Complete Stage 3-5 (Heroic)
+mubiao3022,通关挑战副本3-6,Complete Stage 3-6 (Heroic)
+mubiao3023,通关挑战副本3-7,Complete Stage 3-7 (Heroic)
+mubiao3024,通关挑战副本3-8,Complete Stage 3-8 (Heroic)
+mubiao3025,通关挑战副本4-1,Complete Stage 4-1 (Heroic)
+mubiao3026,通关挑战副本4-2,Complete Stage 4-2 (Heroic)
+mubiao3027,通关挑战副本4-3,Complete Stage 4-3 (Heroic)
+mubiao3028,通关挑战副本4-4,Complete Stage 4-4 (Heroic)
+mubiao3029,通关挑战副本4-5,Complete Stage 4-5 (Heroic)
+mubiao3030,通关挑战副本4-6,Complete Stage 4-6 (Heroic)
+mubiao3031,通关挑战副本4-7,Complete Stage 4-7 (Heroic)
+mubiao3032,通关挑战副本4-8,Complete Stage 4-8 (Heroic)
+mubiao3033,通关挑战副本5-1,Complete Stage 5-1 (Heroic)
+mubiao3034,通关挑战副本5-2,Complete Stage 5-2 (Heroic)
+mubiao3035,通关挑战副本5-3,Complete Stage 5-3 (Heroic)
+mubiao3036,通关挑战副本5-4,Complete Stage 5-4 (Heroic)
+mubiao3037,通关挑战副本5-5,Complete Stage 5-5 (Heroic)
+mubiao3038,通关挑战副本5-6,Complete Stage 5-6 (Heroic)
+mubiao3039,通关挑战副本5-7,Complete Stage 5-7 (Heroic)
+mubiao3040,通关挑战副本5-8,Complete Stage 5-8 (Heroic)
+mubiao3041,通关挑战副本6-1,Complete Stage 6-1 (Heroic)
+mubiao3042,通关挑战副本6-2,Complete Stage 6-2 (Heroic)
+mubiao3043,通关挑战副本6-3,Complete Stage 6-3 (Heroic)
+mubiao3044,通关挑战副本6-4,Complete Stage 6-4 (Heroic)
+mubiao3045,通关挑战副本6-5,Complete Stage 6-5 (Heroic)
+mubiao3046,通关挑战副本6-6,Complete Stage 6-6 (Heroic)
+mubiao3047,通关挑战副本6-7,Complete Stage 6-7 (Heroic)
+mubiao3048,通关挑战副本6-8,Complete Stage 6-8 (Heroic)
+mubiao4001,打造装备3次,Forge an equipment 3 times
+mubiao4002,同一只宠物穿戴3件装备,Equip 3 equipments on a single monster
+mubiao4003,打造装备5次,Forge an equipment 5 times
+mubiao4004,强化打造装备至绿色品质,Forge an equipment to green quality
+mubiao4005,同一只宠物穿戴2件绿色装备,Equip 2 green quality equipments on a single monster
+mubiao4006,强化打造装备至蓝色品质,Forge an equipment to blue quality
+mubiao4007,为装备开孔1次,Open Slots on an equipment 
+mubiao4008,为装备镶嵌纹章1次,Attach an Insignia on an equipment
+mubiao4009,强化打造3件装备至蓝色品质,Forge 3 equipments to blue quality
+mubiao4010,为装备开孔10次,Open 10 Insignia Slots
+mubiao4011,强化打造5件装备至蓝色品质,Forge 5 equipments to blue quality
+mubiao4012,强化打造1件装备至紫色品质,Forge an equipment to purple quality
+mubiao4013,合成1次2级纹章,Combine and create a Level 2 Insignia
+mubiao4014,强化打造3件装备至紫色品质,Forge 3 equipments to purple quality
+mubiao4015,合成3次2级纹章,Combine and create 3 Level 2 Insignias
+mubiao4016,合成1次3级纹章,Combine and create a Level 3 Insignia
+mubiao4017,强化打造1件装备至橙色品质,Forge an equipment to orange quality
+mubiao8001,每日首次登录后领取,Daily free login reward
+mubiao8002,通关10次普通副本,Complete 10 Stages (Normal)
+mubiao8003,升级宠物技能3次,Upgrade a monster's ability 3 times
+mubiao8004,完成3次金币抽蛋,Complete Dawn Summon 3 times
+mubiao8005,打造装备1次,Forge an equipment once
+mubiao8006,使用3次信仰之力,Apply Mytho Essence 3 times
+mubiao8007,完成3次愿望树,Complete Wishing Tree Stages 3 times
+mubiao8008,通关3次挑战副本,Complete 3 Stages (Heroic)
+mubiao8009,完成竞技场5次,Complete 5 Arena games
+mubiao8010,钻石换金币1次,Complete Diamonds for Coins Exchange
+mubiao8011,使用1次活力药,Consume 1 Energy Package
+mubiao8012,领取1次大冒险奖励,Collect 1 Adventure Reward
+mubiao8013,完成3次公会赠活力,Giveaway Energy to 3 Guild members
+mubiao8014,完成1次公会许愿,Complete 1 Guild Wish
+mubiao8015,完成15个日常任务,Complete 15 Daily Quests
+mubiao8017,完成2次米达斯宫,Complete Palace of Midas 2 times
+mubiao8018,完成2次至福乐土,Complete Fields of Elysium 2 times
+chengjiu30001,收集碎片1,Collect Fragments 1
+chengjiu30002,收集碎片2,Collect Fragments 2
+chengjiu30003,收集碎片3,Collect Fragments 3
+chengjiu30004,收集碎片4,Collect Fragments 4
+chengjiu30101,竞技高手,Arena Newbie
+chengjiu30102,竞技胜者,Arena Competitor
+chengjiu30103,竞技强者,Arena Expert
+chengjiu30104,竞技老手,Arena Veteran
+chengjiu30105,竞技大师,Arena Master
+chengjiu30201,战斗历练1,Battle Experience 1
+chengjiu30202,战斗历练2,Battle Experience 2
+chengjiu30203,战斗历练3,Battle Experience 3
+chengjiu30204,战斗历练4,Battle Experience 4
+chengjiu30205,战斗历练5,Battle Experience 5
+chengjiu30206,战斗历练6,Battle Experience 6
+chengjiu30301,公会进步1,Guild Progress 1
+chengjiu30302,公会进步2,Guild Progress 2
+chengjiu30303,公会进步3,Guild Progress 3
+chengjiu30304,公会进步4,Guild Progress 4
+chengjiu30305,公会进步5,Guild Progress 5
+chengjiu30306,公会进步6,Guild Progress 6
+chengmubiao30001,获得封印碎片500,Collect 500 seal fragments
+chengmubiao30002,获得封印碎片1000,Collect 1000 seal fragments
+chengmubiao30003,获得封印碎片5000,Collect 5000 seal fragments
+chengmubiao30004,获得封印碎片10000,Collect 10000 seal fragments
+chengmubiao30101,竞技场100次,Complete 100 Arena battles
+chengmubiao30102,竞技场800次,Complete 800 Arena battles
+chengmubiao30103,竞技场2000次,Complete 2000 Arena battles
+chengmubiao30104,竞技场5000次,Complete 5000 Arena battles
+chengmubiao30105,竞技场10000次,Complete 10000 Arena battles
+chengmubiao30201,进行副本战斗200次,Complete 200 Stage battles
+chengmubiao30202,进行副本战斗1000次,Complete 1000 Stage battles
+chengmubiao30203,进行副本战斗5000次,Complete 5000 Stage battles
+chengmubiao30204,进行副本战斗20000次,Complete 20000 Stage battles
+chengmubiao30205,进行副本战斗35000次,Complete 35000 Stage battles
+chengmubiao30206,进行副本战斗50000次,Complete 50000 Stage battles
+chengmubiao30301,个人贡献收集200,Accumulate 200 Contribution Pts
+chengmubiao30302,个人贡献收集1200,Accumulate 1200 Contribution Pts
+chengmubiao30303,个人贡献收集3800,Accumulate 3800 Contribution Pts
+chengmubiao30304,个人贡献收集6500,Accumulate 6500 Contribution Pts
+chengmubiao30305,个人贡献收集25000,Accumulate 25000 Contribution Pts
+chengmubiao30306,个人贡献收集65000,Accumulate 65000 Contribution Pts
+tili1,吃午饭了,Lunch Time
+tili2,吃晚饭了,Dinner Time
+tilitips1,点击即送45点活力12:00~14:00 {0} 限时领取,"Tap to collect 45 Energy, available 12:00 - 14:00 {0} "
+tilitips2,点击即送45点活力18:00~20:00 {0} 限时领取,"Tap to collect 45 Energy, available 18:00 - 20:00 {0} "
+bosssenlin31Wendige2wp02,左角,Left Horn
+bosssenlin31Wendige2wp03,右角,Right Horn
+bosssenlin32Longnv3wp02,头,Head
+bosssenlin32Longnv3wp03,左灵印,Left Sigil
+bosssenlin32Longnv3wp04,右灵印,Right Sigil
+bosssenlin33Luoxinfu5wp02,左下蜘蛛爪,Lower-left Claw
+bosssenlin33Luoxinfu5wp03,右下蜘蛛爪,Lower-right Claw
+bosssenlin33Luoxinfu5wp04,右上蜘蛛爪,Upper-right Claw
+bosssenlin33Luoxinfu5wp05,左上蜘蛛爪,Upper-left Claw
+bosssenlin34Amute3wp02,脸,Face
+bosssenlin34Amute3wp03,面具,Mask
+bosssenlin35Xiaochou2wp02,锤子,Hammer
+bosssenlin36Momo1wp02,盾,Shield
+bosssenlin37Hapi1wp02,左翅膀,Left Wing
+bosssenlin37Hapi1wp03,右翅膀,Right Wing
+bosshuoshan41Hongniu4wp02,左角,Life Horn
+bosshuoshan41Hongniu4wp03,右角,Right Horn
+bosshuoshan42Daochengsizhong4wp02,钟,Bell
+bosshuoshan42Daochengsizhong4wp03,心脏,Heart
+bosshuoshan43Huoniao4wp02,左羽毛,Left Feather
+bosshuoshan43Huoniao4wp03,中羽毛,Mid Feather
+bosshuoshan43Huoniao4wp04,右羽毛,Right Feather
+bosshuoshan44Datiangou4wp02,左翅膀,Left Wing
+bosshuoshan44Datiangou4wp03,右翅膀,Right Wing
+bosshuoshan44Datiangou4wp04,扇子,Fan
+bosshuoshan45Saibulesi4wp02,左头,Left Head
+bosshuoshan45Saibulesi4wp03,中头,Mid Head
+bosshuoshan45Saibulesi4wp04,右头,Right Head
+bosshuoshan46Tianshizhang4wp02,左翅膀,Left Wing
+bosshuoshan46Tianshizhang4wp03,右翅膀,Right Wing
+bosshuoshan46Tianshizhang4wp04,光环,Aura
+bosshuoshan46Tianshizhang4wp05,长剑,Sword
+bosshuoshan47Ifrit4wp02,左暗火,Left Dark Fire
+bosshuoshan47Ifrit4wp03,右暗火,Right Dark Fire
+bosshuoshan47Ifrit4wp04,法杖,Staff
+bosssenlin38Meidusha2wp02,右下蛇头,Lower-right Snake Head
+bosssenlin38Meidusha2wp03,左下蛇头,Lower-left Snake Head
+bosssenlin38Meidusha2wp04,右上蛇头,Upper-right Snake Head
+bosssenlin38Meidusha2wp05,左上蛇头,Upper-left Snake Head
+bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
+bosshuoshan48Hehuaisituosi4wp02,右上工具,Upper Right Tool
+bosshuoshan48Hehuaisituosi4wp03,右下工具,Lower Right Tool
+bosshuoshan48Hehuaisituosi4wp04,左上工具,Upper Left Tool
+bosshuoshan48Hehuaisituosi4wp05,左下工具,Lower Left Tool
+bosshuoshan48Hehuaisituosi4wp06,头,Head
+wendige2hide_lhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige2hide_rhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+longnv3hide_head,根据图形提示找到弱点,Find this shape on Dragon Girl
+luoxinfu5hide_leg6,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg5,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg1,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg2,根据图形提示找到弱点,Find this shape on one of her claws
+amutehide_lian,根据图形提示找到弱点,Find this shape on him.
+amutehide_mianju,根据图形提示找到弱点,Find this shape on him.
+xiaochou2hide_weapon,根据图形提示找到弱点,Find this shape on the Joker.
+momo1hide_dun,得莫菲的周围好像有什么诡异的力量,Find this shape around Demovoy.
+meidushahide_zuoshetou,美杜莎的秘密,Medusa's secret.
+meidushahide_youshetou,美杜莎的秘密,Medusa's secret.
+meidushahide_xiaoshetou,美杜莎的秘密,Medusa's secret.
+wendige2normal1_lhorn,双角是dot效果的源动力,His horn provides higher damage over time
+wendige2normal1_rhorn,双角是dot效果的源动力,His horn provides higher damage over time
+longnv3normal1_head,龙女的要害,This is her weakpoint.
+longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
+longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
+luoxinfu5normal1_leg6,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg5,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg1,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg2,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+amutenormal1_lian,让攻击打的更猛烈些吧！,Concentrate your fire on this weakpoint.
+amutenormal1_mianju,面具保护着鳄鱼判官的真正弱点,This Mask seems to protect a weakpoint.
+xiaochou2normal1_weapon,干掉锤子！压制小丑的法术攻击力！,Destroy the Hammer! Cripple the Joker's Magical Power!
+momo1normal1_dun,摧毁它！阻止它反射我方的攻击！,Destroy and stop him from counter attack.
+meidushanormal1_zuoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+meidushanormal1_youshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+meidushanormal1_xiaoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+hapi1hide_lwing,根据图形提示找到弱点,Find this shape on Harpy.
+hapi1hide_rwing,根据图形提示找到弱点,Find this shape on Harpy.
+hongniu4hide_lhorn,根据图形提示找到弱点,Find this shape on Minotaur.
+hongniu4hide_rhorn,根据图形提示找到弱点,Find this shape on Minotaur.
+daochengsizhong4hide_bell,根据图形提示找到弱点,Find this shape on Maiden Dojoji.
+daochengsizhong4hide_heart,根据图形提示找到弱点,Find this shape on Maiden Dojoji.
+huoniao4hide_ltail,根据图形提示找到弱点,Find this shape on the Firebird.
+huoniao4hide_mtail,根据图形提示找到弱点,Find this shape on the Firebird.
+huoniao4hide_rtail,根据图形提示找到弱点,Find this shape on the Firebird.
+datiangou4hide_lwing,根据图形提示找到弱点,Find this shape on Tengu.
+datiangou4hide_rwing,根据图形提示找到弱点,Find this shape on Tengu.
+datiangou4hide_fun,大天狗的宝贝藏在哪里？,What gives him strong attack?
+saibulesi4hide_lhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi4hide_mhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi4hide_rhead,根据图形提示找到弱点,Hellhound's special feature?
+tianshizhang4hide_lwing,根据图形提示找到弱点,Find this shape on Archangel.
+tianshizhang4hide_rwing,根据图形提示找到弱点,Find this shape on Archangel.
+tianshizhang4hide_aura,天使长的秘密武器？,His source of Energy?
+tianshizhang4hide_weapon,根据图形提示找到弱点,What gives him strong attack?
+ifrit4hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit4hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit4hide_stone,是什么让伊芙利特攻击如此可怕？,What gives him strong attack?
+hapi1normal_lwing,翅膀让哈皮拥有更快的攻击速度,Her wings increases her speed.
+hapi1normal_rwing,翅膀让哈皮拥有更快的攻击速度,Her wings increases her speed.
+hongniu4normal_lhorn,干掉牛角！搞垮红牛的物理攻击！,His horns increases his attack.
+hongniu4normal_rhorn,干掉牛角！搞垮红牛的物理攻击！,His horns increases his attack.
+daochengsizhong4normal_bell,钟的内部隐藏着什么？,What's the secret inside this Bell?
+daochengsizhong4normal_heart,摧毁她的心吧！,Break her Heart!
+huoniao4normal_ltail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+huoniao4normal_mtail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+huoniao4normal_rtail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+datiangou4normal_lwing,翅膀让大天狗拥有更快的攻击速度,His wings increases his speed.
+datiangou4normal_rwing,翅膀让大天狗拥有更快的攻击速度,His wings increases his speed.
+datiangou4normal_fun,扇子凝聚着提高法术攻击力的力量,His Fan increases his Attack.
+saibulesi4normal_lhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+saibulesi4normal_mhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+saibulesi4normal_rhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+tianshizhang4normal_lwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.
+tianshizhang4normal_rwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.
+tianshizhang4normal_aura,光环是天使长大招能量的源泉,His Ultimate energy increases with his Aura.
+tianshizhang4normal_weapon,长剑是天使长高攻击和自我治疗的保障,His Sword increases his attack.
+ifrit4normal_lleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_rleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_stone,敲断他的法杖！削弱他的法术攻击！,His Staff enhances his attack.
+hehuaisituosi4hide_luweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_ruweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_ldweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_rdweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4normal_eye,快攻击！工匠之神漏出了要害！,Focus attack on her weakpoint!
+hehuaisituosi4normal_luweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
+hehuaisituosi4normal_ruweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
+hehuaisituosi4normal_ldweapon,炎镣铐制作工具,Tool used to make Searing Shackles
+hehuaisituosi4normal_rdweapon,炎镣铐制作工具,Tool used to make Searing Shackles
+jiuweihu4hide_head,根据图形提示找到弱点,Find this shape on 9 Tail.
+huangjinzhiling1hide_head,根据图形提示找到弱点,Find this shape on Soul of Gold.
+huangjinzhiling1hide_spirit,根据图形提示找到弱点,Find this shape within the Soul of Gold.
+jiuweihu4normal_head,九尾狐的要害,This is her weakpoint.
+huangjinzhiling1normal_head,黄金之灵的要害,This is his weakpoint.
+huangjinzhiling1normal_spirit,小小的精灵，控制着黄金之灵,The Real Soul who control the Gold.
+bosszhifuletuJiuweihu4wp02,头,Head
+bossmidasigongHuangjinzhiling1wp02,头,Head
+bossmidasigongHuangjinzhiling1wp03,外壳,Shell
+bossmidasigongHuangjinzhiling1wp04,精灵,Spirit
+huocike4hide_shell,胸前的圆形扣一定有古怪,Anything special with his Button?
+huocike4normal1_shell,摧毁它！阻止它反射我方的攻击！,Destroy the Shell to stop him from counter attacking.
+bossdajie13Cike4wp01,胸,Body
+bossdajie13Cike4wp02,龟壳,Shell
+bossdajie11Moguguai4wp02,蘑菇,Mushroom
+moguguai4hide_mushroom,蘑菇盖会不会是它的保护伞呢？,Would his Cap be the secret to Mantango?
+moguguai4normal_mushroom,原来蘑菇盖是他的弱点！全力攻击！,Mantango's Cap is its weakpoint! Concentrate your fire at it!
+bossdajie18Ladong5wp02,头,Head
+bossdajie18Ladong5wp03,金苹果,Golden Apple
+ladong5hide_head,屠龙先揍头,Try hitting it's Head first?
+ladong5normal_head,让守护龙头晕目眩,Make Guardian Dragon dizzy
+ladong5normal_goldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
+speechname_jiuwei,九尾狐,Nine Tails
+speechname_bingxuenvwang,冰雪女王,Chione
+speechname_wo,我,Me
+speechname_chitiangou,大天狗,Tengu
+speechname_huoshen,工匠之神,God of Craft
+speechname_shenmi,神秘声音,Mysterious Voice
+speechname_shenmiren,神秘人,Mysterious Person
+speechname_A,阿曼达,Amanda
+speechname_B,布鲁克,Brooke
+speechname_K,凯尔,Kyle
+speechname_hetong,河童,Kappa
+speechname_yaojing,精灵,Spirit
+speechname_change,嫦娥,Moon Devine
+speechname_binglong,冰龙,Ice Dragon
+speechname_karong,卡戎,Charon
+speechname_lisa,丽莎,Lisa
+speechname_yafogemeng,亚弗戈蒙,Aforgomon
+speech_summon1,我们打败了冰雪女王！？难道她不是希腊神话中赫赫有名的怪物吗？到底怎么回事？,We defeated Chione?! Isn't she a famous legend from Greek Mythology? What's going on?
+speech_summon2,在<color=#ffcc00>异界</color>，存在许多像我们这样的传奇妖怪正<color=#ffcc00>处于战争之中</color>！我们需要你，帮助我们<color=#ffcc00>恢复世界的秩序</color>！,"<color=#ffcc00>Mythos</color>, the world that allows legends like us to exist, is <color=#ffcc00>at war</color> now! We need your help to <color=#ffcc00>restore order</color>!"
+speech_summon3,我在你房间中创造了一个<color=#ffcc00>魔法召唤之书</color>，你可以用它<color=#ffcc00>召唤新的怪物</color>来组建你的队伍。,Let me place a <color=#ffcc00>Magic Summon Book</color> in your room now so that you might <color=#ffcc00>collect new monsters</color> to form a team.
+speech_zhenrongxuanze1,你们竟然救了我……,"Ohh, so you saved me after all…"
+speech_zhenrongxuanze2,别担心，你没事了。能通过在<color=#ffcc00>召唤之书</color>把你救回来真是太好了！,"No worries, you have been used! Its nice to see you back thru the <color=#ffcc00>Summon Book</color>."
+speech_zhenrongxuanze3,现在你们应该给我解释下状况了吧……,So now you can finally explain what all of this is about…
+speech_zhenrongxuanze4,让我们先去<color=#ffcc00>战斗</color>吧！战斗能获得许多奖励，比如说宠物，这样你就会越来越强大！,Let's <color=#ffcc00>go battle</color> first! Get rewards such as monsters from battle to strengthen your team first!
+speech_shanghuapotips,<color=#ffcc00>新伙伴花魄</color>也是可以<color=#ffcc00>上阵</color>的哦~还记得如何操作吧！,Our <color=#ffcc00>new Flower Pixie</color> can also <color=#ffcc00>join the team</color>. Remember how to add monsters to the team?
+speech_shangmantuoluotips,<color=#ffcc00>新伙伴曼陀罗</color>是个超级<color=#ffcc00>奶妈</color>，<color=#ffcc00>回血</color>全靠他啦！,"Our <color=#ffcc00>new Mandrake</color> is a <color=#ffcc00>healer</color>, so you can rely on it to <color=#ffcc00>recover your monsters' HP</color>!"
+speech_exp1,只要吃下<color=#ffcc00>信仰之力</color>，妖怪就会成长，试试吧？,"If you feed a monster this <color=#ffcc00>Mytho Essence</color>, it will grow. Let's give it a try!"
+speech_exp3,你看，是不是觉得变强了~,See? Don't I look stronger? (And more beautiful...) 
+speech_exp4,获得了信仰之力，我们就会更强大！我们快去抢信仰之力吧！,We will become stronger when we receive more Mytho Essence! Let's go and get more!
+speech_exp5,其实有很多办法获得信仰之力，不一定非要抢其他妖怪的……,"Actually there are a lot of ways to get mytho essence, you don't always have to steal it from other monsters…"
+speech_exp6,不可能，现在镇上的妖怪都知道，这是最快的获得信仰之力的办法。,Who are you kidding? All the monsters in town know that's the quickest way to get more mytho essence.
+speech_exp7,肯定有人在散布谣言，这样下去大家都会死的。,"Hmm, I wonder who started spreading this kind of rumor. Everyone will die if this keeps up."
+speech_equip1,哼，笨影子还不是乖乖被我打趴下了，有了代行者的力量，本狐狸今非昔比了~,"See, I told you I could beat that stupid shadow! With my new keeper, I'm better than ever!"
+speech_equip3,能动手解决的，为什么要动口~多亏了笨影子，我们拿到了好东西呢。,"Sometimes it's better just to save your breath for the fight. Anyway, thanks to that stupid shadow, we got something super useful!"
+speech_equip4,什么东西？,Like what?
+speech_equip5,<color=#ffcc00>装备</color>，看来笨影子来人界的时候还带过来了异界的装备，有了这些我们的实力也有了提高。,<color=#ffcc00>A piece of Equipment</color>! It looks like that puppet brought some equipment from Mythos. With this we will be much stronger!
+speech_houbeiwei,<color=#ffcc00>支援位置</color>开启，可以统御更多的宠物了。多余三只宠物时，可以认真考虑一下让谁做前排，让谁做替补了哦！,"<color=#ffcc00>Backup positions</color> unlocked. You can control more monsters now. When you want to use more than 3 monsters, you should consider which to be active at the start, and which to be your backup."
+speech_shop,商店会有<color=#ffcc00>自动刷新时间</color>，当然，也可以通过<color=#ffcc00>消耗钻石刷新</color>，多来看看吧~,"The store <color=#ffcc00>automatically refreshes at a set time</color>, but of course you may also <color=#ffcc00>spend some diamonds</color> to manually refresh. Make sure to check often!"
+speech_xinshoushilian1,愿望树生长着两颗果实，金色果实通往拥有无限<color=#ffcc00>金币</color>的米达斯宫，银色果实通往可以获得大量<color=#ffcc00>信仰之力</color>的至福乐土。,"The Wishing Tree has 2 fruits: the golden fruit which leads to Palace of Midas and mountains of <color=#ffcc00>coins</color>, and the silver fruit which leads to the Fields of Elysium with tons of <color=#ffcc00>Mytho Essence</color>."
+speech_xinshoushilian2,想要获得金币和信仰之力的奖励？来接受我和黄金之灵的考验吧！,Want to get Gold and Mytho Essence rewards? Accept the drill from me and the Soul of Gold.
+speech_xinshoutower1,拥有通天塔的钥匙，就可以解救被黑暗组织囚禁在里面的妖怪了。,"With the Tower of Darkness key, you can rescue  monsters that have been captured by the dark organization."
+speech_xinshoutower2,通天塔一共有3座，分别是<color=#ffcc00>“试炼之塔”、“死亡之塔”、“绝望之塔”</color>。,"The Tower of Darkness has 3 stages: <color=#ffcc00>Tower of Guantlets, Tower of Death, and the Tower of Despair</color>."
+speech_xinshoutower3,参与通天塔玩法能够获得暗黑碎片，在通天塔商店购买<color=#ffcc00>装备打造材料、稀有宠物碎片</color>哦~,"By playing the Tower of Darkness, you can get dark fragments, which can be used to purchase <color=#ffcc00>equipment forge materials</color> and <color=#ffcc00>rare monster fragments</color> in the Tower Store."
+speech_xinshoutower4,为了安全起见，我们先去拯救被囚禁在第一座通天塔——试炼之塔的妖怪吧~,"To play it safe, let's go rescue the monsters being held in the first tower - the Tower of Gauntlets."
+speech_xinshoupvp1,这里是<color=#ffcc00>竞技场</color>，是代行者们磨练技巧的地方了。,This is the <color=#ffcc00>Arena</color>! Here is where all keepers battle to their master techniques.
+speech_xinshoupvp2,每次竞技会消耗<color=#ffcc00>竞技次数</color>，赢得胜利可以获得<color=#ffcc00>荣誉点</color>。,An <color=#ffcc00>Arena Entry</color> will be used each time you enter the Arena. 
+speech_xinshoupvp3,荣誉点可以在竞技商店购买<color=#ffcc00>宠物进阶材料、稀有宠物碎片</color>哦~,A victory will reward you with <color=#ffcc00>Honor Points</color> which can then be exchanged in the Arena Store for <color=#ffcc00>monster advancement materials</color> and <color=#ffcc00>rare monster fragments</color>!
+speech_xinshoucompose,<color=#ffcc00>低级的纹章、材料、宠物</color>可以通过<color=#ffcc00>合成魔法</color>变成<color=#ffcc00>更高级的纹章、材料、宠物碎片</color>，有不用的材料时就来合成吧。,"<color=#ffcc00>Crafting</color> allows players to turn <color=#ffcc00>low grade monsters, insignia and materials into high grade monsters, insignia and materials</color>. Simply use any of your uneeded materials."
+speech_xinshouguild1,公会是志同道合的代行者伙伴们交流信息的地方。,Joining a guild is the best way to meet and chat with other monster keepers.
+speech_xinshouguild2,在<color=#ffcc00>公会许愿池</color>，每天可以进行<color=#ffcc00>一次许愿</color>。向三位命运女神许愿的效果不同，付出越多收获越大。,"You can <color=#ffcc00>make a wish once a day at the Guild Wish</color>. Making a wish via the 3 different goddesses will yield different effects, and the more spent, the more you shall receive. "
+speech_xinshouguild3,公会会向代行者们发布一些任务。,Guilds will post quests for their members to participate in. 
+speech_xinshouguild4,完成任务不但能得到<color=#ffcc00>大量贡献值和金币</color>，还可能得到一些<color=#ffcc00>不得了的材料</color>呢。记得查看额外奖励哦！,"Completing these missions will not only give <color=#ffcc00>large amounts of contribution points and coins</color>, but may also possibly drop some <color=#ffcc00>awesome materials</color>. Remember to check for extra rewards!"
+speech_xinshouguild5,公会任务需要组队完成，不过<color=#ffcc00>队长会有额外奖励</color>呢。,"Guild quests will require the efforts of player teams to be completed, and <color=#ffcc00>team captains will get extra rewards</color>."
+speech_xinshouguild6,这里是<color=#ffcc00>公会基地</color>，可以将自己的妖怪作为<color=#ffcc00>佣兵</color>派遣到这里，公会伙伴们就可以雇佣了~,This is the <color=#ffcc00>guild base</color>. You may dispatch some of your monsters as <color=#ffcc00>mercenaries</color> here to be hired and used by other players.
+speech_xinshouguild7,当然，雇佣会有相应的佣金，来试试看吧~,Of course players will have to pay a fee when hiring mercenary monsters. Let's give it a try!
+speech_xinshouadventure1,这可是个将空闲不用的宠物派遣锻炼的好去处，还可以得到丰厚的回报哦~不同的大冒险会获得不同的奖励。,This is a good place to send some idle monsters to train and bring back some awesome rewards. Remember to check adventure type for different kinds of rewards.
+speech_xinshouadventure2,大冒险根据产出不同，分为<color=#ffcc00>“强化”、“进阶”、“究极”</color>三个种类，冒险的时间也有<color=#ffcc00>5h、8h、12h</color>可以选择呢，要根据自己的需求合理参与哦~,"Adventures are divided into three types based on their output: <color=#ffcc00>upgrades, evolution, and ultimate</color>. Adventure time can also be selected: <color=#ffcc00>5h, 8h, or 12h</color>. Simply choose whichever suits your needs."
+speech_xinshouadventure3,先来跟我一起看看“强化”冒险吧~,"Come with me and let's check out the ""upgrades"" adventure!"
+speech_xinshouadventure4,每个冒险任务会列出一系列“<color=#ffcc00>获得额外奖励条件</color>”。,"Each adventure quest will list a series of ""<color=#ffcc00>bonus reward requirements</color>"". "
+speech_xinshouadventure9,派出冒险的宠物越符合条件需求，获得额外奖励的概率就越大呢！,The more the monsters you dispatch for the adventure meet these requirements the higher your chance of receiving bonus rewards.
+speech_xinshouadventure5,可以通过“<color=#ffcc00>筛选</color>”按钮快速挑选出<color=#ffcc00>符合额外奖励条件</color>的宠物，跟我来试试。,You can quickly select monsters that <color=#ffcc00>meet the bonus requirements</color> by using the <color=#ffcc00>filter</color> button. Let's give it a try!
+speech_xinshouadventure6,当你选择好冒险的5只宠物后，点击<color=#ffcc00>探险</color>按钮，就冒险成功啦！自己试试吧~,"After you have selected 5 monsters for the adventure, tap the <color=#ffcc00>explore</color> button, and the adventure will be successful. Let's try now!"
+speech_xinshouadventure7,悄悄的告诉你，如果不想等待冒险时间，也可以<color=#ffcc00>通过花费钻石快速完成探险</color>~跟我来看看吧~,"I'll let you in on a little secret… If you don't want to wait for the adventure time, you can also <color=#ffcc00>spend some diamonds to speed up the exploration</color>. Let's give it a shot!"
+speech_xinshouadventure8,这里列出了你所有小队的探险情况哟，点击“<color=#ffcc00>立即完成</color>”按钮，就可以<color=#ffcc00>立即召回冒险的宠物并获得冒险奖励</color>。,"The statuses of all your adventure teams are listed here. Tap the ""<color=#ffcc00>Complete Now</color>"" button to <color=#ffcc00>immediately recall your monsters and receive the adventure rewards</color>. "
+speech_xinshoudecompose,可以将没用的<color=#ffcc00>装备和宠物分解掉</color>，转化成<color=#ffcc00>打造或者进阶材料</color>，这可是变废为宝的好方法哦~,You may <color=#ffcc00>discard any useless monsters or equipment</color> and turn them into <color=#ffcc00>forge or evolution materials</color>. This is the best way to get value from any unused items.
+speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~进阶需要的<color=#ffcc00>化形之书</color>在每章副本<color=#ffcc00>挑战难度</color>的<color=#ffcc00>第四和第八个本</color>掉落。,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster.Advancing monsters requires <color=#ffcc00>Books of Transformation</color>, which can acquired via <color=#ffcc00>Stage 4 or Stage 8 of Story Mode (Heroic)</color>."
+speech_xinshouxiangqian1,装备达到<color=#ffcc00>蓝色品质</color>后就可以开孔了，<color=#ffcc00>品质越高，开孔上限越高</color>。,"<color=#ffcc00>Blue</color> equipment or higher can have slots, and <color=#ffcc00>the higher the grade of the equipment, the higher the slot limit</color>."
+speech_xinshouxiangqian2,开孔后，就可以将形状对应的<color=#ffcc00>纹章镶嵌</color>进去了，纹章分为9种，给装备附加的属性各不相同。,"After opening a slot, you can <color=#ffcc00>attach the corresponding insignia</color>. There are 9 types of insignia, each boosting different stats for the equipment."
+speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，直到开到满意的形状为止~自己试试吧~,"If you are not happy with the slots, you can re-open the slots until you are satisfied with the results.Let's give it a try!"
+speech_xinshouxiangqian4,每次开孔，开出孔的数量和形状都是随机的，运气不好的话，打开的孔也可能被重新锁上。。。自己试试吧~,"Each time you open slots, the amount and type of slots are randomized. If you are not having any luck with it, slots that have been opened can be re-locked. Let's give it a try!"
+speech_xinshoulock1,是否担心开到了心仪的孔在下次开孔时被换掉呢，<color=#ffcc00>锁孔功能</color>就可以帮到你啦！跟我看看锁孔吧~,Worried that the slots you are happy with will be changed the next time you open more? Try <color=#ffcc00>locking</color> them! Let me show you how!
+speech_xinshoulock2,在这里，可以将想保留形状的孔锁住。锁住孔后，每次开孔都会消耗一定量的<color=#ffcc00>钻石</color>来保证<color=#ffcc00>这个孔不变化</color>哦~,"Here you can save the types of slots you would like to keep. After locking a slot, opening other slots will consume a set amount of <color=#ffcc00>Diamonds</color> to ensure that <color=#ffcc00>the locked slots are not changed</color>."
+speech_0fightqian1,你以为我堂堂九尾狐，和这个臭家伙——冰雪女王，是到你房间里玩的么！？,You think a Snow Queen and a Nine-Tail Fox came to your room just for fun!?
+speech_0fightqian2,冰雪女王是来抢你的<color=#ffcc00>照妖镜</color>的！就是你那个眼镜！看我怎么收拾她！,The Snow Queen (Chione) is after you and your <color=#ffcc00>Mytho Lens</color>…..your precious eyepiece! Let's fight her off now!
+speech_0fightqian3,怎……怎么回事？啊！,Wha… What's going on? Hey!!
+speech_0fightzhong1,怎么办啊，她太强了，你根本打不过她啊！,What do we do now? She seems to be too strong for us!
+speech_0fightzhong2,哼！每个怪物都有弱点，只有你的<color=#ffcc00>照妖镜</color>（眼镜）才能找到弱点！,Every Monster got a weakpoint and your <color=#ffcc00>Mytho Lens</color> (the eyepiece) can reveal it!
+speech_0fightzhong3,别担心，现在我就教你怎么用！,"Don't worry, follow my instructions now!"
+speech_0fighthou1,呼……胜利了，没想到你还挺能干嘛。,Whew… We won! I wasn't sure if you had it in ya.
+speech_0fightjihuo,太棒了！我们找到了冰雪女王的<color=#ffcc00>弱点</color>！,Nice! We have found Chione's <color=#ffcc00>weakpoint</color>! 
+speech_0fightjihuo1,干的漂亮，一鼓作气打败冰雪女王吧！,Great Job! Let's defeat Chione now!
+speech_kaijiaxing1,有没有发现这个弱点有些特别？没错！它是有血条的！<color=#ffcc00>有血条的弱点是可以被打掉的</color>。,Notice anything special about this weakpoint? That's right! <color=#ffcc00>These secret point can be destroyed</color>. 
+speech_kaijiaxing2,打掉这类弱点大多数时候会<color=#ffcc00>削弱boss能力或者暴露更多弱点</color>~快集火<color=#ffcc00>花魄的花瓣</color>吧！,Destroying this kind of secret points will usually <color=#ffcc00>weaken the boss' abilities or reveal more secret points</color>. Now tap on <color=#ffcc00>Flower Pixie's petal</color> to concentrate your attack!
+speech_kaijiaxing3,有没有发现这个弱点有些特别？没错！它是有血条的！<color=#ffcc00>有血条的弱点是可以被打掉的</color>。,Notice anything special about this weakpoint? That's right! <color=#ffcc00>These secret point can be destroyed</color>. 
+speech_kaijiaxing4,打掉这类弱点大多数时候会<color=#ffcc00>削弱boss能力或者暴露更多弱点</color>~快集火<color=#ffcc00>曼陀罗的根</color>吧！,Destroying this kind of secret points will usually <color=#ffcc00>weaken the boss' abilities or reveal more secret points</color>. Now tap on <color=#ffcc00>Mandrake's root</color> to concentrate your attack!
+speech_element1,对面<color=#ffcc00>水属性小怪</color>均被我方<color=#ffcc00>木属性宠物克制</color>，容易击杀。,The enemy <color=#ffcc00>water type monsters</color> can be <color=#ffcc00>countered</color> and defeated easily by our <color=#ffcc00>grass type monsters</color>.
+speech_element2,敌方阵容变强了，出现了<color=#ffcc00>克制我方属性的小怪</color>！要收集更多的怪应对不同的敌方组合哦！,"The enemy formation has become stronger, and contains <color=#ffcc00>monster that counter our own</color>! Get more monster to deal with different affinity."
+speech_duoruodian,boss有<color=#ffcc00>多个弱点</color>哦，鉴定成功后，考虑一下<color=#ffcc00>合适的攻击顺序</color>吧~,"Bosses can have <color=#ffcc00>many weakpoints</color>, so after discovering them, consider <color=#ffcc00>the best order for attacking them</color>."
+speech_yincangruodian,注意到了吗？有些弱点的图标以<color=#ffcc00>问号形式</color>出现，是不会提示位置的呢，<color=#ffcc00>需要自己找到哦</color>~,Notice that some weakpoints have <color=#ffcc00>a question mark</color>? Is it indicating a certain spot? <color=#ffcc00>You'll have to find out yourself</color>!
+guide_0dazhao,<color=#ffcc00>大招</color>能量已满，<color=#ffcc00>点击</color>释放,"Power is full, <color=#ffcc00>tap</color> to cast <color=#ffcc00>ultimate ability</color>."
+guide_tips,查看形状,Notice the shape.
+guide_tips1,使用照妖镜<color=#ffcc00>查看怪物</color>,Use Mytho Lens to <color=#ffcc00>detect Monster</color>.
+guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>到她的
+<color=#ffcc00>头部</color>进行<color=#ffcc00>弱点鉴定</color>","Drag and Hold the <color=#ffcc00>Mytho Lens</color> over her
+<color=#ffcc00>head</color> to <color=#ffcc00>scan for weakpoint</color>. "
+guide_drag,拖动,Drag
+guide_hold,停留,Hold
+guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"Now, <color=#ffcc00>tap</color> the head once 
+to <color=#ffcc00>concentrate attack</color>."
+guide_0dazhao1,注意使用<color=#ffcc00>大招</color>，尽快打败冰雪女王！,"Use your <color=#ffcc00>ultimate ability</color>
+to quickly defeat Chione!"
+guide_1PhyDazhao1,<color=#ffcc00>点击</color>释放<color=#ffcc00>大招</color>,"<color=#ffcc00>Tap</color> to cast 
+<color=#ffcc00>ultimate ability</color>"
+guide_1PhyDazhao2,"<color=#ffcc00>快速点击</color>怪物！
+让伤害更猛烈些吧！","<color=#ffcc00>Keep tapping</color> on the 
+monster for more damage"
+guide_zhaoyaojing,是不是忘记找弱点了呢~,"Did you forget to search 
+for enemy weakpoints?"
+guide_huanguai1,"<color=#ffcc00>点击</color>宠物，可以进
+行<color=#ffcc00>后备宠物</color>替换","<color=#ffcc00>Tap</color> a monster to swap it out 
+with one from a <color=#ffcc00>backup position</color>."
+guide_huanguai2,"宠物有生命危险了！
+快替换后备宠物","One of your monsters is in danger, 
+quickly swap it out for a backup monster!"
+guide_Fadazhao,"冰雪女王大招对<color=#ffcc00>多个目标</color>
+造成伤害，<color=#ffcc00>点击</color>图标施放","Chione's ultimate deals damage to 
+<color=#ffcc00>multiple targets</color>. <color=#ffcc00>Tap</color> the icon to cast it."
+guide_Picruodian1,<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>,"<color=#ffcc00>Tap and hold</color> the icon to view the 
+<color=#ffcc00>weakpoint info</color>. "
+guide_Picruodian2,<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>,"<color=#ffcc00>Tap and hold</color> the icon to view the 
+<color=#ffcc00>weakpoint info</color>."
+guide_Jihuoxiaoguai,<color=#ffcc00>点击</color>水哇鬼，<color=#ffcc00>集火</color>击杀小怪,"<color=#ffcc00>Tap</color> the Phase Frog to 
+<color=#ffcc00>concentrate your attacks</color> on it."
+guide_summon1,这里能够<color=#ffcc00>召唤</color>到宠物，成为宠物的主人,"<color=#ffcc00>Summon</color> Monsters here and 
+become their Monster Keeper."
+guide_summon2,使用夜之召唤,Use Dusk Summon now.
+guide_summon3,召唤一只新的宠物吧！,Tap to summon a new monster.
+guide_task1,点击这里查看已完成的任务！,Tap to view completed quests!
+guide_task2,可以领取奖励了！,Collect the reward now!
+guide_task3,看看这次会有什么奖励哦~,"See what kind of reward 
+you get this time!"
+guide_task4,"很棒哦~领取奖励就可以
+拿到<color=#ffcc00>曼陀罗的碎片</color>啦！","Awesome! Collect the reward 
+to get <color=#ffcc00>Mandrake fragments</color>!"
+guide_task5,又有任务完成了哦！,You've completed another quest!
+guide_task6,"哇！这次的奖励是<color=#ffcc00>信仰之力</color>，
+可以用来给<color=#ffcc00>宠物升级</color>哦！","Wow! This time you received some <color=#ffcc00>Mytho Essence</color>. 
+Use this to <color=#ffcc00>level up your monsters</color>!"
+guide_hechengpet1,有新的宠物可以合成！,You have new craftable monsters!
+guide_hechengpet2,进入<color=#ffcc00>宠物图鉴</color>界面,Enter the <color=#ffcc00>Monster Book</color> menu.
+guide_hechengpet3,<color=#ffcc00>合成宠物</color>都是在这里进行哦~,Here is where you can <color=#ffcc00>craft monsters</color>!
+guide_hechengpet4,"有了花魄的加入，
+我们会更强大！","With Flower Pixie, our 
+team is much stronger!"
+guide_hechengpet5,太棒了！已经拿到足够合成<color=#ffcc00>花魄的碎片</color>了！,"Great! You now have enough 
+<color=#ffcc00>fragments to craft Flower Pixie</color>!"
+guide_hechengpet6,"除了召唤之书，合成宠物
+碎片也能获得宠物哦！","Besides the Summoning Book, you can 
+also craft monster using fragements."
+guide_hechengpet7,现在就去与曼陀罗签订契约吧！,"Go and seal the monster 
+pact with Mandrake!"
+guide_hechengpet8,"记得这里吗？合成宠物
+都是在这里进行哦~","Remember this place? 
+This is where you craft monsters!"
+guide_hechengpet9,"有了曼陀罗这个奶妈，
+再也不用担心红血啦！","With a healer like Mandrake, you don't 
+have to worry about low HP anymore!"
+guide_instance1,让我们开始战斗吧！,Let's go battle!
+guide_instance2,选择第一章,Select Chapter 1.
+guide_instance3,先来试试第一个副本,Let's try the first stage.
+guide_instance4,<color=#ffcc00>点击</color>图标上阵宠物,"<color=#ffcc00>Tap</color> the icons to 
+select monsters 
+for your team."
+guide_instance5,让我们去<color=#ffcc00>战斗</color>收集更多的宠物吧！,Go <color=#ffcc00>fight</color> and collect more monsters now!
+guide_exp1,现在就去给<color=#ffcc00>宠物升级</color>吧！,Let's go <color=#ffcc00>upgrade our monsters</color>!
+guide_exp2,升级能使宠物战力提升呢！,"Upgrading a monster increases 
+its battle points (BP)."
+guide_exp3,这里列出了所有<color=#ffcc00>信仰之力</color>,All of your <color=#ffcc00>Mytho Essence</color> is listed here.
+guide_exp4,<color=#ffcc00>点击或者长按</color>可以使用信仰之力哦！,<color=#ffcc00>Tap or tap and hold</color> to use the Mytho Essence.
+guide_ability1,"跟我来看看如何给
+宠物<color=#ffcc00>升级技能</color>吧！","Come and see how we can <color=#ffcc00>increase</color> 
+the power of the <color=#ffcc00>Monster abilities</color>."
+guide_ability2,要常来这里升级宠物,Come back often to upgrade your monsters.
+guide_ability3,试试给这只宠物升级技能,"Try to upgrade the 
+abilities of this monster."
+guide_ability4,"第一个技能是战斗
+中<color=#ffcc00>手动施放的大招</color>","The first ability is <color=#ffcc00>the Ultimate 
+Abilitiy which is cast manually</color>."
+guide_ability5,"其他技能战斗中<color=#ffcc00>自动施放</color>，
+点击切换技能","Other abilities are <color=#ffcc00>cast automatically</color> by the 
+monster in battle. Try tapping on the other abilities."
+guide_ability6,"大多数技能可以升级，但
+需要消耗<color=#ffcc00>金币和技能点</color>
+（点击任意位置结束）","Most abilities can be upgraded 
+with <color=#ffcc00>coins and abilitiy points</color>. 
+(Tap anywhere to continue)"
+guide_equip1,"获得了<color=#ffcc00>宠物装备</color>，
+去给宠物穿上吧！","You've received some <color=#ffcc00>monster equipment</color>, 
+let's go put it on now!"
+guide_equip2,这里可以查看到自己所有的宠物哦~,Here you can view all of your monsters.
+guide_equip3,给冰雪女王穿上装备吧~,Let's put some equipment on Chione.
+guide_equip4,<color=#ffcc00>加号</color>代表这个位置有可穿的装备,"The <color=#ffcc00>symbol</color> indicates you have equipment 
+that can be used for this spot."
+guide_equip5,穿上装备的宠物更强大啦！,Monsters with equipment are much stronger!
+guide_shop1,<color=#ffcc00>普通商店</color>开启啦！,<color=#ffcc00>Normal Store</color> unlocked!
+guide_dazao1,恭喜获得了<color=#ffcc00>灵铁</color>，可以<color=#ffcc00>打造装备</color>啦！,"Congratulations! You have received <color=#ffcc00>raw iron</color>, 
+which can be used for <color=#ffcc00>forging equipment</color>!"
+guide_dazao2,宠物的装备都是可以打造的,All monster equipment can be forged.
+guide_dazao3,先让我来教教你如何打造哦！,"Let me teach you how 
+to forge equipment!"
+guide_dazao4,选择一个要打造的装备,"Select a piece of equipment 
+you would like to forge."
+guide_dazao5,进入打造界面就可以打造装备了哦！,"Enter the Forge menu 
+to forge equipment."
+guide_dazao6,"打造装备可是提升宠物
+战斗力的重要途径呢！","Forging equipment is an important way 
+to increase your monsters' battle power!"
+guide_shilian1,<color=#ffcc00>愿望树</color>玩法开启啦！,<color=#ffcc00>Wishing Tree</color> unlocked!
+guide_shilian2,还等什么，快进入果实探索吧！,"What are you waiting for?
+Let's go explore these fruit!"
+guide_tower1,<color=#ffcc00>通天塔</color>玩法开启啦！,<color=#ffcc00>Tower Of Darkness</color> unlocked!
+guide_tower2,做好战斗准备，进入试炼之塔,Prepare for battle and enter the first tower.
+guide_pvp1,<color=#ffcc00>竞技场</color>开启啦！,<color=#ffcc00>Arena</color> unlocked!
+guide_pvp2,"要<color=#ffcc00>布置防御阵容</color>抵御
+其他代行者的挑战哦！","<color=#ffcc00>Set a defense team</color> to defend against 
+attacks from other keepers!"
+guide_hecheng1,<color=#ffcc00>合成</color>功能开启啦！,<color=#ffcc00>Combine</color> unlocked!
+guide_adventure1,<color=#ffcc00>大冒险</color>玩法开启啦！,<color=#ffcc00>Adventure mode</color> unlocked!
+guide_adventure2,试试看5h的冒险,Let's give the 5h adventure a try.
+guide_adventure3,"要关注<color=#ffcc00>概率</color>的变化以
+保证获得<color=#ffcc00>额外奖励</color>哦！","Pay attention to the <color=#ffcc00>changes</color> in 
+probability to ensure <color=#ffcc00>bonus rewards</color>."
+guide_adventure4,"<color=#ffcc00>点击</color>这里，符合条件的
+宠物就被<color=#ffcc00>筛选</color>出来啦！","<color=#ffcc00>Tap</color> here and monsters that meet the 
+bonus requirements will be <color=#ffcc00>shown</color>."
+guide_adventure5,"再次<color=#ffcc00>点击</color>可
+以<color=#ffcc00>取消筛选</color>","<color=#ffcc00>Tap</color> again to 
+<color=#ffcc00>cancel the filter</color>."
+guide_adventure6,"<color=#ffcc00>借用同公会玩家的宠物</color>
+能帮助自己达成条件呢！","<color=#ffcc00>Hiring monsters from other guild members</color> can 
+also help you reach the bonus requirements."
+guide_adventure7,"所有探险小队的情况
+在这里一目了然哦！","You can check the status of 
+all your adventure teams here."
+guide_fenjie1,<color=#ffcc00>分解</color>功能开启啦！,<color=#ffcc00>Discard</color> unlocked!
+guide_guild1,<color=#ffcc00>公会</color>玩法开启啦！,<color=#ffcc00>Guilds</color> unlocked!
+guide_guild2,"若想<color=#ffcc00>加入其他队伍</color>，
+这里能查看哦~","You may check here if you 
+would like to <color=#ffcc00>join other teams</color>."
+guide_chongwujinjie1,<color=#ffcc00>宠物进阶</color>功能开启啦！,<color=#ffcc00>Monster advance</color> unlocked!
+guide_chongwujinjie2,试试进阶这只宠物,Let's try advancing this monster.
+guide_chongwujinjie3,进阶宠物可以<color=#ffcc00>全面提升宠物能力</color>,"Advancing a monster <color=#ffcc00>
+increases its overall capabilities</color>."
+guide_zhuangbeikaikong1,这个装备可以<color=#ffcc00>开孔</color>啦！,"You may use an Insignia Stone to 
+<color=#ffcc00>open a slot</color> on this equipment."
+guide_zhuangbeikaikong2,"这可是除打造外<color=#ffcc00>提升
+装备战力</color>的重要途径呢！","This is a great way to <color=#ffcc00>upgrade your
+equipment</color>  without forging your equipment."
+guide_zhuangbeilock1,"<color=#ffcc00>锁孔</color>可以防止
+心仪的孔消失哦！","You can <color=#ffcc00>lock slots</color> to 
+keep them from being changed."
+push_linghuoli,九尾狐送来了一箱苹果， 给你补给活力。,Nine Tails sent you a box of apple to give you Energy.
+push_guildtask1,公会任务倒计时即将结束，没完成的要抓紧咯~,"Guild Quests will expire when the time limit is reached, so make sure to complete them on time! "
+push_guildtask2,公会任务已完成，记得去领取奖励哦！,"Guild Quest already completed, remember to go collect the rewards!"
+push_tongtianta1,通天塔已刷新！重新挑战，领取丰厚奖励吧。,Tower Of Darkness has refreshed. Go and battle for some more rewards.
+push_tongtianta2,距离通天塔刷新仅剩1天，你是否已达塔顶？,"The Tower Of Darkness will refresh in 1 day, have you already reached the top?"
+push_pvp,竞技场竞技次数已满，快去向对手发出挑战吧！,"Your Arena chances are full now, go challenge some opponents!"
+push_advanture,探险小分队已成功归队，发现不少奇珍异宝，快去看看吧！,Your exploration team has returned with treasures they have unearthed. Go and see what they found!
+push_summon,可以进行免费召唤啦，去试试运气吧~,"You have a free monster summon, go and try your luck!"
+push_shop,商店都重新进货了，快去瞧瞧吧~,"The store is full of new items now, go and take a look!"
+push_huoli,活力值已满，带领宠物战斗吧！,"Your Energy is full, get out there and take your monsters to battle!"
+push_long,你的宠物都在等你指挥， 快回来帮他们找信仰之力。,Your monsters are awaiting your command. Go and help them collect more Mytho Essence!
+bingxuenvwang3hide_head,根据图形提示找到弱点,Looks like her head is the weakpoint.
+bingxuenvwang3normal_head,冰雪女王的要害,This is Chione's weakpoint.
+bossxinshouBingxuenvwang3wp02,头,Head
+speech_blt_11_1,太棒了！我们打败了花魄！但是为什么街上会有这么多妖怪呢？,Great! We defeated the Flower Pixie! But why are there monsters in the street?
+speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, Mythos is at war!"
+speech_blt_11_3,总之，妖怪是依靠人类对我们的信仰生存的，所以很多妖怪来到人界，是为了获得信仰之力。,"Simply put, monsters rely on the belief of mankind to exist. That's their mytho essence. That's why many monsters have come to the real world, they want to get the power of more people believing."
+speech_blt_11_4,信仰之力，那是什么？,Mytho… essence? What do you mean?
+speech_blt_11_5,总之跟你说你也不懂，简而言之，信仰之力是我们的能量之源，而异界的信仰之力正在急剧减少。,"So basically... Ah forget it, you wouldn't get it anyway! In short, Mytho Essence is our source of energy and it's running short back on Mythos."
+speech_blt_14_1,镇上的妖怪好像形成了集团。,All the monsters in town seem to have divided into groups.
+speech_blt_14_2,是呀，现在镇上有三个大妖怪集团呢，要想说服他们不再厮杀可不容易。,"Yes, there are currently three main groups of monsters in town. It will be difficult to convince them all to stop fighting with each other."
+speech_blt_14_3,哼，闻到这些喽啰们的气味我就知道，这个地方的首领肯定是皮影。,"Hmm... from the reek of these bandits, I can tell right away that their leader is Shadow Puppet."
+speech_blt_14_4,皮影？,Shadow Puppet?
+speech_blt_14_5,是呀，一种掌控影子的怪物，如果不小心，就会被他拖进永恒的黑暗！,"Yeah, a monster that controls the shadows. If we're not careful, we'll be dragged into eternal darkness!"
+speech_blt_15_1,好了，我们看看雪娃娃那边怎么样了,"Ok, let's see how our little snow princess is doing!"
+speech_blt_15_2,…………,…
+speech_blt_15_3,嗯？你怎么这幅表情？,Huh? I don't like that look… What's wrong?
+speech_blt_15_4,被……全灭了……那里的妖怪被……全灭了……,Destroyed... All of them… There were no monsters left!
+speech_blt_15_5,怎么回事？！是谁干的？,What do you mean? Who could do such a thing?
+speech_blt_15_6,小妖怪们说，好像是一个人类……,Some other monsters said that they believe a human is behind it…
+speech_blt_15_7,人类？我知道了！一定是散布流言的那个人，只要妖怪们互相吞并，他最后只要干掉最大的妖怪，就能获得全部信仰之力！,"A human? I know! It must be the one who was spreading all those rumors! He wants the monsters to destroy each other, leaving only the last monster for him to defeat! Then take all the myth essence."
+speech_blt_15_9,刚才小妖怪们说，那个人类似乎还有妖怪帮手,"Just now, a little monster told me that the human has monsters helping him."
+speech_blt_15_10,这么说的话，他也是代行者……我们要小心应付,"If that's true, then he is also a monster keeper... We should be careful."
+speech_blt_17_1,前面就是了，我感受到了很恐怖的力量！我们一定要做好万全的准备。,"It's just ahead! I sense a terrible power here, so let's be on our guard!"
+speech_blt_18_1,不好，来晚了，这里妖怪首领的气息消失了,"Sorry, I came late, the leader's genki seems vapourized."
+speech_blt_18_2,呵呵，没想到还有自投罗网的妖怪，守护龙，你的餐后甜点来了,"Haha, it seems more have fallen right into our trap! Guardian Dragon your dessert has arrived!"
+speech_blt_18_3,你就是谣言的散布者！你的目的是什么？,You're the one that has been spreading the rumors! What's your purpose behind all this?
+speech_blt_18_4,呵呵，目的？当然是夺取信仰之力，只要有足够的信仰之力，就能通过这颗金苹果打开异界的通道，完整的守护龙就能降临人间！,"Why I am stealing all the essence, duh! With enough myth essence, this Golden Apple will open the path to Mythos, and mankind will witness the terror of a complete (but still hungry) Guardian Dragon!"
+speech_blt_18_5,金苹果，坏了！他是守护龙的代行者！,Golden Apple! Not good! That's the Guardian Dragon's keeper!
+speech_blt_18_6,真是一只见多识广的小狐狸，守护龙，上，撕裂这些挡路者！,You sure know a lot for being such a little fox! Go Guardian Dragon! Get rid of these pests!
+speech_blt_18_7,如果不是因为“墙”守护龙不会这么弱，看来我只好动用最后的王牌了……,"If it wasn't for that ""wall,"" Guardian Dragon wouldn't be so weak. It seems I will have to use my last resort…"
+speech_blt_18_8,不好，他要让守护龙吃下金苹果！,Not good! He wants to let the Guardian Dragon eat the Golden Apple!
+speech_blt_18_9,住手！,Stop!
+speech_blt_18_10,啊！咳咳……,Ah! Arghhh…
+speech_blt_18_11,………………,…
+speech_blt_18_12,竟然是你偷袭我……咳咳……我只想见到守护龙……你们……咳咳……,So it was you who attacked me…Arghhh... I only wanted to see Guardian Dragon… Arghhh... But you all… Arghhh…
+speech_blt_18_13,守护龙被击败了，他的代行者的生命也会同时消亡……,"Because the Guardian Dragon was defeated, its keeper will now also disappear…"
+speech_blt_18_14,多亏了你们，他是一个通缉犯，已经在世界各地杀掉了很多妖怪，我追捕多时，今天终于把他捉到了。,"You all have my thanks. He was a wanted man. You couldn't imagine how many monsters he has already killed. I've been hunting him for some time now, and today it has finally come to an end."
+speech_blt_18_15,嗯？你的眼镜…………,Huh? That eyepiece…
+speech_blt_18_16,这部手机给你，如果想知道妖怪和你所戴眼镜的事情，就来找我吧。,"Here, take this phone. If you ever want to know more about monsters or the eyepiece you carry, just find me."
+speech_blt_18_17,那个老头是谁，这么厉害竟然能一下干掉一条守护龙。,Who was that? Strong enough to take out a Guardian Dragon with one shot!
+speech_blt_18_18,……我总觉得他有些面熟，是在哪里见过呢……,"I feel like I've seen that person before, but where…"
+speech_blt_18_21,那老头让你用这个找他，可这里面没有他的信息呀，是不是老糊涂了……,So that mysterious person wants you to use this to contact him… But he didn't leave any info about himself… Maybe he's just old and confused?
+speech_blt_23_1,之前我听凯尔说什么“墙”，那是怎么回事呀……,"I heard Kyle mention something about a ""wall."" What was all that about..."
+speech_blt_23_2,在人界和异界之间有一道屏障，如果一边的生物想穿越到对面的世界，就会被屏障附上新世界的“规则”,"There is a barrier between the real world and Mythos. If a creature want to travel from one world to the other, the barrier will force it to conform to the rules of the world it is entering."
+speech_blt_23_3,比如在人界，本来是没有妖怪存在的，所以我要过来的话，妖力会被大大减弱到这个世界可以允许的水平,"For example, the real world originally didn't have any monsters. So if a monster crosses the barrier, it will be weakened to a level that the real world can accept."
+speech_blt_23_4,诶！这么说你们在异界比在这里强大多了！,Wow! So that means that in Mythos you monsters are actually much stronger!
+speech_blt_23_5,那还用说，如果在异界，哪还用像现在这样费事。,"Of course! Why, if we were in Mythos, we wouldn't need to go to all this trouble."
+speech_blt_23_6,嘘，好像接近目标了,"Shhh, it seems we are getting close to our target."
+speech_blt_24_1,呃……我想了想不对呀，这么说来，人类之前的传说和神话都是翻墙来的妖怪了？,I knew something wasn't right. So that means that mankind's early legends and myths were all monsters that crossed the barrier to the real world?
+speech_blt_24_2,……不，在之前，异界和人界是没有墙的,Nope. Originally there was no barrier between Mythos and the real world.
+speech_blt_24_3,没有墙？也就是说之前这两个世界之间是可以自由往来的？那墙是怎么出现的？,No barrier… That means you could freely cross between the two worlds? Then where did the barrier come from?
+speech_blt_24_4,我也不是很清楚……我的记忆很模糊，在我知道的时候，墙已经在那里了,"I don't really know… My memories aren't very clear. As far as I can remember, it was always there."
+speech_blt_24_5,九尾狐不是至少活了一千年吗，难道一千年前……,But haven't you already lived for a 1000 years? So that means that 1000 years before…
+speech_blt_24_6,你们别说话了，手机有反应了，求救的人就在前面。,You two can discuss this later. Look! The phone is acting up. The distress signal is coming from just ahead!
+speech_blt_24_7,啊……得救了，还以为会被这些妖怪吃了……,"You've saved me!! Boy, I thought I was going to be eaten alive by those monsters…"
+speech_blt_24_8,谢谢你们，我是阿曼达,"Yes, much appreciated! I am Amanda."
+speech_blt_24_9,阿曼达？！你是那个著名的插画师？！画河童漫画的那个？,Amanda?! Aren't you that famous artist? The one who makes that Kappa manga?
+speech_blt_24_10,呃，是我，多谢你救了我，你也有这个手机？,"Uh, yeah, that's me. Thanks for the rescue! Oh… So you also have one of these phones?"
+speech_blt_24_11,是呀，一个神秘的老头给我的。,"Yeah, some mysterious old guy gave it to us."
+speech_blt_24_12,我的是读者寄来的匿名礼物，没想到在这里派上了用场。,I received mine in a package from an anonymous reader. I didn't expect that it would end up working here.
+speech_blt_24_13,河童的代行者，这里太危险了，有什么话一会再说,"Kappa Keeper, it's very dangerous here. We can discuss these things later…"
+speech_blt_25_1,喂你们等等，还有好多妖怪被捉到了这个神社里面,"Hey, wait you guys! There are still lots of monsters trapped inside the shrine."
+speech_blt_25_2,妖怪被捉怎么回事，我们不是已经把黑龙干掉了吗,How could monsters get trapped there? Didn't we already defeat that Black Dragon?
+speech_blt_25_3,最近似乎有很多妖怪平白无故的失踪了,Recently there have been many monsters mysteriously disappearing.
+speech_blt_25_4,失踪？是不是回异界了,Disappearing? Are you sure they didn't just return to Mythos?
+speech_blt_25_5,根本不是的，我的朋友就失踪了，也没有回异界,"No, no they're really disappearing. A friend of mine is missing now, and I know for sure that she didn't return to Mythos."
+speech_blt_25_6,似乎妖怪的失踪是一个神秘组织抓走的，我们根据线索来到这个神社,It seems that there is a mysterious organization behind the disappearance of these monsters. We followed the clues right to this shrine.
+speech_blt_25_7,（神秘组织……不会跟那个神秘老人有什么关系吧）,(Mysterious organization… I wonder if that mysterious old man we ran into earlier could have anything to do with it?)
+speech_blt_25_8,这个神社可能就是神秘组织的据点，我们要小心,This shrine could very well be the hideout for that mysterious organization. We should be careful.
+speech_blt_26_1,你们真厉害，刚才我们就是被神社里的幻术困住，你们竟然没事,"Wow, you guys are awesome! We were being trapped by illusions in the shrine. I'm glad we made it in one piece."
+speech_blt_26_2,幻术？什么幻术，我怎么没感觉到……,Illusions? What illusions? I didn't see anything…
+speech_blt_26_3,咦，小狐狸，这里有你的雕像！,"Hey, look little fox, it's a statue of you!"
+speech_blt_26_4,我的雕像？等等，我好像想起什么了……这里，好像是我们家族在人界的栖息地？,"A statue? Wait, this reminds me of something... This place seems to be the habitat of our family here in the real world?"
+speech_blt_28_1,叽叽！,Squeak squeak!
+speech_blt_28_2,这是什么，好恶心！,"Eww, what is this? Disgusting!"
+speech_blt_28_3,好像就是他们控制了这些妖怪,It seems it was them who were controlling the monsters.
+speech_blt_28_4,这种妖精我从未见过……难道……这是人造的，有人在故意制造妖怪！,I have never seen this kind of creature before. They appear to be manmade. Could it be… Someone is intentionally creating monsters!
+speech_blt_28_5,叽叽！,Squeak squeak!
+speech_blt_28_6,啊啊啊他们聚集到那颗树上了！那棵树也被他们控制了！,Ahhh! More are gathering in that tree! The tree is also being controlled by them!
+speech_blt_28_7,终于处理了这些烦人的妖精，如果这是人造的妖精，那么黑暗组织绑架其他的妖怪，很可能就是为了制造妖精！,"Ugh, finally done with those pesky little creatures. If they are manmade, then it is possible that the monsters being kidnapped are being used to make them!"
+speech_blt_28_8,啊！那龙女她……,Ah! That Dragon Girl! She…
+speech_blt_28_9,这里还没有他们的线索，这些混蛋肯定藏在了其他的地方，可恶！,There are no other clues here. These jerks are definitely hiding out somewhere else.
+speech_blt_28_10,这个树……不是一般的树……,This tree is no ordinary tree!
+speech_blt_28_11,嗯？,Huh?
+speech_blt_28_12,这是世界树的幼苗，这棵树的内部还有空间！,"This is a World Tree seedling. Look, it's hollow inside."
+speech_blt_31_1,小狐狸干得漂亮！没想到树里还有这么大的森林,Good job little fox! I would have never guessed that inside the tree lies a huge forest!
+speech_blt_31_2,世界树本来就是孕育世界的神奇生物，成年的世界树可以支撑起一个世界，这个幼年的世界树中有这么大的空间完全不奇怪,"The World Tree was originally the magical creature that conceived the world. A fully grown World Tree can support an entire world, it's no wonder that this young sapling has so much space inside."
+speech_blt_31_3,这里，有龙女的气息！,This place reeks of Dragon Girl.
+speech_blt_31_4,这么说那些被捉走的妖怪果然在这个树洞里！,That means that the kidnapped mosters must be inside this tree!
+speech_blt_32_1,这里如果是那个黑暗组织的巢穴，那么戒备肯定森严，我们要小心。,"If this is the lair of that dark organization, then that means it should be guarded. Proceed with caution."
+speech_blt_32_2,小狐狸，你们去做诱饵引开那些守卫，我趁机去救人怎么样？,"Little fox, go buy us some time by distracting the guards. In the meantime, we'll go and save as many as we can."
+speech_blt_32_3,诱……诱饵！,Dis… Distract the guards??
+speech_blt_32_4,这个确实是比较快的方案了，只要小心的话不会有什么问题。,"I know it's hasty plan, but it should work as long as we're all careful."
+speech_blt_33_1,喂喂……还要往前走吗，感觉要被他们发现了……,"Wait, wait! Do we still need to go any further? Don't you think we'll be spotted?"
+speech_blt_33_2,别害怕，只要引开落新妇，就算是完成任务了,"Don't worry, we just need to lure out Nephila and are job here will be done."
+speech_blt_34_1,啊啊啊，蜘蛛！好讨厌！,"Ahhh, spiders!! I hate spiders!!"
+speech_blt_34_2,嘘……小点声，小心被……,Shhh… Keep it down! We don't want to be…
+speech_blt_34_3,坏了！果然被发现了，只能蛮干了！,"Oh no! We've been spotted! Ok guys, get ready to fight!"
+speech_blt_35_1,干的不错吗，小狐狸,"Not bad, little fox!"
+speech_blt_35_2,……都怪这个胆小鬼，差点连命都没了……,It's all this sissy's fault... We almost didn't make it back there…
+speech_blt_35_3,谁是胆小鬼！女孩子怕蜘蛛怎么了！还那么大一只！,Who are you calling a sissy? Girls are afraid of spiders. So what?! (and it was a big one too…)
+speech_blt_35_4,嘘……小点声……别再引来怪物……,"Ok, ok… Just keep your voice down. We don't want to end up getting caught again…"
+speech_blt_35_5,前面就是关押妖怪的地方了吧……我们快去救人吧。,Just ahead is where they are keeping the monsters… Let's go save them!
+speech_blt_36_1,哈哈哈，欢迎来到森之牢狱！,"Hahaha, welcome to the forest! Or should I say… Prison!!!"
+speech_blt_36_2,你就是绑架妖怪的始作俑者吗！,So you are the one behind all the monster kidnappings!
+speech_blt_36_3,绑架，不要说得那么难听，我只是让这些异界逃来的可怜虫变得更加强大。,Kidnapping? It sounds bad when you put it that way… I was only just helping these worthless Mythos escapees to become stronger.
+speech_blt_36_4,你别想跑！,Don't even think of running!
+speech_blt_36_5,跑？我怎么会跑？盛大的欢迎宴会才刚刚开始。,Running? Why would I run? Why the welcoming banquet has only just begun!
+speech_blt_36_6,啊，那是龙女！她……她也被控制了！,"Ah, Dragon Girl! She… She is being controlled!"
+speech_blt_36_7,呵呵，你能对昔日的朋友下手吗？,Ahaha! Seeing old friends reunited always brings so much emotion... I'll leave you guys to catch up. Hahaha
+speech_blt_37_1,龙女……你没事吧！,Dragon Girl… Are you ok?!
+speech_blt_37_2,别担心，他只是妖力用尽晕了过去。,"Don't worry, her powers have been drained, that's all."
+speech_blt_37_3,怎么才能把她从控制中救出来！,How do we save her from being controlled!
+speech_blt_37_4,控制……对了！你快使用照妖镜！,Controlled… Oh that's right! Use the Mytho Lens!
+speech_blt_37_5,嗯？,Huh?
+speech_blt_37_6,对！你用照妖镜能够看到的，那些控制龙女的妖精的弱点。,Right! You can use the Mytho lens to see the weakpoints of the creatures controlling Dragon Girl.
+speech_blt_38_1,怎……怎么可能！你到底是谁，你为什么能够击败这些妖精！,How… How could it be? Who are you! And how are you able to defeat my minions!
+speech_blt_38_2,不…呵呵…不管你是谁，都不能阻止我，阻止组织！,"But it matters not… Haha! Whoever who you may be, you cannot stop me. You cannot stop our plan!"
+speech_blt_38_3,我要让你看看，美杜莎的代行者的厉害！,It's time for you to see the power of Medusa's keeper!
+speech_blt_38_4,没想到这个人夺取了这么多妖怪的能力！,I had no idea that this person had stolen the power of so many monsters!
+speech_blt_38_5,如果还有妖怪来到人界，一定还会被这个黑暗组织盯上……,"If monsters keep coming to the real world, for sure they will just keep being caught by these guys…"
+speech_blt_38_6,说起来，到底异界发生了什么，为什么妖怪会来到人界？,So what exactly happened on Mythos? Why are so many monsters coming to the real world?
+speech_blt_38_7,………………,…
+speech_blt_38_8,我们去异界看个清楚吧,Why don't we go to Mythos and you can see for ourselves?
+speech_blt_38_9,………………,…
+speech_blt_38_10,九尾？,Nine Tails?
+speech_blt_38_11,…………好吧，不过回到异界唯一的办法就是房间里的传送门了,Alright… But the only way back to Mythos is through the portal in the bedroom.
+speech_blt_41_1,这里是哪里？,Where is this?
+speech_blt_41_2,啊！为什么传到了这么讨厌的地方！,Ah! How did we end up here?!
+speech_blt_41_3,这里是异界七大国度的火之国……传送门不稳定，这里离我们的目的地还很远,"This is the Fire Kingdom, one of the seven  kingdoms of Mythos… It seems our portal isn't entirely stable. This is pretty far off from where we had intended to go."
+speech_blt_41_4,我怎么感觉身体不太舒服,Ughhh… I don't feel so well.
+speech_blt_41_5,因为穿过了屏障，人类也会被屏障削弱，就像妖怪去人界的时候一样，在这里千万不要轻举妄动,"It's because you passed through the barrier. Humans are also weakened by the barrier, just like when monsters come to the real world. We need to be on our guard here."
+speech_blt_41_6,火之国的统治者是工匠之神，是个十分可怕的存在……,The leader of Fire Kingdom is the God of Craft…... One scary dude…
+speech_blt_42_1,热死了……我感觉我要化掉了……,"It's so hot, I think I'm melting…"
+speech_blt_42_2,我也是……感觉要干枯了……,Me too… I'm about to dry up…
+speech_blt_42_3,整个火之国都是建立在一个巨大的火山中……在这里生活的全是一些喜爱火炎的神怪,All of the Fire Kingdom is located within one massive volcano. The monsters that exist here tend to love fire and flames.
+speech_blt_42_4,啊……前面好像有一座大雪山~你们看到没？,"Ah, but what is that big snowy mountain that lies just ahead. Do you see it too?"
+speech_blt_42_5,好棒……大雪山……,Oh nice… A big snowy mountain…
+speech_blt_42_6,喂喂……已经出现海市蜃楼的幻觉了吗……,Hey! Already seeing mirages huh?
+speech_blt_42_7,振作呀！,Get yourselves together!
+speech_blt_43_1,再往前走，是火鸟的栖息地了,Just a little further is the Firebird habitat.
+speech_blt_43_2,火鸟！,Firebird?!
+speech_blt_43_3,是呀，因为火鸟的能力是涅槃，可以浴火重生，所以他们一遇到不开心的事就自焚了，是一群丧心病狂的纵火犯,"Yeah, because Firebird's ability is Nirvana, it can be reborn from the ashes. So the moment she encounters anything unfavorable, she burns herself… Like a group of crazy arsonists…"
+speech_blt_43_4,纵火犯……,Pyromaniacs is more like it…
+speech_blt_43_5,总之我们还是离他们远点比较好……,"Overall, it's best to keep our distance from her…"
+speech_blt_44_1,前面是大天狗的住处了，听说他是一个盲人，却拥有很强大的占卜能力呢~,"Just ahead is where Tengu lives. It's said that he's blind, but possesses divination powers."
+speech_blt_44_2,我要去找他算算我的恋爱运~,Oh I should talk to him about my luck with finding love!
+speech_blt_44_3,说到恋爱你神采奕奕，完全不像是被热晕了的样子了呢……,"Now you're thinking about finding love! Hey, what happened to that look of heat stroke you had a moment ago…"
+speech_blt_44_4,哼，要你管！,"Hmph, that's none of your business!"
+speech_blt_44_5,盲人算命，百试百灵。,"Blind fortune teller, sounds pretty accurate."
+speech_blt_44_6,哇！果然有大天狗！快帮我占卜！,Wow! It is Tengu after all! Quick tell my fortune!
+speech_blt_44_7,嗯，这位小姐，你的面色很差呢，或许会有大灾难……,Yes. This girl… I can see from your poor facial complexion… A great catastrophe is coming for you…
+speech_blt_44_8,你一个瞎子怎么看出她的面色的？,How could a blind man see someone's complexion? And so fast…
+speech_blt_44_9,…………………………,…
+speech_blt_44_10,…………………………,…
+speech_blt_44_11,…………………………,…
+speech_blt_44_12,啊……哈哈……老夫身体不适，今天就不占卜了……,"Ah, well… My wife is not feeling well, so no more fortunes today."
+speech_blt_44_13,别想跑！,"Hey, don't think of running!"
+speech_blt_44_14,喂喂……别打了！我错了还不行吗！扮演瞎子只是为了让占卜更可信啊……,"Hey, take it easy. No need to fight, hehe! Ok so I was all a lie... I just pretend to be blind to make my fortunes more believable…"
+speech_blt_44_15,哼，没想到你是这样的瞎子，快说火神殿怎么走,"Hmph, I never would have guessed you were like this. Just tell us how to get to the  Ember Palace."
+speech_blt_44_16,你们要去找工匠之神？过了这片山谷，前面就是了。,"You guys want to go find the God of Craft? Cross this valley, and then it's just ahead."
+speech_blt_44_17,那好，我们走了,"Ok then, off we go!"
+speech_blt_44_18,小姑娘……,"Oh, miss…"
+speech_blt_44_19,嗯？,Huh?
+speech_blt_44_20,嗯……算了没事……你回到故乡的时候千万要小心……,Ah forget it… Just be careful when you return to your hometown.
+speech_blt_44_21,？,?
+speech_blt_45_1,按照大天狗所说，出了前面的山谷就应该能看到火神殿了。,"According to Tengu, we should be able to see the Ember Palace once we get out the valley."
+speech_blt_46_1,距离火神殿还有一段路,We still have a ways to go before we reach the Ember Palace.
+speech_blt_46_2,喂喂，九尾，打底异界发生了什么，为什么你们会到人界去呢？,"Hey, Nine Tails! So what exactly happened in Mythos. Why did you guys ever want to come to the real world?"
+speech_blt_46_3,…………你到了就知道了,You'll understand when we get there.
+speech_blt_47_1,这里就是火神殿的前面了，不出意外的话，会有伊芙利特守卫在这里，我们要小心。,"This is the front of Ember Palace. If we avoid any other problems, there should be Ifrit guards here. We should be careful."
+speech_blt_48_1,前面马上就要进入火神殿了,Ok the entrance to the palace should be just ahead.
+speech_blt_48_2,工匠之神，到底是个什么样子的人？,So what kind of creature is the God of Craft exactly?
+speech_blt_48_3,工匠之神十分可怕……总之你见到的时候千万不要乱说话,Absolutely terrifying… Just don't say anything to upset him once we meet him.
+speech_blt_48_4,诶？你们是来找我的吗？,Huh? You are here to see me?
+speech_blt_48_5,工！工匠之神大人！,God…..God of Craft!
+speech_blt_48_6,诶？！这是工匠之神？这明明是个小孩子呀！,What? This is the God of Craft!? This is obviously just a little kid!
+speech_blt_48_7,住！住嘴！工匠之神大人！他什么也没说！,"Stop! Be quiet! Oh God…..God of Craft!! Ignore him, he's doesn't really have his marbles together you know…"
+speech_blt_48_8,呐？你就是工匠之神，好可爱，快放我们通过火之国吧。,So you are the God of Craft. A real cutie! Now can you help us cross the Fire Kingdom?
+speech_blt_48_9,大……大姐姐……好可怕……,Big… big girl… So scary!!
+speech_blt_48_10,啊啊啊啊不好了！,"Uh oh, not good!!!"
+speech_blt_48_11,？,???
+speech_blt_48_12,工匠之神一害怕的时候就会大哭，一大哭的时候就会释放吞噬天地的爆炎之力,"As soon as God of Craft is scared, he will cry. Once he starts crying, he releases his powers, engulfing everything around him in flames!"
+speech_blt_48_13,呜呜……好可怕……哇哇哇！！！,So… SCARY!!! Waaaaaa!!!!
+langren5hide_lcuff,根据图形提示找到弱点,Find this shape on Werewolf.
+langren5hide_rcuff,根据图形提示找到弱点,Find this shape on Werewolf.
+langren5normal1_lcuff,打掉双腕带，削弱狼人攻击！但会提升他的速度...,His bracer increases his attack but decreases his speed.
+langren5normal1_rcuff,打掉双腕带，削弱狼人攻击！但会提升他的速度…,His bracer increases his attack but decreases his speed.
+mengyan5hide_head,邪恶的梦魇，完美的隐藏了自己的弱点,Its weakpoint is hiding within.
+mengyan5normal_head,梦魇的要害,Attack this weakpoint.
+xiaochou3hide_weapon,根据图形提示找到弱点,Find this shape on Joker.
+xiaochou3normal1_weapon,干掉锤子！压制小丑的法术攻击力！,This Hammer increases her attack.
+bingyan3hide_head,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3hide_larm,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3hide_rarm,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3normal_head1,这才是真正的弱点！,This is the Real weakpoint.
+bingyan3normal_larm1,这才是真正的弱点！,This is the Real weakpoint.
+bingyan3normal_rarm1,这才是真正的弱点！,This is the Real weakpoint.
+sheshou3hide_weapon,根据图形提示找到弱点,Find her secret from this shape.
+sheshou3normal1_weapon,弓箭大幅提升了射手座的物理攻击力,Her bow makes her attack massively powerful!
+huoniao3hide_ltail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3hide_mtail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3hide_rtail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3normal_ltail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+huoniao3normal_mtail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+huoniao3normal_rtail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+wendige3hide_lhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige3hide_rhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige3hide_heart,根据图形提示找到弱点,Find this shape on Wendigo's body.
+wendige3normal1_lhorn,失去所有角的温迪戈会迷失攻击的方向（眩晕）,"Without horns, Wendigo loses direction and get stunned."
+wendige3normal1_rhorn,失去所有角的温迪戈会迷失攻击的方向（眩晕）,"Without horns, Wendigo loses direction and get stunned."
+wendige3normal1_heart,全力攻击要害！,"Focus attack on its weakpoint, Quick!"
+dujiaoshou5hide_horn,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5hide_lwing,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5hide_rwing,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5normal_horn,没有了角的独角兽就无法驱散自身效果了,This is where she can dispel other effects.
+dujiaoshou5normal_lwing,翅膀让独角兽拥有更快的攻击速度,The wings increases her speed.
+dujiaoshou5normal_rwing,翅膀让独角兽拥有更快的攻击速度,The wings increases her speed.
+anpusha5hide_heart,根据图形提示找到弱点,Find this heart on Empusae.
+anpusha5normal1_heart,没有了心的安普莎就无法给我方添加减益效果了,Her heart provides debuff to her enemies.
+ifrit5hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5hide_stone,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5normal_lleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_rleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_stone,敲断他的法杖！削弱他的物理攻击！,This Staff increases her attack.
+nvyao5hide_mask,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_head,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_lsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_rsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5normal_mask,女妖面罩下是怎样的面庞？,This Mask seems to protect a weakpoint.
+nvyao5normal_head,女妖真正的弱点,This is the Real weakpoint.
+nvyao5normal_lsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+nvyao5normal_rsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+weitianshi5hide_aura,天使也会有弱点？,Where could be the secret of Archangel?
+weitianshi5normal1_aura,被光环光芒照射到的宠物将无法回血,The Aura stops her enemies from Healing!
+saibulesi5hide_lhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5hide_mhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5hide_rhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5normal_lhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+saibulesi5normal_mhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+saibulesi5normal_rhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+change5hide_rabbit,嫦娥的心爱之物在哪里？,See where is Moon Devine's Pet?
+change5hide_necklace,根据图形提示找到弱点,Find this shape on the Moon Devine.
+change5normal_rabbit,最好不要碰它,Don't touch it
+change5normal_necklace,吊坠散发的魔力，提升了嫦娥的法术攻击,This Pendant increases her Power.
+Yimier3hide_lwing,弱点会在身体上么？,Is this secret on his body?
+Yimier3hide_rwing,弱点会在身体上么？,Is this secret on his body?
+Yimier3hide_bone,到处都是骨头，弱点在哪呢？,"Lots of bones around, where is this secret?"
+Yimier3hide_skull,到处都是骨头，弱点在哪呢？,"Lots of bones around, where is this secret?"
+yimiernormal_lwing,两侧翅膀提升了他的攻击力！,His wings increases his Power!
+yimiernormal_rwing,两侧翅膀提升了他的攻击力！,His wings increases his Power!
+yimiernormal_bone,骨盘提升了他的攻击力！,His Bone Halo increases his Power!
+yimiernormal_skull,头骨提升了他的攻击力！,His Bone Skull increases his Power!
+karong5hide_orb,空气中闪烁着邪恶的光,This secret is hovering above her.
+karong5hide_body,——,——
+karong5hide_leftarm,这个恶魔的弱点会在哪呢？,Where is this secret?
+karong5hide_rightarm1,这个恶魔的弱点会在哪呢？,Where is this secret?
+karong5normal_orb,悬浮的宝石，在保护着什么？,This secret seems to be hiding something.
+karong5normal_leftarm,左爪保证卡戎的高法术攻击,Left claws has high magical power.
+karong5normal_rightarm1,右爪保证卡戎的高物理攻击,Right claws has high physical power.
+bosschaoxue52Mengyan5wp02,灵魂之源,Soul Source
+bosschaoxue54Bingyan3wp02,头,Head
+bosschaoxue54Bingyan3wp03,左臂,Left Arm
+bosschaoxue54Bingyan3wp04,右臂,Right Arm
+bosschaoxue54Bingyan3wp05,头,Head
+bosschaoxue54Bingyan3wp06,左臂,Left Arm
+bosschaoxue54Bingyan3wp07,右臂,Right Arm
+bosschaoxue55Sheshou3wp02,弓箭,Bow
+bosschaoxue56Huoniao3wp02,左羽毛,Left Feather
+bosschaoxue56Huoniao3wp03,中羽毛,Mid Feather
+bosschaoxue56Huoniao3wp04,右羽毛,Right Feather
+bosschaoxue57Wendige3wp02,左角,Left Horn
+bosschaoxue57Wendige3wp03,右角,Right Horn
+bosschaoxue57Wendige3wp04,心脏,Heart
+bossminghe61Dujiaoshou5wp02,角,Horn
+bossminghe61Dujiaoshou5wp03,左翅膀,Left Wing
+bossminghe61Dujiaoshou5wp04,右翅膀,Right Wing
+bossminghe62Anpusha5wp02,心,Heart
+bossminghe63Ifrit5wp02,左暗火,Left Dark Fire
+bossminghe63Ifrit5wp03,右暗火,Right Dark Fire
+bossminghe63Ifrit5wp04,法杖,Staff
+bossminghe64Nvyao5wp02,面罩,Mask
+bossminghe64Nvyao5wp03,头,Head
+bossminghe64Nvyao5wp04,左魂器,Left Soul
+bossminghe64Nvyao5wp05,右魂器,Right Soul
+bossminghe65Weitianshi5wp02,光环,Aura
+bossminghe66Saibulesi5wp02,左头,Left Head
+bossminghe66Saibulesi5wp03,中头,Mid Head
+bossminghe66Saibulesi5wp04,右头,Right Head
+bossminghe67Change5wp02,兔子,Rabbit
+bossminghe67Change5wp03,吊坠,Pendant
+bosschaoxue58Yimier3wp02,左翅膀,Left Wing
+bosschaoxue58Yimier3wp03,右翅膀,Right Wing
+bosschaoxue58Yimier3wp04,骨盘,Bone Halo
+bosschaoxue58Yimier3wp05,头骨,Skull
+bossminghe68Karong5wp01,女孩,Girl
+bossminghe68Karong5wp02,宝石,Gem
+bossminghe68Karong5wp04,左爪,Left Claw
+bossminghe68Karong5wp05,右爪,Right Claw
+bosssiwangtaDatiangou4wp04,面具,Mask
+bosssiwangtaDatiangou4wp05,脸,Face
+datiangou4hide_mask,身上隐藏的邪恶力量？,An evil power embodied in him!
+datiangou4hide_head,根据图形提示找到弱点,Find this shape on Tengu.
+datiangou4normal_mask,面具下隐藏着如何一张面庞？,What lies behind this mask?
+datiangou4normal_head,大天狗真正的要害,Vital Point of Tengu.
+speech_blt_51_1,这里就是你的雪之国吗？,So this is your Snow Kingdom?
+speech_blt_51_2,是呀，可是，感觉好像有些不对……,"Yes, this is it. But something doesn't seem right..."
+speech_blt_51_3,哪里不对？,Huh? What do you mean?
+speech_blt_51_4,我不知道，雪的感觉跟之前不一样了……,"I'm not sure, it just seems the snow is different somehow…"
+speech_blt_51_5,那是…狼人！？雪之国应该没有狼人的！,Is that a… Werewolf! The Snow Kingdom shouldn't have Werewolves!
+speech_blt_51_6,他扑过来了！,He's coming straight for us!
+speech_blt_52_1,雪之国……一定发生了什么……,Snow Kingdom… Something must have happened…
+speech_blt_52_2,出现了不该出现在这里的妖怪，这到底是怎么回事,"Monsters that shouldn't be here appearing suddenly, I wonder what's going on."
+speech_blt_53_1,前面那个妖怪是梦魇，我们要小心别被他拖进梦里！,The monster just ahead is a Bangungot. Be careful not to be dragged into his dream!
+speech_blt_53_2,狼人…梦魇…,Werewolves… Bangungots…
+speech_blt_54_1,在前面就是我的行宫了，我被卷到人界的时候正在喝茶……,Just ahead is one of my palaces. I remember I was just there drinking tea before being swept away to the real world…
+speech_blt_54_2,呼，那么说到这里应该安全些了……,"Whew, so it should be safer there, right?"
+speech_blt_54_3,行宫中留着我的雪人守卫，那些外来的家伙根本进不来,"With the snowman guards inside my palace, those monsters from the outside shouldn't be able to get in."
+speech_blt_54_4,雪人……守卫，你不会是说对面那个家伙吧……,Snowman… Guards… You mean those guys over there?
+speech_blt_54_5,是呀~小雪人，我回来啦~咦……小雪人？,"Yeah! Hey little snowmen, I'm back! Huh? Little snowmen?"
+speech_blt_54_6,快闪开！他攻过来了！,Watch out! It's attacking!
+speech_blt_54_7,小雪人…为什么不认识我了……,Why don't the snowmen recognize me?
+speech_blt_54_8,这个事很诡异……雪人的情况，好像我们在森之国看到的那些被控制的妖怪一样,This is all very strange… It seems like the snowmen are being controlled just like those monsters in the Forest Kingdom.
+speech_blt_54_9,你是说…也有坏人来到了雪之国？,Are you saying that evil has also come to the Snow Kingdom?
+speech_blt_54_10,雪之国的镇守者在哪里，看来我们还是需要去提醒一下。,Where is the defender of the Snow Kingdom? It seems we need to go remind him what to do!
+speech_blt_54_11,你是说小冰龙吗，他的行宫离这里还很远。,You mean the Ice Dragon? His palace is still far from here.
+speech_blt_55_1,小冰龙平时都躲着不见人，路上都是他的守卫，我们要小心。,"The Ice Dragon usually keeps himself hidden away from people, and these monsters watching the way are all his guards. We should keep an eye out."
+speech_blt_55_2,要小心她的弓箭，很厉害的。,"Be careful of her arrows, they pack quite a punch."
+speech_blt_56_1,冰鸟的尾巴是它的法力源泉，可以尝试去击破。,The Ice Bird's tail is her source of power. You can try attacking it.
+speech_blt_57_1,咦？这家伙的角有些奇怪……,Huh? The horns on this one are a little strange…
+speech_blt_58_1,前面就是小冰龙的行宫了,The Ice Dragon's palace is just up ahead.
+speech_blt_58_2,我们要小心，没准敌人已经到了这里,"We should proceed with caution, the enemy could be upon us before we even know it."
+speech_blt_58_3,小冰龙~大事不好啦，有一群妖怪闯进了……,"Ice Dragon! Something has gone wrong, a group of monsters have invaded…"
+speech_blt_58_4,住口！,Silence!
+speech_blt_58_5,嗯？小冰龙？,Huh? Ice Dragon?
+speech_blt_58_6,可恨的外来者，你休想侵占雪之国！,You outsiders! You'll never invade the Snow Kingdom!
+speech_blt_58_7,小冰龙？你不认识我了？,Ice Dragon? Don't you remember me?
+speech_blt_58_8,他好像神智有些混乱……,He seems to be confused…
+speech_blt_58_9,谁也别想前进一步！！,Not one step closer!
+speech_blt_58_10,坏了，他更疯狂了！,"Uh oh, now he's even more crazy!"
+speech_blt_58_11,……,…
+speech_blt_58_12,你们快走，在他的身后就是通往下一个国度的入口。,You guys should go. Just behind him is the gateway to the next kingdom.
+speech_blt_58_13,你呢？,What about you?
+speech_blt_58_14,我来拦住小冰龙，怎么说我也是这个雪之国的国王呢。,"I'll stop the Ice Dragon, after all I am the ruler of the Snow Kingdom."
+speech_blt_58_15,没时间了！你们快走！,There's no time! Go!!!
+speech_blt_58_16,好……,Alright…
+speech_blt_58_17,谁也别想破坏冰雪女王的国度！！！,No one could destroy the kingdom of Queen Chione!!
+speech_blt_58_18,小冰龙……够了……你已经足够努力了……我就在这里……,Ice Dragon… Enough!! You have already done enough… I am here…
+speech_blt_58_19,啊啊啊啊啊,Ahhhhhh!!!!
+speech_blt_61_1,这里是什么地方，怎么这么暗……,Where are we? It's so dark…
+speech_blt_61_2,这里是死亡之国……,This is the Death Kingdom…
+speech_blt_61_3,死……亡之国？我死了？,Death… Kingdom? Did I die???
+speech_blt_61_4,你想多了……死亡之国也只不过是异世界的一个国度而已,Don't be silly… The Death Kingdom is just another kingdom of Mythos.
+speech_blt_61_5,回雪之国的路已经被雪女冰封了，我们只能前进了。,The way back to the Kingdom of Snow has already been sealed by Chione… We can only go forward now. 
+speech_blt_61_6,独角兽是长眠的领路人，要注意她的角。,"The Unicorn is a dead guide for us, pay attention to her horn."
+speech_blt_62_1,看来这里还没有像森之国和雪之国一样被邪恶势力所侵染,"It seems there are no invaders here, unlike the Forest Kingdom and Snow Kingdom."
+speech_blt_62_2,我们去冥河畔找卡戎，他应该能将我们带出这里,Let's go to the Nether River and look for Charon. He should be able to lead us out of here.
+speech_blt_62_3,不要直视安普莎头顶的魔心，它会将人引入迷途。,Don't look directly at the heart on top of Empusa's head. It will seduce you.
+speech_blt_63_1,接受了冥界力量洗礼的伊芙利特，比火之国的更可怕。,"This Ifrit has undergone the rituals of the underworld, and is much more terrible than the one we met in the Fire Kingdom."
+speech_blt_64_1,前面就快到冥河畔了，从这里开始路途更加凶险，千万不要回头,"The Nether River lies just ahead. The road will get more dangerous from here, but don't look back!"
+speech_blt_64_2,女妖的魂器里装满了灵魂，这是她的法力源泉。,The Banshee's amulet is full of souls. This is her source of power.
+speech_blt_65_1,堕落的天使，圣洁的光环反而成了杀人的凶器。,"Fallen Angel, her holy halo has now become a weapon for murder."
+speech_blt_66_1,地狱的守门犬，每一个头颅都不可小觑。,Hellhound.... Don't underestimate any of its heads.
+speech_blt_67_1,那不是嫦娥吗，她为什么跑到这里来了,Could that be Moon Devine? What is she doing here?
+speech_blt_67_2,你不是九尾狐狸吗，为什么到死亡之国来了,"Why, aren't you Nine Tails? Why have you come to the Death Kingdom?"
+speech_blt_67_3,我还想问你呢,I was just about to ask you the same!
+speech_blt_67_4,冥王说有一股邪恶力量从人界而来，让我帮忙这里的驻兵防守下，你看我这身黑色的衣服是不是特别应景，嘻嘻～对了，那邪恶势力不会是你们吧？,"Hades said that an evil force had come from the real world and decided to send me here. I got this black outfit just for the occasion! Hehe, by the way, that evil force wouldn't happen to be you guys?"
+speech_blt_67_5,……才不是，我们也是追着那股力量而来的,Of course not! We are also chasing after the same thing!
+speech_blt_67_6,那你们不早说，让我打了一身汗还要洗澡.,"Why didn't you say so earlier! Now that I'm all sweaty, I'll have to go take a shower again."
+speech_blt_67_7,我怎么会知道你在这里……不过现在森之国和雪之国都被搞得一团乱，我怀疑他们有更大的目的，所以要回人界调查清楚,"How could I know you would be here… the Forest and Snow Kingdom are both a mess now. I think there is a conspiracy behind all this, so I want to return to the real world to investigate."
+speech_blt_67_8,那你们去找卡戎吧，坐着她的船，一会儿就到人界了,Then you go find Charon and take a ride on her boat. That will get you back quickly.
+speech_blt_68_1,说起来，卡戎不是冥河的摆渡人吗，坐他的船……,"Right, isn't Charon the ferryman who carries souls? Take her boat…….."
+speech_blt_68_2,回到人界也只有这条路了，不过他确实是个危险的家伙，要小心……,"It might be dangerous, but that's the only way to go back to real world. Let's be careful."
+speech_blt_68_3,好奇怪，我们在河岸走了这么半天，也没看到他,"Strange, we've been around for a while but there is no sign of Charon."
+speech_blt_68_4,咦？那边有个小女孩？,"See, there is a little girl over there?"
+speech_blt_68_5,…………,……..
+speech_blt_68_6,请问你见过卡戎吗，我们要坐船……,"Hey, have you seen Charon? We want to take her boat."
+speech_blt_68_7,坐船？那很容易呀，但是你们买得起船票吗？,"Take her boat? That's easy, but can you pay the price?"
+speech_blt_68_8,竟然还要钱……,We need to pay money?
+speech_blt_68_9,桀桀桀，不要钱，要命哦~,"Hahaha, the price is not money, its your life."
+speech_blt_68_10,小心！她身上有卡戎的气息！,Watch out! I feel Charon in her!
+speech_blt_68_11,唔……好痛……我怎么了……,Ouch…….it's painful….what happened…….
+speech_blt_68_12,卡戎那家伙竟然附身在这孩子身上！,How could Charon possessed such a cute little girl!
+speech_blt_68_13,趁着卡戎被打晕了，我们快带这孩子走吧,Charon seems stunned. Let's take the chance and bring the girl with us.
+speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗，嘿嘿嘿，好像很有趣。,"Stealing Charon's boat and hijacking a cute little girl from Death Kingdom! Hahaha, sounds fun!"
+10001_name,茁壮成长 I,Growing Up I
+10002_name,茁壮成长 II,Growing Up II
+10003_name,茁壮成长 III,Growing Up III
+10004_name,茁壮成长 IV,Growing Up IV
+10005_name,茁壮成长 V,Growing Up V
+10006_name,茁壮成长 VI,Growing Up VI
+10007_name,茁壮成长 VII,Growing Up VII
+10008_name,茁壮成长 VIII,Growing Up VIII
+10009_name,茁壮成长 IX,Growing Up IX
+10010_name,茁壮成长 X,Growing Up X
+10011_name,茁壮成长 XI,Growing Up XI
+10012_name,茁壮成长 XII,Growing Up XII
+10013_name,忠于战斗 I,Loyal to Battle I
+10014_name,忠于战斗 II,Loyal to Battle II
+10015_name,忠于战斗 III,Loyal to Battle III
+10016_name,忠于战斗 IV,Loyal to Battle IV
+10017_name,忠于战斗 V,Loyal to Battle V
+10018_name,忠于战斗 VI,Loyal to Battle VI
+10019_name,忠于战斗 VII,Loyal to Battle VII
+10020_name,差一点就能三星 I,Almost 3 Stars I
+10021_name,差一点就能三星 II,Almost 3 Stars II
+10022_name,差一点就能三星 III,Almost 3 Stars III
+10023_name,任性过关 I,Whatever The Cost I
+10024_name,任性过关 II,Whatever The Cost II
+10025_name,任性过关 III,Whatever The Cost III
+10026_name,有惊无险 I,Near Miss I
+10027_name,有惊无险 II,Near Miss II
+10028_name,有惊无险 III,Near Miss III
+10029_name,极限挑战 I,Ultimate Challenge I
+10030_name,极限挑战 II,Ultimate Challenge II
+10031_name,极限挑战 III,Ultimate Challenge III
+10032_name,极限挑战 IV,Ultimate Challenge IV
+10033_name,极限挑战 V,Ultimate Challenge V
+10034_name,极限挑战 VI,Ultimate Challenge VI
+10035_name,淘金者 I,Gold Digger I
+10036_name,淘金者 II,Gold Digger II
+10037_name,淘金者 III,Gold Digger III
+10038_name,淘金者 IV,Gold Digger IV
+10039_name,淘金者 V,Gold Digger V
+10040_name,为了宠物 I,For Monsters I
+10041_name,为了宠物 II,For Monsters II
+10042_name,为了宠物 III,For Monsters III
+10043_name,为了宠物 IV,For Monsters IV
+10044_name,为了宠物 V,For Monsters V
+10045_name,绿色品质 I,Green Grade I
+10046_name,绿色品质 II,Green Grade II
+10047_name,绿色品质 III,Green Grade III
+10048_name,绿色品质 IV,Green Grade IV
+10049_name,绿色品质 V,Green Grade V
+10050_name,蓝色品质 I,Blue Grade I
+10051_name,蓝色品质 II,Blue Grade II
+10052_name,蓝色品质 III,Blue Grade III
+10053_name,蓝色品质 IV,Blue Grade IV
+10054_name,蓝色品质 V,Blue Grade V
+10055_name,紫色品质 I,Purple Grade I
+10056_name,紫色品质 II,Purple Grade II
+10057_name,紫色品质 III,Purple Grade III
+10058_name,紫色品质 IV,Purple Grade IV
+10059_name,紫色品质 V,Purple Grade V
+10060_name,橙色品质 I,Orange Grade I
+10061_name,橙色品质 II,Orange Grade II
+10062_name,橙色品质 III,Orange Grade III
+10063_name,橙色品质 IV,Orange Grade IV
+10064_name,橙色品质 V,Orange Grade V
+10065_name,晋升的乐趣 I,Fun of Promotion I
+10066_name,晋升的乐趣 II,Fun of Promotion II
+10067_name,晋升的乐趣 III,Fun of Promotion III
+10068_name,强固阵容 I,Strong Lineup I
+10069_name,强固阵容 II,Strong Lineup II
+10070_name,强固阵容 III,Strong Lineup III
+10071_name,专心修炼 I,Focus on Practice I
+10072_name,专心修炼 II,Focus on Practice II
+10073_name,专心修炼 III,Focus on Practice III
+10074_name,专心修炼 IV,Focus on Practice IV
+10075_name,专心修炼 V,Focus on Practice V
+10076_name,专心修炼 VI,Focus on Practice VI
+10077_name,专心修炼 VII,Focus on Practice VII
+10078_name,钟爱普通商店 I,Regular Customer I
+10079_name,钟爱普通商店 II,Regular Customer II
+10080_name,钟爱普通商店 III,Regular Customer III
+10081_name,钟爱普通商店 IV,Regular Customer IV
+10082_name,钟爱普通商店 V,Regular Customer V
+10083_name,钟爱公会商店 I,Patron I
+10084_name,钟爱公会商店 II,Patron II
+10085_name,挑剔者 I,Being Picky I
+10086_name,挑剔者 II,Being Picky II
+10087_name,挑剔者 III,Being Picky III
+10088_name,挑剔者 IV,Being Picky IV
+10089_name,登顶通天塔 I,Climb The Tower I
+10090_name,登顶通天塔 II,Climb The Tower II
+10091_name,登顶通天塔 III,Climb The Tower III
+10092_name,登顶通天塔 IV,Climb The Tower IV
+10093_name,登顶通天塔 V,Climb The Tower V
+10094_name,登顶通天塔 VI,Climb The Tower VI
+10095_name,王者的荣耀 I,Arena Glory I
+10096_name,王者的荣耀 II,Arena Glory II
+10097_name,王者的荣耀 III,Arena Glory III
+10098_name,王者的荣耀 IV,Arena Glory IV
+10099_name,胜败乃兵家常事 I,Facts of War I
+10100_name,胜败乃兵家常事 II,Facts of War II
+10101_name,胜败乃兵家常事 III,Facts of War III
+10102_name,胜败乃兵家常事 IV,Facts of War IV
+10103_name,居然还能平局 I,Stalemate I
+10104_name,居然还能平局 II,Stalemate II
+10105_name,居然还能平局 III,Stalemate III
+10106_name,竞技场爱好者 I,Arena Enthusiast I
+10107_name,竞技场爱好者 II,Arena Enthusiast II
+10108_name,竞技场爱好者 III,Arena Enthusiast III
+10109_name,竞技场爱好者 IV,Arena Enthusiast IV
+10110_name,竞技场爱好者 V,Arena Enthusiast V
+10111_name,铜墙铁壁 I,Like A Wall I
+10112_name,铜墙铁壁 II,Like A Wall II
+10113_name,铜墙铁壁 III,Like A Wall III
+10114_name,更强的纹章 I,Stronger Insignia I
+10115_name,更强的纹章 II,Stronger Insignia II
+10116_name,更强的纹章 III,Stronger Insignia III
+10117_name,更强的纹章 IV,Stronger Insignia IV
+10118_name,更强的纹章 V,Stronger Insignia V
+10119_name,为了纹章 I,For Insignias I
+10120_name,为了纹章 II,For Insignias II
+10121_name,为了纹章 III,For Insignias III
+10122_name,为了纹章 IV,For Insignias IV
+10123_name,纹章爱好者 I,Insignia Enthusiast I
+10124_name,纹章爱好者 II,Insignia Enthusiast II
+10125_name,纹章爱好者 III,Insignia Enthusiast III
+10126_name,纹章爱好者 IV,Insignia Enthusiast IV
+10127_name,纹章爱好者 V,Insignia Enthusiast V
+10128_name,纹章爱好者 VI,Insignia Enthusiast VI
+10129_name,纹章专家 I,Insignia Expert I
+10130_name,纹章专家 II,Insignia Expert II
+10131_name,纹章专家 III,Insignia Expert III
+10132_name,纹章专家 IV,Insignia Expert IV
+10133_name,纹章专家 V,Insignia Expert V
+10134_name,纹章专家 VI,Insignia Expert VI
+10135_name,意外之财 I,Windfall I
+10136_name,意外之财 II,Windfall II
+10137_name,意外之财 III,Windfall III
+10138_name,意外之财 IV,Windfall IV
+10139_name,忠诚的信徒 I,Loyal Follower I
+10140_name,忠诚的信徒 II,Loyal Follower II
+10141_name,忠诚的信徒 III,Loyal Follower III
+10142_name,忠诚的信徒 IV,Loyal Follower IV
+10143_name,忠诚的信徒 V,Loyal Follower V
+10144_name,虔诚的信徒 I,Zealot I
+10145_name,虔诚的信徒 II,Zealot II
+10146_name,虔诚的信徒 III,Zealot III
+10147_name,虔诚的信徒 IV,Zealot IV
+10148_name,虔诚的信徒 V,Zealot V
+10149_name,为了公会 I,For the Guild I
+10150_name,为了公会 II,For the Guild II
+10151_name,为了公会 III,For the Guild III
+10152_name,为了公会 IV,For the Guild IV
+10153_name,辛勤的公会成员 I,Diligent Member I
+10154_name,辛勤的公会成员 II,Diligent Member II
+10155_name,辛勤的公会成员 III,Diligent Member III
+10156_name,辛勤的公会成员 IV,Diligent Member IV
+10157_name,公会活跃分子 I,Guild Activist I
+10158_name,公会活跃分子 II,Guild Activist II
+10159_name,公会活跃分子 III,Guild Activist III
+10160_name,公会活跃分子 IV,Guild Activist IV
+10161_name,公会活跃分子 V,Guild Activist V
+10162_name,公会活跃分子 VI,Guild Activist VI
+10163_name,变废为宝 I,Recycle I
+10164_name,变废为宝 II,Recycle II
+10165_name,变废为宝 III,Recycle III
+10166_name,变废为宝 IV,Recycle IV
+10167_name,变废为宝 V,Recycle V
+10168_name,收集者 I,Collector I
+10169_name,收集者 II,Collector II
+10170_name,收集者 III,Collector III
+10171_name,收集者 IV,Collector IV
+10172_name,从来不缺少体力 I,Inexhaustible I
+10173_name,从来不缺少体力 II,Inexhaustible II
+10174_name,从来不缺少体力 III,Inexhaustible III
+10175_name,从来不缺少体力 IV,Inexhaustible IV
+10176_name,从来不缺少体力 V,Inexhaustible V
+10177_name,从来不缺少体力 VI,Inexhaustible VI
+10178_name,冒险者 I,Adventurer I
+10179_name,冒险者 II,Adventurer II
+10180_name,冒险者 III,Adventurer III
+10181_name,冒险者 IV,Adventurer IV
+10182_name,冒险者 V,Adventurer V
+10183_name,互帮互助 I,Help Each Other I
+10184_name,互帮互助 II,Help Each Other II
+10185_name,互帮互助 III,Help Each Other III
+10186_name,互帮互助 IV,Help Each Other IV
+10187_name,互帮互助 V,Help Each Other V
+10188_name,获得惊喜 I,Pleasant Surprise I
+10189_name,获得惊喜 II,Pleasant Surprise II
+10190_name,获得惊喜 III,Pleasant Surprise III
+10191_name,获得惊喜 IV,Pleasant Surprise IV
+10192_name,获得惊喜 V,Pleasant Surprise V
+10193_name,获得惊喜 VI,Pleasant Surprise VI
+10194_name,宠物降临 I,Monsters Arrive I
+10195_name,宠物降临 II,Monsters Arrive II
+10196_name,宠物降临 III,Monsters Arrive III
+10197_name,宠物降临 IV,Monsters Arrive IV
+10198_name,A级宠物降临 I,A Class Monster I
+10199_name,A级宠物降临 II,A Class Monster II
+10200_name,A级宠物降临 III,A Class Monster III
+10201_name,S级宠物降临 I,S Class Monster I
+10202_name,S级宠物降临 II,S Class Monster II
+10203_name,SS级宠物降临 I,SS Class Monster I
+10204_name,动物总动员 I,Animals Arise I
+10205_name,动物总动员 II,Animals Arise II
+10206_name,神怪总动员 I,Deities Arise I
+10207_name,神怪总动员 II,Deities Arise II
+10208_name,人物总动员 I,Humans Arise I
+10209_name,人物总动员 II,Humans Arise II
+10210_name,植物总动员 I,Plants Arise I
+10211_name,植物总动员 II,Plants Arise II
+10212_name,特异总动员 I,Peculiars Arise I
+10213_name,特异总动员 II,Peculiars Arise II
+10214_name,光之集会 I,Light Party I
+10215_name,光之集会 II,Light Party II
+10216_name,草之集会 I,Plant Party I
+10217_name,草之集会 II,Plant Party II
+10218_name,水之集会 I,Water Party I
+10219_name,水之集会 II,Water Party II
+10220_name,火之集会 I,Fire Party I
+10221_name,火之集会 II,Fire Party II
+10222_name,暗之集会 I,Earth Party I
+10223_name,暗之集会 II,Earth Party II
+10224_name,极限操作 I,Extreme Moves I
+10225_name,极限操作 II,Extreme Moves II
+10226_name,极限操作 III,Extreme Moves III
+10227_name,手打达人 I,Endurance I
+10228_name,手打达人 II,Endurance II
+10229_name,手打达人 III,Endurance III
+10230_name,手打达人 IV,Endurance IV
+10231_name,手打达人 V,Endurance V
+10232_name,手打达人 VI,Endurance VI
+10001_miaoshu,等级提升至5级,Reach level 5
+10002_miaoshu,等级提升至10级,Reach level 10
+10003_miaoshu,等级提升至15级,Reach level 15
+10004_miaoshu,等级提升至20级,Reach level 20
+10005_miaoshu,等级提升至25级,Reach level 25
+10006_miaoshu,等级提升至30级,Reach level 30
+10007_miaoshu,等级提升至35级,Reach level 35
+10008_miaoshu,等级提升至40级,Reach level 40
+10009_miaoshu,等级提升至45级,Reach level 45
+10010_miaoshu,等级提升至50级,Reach level 50
+10011_miaoshu,等级提升至55级,Reach level 55
+10012_miaoshu,等级提升至60级,Reach level 60
+10013_miaoshu,完成任意副本战斗10次,Complete any stage battles 10 times
+10014_miaoshu,完成任意副本战斗50次,Complete any stage battles 50 times
+10015_miaoshu,完成任意副本战斗100次,Complete any stage battles 100 times
+10016_miaoshu,完成任意副本战斗500次,Complete any stage battles 500 times
+10017_miaoshu,完成任意副本战斗1000次,Complete any stage battles 1000 times
+10018_miaoshu,完成任意副本战斗5000次,Complete any stage battles 5000 times
+10019_miaoshu,完成任意副本战斗10000次,Complete any stage battles 10000 times
+10020_miaoshu,复活1次通关任意副本战斗1次,Complete any stage using 1 revives a total of 1 times
+10021_miaoshu,复活1次通关任意副本战斗5次,Complete any stage using 1 revives a total of 5 times
+10022_miaoshu,复活1次通关任意副本战斗10次,Complete any stage using 1 revives a total of 10 times
+10023_miaoshu,复活3次通关任意副本战斗1次,Complete any stage using 3 revives a total of 1 times
+10024_miaoshu,复活3次通关任意副本战斗5次,Complete any stage using 3 revives a total of 5 times
+10025_miaoshu,复活3次通关任意副本战斗10次,Complete any stage using 3 revives a total of 10 times
+10026_miaoshu,剩余1只宠物通关任意副本战斗1次,Clear a stage with only 1 monster remaining 1 times
+10027_miaoshu,剩余1只宠物通关任意副本战斗5次,Clear a stage with only 1 monster remaining 5 times
+10028_miaoshu,剩余1只宠物通关任意副本战斗10次,Clear a stage with only 1 monster remaining 10 times
+10029_miaoshu,携带3只宠物通关挑战副本1-8,Clear Stage 1-8 on heroic difficulty using only 3 monsters
+10030_miaoshu,携带3只宠物通关挑战副本2-8,Clear Stage 2-8 on heroic difficulty using only 3 monsters
+10031_miaoshu,携带3只宠物通关挑战副本3-8,Clear Stage 3-8 on heroic difficulty using only 3 monsters
+10032_miaoshu,携带3只宠物通关挑战副本4-8,Clear Stage 4-8 on heroic difficulty using only 3 monsters
+10033_miaoshu,携带3只宠物通关挑战副本5-8,Clear Stage 5-8 on heroic difficulty using only 3 monsters
+10034_miaoshu,携带3只宠物通关挑战副本6-8,Clear Stage 6-8 on heroic difficulty using only 3 monsters
+10035_miaoshu,完成任意难度米达斯宫10次,Complete Midas' Palace 10 times on any difficulty
+10036_miaoshu,完成任意难度米达斯宫50次,Complete Midas' Palace 50 times on any difficulty
+10037_miaoshu,完成任意难度米达斯宫100次,Complete Midas' Palace 100 times on any difficulty
+10038_miaoshu,完成任意难度米达斯宫500次,Complete Midas' Palace 500 times on any difficulty
+10039_miaoshu,完成任意难度米达斯宫1000次,Complete Midas' Palace 1000 times on any difficulty
+10040_miaoshu,完成任意难度至福乐土10次,Complete Fields of Elysium 10 times on any difficulty
+10041_miaoshu,完成任意难度至福乐土50次,Complete Fields of Elysium 50 times on any difficulty
+10042_miaoshu,完成任意难度至福乐土100次,Complete Fields of Elysium 100 times on any difficulty
+10043_miaoshu,完成任意难度至福乐土500次,Complete Fields of Elysium 500 times on any difficulty
+10044_miaoshu,完成任意难度至福乐土1000次,Complete Fields of Elysium 1000 times on any difficulty
+10045_miaoshu,拥有绿色品质装备达到6个,Have 6 pieces of green grade equipment
+10046_miaoshu,拥有绿色品质装备达到12个,Have 12 pieces of green grade equipment
+10047_miaoshu,拥有绿色品质装备达到18个,Have 18 pieces of green grade equipment
+10048_miaoshu,拥有绿色品质装备达到24个,Have 24 pieces of green grade equipment
+10049_miaoshu,拥有绿色品质装备达到30个,Have 30 pieces of green grade equipment
+10050_miaoshu,拥有蓝色品质装备达到6个,Have 6 pieces of blue grade equipment
+10051_miaoshu,拥有蓝色品质装备达到12个,Have 12 pieces of blue grade equipment
+10052_miaoshu,拥有蓝色品质装备达到18个,Have 18 pieces of blue grade equipment
+10053_miaoshu,拥有蓝色品质装备达到24个,Have 24 pieces of blue grade equipment
+10054_miaoshu,拥有蓝色品质装备达到30个,Have 30 pieces of blue grade equipment
+10055_miaoshu,拥有紫色品质装备达到6个,Have 6 pieces of purple grade equipment
+10056_miaoshu,拥有紫色品质装备达到12个,Have 12 pieces of purple grade equipment
+10057_miaoshu,拥有紫色品质装备达到18个,Have 18 pieces of purple grade equipment
+10058_miaoshu,拥有紫色品质装备达到24个,Have 24 pieces of purple grade equipment
+10059_miaoshu,拥有紫色品质装备达到30个,Have 30 pieces of purple grade equipment
+10060_miaoshu,拥有橙色品质装备达到6个,Have 6 pieces of orange grade equipment
+10061_miaoshu,拥有橙色品质装备达到12个,Have 12 pieces of orange grade equipment
+10062_miaoshu,拥有橙色品质装备达到18个,Have 18 pieces of orange grade equipment
+10063_miaoshu,拥有橙色品质装备达到24个,Have 24 pieces of orange grade equipment
+10064_miaoshu,拥有橙色品质装备达到30个,Have 30 pieces of orange grade equipment
+10065_miaoshu,拥有绿色品质宠物达到3只,Have 3 green grade monsters
+10066_miaoshu,拥有蓝色品质宠物达到3只,Have 3 blue grade monsters
+10067_miaoshu,拥有紫色品质宠物达到3只,Have 3 purple grade monsters
+10068_miaoshu,拥有绿色品质宠物达到5只,Have 5 green grade monsters
+10069_miaoshu,拥有蓝色品质宠物达到5只,Have 5 blue grade monsters
+10070_miaoshu,拥有紫色品质宠物达到5只,Have 5 purple grade monsters
+10071_miaoshu,进行10次宠物技能升级,Purchase raw iron of any grade 10 times 
+10072_miaoshu,进行50次宠物技能升级,Purchase raw iron of any grade 50 times 
+10073_miaoshu,进行100次宠物技能升级,Purchase raw iron of any grade 100 times 
+10074_miaoshu,进行500次宠物技能升级,Purchase raw iron of any grade 500 times 
+10075_miaoshu,进行1000次宠物技能升级,Purchase raw iron of any grade 1000 times 
+10076_miaoshu,进行5000次宠物技能升级,Purchase raw iron of any grade 5000 times 
+10077_miaoshu,进行10000次宠物技能升级,Purchase raw iron of any grade 10000 times 
+10078_miaoshu,普通商店购买任意等级灵铁10次,Purchase raw iron of any grade 10 times 
+10079_miaoshu,普通商店购买任意等级灵铁50次,Purchase raw iron of any grade 50 times 
+10080_miaoshu,普通商店购买任意等级灵铁100次,Purchase raw iron of any grade 100 times 
+10081_miaoshu,普通商店购买任意等级灵铁500次,Purchase raw iron of any grade 500 times 
+10082_miaoshu,普通商店购买任意等级灵铁1000次,Purchase raw iron of any grade 1000 times 
+10083_miaoshu,公会商店购买开孔石5次,Purchase 5 Insignia Stones from the guild store
+10084_miaoshu,公会商店购买开孔石10次,Purchase 10 engraving stones from the guild store
+10085_miaoshu,在任意商店进行刷新操作达到5次,Use the refresh button in any store 5 times
+10086_miaoshu,在任意商店进行刷新操作达到10次,Use the refresh button in any store 10 times
+10087_miaoshu,在任意商店进行刷新操作达到50次,Use the refresh button in any store 50 times
+10088_miaoshu,在任意商店进行刷新操作达到100次,Use the refresh button in any store 100 times
+10089_miaoshu,通关任意难度通天塔顶层1次,Clear the top level of the Tower of Darkness on any difficulty 1 time
+10090_miaoshu,通关任意难度通天塔顶层2次,Clear the top level of the Tower of Darkness on any difficulty 2 time
+10091_miaoshu,通关任意难度通天塔顶层5次,Clear the top level of the Tower of Darkness on any difficulty 5 time
+10092_miaoshu,通关任意难度通天塔顶层10次,Clear the top level of the Tower of Darkness on any difficulty 10 time
+10093_miaoshu,通关任意难度通天塔顶层20次,Clear the top level of the Tower of Darkness on any difficulty 20 time
+10094_miaoshu,通关任意难度通天塔顶层50次,Clear the top level of the Tower of Darkness on any difficulty 50 time
+10095_miaoshu,竞技场胜利达到10次,Accumulate 10 victories in the Arena
+10096_miaoshu,竞技场胜利达到50次,Accumulate 50 victories in the Arena
+10097_miaoshu,竞技场胜利达到100次,Accumulate 100 victories in the Arena
+10098_miaoshu,竞技场胜利达到500次,Accumulate 500 victories in the Arena
+10099_miaoshu,竞技场失败达到10次,Accumulate 10 defeats in the Arena
+10100_miaoshu,竞技场失败达到50次,Accumulate 50 defeats in the Arena
+10101_miaoshu,竞技场失败达到100次,Accumulate 100 defeats in the Arena
+10102_miaoshu,竞技场失败达到500次,Accumulate 500 defeats in the Arena
+10103_miaoshu,竞技场平局达到10次,Accumulate 10 draws in the Arena
+10104_miaoshu,竞技场平局达到50次,Accumulate 50 draws in the Arena
+10105_miaoshu,竞技场平局达到100次,Accumulate 100 draws in the Arena
+10106_miaoshu,进行10次竞技场,Complete 10 battles in the Arena
+10107_miaoshu,进行50次竞技场,Complete 50 battles in the Arena
+10108_miaoshu,进行100次竞技场,Complete 100 battles in the Arena
+10109_miaoshu,进行500次竞技场,Complete 500 battles in the Arena
+10110_miaoshu,进行1000次竞技场,Complete 100 battles in the Arena
+10111_miaoshu,竞技场防守胜利达到10次,Win 10 defensive battles in the Arena
+10112_miaoshu,竞技场防守胜利达到20次,Win 20 defensive battles in the Arena
+10113_miaoshu,竞技场防守胜利达到50次,Win 50 defensive battles in the Arena
+10114_miaoshu,合成10个3级纹章,Craft level 3 insignias 10 times
+10115_miaoshu,合成50个3级纹章,Craft level 3 insignias 50 times
+10116_miaoshu,合成10个4级纹章,Craft level 4 insignias 10 times
+10117_miaoshu,合成5个5级纹章,Craft level 5 insignias 5 times
+10118_miaoshu,合成1个6级纹章,Craft level 6 insignias 1 times
+10119_miaoshu,进行10次装备开孔,Open slots on equipment 10 times
+10120_miaoshu,进行50次装备开孔,Open slots on equipment 50 times
+10121_miaoshu,进行100次装备开孔,Open slots on equipment 100 times
+10122_miaoshu,进行500次装备开孔,Open slots on equipment 500 times
+10123_miaoshu,拥有1个镶嵌了4个纹章的装备,Attach 4 insignias to 1 piece of equipment
+10124_miaoshu,拥有6个镶嵌了4个纹章的装备,Attach 4 insignias to 5 piece of equipment
+10125_miaoshu,拥有12个镶嵌了4个纹章的装备,Attach 4 insignias to 12 piece of equipment
+10126_miaoshu,拥有18个镶嵌了4个纹章的装备,Attach 4 insignias to 18 piece of equipment
+10127_miaoshu,拥有24个镶嵌了4个纹章的装备,Attach 4 insignias to 24 piece of equipment
+10128_miaoshu,拥有30个镶嵌了4个纹章的装备,Attach 4 insignias to 30 piece of equipment
+10129_miaoshu,拥有1个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 1 piece of equipment
+10130_miaoshu,拥有6个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 6 piece of equipment
+10131_miaoshu,拥有12个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 12 piece of equipment
+10132_miaoshu,拥有18个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 18 piece of equipment
+10133_miaoshu,拥有24个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 24 piece of equipment
+10134_miaoshu,拥有30个镶嵌了4个相同纹章的装备,Attach 4 of the same type of insignia to 30 piece of equipment
+10135_miaoshu,兑换金币达到5次,Exchange for coins 5 times
+10136_miaoshu,兑换金币达到50次,Exchange for coins 50 times
+10137_miaoshu,兑换金币达到100次,Exchange for coins 100 times
+10138_miaoshu,兑换金币达到500次,Exchange for coins 500 times
+10139_miaoshu,公会许愿达到7次,Complete guild wishes 7 times
+10140_miaoshu,公会许愿达到15次,Complete guild wishes 15 times
+10141_miaoshu,公会许愿达到25次,Complete guild wishes 25 times
+10142_miaoshu,公会许愿达到50次,Complete guild wishes 50 times
+10143_miaoshu,公会许愿达到100次,Complete guild wishes 100 times
+10144_miaoshu,公会梦之许愿达到1次,Complete Wish Dreamer 1 time
+10145_miaoshu,公会梦之许愿达到7次,Complete Wish Dreamer 7 time
+10146_miaoshu,公会梦之许愿达到15次,Complete Wish Dreamer 15 time
+10147_miaoshu,公会梦之许愿达到25次,Complete Wish Dreamer 25 time
+10148_miaoshu,公会梦之许愿达到50次,Complete Wish Dreamer 50 time
+10149_miaoshu,开启1次公会任务,Open 1 guild quest
+10150_miaoshu,开启7次公会任务,Open 7 guild quest
+10151_miaoshu,开启15次公会任务,Open 15 guild quest
+10152_miaoshu,开启25次公会任务,Open 25 guild quest
+10153_miaoshu,完成7次公会任务,Complete 7 guild quests
+10154_miaoshu,完成15次公会任务,Complete 15 guild quests
+10155_miaoshu,完成50次公会任务,Complete 50 guild quests
+10156_miaoshu,完成100次公会任务,Complete 100 guild quests
+10157_miaoshu,为公会成员赠送活力值达到10次,Send energy to guild members 10 times
+10158_miaoshu,为公会成员赠送活力值达到20次,Send energy to guild members 20 times
+10159_miaoshu,为公会成员赠送活力值达到50次,Send energy to guild members 50 times
+10160_miaoshu,为公会成员赠送活力值达到100次,Send energy to guild members 100 times
+10161_miaoshu,为公会成员赠送活力值达到500次,Send energy to guild members 500 times
+10162_miaoshu,为公会成员赠送活力值达到1000次,Send energy to guild members 1000 times
+10163_miaoshu,进行10次分解操作,Discard items 10 times
+10164_miaoshu,进行50次分解操作,Discard items 50 times
+10165_miaoshu,进行100次分解操作,Discard items 100 times
+10166_miaoshu,进行500次分解操作,Discard items 500 times
+10167_miaoshu,进行1000次分解操作,Discard items 1000 times
+10168_miaoshu,使用宠物碎片合成宠物达到10次,Use fragments to craft a monster 10 times
+10169_miaoshu,使用宠物碎片合成宠物达到20次,Use fragments to craft a monster 20 times
+10170_miaoshu,使用宠物碎片合成宠物达到50次,Use fragments to craft a monster 50 times
+10171_miaoshu,使用宠物碎片合成宠物达到100次,Use fragments to craft a monster 100 times
+10172_miaoshu,补充活力达到10次,Add energy 10 times
+10173_miaoshu,补充活力达到50次,Add energy 50 times
+10174_miaoshu,补充活力达到100次,Add energy 100 times
+10175_miaoshu,补充活力达到200次,Add energy 200 times
+10176_miaoshu,补充活力达到500次,Add energy 500 times
+10177_miaoshu,补充活力达到1000次,Add energy 1000 times
+10178_miaoshu,领取大冒险奖励达到10次,Collect adventure mode rewards 10 times
+10179_miaoshu,领取大冒险奖励达到50次,Collect adventure mode rewards 50 times
+10180_miaoshu,领取大冒险奖励达到100次,Collect adventure mode rewards 100 times
+10181_miaoshu,领取大冒险奖励达到500次,Collect adventure mode rewards 500 times
+10182_miaoshu,领取大冒险奖励达到1000次,Collect adventure mode rewards 1000 times
+10183_miaoshu,使用公会基地宠物参与大冒险达到10次,Use guild base monsters in adventure mode 10 times
+10184_miaoshu,使用公会基地宠物参与大冒险达到50次,Use guild base monsters in adventure mode 50 times
+10185_miaoshu,使用公会基地宠物参与大冒险达到100次,Use guild base monsters in adventure mode 100 times
+10186_miaoshu,使用公会基地宠物参与大冒险达到500次,Use guild base monsters in adventure mode 500 times
+10187_miaoshu,使用公会基地宠物参与大冒险达到1000次,Use guild base monsters in adventure mode 1000 times
+10188_miaoshu,进行10次召唤操作,Use the summon feature 10 times
+10189_miaoshu,进行50次召唤操作,Use the summon feature 50 times
+10190_miaoshu,进行100次召唤操作,Use the summon feature 100 times
+10191_miaoshu,进行500次召唤操作,Use the summon feature 500 times
+10192_miaoshu,进行1000次召唤操作,Use the summon feature 1000 times
+10193_miaoshu,进行5000次召唤操作,Use the summon feature 5000 times
+10194_miaoshu,召唤获得宠物达到10只,Summon 10 monsters
+10195_miaoshu,召唤获得宠物达到20只,Summon 20 monsters
+10196_miaoshu,召唤获得宠物达到50只,Summon 50 monsters
+10197_miaoshu,召唤获得宠物达到100只,Summon 100 monsters
+10198_miaoshu,召唤获得1只A级宠物,Summon 1 A Class monster
+10199_miaoshu,召唤获得5只A级宠物,Summon 5 A Class monster
+10200_miaoshu,召唤获得10只A级宠物,Summon 10 A Class monster
+10201_miaoshu,召唤获得1只S级宠物,Summon 1 S Class monster
+10202_miaoshu,召唤获得5只S级宠物,Summon 5 S Class monster
+10203_miaoshu,召唤获得1只SS级宠物,Summon 1 SS Class monster
+10204_miaoshu,召唤获得动物类宠物达到5只,Summon 5 animal monsters
+10205_miaoshu,召唤获得动物类宠物达到10只,Summon 10 animal monsters
+10206_miaoshu,召唤获得神类宠物达到5只,Summon 5 deity monsters
+10207_miaoshu,召唤获得神类宠物达到10只,Summon 10 deity monsters
+10208_miaoshu,召唤获得人物类宠物达到5只,Summon 5 human monsters
+10209_miaoshu,召唤获得人物类宠物达到10只,Summon 10 human monsters
+10210_miaoshu,召唤获得植物类宠物达到5只,Summon 5 plant monsters
+10211_miaoshu,召唤获得植物类宠物达到10只,Summon 10 plant monsters
+10212_miaoshu,召唤获得特异类宠物达到5只,Summon 5 peculiar monsters
+10213_miaoshu,召唤获得特异类宠物达到10只,Summon 10 peculiar monsters
+10214_miaoshu,召唤获得5只光属性宠物,Summon 5 light type monsters
+10215_miaoshu,召唤获得10只光属性宠物,Summon 10 light type monsters
+10216_miaoshu,召唤获得5只草属性宠物,Summon 5 grass type monsters
+10217_miaoshu,召唤获得10只草属性宠物,Summon 10 grass type monsters
+10218_miaoshu,召唤获得5只水属性宠物,Summon 5 water type monsters
+10219_miaoshu,召唤获得10只水属性宠物,Summon 10 water type monsters
+10220_miaoshu,召唤获得5只火属性宠物,Summon 5 fire type monsters
+10221_miaoshu,召唤获得10只火属性宠物,Summon 10 fire type monsters
+10222_miaoshu,召唤获得5只暗属性宠物,Summon 5 dark type monsters
+10223_miaoshu,召唤获得10只暗属性宠物,Summon 10 dark type monsters
+10224_miaoshu,手动大招点击达到23Hit10次,Reach 23 hits using manual ultimate abilities 10 times
+10225_miaoshu,手动大招点击达到24Hit10次,Reach 24 hits using manual ultimate abilities 10 times
+10226_miaoshu,手动大招点击达到25Hit10次,Reach 25 hits using manual ultimate abilities 10 times
+10227_miaoshu,手动大招累计点击达到500Hit,Accumulate 500 hits using manual ultimate abilities
+10228_miaoshu,手动大招累计点击达到1000Hit,Accumulate 1000 hits using manual ultimate abilities
+10229_miaoshu,手动大招累计点击达到5000Hit,Accumulate 5000 hits using manual ultimate abilities
+10230_miaoshu,手动大招累计点击达到10000Hit,Accumulate 10000 hits using manual ultimate abilities
+10231_miaoshu,手动大招累计点击达到50000Hit,Accumulate 50000 hits using manual ultimate abilities
+10232_miaoshu,手动大招累计点击达到100000Hit,Accumulate 100000 hits using manual ultimate abilities
+gohorselight_pvp10,大师段的<color=#ffcc00>{0}</color>称霸竞技场，<color=#ffcc00>连赢5场</color>！所向无敌！,Master <color=#ffcc00>{0}</color> is domintating the Arena with a <color=#ffcc00>5 win streak</color>. Invincible!
+gohorselight_pvprank,<color=#ffcc00>{0}</color>荣登竞技场排行榜<color=#ffcc00>前三名</color>！称霸全服指日可待！,<color=#ffcc00>{0}</color> has entered <color=#ffcc00>the top 3</color> of the Arena leaderboards! It won't be long before the whole server knows this name!
+gohorselight_pvprankweek_person,竞技场周结算完毕，恭喜<color=#ffcc00>排名前三</color>的玩家<color=#ffcc00>{0}</color>、<color=#ffcc00>{1}</color>、<color=#ffcc00>{2}</color>！,"The weekly Arena season has ended. Congratulations to <color=#ffcc00>the top 3 ranked keepers</color>! 1st place - <color=#ffcc00>{0}</color>, 2nd place - <color=#ffcc00>{1}</color>, 3rd place - <color=#ffcc00>{2}</color>!"
+gohorselight_pvprankmonth_person,竞技场月结算完毕，本月<color=#ffcc00>冠军</color><color=#ffcc00>{0}</color>、<color=#ffcc00>亚军</color><color=#ffcc00>{1}</color>、<color=#ffcc00>季军</color><color=#ffcc00>{2}</color>，恭喜三位玩家！,"The monthly Arena season has ended. This month's <color=#ffcc00>champion</color> - <color=#ffcc00>{0}</color>, <color=#ffcc00>2nd place</color> - <color=#ffcc00>{1}</color>, <color=#ffcc00>3rd place</color> - <color=#ffcc00>{2}</color>. Congratulations to these 3 powerful monster keepers!"
+gohorselight_tower1,<color=#ffcc00>{0}</color>成功征服<color=#ffcc00>死亡之塔</color>！声名大噪，谁人能挡！,<color=#ffcc00>{0}</color> has successfully conquered the <color=#ffcc00>Tower Of Death</color>! Unstoppable!
+gohorselight_towerbefore,距离<color=#ffcc00>通天塔刷新</color>不足2天，还没通关的代行者要抓紧咯！,The <color=#ffcc00>Tower of Darkness will refresh</color> in less than 2 days. Fight hard to complete it soon!
+gohorselight_towerafter,<color=#ffcc00>通天塔已刷新</color>，代行者们重新整装冲塔吧！,The <color=#ffcc00>Tower of Darkness has refreshed</color>! It is time for keepers to storm the tower once again!
+gohorselight_guildjoin,<color=#ffcc00>{0}</color>已加入公会任务小队，一起努力完成任务取得丰厚奖励哦！,<color=#ffcc00>{0}</color> has joined the guild team. Battle together to earn the reward!
+gohorselight_guildcomplete,公会任务已全部完成，记得去领取奖励哦！,"All guild quests have been completed, remember to go collect the rewards!"
+gohorselight_summon,恭喜<color=#ffcc00>{0}</color>已成功召唤到<color=#ffcc00>{1}</color>！,<color=#ffcc00>{0}</color> has successfully summoned <color=#ffcc00>{1}</color>!
+gohorselight_advance,恭喜<color=#ffcc00>{0}</color>成功将<color=#ffcc00>{1}</color>进阶到顶级！实力大增！,<color=#ffcc00>{0}</color> has successfully advanced <color=#ffcc00>{1}</color> to the max level! That's one powerful monster!
+gohorselight_forge,恭喜<color=#ffcc00>{0}</color>成功将<color=#ffcc00>{1}</color>打造到顶级！,<color=#ffcc00>{0}</color> has successfully forged <color=#ffcc00>{1}</color> to the max level!
+gohorselight_daoju,恭喜<color=#ffcc00>{0}</color>获得{1}个<color=#ffcc00>{2}</color>，真是让所有代行者羡慕不已！,<color=#ffcc00>{0}</color> has received {1} <color=#ffcc00>{2}</color>! Now that's some shiny loot!
+bosskongdao71Weitianshi1wp02,光环,Aura
+bosskongdao71Weitianshi1wp03,左翅膀,Left Wing
+bosskongdao71Weitianshi1wp04,右翅膀,Right Wing
+bosskongdao72Nvyao1wp02,面罩,Mask
+bosskongdao72Nvyao1wp03,头,Head
+bosskongdao72Nvyao1wp04,左魂器,Left Soul
+bosskongdao72Nvyao1wp05,右魂器,Right Soul
+bosskongdao73Luoxinfu1wp02,左下蜘蛛爪,Lower-left Claw
+bosskongdao73Luoxinfu1wp03,右下蜘蛛爪,Lower-right Claw
+bosskongdao73Luoxinfu1wp04,左蜘蛛爪,Left Claw
+bosskongdao73Luoxinfu1wp05,右蜘蛛爪,Right Claw
+bosskongdao73Luoxinfu1wp06,右上蜘蛛爪,Upper-right Claw
+bosskongdao73Luoxinfu1wp07,左上蜘蛛爪,Upper-left Claw
+bosskongdao74Piying1wp02,左半身,Left Shadow
+bosskongdao74Piying1wp03,右半身,Right Shadow
+bosskongdao74Piying1wp04,头,Head
+bosskongdao75Sheshou1wp02,弓箭,Bow
+bosskongdao75Sheshou1wp03,头,Head
+bosskongdao76Yifanmumian1wp02,吊坠,Pendant
+bosskongdao76Yifanmumian1wp03,左大手,Left Hand
+bosskongdao76Yifanmumian1wp04,右大手,Right Hand
+bosskongdao77Longnv1wp02,头,Head
+bosskongdao77Longnv1wp03,左灵印,Left Sigil
+bosskongdao77Longnv1wp04,右灵印,Right Sigil
+bosskongdao78Jinglingwang1wp02,皇冠,Crown
+bosskongdao78Jinglingwang1wp03,左上翅膀,Upper-left Wing
+bosskongdao78Jinglingwang1wp04,左下翅膀,Lower-left Wing
+bosskongdao78Jinglingwang1wp05,右上翅膀,Upper-right Wing
+bosskongdao78Jinglingwang1wp06,右下翅膀,Lower-right Wing
+bossrenjie81Huapo2awakenwp02,花瓣,Petal
+bossrenjie81Huapo2awakenwp03,花瓣,Petal
+bossrenjie81Huapo2awakenwp04,花瓣,Petal
+bossrenjie81Huapo2awakenwp05,花瓣,Petal
+bossrenjie81Huapo2awakenwp06,花瓣,Petal
+bossrenjie82Huoniao4awakenwp02,左羽毛,Left Feather
+bossrenjie82Huoniao4awakenwp03,中羽毛,Mid Feather
+bossrenjie82Huoniao4awakenwp04,右羽毛,Right Feather
+bossrenjie82Huoniao4awakenwp05,皇冠,Crown
+bossrenjie83Amute3awakenwp02,脸,Face
+bossrenjie83Amute3awakenwp03,面具,Mask
+bossrenjie84Anpusha5awakenwp02,心,Heart
+bossrenjie84Anpusha5awakenwp03,左翅膀,Left Wing
+bossrenjie84Anpusha5awakenwp04,右翅膀,Right Wing
+bossrenjie85Dujiaoshou1awakenwp02,光环,Aura
+bossrenjie85Dujiaoshou1awakenwp03,左翅膀,Left Wing
+bossrenjie85Dujiaoshou1awakenwp04,右翅膀,Right Wing
+bossrenjie86Landuo2wp02,光环,Aura
+bossrenjie86Landuo2wp03,左翅膀,Left Wing
+bossrenjie86Landuo2wp04,右翅膀,Right Wing
+bossrenjie86Landuo2wp05,泡泡,Bubble
+bossrenjie87Baonu4wp02,头盔,Helmet
+bossrenjie87Baonu4wp03,左侧骨节,Left Bone
+bossrenjie87Baonu4wp04,左侧骨节,Left Bone
+bossrenjie87Baonu4wp05,左侧骨节,Left Bone
+bossrenjie87Baonu4wp06,左侧骨节,Left Bone
+bossrenjie87Baonu4wp07,右侧骨节,Right Bone
+bossrenjie87Baonu4wp08,右侧骨节,Right Bone
+bossrenjie87Baonu4wp09,右侧骨节,Right Bone
+bossrenjie87Baonu4wp10,右侧骨节,Right Bone
+bossrenjie88Yafogemeng5wp02,头,Head
+bossrenjie88Yafogemeng5wp03,光环,Aura
+bossrenjie88Yafogemeng5wp04,左手,Left Hand
+bossrenjie88Yafogemeng5wp05,右手,Right Hand
+bossrenjie88Yafogemeng5wp06,左翅膀,Left Wing
+bossrenjie88Yafogemeng5wp07,右翅膀,Right Wing
+weitianshi1hide_aura,根据图形提示找到弱点,Find this shape on Fallen Angel.
+weitianshi1hide_lwing,根据图形提示找到弱点,Find this shape on Fallen Angel.
+weitianshi1hide_rwing,根据图形提示找到弱点,Find this shape on Fallen Angel.
+nvyao1hide_mask,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_head,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_lsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_rsoul,根据图形提示找到弱点,Find this shape on Banshee.
+luoxinfu1hide_leg1,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg2,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg3,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg4,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg5,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg6,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+piying1hide_lbody,根据图形提示找到弱点,Where is his secret?
+piying1hide_rbody,根据图形提示找到弱点,Where is his secret?
+piying1hide_head,根据图形提示找到弱点,Where is his secret?
+sheshou1hide_weapon,根据图形提示找到弱点,Find her weapon!
+sheshou1hide_head,根据图形提示找到弱点,Find this secret!
+yifanmumian1hide_pendant,一反木棉身上的秘密藏在哪呢？,What's the secret on Ittan Momen？
+yifanmumian1hide_larm,根据图形提示找到弱点,Where is her secret!?
+yifanmumian1hide_rarm,根据图形提示找到弱点,Where is her secret!?
+longnv1hide_head,根据图形提示找到弱点,Find her secret from this shape.
+longnv1hide_lingyin1,龙女的灵力隐藏在哪里？,Where could be the secret of her?
+longnv1hide_lingyin2,龙女的灵力隐藏在哪里？,Where could be the secret of her?
+jinglingwang2hide_crown,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+jinglingwang2hide_luwing,根据图形提示找到弱点,Find this shape on Prince Elve.
+jinglingwang2hide_ldwing,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+jinglingwang2hide_ruwing,根据图形提示找到弱点,Find this shape on Prince Elve.
+jinglingwang2hide_rdwing,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+huapo2awakenhide_flower,花魄四周好像存在着某种神秘的力量,Her secret power hovers around her!
+huoniao4awakenhide_ltail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_mtail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_rtail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_crown,火鸟的秘密又在哪里？,Where could be the Real secret!?
+amute3awakenhide_lian,根据图形提示找到弱点,Find Amute's secret from this shape!
+amute3awakenhide_mianju,根据图形提示找到弱点,Find Amute's secret from this shape!
+anpusha5awakenhide_heart,根据图形提示找到弱点,Find her secret from this shape.
+anpusha5awakenhide_lwing,根据图形提示找到弱点,Find her secret from this shape.
+anpusha5awakenhide_rwing,根据图形提示找到弱点,Find her secret from this shape.
+dujiaoshou1awakenhide_horn,是什么让独角兽散发着神秘的光芒？,Where is this sparkling secret!?
+dujiaoshou1awakenhide_lwing,根据图形提示找到弱点,Find her secret from this shape.
+dujiaoshou1awakenhide_rwing,根据图形提示找到弱点,Find her secret from this shape.
+landuo2hide_ring,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_lwing,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_rwing,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_bubble,好多泡泡呀，是可爱亦或是危险？,These bubbles looks cute…. but dangerous too.
+baonu4hide_armet,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone1,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone2,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone3,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone4,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone1,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone2,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone3,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone4,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+yafogemeng5hide_head,一个头？两个头？,One Head? Two Heads?
+yafogemeng5hide_aura,光！神秘而邪恶的光！,"Light, evil and secret light!"
+yafogemeng5hide_larm,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_rarm,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_lwing,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_rwing,根据图形提示找到弱点,Find the secret accordng to the shape!
+weitianshi1normal1_aura,伪天使真正的弱点,Attack this real weakpoint!
+weitianshi1normal1_lwing,舞动的左翅！犀利的法攻！,Left wing increases her Magical Power!
+weitianshi1normal1_rwing,舞动的右翅！犀利的法攻！,Right wing increases her Magical Power!
+nvyao1normal1_mask,女妖面罩下是怎样的面庞？,What could be hiding under this Mask?
+nvyao1normal1_head,女妖真正的弱点,Attack this real weakpoint!
+nvyao1normal1_lsoul,双魂器的存在，提升了女妖的法攻！,"When both soul container exist, increases her Magical Power!"
+nvyao1normal1_rsoul,双魂器的存在，提升了女妖的法攻！,"When both soul container exist, increases her Magical Power!"
+luoxinfu1normal1_leg1,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg2,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg3,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg4,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg5,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg6,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+piying1normal1_lbody,左半身保护皮影免受物理攻击的侵袭,Left Shadow can immune Shadow Puppet from all physical attack.
+piying1normal1_rbody,右半身保护皮影免受法术攻击的侵袭,Right Shadow can immune Shadow Puppet from all magical attack.
+piying1normal1_head,皮影真正的弱点,This is a real weakpoint!
+sheshou1normal1_weapon,弓箭是射手高物理攻击的保证,The bow guarantees her high physical attack!
+sheshou1normal1_head,射手的软肋在头部,This is a real weakpoint!
+yifanmumian1normal1_pendant,吊坠为一反木棉提供强大的护盾效果,The Pendant can protect her!
+yifanmumian1normal1_larm,大手的存在，大幅提高了她的法术攻击,Her hands increases her Magical Power!
+yifanmumian1normal1_rarm,大手的存在，大幅提高了她的法术攻击,Her hands increases her Magical Power!
+longnv1normal1_head,龙女的要害,This is her Real weakpoint!
+longnv1normal1_lingyin1,灵印的法力会让我方眩晕,Sigil provide stun power to Dragon Girl.
+longnv1normal1_lingyin2,灵印的法力会让我方眩晕,Sigil provide stun power to Dragon Girl.
+jinglingwang2normal1_crown,精灵王回复效果的能源,This is where he heal himself!
+jinglingwang2normal1_luwing,左上翅膀让精灵王拥有更快的攻击速度,This increases his speed!
+jinglingwang2normal1_ldwing,左下翅膀为精灵王提供强大的护盾,This protects himself!
+jinglingwang2normal1_ruwing,右上翅膀让精灵王拥有更快的攻击速度,This increases his speed!
+jinglingwang2normal1_rdwing,右下翅膀为精灵王提供强大的护盾,This protects himself!
+huapo2awakennormal1_flower,花瓣在源源不断向花魄输送着魔力,These petals give her more magial power!
+huoniao4awakennormal1_ltail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_mtail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_rtail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_crown,不仅提升火鸟的攻击，更为火鸟提供强大的护盾！,"Not only increases Firebird attack, but also provide a powerful shield."
+amute3awakennormal1_lian,让攻击打的更猛烈些吧！,Attack this Real Weakpoint!
+amute3awakennormal1_mianju,面具保护着鳄鱼判官的真正弱点,This mask seems to protect another secret!
+anpusha5awakennormal1_heart,没有心的安普莎将失去添加减益效果的能力,Her heart provide power to debuff!
+anpusha5awakennormal1_lwing,打掉她的翅膀！让她失去眩晕我方的能力！,Her wings could stun her enemies!
+anpusha5awakennormal1_rwing,打掉她的翅膀！让她失去眩晕我方的能力！,Her wings could stun her enemies!
+dujiaoshou1awakennormal1_horn,让光芒消失！削弱独角兽的能力！,Destroy and take away her power!
+dujiaoshou1awakennormal1_lwing,翅膀让独角兽能够永生,Her wings provide her power to live forever!
+dujiaoshou1awakennormal1_rwing,翅膀让独角兽能够永生,Her wings provide her power to live forever!
+landuo2normal1_ring,光环的能量是玛蒙高法术攻击的支撑,The Aura provides massive magical attack power!
+landuo2normal1_lwing,坚韧的翅膀是增强了法术攻击,The wings provide magical power too!
+landuo2normal1_rwing,坚韧的翅膀是增强了法术攻击,The wings provide magical power too!
+landuo2normal1_bubble,神秘的泡泡会使我方怪物迷失（眩晕）,The bubbles can stun its enemies!
+baonu4normal1_armet,头盔会让我方宠物头晕目眩,The Helmet can stun its enemies!
+baonu4normal1_lbone1,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone2,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone3,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone4,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone1,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone2,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone3,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone4,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+yafogemeng5normal1_head,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_aura,光环保护亚弗戈蒙免受法术伤害的侵袭,The Aura can immune Archangel from all magical attack.
+yafogemeng5normal1_larm,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_rarm,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_lwing,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_rwing,是强大恢复生命能力的保证,This can massively heal himself.
+speech_blt_71_1,咳咳咳……,Ughhh... 
+speech_blt_71_2,呼……小狐狸他醒了，他终于醒了！,"Hey, Little Fox, he woke up! He finally woke up!"
+speech_blt_71_3,你终于醒了。,You've finally awoken.
+speech_blt_71_4,我记得我掉进了冥河……这里是天国吗……,I remember that I fell into the Nether River… Am I in heaven now?
+speech_blt_71_5,是呀，这里是天国呢~,"Yes, this is the Sky Kingdom."
+speech_blt_71_6,啊？！我真的死了！？！？！？,Huh?! So I really died?!?!
+speech_blt_71_7,咳咳……我们都被这个人类的小女孩救了，这里是光之国，也叫天国，不过你没死，放一万个心……,"Ahem... Actually we were all saved by this little girl. This is the Light Kingdom, also known as the Sky Kingdom. But you didn't die, so don't worry... "
+speech_blt_71_8,我看到你们在河里漂着，就把你们捞上来带到这里了……,"I saw you all floating in the river, and decided to pull you out and bring you here... "
+speech_blt_71_9,吓我一跳，咦？你是幽灵？,"Wow, you had me worried! Wait... Are you a ghost?"
+speech_blt_71_10,是呀，我是个幽灵呢，我叫丽莎，啊这里不方便，我们一会再说吧~,Sure am! My name is Lisa. But let's not discuss this here.
+speech_blt_72_1,丽莎你不是人类的幽灵吗，为什么会在异界,"But you're the ghost of a human, aren't you? Why are you here on Mythos?"
+speech_blt_72_2,我也不知道怎么回事，我恢复意识后就在这里了……不过这里大家都挺好的，嘻嘻嘻,"Yeah I don't really understand it either. I was here when I regained consciousness... But everyone is quite nice here, hehehe."
+speech_blt_72_3,嗯……奇怪……丽莎你知道怎么回人界吗，我需要回去。,"Hmm... Interesting... Lisa, do you know how to go to the real world? I need to get back there."
+speech_blt_72_4,回人界？啊太好了，你能带我回去吗，我想或许回到人界，我没准能想起来自己是怎么死的呢，嘻嘻……,"Back to the real world? That's great! Can you take me with you? I was thinking to go there as well, and perhaps I'll be able to remember how I died...  "
+speech_blt_72_5,没有问题呀，在这光之国有没有人能够打开通道呢？,No problem! Is there anyone in the Light Kingdom that could open the way back?
+speech_blt_72_6,光之国最厉害的，应该是精灵王子了吧，或许你可以试试去拜托他,The Light Kingdom is the most powerful of all! The Prince Elve should be able to help... Perhaps we can try asking him.
+speech_blt_72_7,嗯，那我们去找精灵王子吧,"Ok, let's go find him."
+speech_blt_74_1,（东张西望）…………,(looking around) ... 
+speech_blt_74_2,九尾！你看那个人！,Nine Tails! Look who it is!
+speech_blt_74_3,竟然是那个代行者老头，他怎么会在异界，我们快跟上去！,So it's that old monster keeper. How could he be on Mythos? Let's catch up to him and see!
+speech_blt_75_1,（东张西望）…………,(looking around) ... 
+speech_blt_75_2,（低声）他好像还没有发现我们,(Whispering) He doesn't seem to have noticed us.
+speech_blt_75_3,（低声）他出现在这里，看来代行者连接了异界和人界是事实了,"(Whispering) If he's here, then that must mean he was able to really link Mythos and the real world."
+speech_blt_75_4,（低声）这么说……森之国和冰雪之国的屠杀……也是代行者组织干的了……,(Whispering) That also means that he is be behind the Forest Kingdom and Snow Kingdom attacks... 
+speech_blt_77_1,坏了……跟丢了……,Oh no... We've lost him... 
+speech_blt_77_2,刚才这位老人家的方向……好像也是去光之圣殿呢,"Judging from the direction he was going just now, he should be headed for the Palace of Light."
+speech_blt_77_3,光之圣殿，难道他也要去找精灵王子，我们快跟过去！,Palace of Light... Could it be that he also wants to see the Prince Elve? Let's catch up to him!
+speech_blt_78_1,看到了，他与精灵王子聊了两句，就进了圣殿，然后我就感觉不到他的气息了！,I saw it with my own eyes! He spoke with Prince Elve for a moment and entered the palace. Now I can't sense him here at all!
+speech_blt_78_2,看来圣殿里果然有连接异界的通道，如果不是进入通道，不可能感觉不到他的存在。,"So it seems the palace contains a passage to the real world after all. If he was still on Mythos, I would be able to sense him here."
+speech_blt_78_3_1,呵呵，少年人很努力嘛，竟然能跟得上老夫。,"Hehe, you young kids are quite clever these days, you've kept up with me all this time."
+speech_blt_78_3_2,别跑！,Don't run!
+speech_blt_78_3_3,小心精灵王子！,Be careful of the Prince Elve!
+speech_blt_78_3end_1,果然在圣殿后面有连接人界的通道！不过那老头不知去向了！,So the passage to the real world lies behind the palace after all! But I have no idea where that old guy went!
+speech_blt_78_3end_2,这么说来，光之国和代行者组织之间，或许有什么阴谋……,That means that Light Kingdom and that keeper are working together... Maybe there is some sort of plot behind this.
+speech_blt_78_3end_3,不管怎么样，只要回到人界就知道了，走吧,"Either way, we'll know once we get back to the real world. Let's go!"
+speech_blt_78_3end_4,带上我，我也要回去~,Take me with you! I want to go back too!!
+speech_blt_78_3end_5,嗯，好的，我们一起回人界！,Ok! Let's go back together!
+speech_blt_81_1,这里是……哪里……,Where... Is this place... 
+speech_blt_81_2,这里是人界没错，我不能自己汲取信仰之力,"This is the real world, thre's no doubt about that. I can't make use of my Mytho Essence."
+speech_blt_81_3,可是……这好像是一片废墟……,But... These seem to be ruins of some sort...  
+speech_blt_81_4,…………,... 
+speech_blt_81_5,怎么了丽莎？,What's wrong Lisa?
+speech_blt_81_6,我不知道……我就是觉得好害怕……这个废墟，很可怕……,I don't know... I just feel really afraid... These ruins are scary... 
+speech_blt_81_7,不管怎样，我们先走出去再说吧,"Ok, let's see if we can find our way out of here."
+speech_blt_81_3_1,怎么回事，这里的妖怪很多也很强，甚至比异界的妖怪还要强！,"What? There are a lot of monsters here, and they are really strong. Even stronger than the ones back on Mythos!"
+speech_blt_82_3_1,先是强的过分的花魄，又是强的过分的火鸟？,"First there's a super strong Flower Pixie, and then an overpowered Firebird?"
+speech_blt_84_3_1,花魄，火鸟，阿姆特，安普莎……莫非……,"Flower Pixie, Firebird, Ammut, Empusa... Could it be…"
+speech_blt_85_1,我明白了！,I got it!
+speech_blt_85_2,怎么回事？,"Huh, what?"
+speech_blt_85_3,我们一直在原地打转，这个废墟利用我们的力量在运转一个法阵,We've been going in circles! These ruins are using our powers to complete a magic ceremony of some sort... 
+speech_blt_85_4,法阵？,Magic... Ceremony?
+speech_blt_85_5,嗯，草属性的花魄，火属性的火鸟，水属性的阿姆特，暗属性的安普莎，如果没错的话，前方一定是一个光属性的守护兽。,"Right! The grass type Flower Pixie, fire type Firebird, the water type Ammut, and then the dark type Empusa... If I'm not mistaken, there should be a light type  monster waiting for us next."
+speech_blt_85_6,通过这个法阵，这个废墟中封印着的某些东西就会觉醒！,"With this magic, whatever's sealed in these ruins can be awakened!"
+speech_blt_85_7,这么说来，我们已经落入了这个废墟的陷阱？！,That means we have already fallen into the trap of these ruins?!
+speech_blt_86_1,啊啊啊啊！好可怕，有可怕的东西过来了！,Ahhh! Scary! Something scary has come!
+speech_blt_86_2,有一股十分邪恶的力量过来了，要小心！,"A very evil force has come, be careful!"
+speech_blt_86_3_1,刚才那个…是地狱七君主？！看来这个废墟下封印着不得了的东西……,Were those... The 7 Deadly Sins? These ruins must contain something incredible...  
+speech_blt_87_1,啊啊啊，又来了！,Ahhh... They're here again!
+speech_blt_87_2,小心，可能又是地狱七君主之一！,Careful! It could be another one of the Deadly Sins!
+speech_blt_88_1,九尾，这个废墟里面竟然有这么可怕的怪物，这个废墟原来到底是什么东西？,"Nine Tails, with such terrible monsters roaming around here, what could these ruins have originally been?"
+speech_blt_88_2,我也不知道，不过看起来像是图书馆之类的……,"I'm not entirely sure either, but it seems to have been a library of some sort... "
+speech_blt_88_3,…………,... 
+speech_blt_88_2_1,头好痛……,"Uh, my head... "
+speech_blt_88_2_2,怎么回事，丽莎？,"What's wrong, Lisa?"
+speech_blt_88_2_3,头好痛……我感觉到前面有什么东西，我好像有印象，但是头好痛！,"My head hurts so much... I sense something up ahead, something that I seem to remember. But my head really hurts!"
+speech_blt_88_3_1,天呀，这是一股什么力量！,Wow! What kind of force could this be!
+speech_blt_88_3_2,我感觉整个人都被禁锢住了！,I feel as if I'm trapped and unable to move!
+speech_blt_88_3_3,……时间……不可逆的时间……,Time... Time irreversible... 
+speech_blt_88_3_4,丽莎你怎么了？,"Lisa, are you alright?"
+speech_blt_88_3_5,……知晓一切的未来，所有未来化成的神灵……知性的亚弗戈蒙……再现于大图书馆之上吧！,"Knowing the future, all the dieties of the future... The knowledgable Aforgomon... Is once again on top of the Great Library!"
+speech_blt_88_3_6,桀桀桀桀桀桀桀……,Mwahahahaha…
+speech_blt_88_3_7,！！！！！！,!!!!!
+speech_blt_88_3end_1,咳咳……这个怪物是丽莎召唤出来的吗！,Ughh... Was this monster summoned by Lisa!
+speech_blt_88_3end_2,丽莎，你这是怎么回事，啊九尾你快看，丽莎好像不对劲。,"Lisa, what's going on? Nine Tails, come quickly! Something's wrong with Lisa!"
+speech_blt_88_3end_3,别过去，她身上缠绕着十分可怕的力量，被碰到我们都会粉碎！,Don't move. Lisa's body is wrapped in a terrible force. Touch her and we will all be destroyed!
+speech_blt_88_3end_4,……献上知性的亚弗戈蒙之力，回应我的祈祷吧，存在于所有未来中的幻象，将于此间成型……降临于人世吧，幻界大图书馆！,"An offering for the power of Aforgomon, answer my prayers. The existance of all future visions will take shape here... It's coming to the world, the magic world's Great Library!"
+bingyan3normal_head,普通受击点,This is not a weakpoint.
+bingyan3normal_larm,普通受击点,This is not a weakpoint.
+bingyan3normal_rarm,普通受击点,This is not a weakpoint.
+story_langren,来源于希腊的一个神秘种族。平时狼人长相行为与正常人无异，每到月圆之夜，在满月月光的照射下，狼人体内的血液就会开始觉醒，从一个普通人变成一头毫无理智只会嗜血的巨狼。狼人拥有强大的自愈能力，普通武器无法伤到他们，只有银器才能阻止狼人自愈，杀死他们。,"Werewolves originate from a race in ancient Greece. Normally appearing as just normal people, the werewolves' blood is awakened under the light of a full moon. When tranformed, they become a beast that is senseless and bloodthirsty. Werewolves possess strong healing abilities, rendering most weapons practically useless. Only silver weapons can stop their healing abilities and defeat them."
+story_diyuquan,希腊神话中的地狱看门犬，负责看守着冥界之门阻止生者进入和亡者逃离。地狱犬有三个头，每个头颅都可以喷吐烈火。地狱犬喜爱甜食，讨厌阳光。,"As the gatekeeper of ancient Greece, the Hellhound was responsible for guarding the gates of the underworld, keeping living creatures out and preventing the dead from escaping. The hellhound has three heads, with each one being able spew fire. Hellhounds love sweets and hate the sun."
+story_piying,皮影起源于中国的汉朝，汉朝有一个非常出名的皇帝——汉武帝，他的一个爱妃死于疾病，汉武帝伤心欲绝，于是让他的臣子们想办法唤回爱妃。臣子们用皮革制成了妃子的样子，在油灯的照明下，皮影动了起来，好像爱妃真的活过来了一样。,"The Shadow Puppet originated during China's Han Dynasty when one of the concubines of the famous Emperor Wu died of illness. The emperor was devastated, and he summoned his officers to bring her back to life. The officers made the shape of the concubine using leather, and using an oil lamp they made her shadow move, bringing her back to life."
+story_mengyan,是菲律宾神话中的小生物，它们通常找到熟睡中的受害者，趴在他们的脸上，悄无声气地带走它们的生命….,The Bangungot is a creature from Filipino folklore that attacks its victims when they are sleeping. It with sit on its victim's face and silently steals its life away... 
+story_xiyiren,一种半人半兽的妖怪，全身披满厚厚的绿色鳞甲，拥有一双血红色的眼睛。蜥蜴人经常出没于沼泽地区，力大无比，在水泽中行走如飞，袭击靠近沼泽的生物。,"Half man, half monster, the Lizardman is covered in green scales and has 2 blood-red eyes. It can usually be found near swamp and bogs and has incredible strength. It can move extremely quickly in water, and attacks creatures that venture too close to the marsh."
+story_panshen,西班牙神话中的牧神和森林之神。喜好音乐，可以吹奏出令众神迷醉的乐曲。潘十分自恋且喜好美色，几乎所有森林中的女神都遭遇过潘的求婚，然而迄今为止，成功率为零……,"Pan is the god of shepherds and forests. Pan likes music, and can play songs that enchants the other gods. Pan also has a narcissistic character and is obsessed beauty, almost all the goddesses of the forest have requested his hand in marriage at some point. To this day, the success rate of these requests is still nil... "
+story_zouyincao,一种热爱旋律的小精灵，人们往往不见其形便闻其声。走音草往往隐藏在森林深处，偶尔会聚集到一起合奏出奇妙的音乐。他们如同留声机一般的身体，总被人们误以为是遗弃在森林里的留声机。,"A sprite that loves the melodies of music. People tend not to see its shape, but instead hear its sound. Melody Bulbs are always hidden deep within the forests, and occasionally gather to perform music together. Their phonograph-like bodies often lead people to mistake them for abandoned phonographs in the forest."
+story_tianshizhang,拥有无尽神力的大天使，真正的光之子。,"An angel with limitless power, truly born of the light."
+story_demofei,俄罗斯传说中房子的守护神，最有特点的是他的胡子，常常和头发连在了一起。人们通常不会看到得莫非，却能够听到他的声音，不过，他的声音异常的空洞、刺耳….,"A protective house spirit from Russian folklore, its most distinct characteristic is its beard which runs along its entire face. The Demovoy is more often heard than seen with his voice that is hollow and harsh."
+story_datiangou,日本传说中的妖怪，长着长长的鼻子，手持一把羽毛扇，拥有强大的法力，传说中大天狗是山中的苦行僧死后化成。大天狗一族精于占卜之术但是同时喜欢恶作剧，经常会施展法术让进入山中的人迷路。,"A monster from Japanese legends with an unnaturally long nose and a feather fan. Tengu possess great power, and legend has it that they are ascetic monks who have died in the mountains. The Tengu are known to be skillful in divination but are prone to mischief, often using magic to cause people to become lost in the mountains."
+story_hongniu,希腊神话中的牛头怪，牛头人身，力大无比，居住在克里特岛上的迷宫中。米诺到诺斯生性残暴易怒，凡是踏入它的迷宫之地，就会招致米诺到诺斯疯狂的追杀。,"Originating from Greek mythology, the Minotaur is a strong monster with the head of a bull on the body of a man, dwelling in the maze-like Labyrinth on the island of Crete. He has a ferocious nature, and will chase down anyone that dares enter Labyrinth."
+story_huocike,精通忍术的精灵，身上长满了带有尖刺的甲壳，大意轻敌的话就会被尖刺割伤。火刺壳行动敏捷还掌握着大量忍术，是个不可多得的战斗妖怪。,A sprite that knows kung-fu and has a body with a shell covered in fiery spikes that damage any enemy that underestimates it. A Fireshell's quick movements reflect its skills in ninjutsu and are among the most effective monsters to have in battle.
+story_ifulite,阿拉伯传说中四大元素精灵之一，掌管烈炎的元素精灵伊芙利特。伊芙利特是在火焰中诞生的精灵，擅长操纵火焰攻击敌人。他生性暴躁冲动，所有被伊芙利特经过的地方都会变成一片焦土。,"One of the four major elemental sprites from Arabic legends, the Ifrit is the sprite in charge of fire. They are born among the flames, and are excellent at controlling fire to attack their enemies. Ifrit have an impulsive and violent nature, leaving a scorched landscape wherever they tread."
+story_wushi,中国传说的妖怪。每到节日时，中国人会挥动舞狮祈求吉祥，久而久之舞狮有了灵气就变成了精怪。舞狮天性活泼，喜欢热闹，经常在节日和集会中出现，出现舞狮的地方，来年风调雨顺。,"A monster of Chinese origin, that was once waved in the air as way of praying for good luck by people celebrating festivals. Over time, the Dancing Lion attained life and became a monster. They are lively in nature, and love gatherings and festivals. Wherever they appear, the land is blessed with good weather the following year."
+story_moguguai,日本传说中，一群寻求快乐的年轻人被困在神秘的岛上，当他们生命逝去后，在某个神秘的时刻，他们变成了神秘的蘑菇….,"Japanese legend has it that a group of young men in search of happiness became trapped on a mysterious island. Just as they were passing away, something mysterious happened, causing them to become the mysterious Matango."
+story_eyupanguan,埃及传说中负责审判死者的判官，拥有鳄鱼的头，身体却是狮子和河马的组合体，来到冥界的死者都要接受鳄鱼判官的审判，赎清生前的罪孽。,"The Crocodile Warden is a judge from Egyptian legends that is charged with judgement of the deceased. It has an alligator head, and the body of a lion and a hippo. All the deceased who come to the underworld must accept his judgement and redeem the sins of their life before."
+story_wendige,印第安传说中的一种妖怪，温迪戈拥有尖牙利齿，散发着死人才有的腐烂气息。一旦人类犯下了同类相食的罪行，就会召唤来温迪戈，温迪戈十分嗜血，会吞噬所有有生命的物体。,"A monster from Native American legends, the Wendigo has sharp teeth and carries the smell of rotting flesh. Any act of cannibalism will summon the Wendigo, who is bloodthirsty and devours all living things."
+story_shilaimu,一种粘液形成的怪物，生存于下水道等地下阴暗区域，依靠吞噬小生物成长进化。史莱姆智力低下，一般依靠本能行动，物理攻击效果不明显，一旦吞噬成长到足够巨大是十分难缠的对手。,"A monster formed from sticky liquid that lives in pipes and other dark places, growing by eating small creatures it encounters. A Slime's intellect is very low as it usually relies on its natural instincts, and any physical attacks against it are ineffective. Once it grows to a large enough size, a Slime can prove to be a very tough opponent."
+story_hetong,日本传说中的妖怪。河童居住在日本的河川或池子中，头顶的碟子中盛有清水，是河童的法力来源也是弱点，只要碟子中的清水流干，河童就会精力尽失，所以捕获河童的办法是诱骗它弯腰。,"The Kappa originates from Japanese legends and inhabits
+ponds and rivers. Kappa have a small plate at the top of their heads that is their source of power as well as their weakpoint. If the plate dries out, the Kappa loses its power, so the trick to capturing them is getting them to bow."
+story_wagui,泰国传说中一种可爱的小生物，常常守卫在废弃的寺庙或者修道院周围，他们身着僧侣服饰，忠诚地捍卫自己的领土不被外人所侵扰。,"A small and cute creature from Thai legends, often found guarding abandoned temples and monasteries. They dress in monk clothing and faithfully defend their territory against intrusion from outsiders."
+story_youlingchuanzhang,幽灵船的船长，幽灵船常年行驶在迷雾之海中，吸引并征服靠近的船只。幽灵船长生性狡猾多疑，传说他将毕生的财宝都藏在了一个不为人知的地点，至今还无人找到。,"Captain of a ghost ship that has sailed the Seven Seas cloaked in fog so as to allure and board unsuspecting ships. Soul Captain is cunning and mistrusting by nature, and legend has it that he has hidden his lifetime plunders in an unkown location No one has found it to this day. "
+story_longgongtongzi,日本传说中的妖怪。如果谁对龙宫有恩，龙宫童子会以俊美少年的形象出现在恩人的面前帮助其实现愿望，随着愿望实现的越来越多，龙宫童子失去妖力，会越来越苍老甚至死亡，如果这时人们因为苍老而嫌弃龙宫童子并将它赶走，之前所得的一切也会化为乌有。,"A monster from Japanese legends. If someone is blessed by Ryuku Doji, then Ryuku Doji will appear as a young boy in front of that person, and grant them wishes. The more the wishes, the more power Ryuku Doji will lose, causing him to grow old or even die. If at this time the person makes Ryuku Doji leave because he has grown old, then everything that was a result of the wishes will then disappear."
+story_baosangnvyao,爱尔兰传说中的妖怪，可以预示死亡。一般在某人将死的时候，报丧女妖就会出现在森林沼泽附近，不停的痛哭，以恐怖的哭声告知人类死亡的来临。,"A monster originating in Irish legends that can foretell death. At the moment someone is about to die, Banshees will appear in a nearby forest or swamp and cry out. These cries herald the the coming of death."
+story_luoxinfu,日本传说中的妖怪。络新妇是蜘蛛修炼而成的妖怪，会幻化成美女的样子勾引年轻男子，当年轻男子被诱惑三日之后，就会被取走首级食用。络新妇的弱点是火。,"A monster from Japanese legends, Nephila is a spider that eventually reached immortality and became a monster. A Nephila takes on the appearance of a beautiful woman to entice young men, and once they have been lured away for 3 days, they will be taken away and eaten. Nephila's weakness is fire."
+story_weitianshi,是邪恶、反叛的天使，被天堂所抛弃，他们通常犯下过罪行，只能等待刑罚的到来。有时，人们能够远远地望见绝望地等待审判到来的伪天使。,"A Fallen Angel is a wicked or rebellious angel that had been cast out of heaven. Any angels who have sinned are cast out to await their punishment on Judgment Day. They can sometimes be seen gazing from a distance, watching and waiting for their day of punishment to come."
+story_kairuisi,恶魔伪装成的天使，拥有天使般甜美的外形，如果人类不小心就会受骗，被她诱惑后堕落，灵魂就被带去无尽的地狱。,"Demons disguised as angels with an angelic appearance. If humans are not careful, they are easily deceived and tempted into evil. Their souls will be taken to the endless depths of hell."
+story_anpusha,希腊神话中的吸血女妖。安普莎精于变化，经常变换成少女的模样徘徊在路边吸引人们靠近，当有人大意靠近后就吸干他们的鲜血。,"A bloodsucking monster of Greek mythology. Empusae can transform and often takes the appearance of young maidens to attract people wandering the streets. Once a victim comes close enough, she will suck their blood."
+story_huapo,中国神话中花朵的精灵。吸收了朝露精华的花朵，孕育而成的小精灵，身材玲珑，动作轻快。但不要因此就小瞧了她们，一旦有人惹怒了这些小精灵，就会被收到森林的的惩罚。,"A flower sprite from Chinese mythology. Flower Pixies are flowers that have absorbed the essence of dew, causing them to come alive with delicate with light movements. But don't let that fool you, once they are angered, they can summon the judgement of the forest."
+story_mantuoluo,一种奇妙的植物妖怪。长得像一般的草药，但是被拔出土时会发出凄厉的喊叫，听到叫声的生物会立刻死亡。,"A wonderful plant monster that grows to look like an ordinary plant, but when pulled from the soil releases a shrilling cry. Any creatures that hear this cry will instantly die."
+story_xingkongsheshou,拥有高超射术的射手，肆意驰骋在星空之中，是十二星座之射手座所幻化而成的神怪。,An archer with incredible skill that prances across the starry sky. The Astro Archer is the Sagittarius deity of the twelve zodiac. 
+story_dujiaoshou,神话传说中的生物，头上长有一只独角，性格温顺。独角兽通常是纯洁和优雅的象征，据说他的角能够解毒、治愈疾病。幻化成人形的独角兽大部分为少女，十分爱干净，如果不慎因为肮脏而惹怒她，后果十分可怕……,"A mythological creature, its head has a single horn and it has a very docile nature. Unicorns are often the symbol of elegance and purity, and it's said that its horn can serve as an antidote and even cure disease. Most adult unicorns are female, and are very clean. If a person happens to displease them due to being dirty, then the results can be quite unpleasant..."
+story_hapi,传说中阿拉伯的风之妖精，长有一双巨大的翅膀和鸟的爪子，却拥有人类的美丽面庞。哈皮可以驾驭风暴，常常在恶人猎食时，把他们送向地狱女神。,"A wind sprite of Arabian origin that grows to have two massive wings and bird-like claws, while retaining the beauty of a human face. Harpies can ride the wind, and often catch wicked men while out hunting, taking them to the goddess of hell."
+story_change,中国传说中的仙子，因为误食仙药而飞升到月亮上，成为了月之仙子。月亮上一片荒凉，只有嫦娥和她心爱的宠物玉兔永远的居住在那里。,An immortal of Chinese origin who ended flying to the moon and becoming the moon deity due to drinking the wrong elixir. Now the desolate surface of the moon only has Chang'e and her beloved pet rabbit living there forever.
+story_daochengsizhong,日本传说中的妖怪。曾经是一个名叫清姬的人类女子，爱上了一名僧人，僧人答应娶清姬后又食言。清姬被怨念吞噬化成一条大蛇，追到了僧人的寺里，找到了躲在大钟里的僧人却对大钟无可奈何，于是缠住大钟，连人带钟一起烧毁，不能同生，只能同死。,"A monster from Japanese legends. Once a very beautiful  girl named Kiyohime fell in love with a monk, and the monk promised to marry her, but then later broke his oath. Engrossed in resentment, Kiyohime tranformed into a snake-like creature and chased the monk in the temple. Once she discovered that he was hiding under a bell, she entangled the bell, and burned it. If we can't live together, then we can only die together."
+story_huoniao,在无尽的烈火中诞生的神鸟，拥有着若火焰般肆意伸展的羽毛和不灭的生命。传说中的火鸟拥有不死之身，只要有火焰存在，火鸟就能从火焰中无数次的重生。,"A divine bird born among endless flames that possesses fire-like feathers and immortality. Legends speak of Firebird's immortality, saying that as long as there is fire, the bird may be reborn from the flames countless times."
+story_gongjiangzhishen,希腊神话中的火神和工匠之神。掌管着异界的火之国度，火神生性善良胆小，人畜无害。唯一要注意的就是不要把火神惹哭，惹哭的火神会散发毁灭一切的灾厄之炎。,"The Greek mythological god of fire and craft. He rules Mythos' Fire Kingdom and possesses a good nature, harmless to humans and animals. The only warning is not to make him cry. If he cries, his flames engulf everything around him and cause utter destruction."
+story_xiaochou,打扮成小丑的妖怪，通过幻术迷惑人类，搞一些恶作剧。最著名的小丑妖怪是花衣魔笛手。,"A monster dressed as a clown that uses magic to confuse humans, and commit mischief. The most famous clown monster is Pied Piper of Hamelin."
+story_bingxuenvwang,曾与海神波塞冬生下欧摩尔波斯，为了不让波塞冬知道孩子的存在，她将孩子扔进了深海，但幸运的是，波塞冬救了孩子。,"She once gave birth to Eumolpus with Poseidon, but to keep Poseidon from knowing of the child, she threw the child into the deep sea. But fate would have it that Poseidon came and saved the child."
+story_longnv,中国传说中的妖怪，居住在深海龙宫的真龙后裔。龙女擅长驾驭水族，并拥有强大的水系法术，但是她性格随和，一般不会表现出强大的一面。,"A monster of Chinese origin, she is the true descendant of dragons that lives deep in the sea. Dragon Girl can control the creatures of the deep, and has strong water magic. However, she is quite easygoing, and generally does not exhibit her powers."
+story_jinglingwang,诞生于朝露之中的妖精之王，优雅的剑术大师。妖精一族是上古邪神创造而生，被邪神当做奴隶肆无忌惮的奴役和虐待。直到妖精王出现，妖精一族在妖精王的领导下逐渐壮大，终于诛杀邪神，获得自由。,"The Goblin King was born with the morning dew and is quite the swordsman. The goblin race was brought to life by Cthulhu to serve as slaves, and were subject to servitude and abuse. When the Goblin King appeared, the goblin race steadily grew in strength, and were eventually were able to slay Cthulhu, gaining their freedom."
+story_duoduoluo,生活在世界树上的妖精，森林的播种者。每到夜晚会行走在森林里，脚印踏过的土地会长出新的幼苗。,"A sprite that lives on the Tree of Life and sower of the great forest. Every night, he will go down to the forest, and saplings will begin to grow wherever his feet touched the soil."
+story_yifanmumian,日本传说中的妖怪，长相是一根白色布带。会袭击夜间独自出行的行人，把人的身体和头包裹起来带到半空中。,"A monster of Japanese origin that appears to be a white belt. He will attack people walking alone at night by surprise, and wrap the body and head to be taken up to the heavens."
+ruodian_hide_name,线索,Clue
+guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Myth Guardian Mode</color> unlocked!
+guide_road2,进入第一个关卡,Enter the first stage
+speech_xinyangzhilu1,神话守护者玩法共有<color=#ffcc00>9个关卡</color>，每关都有<color=#ffcc00>5只怪物</color>镇守，打败这些怪物才能够拿到奖励哦！,"Myth Guardian Mode has a total of <color=#ffcc00>9 stages</color>, with each stage guarded by <color=#ffcc00>5 monsters</color>. Defeat the monsters to get rewards!"
+speech_xinyangzhilu2,闯关过程中，我方怪物的<color=#ffcc00>血量和能量</color>在战斗结束后是会<color=#ffcc00>保留到下一场战斗</color>的，所以要合适的排布怪物们出场的先后顺序哦。,"While battling stages in this mode, the <color=#ffcc00>HP and Power</color> of players' monsters at the end of battle will be <color=#ffcc00>saved and used in the next battle</color>. So players should carefully consider their lineups and the order their monsters enter the battlefield."
+speech_xinyangzhilu3,当然，通关奖励是不会少的！除了<color=#ffcc00>基础奖励</color>外，还有<color=#ffcc00>概率获得神秘的宝箱奖励</color>哦！,"Of course, there will be great rewards upon clearing a stage! In addition to the <color=#ffcc00>basic rewards</color>, there will also be <color=#ffcc00>a chance of receiving mysterious treasure rewards</color>!"
+speech_xinyangzhilu4,还等什么！开启征战之旅吧！,What are you waiting for? Start your adventure now!
+guide_ruodian1,每个怪物都有<color=#ffcc00>弱点</color>,Every Monster's got a secret <color=#ffcc00>weakpoint</color>.
+guide_ruodian2,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
+看起来她的<color=#ffcc00>头</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
+It appears to be her <color=#ffcc00>head</color>."
+guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it's her <color=#ffcc00>head</color>.
+guide_ruodian4,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
+看起来<color=#ffcc00>花瓣</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
+It appears to be her <color=#ffcc00>petal</color>."
+mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
+hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.
+guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoints</color>?
+zouyincao2normal1_yinfu1,音符守护着他不受伤害！,音符守护着它不受伤害！
+zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,环绕的音符，会有什么样的秘密？
+bossdajie16Zouyincao2wp03,音符盾,音符盾
+bosschaoxue52Yifanmumian3wp02,吊坠,Pendant
+bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll
+yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？
+yifanmumian3normal1_pendant,吊坠是dot效果的源动力,The pendant is the source of her DOT effects.
+yifanmumian1normal1_zhiren,干掉她的保护伞！,Destroy her protective scroll!
+ladong5hide_appleshell,这坚硬的壳里面会有什么秘密？,What secrets lie under this protective shield?
+ladong5normal_appleshell,金苹果可能就在里面！,Maybe the Golden Apple is inside!
+guide_hero1,一起来看看<color=#ffcc00>挑战难度</color>的副本吧,Let's try a stage on <color=#ffcc00>heroic difficulty</color>!
+guide_hero2,选择第一章,Select Chapter 1.
+guide_hero3,这里可以切换<color=#ffcc00>普通与挑战难度</color>,"Here you can switch between 
+<color=#ffcc00>normal and heroic difficulty</color>."
+guide_hero4,选择挑战难度,Select heroic difficulty.
+guide_hero5,点击这里看看奖励多棒吧,Tap here to view the possible rewards.
+speech_hero1,挑战难度副本主要产出<color=#ffcc00>宠物进阶的相关材料、宠物碎片</color>等，三星通关挑战难度副本能够获得<color=#ffcc00>钻石</color>等丰富的奖励呢！,Heroic stages will drop <color=#ffcc00>monster advancement materials and monster fragments</color>. Clearing a heroic stage with 3-stars will give <color=#ffcc00>diamond</color> rewards!
+guide_worldboss1,<color=#ffcc00>神怪入侵</color>玩法开启啦！,<color=#ffcc00>Deity Invasion</color> unlocked!
+guide_worldboss2,"每个神怪都有<color=#ffcc00>克星</color>，
+战斗时将克星上阵，
+就能获得对应的<color=#ffcc00>伤害加成</color>","Each deity has a <color=#ffcc00>nemesis</color>. 
+If you add the nemesis to your lineup, 
+then you can receive the corresponding <color=#ffcc00>damage bonuses</color>."
+speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续<color=#ffcc00>15分钟</color>，每天只能选择<color=#ffcc00>一场</color>参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for <color=#ffcc00>15 minutes</color> each. Players may only participate in <color=#ffcc00>1 of the 3 battles</color> each day.
+speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! "
+speech_worldboss3,偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!"
+bossworldbossjidu5wp02,右手,Right Hand
+bossworldbossjidu5wp03,左手,Left Hand
+bossworldbossjidu5wp04,剪刀,Shears
+bossworldbossjidu5wp05,右翅膀,Right Wing
+bossworldbossjidu5wp06,左翅膀,Left Wing
+bossworldbossjidu5wp07,角,Horn
+bossworldbossjidu5wp08,披风右下摆,Cloak right
+bossworldbossjidu5wp09,披风左下摆,Cloak left
+bossworldbossjidu5wp10,兜帽,Hood
+jidu5hide_rhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_scissors,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_rwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_angle,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_rcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_lcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5hide_hood,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+jidu5normal_rhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_scissors,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_rwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_angle,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_rcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_lcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+jidu5normal_hood,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.
+bossworldbossmeitatelong1wp02,右翅膀,Right Wing
+bossworldbossmeitatelong1wp03,左翅膀,Left Wing
+bossworldbossmeitatelong1wp04,神秘之星,Secret Star
+bossworldbossmeitatelong1wp05,右下翅膀,Lower-right Wing
+bossworldbossmeitatelong1wp06,左下翅膀,Lower-left Wing
+bossworldbossmeitatelong1wp07,神秘之脸,Secret Face
+bossworldbossmeitatelong1wp08,右上翅膀,Upper-right Wing
+bossworldbossmeitatelong1wp09,左上翅膀,Upper-left Wing
+bossworldbossmeitatelong1wp10,神秘之架,Secret cross
+meitatelong1hide_rmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_lmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_star,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_rdwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_ldwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_face,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_ruwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_luwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1hide_cross,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?"
+meitatelong1normal_rmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_lmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_star,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_rdwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_ldwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_face,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.
+worldentry,神怪入侵,Deity Invasion
+10233_name,守护者挑战达人 I,Guardian Challenger I
+10234_name,守护者挑战达人 II,Guardian Challenger II
+10235_name,守护者挑战达人 III,Guardian Challenger III
+10236_name,守护者挑战达人 IV,Guardian Challenger IV
+10237_name,守护者通关达人 I,Guardian Slayer I
+10238_name,守护者通关达人 II,Guardian Slayer II
+10239_name,守护者通关达人 III,Guardian Slayer III
+10240_name,守护者通关达人 IV,Guardian Slayer IV
+10241_name,守护者通关达人 V,Guardian Slayer V
+10242_name,一起打boss I,Battle Together I
+10243_name,一起打boss II,Battle Together II
+10244_name,一起打boss III,Battle Together III
+10245_name,一起打boss IV,Battle Together IV
+10246_name,极限挑战 I,Extreme Challenge I
+10247_name,极限挑战 II,Extreme Challenge II
+10248_name,极限挑战 III,Extreme Challenge III
+10249_name,极限挑战 IV,Extreme Challenge IV
+10250_name,极限挑战 V,Extreme Challenge V
+10251_name,极限挑战 VI,Extreme Challenge VI
+10252_name,boss杀手 I,Boss Slayer I
+10253_name,boss杀手 II,Boss Slayer II
+10254_name,boss杀手 III,Boss Slayer III
+10255_name,boss杀手 IV,Boss Slayer IV
+10256_name,boss杀手 V,Boss Slayer V
+10257_name,极限输出 I,Massive DPS I
+10258_name,极限输出 II,Massive DPS II
+10259_name,极限输出 III,Massive DPS III
+10260_name,极限输出 IV,Massive DPS IV
+10261_name,分享达人 I,Share the Fun I
+10262_name,分享达人 II,Share the Fun II
+10263_name,分享达人 III,Share the Fun III
+10264_name,分享达人 IV,Share the Fun IV
+10265_name,分享达人 V,Share the Fun V
+10266_name,勇闯巅峰 I,Brave the Arena I
+10267_name,勇闯巅峰 II,Brave the Arena II
+10268_name,勇闯巅峰 III,Brave the Arena III
+10269_name,勇闯巅峰 IV,Brave the Arena IV
+10270_name,勇闯巅峰 V,Brave the Arena V
+10271_name,时间如金 I,Pure Skill I
+10272_name,时间如金 II,Pure Skill II
+10273_name,时间如金 III,Pure Skill III
+10274_name,时间如金 IV,Pure Skill IV
+10275_name,时间如金 V,Pure Skill V
+10276_name,收集达人 I,Avatar Collector I
+10277_name,收集达人 II,Avatar Collector II
+10278_name,收集达人 III,Avatar Collector III
+10279_name,收集达人 IV,Avatar Collector IV
+10233_miaoshu,累计参与神话守护者达到5次,Participate in Myth Guardians mode 5 times.
+10234_miaoshu,累计参与神话守护者达到10次,Participate in Myth Guardians mode 10 times.
+10235_miaoshu,累计参与神话守护者达到50次,Participate in Myth Guardians mode 50 times.
+10236_miaoshu,累计参与神话守护者达到100次,Participate in Myth Guardians mode 100 times.
+10237_miaoshu,通关神话守护者达到1次,Clear Legend Guardian mode once.
+10238_miaoshu,通关神话守护者达到5次,Clear Legend Guardian mode 5 times.
+10239_miaoshu,通关神话守护者达到10次,Clear Legend Guardian mode 10 times.
+10240_miaoshu,通关神话守护者达到20次,Clear Legend Guardian mode 20 times.
+10241_miaoshu,通关神话守护者达到50次,Clear Legend Guardian mode 50 times.
+10242_miaoshu,参与神怪入侵挑战达到5次,Participate in Deity Invasion mode 5 times.
+10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.
+10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.
+10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.
+10246_miaoshu,同一个时间段内挑战boss达到5次,Battle a boss 5 times in a single time period.
+10247_miaoshu,同一个时间段内挑战boss达到6次,Battle a boss 6 times in a single time period.
+10248_miaoshu,同一个时间段内挑战boss达到7次,Battle a boss 7 times in a single time period.
+10249_miaoshu,同一个时间段内挑战boss达到8次,Battle a boss 8 times in a single time period.
+10250_miaoshu,同一个时间段内挑战boss达到9次,Battle a boss 9 times in a single time period.
+10251_miaoshu,同一个时间段内挑战boss达到10次,Battle a boss 10 times in a single time period.
+10252_miaoshu,世界boss排名达到前50名,Reach the top 50 in Deity Invasion rankings.
+10253_miaoshu,世界boss排名达到前20名,Reach the top 20 in Deity Invasion rankings.
+10254_miaoshu,世界boss排名达到前10名,Reach the top 10 in Deity Invasion rankings.
+10255_miaoshu,世界boss排名达到前3名,Reach the top 3 in Deity Invasion rankings.
+10256_miaoshu,世界boss排名达到第1名,Reach the top 1 in Deity Invasion rankings.
+10257_miaoshu,世界boss单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.
+10258_miaoshu,世界boss单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.
+10259_miaoshu,世界boss单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.
+10260_miaoshu,世界boss单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.
+10261_miaoshu,faceboo分享达到1次,Share via Facebook once.
+10262_miaoshu,faceboo分享达到5次,Share via Facebook 5 times.
+10263_miaoshu,faceboo分享达到10次,Share via Facebook 10 times.
+10264_miaoshu,faceboo分享达到20次,Share via Facebook 20 times.
+10265_miaoshu,faceboo分享达到50次,Share via Facebook 50 times.
+10266_miaoshu,购买竞技场出战点数达到1次,Purchase Arena Entries once.
+10267_miaoshu,购买竞技场出战点数达到5次,Purchase Arena Entries 5 times.
+10268_miaoshu,购买竞技场出战点数达到10次,Purchase Arena Entries 10 times.
+10269_miaoshu,购买竞技场出战点数达到20次,Purchase Arena Entries 20 times.
+10270_miaoshu,购买竞技场出战点数达到50次,Purchase Arena Entries 50 times.
+10271_miaoshu,购买宠物技能点数达到1次,Purchase Monster Ability Points once.
+10272_miaoshu,购买宠物技能点数达到5次,Purchase Monster Ability Points 5 times.
+10273_miaoshu,购买宠物技能点数达到10次,Purchase Monster Ability Points 10 times.
+10274_miaoshu,购买宠物技能点数达到20次,Purchase Monster Ability Points 20 times.
+10275_miaoshu,购买宠物技能点数达到50次,Purchase Monster Ability Points 50 times.
+10276_miaoshu,点亮宠物头像达到5个,Accumulate 5 Monster Avatars.
+10277_miaoshu,点亮宠物头像达到10个,Accumulate 10 Monster Avatars.
+10278_miaoshu,点亮宠物头像达到20个,Accumulate 20 Monster Avatars.
+10279_miaoshu,点亮宠物头像达到50个,Accumulate 50 Monster Avatars.
+story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird."
+story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…"
+biaoti8023,挑战守护者,挑战守护者
+biaoti8024,抵御入侵者,抵御入侵者
+mubiao8023,完成1次神话守护者,完成1次神话守护者
+mubiao8024,完成1次神怪入侵,完成1次神怪入侵

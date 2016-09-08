@@ -66,13 +66,35 @@ public class TimeStaticData
     }
     public static bool operator <(TimeStaticData a, TimeStaticData b)
     {
-        if (a>b||a==b)
+        if (a > b || a == b)
         {
             return false;
         }
         else
         {
             return true;
+        }
+    }
+    public static bool operator <=(TimeStaticData a, TimeStaticData b)
+    {
+        if (a > b)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public static bool operator >=(TimeStaticData a, TimeStaticData b)
+    {
+        if (a > b||a == b)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

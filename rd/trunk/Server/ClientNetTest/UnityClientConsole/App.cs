@@ -28,7 +28,7 @@ namespace UnityClientConsole
         int instanceTime = 0;
         bool isAssemble = false;
         bool firstTest = false; 
-        int[] monster = new int[5];
+        int[] monster = new int[10];
         string[] instanceID = {"yueguangsenlin11", "yueguangsenlin12", "yueguangsenlin14", "yueguangsenlin17", "yueguangsenlin18",
                                "minghe12", "minghe13", "minghe14", "minghe17", "minghe18"};
         public App()
@@ -181,7 +181,7 @@ namespace UnityClientConsole
 
                 if (firstTest == false)
                 {
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < monsterInfoSyn.monsterInfo.Count; ++i)
                     {
                         monster[i] = monsterInfoSyn.monsterInfo[i].monsterId;
                     }
@@ -383,9 +383,31 @@ namespace UnityClientConsole
 //                 allianceJoinList.reqPage = 1;
 //                 netmanaget.SendProtocol(code.ALLIANCE_JOINLIST_C.GetHashCode(), allianceJoinList);
 
-                HSAllianceFatigueGive fatigue = new HSAllianceFatigueGive();
-                fatigue.targetId = 1891;
-                netmanaget.SendProtocol(code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode(), fatigue);
+//                 HSAllianceFatigueGive fatigue = new HSAllianceFatigueGive();
+//                 fatigue.targetId = 1891;
+//                 netmanaget.SendProtocol(code.ALLIANCE_FATIGUE_GIVE_C.GetHashCode(), fatigue);
+
+//                 HSAdventureEnter adven = new HSAdventureEnter();
+//                 adven.teamId = 1;
+//                 adven.type = 1;
+//                 adven.gear = 1;
+//                 adven.selfMonsterId.Add(48185);
+//                 adven.selfMonsterId.Add(48186);
+//                 adven.selfMonsterId.Add(48187);
+//                 adven.selfMonsterId.Add(48188);
+//                 adven.selfMonsterId.Add(48189);
+//                 netmanaget.SendProtocol(code.ADVENTURE_ENTER_C.GetHashCode(), adven);
+
+//                 HSAdventureNewCondition newCondition = new HSAdventureNewCondition();
+//                 newCondition.type = 1;
+//                 newCondition.gear = 1;
+//                 netmanaget.SendProtocol(code.ADVENTURE_NEW_CONDITION_C.GetHashCode(), newCondition);
+
+//                 HSAdventureBuyCondition buyCondition = new HSAdventureBuyCondition();
+//                 netmanaget.SendProtocol(code.ADVENTURE_BUY_CONDITION_C.GetHashCode(), buyCondition);
+
+                HSAdventureBuyTeam buyTeam = new HSAdventureBuyTeam();
+                netmanaget.SendProtocol(code.ADVENTURE_BUY_TEAM_C.GetHashCode(), buyTeam);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
@@ -561,6 +583,19 @@ namespace UnityClientConsole
              //    HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
              //    Console.WriteLine("工会列表");
              //}
+            // 大冒险----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.ADVENTURE_ENTER_S.GetHashCode()))
+            {
+                HSAdventureEnterRet enterReturn = protocol.GetProtocolBody<HSAdventureEnterRet>();
+                Console.WriteLine("进入大冒险");
+
+                HSAdventureSettle settle = new HSAdventureSettle();
+                settle.teamId = 1;
+                netmanaget.SendProtocol(code.ADVENTURE_SETTLE_C.GetHashCode(), settle);
+
+                //HSInstanceRevive instanceRevive = new HSInstanceRevive();
+                //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
+            }
         }
 
         public void OnTick(long timeStamp)

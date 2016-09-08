@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIQuest : UIBase, 
+public class UIQuest : UIBase,
                        TabButtonDelegate,
                        IScrollView
 {
@@ -15,7 +15,7 @@ public class UIQuest : UIBase,
     public Text text_story;
     public Text text_daily;
     public Text text_other;
-    
+
     public FixCountScrollView scrollView;
     //not find quest
     //public Text text_tips;
@@ -42,7 +42,7 @@ public class UIQuest : UIBase,
     }
 
     public List<HomeButton> tabControl = new List<HomeButton>();
-    
+
     private List<QuestData> CurrentList;
 
     void Start()
@@ -51,7 +51,7 @@ public class UIQuest : UIBase,
         EventTriggerListener.Get(btn_Close.gameObject).onClick = ClickCloseButton;
     }
 
-    public void Refresh(int select=-1)
+    public void Refresh(int select = -1)
     {
         selIndex = (select == -1 ? selIndex : select);
 
@@ -59,17 +59,17 @@ public class UIQuest : UIBase,
 
         tabControl[0].gameObject.SetActive(UIUtil.CheckIsStoryQuestOpened());
         tabControl[2].gameObject.SetActive(UIUtil.CheckIsDailyQuestOpened());
-        if (selIndex==2&&!UIUtil.CheckIsDailyQuestOpened())
+        if (selIndex == 2 && !UIUtil.CheckIsDailyQuestOpened())
         {
             selIndex = 0;
         }
-        if (selIndex==0&&!UIUtil.CheckIsStoryQuestOpened())
+        if (selIndex == 0 && !UIUtil.CheckIsStoryQuestOpened())
         {
             selIndex = 1;
         }
         #endregion
 
-        if (tabIndex!=selIndex)
+        if (tabIndex != selIndex)
         {
             TabGroup.OnChangeItem(selIndex);
         }
@@ -79,14 +79,14 @@ public class UIQuest : UIBase,
         }
     }
 
-    void ReLoadData(int index,bool record=false)
+    void ReLoadData(int index, bool record = false)
     {
         GameQuestData questData = GameDataMgr.Instance.PlayerDataAttr.gameQuestData;
         tabControl[0].ShowTip = questData.StoryFinish;
         tabControl[1].ShowTip = questData.DailyFinish;
         tabControl[2].ShowTip = questData.OtherFinish;
 
-        switch ((QuestType)(index+1))
+        switch ((QuestType)(index + 1))
         {
             case QuestType.StoryType:
                 CurrentList = new List<QuestData>(questData.StoryList);
@@ -109,11 +109,11 @@ public class UIQuest : UIBase,
     {
         ReLoadData(tabIndex, true);
     }
-    
+
     void OnSubmitReturn(ProtocolMessage msg)
     {
         UINetRequest.Close();
-        if (msg == null||msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             return;
         }
@@ -208,13 +208,15 @@ public class UIQuest : UIBase,
                              GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
         }
     }
-    
+
     #endregion
 
     #region UIBase
     //初始化状态
     public override void Init()
     {
+        tabIndex = -1;
+        selIndex = 0;
         if (animator != null)
         {
             animator.SetTrigger("TriggerIn");
@@ -241,12 +243,12 @@ public class UIQuest : UIBase,
     #endregion
 
     #region IScrollView
-    public void ReloadData(Transform item, int index)
+    public void IScrollViewReloadItem(Transform item, int index)
     {
         questItem quest = item.GetComponent<questItem>();
         quest.ReLoadData(CurrentList[index]);
     }
-    public Transform CreateData(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("questItem");
         if (go!=null)
@@ -259,7 +261,7 @@ public class UIQuest : UIBase,
         }
         return null;
     }
-    public void CleanData(List<Transform> itemList)
+    public void IScrollViewCleanItem(List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

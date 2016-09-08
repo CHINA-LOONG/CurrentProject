@@ -353,9 +353,10 @@ public class ConsumeItems {
 				if(monsterEntity == null) {
 					return ConsumeCheckResult.MONSTER_NOT_ENOUGH;
 				}
-				else if (monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE) ||
-						 monsterEntity.isStateSet(Const.MonsterState.IN_ALLIANCE_BASE_VALUE)  ||
-						 monsterEntity.isStateSet(Const.MonsterState.IN_ADVENTURE_VALUE)) 
+				else if (monsterEntity.isStateSet(
+						Const.MonsterState.LOCKED_VALUE
+						| Const.MonsterState.IN_ALLIANCE_BASE_VALUE
+						| Const.MonsterState.IN_ADVENTURE_VALUE)) 
 				{
 					return ConsumeCheckResult.MONSTER_LOCKED;
 				}

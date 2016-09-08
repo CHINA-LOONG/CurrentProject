@@ -795,7 +795,7 @@ public class Buff
                         spellNameArgs.triggerTime = curTime;
                         spellNameArgs.casterID = targetID;
                         spellNameArgs.targetID = targetID;
-                        spellNameArgs.wpNode = ownedSpell.spellData.name;
+                        spellNameArgs.wpNode = ownedSpell.spellData.NameAttr;
                         spellNameArgs.vitalMax = -1;
                         spellService.TriggerEvent(GameEventList.SpellLifeChange, spellNameArgs);
                     }

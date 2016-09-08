@@ -1,0 +1,174 @@
+﻿#TEXT,TEXT,TEXT
+id,chinese,english
+#文字Id,文字内容,文字内容
+xgCike,火刺壳,Fireshell
+xgWushi,舞狮,Dancing Lion
+xgXiaochou,小丑,Joker
+xgWagui,哇鬼,Phase Frog
+xgBingyan,史莱姆,Slime
+xgHetong,河童,Kappa
+xgHuapo,花魄,Flower Pixie
+xgXiyiren,蜥蜴人,Lizardman
+bossdajie16Zouyincao2,走音草,Clinker Plant
+xgPiying,皮影,Shadow Puppet
+xgMengyan,梦魇,Bangungot
+xgWeitianshi,伪天使,Fallen Angel
+xgMomo,得莫菲,Demovoy
+xgMantuoluo,曼陀罗,Mandrake
+xgMendige,温迪戈,Wendigo
+xgShuigui,幽灵船长,Soul Pirate
+xgLangren,狼人,Werewolf
+xgNvyao,报丧女妖,Banshee
+xgLonggongtongzi,龙宫童子,Ryuku Doji
+xgPanshen,潘神,Pans
+xgHapi,哈皮,Harpy
+xgDaochengsizhong,道成寺妖,Maiden Dojoji
+xgHuoniao,火鸟,Firebird
+xgHongniu,米诺到诺斯,Minotaur
+xgChange,嫦娥,Moon Devine
+xgDujiaoshou,独角兽,Pegasus
+xgKairuisi,凯瑞斯,Keres
+xgAmute,鳄鱼判官,Croc Warden
+xgLuoxinfu,络新妇,Nephila
+xgLongnv,龙女,Dragon Girl
+xgJinglingwang,精灵王子,Elf Prince
+xgIfrit,伊芙利特,Ifrit
+xgSenlinyaoji,森林妖姬,Dryad
+xgDatiangou,大天狗,Tengu
+xgAnpusha,安普沙,Empusa
+xgBingxuenvwang,冰雪女王,Chione
+xgWendige,温迪戈,Wendigo
+xgSaibulesi,地狱犬,Hellhound
+xgYifulite,伊芙利特,Ifrit
+xgMoguguai,蘑菇怪,Matango
+xgTianshizhang,天使长,Archangel
+Meidusha,美杜莎,Medusa
+Hehuaisituosi,工匠之神,God of Craft
+Jiuweihu,九尾,Nine Tails
+Huangjinzhiling,黄金之灵,Soul of Gold
+Datiangou,大天狗,Tengu
+xgSheshouzuo,星空射手,Astro Archer
+Ladong,守护龙,Guardian Dragon
+bossxiaoxiang28Muling2,木灵,Kodama
+Yimier,冰龙,Ice Dragon
+Karong,卡戎,Charon
+bossrenjie86Mameng4,玛蒙,Mammon
+bossrenjie87Beiergefu5,贝尔哥夫,Belphegor
+bossrenjie88Yafogemeng5,亚弗戈蒙,Aforgomon
+xgKahuna2,多多洛,Troll Sayama
+xgJinglingwang2,精灵王子,Elf Prince
+xgYifanmumian1,一反木棉,Ittan Momen
+xiaochoutips,想看我变戏法吗？,Who wants to see me juggle?
+hetongtips,我……我想跟人类做朋友……,I… I would like to be friends with humans…
+waguitips,呱~呱~呱~,Ribbit. Ribbit.
+ciketips,我的忍道，一往无前！,I know kung-fu!
+huapotips,可不要小瞧花朵的力量哦~,Don't underestimate flower power!
+wusihtips,嗷嗷嗷~,Rawr.
+xiyirentips,叽叽叽~入侵者只有一个下场！,"I'm a lizard, man."
+piyingtips,有光的地方就有影！,"If there's light, there's shadows!"
+momotips,接受大自然的馈赠，这是生存的真谛。,"Accept nature's gift, it is the meaning of survival."
+shilaimutips,吞噬……变大……我要变得更大……,Must… Devour… More!!
+mengyantips,对未知的恐惧，让噩梦永不落幕。,"Fear the unknown, so the nightmare never ends."
+weitianshitips,………………,…
+moguguaitips,蘑菇~蘑菇~蘑菇~,Get a life…
+panshentips,哟~美人儿~可否赏光和我去喝个咖啡？,"Oh my beauty, would you join me for a cup of coffee?"
+mantuoluotips,你们不要过来，再靠近我可要叫了……,Any closer and I'll scream…
+longgongtongzitips,是你找到我的小乌龟吗？,Did you find my little turtle?
+langrentips,啊！满月，我感觉身体充满了力量！,Oh full moon! I feel the power!
+shuiguitips,想加入我的船队吗，不过代价是你的生命。,You may join me crew… But the price be yer life!
+nvyaotips,请问，这里是通往葬礼的路吗？,"Excuse me, will the funeral procession be heading this way?"
+hapitips,风中的精灵已经带给我你的消息了。,The spirits of the wind have already given my your message.
+wendigetips,肉……肉……我好饿……,"Meat, meat, I must eat!"
+daochengsizhongtips,为什么我爱的人，却一直躲着我……,Why do people I love avoid me… Is it my face?
+hongniutips,在这迷宫中，我就是国王！,"In the labyrinth, I am king!"
+huoniaotips,火炎，为我带来无尽的生命。,Deathly flames bring me endless life.
+changetips,月亮又圆了，对我的囚禁却没有终结……,"The moon grows round again, but it ends not my captivity…"
+saibulesitips,能从我面前通过的，只有死人！,Only the dead may pass before me!
+sheshouzuotips,没有人能逃过我的弓箭，流星也不例外。,Nothing can escape my arrows… Including meteors!
+kairuisitips,嘻嘻，你的灵魂，归我了哟~,"Hehe, your soul belongs to me!"
+longnvtips,海的女儿，并不是只有小美人鱼一个。,Mermaids aren't the only girls in the sea…
+luoxinfutips,要不要和我做一些危险的小游戏~,Who wants to play a game with me?
+amutetips,生存还是死亡，这是个有趣的问题。,Life or death… An interesing question!
+anpushatips,鲜血的气味，让我垂涎欲滴了呢~,The scent of fresh blood always makes my mouth water…
+yifulitetips,燃烧吧，只有彻底的毁灭才会带来新生！,Burn it all! Only with complete destruction can something new be made!
+datiangoutips,哎呀呀~你的气色不好呀，要不要我给你算上一卦？,"Hey you don't look so good, how about I tell your fortune?"
+dujiaoshoutips,安睡吧，你将有一个好梦……,"Sleep, you will have a good dream…"
+tianshizhangtips,圣光会制裁一切邪恶。,The light will banish all evil.
+bingxuenvwangtips,小心了~冰雕可不会说话哦~,Frozen treats are good to eat!
+bossdajie11Moguguai4tips,蘑菇！Zzzzz,Zzzzz…
+bossdajie12Mantuoluo2tips,根茎是植物的生命之源,Home is where your roots are!
+bossdajie13Cike4tips,来次背部按摩怎么样？,How about a back rub?
+bossdajie14Piying5tips,我们是三兄弟！,The three of us are brothers!
+bossdajie15Langren3tips,手腕带了厚重的铁环，只是为了锻炼么,These big iron bracers are a part of my new workout routine!
+bossdajie16Zouyincao2tips,我喜欢地下音乐。,I'm into underground music!
+bossdajie17Huapo2tips,可不要小瞧花朵的力量哦~,Don't underestimate flower power!
+bossdajie18Ladong5tips,谁也别想偷走金苹果,Don't even think about touching the golden apple!
+bossxiaoxiang21Wushi4tips,我不是来接球的。,This ball isn't just for playing fetch!
+bossxiaoxiang22Xiyiren2tips,不是只有金刚狼才有炫酷的爪子,Not only Wolverine has cool claws.
+bossxiaoxiang23Panshen2tips,请你接受我的心,Please accept my love!
+bossxiaoxiang24Shuigui3tips,宝藏什么的我真的木有！！,What? You think all bosses have treasure?
+bossxiaoxiang25Kairuisi5tips,一不小心哥哥的灵魂就被吸走了,A soul a day keeps the doctor away!
+bossxiaoxiang26Longgongtongzi3tips,龙宫至宝在我手里,The treasures of the sea all belong to me!
+bossxiaoxiang27hetong2tips,围巾是我的最爱,Scarves are my passion.
+bossxiaoxiang28Muling2tips,好…痛苦……,The pain…
+bosssenlin31Wendige2tips,吃了鹿以后，长出了奇怪的东西,"After I ate that deer, strange things started to grow on me."
+bosssenlin32Longnv3tips,老爸给的灵印就是厉害,This sigil dad gave me is pretty powerful!
+bosssenlin33Luoxinfu5tips,他们靠两条腿，能跑多快,Look how fast they run on their two legs…
+bosssenlin34Amute3tips,你永远看不出我的真面目,You will never see my real face.
+bosssenlin35Xiaochou2tips,让我来示范一下，什么叫做铁锤外交！,Let me demonstrate hammer diplomacy!
+bosssenlin36Momo1tips,房子守护着我,I'm the guardian of the house!
+bosssenlin37Hapi1tips,风呀，带我一程吧！,Let the winds take me!
+bosssenlin38Meidusha2tips,凡人，谁给你勇气直视我的双眼,"Mortal, who gave you the courage to look into my eyes!"
+bosshuoshan41Hongniu4tips,和公牛角力？你会尝到牛角的滋味的,"Mess with the bull, and you get the horns!"
+bosshuoshan42Daochengsizhong4tips,谁也别想夺走我的爱人,Don't even think about taking my love away! 
+bosshuoshan43Huoniao4tips,重生的奥秘就是...你猜！,"And the mystery of rebirth is… Come on, guess!"
+bosshuoshan44Datiangou4tips,不要让我找到机会爆发,Don't give me a reason to lose it!
+bosshuoshan45Saibulesi4tips,你好，你好，你好！所有的话，我都会说三遍,Hello! Hello! Hello! I like to repeat myself... 
+bosshuoshan46Tianshizhang4tips,迎接审判吧！,Lead me to battle!
+bosshuoshan47Ifrit4tips,你闻起来像……烧焦了一样！,You smell like... Burning!
+bosshuoshan48Hehuaisituosi4tips,好……好可怕……你们不要过来……,For great science!
+bosszhifuletuJiuweihu4tips,嘻嘻，你能识破我的变化吗？,Can you see through my disguise?
+bossmidasigongHuangjinzhiling1tips,宝藏！无尽的宝藏！,Treasure… And more treasure!
+zouyincaotips,快给我喝彩！,I like music with beets.
+bosschaoxue51Langren5tips,手腕带了厚重的铁环，只是为了锻炼么,These big iron bracers are a part of my new workout routine!
+bosschaoxue52Mengyan5tips,我听到了血液流淌的声音,Did someone say blood?
+bosschaoxue53Xiaochou3tips,让我来示范一下，什么叫做铁锤外交！,Let me demonstrate hammer diplomacy!
+bosschaoxue54Bingyan3tips,我能随意改变自己的身体构造！,I can take whatever shape I please!
+bosschaoxue55Sheshou3tips,我的力量来自星辰,By the power of the stars
+bosschaoxue56Huoniao3tips,别揪我的羽毛！,Don't mess with my feathers!
+bosschaoxue57Wendige3tips,如果我们战略性地从侧翼插上-噢我在忽悠谁呢？我们赶紧吃掉他们吧！,"If we approach strategically from the flank- oh who am I kidding, let's just eat them."
+bosschaoxue58Yimier3tips,冰封……一切……,Freeze… Everything…
+bossminghe61Dujiaoshou5tips,我的角可不是装饰品,This horn isn't for decoration you know!
+bossminghe62Anpusha5tips,我是要让你心跳加速呢，还是，让它停止！,I can make your heart beat fast… Or make it stop completely!
+bossminghe63Ifrit5tips,你闻起来像……烧焦了一样！,You smell like... Burning!
+bossminghe64Nvyao5tips,我永远是18岁！,I'm only 18… And always will be!
+bossminghe65Weitianshi5tips,头上有光环的不一定是天使，还有可能是恶魔！,Only angels have halos you say…
+bossminghe66Saibulesi5tips,你好，你好，你好！所有的话，我都会说三遍,Hello! Hello! Hello! I like to repeat myself... 
+bossminghe67Change5tips,兔子陪伴着我的一生,Bunnies are my companions for life!
+bossminghe68Karong5tips,请享受死亡之路,The road to death can be… Enjoyable!
+bosssiwangtaHetong2tips,我的围巾呢？！！！！！,What about my scarf?!?!
+bosssiwangtaDatiangou4tips,我也是个帅哥,I'm handsome too!
+bosskongdao71Weitianshi1tips,我才不是折翼的天使！,"Wings or no wings, I'm not an angel!"
+bosskongdao72Nvyao1tips,他们答应过我永远不离开…,They promised that they would never leave me…
+bosskongdao73Luoxinfu1tips,变幻莫测？没错，说的就是我！,"Unpredictable? Yep, that would be me!"
+bosskongdao74Piying1tips,兄弟常伴我身边！,Have you seen my brothers?
+bosskongdao75Sheshou1tips,无与伦比的骑士精神！,I'm the knight in shining armor!
+bosskongdao76Yifanmumian1tips,带上它你就成为她！,"If you take it, you will become it!"
+bosskongdao77Longnv1tips,龙吟称霸天下！,"Dragons, the true masters of the universe!"
+bosskongdao78Jinglingwang1tips,凡人，你以为你能伤的了我？,You mortals think you could hurt me?
+bossrenjie81Huapo2awakentips,你知道花瓣在哪里么？,Do you know where the petals are?
+bossrenjie82Huoniao4awakentips,绝不低头，否则皇冠会掉！,"I would bow, but I don't want my crown to fall off!"
+bossrenjie83Amute3awakentips,那只不过是一个面具而已！,It's only a mask!
+bossrenjie84Anpusha5awakentips,你觉得我美吗？,Do you think I'm beautiful?
+bossrenjie85Dujiaoshou1awakentips,圣洁的力量会保护着我！,Divine powers protect me!
+bossrenjie86Landuo2tips,呼呼~好困，别吵醒我~,"Keep it down, I'm trying to sleep here!"
+bossrenjie87Baonu4tips,我崇尚火焰的力量！,I respect the power of fire and flames!
+bossrenjie88Yafogemeng5tips,别来打扰我~,Don't disturb me!
+jinglingwangtips,凡人，别挡着本王的路！,"Outta my way, mortals!"
+kahunatips,唔，好饿……肚子又叫了……,Anyone else hungry right now…
+yifanmumiantips,带上它你就成为她！,"If you take it, you will become it!"
+bossWorldJidu5name,别西卜,Beelzebub
+bossWorldMeitatelong1name,梅塔特隆,Metatron
+bossWorldJidu5tips,如何承受别西卜的愤怒同时保证输出，是制敌的关键。,The key to is to survive Beelzebub's rage while maintaining constant damage.
+bossWorldMeitatelong1tips,梅塔特隆在不同状态下能够压制敌方不同的输出能力。,Metatron can suppress different amounts of damage in different states. 
+xgShuiniao,冰鸟,Arcticbird

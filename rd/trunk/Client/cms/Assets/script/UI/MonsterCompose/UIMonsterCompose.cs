@@ -127,7 +127,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
     void Refresh()
     {
         tglUseCommon.isOn = false;
-        textName.text = StaticDataMgr.Instance.GetTextByID(CurData.unit.nickName);
+        textName.text = CurData.unit.NickNameAttr;
         textType.text = StaticDataMgr.Instance.GetTextByID("monstertype" + CurData.unit.type);
         imgProIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + CurData.unit.property);
 

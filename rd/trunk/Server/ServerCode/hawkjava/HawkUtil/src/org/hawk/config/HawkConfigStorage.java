@@ -175,7 +175,7 @@ public class HawkConfigStorage {
 
 			InputStream stream = new FileInputStream(file);
 			// UTF-8 CSV with 3 bytes BOM
-			//stream.skip(3);
+			// stream.skip(3);
 			// 跳过第一行，因为配置文件编码有可能没有经过转换（GB2312 --> UTF-8 with BOM），公司决定启动优先，正误其次
 			while (true) {
 				int nextByte = stream.read();

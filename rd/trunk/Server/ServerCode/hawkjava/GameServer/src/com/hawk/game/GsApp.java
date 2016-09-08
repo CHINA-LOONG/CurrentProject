@@ -516,6 +516,7 @@ public class GsApp extends HawkApp {
 						// 登陆协议时间间隔控制
 						synchronized (puidLoginTime) {
 							if (puidLoginTime.containsKey(puid) && HawkTime.getMillisecond() <= puidLoginTime.get(puid) + 5000) {
+								session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE,Status.error.LOGIN_INTERVAL_SHORT_VALUE, 1));
 								return true;
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
@@ -724,7 +725,6 @@ public class GsApp extends HawkApp {
 					objBase.lockObj();
 				}
 
-				logger.info("create player: {}, puid: {}", playerId, puid);
 			}
 
 			// 会话绑定应用对象
@@ -732,8 +732,8 @@ public class GsApp extends HawkApp {
 				// 已存在会话的情况下, 踢出玩家
 				Player player = (Player) objBase.getImpl();
 				if (player != null && player.getSession() != null && player.getSession() != session) {	
+
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
-					player.getSession().close(false);
 					player.getSession().setAppObject(null);
 				}
 

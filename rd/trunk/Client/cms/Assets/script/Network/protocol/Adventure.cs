@@ -39,20 +39,20 @@ namespace PB
       get { return _endTime; }
       set { _endTime = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _monsterId = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> monsterId
+    private readonly global::System.Collections.Generic.List<int> _selfMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"selfMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> selfMonsterId
     {
-      get { return _monsterId; }
+      get { return _selfMonsterId; }
     }
   
-    private AllianceBaseMonster _monsterHire = null;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"monsterHire", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private AllianceBaseMonster _hireMonster = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"hireMonster", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public AllianceBaseMonster monsterHire
+    public AllianceBaseMonster hireMonster
     {
-      get { return _monsterHire; }
-      set { _monsterHire = value; }
+      get { return _hireMonster; }
+      set { _hireMonster = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -119,18 +119,18 @@ namespace PB
       get { return _teamCount; }
       set { _teamCount = value; }
     }
-    private readonly global::System.Collections.Generic.List<HSAdventureTeam> _adventureTeam = new global::System.Collections.Generic.List<HSAdventureTeam>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"adventureTeam", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSAdventureTeam> adventureTeam
+    private readonly global::System.Collections.Generic.List<HSAdventureTeam> _busyTeam = new global::System.Collections.Generic.List<HSAdventureTeam>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"busyTeam", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSAdventureTeam> busyTeam
     {
-      get { return _adventureTeam; }
+      get { return _busyTeam; }
     }
   
-    private readonly global::System.Collections.Generic.List<HSAdventure> _adventure = new global::System.Collections.Generic.List<HSAdventure>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"adventure", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSAdventure> adventure
+    private readonly global::System.Collections.Generic.List<HSAdventure> _idleAdventure = new global::System.Collections.Generic.List<HSAdventure>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"idleAdventure", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSAdventure> idleAdventure
     {
-      get { return _adventure; }
+      get { return _idleAdventure; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -150,27 +150,34 @@ namespace PB
       get { return _teamId; }
       set { _teamId = value; }
     }
-    private int _adventureId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"adventureId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int adventureId
+    private int _type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
     {
-      get { return _adventureId; }
-      set { _adventureId = value; }
+      get { return _type; }
+      set { _type = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _monsterId = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> monsterId
+    private int _gear;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"gear", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gear
     {
-      get { return _monsterId; }
+      get { return _gear; }
+      set { _gear = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _selfMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"selfMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> selfMonsterId
+    {
+      get { return _selfMonsterId; }
     }
   
-    private AllianceBaseMonster _monsterHire = null;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"monsterHire", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private AllianceBaseMonster _hireMonster = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"hireMonster", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public AllianceBaseMonster monsterHire
+    public AllianceBaseMonster hireMonster
     {
-      get { return _monsterHire; }
-      set { _monsterHire = value; }
+      get { return _hireMonster; }
+      set { _hireMonster = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -262,12 +269,19 @@ namespace PB
   {
     public HSAdventureNewCondition() {}
     
-    private int _adventureId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"adventureId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int adventureId
+    private int _type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
     {
-      get { return _adventureId; }
-      set { _adventureId = value; }
+      get { return _type; }
+      set { _type = value; }
+    }
+    private int _gear;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"gear", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gear
+    {
+      get { return _gear; }
+      set { _gear = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -361,6 +375,23 @@ namespace PB
       get { return _teamId; }
       set { _teamId = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAdventureConditionPush")]
+  public partial class HSAdventureConditionPush : global::ProtoBuf.IExtensible
+  {
+    public HSAdventureConditionPush() {}
+    
+    private readonly global::System.Collections.Generic.List<HSAdventure> _idleAdventure = new global::System.Collections.Generic.List<HSAdventure>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"idleAdventure", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSAdventure> idleAdventure
+    {
+      get { return _idleAdventure; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

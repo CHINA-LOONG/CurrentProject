@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<project name="Javascript compress project" basedir="." default="js_socket">
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="./compiler.jar"/>
+    <target name="js_socket">
+        <jscomp compilationLevel="simple" warning="quiet" debug="true" output="./../websocket/script/lib/hawk.min.js" sourceMapOutputFile="./../websocket/script/lib/hawk.min.js.map" sourceMapFormat="V3">
+            <sources dir="./../websocket/script/hawk">
+                <file name="HawkProtocolManager.js"/>
+                <file name="HawkProtocol.js"/>
+                <file name="HawkSocket.js"/>
+            </sources>
+        </jscomp>
+    </target>   
+</project>

@@ -82,6 +82,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"UNSUPPORT_ACTION", Value=8)]
       UNSUPPORT_ACTION = 8,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_INTERVAL_SHORT", Value=9)]
+      LOGIN_INTERVAL_SHORT = 9,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -438,20 +441,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_LIST_EMPTY", Value=524330)]
       ALLIANCE_APPLY_LIST_EMPTY = 524330,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_MONSTER", Value=524334)]
-      ALLIANCE_BASE_HAVE_MONSTER = 524334,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_MONSTER", Value=524331)]
+      ALLIANCE_BASE_HAVE_MONSTER = 524331,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_NO_MONSTER", Value=524336)]
-      ALLIANCE_BASE_HAVE_NO_MONSTER = 524336,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_HAVE_NO_MONSTER", Value=524332)]
+      ALLIANCE_BASE_HAVE_NO_MONSTER = 524332,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_POSITION_LOCK", Value=524337)]
-      ALLIANCE_BASE_POSITION_LOCK = 524337,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_POSITION_LOCK", Value=524333)]
+      ALLIANCE_BASE_POSITION_LOCK = 524333,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_MONSTER_HAVE_SEND", Value=524338)]
-      ALLIANCE_BASE_MONSTER_HAVE_SEND = 524338,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_MONSTER_HAVE_SEND", Value=524334)]
+      ALLIANCE_BASE_MONSTER_HAVE_SEND = 524334,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_TIME_LIMIT", Value=524339)]
-      ALLIANCE_BASE_TIME_LIMIT = 524339
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_BASE_TIME_LIMIT", Value=524335)]
+      ALLIANCE_BASE_TIME_LIMIT = 524335
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]
@@ -485,6 +488,32 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_FULL", Value=720897)]
       SETTING_BLOCK_FULL = 720897
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"adventureError")]
+    public enum adventureError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_COUNT", Value=786433)]
+      ADVENTURE_TEAM_COUNT = 786433,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_CHANGE_ZERO", Value=786434)]
+      ADVENTURE_CHANGE_ZERO = 786434,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_CHANGE_NOT_ZERO", Value=786435)]
+      ADVENTURE_CHANGE_NOT_ZERO = 786435,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_MONSTER_COUNT", Value=786436)]
+      ADVENTURE_MONSTER_COUNT = 786436,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_NOT_OPEN", Value=786437)]
+      ADVENTURE_TEAM_NOT_OPEN = 786437,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_BUSY", Value=786438)]
+      ADVENTURE_TEAM_BUSY = 786438,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_IDLE", Value=786439)]
+      ADVENTURE_TEAM_IDLE = 786439
     }
   
 }

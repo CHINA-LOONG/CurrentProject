@@ -1,0 +1,10 @@
+﻿#TEXT,NUM,NUM
+id,gold,gift
+#产品Id,金币数量,首冲倍数
+test1,100,1
+test2,200,1
+test3,300,1
+test4,400,1
+test5,500,1
+test6,600,1
+month,0,0

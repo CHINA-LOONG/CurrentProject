@@ -3,7 +3,6 @@ package com.hawk.game.module;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
@@ -252,10 +251,10 @@ public class PlayerMonsterModule extends PlayerModule {
 			return true;
 		}
 
-		if (locked && monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+		if (true == locked && monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
 			sendError(hsCode, Status.monsterError.LOCK_ALREADY);
 			return true;
-		} else if (!locked && !monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
+		} else if (false == locked && !monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE)) {
 			sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
 			return true;
 		}
@@ -382,9 +381,8 @@ public class PlayerMonsterModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntityMap().entrySet()) {
-			MonsterEntity monsterEntity = entry.getValue();
-			monsterEntity.notifyUpdate(false);
+		for (MonsterEntity entity : player.getPlayerData().getMonsterEntityMap().values()) {
+			entity.notifyUpdate(false);
 		}
 		return true;
 	}

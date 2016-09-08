@@ -1,0 +1,11 @@
+﻿#NUM,TEXT,NUM,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT
+chapter,name,normalLevel,normalReward1,normalReward2,normalReward3,normalDrop,hardLevel,hardReward1,hardReward2,hardReward3,hardDrop
+#章节Id,章节名称,难度1等级,难度1满6星rewardId,难度1满12星rewardId,难度1满24星rewardId,难度1掉落rewardId,难度2等级,难度2满6星rewardId,难度2满12星rewardId,难度2满24星rewardId,难度2掉落rewardId
+1,chapter1_name,1,31001,31011,31021,41001,10,32001,32011,32021,42001
+2,chapter2_name,5,31002,31012,31022,41002,10,32002,32012,32022,42002
+3,chapter3_name,10,31003,31013,31023,41003,20,32003,32013,32023,42003
+4,chapter4_name,15,31004,31014,31024,41004,30,32004,32014,32024,42004
+5,chapter5_name,25,31005,31015,31025,41005,40,32005,32015,32025,42005
+6,chapter6_name,32,31006,31016,31026,41006,50,32006,32016,32026,42006
+7,chapter7_name,40,31007,31017,31027,41007,99,32006,32016,32026,42006
+8,chapter8_name,48,31008,31018,31028,41008,99,32006,32016,32026,42006

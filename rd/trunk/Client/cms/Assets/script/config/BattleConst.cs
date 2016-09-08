@@ -137,4 +137,9 @@ public class BattleConst
     //任务开放等级
     public const int storyQuest = 1;
     public const int dailyQuest = 10;
+    //大冒险探险时间
+    public static int[] adventureTime = new int[3] { 5, 8, 12 };
+    //public const int adventureTime_1 = 5;
+    //public const int adventureTime_2 = 8;
+    //public const int adventureTime_3 = 12;
 }

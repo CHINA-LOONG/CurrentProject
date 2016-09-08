@@ -1,0 +1,100 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- message -----------------------------------------------------
+
+message ShopItem
+{
+	required int32  type = 1;
+	required string itemId = 2;//配置id
+	required int32  count = 3;//物品数量
+	optional int32  stage = 4;// 品级
+	optional int32  level = 5;// 级别
+	required int32  slot = 6;//位置
+	required float  discount = 7;//折扣
+	required int32  price = 8;//价钱
+	required bool   hasBuy = 9;//是否已经购买
+	required int32  priceType = 10;//货币种类
+}
+
+message ShopData
+{
+	required int32 type = 1;
+	required int32 shopId = 2;
+	repeated ShopItem itemInfos = 3;
+	required int32 refreshTimesLeft = 4;
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
+message HSShopDataInit
+{
+}
+
+message HSShopDataInitRet
+{
+	repeated ShopData shopDatas = 1;
+}
+
+message HSShopDataSyn
+{
+	required int32 type   = 1;
+}
+
+message HSShopDataSynRet
+{
+	required ShopData shopData = 1;
+}
+
+message HSShopRefresh
+{
+	required int32 type   = 1;
+}
+
+message HSShopRefreshRet
+{
+	required ShopData shopData = 1;
+}
+
+message HSShopItemBuy
+{
+	required int32 type = 1;
+	required int32 slot = 2;
+	required int32 shopId = 3;
+}
+
+message HSShopItemBuyRet
+{
+	
+}
+
+message HSStoreItemBuy
+{
+	required string itemId = 1;
+	required int32 count = 2;
+}
+
+message HSStoreItemBuyRet
+{
+	
+}
+
+message HSShopGold2Coin
+{
+}
+
+message HSShopGold2CoinRet
+{
+	required int32 changeCount = 1;
+	required int32 multiple = 2;
+	required int32 totalReward = 3;
+}
+
+message HSShopRefreshTimeSync
+{
+	// 普通商店刷新次数
+	required int32  normalShopRefreshTime = 1;
+	// 公会商店刷新次数
+	required int32  allianceShopRefreshTime = 2;
+	// 通天塔商店刷新次数
+	required int32  towerShopRefreshTime = 3;
+}

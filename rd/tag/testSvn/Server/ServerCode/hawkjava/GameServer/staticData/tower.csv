@@ -1,0 +1,6 @@
+﻿#NUM,TEXT,TEXT,NUM,TEXT
+id,textId,time,level,floor
+#id,塔名称,刷新时间,需求等级,层数副本列表
+1,shilian,[102],1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"
+2,juewang,[102],1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"
+3,siwang,[102],1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"

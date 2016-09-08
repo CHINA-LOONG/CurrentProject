@@ -234,7 +234,7 @@ public class UITower : UIBase
                 }
                 icon.transform.SetParent(towerItem.rewardImage.transform, false);
 
-                towerItem.rewardName.text = StaticDataMgr.Instance.GetTextByID(itemData.name) + "x" + rewardData.itemList[0].protocolData.count;
+                towerItem.rewardName.text = itemData.NameAttr + "x" + rewardData.itemList[0].protocolData.count;
                 towerItem.RewardStage.text = "STAGE " + (rewardNum + 1);
                 rewardNum++;
             }

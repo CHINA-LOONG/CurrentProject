@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/com_funplus_sdk_account_popup_back_button_width"
+    android:layout_height="@dimen/com_funplus_sdk_account_popup_header_height"
+    android:layout_alignParentLeft="true">
+
+    <ImageButton
+        android:id="@+id/com_funplus_sdk_account_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/com_funplus_sdk_account_arrow_left"
+        android:background="@null"/>
+
+</LinearLayout>

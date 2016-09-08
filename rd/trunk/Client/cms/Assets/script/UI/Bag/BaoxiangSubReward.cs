@@ -21,7 +21,7 @@ public class BaoxiangSubReward : MonoBehaviour
 
 	public	bool	InitWithRewardInfo(PB.RewardItem reward)
 	{
-		string name = null;
+		//string name = null;
 		if (reward.type == (int)PB.itemType.MONSTER)
 		{
 			GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey((int)reward.id);
@@ -38,14 +38,14 @@ public class BaoxiangSubReward : MonoBehaviour
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
 
-			name = unit.name;
+			//name = unit.name;
 		} 
 		else  if (reward.type == (int)PB.itemType.ITEM) 
 		{
 			ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(reward.itemId, reward.count),true,false);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
-			name = GetItemName(reward.itemId);
+			//name = GetItemName(reward.itemId);
 		}
 		else if (reward.type == (int)PB.itemType.EQUIP)
 		{
@@ -53,19 +53,9 @@ public class BaoxiangSubReward : MonoBehaviour
 			ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true,false);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
-			name = GetItemName(reward.itemId);
+			//name = GetItemName(reward.itemId);
 		}
 		//itemNameText.text =   StaticDataMgr.Instance.GetTextByID (name);
 		return true;
-	}
-
-	string GetItemName(string itemId)
-	{
-		ItemStaticData stData = StaticDataMgr.Instance.GetItemData (itemId);
-		if (stData != null)
-		{
-			return stData.name;
-		}
-		return null;
 	}
 }

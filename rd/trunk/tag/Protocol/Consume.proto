@@ -1,0 +1,33 @@
+option java_package = "com.hawk.game.protocol";
+
+import "Protocol/Player.proto";
+import "Protocol/Monster.proto";
+
+// ------------------------------------------------------- struct -------------------------------------------------------
+// 推送道具 装备 角色的需要移除的Id的列表
+message ConsumeItem
+{
+	// 类型
+	required int32 type = 1;
+	// 唯一Id
+	optional int64 id = 2;
+	// 物品编号
+	required string itemId = 3;
+	// 实体对象直接移除对象
+	optional int32 count = 4;
+}
+
+// ------------------------------------------------------- protocol -------------------------------------------------------
+
+// 经常发生变动的值主动推送给前端
+message HSConsumeInfo
+{
+	// 玩家同步信息
+	optional SynPlayerAttr playerAttr = 1;
+	// 宠物同步信息
+	repeated SynMonsterAttr monstersAttr = 2;
+	
+	// 移除的物品 
+	repeated ConsumeItem  consumeItems = 3;
+	optional int32  hsCode = 4;
+}

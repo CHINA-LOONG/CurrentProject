@@ -31,11 +31,14 @@ import com.hawk.game.BILog.BIPetFlowData;
 import com.hawk.game.BILog.BIPetLevelUpData;
 import com.hawk.game.BILog.BIPlayerLevelData;
 import com.hawk.game.BILog.BITowerCoinData;
+import com.hawk.game.config.AdventureCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
+import com.hawk.game.entity.AdventureEntity;
+import com.hawk.game.entity.AdventureTeamEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -45,6 +48,7 @@ import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.module.PlayerAdventureModule;
 import com.hawk.game.module.PlayerAllianceModule;
 import com.hawk.game.module.PlayerEquipModule;
 import com.hawk.game.module.PlayerIdleModule;
@@ -63,6 +67,8 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.HS.code;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSKickPlayer;
+import com.hawk.game.util.AdventureUtil;
+import com.hawk.game.util.AdventureUtil.AdventureCondition;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
@@ -122,6 +128,7 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.IM_MODULE, new PlayerImModule(this));
 		registerModule(GsConst.ModuleType.SHOP_MODULE, new PlayerShopModule(this));
 		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
+		registerModule(GsConst.ModuleType.ADVENTURE_MODULE, new PlayerAdventureModule(this));
 		// 任务模块放其它模块后，用到其它模块数据
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		// 最后注册空闲模块, 用来消息收尾处理
@@ -745,10 +752,15 @@ public class Player extends HawkAppObj {
 		if (true == levelup) {
 			QuestUtil.postQuestDataUpdateMsg(getXid());
 
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, getXid());
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level up message failed: " + getId());
+			}
+
+			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post level update message failed: " + getName());
+				HawkLog.errPrintln("post level up message failed: " + getName());
 			}
 		}
 
@@ -792,10 +804,15 @@ public class Player extends HawkAppObj {
 		if (true == levelup) {
 			QuestUtil.postQuestDataUpdateMsg(getXid());
 
-			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, getXid());
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level up message failed: " + getId());
+			}
+
+			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post level update message failed: " + getName());
+				HawkLog.errPrintln("post level up message failed: " + getName());
 			}
 
 			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
@@ -1197,16 +1214,15 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerAllianceEntity().setContribution(playerData.getPlayerAllianceEntity().getContribution() - contribution);
 		playerData.getPlayerAllianceEntity().notifyUpdate(true);
 
-		BILogger.getBIData(BIGuildMemberFlowData.class).log(
+		BILogger.getBIData(BIGuildMemberFlowData.class).logContribution(
 				this, 
 				action, 
 				allianceEntity, 
 				playerData.getPlayerAllianceEntity(), 
 				0, 
-				contribution, 
-				playerData.getPlayerAllianceEntity().getPostion()
+				contribution
 				);
-		
+
 		return true;
 	}
 
@@ -1234,16 +1250,15 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("not join guild");
 		}
 
-		BILogger.getBIData(BIGuildMemberFlowData.class).log(
+		BILogger.getBIData(BIGuildMemberFlowData.class).logContribution(
 				this, 
 				action, 
 				allianceEntity, 
 				playerData.getPlayerAllianceEntity(), 
 				contribution, 
-				0, 
-				playerData.getPlayerAllianceEntity().getPostion()
+				0
 				);
-		
+
 		return true;
 	}
 
@@ -1431,6 +1446,85 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 增加大冒险条件刷新次数
+	 */
+	public int increaseAdventureChangeTimes(int times, Action action) {
+		if (times <= 0) {
+			throw new RuntimeException("increaseAdventureChangeTimes");
+		}
+
+		// 增加前先更新
+		regainAdventureChangeTimes();
+
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getAdventureChange();
+		int remain = old + times - GsConst.MAX_ADVENTURE_CHANGE;
+		int increase = times - (remain > 0 ? remain : 0);
+		if (0 != increase) {
+			statisticsEntity.setAdventureChange(old + increase);
+			statisticsEntity.notifyUpdate(true);
+		}
+
+		//TODO BI
+		return increase;
+	}
+
+	/**
+	 * 消耗大冒险条件刷新次数
+	 */
+	public void consumeAdventureChangeTimes(int times, Action action) {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		if (times <= 0 || times > statisticsEntity.getAdventureChange()) {
+			throw new RuntimeException("consumeAdventureChangeTimes");
+		}
+
+		int old = statisticsEntity.getAdventureChange();
+		int cur = old - times;
+
+		// 从低于上限的时间开始恢复
+		if (old >= GsConst.MAX_ADVENTURE_CHANGE && cur < GsConst.MAX_ADVENTURE_CHANGE) {
+			statisticsEntity.setAdventureChangeBeginTime(HawkTime.getCalendar());
+		}
+
+		statisticsEntity.setAdventureChange(cur);
+		statisticsEntity.notifyUpdate(true);
+
+		// TODO BI
+	}
+
+	/**
+	 * 恢复大冒险条件刷新次数
+	 */
+	public int regainAdventureChangeTimes() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getAdventureChange();
+		if (old == GsConst.MAX_ADVENTURE_CHANGE) {
+			return old;
+		}
+
+		Calendar curTime = HawkTime.getCalendar();
+		Calendar beginTime = statisticsEntity.getAdventureChangeBeginTime();
+
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int cur = old + delta / GsConst.ADVENTURE_CHANGE_TIME;
+
+		if (cur > GsConst.MAX_ADVENTURE_CHANGE) {
+			cur = GsConst.MAX_ADVENTURE_CHANGE;
+		}
+
+		if (old == cur) {
+			return cur;
+		}
+
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.ADVENTURE_CHANGE_TIME  * 1000);
+		statisticsEntity.setAdventureChange(cur);
+		statisticsEntity.setAdventureChangeBeginTime(beginTime);
+
+		statisticsEntity.notifyUpdate(true);
+		return cur;
+	}
+
+	/**
 	 * 登录
 	 */
 	private void onLogin() {
@@ -1438,8 +1532,15 @@ public class Player extends HawkAppObj {
 
 		// 首次登陆，初始化数据
 		if (statisticsEntity.getLoginTimes() == 0) {
+			try {
 			genBirthData();
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
 		}
+
+		statisticsEntity.increaseLoginTimes();
+		statisticsEntity.notifyUpdate(true);
 
 		// 登录时刷新
 		onPlayerRefresh(HawkTime.getMillisecond(), true);
@@ -1466,8 +1567,44 @@ public class Player extends HawkAppObj {
 		if (attrCfg != null) {
 			statisticsEntity.setFatigue(attrCfg.getFatigue());
 		}
-		statisticsEntity.setSkillPoint(10);
+		statisticsEntity.setSkillPoint(GsConst.MAX_SKILL_POINT);
+		statisticsEntity.setAdventureChange(GsConst.MAX_ADVENTURE_CHANGE);
 		statisticsEntity.notifyUpdate(true);
+
+		// 所有大冒险
+		playerData.loadAllAdventure();
+		for (Entry<Integer, Map<Integer, List<AdventureCfg>>> typeEntry : AdventureUtil.getAdventureMap().entrySet()) {
+			int type = typeEntry.getKey();
+			for (Entry<Integer, List<AdventureCfg>> gearEntity : typeEntry.getValue().entrySet()) {
+				int gear = gearEntity.getKey();
+				List<AdventureCfg> cfgList = gearEntity.getValue();
+
+				List<AdventureCondition> conditionList = AdventureUtil.genConditionList(getLevel());
+				AdventureEntity advenEntity = new AdventureEntity(getId(), type, gear);
+
+				for (int i = 0; i < gearEntity.getValue().size(); ++i) {
+					AdventureCfg cfg = cfgList.get(i);
+					if (true == cfg.isInLevelRange(getLevel())) {						
+						advenEntity.setAdventureId(cfg.getId());
+						break;
+					}
+				}
+
+				advenEntity.setConditionList(conditionList);
+				advenEntity.notifyCreate();
+				playerData.addAdventureEntity(advenEntity);
+			}
+		}
+
+		// 初始2支大冒险队伍
+		playerData.loadAllAdventureTeam();
+		AdventureTeamEntity teamEntity = new AdventureTeamEntity(getId(), 1);
+		teamEntity.notifyCreate();
+		playerData.addAdventureTeamEntity(teamEntity);
+
+		teamEntity = new AdventureTeamEntity(getId(), 2);
+		teamEntity.notifyCreate();
+		playerData.addAdventureTeamEntity(teamEntity);
 
 		// TEST ----------------------------------------------------------------------------------------
 		playerData.loadAllMonster();

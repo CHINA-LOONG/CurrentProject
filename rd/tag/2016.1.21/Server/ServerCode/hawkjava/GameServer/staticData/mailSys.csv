@@ -1,0 +1,29 @@
+﻿#NUM,#TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
+id,textId,comments,rewardId,lang_1,sender_1,subject_1,content_1,lang_2,sender_2,subject_2,content_2
+#id,mail_系统名_001,注释,附件,语言1,发信人1,主题1,内容1,语言2,发信人2,主题2,内容2
+100,mail_new_001,新手欢迎邮件,mail_new_001,zh-CN,系统,新手活力礼包,欢迎参加测试,en,System,Novice Energy packs,Welcome to the test
+101,mail_sociaty_001,移交会长,,zh-CN,系统,会内职务变更,"亲爱的玩家：
+您已成为{0}公会会长！",en,System,Guild Role Change,"Dear player: 
+You have been promoted to Guild Master of {0}!"
+102,mail_sociaty_002,被赠送活力值,110004,zh-CN,系统,活力值,这是来自{0}赠送的{1}点活力值,en,System,Energy Points,{0} has sent you {1} Energy!
+103,mail_sociaty_003,被踢出公会,,zh-CN,系统,公会变更,很遗憾，您已被请离公会{0},en,System,Guild Change,"Unfortunately, you have been removed from guild {0}."
+104,mail_sociaty_004,被踢出公会时发放助战收入,,zh-CN,系统,公会助战收入,这是你的助战收入，请查收,en,System,Guild Assist Income,"Attached is your guild assist income, be sure to collect it!"
+105,mail_pvp_001,竞技场段位奖励,,zh-CN,系统,竞技场周结算段位奖励,"亲爱的玩家：
+这是您的本周竞技场段位奖励，请查收",en,System,Weekly Arena Title Reward,"Dear player: 
+Attached is your weekly Arena Title reward, congratulations! Be sure to collect it!"
+106,mail_pvp_002,竞技场排名奖励,,zh-CN,系统,竞技场赛季结算排名奖励,"亲爱的玩家：
+这是您的本月竞技场排名奖励，请查收",en,System,Arena Season Ranking Reward,"Dear player: 
+Attached is your Arena Season ranking reward, congratulations! Be sure to collect it!"
+1000,mail_gm_rename,修改人物昵称,,zh-CN,系统,GM通知,由于您的昵称中存在违规文字，现将您的昵称修改为“{0}”，感谢您的理解与配合！,en,System,GM Notice,"Due to illegal characters detected in your nickname, your name will be changed to {0}. Thank you for your understanding and cooperation."
+1001,mail_gm_clearitem,删除所有物品,,zh-CN,系统,GM通知,由于您使用非正常的途径获得物品，现将您的物品全部删除。感谢您的理解与配合！,en,System,GM Notice,"Items obtained via abnormal methods have been detected on your account, therefore all items owned by your account will be removed. Thank you for your understanding and cooperation."
+1002,mail_gm_removeitem,删除物品,,zh-CN,系统,GM通知,由于您使用非正常的途径获得某些物品，现将这些物品删除：{0}*{1}。感谢您的理解与配合！,en,System,GM Notice,"Items obtained via abnormal methods have been detected on your account, therefore following items will be removed {0} * {1}. Thank you for your understanding and cooperation."
+1003,mail_gm_clearequip,删除所有装备,,zh-CN,系统,GM通知,由于您使用非正常的途径获得装备，现将您的装备全部删除。感谢您的理解与配合！,en,System,GM Notice,"Equips obtained via abnormal methods have been detected on your account, therefore all equips owned by your account will be removed. Thank you for your understanding and cooperation."
+1004,mail_gm_removeequip,删除装备,,zh-CN,系统,GM通知,由于您使用非正常的途径获得装备，现将该装备删除：{0}。感谢您的理解与配合！,en,System,GM Notice,"An equip obtained via abnormal methods have been detected on your account, therefore the equip will be removed {0}. Thank you for your understanding and cooperation."
+1005,mail_gm_deduct_coin,扣金币,,zh-CN,系统,GM通知,由于您非法获得{0}金币。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,The system detected {0} Coins obtained via abnormal methods on your account. These Coins will be removed from your account. Thank you for your understanding and cooperation.
+1006,mail_gm_deduct_diamond,扣钻石,,zh-CN,系统,GM通知,由于您非法获得{0}钻石。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,The system detected {0} Diamonds obtained via abnormal methods on your account. These Coins will be removed from your account. Thank you for your understanding and cooperation.
+107,mail_boss_001,发放世界boss活动奖励,,zh-CN,系统,神怪入侵排名奖励,"亲爱的玩家：
+这是您的神怪入侵活动的奖励，请查收",en,System,神怪入侵排名奖励,"亲爱的玩家：
+这是您的神怪入侵活动的奖励，请查收"
+108,mail_boss_002,发放世界boss额外奖励,,zh-CN,系统,消灭神怪的额外奖励,"亲爱的玩家：
+鉴于您在消灭神怪过程中的卓越表现，这是您获得的额外奖励，请查收",en,System,消灭神怪的额外奖励,"亲爱的玩家：
+鉴于您在消灭神怪过程中的卓越表现，这是您获得的额外奖励，请查收"

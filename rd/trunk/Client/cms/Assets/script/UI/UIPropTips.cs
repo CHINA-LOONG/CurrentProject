@@ -43,7 +43,7 @@ public class UIPropTips : UIBase {
             ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(propId, 1), false);
             icon.transform.SetParent(iconPos, false);
         }
-        propName.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+        propName.text = itemData.NameAttr;
         Outline outline = propName.GetComponent<Outline>();
         outline.effectColor = ColorConst.GetStageOutLineColor(itemData.grade);
         propName.color = ColorConst.GetStageTextColor(itemData.grade);
@@ -61,7 +61,8 @@ public class UIPropTips : UIBase {
             propType.text = StaticDataMgr.Instance.GetTextByID("bag_tag_box");
         else if (itemData.type == 5)
             propType.text = StaticDataMgr.Instance.GetTextByID("bag_tag_use");
-        propDescription.text = StaticDataMgr.Instance.GetTextByID(itemData.tips);
+
+        propDescription.text = itemData.TipsAttr;
 
         //get by
         if (!getBy ||itemData.FoundList==null|| itemData.FoundList.Count <= 0)

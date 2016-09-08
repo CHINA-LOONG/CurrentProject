@@ -1,0 +1,82 @@
+<resources>
+    <dimen name="fp__logo_padding">15dp</dimen>
+
+    <dimen name="fp__account_window_width">300dp</dimen>
+    <dimen name="fp__account_window_padding">1dp</dimen>
+
+    <dimen name="fp__account_header_height">66dp</dimen>
+    <dimen name="fp__account_header_text_size">20sp</dimen>
+    <dimen name="fp__account_title_text_size">20sp</dimen>
+
+    <dimen name="fp__account_back_button_text_size">30sp</dimen>
+    <dimen name="fp__account_back_button_width">40dp</dimen>
+    <dimen name="fp__account_back_button_height">40dp</dimen>
+    <dimen name="fp__account_back_button_padding">0dp</dimen>
+    <dimen name="fp__account_back_button_margin_top">30dp</dimen>
+
+    <dimen name="fp__account_close_button_width">60dp</dimen>
+    <dimen name="fp__account_close_button_height">80dp</dimen>
+    <dimen name="fp__account_close_button_padding">0dp</dimen>
+
+    <dimen name="fp__account_body_margin_top">10dp</dimen>
+    <dimen name="fp__account_body_margin_right">30dp</dimen>
+    <dimen name="fp__account_body_margin_bottom">8dp</dimen>
+    <dimen name="fp__account_body_margin_left">30dp</dimen>
+
+    <dimen name="fp__account_main_button_height">40dp</dimen>
+    <dimen name="fp__account_main_button_margin_top">10dp</dimen>
+    <dimen name="fp__account_main_button_padding_left">20dp</dimen>
+    <dimen name="fp__account_main_button_padding_right">20dp</dimen>
+    <dimen name="fp__account_main_button_corner_radius">4dp</dimen>
+
+    <dimen name="fp__account_footer_margin_right">3dp</dimen>
+    <dimen name="fp__account_footer_margin_left">3dp</dimen>
+    <dimen name="fp__account_footer_padding_top">10dp</dimen>
+    <dimen name="fp__account_footer_padding_bottom">20dp</dimen>
+    <dimen name="fp__account_footer_text_size">16sp</dimen>
+    <dimen name="fp__account_footer_space_width">12dp</dimen>
+
+    <dimen name="fp__account_input_field_height">40dp</dimen>
+    <dimen name="fp__account_input_field_margin_top">5dp</dimen>
+    <dimen name="fp__account_input_field_padding_left">10dp</dimen>
+    <dimen name="fp__account_input_field_drawable_padding">5dp</dimen>
+
+    <dimen name="fp__account_input_field_corner_radius">4dp</dimen>
+    <dimen name="fp__account_input_field_stroke_width">0.5dp</dimen>
+
+    <dimen name="fp__account_submit_button_margin_top">20dp</dimen>
+    <dimen name="fp__account_submit_button_text_size">16dp</dimen>
+    <dimen name="fp__account_submit_button_corner_radius">4dp</dimen>
+
+    <dimen name="fp__account_bind_alert_border_width">1dp</dimen>
+    <dimen name="fp__account_bind_alert_padding_top">4dp</dimen>
+    <dimen name="fp__account_bind_alert_padding_bottom">4dp</dimen>
+    <dimen name="fp__account_bind_alert_padding_right">10dp</dimen>
+    <dimen name="fp__account_bind_alert_padding_left">10dp</dimen>
+    <dimen name="fp__account_bind_alert_margin_bottom">5dp</dimen>
+    <dimen name="fp__account_bind_alert_text_size">12sp</dimen>
+    <dimen name="fp__account_bind_with_sns_margin_top">5dp</dimen>
+    <dimen name="fp__account_bind_with_sns_margin_bottom">5dp</dimen>
+    <dimen name="fp__account_bind_fb_margin_top">10dp</dimen>
+    <dimen name="fp__account_bind_email_margin_top">20dp</dimen>
+    <dimen name="fp__account_bind_email_margin_bottom">10dp</dimen>
+    <dimen name="fp__account_bind_email_text_size">16sp</dimen>
+
+    <dimen name="fp__account_switch_window_padding">30dp</dimen>
+    <dimen name="fp__account_switch_logout_alert_padding">10dp</dimen>
+    <dimen name="fp__account_switch_logout_alert_text_size">16sp</dimen>
+    <dimen name="fp__account_switch_cancel_button_margin_top">10dp</dimen>
+    <dimen name="fp__account_switch_cancel_button_corner_radius">4dp</dimen>
+    <dimen name="fp__account_switch_confirm_button_margin_top">10dp</dimen>
+    <dimen name="fp__account_switch_confirm_button_margin_bottom">20dp</dimen>
+
+    <dimen name="fp__account_user_center_padding_bottom">30dp</dimen>
+    <dimen name="fp__account_user_center_text_size">16sp</dimen>
+    <dimen name="fp__account_user_center_button_margin_top">10dp</dimen>
+    <dimen name="fp__account_user_center_button_height">40dp</dimen>
+    <dimen name="fp__account_user_center_logout_clickable_margin_top">20dp</dimen>
+    <dimen name="fp__account_user_center_logout_clickable_text_size">16sp</dimen>
+
+    <dimen name="fp__account_login_welcome_margin">20dp</dimen>
+
+</resources>

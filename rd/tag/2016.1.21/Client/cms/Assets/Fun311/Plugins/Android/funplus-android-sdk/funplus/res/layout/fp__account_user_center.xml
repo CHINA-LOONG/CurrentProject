@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/fp__account_window_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/fp__account_window_padding"
+        android:background="@drawable/fp__account_window_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fp__account_header_height">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/fp__logo_padding"
+                android:background="@color/fp__white"
+                android:textColor="@color/fp__account_title_color"
+                android:textSize="@dimen/fp__account_title_text_size"
+                android:text="@string/fp__account_user_center"/>
+
+            <include layout="@layout/fp__account_close_button"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fp__account_body_margin_top"
+            android:layout_marginRight="@dimen/fp__account_body_margin_right"
+            android:layout_marginBottom="@dimen/fp__account_body_margin_bottom"
+            android:layout_marginLeft="@dimen/fp__account_body_margin_left"
+            android:paddingBottom="@dimen/fp__account_user_center_padding_bottom">
+
+            <TextView
+                android:id="@+id/fp__account_fpid"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fp__black"
+                android:text="@string/fp__account_your_fpid"/>
+
+            <Button
+                android:id="@+id/fp__account_bind_account_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fp__account_user_center_button_height"
+                android:layout_marginTop="@dimen/fp__account_user_center_button_margin_top"
+                android:background="@drawable/fp__account_submit_button"
+                android:text="@string/fp__account_bind_your_account"
+                android:textStyle="bold"
+                android:textColor="@color/fp__white"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/fp__account_support_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fp__account_user_center_button_height"
+                android:layout_marginTop="@dimen/fp__account_user_center_button_margin_top"
+                android:background="@drawable/fp__account_support_button"
+                android:text="@string/fp__account_support"
+                android:textStyle="bold"
+                android:textColor="@color/fp__white"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/fp__account_logout_clickable"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/fp__account_user_center_logout_clickable_margin_top"
+                android:clickable="true"
+                android:textSize="@dimen/fp__account_user_center_logout_clickable_text_size"
+                android:layout_gravity="center"
+                android:textColor="@color/fp__account_dark_blue"
+                android:text="@string/fp__account_logout"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -305,6 +305,7 @@ public class GameQuestData
                 Action endEvent = () =>
                 {
                     RefreshQuest((QuestType)info.staticData.type);
+                    GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
                 };
                 info.TimeEvent = new TimeEventWrap(GameTimeMgr.GetTimeStamp(new DateTime(curDateTime.Year,curDateTime.Month,curDateTime.Day,beginTime.hour,beginTime.minute,0)), endEvent);
             }
@@ -313,6 +314,7 @@ public class GameQuestData
                 Action endEvent = () =>
                 {
                     RefreshQuest((QuestType)info.staticData.type);
+                    GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
                 };
                 info.TimeEvent = new TimeEventWrap(GameTimeMgr.GetTimeStamp(new DateTime(curDateTime.Year, curDateTime.Month, curDateTime.Day, endTime.hour, endTime.minute, 0)), endEvent);
             }
@@ -352,7 +354,8 @@ public class GameQuestData
             TimeStaticData endTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeEndId);
             if (beginTime != null && endTime != null)
             {
-                if (beginTime < GameTimeMgr.Instance.GetServerTime() && endTime > GameTimeMgr.Instance.GetServerTime())
+                TimeStaticData time = GameTimeMgr.Instance.GetServerTime();
+                if (beginTime <= time && endTime >= time)
                 {
                     if (info.progress >= info.staticData.goalCount)
                     {

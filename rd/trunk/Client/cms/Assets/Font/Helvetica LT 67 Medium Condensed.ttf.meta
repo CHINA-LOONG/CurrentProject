@@ -11,7 +11,7 @@ TrueTypeFontImporter:
   includeFontData: 0
   use2xBehaviour: 0
   fontNames:
-  - SF UI Display
+  - "Helvetica\uFF0CSF UI Display"
   - _H_HelveticaNeue
   - _H_Helvetica
   - San Francisco

@@ -212,7 +212,7 @@ public class DecomposeItem : MonoBehaviour
         {
             equipIcon.RefreshWithEquipInfo(CurData.curEquip,true,true);
         }
-        UIUtil.SetStageColor(equipName, staticData.name, curEquip.stage);
+        UIUtil.SetStageColor(equipName, staticData.NameAttr, curEquip.stage);
         //TODO:设置战力
         //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)
         textDengji.text = staticData.minLevel.ToString();

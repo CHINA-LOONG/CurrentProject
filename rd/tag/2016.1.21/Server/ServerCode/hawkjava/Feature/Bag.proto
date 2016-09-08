@@ -1,0 +1,10 @@
+option java_package = "com.feefoxes.game.protocol";
+
+message BagInfo
+{
+	optional int32 id = 1;
+	optional int32 playerid = 2;
+	optional int32 itemid = 3;
+	optional int32 count = 4;
+}
+

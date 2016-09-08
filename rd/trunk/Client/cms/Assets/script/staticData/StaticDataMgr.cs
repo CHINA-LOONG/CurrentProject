@@ -6,6 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+public enum LanguageType
+{
+    General,
+    ItemsLanguage,
+    PetLanguage,
+    SkillLanguage
+}
+
 public class StaticDataMgr : MonoBehaviour
 {
     static StaticDataMgr mInst = null;
@@ -47,6 +55,11 @@ public class StaticDataMgr : MonoBehaviour
 
     Dictionary<string, string> assetMapping = new Dictionary<string, string>();
     Dictionary<string, LangStaticData> langData = new Dictionary<string, LangStaticData>();
+
+    Dictionary<string, LangStaticData> languageItemData = new Dictionary<string, LangStaticData>();
+    Dictionary<string, LangStaticData> languagePetData = new Dictionary<string, LangStaticData>();
+    Dictionary<string, LangStaticData> languageSkillData = new Dictionary<string, LangStaticData>();
+
     Dictionary<string, AssetLangData> assetLang = new Dictionary<string, AssetLangData>();
     Dictionary<string, string> audioMapping = new Dictionary<string, string>();
     Dictionary<string, Dictionary<int, EquipProtoData>> equipData = new Dictionary<string, Dictionary<int, EquipProtoData>>();
@@ -499,30 +512,48 @@ public class StaticDataMgr : MonoBehaviour
         {
             #region language
 
-            System.Action<LangStaticData> addElement = item =>
+            System.Action<LangStaticData,Dictionary<string,LangStaticData>> addElement = (item,dataDic)=>
             {
                 if (string.IsNullOrEmpty(item.id))
                     return;
-                if (langData.ContainsKey(item.id))
+                if (dataDic.ContainsKey(item.id))
                 {
-                    langData[item.id] = item;
+                    dataDic[item.id] = item;
                     Logger.LogError("error: Found the same Text ID:" + item.id);
                 }
                 else
                 {
-                    langData.Add(item.id, item);
+                    dataDic.Add(item.id, item);
                 }
             };
 
             var data = InitTable<LangStaticData>("languageUI");
             foreach (var item in data)
             {
-                addElement(item);
+                addElement(item,langData);
             }
             var data2 = InitTable<LangStaticData>("languageStatic");
             foreach (var item in data2)
             {
-                addElement(item);
+                addElement(item, langData);
+            }
+            
+            var data3 = InitTable<LangStaticData>("languageItemName");
+            foreach (var item in data3)
+            {
+                addElement(item,languageItemData);
+            }
+
+            var data4 = InitTable<LangStaticData>("languagePetName");
+            foreach (var item in data4)
+            {
+                addElement(item,languagePetData);
+            }
+
+            var data5 = InitTable<LangStaticData>("languageSkillName");
+            foreach (var item in data5)
+            {
+                addElement(item,languageSkillData);
             }
             #endregion
         }
@@ -645,6 +676,7 @@ public class StaticDataMgr : MonoBehaviour
                 var data = InitTable<AdventureData>("adventure");
                 foreach (var item in data)
                 {
+                    item.InitData();
                     adventureData.Add(item.id, item);
                 }
             }
@@ -1169,9 +1201,29 @@ public class StaticDataMgr : MonoBehaviour
 
     public string GetTextByID(string id)
     {
+        return GetTextByID(id, LanguageType.General);
+    }
+   
+    public string GetTextByID(string id, LanguageType lType)
+    {
         if (string.IsNullOrEmpty(id)) return "";
         LangStaticData item = null;
-        langData.TryGetValue(id, out item);
+        switch(lType)
+        {
+            case LanguageType.General:
+                langData.TryGetValue(id, out item);
+                break;
+            case LanguageType.ItemsLanguage:
+                languageItemData.TryGetValue(id, out item);
+                break;
+            case LanguageType.PetLanguage:
+                languagePetData.TryGetValue(id, out item);
+                break;
+            case LanguageType.SkillLanguage:
+                languageSkillData.TryGetValue(id, out item);
+                break;
+        }
+       
 
         if (item == null) return id + "Not configured";
         else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? item.chinese + "Not configured" : item.english;
@@ -1252,12 +1304,23 @@ public class StaticDataMgr : MonoBehaviour
         return questData;
     }
 
-    public AdventureData GetAdventureData(int id)
+    public AdventureData GetAdventureDataById(int id)
     {
         AdventureData adventure = null;
         adventureData.TryGetValue(id, out adventure);
         return adventure;
     }
+    //public AdventureData GetAdventureDataByTypeAndGearAndLevel(int type, int gear,int level)
+    //{
+    //    foreach (var item in adventureData)
+    //    {
+    //        if (item.Value.type == type && item.Value.time==gear && (level>=item.Value.minLevel||level<=item.Value.maxLevel))
+    //        {
+    //            return item.Value;
+    //        }
+    //    }
+    //    return null;
+    //}
     public AdventureConditionNumData GetAdventureConditionNumData(int id)
     {
         AdventureConditionNumData adventure = null;

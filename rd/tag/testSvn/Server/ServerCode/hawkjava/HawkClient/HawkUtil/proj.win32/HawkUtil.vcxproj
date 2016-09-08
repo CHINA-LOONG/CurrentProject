@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HawkAtomic.h" />
+    <ClInclude Include="..\HawkBase64.h" />
+    <ClInclude Include="..\HawkByteOrder.h" />
+    <ClInclude Include="..\HawkCounter.h" />
+    <ClInclude Include="..\HawkDemutexTable.h" />
+    <ClInclude Include="..\HawkDiskFile.h" />
+    <ClInclude Include="..\HawkException.h" />
+    <ClInclude Include="..\HawkFile.h" />
+    <ClInclude Include="..\HawkHeapArray.h" />
+    <ClInclude Include="..\HawkIPAddr.h" />
+    <ClInclude Include="..\HawkKVFile.h" />
+    <ClInclude Include="..\HawkLogger.h" />
+    <ClInclude Include="..\HawkLoggerManager.h" />
+    <ClInclude Include="..\HawkMalloc.h" />
+    <ClInclude Include="..\HawkMarshal.h" />
+    <ClInclude Include="..\HawkMarshalData.h" />
+    <ClInclude Include="..\HawkMath.h" />
+    <ClInclude Include="..\HawkMd5.h" />
+    <ClInclude Include="..\HawkMemoryFile.h" />
+    <ClInclude Include="..\HawkOctets.h" />
+    <ClInclude Include="..\HawkOctetsStream.h" />
+    <ClInclude Include="..\HawkOSOperator.h" />
+    <ClInclude Include="..\HawkProtocol.h" />
+    <ClInclude Include="..\HawkProtocolManager.h" />
+    <ClInclude Include="..\HawkRand.h" />
+    <ClInclude Include="..\HawkRefCounter.h" />
+    <ClInclude Include="..\HawkRingBuffer.h" />
+    <ClInclude Include="..\HawkRWEFds.h" />
+    <ClInclude Include="..\HawkScope.h" />
+    <ClInclude Include="..\HawkSecurity.h" />
+    <ClInclude Include="..\HawkSession.h" />
+    <ClInclude Include="..\HawkSmartPtr.h" />
+    <ClInclude Include="..\HawkSocket.h" />
+    <ClInclude Include="..\HawkSocketAddr.h" />
+    <ClInclude Include="..\HawkSocketPair.h" />
+    <ClInclude Include="..\HawkStdHeader.h" />
+    <ClInclude Include="..\HawkStreamCompress.h" />
+    <ClInclude Include="..\HawkStringUtil.h" />
+    <ClInclude Include="..\HawkUtil.h" />
+    <ClInclude Include="..\HawkZlib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\HawkBase64.cpp" />
+    <ClCompile Include="..\HawkCounter.cpp" />
+    <ClCompile Include="..\HawkDiskFile.cpp" />
+    <ClCompile Include="..\HawkException.cpp" />
+    <ClCompile Include="..\HawkFile.cpp" />
+    <ClCompile Include="..\HawkIPAddr.cpp" />
+    <ClCompile Include="..\HawkKVFile.cpp" />
+    <ClCompile Include="..\HawkLogger.cpp" />
+    <ClCompile Include="..\HawkLoggerManager.cpp" />
+    <ClCompile Include="..\HawkMalloc.cpp" />
+    <ClCompile Include="..\HawkMarshal.cpp" />
+    <ClCompile Include="..\HawkMarshalData.cpp" />
+    <ClCompile Include="..\HawkMath.cpp" />
+    <ClCompile Include="..\HawkMd5.cpp" />
+    <ClCompile Include="..\HawkMemoryFile.cpp" />
+    <ClCompile Include="..\HawkOctets.cpp" />
+    <ClCompile Include="..\HawkOctetsStream.cpp" />
+    <ClCompile Include="..\HawkOSOperator.cpp" />
+    <ClCompile Include="..\HawkProtocol.cpp" />
+    <ClCompile Include="..\HawkProtocolManager.cpp" />
+    <ClCompile Include="..\HawkRand.cpp" />
+    <ClCompile Include="..\HawkRefCounter.cpp" />
+    <ClCompile Include="..\HawkRWEFds.cpp" />
+    <ClCompile Include="..\HawkScope.cpp" />
+    <ClCompile Include="..\HawkSecurity.cpp" />
+    <ClCompile Include="..\HawkSession.cpp" />
+    <ClCompile Include="..\HawkSocket.cpp" />
+    <ClCompile Include="..\HawkSocketAddr.cpp" />
+    <ClCompile Include="..\HawkSocketPair.cpp" />
+    <ClCompile Include="..\HawkStreamCompress.cpp" />
+    <ClCompile Include="..\HawkStringUtil.cpp" />
+    <ClCompile Include="..\HawkUtil.cpp" />
+    <ClCompile Include="..\HawkZlib.cpp" />
+    <ClCompile Include="..\source\zlib\adler32.c" />
+    <ClCompile Include="..\source\zlib\compress.c" />
+    <ClCompile Include="..\source\zlib\crc32.c" />
+    <ClCompile Include="..\source\zlib\deflate.c" />
+    <ClCompile Include="..\source\zlib\infback.c" />
+    <ClCompile Include="..\source\zlib\inffast.c" />
+    <ClCompile Include="..\source\zlib\inflate.c" />
+    <ClCompile Include="..\source\zlib\inftrees.c" />
+    <ClCompile Include="..\source\zlib\ioapi.c" />
+    <ClCompile Include="..\source\zlib\trees.c" />
+    <ClCompile Include="..\source\zlib\uncompr.c" />
+    <ClCompile Include="..\source\zlib\unzip.c" />
+    <ClCompile Include="..\source\zlib\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\source\zlib\Makefile" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2B2642D5-2B93-44FE-9DAC-EF4465B09458}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>HawkUtil</RootNamespace>
+    <ProjectName>HawkUtil</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>../source/zlib;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>../source/zlib;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;UTIL_EXPORT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;UTIL_EXPORT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

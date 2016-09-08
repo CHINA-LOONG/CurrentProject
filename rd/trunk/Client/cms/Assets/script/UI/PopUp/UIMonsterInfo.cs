@@ -67,8 +67,8 @@ public class UIMonsterInfo : UIBase
         int plusQuality = 0;
         UIUtil.CalculationQuality(stage, out quallity, out plusQuality);
 
-        UIUtil.SetStageColor(name, unitData.nickName, quallity);
-        monsterDescText.text = StaticDataMgr.Instance.GetTextByID(unitData.say);
+        UIUtil.SetStageColor(name, unitData.NickNameAttr, quallity);
+        monsterDescText.text = unitData.SayAttr;
 
         SetProperty(unitData.property);
 

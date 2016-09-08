@@ -1,0 +1,49 @@
+import "Protocol/Const.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message HSQuest
+{
+	required int32 questId = 1;
+	optional int32 progress = 2 [default = 0];
+}
+
+// protocol-----------------------------------------------------
+
+// QUEST_INFO_SYNC_S
+message HSQuestInfoSync
+{
+	repeated HSQuest questInfo = 1;
+}
+
+// QUEST_SUBMIT_C
+message HSQuestSubmit
+{
+	required int32 questId = 1;
+}
+
+// QUEST_SUBMIT_S
+message HSQuestSubmitRet
+{
+	required int32 questId = 1;
+}
+
+// QUEST_ACCEPT_S
+message HSQuestAccept
+{
+	repeated HSQuest quest = 1;
+}
+
+// QUEST_UPDATE_S
+message HSQuestUpdate
+{
+	repeated HSQuest quest = 1;
+}
+
+// QUEST_REMOVE_S
+message HSQuestRemove
+{
+	repeated int32 questId = 1;
+}

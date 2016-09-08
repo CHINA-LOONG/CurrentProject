@@ -51,7 +51,7 @@ public class UIEquipTips : UIBase
         curData = data;
         
         ItemStaticData itemData = StaticDataMgr.Instance.GetItemData(curData.equipId);
-        UIUtil.SetStageColor(textName, itemData.name, curData.stage, curData.level);
+        UIUtil.SetStageColor(textName, itemData.NameAttr, curData.stage, curData.level);
         textType.text = StaticDataMgr.Instance.GetTextByID(typeLanguageId[itemData.subType - 1]);
         textPart.text = StaticDataMgr.Instance.GetTextByID(partLanguageId[itemData.part - 1]);
 

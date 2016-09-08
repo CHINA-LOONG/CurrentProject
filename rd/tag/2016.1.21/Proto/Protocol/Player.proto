@@ -1,0 +1,83 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- struct -------------------------------------------------------
+
+message SynPlayerAttr
+{
+	// 钻石
+	optional int32 gold = 1;
+	// 金币
+	optional int64 coin = 2;
+	// 通天塔币
+	optional int32 towerCoin = 3;
+	// 公会币
+	optional int32 contribution = 4;
+	// 主卡等级
+	optional int32 level = 5;
+	// 主卡经验
+	optional int32 exp = 6;
+	// 活力值
+	optional int32 fatigue = 7;
+	// 正在累计活力值恢复时间开始时间戳（秒）
+	optional int32 fatigueBeginTime = 8;
+}
+
+message PlayerInfo
+{
+	required int32  playerId = 1;
+	required string nickname = 2;
+	required int32  career = 3;
+	required int32  level = 4;
+	required int32  exp = 5;
+	required int32  gold = 6;
+	required int64  coin = 7;
+	required int32  towerCoin = 8;
+	optional int32  gender = 9;
+	optional int32  eye = 10;
+	optional int32  hair = 11;
+	optional int32  hairColor = 12;
+	required int32  recharge = 13;
+	required int32  vipLevel = 14;
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
+// KICKOUT_S
+message HSPlayerKickout
+{
+	required int32 reason = 1;
+}
+
+// PLAYER_CREATE_C
+message HSPlayerCreate
+{
+	required string puid = 1;
+	required string nickname = 2;
+	required int32 career = 3;
+	required int32 gender = 4;
+	required int32 eye = 5;
+	required int32 hair = 6;
+	required int32 hairColor = 7;
+}
+
+// ROLE_CREATE_S
+message HSPlayerCreateRet
+{
+	required int32 status = 1;
+	optional int32 palyerID = 2;
+}
+
+// PLAYER_INFO_SYNC_S
+message HSPlayerInfoSync
+{
+	required PlayerInfo info = 1;
+}
+
+// ASSEMBLE_FINISH_S
+message HSAssembleFinish
+{
+	required int32 playerId = 1;
+	required int32 allianceID = 2;
+	required int32 contribution = 3;
+}
+

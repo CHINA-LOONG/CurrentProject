@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/fp__account_window_padding"
+        android:background="@drawable/fb__account_login_welcome_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fp__account_login_welcome_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fp__account_login_welcome_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/fp__black"
+                android:text="@string/fp__account_login_welcome"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

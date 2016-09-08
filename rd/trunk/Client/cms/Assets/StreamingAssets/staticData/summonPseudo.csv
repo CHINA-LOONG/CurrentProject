@@ -1,0 +1,5 @@
+﻿#NUM,TEXT,NUM,TEXT
+id,comments,times,rewardGroup
+#id,注释,次数,奖励组id
+1,前3次钻石单抽,3,1001
+2,第1次钻石十连抽,1,1001

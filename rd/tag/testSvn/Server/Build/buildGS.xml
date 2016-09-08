@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project GameServer">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="./GameServer.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="com.hawk.game.GsMain"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="../ServerCode/hawkjava/GameServer/bin"/>
+            <fileset dir="../ServerCode/hawkjava/HawkUtil/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/zmq.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/memcached.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/protobuf-java-2.5.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/mina-core-2.0.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/tools.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/dom4j-1.6.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/log4j-1.2.17.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/slf4j-api-1.7.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/slf4j-log4j12-1.7.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-collections-3.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/json-lib-2.4-jdk15.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/mysql-connector-java-5.1.29-bin.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-configuration-1.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-lang-2.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/antlr-2.7.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/c3p0-0.9.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/jta-1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/hibernate3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/javassist-3.12.0.GA.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-beanutils-1.9.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/ezmorph-1.0.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-email-1.3.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/activation.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/mail.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/gson-1.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/jedis-2.6.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-pool2-2.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/protobuf-java-format-1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/javacsv.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-codec-1.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/commons-logging-1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpasyncclient-4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpasyncclient-cache-4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpclient-4.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpclient-cache-4.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpcore-4.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpcore-nio-4.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/notnoop-javaapns-1.0.0.beta3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/google-gcm-151226.jar"/>
+            <fileset dir="../../Proto/Protobuf/Java/bin"/>
+        </jar>
+    </target>
+</project>

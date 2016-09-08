@@ -255,6 +255,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_BUY_TEAM_S", Value=3210)]
       ADVENTURE_BUY_TEAM_S = 3210,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_CONDITION_PUSH_S", Value=3211)]
+      ADVENTURE_CONDITION_PUSH_S = 3211,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             

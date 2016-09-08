@@ -1,0 +1,46 @@
+update --game qmby --file syncserver.sh
+
+参数option:
+--game --platform --serverids --timeout
+
+# shell命令测试
+sh runserver.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0
+sh stopserver.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0
+sh serverstatus.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0
+sh sqldump.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0
+sh sqlchange.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0 change.sql
+sh syncserver.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0 http://123.59.62.235/qmby_sync/
+sh serverscript.sh 9095 9000 127.0.0.1 3306 legend root 123456 /data/java/legend_test_sever/trunk/jar/ 0 synthesisinfo date:2015-07-10
+
+参数option:
+--game --platform --serverids --timeout
+
+# ops命令格式
+runserver.sh --game qmby
+serverscript.sh --game qmby --args synthesisinfo date:2015-07-10
+serverstatus.sh --game qmby
+stopserver.sh --game qmby
+sqldump.sh --game qmby
+syncserver.sh --game qmby --args http://123.59.62.235/$game/
+sqlchange.sh --game qmby --args sqlchange.1.0.1.sql
+
+update --args sqlchange.sh
+
+sqlchange.sh --game qmby --platform android --serverId 1,2 --args sqlchange.1.0.1.sql
+
+[
+	"a1"=
+	[
+		"qmby.android.1"="server response",
+	],
+	
+	"a2"=
+	[
+		"qmby.android.2"="server response",
+		"qmby.android.3"="server response",
+	]
+]
+
+"qmby.android.1"="server response",
+"qmby.android.2"="server response",
+"qmby.android.3"="server response",

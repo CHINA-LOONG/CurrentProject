@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="import">
+      <UniqueIdentifier>{77ee7e70-09a7-43db-b725-446fb12abb2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\zlib">
+      <UniqueIdentifier>{84307a86-507d-4ab7-ab2c-bf5836e1ad20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="file">
+      <UniqueIdentifier>{a8720312-85a0-4f65-a88d-5dfaef1293a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{17f043d0-f327-428f-9620-f2fff0a198db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="memory">
+      <UniqueIdentifier>{8bf8654c-5a45-4a5b-9b38-18ff98870199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{159f7008-37b7-4cbf-959a-5ade7aeebe22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="os">
+      <UniqueIdentifier>{b409cd93-9c9c-4d4e-b3d5-736d3369f085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refcount">
+      <UniqueIdentifier>{c0e41c00-0858-470e-9bba-9c7e6eed81ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="security">
+      <UniqueIdentifier>{5c556a54-2a6d-4294-b463-89a1d0a55e0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="string">
+      <UniqueIdentifier>{5c8de752-6c75-4e7f-afbc-c14dcce2e211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{51085bcb-e8ee-442f-a1fb-ed015b7420b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zip">
+      <UniqueIdentifier>{3be14567-8b10-499d-8c2d-5f766f86c246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm">
+      <UniqueIdentifier>{dbfd5a89-38b3-4d23-b84e-982d008d4f61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="malloc">
+      <UniqueIdentifier>{acb93c7c-d794-4ced-b9ef-291f1a978ddd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="exception">
+      <UniqueIdentifier>{ae6ff59f-4992-4255-9539-490f34f1441b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logger">
+      <UniqueIdentifier>{248c22a4-652d-43a7-bd49-c89095b755dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protocol">
+      <UniqueIdentifier>{0e21c8bb-8bb5-4ccb-98eb-77c62d2fa135}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HawkStdHeader.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkDiskFile.h">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkFile.h">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMemoryFile.h">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkAtomic.h">
+      <Filter>os</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkOSOperator.h">
+      <Filter>os</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkBase64.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMd5.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkStreamCompress.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkZlib.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkByteOrder.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkOctetsStream.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMarshal.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMarshalData.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkOctets.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkIPAddr.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkRWEFds.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSocket.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSocketAddr.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSocketPair.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkCounter.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMath.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkRand.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkStringUtil.h">
+      <Filter>string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkRefCounter.h">
+      <Filter>refcount</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkScope.h">
+      <Filter>refcount</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSmartPtr.h">
+      <Filter>refcount</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkHeapArray.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkRingBuffer.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkDemutexTable.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkKVFile.h">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkMalloc.h">
+      <Filter>malloc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkSecurity.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkException.h">
+      <Filter>exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkLogger.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkLoggerManager.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkProtocol.h">
+      <Filter>protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HawkProtocolManager.h">
+      <Filter>protocol</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\zlib\adler32.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\compress.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\crc32.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\deflate.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\infback.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\inffast.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\inflate.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\inftrees.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\trees.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\uncompr.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\zutil.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\ioapi.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\zlib\unzip.c">
+      <Filter>import\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkDiskFile.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkFile.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMemoryFile.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkOSOperator.cpp">
+      <Filter>os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkBase64.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkStreamCompress.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkZlib.cpp">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMarshal.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMarshalData.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkOctets.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkOctetsStream.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkIPAddr.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkRWEFds.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkSocket.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkSocketPair.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkSocketAddr.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkCounter.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMath.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkRand.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkStringUtil.cpp">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkRefCounter.cpp">
+      <Filter>refcount</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMd5.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkScope.cpp">
+      <Filter>refcount</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkKVFile.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkMalloc.cpp">
+      <Filter>malloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkSecurity.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkException.cpp">
+      <Filter>exception</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkLogger.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkLoggerManager.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkProtocol.cpp">
+      <Filter>protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HawkProtocolManager.cpp">
+      <Filter>protocol</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\source\zlib\Makefile">
+      <Filter>import\zlib</Filter>
+    </None>
+  </ItemGroup>
+</Project>

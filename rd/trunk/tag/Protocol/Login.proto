@@ -1,0 +1,55 @@
+import "Protocol/Role.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// LOGIN_C
+message HSLogin
+{
+	required string puid = 1;
+	optional string token = 2;
+}
+
+// LOGIN_S
+message HSLoginRet
+{
+	required int32 status = 1;
+	required int32 playerId = 2;
+}
+
+// SyncInfo_C
+message HSSyncInfo
+{
+	optional string deviceId = 1 [default = "0"];
+	optional string platform = 2 [default = "0"];
+	optional string version = 3 [default = "0.0.1"];
+}
+
+// SyncInfo_S
+message HSSyncInfoRet
+{
+	required int32 status = 1;
+	optional int32 timeStamp = 2;
+}
+
+// Reconnect_C
+message HSReconnect
+{
+    required string puid = 1;
+	optional string token = 2;
+	optional string deviceId = 3 [default = "0"];
+	optional string platform = 4 [default = "0"];
+}
+
+// Reconnect_S
+message HSReconnectRet
+{
+	required int32 status = 1;
+	optional int32 timeStamp = 2;
+}
+
+// KICKOUT_S
+message HSUserKickout
+{
+	required int32 playerId = 1;
+	optional int32 reason = 2;	
+}

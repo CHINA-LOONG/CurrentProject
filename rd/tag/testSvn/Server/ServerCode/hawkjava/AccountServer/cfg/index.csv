@@ -1,0 +1,8 @@
+﻿#NUM,TEXT,TEXT,TEXT,TEXT
+area,lang_1,name_1,lang_2,name_2
+#区间,语言1,名字1,语言2,名字2
+1,zh-CN,公共服务器,en,public_server
+2,zh-CN,测试服务器,en,QA_server
+3,zh-CN,程序服务器,en,RD_server
+4,zh-CN,策划服务器,en,GD_server
+5,zh-CN,其他,en,OTHER_server

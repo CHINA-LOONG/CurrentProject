@@ -16,12 +16,18 @@ public class GsConst {
 	public static final String SWEEP_TICKET = "10003";
 	// 万能碎片Id
 	public static final String COMMON_FRAGMENT = "20001";
-	// 最大技能点数
+	// 活力最大值
+	public static final int MAX_FATIGUE_COUNT = 5000;
+	// 技能点最大值
 	public static final int MAX_SKILL_POINT = 10;
-	// 活力值增长秒数
+	// 大冒险条件刷新次数最大值
+	public static final int MAX_ADVENTURE_CHANGE = 10;
+	// 活力值恢复秒数
 	public static final int FATIGUE_TIME = 10 * 60;
-	// 技能点增长秒数
+	// 技能点恢复秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
+	// 大冒险条件刷新次数恢复秒数
+	public static final int ADVENTURE_CHANGE_TIME = 30 * 60;
 	// 最大邮件数
 	public static final int MAX_MAIL_COUNT = 300;
 	// 最大品级数
@@ -50,8 +56,6 @@ public class GsConst {
 	public static final int MAX_GOLD_COUNT = 999999999;
 	// 金币最大值
 	public static final int MAX_COIN_COUNT = 999999999;
-	// 疲劳值最大值
-	public static final int MAX_FATIGUE_COUNT = 5000;
 	// 副本最大星数
 	public static final int MAX_INSTANCE_STAR = 3;
 	// 副本复活次数
@@ -72,6 +76,12 @@ public class GsConst {
 	public static final int GEM_COMPOSE_COUNT = 5;
 	// 最大合成次数
 	public static final int COMPOSE_MAX_COUNT = 10;
+	// 购买大冒险条件刷新次数消耗钻石
+	public static final int ADVENTURE_CHANGE_BUY_CONSUME = 50;
+	// 大冒险上阵怪物数
+	public static final int ADVENTURE_MONSTER_COUNT = 5;
+	// 大冒险持续时间档位
+	public static final int[] ADVENTURE_TIME_GEAR = new int[] { 5 * 3600, 8 * 3600, 12 * 3600 };
 	// 趣加Funplus
 	public static final String FUNPLUS_APP_ID = "1013";
 	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
@@ -119,7 +129,7 @@ public class GsConst {
 		// 玩家重新连接
 		public static final int PLAYER_RECONNECT = 5;
 		// 玩家等级变化更新
-		public static final int PLAYER_LEVEL_CHANGE = 6;
+		public static final int PLAYER_LEVEL_UP = 6;
 
 		// 创建公会
 		public static final int ALLIANCE_CREATE = 100;
@@ -166,7 +176,7 @@ public class GsConst {
 		// 公会撤兵
 		public static final int ALLIANCE_BASE_RECALL = 121;
 		// 雇用奖励
-		public static final int Alliance_HIRE_REWARD = 122;
+		public static final int ALLIANCE_HIRE_REWARD = 122;
 		
 		/**
 		 * 快照管理器消息定义
@@ -210,6 +220,8 @@ public class GsConst {
 		public static final int SHOP_MODULE = 11;
 		// 公会模块
 		public static final int ALLIANCE_MODULE = 12;
+		// 大冒险模块
+		public static final int ADVENTURE_MODULE = 13;
 
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -453,11 +465,11 @@ public class GsConst {
 		public static final int BASE_MIN_TIME = 180;
 
 		// 公会贡献值奖励1
-		public static final String ALLIANCE_CONTRI_REWARD1 = "10002";
+		public static final String ALLIANCE_CONTRI_REWARD1 = "110001";
 		// 公会贡献值奖励2
-		public static final String ALLIANCE_CONTRI_REWARD2 = "10002";
+		public static final String ALLIANCE_CONTRI_REWARD2 = "110001";
 		// 公会贡献值奖励3
-		public static final String ALLIANCE_CONTRI_REWARD3 = "10002";
+		public static final String ALLIANCE_CONTRI_REWARD3 = "110001";
 	}
 
 	// 翻译系统，敏感词选项
@@ -501,4 +513,5 @@ public class GsConst {
 		// 公会解除副会长
 		public static final int ALLIANCE_ELDER_DEMOTE = 105;
 	}
+
 }

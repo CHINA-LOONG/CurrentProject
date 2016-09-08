@@ -1,0 +1,11 @@
+﻿#TEXT,TEXT
+module,state
+鍔熻兘,鐘舵€?
+showExp,1
+showFps,1
+showGM,1
+serverListURL,http://119.254.209.126:9101/fetch_gameserver
+noticeUrl,https://cs-mail.funplusgame.com/legendsawake/activities.php?
+os,os=0
+serverid,serverid=0
+svn,0

@@ -1,0 +1,6 @@
+﻿#TEXT,FLOAT,FLOAT,FLOAT,FLOAT,NUM
+nodeID,lightX,lightY,lightZ,lightW,lightIndex
+#nodeID,lightX,lightY,lightZ,lightW,lightIndex
+shuye_01,0.03935774,0.03935774,0.6658619,0.261565,0
+wz_shu_009,0.05309497,0.05309497,0.9138551,0.1384645,0
+wz_qiang1,0.2621524,0.2621524,-0.001024033,0.467726,0

@@ -74,7 +74,7 @@ public class ItemStaticData
 	{
 		get
 		{
-			return StaticDataMgr.Instance.GetTextByID(name);
+            return StaticDataMgr.Instance.GetTextByID(name, LanguageType.ItemsLanguage);
 		}
 	}
 
@@ -82,7 +82,7 @@ public class ItemStaticData
 	{
 		get
 		{
-			return StaticDataMgr.Instance.GetTextByID(tips);
+            return StaticDataMgr.Instance.GetTextByID(tips, LanguageType.ItemsLanguage);
 		}
 	}
 

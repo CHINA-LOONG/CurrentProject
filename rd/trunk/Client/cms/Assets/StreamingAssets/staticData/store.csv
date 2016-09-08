@@ -1,6 +1,6 @@
-#TEXT,NUM,FLOAT
+﻿#TEXT,NUM,FLOAT
 itemId,price,discount
-#��Ʒid,��Ǯ,�ۿ�
+#物品id,价钱,折扣
 50001,100,1
 50005,50,0.5
 50006,120,0.74

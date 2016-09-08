@@ -39,6 +39,14 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "refreshTimeX")
 	protected String refreshTimeXJson = "";
 
+	// 大冒险条件刷新次数
+	@Column(name = "adventureChange", nullable = false)
+	protected int adventureChange = 0;
+
+	// 大冒险条件刷新次数开始计时时间
+	@Column(name = "adventureChangeBeginTime")
+	protected Calendar adventureChangeBeginTime = null;
+
 	// 历史金币抽蛋次数
 	@Column(name = "eggCoinTimes", nullable = false)
 	protected int eggCoinTimes = 0;
@@ -159,12 +167,14 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 
 	protected Lf2StatisticsEntity() {
 		Calendar time = HawkTime.getCalendar();
+		this.adventureChangeBeginTime = time;
 		this.monthCardEndTime = time;
 	}
 
 	protected Lf2StatisticsEntity(int playerId) {
 		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
+		this.adventureChangeBeginTime = time;
 		this.monthCardEndTime = time;
 	}
 
