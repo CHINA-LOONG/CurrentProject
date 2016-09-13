@@ -147,7 +147,6 @@ public class GameDataMgr : MonoBehaviour
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_INFO_SYNC_S.GetHashCode().ToString(), OnPlayerInfoSync);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_INFO_SYNC_S.GetHashCode().ToString(), OnSettingInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
@@ -171,7 +170,6 @@ public class GameDataMgr : MonoBehaviour
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_INFO_SYNC_S.GetHashCode().ToString(), OnPlayerInfoSync);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_INFO_SYNC_S.GetHashCode().ToString(), OnSettingInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
@@ -388,11 +386,6 @@ public class GameDataMgr : MonoBehaviour
         mainPlayer.hairColor = playerInfo.hairColor;
         mainPlayer.recharget = playerInfo.recharge;
         mainPlayer.vipLevel = playerInfo.vipLevel;
-    }
-    //---------------------------------------------------------------------------------------------
-    void OnStatisticsInfoSync(ProtocolMessage msg)
-    {
-        PB.HSStatisticsInfoSync playerSync = msg.GetProtocolBody<PB.HSStatisticsInfoSync>();
     }
     //---------------------------------------------------------------------------------------------
     void OnSettingInfoSync(ProtocolMessage msg)

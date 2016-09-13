@@ -1920,7 +1920,7 @@ compose_record_011,祝福之力不足,Insufficient Blessing Power.
 dazhao_jieduan,连续,Keep
 dazhao_shifang,可获得多次伤害,for more damage
 compose_monster_name,宠物,Monster
-monstercompose_tips,*合成5个同稀有度的宠物可以几率获得更高稀有度的宠物,*Combine 5 same class Monster and receive 1 higher class Monster
+monstercompose_tips,*合成5个同稀有度的宠物可以几率获得更高稀有度的宠物碎片,*Combine 5 same class Monster and receive 1 higher class monster fragments
 compose_monster_filter,筛选,Filter
 compose_monster_hecheng,合成,Compose
 monstercompose_hecheng_tips,材料宠物合成后将<color=#ffcc00>消失</color>，确定进行合成操作吗？,Material monsters will be <color=#ffcc00>consumed</color> upon combining them. Continue?
@@ -1929,9 +1929,9 @@ compose_filter_b,稀有度B,B Class
 compose_filter_a,稀有度A,A Class
 compose_filter_all,全部,All
 worldboss_record_007,活动未开始，可以在规则说明处查看活动时间哦！,"Event not started yet, please check Rules for event starting time."
-compose_monster_target1,随机B级稀有度宠物,Random B-Class Monster
-compose_monster_target2,随机A级稀有度宠物,Random A-Class Monster
-compose_monster_target3,随机S级稀有度宠物,Random S-Class Monster
+compose_monster_target1,随机B稀有度宠物碎片,Random B-Class Monster Fragments
+compose_monster_target2,随机A稀有度宠物碎片,Random A-Class Monster Fragments
+compose_monster_target3,随机S稀有度宠物碎片,Random S-Class Monster Fragments
 giftspecial_jinjiea1_name,A级进阶礼包,Advancement Package
 giftspecial_jinjiea1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
 giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Advancement Package (Rare)
@@ -1952,3 +1952,4 @@ tuoguan_name,托管,Auto-battle
 instance_zhuzhan_002,当前玩法无法使用公会助战功能哦！,Unable to use Guild Assistance in the current game mode!
 instance_zhuzhan_004,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?
 instance_zhuzhan_003,请至少选择一位己方成员上阵！,Please select at least one member to enter battle!
+retry_pinfandenglu,登录操作过于频繁，请稍后再试,登录操作过于频繁，请稍后再试

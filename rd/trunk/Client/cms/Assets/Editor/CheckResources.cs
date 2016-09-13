@@ -86,6 +86,7 @@ public class CheckResources : EditorWindow
                     if (nexLine.Contains(metaGuid))
                     {
                         fileName.Add(filename.Replace('\\', '/'));
+                        Debug.Log("<color=#FBFF00FF>" + filename.Replace('\\', '/') + "</color>");
                         continue;
                     }
                 }

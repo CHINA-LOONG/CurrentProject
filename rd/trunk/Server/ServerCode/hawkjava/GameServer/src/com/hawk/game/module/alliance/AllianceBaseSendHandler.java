@@ -9,6 +9,7 @@ import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.MonsterEntity;
@@ -73,8 +74,8 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 			return true;
 		}
 		
-		if ((request.getPosition() == 1 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.SECOND_BASE_POSITION_CONTRIBUTION) || 
-			(request.getPosition() == 2 && playerAllianceEntity.getTotalContribution() <= GsConst.Alliance.THIRD_BASE_POSITION_CONTRIBUTION)){
+		if ((request.getPosition() == 1 && playerAllianceEntity.getTotalContribution() <= SysBasicCfg.getInstance().getAllianceSecondPositionContribution()) || 
+			(request.getPosition() == 2 && playerAllianceEntity.getTotalContribution() <= SysBasicCfg.getInstance().getAllianceThirdPositionContribution())){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_BASE_POSITION_LOCK_VALUE);
 			return true;
 		}

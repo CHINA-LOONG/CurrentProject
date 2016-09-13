@@ -459,9 +459,6 @@ public class GsConst {
 		public static final int MAX_COPYMAIN_COUNT = 2;
 		public static final int SEND_FATIGUE_COUNT = 1;
 
-		public static final int SECOND_BASE_POSITION_CONTRIBUTION = 1000;
-		public static final int THIRD_BASE_POSITION_CONTRIBUTION = 2000;
-
 		public static final int BASE_MIN_TIME = 180;
 
 		// 公会贡献值奖励1
@@ -514,4 +511,17 @@ public class GsConst {
 		public static final int ALLIANCE_ELDER_DEMOTE = 105;
 	}
 
+	public static class summon {
+		public static final int FIRST_N_ONE_PSEUDO_REWARD = 1;
+		public static final int FIRST_N_TEN_PSEUDO_REWARD = 2;
+
+		public static final int ONE_COIN_PRICE= 100;
+		public static final int TEN_COIN_PRICE = 900;
+		public static final int ONE_DIAMOND_PRICE = 10;
+		public static final int TEN_DIAMOND_PRICE = 90;
+		
+		public static final int MAX_COIN_FREE_TIMES_DAILY = 5;
+		public static final int MAX_DIAMOND_FREE_TIMES = 1;
+		public static final int DIAMOND_FREE_TIME = 60;
+	}
 }

@@ -5094,6 +5094,16 @@ public final class Adventure {
      * <code>required int32 teamId = 1;</code>
      */
     int getTeamId();
+
+    // required bool pay = 2;
+    /**
+     * <code>required bool pay = 2;</code>
+     */
+    boolean hasPay();
+    /**
+     * <code>required bool pay = 2;</code>
+     */
+    boolean getPay();
   }
   /**
    * Protobuf type {@code HSAdventureSettle}
@@ -5155,6 +5165,11 @@ public final class Adventure {
               teamId_ = input.readInt32();
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              pay_ = input.readBool();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5211,8 +5226,25 @@ public final class Adventure {
       return teamId_;
     }
 
+    // required bool pay = 2;
+    public static final int PAY_FIELD_NUMBER = 2;
+    private boolean pay_;
+    /**
+     * <code>required bool pay = 2;</code>
+     */
+    public boolean hasPay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool pay = 2;</code>
+     */
+    public boolean getPay() {
+      return pay_;
+    }
+
     private void initFields() {
       teamId_ = 0;
+      pay_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5220,6 +5252,10 @@ public final class Adventure {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasTeamId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPay()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -5233,6 +5269,9 @@ public final class Adventure {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, teamId_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, pay_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -5245,6 +5284,10 @@ public final class Adventure {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, teamId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, pay_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5368,6 +5411,8 @@ public final class Adventure {
         super.clear();
         teamId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        pay_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -5400,6 +5445,10 @@ public final class Adventure {
           to_bitField0_ |= 0x00000001;
         }
         result.teamId_ = teamId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.pay_ = pay_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5419,12 +5468,19 @@ public final class Adventure {
         if (other.hasTeamId()) {
           setTeamId(other.getTeamId());
         }
+        if (other.hasPay()) {
+          setPay(other.getPay());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasTeamId()) {
+          
+          return false;
+        }
+        if (!hasPay()) {
           
           return false;
         }
@@ -5479,6 +5535,39 @@ public final class Adventure {
       public Builder clearTeamId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         teamId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool pay = 2;
+      private boolean pay_ ;
+      /**
+       * <code>required bool pay = 2;</code>
+       */
+      public boolean hasPay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool pay = 2;</code>
+       */
+      public boolean getPay() {
+        return pay_;
+      }
+      /**
+       * <code>required bool pay = 2;</code>
+       */
+      public Builder setPay(boolean value) {
+        bitField0_ |= 0x00000002;
+        pay_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool pay = 2;</code>
+       */
+      public Builder clearPay() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        pay_ = false;
         onChanged();
         return this;
       }
@@ -10438,22 +10527,22 @@ public final class Adventure {
       "ar\030\003 \002(\005\022\025\n\rselfMonsterId\030\004 \003(\005\022)\n\013hireM" +
       "onster\030\005 \001(\0132\024.AllianceBaseMonster\"6\n\023HS" +
       "AdventureEnterRet\022\016\n\006teamId\030\001 \002(\005\022\017\n\007end" +
-      "Time\030\002 \002(\005\"#\n\021HSAdventureSettle\022\016\n\006teamI" +
-      "d\030\001 \002(\005\"\217\001\n\024HSAdventureSettleRet\022\016\n\006team" +
-      "Id\030\001 \002(\005\022\"\n\013basicReward\030\002 \002(\0132\r.HSReward",
-      "Info\022\"\n\013extraReward\030\003 \001(\0132\r.HSRewardInfo" +
-      "\022\037\n\tadventure\030\004 \002(\0132\014.HSAdventure\"5\n\027HSA" +
-      "dventureNewCondition\022\014\n\004type\030\001 \002(\005\022\014\n\004ge" +
-      "ar\030\002 \002(\005\"p\n\032HSAdventureNewConditionRet\022\037" +
-      "\n\tadventure\030\001 \002(\0132\014.HSAdventure\022\023\n\013chang" +
-      "eCount\030\002 \002(\005\022\034\n\024changeCountBeginTime\030\003 \002" +
-      "(\005\"\031\n\027HSAdventureBuyCondition\"O\n\032HSAdven" +
-      "tureBuyConditionRet\022\023\n\013changeCount\030\001 \002(\005" +
-      "\022\034\n\024changeCountBeginTime\030\002 \002(\005\"\024\n\022HSAdve" +
-      "ntureBuyTeam\"\'\n\025HSAdventureBuyTeamRet\022\016\n",
-      "\006teamId\030\001 \002(\005\"?\n\030HSAdventureConditionPus" +
-      "h\022#\n\ridleAdventure\030\001 \003(\0132\014.HSAdventureB\030" +
-      "\n\026com.hawk.game.protocol"
+      "Time\030\002 \002(\005\"0\n\021HSAdventureSettle\022\016\n\006teamI" +
+      "d\030\001 \002(\005\022\013\n\003pay\030\002 \002(\010\"\217\001\n\024HSAdventureSett" +
+      "leRet\022\016\n\006teamId\030\001 \002(\005\022\"\n\013basicReward\030\002 \002",
+      "(\0132\r.HSRewardInfo\022\"\n\013extraReward\030\003 \001(\0132\r" +
+      ".HSRewardInfo\022\037\n\tadventure\030\004 \002(\0132\014.HSAdv" +
+      "enture\"5\n\027HSAdventureNewCondition\022\014\n\004typ" +
+      "e\030\001 \002(\005\022\014\n\004gear\030\002 \002(\005\"p\n\032HSAdventureNewC" +
+      "onditionRet\022\037\n\tadventure\030\001 \002(\0132\014.HSAdven" +
+      "ture\022\023\n\013changeCount\030\002 \002(\005\022\034\n\024changeCount" +
+      "BeginTime\030\003 \002(\005\"\031\n\027HSAdventureBuyConditi" +
+      "on\"O\n\032HSAdventureBuyConditionRet\022\023\n\013chan" +
+      "geCount\030\001 \002(\005\022\034\n\024changeCountBeginTime\030\002 " +
+      "\002(\005\"\024\n\022HSAdventureBuyTeam\"\'\n\025HSAdventure",
+      "BuyTeamRet\022\016\n\006teamId\030\001 \002(\005\"?\n\030HSAdventur" +
+      "eConditionPush\022#\n\ridleAdventure\030\001 \003(\0132\014." +
+      "HSAdventureB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10501,7 +10590,7 @@ public final class Adventure {
           internal_static_HSAdventureSettle_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAdventureSettle_descriptor,
-              new java.lang.String[] { "TeamId", });
+              new java.lang.String[] { "TeamId", "Pay", });
           internal_static_HSAdventureSettleRet_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_HSAdventureSettleRet_fieldAccessorTable = new

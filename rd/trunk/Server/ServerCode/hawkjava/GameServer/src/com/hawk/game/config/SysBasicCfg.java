@@ -56,6 +56,14 @@ public class SysBasicCfg extends HawkConfigBase {
 	 */
 	protected final float allianceDissoveGoldRate;
 	/**
+	 * 解散公会返还比例
+	 */
+	protected final float allianceSecondPositionContribution;
+	/**
+	 * 解散公会返还比例
+	 */
+	protected final float allianceThirdPositionContribution;
+	/**
 	 * 全局静态对象
 	 */
 	private static SysBasicCfg instance = null;
@@ -83,6 +91,8 @@ public class SysBasicCfg extends HawkConfigBase {
 		allianceMaxBigTask = 0;
 		allianceMaxSmallTask = 0;
 		allianceDissoveGoldRate = .0f;
+		allianceSecondPositionContribution = 0;
+		allianceThirdPositionContribution = 0;
 	}
 
 	public int getPlayerCacheTime() {
@@ -134,5 +144,13 @@ public class SysBasicCfg extends HawkConfigBase {
 
 	public float getAllianceDissoveGoldRate() {
 		return allianceDissoveGoldRate;
+	}
+
+	public float getAllianceSecondPositionContribution() {
+		return allianceSecondPositionContribution;
+	}
+
+	public float getAllianceThirdPositionContribution() {
+		return allianceThirdPositionContribution;
 	}
 }

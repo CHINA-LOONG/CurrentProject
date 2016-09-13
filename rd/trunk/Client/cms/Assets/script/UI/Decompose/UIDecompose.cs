@@ -801,13 +801,13 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         Refresh();
     }
 
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         DecomposeItem material = item.GetComponent<DecomposeItem>();
         material.ReloadData(decomposeList.itemsInfo[index]);
     }
 
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("DecomposeItem");
         if (go != null)
@@ -820,7 +820,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         return null;
     }
 
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

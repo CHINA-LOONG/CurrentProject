@@ -1,17 +1,17 @@
-#NUM,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,NUM ,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM
-id,comments,name,title,desc,image,type,children,rechargeId,buyPrice,baseGift,extraGift,timeBegin,timeEnd,buyTime,duration,weight
-#Àñ°üid,×¢ÊÍ,Ãû³Æ,±êÌâ,ÃèÊö,µ×Í¼,ÀàĞÍ(1-½ø½×Àñ°ü/2-ËéÆ¬Àñ°ü/101-»î¶¯Àñ°ü/102-Ñ¡ÔñÀñ¡¾103¡¿),×ÓÀñ°ü,³äÖµID,ÊıÁ¿,»ù±¾½±Àø,¶îÍâ½±Àø,¿ªÊ¼Ê±¼äid,½áÊøÊ±¼äid,×î´ó¹ºÂò´ÎÊı,»î¶¯Ê±¼ä£¨Ğ¡Ê±£©,È¨ÖØ
-101,½ø½×Àñ°üa1,,giftspecial_jinjiea1_name,giftspecial_jinjiea1_desc,teshushoumai_chongwujinjie,1,0,,100,jinjie_base_1,,-1,-1,1,24,800
-102,½ø½×Àñ°üa2,,giftspecial_jinjiea2_name,giftspecial_jinjiea2_desc,teshushoumai_chongwujinjie,1,0,,200,jinjie_base_2,,-1,-1,1,24,200
-103,½ø½×Àñ°üb1,,giftspecial_jinjieb1_name,giftspecial_jinjieb1_desc,teshushoumai_chongwujinjie,5,0,,300,jinjie_base_1,,-1,-1,1,24,800
-104,½ø½×Àñ°üb2,,giftspecial_jinjieb2_name,giftspecial_jinjieb2_desc,teshushoumai_chongwujinjie,5,0,,400,jinjie_base_2,,-1,-1,1,24,200
-105,½ø½×Àñ°üc1,,giftspecial_jinjiec1_name,giftspecial_jinjiec1_desc,teshushoumai_chongwujinjie,6,0,,500,jinjie_base_1,,-1,-1,1,24,800
-106,½ø½×Àñ°üc2,,giftspecial_jinjiec2_name,giftspecial_jinjiec2_desc,teshushoumai_chongwujinjie,6,0,,600,jinjie_base_2,,-1,-1,1,24,200
-203,»î¶¯Àñ°ü1,,giftspecial_huodong1_name,giftspecial_huodong1_desc,teshushoumai_changzhu,101,0,com.diandian.undergroundguardian.giftspecial.99.99,0,huodong_base_1,huodong_extra_1,407,408,10,-1,100
-202,»î¶¯Àñ°ü2,,giftspecial_huodong2_name,giftspecial_huodong2_desc,teshushoumai_changzhu,101,0,com.diandian.undergroundguardian.giftspecial.49.99,0,huodong_base_2,huodong_extra_2,409,410,10,-1,100
-209,Ñ¡ÔñÀñ°ü¸¸Àñ°ü1,,giftspecial_xuanze1_name,giftspecial_xuanze1_desc,,102,"204,205",,0,,,407,408,1,-1,100
-204,Ñ¡ÔñÀñ°ü×ÓÀñ°ü11,,,,teshushoumai_xinshou,103,0,com.diandian.undergroundguardian.giftspecial.0.99,0,xuanze_zuo_1,,-1,-1,1,-1,100
-205,Ñ¡ÔñÀñ°ü×ÓÀñ°ü12,,,,teshushoumai_changzhu,103,0,com.diandian.undergroundguardian.giftspecial.9.99,0,xuanze_you_1,,-1,-1,1,-1,100
-206,Ñ¡ÔñÀñ°ü¸¸Àñ°ü1,,giftspecial_xuanze2_name,giftspecial_xuanze2_desc,,102,"207,208",,0,,,409,410,1,-1,100
-207,Ñ¡ÔñÀñ°ü×ÓÀñ°ü11,,,,teshushoumai_xinshou,103,0,com.diandian.undergroundguardian.giftspecial.24.99,0,xuanze_zuo_2,,-1,-1,1,-1,100
-208,Ñ¡ÔñÀñ°ü×ÓÀñ°ü12,,,,teshushoumai_changzhu,103,0,com.diandian.undergroundguardian.giftspecial.49.99,0,xuanze_you_2,,-1,-1,1,-1,100
+ï»¿#NUM,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,NUM ,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM
+id,comments,name,title,desc,image,type,children,rechargeId,buyPrice,baseGift,extraGift,buyTimes,timeBegin,timeEnd,relativeTimeBegin,duration,weight
+#ç¤¼åŒ…id,æ³¨é‡Š,åç§°,æ ‡é¢˜,æè¿°,åº•å›¾,ç±»å‹(1-è¿›é˜¶ç¤¼åŒ…/2-ç¢ç‰‡ç¤¼åŒ…/101-æ´»åŠ¨ç¤¼åŒ…/102-é€‰æ‹©ç¤¼ã€103ã€‘),å­ç¤¼åŒ…,å……å€¼ID,æ•°é‡,åŸºæœ¬å¥–åŠ±,é¢å¤–å¥–åŠ±,æœ€å¤§è´­ä¹°æ¬¡æ•°,å¼€å§‹æ—¶é—´id,ç»“æŸæ—¶é—´id,ç›¸å¯¹å¼€æœå¼€å§‹æ—¶é—´,æŒç»­ç§’æ•°,æƒé‡
+101,è¿›é˜¶ç¤¼åŒ…a1,,giftspecial_jinjiea1_name,giftspecial_jinjiea1_desc,teshushoumai_chongwujinjie,1,0,,100,jinjie_base_1,,1,-1,-1,-1,86400,800
+102,è¿›é˜¶ç¤¼åŒ…a2,,giftspecial_jinjiea2_name,giftspecial_jinjiea2_desc,teshushoumai_chongwujinjie,1,0,,200,jinjie_base_2,,1,-1,-1,-1,86400,200
+103,è¿›é˜¶ç¤¼åŒ…b1,,giftspecial_jinjieb1_name,giftspecial_jinjieb1_desc,teshushoumai_chongwujinjie,5,0,,300,jinjie_base_1,,1,-1,-1,-1,86400,800
+104,è¿›é˜¶ç¤¼åŒ…b2,,giftspecial_jinjieb2_name,giftspecial_jinjieb2_desc,teshushoumai_chongwujinjie,5,0,,400,jinjie_base_2,,1,-1,-1,-1,86400,200
+105,è¿›é˜¶ç¤¼åŒ…c1,,giftspecial_jinjiec1_name,giftspecial_jinjiec1_desc,teshushoumai_chongwujinjie,6,0,,500,jinjie_base_1,,1,-1,-1,-1,86400,800
+106,è¿›é˜¶ç¤¼åŒ…c2,,giftspecial_jinjiec2_name,giftspecial_jinjiec2_desc,teshushoumai_chongwujinjie,6,0,,600,jinjie_base_2,,1,-1,-1,-1,86400,200
+203,æ´»åŠ¨ç¤¼åŒ…1,,giftspecial_huodong1_name,giftspecial_huodong1_desc,teshushoumai_changzhu,101,0,com.diandian.undergroundguardian.giftspecial.99.99,0,huodong_base_1,huodong_extra_1,10,407,408,-1,-1,100
+202,æ´»åŠ¨ç¤¼åŒ…2,,giftspecial_huodong2_name,giftspecial_huodong2_desc,teshushoumai_changzhu,101,0,com.diandian.undergroundguardian.giftspecial.49.99,0,huodong_base_2,huodong_extra_2,10,409,410,-1,-1,100
+209,é€‰æ‹©ç¤¼åŒ…çˆ¶ç¤¼åŒ…1,,giftspecial_xuanze1_name,giftspecial_xuanze1_desc,,102,"204,205",,0,,,1,407,408,-1,-1,100
+204,é€‰æ‹©ç¤¼åŒ…å­ç¤¼åŒ…11,,,,teshushoumai_xinshou,103,0,com.diandian.undergroundguardian.giftspecial.0.99,0,xuanze_zuo_1,,1,-1,-1,-1,-1,100
+205,é€‰æ‹©ç¤¼åŒ…å­ç¤¼åŒ…12,,,,teshushoumai_changzhu,103,0,com.diandian.undergroundguardian.giftspecial.9.99,0,xuanze_you_1,,1,-1,-1,-1,-1,100
+206,é€‰æ‹©ç¤¼åŒ…çˆ¶ç¤¼åŒ…1,,giftspecial_xuanze2_name,giftspecial_xuanze2_desc,,102,"207,208",,0,,,1,409,410,-1,-1,100
+207,é€‰æ‹©ç¤¼åŒ…å­ç¤¼åŒ…11,,,,teshushoumai_xinshou,103,0,com.diandian.undergroundguardian.giftspecial.24.99,0,xuanze_zuo_2,,1,-1,-1,-1,-1,100
+208,é€‰æ‹©ç¤¼åŒ…å­ç¤¼åŒ…12,,,,teshushoumai_changzhu,103,0,com.diandian.undergroundguardian.giftspecial.49.99,0,xuanze_you_2,,1,-1,-1,-1,-1,100

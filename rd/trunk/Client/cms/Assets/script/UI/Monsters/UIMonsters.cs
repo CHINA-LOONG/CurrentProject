@@ -387,7 +387,7 @@ public class UIMonsters : UIBase,
         ReLoadData(tabIndex2nd);
     }
 
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         if (uiType == UIType.Owned)
         {
@@ -413,7 +413,7 @@ public class UIMonsters : UIBase,
         }
         return null;
     }
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         if (uiType == UIType.Owned)
         {
@@ -426,7 +426,7 @@ public class UIMonsters : UIBase,
             collect.ReloadData(CollectList[index]);
         }
     }
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

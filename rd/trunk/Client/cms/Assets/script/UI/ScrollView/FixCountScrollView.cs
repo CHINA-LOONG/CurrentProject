@@ -11,9 +11,9 @@ using System.Collections.Generic;
 public interface IScrollView
 {
     //List<Transform> CreateItem(int count);
-    void IScrollViewReloadItem(Transform item, int index);
-    Transform IScrollViewCreateItem(Transform parent, int index = 0);
-    void IScrollViewCleanItem(List<Transform> itemList);
+    void IScrollViewReloadItem(FixCountScrollView scrollView,Transform item, int index);
+    Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent);
+    void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList);
 }
 
 [DisallowMultipleComponent]
@@ -250,7 +250,7 @@ public class FixCountScrollView : MonoBehaviour
             CleanContent();
             for (int i = 0; i < childCont; i++)
             {
-                Transform item = iScrollViewDelegate.IScrollViewCreateItem(m_Content);
+                Transform item = iScrollViewDelegate.IScrollViewCreateItem(this, m_Content);
                 item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
                 m_Child.Add(item);
             }
@@ -263,7 +263,7 @@ public class FixCountScrollView : MonoBehaviour
     {
         if (iScrollViewDelegate != null)
         {
-            iScrollViewDelegate.IScrollViewCleanItem(m_Child);
+            iScrollViewDelegate.IScrollViewCleanItem(this, m_Child);
         }
         if (m_Child.Count != 0)
         {
@@ -326,7 +326,7 @@ public class FixCountScrollView : MonoBehaviour
             item.gameObject.SetActive(true);
             if (iScrollViewDelegate != null)
             {
-                iScrollViewDelegate.IScrollViewReloadItem(item, index);
+                iScrollViewDelegate.IScrollViewReloadItem(this, item, index);
             }
             //Text text = item.GetComponent<Text>();
             //if (text != null)

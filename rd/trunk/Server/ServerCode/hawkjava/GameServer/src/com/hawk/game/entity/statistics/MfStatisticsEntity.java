@@ -77,6 +77,10 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "towerXFloor", nullable = false)
 	protected String towerXFloorJson = "";
 
+	// 今日已雇佣怪物
+	@Column(name = "hireMonsterDaily", nullable = false)
+	protected String hireMonsterDailyJson = "";
+
 	// 历史大冒险次数
 	@Column(name = "adventureTimes", nullable = false)
 	protected int adventureTimes = 0;
@@ -178,6 +182,11 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	boolean towerFloorFlag = false;
 
 	@Transient
+	protected Set<Integer> hireMonsterDailySet = new HashSet<Integer>();
+	@Transient
+	boolean hireMonsterDailyFlag = false;
+
+	@Transient
 	protected Map<String, Integer> useItemCountMap = new HashMap<String, Integer>();
 	@Transient
 	boolean useItemCountFlag = false;
@@ -228,6 +237,9 @@ public class MfStatisticsEntity extends HawkDBEntity {
 		if (null != towerXFloorJson && false == "".equals(towerXFloorJson) && false == "null".equals(towerXFloorJson)) {
 			towerFloorMap = HawkJsonUtil.getJsonInstance().fromJson(towerXFloorJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
 		}
+		if (null != hireMonsterDailyJson && false == "".equals(hireMonsterDailyJson) && false == "null".equals(hireMonsterDailyJson)) {
+			hireMonsterDailySet = HawkJsonUtil.getJsonInstance().fromJson(hireMonsterDailyJson, new TypeToken<HashSet<Integer>>() {}.getType());
+		}
 		if (null != useItemXCountJson && false == "".equals(useItemXCountJson) && false == "null".equals(useItemXCountJson)) {
 			useItemCountMap = HawkJsonUtil.getJsonInstance().fromJson(useItemXCountJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
@@ -270,6 +282,10 @@ public class MfStatisticsEntity extends HawkDBEntity {
 		if (true == towerFloorFlag) {
 			towerFloorFlag = false;
 			towerXFloorJson = HawkJsonUtil.getJsonInstance().toJson(towerFloorMap);
+		}
+		if (true == hireMonsterDailyFlag) {
+			hireMonsterDailyFlag = false;
+			hireMonsterDailyJson = HawkJsonUtil.getJsonInstance().toJson(hireMonsterDailySet);
 		}
 		if (true == useItemCountFlag) {
 			useItemCountFlag = false;

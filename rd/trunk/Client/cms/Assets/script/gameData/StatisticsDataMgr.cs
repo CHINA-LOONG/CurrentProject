@@ -46,7 +46,10 @@ public class StatisticsDataMgr : MonoBehaviour {
 
     public void Init()
     {
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART1_S.GetHashCode().ToString(), OnStatisticsPart1Sync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART2_S.GetHashCode().ToString(), OnStatisticsPart2Sync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART3_S.GetHashCode().ToString(), OnStatisticsPart3Sync);
+        
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
@@ -57,7 +60,10 @@ public class StatisticsDataMgr : MonoBehaviour {
 
     void Destroy()
     {
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART1_S.GetHashCode().ToString(), OnStatisticsPart1Sync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART2_S.GetHashCode().ToString(), OnStatisticsPart2Sync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART3_S.GetHashCode().ToString(), OnStatisticsPart3Sync);
+
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
@@ -65,41 +71,61 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.gm.GM_INSTANCE_PUSH_S.GetHashCode().ToString(), OnGMInstanceStateChange);
     }
 
-    void OnStatisticsInfoSync(ProtocolMessage message)
+    void OnStatisticsPart1Sync(ProtocolMessage  message)
     {
-        PB.HSStatisticsInfoSync staticsticsData = message.GetProtocolBody<PB.HSStatisticsInfoSync>();
-        SkillPoints = staticsticsData.skillPoint;
-        skillTimeBegin = staticsticsData.skillPointBeginTime;
-		GameDataMgr.Instance.UserDataAttr.orderServerKey =  staticsticsData.orderServerKey;
-		GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = staticsticsData.monthCardLeft;
-		GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = staticsticsData.rechargeState;
-		expLeftTime = staticsticsData.expLeftTimes;
-		gold2coinExchargeTimes = staticsticsData.gold2CoinTimes;
-        GameDataMgr.Instance.PlayerDataAttr.InitCollectPet(staticsticsData.monsterCollect);
-
-        GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(staticsticsData.itemState);
-
-        UpdateServerTime(staticsticsData.timeStamp);
-
-        GameDataMgr.Instance.PlayerDataAttr.UpdateHuoli(staticsticsData.fatigue, staticsticsData.fatigueBeginTime);
-
-        if (staticsticsData.instanceState != null)
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-            InstanceMapService.Instance.RefreshInstanceMap(staticsticsData.instanceState);
+            return;
+        }
+        PB.HSStatisticsSyncPart1 msgData = message.GetProtocolBody<PB.HSStatisticsSyncPart1>();
+        UpdateServerTime(msgData.timeStamp);
+        if (msgData.instanceState != null)
+        {
+            InstanceMapService.Instance.RefreshInstanceMap(msgData.instanceState);
         }
 
-        InstanceMapService.Instance.instanceResetTimes = staticsticsData.instanceResetCount;
+        InstanceMapService.Instance.instanceResetTimes = msgData.instanceResetCount;
 
-        if (staticsticsData.chapterState != null)
+        if (msgData.chapterState != null)
         {
-            InstanceMapService.Instance.chapterState = staticsticsData.chapterState;
+            InstanceMapService.Instance.chapterState = msgData.chapterState;
         }
 
-        GameDataMgr.Instance.SyncHoleData(staticsticsData.holeState);
-        GameDataMgr.Instance.SyncTowerData(staticsticsData.towerState);
+        GameDataMgr.Instance.SyncHoleData(msgData.holeState);
+        GameDataMgr.Instance.SyncTowerData(msgData.towerState);
     }
+    void OnStatisticsPart2Sync(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSStatisticsSyncPart2 msgData = message.GetProtocolBody<PB.HSStatisticsSyncPart2>();
 
-	void OnExpLeftTimesSync(ProtocolMessage message)
+        GameDataMgr.Instance.PlayerDataAttr.InitCollectPet(msgData.monsterCollect);
+
+        GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(msgData.itemState);
+
+        GameDataMgr.Instance.PlayerDataAttr.UpdateHuoli(msgData.fatigue, msgData.fatigueBeginTime);
+
+        SkillPoints = msgData.skillPoint;
+        skillTimeBegin = msgData.skillPointBeginTime;
+    }
+    void OnStatisticsPart3Sync(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSStatisticsSyncPart3 msgData = message.GetProtocolBody<PB.HSStatisticsSyncPart3>();
+
+        GameDataMgr.Instance.UserDataAttr.orderServerKey = msgData.orderServerKey;
+        GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = msgData.monthCardLeft;
+        GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = msgData.rechargeState;
+        expLeftTime = msgData.expLeftTimes;
+        gold2coinExchargeTimes = msgData.gold2CoinTimes;
+    }
+    void OnExpLeftTimesSync(ProtocolMessage message)
 	{
         PB.HSSyncExpLeftTimes msgBody = message.GetProtocolBody<PB.HSSyncExpLeftTimes>();
 		expLeftTime = msgBody;

@@ -144,13 +144,13 @@ public class UISelectEquipList : UIBase,
     }
 
     #region ScrollView
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         EquipListItem equip = item.GetComponent<EquipListItem>();
         equip.ReloadData(Infos[index]);
     }
 
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("EquipListItem");
         if (go != null)
@@ -163,7 +163,7 @@ public class UISelectEquipList : UIBase,
         return null;
     }
 
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
         itemList.Clear();

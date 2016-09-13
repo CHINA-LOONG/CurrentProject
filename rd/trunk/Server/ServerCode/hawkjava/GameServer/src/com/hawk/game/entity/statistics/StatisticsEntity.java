@@ -620,6 +620,17 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
+	// hireMonster------------------------------------------
+	public Set<Integer> getHireMonsterDailySet() {
+		return mfEntity.hireMonsterDailySet;
+	}
+
+	public void addHireMonsterDaily(int monsterId) {
+		mfEntity.hireMonsterDailySet.add(monsterId);
+		mfEntity.hireMonsterDailyFlag = true;
+		mfUpdate = true;
+	}
+
 	// adventureTimes------------------------------------------
 	public int getAdventureTimes() {
 		return mfEntity.adventureTimes;
@@ -1274,12 +1285,61 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
-	public int getEggDiamondTimes() {
-		return lf2Entity.eggDiamondTimes;
+	public int getEggCoinFreeTimesDaily() {
+		return lf2Entity.eggCoinFreeTimesDaily;
 	}
 
-	public void increaseEggDiamondTimes() {
-		++lf2Entity.eggDiamondTimes;
+	public void increaseEggCoinFreeTimesDaily() {
+		++lf2Entity.eggCoinFreeTimesDaily;
+		lf2Update = true;
+	}
+	
+	public void clearEggCoinFreeTimesDaily() {
+		lf2Entity.eggCoinFreeTimesDaily = 0;
+		lf2Update = true;
+	}
+
+	public int getEggDiamondFreeTimes() {
+		return lf2Entity.eggDiamondFreeTimes;
+	}
+
+	public void increaseEggDiamondFreeTimes() {
+		++lf2Entity.eggDiamondFreeTimes;
+		lf2Update = true;
+	}
+
+	public int getEggDiamondOneTimes() {
+		return lf2Entity.eggDiamondOneTimes;
+	}
+
+	public void increaseEggDiamondOneTimes() {
+		++lf2Entity.eggDiamondOneTimes;
+		lf2Update = true;
+	}
+	
+	public int getEggDiamondTenTimes() {
+		return lf2Entity.eggDiamondTenTimes;
+	}
+
+	public void increaseEggDiamondTenTimes() {
+		++lf2Entity.eggDiamondTenTimes;
+		lf2Update = true;
+	}
+	public int getEggDiamondPoint() {
+		return lf2Entity.eggDiamondPoint;
+	}
+
+	public void setEggDiamondPoint(int point) {
+		lf2Entity.eggDiamondPoint = point;
+		lf2Update = true;
+	}
+
+	public Calendar getEggPointBeginTime() {
+		return lf2Entity.eggPointBeginTime;
+	}
+
+	public void setEggPointBeginTime(Calendar time) {
+		lf2Entity.eggPointBeginTime = time;
 		lf2Update = true;
 	}
 

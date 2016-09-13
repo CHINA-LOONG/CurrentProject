@@ -3057,6 +3057,22 @@ public final class Status {
      * </pre>
      */
     ADVENTURE_TEAM_IDLE(6, 786439),
+    /**
+     * <code>ADVENTURE_NOT_END = 786440;</code>
+     *
+     * <pre>
+     * 冒险未完成
+     * </pre>
+     */
+    ADVENTURE_NOT_END(7, 786440),
+    /**
+     * <code>ADVENTURE_HIRE_ALREADY = 786441;</code>
+     *
+     * <pre>
+     * 怪物今日已雇佣
+     * </pre>
+     */
+    ADVENTURE_HIRE_ALREADY(8, 786441),
     ;
 
     /**
@@ -3115,6 +3131,22 @@ public final class Status {
      * </pre>
      */
     public static final int ADVENTURE_TEAM_IDLE_VALUE = 786439;
+    /**
+     * <code>ADVENTURE_NOT_END = 786440;</code>
+     *
+     * <pre>
+     * 冒险未完成
+     * </pre>
+     */
+    public static final int ADVENTURE_NOT_END_VALUE = 786440;
+    /**
+     * <code>ADVENTURE_HIRE_ALREADY = 786441;</code>
+     *
+     * <pre>
+     * 怪物今日已雇佣
+     * </pre>
+     */
+    public static final int ADVENTURE_HIRE_ALREADY_VALUE = 786441;
 
 
     public final int getNumber() { return value; }
@@ -3128,6 +3160,8 @@ public final class Status {
         case 786437: return ADVENTURE_TEAM_NOT_OPEN;
         case 786438: return ADVENTURE_TEAM_BUSY;
         case 786439: return ADVENTURE_TEAM_IDLE;
+        case 786440: return ADVENTURE_NOT_END;
+        case 786441: return ADVENTURE_HIRE_ALREADY;
         default: return null;
       }
     }
@@ -3177,6 +3211,104 @@ public final class Status {
     }
 
     // @@protoc_insertion_point(enum_scope:adventureError)
+  }
+
+  /**
+   * Protobuf enum {@code summonError}
+   */
+  public enum summonError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SUMMON_COIN_NO_FREE = 851969;</code>
+     *
+     * <pre>
+     * 没有免费金币抽蛋次数
+     * </pre>
+     */
+    SUMMON_COIN_NO_FREE(0, 851969),
+    /**
+     * <code>SUMMON_DIAMOND_NO_FREE = 851970;</code>
+     *
+     * <pre>
+     * 没有免费钻石抽蛋次数
+     * </pre>
+     */
+    SUMMON_DIAMOND_NO_FREE(1, 851970),
+    ;
+
+    /**
+     * <code>SUMMON_COIN_NO_FREE = 851969;</code>
+     *
+     * <pre>
+     * 没有免费金币抽蛋次数
+     * </pre>
+     */
+    public static final int SUMMON_COIN_NO_FREE_VALUE = 851969;
+    /**
+     * <code>SUMMON_DIAMOND_NO_FREE = 851970;</code>
+     *
+     * <pre>
+     * 没有免费钻石抽蛋次数
+     * </pre>
+     */
+    public static final int SUMMON_DIAMOND_NO_FREE_VALUE = 851970;
+
+
+    public final int getNumber() { return value; }
+
+    public static summonError valueOf(int value) {
+      switch (value) {
+        case 851969: return SUMMON_COIN_NO_FREE;
+        case 851970: return SUMMON_DIAMOND_NO_FREE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<summonError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<summonError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<summonError>() {
+            public summonError findValueByNumber(int number) {
+              return summonError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(13);
+    }
+
+    private static final summonError[] VALUES = values();
+
+    public static summonError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private summonError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:summonError)
   }
 
 
@@ -3284,14 +3416,17 @@ public final class Status {
       "TEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_" +
       "COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUNT\020\204\200" +
       "$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200(*(\n\014se" +
-      "ttingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200,*\336\001\n" +
+      "ttingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200,*\225\002\n" +
       "\016adventureError\022\032\n\024ADVENTURE_TEAM_COUNT\020" +
       "\201\2000\022\033\n\025ADVENTURE_CHANGE_ZERO\020\202\2000\022\037\n\031ADVE" +
       "NTURE_CHANGE_NOT_ZERO\020\203\2000\022\035\n\027ADVENTURE_M",
       "ONSTER_COUNT\020\204\2000\022\035\n\027ADVENTURE_TEAM_NOT_O" +
       "PEN\020\205\2000\022\031\n\023ADVENTURE_TEAM_BUSY\020\206\2000\022\031\n\023AD" +
-      "VENTURE_TEAM_IDLE\020\207\2000B\030\n\026com.hawk.game.p" +
-      "rotocol"
+      "VENTURE_TEAM_IDLE\020\207\2000\022\027\n\021ADVENTURE_NOT_E" +
+      "ND\020\210\2000\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\2000*F\n\013" +
+      "summonError\022\031\n\023SUMMON_COIN_NO_FREE\020\201\2004\022\034" +
+      "\n\026SUMMON_DIAMOND_NO_FREE\020\202\2004B\030\n\026com.hawk" +
+      ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

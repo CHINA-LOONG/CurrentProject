@@ -325,4 +325,16 @@ enum adventureError
 	ADVENTURE_TEAM_BUSY        = 0x000C0006;
 	// 队伍未加入冒险
 	ADVENTURE_TEAM_IDLE        = 0x000C0007;
+	// 冒险未完成
+	ADVENTURE_NOT_END          = 0x000C0008;
+	// 怪物今日已雇佣
+	ADVENTURE_HIRE_ALREADY     = 0x000C0009;
+}
+
+enum summonError
+{
+	// 没有免费金币抽蛋次数
+	SUMMON_COIN_NO_FREE        = 0x000D0001;
+	// 没有免费钻石抽蛋次数
+	SUMMON_DIAMOND_NO_FREE     = 0x000D0002;
 }

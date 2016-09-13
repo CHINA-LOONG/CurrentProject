@@ -509,4 +509,21 @@ namespace PB
       IN_ADVENTURE = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"SummonType")]
+    public enum SummonType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN", Value=1)]
+      SUMMON_COIN = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND", Value=2)]
+      SUMMON_DIAMOND = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_FREE", Value=3)]
+      SUMMON_COIN_FREE = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_FREE", Value=4)]
+      SUMMON_DIAMOND_FREE = 4
+    }
+  
 }

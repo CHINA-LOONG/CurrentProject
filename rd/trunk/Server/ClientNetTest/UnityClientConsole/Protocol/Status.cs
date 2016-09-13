@@ -82,6 +82,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"UNSUPPORT_ACTION", Value=8)]
       UNSUPPORT_ACTION = 8,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_INTERVAL_SHORT", Value=9)]
+      LOGIN_INTERVAL_SHORT = 9,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -510,7 +513,24 @@ namespace PB
       ADVENTURE_TEAM_BUSY = 786438,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_IDLE", Value=786439)]
-      ADVENTURE_TEAM_IDLE = 786439
+      ADVENTURE_TEAM_IDLE = 786439,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NOT_END", Value=786440)]
+      ADVENTURE_NOT_END = 786440,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_HIRE_ALREADY", Value=786441)]
+      ADVENTURE_HIRE_ALREADY = 786441
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"summonError")]
+    public enum summonError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851969)]
+      SUMMON_COIN_NO_FREE = 851969,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851970)]
+      SUMMON_DIAMOND_NO_FREE = 851970
     }
   
 }

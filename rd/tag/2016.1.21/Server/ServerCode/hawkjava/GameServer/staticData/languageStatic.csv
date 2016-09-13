@@ -54,14 +54,14 @@ piying5hide_lbody,三个秘密——右半身的秘密,Three secrets? One on his
 piying5hide_rbody,三个秘密——左半身的秘密,Three secrets? One on his left Shadow?
 piying5hide_head,三个秘密——头部神秘的眼罩,Three secrets? Could it in be his head?
 huapo2hide_flower,空中漂浮的花瓣，隐藏着怎样的秘密？,Notice the Petal hovering around?
-zouyincao2hide_trumpet,疯狂舞动的喇叭,The secret is in its Crazy Trumpet.
+zouyincao2hide_trumpet,猜猜我在哪,Find me
 wushi4hide_horn,舞狮头顶尖尖角,This shape looks like a horn?
 wushi4hide_ball,舞狮看起来很喜欢他的球呢,It seems to love the Magic Ball.
 xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?
 xiyiren2hide_claw,锋利的爪子,Attack its Bracelet could be where its secret lies.
 panshen2hide_eye,口中的玫瑰，散发着迷人的香气,The rose in his mouth is emitting a strange scent.
 shuigui3hide_box,船长脚边的宝箱好像有些奇怪！,Something interesting besides the captain.
-shuigui3hide_skull,船长的头顶已经失去了保护,His Skull seems exposed.
+shuigui3hide_skull,船长的头顶已经失去了保护,The top of the pirate's head is no longer protected.
 shuigui3hide_bird,注意到船长头顶的乌鸦了么？,Notice there is a Crow on his head?
 kairuisi5hide_head,帽子下掩藏的头部会是他的弱点么？,This shape looks like her hood?
 kairuisi5hide_weapon,手中挥舞的镰刀,How about her Sickle？
@@ -85,7 +85,7 @@ xiyiren2normal1_claw,干掉爪子！看看爪子下隐藏着怎样的黑手！,D
 panshen2normal1_eye,攻击玫瑰会让潘神心碎,Let's break his heart by attacking the Rose.
 shuigui3normal1_box,击破宝箱，船长会丧失眩晕我方的能力,This Magic Chest Box can increase in Stunning Effect
 siwangtashuigui3normal1_box,附加炸弹效果,Increases bomb effect
-shuigui3normal1_skull,船长的头顶，不堪一击….,Attack his Skull now.
+shuigui3normal1_skull,船长的头顶，不堪一击….,The top of the pirate's head is quite vunerable…
 shuigui3normal1_bird,乌鸦似乎在保护着什么…打掉它看看,The Crow could be protect his weakpoint.
 kairuisi5normal1_head,凯瑞斯的软肋,This is her weakpoint.
 kairuisi5normal1_weapon,镰刀不仅提升法术攻击，还能够治疗凯瑞斯！,This Sickle increases her attack and healing power.
@@ -767,9 +767,9 @@ bossdajie11Moguguai4wp02,蘑菇,Mushroom
 moguguai4hide_mushroom,蘑菇盖会不会是它的保护伞呢？,Would his Cap be the secret to Mantango?
 moguguai4normal_mushroom,原来蘑菇盖是他的弱点！全力攻击！,Mantango's Cap is its weakpoint! Concentrate your fire at it!
 bossdajie18Ladong5wp02,头,Head
-bossdajie18Ladong5wp03,金苹果,Golden Apple
+bossdajie18Ladong5wp03,坚硬的保护壳,Protective Shell
 ladong5hide_head,屠龙先揍头,Try hitting it's Head first?
-ladong5normal_head,让守护龙头晕目眩,Make Guardian Dragon dizzy
+ladong5normal_head,守护龙的要害,Attack this weakpoint.
 ladong5normal_goldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
 speechname_jiuwei,九尾狐,Nine Tails
 speechname_bingxuenvwang,冰雪女王,Chione
@@ -2223,9 +2223,9 @@ It appears to be her <color=#ffcc00>petal</color>."
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.
 guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoints</color>?
-zouyincao2normal1_yinfu1,音符守护着他不受伤害！,音符守护着它不受伤害！
-zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,环绕的音符，会有什么样的秘密？
-bossdajie16Zouyincao2wp03,音符盾,音符盾
+zouyincao2normal1_yinfu1,音符守护着他不受伤害！,The Musical Notes prevent him from taking damage!
+zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,What secret is being surrounded by these Musical Notes?
+bossdajie16Zouyincao2wp03,音符盾,Notes Shield
 bosschaoxue52Yifanmumian3wp02,吊坠,Pendant
 bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll
 yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？
@@ -2400,7 +2400,9 @@ worldentry,神怪入侵,Deity Invasion
 10279_miaoshu,点亮宠物头像达到50个,Accumulate 50 Monster Avatars.
 story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird."
 story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…"
-biaoti8023,挑战守护者,挑战守护者
-biaoti8024,抵御入侵者,抵御入侵者
-mubiao8023,完成1次神话守护者,完成1次神话守护者
-mubiao8024,完成1次神怪入侵,完成1次神怪入侵
+biaoti8023,挑战守护者,Face the Guardians
+biaoti8024,抵御入侵者,Resist the Invasion
+mubiao8023,完成1次神话守护者,Complete Myth Guardian mode once. 
+mubiao8024,完成1次神怪入侵,Complete Deity Invasion mode once.
+bossdajie18Ladong5wp04,金苹果,Golden Apple
+ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!

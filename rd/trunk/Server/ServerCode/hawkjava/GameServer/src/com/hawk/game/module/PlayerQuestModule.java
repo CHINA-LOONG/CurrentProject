@@ -531,12 +531,12 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 		// 钻石抽蛋次数
 		case GsConst.QuestGoalType.EGG_DIAMOND_TIMES: {
-			progress = statisticsEntity.getEggDiamondTimes();
+			// progress = statisticsEntity.getEggDiamondTimes();
 			break;
 		}
 		// 抽蛋次数
 		case GsConst.QuestGoalType.EGG_ALL_TIMES: {
-			progress = statisticsEntity.getEggCoinTimes() + statisticsEntity.getEggDiamondTimes();
+			// progress = statisticsEntity.getEggCoinTimes() + statisticsEntity.getEggDiamondTimes();
 			break;
 		}
 		// 抽到X品级宠物次数

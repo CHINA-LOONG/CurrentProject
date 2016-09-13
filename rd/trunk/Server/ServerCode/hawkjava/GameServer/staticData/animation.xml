@@ -10692,6 +10692,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<ParticleList>
 				<Particle asset="yifanmumian3pre_bossdianran" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Yafogemenghuidaoguoqu"/>
+			</AudioList>
 		</Ani>
 		
 		<Ani id="bosschaoxue52Yifanmumian31e3" state="0" AniType="Damage">
@@ -14641,7 +14644,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		<Ani id="Zouyincao2_state2to1" state="0" action_delay="2">
 			<WpStateList>
 				<Wp time="0.5" name="bossdajie16Zouyincao2wp01" state="1"/>
-				<Wp time="0.5" name="bossdajie16Zouyincao2wp02" state="0"/>
+				<Wp time="0.5" name="bossdajie16Zouyincao2wp02" state="1"/>
 				<Wp time="0.5" name="bossdajie16Zouyincao2wp03" state="3"/>
 				<Wp time="0.5" name="bossdajie16Zouyincao2wp04" state="3"/>
 			</WpStateList>
@@ -14996,14 +14999,14 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ControllerList-->
 			<WpStateList>
 				<Wp time="0.5" name="bossdajie18Ladong5wp04" state="1"/>
+				<Wp time="0.5" name="bossdajie18Ladong5wp03" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="Ladong5_state2to1" state="0" action_delay="1">
-			<ControllerList>
+			<!--ControllerList>
 				<Controller time="2" name="Ladong5boss"/>
-			</ControllerList>
+			</ControllerList-->
 			<WpStateList>
-				<Wp time="0.5" name="bossdajie18Ladong5wp02" state="0"/>
 				<Wp time="0.5" name="bossdajie18Ladong5wp03" state="3"/>
 			</WpStateList>
 		</Ani>

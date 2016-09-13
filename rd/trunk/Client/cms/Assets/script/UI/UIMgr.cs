@@ -410,12 +410,14 @@ public class UIMgr : MonoBehaviour
     public void OnKickPlayer(ProtocolMessage msg)//顶号
     {
         PB.HSKickPlayer result = msg.GetProtocolBody<PB.HSKickPlayer>();
-        if (result.reason == 1)
+        if (result.reason == 1 )
         {
-            curParkTime = 0.0f;
-            MsgBox.PromptMsg.Open(
-             MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("login_dinghao_001"), SetKickPlayre);
         }
+
+        SocketClient.Logout();
+        curParkTime = 0.0f;
+        MsgBox.PromptMsg.Open(
+         MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("login_dinghao_001"), SetKickPlayre);
     }
     void Update()
     {

@@ -243,12 +243,12 @@ public class UIQuest : UIBase,
     #endregion
 
     #region IScrollView
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         questItem quest = item.GetComponent<questItem>();
         quest.ReLoadData(CurrentList[index]);
     }
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("questItem");
         if (go!=null)
@@ -261,7 +261,7 @@ public class UIQuest : UIBase,
         }
         return null;
     }
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
     }

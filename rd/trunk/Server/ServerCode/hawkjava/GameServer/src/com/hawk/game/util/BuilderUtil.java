@@ -36,7 +36,9 @@ import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.ChapterState;
-import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
+import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart1;
+import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart2;
+import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart3;
 import com.hawk.game.protocol.Statistics.HSSyncDailyRefresh;
 import com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes;
 import com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh;
@@ -74,8 +76,10 @@ public class BuilderUtil {
 		return builder;
 	}
 
-	public static HSStatisticsInfoSync.Builder genStatisticsBuilder(StatisticsEntity statisticsEntity) {
-		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();
+	public static HSStatisticsSyncPart1.Builder genStatisticsPart1Builder(StatisticsEntity statisticsEntity) {
+		HSStatisticsSyncPart1.Builder builder = HSStatisticsSyncPart1.newBuilder();
+
+		builder.setTimeStamp(HawkTime.getSeconds());
 
 		for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
 			InstanceState.Builder instanceState = InstanceState.newBuilder();
@@ -95,43 +99,6 @@ public class BuilderUtil {
 		chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
 		builder.setChapterState(chapterState);
 
-		builder.addAllMonsterCollect(statisticsEntity.getMonsterCollectSet());
-		builder.setFatigue(statisticsEntity.getFatigue());
-		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
-		builder.setSkillPoint(statisticsEntity.getSkillPoint());
-		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
-//		builder.setAdventureChange(statisticsEntity.getAdventureChange());
-//		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
-		builder.setTimeStamp(HawkTime.getSeconds());
-
-		// 设置订单服务器key
-		builder.setOrderServerKey(HawkOrderService.getInstance().getSuuid());
-		if (statisticsEntity.getMonthCardEndTime() == null || HawkTime.getCalendar().compareTo(statisticsEntity.getMonthCardEndTime()) > 0) {
-			builder.setMonthCardLeft(0);
-		}
-		else {
-			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
-		}
-
-		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
-			RechargeState.Builder rechargeState = RechargeState.newBuilder();
-			rechargeState.setProductId(entry.getKey());
-			rechargeState.setBuyTimes(entry.getValue());
-			builder.addRechargeState(rechargeState);
-		}
-
-		builder.setGold2CoinTimes(statisticsEntity.getBuyCoinTimesDaily());
-		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
-		builder.setInstanceResetCount(statisticsEntity.getInstanceResetTimesDaily());
-
-		for (Entry<String, Integer> entry : statisticsEntity.getUseItemCountDailyMap().entrySet()) {
-			ItemState.Builder itemState = ItemState.newBuilder();
-			itemState.setItemId(entry.getKey());
-			itemState.setUseCountDaily(entry.getValue());
-
-			builder.addItemState(itemState);
-		}
-
 		for (Entry<Integer, Boolean> entry : ServerData.getInstance().getHoleStateMap().entrySet()) {
 			HoleState.Builder holeState = HoleState.newBuilder();
 			holeState.setHoleId(entry.getKey());
@@ -148,6 +115,58 @@ public class BuilderUtil {
 
 			builder.addTowerState(towerState);
 		}
+
+		builder.setInstanceResetCount(statisticsEntity.getInstanceResetTimesDaily());
+
+		return builder;
+	}
+
+	public static HSStatisticsSyncPart2.Builder genStatisticsPart2Builder(StatisticsEntity statisticsEntity) {
+		HSStatisticsSyncPart2.Builder builder = HSStatisticsSyncPart2.newBuilder();
+
+		builder.addAllMonsterCollect(statisticsEntity.getMonsterCollectSet());
+		
+		for (Entry<String, Integer> entry : statisticsEntity.getUseItemCountDailyMap().entrySet()) {
+			ItemState.Builder itemState = ItemState.newBuilder();
+			itemState.setItemId(entry.getKey());
+			itemState.setUseCountDaily(entry.getValue());
+
+			builder.addItemState(itemState);
+		}
+		
+		builder.setFatigue(statisticsEntity.getFatigue());
+		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
+		builder.setSkillPoint(statisticsEntity.getSkillPoint());
+		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+		builder.setAdventureChange(statisticsEntity.getAdventureChange());
+		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
+		// TODO
+		builder.setSummonDiamondFreeBeginTime(0);
+
+		return builder;
+	}
+
+	public static HSStatisticsSyncPart3.Builder genStatisticsPart3Builder(StatisticsEntity statisticsEntity) {
+		HSStatisticsSyncPart3.Builder builder = HSStatisticsSyncPart3.newBuilder();
+
+		builder.setOrderServerKey(HawkOrderService.getInstance().getSuuid());
+
+		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
+			RechargeState.Builder rechargeState = RechargeState.newBuilder();
+			rechargeState.setProductId(entry.getKey());
+			rechargeState.setBuyTimes(entry.getValue());
+			builder.addRechargeState(rechargeState);
+		}
+
+		if (statisticsEntity.getMonthCardEndTime() == null || HawkTime.getCalendar().compareTo(statisticsEntity.getMonthCardEndTime()) > 0) {
+			builder.setMonthCardLeft(0);
+		}
+		else {
+			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
+		}
+
+		builder.setGold2CoinTimes(statisticsEntity.getBuyCoinTimesDaily());
+		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
 
 		return builder;
 	}

@@ -1682,5 +1682,5 @@ bosschaoxue52Yifanmumian33Name,水魔翻腾,Water Surge
 bosschaoxue52Yifanmumian34Name,水魔翻腾,Water Surge
 bosschaoxue52Yifanmumian35Name,激流一击,Torrential Blast
 bosschaoxue52Yifanmumian31Tips,攻击敌方单体，造成100%法攻水法术伤害，几率附加溺水效果,"Deals (100% of magic ATK) water type damage to a single enemy target, with a chance of drowning effect."
-bosschaoxue52Yifanmumian34Tips,攻击敌方群体，造成100%法攻水法术伤害，几率附加溺水效果,"Deals (100% of magic ATK) water type damage to all  enemies, with a chance of drowning effect."
-bosschaoxue52Yifanmumian35Tips,攻击敌方群体，造成100%法攻水法术伤害，提升自身暴击率、智力,"Deals (100% of magic ATK) water type damage to all  enemies, and increases your crit rate and INT."
+bosschaoxue52Yifanmumian34Tips,攻击敌方群体，造成75%法攻水法术伤害，几率附加溺水效果,"Deals (75% of magic ATK) water type damage to all  enemies, with a chance of drowning effect."
+bosschaoxue52Yifanmumian35Tips,攻击敌方群体，造成112%法攻水法术伤害，提升自身暴击率、智力,"Deals (112% of magic ATK) water type damage to all  enemies, and increases your crit rate and INT."

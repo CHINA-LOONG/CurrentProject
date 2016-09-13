@@ -513,7 +513,10 @@ namespace PB
       ADVENTURE_TEAM_BUSY = 786438,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_TEAM_IDLE", Value=786439)]
-      ADVENTURE_TEAM_IDLE = 786439
+      ADVENTURE_TEAM_IDLE = 786439,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NOT_END", Value=786440)]
+      ADVENTURE_NOT_END = 786440
     }
   
 }

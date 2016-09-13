@@ -3504,6 +3504,106 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:MonsterState)
   }
 
+  /**
+   * Protobuf enum {@code SummonType}
+   */
+  public enum SummonType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SUMMON_COIN = 1;</code>
+     */
+    SUMMON_COIN(0, 1),
+    /**
+     * <code>SUMMON_DIAMOND = 2;</code>
+     */
+    SUMMON_DIAMOND(1, 2),
+    /**
+     * <code>SUMMON_COIN_FREE = 3;</code>
+     */
+    SUMMON_COIN_FREE(2, 3),
+    /**
+     * <code>SUMMON_DIAMOND_FREE = 4;</code>
+     */
+    SUMMON_DIAMOND_FREE(3, 4),
+    ;
+
+    /**
+     * <code>SUMMON_COIN = 1;</code>
+     */
+    public static final int SUMMON_COIN_VALUE = 1;
+    /**
+     * <code>SUMMON_DIAMOND = 2;</code>
+     */
+    public static final int SUMMON_DIAMOND_VALUE = 2;
+    /**
+     * <code>SUMMON_COIN_FREE = 3;</code>
+     */
+    public static final int SUMMON_COIN_FREE_VALUE = 3;
+    /**
+     * <code>SUMMON_DIAMOND_FREE = 4;</code>
+     */
+    public static final int SUMMON_DIAMOND_FREE_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static SummonType valueOf(int value) {
+      switch (value) {
+        case 1: return SUMMON_COIN;
+        case 2: return SUMMON_DIAMOND;
+        case 3: return SUMMON_COIN_FREE;
+        case 4: return SUMMON_DIAMOND_FREE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SummonType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<SummonType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SummonType>() {
+            public SummonType findValueByNumber(int number) {
+              return SummonType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(23);
+    }
+
+    private static final SummonType[] VALUES = values();
+
+    public static SummonType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private SummonType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:SummonType)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3574,8 +3674,10 @@ public final class Const {
       "\030Spell_Type_PrepareDazhao\020\n\022\022\n\016Spell_Typ" +
       "e_Dot\020\013\022\022\n\016Spell_Type_Hot\020\014\022\022\n\016Num_Spell",
       "_Type\020\r*B\n\014MonsterState\022\n\n\006LOCKED\020\001\022\024\n\020I" +
-      "N_ALLIANCE_BASE\020\002\022\020\n\014IN_ADVENTURE\020\004B\030\n\026c" +
-      "om.hawk.game.protocol"
+      "N_ALLIANCE_BASE\020\002\022\020\n\014IN_ADVENTURE\020\004*`\n\nS" +
+      "ummonType\022\017\n\013SUMMON_COIN\020\001\022\022\n\016SUMMON_DIA" +
+      "MOND\020\002\022\024\n\020SUMMON_COIN_FREE\020\003\022\027\n\023SUMMON_D" +
+      "IAMOND_FREE\020\004B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

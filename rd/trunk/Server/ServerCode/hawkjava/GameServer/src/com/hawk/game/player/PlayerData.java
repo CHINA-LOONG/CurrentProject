@@ -810,7 +810,9 @@ public class PlayerData {
 	 * 同步玩家统计信息
 	 */
 	public void syncStatisticsInfo() {
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_INFO_SYNC_S, BuilderUtil.genStatisticsBuilder(statisticsEntity)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART1_S, BuilderUtil.genStatisticsPart1Builder(statisticsEntity)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART2_S, BuilderUtil.genStatisticsPart2Builder(statisticsEntity)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART3_S, BuilderUtil.genStatisticsPart3Builder(statisticsEntity)));
 	}
 
 	/**

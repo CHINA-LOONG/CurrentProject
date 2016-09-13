@@ -220,6 +220,13 @@ namespace PB
       get { return _teamId; }
       set { _teamId = value; }
     }
+    private bool _pay;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pay", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool pay
+    {
+      get { return _pay; }
+      set { _pay = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

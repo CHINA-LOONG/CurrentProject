@@ -54,42 +54,58 @@ message TowerState
 
 // protocol-----------------------------------------------------
 
-message HSStatisticsInfoSync
+message HSStatisticsSyncPart1
 {
-	// 副本状态
-	repeated InstanceState instanceState = 1;
-	// 章节状态
-	required ChapterState chapterState = 2;
-	// 宠物图鉴
-	repeated string monsterCollect = 3;
-	// 当前活力值
-	required int32 fatigue = 4;
-	// 当前正在累计活力值恢复时间开始时间戳（秒）
-	required int32 fatigueBeginTime = 5;
-	// 当前技能点
-	required int32 skillPoint = 6;
-	// 当前正在累计技能点恢复时间开始时间戳（秒）
-	required int32 skillPointBeginTime = 7;
 	// 服务器时间戳
-	optional int32 timeStamp = 8;
-	// 订单服务器key
-	required string orderServerKey = 9;
-	// 商城购买状态
-	repeated RechargeState rechargeState = 10;
-	// 月卡剩余时间
-	required int32 monthCardLeft = 11;
-	// 今日钻石购买金币次数
-	required int32 gold2CoinTimes = 12;
-	// 多倍经验剩余次数
-	required HSSyncExpLeftTimes expLeftTimes = 13;
-	// 今日物品使用次数
-	repeated ItemState itemState = 14;
-	// 今日副本挑战重置次数
-	required int32 instanceResetCount = 15;
+	required int32 timeStamp = 1;
+	// 副本状态
+	repeated InstanceState instanceState = 2;
+	// 章节状态
+	required ChapterState chapterState = 3;
 	// 洞开启状态
-	repeated HoleState holeState = 16;
+	repeated HoleState holeState = 4;
 	// 塔完成层数
-	repeated TowerState towerState = 17;
+	repeated TowerState towerState = 5;
+	// 今日副本挑战重置次数
+	required int32 instanceResetCount = 6;
+}
+
+message HSStatisticsSyncPart2
+{
+	// 宠物图鉴
+	repeated string monsterCollect = 1;
+	// 今日物品使用次数
+	repeated ItemState itemState = 2;
+	// 当前活力值
+	required int32 fatigue = 3;
+	// 当前正在累计活力值恢复时间开始时间戳（秒）
+	required int32 fatigueBeginTime = 4;
+	// 当前技能点
+	required int32 skillPoint = 5;
+	// 当前正在累计技能点恢复时间开始时间戳（秒）
+	required int32 skillPointBeginTime = 6;
+	// 当前大冒险变更条件次数
+	required int32 adventureChange = 7;
+	// 当前正在累计大冒险变更条件次数恢复时间开始时间戳（秒）
+	required int32 adventureChangeBeginTime = 8;
+	// 免费钻石抽蛋恢复时间开始时间戳（秒）
+	required int32 summonDiamondFreeBeginTime = 9;
+	// 今日已雇佣公会怪物
+	repeated int32 hiredMonsterId = 10;
+}
+
+message HSStatisticsSyncPart3
+{
+	// 订单服务器key
+	required string orderServerKey = 1;
+	// 商城购买状态
+	repeated RechargeState rechargeState = 2;
+	// 月卡剩余时间
+	required int32 monthCardLeft = 3;
+	// 今日钻石购买金币次数
+	required int32 gold2CoinTimes = 4;
+	// 多倍经验剩余次数
+	required HSSyncExpLeftTimes expLeftTimes = 5;
 }
 
 // SYNC_DAILY_REFRESH_S

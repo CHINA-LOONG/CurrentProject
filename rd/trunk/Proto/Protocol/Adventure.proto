@@ -60,6 +60,7 @@ message HSAdventureEnterRet
 message HSAdventureSettle
 {
 	required int32 teamId = 1;
+	required bool pay = 2;
 }
 
 // ADVENTURE_SETTLE_S

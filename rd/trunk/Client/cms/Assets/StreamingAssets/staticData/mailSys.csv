@@ -16,3 +16,4 @@ id,textId,comments,rewardId,lang_1,sender_1,subject_1,content_1,lang_2,sender_2,
 You have been promoted to Guild Master of {0}!"
 102,mail_sociaty_002,被赠送活力值,110004,zh-CN,系统,活力值,这是来自{0}赠送的{1}点活力值,en,System,Energy Points,{0} has sent you {1} Energy!
 103,mail_sociaty_003,被踢出公会,,zh-CN,系统,公会变更,很遗憾，您已被请离公会{0},en,System,Guild Change,"Unfortunately, you have been removed from guild {0}."
+104,mail_sociaty_004,被踢出公会时发放助战收入,,zh-CN,系统,公会助战收入,这是你的助战收入，请查收,en,System,The public will assist in income,"This is your bidding income, please check"

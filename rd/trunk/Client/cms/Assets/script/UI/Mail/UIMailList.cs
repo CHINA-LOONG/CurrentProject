@@ -62,13 +62,13 @@ public class UIMailList : MonoBehaviour,IScrollView
         actionReadMail(mailInfo);
     }
 
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         mailItem mail = item.GetComponent<mailItem>();
         mail.ReloadData(infos[index]);
     }
 
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("mailItem");
         UIUtil.SetParentReset(go.transform, parent);
@@ -76,7 +76,7 @@ public class UIMailList : MonoBehaviour,IScrollView
         return go.transform;
     }
 
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
         itemList.Clear();

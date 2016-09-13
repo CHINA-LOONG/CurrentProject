@@ -1,0 +1,35 @@
+import "Protocol/Reward.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+
+// protocol-----------------------------------------------------
+
+// SUMMON_ONE_C
+message HSSummonOne
+{
+	required int32 type = 1;
+}
+
+// SUMMON_ONE_S
+message HSSummonOneRet
+{
+	required HSRewardInfo reward = 1;
+
+	// 免费钻石抽恢复时间开始时间戳（秒）
+	optional int32 freeBeginTime = 2;
+}
+
+// SUMMON_TEN_C
+message HSSummonTen
+{
+	required int32 type = 1;
+}
+
+// SUMMON_TEN_S
+message HSSummonTenRet
+{
+	repeated HSRewardInfo reward = 1;
+}

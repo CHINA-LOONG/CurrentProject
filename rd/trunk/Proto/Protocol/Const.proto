@@ -340,3 +340,11 @@ enum MonsterState
 	IN_ALLIANCE_BASE = 2;
 	IN_ADVENTURE = 4;
 }
+
+enum SummonType
+{
+	SUMMON_COIN = 1;
+	SUMMON_DIAMOND = 2;
+	SUMMON_COIN_FREE = 3;
+	SUMMON_DIAMOND_FREE = 4;
+}

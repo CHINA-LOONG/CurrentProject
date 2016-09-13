@@ -1525,6 +1525,38 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 恢复免费钻石抽蛋点数
+	 */
+	public int regainEggDiamondPoint() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getEggDiamondPoint();
+		if (old == GsConst.summon.MAX_DIAMOND_FREE_TIMES) {
+			return old;
+		}
+
+		Calendar curTime = HawkTime.getCalendar();
+		Calendar beginTime = statisticsEntity.getEggPointBeginTime();
+
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int cur = old + delta / GsConst.summon.DIAMOND_FREE_TIME;
+
+		if (cur > GsConst.summon.MAX_DIAMOND_FREE_TIMES) {
+			cur = GsConst.summon.MAX_DIAMOND_FREE_TIMES;
+		}
+
+		if (old == cur) {
+			return cur;
+		}
+
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.summon.DIAMOND_FREE_TIME  * 1000);
+		statisticsEntity.setEggDiamondPoint(cur);
+		statisticsEntity.setEggPointBeginTime(beginTime);
+
+		statisticsEntity.notifyUpdate(true);
+		return cur;
+	}
+
+	/**
 	 * 登录
 	 */
 	private void onLogin() {

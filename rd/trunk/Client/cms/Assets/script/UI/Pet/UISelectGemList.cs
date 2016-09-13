@@ -151,13 +151,13 @@ public class UISelectGemList : UIBase,
     }
     
     #region ScrollView
-    public void IScrollViewReloadItem(Transform item, int index)
+    public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
         GemListItem gem = item.GetComponent<GemListItem>();
         gem.OnReload(infos[index]);
     }
 
-    public Transform IScrollViewCreateItem(Transform parent, int index = 0)
+    public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("GemListItem");
         if (go != null)
@@ -170,7 +170,7 @@ public class UISelectGemList : UIBase,
         return null;
     }
 
-    public void IScrollViewCleanItem(List<Transform> itemList)
+    public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
         itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
         itemList.Clear();

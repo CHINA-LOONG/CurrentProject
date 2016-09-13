@@ -198,131 +198,178 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
-  public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsSyncPart1")]
+  public partial class HSStatisticsSyncPart1 : global::ProtoBuf.IExtensible
   {
-    public HSStatisticsInfoSync() {}
+    public HSStatisticsSyncPart1() {}
     
+    private int _timeStamp;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int timeStamp
+    {
+      get { return _timeStamp; }
+      set { _timeStamp = value; }
+    }
     private readonly global::System.Collections.Generic.List<InstanceState> _instanceState = new global::System.Collections.Generic.List<InstanceState>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"instanceState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, Name=@"instanceState", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<InstanceState> instanceState
     {
       get { return _instanceState; }
     }
   
     private ChapterState _chapterState;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"chapterState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"chapterState", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public ChapterState chapterState
     {
       get { return _chapterState; }
       set { _chapterState = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _monsterCollect = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"monsterCollect", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> monsterCollect
-    {
-      get { return _monsterCollect; }
-    }
-  
-    private int _fatigue;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int fatigue
-    {
-      get { return _fatigue; }
-      set { _fatigue = value; }
-    }
-    private int _fatigueBeginTime;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int fatigueBeginTime
-    {
-      get { return _fatigueBeginTime; }
-      set { _fatigueBeginTime = value; }
-    }
-    private int _skillPoint;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int skillPoint
-    {
-      get { return _skillPoint; }
-      set { _skillPoint = value; }
-    }
-    private int _skillPointBeginTime;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"skillPointBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int skillPointBeginTime
-    {
-      get { return _skillPointBeginTime; }
-      set { _skillPointBeginTime = value; }
-    }
-    private int _timeStamp = default(int);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int timeStamp
-    {
-      get { return _timeStamp; }
-      set { _timeStamp = value; }
-    }
-    private string _orderServerKey;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"orderServerKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string orderServerKey
-    {
-      get { return _orderServerKey; }
-      set { _orderServerKey = value; }
-    }
-    private readonly global::System.Collections.Generic.List<RechargeState> _rechargeState = new global::System.Collections.Generic.List<RechargeState>();
-    [global::ProtoBuf.ProtoMember(10, Name=@"rechargeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<RechargeState> rechargeState
-    {
-      get { return _rechargeState; }
-    }
-  
-    private int _monthCardLeft;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"monthCardLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int monthCardLeft
-    {
-      get { return _monthCardLeft; }
-      set { _monthCardLeft = value; }
-    }
-    private int _gold2CoinTimes;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"gold2CoinTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int gold2CoinTimes
-    {
-      get { return _gold2CoinTimes; }
-      set { _gold2CoinTimes = value; }
-    }
-    private HSSyncExpLeftTimes _expLeftTimes;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public HSSyncExpLeftTimes expLeftTimes
-    {
-      get { return _expLeftTimes; }
-      set { _expLeftTimes = value; }
-    }
-    private readonly global::System.Collections.Generic.List<ItemState> _itemState = new global::System.Collections.Generic.List<ItemState>();
-    [global::ProtoBuf.ProtoMember(14, Name=@"itemState", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<ItemState> itemState
-    {
-      get { return _itemState; }
-    }
-  
-    private int _instanceResetCount;
-    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"instanceResetCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int instanceResetCount
-    {
-      get { return _instanceResetCount; }
-      set { _instanceResetCount = value; }
-    }
     private readonly global::System.Collections.Generic.List<HoleState> _holeState = new global::System.Collections.Generic.List<HoleState>();
-    [global::ProtoBuf.ProtoMember(16, Name=@"holeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, Name=@"holeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<HoleState> holeState
     {
       get { return _holeState; }
     }
   
     private readonly global::System.Collections.Generic.List<TowerState> _towerState = new global::System.Collections.Generic.List<TowerState>();
-    [global::ProtoBuf.ProtoMember(17, Name=@"towerState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, Name=@"towerState", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<TowerState> towerState
     {
       get { return _towerState; }
     }
   
+    private int _instanceResetCount;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"instanceResetCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int instanceResetCount
+    {
+      get { return _instanceResetCount; }
+      set { _instanceResetCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsSyncPart2")]
+  public partial class HSStatisticsSyncPart2 : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsSyncPart2() {}
+    
+    private readonly global::System.Collections.Generic.List<string> _monsterCollect = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"monsterCollect", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> monsterCollect
+    {
+      get { return _monsterCollect; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<ItemState> _itemState = new global::System.Collections.Generic.List<ItemState>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"itemState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemState> itemState
+    {
+      get { return _itemState; }
+    }
+  
+    private int _fatigue;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int fatigue
+    {
+      get { return _fatigue; }
+      set { _fatigue = value; }
+    }
+    private int _fatigueBeginTime;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int fatigueBeginTime
+    {
+      get { return _fatigueBeginTime; }
+      set { _fatigueBeginTime = value; }
+    }
+    private int _skillPoint;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPoint
+    {
+      get { return _skillPoint; }
+      set { _skillPoint = value; }
+    }
+    private int _skillPointBeginTime;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"skillPointBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPointBeginTime
+    {
+      get { return _skillPointBeginTime; }
+      set { _skillPointBeginTime = value; }
+    }
+    private int _adventureChange;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"adventureChange", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int adventureChange
+    {
+      get { return _adventureChange; }
+      set { _adventureChange = value; }
+    }
+    private int _adventureChangeBeginTime;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"adventureChangeBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int adventureChangeBeginTime
+    {
+      get { return _adventureChangeBeginTime; }
+      set { _adventureChangeBeginTime = value; }
+    }
+    private int _summonDiamondFreeBeginTime;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"summonDiamondFreeBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int summonDiamondFreeBeginTime
+    {
+      get { return _summonDiamondFreeBeginTime; }
+      set { _summonDiamondFreeBeginTime = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _hiredMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(10, Name=@"hiredMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> hiredMonsterId
+    {
+      get { return _hiredMonsterId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsSyncPart3")]
+  public partial class HSStatisticsSyncPart3 : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsSyncPart3() {}
+    
+    private string _orderServerKey;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"orderServerKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string orderServerKey
+    {
+      get { return _orderServerKey; }
+      set { _orderServerKey = value; }
+    }
+    private readonly global::System.Collections.Generic.List<RechargeState> _rechargeState = new global::System.Collections.Generic.List<RechargeState>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"rechargeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<RechargeState> rechargeState
+    {
+      get { return _rechargeState; }
+    }
+  
+    private int _monthCardLeft;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"monthCardLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monthCardLeft
+    {
+      get { return _monthCardLeft; }
+      set { _monthCardLeft = value; }
+    }
+    private int _gold2CoinTimes;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"gold2CoinTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gold2CoinTimes
+    {
+      get { return _gold2CoinTimes; }
+      set { _gold2CoinTimes = value; }
+    }
+    private HSSyncExpLeftTimes _expLeftTimes;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public HSSyncExpLeftTimes expLeftTimes
+    {
+      get { return _expLeftTimes; }
+      set { _expLeftTimes = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

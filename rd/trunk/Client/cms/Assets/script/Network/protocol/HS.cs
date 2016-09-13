@@ -75,35 +75,41 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"RECCONECT_S", Value=1008)]
       RECCONECT_S = 1008,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1010)]
-      PLAYER_INFO_SYNC_S = 1010,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1020)]
+      PLAYER_INFO_SYNC_S = 1020,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_INFO_SYNC_S", Value=1011)]
-      STATISTICS_INFO_SYNC_S = 1011,
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_INFO_SYNC_S", Value=1021)]
+      SETTING_INFO_SYNC_S = 1021,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_INFO_SYNC_S", Value=1012)]
-      SETTING_INFO_SYNC_S = 1012,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=1022)]
+      MONSTER_INFO_SYNC_S = 1022,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=1013)]
-      MONSTER_INFO_SYNC_S = 1013,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1023)]
+      ITEM_INFO_SYNC_S = 1023,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1014)]
-      ITEM_INFO_SYNC_S = 1014,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1024)]
+      EQUIP_INFO_SYNC_S = 1024,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1015)]
-      EQUIP_INFO_SYNC_S = 1015,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1025)]
+      MAIL_INFO_SYNC_S = 1025,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
-      MAIL_INFO_SYNC_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_INFO_SYNC_S", Value=1026)]
+      ADVENTURE_INFO_SYNC_S = 1026,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_INFO_SYNC_S", Value=1017)]
-      ADVENTURE_INFO_SYNC_S = 1017,
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1027)]
+      QUEST_INFO_SYNC_S = 1027,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1018)]
-      QUEST_INFO_SYNC_S = 1018,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART1_S", Value=1030)]
+      STATISTICS_SYNC_PART1_S = 1030,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1019)]
-      ASSEMBLE_FINISH_S = 1019,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART2_S", Value=1031)]
+      STATISTICS_SYNC_PART2_S = 1031,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART3_S", Value=1032)]
+      STATISTICS_SYNC_PART3_S = 1032,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1099)]
+      ASSEMBLE_FINISH_S = 1099,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -461,6 +467,18 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_S", Value=8013)]
       SHOP_STORE_BUY_S = 8013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_C", Value=9101)]
+      SUMMON_ONE_C = 9101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_S", Value=9102)]
+      SUMMON_ONE_S = 9102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_C", Value=9103)]
+      SUMMON_TEN_C = 9103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_S", Value=9104)]
+      SUMMON_TEN_S = 9104,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_C", Value=9001)]
       ALLIANCE_CREATE_C = 9001,

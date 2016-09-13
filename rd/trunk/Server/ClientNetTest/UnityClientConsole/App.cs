@@ -166,10 +166,20 @@ namespace UnityClientConsole
                 HSPlayerInfoSync playerInfo = protocol.GetProtocolBody<HSPlayerInfoSync>();
                 Console.WriteLine("同步玩家信息");
             }
-            else if (protocol.checkType(code.STATISTICS_INFO_SYNC_S.GetHashCode()))
+            else if (protocol.checkType(code.STATISTICS_SYNC_PART1_S.GetHashCode()))
             {
-                HSStatisticsInfoSync statisticsInfo = protocol.GetProtocolBody<HSStatisticsInfoSync>();
-                Console.WriteLine("同步统计信息");
+                HSStatisticsSyncPart1 statisticsInfo = protocol.GetProtocolBody<HSStatisticsSyncPart1>();
+                Console.WriteLine("同步统计信息1");
+            }
+            else if (protocol.checkType(code.STATISTICS_SYNC_PART2_S.GetHashCode()))
+            {
+                HSStatisticsSyncPart2 statisticsInfo = protocol.GetProtocolBody<HSStatisticsSyncPart2>();
+                Console.WriteLine("同步统计信息2");
+            }
+            else if (protocol.checkType(code.STATISTICS_SYNC_PART3_S.GetHashCode()))
+            {
+                HSStatisticsSyncPart3 statisticsInfo = protocol.GetProtocolBody<HSStatisticsSyncPart3>();
+                Console.WriteLine("同步统计信息3");
             }
             else if (protocol.checkType(code.SETTING_INFO_SYNC_S.GetHashCode()))
             {
@@ -406,8 +416,8 @@ namespace UnityClientConsole
 //                 HSAdventureBuyCondition buyCondition = new HSAdventureBuyCondition();
 //                 netmanaget.SendProtocol(code.ADVENTURE_BUY_CONDITION_C.GetHashCode(), buyCondition);
 
-                HSAdventureBuyTeam buyTeam = new HSAdventureBuyTeam();
-                netmanaget.SendProtocol(code.ADVENTURE_BUY_TEAM_C.GetHashCode(), buyTeam);
+//                 HSAdventureBuyTeam buyTeam = new HSAdventureBuyTeam();
+//                 netmanaget.SendProtocol(code.ADVENTURE_BUY_TEAM_C.GetHashCode(), buyTeam);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))

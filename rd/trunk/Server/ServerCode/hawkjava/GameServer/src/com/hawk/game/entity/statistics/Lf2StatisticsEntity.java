@@ -55,9 +55,29 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "eggCoinTimesDaily", nullable = false)
 	protected int eggCoinTimesDaily = 0;
 
-	// 历史钻石抽蛋次数
-	@Column(name = "eggDiamondTimes", nullable = false)
-	protected int eggDiamondTimes = 0;
+	// 今日免费金币抽蛋次数
+	@Column(name = "eggCoinFreeTimesDaily", nullable = false)
+	protected int eggCoinFreeTimesDaily = 0;
+
+	// 历史钻石免费单抽次数
+	@Column(name = "eggDiamondFreeTimes", nullable = false)
+	protected int eggDiamondFreeTimes = 0;
+
+	// 历史钻石收费单抽次数
+	@Column(name = "eggDiamondOneTimes", nullable = false)
+	protected int eggDiamondOneTimes = 0;
+
+	// 历史钻石十连抽次数
+	@Column(name = "eggDiamondTenTimes", nullable = false)
+	protected int eggDiamondTenTimes = 0;
+
+	// 免费钻石抽蛋点数
+	@Column(name = "eggDiamondPoint", nullable = false)
+	protected int eggDiamondPoint = 0;
+
+	// 免费钻石抽蛋点数开始计时时间
+	@Column(name = "eggDiamondPointBeginTime")
+	protected Calendar eggPointBeginTime = null;
 
 	// 历史抽到品级X宠物次数
 	@Column(name = "callMonsterStageXTimes", nullable = false)
