@@ -62,6 +62,7 @@ import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerSettingModule;
 import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
+import com.hawk.game.module.PlayerSummonModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.HS.code;
@@ -129,6 +130,7 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.SHOP_MODULE, new PlayerShopModule(this));
 		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
 		registerModule(GsConst.ModuleType.ADVENTURE_MODULE, new PlayerAdventureModule(this));
+		registerModule(GsConst.ModuleType.SUMMON_MODULE, new PlayerSummonModule(this));
 		// 任务模块放其它模块后，用到其它模块数据
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		// 最后注册空闲模块, 用来消息收尾处理
@@ -1611,18 +1613,23 @@ public class Player extends HawkAppObj {
 				int gear = gearEntity.getKey();
 				List<AdventureCfg> cfgList = gearEntity.getValue();
 
-				List<AdventureCondition> conditionList = AdventureUtil.genConditionList(getLevel());
 				AdventureEntity advenEntity = new AdventureEntity(getId(), type, gear);
+
+				List<AdventureCondition> conditionList = AdventureUtil.genConditionList(getLevel());
+				if (null == conditionList) {
+					advenEntity.clearConditionList();
+				} else {
+					advenEntity.setConditionList(conditionList);
+				}
 
 				for (int i = 0; i < gearEntity.getValue().size(); ++i) {
 					AdventureCfg cfg = cfgList.get(i);
-					if (true == cfg.isInLevelRange(getLevel())) {						
+					if (true == cfg.isInLevelRange(getLevel())) {
 						advenEntity.setAdventureId(cfg.getId());
 						break;
 					}
 				}
 
-				advenEntity.setConditionList(conditionList);
 				advenEntity.notifyCreate();
 				playerData.addAdventureEntity(advenEntity);
 			}

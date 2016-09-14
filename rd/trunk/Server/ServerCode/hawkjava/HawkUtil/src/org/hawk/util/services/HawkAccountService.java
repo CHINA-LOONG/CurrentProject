@@ -25,10 +25,12 @@ public class HawkAccountService extends HawkTickable {
 	
 	public static class RegitsterGameServer {
 		String gameServerHost;
-		int port;	
-		public RegitsterGameServer (String gameServerHost, int port) {
+		int port;
+		int scriptPort;
+		public RegitsterGameServer (String gameServerHost, int port, int scriptPort) {
 			this.gameServerHost = gameServerHost;
 			this.port = port;
+			this.scriptPort = scriptPort;
 		}
 	}
 
@@ -99,7 +101,7 @@ public class HawkAccountService extends HawkTickable {
 	
 	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&nickname=%s";
 	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&level=%d";
-	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%d&ip=%s&port=%d";
+	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%d&ip=%s&port=%d&scriptPort=%d";
 	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%d";
 	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%d";
 	
@@ -300,7 +302,7 @@ public class HawkAccountService extends HawkTickable {
 	private boolean doReport(RegitsterGameServer gameServerData) {
 		if (accountZmq != null) {
 			try {
-				String queryParam = String.format(serverRegistParam, gameName, platform, channel, serverId, gameServerData.gameServerHost, gameServerData.port);
+				String queryParam = String.format(serverRegistParam, gameName, platform, channel, serverId, gameServerData.gameServerHost, gameServerData.port, gameServerData.scriptPort);
 				accountLogger.info("report: " + serverRegistPath + "?" + queryParam);
 
 				int status = executeMethod(serverRegistPath, queryParam);

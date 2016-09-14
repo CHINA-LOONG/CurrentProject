@@ -8,7 +8,9 @@ import java.util.concurrent.Executors;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
+import com.hawk.account.httpHandler.FetchAllPlayerHandler;
 import com.hawk.account.httpHandler.FetchGameServerInfoHandler;
+import com.hawk.account.httpHandler.FetchScriptAddressHandler;
 import com.hawk.account.httpHandler.HeartBeatHandler;
 import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
@@ -63,6 +65,8 @@ public class AccountHttpServer {
 				httpServer.createContext("/unregist_gameserver", new UnRegistGameServerHandler());
 				httpServer.createContext("/fetch_gameServer", new FetchGameServerInfoHandler());
 				httpServer.createContext("/heartBeat", new HeartBeatHandler());
+				httpServer.createContext("/fetchAllPlayer", new FetchAllPlayerHandler());
+				httpServer.createContext("/fetchScriptAddr", new FetchScriptAddressHandler());
 				httpServer.start();
 				HawkLog.logPrintln("Account Http Server [" + addr + ":" + port + "] Start OK.");
 			}

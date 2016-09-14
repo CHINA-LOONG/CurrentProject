@@ -95,6 +95,7 @@
     <Compile Include="Protocol\Skill.cs" />
     <Compile Include="Protocol\Statistics.cs" />
     <Compile Include="Protocol\Status.cs" />
+    <Compile Include="Protocol\Summon.cs" />
     <Compile Include="Protocol\SysProtocol.cs" />
     <Compile Include="ZlibUtil.cs" />
   </ItemGroup>

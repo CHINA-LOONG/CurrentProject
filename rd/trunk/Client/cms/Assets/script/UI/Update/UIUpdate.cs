@@ -26,7 +26,7 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 	/// </summary>
 	public void CheckExtractResource()
 	{
-		bool isExists = Directory.Exists(Util.ResPath) && File.Exists(Path.Combine(Util.ResPath, "files.txt"));
+        bool isExists = UpdateHelpter.IsResouceExtracted();
 		//
 		if (Const.DebugMode || isExists)
 		{
@@ -95,6 +95,9 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 			
 			yield return new WaitForEndOfFrame();
 		}
+        //资源抽取完成，写入客户端初始时的版本号
+        UpdateHelpter.SetResouceCode(Const.resouceCode);
+
 		Logger.Log("解包完成!!!");
 		msgText.text = "资源包抽取抽取完成";
 		yield return new WaitForSeconds(0.1f);
@@ -119,18 +122,11 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		string dataPath = Util.ResPath;  //数据目录
 		string url = Const.UpdateUrl;
 		
-		//获取本地版本
-		string versionFilePath = Path.Combine(dataPath, "version");
-		string localVersion = string.Empty;
-		if (File.Exists(versionFilePath))
-			localVersion = File.ReadAllText(versionFilePath).Trim();
-
-		
+	
 		httpRquest = new HTTPRequest (new Uri(url),HTTPMethods.Post);
 		httpRquest.AddField ("channel", Const.channel);
-		httpRquest.AddField ("device", Const.platform);
-		httpRquest.AddField ("resourceId", Const.ResouceCodeAttr.ToString());
-		httpRquest.AddField ("versionCode", Const.versionCode.ToString());
+		httpRquest.AddField ("vid", UpdateHelpter.GetResouceCode().ToString());
+		httpRquest.AddField ("platform", Const.platform);
 		httpRquest.Send ();
 		yield return StartCoroutine (httpRquest);
 		if (!httpRquest.Response.IsSuccess)
@@ -148,10 +144,20 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 			OnUpdateFailed("");
 			yield break;
 		}
-		if(int.Parse(ht["status"].ToString()) != 0)
+        int status = int.Parse(ht["status"].ToString());
+        if (status != 0)
 		{
-			Logger.LogError("更新错误，数据error: " + remoteVersion);
-			OnUpdateFailed("");
+            string msg = "";
+            if(status == 1)
+            {
+                msg = "版本过期，请更新程序到最新版本.";
+            }
+            else
+            {
+                msg = string.Format("数据错误 status = {0}", status);
+            }
+			Logger.LogError(msg);
+			OnUpdateFailed(msg);
 			yield break;
 		}
 
@@ -160,8 +166,9 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		int tempIndex = 1;
 		foreach(Hashtable subVersion in versionList)
 		{
-			int verId = int.Parse(subVersion["resourceId"].ToString());
+			int verId = int.Parse(subVersion["vid"].ToString());
 			string verZip = string.Format("{0}.zip",subVersion["resourceName"].ToString());
+            float fileSizeKb = float.Parse(subVersion["resourceSize"].ToString());
 
 			msgText.text = string.Format("更新资源{0},共有{1}个资源", tempIndex ++ ,versionList.Count );
 			httpRquest = new HTTPRequest( new Uri( string.Format("{0}/{1}",resServer,verZip)));
@@ -177,9 +184,8 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 			Util.UnZipFromBytes(httpRquest.Response.Data, dataPath);
 			
 			//更新成功后写入客户端的version文件
-			File.WriteAllText(versionFilePath, verId.ToString());
 
-			Const.SetResouceCode(verId);
+			UpdateHelpter.SetResouceCode(verId);
 
 			yield return new WaitForEndOfFrame();
 		}
@@ -187,10 +193,9 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		OnUpdateFinished ();
 	}
 	
-	void OnUpdateFailed(string file)
+	void OnUpdateFailed(string msg)
 	{
-		Logger.LogError("更新失败!>" + file);
-		msgText.text = "资源更新失败，todo：该怎么办呢！";
+		msgText.text = msg;
 		userCanRequestUpdate = true;
 	}
 

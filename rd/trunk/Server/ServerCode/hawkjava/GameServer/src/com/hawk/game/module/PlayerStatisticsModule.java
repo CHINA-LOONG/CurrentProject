@@ -84,6 +84,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearEggCoinFreeTimesDaily();
 				statisticsEntity.clearEquipPunchTimesDaily();
 				statisticsEntity.clearEquipStageMaxCountDaily();
+				statisticsEntity.clearHireMonsterDaily();
 				statisticsEntity.clearHoleTimesDaily();
 				statisticsEntity.clearInstanceEnterTimesDaily();
 				statisticsEntity.clearInstanceHardTimesDaily();

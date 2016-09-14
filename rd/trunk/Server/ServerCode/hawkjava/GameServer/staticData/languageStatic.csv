@@ -572,7 +572,7 @@ mubiao8011,使用1次活力药,Consume 1 Energy Package
 mubiao8012,领取1次大冒险奖励,Collect 1 Adventure Reward
 mubiao8013,完成3次公会赠活力,Giveaway Energy to 3 Guild members
 mubiao8014,完成1次公会许愿,Complete 1 Guild Wish
-mubiao8015,完成15个日常任务,Complete 15 Daily Quests
+mubiao8015,完成17个日常任务,Complete 17 Daily Quests
 mubiao8017,完成2次米达斯宫,Complete Palace of Midas 2 times
 mubiao8018,完成2次至福乐土,Complete Fields of Elysium 2 times
 chengjiu30001,收集碎片1,Collect Fragments 1
@@ -680,8 +680,8 @@ momo1hide_dun,得莫菲的周围好像有什么诡异的力量,Find this shape a
 meidushahide_zuoshetou,美杜莎的秘密,Medusa's secret.
 meidushahide_youshetou,美杜莎的秘密,Medusa's secret.
 meidushahide_xiaoshetou,美杜莎的秘密,Medusa's secret.
-wendige2normal1_lhorn,双角是dot效果的源动力,His horn provides higher damage over time
-wendige2normal1_rhorn,双角是dot效果的源动力,His horn provides higher damage over time
+wendige2normal1_lhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time
+wendige2normal1_rhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time
 longnv3normal1_head,龙女的要害,This is her weakpoint.
 longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
 longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
@@ -737,8 +737,8 @@ tianshizhang4normal_lwing,翅膀让天使长拥有更快的攻击速度,His wing
 tianshizhang4normal_rwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.
 tianshizhang4normal_aura,光环是天使长大招能量的源泉,His Ultimate energy increases with his Aura.
 tianshizhang4normal_weapon,长剑是天使长高攻击和自我治疗的保障,His Sword increases his attack.
-ifrit4normal_lleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
-ifrit4normal_rleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_lleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_rleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.
 ifrit4normal_stone,敲断他的法杖！削弱他的法术攻击！,His Staff enhances his attack.
 hehuaisituosi4hide_luweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
 hehuaisituosi4hide_ruweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
@@ -1256,8 +1256,8 @@ anpusha5normal1_heart,没有了心的安普莎就无法给我方添加减益效�
 ifrit5hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.
 ifrit5hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.
 ifrit5hide_stone,根据图形提示找到弱点,Find this shape on Ifrit.
-ifrit5normal_lleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
-ifrit5normal_rleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_lleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_rleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.
 ifrit5normal_stone,敲断他的法杖！削弱他的物理攻击！,This Staff increases her attack.
 nvyao5hide_mask,根据图形提示找到弱点,Find this shape on Banshee.
 nvyao5hide_head,根据图形提示找到弱点,Find this shape on Banshee.
@@ -2229,7 +2229,7 @@ bossdajie16Zouyincao2wp03,音符盾,Notes Shield
 bosschaoxue52Yifanmumian3wp02,吊坠,Pendant
 bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll
 yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？
-yifanmumian3normal1_pendant,吊坠是dot效果的源动力,The pendant is the source of her DOT effects.
+yifanmumian3normal1_pendant,吊坠是持续伤害效果的源动力,The pendant is the source of her DOT effects.
 yifanmumian1normal1_zhiren,干掉她的保护伞！,Destroy her protective scroll!
 ladong5hide_appleshell,这坚硬的壳里面会有什么秘密？,What secrets lie under this protective shield?
 ladong5normal_appleshell,金苹果可能就在里面！,Maybe the Golden Apple is inside!
@@ -2406,3 +2406,4 @@ mubiao8023,完成1次神话守护者,Complete Myth Guardian mode once.
 mubiao8024,完成1次神怪入侵,Complete Deity Invasion mode once.
 bossdajie18Ladong5wp04,金苹果,Golden Apple
 ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
+push_worldboss,神怪入侵活动将在5分钟后开启！快来和伙伴们一起征战吧！,Deity Invasion will be starting in 5 minutes! Come and battle alongside your friends!

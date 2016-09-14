@@ -631,6 +631,12 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
+	public void clearHireMonsterDaily() {
+		mfEntity.hireMonsterDailySet.clear();
+		mfEntity.hireMonsterDailyFlag = true;
+		mfUpdate = true;
+	}
+
 	// adventureTimes------------------------------------------
 	public int getAdventureTimes() {
 		return mfEntity.adventureTimes;
@@ -1594,6 +1600,16 @@ public class StatisticsEntity {
 
 	public void increaseTotalOnlineTime(long onlineTime) {
 		lf2Entity.totalOnlineTime += onlineTime;
+		lf2Update = true;
+	}
+	
+	// dumpTime----------------------------------------------
+	public int getDumpTime() {
+		return lf2Entity.dumpTime;
+	}
+
+	public void setDumpTime(int dumpTime) {
+		lf2Entity.dumpTime = dumpTime;
 		lf2Update = true;
 	}
 }

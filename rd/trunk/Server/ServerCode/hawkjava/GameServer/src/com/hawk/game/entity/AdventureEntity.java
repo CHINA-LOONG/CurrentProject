@@ -118,6 +118,12 @@ public class AdventureEntity extends HawkDBEntity {
 		this.conditionList = conditionList;
 	}
 
+	public void clearConditionList() {
+		count1 = count2 = count3 = 0;
+		typeCfg1 = typeCfg2 = typeCfg3 = 0;
+		this.conditionList.clear();
+	}
+
 	@Override
 	public boolean decode() {
 		AdventureConditionTypeCfg conditionTypeCfg;

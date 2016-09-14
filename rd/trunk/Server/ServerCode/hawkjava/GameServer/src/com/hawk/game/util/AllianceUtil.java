@@ -11,9 +11,11 @@ import org.hawk.os.HawkTime;
 import com.hawk.game.config.SociatyBaseCfg;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
+import com.hawk.game.entity.AllianceBaseEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.PlayerAllianceEntity.BaseMonsterInfo;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
@@ -161,6 +163,25 @@ public class AllianceUtil {
 		}
 		
 		return sociatyBaseList.get(i);
+	}
+	
+	/**
+	 * 获取玩家工会基地总收入
+	 * @param allianceEntity
+	 * @param playerAllianceEntity
+	 * @return
+	 */
+	public static int getTotalBaseReward(AllianceEntity allianceEntity, PlayerAllianceEntity playerAllianceEntity){
+		int baseReward = 0;
+		for (BaseMonsterInfo baseMonster : playerAllianceEntity.getBaseMonsterInfo().values()) {
+			baseReward += baseMonster.getReward();
+			AllianceBaseEntity baseEntity = allianceEntity.getAllianceBaseEntityMap().get(baseMonster.getMonsterId());
+			if (baseEntity != null) {
+				baseReward += getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend() * ((HawkTime.getSeconds() - baseEntity.getCreateTime()) / 60);
+			}
+		}
+		
+		return baseReward;
 	}
 	
 	/**

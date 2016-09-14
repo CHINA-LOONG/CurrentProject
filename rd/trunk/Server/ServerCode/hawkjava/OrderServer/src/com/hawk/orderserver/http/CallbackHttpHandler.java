@@ -41,6 +41,8 @@ public class CallbackHttpHandler implements HttpHandler {
 				}
 			}
 			
+			logger.info(params.toString());
+			
 			CallbackInfo callbackInfo = new CallbackInfo();
 			if (callbackInfo.fromMap(params)) {
 				OrderManager.getInstance().addCallbackInfo(callbackInfo);

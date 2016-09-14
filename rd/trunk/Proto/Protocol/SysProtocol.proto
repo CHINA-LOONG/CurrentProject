@@ -33,3 +33,9 @@ message HSKickPlayer
 {
 	required int32 reason = 1;
 }
+
+// WARN
+message HSWarnPlayer
+{
+	required string content = 1;
+}

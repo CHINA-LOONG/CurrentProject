@@ -1,27 +1,37 @@
 package com.hawk.game.module.alliance;
 
+import java.util.Arrays;
+
 import org.hawk.app.HawkAppObj;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.ServerData;
 import com.hawk.game.BILog.BIGuildMemberFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceLeaveRet;
 import com.hawk.game.protocol.Alliance.HSAllianceTeamLeaveNotify;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
+import com.hawk.game.util.MailUtil.MailInfo;
 
 public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 	/**
@@ -72,6 +82,7 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		playerAllianceEntity.notifyUpdate(true);
 
 		// 清理公会驻兵
+		int totalBaseReward = AllianceUtil.getTotalBaseReward(allianceEntity, playerAllianceEntity);
 		allianceEntity.clearAllianceBase(player.getId());
 		
 		// 清理队伍信息
@@ -85,8 +96,20 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 
 		AllianceManager.getInstance().removePlayerAndAllianceMap(player.getId());
 		allianceEntity.removeMember(player.getId());
-		
+
+		// 离开公会频道
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), player.getId());
+		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
+		if (mailCfg != null) {
+			MailInfo mailInfo = new MailInfo();
+			String lang = ServerData.getInstance().getPlayerLang(player.getId());
+			mailInfo.subject = mailCfg.getSubject(lang);
+			mailInfo.content = mailCfg.getContent(lang);
+			ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
+			mailInfo.rewardList = Arrays.asList(item);
+
+			MailUtil.SendMail(mailInfo, player.getId(), 0, mailCfg.getSender(lang));
+		}
 
 		// 清理工会数据
 		if (deleteAlliance) {

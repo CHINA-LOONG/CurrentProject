@@ -34,6 +34,10 @@ import com.sun.tools.javac.Main;
  */
 public class HawkScriptManager {
 	/**
+	 * 端口号
+	 */
+	private int port;
+	/**
 	 * 服务器对象
 	 */
 	private HttpServer httpServer;
@@ -96,7 +100,8 @@ public class HawkScriptManager {
 			if (httpAddr != null && httpAddr.length() > 0) {
 				String[] addrInfo = httpAddr.split(":");
 				if (addrInfo != null && addrInfo.length == 2) {
-					httpServer = HttpServer.create(new InetSocketAddress(addrInfo[0], Integer.valueOf(addrInfo[1])), 100);					
+					port = Integer.valueOf(addrInfo[1]);
+					httpServer = HttpServer.create(new InetSocketAddress(addrInfo[0], port), 100);					
 					httpServer.createContext("/", new HawkScriptHttpHandler());
 					httpServer.setExecutor(Executors.newFixedThreadPool(2));
 					httpServer.start();
@@ -147,6 +152,13 @@ public class HawkScriptManager {
 				HawkException.catchException(e);
 			}
 		}
+	}
+	
+	/**
+	 * 获取端口号
+	 */
+	public int getScriptPort(){
+		return port;
 	}
 	
 	/**

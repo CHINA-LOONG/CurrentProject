@@ -1,5 +1,7 @@
 package com.hawk.game.module.alliance;
 
+import java.util.Arrays;
+
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
@@ -7,24 +9,28 @@ import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.ServerData;
-import com.hawk.game.BILog.BIGuildMemberFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BIGuildMemberFlowData;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceLeave;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKick;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKickRet;
 import com.hawk.game.protocol.Alliance.HSAllianceTeamLeaveNotify;
+import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
+import com.hawk.game.util.MailUtil.MailInfo;
 
 public class AllianceMemberKickHandler implements HawkMsgHandler{
 	/**
@@ -76,6 +82,7 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		targetPlayerAllianceEntity.notifyUpdate(true);
 
 		// 清理公会驻兵
+		int totalBaseReward = AllianceUtil.getTotalBaseReward(allianceEntity, targetPlayerAllianceEntity);
 		allianceEntity.clearAllianceBase(request.getTargetId());
 		
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(request.getTargetId());
@@ -83,7 +90,7 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 			teamEntity.removePlayerFromTeam(request.getTargetId());
 			HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
 			notify.setPlayerId(request.getTargetId());
-			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);	
+			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
 		}
 
 		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
@@ -94,6 +101,17 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_KICK);
 		if (mailCfg != null) {
 			MailUtil.SendSysMail(mailCfg, request.getTargetId(), allianceEntity.getName());
+		}
+		mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
+		if (mailCfg != null) {
+			MailInfo mailInfo = new MailInfo();
+			String lang = ServerData.getInstance().getPlayerLang(request.getTargetId());
+			mailInfo.subject = mailCfg.getSubject(lang);
+			mailInfo.content = mailCfg.getContent(lang);
+			ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
+			mailInfo.rewardList = Arrays.asList(item);
+
+			MailUtil.SendMail(mailInfo, request.getTargetId(), 0, mailCfg.getSender(lang));
 		}
 
 		HSAllianceMemKickRet.Builder response = HSAllianceMemKickRet.newBuilder();

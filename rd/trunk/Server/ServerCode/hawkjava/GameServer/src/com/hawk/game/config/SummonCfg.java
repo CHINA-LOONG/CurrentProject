@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.config.HawkConfigBase.Id;
 import org.hawk.log.HawkLog;
 
 @HawkConfigManager.CsvResource(file = "staticData/summon.csv", struct = "list")

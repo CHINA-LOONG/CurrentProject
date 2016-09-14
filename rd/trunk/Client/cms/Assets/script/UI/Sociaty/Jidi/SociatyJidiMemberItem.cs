@@ -7,6 +7,7 @@ public class SociatyJidiMemberItem : MonoBehaviour
     public Text nameText;
     public Text bpText;
     public RectTransform iconParent;
+    public Button itemButton;
 
     private MonsterIcon itemIcon = null;
     private PB.AllianceBaseMonster baseMonster = null;
@@ -37,6 +38,12 @@ public class SociatyJidiMemberItem : MonoBehaviour
         itemIcon.transform.SetParent(iconParent);
         itemIcon.transform.localScale = new Vector3(scale, scale, scale);
         itemIcon.transform.localPosition = Vector3.zero;
+
+        itemButton.onClick.AddListener(OnMonsterIconClicked);
+    }
+    void OnMonsterIconClicked()
+    {
+        UIMonsterInfo.Open(-1, baseMonster.cfgId, baseMonster.level, baseMonster.stage);
     }
     
     public void Clear()

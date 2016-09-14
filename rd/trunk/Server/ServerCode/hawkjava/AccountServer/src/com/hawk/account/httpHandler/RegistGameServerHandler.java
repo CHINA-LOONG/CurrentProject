@@ -29,7 +29,12 @@ public class RegistGameServerHandler implements HttpHandler{
 			// 初始化服务器地址
 			if (params.get("server") != null && params.get("ip") != null && params.get("port") != null){
 				// 更新服务器状态
-				AccountServices.getInstance().registGameServer(Integer.valueOf(params.get("server")), params.get("ip"), Integer.valueOf(params.get("port")));
+				AccountServices.getInstance().registGameServer(
+						Integer.valueOf(params.get("server")), 
+						params.get("ip"), 
+						Integer.valueOf(params.get("port")), 
+						(params.containsKey("scriptPort") ? Integer.valueOf(params.get("scriptPort")): 0)
+						);
 			}
 		}
 	}

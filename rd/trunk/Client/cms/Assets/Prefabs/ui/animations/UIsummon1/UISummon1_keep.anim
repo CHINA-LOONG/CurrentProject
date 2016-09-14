@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: UISummon1_keep
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 56
+        inSlope: 13
+        outSlope: -.193467692
+        tangentMode: 1
+      - time: 1.60000002
+        value: 62
+        inSlope: -.267857075
+        outSlope: -.267857075
+        tangentMode: 10
+      - time: 3
+        value: 56
+        inSlope: -3.92512338e-05
+        outSlope: -13
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon1/taiyang
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 81.5999985
+        inSlope: 14.4000015
+        outSlope: 2.85512524e-05
+        tangentMode: 1
+      - time: 1.60000002
+        value: 87
+        inSlope: -.241071582
+        outSlope: -.241071582
+        tangentMode: 10
+      - time: 3
+        value: 81.5999985
+        inSlope: .164402574
+        outSlope: -14.4000015
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/yueliang
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .196078435
+        inSlope: .502451003
+        outSlope: .502451003
+        tangentMode: 10
+      - time: 1.60000002
+        value: 1
+        inSlope: -.0355602205
+        outSlope: -.0355602205
+        tangentMode: 10
+      - time: 3
+        value: .196999997
+        inSlope: -.573571444
+        outSlope: -.573571444
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.a
+    path: Summon2/fazhen
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_PPtrCurves: []
+  m_SampleRate: 30
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - path: 4108366908
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 218406232
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3235794198
+      attribute: 304273561
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 3
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 56
+        inSlope: 13
+        outSlope: -.193467692
+        tangentMode: 1
+      - time: 1.60000002
+        value: 62
+        inSlope: -.267857075
+        outSlope: -.267857075
+        tangentMode: 10
+      - time: 3
+        value: 56
+        inSlope: -3.92512338e-05
+        outSlope: -13
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon1/taiyang
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 81.5999985
+        inSlope: 14.4000015
+        outSlope: 2.85512524e-05
+        tangentMode: 1
+      - time: 1.60000002
+        value: 87
+        inSlope: -.241071582
+        outSlope: -.241071582
+        tangentMode: 10
+      - time: 3
+        value: 81.5999985
+        inSlope: .164402574
+        outSlope: -14.4000015
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/yueliang
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .196078435
+        inSlope: .502451003
+        outSlope: .502451003
+        tangentMode: 10
+      - time: 1.60000002
+        value: 1
+        inSlope: -.0355602205
+        outSlope: -.0355602205
+        tangentMode: 10
+      - time: 3
+        value: .196999997
+        inSlope: -.573571444
+        outSlope: -.573571444
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.a
+    path: Summon2/fazhen
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []

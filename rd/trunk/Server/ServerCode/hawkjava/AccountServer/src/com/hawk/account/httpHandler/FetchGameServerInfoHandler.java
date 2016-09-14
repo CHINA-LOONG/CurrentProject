@@ -15,27 +15,11 @@ import com.google.gson.JsonObject;
 import com.hawk.account.AccountServices;
 import com.hawk.account.db.DBManager;
 import com.hawk.account.http.AccountHttpServer;
+import com.hawk.account.roleServeInfo.RoleServerInfo;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 public class FetchGameServerInfoHandler implements HttpHandler{
-
-	private static class RoleServerInfo{
-		public int server;
-		public String nickname;
-		public int level;
-
-		public RoleServerInfo(int server, int level, String nickname){
-			this.server = server;
-			this.nickname = nickname;
-			this.level = level;
-		}
-
-		@Override
-		public String toString() {
-			return super.toString() + " " + server + " "  + nickname + " "  + level;
-		}
-	}
 
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {

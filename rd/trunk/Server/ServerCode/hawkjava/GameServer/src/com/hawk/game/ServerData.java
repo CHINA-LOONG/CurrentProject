@@ -236,6 +236,18 @@ public class ServerData {
 	}
 
 	/**
+	 * 通过昵称获取playerID
+	 */
+	public int getPlayerIdByNickname(String nickname){
+		Integer playerId = nameMap.get(nickname);
+		if (playerId == null) {
+			return 0;
+		}
+		
+		return playerId;
+	}
+	
+	/**
 	 * 增加puid和玩家id的映射
 	 */
 	public void addPuidAndPlayerId(String puid, int playerId) {
@@ -249,7 +261,7 @@ public class ServerData {
 	public void addNameAndPlayerId(String name, int playerId) {
 		nameMap.put(name.toLowerCase(), playerId);
 	}
-
+	
 	/**
 	 * 增加name和玩家id的映射
 	 */

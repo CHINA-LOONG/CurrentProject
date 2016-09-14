@@ -13,6 +13,7 @@ public class SelectPet : UIBase
     public Text zhushouText;
     public ScrollView contentView;
     public Button closeButton;
+    public Image bgMask;
     private SelectPetDelegate callBack;
 
     public static SelectPet Instance = null;
@@ -46,6 +47,7 @@ public class SelectPet : UIBase
     void Start ()
     {
         closeButton.onClick.AddListener(OnCloseButtonClick);
+        EventTriggerListener.Get(bgMask.gameObject).onClick = OnBgMaskClick;
         titleText.text = StaticDataMgr.Instance.GetTextByID("sociaty_paibingxuanze");
         zhushouText.text = StaticDataMgr.Instance.GetTextByID("advanture_zhushouing");
         maoxianText.text = StaticDataMgr.Instance.GetTextByID("advanture_maoxianing");
@@ -59,7 +61,12 @@ public class SelectPet : UIBase
     {
         UIMgr.Instance.CloseUI_(this);
     }
-	
+
+    void OnBgMaskClick (GameObject go)
+    {
+        OnCloseButtonClick();
+    }
+
     void RefreshUI()
     {
         GameDataMgr.Instance.PlayerDataAttr.GetAllPet(ref mListUnit);
@@ -96,7 +103,7 @@ public class SelectPet : UIBase
             }
             else if (gameUnit.pbUnit.IsInAllianceBase())
             {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("advanture_record_009"), (int)PB.ImType.PROMPT);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_009"), (int)PB.ImType.PROMPT);
                 return;
             }
         }

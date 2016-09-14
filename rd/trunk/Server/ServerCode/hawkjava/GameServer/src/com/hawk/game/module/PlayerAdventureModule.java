@@ -72,9 +72,14 @@ public class PlayerAdventureModule extends PlayerModule {
 			if (false == busyAdventureList.contains(advenEntity.getAdventureId())) {
 
 				List<AdventureCondition> conditionList = AdventureUtil.genConditionList(player.getLevel());
+				if (null == conditionList) {
+					advenEntity.clearConditionList();
+				} else {
+					advenEntity.setConditionList(conditionList);
+				}
+
 				AdventureCfg advenCfg = AdventureUtil.getAdventureCfg(advenEntity.getType(), advenEntity.getGear(), player.getLevel());
 				advenEntity.setAdventureId(advenCfg.getId());
-				advenEntity.setConditionList(conditionList);
 				advenEntity.notifyUpdate(true);
 
 				builder.addIdleAdventure(BuilderUtil.genAdventureBuilder(advenEntity));
@@ -119,12 +124,6 @@ public class PlayerAdventureModule extends PlayerModule {
 			return true;
 		}
 
-		// 公会
-		if (null != hireMonster && 0 == player.getAllianceId()) {
-			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
-			return true;
-		}
-
 		// 阵型
 		int size = selfMonsterList.size();
 		if ((size +  ((null == hireMonster) ? 0 : 1)) != GsConst.ADVENTURE_MONSTER_COUNT) {
@@ -153,6 +152,17 @@ public class PlayerAdventureModule extends PlayerModule {
 
 		// 雇佣
 		if (null != hireMonster) {
+			if (0 == player.getAllianceId()) {
+				sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+				return true;
+			}
+
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			if (true == statisticsEntity.getHireMonsterDailySet().contains(hireMonster.getMonsterId())) {
+				sendError(hsCode, Status.adventureError.ADVENTURE_HIRE_ALREADY);
+				return true;
+			}
+
 			SociatyBaseCfg baseCfg = AllianceUtil.getAllianceBaseConfig(hireMonster.getBp());
 			if (null == baseCfg) {
 				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
@@ -165,6 +175,9 @@ public class PlayerAdventureModule extends PlayerModule {
 				return true;
 			}
 			consume.consumeTakeAffectAndPush(player, Action.ADVENTURE_HIRE_MONSTER, hsCode);
+
+			statisticsEntity.addHireMonsterDaily(hireMonster.getMonsterId());
+			statisticsEntity.notifyUpdate(true);
 
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_HIRE_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 	 		msg.pushParam(player);
@@ -197,6 +210,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		HSAdventureSettle protocol = cmd.parseProtocol(HSAdventureSettle.getDefaultInstance());
 		int hsCode = cmd.getType();
 		int teamId = protocol.getTeamId();
+		boolean isPay = protocol.getPay();
 
 		// 队伍
 		AdventureTeamEntity teamEntity = player.getPlayerData().getAdventureTeamEntity(teamId);
@@ -213,6 +227,11 @@ public class PlayerAdventureModule extends PlayerModule {
 		ConsumeItems consume = null; 
 		int curTime = HawkTime.getSeconds();
 		if (curTime < teamEntity.getEndTime()) {
+			if (false == isPay) {
+				sendError(hsCode, Status.adventureError.ADVENTURE_NOT_END);
+				return true;
+			}
+
 			consume = ConsumeItems.valueOf();
 			consume.addGold((int) Math.ceil((teamEntity.getEndTime() - curTime) / 600) * 2);
 			if (false == consume.checkConsume(player, hsCode)) {
@@ -276,7 +295,11 @@ public class PlayerAdventureModule extends PlayerModule {
 
 		// refresh
 		List<AdventureCondition> conditionList = AdventureUtil.genConditionList(player.getLevel());
-		advenEntity.setConditionList(conditionList);
+		if (null == conditionList) {
+			advenEntity.clearConditionList();
+		} else {
+			advenEntity.setConditionList(conditionList);
+		}
 		advenEntity.notifyUpdate(true);
 
 		HSAdventureSettleRet.Builder response = HSAdventureSettleRet.newBuilder();
@@ -312,7 +335,11 @@ public class PlayerAdventureModule extends PlayerModule {
 		}
 
 		List<AdventureCondition> conditionList = AdventureUtil.genConditionList(player.getLevel());
-		advenEntity.setConditionList(conditionList);
+		if (null == conditionList) {
+			advenEntity.clearConditionList();
+		} else {
+			advenEntity.setConditionList(conditionList);
+		}
 		advenEntity.notifyUpdate(true);
 
 		player.consumeAdventureChangeTimes(1, Action.NULL);

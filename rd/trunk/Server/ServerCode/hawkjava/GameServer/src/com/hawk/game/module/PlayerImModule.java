@@ -5,6 +5,7 @@ import org.hawk.app.HawkAppObj;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
 import org.hawk.os.HawkException;
+import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
@@ -20,6 +21,7 @@ import com.hawk.game.protocol.Im.HSImChatSend;
 import com.hawk.game.protocol.Im.HSImPlayer;
 import com.hawk.game.protocol.Im.HSImPlayerGet;
 import com.hawk.game.protocol.Im.HSImPlayerGetRet;
+import com.hawk.game.protocol.Status.imError;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 
@@ -40,8 +42,12 @@ public class PlayerImModule extends PlayerModule {
 		String chatText = protocol.getText();
 		String expansion = protocol.hasExpansion() ? protocol.getExpansion() : null;
 
+		if (player.getPlayerData().getStatisticsEntity().getDumpTime() > HawkTime.getSeconds()) {
+			sendError(hsCode, imError.IM_DUMP_ERROR_VALUE);
+			return true;
+		}
+		
 		// TODO: 
-		// 禁言判断
 		// 屏蔽
 		// 长度限制
 		if (chatText.length() > GsConst.MAX_IM_CHAT_LENGTH) {

@@ -26,6 +26,7 @@ import org.hawk.obj.HawkObjManager;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkShutdownHook;
 import org.hawk.os.HawkTime;
+import org.hawk.script.HawkScriptManager;
 import org.hawk.service.HawkServiceManager;
 import org.hawk.util.services.FunPlusPushService;
 import org.hawk.util.services.FunPlusTranslateService;
@@ -157,8 +158,7 @@ public class GsApp extends HawkApp {
 					// TODO
 					String ip = getMyHostIp();
 
-
-					HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort()));
+					HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort(), HawkScriptManager.getInstance().getScriptPort()));
 				}
 				catch (Exception e) {
 					HawkLog.logPrintln("get ip fail");
@@ -265,7 +265,7 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public Player queryPlayer(int playerId) {
-		HawkObjBase<HawkXID, HawkAppObj> objBase =queryObject(HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId));
+		HawkObjBase<HawkXID, HawkAppObj> objBase = queryObject(HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId));
 		if(objBase != null) {
 			return (Player)objBase.getImpl();
 		}
@@ -724,7 +724,6 @@ public class GsApp extends HawkApp {
 				if (objBase != null) {
 					objBase.lockObj();
 				}
-
 			}
 
 			// 会话绑定应用对象
@@ -732,7 +731,6 @@ public class GsApp extends HawkApp {
 				// 已存在会话的情况下, 踢出玩家
 				Player player = (Player) objBase.getImpl();
 				if (player != null && player.getSession() != null && player.getSession() != session) {	
-
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 					player.getSession().setAppObject(null);
 				}
@@ -787,6 +785,50 @@ public class GsApp extends HawkApp {
 		return true;
 	}
 
+	/**
+	 * 查询用户，如果用户不在线，则加载
+	 */
+	public Player queryAndLoadPlayer(int playerId, String puid){
+		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
+		boolean playerOffline = false;
+		Player player = null;
+		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
+		try {
+			// 离线对象创建临时数据
+			if (objBase == null || !objBase.isObjValid()) {
+				objBase = GsApp.getInstance().createObj(xid);
+				if (objBase != null) {
+					objBase.lockObj();
+				}
+				
+				
+
+				playerOffline = true;
+			}
+
+			if (objBase != null) {
+				player = (Player) objBase.getImpl();
+				if (playerOffline == true) {
+					// 家在离线数据
+					player.getPlayerData().setPuid(puid);
+					player.getPlayerData().loadPlayer();
+					player.getPlayerData().loadStatistics();
+					player.getPlayerData().loadAllMonster();
+					player.getPlayerData().loadAllItem();
+					player.getPlayerData().loadAllEquip();
+					player.getPlayerData().loadShop();
+				}		
+			}
+		} finally {
+			if (objBase != null) {
+				objBase.unlockObj();
+			}
+		}
+		
+		return player;
+	}
+	
+	
 	// 主线程运行
 	@Override
 	public void onOrderNotify(JSONObject jsonInfo) {

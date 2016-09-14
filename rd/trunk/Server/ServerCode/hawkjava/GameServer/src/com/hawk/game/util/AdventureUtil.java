@@ -75,6 +75,7 @@ public class AdventureUtil {
 	 * 检测怪物组是否满足条件组
 	 */
 	public static boolean isConditionMeet(List<AdventureCondition> conditionList, List<MonsterCfg> monsterList) {
+		// conditionList为空的情况视为符合条件，不予处理
 		for (AdventureCondition condition : conditionList) {
 			int meetCount = 0;
 			for (MonsterCfg monsterCfg : monsterList) {
@@ -93,12 +94,20 @@ public class AdventureUtil {
 	}
 
 	/**
-	 * 生成新条件组
+	 * 生成玩家等级对应的条件组
+	 * @return 如果level没有对应条件列表，返回null
 	 */
 	public static List<AdventureCondition> genConditionList(int level) {
 		List<Integer> countList = getCountList(level);
+		if (null == countList) {
+			return null;
+		}
+
 		int conditionCount = countList.size();
 		List<AdventureConditionTypeCfg> typeList = getTypeList(level, conditionCount);
+		if (null == typeList) {
+			return null;
+		}
 
 		HawkRand.randomOrder(countList);
 
@@ -112,6 +121,12 @@ public class AdventureUtil {
 		return conditionList;
 	}
 
+	// 内部方法----------------------------------------------------------------------
+
+	/**
+	 * 生成玩家等级对应的条件组数量部分
+	 * @return 如果level没有对应数量列表，返回null
+	 */
 	private static List<Integer> getCountList(int level) {
 		List<List<Integer>> objectList = new ArrayList<List<Integer>> ();
 		List<Integer> weightList = new ArrayList<Integer> ();
@@ -124,9 +139,16 @@ public class AdventureUtil {
 			}
 		}
 
+		if (true == objectList.isEmpty()) {
+			return null;
+		}
 		return HawkRand.randonWeightObject(objectList, weightList);
 	}
 
+	/**
+	 * 生成玩家等级对应的条件组类型部分
+	 * @return 如果level没有对应类型列表，返回null
+	 */
 	private static List<AdventureConditionTypeCfg> getTypeList(int level, int count) {
 		List<AdventureConditionTypeCfg> objectList = new ArrayList<AdventureConditionTypeCfg> ();
 		List<Integer> weightList = new ArrayList<Integer> ();
@@ -139,6 +161,9 @@ public class AdventureUtil {
 			}
 		}
 
+		if (true == objectList.isEmpty()) {
+			return null;
+		}
 		return HawkRand.randonWeightObject(objectList, weightList, count);
 	}
 

@@ -19,6 +19,7 @@ enum kickReason
 	LOGIN_FORBIDEN         = 3;
 	KICKED_OUT             = 4;
 	SERVER_RESTART         = 5;
+	GM				       = 6;
 }
 
 // 获得道具/怪物原因

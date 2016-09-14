@@ -418,6 +418,14 @@ namespace UnityClientConsole
 
 //                 HSAdventureBuyTeam buyTeam = new HSAdventureBuyTeam();
 //                 netmanaget.SendProtocol(code.ADVENTURE_BUY_TEAM_C.GetHashCode(), buyTeam);
+
+                HSSummonOne summonOne = new HSSummonOne();
+                summonOne.type = 4;
+                netmanaget.SendProtocol(code.SUMMON_ONE_C.GetHashCode(), summonOne);
+
+                HSSummonTen summonTen = new HSSummonTen();
+                summonTen.type = 4;
+                netmanaget.SendProtocol(code.SUMMON_TEN_C.GetHashCode(), summonTen);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
@@ -605,6 +613,17 @@ namespace UnityClientConsole
 
                 //HSInstanceRevive instanceRevive = new HSInstanceRevive();
                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
+            }
+            // 抽蛋----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.SUMMON_ONE_S.GetHashCode()))
+            {
+                HSSummonOneRet one = protocol.GetProtocolBody<HSSummonOneRet>();
+                Console.WriteLine("单抽");
+            }
+            else if (protocol.checkType(code.SUMMON_TEN_S.GetHashCode()))
+            {
+                HSSummonTenRet ten = protocol.GetProtocolBody<HSSummonTenRet>();
+                Console.WriteLine("十连抽");
             }
         }
 

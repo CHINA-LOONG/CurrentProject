@@ -86,7 +86,7 @@ public class AccountServices {
 	private URIBuilder uriBuilder = null;
 
 	private static final String serverPath = "/report_accountServer";
-	private static final String fetchIpPath = "/fetch_myip";
+	//private static final String fetchIpPath = "/fetch_myip";
 
 	private static final String serverQuery = "game=%s&platform=%s&channel=%s&server=%s&ip=%s&zmq_port=%d&http_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
 
@@ -147,12 +147,13 @@ public class AccountServices {
 	 * @param hostIp
 	 * @param port
 	 */
-	public void registGameServer(int serverIndex, String hostIp, int port) {
+	public void registGameServer(int serverIndex, String hostIp, int port, int scriptPort) {
 		GameServer gameServer = getGameServer(serverIndex);
 		ServerInfoCfg serverInfo = HawkConfigManager.getInstance().getConfigByKey(ServerInfoCfg.class, serverIndex);
 		if (gameServer != null && serverInfo != null) {
 			gameServer.setHostIp(hostIp);
 			gameServer.setPort(port);
+			gameServer.setScriptPort(scriptPort);
 			gameServer.setState(serverInfo.getState());
 			gameServer.setHeartBeatTime(HawkTime.getMillisecond());
 			updateServerInfo();

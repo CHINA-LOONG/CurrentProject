@@ -278,7 +278,7 @@ public class BuilderUtil {
 		if (myBase == true) {
 			builder.setSendTime(baseEntity.getSendTime());
 			builder.setPosition(baseEntity.getPosition());
-			builder.setReward((HawkTime.getSeconds() - baseEntity.getSendTime()) * AllianceUtil.getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend());
+			builder.setReward(((HawkTime.getSeconds() - baseEntity.getSendTime()) / 60) * AllianceUtil.getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend());
 		}
 
 		return builder;

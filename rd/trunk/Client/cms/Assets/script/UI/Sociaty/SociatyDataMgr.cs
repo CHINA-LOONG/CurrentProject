@@ -335,6 +335,7 @@ public class SociatyDataMgr : MonoBehaviour
                 allianceBaseMonster.Clear();
                 allianceBaseMonster.AddRange(msgRet.monsterInfo);
                 syncBaseMonsterTime = GameTimeMgr.Instance.GetServerTimeStamp();
+                allianceBaseMonster.Sort(SortAllianceBaseMonster);
             }
         }
 
@@ -359,6 +360,38 @@ public class SociatyDataMgr : MonoBehaviour
         PB.HSAllianceBaseRecallMonster param = new PB.HSAllianceBaseRecallMonster();
         param.position = position;
         GameApp.Instance.netManager.SendMessage(PB.code.ALLIANCE_BASE_RECALL_C.GetHashCode(), param);
+    }
+
+    public int SortAllianceBaseMonster(PB.AllianceBaseMonster itemA, PB.AllianceBaseMonster itemB)
+    {
+        int result;
+        if (itemA.level == itemB.level)
+        {
+            if (itemA.stage == itemB.stage)
+            {
+                int selfGrade = StaticDataMgr.Instance.GetUnitRowData(itemA.cfgId).rarity;
+                int targetGrade = StaticDataMgr.Instance.GetUnitRowData(itemB.cfgId).rarity;
+                if (selfGrade == targetGrade)
+                {
+                    result = 0;
+                }
+                else
+                {
+                    result = selfGrade > targetGrade ? -1 : 1;
+                }
+            }
+            else
+            {
+                result = itemA.stage > itemB.stage ? -1 : 1;
+            }
+        }
+        else
+        {
+            result = itemA.level > itemB.level ? -1 : 1;
+        }
+
+        return result;
+
     }
 
     #endregion

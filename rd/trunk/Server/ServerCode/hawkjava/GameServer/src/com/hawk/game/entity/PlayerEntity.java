@@ -102,6 +102,10 @@ public class PlayerEntity extends HawkDBEntity {
 	
 	@Column(name = "osName", nullable = false)
 	protected String osName = "";
+
+	// 锁定时间
+	@Column(name = "lockTime", nullable = false)
+	protected int lockTime = 0;
 	
 	@Column(name = "loginTime")
 	protected Calendar loginTime = null;
@@ -322,6 +326,14 @@ public class PlayerEntity extends HawkDBEntity {
 		this.osName = osName;
 	}
 
+	public int getLockTime() {
+		return lockTime;
+	}
+
+	public void setLockTime(int lockTime) {
+		this.lockTime = lockTime;
+	}
+	
 	public Calendar getLoginTime() {
 		return loginTime;
 	}

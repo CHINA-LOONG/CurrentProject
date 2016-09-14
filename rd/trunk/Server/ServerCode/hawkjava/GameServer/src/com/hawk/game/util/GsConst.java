@@ -222,6 +222,8 @@ public class GsConst {
 		public static final int ALLIANCE_MODULE = 12;
 		// 大冒险模块
 		public static final int ADVENTURE_MODULE = 13;
+		// 抽蛋模块
+		public static final int SUMMON_MODULE = 14;
 
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -459,7 +461,7 @@ public class GsConst {
 		public static final int MAX_COPYMAIN_COUNT = 2;
 		public static final int SEND_FATIGUE_COUNT = 1;
 
-		public static final int BASE_MIN_TIME = 180;
+		public static final int BASE_MIN_TIME = 3600;
 
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "110001";
@@ -494,8 +496,10 @@ public class GsConst {
 		public static final int ALLIANCE_OWNER = 101;
 		// 被赠送活力值
 		public static final int ALLIANCE_FATIGUE = 102;
-		// 被踢出工会
+		// 被踢出公会
 		public static final int ALLIANCE_KICK = 103;
+		// 离开公会发放基地奖励
+		public static final int ALLIANCE_LEAVE_BASE = 104;
 	}
 
 	public static class SysIm {

@@ -2,4 +2,5 @@
 	<item id="xmlcheck" 		className="com.hawk.game.gm.XmlReloadHandler"/>
 	<item id="sysop" 			className="com.hawk.game.gm.SysOperationHandler"/>
 	<item id="onshutdown" 		className="com.hawk.game.gm.ShutdownCallbackHandler"/>
+	<item id="GM" 				className="com.hawk.game.gm.OpsGMHandler"/>
 </script>

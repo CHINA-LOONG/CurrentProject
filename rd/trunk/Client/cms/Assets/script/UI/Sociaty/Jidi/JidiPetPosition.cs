@@ -106,7 +106,7 @@ public class JidiPetPosition : MonoBehaviour
         {
             nameStr = unitData.NickNameAttr;
         }
-        nameText.text = nameStr;
+        UIUtil.SetStageColor(nameText, nameStr, quallity);
 
         lvText.text = string.Format("LVL{0}", petData.level);
         stayTimeSecond = GameTimeMgr.Instance.GetServerTimeStamp() - petData.sendTime;
@@ -172,7 +172,7 @@ public class JidiPetPosition : MonoBehaviour
 
     void OnReCallButtonClick()
     {
-        if(stayTimeSecond < 3*60)//todo
+        if(stayTimeSecond < 3600)
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_067"), (int)PB.ImType.PROMPT);
             return;

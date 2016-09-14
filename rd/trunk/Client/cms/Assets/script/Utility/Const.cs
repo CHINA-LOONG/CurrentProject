@@ -76,25 +76,9 @@ public class Const
 	//关于打包的一些配置 todo:move to config file for auto package
 	public	static	int		versionCode = 1;//程序版本号
 	public	static	string	versionName = "1.0.0";
-	private	static	int		resouceCode = 1;//资源版本号 
+	public	static	int		resouceCode = 8;//资源版本号 
 
-	public	static	string	channel = "test";//渠道号
+	public	static	string	channel = "funplus";//渠道号
 	public	static	string	platform = "ios";//平台 ios  android
-
-	public	static	int	ResouceCodeAttr
-	{
-		get
-		{
-			int savecode = PlayerPrefs.GetInt("resouceCode");
-			if(savecode < resouceCode)
-				return resouceCode;
-			return savecode;
-		}
-	}
-
-	public static void SetResouceCode(int resCode)
-	{
-		PlayerPrefs.SetInt ("resouceCode", resCode);
-	}
 
 }

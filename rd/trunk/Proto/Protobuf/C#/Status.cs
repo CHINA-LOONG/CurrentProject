@@ -85,6 +85,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_INTERVAL_SHORT", Value=9)]
       LOGIN_INTERVAL_SHORT = 9,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_LOCK", Value=10)]
+      LOGIN_LOCK = 10,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -479,7 +482,10 @@ namespace PB
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=655361)]
-      IM_CHAT_LENGTH = 655361
+      IM_CHAT_LENGTH = 655361,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_DUMP_ERROR", Value=655362)]
+      IM_DUMP_ERROR = 655362
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"settingError")]

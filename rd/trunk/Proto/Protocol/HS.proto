@@ -11,6 +11,8 @@ enum sys
 	HEART_BEAT                  = 3;
 	// 错误码提示
 	ERROR_CODE                  = 4;
+	// 警告
+	WARN                		= 5;
 }
 
 // GM协议ID列表(100<=gm<1000)

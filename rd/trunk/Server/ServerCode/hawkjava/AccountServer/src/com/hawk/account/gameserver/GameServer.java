@@ -22,6 +22,7 @@ public class GameServer{
 	public String name;
 	public String hostIp;
 	public int port;
+	public int scriptPort;
 	public int state;
 	public long heartBeatTime;
 
@@ -30,6 +31,7 @@ public class GameServer{
 		name = "";
 		hostIp = "";
 		port = 0;
+		scriptPort = 0;
 		state = GameServer.SERVER_STATE_MAINTAIN;
 		index = 0;
 		area = 0;
@@ -83,6 +85,14 @@ public class GameServer{
 		this.port = port;
 	}
 
+	public int getScriptPort() {
+		return scriptPort;
+	}
+
+	public void setScriptPort(int scriptPort) {
+		this.scriptPort = scriptPort;
+	}
+	
 	public int getState() {
 		return state;
 	}

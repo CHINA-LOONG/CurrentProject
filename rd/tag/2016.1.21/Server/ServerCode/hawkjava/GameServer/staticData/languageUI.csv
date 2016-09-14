@@ -1569,7 +1569,7 @@ facebook_share_content1,大批神话中的妖怪突然降临人界！点击前�
 facebook_share_title2,我在《Legends Awake》中发起了一次挑战,I have sent a challenge in <Legends Awake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
-specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,"From {0}.{1} to {2}.{3}, can only be purchased <color=#ffcc00>{4}</color> times!"
+specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3} {4} </color>期间，只有<color=#ffcc00>{5}</color>次机会,"From {0}.{1} to {2}.{3} {4} , can only be purchased <color=#ffcc00>{5}</color> times!"
 specialgift_advanceTime,剩余时间 ,Time left 
 specialgift_advanceCount,剩余次数 ,Remaining 
 specialgift_choiceTime,剩余时间 ,Time left 
@@ -1950,6 +1950,12 @@ server_limit_001,当前服务器已达到注册上限，请选择其他服务器
 jiasu_name,加速,Speed-up
 tuoguan_name,托管,Auto-battle
 instance_zhuzhan_002,当前玩法无法使用公会助战功能哦！,Unable to use Guild Assistance in the current game mode!
-instance_zhuzhan_004,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?
+instance_zhuzhan_004,"雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 雇佣花费
+将支付给雇佣宠物所属玩家","雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 雇佣花费
+将支付给雇佣宠物所属玩家"
 instance_zhuzhan_003,请至少选择一位己方成员上阵！,Please select at least one member to enter battle!
 retry_pinfandenglu,登录操作过于频繁，请稍后再试,登录操作过于频繁，请稍后再试
+instance_zhuzhan_jifang,己方宠物,己方宠物
+instance_zhuzhan_gonghui,助战宠物,助战宠物
+instance_zhuzhan_005,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?
+instance_zhuzhan_006,一次战斗只能雇佣一只宠物,Only 1 monster may be hired for each battle.

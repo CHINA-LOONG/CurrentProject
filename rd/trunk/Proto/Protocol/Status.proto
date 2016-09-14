@@ -38,6 +38,8 @@ enum error
 	UNSUPPORT_ACTION           = 0x00000008;
 	// 登陆太频繁
 	LOGIN_INTERVAL_SHORT       = 0x00000009;
+	// 登陆被锁定
+	LOGIN_LOCK   		       = 0x0000000A;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
 }
@@ -301,6 +303,8 @@ enum imError
 {
 	// 聊天内容太长
 	IM_CHAT_LENGTH             = 0x000A0001;
+	// 禁言
+	IM_DUMP_ERROR              = 0x000A0002;
 }
 
 enum settingError
