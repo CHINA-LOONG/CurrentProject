@@ -337,8 +337,10 @@ enum adventureError
 
 enum summonError
 {
-	// 没有免费金币抽蛋次数
-	SUMMON_COIN_NO_FREE        = 0x000D0001;
 	// 没有免费钻石抽蛋次数
-	SUMMON_DIAMOND_NO_FREE     = 0x000D0002;
+	SUMMON_DIAMOND_NO_FREE     = 0x000D0001;
+	// 没有免费金币抽蛋次数
+	SUMMON_COIN_NO_FREE        = 0x000D0002;
+	// 免费金币抽蛋冷却中
+	SUMMON_COIN_FREE_CD        = 0x000D0003;
 }

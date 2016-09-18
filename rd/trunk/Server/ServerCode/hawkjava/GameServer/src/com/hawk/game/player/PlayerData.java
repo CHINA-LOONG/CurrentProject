@@ -13,6 +13,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.AdventureEntity;
 import com.hawk.game.entity.AdventureTeamEntity;
+import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
@@ -27,6 +28,7 @@ import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
+import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.Quest.HSQuest;
@@ -381,6 +383,19 @@ public class PlayerData {
 		}
 
 		return true;
+	}
+	
+	/**
+	 * 怪物是否在公会基地中
+	 * @param monsterId
+	 * @return
+	 */
+	public boolean isMonsterInBase(int monsterId){
+		if (playerAllianceEntity.getAllianceId() != 0) {
+			return playerAllianceEntity.ismonsterSendtoBase(monsterId);
+		}
+		
+		return false;
 	}
 
 	/**
@@ -870,10 +885,11 @@ public class PlayerData {
 	 */
 	public void syncMonsterInfo(int id) {
 		HSMonsterInfoSync.Builder builder = HSMonsterInfoSync.newBuilder();
-
+		// 判断宠物是否在基地中
+		PlayerAllianceEntity playerAllianceEntity = AllianceManager.getInstance().getPlayerAllianceEntity(player.getId());
 		if (id == 0) {
 			for (Entry<Integer, MonsterEntity> entry : monsterEntityMap.entrySet()) {
-				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue()));
+				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue(), playerAllianceEntity));
 				// 分批发送
 				if (builder.getMonsterInfoCount() >= 10) {
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder));
@@ -882,7 +898,7 @@ public class PlayerData {
 			}
 		}
 		else {
-			builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntityMap.get(id)));
+			builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntityMap.get(id), playerAllianceEntity));
 		}
 
 		if (builder.getMonsterInfoCount() > 0) {

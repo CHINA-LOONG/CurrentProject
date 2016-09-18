@@ -192,7 +192,7 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 
 	public boolean canMonsterDecompose(){
-		return (state | Const.MonsterState.LOCKED_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE | Const.MonsterState.IN_ALLIANCE_BASE_VALUE)!= 0;
+		return (state | Const.MonsterState.LOCKED_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE )!= 0;
 	}
 
 	@Override

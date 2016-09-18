@@ -2,6 +2,7 @@
 		Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Float1("Float1",Float) = 1.0
+		_FadeColor("FadeColor", Color) = (0.0, 0.0, 0.0, 1.0)
 	}
 
 	SubShader {
@@ -12,7 +13,8 @@
 			#pragma fragment frag
 
 			uniform sampler2D _MainTex;
-			uniform float _Float1; 
+			uniform float _Float1;
+			float4 _FadeColor;
 			
 			struct Input {
 				float4 pos : POSITION;
@@ -33,7 +35,7 @@
 
 			float4 frag (v2f i) : COLOR {		 	 
 				float4 outColor;				
-				outColor = tex2D( _MainTex, i.uv) * _Float1;
+			outColor = tex2D(_MainTex, i.uv) * _Float1 +(1.0 - _Float1) * _FadeColor;
 			    return outColor;
 			}
 			ENDCG

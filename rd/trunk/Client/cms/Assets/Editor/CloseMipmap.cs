@@ -391,7 +391,19 @@ public class CloseMipmap : MonoBehaviour
             {
                 int subIndex = prefabs_path[i].LastIndexOf("/");
                 string filename = prefabs_path[i].Substring(subIndex + 1);
-                objects.Add(filename, curObj);
+                if (objects.ContainsKey(filename) == false)
+                {
+                    objects.Add(filename, curObj);
+                }
+                else
+                {
+                    objects.Add(prefabs_path[i], curObj);
+                    using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+                    {
+                        string s = string.Format("prefab has same name {0}", filename);
+                        writer.WriteLine(s);
+                    }
+                }
             }
             else
             {

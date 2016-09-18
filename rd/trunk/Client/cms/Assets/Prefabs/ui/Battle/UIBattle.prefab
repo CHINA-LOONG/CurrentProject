@@ -3293,6 +3293,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11421236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5360,6 +5361,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11470826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5759,6 +5761,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11479962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6268,6 +6271,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11491938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12948,7 +12952,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 242, y: -523}
+  m_AnchoredPosition: {x: -46.5, y: -271}
   m_SizeDelta: {x: 77, y: 77}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22485738

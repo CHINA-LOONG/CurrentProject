@@ -454,6 +454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
   titleText: {fileID: 11419352}
   maoxianText: {fileID: 11477636}
   zhushouText: {fileID: 11428744}
@@ -689,7 +691,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 5
     m_Right: 5
-    m_Top: 12
+    m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 3
   m_StartCorner: 0
@@ -1063,7 +1065,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 4, y: 206.5}
+  m_AnchoredPosition: {x: 0, y: 202.639999}
   m_SizeDelta: {x: 407.190002, y: 0}
   m_Pivot: {x: .5, y: 1}
 --- !u!224 &22440976
@@ -1098,8 +1100,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 28, y: 16.2000008}
-  m_SizeDelta: {x: 451.5, y: 423}
+  m_AnchoredPosition: {x: 28, y: 7.69999981}
+  m_SizeDelta: {x: 451.5, y: 404.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22457642
 RectTransform:

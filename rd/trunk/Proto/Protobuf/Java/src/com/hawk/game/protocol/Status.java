@@ -3253,47 +3253,64 @@ public final class Status {
   public enum summonError
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>SUMMON_COIN_NO_FREE = 851969;</code>
-     *
-     * <pre>
-     * 没有免费金币抽蛋次数
-     * </pre>
-     */
-    SUMMON_COIN_NO_FREE(0, 851969),
-    /**
-     * <code>SUMMON_DIAMOND_NO_FREE = 851970;</code>
+     * <code>SUMMON_DIAMOND_NO_FREE = 851969;</code>
      *
      * <pre>
      * 没有免费钻石抽蛋次数
      * </pre>
      */
-    SUMMON_DIAMOND_NO_FREE(1, 851970),
+    SUMMON_DIAMOND_NO_FREE(0, 851969),
+    /**
+     * <code>SUMMON_COIN_NO_FREE = 851970;</code>
+     *
+     * <pre>
+     * 没有免费金币抽蛋次数
+     * </pre>
+     */
+    SUMMON_COIN_NO_FREE(1, 851970),
+    /**
+     * <code>SUMMON_COIN_FREE_CD = 851971;</code>
+     *
+     * <pre>
+     * 免费金币抽蛋冷却中
+     * </pre>
+     */
+    SUMMON_COIN_FREE_CD(2, 851971),
     ;
 
     /**
-     * <code>SUMMON_COIN_NO_FREE = 851969;</code>
-     *
-     * <pre>
-     * 没有免费金币抽蛋次数
-     * </pre>
-     */
-    public static final int SUMMON_COIN_NO_FREE_VALUE = 851969;
-    /**
-     * <code>SUMMON_DIAMOND_NO_FREE = 851970;</code>
+     * <code>SUMMON_DIAMOND_NO_FREE = 851969;</code>
      *
      * <pre>
      * 没有免费钻石抽蛋次数
      * </pre>
      */
-    public static final int SUMMON_DIAMOND_NO_FREE_VALUE = 851970;
+    public static final int SUMMON_DIAMOND_NO_FREE_VALUE = 851969;
+    /**
+     * <code>SUMMON_COIN_NO_FREE = 851970;</code>
+     *
+     * <pre>
+     * 没有免费金币抽蛋次数
+     * </pre>
+     */
+    public static final int SUMMON_COIN_NO_FREE_VALUE = 851970;
+    /**
+     * <code>SUMMON_COIN_FREE_CD = 851971;</code>
+     *
+     * <pre>
+     * 免费金币抽蛋冷却中
+     * </pre>
+     */
+    public static final int SUMMON_COIN_FREE_CD_VALUE = 851971;
 
 
     public final int getNumber() { return value; }
 
     public static summonError valueOf(int value) {
       switch (value) {
-        case 851969: return SUMMON_COIN_NO_FREE;
-        case 851970: return SUMMON_DIAMOND_NO_FREE;
+        case 851969: return SUMMON_DIAMOND_NO_FREE;
+        case 851970: return SUMMON_COIN_NO_FREE;
+        case 851971: return SUMMON_COIN_FREE_CD;
         default: return null;
       }
     }
@@ -3458,10 +3475,10 @@ public final class Status {
       "TER_COUNT\020\204\2000\022\035\n\027ADVENTURE_TEAM_NOT_OPEN" +
       "\020\205\2000\022\031\n\023ADVENTURE_TEAM_BUSY\020\206\2000\022\031\n\023ADVEN" +
       "TURE_TEAM_IDLE\020\207\2000\022\027\n\021ADVENTURE_NOT_END\020" +
-      "\210\2000\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\2000*F\n\013sum" +
-      "monError\022\031\n\023SUMMON_COIN_NO_FREE\020\201\2004\022\034\n\026S" +
-      "UMMON_DIAMOND_NO_FREE\020\202\2004B\030\n\026com.hawk.ga" +
-      "me.protocol"
+      "\210\2000\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\2000*a\n\013sum" +
+      "monError\022\034\n\026SUMMON_DIAMOND_NO_FREE\020\201\2004\022\031" +
+      "\n\023SUMMON_COIN_NO_FREE\020\202\2004\022\031\n\023SUMMON_COIN" +
+      "_FREE_CD\020\203\2004B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

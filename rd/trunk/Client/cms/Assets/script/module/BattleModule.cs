@@ -67,6 +67,7 @@ public class BattleModule : ModuleBase
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
             if (loading != null)
             {
+                UIMgr.Instance.FixBrokenWord();
                 controller.StartBattlePrepare(enterParam);
                 loading.SetLoadingCallback(LoadResourceFinish);
                 loading.UpdateTotalAssetCount();

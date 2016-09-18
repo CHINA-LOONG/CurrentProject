@@ -15,6 +15,7 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
@@ -125,7 +126,7 @@ public class BuilderUtil {
 		HSStatisticsSyncPart2.Builder builder = HSStatisticsSyncPart2.newBuilder();
 
 		builder.addAllMonsterCollect(statisticsEntity.getMonsterCollectSet());
-		
+
 		for (Entry<String, Integer> entry : statisticsEntity.getUseItemCountDailyMap().entrySet()) {
 			ItemState.Builder itemState = ItemState.newBuilder();
 			itemState.setItemId(entry.getKey());
@@ -133,15 +134,16 @@ public class BuilderUtil {
 
 			builder.addItemState(itemState);
 		}
-		
+
 		builder.setFatigue(statisticsEntity.getFatigue());
 		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
 		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		builder.setAdventureChange(statisticsEntity.getAdventureChange());
 		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
-		// TODO
-		builder.setSummonDiamondFreeBeginTime(0);
+		builder.setSummonDiamondFreeBeginTime((int)(statisticsEntity.getEggPointBeginTime().getTimeInMillis() / 1000));
+		builder.setSummonCoinFreeLastTime((int)(statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() / 1000));
+		builder.addAllHiredMonsterId(statisticsEntity.getHireMonsterDailySet());
 
 		return builder;
 	}
@@ -219,7 +221,7 @@ public class BuilderUtil {
 		return builder;
 	}
 
-	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity) {
+	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity, PlayerAllianceEntity playerAllianceEntity) {
 		HSMonster.Builder builder = HSMonster.newBuilder();
 		builder.setMonsterId(monsterEntity.getId());
 		builder.setCfgId(monsterEntity.getCfgId());
@@ -229,7 +231,12 @@ public class BuilderUtil {
 		builder.setLazy(monsterEntity.getLazy());
 		builder.setLazyExp(monsterEntity.getLazyExp());
 		builder.setDisposition(monsterEntity.getDisposition());
-		builder.setState(monsterEntity.getState());
+		if (playerAllianceEntity != null && playerAllianceEntity.ismonsterSendtoBase(monsterEntity.getId())) {
+			builder.setState(monsterEntity.getState() | Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
+		}
+		else {
+			builder.setState(monsterEntity.getState());
+		}
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
 		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
@@ -247,7 +254,7 @@ public class BuilderUtil {
 	 * @return
 	 */
 	public static HSMonster.Builder genCompleteMonsterBuilder(Player player, MonsterEntity monsterEntity){
-		HSMonster.Builder builder = genMonsterBuilder(monsterEntity);
+		HSMonster.Builder builder = genMonsterBuilder(monsterEntity, null);
 		// 组装装备
 		Map<Integer, Long> equips = player.getPlayerData().getMonsterEquips(monsterEntity.getId());
 		if (equips != null) {
@@ -278,7 +285,7 @@ public class BuilderUtil {
 		if (myBase == true) {
 			builder.setSendTime(baseEntity.getSendTime());
 			builder.setPosition(baseEntity.getPosition());
-			builder.setReward(((HawkTime.getSeconds() - baseEntity.getSendTime()) / 60) * AllianceUtil.getAllianceBaseConfig(baseEntity.getBp()).getCoinDefend());
+			builder.setReward(AllianceUtil.getAllianceBaseDefReward(baseEntity.getBp(), baseEntity.getSendTime()));
 		}
 
 		return builder;

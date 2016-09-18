@@ -260,6 +260,7 @@ public class SociatyDataMgr : MonoBehaviour
             return;
         }
         GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
+        GameDataMgr.Instance.PlayerDataAttr.ChangePetStateForLeaveSociaty();
     }
     void OnTaskTimeOut_N_S(ProtocolMessage message)
     {

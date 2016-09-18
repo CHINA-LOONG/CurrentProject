@@ -144,7 +144,7 @@ public class PlayerAdventureModule extends PlayerModule {
 				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
 				return true;
 			}
-			if (monsterEntity.isStateSet(Const.MonsterState.IN_ALLIANCE_BASE_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE)) {
+			if (monsterEntity.isStateSet(Const.MonsterState.IN_ADVENTURE_VALUE) || player.getPlayerData().isMonsterInBase(monsterId)) {
 				sendError(hsCode, Status.monsterError.MONSTER_BUSY_VALUE);
 				return true;
 			}
@@ -194,6 +194,12 @@ public class PlayerAdventureModule extends PlayerModule {
 		// hireMonster只读，直接使用protobuf的数据即可
 		teamEntity.setHireMonster(hireMonster);
 		teamEntity.notifyUpdate(true);
+
+		for (int i = 0; i < size; ++i) {
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(selfMonsterList.get(i));
+			monsterEntity.addState(Const.MonsterState.IN_ADVENTURE_VALUE);
+			monsterEntity.notifyUpdate(true);
+		}
 
 		HSAdventureEnterRet.Builder response = HSAdventureEnterRet.newBuilder();
 		response.setTeamId(teamId);
@@ -395,7 +401,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		int teamCount = player.getPlayerData().getAdventureTeamEntityMap().size();
 		int newTeamId = teamCount + 1;
 
-		if (newTeamId > priceCfgMap.size()) {
+		if (false == priceCfgMap.containsKey(newTeamId)) {
 			sendError(hsCode, Status.adventureError.ADVENTURE_TEAM_COUNT);
 			return true;
 		}

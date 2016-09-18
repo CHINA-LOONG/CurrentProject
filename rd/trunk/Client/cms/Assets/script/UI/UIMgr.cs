@@ -21,6 +21,12 @@ public class LoadUIEventArgs : System.EventArgs
     public AssetLoadedCallBack assetCallBack;
 }
 
+public class UIBaseData
+{
+    public UIBase uiItem;
+    public int uiIndex;
+}
+
 public class UIMgr : MonoBehaviour
 {
     [SerializeField]
@@ -83,6 +89,9 @@ public class UIMgr : MonoBehaviour
         }
     }
 
+    static string chineseTxt = null;
+    public UnityEngine.Font baseFont;
+
     public static bool IsUIDestroyed()
     {
         return mInst == null;
@@ -92,6 +101,7 @@ public class UIMgr : MonoBehaviour
     List<UIBase> popupList = new List<UIBase>();
 
     public List<UIBase> stackList = new List<UIBase>();
+    public List<UIBase> uiLayerList = new List<UIBase>();
 
     void Start()
     {
@@ -158,19 +168,6 @@ public class UIMgr : MonoBehaviour
         GameObject topGo = Util.FindChildByName(rootObj, "topPanel");
         rootData.topPanelTransform = topGo.transform;
     }
-
-    UIBase CreateUI(string uiName, bool cache = true)
-    {
-        UIBase uiItem = null;
-        GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
-        if (null == ui)
-        {
-            return null;
-        }
-        SetUIInternal(ref uiItem, ui, uiName, cache);
-
-        return uiItem;
-    }
     public UIBase OpenUI_(string uiName, bool cache = true)
     {
         UIBase uiItem = null;
@@ -184,7 +181,12 @@ public class UIMgr : MonoBehaviour
         }
         if (uiItem == null)
         {
-            uiItem = CreateUI(uiName, cache);
+            GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
+            if (null == ui)
+            {
+                return null;
+            }
+            SetUIInternal(ref uiItem, ui, uiName, cache);
         }
         uiItem.transform.SetAsLastSibling();
         uiItem.Init();
@@ -192,6 +194,11 @@ public class UIMgr : MonoBehaviour
         if (!string.Equals(uiName, UINetRequest.ViewName))
         {
             AddedToStack(uiItem);
+        }
+
+        if (cache)
+        {
+            OnUILayerOpen(uiItem);
         }
         return uiItem;
     }
@@ -227,6 +234,133 @@ public class UIMgr : MonoBehaviour
             }
         }
     }
+    
+    private void OnUILayerOpen(UIBase uiItem)
+    {
+        if (
+            uiItem.IgnorePreviousHide == false && 
+            uiItem.ViewTypeAttr != UIBase.ViewType.VT_POPUP &&
+            uiItem.ViewTypeAttr != UIBase.ViewType.VT_POPUPTOP
+            )
+        {
+            int count = uiLayerList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                if (uiLayerList[i] == uiItem)
+                {
+                    uiLayerList.Remove(uiItem);
+                    break;
+                }
+            }
+
+            uiLayerList.Add(uiItem);
+            if (uiItem.HidePreviousUI == true)
+            {
+                count = uiLayerList.Count;
+                if (count > 1)
+                {
+                    HidePreviousUIRecurs(count - 2);
+                    //UIBase previousUI = uiLayerList[count - 2];
+                    //if (previousUI != null)
+                    //{
+                    //    previousUI.gameObject.SetActive(false);
+                    //}
+                    //else
+                    //{
+                    //    Debug.LogError("null previous ui");
+                    //}
+                }
+            }
+        }
+    }
+
+    private void HidePreviousUIRecurs(int index)
+    {
+        if (index >= 0 && index < uiLayerList.Count)
+        {
+            UIBase previousUI = uiLayerList[index];
+            if (previousUI != null)
+            {
+                previousUI.gameObject.SetActive(false);
+                if (previousUI.HidePreviousUI == false)
+                {
+                    HidePreviousUIRecurs(index - 1);
+                }
+            }
+            else
+            {
+                Debug.LogError("null previous ui");
+            }
+        }
+        else
+        {
+            Debug.LogError(string.Format("invalidate hide previous ui index {0}", index));
+        }
+    }
+
+    private void ShowPreviousUIRecurs(int index)
+    {
+        if (index >= 0 && index < uiLayerList.Count)
+        {
+            UIBase previousUI = uiLayerList[index];
+            if (previousUI != null)
+            {
+                previousUI.gameObject.SetActive(true);
+                previousUI.RefreshOnPreviousUIHide();
+                if (previousUI.HidePreviousUI == false)
+                {
+                    ShowPreviousUIRecurs(index - 1);
+                }
+            }
+            else
+            {
+                Logger.LogError("null previous ui");
+            }
+        }
+        else
+        {
+            Logger.LogError(string.Format("invalidate show previous ui index {0}", index));
+        }
+    }
+    private void OnUILayerClose(UIBase uiItem)
+    {
+        if (
+            uiItem.IgnorePreviousHide == false &&
+            uiItem.ViewTypeAttr != UIBase.ViewType.VT_POPUP &&
+            uiItem.ViewTypeAttr != UIBase.ViewType.VT_POPUPTOP
+            )
+        {
+            int count = uiLayerList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                if (uiLayerList[i] == uiItem)
+                {
+                    uiLayerList.Remove(uiItem);
+                    break;
+                }
+            }
+
+            count = uiLayerList.Count;
+            if (count > 0)
+            {
+                ShowPreviousUIRecurs(count - 1);
+                //UIBase previousUI = uiLayerList[count - 1];
+                //if (previousUI != null)
+                //{
+                //    previousUI.gameObject.SetActive(true);
+                //}
+                //else
+                //{
+                //    Debug.LogError("null previous ui");
+                //}
+            }
+        }
+    }
+
+    public void ClearUILayerList()
+    {
+        uiLayerList.Clear();
+    }
 
     public void OpenUICallback(GameObject ui, System.EventArgs args)
     {
@@ -249,6 +383,11 @@ public class UIMgr : MonoBehaviour
             }
 
             mRequestUIList.Remove(uiEventArgs.uiName);
+
+            if (uiEventArgs.cache == true)
+            {
+                OnUILayerOpen(uiItem);
+            }
         }
     }
 
@@ -268,6 +407,8 @@ public class UIMgr : MonoBehaviour
                 {
                     AddedToStack(uiItem);
                 }
+
+                OnUILayerOpen(uiItem);
             }
         }
         if (uiItem == null)
@@ -291,6 +432,7 @@ public class UIMgr : MonoBehaviour
     {
         if (uiItem != null)
         {
+            OnUILayerClose(uiItem);
             if (uiList.ContainsValue(uiItem))
             {
                 uiItem.gameObject.SetActive(false);
@@ -300,35 +442,36 @@ public class UIMgr : MonoBehaviour
             {
                 DestroyUI(uiItem);
             }
+
         }
     }
 
     public void DestroyUI(UIBase uiItem)
     {
-        if (uiItem == null)
+        if (uiItem != null)
         {
-            return;
-        }
-        RemoveFromStack(uiItem);
-        if (uiList.ContainsValue(uiItem))
-        {
-            string uiName = "";
-            foreach (var item in uiList)
+            OnUILayerClose(uiItem);
+            RemoveFromStack(uiItem);
+            if (uiList.ContainsValue(uiItem))
             {
-                if (item.Value == uiItem)
+                string uiName = "";
+                foreach (var item in uiList)
                 {
-                    uiName = item.Key;
-                    break;
+                    if (item.Value == uiItem)
+                    {
+                        uiName = item.Key;
+                        break;
+                    }
                 }
+                uiList.Remove(uiName);
             }
-            uiList.Remove(uiName);
+            if (popupList.Contains(uiItem))
+            {
+                popupList.Remove(uiItem);
+            }
+            uiItem.Clean();
+            ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
         }
-        if (popupList.Contains(uiItem))
-        {
-            popupList.Remove(uiItem);
-        }
-        uiItem.Clean();
-        ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
     }
     public void DestroyAllPopup()
     {
@@ -443,6 +586,21 @@ public class UIMgr : MonoBehaviour
             curParkTime = 0.0f;
             //重置数据
             GameDataMgr.Instance.ClearAllData();
+            //destroy all ui
+            DestroyAllPopup();
+            int count = uiList.Count;
+            List<UIBase> tmpList = new List<UIBase>();
+            tmpList.AddRange(uiList.Values);
+            for (int i = count -1; i >= 0; --i)
+            {
+                RemoveFromStack(tmpList[i]);
+                tmpList[i].Clean();
+                ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
+            }
+            tmpList.Clear();
+            uiList.Clear();
+            ClearUILayerList();
+
             //跳转到登录
             GameMain.Instance.ChangeModule<LoginModule>();
         }
@@ -466,6 +624,18 @@ public class UIMgr : MonoBehaviour
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.KICKOUT_S.GetHashCode().ToString(), OnKickPlayer);
+    }
+    //------------------------------------------------------------------------------------------------------
+    public void FixBrokenWord()
+    {
+        return;
+        if (chineseTxt == null)
+        {
+            TextAsset txt = Resources.Load("commonText") as TextAsset;
+            chineseTxt = txt.ToString();
+        }
+
+        baseFont.RequestCharactersInTexture(chineseTxt);
     }
     //------------------------------------------------------------------------------------------------------
 }

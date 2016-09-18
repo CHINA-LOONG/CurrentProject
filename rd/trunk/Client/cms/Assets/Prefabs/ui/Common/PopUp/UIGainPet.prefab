@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 1
+  mHidePreviouseUI: 1
   mConfirmBtn: {fileID: 11476314}
   mConfirmBtnText: {fileID: 11467310}
   mGainPetText: {fileID: 11454170}

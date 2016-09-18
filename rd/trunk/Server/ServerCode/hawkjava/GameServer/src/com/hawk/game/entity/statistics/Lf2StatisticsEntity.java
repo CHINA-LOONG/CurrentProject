@@ -79,6 +79,10 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "eggDiamondPointBeginTime")
 	protected Calendar eggPointBeginTime = null;
 
+	// 上次免费金币抽蛋时间
+	@Column(name = "eggCoinFreeLastTime")
+	protected Calendar eggCoinFreeLastTime = null;
+
 	// 历史抽到品级X宠物次数
 	@Column(name = "callMonsterStageXTimes", nullable = false)
 	protected String callMonsterStageXTimesJson = "";

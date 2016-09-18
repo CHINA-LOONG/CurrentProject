@@ -578,11 +578,11 @@ sociaty_vicechairman,副会长,Elder
 sociaty_member1,成员,Member
 sociaty_mybing,我的驻兵,My Garrison
 sociaty_otherbing,基地列兵,Base Garrison
-sociaty_lishi,个人历史贡献值：{0},Total contribution: {0}
+sociaty_lishi,个人历史贡献值：<color=#ffCC00ff>{0}</color>,Total personal contribution: <color=#ffCC00ff>{0}</color>
 sociaty_tipsjidichang,驻守基地的宠物可根据驻守时长获得金币，被其他玩家雇佣时也可获得金币收入,Monsters garrisoned in the Guild Base gain coins with time. They also earn coins when hired by other members.
 sociaty_addmonster,添加宠物,Add monster
-sociaty_tipslock,公会历史贡献值达到{0}解锁,Unlocked when total guild contribution reaches {0}.
-sociaty_zhushoutime,驻守时长：,Garrison time: 
+sociaty_tipslock,公会历史贡献值达到<color=#ffCC00ff>{0}</color>解锁,Unlocked when total guild contribution reaches <color=#ffCC00ff>{0}</color>.
+sociaty_zhushoutime,驻守时长：,Garrison time:
 sociaty_zhushoutime1,{0}小时{1}分钟,{0} hrs {1} min
 sociaty_leijishouru,累积收入：,Accumulated income:
 sociaty_recall,立即召回,Recall
@@ -590,11 +590,11 @@ sociaty_shouru1,驻扎收入：,Defense income:
 sociaty_shouru2,雇佣收入：,Hired monster income:
 advanture_maoxianing,冒险中,Exploring
 advanture_zhushouing,驻守中,Garrisoned
-sociaty_paibingxuanze,选择宠物,Choise monster
+sociaty_paibingxuanze,选择宠物,Select a monster
 sociaty_paichuqueren,派出的宠物至少要驻扎1个小时才可以召回哦，确定派出宠物？,"After being dispatched, you must wait 1 hour before monsters can be recalled. Continue?"
-sociaty_record_066,该位置未解锁,unlock
-sociaty_record_067,派出时间未满1小时，不能召回,cannt back
-sociaty_record_068,宠物已不在公会基地,not here
+sociaty_record_066,该位置未解锁,This position has not been unlocked
+sociaty_record_067,派出时间未满1小时，不能召回,"Dispatch time is still under 1hr, unable to recall"
+sociaty_record_068,宠物已不在公会基地,Monster is already no longer in the base
 ,,
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas

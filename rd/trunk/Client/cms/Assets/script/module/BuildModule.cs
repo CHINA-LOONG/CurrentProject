@@ -64,6 +64,7 @@ public class BuildModule : ModuleBase
         UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
         if (loading != null)
         {
+            UIMgr.Instance.FixBrokenWord();
             //add resource request
             AddResRequest();
             loading.SetLoadingCallback(LoadResourceFinish);
@@ -90,6 +91,7 @@ public class BuildModule : ModuleBase
     public override IEnumerator LoadResourceFinish()
     {
         ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
+        UIMgr.Instance.ClearUILayerList();
         //wait for ui
         yield return new WaitForFixedUpdate();
         UIMgr.Instance.CloseUI_(UILoading.ViewName);

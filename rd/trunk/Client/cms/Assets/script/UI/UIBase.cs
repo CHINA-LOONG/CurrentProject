@@ -21,6 +21,26 @@ public abstract class UIBase : MonoBehaviour
 		}
 	}
 
+    [SerializeField]
+    protected bool mIgnorePreviousHide = false;
+    public bool IgnorePreviousHide
+    {
+        get
+        {
+            return mIgnorePreviousHide;
+        }
+    }
+
+    [SerializeField]
+    protected bool mHidePreviouseUI = true;
+    public bool HidePreviousUI
+    {
+        get
+        {
+            return mHidePreviouseUI;
+        }
+    }
+
     //初始化界面操作，创建或激活后配置初始状态
     public virtual void Init()
     {
@@ -30,6 +50,11 @@ public abstract class UIBase : MonoBehaviour
     public virtual void Clean()
     {
  
+    }
+
+    public virtual void RefreshOnPreviousUIHide()
+    {
+
     }
 
     //public void Update()

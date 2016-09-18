@@ -33,6 +33,15 @@ public class SociatyJidi : UIBase, TabButtonDelegate
     {
 
     }
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
+    }
 
     public override void Clean()
     {
@@ -134,6 +143,15 @@ public class SociatyJidi : UIBase, TabButtonDelegate
 
     void OnCloseButtonClick()
     {
+        UIMgr.Instance.CloseUI_(this);
+    }
+    void OnAllianceLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
         UIMgr.Instance.CloseUI_(this);
     }
 }

@@ -614,7 +614,7 @@ sociaty_tipsjidichang,宠物可根据驻守时长获得金币，被雇佣时也�
 sociaty_addmonster,添加宠物,Add monster
 sociaty_tipslock,公会历史贡献值达到<color=#ffCC00ff>{0}</color>解锁,Unlocked when total guild contribution reaches <color=#ffCC00ff>{0}</color>.
 sociaty_zhushoutime,驻守时长：,Garrison time:
-sociaty_zhushoutime1,{0}小时{1}分钟,{0} hrs {1} min
+sociaty_zhushoutime1,{0}小时{1}分钟,{0}hrs{1}min
 sociaty_leijishouru,累积收入：,Accumulated income:
 sociaty_recall,立即召回,Recall
 sociaty_shouru1,驻扎收入：,Defense income:
@@ -1959,3 +1959,7 @@ instance_zhuzhan_jifang,己方宠物,己方宠物
 instance_zhuzhan_gonghui,助战宠物,助战宠物
 instance_zhuzhan_005,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?
 instance_zhuzhan_006,一次战斗只能雇佣一只宠物,Only 1 monster may be hired for each battle.
+im_chat_day,{0}天{1}小时,{0} days {1} hrs
+im_chat_hour,{0}小时{1}分,{0} hrs {1} min
+im_chat_minite,{0}分,{0} min
+im_chat_missiontips,存在正在进行的公会任务，点击这里查看,"Can be found in the current Guild Quest, tap here to view."

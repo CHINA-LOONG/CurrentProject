@@ -419,13 +419,13 @@ namespace UnityClientConsole
 //                 HSAdventureBuyTeam buyTeam = new HSAdventureBuyTeam();
 //                 netmanaget.SendProtocol(code.ADVENTURE_BUY_TEAM_C.GetHashCode(), buyTeam);
 
-                HSSummonOne summonOne = new HSSummonOne();
-                summonOne.type = 4;
-                netmanaget.SendProtocol(code.SUMMON_ONE_C.GetHashCode(), summonOne);
-
-                HSSummonTen summonTen = new HSSummonTen();
-                summonTen.type = 4;
-                netmanaget.SendProtocol(code.SUMMON_TEN_C.GetHashCode(), summonTen);
+//                 HSSummonOne summonOne = new HSSummonOne();
+//                 summonOne.type = 4;
+//                 netmanaget.SendProtocol(code.SUMMON_ONE_C.GetHashCode(), summonOne);
+// 
+//                 HSSummonTen summonTen = new HSSummonTen();
+//                 summonTen.type = 4;
+//                 netmanaget.SendProtocol(code.SUMMON_TEN_C.GetHashCode(), summonTen);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))

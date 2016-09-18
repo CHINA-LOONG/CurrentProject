@@ -13,6 +13,7 @@ public class UIGainPet : UIBase
     private GameObject mGainPetRender;
     private BattleObject mGainPetBo;
     private float mGainPetEndTime;
+    private Fade mFadeWhite;
     //---------------------------------------------------------------------------------------------
     void Awake()
     {
@@ -59,6 +60,17 @@ public class UIGainPet : UIBase
     //---------------------------------------------------------------------------------------------
     public void ShowGainPet(string monsterID)
     {
+        StartCoroutine(ShowGainPetFlash(monsterID));
+    }
+    //---------------------------------------------------------------------------------------------
+    IEnumerator ShowGainPetFlash(string monsterID)
+    {
+        UICamera.Instance.CameraAttr.enabled = false;
+        mFadeWhite = Camera.main.GetComponent<Fade>();
+        mFadeWhite.FadeOut(0.5f);
+        yield return new WaitForSeconds(1.0f);
+        mFadeWhite.FadeIn(2.0f);
+        UICamera.Instance.CameraAttr.enabled = true;
         GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
         ShowGainPetInternal(gainPet);
     }
@@ -107,6 +119,7 @@ public class UIGainPet : UIBase
         mGainPetRender = null;
         //minus time means invalidate time
         mGainPetEndTime = -1.0f;
+        mFadeWhite.FadeIn(0.0f);
     }
     //---------------------------------------------------------------------------------------------
 }

@@ -1349,6 +1349,15 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
+	public Calendar getEggCoinFreeLastTime() {
+		return lf2Entity.eggCoinFreeLastTime;
+	}
+
+	public void setEggCoinFreeLastTime(Calendar time) {
+		lf2Entity.eggCoinFreeLastTime = time;
+		lf2Update = true;
+	}
+
 	// callMonsterTimes----------------------------------------
 	// TODO 抽蛋功能未开发，开发后统计数据
 	public List<Integer> getCallMonsterStageTimesList() {

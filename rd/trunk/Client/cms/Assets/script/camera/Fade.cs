@@ -3,19 +3,14 @@ using System.Collections;
 
 public class Fade : MonoBehaviour
 {
-    public static Material ma;
+    public Material ma;
 
     static float targetRatio = 1.0f;
     static float fadeBeginTime = 0.0f;
     static float fadeSpeed = 0.0f;
     static bool fadeBegin = false;
     const string fadeRatioName = "_Float1";
-    //---------------------------------------------------------------------------------------------
-    //初始化
-    void Start()
-    {
-        ma = new Material(Shader.Find("Custom/Fade"));
-    }
+    const string fadeColorName = "_FadeColor";
     //---------------------------------------------------------------------------------------------
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -38,9 +33,9 @@ public class Fade : MonoBehaviour
         fadeBegin = false;
     }
     //---------------------------------------------------------------------------------------------
-    public static void SetFadeTarget(float ratio, float duration)
+    public void SetFadeTarget(float ratio, float duration)
     {
-        if (duration == 0.0f)
+        if (Mathf.Abs(duration) <= BattleConst.floatZero)
         {
             ma.SetFloat(fadeRatioName, ratio);
         }
@@ -53,12 +48,12 @@ public class Fade : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public static void FadeIn(float duration)
+    public void FadeIn(float duration)
     {
         SetFadeTarget(1.0f, duration);
     }
     //---------------------------------------------------------------------------------------------
-    public static void FadeOut(float duration)
+    public void FadeOut(float duration)
     {
         SetFadeTarget(0.0f, duration);
     }

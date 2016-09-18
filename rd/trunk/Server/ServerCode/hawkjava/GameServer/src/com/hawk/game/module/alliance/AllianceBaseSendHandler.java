@@ -113,8 +113,10 @@ public class AllianceBaseSendHandler implements HawkMsgHandler{
 					
 					// 添加基地驻兵
 					allianceEntity.addAllianceBase(allianceBaseEntity, request.getPosition());
-					monsterEntity.addState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
-					monsterEntity.notifyUpdate(true);
+					
+					//monsterEntity.addState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
+					//monsterEntity.notifyUpdate(true);
+					
 					// 回复信息
 					HSAllianceBaseSendMonsterRet.Builder response = HSAllianceBaseSendMonsterRet.newBuilder();
 					response.setSendTime(allianceBaseEntity.getSendTime());

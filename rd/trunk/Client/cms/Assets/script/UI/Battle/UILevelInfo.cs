@@ -11,10 +11,6 @@ public class UILevelInfo : UIBase
     public Animator mLevelInfoAnimator;
 
     //------------------------------------------------------------------------------------------------------  
-    void Start()
-    {
-    }
-    //------------------------------------------------------------------------------------------------------  
     public void SetVisible(bool isVisible)
     {
         gameObject.SetActive(isVisible);

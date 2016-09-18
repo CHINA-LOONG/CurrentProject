@@ -48,6 +48,7 @@ public class SociatyPray : UIBase
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_PRAY_C.GetHashCode().ToString(), OnPrayResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_PRAY_S.GetHashCode().ToString(), OnPrayResult);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
 
     }
     //---------------------------------------------------------------------------------------------
@@ -55,6 +56,7 @@ public class SociatyPray : UIBase
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_PRAY_C.GetHashCode().ToString(), OnPrayResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_PRAY_S.GetHashCode().ToString(), OnPrayResult);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
     }
     //---------------------------------------------------------------------------------------------
     void OnPrayResult(ProtocolMessage msg)
@@ -78,6 +80,16 @@ public class SociatyPray : UIBase
                 mSociatyLiveValue.text = playerSync.allianceContribution.ToString();
             }
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnAllianceLeave_N_S(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = 0;
+        UIMgr.Instance.CloseUI_(this);
     }
     //---------------------------------------------------------------------------------------------
 }

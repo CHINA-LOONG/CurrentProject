@@ -636,7 +636,7 @@ public class AwardItems {
 						}
 
 						item.setId(monsterEntity.getId());
-						item.setMonster(BuilderUtil.genMonsterBuilder(monsterEntity));
+						item.setMonster(BuilderUtil.genMonsterBuilder(monsterEntity, null));
 					}
 					break;
 

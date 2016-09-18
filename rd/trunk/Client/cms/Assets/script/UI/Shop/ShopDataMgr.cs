@@ -26,6 +26,10 @@ public class ShopDataMgr : MonoBehaviour
 	{
 		BindListener ();
 	}
+    void OnDestroy()
+    {
+        UnBindListener();
+    }
 
 	void BindListener()
 	{

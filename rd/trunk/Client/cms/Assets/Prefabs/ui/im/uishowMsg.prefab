@@ -1275,6 +1275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 1
+  mHidePreviouseUI: 1
   msgText: {fileID: 11471312}
   placeholder: {fileID: 11457278}
   showLeftChatBox: {fileID: 131738}
@@ -1302,6 +1304,7 @@ MonoBehaviour:
   moduleVec: {fileID: 22414552}
   leftCahtMove: {fileID: 22498682}
   isDrag: 0
+  showNewMsg: 0
 --- !u!114 &11446820
 MonoBehaviour:
   m_ObjectHideFlags: 1

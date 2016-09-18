@@ -121,6 +121,11 @@ public class UIMonsters : UIBase,
 
     private List<GameUnit> mPetList = new List<GameUnit>();
 
+    public override void RefreshOnPreviousUIHide()
+    {
+        Refresh();
+    }
+
     public override void Init()
     {
         tabIndex1st = -1;

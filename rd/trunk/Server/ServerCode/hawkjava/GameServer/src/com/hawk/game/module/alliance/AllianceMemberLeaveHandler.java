@@ -84,7 +84,7 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		// 清理公会驻兵
 		int totalBaseReward = AllianceUtil.getTotalBaseReward(allianceEntity, playerAllianceEntity);
 		allianceEntity.clearAllianceBase(player.getId());
-		
+
 		// 清理队伍信息
 		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(player.getId());
 		if (teamEntity != null) {
@@ -99,16 +99,18 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 
 		// 离开公会频道
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), player.getId());
-		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
-		if (mailCfg != null) {
-			MailInfo mailInfo = new MailInfo();
-			String lang = ServerData.getInstance().getPlayerLang(player.getId());
-			mailInfo.subject = mailCfg.getSubject(lang);
-			mailInfo.content = mailCfg.getContent(lang);
-			ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
-			mailInfo.rewardList = Arrays.asList(item);
+		if (0 < totalBaseReward) {
+			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
+			if (mailCfg != null) {
+				MailInfo mailInfo = new MailInfo();
+				String lang = ServerData.getInstance().getPlayerLang(player.getId());
+				mailInfo.subject = mailCfg.getSubject(lang);
+				mailInfo.content = mailCfg.getContent(lang);
+				ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
+				mailInfo.rewardList = Arrays.asList(item);
 
-			MailUtil.SendMail(mailInfo, player.getId(), 0, mailCfg.getSender(lang));
+				MailUtil.SendMail(mailInfo, player.getId(), 0, mailCfg.getSender(lang));
+			}
 		}
 
 		// 清理工会数据

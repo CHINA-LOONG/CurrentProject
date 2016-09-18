@@ -126,6 +126,7 @@ public class GameMain : MonoBehaviour
         SwitchLevelEventArgs args = new SwitchLevelEventArgs();
         args.enterParam = enterInstanceParam;
         ResourceMgr.Instance.LoadLevelAsyn(instanceData.instanceProtoData.sceneID, false, OnSceneLoaded, args);
+        UIMgr.Instance.ClearUILayerList();
     }
     //---------------------------------------------------------------------------------------------
     public void OnSceneLoaded(GameObject instance, System.EventArgs args)

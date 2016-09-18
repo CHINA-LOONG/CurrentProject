@@ -532,11 +532,14 @@ namespace PB
     public enum summonError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851969)]
-      SUMMON_COIN_NO_FREE = 851969,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851969)]
+      SUMMON_DIAMOND_NO_FREE = 851969,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851970)]
-      SUMMON_DIAMOND_NO_FREE = 851970
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851970)]
+      SUMMON_COIN_NO_FREE = 851970,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_FREE_CD", Value=851971)]
+      SUMMON_COIN_FREE_CD = 851971
     }
   
 }

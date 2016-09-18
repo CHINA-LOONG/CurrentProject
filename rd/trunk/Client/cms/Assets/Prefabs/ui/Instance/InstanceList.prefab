@@ -6498,6 +6498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 0
   difficultyDropDown: {fileID: 11457308}
   dropButton: {fileID: 11489974}
   chaptrName: {fileID: 11472030}

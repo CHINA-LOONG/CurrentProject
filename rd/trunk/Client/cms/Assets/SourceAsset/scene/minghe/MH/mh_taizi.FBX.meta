@@ -18,9 +18,11 @@ ModelImporter:
     2300000: objdefault01
     2300002: Object03
     2300004: Object05
+    2300006: //RootNode
     3300000: objdefault01
     3300002: Object03
     3300004: Object05
+    3300006: //RootNode
     4300000: Object03
     4300002: Object05
     4300004: objdefault01
@@ -81,8 +83,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

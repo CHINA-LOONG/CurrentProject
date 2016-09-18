@@ -461,7 +461,7 @@ public class GsConst {
 		public static final int MAX_COPYMAIN_COUNT = 2;
 		public static final int SEND_FATIGUE_COUNT = 1;
 
-		public static final int BASE_MIN_TIME = 3600;
+		public static final int BASE_MIN_TIME = 30;
 
 		// 公会贡献值奖励1
 		public static final String ALLIANCE_CONTRI_REWARD1 = "110001";
@@ -526,6 +526,9 @@ public class GsConst {
 		
 		public static final int MAX_COIN_FREE_TIMES_DAILY = 5;
 		public static final int MAX_DIAMOND_FREE_TIMES = 1;
+		// 免费钻石抽蛋恢复秒数
 		public static final int DIAMOND_FREE_TIME = 60;
+		// 免费金币抽蛋冷却秒数
+		public static final int COIN_FREE_CD = 180;
 	}
 }

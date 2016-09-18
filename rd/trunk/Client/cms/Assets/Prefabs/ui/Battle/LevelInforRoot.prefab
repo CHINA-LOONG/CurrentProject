@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 1
+  mHidePreviouseUI: 0
   mLevelBoss: {fileID: 11415992}
   mLevelInfoName: {fileID: 11443312}
   mLevelInfoIndex: {fileID: 11468534}

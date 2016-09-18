@@ -26,7 +26,7 @@ Material:
         first:
           name: _NoiseTex
         second:
-          m_Texture: {fileID: 2800000, guid: 968985380ec7aab4d98d324def83322f, type: 3}
+          m_Texture: {fileID: 2800000, guid: ea03fe36a12242d47831a650a974e2ff, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

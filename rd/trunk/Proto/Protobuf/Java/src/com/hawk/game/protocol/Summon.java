@@ -437,23 +437,41 @@ public final class Summon {
      */
     com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getRewardOrBuilder();
 
-    // optional int32 freeBeginTime = 2;
+    // optional int32 freeDiamondBeginTime = 2;
     /**
-     * <code>optional int32 freeBeginTime = 2;</code>
+     * <code>optional int32 freeDiamondBeginTime = 2;</code>
      *
      * <pre>
      * 免费钻石抽恢复时间开始时间戳（秒）
      * </pre>
      */
-    boolean hasFreeBeginTime();
+    boolean hasFreeDiamondBeginTime();
     /**
-     * <code>optional int32 freeBeginTime = 2;</code>
+     * <code>optional int32 freeDiamondBeginTime = 2;</code>
      *
      * <pre>
      * 免费钻石抽恢复时间开始时间戳（秒）
      * </pre>
      */
-    int getFreeBeginTime();
+    int getFreeDiamondBeginTime();
+
+    // optional int32 freeCoinLastTime = 3;
+    /**
+     * <code>optional int32 freeCoinLastTime = 3;</code>
+     *
+     * <pre>
+     * 上次免费金币抽时间戳（秒）
+     * </pre>
+     */
+    boolean hasFreeCoinLastTime();
+    /**
+     * <code>optional int32 freeCoinLastTime = 3;</code>
+     *
+     * <pre>
+     * 上次免费金币抽时间戳（秒）
+     * </pre>
+     */
+    int getFreeCoinLastTime();
   }
   /**
    * Protobuf type {@code HSSummonOneRet}
@@ -525,7 +543,12 @@ public final class Summon {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              freeBeginTime_ = input.readInt32();
+              freeDiamondBeginTime_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              freeCoinLastTime_ = input.readInt32();
               break;
             }
           }
@@ -590,33 +613,58 @@ public final class Summon {
       return reward_;
     }
 
-    // optional int32 freeBeginTime = 2;
-    public static final int FREEBEGINTIME_FIELD_NUMBER = 2;
-    private int freeBeginTime_;
+    // optional int32 freeDiamondBeginTime = 2;
+    public static final int FREEDIAMONDBEGINTIME_FIELD_NUMBER = 2;
+    private int freeDiamondBeginTime_;
     /**
-     * <code>optional int32 freeBeginTime = 2;</code>
+     * <code>optional int32 freeDiamondBeginTime = 2;</code>
      *
      * <pre>
      * 免费钻石抽恢复时间开始时间戳（秒）
      * </pre>
      */
-    public boolean hasFreeBeginTime() {
+    public boolean hasFreeDiamondBeginTime() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 freeBeginTime = 2;</code>
+     * <code>optional int32 freeDiamondBeginTime = 2;</code>
      *
      * <pre>
      * 免费钻石抽恢复时间开始时间戳（秒）
      * </pre>
      */
-    public int getFreeBeginTime() {
-      return freeBeginTime_;
+    public int getFreeDiamondBeginTime() {
+      return freeDiamondBeginTime_;
+    }
+
+    // optional int32 freeCoinLastTime = 3;
+    public static final int FREECOINLASTTIME_FIELD_NUMBER = 3;
+    private int freeCoinLastTime_;
+    /**
+     * <code>optional int32 freeCoinLastTime = 3;</code>
+     *
+     * <pre>
+     * 上次免费金币抽时间戳（秒）
+     * </pre>
+     */
+    public boolean hasFreeCoinLastTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 freeCoinLastTime = 3;</code>
+     *
+     * <pre>
+     * 上次免费金币抽时间戳（秒）
+     * </pre>
+     */
+    public int getFreeCoinLastTime() {
+      return freeCoinLastTime_;
     }
 
     private void initFields() {
       reward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-      freeBeginTime_ = 0;
+      freeDiamondBeginTime_ = 0;
+      freeCoinLastTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -642,7 +690,10 @@ public final class Summon {
         output.writeMessage(1, reward_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, freeBeginTime_);
+        output.writeInt32(2, freeDiamondBeginTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, freeCoinLastTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -659,7 +710,11 @@ public final class Summon {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, freeBeginTime_);
+          .computeInt32Size(2, freeDiamondBeginTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, freeCoinLastTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -788,8 +843,10 @@ public final class Summon {
           rewardBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        freeBeginTime_ = 0;
+        freeDiamondBeginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        freeCoinLastTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -829,7 +886,11 @@ public final class Summon {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.freeBeginTime_ = freeBeginTime_;
+        result.freeDiamondBeginTime_ = freeDiamondBeginTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.freeCoinLastTime_ = freeCoinLastTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -849,8 +910,11 @@ public final class Summon {
         if (other.hasReward()) {
           mergeReward(other.getReward());
         }
-        if (other.hasFreeBeginTime()) {
-          setFreeBeginTime(other.getFreeBeginTime());
+        if (other.hasFreeDiamondBeginTime()) {
+          setFreeDiamondBeginTime(other.getFreeDiamondBeginTime());
+        }
+        if (other.hasFreeCoinLastTime()) {
+          setFreeCoinLastTime(other.getFreeCoinLastTime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1004,51 +1068,100 @@ public final class Summon {
         return rewardBuilder_;
       }
 
-      // optional int32 freeBeginTime = 2;
-      private int freeBeginTime_ ;
+      // optional int32 freeDiamondBeginTime = 2;
+      private int freeDiamondBeginTime_ ;
       /**
-       * <code>optional int32 freeBeginTime = 2;</code>
+       * <code>optional int32 freeDiamondBeginTime = 2;</code>
        *
        * <pre>
        * 免费钻石抽恢复时间开始时间戳（秒）
        * </pre>
        */
-      public boolean hasFreeBeginTime() {
+      public boolean hasFreeDiamondBeginTime() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 freeBeginTime = 2;</code>
+       * <code>optional int32 freeDiamondBeginTime = 2;</code>
        *
        * <pre>
        * 免费钻石抽恢复时间开始时间戳（秒）
        * </pre>
        */
-      public int getFreeBeginTime() {
-        return freeBeginTime_;
+      public int getFreeDiamondBeginTime() {
+        return freeDiamondBeginTime_;
       }
       /**
-       * <code>optional int32 freeBeginTime = 2;</code>
+       * <code>optional int32 freeDiamondBeginTime = 2;</code>
        *
        * <pre>
        * 免费钻石抽恢复时间开始时间戳（秒）
        * </pre>
        */
-      public Builder setFreeBeginTime(int value) {
+      public Builder setFreeDiamondBeginTime(int value) {
         bitField0_ |= 0x00000002;
-        freeBeginTime_ = value;
+        freeDiamondBeginTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 freeBeginTime = 2;</code>
+       * <code>optional int32 freeDiamondBeginTime = 2;</code>
        *
        * <pre>
        * 免费钻石抽恢复时间开始时间戳（秒）
        * </pre>
        */
-      public Builder clearFreeBeginTime() {
+      public Builder clearFreeDiamondBeginTime() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        freeBeginTime_ = 0;
+        freeDiamondBeginTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 freeCoinLastTime = 3;
+      private int freeCoinLastTime_ ;
+      /**
+       * <code>optional int32 freeCoinLastTime = 3;</code>
+       *
+       * <pre>
+       * 上次免费金币抽时间戳（秒）
+       * </pre>
+       */
+      public boolean hasFreeCoinLastTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 freeCoinLastTime = 3;</code>
+       *
+       * <pre>
+       * 上次免费金币抽时间戳（秒）
+       * </pre>
+       */
+      public int getFreeCoinLastTime() {
+        return freeCoinLastTime_;
+      }
+      /**
+       * <code>optional int32 freeCoinLastTime = 3;</code>
+       *
+       * <pre>
+       * 上次免费金币抽时间戳（秒）
+       * </pre>
+       */
+      public Builder setFreeCoinLastTime(int value) {
+        bitField0_ |= 0x00000004;
+        freeCoinLastTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 freeCoinLastTime = 3;</code>
+       *
+       * <pre>
+       * 上次免费金币抽时间戳（秒）
+       * </pre>
+       */
+      public Builder clearFreeCoinLastTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        freeCoinLastTime_ = 0;
         onChanged();
         return this;
       }
@@ -2200,12 +2313,13 @@ public final class Summon {
   static {
     java.lang.String[] descriptorData = {
       "\n\025Protocol/Summon.proto\032\025Protocol/Reward" +
-      ".proto\"\033\n\013HSSummonOne\022\014\n\004type\030\001 \002(\005\"F\n\016H" +
+      ".proto\"\033\n\013HSSummonOne\022\014\n\004type\030\001 \002(\005\"g\n\016H" +
       "SSummonOneRet\022\035\n\006reward\030\001 \002(\0132\r.HSReward" +
-      "Info\022\025\n\rfreeBeginTime\030\002 \001(\005\"\033\n\013HSSummonT" +
-      "en\022\014\n\004type\030\001 \002(\005\"/\n\016HSSummonTenRet\022\035\n\006re" +
-      "ward\030\001 \003(\0132\r.HSRewardInfoB\030\n\026com.hawk.ga" +
-      "me.protocol"
+      "Info\022\034\n\024freeDiamondBeginTime\030\002 \001(\005\022\030\n\020fr" +
+      "eeCoinLastTime\030\003 \001(\005\"\033\n\013HSSummonTen\022\014\n\004t" +
+      "ype\030\001 \002(\005\"/\n\016HSSummonTenRet\022\035\n\006reward\030\001 " +
+      "\003(\0132\r.HSRewardInfoB\030\n\026com.hawk.game.prot" +
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2223,7 +2337,7 @@ public final class Summon {
           internal_static_HSSummonOneRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSummonOneRet_descriptor,
-              new java.lang.String[] { "Reward", "FreeBeginTime", });
+              new java.lang.String[] { "Reward", "FreeDiamondBeginTime", "FreeCoinLastTime", });
           internal_static_HSSummonTen_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSSummonTen_fieldAccessorTable = new

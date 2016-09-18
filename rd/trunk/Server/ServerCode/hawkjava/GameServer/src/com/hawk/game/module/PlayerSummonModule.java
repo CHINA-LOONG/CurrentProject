@@ -1,6 +1,7 @@
 package com.hawk.game.module;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hawk.annotation.ProtocolHandler;
@@ -74,8 +75,15 @@ public class PlayerSummonModule extends PlayerModule {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_NO_FREE);
 				return true;
 			}
+			Calendar curTime = HawkTime.getCalendar();
+			if (curTime.getTimeInMillis() > statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
+				sendError(hsCode, Status.summonError.SUMMON_COIN_FREE_CD);
+				return true;
+			}
 			reward.addItemInfos(summonCfg.getReward().getRewardList());
 			statisticsEntity.increaseEggCoinFreeTimesDaily();
+			statisticsEntity.setEggCoinFreeLastTime(curTime);
+			response.setFreeCoinLastTime((int)(curTime.getTimeInMillis() / 1000));
 			break;
 		}
 
@@ -102,11 +110,12 @@ public class PlayerSummonModule extends PlayerModule {
 				return true;
 			}
 			reward.addItemInfos(summonCfg.getReward().getRewardList());
+			Calendar curTime = HawkTime.getCalendar();
 			// 最大1点，直接重置
 			statisticsEntity.setEggDiamondPoint(0);
-			statisticsEntity.setEggPointBeginTime(HawkTime.getCalendar());
+			statisticsEntity.setEggPointBeginTime(curTime);
 			statisticsEntity.increaseEggDiamondFreeTimes();
-			response.setFreeBeginTime((int)(statisticsEntity.getEggPointBeginTime().getTimeInMillis() / 1000));
+			response.setFreeDiamondBeginTime((int)(curTime.getTimeInMillis() / 1000));
 			break;
 		}
 

@@ -79,7 +79,7 @@ public class SelectPet : UIBase
             string monsterId = subUnit.pbUnit.id;
 
             MonsterIcon icon = MonsterIcon.CreateIcon();
-            EventTriggerListener.Get(icon.iconButton.gameObject).onClick = OnMonsterClicked;
+            ScrollViewEventListener.Get(icon.iconButton.gameObject).onClick = OnMonsterClicked;
             contentView.AddElement(icon.gameObject);
             icon.SetMonsterStaticId(monsterId);
             icon.SetId(subUnit.pbUnit.guid.ToString());
@@ -87,6 +87,8 @@ public class SelectPet : UIBase
             icon.SetStage(subUnit.pbUnit.stage);
             icon.ShowZhushouImage(subUnit.pbUnit.IsInAllianceBase());
             icon.ShowMaoxianImage(subUnit.pbUnit.IsInAdventure());
+            icon.ShowLockImage(subUnit.pbUnit.IsInAllianceBase() || subUnit.pbUnit.IsInAdventure());
+            icon.ShowMaskImage(subUnit.pbUnit.IsInAllianceBase() || subUnit.pbUnit.IsInAdventure());
         }
     }
 

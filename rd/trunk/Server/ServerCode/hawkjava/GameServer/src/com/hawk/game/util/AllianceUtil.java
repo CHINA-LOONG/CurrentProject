@@ -166,6 +166,17 @@ public class AllianceUtil {
 	}
 	
 	/**
+	 * 
+	 * @param bp
+	 * @param sendTime
+	 * @return
+	 */
+	public static int getAllianceBaseDefReward(int bp, int sendTime){
+		float time = (HawkTime.getSeconds() - sendTime) / 60.0f;
+		return (int)(AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * time);		
+	}
+	
+	/**
 	 * 获取玩家工会基地总收入
 	 * @param allianceEntity
 	 * @param playerAllianceEntity

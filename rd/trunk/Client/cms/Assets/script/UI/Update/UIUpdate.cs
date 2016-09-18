@@ -224,7 +224,8 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		GameSpeedService.Instance.Init();
 
         ResourceMgr.Instance.LoadLevelAsyn("firstScene", false);
-		Destroy (gameObject);
+        UIMgr.Instance.ClearUILayerList();
+        Destroy (gameObject);
 	}
 
 	//--------------Event------------------------

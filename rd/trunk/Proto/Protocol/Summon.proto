@@ -19,7 +19,9 @@ message HSSummonOneRet
 	required HSRewardInfo reward = 1;
 
 	// 免费钻石抽恢复时间开始时间戳（秒）
-	optional int32 freeBeginTime = 2;
+	optional int32 freeDiamondBeginTime = 2;
+	// 上次免费金币抽时间戳（秒）
+	optional int32 freeCoinLastTime = 3;
 }
 
 // SUMMON_TEN_C

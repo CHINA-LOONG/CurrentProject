@@ -61,6 +61,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public Text mTestShowExp;
 
+    void Awake()
+    {
+        BindListener();
+    }
+
     void Start()
     {
         EventTriggerListener.Get(m_PetButton.gameObject).onClick = PetButtonClick;
@@ -83,8 +88,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
         m_LangPopup.AddItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
         m_LangPopup.SetSelection((int)LanguageMgr.Instance.Lang);
-
-		BindListener ();
     }
 
 	void OnDestroy()

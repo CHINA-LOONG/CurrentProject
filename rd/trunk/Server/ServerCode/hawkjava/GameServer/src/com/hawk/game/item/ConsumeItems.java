@@ -353,13 +353,12 @@ public class ConsumeItems {
 				if(monsterEntity == null) {
 					return ConsumeCheckResult.MONSTER_NOT_ENOUGH;
 				}
-				else if (monsterEntity.isStateSet(
-						Const.MonsterState.LOCKED_VALUE
-						| Const.MonsterState.IN_ALLIANCE_BASE_VALUE
-						| Const.MonsterState.IN_ADVENTURE_VALUE)) 
+				else if (monsterEntity.isStateSet(Const.MonsterState.LOCKED_VALUE | Const.MonsterState.IN_ADVENTURE_VALUE) ||
+						 player.getPlayerData().isMonsterInBase(monsterEntity.getId())) 
 				{
 					return ConsumeCheckResult.MONSTER_LOCKED;
 				}
+				
 				break;
 
 			case itemType.ITEM_VALUE:

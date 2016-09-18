@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: mhpian
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -19,8 +19,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: fa6a925d664610c419e1771a9dd707c7, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: d66f9433dd5bc57479f208c64156ad90, type: 3}
+          m_Scale: {x: 2.5, y: 6}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -80,16 +80,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _NoiseTex
+          name: _ToonShade
         second:
-          m_Texture: {fileID: 2800000, guid: f3b3b81a476b39c47be4971cbfc55822, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ToonShade
+          name: _NoiseTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 96bfae3a178f40045bcf19d5b0679a9b, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -148,15 +148,15 @@ Material:
       data:
         first:
           name: _ForceX
-        second: .0900000036
-      data:
-        first:
-          name: _ForceY
         second: .140000001
       data:
         first:
+          name: _ForceY
+        second: .300000012
+      data:
+        first:
           name: _HeatTime
-        second: -.0199999996
+        second: .0109999999
     m_Colors:
       data:
         first:
@@ -169,4 +169,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .158999979, g: .716000021, b: .531613946, a: .559000015}
+        second: {r: .421999991, g: .511012137, b: 1, a: .101960786}

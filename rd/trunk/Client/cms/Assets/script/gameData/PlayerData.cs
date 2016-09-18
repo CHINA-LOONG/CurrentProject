@@ -291,7 +291,21 @@ public class PlayerData : MonoBehaviour
 		GameUnit unit = null;
 		allUnitDic.TryGetValue (guid, out unit);
 		return unit;
-	}
+    }
+    //---------------------------------------------------------------------------------------------
+    /// <summary>
+    /// 离开公会后，重置宠物驻守状态
+    /// </summary>
+    public  void    ChangePetStateForLeaveSociaty()
+    {
+        foreach(GameUnit subUnit in allUnitDic.Values)
+        {
+            if(subUnit.pbUnit.IsInAllianceBase())
+            {
+                subUnit.pbUnit.SetInAllianceBase(false);
+            }
+        }
+    }
     //---------------------------------------------------------------------------------------------
     public void SyncPlayerInof(ProtocolMessage msg)
     {

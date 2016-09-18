@@ -167,7 +167,7 @@ public class ResourceMgr : MonoBehaviour
         StartCoroutine(LoadLevelRequest(new AssetRequest(levelName, callBack, args, isAdditive)));
     }
     //---------------------------------------------------------------------------------------------
-    public IEnumerator LoadLevelRequest(AssetRequest request)
+    private IEnumerator LoadLevelRequest(AssetRequest request)
     {
         string abname = StaticDataMgr.Instance.GetBundleName(request.assetName);
         if (abname == null)

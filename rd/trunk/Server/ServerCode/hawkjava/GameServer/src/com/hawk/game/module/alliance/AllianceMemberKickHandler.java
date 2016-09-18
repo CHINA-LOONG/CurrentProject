@@ -95,23 +95,25 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 
 		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
 		allianceEntity.removeMember(request.getTargetId());
-		
+
 		// 离开公会频道
 		ImManager.getInstance().quitGuild(allianceEntity.getId(), request.getTargetId());
 		MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_KICK);
 		if (mailCfg != null) {
 			MailUtil.SendSysMail(mailCfg, request.getTargetId(), allianceEntity.getName());
 		}
-		mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
-		if (mailCfg != null) {
-			MailInfo mailInfo = new MailInfo();
-			String lang = ServerData.getInstance().getPlayerLang(request.getTargetId());
-			mailInfo.subject = mailCfg.getSubject(lang);
-			mailInfo.content = mailCfg.getContent(lang);
-			ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
-			mailInfo.rewardList = Arrays.asList(item);
+		if (0 < totalBaseReward) {
+			mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.ALLIANCE_LEAVE_BASE);
+			if (mailCfg != null) {
+				MailInfo mailInfo = new MailInfo();
+				String lang = ServerData.getInstance().getPlayerLang(request.getTargetId());
+				mailInfo.subject = mailCfg.getSubject(lang);
+				mailInfo.content = mailCfg.getContent(lang);
+				ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), totalBaseReward);
+				mailInfo.rewardList = Arrays.asList(item);
 
-			MailUtil.SendMail(mailInfo, request.getTargetId(), 0, mailCfg.getSender(lang));
+				MailUtil.SendMail(mailInfo, request.getTargetId(), 0, mailCfg.getSender(lang));
+			}
 		}
 
 		HSAllianceMemKickRet.Builder response = HSAllianceMemKickRet.newBuilder();

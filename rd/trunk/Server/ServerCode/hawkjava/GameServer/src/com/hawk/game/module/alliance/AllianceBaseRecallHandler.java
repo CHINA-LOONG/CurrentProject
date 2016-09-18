@@ -18,7 +18,6 @@ import com.hawk.game.item.AwardItems;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceBaseRecallMonster;
-import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceBaseRecallMonsterRet;
@@ -75,7 +74,7 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 		if(xid != null){
 			HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
 			try {
-				if (objBase != null && objBase.isObjValid()) {		
+				if (objBase != null && objBase.isObjValid()) {		 
 
 					MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getMonsterId());
 					if (monsterEntity == null) {
@@ -85,7 +84,7 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 					
 					int bp = baseEntity.getBp();
 					AwardItems award = new AwardItems();
-					int rewardCoin = AllianceUtil.getAllianceBaseConfig(bp).getCoinDefend() * ((HawkTime.getSeconds()- baseEntity.getSendTime()) / 60);
+					int rewardCoin = AllianceUtil.getAllianceBaseDefReward(bp, baseEntity.getSendTime());
 					int hireCoin = playerAllianceEntity.getBaseMonsterInfo(request.getPosition()).getReward();
 					award.addCoin(rewardCoin + hireCoin);
 					award.rewardTakeAffectAndPush(player, Action.GUILD_BASE_REWARD, protocol.getType());
@@ -94,8 +93,8 @@ public class AllianceBaseRecallHandler implements HawkMsgHandler{
 					allianceEntity.removeAllianceBase(player.getId(), request.getPosition());
 					baseEntity.delete();
 					
-					monsterEntity.removeState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
-					monsterEntity.notifyUpdate(true);
+					//monsterEntity.removeState(Const.MonsterState.IN_ALLIANCE_BASE_VALUE);
+					//monsterEntity.notifyUpdate(true);
 					
 					// 回复信息
 					HSAllianceBaseRecallMonsterRet.Builder response = HSAllianceBaseRecallMonsterRet.newBuilder();

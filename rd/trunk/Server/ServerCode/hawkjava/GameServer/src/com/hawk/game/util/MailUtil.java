@@ -8,6 +8,7 @@ import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.xid.HawkXID;
 
+import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.RewardCfg;
@@ -97,9 +98,10 @@ public class MailUtil {
 		}
 
 		if (true == mailEntity.notifyCreate()) {
-			// 如果receiver在线，发msg
-			if (true == ServerData.getInstance().isPlayerOnline(receiverId)) {
-				HawkXID receiverXID = HawkXID.valueOf(GsConst.ObjType.PLAYER, receiverId);
+			// 如果receiver在线或在缓存中，发msg
+			// 忽略发送过程中receiver因超时被清理掉的错误，没有影响
+			HawkXID receiverXID = HawkXID.valueOf(GsConst.ObjType.PLAYER, receiverId);
+			if (null != GsApp.getInstance().queryObject(receiverXID)) {
 				HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.MAIL_NEW);
 				msg.pushParam(mailEntity);
 				if (false == HawkApp.getInstance().postMsg(receiverXID, msg)) {

@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 3708eb358c8f9af4a9cf2a98ffb536fd, type: 3}
+          m_Texture: {fileID: 2800000, guid: 968985380ec7aab4d98d324def83322f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _NoiseTex
         second:
-          m_Texture: {fileID: 2800000, guid: 9c86161bea25f6e4cb0d727f778c9d43, type: 3}
+          m_Texture: {fileID: 2800000, guid: 069ffb23bb877c047891a1dc858d054e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -45,9 +45,9 @@ Material:
       data:
         first:
           name: _HeatTime
-        second: .200000003
+        second: .349000007
     m_Colors:
       data:
         first:
           name: _TintColor
-        second: {r: .286764681, g: .645841599, b: 1, a: .5}
+        second: {r: .880730152, g: .823529422, b: 1, a: .5}
