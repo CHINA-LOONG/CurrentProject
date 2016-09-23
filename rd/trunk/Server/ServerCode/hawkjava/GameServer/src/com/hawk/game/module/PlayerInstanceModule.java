@@ -13,10 +13,13 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
+import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BIEnergyFlowData;
+import com.hawk.game.BILog.BIRoundFlowData;
 import com.hawk.game.config.HoleCfg;
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceChapterCfg;
@@ -32,6 +35,7 @@ import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -83,6 +87,8 @@ public class PlayerInstanceModule extends PlayerModule {
 	private int curHoleId;
 	// 本次塔id
 	private int curTowerId;
+	// 本次开始时间戳（秒）
+	private int curBeginTime;
 	// 刷新类型掩码，副本开始后如果发生刷新，旧周期开始的副本结算时不影响新周期的数据
 	// 方法在单线程内调用，不需volatile
 	private int refreshMask;
@@ -180,6 +186,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curChapterId = entryCfg.getChapter();
 		this.curIndex = entryCfg.getIndex();
 		this.curMonsterList.addAll(battleMonsterList);
+		this.curBeginTime = HawkTime.getSeconds();
 
 		// 生成副本
 		genInstance(instanceId);
@@ -187,7 +194,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗1点体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.NORMAL_INSTANCE, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 
 		// 次数修改
 		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, 1);
@@ -197,6 +204,15 @@ public class PlayerInstanceModule extends PlayerModule {
 		response.setInstanceId(instanceId);
 		response.addAllBattle(this.curBattleList);
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
+
+		switch (entryCfg.getDifficult()) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "instance", this.curInstanceId, "normal", 0, 1, player.getPlayerData().getStatisticsEntity().getFatigue() - 1);
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "instance", this.curInstanceId, "heroic", 0, 1, player.getPlayerData().getStatisticsEntity().getFatigue() - 1);
+			break;
+		}
 		return true;
 	}
 
@@ -218,13 +234,14 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		String[] instanceList = holeCfg.getInstanceList();
-		boolean contain = false;
-		for (String id : instanceList) {
-			if (id.equals(instanceId)) {
-				contain = true;
+		int index = -1;
+		for (int i = 0; i < instanceList.length; ++i) {
+			if (instanceList[i].equals(instanceId)) {
+				index = i;
+				break;
 			}
 		}
-		if (false == contain) {
+		if (index == -1) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return true;
 		}
@@ -281,8 +298,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 		this.curType = Const.InstanceType.INSTANCE_HOLE_VALUE;
 		this.curInstanceId = instanceId;
+		this.curDifficulty = index + 1;
 		this.curMonsterList.addAll(battleMonsterList);
 		this.curHoleId = holeId;
+		this.curBeginTime = HawkTime.getSeconds();
 
 		// 生成副本
 		genInstance(instanceId);
@@ -290,7 +309,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗全部体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, entryCfg.getFatigue());
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.HOLE_INSTANCE, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 
 		// 次数修改
 		statisticsEntity.increaseHoleTimes(holeId);
@@ -302,6 +321,14 @@ public class PlayerInstanceModule extends PlayerModule {
 		response.addAllBattle(this.curBattleList);
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
 
+		String difficulty = "";
+		switch (this.curDifficulty) {
+		case 1: difficulty = "d1"; break;
+		case 2: difficulty = "d2"; break;
+		case 3: difficulty = "d3"; break;
+		case 4: difficulty = "d4"; break;
+		}
+		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "hole", this.curInstanceId, difficulty, 0, entryCfg.getFatigue(), statisticsEntity.getFatigue() - entryCfg.getFatigue());
 		return true;
 	}
 
@@ -370,6 +397,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curInstanceId = instanceId;
 		this.curMonsterList.addAll(battleMonsterList);
 		this.curTowerId = towerId;
+		this.curBeginTime = HawkTime.getSeconds();
 
 		// 生成副本
 		genInstance(instanceId);
@@ -377,13 +405,14 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗全部体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, entryCfg.getFatigue());
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.TOWER_INSTANCE, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
 		response.setInstanceId(instanceId);
 		response.addAllBattle(this.curBattleList);
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
 
+		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "tower", this.curInstanceId, "", 0, entryCfg.getFatigue(), statisticsEntity.getFatigue() - entryCfg.getFatigue());
 		return true;
 	}
 
@@ -430,6 +459,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curType = Const.InstanceType.INSTANCE_GUILD_VALUE;
 		this.curInstanceId = instanceId;
 		this.curMonsterList.addAll(battleMonsterList);
+		this.curBeginTime = HawkTime.getSeconds();
 
 		// 生成副本
 		genInstance(instanceId);
@@ -437,12 +467,14 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 进副本消耗1点体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.GUILD_INSTANCE, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
 		response.setInstanceId(instanceId);
 		response.addAllBattle(this.curBattleList);
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
+
+		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "guild", this.curInstanceId, "", 0, 1, player.getPlayerData().getStatisticsEntity().getFatigue() - 1);
 		return true;
 	}
 
@@ -556,9 +588,20 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 		}
 
-		consumeItem.consumeTakeAffectAndPush(player, Action.RAID, hsCode);
-		consumeFatigue.consumeTakeAffectAndPush(player, Action.RAID, hsCode);
-		allReward.rewardTakeAffectAndPush(player, Action.RAID, hsCode);
+		consumeItem.consumeTakeAffectAndPush(player, Action.RAID_TICKET_USE, hsCode);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
+
+		String biDifficulty = "";
+		switch(entryCfg.getDifficult()) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			allReward.rewardTakeAffectAndPush(player, Action.RAID_NORMAL_INSTANCE, hsCode);
+			biDifficulty = "normal";
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			allReward.rewardTakeAffectAndPush(player, Action.RAID_HEROIC_INSTANCE, hsCode);
+			biDifficulty = "heroic";
+			break;
+		}
 
 		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, count);
 		statisticsEntity.notifyUpdate(true);
@@ -569,6 +612,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 		response.setSweepReward(sweepReward.getBuilder());
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SWEEP_S, response));
+
+
+		BILogger.getBIData(BIRoundFlowData.class).log(player, Action.RAID, "instance", instanceId, biDifficulty, 0, 0, 1);
+		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.RAID, "instance", instanceId, biDifficulty, 0, fatigueChange, statisticsEntity.getFatigue() - fatigueChange);
 		return true;
 	}
 
@@ -969,12 +1016,15 @@ public class PlayerInstanceModule extends PlayerModule {
 	private void settleStory(int passBattleCount, int deadMonsterCount, int hsCode) {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
+		int time = HawkTime.getSeconds() - this.curBeginTime;
+		boolean isWin = (passBattleCount == this.curBattleList.size());
+		int starCount = 0;
+
 		// 胜利
-		if (passBattleCount == this.curBattleList.size()) {
+		if (true == isWin) {
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 			// 根据复活次数和死亡宠物次数决定星级
-			int starCount = 0;
 			if (this.curReviveCount > 0) {
 				starCount = 1;
 			} else {
@@ -986,6 +1036,8 @@ public class PlayerInstanceModule extends PlayerModule {
 					starCount = 1;
 				}
 			}
+
+			response.setStarCount(starCount);
 
 			// 记录副本进度
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
@@ -1016,6 +1068,9 @@ public class PlayerInstanceModule extends PlayerModule {
 				}
 				statisticsEntity.increaseInstanceNormalTimes();
 
+				// 奖励
+				genSettleReward(0, null, Action.NORMAL_INSTANCE_REWARD, hsCode);
+
 			} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
 				int oldChapter = statisticsEntity.getHardTopChapter();
 				int oldIndex = statisticsEntity.getHardTopIndex();
@@ -1030,14 +1085,10 @@ public class PlayerInstanceModule extends PlayerModule {
 					statisticsEntity.increaseInstanceHardTimesDaily();
 				}
 				statisticsEntity.increaseInstanceHardTimes();
+
+				// 奖励
+				genSettleReward(0, null, Action.HEROIC_INSTANCE_REWARD, hsCode);
 			}
-
-			statisticsEntity.notifyUpdate(true);
-
-			response.setStarCount(starCount);
-
-			// 奖励
-			genSettleReward(0, null);
 		}
 
 		// 消耗剩余体力，向上取整
@@ -1046,10 +1097,21 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (fatigueChange > 0) {
 			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
-			consumeFatigue.consumeTakeAffectAndPush(player, Action.NORMAL_INSTANCE_REWARD, hsCode);
+			consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
+
+		switch(this.curDifficulty) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "instance", this.curInstanceId, "normal", starCount, time, isWin ? 1 : 0);
+			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_END, "instance", this.curInstanceId, "normal", 0, fatigueChange, player.getPlayerData().getStatisticsEntity().getFatigue() - fatigueChange);
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "instance", this.curInstanceId, "heroic", starCount, time, isWin ? 1 : 0);
+			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_END, "instance", this.curInstanceId, "heroic", 0, fatigueChange, player.getPlayerData().getStatisticsEntity().getFatigue() - fatigueChange);
+			break;
+		}
 	}
 
 	/**
@@ -1058,8 +1120,11 @@ public class PlayerInstanceModule extends PlayerModule {
 	private void settleHole(int passBattleCount, int hsCode) {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
+		int time = HawkTime.getSeconds() - this.curBeginTime;
+		boolean isWin = (passBattleCount == this.curBattleList.size());
+
 		// 胜利
-		if (passBattleCount == this.curBattleList.size()) {
+		if (true == isWin) {
 			float moreCoinRatio = 0;
 			List<ItemInfo> moreItemList = null;
 
@@ -1069,15 +1134,26 @@ public class PlayerInstanceModule extends PlayerModule {
 					moreItemList = new ArrayList<ItemInfo>();
 					moreItemList.add(itemInfo);
 				}
+				// 奖励
+				genSettleReward(moreCoinRatio, moreItemList, Action.EXP_HOLE_INSTANCE_REWARD, hsCode);
+
 			} else if (this.curHoleId == GsConst.HoleType.COIN_HOLE) {
 				moreCoinRatio = AllianceUtil.getAllianceCoinRatio(player);
+				// 奖励
+				genSettleReward(moreCoinRatio, moreItemList, Action.COIN_HOLE_INSTANCE_REWARD, hsCode);
 			}
-
-			// 奖励
-			genSettleReward(moreCoinRatio, moreItemList);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
+
+		String difficulty = "";
+		switch (this.curDifficulty) {
+		case 1: difficulty = "d1"; break;
+		case 2: difficulty = "d2"; break;
+		case 3: difficulty = "d3"; break;
+		case 4: difficulty = "d4"; break;
+		}
+		BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "hole", this.curInstanceId, difficulty, 0, time, isWin ? 1 : 0);
 	}
 
 	/**
@@ -1086,8 +1162,11 @@ public class PlayerInstanceModule extends PlayerModule {
 	private void settleTower(int passBattleCount, int hsCode) {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
+		int time = HawkTime.getSeconds() - this.curBeginTime;
+		boolean isWin = (passBattleCount == this.curBattleList.size());
+
 		// 胜利
-		if (passBattleCount == this.curBattleList.size()) {
+		if (true == isWin) {
 			if (0 == (this.refreshMask & GsConst.RefreshMask.TOWER)) {
 				StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 				statisticsEntity.increaseTowerFloor(this.curTowerId);
@@ -1095,10 +1174,12 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			// 奖励
-			genSettleReward(0, null);
+			genSettleReward(0, null, Action.TOWER_INSTANCE_REWARD, hsCode);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
+
+		BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "tower", this.curInstanceId, "", 0, time, isWin ? 1 : 0);
 	}
 
 	/**
@@ -1107,8 +1188,11 @@ public class PlayerInstanceModule extends PlayerModule {
 	private void settleGuild(int passBattleCount, int hsCode) {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
+		int time = HawkTime.getSeconds() - this.curBeginTime;
+		boolean isWin = (passBattleCount == this.curBattleList.size());
+
 		// 胜利
-		if (passBattleCount == this.curBattleList.size()) {
+		if (true == isWin) {
 			// 公会消息
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(player);
@@ -1116,7 +1200,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 
 			// 奖励
-			genSettleReward(0, null);
+			genSettleReward(0, null, Action.GUILD_INSTANCE_REWARD, hsCode);
 		}
 
 		// 消耗剩余体力，向上取整
@@ -1129,12 +1213,15 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
+
+		BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "guild", this.curInstanceId, "", 0, time, isWin ? 1 : 0);
+		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_END, "guild", this.curInstanceId, "", 0, fatigueChange, player.getPlayerData().getStatisticsEntity().getFatigue() - fatigueChange);
 	}
 
 	/**
 	 * 发放结算奖励
 	 */
-	private AwardItems genSettleReward(float moreCoinRatio, List<ItemInfo> moreItemInfoList) {
+	private AwardItems genSettleReward(float moreCoinRatio, List<ItemInfo> moreItemInfoList, Action action, int hsCode) {
 		AwardItems completeReward = AwardItems.valueOf();
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
@@ -1217,7 +1304,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 发放掉落奖励和完成奖励
-		completeReward.rewardTakeAffectAndPush(player,  Action.NORMAL_INSTANCE_REWARD, HS.code.INSTANCE_SETTLE_C_VALUE);
+		completeReward.rewardTakeAffectAndPush(player, action, hsCode);
 
 		// 多倍经验次数
 		if (statisticsEntity.getDoubleExpLeft() > 0) {
@@ -1245,6 +1332,7 @@ public class PlayerInstanceModule extends PlayerModule {
 				|| this.curDifficulty != 0 || this.curChapterId != 0 || this.curIndex != 0
 				|| this.curTowerId != 0
 				|| this.curHoleId != 0
+				|| this.curBeginTime != 0
 				|| this.refreshMask != 0) {
 			return false;
 		}
@@ -1266,6 +1354,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curIndex = 0;
 		this.curHoleId = 0;
 		this.curTowerId = 0;
+		this.curBeginTime = 0;
 		this.refreshMask = 0;
 	}
 

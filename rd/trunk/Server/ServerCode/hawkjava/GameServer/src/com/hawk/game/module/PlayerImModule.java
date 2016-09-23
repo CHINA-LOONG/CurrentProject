@@ -46,7 +46,7 @@ public class PlayerImModule extends PlayerModule {
 			sendError(hsCode, imError.IM_DUMP_ERROR_VALUE);
 			return true;
 		}
-		
+
 		// TODO: 
 		// 屏蔽
 		// 长度限制

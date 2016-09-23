@@ -92,6 +92,9 @@ public class GameEventList
     public static string QuestChanged = "QuestChanged";
     //Adventure
     public static string AdventureChange = "AdventureChange";
+    public static string AdventureAddTeam = "AdventureAddTeam";
+    public static string AdventureConditionChange = "AdventureConditionChange";
+    public static string AdventureConditionCountChange = "AdventureConditionCountChange";
     //Mail
     public static string MailAdd = "MailAdd";
     public static string MailRead = "MailRead";

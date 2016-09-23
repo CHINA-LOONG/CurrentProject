@@ -90,7 +90,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		if (false == consume.checkConsume(player, hsCode)) {
 			return true;
 		}
-		
+
 		consume.consumeTakeAffectAndPush(player, Action.MONSTER_ABILITY_LEVEL_UP, hsCode);
 
 		player.consumeSkillPoint(1, Action.MONSTER_ABILITY_LEVEL_UP);
@@ -265,7 +265,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		else {
 			monsterEntity.removeState(Const.MonsterState.LOCKED_VALUE);
 		}
-		
+
 		monsterEntity.notifyUpdate(true);
 
 		/// TODO

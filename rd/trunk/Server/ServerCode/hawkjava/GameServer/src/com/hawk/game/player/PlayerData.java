@@ -13,7 +13,6 @@ import org.hawk.net.protocol.HawkProtocol;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.AdventureEntity;
 import com.hawk.game.entity.AdventureTeamEntity;
-import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
@@ -28,7 +27,6 @@ import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
-import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.Quest.HSQuest;
@@ -384,7 +382,7 @@ public class PlayerData {
 
 		return true;
 	}
-	
+
 	/**
 	 * 怪物是否在公会基地中
 	 * @param monsterId
@@ -394,7 +392,7 @@ public class PlayerData {
 		if (playerAllianceEntity.getAllianceId() != 0) {
 			return playerAllianceEntity.ismonsterSendtoBase(monsterId);
 		}
-		
+
 		return false;
 	}
 
@@ -469,7 +467,7 @@ public class PlayerData {
 		return questMap.get(questId);
 	}
 
-	public void setQuest(HSQuest quest) {
+	public void addQuest(HSQuest quest) {
 		questMap.put(quest.getQuestId(), quest);
 	}
 

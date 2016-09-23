@@ -48,6 +48,10 @@ public class GameConfig : MonoBehaviour {
     public static int MaxSkillPoint = 10;
     //技能恢复时间
     public static int SkillPointTime = 360;
+    //大冒险最大刷新次数
+    public static int MaxAdventurePoint = 10;
+    //大冒险恢复时间
+    public static int AdventurePointTime = 3600;
 
     public static int MaxMonsterStage = 15;
 

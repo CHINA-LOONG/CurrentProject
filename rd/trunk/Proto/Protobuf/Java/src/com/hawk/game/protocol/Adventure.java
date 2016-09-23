@@ -5596,33 +5596,55 @@ public final class Adventure {
      */
     int getTeamId();
 
-    // required .HSRewardInfo basicReward = 2;
+    // repeated .RewardItem basicReward = 2;
     /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
+     * <code>repeated .RewardItem basicReward = 2;</code>
      */
-    boolean hasBasicReward();
+    java.util.List<com.hawk.game.protocol.Reward.RewardItem> 
+        getBasicRewardList();
     /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
+     * <code>repeated .RewardItem basicReward = 2;</code>
      */
-    com.hawk.game.protocol.Reward.HSRewardInfo getBasicReward();
+    com.hawk.game.protocol.Reward.RewardItem getBasicReward(int index);
     /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
+     * <code>repeated .RewardItem basicReward = 2;</code>
      */
-    com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getBasicRewardOrBuilder();
+    int getBasicRewardCount();
+    /**
+     * <code>repeated .RewardItem basicReward = 2;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+        getBasicRewardOrBuilderList();
+    /**
+     * <code>repeated .RewardItem basicReward = 2;</code>
+     */
+    com.hawk.game.protocol.Reward.RewardItemOrBuilder getBasicRewardOrBuilder(
+        int index);
 
-    // optional .HSRewardInfo extraReward = 3;
+    // repeated .RewardItem extraReward = 3;
     /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
+     * <code>repeated .RewardItem extraReward = 3;</code>
      */
-    boolean hasExtraReward();
+    java.util.List<com.hawk.game.protocol.Reward.RewardItem> 
+        getExtraRewardList();
     /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
+     * <code>repeated .RewardItem extraReward = 3;</code>
      */
-    com.hawk.game.protocol.Reward.HSRewardInfo getExtraReward();
+    com.hawk.game.protocol.Reward.RewardItem getExtraReward(int index);
     /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
+     * <code>repeated .RewardItem extraReward = 3;</code>
      */
-    com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getExtraRewardOrBuilder();
+    int getExtraRewardCount();
+    /**
+     * <code>repeated .RewardItem extraReward = 3;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+        getExtraRewardOrBuilderList();
+    /**
+     * <code>repeated .RewardItem extraReward = 3;</code>
+     */
+    com.hawk.game.protocol.Reward.RewardItemOrBuilder getExtraRewardOrBuilder(
+        int index);
 
     // required .HSAdventure adventure = 4;
     /**
@@ -5711,34 +5733,24 @@ public final class Adventure {
               break;
             }
             case 18: {
-              com.hawk.game.protocol.Reward.HSRewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = basicReward_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                basicReward_ = new java.util.ArrayList<com.hawk.game.protocol.Reward.RewardItem>();
+                mutable_bitField0_ |= 0x00000002;
               }
-              basicReward_ = input.readMessage(com.hawk.game.protocol.Reward.HSRewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(basicReward_);
-                basicReward_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
+              basicReward_.add(input.readMessage(com.hawk.game.protocol.Reward.RewardItem.PARSER, extensionRegistry));
               break;
             }
             case 26: {
-              com.hawk.game.protocol.Reward.HSRewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = extraReward_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                extraReward_ = new java.util.ArrayList<com.hawk.game.protocol.Reward.RewardItem>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              extraReward_ = input.readMessage(com.hawk.game.protocol.Reward.HSRewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(extraReward_);
-                extraReward_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
+              extraReward_.add(input.readMessage(com.hawk.game.protocol.Reward.RewardItem.PARSER, extensionRegistry));
               break;
             }
             case 34: {
               com.hawk.game.protocol.Adventure.HSAdventure.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = adventure_.toBuilder();
               }
               adventure_ = input.readMessage(com.hawk.game.protocol.Adventure.HSAdventure.PARSER, extensionRegistry);
@@ -5746,7 +5758,7 @@ public final class Adventure {
                 subBuilder.mergeFrom(adventure_);
                 adventure_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000002;
               break;
             }
           }
@@ -5757,6 +5769,12 @@ public final class Adventure {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          basicReward_ = java.util.Collections.unmodifiableList(basicReward_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          extraReward_ = java.util.Collections.unmodifiableList(extraReward_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -5805,48 +5823,76 @@ public final class Adventure {
       return teamId_;
     }
 
-    // required .HSRewardInfo basicReward = 2;
+    // repeated .RewardItem basicReward = 2;
     public static final int BASICREWARD_FIELD_NUMBER = 2;
-    private com.hawk.game.protocol.Reward.HSRewardInfo basicReward_;
+    private java.util.List<com.hawk.game.protocol.Reward.RewardItem> basicReward_;
     /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
+     * <code>repeated .RewardItem basicReward = 2;</code>
      */
-    public boolean hasBasicReward() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
-     */
-    public com.hawk.game.protocol.Reward.HSRewardInfo getBasicReward() {
+    public java.util.List<com.hawk.game.protocol.Reward.RewardItem> getBasicRewardList() {
       return basicReward_;
     }
     /**
-     * <code>required .HSRewardInfo basicReward = 2;</code>
+     * <code>repeated .RewardItem basicReward = 2;</code>
      */
-    public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getBasicRewardOrBuilder() {
+    public java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+        getBasicRewardOrBuilderList() {
       return basicReward_;
+    }
+    /**
+     * <code>repeated .RewardItem basicReward = 2;</code>
+     */
+    public int getBasicRewardCount() {
+      return basicReward_.size();
+    }
+    /**
+     * <code>repeated .RewardItem basicReward = 2;</code>
+     */
+    public com.hawk.game.protocol.Reward.RewardItem getBasicReward(int index) {
+      return basicReward_.get(index);
+    }
+    /**
+     * <code>repeated .RewardItem basicReward = 2;</code>
+     */
+    public com.hawk.game.protocol.Reward.RewardItemOrBuilder getBasicRewardOrBuilder(
+        int index) {
+      return basicReward_.get(index);
     }
 
-    // optional .HSRewardInfo extraReward = 3;
+    // repeated .RewardItem extraReward = 3;
     public static final int EXTRAREWARD_FIELD_NUMBER = 3;
-    private com.hawk.game.protocol.Reward.HSRewardInfo extraReward_;
+    private java.util.List<com.hawk.game.protocol.Reward.RewardItem> extraReward_;
     /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
+     * <code>repeated .RewardItem extraReward = 3;</code>
      */
-    public boolean hasExtraReward() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
-     */
-    public com.hawk.game.protocol.Reward.HSRewardInfo getExtraReward() {
+    public java.util.List<com.hawk.game.protocol.Reward.RewardItem> getExtraRewardList() {
       return extraReward_;
     }
     /**
-     * <code>optional .HSRewardInfo extraReward = 3;</code>
+     * <code>repeated .RewardItem extraReward = 3;</code>
      */
-    public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getExtraRewardOrBuilder() {
+    public java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+        getExtraRewardOrBuilderList() {
       return extraReward_;
+    }
+    /**
+     * <code>repeated .RewardItem extraReward = 3;</code>
+     */
+    public int getExtraRewardCount() {
+      return extraReward_.size();
+    }
+    /**
+     * <code>repeated .RewardItem extraReward = 3;</code>
+     */
+    public com.hawk.game.protocol.Reward.RewardItem getExtraReward(int index) {
+      return extraReward_.get(index);
+    }
+    /**
+     * <code>repeated .RewardItem extraReward = 3;</code>
+     */
+    public com.hawk.game.protocol.Reward.RewardItemOrBuilder getExtraRewardOrBuilder(
+        int index) {
+      return extraReward_.get(index);
     }
 
     // required .HSAdventure adventure = 4;
@@ -5860,7 +5906,7 @@ public final class Adventure {
      * </pre>
      */
     public boolean hasAdventure() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required .HSAdventure adventure = 4;</code>
@@ -5885,8 +5931,8 @@ public final class Adventure {
 
     private void initFields() {
       teamId_ = 0;
-      basicReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-      extraReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
+      basicReward_ = java.util.Collections.emptyList();
+      extraReward_ = java.util.Collections.emptyList();
       adventure_ = com.hawk.game.protocol.Adventure.HSAdventure.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -5898,20 +5944,18 @@ public final class Adventure {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasBasicReward()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasAdventure()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getBasicReward().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      for (int i = 0; i < getBasicRewardCount(); i++) {
+        if (!getBasicReward(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
-      if (hasExtraReward()) {
-        if (!getExtraReward().isInitialized()) {
+      for (int i = 0; i < getExtraRewardCount(); i++) {
+        if (!getExtraReward(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -5930,13 +5974,13 @@ public final class Adventure {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, teamId_);
       }
+      for (int i = 0; i < basicReward_.size(); i++) {
+        output.writeMessage(2, basicReward_.get(i));
+      }
+      for (int i = 0; i < extraReward_.size(); i++) {
+        output.writeMessage(3, extraReward_.get(i));
+      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, basicReward_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, extraReward_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, adventure_);
       }
       getUnknownFields().writeTo(output);
@@ -5952,15 +5996,15 @@ public final class Adventure {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, teamId_);
       }
+      for (int i = 0; i < basicReward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, basicReward_.get(i));
+      }
+      for (int i = 0; i < extraReward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, extraReward_.get(i));
+      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, basicReward_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, extraReward_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, adventure_);
       }
@@ -6090,17 +6134,17 @@ public final class Adventure {
         teamId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (basicRewardBuilder_ == null) {
-          basicReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
+          basicReward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           basicRewardBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (extraRewardBuilder_ == null) {
-          extraReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
+          extraReward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           extraRewardBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (adventureBuilder_ == null) {
           adventure_ = com.hawk.game.protocol.Adventure.HSAdventure.getDefaultInstance();
         } else {
@@ -6139,24 +6183,26 @@ public final class Adventure {
           to_bitField0_ |= 0x00000001;
         }
         result.teamId_ = teamId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (basicRewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            basicReward_ = java.util.Collections.unmodifiableList(basicReward_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
           result.basicReward_ = basicReward_;
         } else {
           result.basicReward_ = basicRewardBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (extraRewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            extraReward_ = java.util.Collections.unmodifiableList(extraReward_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
           result.extraReward_ = extraReward_;
         } else {
           result.extraReward_ = extraRewardBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
+          to_bitField0_ |= 0x00000002;
         }
         if (adventureBuilder_ == null) {
           result.adventure_ = adventure_;
@@ -6182,11 +6228,57 @@ public final class Adventure {
         if (other.hasTeamId()) {
           setTeamId(other.getTeamId());
         }
-        if (other.hasBasicReward()) {
-          mergeBasicReward(other.getBasicReward());
+        if (basicRewardBuilder_ == null) {
+          if (!other.basicReward_.isEmpty()) {
+            if (basicReward_.isEmpty()) {
+              basicReward_ = other.basicReward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureBasicRewardIsMutable();
+              basicReward_.addAll(other.basicReward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.basicReward_.isEmpty()) {
+            if (basicRewardBuilder_.isEmpty()) {
+              basicRewardBuilder_.dispose();
+              basicRewardBuilder_ = null;
+              basicReward_ = other.basicReward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              basicRewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBasicRewardFieldBuilder() : null;
+            } else {
+              basicRewardBuilder_.addAllMessages(other.basicReward_);
+            }
+          }
         }
-        if (other.hasExtraReward()) {
-          mergeExtraReward(other.getExtraReward());
+        if (extraRewardBuilder_ == null) {
+          if (!other.extraReward_.isEmpty()) {
+            if (extraReward_.isEmpty()) {
+              extraReward_ = other.extraReward_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureExtraRewardIsMutable();
+              extraReward_.addAll(other.extraReward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.extraReward_.isEmpty()) {
+            if (extraRewardBuilder_.isEmpty()) {
+              extraRewardBuilder_.dispose();
+              extraRewardBuilder_ = null;
+              extraReward_ = other.extraReward_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              extraRewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getExtraRewardFieldBuilder() : null;
+            } else {
+              extraRewardBuilder_.addAllMessages(other.extraReward_);
+            }
+          }
         }
         if (other.hasAdventure()) {
           mergeAdventure(other.getAdventure());
@@ -6200,20 +6292,18 @@ public final class Adventure {
           
           return false;
         }
-        if (!hasBasicReward()) {
-          
-          return false;
-        }
         if (!hasAdventure()) {
           
           return false;
         }
-        if (!getBasicReward().isInitialized()) {
-          
-          return false;
+        for (int i = 0; i < getBasicRewardCount(); i++) {
+          if (!getBasicReward(i).isInitialized()) {
+            
+            return false;
+          }
         }
-        if (hasExtraReward()) {
-          if (!getExtraReward().isInitialized()) {
+        for (int i = 0; i < getExtraRewardCount(); i++) {
+          if (!getExtraReward(i).isInitialized()) {
             
             return false;
           }
@@ -6277,116 +6367,239 @@ public final class Adventure {
         return this;
       }
 
-      // required .HSRewardInfo basicReward = 2;
-      private com.hawk.game.protocol.Reward.HSRewardInfo basicReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> basicRewardBuilder_;
-      /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
-       */
-      public boolean hasBasicReward() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      // repeated .RewardItem basicReward = 2;
+      private java.util.List<com.hawk.game.protocol.Reward.RewardItem> basicReward_ =
+        java.util.Collections.emptyList();
+      private void ensureBasicRewardIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          basicReward_ = new java.util.ArrayList<com.hawk.game.protocol.Reward.RewardItem>(basicReward_);
+          bitField0_ |= 0x00000002;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder> basicRewardBuilder_;
+
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfo getBasicReward() {
+      public java.util.List<com.hawk.game.protocol.Reward.RewardItem> getBasicRewardList() {
         if (basicRewardBuilder_ == null) {
-          return basicReward_;
+          return java.util.Collections.unmodifiableList(basicReward_);
         } else {
-          return basicRewardBuilder_.getMessage();
+          return basicRewardBuilder_.getMessageList();
         }
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      public Builder setBasicReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
+      public int getBasicRewardCount() {
+        if (basicRewardBuilder_ == null) {
+          return basicReward_.size();
+        } else {
+          return basicRewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem getBasicReward(int index) {
+        if (basicRewardBuilder_ == null) {
+          return basicReward_.get(index);
+        } else {
+          return basicRewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public Builder setBasicReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem value) {
         if (basicRewardBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          basicReward_ = value;
+          ensureBasicRewardIsMutable();
+          basicReward_.set(index, value);
           onChanged();
         } else {
-          basicRewardBuilder_.setMessage(value);
+          basicRewardBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
       public Builder setBasicReward(
-          com.hawk.game.protocol.Reward.HSRewardInfo.Builder builderForValue) {
+          int index, com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
         if (basicRewardBuilder_ == null) {
-          basicReward_ = builderForValue.build();
+          ensureBasicRewardIsMutable();
+          basicReward_.set(index, builderForValue.build());
           onChanged();
         } else {
-          basicRewardBuilder_.setMessage(builderForValue.build());
+          basicRewardBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      public Builder mergeBasicReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
+      public Builder addBasicReward(com.hawk.game.protocol.Reward.RewardItem value) {
         if (basicRewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              basicReward_ != com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance()) {
-            basicReward_ =
-              com.hawk.game.protocol.Reward.HSRewardInfo.newBuilder(basicReward_).mergeFrom(value).buildPartial();
-          } else {
-            basicReward_ = value;
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureBasicRewardIsMutable();
+          basicReward_.add(value);
           onChanged();
         } else {
-          basicRewardBuilder_.mergeFrom(value);
+          basicRewardBuilder_.addMessage(value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public Builder addBasicReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem value) {
+        if (basicRewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBasicRewardIsMutable();
+          basicReward_.add(index, value);
+          onChanged();
+        } else {
+          basicRewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public Builder addBasicReward(
+          com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
+        if (basicRewardBuilder_ == null) {
+          ensureBasicRewardIsMutable();
+          basicReward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          basicRewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public Builder addBasicReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
+        if (basicRewardBuilder_ == null) {
+          ensureBasicRewardIsMutable();
+          basicReward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          basicRewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public Builder addAllBasicReward(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Reward.RewardItem> values) {
+        if (basicRewardBuilder_ == null) {
+          ensureBasicRewardIsMutable();
+          super.addAll(values, basicReward_);
+          onChanged();
+        } else {
+          basicRewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
       public Builder clearBasicReward() {
         if (basicRewardBuilder_ == null) {
-          basicReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
+          basicReward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           basicRewardBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfo.Builder getBasicRewardBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getBasicRewardFieldBuilder().getBuilder();
+      public Builder removeBasicReward(int index) {
+        if (basicRewardBuilder_ == null) {
+          ensureBasicRewardIsMutable();
+          basicReward_.remove(index);
+          onChanged();
+        } else {
+          basicRewardBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getBasicRewardOrBuilder() {
-        if (basicRewardBuilder_ != null) {
-          return basicRewardBuilder_.getMessageOrBuilder();
-        } else {
-          return basicReward_;
+      public com.hawk.game.protocol.Reward.RewardItem.Builder getBasicRewardBuilder(
+          int index) {
+        return getBasicRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItemOrBuilder getBasicRewardOrBuilder(
+          int index) {
+        if (basicRewardBuilder_ == null) {
+          return basicReward_.get(index);  } else {
+          return basicRewardBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>required .HSRewardInfo basicReward = 2;</code>
+       * <code>repeated .RewardItem basicReward = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> 
+      public java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+           getBasicRewardOrBuilderList() {
+        if (basicRewardBuilder_ != null) {
+          return basicRewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(basicReward_);
+        }
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem.Builder addBasicRewardBuilder() {
+        return getBasicRewardFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Reward.RewardItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem.Builder addBasicRewardBuilder(
+          int index) {
+        return getBasicRewardFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Reward.RewardItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RewardItem basicReward = 2;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Reward.RewardItem.Builder> 
+           getBasicRewardBuilderList() {
+        return getBasicRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
           getBasicRewardFieldBuilder() {
         if (basicRewardBuilder_ == null) {
-          basicRewardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder>(
+          basicRewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder>(
                   basicReward_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           basicReward_ = null;
@@ -6394,116 +6607,239 @@ public final class Adventure {
         return basicRewardBuilder_;
       }
 
-      // optional .HSRewardInfo extraReward = 3;
-      private com.hawk.game.protocol.Reward.HSRewardInfo extraReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> extraRewardBuilder_;
-      /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
-       */
-      public boolean hasExtraReward() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      // repeated .RewardItem extraReward = 3;
+      private java.util.List<com.hawk.game.protocol.Reward.RewardItem> extraReward_ =
+        java.util.Collections.emptyList();
+      private void ensureExtraRewardIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          extraReward_ = new java.util.ArrayList<com.hawk.game.protocol.Reward.RewardItem>(extraReward_);
+          bitField0_ |= 0x00000004;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder> extraRewardBuilder_;
+
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfo getExtraReward() {
+      public java.util.List<com.hawk.game.protocol.Reward.RewardItem> getExtraRewardList() {
         if (extraRewardBuilder_ == null) {
-          return extraReward_;
+          return java.util.Collections.unmodifiableList(extraReward_);
         } else {
-          return extraRewardBuilder_.getMessage();
+          return extraRewardBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      public Builder setExtraReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
+      public int getExtraRewardCount() {
+        if (extraRewardBuilder_ == null) {
+          return extraReward_.size();
+        } else {
+          return extraRewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem getExtraReward(int index) {
+        if (extraRewardBuilder_ == null) {
+          return extraReward_.get(index);
+        } else {
+          return extraRewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public Builder setExtraReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem value) {
         if (extraRewardBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          extraReward_ = value;
+          ensureExtraRewardIsMutable();
+          extraReward_.set(index, value);
           onChanged();
         } else {
-          extraRewardBuilder_.setMessage(value);
+          extraRewardBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
       public Builder setExtraReward(
-          com.hawk.game.protocol.Reward.HSRewardInfo.Builder builderForValue) {
+          int index, com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
         if (extraRewardBuilder_ == null) {
-          extraReward_ = builderForValue.build();
+          ensureExtraRewardIsMutable();
+          extraReward_.set(index, builderForValue.build());
           onChanged();
         } else {
-          extraRewardBuilder_.setMessage(builderForValue.build());
+          extraRewardBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      public Builder mergeExtraReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
+      public Builder addExtraReward(com.hawk.game.protocol.Reward.RewardItem value) {
         if (extraRewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              extraReward_ != com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance()) {
-            extraReward_ =
-              com.hawk.game.protocol.Reward.HSRewardInfo.newBuilder(extraReward_).mergeFrom(value).buildPartial();
-          } else {
-            extraReward_ = value;
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureExtraRewardIsMutable();
+          extraReward_.add(value);
           onChanged();
         } else {
-          extraRewardBuilder_.mergeFrom(value);
+          extraRewardBuilder_.addMessage(value);
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public Builder addExtraReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem value) {
+        if (extraRewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureExtraRewardIsMutable();
+          extraReward_.add(index, value);
+          onChanged();
+        } else {
+          extraRewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public Builder addExtraReward(
+          com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
+        if (extraRewardBuilder_ == null) {
+          ensureExtraRewardIsMutable();
+          extraReward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          extraRewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public Builder addExtraReward(
+          int index, com.hawk.game.protocol.Reward.RewardItem.Builder builderForValue) {
+        if (extraRewardBuilder_ == null) {
+          ensureExtraRewardIsMutable();
+          extraReward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          extraRewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public Builder addAllExtraReward(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Reward.RewardItem> values) {
+        if (extraRewardBuilder_ == null) {
+          ensureExtraRewardIsMutable();
+          super.addAll(values, extraReward_);
+          onChanged();
+        } else {
+          extraRewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
       public Builder clearExtraReward() {
         if (extraRewardBuilder_ == null) {
-          extraReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
+          extraReward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           extraRewardBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfo.Builder getExtraRewardBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getExtraRewardFieldBuilder().getBuilder();
+      public Builder removeExtraReward(int index) {
+        if (extraRewardBuilder_ == null) {
+          ensureExtraRewardIsMutable();
+          extraReward_.remove(index);
+          onChanged();
+        } else {
+          extraRewardBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getExtraRewardOrBuilder() {
-        if (extraRewardBuilder_ != null) {
-          return extraRewardBuilder_.getMessageOrBuilder();
-        } else {
-          return extraReward_;
+      public com.hawk.game.protocol.Reward.RewardItem.Builder getExtraRewardBuilder(
+          int index) {
+        return getExtraRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItemOrBuilder getExtraRewardOrBuilder(
+          int index) {
+        if (extraRewardBuilder_ == null) {
+          return extraReward_.get(index);  } else {
+          return extraRewardBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .HSRewardInfo extraReward = 3;</code>
+       * <code>repeated .RewardItem extraReward = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> 
+      public java.util.List<? extends com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
+           getExtraRewardOrBuilderList() {
+        if (extraRewardBuilder_ != null) {
+          return extraRewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(extraReward_);
+        }
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem.Builder addExtraRewardBuilder() {
+        return getExtraRewardFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Reward.RewardItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public com.hawk.game.protocol.Reward.RewardItem.Builder addExtraRewardBuilder(
+          int index) {
+        return getExtraRewardFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Reward.RewardItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RewardItem extraReward = 3;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Reward.RewardItem.Builder> 
+           getExtraRewardBuilderList() {
+        return getExtraRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder> 
           getExtraRewardFieldBuilder() {
         if (extraRewardBuilder_ == null) {
-          extraRewardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder>(
+          extraRewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Reward.RewardItem, com.hawk.game.protocol.Reward.RewardItem.Builder, com.hawk.game.protocol.Reward.RewardItemOrBuilder>(
                   extraReward_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           extraReward_ = null;
@@ -10528,21 +10864,21 @@ public final class Adventure {
       "onster\030\005 \001(\0132\024.AllianceBaseMonster\"6\n\023HS" +
       "AdventureEnterRet\022\016\n\006teamId\030\001 \002(\005\022\017\n\007end" +
       "Time\030\002 \002(\005\"0\n\021HSAdventureSettle\022\016\n\006teamI" +
-      "d\030\001 \002(\005\022\013\n\003pay\030\002 \002(\010\"\217\001\n\024HSAdventureSett" +
-      "leRet\022\016\n\006teamId\030\001 \002(\005\022\"\n\013basicReward\030\002 \002",
-      "(\0132\r.HSRewardInfo\022\"\n\013extraReward\030\003 \001(\0132\r" +
-      ".HSRewardInfo\022\037\n\tadventure\030\004 \002(\0132\014.HSAdv" +
-      "enture\"5\n\027HSAdventureNewCondition\022\014\n\004typ" +
-      "e\030\001 \002(\005\022\014\n\004gear\030\002 \002(\005\"p\n\032HSAdventureNewC" +
-      "onditionRet\022\037\n\tadventure\030\001 \002(\0132\014.HSAdven" +
-      "ture\022\023\n\013changeCount\030\002 \002(\005\022\034\n\024changeCount" +
-      "BeginTime\030\003 \002(\005\"\031\n\027HSAdventureBuyConditi" +
-      "on\"O\n\032HSAdventureBuyConditionRet\022\023\n\013chan" +
-      "geCount\030\001 \002(\005\022\034\n\024changeCountBeginTime\030\002 " +
-      "\002(\005\"\024\n\022HSAdventureBuyTeam\"\'\n\025HSAdventure",
-      "BuyTeamRet\022\016\n\006teamId\030\001 \002(\005\"?\n\030HSAdventur" +
-      "eConditionPush\022#\n\ridleAdventure\030\001 \003(\0132\014." +
-      "HSAdventureB\030\n\026com.hawk.game.protocol"
+      "d\030\001 \002(\005\022\013\n\003pay\030\002 \002(\010\"\213\001\n\024HSAdventureSett" +
+      "leRet\022\016\n\006teamId\030\001 \002(\005\022 \n\013basicReward\030\002 \003",
+      "(\0132\013.RewardItem\022 \n\013extraReward\030\003 \003(\0132\013.R" +
+      "ewardItem\022\037\n\tadventure\030\004 \002(\0132\014.HSAdventu" +
+      "re\"5\n\027HSAdventureNewCondition\022\014\n\004type\030\001 " +
+      "\002(\005\022\014\n\004gear\030\002 \002(\005\"p\n\032HSAdventureNewCondi" +
+      "tionRet\022\037\n\tadventure\030\001 \002(\0132\014.HSAdventure" +
+      "\022\023\n\013changeCount\030\002 \002(\005\022\034\n\024changeCountBegi" +
+      "nTime\030\003 \002(\005\"\031\n\027HSAdventureBuyCondition\"O" +
+      "\n\032HSAdventureBuyConditionRet\022\023\n\013changeCo" +
+      "unt\030\001 \002(\005\022\034\n\024changeCountBeginTime\030\002 \002(\005\"" +
+      "\024\n\022HSAdventureBuyTeam\"\'\n\025HSAdventureBuyT",
+      "eamRet\022\016\n\006teamId\030\001 \002(\005\"?\n\030HSAdventureCon" +
+      "ditionPush\022#\n\ridleAdventure\030\001 \003(\0132\014.HSAd" +
+      "ventureB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

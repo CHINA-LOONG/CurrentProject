@@ -85,6 +85,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_INTERVAL_SHORT", Value=9)]
       LOGIN_INTERVAL_SHORT = 9,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_LOCK", Value=10)]
+      LOGIN_LOCK = 10,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -479,7 +482,10 @@ namespace PB
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=655361)]
-      IM_CHAT_LENGTH = 655361
+      IM_CHAT_LENGTH = 655361,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_DUMP_ERROR", Value=655362)]
+      IM_DUMP_ERROR = 655362
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"settingError")]
@@ -516,7 +522,24 @@ namespace PB
       ADVENTURE_TEAM_IDLE = 786439,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_NOT_END", Value=786440)]
-      ADVENTURE_NOT_END = 786440
+      ADVENTURE_NOT_END = 786440,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_HIRE_ALREADY", Value=786441)]
+      ADVENTURE_HIRE_ALREADY = 786441
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"summonError")]
+    public enum summonError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851969)]
+      SUMMON_DIAMOND_NO_FREE = 851969,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851970)]
+      SUMMON_COIN_NO_FREE = 851970,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_FREE_CD", Value=851971)]
+      SUMMON_COIN_FREE_CD = 851971
     }
   
 }

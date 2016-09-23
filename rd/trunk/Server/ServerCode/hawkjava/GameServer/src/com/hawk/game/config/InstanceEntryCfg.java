@@ -29,6 +29,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	// client only
 	protected final String desc= null;
+	protected final int bp = 0;
 	protected final String bgzhuangshi = null;
 	protected final String instanceSpell = null;
 

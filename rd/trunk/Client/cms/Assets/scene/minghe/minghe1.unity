@@ -5545,6 +5545,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 10814266, guid: 4e2bccd656ebb99479b5a4286863f3cd, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e2bccd656ebb99479b5a4286863f3cd, type: 2}
   m_IsPrefabParent: 0

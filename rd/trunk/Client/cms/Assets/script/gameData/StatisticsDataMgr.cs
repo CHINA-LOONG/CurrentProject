@@ -110,6 +110,10 @@ public class StatisticsDataMgr : MonoBehaviour {
 
         SkillPoints = msgData.skillPoint;
         skillTimeBegin = msgData.skillPointBeginTime;
+
+        AdventureDataMgr.Instance.AdventureChange = msgData.adventureChange;
+        AdventureDataMgr.Instance.AdventureChangeBeginTime = msgData.adventureChangeBeginTime;
+        AdventureDataMgr.Instance.hiredMonsterId = msgData.hiredMonsterId;
     }
     void OnStatisticsPart3Sync(ProtocolMessage message)
     {
@@ -155,6 +159,8 @@ public class StatisticsDataMgr : MonoBehaviour {
 
         //公会大任务
         GameDataMgr.Instance.SociatyDataMgrAttr.taskCount = 0;
+        //清理大冒险已经使用公会宠物列表
+        AdventureDataMgr.Instance.CleanHiredMonster();
     }
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {

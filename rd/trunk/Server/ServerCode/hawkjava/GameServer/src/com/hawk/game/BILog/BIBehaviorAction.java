@@ -110,7 +110,7 @@ public class BIBehaviorAction {
 		/**
 		 * 开始挑战副本
 		 */
-		HEROCI_INSTANCE(1005),
+		HEROIC_INSTANCE(1005),
 		/**
 		 * 开始试炼副本
 		 */
@@ -130,7 +130,7 @@ public class BIBehaviorAction {
 		/**
 		 * 结算挑战副本
 		 */
-		HEROCI_INSTANCE_REWARD(1010),
+		HEROIC_INSTANCE_REWARD(1010),
 		/**
 		 * 结算金钱试炼副本
 		 */
@@ -155,6 +155,22 @@ public class BIBehaviorAction {
 		 * 副本章节奖励
 		 */
 		INSTANCE_STAGE_REWARD(1016),
+		/**
+		 * 开始战斗消耗体力
+		 */
+		INSTANCE_START(1017),
+		/**
+		 * 结束战斗消耗体力
+		 */
+		INSTANCE_END(1018),
+		/**
+		 * 扫荡普通副本获得奖励
+		 */
+		RAID_NORMAL_INSTANCE(1019),
+		/**
+		 * 扫荡挑战副本获得奖励
+		 */
+		RAID_HEROIC_INSTANCE(1020),
 
 		/**
 		 * 宠物升级
@@ -203,46 +219,54 @@ public class BIBehaviorAction {
 		ENERGY_RECOVER(3002),
 
 		/**
-		 * 任务获得
+		 * 任务奖励
 		 */
 		MISSION_REWARD(4001),
+		/**
+		 * 接受任务
+		 */
+		MISSION_ACCEPT(4002),
+		/**
+		 * 任务进行中
+		 */
+		MISSION_ONGOING(4003),
 
 		/**
 		 * 出售道具
 		 */
-		ITEM_SELL(4001),
+		ITEM_SELL(5001),
 		/**
 		 * 使用宝箱
 		 */
-		BOX_USE(4002),
+		BOX_USE(5002),
 		/**
 		 * 使用扫荡券
 		 */
-		RAID_TICKET_USE(4003),
+		RAID_TICKET_USE(5003),
 		/**
 		 * 使用钥匙 
 		 */
-		KEY_USE(4004),
+		KEY_USE(5004),
 		/**
 		 * 使用双倍经验药
 		 */
-		EXP_SCROLL_USE(4005),
+		EXP_SCROLL_USE(5005),
 		/**
 		 * 使用活力道具
 		 */
-		ENERGY_COOKIES_USE(4006),
+		ENERGY_COOKIES_USE(5006),
 		/**
 		 * 宠物使用经验道具
 		 */
-		EXP_POTION_USE(4007),
+		EXP_POTION_USE(5007),
 		/**
 		 * 宝石合成
 		 */
-		GEM_COMBINE(4008),
+		GEM_COMBINE(5008),
 		/**
 		 * 材料合成
 		 */
-		MATERIAL_COMBINE(4009),
+		MATERIAL_COMBINE(5009),
 
 		/**
 		 * 装备强化
@@ -408,6 +432,7 @@ public class BIBehaviorAction {
 		/**
 		 * 抽蛋
 		 */
+		// (11001)
 
 		/**
 		 * 签到

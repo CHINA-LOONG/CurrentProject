@@ -356,6 +356,10 @@ public class UIUtil
         }
     }
 
+    public static string Convert_hh_mm_ss(int time)
+    {
+        return string.Format("{0:D2}:{1:D2}:{2:D2}", time / 3600, (time % 3600) / 60, time % 60);
+    }
     public static void SetStageColor(Text label, GameUnit unit)
     {
         int quallity = 0;

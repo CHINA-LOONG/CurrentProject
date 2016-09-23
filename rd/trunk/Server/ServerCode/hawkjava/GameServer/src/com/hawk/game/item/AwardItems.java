@@ -7,21 +7,23 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 
 import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BIEnergyFlowData;
 import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Const.changeType;
-import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.itemType;
+import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.SynMonsterAttr;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
 import com.hawk.game.protocol.Reward.HSRewardInfo;
 import com.hawk.game.protocol.Reward.RewardItem;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
@@ -501,15 +503,21 @@ public class AwardItems {
 						int newLevel = player.getLevel();
 
 						if (newLevel > oldLevel) {
+							int fatigueReward = 0;
 							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
 								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
-								if (attrCfg != null && attrCfg.getFatigueReward() > 0) {
-									RewardItem.Builder rewardItem = RewardItem.newBuilder();
-									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
-									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
-									rewardItem.setCount(attrCfg.getFatigueReward());
-									rewardInfo.addRewardItems(rewardItem);
+								if (attrCfg != null) {
+									fatigueReward += attrCfg.getFatigueReward();
 								}
+							}
+							if (fatigueReward > 0) {
+								RewardItem.Builder rewardItem = RewardItem.newBuilder();
+								rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
+								rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
+								rewardItem.setCount(fatigueReward);
+								rewardInfo.addRewardItems(rewardItem);
+
+								BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.PLAYER_LEVEL_UP, "", "", "", fatigueReward, 0, player.getPlayerData().getStatisticsEntity().getFatigue() + fatigueReward);
 							}
 						}
 						break;
@@ -521,15 +529,21 @@ public class AwardItems {
 						newLevel = player.getLevel();
 
 						if (newLevel > oldLevel) {
+							int fatigueReward = 0;
 							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
 								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
-								if (attrCfg != null && attrCfg.getFatigueReward() > 0) {
-									RewardItem.Builder rewardItem = RewardItem.newBuilder();
-									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
-									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
-									rewardItem.setCount(attrCfg.getFatigueReward());
-									rewardInfo.addRewardItems(rewardItem);
+								if (attrCfg != null) {
+									fatigueReward += attrCfg.getFatigueReward();
 								}
+							}
+							if (fatigueReward > 0) {
+								RewardItem.Builder rewardItem = RewardItem.newBuilder();
+								rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
+								rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
+								rewardItem.setCount(fatigueReward);
+								rewardInfo.addRewardItems(rewardItem);
+
+								BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.PLAYER_LEVEL_UP, "", "", "", fatigueReward, 0, player.getPlayerData().getStatisticsEntity().getFatigue() + fatigueReward);
 							}
 						}
 						break;

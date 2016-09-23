@@ -30,7 +30,12 @@ public class TimeEventWrap
 
     void update(int time)
     {
-        updateList.ForEach(delegate (perCountDownTime update) { update(time); });
+        perCountDownTime subPerCount = null;
+        for (int i=0;i<updateList.Count;++i)
+        {
+            subPerCount = updateList[i];
+            subPerCount(time);
+        }
     }
     void finish()
     {
@@ -67,6 +72,7 @@ public class TimeEventWrap
     {
         TimeEventMgr.Instance.remove(this);
     }
+    
 }
 
 public class TimeEventMgr : MonoBehaviour
@@ -112,9 +118,16 @@ public class TimeEventMgr : MonoBehaviour
         {
             startTime = Time.realtimeSinceStartup;
             int count = times.Count;
-            for (int i = 0; i < count; i++)
+            try
             {
-                times[i].refresh(GameTimeMgr.Instance.GetServerTimeStamp());
+                for (int i = (count - 1); i >= 0; i--)
+                {
+                    times[i].refresh(GameTimeMgr.Instance.GetServerTimeStamp());
+                }
+            }
+            catch (Exception)
+            {
+                Logger.LogError("...............");
             }
         }
     }

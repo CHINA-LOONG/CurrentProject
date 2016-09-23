@@ -244,21 +244,20 @@ namespace PB
       get { return _teamId; }
       set { _teamId = value; }
     }
-    private HSRewardInfo _basicReward;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"basicReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public HSRewardInfo basicReward
+    private readonly global::System.Collections.Generic.List<RewardItem> _basicReward = new global::System.Collections.Generic.List<RewardItem>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"basicReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<RewardItem> basicReward
     {
       get { return _basicReward; }
-      set { _basicReward = value; }
     }
-    private HSRewardInfo _extraReward = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"extraReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public HSRewardInfo extraReward
+  
+    private readonly global::System.Collections.Generic.List<RewardItem> _extraReward = new global::System.Collections.Generic.List<RewardItem>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"extraReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<RewardItem> extraReward
     {
       get { return _extraReward; }
-      set { _extraReward = value; }
     }
+  
     private HSAdventure _adventure;
     [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"adventure", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public HSAdventure adventure

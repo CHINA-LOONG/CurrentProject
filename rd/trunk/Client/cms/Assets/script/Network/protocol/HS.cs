@@ -24,7 +24,10 @@ namespace PB
       HEART_BEAT = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=4)]
-      ERROR_CODE = 4
+      ERROR_CODE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WARN", Value=5)]
+      WARN = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"gm")]

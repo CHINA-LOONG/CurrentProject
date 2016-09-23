@@ -165,6 +165,9 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
         //GameEventMgr.Instance.AddListener<Coin>(GameEventList.EatCoin, OnEatCoin);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_INFO_SYNC_S.GetHashCode().ToString(), OnAdventureInfoSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_CONDITION_PUSH_S.GetHashCode().ToString(), OnAdventureUpdate);
     }
     //---------------------------------------------------------------------------------------------
     void UnBindListener()
@@ -188,6 +191,9 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_INFO_SYNC_S.GetHashCode().ToString(), OnAdventureInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_CONDITION_PUSH_S.GetHashCode().ToString(), OnAdventureUpdate);
     }
     //---------------------------------------------------------------------------------------------
     public void OnBattleStart()
@@ -483,6 +489,19 @@ public class GameDataMgr : MonoBehaviour
         PB.HSQuestUpdate questUpdate = msg.GetProtocolBody<PB.HSQuestUpdate>();
         mainPlayer.gameQuestData.QuestUpdate(questUpdate.quest);
     }
+    //adventure-------------------------------------------------------------------------------------
+    void OnAdventureInfoSync(ProtocolMessage msg)
+    {
+        PB.HSAdventureInfoSync adventureSync = msg.GetProtocolBody<PB.HSAdventureInfoSync>();
+        AdventureDataMgr.Instance.AdvestureInfoSync(adventureSync);
+    }
+    void OnAdventureUpdate(ProtocolMessage msg)
+    {
+        PB.HSAdventureConditionPush adventureUpdate = msg.GetProtocolBody<PB.HSAdventureConditionPush>();
+        AdventureDataMgr.Instance.AdvestureInfoUpdate(adventureUpdate);
+    }
+
+
     //mail----------------------------------------------------------------------------------------------
     void OnMailInfoSync(ProtocolMessage msg)
     {

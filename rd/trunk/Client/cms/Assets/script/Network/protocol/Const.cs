@@ -41,7 +41,10 @@ namespace PB
       KICKED_OUT = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_RESTART", Value=5)]
-      SERVER_RESTART = 5
+      SERVER_RESTART = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GM", Value=6)]
+      GM = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"RewardReason")]

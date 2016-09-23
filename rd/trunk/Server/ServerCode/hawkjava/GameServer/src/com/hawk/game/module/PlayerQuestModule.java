@@ -17,12 +17,14 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.BILog.BIBehaviorAction.Action;
+import com.hawk.game.BILog.BIMissionFlowData;
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.log.BILogger;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -74,6 +76,9 @@ public class PlayerQuestModule extends PlayerModule {
 				entry.setValue(quest.build());
 
 				updateQuestList.add(entry.getValue());
+
+				QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, quest.getQuestId());
+				BILogger.getBIData(BIMissionFlowData.class).log(player, Action.MISSION_ONGOING, questCfg.getType(), questCfg.getId(), questCfg.getNameId(), (float)newProgress / questCfg.getGoalCount());
 			}
 		}
 		if (false == updateQuestList.isEmpty()) {
@@ -160,6 +165,7 @@ public class PlayerQuestModule extends PlayerModule {
 			}
 		}
 
+		BILogger.getBIData(BIMissionFlowData.class).log(player, Action.MISSION_REWARD, questCfg.getType(), questId, questCfg.getNameId(), 1);
 		return true;
 	}
 
@@ -238,7 +244,7 @@ public class PlayerQuestModule extends PlayerModule {
 			builder.setQuestId(questCfg.getId());
 			builder.setProgress(progress);
 			HSQuest quest = builder.build();
-			player.getPlayerData().setQuest(quest);
+			player.getPlayerData().addQuest(quest);
 
 			if (null != acceptList) {
 				acceptList.add(quest);
@@ -252,6 +258,7 @@ public class PlayerQuestModule extends PlayerModule {
 				}
 			}
 
+			BILogger.getBIData(BIMissionFlowData.class).log(player, Action.MISSION_ACCEPT, questCfg.getType(), questCfg.getId(), questCfg.getNameId(), 0);
 			return true;
 		}
 		return false;

@@ -22,8 +22,8 @@ Attached is your Arena Season ranking reward, congratulations! Be sure to collec
 1005,mail_gm_deduct_coin,扣金币,,zh-CN,系统,GM通知,由于您非法获得{0}金币。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,The system detected {0} Coins obtained via abnormal methods on your account. These Coins will be removed from your account. Thank you for your understanding and cooperation.
 1006,mail_gm_deduct_diamond,扣钻石,,zh-CN,系统,GM通知,由于您非法获得{0}钻石。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,The system detected {0} Diamonds obtained via abnormal methods on your account. These Coins will be removed from your account. Thank you for your understanding and cooperation.
 107,mail_boss_001,发放世界boss活动奖励,,zh-CN,系统,神怪入侵排名奖励,"亲爱的玩家：
-这是您的神怪入侵活动的奖励，请查收",en,System,神怪入侵排名奖励,"亲爱的玩家：
-这是您的神怪入侵活动的奖励，请查收"
+这是您的神怪入侵活动的奖励，请查收",en,System,Deity Invasion Reward,"Dear Player,
+Attached are your Deity Invasion rewards. Enjoy!"
 108,mail_boss_002,发放世界boss额外奖励,,zh-CN,系统,消灭神怪的额外奖励,"亲爱的玩家：
-鉴于您在消灭神怪过程中的卓越表现，这是您获得的额外奖励，请查收",en,System,消灭神怪的额外奖励,"亲爱的玩家：
-鉴于您在消灭神怪过程中的卓越表现，这是您获得的额外奖励，请查收"
+鉴于您在消灭神怪过程中的卓越表现，这是您获得的额外奖励，请查收",en,System,Bonus Rewards - Defeated Deities,"Dear Player,
+Your outstanding performance in defeating the deities has not gone unnoticed. Attached are some bonus rewards for you. Enjoy!"

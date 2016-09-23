@@ -1,9 +1,9 @@
 ﻿
 public enum AdventureType
 {
-    QIANGHUA,
-    JINJIE,
-    BOSS
+    QIANGHUA = 1,
+    JINJIE = 2,
+    BOSS = 3
 }
 public class AdventureData
 {
@@ -22,6 +22,28 @@ public class AdventureData
     public AdventureType Type
     {
         get { return (AdventureType)type; }
+    }
+
+    public string CommentsText
+    {
+        get { return StaticDataMgr.Instance.GetTextByID(comments); }
+    }
+    public string TypeText
+    {
+        get
+        {
+            switch (type)
+            {
+                case 1:
+                    return StaticDataMgr.Instance.GetTextByID("adventure_qianghuashi");
+                case 2:
+                    return StaticDataMgr.Instance.GetTextByID("adventure_jinjieshi");
+                case 3:
+                    return StaticDataMgr.Instance.GetTextByID("adventure_boss");
+                default:
+                    return "type error";
+            }
+        }
     }
     //在读取配置表单的时候调用，有些需要解析字符串获取数值
     public void InitData()

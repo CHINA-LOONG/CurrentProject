@@ -21,6 +21,7 @@ public class InstanceEntry
 	public	string	enemy4;
 	public	string	enemy5;
 	public	string	enemy6;
+    public int bp;//敌方阵容战力
     public  string reward;
     public string bgzhuangshi;
     public string instanceSpell;

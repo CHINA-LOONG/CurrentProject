@@ -21,13 +21,10 @@ import org.hawk.db.HawkDBEntity;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.hawk.game.GsApp;
 import com.hawk.game.entity.PlayerAllianceEntity.BaseMonsterInfo;
 import com.hawk.game.manager.AllianceManager;
-import com.hawk.game.player.Player;
-import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskTimeoutNotify;
+import com.hawk.game.protocol.HS;
 
 
 /**

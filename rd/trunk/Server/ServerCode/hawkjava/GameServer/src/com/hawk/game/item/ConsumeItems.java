@@ -358,7 +358,7 @@ public class ConsumeItems {
 				{
 					return ConsumeCheckResult.MONSTER_LOCKED;
 				}
-				
+
 				break;
 
 			case itemType.ITEM_VALUE:

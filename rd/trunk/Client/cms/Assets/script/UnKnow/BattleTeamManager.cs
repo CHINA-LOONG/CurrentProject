@@ -24,7 +24,17 @@ public class BattleTeamManager
 			{
 				for(int i =0;i< iteams.Length;++i)
 				{
-					teamList.Add(iteams[i]);
+                    string subGuid = iteams[i];
+                    if(!string.IsNullOrEmpty(subGuid))
+                    {
+                        int guid = int.Parse(subGuid);
+                        GameUnit subUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
+                        if (subUnit == null || subUnit.pbUnit.IsInAdventure())
+                        {
+                            subGuid = "";
+                        }
+                    }
+					teamList.Add(subGuid);
 				}
 				return teamList;
 			}

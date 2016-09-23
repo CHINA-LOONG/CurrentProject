@@ -67,8 +67,8 @@ message HSAdventureSettle
 message HSAdventureSettleRet
 {
 	required int32 teamId = 1;
-	required HSRewardInfo basicReward = 2;
-	optional HSRewardInfo extraReward = 3;
+	repeated RewardItem basicReward = 2;
+	repeated RewardItem extraReward = 3;
 	// 新冒险数据
 	required HSAdventure adventure = 4;
 }

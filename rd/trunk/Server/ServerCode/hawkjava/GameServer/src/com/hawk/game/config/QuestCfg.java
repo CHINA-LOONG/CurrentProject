@@ -29,10 +29,10 @@ public class QuestCfg extends HawkConfigBase {
 	protected final String rewardId;
 	protected final float expK;
 	protected final float expB;
+	private final String name;
 
 	// client only
 	private final String comments = null;
-	private final String name = null;
 	private final String icon = null;
 	private final String desc = null;
 	private final String speechId = null;
@@ -59,6 +59,7 @@ public class QuestCfg extends HawkConfigBase {
 		rewardId = "";
 		expK = 0;
 		expB = 0;
+		name = "";
 	}
 
 	@Override
@@ -283,7 +284,7 @@ public class QuestCfg extends HawkConfigBase {
 		// 打孔次数
 		case "equipslot":
 			goalTypeValue = GsConst.QuestGoalType.EQUIP_SLOT_TIMES;
-			break;	
+			break;
 		// 免费领取
 		case "free":
 			goalTypeValue = GsConst.QuestGoalType.FREE_GOAL;
@@ -379,5 +380,9 @@ public class QuestCfg extends HawkConfigBase {
 
 	public int getExpReward(int level) {
 		return (int)(expK * level + expB);
+	}
+
+	public String getNameId() {
+		return name;
 	}
 }

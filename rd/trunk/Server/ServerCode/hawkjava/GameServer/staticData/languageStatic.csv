@@ -54,7 +54,7 @@ piying5hide_lbody,三个秘密——右半身的秘密,Three secrets? One on his
 piying5hide_rbody,三个秘密——左半身的秘密,Three secrets? One on his left Shadow?
 piying5hide_head,三个秘密——头部神秘的眼罩,Three secrets? Could it in be his head?
 huapo2hide_flower,空中漂浮的花瓣，隐藏着怎样的秘密？,Notice the Petal hovering around?
-zouyincao2hide_trumpet,猜猜我在哪,Find me
+zouyincao2hide_trumpet,疯狂舞动的喇叭,The secret is in its Crazy Trumpet.
 wushi4hide_horn,舞狮头顶尖尖角,This shape looks like a horn?
 wushi4hide_ball,舞狮看起来很喜欢他的球呢,It seems to love the Magic Ball.
 xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?
@@ -2370,20 +2370,20 @@ worldentry,神怪入侵,Deity Invasion
 10249_miaoshu,同一个时间段内挑战boss达到8次,Battle a boss 8 times in a single time period.
 10250_miaoshu,同一个时间段内挑战boss达到9次,Battle a boss 9 times in a single time period.
 10251_miaoshu,同一个时间段内挑战boss达到10次,Battle a boss 10 times in a single time period.
-10252_miaoshu,世界boss排名达到前50名,Reach the top 50 in Deity Invasion rankings.
-10253_miaoshu,世界boss排名达到前20名,Reach the top 20 in Deity Invasion rankings.
-10254_miaoshu,世界boss排名达到前10名,Reach the top 10 in Deity Invasion rankings.
-10255_miaoshu,世界boss排名达到前3名,Reach the top 3 in Deity Invasion rankings.
-10256_miaoshu,世界boss排名达到第1名,Reach the top 1 in Deity Invasion rankings.
-10257_miaoshu,世界boss单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.
-10258_miaoshu,世界boss单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.
-10259_miaoshu,世界boss单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.
-10260_miaoshu,世界boss单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.
-10261_miaoshu,faceboo分享达到1次,Share via Facebook once.
-10262_miaoshu,faceboo分享达到5次,Share via Facebook 5 times.
-10263_miaoshu,faceboo分享达到10次,Share via Facebook 10 times.
-10264_miaoshu,faceboo分享达到20次,Share via Facebook 20 times.
-10265_miaoshu,faceboo分享达到50次,Share via Facebook 50 times.
+10252_miaoshu,神怪入侵排名达到前50名,Reach the top 50 in Deity Invasion rankings.
+10253_miaoshu,神怪入侵排名达到前20名,Reach the top 20 in Deity Invasion rankings.
+10254_miaoshu,神怪入侵排名达到前10名,Reach the top 10 in Deity Invasion rankings.
+10255_miaoshu,神怪入侵排名达到前3名,Reach the top 3 in Deity Invasion rankings.
+10256_miaoshu,神怪入侵排名达到第1名,Reach the top 1 in Deity Invasion rankings.
+10257_miaoshu,神怪入侵单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.
+10258_miaoshu,神怪入侵单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.
+10259_miaoshu,神怪入侵单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.
+10260_miaoshu,神怪入侵单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.
+10261_miaoshu,facebook分享达到1次,Share via Facebook once.
+10262_miaoshu,facebook分享达到5次,Share via Facebook 5 times.
+10263_miaoshu,facebook分享达到10次,Share via Facebook 10 times.
+10264_miaoshu,facebook分享达到20次,Share via Facebook 20 times.
+10265_miaoshu,facebook分享达到50次,Share via Facebook 50 times.
 10266_miaoshu,购买竞技场出战点数达到1次,Purchase Arena Entries once.
 10267_miaoshu,购买竞技场出战点数达到5次,Purchase Arena Entries 5 times.
 10268_miaoshu,购买竞技场出战点数达到10次,Purchase Arena Entries 10 times.
@@ -2407,3 +2407,6 @@ mubiao8024,完成1次神怪入侵,Complete Deity Invasion mode once.
 bossdajie18Ladong5wp04,金苹果,Golden Apple
 ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
 push_worldboss,神怪入侵活动将在5分钟后开启！快来和伙伴们一起征战吧！,Deity Invasion will be starting in 5 minutes! Come and battle alongside your friends!
+story_renyu,居住在深海的梦幻种族，拥有美妙的歌喉。人鱼族每月会随着潮汐来到海面歌唱，路过的海员听到歌声会被蛊惑跳海，投入人鱼的怀抱。,"A race of creatures that reside in fabled kingdoms shrouded in the depths of the sea. Mermaids will follow the tide once a month to the surface and sing beautiful songs. Any sailors that happen to hear the sound will become charmed and jump into the sea, right into the arms of the mermaids."
+story_shixianggui,守护城堡的石像在月光常年的浸润下获得了生命。拥有坚不可摧的躯体和怪力，攻击一切试图闯入城堡的探险者。,"Once stationary stone guardians perched on the lofty ledges of the castle, these statues came to life after years of absorbing the power of the moonlight. With durable bodies and monstrous strength, the gargoyles will attack anything that tries to enter the castle uninvited."
+story_senlinnvshen,森林意志汇聚而成的实体，高贵的王者。守护着森林中所有的生灵，对于破坏森林的入侵者给予严厉的制裁。,A race of noble rulers that were formed from the very essence of the forest’s will. They serve to protect all the creatures of the forest and punish anyone that threatens its tranquility.

@@ -40,13 +40,21 @@ namespace PB
       get { return _reward; }
       set { _reward = value; }
     }
-    private int _freeBeginTime = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"freeBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _freeDiamondBeginTime = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"freeDiamondBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
-    public int freeBeginTime
+    public int freeDiamondBeginTime
     {
-      get { return _freeBeginTime; }
-      set { _freeBeginTime = value; }
+      get { return _freeDiamondBeginTime; }
+      set { _freeDiamondBeginTime = value; }
+    }
+    private int _freeCoinLastTime = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"freeCoinLastTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int freeCoinLastTime
+    {
+      get { return _freeCoinLastTime; }
+      set { _freeCoinLastTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

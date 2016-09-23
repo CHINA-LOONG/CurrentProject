@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.BILog.BICoinData;
+import com.hawk.game.BILog.BIEnergyFlowData;
 import com.hawk.game.BILog.BIGoldData;
 import com.hawk.game.BILog.BIGuildMemberFlowData;
 import com.hawk.game.BILog.BIItemData;
@@ -1309,14 +1310,18 @@ public class Player extends HawkAppObj {
 		// 增加前先更新
 		regainFatigue();
 
-		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int fatigueRemain = statisticsEntity.getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
 		int fatigueIncrease = fatigue - (fatigueRemain > 0 ? fatigueRemain : 0);
 		if (0 != fatigueIncrease) {
-			playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigueIncrease);
-			playerData.getStatisticsEntity().notifyUpdate(true);
+			statisticsEntity.setFatigue(statisticsEntity.getFatigue() + fatigueIncrease);
+			statisticsEntity.notifyUpdate(true);
 		}
 
-		//TODO BI
+		// 除以下情况，其余情况增加体力在具体位置记录BI
+		if (action == Action.MAIL_REWARD || action == Action.ENERGY_COOKIES_USE) {
+			BILogger.getBIData(BIEnergyFlowData.class).log(this, action, "", "", "", fatigueIncrease, fatigue, statisticsEntity.getFatigue());
+		}
 		return fatigueIncrease;
 	}
 
@@ -1346,7 +1351,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.increaseUseFatigueCountDaily(fatigue);
 		statisticsEntity.notifyUpdate(true);
 
-		// TODO BI
+		BILogger.getBIData(BIEnergyFlowData.class).log(this, action, "", "", "", 0, fatigue, cur);
 	}
 
 	/**
@@ -1387,8 +1392,9 @@ public class Player extends HawkAppObj {
 		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.FATIGUE_TIME  * 1000);
 		statisticsEntity.setFatigue(cur);
 		statisticsEntity.setFatigueBeginTime(beginTime);
-
 		statisticsEntity.notifyUpdate(true);
+
+		BILogger.getBIData(BIEnergyFlowData.class).log(this, Action.ENERGY_RECOVER, "", "", "", cur - old, 0, cur);
 		return cur;
 	}
 

@@ -44,6 +44,9 @@ public class UIAdjustBattleTeam : UIBase
 	public  Text	lbEnemyZhenrong;
 	public	Text	lbMyShangzhen;
 	public	Text	lbMyHoubei;
+    public Text myBpText;
+    public Text enemyBpText;
+    public Text[] bpLabelArray;
 
     public SpellIcon buffIcon;
     public Text nameText;
@@ -90,6 +93,35 @@ public class UIAdjustBattleTeam : UIBase
     private int oldPlayerLevel = 0;
     private int oldHuoliValue = 0;
 
+    private  int    enemyBp = 0;
+    private int EnemyBpAttr
+    {
+        set
+        {
+            enemyBp = value;
+            enemyBpText.text = string.Format("{0}", enemyBp);
+        }
+    }
+
+    private int myBp = 0;
+    private int MyBpAttr
+    {
+        set
+        {
+            myBp = value;
+            myBpText.text = string.Format("{0}", myBp);
+            if(myBp < enemyBp)
+            {
+                myBpText.color = new Color(122.0f / 255.0f, 1, 0);
+            }
+            else
+            {
+                myBpText.color = new Color(1.0f, 204.0f/255.0f,0.0f);
+            }
+        }
+    }
+
+
     public  static void OpenWith(string instanceId,int star,bool showInstanceListWhenExit, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
     {
         UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
@@ -127,6 +159,9 @@ public class UIAdjustBattleTeam : UIBase
         UIUtil.SetButtonTitle(resetTimesButton.transform, StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu"));
         UIUtil.SetButtonTitle(rapid1Button.transform, StaticDataMgr.Instance.GetTextByID("instance_saodang"));
         skillTips.gameObject.SetActive(false);
+
+        bpLabelArray[0].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
+        bpLabelArray[1].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
     }
     public override void Clean()
     {
@@ -285,7 +320,8 @@ public class UIAdjustBattleTeam : UIBase
 		string monsterId = null;
 		MonsterIconBg subBg = null;
 		RectTransform rectTrans = null;
-    
+        EnemyBpAttr = instanceEntryData.bp;
+
 		for (int i = 0; i<enemyTeamBg.Count; ++ i)
 		{
 			subBg = enemyTeamBg[i];
@@ -352,6 +388,7 @@ public class UIAdjustBattleTeam : UIBase
 
 	void InitPlayerTeamIcons()
 	{
+        MyBpAttr = 0;
 		prepareIndex = -1;
 		teamList =  BattleTeamManager.GetTeamWithKey (BattleTeamManager.TeamList.Defualt);
         CleanAllPlayersIcons();
@@ -380,7 +417,8 @@ public class UIAdjustBattleTeam : UIBase
 			}
 			else
 			{
-				MonsterIcon subIcon = MonsterIcon.CreateIcon();
+                MyBpAttr = unit.mBp + myBp;
+                MonsterIcon subIcon = MonsterIcon.CreateIcon();
                 playerIcons.Add(subIcon);//添加列表用于维护
 
 				subIcon.transform.SetParent(subBg.transform,false);
@@ -430,6 +468,8 @@ public class UIAdjustBattleTeam : UIBase
 			icon.SetLevel(subUnit.pbUnit.level);
 			icon.SetStage(subUnit.pbUnit.stage);
             icon.ShowMaoxianImage(subUnit.pbUnit.IsInAdventure());
+            icon.ShowMaskImage(subUnit.pbUnit.IsInAdventure());
+            icon.ShowLockImage(subUnit.pbUnit.IsInAdventure());
 
 			playerAllIconDic.Add(icon.Id,icon);
 
@@ -550,7 +590,14 @@ public class UIAdjustBattleTeam : UIBase
 		MonsterIcon subIcon = go.GetComponentInParent<MonsterIcon> ();
 
 		string guid = subIcon.Id;
-        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(int.Parse(guid));
+       
+        BattleTeamToPlayerWarehouse (guid);
+	}
+
+	void	OnPlayerWarehouseIconClick(GameObject go)
+	{
+		MonsterIcon micon = go.GetComponentInParent<MonsterIcon> ();
+        GameUnit gameUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(int.Parse(micon.Id));
         if (null != gameUnit)
         {
             if (gameUnit.pbUnit.IsInAdventure())
@@ -559,14 +606,8 @@ public class UIAdjustBattleTeam : UIBase
                 return;
             }
         }
-        BattleTeamToPlayerWarehouse (guid);
-	}
 
-	void	OnPlayerWarehouseIconClick(GameObject go)
-	{
-
-		MonsterIcon micon = go.GetComponentInParent<MonsterIcon> ();
-		bool isSel = micon.IsSelected ();
+        bool isSel = micon.IsSelected ();
 
 		if (isSel) 
 		{
@@ -631,9 +672,9 @@ public class UIAdjustBattleTeam : UIBase
 		subIcon.SetMonsterStaticId (unit.pbUnit.id);
 		subIcon.SetLevel (unit.pbUnit.level);
         subIcon.SetStage(unit.pbUnit.stage);
-
-		//新的prepareindex
-		UpdatePrepareIndex ();
+        MyBpAttr = myBp + unit.mBp;
+        //新的prepareindex
+        UpdatePrepareIndex ();
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -654,6 +695,8 @@ public class UIAdjustBattleTeam : UIBase
 				{
                     playerIcons.Remove(subIcon);
                     ResourceMgr.Instance.DestroyAsset(subIcon.gameObject);
+                    GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(int.Parse(guid));
+                    MyBpAttr = myBp - unit.mBp;
 					break;
 				}
 			}

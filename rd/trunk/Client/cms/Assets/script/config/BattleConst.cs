@@ -139,6 +139,8 @@ public class BattleConst
     public const int dailyQuest = 10;
     //大冒险探险时间
     public static int[] adventureTime = new int[3] { 5, 8, 12 };
+    public const int maxAdventureTeam = 7;
+    public const int maxRefrshCondition = 10;
     //public const int adventureTime_1 = 5;
     //public const int adventureTime_2 = 8;
     //public const int adventureTime_3 = 12;

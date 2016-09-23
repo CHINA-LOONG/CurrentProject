@@ -166,10 +166,10 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 40013,name_40013_pvprankxianshijinbi,-1,icon_jinbixiangzi3,4,-1,3,0,1,-1,tips_40013_pvprankxianshijinbi,3,-1,-1,10,2,1,1,300001,,,,-1,-1,-1,,-1,-1,-1,,1
 40014,name_40007_bigTaskleader501,-1,icon_lingxiubaoxiang4,4,5,4,0,1,-1,tips_40014_bigTaskleader501,3,-1,-1,10,2,1,1,200007,,,,-1,-1,-1,,-1,-1,-1,7_2,1
 40015,name_40010_bigTaskleader502,-1,icon_lingxiubaoxiangbuji4,4,5,4,0,1,-1,tips_40015_bigTaskleader502,3,-1,-1,10,2,1,1,200008,,,,-1,-1,-1,,-1,-1,-1,7_2,1
-40052,name_40052_pvpstagereward,-1,icon_wenzhangxiangzi2,4,3,2,0,1,-1,tips_40052_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40052,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",1
-40053,name_40053_pvpstagereward,-1,icon_wenzhangxiangzi3,4,3,3,0,1,-1,tips_40053_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40053,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",1
-40054,name_40054_pvpstagereward,-1,icon_wenzhangxiangzi4,4,3,4,0,1,-1,tips_40054_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40054,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",0
-40055,name_40055_pvpstagereward,-1,icon_wenzhangxiangzi5,4,3,5,0,1,-1,tips_40055_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40055,,,,-1,-1,-1,,-1,-1,-1,5_3,1
+40052,name_40052_pvpstagereward,-1,icon_wenzhangxiangzi1,4,3,1,0,1,-1,tips_40052_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40052,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",1
+40053,name_40053_pvpstagereward,-1,icon_wenzhangxiangzi2,4,3,2,0,1,-1,tips_40053_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40053,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",1
+40054,name_40054_pvpstagereward,-1,icon_wenzhangxiangzi3,4,3,3,0,1,-1,tips_40054_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40054,,,,-1,-1,-1,,-1,-1,-1,"6,5_3",0
+40055,name_40055_pvpstagereward,-1,icon_wenzhangxiangzi4,4,3,4,0,1,-1,tips_40055_pvpstagereward,3,-1,-1,10,2,1,1,pvpstagereward_40055,,,,-1,-1,-1,,-1,-1,-1,5_3,1
 40056,name_40056_pvprankreward,-1,icon_chongwusuipian1,4,4,1,0,1,-1,tips_40056_pvprankreward,3,-1,-1,10,2,1,1,pvprankreward_40056,,,,-1,-1,-1,,-1,-1,-1,"13_1,1_dajie21,1_huoshan21",1
 40057,name_40057_pvprankreward,-1,icon_chongwusuipian2,4,4,2,0,1,-1,tips_40057_pvprankreward,3,-1,-1,10,2,1,1,pvprankreward_40057,,,,-1,-1,-1,,-1,-1,-1,"13_1,5_3",1
 40058,name_40058_pvprankreward,-1,icon_chongwusuipian3,4,4,3,0,1,-1,tips_40058_pvprankreward,3,-1,-1,10,2,1,1,pvprankreward_40058,,,,-1,-1,-1,,-1,-1,-1,5_3,1

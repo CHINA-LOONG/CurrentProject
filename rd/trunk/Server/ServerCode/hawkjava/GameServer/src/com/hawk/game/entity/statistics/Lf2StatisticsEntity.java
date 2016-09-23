@@ -196,6 +196,8 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	protected Lf2StatisticsEntity() {
 		Calendar time = HawkTime.getCalendar();
 		this.adventureChangeBeginTime = time;
+		this.eggPointBeginTime = time;
+		this.eggCoinFreeLastTime = time;
 		this.monthCardEndTime = time;
 	}
 
@@ -203,6 +205,8 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
 		this.adventureChangeBeginTime = time;
+		this.eggPointBeginTime = time;
+		this.eggCoinFreeLastTime = time;
 		this.monthCardEndTime = time;
 	}
 

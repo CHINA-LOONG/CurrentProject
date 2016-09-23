@@ -615,7 +615,7 @@ sociaty_addmonster,添加宠物,Add monster
 sociaty_tipslock,公会历史贡献值达到<color=#ffCC00ff>{0}</color>解锁,Unlocked when total guild contribution reaches <color=#ffCC00ff>{0}</color>.
 sociaty_zhushoutime,驻守时长：,Garrison time:
 sociaty_zhushoutime1,{0}小时{1}分钟,{0}hrs{1}min
-sociaty_leijishouru,累积收入：,Accumulated income:
+sociaty_leijishouru,累积收入：,Income:
 sociaty_recall,立即召回,Recall
 sociaty_shouru1,驻扎收入：,Defense income:
 sociaty_shouru2,雇佣收入：,Hired monster income:
@@ -1569,7 +1569,7 @@ facebook_share_content1,大批神话中的妖怪突然降临人界！点击前�
 facebook_share_title2,我在《Legends Awake》中发起了一次挑战,I have sent a challenge in <Legends Awake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
-specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3} {4} </color>期间，只有<color=#ffcc00>{5}</color>次机会,"From {0}.{1} to {2}.{3} {4} , can only be purchased <color=#ffcc00>{5}</color> times!"
+specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3} {4} </color>期间，只有<color=#ffcc00>{5}</color>次机会,"From <color=#ffcc00>{0}.{1} to {2}.{3} {4}</color> , can only be purchased <color=#ffcc00>{5}</color> times!"
 specialgift_advanceTime,剩余时间 ,Time left 
 specialgift_advanceCount,剩余次数 ,Remaining 
 specialgift_choiceTime,剩余时间 ,Time left 
@@ -1673,11 +1673,11 @@ giftspecial_suipian2_name,碎片礼包（稀有）,Fragment Package (Rare)
 giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>60 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!"
 giftspecial_huodong1_name,惊喜礼包,Surprise Package
 giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,The <color=#ffcc00>SS grade monster</color> you've been after is right in front of you!
-giftspecial_huodong2_name,珍稀纹章礼包,Prized Insignia Package
-giftspecial_huodong2_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!
-giftspecial_xuanze1_name,新人礼,New Player Surprise
-giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose <color=#ffcc00>one</color>!
-giftspecial_xuanze2_name,中级礼包,Intermediate Package
+giftspecial_huodong2_name,惊喜怪物之魂！,惊喜怪物之魂！
+giftspecial_huodong2_desc,怪物之魂来临！！机会难得！,怪物之魂来临！！机会难得！
+giftspecial_xuanze1_name,新人钜惠,新人钜惠
+giftspecial_xuanze1_desc,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！
+giftspecial_xuanze2_name,超值钜惠,超值钜惠
 giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>one</color>!
 xinyangzhilu_name,神话守护者,Myth Guardian
 main_icon_mythopath,神话守护者,"Myth
@@ -1932,34 +1932,33 @@ worldboss_record_007,活动未开始，可以在规则说明处查看活动时�
 compose_monster_target1,随机B稀有度宠物碎片,Random B-Class Monster Fragments
 compose_monster_target2,随机A稀有度宠物碎片,Random A-Class Monster Fragments
 compose_monster_target3,随机S稀有度宠物碎片,Random S-Class Monster Fragments
-giftspecial_jinjiea1_name,A级进阶礼包,Advancement Package
-giftspecial_jinjiea1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
-giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Advancement Package (Rare)
-giftspecial_jinjiea2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
-giftspecial_jinjieb1_name,S级进阶礼包,Advancement Package
-giftspecial_jinjieb1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
-giftspecial_jinjieb2_name,S级进阶礼包（稀有）,Advancement Package (Rare)
-giftspecial_jinjieb2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
-giftspecial_jinjiec1_name,SS级进阶礼包,Advancement Package
-giftspecial_jinjiec1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
-giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Advancement Package (Rare)
-giftspecial_jinjiec2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
+giftspecial_jinjiea1_name,A级进阶礼包,Package for A Class
+giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Package for A Class (Rare)
+giftspecial_jinjieb1_name,S级进阶礼包,Package for S Class
+giftspecial_jinjieb2_name,S级进阶礼包（稀有）,Package for S Class (Rare)
+giftspecial_jinjiec1_name,SS级进阶礼包,Package for SS Class
+giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Package for SS Class (Rare)
 server_limit_002,当前服务器爆满，请稍后登录或选择其他服务器进行游戏！,"The server is busy now. Please try again shortly, or select another server to play on!"
 server_limit_001,当前服务器已达到注册上限，请选择其他服务器进行游戏！,The current server has already reached the max player limit. Please select another server to play on!
 3D_unlock_tips,<color=#ffcc00>神怪入侵</color>尚未达到开启条件,<color=#ffcc00>Deity Invasion</color> has not been opened yet.
 jiasu_name,加速,Speed-up
 tuoguan_name,托管,Auto-battle
 instance_zhuzhan_002,当前玩法无法使用公会助战功能哦！,Unable to use Guild Assistance in the current game mode!
-instance_zhuzhan_004,"雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 雇佣花费
-将支付给雇佣宠物所属玩家","雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 雇佣花费
-将支付给雇佣宠物所属玩家"
+instance_zhuzhan_004,雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 花费,Hired <color=#ffcc00ff>{1}</color> from<color=#ffcc00ff>{0}</color> cost 
 instance_zhuzhan_003,请至少选择一位己方成员上阵！,Please select at least one member to enter battle!
-retry_pinfandenglu,登录操作过于频繁，请稍后再试,登录操作过于频繁，请稍后再试
-instance_zhuzhan_jifang,己方宠物,己方宠物
-instance_zhuzhan_gonghui,助战宠物,助战宠物
+instance_zhuzhan_jifang,己方宠物,My Monsters
+instance_zhuzhan_gonghui,助战宠物,Guild Monsters
 instance_zhuzhan_005,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?
 instance_zhuzhan_006,一次战斗只能雇佣一只宠物,Only 1 monster may be hired for each battle.
 im_chat_day,{0}天{1}小时,{0} days {1} hrs
 im_chat_hour,{0}小时{1}分,{0} hrs {1} min
 im_chat_minite,{0}分,{0} min
 im_chat_missiontips,存在正在进行的公会任务，点击这里查看,"Can be found in the current Guild Quest, tap here to view."
+retry_pinfandenglu,登录操作过于频繁，请稍后再试！,"The login operation too frequently, please try again later."
+pvp_resultteambp,战力,BP
+instance_zhuzhan_007,将支付给雇佣宠物所属玩家,the mercenary fee will be given to the keeper of the monster.
+3D_unlock_tips_xinyangzhilu,<color=#ffcc00>神话守护者</color>尚未达到开启条件,<color=#ffcc00>Mytho Guardian</color> has not been opened yet.
+giftspecial_huodong3_name,珍稀纹章礼包,Prized Insignia Package
+giftspecial_huodong3_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!
+giftspecial_huodong4_name,雪女降临,雪女降临
+giftspecial_huodong4_desc,冰雪女王来临！机会难得！,冰雪女王来临！机会难得！

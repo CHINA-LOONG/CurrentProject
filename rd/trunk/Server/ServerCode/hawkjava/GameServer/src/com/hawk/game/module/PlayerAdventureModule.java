@@ -252,6 +252,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		List<MonsterCfg> monsterList = new ArrayList<>(GsConst.ADVENTURE_MONSTER_COUNT);
 		for (Integer monsterId : teamEntity.getSelfMonsterList()) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+			
 			if (null == monsterEntity) {
 				HawkLog.errPrintln(String.format("entity invalid MonsterEntity: %d", monsterId));
 			} else {
@@ -261,6 +262,9 @@ public class PlayerAdventureModule extends PlayerModule {
 				} else {
 					monsterList.add(monsterCfg);
 				}
+
+				monsterEntity.removeState(Const.MonsterState.IN_ADVENTURE_VALUE);
+				monsterEntity.notifyUpdate(true);
 			}
 		}
 
@@ -310,9 +314,9 @@ public class PlayerAdventureModule extends PlayerModule {
 
 		HSAdventureSettleRet.Builder response = HSAdventureSettleRet.newBuilder();
 		response.setTeamId(teamId);
-		response.setBasicReward(basicReward.getBuilder());
+		response.addAllBasicReward(basicReward.getBuilder().getRewardItemsList());
 		if (null != extraReward) {
-			response.setExtraReward(extraReward.getBuilder());
+			response.addAllExtraReward(extraReward.getBuilder().getRewardItemsList());
 		}
 		response.setAdventure(BuilderUtil.genAdventureBuilder(advenEntity));
 		sendProtocol(HawkProtocol.valueOf(HS.code.ADVENTURE_SETTLE_S, response));

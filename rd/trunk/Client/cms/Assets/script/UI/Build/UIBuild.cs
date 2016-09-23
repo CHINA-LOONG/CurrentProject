@@ -42,8 +42,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UIBag uiBag;
     [HideInInspector]
     public InstanceMap uiInstance;
-    //[HideInInspector]
-    //public UIPetList uiPetList;
     [HideInInspector]
     public UIMonsters uiMonsters;
     [HideInInspector]
@@ -56,8 +54,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UICompose uiCompose;
     [HideInInspector]
     public UIDecompose uiDecompose;
-    //[HideInInspector]
-    //public UIAdventure uiAdventure;
+    [HideInInspector]
+    public UIAdventure uiAdventure;
 
     public Text mTestShowExp;
 
@@ -183,7 +181,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void PetButtonClick(GameObject go)
     {
-        //uiPetList= UIMgr.Instance.OpenUI_(UIPetList.ViewName) as UIPetList;
         //uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
         UIMgr.Instance.OpenUIAsync(UIMonsters.ViewName, true, PetLoadCallback);
     }
@@ -219,7 +216,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     }
     void OnAdventureButtonClick(GameObject go)
     {
-        //uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
+        uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
     }
 
     void    OnHuoliButtonClick (GameObject go)
@@ -314,14 +311,13 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiMail);
         UIMgr.Instance.DestroyUI(uiBag);
         UIMgr.Instance.DestroyUI(uiInstance);
-        //UIMgr.Instance.DestroyUI(uiPetList);
         UIMgr.Instance.DestroyUI(uiMonsters);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
 		UIMgr.Instance.DestroyUI (uiShop);
         UIMgr.Instance.DestroyUI(uiStore);
         UIMgr.Instance.DestroyUI(uiCompose);
         UIMgr.Instance.DestroyUI(uiDecompose);
-        //UIMgr.Instance.DestroyUI(uiAdventure);
+        UIMgr.Instance.DestroyUI(uiAdventure);
         
         if(null != UISociatyTask.Instance)
         {

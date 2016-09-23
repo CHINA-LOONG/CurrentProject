@@ -475,9 +475,6 @@ public class PlayerItemModule extends PlayerModule{
 		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
 			action = Action.ENERGY_COOKIES_USE;
 		}
-		else if (itemCfg.getId().equals(GsConst.SWEEP_TICKET)) {
-			action = Action.RAID_TICKET_USE;
-		}
 		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ||
 				 itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE) {
 			action = Action.EXP_SCROLL_USE;
