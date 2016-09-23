@@ -6,6 +6,7 @@ public class AdventureGuildMonsterInfo
 {
     public PB.AllianceBaseMonster unit;
     public UnitData unitData;
+    public Sociatybase sociatyData;
 
     private bool isSelect;
     public bool IsSelect
@@ -85,6 +86,10 @@ public class AdventureGuildMonster : MonoBehaviour
     public void ReloadData(AdventureGuildMonsterInfo info)
     {
         CurData = info;
+
+        textName.text = CurData.unit.nickname;
+        textCoin.text = CurData.sociatyData.coinHire.ToString();
+
         if (monsterIcon==null)
         {
             monsterIcon = MonsterIcon.CreateIcon();
@@ -95,7 +100,7 @@ public class AdventureGuildMonster : MonoBehaviour
         {
             monsterIcon.Init();
         }
-        monsterIcon.SetMonsterStaticId(CurData.unit.monsterId.ToString());
+        monsterIcon.SetMonsterStaticId(CurData.unit.cfgId.ToString());
         monsterIcon.SetId(CurData.unit.id.ToString());
         monsterIcon.SetLevel(CurData.unit.level);
         monsterIcon.SetStage(CurData.unit.stage);

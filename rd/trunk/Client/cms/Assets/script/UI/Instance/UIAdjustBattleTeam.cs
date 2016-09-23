@@ -112,11 +112,11 @@ public class UIAdjustBattleTeam : UIBase
             myBpText.text = string.Format("{0}", myBp);
             if(myBp < enemyBp)
             {
-                myBpText.color = new Color(122.0f / 255.0f, 1, 0);
+                myBpText.color = new Color(1, 0, 0);
             }
             else
             {
-                myBpText.color = new Color(1.0f, 204.0f/255.0f,0.0f);
+                myBpText.color = new Color(122.0f / 255.0f, 1, 0);
             }
         }
     }

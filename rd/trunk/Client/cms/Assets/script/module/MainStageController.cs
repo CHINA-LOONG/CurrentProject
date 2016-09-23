@@ -20,15 +20,18 @@ public class MainStageController : MonoBehaviour
     public SelectableObj mTowerSiwangObj;
     public SelectableObj mHoleJinbiObj;
     public SelectableObj mHoleJingyanObj;
+    public SelectableObj mChoudanObj;
     //lise all group
     public SelectableObjGroup mTowerGroup;
     public SelectableObjGroup mHoleGroup;
+    public SelectableObjGroup mChoudanGroup;
 
     //ui ref
     private UIHoleEntry mUIHoleEntry;
     private UIHole mUIHole;
     private UITowerEntry mUITowerEntry;
     private UITower mUITower;
+    private MainSummon mSummonMain;
 
     //private float mDistanceList;
     private float mCurYawAngle = 0.0f;
@@ -540,6 +543,10 @@ public class MainStageController : MonoBehaviour
                     mUIHole = UIHole.OpenHole((int)HoleType.Hole_Exp);
                 }
             }
+            //抽蛋
+            else if (selectedObj == mChoudanObj)
+            {
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -567,6 +574,11 @@ public class MainStageController : MonoBehaviour
                 mUIHoleEntry = UIMgr.Instance.OpenUI_("UIHoleEntry") as UIHoleEntry;
                 mUIHoleEntry.SetMainStageControl(this);
                 RefreshHoleState(true);
+            }
+            else if (selectGroup == mChoudanGroup)
+            {
+                mSummonMain = UIMgr.Instance.OpenUI_(MainSummon.ViewName) as MainSummon;
+                mSummonMain.SetMainStageControl(this);
             }
 
             //TODO: set outside instead of deactive
@@ -632,5 +644,4 @@ public class MainStageController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-
 }

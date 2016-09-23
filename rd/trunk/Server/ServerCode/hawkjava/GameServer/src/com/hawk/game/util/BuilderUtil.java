@@ -142,6 +142,7 @@ public class BuilderUtil {
 		builder.setAdventureChange(statisticsEntity.getAdventureChange());
 		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
 		builder.setSummonDiamondFreeBeginTime((int)(statisticsEntity.getEggPointBeginTime().getTimeInMillis() / 1000));
+		builder.setSummonCoinFreeTimesDaily(statisticsEntity.getEggCoinFreeTimesDaily());
 		builder.setSummonCoinFreeLastTime((int)(statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() / 1000));
 		builder.addAllHiredMonsterId(statisticsEntity.getHireMonsterDailySet());
 

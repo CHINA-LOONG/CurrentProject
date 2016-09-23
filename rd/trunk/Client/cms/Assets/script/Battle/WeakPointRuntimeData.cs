@@ -140,6 +140,11 @@ public class WeakPointRuntimeData
         {
             //event or call
             BattleController.Instance.GetUIBattle().wpUI.UpdateWeakpointIcon(this);
+            if (lastWpstate== WeakpointState.Hide && (wpState == WeakpointState.Normal1 || wpState == WeakpointState.Normal2))
+            {
+                BattleController.Instance.GetUIBattle().wpUI.ShowFindEffect(id);
+            }
+
         }
         if(lastWpstate == WeakpointState.Dead)
         {

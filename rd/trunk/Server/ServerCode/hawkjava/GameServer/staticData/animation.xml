@@ -3135,12 +3135,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="ultXiaochou2b1Finish" state="1" finish_event="ultXiaochou2b1">
 		</Ani>
-		
-		
-		
-		
-		
-		
+	
 	</AniList>
 	<AniList group="xgMoguren3">
 	
@@ -3748,7 +3743,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	
 		<Ani id="ultYifanmumian3" state="0" AniType="Skill">
 			<AudioList>
-				<Audio time="0" name="yifanmumian11"/>
+				<Audio time="0" name="yifanmumian31"/>
+				<Audio time="1.7" name="yifanmumian32"/>
 			</AudioList>
 		</Ani>
 		
@@ -3781,8 +3777,15 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="yifanmumian3pre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="yifanmumian11"/>
+				<Audio time="0" name="yifanmumian31"/>
+				<Audio time="1.7" name="yifanmumian32"/>
 			</AudioList>
+		</Ani>
+		
+		<Ani id="psvYifanmumian3e2" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_qusan" bundle="effect/particle" ani="" locky="true" parent=""/>
+			</ParticleList>
 		</Ani>
 		
 	</AniList>

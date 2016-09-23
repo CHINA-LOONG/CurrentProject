@@ -82,3 +82,11 @@ public class AdventureTeamPriceData
     public int id;
     public int gold;
 }
+
+public class Sociatybase
+{
+    public int bpMax;
+    public int coinDefend;
+    public int coinHire;
+    public int coinHireget;
+}

@@ -19,6 +19,7 @@ public class WpIcon : MonoBehaviour
     public UIProgressbar progressBar;
     public Image buttonImage;
 
+    private ShakeUi shakeUi;
     private bool isArmor = false;//是否是铠甲
     private WeakPointRuntimeData wpRealData;
     // Use this for initialization
@@ -26,7 +27,8 @@ public class WpIcon : MonoBehaviour
     {
         EventTriggerListener.Get(buttonImage.gameObject).onEnter = OnTouchEnter;
         EventTriggerListener.Get(buttonImage.gameObject).onExit = OnTouchExit;
-	}
+        shakeUi = GetComponent<ShakeUi>();
+    }
 
     public  string GetWpId()
     {
@@ -40,6 +42,7 @@ public class WpIcon : MonoBehaviour
     public  void    RefreshWithWp(WeakPointRuntimeData wpRealData)
     {
         this.wpRealData = wpRealData;
+        shakeUi = GetComponent<ShakeUi>();
         progressBar.gameObject.SetActive(false);
         deadMask.gameObject.SetActive(false);
 
@@ -75,7 +78,7 @@ public class WpIcon : MonoBehaviour
         progressBar.gameObject.SetActive(isArmor);
         if(isArmor)
         {
-            RefreshProgress(0);
+            RefreshProgress(0,false);
         }
     }
 
@@ -84,10 +87,14 @@ public class WpIcon : MonoBehaviour
         return string.Format("ruodianIcon_{0}", (int)type);
     }
 
-    public void RefreshProgress(int oldHp)
+    public void RefreshProgress(int oldHp,bool shake = true)
     {
         float ratio = (float)wpRealData.HpAttr / (float)wpRealData.maxHp;
         progressBar.SetTargetRatio(ratio);
+        if(shake && null != shakeUi)
+        {
+            shakeUi.SetShake();
+        }
     }
 
     public  void    ShowoffIcon(bool showoff)

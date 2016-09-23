@@ -12,6 +12,7 @@ public class WeakpointUI : MonoBehaviour
     public RectTransform tipsRectTrans;
     public Text wpNameText;
     public Text tipsText;
+    public RectTransform findEffectObject;
 
     public Ease outEaseAni;
     public float outTime = 0.4f;
@@ -27,6 +28,7 @@ public class WeakpointUI : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        findEffectObject.gameObject.SetActive(false);
         HideAllWpIcon();
         contentParetnOldPosition = contentParent.anchoredPosition;
         Vector2 initPos = new Vector2(contentParetnOldPosition.x - 300, contentParetnOldPosition.y);
@@ -121,6 +123,29 @@ public class WeakpointUI : MonoBehaviour
                 break;
             }
         }
+    }
+    public void ShowFindEffect(string wpId)
+    {
+        WpIcon icon = null;
+        foreach (var subIcon in wpIconList)
+        {
+            if (string.IsNullOrEmpty(subIcon.GetWpId()))
+                continue;
+            if (subIcon.GetWpId().Equals(wpId))
+            {
+                icon = subIcon;
+                break;
+            }
+        }
+        if (null == icon)
+            return;
+
+        RectTransform iconRt = icon.transform as RectTransform;
+        Vector3 iconPosition = UIUtil.GetSpacePos(iconRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
+        float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
+        findEffectObject.gameObject.SetActive(false);
+        findEffectObject.anchoredPosition = new Vector2((iconPosition.x - 25.0f)/ fscale, (iconPosition.y + 6.3f)/ fscale);
+        findEffectObject.gameObject.SetActive(true);
     }
 
     void    UpdateArmorProgress(WeakPointRuntimeData wpRealData,int oldHp)

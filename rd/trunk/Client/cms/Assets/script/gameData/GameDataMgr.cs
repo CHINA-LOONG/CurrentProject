@@ -24,7 +24,9 @@ public class GameDataMgr : MonoBehaviour
     public bool mTowerInvalidate = false;
     public bool mTowerRefreshed = false;
     //public List<PB.TowerState> mTowerStateList;
-
+    public int summonZuanshi;
+    public int summonJinbi;
+    public int freeJinbiSumNum;
     bool mGoldMaxHinted = false;
     bool mCoinMaxHinted = false;
 

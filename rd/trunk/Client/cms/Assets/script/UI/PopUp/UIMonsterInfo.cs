@@ -88,7 +88,7 @@ public class UIMonsterInfo : UIBase
             {
                 monsterCharacter = pet.character;
             }
-            zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), 1989);
+            zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), pet.mBp);
         }
         else
         {

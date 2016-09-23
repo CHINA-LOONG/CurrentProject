@@ -1396,8 +1396,8 @@ bossminghe68Karong54Tips,给群体目标造成80%法攻的暗属性法术伤害�
 bossminghe68Karong55Tips,给单体目标造成100%法攻的暗属性法术伤害,Deals (100% of magic ATK) dark type magic damage to a single target
 bosschaoxue58Yimier31Tips,给单体目标造成100%法攻水属性伤害,Deals (100% of magic ATK) water type magic damage to a single target
 bosschaoxue58Yimier32Tips,给单体目标添加冰冻效果，持续2回合,Cast Drowning effect on a single target for 2 turns
-bosschaoxue58Yimier33Tips,给群体目标造成100%法攻水属性伤害；若目标存在冰冻效果则伤害提升,"Deals (100% of magic ATK) water type magic damage to all enemy targets, with increased damage to any target with Drowning effect"
-bosschaoxue58Yimier34Tips,给群体目标造成200%法攻水属性伤害并概率附加冰冻效果,Deals (200% of magic ATK) water type magic damage to all enemy targets with a small chance of Drowning effect
+bosschaoxue58Yimier33Tips,给群体目标造成100%法攻水属性伤害；若目标存在眩晕效果则伤害提升,"Deals (100% of magic ATK) water type magic damage to all enemy targets, with increased damage to any target with Stun effect"
+bosschaoxue58Yimier34Tips,给群体目标造成200%法攻水属性伤害并概率附加眩晕效果,Deals (200% of magic ATK) water type magic damage to all enemy targets with a small chance of Stun effect
 bosssiwangtaIfrit51Tips,给群体目标造成80%物攻暗属性伤害并概率附加痛楚效果,Deals (80% of physical ATK) dark type physical damage to all enemy targets with a small chance of Anguish effect
 bosssiwangtaHetong23Name,愤怒,Rage
 bosssiwangtaHetong23Tips,提升自身80%智力,Increases your INT by 80%

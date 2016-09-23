@@ -29,6 +29,12 @@ public class InstanceMap : UIBase
     {
         UIMgr.Instance.OpenUI_(ViewName);
     }
+    public static void OpenMapAndInstanceList(int chapter,InstanceDifficulty diffType= InstanceDifficulty.Normal)
+    {
+        InstanceMap insMap = (InstanceMap)UIMgr.Instance.OpenUI_(ViewName);
+        insMap.OpenInstanceList(chapter, diffType);
+        insMap.FocusOnChapter(chapter);
+    }
 
     bool isFirst = true;
     public override void Init()
@@ -61,9 +67,9 @@ public class InstanceMap : UIBase
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
 
-    public void OpenInstanceList(int chapterIndex)
+    public void OpenInstanceList(int chapterIndex,InstanceDifficulty diffType = InstanceDifficulty.Normal)
     {
-        mInstanceList = InstanceList.OpenWith(chapterIndex);
+        mInstanceList = InstanceList.OpenWith(chapterIndex, diffType);
     }
     private void FirstInit()
     {
@@ -175,9 +181,13 @@ public class InstanceMap : UIBase
         InstanceEntryRuntimeData subInstance = InstanceMapService.Instance.GetRuntimeInstance(instanceID);
         if (null == subInstance)
             return;
+        FocusOnChapter(subInstance.staticData.chapter);
+    }
 
+    public void FocusOnChapter(int chapter)
+    {
         ChapterButton cb;
-        if (allChapterButtonDic.TryGetValue(subInstance.staticData.chapter, out cb) == true)
+        if (allChapterButtonDic.TryGetValue(chapter, out cb) == true)
         {
             OnChapterButtonOnClicked(cb);
         }

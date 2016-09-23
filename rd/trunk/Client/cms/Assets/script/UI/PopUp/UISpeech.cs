@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UISpeech : UIBase
 {
     public static string ViewName = "UISpeech";
-
     public static void Open(string speechId, System.Action<float> callBack = null)
     {
         SpeechData info = StaticDataMgr.Instance.GetSpeechData(speechId);
@@ -15,73 +14,51 @@ public class UISpeech : UIBase
             return;
         }
         UISpeech speech = UIMgr.Instance.OpenUI_(UISpeech.ViewName) as UISpeech;
-        speech.info = info;
-        speech.endEvent = callBack;
-        speech.ShowWithData(info);
+        speech.ShowWithData(info, callBack);
     }
-
-
+    
     public Button btnSkip;
     public Button btnNext;
-    public Image imgNextTip;
 
-    public GameObject panelCampA;
-    public GameObject panelCampB;
-    public Image imgCampA;
-    public Image imgCampB;
-    public GameObject nameCampA;
-    public GameObject nameCampB;
-    public Text textCampA;
-    public Text textCampB;
+    [System.Serializable]
+    public class SpeechCamp
+    {
+        public Image imgRole;
+        public Image imgFace;
+        public Text textName;
+        public Text textContent;
+        public Image imgNetTips;
 
-    public Text textContent;
+        string strRole;
+        string strFace;
 
-
+        public void SetSpeech(SpeechStaticData data,bool isLast)
+        {
+            if (string.IsNullOrEmpty(strRole)||!strRole.Equals(data.image))
+            {
+                strRole = data.image;
+                imgRole.sprite= ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
+            }
+            if (string.IsNullOrEmpty(strFace) || !strFace.Equals(data.face))
+            {
+                strFace = data.face;
+                imgFace.sprite= ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
+            }
+            textName.text = StaticDataMgr.Instance.GetTextByID(data.name);
+            textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
+            imgNetTips.gameObject.SetActive(!isLast);
+        }
+    }
+    
+    public Animator animatorA;
+    public Animator animatorB;
+    public SpeechCamp campA;
+    public SpeechCamp campB;
+    
     private SpeechData info;
     private System.Action<float> endEvent;
     private int index = 0;
-
-    private Image imgCurrent;
-    public GameObject nameCurrent;
-    private Text textCurrent;
-    private string camp="";
-    public string Camp
-    {
-        get { return info.speechList[index].campType; }
-        set 
-        {
-            if (value!=camp)
-            {
-                SetCamp(value);
-                camp = value;
-            }
-        }
-    }
-    void SetCamp(string camp)
-    {
-
-        if (camp=="a")
-        {
-            panelCampA.gameObject.SetActive(true);
-            panelCampB.gameObject.SetActive(false);
-            nameCurrent = nameCampA;
-            imgCurrent = imgCampA;
-            textCurrent = textCampA;
-        }
-        else if(camp=="b")
-        {
-            panelCampB.gameObject.SetActive(true);
-            panelCampA.gameObject.SetActive(false);
-
-            nameCurrent = nameCampB;
-            imgCurrent = imgCampB;
-            textCurrent = textCampB;
-        }
-        else
-        {
-            Logger.Log("error： 配置表阵营填写错误！！");
-        }
-    }
+    private string curCamp = "";
 
 
     void Start()
@@ -90,33 +67,60 @@ public class UISpeech : UIBase
         EventTriggerListener.Get(btnNext.gameObject).onClick = OnClickNext;
     }
 
-    public void ShowWithData(SpeechData info)
+    public void ShowWithData(SpeechData info,System.Action<float> callBack)
     {
+        this.info = info;
+        this.endEvent = callBack;
+
         if (info.skip != "1")
             btnSkip.gameObject.SetActive(false);
         else
             btnSkip.gameObject.SetActive(true);
+
         index = 0;
-        imgNextTip.gameObject.SetActive(true);
         SetSpeech(index);
     }
 
     void SetSpeech(int index)
     {
+        //对话结束
         if (index >= info.speechList.Count) { EndOfSpeech(); return; }
-        if (index == (info.speechList.Count - 1)) { imgNextTip.gameObject.SetActive(false); }
+
         SpeechStaticData data = info.speechList[index];
-        Camp = data.campType;
 
-        imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
-        nameCurrent.SetActive(!string.IsNullOrEmpty(data.name));
-
-        textCurrent.text = StaticDataMgr.Instance.GetTextByID(data.name);
-        textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
+        if (data.campType == "a")
+        {
+            if (!string.Equals(curCamp,data.campType))
+            {
+                //TODO:播放动画
+                if (index != 0)
+                {
+                    animatorB.SetTrigger("exit");
+                }
+                animatorA.SetTrigger("enter");
+            }
+            campA.SetSpeech(data, index == (info.speechList.Count - 1));
+        }
+        else if (data.campType == "b")
+        {
+            if (!string.Equals(curCamp, data.campType))
+            {
+                //TODO:播放动画
+                if (index != 0)
+                {
+                    animatorA.SetTrigger("exit");
+                }
+                animatorB.SetTrigger("enter");
+            }
+            campB.SetSpeech(data, index == (info.speechList.Count - 1));
+        }
+        else
+        {
+            Logger.Log("error： 配置表阵营填写错误！！");
+        }
+        curCamp = data.campType;
     }
-
-
-
+    
     void OnClickSkip(GameObject go)
     {
         EndOfSpeech();

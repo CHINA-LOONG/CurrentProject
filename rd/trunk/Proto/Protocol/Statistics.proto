@@ -90,10 +90,12 @@ message HSStatisticsSyncPart2
 	required int32 adventureChangeBeginTime = 8;
 	// 免费钻石抽蛋恢复时间开始时间戳（秒）
 	required int32 summonDiamondFreeBeginTime = 9;
+	// 今日免费金币抽蛋次数
+	required int32 summonCoinFreeTimesDaily = 10;
 	// 上次免费金币抽蛋时间戳（秒）
-	required int32 summonCoinFreeLastTime = 10;
+	required int32 summonCoinFreeLastTime = 11;
 	// 今日已雇佣公会怪物
-	repeated int32 hiredMonsterId = 11;
+	repeated int32 hiredMonsterId = 12;
 }
 
 message HSStatisticsSyncPart3

@@ -90,6 +90,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, AdventureConditionNumData> adventureConditionNumData = new Dictionary<int, AdventureConditionNumData>();
     Dictionary<int, AdventureConditionTypeData> adventureConditionTypeData = new Dictionary<int, AdventureConditionTypeData>();
     Dictionary<int, AdventureTeamPriceData> adventureTeamPriceData = new Dictionary<int, AdventureTeamPriceData>();
+    Dictionary<int, Sociatybase> sociatyBaseData = new Dictionary<int, Sociatybase>();
 
     public void Init()
     {
@@ -472,10 +473,10 @@ public class StaticDataMgr : MonoBehaviour
 
             foreach (var item in data)
             {
-                if (string.IsNullOrEmpty(item.id))
-                    continue;
+                //if (string.IsNullOrEmpty(item.id))
+                //    continue;
 
-                if (speechData.ContainsKey(item.id))
+                if (!string.IsNullOrEmpty(item.id)&&speechData.ContainsKey(item.id))
                 {
                     speechData[item.id].speechList.Add(item);
                     continue;
@@ -699,6 +700,13 @@ public class StaticDataMgr : MonoBehaviour
                 foreach (var item in data)
                 {
                     adventureTeamPriceData.Add(item.id, item);
+                }
+            }
+            {
+                var data = InitTable<Sociatybase>("sociatybase");
+                foreach (var item in data)
+                {
+                    sociatyBaseData.Add(item.bpMax, item);
                 }
             }
             #endregion
@@ -1339,7 +1347,18 @@ public class StaticDataMgr : MonoBehaviour
         adventureTeamPriceData.TryGetValue(id, out adventure);
         return adventure;
     }
-
+    public Sociatybase GetSociatybaseData(int bp)
+    {
+        int tempKey = -1;
+        foreach (var item in sociatyBaseData)
+        {
+            if (bp > item.Key && (tempKey < item.Key||tempKey==-1))
+            {
+                tempKey = item.Key;
+            }
+        }
+        return sociatyBaseData[tempKey];
+    }
 
 
     #endregion

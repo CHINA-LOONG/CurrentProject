@@ -243,7 +243,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackMetalCutStronge2" state="0">
 			<ParticleList>
-				<Particle asset="attackMetalCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackMetalSlight" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -282,7 +282,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackPlantCutStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackPlantCut" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
+				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -321,7 +321,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackWaterCutStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackWaterCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackWaterSlight" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -360,7 +360,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackFireCutStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackFireCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackFireSlight" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -399,7 +399,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackEarthCutStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -440,7 +440,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackMetalStabStronge2" state="0">
 			<ParticleList>
-				<Particle asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackMetalSlight" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
@@ -479,7 +479,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackPlantStabStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
@@ -518,7 +518,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackWaterStabStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackWaterStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackWaterSlight" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
@@ -557,7 +557,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackFireStabStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackFireStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackFireSlight" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
@@ -596,7 +596,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackEarthStabStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
@@ -636,7 +636,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackMetalSmashStronge2" state="0">
 			<ParticleList>
-				<Particle asset="attackMetalSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="attackMetalSlight" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -675,7 +675,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackPlantSmashStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackPlantSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -714,7 +714,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackWaterSmashStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackWaterSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="attackWaterSlight" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -753,7 +753,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackFireSmashStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackFireSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="attackFireSlight" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -792,7 +792,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackEarthSmashStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackEarthSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -804,12 +804,20 @@ state = 1 Remove
 				<Motion ani="" key="wugong" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="attackMetalSlighte2" state="0" AniType="Damage">
+		<Ani id="attackMetalSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle asset="attackMetalSlight" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="1" asset="magicMetalBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="1.5" name="metalp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackMetalSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicMetalBall" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="metale1"/>
 			</AudioList>
 		</Ani>
 		<Ani id="attackPlantSlight" state="0" AniType="Skill">
@@ -819,7 +827,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="attackPlantSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -830,12 +838,20 @@ state = 1 Remove
 				<Motion ani="" key="wugong" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="attackWaterSlighte2" state="0" AniType="Damage">
+		<Ani id="attackWaterSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle asset="attackWaterSlight" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="1" asset="magicWaterBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="1" name="waterp3"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackWaterSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicWaterBall" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
 			</AudioList>
 		</Ani>
 		<Ani id="attackFireSlight" state="0" AniType="Skill">
@@ -843,12 +859,20 @@ state = 1 Remove
 				<Motion ani="" key="wugong" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="attackFireSlighte2" state="0" AniType="Damage">
+		<Ani id="attackFireSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle asset="attackFireSlight" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="1" asset="magicFireBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="1" name="firep1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackFireSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicFireBall" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firee1"/>
 			</AudioList>
 		</Ani>
 		<Ani id="attackEarthSlight" state="0" AniType="Skill">
@@ -856,7 +880,83 @@ state = 1 Remove
 				<Motion ani="" key="wugong" value="true"/>
 			</MotionList>
 		</Ani>
+		<Ani id="attackEarthSlighte1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="magicEarthBallp" bundle="effect/particle" parent="" attach="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="earthp1"/>
+			</AudioList>
+		</Ani>
 		<Ani id="attackEarthSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthBall" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		
+		
+		
+		<!--TankAttackCommon-->
+		<Ani id="TankAttackMetalCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankAttackMetalCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackMetalSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="TankAttackPlantCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankAttackPlantCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackPlantSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="TankAttackWaterCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankAttackWaterCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackWaterSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="TankAttackFireCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankAttackFireCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackFireSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="TankAttackEarthCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankAttackEarthCommone2" state="0">
 			<ParticleList>
 				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
@@ -864,7 +964,139 @@ state = 1 Remove
 				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
-		
+		<!--TankMagicMetalCommon-->
+		<Ani id="TankMagicMetalCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicMetalCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="TankMagickPlantCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagickPlantCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>		
+		<Ani id="TankMagicWaterCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicWaterCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>		
+		<Ani id="TankMagicFireCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicFireCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>		
+		<Ani id="TankMagicEarthCommon" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicEarthCommone2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthSlight" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>		
+		<!--TankMagicMetalStrong-->
+		<Ani id="TankMagicMetalStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicMetalStronge2" state="0">
+			<ParticleList>
+				<Particle asset="attackMetalCut" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>	
+		<Ani id="TankMagicPlantStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicPlantStronge2" state="0">
+			<ParticleList>
+				<Particle asset="attackPlantCut" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>	
+		<Ani id="TankMagicWaterStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicWaterStronge2" state="0">
+			<ParticleList>
+				<Particle asset="attackWaterCut" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>	
+		<Ani id="TankMagicFireStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicFireStronge2" state="0">
+			<ParticleList>
+				<Particle asset="attackFireCut" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>	
+		<Ani id="TankMagicEarthStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="TankMagicEarthStronge2" state="0">
+			<ParticleList>
+				<Particle asset="attackEarthCut" bundle="effect/particle" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>	
+				
 		<!--attackend-->
 		<!--MetalBall-->
 		<Ani id="magicMetalBallSlight" state="0" AniType="Skill">
@@ -932,17 +1164,17 @@ state = 1 Remove
 				<Audio time="0" name="cmetal"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicMetalBallStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicMetalBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="magicMetalBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="metalp1"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicMetalBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicMetalBall" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale1"/>
@@ -1021,7 +1253,7 @@ state = 1 Remove
 		</Ani-->
 		<Ani id="magicMetalColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="attackMetalStab" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale2"/>
@@ -1104,7 +1336,7 @@ state = 1 Remove
 		</Ani-->
 		<Ani id="magicPlantBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -1170,17 +1402,17 @@ state = 1 Remove
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicPlantColumnStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicPlantColumnStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="plantp1"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicPlantColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<!--WaterBall-->
@@ -1249,17 +1481,17 @@ state = 1 Remove
 				<Audio time="0" name="cwater"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicWaterBallStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicWaterBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="magicWaterBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1" name="waterp3"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicWaterBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicWaterBall" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="0" asset="attackWaterStab" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -1327,7 +1559,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicWaterColumnStronge1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1.5" asset="attackWaterStab" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="waterp2"/>
@@ -1405,17 +1637,17 @@ state = 1 Remove
 				<Audio time="0" name="cfire"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicFireBallStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicFireBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="magicFireBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1" name="firep1"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicFireBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicFireBall" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackFireStab" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="firee1"/>
@@ -1483,7 +1715,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicFireColumnStronge1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1.5" asset="attackFireStab" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="firep2"/>
@@ -1555,17 +1787,17 @@ state = 1 Remove
 				<Audio time="0" name="cearth"/>
 			</AudioList>
 		</Ani>
-		<Ani id="magicEarthBallStronge1" state="0" AniType="Persistent">
+		<!--Ani id="magicEarthBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
 				<Particle time="1" asset="magicEarthBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="earthp1"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		<Ani id="magicEarthBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicEarthBall" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<!--EarthColumn-->
@@ -1630,7 +1862,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicEarthColumnStronge1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicEarthColumnp" bundle="effect/particle" parent="" locky="true" ignore_rot="true"/>
+				<Particle time="1.5" asset="attackEarthStab" bundle="effect/particle" parent="" locky="true" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="earthp1"/>
@@ -1656,7 +1888,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicMetalSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackMetalStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackMetalCut" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale1"/>
@@ -1675,7 +1907,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicPlantSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackPlantCut" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cut"/>
@@ -1694,7 +1926,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicWaterSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackWaterStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackWaterCut" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="watere1"/>
@@ -1713,7 +1945,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicFireSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackFireStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackFireCut" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="firee1"/>
@@ -1732,7 +1964,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicEarthSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackEarthStab" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="attackEarthCut" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="earthp1"/>

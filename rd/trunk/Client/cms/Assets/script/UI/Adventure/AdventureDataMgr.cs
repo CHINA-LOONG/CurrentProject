@@ -384,7 +384,7 @@ public class AdventureDataMgr
     {
         for (int i = 0; i < hiredMonsterId.Count; i++)
         {
-            if (monster.id==hiredMonsterId[i])
+            if (monster.monsterId==hiredMonsterId[i])
             {
                 return true;
             }

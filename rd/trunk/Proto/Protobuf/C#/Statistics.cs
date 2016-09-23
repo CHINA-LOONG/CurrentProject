@@ -318,15 +318,22 @@ namespace PB
       get { return _summonDiamondFreeBeginTime; }
       set { _summonDiamondFreeBeginTime = value; }
     }
+    private int _summonCoinFreeTimesDaily;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"summonCoinFreeTimesDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int summonCoinFreeTimesDaily
+    {
+      get { return _summonCoinFreeTimesDaily; }
+      set { _summonCoinFreeTimesDaily = value; }
+    }
     private int _summonCoinFreeLastTime;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"summonCoinFreeLastTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"summonCoinFreeLastTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int summonCoinFreeLastTime
     {
       get { return _summonCoinFreeLastTime; }
       set { _summonCoinFreeLastTime = value; }
     }
     private readonly global::System.Collections.Generic.List<int> _hiredMonsterId = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(11, Name=@"hiredMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, Name=@"hiredMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public global::System.Collections.Generic.List<int> hiredMonsterId
     {
       get { return _hiredMonsterId; }

@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &117914
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &132568
 GameObject:
   m_ObjectHideFlags: 1
@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &145378
 GameObject:
   m_ObjectHideFlags: 1
@@ -262,6 +262,7 @@ GameObject:
   - 224: {fileID: 22484920}
   - 222: {fileID: 22290614}
   - 114: {fileID: 11488398}
+  - 114: {fileID: 11486634}
   m_Layer: 5
   m_Name: UISumReward
   m_TagString: Untagged
@@ -285,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &152972
 GameObject:
   m_ObjectHideFlags: 1
@@ -405,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &176486
 GameObject:
   m_ObjectHideFlags: 1
@@ -993,6 +994,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11486634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd6d2b113e6f9d418504404f8c0b589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  sunlight: {fileID: 172216}
+  moon: {fileID: 128528}
+  okButton: {fileID: 162112}
+  tenReward: {fileID: 145118}
+  onceReward: {fileID: 115074}
+  title: {fileID: 11432122}
 --- !u!114 &11488398
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -34,10 +34,10 @@ public class InstanceList : UIBase
 
     PB.HSRewardInfo boxReward = null;
 
-    public static InstanceList OpenWith(int chapterId)
+    public static InstanceList OpenWith(int chapterId, InstanceDifficulty difficulty = InstanceDifficulty.Normal)
     {
         InstanceList instanceUi = (InstanceList)UIMgr.Instance.OpenUI_(ViewName);
-        instanceUi.RefreshWithChapterId(chapterId);
+        instanceUi.RefreshWithChapterId(chapterId, difficulty);
         return instanceUi;
     }
 

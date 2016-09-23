@@ -114,6 +114,9 @@ public class StatisticsDataMgr : MonoBehaviour {
         AdventureDataMgr.Instance.AdventureChange = msgData.adventureChange;
         AdventureDataMgr.Instance.AdventureChangeBeginTime = msgData.adventureChangeBeginTime;
         AdventureDataMgr.Instance.hiredMonsterId = msgData.hiredMonsterId;
+        GameDataMgr.Instance.summonJinbi = msgData.summonCoinFreeLastTime;
+        GameDataMgr.Instance.summonZuanshi = msgData.summonDiamondFreeBeginTime;
+        GameDataMgr.Instance.freeJinbiSumNum = msgData.summonCoinFreeTimesDaily;
     }
     void OnStatisticsPart3Sync(ProtocolMessage message)
     {

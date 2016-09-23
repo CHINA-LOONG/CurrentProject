@@ -93,4 +93,9 @@ public class GameConfig : MonoBehaviour {
     //功能开启等级限制
     public int OpenLevelForGonghui = 20;//公会开发等级
     public int OpenLevelForTower = 10;//通天塔开放等级
+    //抽蛋消耗
+    public int jinBiSum = 100;
+    public int zuanShiSum = 10;
+    public int zuanShiFree = 60;
+    public int jinBiFree = 180;
 }

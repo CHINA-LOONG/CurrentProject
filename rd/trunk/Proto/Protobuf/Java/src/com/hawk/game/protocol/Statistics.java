@@ -6570,9 +6570,27 @@ public final class Statistics {
      */
     int getSummonDiamondFreeBeginTime();
 
-    // required int32 summonCoinFreeLastTime = 10;
+    // required int32 summonCoinFreeTimesDaily = 10;
     /**
-     * <code>required int32 summonCoinFreeLastTime = 10;</code>
+     * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+     *
+     * <pre>
+     * 今日免费金币抽蛋次数
+     * </pre>
+     */
+    boolean hasSummonCoinFreeTimesDaily();
+    /**
+     * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+     *
+     * <pre>
+     * 今日免费金币抽蛋次数
+     * </pre>
+     */
+    int getSummonCoinFreeTimesDaily();
+
+    // required int32 summonCoinFreeLastTime = 11;
+    /**
+     * <code>required int32 summonCoinFreeLastTime = 11;</code>
      *
      * <pre>
      * 上次免费金币抽蛋时间戳（秒）
@@ -6580,7 +6598,7 @@ public final class Statistics {
      */
     boolean hasSummonCoinFreeLastTime();
     /**
-     * <code>required int32 summonCoinFreeLastTime = 10;</code>
+     * <code>required int32 summonCoinFreeLastTime = 11;</code>
      *
      * <pre>
      * 上次免费金币抽蛋时间戳（秒）
@@ -6588,9 +6606,9 @@ public final class Statistics {
      */
     int getSummonCoinFreeLastTime();
 
-    // repeated int32 hiredMonsterId = 11;
+    // repeated int32 hiredMonsterId = 12;
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -6598,7 +6616,7 @@ public final class Statistics {
      */
     java.util.List<java.lang.Integer> getHiredMonsterIdList();
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -6606,7 +6624,7 @@ public final class Statistics {
      */
     int getHiredMonsterIdCount();
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -6718,23 +6736,28 @@ public final class Statistics {
             }
             case 80: {
               bitField0_ |= 0x00000080;
-              summonCoinFreeLastTime_ = input.readInt32();
+              summonCoinFreeTimesDaily_ = input.readInt32();
               break;
             }
             case 88: {
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+              bitField0_ |= 0x00000100;
+              summonCoinFreeLastTime_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
                 hiredMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000400;
+                mutable_bitField0_ |= 0x00000800;
               }
               hiredMonsterId_.add(input.readInt32());
               break;
             }
-            case 90: {
+            case 98: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800) && input.getBytesUntilLimit() > 0) {
                 hiredMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000400;
+                mutable_bitField0_ |= 0x00000800;
               }
               while (input.getBytesUntilLimit() > 0) {
                 hiredMonsterId_.add(input.readInt32());
@@ -6756,7 +6779,7 @@ public final class Statistics {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           itemState_ = java.util.Collections.unmodifiableList(itemState_);
         }
-        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           hiredMonsterId_ = java.util.Collections.unmodifiableList(hiredMonsterId_);
         }
         this.unknownFields = unknownFields.build();
@@ -7061,21 +7084,45 @@ public final class Statistics {
       return summonDiamondFreeBeginTime_;
     }
 
-    // required int32 summonCoinFreeLastTime = 10;
-    public static final int SUMMONCOINFREELASTTIME_FIELD_NUMBER = 10;
+    // required int32 summonCoinFreeTimesDaily = 10;
+    public static final int SUMMONCOINFREETIMESDAILY_FIELD_NUMBER = 10;
+    private int summonCoinFreeTimesDaily_;
+    /**
+     * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+     *
+     * <pre>
+     * 今日免费金币抽蛋次数
+     * </pre>
+     */
+    public boolean hasSummonCoinFreeTimesDaily() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+     *
+     * <pre>
+     * 今日免费金币抽蛋次数
+     * </pre>
+     */
+    public int getSummonCoinFreeTimesDaily() {
+      return summonCoinFreeTimesDaily_;
+    }
+
+    // required int32 summonCoinFreeLastTime = 11;
+    public static final int SUMMONCOINFREELASTTIME_FIELD_NUMBER = 11;
     private int summonCoinFreeLastTime_;
     /**
-     * <code>required int32 summonCoinFreeLastTime = 10;</code>
+     * <code>required int32 summonCoinFreeLastTime = 11;</code>
      *
      * <pre>
      * 上次免费金币抽蛋时间戳（秒）
      * </pre>
      */
     public boolean hasSummonCoinFreeLastTime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>required int32 summonCoinFreeLastTime = 10;</code>
+     * <code>required int32 summonCoinFreeLastTime = 11;</code>
      *
      * <pre>
      * 上次免费金币抽蛋时间戳（秒）
@@ -7085,11 +7132,11 @@ public final class Statistics {
       return summonCoinFreeLastTime_;
     }
 
-    // repeated int32 hiredMonsterId = 11;
-    public static final int HIREDMONSTERID_FIELD_NUMBER = 11;
+    // repeated int32 hiredMonsterId = 12;
+    public static final int HIREDMONSTERID_FIELD_NUMBER = 12;
     private java.util.List<java.lang.Integer> hiredMonsterId_;
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -7100,7 +7147,7 @@ public final class Statistics {
       return hiredMonsterId_;
     }
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -7110,7 +7157,7 @@ public final class Statistics {
       return hiredMonsterId_.size();
     }
     /**
-     * <code>repeated int32 hiredMonsterId = 11;</code>
+     * <code>repeated int32 hiredMonsterId = 12;</code>
      *
      * <pre>
      * 今日已雇佣公会怪物
@@ -7130,6 +7177,7 @@ public final class Statistics {
       adventureChange_ = 0;
       adventureChangeBeginTime_ = 0;
       summonDiamondFreeBeginTime_ = 0;
+      summonCoinFreeTimesDaily_ = 0;
       summonCoinFreeLastTime_ = 0;
       hiredMonsterId_ = java.util.Collections.emptyList();
     }
@@ -7163,6 +7211,10 @@ public final class Statistics {
         return false;
       }
       if (!hasSummonDiamondFreeBeginTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSummonCoinFreeTimesDaily()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7211,10 +7263,13 @@ public final class Statistics {
         output.writeInt32(9, summonDiamondFreeBeginTime_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(10, summonCoinFreeLastTime_);
+        output.writeInt32(10, summonCoinFreeTimesDaily_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(11, summonCoinFreeLastTime_);
       }
       for (int i = 0; i < hiredMonsterId_.size(); i++) {
-        output.writeInt32(11, hiredMonsterId_.get(i));
+        output.writeInt32(12, hiredMonsterId_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -7268,7 +7323,11 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, summonCoinFreeLastTime_);
+          .computeInt32Size(10, summonCoinFreeTimesDaily_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, summonCoinFreeLastTime_);
       }
       {
         int dataSize = 0;
@@ -7418,10 +7477,12 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000080);
         summonDiamondFreeBeginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        summonCoinFreeLastTime_ = 0;
+        summonCoinFreeTimesDaily_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        hiredMonsterId_ = java.util.Collections.emptyList();
+        summonCoinFreeLastTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        hiredMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -7496,10 +7557,14 @@ public final class Statistics {
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000080;
         }
+        result.summonCoinFreeTimesDaily_ = summonCoinFreeTimesDaily_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.summonCoinFreeLastTime_ = summonCoinFreeLastTime_;
-        if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (((bitField0_ & 0x00000800) == 0x00000800)) {
           hiredMonsterId_ = java.util.Collections.unmodifiableList(hiredMonsterId_);
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000800);
         }
         result.hiredMonsterId_ = hiredMonsterId_;
         result.bitField0_ = to_bitField0_;
@@ -7575,13 +7640,16 @@ public final class Statistics {
         if (other.hasSummonDiamondFreeBeginTime()) {
           setSummonDiamondFreeBeginTime(other.getSummonDiamondFreeBeginTime());
         }
+        if (other.hasSummonCoinFreeTimesDaily()) {
+          setSummonCoinFreeTimesDaily(other.getSummonCoinFreeTimesDaily());
+        }
         if (other.hasSummonCoinFreeLastTime()) {
           setSummonCoinFreeLastTime(other.getSummonCoinFreeLastTime());
         }
         if (!other.hiredMonsterId_.isEmpty()) {
           if (hiredMonsterId_.isEmpty()) {
             hiredMonsterId_ = other.hiredMonsterId_;
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000800);
           } else {
             ensureHiredMonsterIdIsMutable();
             hiredMonsterId_.addAll(other.hiredMonsterId_);
@@ -7618,6 +7686,10 @@ public final class Statistics {
           return false;
         }
         if (!hasSummonDiamondFreeBeginTime()) {
+          
+          return false;
+        }
+        if (!hasSummonCoinFreeTimesDaily()) {
           
           return false;
         }
@@ -8437,20 +8509,69 @@ public final class Statistics {
         return this;
       }
 
-      // required int32 summonCoinFreeLastTime = 10;
+      // required int32 summonCoinFreeTimesDaily = 10;
+      private int summonCoinFreeTimesDaily_ ;
+      /**
+       * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+       *
+       * <pre>
+       * 今日免费金币抽蛋次数
+       * </pre>
+       */
+      public boolean hasSummonCoinFreeTimesDaily() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+       *
+       * <pre>
+       * 今日免费金币抽蛋次数
+       * </pre>
+       */
+      public int getSummonCoinFreeTimesDaily() {
+        return summonCoinFreeTimesDaily_;
+      }
+      /**
+       * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+       *
+       * <pre>
+       * 今日免费金币抽蛋次数
+       * </pre>
+       */
+      public Builder setSummonCoinFreeTimesDaily(int value) {
+        bitField0_ |= 0x00000200;
+        summonCoinFreeTimesDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 summonCoinFreeTimesDaily = 10;</code>
+       *
+       * <pre>
+       * 今日免费金币抽蛋次数
+       * </pre>
+       */
+      public Builder clearSummonCoinFreeTimesDaily() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        summonCoinFreeTimesDaily_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 summonCoinFreeLastTime = 11;
       private int summonCoinFreeLastTime_ ;
       /**
-       * <code>required int32 summonCoinFreeLastTime = 10;</code>
+       * <code>required int32 summonCoinFreeLastTime = 11;</code>
        *
        * <pre>
        * 上次免费金币抽蛋时间戳（秒）
        * </pre>
        */
       public boolean hasSummonCoinFreeLastTime() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>required int32 summonCoinFreeLastTime = 10;</code>
+       * <code>required int32 summonCoinFreeLastTime = 11;</code>
        *
        * <pre>
        * 上次免费金币抽蛋时间戳（秒）
@@ -8460,42 +8581,42 @@ public final class Statistics {
         return summonCoinFreeLastTime_;
       }
       /**
-       * <code>required int32 summonCoinFreeLastTime = 10;</code>
+       * <code>required int32 summonCoinFreeLastTime = 11;</code>
        *
        * <pre>
        * 上次免费金币抽蛋时间戳（秒）
        * </pre>
        */
       public Builder setSummonCoinFreeLastTime(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         summonCoinFreeLastTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 summonCoinFreeLastTime = 10;</code>
+       * <code>required int32 summonCoinFreeLastTime = 11;</code>
        *
        * <pre>
        * 上次免费金币抽蛋时间戳（秒）
        * </pre>
        */
       public Builder clearSummonCoinFreeLastTime() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         summonCoinFreeLastTime_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated int32 hiredMonsterId = 11;
+      // repeated int32 hiredMonsterId = 12;
       private java.util.List<java.lang.Integer> hiredMonsterId_ = java.util.Collections.emptyList();
       private void ensureHiredMonsterIdIsMutable() {
-        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
           hiredMonsterId_ = new java.util.ArrayList<java.lang.Integer>(hiredMonsterId_);
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000800;
          }
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8506,7 +8627,7 @@ public final class Statistics {
         return java.util.Collections.unmodifiableList(hiredMonsterId_);
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8516,7 +8637,7 @@ public final class Statistics {
         return hiredMonsterId_.size();
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8526,7 +8647,7 @@ public final class Statistics {
         return hiredMonsterId_.get(index);
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8540,7 +8661,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8553,7 +8674,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8567,7 +8688,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated int32 hiredMonsterId = 11;</code>
+       * <code>repeated int32 hiredMonsterId = 12;</code>
        *
        * <pre>
        * 今日已雇佣公会怪物
@@ -8575,7 +8696,7 @@ public final class Statistics {
        */
       public Builder clearHiredMonsterId() {
         hiredMonsterId_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         onChanged();
         return this;
       }
@@ -12225,25 +12346,25 @@ public final class Statistics {
       "e\022#\n\014chapterState\030\003 \002(\0132\r.ChapterState\022\035" +
       "\n\tholeState\030\004 \003(\0132\n.HoleState\022\037\n\ntowerSt" +
       "ate\030\005 \003(\0132\013.TowerState\022\032\n\022instanceResetC" +
-      "ount\030\006 \002(\005\"\301\002\n\025HSStatisticsSyncPart2\022\026\n\016" +
+      "ount\030\006 \002(\005\"\343\002\n\025HSStatisticsSyncPart2\022\026\n\016" +
       "monsterCollect\030\001 \003(\t\022\035\n\titemState\030\002 \003(\0132" +
       "\n.ItemState\022\017\n\007fatigue\030\003 \002(\005\022\030\n\020fatigueB",
       "eginTime\030\004 \002(\005\022\022\n\nskillPoint\030\005 \002(\005\022\033\n\023sk" +
       "illPointBeginTime\030\006 \002(\005\022\027\n\017adventureChan" +
       "ge\030\007 \002(\005\022 \n\030adventureChangeBeginTime\030\010 \002" +
-      "(\005\022\"\n\032summonDiamondFreeBeginTime\030\t \002(\005\022\036" +
-      "\n\026summonCoinFreeLastTime\030\n \002(\005\022\026\n\016hiredM" +
-      "onsterId\030\013 \003(\005\"\260\001\n\025HSStatisticsSyncPart3" +
-      "\022\026\n\016orderServerKey\030\001 \002(\t\022%\n\rrechargeStat" +
-      "e\030\002 \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft" +
-      "\030\003 \002(\005\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLef" +
-      "tTimes\030\005 \002(\0132\023.HSSyncExpLeftTimes\"3\n\022HSS",
-      "yncDailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.Hol" +
-      "eState\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSync" +
-      "ShopRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncE" +
-      "xpLeftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtr" +
-      "ipleExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.proto" +
-      "col"
+      "(\005\022\"\n\032summonDiamondFreeBeginTime\030\t \002(\005\022 " +
+      "\n\030summonCoinFreeTimesDaily\030\n \002(\005\022\036\n\026summ" +
+      "onCoinFreeLastTime\030\013 \002(\005\022\026\n\016hiredMonster" +
+      "Id\030\014 \003(\005\"\260\001\n\025HSStatisticsSyncPart3\022\026\n\016or" +
+      "derServerKey\030\001 \002(\t\022%\n\rrechargeState\030\002 \003(" +
+      "\0132\016.RechargeState\022\025\n\rmonthCardLeft\030\003 \002(\005" +
+      "\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeftTimes",
+      "\030\005 \002(\0132\023.HSSyncExpLeftTimes\"3\n\022HSSyncDai" +
+      "lyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState" +
+      "\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncShopRe" +
+      "fresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeft" +
+      "Times\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleEx" +
+      "pLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12297,7 +12418,7 @@ public final class Statistics {
           internal_static_HSStatisticsSyncPart2_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart2_descriptor,
-              new java.lang.String[] { "MonsterCollect", "ItemState", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "AdventureChange", "AdventureChangeBeginTime", "SummonDiamondFreeBeginTime", "SummonCoinFreeLastTime", "HiredMonsterId", });
+              new java.lang.String[] { "MonsterCollect", "ItemState", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "AdventureChange", "AdventureChangeBeginTime", "SummonDiamondFreeBeginTime", "SummonCoinFreeTimesDaily", "SummonCoinFreeLastTime", "HiredMonsterId", });
           internal_static_HSStatisticsSyncPart3_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_HSStatisticsSyncPart3_fieldAccessorTable = new

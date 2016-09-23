@@ -41,6 +41,7 @@ public class UIAdventureLayout : UIBase,
     private List<AdventureConditionItem> itemPool = new List<AdventureConditionItem>();
     private int filterType = -1;
     private int filterProperty = -1;
+    private int conditionStep = 0;
     public AdventureExtraConditon showConditonStep;
 
     private AdventureInfo curData;
@@ -120,6 +121,7 @@ public class UIAdventureLayout : UIBase,
             GameDataMgr.Instance.SociatyDataMgrAttr.GetJidiBaseMonstersAsyn(delegate(List<PB.AllianceBaseMonster> guildList)
             {
                 UnitData curUnitData;
+                Sociatybase curSociatyData;
                 PB.AllianceBaseMonster curMonster;
                 for (int i = 0; i < guildList.Count; i++)
                 {
@@ -129,7 +131,8 @@ public class UIAdventureLayout : UIBase,
                         continue;
                     }
                     curUnitData = StaticDataMgr.Instance.GetUnitRowData(curMonster.cfgId);
-                    allGuilds.Add(new AdventureGuildMonsterInfo() { unit = curMonster, unitData = curUnitData });
+                    curSociatyData = StaticDataMgr.Instance.GetSociatybaseData(curMonster.bp);
+                    allGuilds.Add(new AdventureGuildMonsterInfo() { unit = curMonster, unitData = curUnitData, sociatyData = curSociatyData });
                 }
                 if (callBack != null)
                 {
@@ -192,6 +195,7 @@ public class UIAdventureLayout : UIBase,
             else
             {
                 textGuildTips.gameObject.SetActive(false);
+                scrollGuild.InitContentSize(showGuilds.Count, this);
             }
         }
         else
@@ -384,9 +388,9 @@ public class UIAdventureLayout : UIBase,
             }
         }
 
-        int rate = (int)(((float)count / amount) * 100);
-        showConditonStep.RefreshStep(rate);
-        Logger.Log("当前满足额外奖励率：" + rate + "%");
+        conditionStep = (int)(((float)count / amount) * 100);
+        showConditonStep.RefreshStep(conditionStep);
+        Logger.Log("当前满足额外奖励率：" + conditionStep + "%");
     }
     bool CheckIsMeetCondition(AdventureConditionItem condition)
     {
@@ -430,13 +434,13 @@ public class UIAdventureLayout : UIBase,
     {
         if (AdventureDataMgr.Instance.AdventureChange>=1)//拥有变更次数
         {
-            PrompMsgRefreshCondition promp = PrompMsgRefreshCondition.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipschange"),
+            PrompMsgRefreshCondition prompt = PrompMsgRefreshCondition.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipschange"),
                                                                            0,
                                                                            PrompButtonRefreshCallBack);
         }
         else//没有变更次数
         {
-            PrompMsgRefreshCondition promp = PrompMsgRefreshCondition.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipsbuy"),
+            PrompMsgRefreshCondition prompt = PrompMsgRefreshCondition.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipsbuy"),
                                                                            50,
                                                                            PrompButtonBuyCallBack);
         }
@@ -465,16 +469,84 @@ public class UIAdventureLayout : UIBase,
     }
     void OnClickAdventureBtn()
     {
+        if (!(selfMonsterId.Count == 4 && hireMonster != null)&&!(selfMonsterId.Count==5))
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_007"), (int)PB.ImType.PROMPT);
+        }
+        else
+        {
+            Dictionary<int, GameUnit> allUnitDic = GameDataMgr.Instance.PlayerDataAttr.allUnitDic;
+            int index = 0;//剩余怪物计数
+            foreach (var item in allUnitDic)
+            {
+                if (!item.Value.pbUnit.IsInAdventure() && !CheckIsSelected(item.Value.pbUnit.guid))
+                {
+                    index++;
+                    if (index >= 5)
+                    {
+                        break;
+                    }
+                }
+            }
+            if (index < 5)//剩余少于5只怪物
+            {
+                MsgBox.PromptMsg prompt = MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+                                                              StaticDataMgr.Instance.GetTextByID("adventure_numbuzuti"),
+                                                              SubmitAdventureInfo);
+            }
+            else
+            {
+                SubmitAdventureInfo(MsgBox.PrompButtonClick.OK);
+            }
+        }
+    }
+    void SubmitAdventureInfo(MsgBox.PrompButtonClick click)
+    {
+        if (click == MsgBox.PrompButtonClick.Cancle)
+            return;
+        if (selfMonsterId.Count == 4 && hireMonster != null)
+        {
+            UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(hireMonster.cfgId);
+            Sociatybase sociatyBase = StaticDataMgr.Instance.GetSociatybaseData(hireMonster.bp);
+            PrompMsgAdventureConfirm promp = PrompMsgAdventureConfirm.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipsguyong"),
+                                                                         StaticDataMgr.Instance.GetTextByID("adventure_tipsweight"), 
+                                                                         conditionStep,
+                                                                         string.Format(StaticDataMgr.Instance.GetTextByID("adventure_tipsguyongxinxi"), hireMonster.nickname, unitData.NickNameAttr),
+                                                                         sociatyBase != null ? sociatyBase.coinHire : 0,
+                                                                         SubmitAdventure);
+
+        }
+        else if (selfMonsterId.Count == 5)
+        {
+            PrompMsgAdventureConfirm promp = PrompMsgAdventureConfirm.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipstanxian"),
+                                                                StaticDataMgr.Instance.GetTextByID("adventure_tipsweight"), 
+                                                                conditionStep,
+                                                                "",
+                                                                0,
+                                                                SubmitAdventure);
+        }
+        else
+        {
+            Logger.LogError("选择大冒险阵容异常");
+        }
+    }
+    void SubmitAdventure(MsgBox.PrompButtonClick click)
+    {
+        if (click == MsgBox.PrompButtonClick.Cancle)
+            return;
+        
         PB.HSAdventureEnter param = new PB.HSAdventureEnter();
         param.teamId = AdventureDataMgr.Instance.GetUnusedAdventureTeamId();
-        if (param.teamId<=0||param.teamId>AdventureDataMgr.Instance.teamCount)
-        {
-            Logger.LogError("队伍数量存在异常");
-        }
         param.type = curData.adventureData.type;
         param.gear = curData.adventureData.time;
         if (selfMonsterId.Count == 4 && hireMonster != null)
         {
+            Sociatybase sociatyBase = StaticDataMgr.Instance.GetSociatybaseData(hireMonster.bp);
+            if (sociatyBase==null||GameDataMgr.Instance.PlayerDataAttr.coin<sociatyBase.coinHire)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+                return;
+            }
             param.selfMonsterId.AddRange(selfMonsterId);
             param.hireMonster = hireMonster;
         }
@@ -484,10 +556,12 @@ public class UIAdventureLayout : UIBase,
         }
         else
         {
-            Logger.LogError("此地应该弹出窗");
+            Logger.LogError("大冒险上阵数据异常");
         }
         GameApp.Instance.netManager.SendMessage(PB.code.ADVENTURE_ENTER_C.GetHashCode(), param);
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_004"), (int)PB.ImType.PROMPT);
     }
+
     #endregion
 
     #region UIBase

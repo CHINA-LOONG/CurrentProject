@@ -512,4 +512,22 @@ public class GuildParse : ParseBase
         }
         this.condition = condition;
     }
+    public  void    JumpChapterMapAndInstanceList(int chapter,InstanceDifficulty instanceDiff)
+    {
+        bool isOpened = false;
+        if (InstanceDifficulty.Normal == instanceDiff)
+        {
+            isOpened = InstanceMapService.Instance.IsChapterOpened(chapter);
+        }
+        else
+        {
+            isOpened = InstanceMapService.Instance.IsHardChapterOpend(chapter);
+        }
+        if(!isOpened)
+        {
+            Logger.LogError("章节为开启 for Xiaolong");
+            return;
+        }
+        InstanceMap.OpenMapAndInstanceList(chapter, instanceDiff);
+    }
 }
