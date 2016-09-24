@@ -34,6 +34,7 @@ public class ActorParticleData : ICloneable
     //state data
     public GameObject psObject;
     public float psDuration;
+    public Transform psParent;
     
     public object Clone()
     {

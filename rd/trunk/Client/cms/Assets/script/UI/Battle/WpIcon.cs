@@ -27,7 +27,7 @@ public class WpIcon : MonoBehaviour
     {
         EventTriggerListener.Get(buttonImage.gameObject).onEnter = OnTouchEnter;
         EventTriggerListener.Get(buttonImage.gameObject).onExit = OnTouchExit;
-        shakeUi = GetComponent<ShakeUi>();
+        shakeUi = progressBar.GetComponent<ShakeUi>();
     }
 
     public  string GetWpId()
@@ -42,7 +42,6 @@ public class WpIcon : MonoBehaviour
     public  void    RefreshWithWp(WeakPointRuntimeData wpRealData)
     {
         this.wpRealData = wpRealData;
-        shakeUi = GetComponent<ShakeUi>();
         progressBar.gameObject.SetActive(false);
         deadMask.gameObject.SetActive(false);
 
@@ -78,7 +77,7 @@ public class WpIcon : MonoBehaviour
         progressBar.gameObject.SetActive(isArmor);
         if(isArmor)
         {
-            RefreshProgress(0,false);
+            RefreshProgress(false);
         }
     }
 
@@ -87,7 +86,7 @@ public class WpIcon : MonoBehaviour
         return string.Format("ruodianIcon_{0}", (int)type);
     }
 
-    public void RefreshProgress(int oldHp,bool shake = true)
+    public void RefreshProgress(bool shake = true)
     {
         float ratio = (float)wpRealData.HpAttr / (float)wpRealData.maxHp;
         progressBar.SetTargetRatio(ratio);

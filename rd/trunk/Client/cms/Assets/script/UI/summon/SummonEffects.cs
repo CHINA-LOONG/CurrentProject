@@ -12,6 +12,7 @@ public class SummonEffects : MonoBehaviour {
     public GameObject yueliangB1;
     public GameObject yueliangB2;
     public Animator summAnim;
+    public GameObject summonState;
 	// Use this for initialization
     public void Reset()
     {
@@ -24,5 +25,12 @@ public class SummonEffects : MonoBehaviour {
         taiyangB2.SetActive(false);
         yueliangB1.SetActive(false);
         yueliangB2.SetActive(false);
+    }
+    public void SetSummonState(bool isTaiyang)
+    {
+        if (isTaiyang)
+            summonState.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+        else
+            summonState.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 }

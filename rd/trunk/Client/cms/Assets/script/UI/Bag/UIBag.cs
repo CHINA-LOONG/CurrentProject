@@ -54,22 +54,30 @@ public class UIBag : UIBase,TabButtonDelegate
 	private	ItemData	curUseItemData;
 	private	bool	isCanSell = false;
 
+    public static UIBag OpenWith(BagType bagType = BagType.BaoXiang)
+    {
+        UIBag bag = (UIBag)UIMgr.Instance.OpenUI_(ViewName);
+        bag.InitWith(bagType);
+        return bag;
+    }
+
     void Start()
     {
 		Instance = this;
         
     }
 	bool isFirst = true;
-    public override void Init()
+
+    public void InitWith(BagType bagType = BagType.BaoXiang)
     {
-		if (isFirst)
-		{
-			isFirst = false;
-			FirsInit();
-		}
-		tabBtnGroup.OnChangeItem (0);
-		curBagState = BagState.Norml;
-		RefreshBag ();
+        if (isFirst)
+        {
+            isFirst = false;
+            FirsInit();
+        }
+        tabBtnGroup.OnChangeItem((int)bagType);
+        curBagState = BagState.Norml;
+        RefreshBag();
     }
 
 	void FirsInit()

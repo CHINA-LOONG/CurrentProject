@@ -321,15 +321,28 @@ public class BattleObject : MonoBehaviour
                         {
                             //curParticleData.psObject.transform.localRotation = prefab.transform.localRotation;
                             curParticleData.psObject.transform.localRotation = BattleConst.rotYPIDegree;
-                            curParticleData.psObject.transform.SetParent(rootTransform, false);
                             //NOTE: xw said if attach, ignore lock
+                            if (curParticleData.locky == "true")
+                            {
+                                curParticleData.psObject.transform.localPosition = rootTransform.position;
+                                curParticleData.psObject.transform.SetParent(transform.parent, false);
+                                curParticleData.psParent = transform.parent;
+                                curParticleData.psObject.transform.localScale = rootTransform.lossyScale;
+                            }
+                            else
+                            {
+                                curParticleData.psObject.transform.SetParent(rootTransform, false);
+                                curParticleData.psParent = rootTransform;
+                            }
                         }
                         else
                         {
                             //curEvent.psObject.transform.parent = transform.parent;
                             curParticleData.psObject.transform.localPosition = rootTransform.position;
+                            curParticleData.psObject.transform.localScale = rootTransform.lossyScale;
                             //curParticleData.psObject.transform.localRotation = rootTransform.rotation;
                             curParticleData.psObject.transform.SetParent(transform.parent, false);
+                            curParticleData.psParent = rootTransform;
                             if (curParticleData.locky == "true")
                             {
                                 //curParticleData.psObject.transform.localRotation = Quaternion.identity;
@@ -543,6 +556,18 @@ public class BattleObject : MonoBehaviour
                     else 
                     {
                         finish = false;
+                        //update position
+                        if (curParticleData.attach == "true" &&
+                            curParticleData.locky == "true" &&
+                            curParticleData.psParent != null
+                            )
+                        {
+                            curParticleData.psObject.transform.localPosition = new Vector3(
+                                curParticleData.psParent.position.x,
+                                BattleController.floorHeight + BattleConst.floorHeight,
+                                curParticleData.psParent.position.z
+                                );
+                        }
                     }
                 }
             }

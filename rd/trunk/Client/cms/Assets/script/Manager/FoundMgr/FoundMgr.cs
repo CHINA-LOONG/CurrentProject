@@ -33,7 +33,10 @@ public class FoundMgr
         InstanceEntryRuntimeData runtime = InstanceMapService.Instance.GetRuntimeInstance(entry.id);
         UIAdjustBattleTeam.OpenWith(entry.id, runtime.star,false, (InstanceType)entry.type);
     }
-    //合成
+    /// <summary>
+    /// 合成
+    /// </summary>
+    /// <param name="index">0--装备/1--宠物</param>
     public void GoToUICompose(int index)
     {
         if (curUIPanel as UICompose == null)
@@ -48,7 +51,10 @@ public class FoundMgr
             //(curUIPanel as UICompose).Refresh(index);
         }
     }
-    //分解
+    /// <summary>
+    /// 分解
+    /// </summary>
+    /// <param name="index">0--装备/1--宠物</param>
     public void GoToUIDecompose(int index)
     {
         if (curUIPanel as UIDecompose == null)
@@ -62,7 +68,10 @@ public class FoundMgr
             //(curUIPanel as UIDecompose).Refresh(index);
         }
     }
-    //商店
+    /// <summary>
+    /// 商店
+    /// </summary>
+    /// <param name="type">商店类型</param>
     public void GoToUIShop(PB.shopType type)
     {
         if (curUIPanel as UIShop == null)
@@ -74,7 +83,9 @@ public class FoundMgr
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
         }
     }
-    //商城
+    /// <summary>
+    /// 商城
+    /// </summary>
     public void GoToUIStore()
     {
         if (curUIPanel as UIStore == null)
@@ -86,23 +97,128 @@ public class FoundMgr
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
         }
     }
-    //日常
-    public void GoToDaily()
+    /// <summary>
+    /// 任务
+    /// </summary>
+    /// <param name="index">0--剧情/1--日常/2--成就</param>
+    public void GoToQuest(int index)
     {
-        Logger.Log("打开日常界面");
+        if (curUIPanel as UIQuest == null)
+        {
+            uibuild.uiQuest = UIMgr.Instance.OpenUI_(UIQuest.ViewName) as UIQuest;
+            uibuild.uiQuest.Refresh(index);
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+            //(curUIPanel as UIDecompose).Refresh(index);
+        }
     }
-    //抽奖
+    /// <summary>
+    /// 抽蛋
+    /// </summary>
     public void GoToLucky()
     {
         Logger.Log("打开抽奖界面");
     }
-    //公会
-    public void GoToGuild()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index">1--boss/2--任务/3--成员/4--列表/5--主界面/6--许愿</param>
+    public void GoToGuild(int index)
     {
-        Logger.Log("打开公会界面");
+        if (GameDataMgr.Instance.SociatyDataMgrAttr.allianceID > 0)
+        {
+            switch (index)
+            {
+                case 1:
+                    //公会boss   未开发
+                    break;
+                case 2:
+                    //任务 
+                    UISociatyTask.Open();
+                    break;
+                case 3:
+                    //成员   
+                    SociatyMain.OpenWith(SociatyContenType.Member);
+                    break;
+                case 4:
+                    //公会列表 (其它公会)
+                    SociatyMain.OpenWith(SociatyContenType.OtherSociaty);
+                    break;
+                case 5:
+                    //公会主界面
+                    SociatyMain.OpenWith();
+                    break;
+                case 6:
+                    //公会许愿
+                    UIMgr.Instance.OpenUI_(SociatyPray.ViewName);
+                    break;
+            }
+        }
+        else
+        {
+            // 申请公会
+            SociatyList.OpenWith(null);
+        }
     }
-
-    //通天塔
+    /// <summary>
+    /// 背包
+    /// </summary>
+    public void GoToBag(BagType type)
+    {
+        UIBag.OpenWith(type);
+    }
+    /// <summary>
+    /// 宠物
+    /// </summary>
+    /// <param name="index">0--拥有/1--收藏</param>
+    public void GoToMonster(int index)
+    {
+        if (curUIPanel as UIMonsters == null)
+        {
+            uibuild.uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
+            uibuild.uiQuest.Refresh(index);
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+            //(curUIPanel as UIDecompose).Refresh(index);
+        }
+    }
+    /// <summary>
+    /// 钻石购买金币
+    /// </summary>
+    public void GoToBuyCoin()
+    {
+        GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+    }
+    /// <summary>
+    /// 章節
+    /// </summary>
+    /// <param name="chapter">章節ID</param>
+    /// <param name="instanceDiff">難度</param>
+    public void GoToChapter(int chapter, InstanceDifficulty instanceDiff)
+    {
+        bool isOpened = false;
+        if (InstanceDifficulty.Normal == instanceDiff)
+        {
+            isOpened = InstanceMapService.Instance.IsChapterOpened(chapter);
+        }
+        else
+        {
+            isOpened = InstanceMapService.Instance.IsHardChapterOpend(chapter);
+        }
+        if (!isOpened)
+        {
+            Logger.LogError("章节为开启 for Xiaolong");
+            return;
+        }
+        InstanceMap.OpenMapAndInstanceList(chapter, instanceDiff);
+    }
+    /// <summary>
+    /// 通天塔
+    /// </summary>
     public void GoToTower()
     {
         MainStageController mainStage = UIMgr.Instance.MainstageInstance;
@@ -112,7 +228,9 @@ public class FoundMgr
         }
 
     }
-    //洞
+    /// <summary>
+    /// 试炼
+    /// </summary>
     public void GoToHole()
     {
         MainStageController mainStage = UIMgr.Instance.MainstageInstance;
@@ -121,5 +239,25 @@ public class FoundMgr
             mainStage.SetCurrentSelectGroup((int)InstanceType.Hole);
         }
     }
+    /// <summary>
+    /// 大冒险
+    /// </summary>
+    public void GoToAdventure()
+    {
+        if (curUIPanel as UIAdventure == null)
+        {
+            uibuild.uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
+        }
+    }
+    /// <summary>
+    /// 竞技场
+    /// </summary>
+    public void GoToArena()
+    {
 
+    }
 }

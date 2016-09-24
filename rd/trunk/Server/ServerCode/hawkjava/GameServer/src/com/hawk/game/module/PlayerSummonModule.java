@@ -76,7 +76,7 @@ public class PlayerSummonModule extends PlayerModule {
 				return true;
 			}
 			Calendar curTime = HawkTime.getCalendar();
-			if (curTime.getTimeInMillis() > statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
+			if (curTime.getTimeInMillis() < statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_FREE_CD);
 				return true;
 			}

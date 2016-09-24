@@ -174,7 +174,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void BagButtonClick(GameObject go)
     {
-        uiBag = UIMgr.Instance.OpenUI_(UIBag.ViewName)as UIBag;
+        uiBag = UIBag.OpenWith();
        // GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
 
     }

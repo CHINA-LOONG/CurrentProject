@@ -56,6 +56,8 @@ public class UISummon : UIBase
     public void OpenUISummon(bool isJinBi)
     {
         consumB = isJinBi;
+        if (summEffect != null)
+            summEffect.SetSummonState(isJinBi);
     }
     //---------------------------------------------------------------------------
     void SummonOnce(GameObject go)//单次召唤点击事件
@@ -64,11 +66,12 @@ public class UISummon : UIBase
         if (consumB)
         {
             cons = ConsumeType.Consume_jinbi;
-            if (GameDataMgr.Instance.freeJinbiSumNum > 0)
+            if (GameDataMgr.Instance.freeJinbiSumNum <=5)
             {
                 if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
                 {
                     cons = ConsumeType.Consume_Free_jinbi;
+                    GameDataMgr.Instance.freeJinbiSumNum++;
                 }
             }                
             consum = cons;
@@ -177,9 +180,9 @@ public class UISummon : UIBase
             ShowAnim(summonList[summonNum].item.stage, consumB);
         }       
         choudanAnim.SetBool("loop", false);
-        yield return new WaitForSeconds(2.20f);
-        //choudanAnim.SetBool("nullAnim", true);
+        yield return new WaitForSeconds(2.40f);
         choudanAnim.SetBool(PlayerPrefs.GetString("animSumEnd"), false);
+        choudanAnim.SetBool("nullAnim", true);
         yield return new WaitForSeconds(1f);
         summEffect.Reset();
         ShowSummonReward();
@@ -229,7 +232,6 @@ public class UISummon : UIBase
         else
         {
             //展示召唤获得
-            //-
             if (summonList.Count > 1)
             {
                 if (summonList.Count == (summonNum + 1))
@@ -271,17 +273,25 @@ public class UISummon : UIBase
     //---------------------------------------------------------------------------
     void OnOneSummonRet(ProtocolMessage msg)//召唤单次协议返回
     {
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            Logger.LogError("RequestShopData Error errorCode: " + error.errCode);
+            choudanAnim.SetBool(PlayerPrefs.GetString("animSumBegin"), false);
+            choudanAnim.SetBool("loop", false);
+            showUI(true);
+            return;
+        }
         PB.HSSummonOneRet result = msg.GetProtocolBody<PB.HSSummonOneRet>();
         if (result.freeCoinLastTime != 0)
         {
             GameDataMgr.Instance.summonJinbi = result.freeCoinLastTime;
-            SetFreeTime();
         }
         if (result.freeDiamondBeginTime != 0)
         {
             GameDataMgr.Instance.summonZuanshi = result.freeDiamondBeginTime;
-            SetFreeTime();
         }
+        SetFreeTime();
         SetSummonList(result.reward.RewardItems[0]);
     }
     //---------------------------------------------------------------------------
@@ -344,13 +354,14 @@ public class UISummon : UIBase
         choudanAnim = summEffect.summAnim;
         onceButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_onetime");
         tenButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_tentime");
+        summEffect.SetSummonState(consumB);
 	}
     //---------------------------------------------------------------------------
     public void SetFreeTime()
     {
         if (consumB)
         {
-            if (GameDataMgr.Instance.freeJinbiSumNum <= 0)
+            if (GameDataMgr.Instance.freeJinbiSumNum >=5)
             {
                 freeState.text = StaticDataMgr.Instance.GetTextByID("summon_useout");
 				freeState.gameObject.SetActive(true);
@@ -363,12 +374,14 @@ public class UISummon : UIBase
                 {
                     freeImage.gameObject.SetActive(true);
 					SumTypeImg.gameObject.SetActive(false);
-                    freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_lefttimecoin"), GameDataMgr.Instance.freeJinbiSumNum);
+                    freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_lefttimecoin"), (5 - GameDataMgr.Instance.freeJinbiSumNum));
                 }
                 else
                 {
+                    SumTypeImg.gameObject.SetActive(true);
                     freeImage.gameObject.SetActive(false);
-                    timeEvent = new TimeEventWrap(GameTimeMgr.Instance.GetServerTimeStamp() - (GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree), endFreeTime);
+                    freeState.gameObject.SetActive(true);
+                    timeEvent = new TimeEventWrap((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree), endFreeTime);
                     timeEvent.AddUpdateEvent(OnUpdateTime);
                 }
             }
@@ -401,12 +414,7 @@ public class UISummon : UIBase
     //---------------------------------------------------------------------------
     void OnUpdateTime(int time)
     {
-        if (consumB)
-            GameDataMgr.Instance.summonJinbi--;
-        else
-            GameDataMgr.Instance.summonZuanshi--;
-
-		freeState.text = UIUtil.Convert_hh_mm_ss(time ) ;
+		freeState.text = UIUtil.Convert_hh_mm_ss(time) ;
     }
     //---------------------------------------------------------------------------
     void OnEnable()

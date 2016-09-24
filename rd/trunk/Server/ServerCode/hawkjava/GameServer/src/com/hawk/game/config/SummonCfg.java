@@ -56,7 +56,7 @@ public class SummonCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
-		String[] rechargeRange = recharge.split(",");
+		String[] rechargeRange = recharge.split("_");
 		if (rechargeRange.length != 2) {
 			return false;
 		}

@@ -227,7 +227,11 @@ public class InstanceMapService : MonoBehaviour
 
 	private bool CheckAndOpenNextChapter(InstanceDifficulty difftype,int nextChapter)
 	{
-		List<InstanceEntry> listStaticInstance = GetStaticInstance (difftype, nextChapter);
+        if (!IsChapterFinished(nextChapter - 1, difftype))
+        {
+            return false;
+        }
+        List<InstanceEntry> listStaticInstance = GetStaticInstance (difftype, nextChapter);
 		if (listStaticInstance.Count == 0)
 			return false;
 

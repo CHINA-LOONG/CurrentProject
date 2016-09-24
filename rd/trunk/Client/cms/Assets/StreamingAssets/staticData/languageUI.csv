@@ -930,3 +930,17 @@ adventure_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be 
 adventure_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
 adventure_record_011,探险任务已完成,complete
 arrayselect_bp_001,综合战力,Team BP
+,,
+summon_titlecoin,聚合,Gather
+summon_tipscoin,聚合获得物品或宠物,Gathering gives items or monsters
+summon_free,免费,Free
+summon_titlegold,纯粹聚合,Pure Gather
+summon_tipsgold,十连聚合必得宠物,Gather 10 guarantees a monster
+summon_onetime,聚合1次,Gather 1
+summon_lefttimecoin,免费次数：{0}/5,Free chances: {0}/5
+summon_recovertimecoin,冷却时间,CD time
+summon_useout,今日免费次数已用完,You have used today's free chances.
+summon_tentime,聚合10次,Gather 10
+summon_recovertimegold,{0}后免费,Free in {0}
+summon_skip,跳过,Skip
+summon_result,聚合结果,You gathered

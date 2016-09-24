@@ -306,6 +306,20 @@ public class UIBattle : UIBase
                 float startTime = mVitalChangeList.Count > 0 ? mVitalChangeList[0].showTime : Time.time;
                 vitalChangeData.showTime = startTime + BattleConst.intervalTime * mVitalChangeList.Count;
                 mVitalChangeList.Add(vitalChangeData);
+
+                if (string.IsNullOrEmpty(lifeChange.wpID) == false && lifeChange.wpID != "e_shouji")
+                {
+                    BattleObject target = ObjectDataMgr.Instance.GetBattleObject(lifeChange.targetID);
+                    WeakPointRuntimeData wpRuntime = null;
+                    if (target.wpGroup != null)
+                    {
+                        target.wpGroup.allWpDic.TryGetValue(lifeChange.wpID, out wpRuntime);
+                        if (wpRuntime != null)
+                        {
+                            wpUI.UpdateArmorProgress(wpRuntime);
+                        }
+                    }
+                }
             }
         }
     }

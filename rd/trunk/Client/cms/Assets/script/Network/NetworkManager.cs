@@ -60,13 +60,13 @@ public class NetworkManager : MonoBehaviour
                         PB.HSErrorCode errorCode = pmsg.GetProtocolBody<PB.HSErrorCode>();
 
                         if (errorCode != null)
-                        {
+						{
+							Logger.LogErrorFormat("error for net request :error code =  {0:X} " , errorCode.errCode);
                             if (GameEventMgr.Instance.IsListenEvent(errorCode.hsCode.ToString()) == true)
                             {
                                 GameEventMgr.Instance.FireEvent<ProtocolMessage>(errorCode.hsCode.ToString(), pmsg);
                             }
 							//Logger.LogError("error for net request :error code =  " + errorCode.errCode);
-							Logger.LogErrorFormat("error for net request :error code =  {0:X} " , errorCode.errCode);
                         }
                     }
                     else

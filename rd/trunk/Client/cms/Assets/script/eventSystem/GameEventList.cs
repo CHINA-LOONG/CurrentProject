@@ -17,7 +17,6 @@ public class GameEventList
     //Battle
     public static string StartBattle = "StartBattle";  //param: PbStartBattle  
 	//public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
-    public static string RefreshWpProgress = "RefreshWpProgress";//param wpRun oldHp
 
     //Mirror in the Battle
     public static string SetMirrorModeState = "SetMirrorModeState"; //param bool ,bool

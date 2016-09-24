@@ -1813,38 +1813,38 @@ bossAmute1Name,水球,Liquid Sphere
 bossAmute2Name,水龙卷,Waterspout
 bossAmute1Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
 bossAmute2Tips,给群体目标造成100%法攻水属性伤害,Deals (100% of magic ATK) water type magic damage to all enemy targets 
-adventure_condition1,{0}只光属性宠物,{0} light type monsters
-adventure_condition2,{0}只木属性宠物,{0} grass type monsters
-adventure_condition3,{0}只水属性宠物,{0} water type monsters
-adventure_condition4,{0}只火属性宠物,{0} fire type monsters
-adventure_condition5,{0}只暗属性宠物,{0} dark type monsters
-adventure_condition6,{0}只动物类宠物,{0} animal type monsters
-adventure_condition7,{0}只人物类宠物,{0} human type monsters
-adventure_condition8,{0}只特异类宠物,{0} peculiar type monsters
-adventure_condition9,{0}只植物类宠物,{0} plant type monsters
-adventure_condition10,{0}只神类宠物,{0} deity type monsters
-adventure_condition11,{0}只光属性动物类宠物,{0} light type animal monsters
-adventure_condition12,{0}只光属性人物类宠物,{0} light type human monsters
-adventure_condition13,{0}只光属性特异类宠物,{0} light type peculiar monsters
-adventure_condition14,{0}只光属性植物类宠物,{0} light type plant monsters
-adventure_condition15,{0}只光属性神类宠物,{0} light type deity monsters
-adventure_condition16,{0}只木属性动物类宠物,{0} grass type animal monsters
-adventure_condition17,{0}只木属性人物类宠物,{0} grass type human monsters
-adventure_condition18,{0}只木属性特异类宠物,{0} grass type peculiar monsters
-adventure_condition19,{0}只木属性植物类宠物,{0} grass type plant monsters
-adventure_condition20,{0}只木属性神类宠物,{0} grass type deity monsters
-adventure_condition21,{0}只水属性动物类宠物,{0} water type animal monsters
-adventure_condition22,{0}只水属性人物类宠物,{0} water type human monsters
-adventure_condition23,{0}只水属性特异类宠物,{0} water type peculiar monsters
-adventure_condition24,{0}只水属性植物类宠物,{0} water type plant monsters
-adventure_condition25,{0}只水属性神类宠物,{0} water type deity monsters
-adventure_condition26,{0}只火属性动物类宠物,{0} fire type animal monsters
-adventure_condition27,{0}只火属性人物类宠物,{0} fire type human monsters
-adventure_condition28,{0}只火属性特异类宠物,{0} fire type peculiar monsters
-adventure_condition29,{0}只火属性植物类宠物,{0} fire type plant monsters
-adventure_condition30,{0}只火属性神类宠物,{0} fire type deity monsters
-adventure_condition31,{0}只暗属性动物类宠物,{0} dark type animal monsters
-adventure_condition32,{0}只暗属性人物类宠物,{0} dark type human monsters
-adventure_condition33,{0}只暗属性特异类宠物,{0} dark type peculiar monsters
-adventure_condition34,{0}只暗属性植物类宠物,{0} dark type plant monsters
-adventure_condition35,{0}只暗属性神类宠物,{0} dark type deity monsters
+adventure_conditions1,{0}只光属性宠物,{0} light type monsters
+adventure_conditions2,{0}只木属性宠物,{0} grass type monsters
+adventure_conditions3,{0}只水属性宠物,{0} water type monsters
+adventure_conditions4,{0}只火属性宠物,{0} fire type monsters
+adventure_conditions5,{0}只暗属性宠物,{0} dark type monsters
+adventure_conditions6,{0}只动物类宠物,{0} animal type monsters
+adventure_conditions7,{0}只人物类宠物,{0} human type monsters
+adventure_conditions8,{0}只特异类宠物,{0} peculiar type monsters
+adventure_conditions9,{0}只植物类宠物,{0} plant type monsters
+adventure_conditions10,{0}只神类宠物,{0} deity type monsters
+adventure_conditions11,{0}只光属性动物类宠物,{0} light type animal monsters
+adventure_conditions12,{0}只光属性人物类宠物,{0} light type human monsters
+adventure_conditions13,{0}只光属性特异类宠物,{0} light type peculiar monsters
+adventure_conditions14,{0}只光属性植物类宠物,{0} light type plant monsters
+adventure_conditions15,{0}只光属性神类宠物,{0} light type deity monsters
+adventure_conditions16,{0}只木属性动物类宠物,{0} grass type animal monsters
+adventure_conditions17,{0}只木属性人物类宠物,{0} grass type human monsters
+adventure_conditions18,{0}只木属性特异类宠物,{0} grass type peculiar monsters
+adventure_conditions19,{0}只木属性植物类宠物,{0} grass type plant monsters
+adventure_conditions20,{0}只木属性神类宠物,{0} grass type deity monsters
+adventure_conditions21,{0}只水属性动物类宠物,{0} water type animal monsters
+adventure_conditions22,{0}只水属性人物类宠物,{0} water type human monsters
+adventure_conditions23,{0}只水属性特异类宠物,{0} water type peculiar monsters
+adventure_conditions24,{0}只水属性植物类宠物,{0} water type plant monsters
+adventure_conditions25,{0}只水属性神类宠物,{0} water type deity monsters
+adventure_conditions26,{0}只火属性动物类宠物,{0} fire type animal monsters
+adventure_conditions27,{0}只火属性人物类宠物,{0} fire type human monsters
+adventure_conditions28,{0}只火属性特异类宠物,{0} fire type peculiar monsters
+adventure_conditions29,{0}只火属性植物类宠物,{0} fire type plant monsters
+adventure_conditions30,{0}只火属性神类宠物,{0} fire type deity monsters
+adventure_conditions31,{0}只暗属性动物类宠物,{0} dark type animal monsters
+adventure_conditions32,{0}只暗属性人物类宠物,{0} dark type human monsters
+adventure_conditions33,{0}只暗属性特异类宠物,{0} dark type peculiar monsters
+adventure_conditions34,{0}只暗属性植物类宠物,{0} dark type plant monsters
+adventure_conditions35,{0}只暗属性神类宠物,{0} dark type deity monsters

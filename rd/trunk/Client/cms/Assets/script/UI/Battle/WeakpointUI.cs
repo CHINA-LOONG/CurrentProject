@@ -42,16 +42,7 @@ public class WeakpointUI : MonoBehaviour
             subWpIcon.gameObject.SetActive(false);
         }
     }
-
-    void    OnEnable()
-    {
-        GameEventMgr.Instance.AddListener<WeakPointRuntimeData, int>(GameEventList.RefreshWpProgress, UpdateArmorProgress);
-    }
-
-    void OnDisable()
-    {
-        GameEventMgr.Instance.RemoveListener<WeakPointRuntimeData, int>(GameEventList.RefreshWpProgress, UpdateArmorProgress);
-    }
+    
     public  void    ChangeBatch(float delayTime)
     {
         isPrepareChangeBatch = true;
@@ -148,7 +139,7 @@ public class WeakpointUI : MonoBehaviour
         findEffectObject.gameObject.SetActive(true);
     }
 
-    void    UpdateArmorProgress(WeakPointRuntimeData wpRealData,int oldHp)
+    public void  UpdateArmorProgress(WeakPointRuntimeData wpRealData)
     {
         foreach (var subIcon in wpIconList)
         {
@@ -156,7 +147,7 @@ public class WeakpointUI : MonoBehaviour
                 continue;
             if (subIcon.GetWpId().Equals(wpRealData.id))
             {
-                subIcon.RefreshProgress(oldHp);
+                subIcon.RefreshProgress();
                 break;
             }
         }

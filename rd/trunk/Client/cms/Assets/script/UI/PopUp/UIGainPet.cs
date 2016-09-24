@@ -60,7 +60,10 @@ public class UIGainPet : UIBase
     //---------------------------------------------------------------------------------------------
     public void ShowGainPet(string monsterID)
     {
-        StartCoroutine(ShowGainPetFlash(monsterID));
+        UICamera.Instance.CameraAttr.enabled = true;
+        GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
+        ShowGainPetInternal(gainPet);
+        //StartCoroutine(ShowGainPetFlash(monsterID));
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator ShowGainPetFlash(string monsterID)
@@ -119,7 +122,7 @@ public class UIGainPet : UIBase
         mGainPetRender = null;
         //minus time means invalidate time
         mGainPetEndTime = -1.0f;
-        mFadeWhite.FadeIn(0.0f);
+        //mFadeWhite.FadeIn(0.0f);
     }
     //---------------------------------------------------------------------------------------------
 }

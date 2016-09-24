@@ -70,7 +70,7 @@ public class MainSummon : UIBase
         }
     }
     //---------------------------------------------------------------------------
-	void Start ()
+    void Start()
     {
         EventTriggerListener.Get(jinbiButton).onClick = JinbiSummon;
         EventTriggerListener.Get(zuanshiButton).onClick = ZhuanshiSummon;
@@ -81,22 +81,21 @@ public class MainSummon : UIBase
         sumIntroduce2.text = StaticDataMgr.Instance.GetTextByID("summon_tipsgold");
         freeImage1.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
         freeImage2.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
-        if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
+        jinbi.gameObject.GetComponent<Text>().text = GameConfig.Instance.jinBiSum.ToString();
+        zuanshi.gameObject.GetComponent<Text>().text = GameConfig.Instance.zuanShiSum.ToString();
+        if (GameDataMgr.Instance.freeJinbiSumNum <  5)
         {
-            SetFree(true, freeImage1, jinbi);
+            if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
+                SetFree(true, freeImage1, jinbi);
+            else
+                SetFree(false, freeImage1, jinbi);
         }
         else
-        {
             SetFree(false, freeImage1, jinbi);
-        }
         if ((GameDataMgr.Instance.summonZuanshi + GameConfig.Instance.zuanShiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
-        {
             SetFree(true, freeImage2, zuanshi);
-        }
         else
-        {
             SetFree(false, freeImage2, zuanshi);
-        }
-	}
+    }
     //---------------------------------------------------------------------------
 }

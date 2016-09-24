@@ -45,7 +45,7 @@ public class WeakPointRuntimeData
             {
                 hp = maxHp;
             }
-            GameEventMgr.Instance.FireEvent<WeakPointRuntimeData, int>(GameEventList.RefreshWpProgress, this, oldHp);
+            //GameEventMgr.Instance.FireEvent<WeakPointRuntimeData, int>(GameEventList.RefreshWpProgress, this, oldHp);
         }
     }
 	public	WeakpointState	wpState;

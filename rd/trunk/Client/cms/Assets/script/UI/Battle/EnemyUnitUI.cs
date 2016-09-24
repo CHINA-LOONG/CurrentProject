@@ -7,6 +7,7 @@ public class EnemyUnitUI : MonoBehaviour
 	public Text unitName;
 	public Text unitLevel;
 	public LifeBarUI lifeBar;
+    public Image propertyImage;
 
     public BattleObject Unit
     {
@@ -51,6 +52,12 @@ public class EnemyUnitUI : MonoBehaviour
             Hide();
             return;
         }
+        Sprite psprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + sUnit.unit.property);
+        if (null != psprite )
+        {
+            propertyImage.sprite = psprite;
+        }
+
 
         unitName.text = sUnit.unit.name;
         unitLevel.text = sUnit.unit.pbUnit.level.ToString();
