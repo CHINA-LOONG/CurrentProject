@@ -38,7 +38,7 @@ public class HfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "fatigue", nullable = false)
 	protected int fatigue = 0;
 
-	// 活力值开始计时时间
+	// 活力值恢复开始计时时间
 	@Column(name = "fatigueBeginTime")
 	protected Calendar fatigueBeginTime = null;
 

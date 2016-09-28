@@ -64,8 +64,9 @@ public class GameMain : MonoBehaviour
 		{
 			mCurModule.OnExit();
             Destroy(mCurModule);
+            UIMgr.Instance.ClearUIOnSceneChange(false);
             ResourceMgr.Instance.UnloadCachedBundles(true);
-            UIMgr.Instance.DestroyAllPopup();
+            //UIMgr.Instance.DestroyAllPopup();
         }
         string moduleName = typeof(T).ToString();
         T t = this.gameObject.AddComponent<T>();
@@ -156,8 +157,9 @@ public class GameMain : MonoBehaviour
         {
             mCurModule.OnExit();
             Destroy(mCurModule);
+            UIMgr.Instance.ClearUIOnSceneChange(false);
             ResourceMgr.Instance.UnloadCachedBundles(true);
-            UIMgr.Instance.DestroyAllPopup();
+            //UIMgr.Instance.DestroyAllPopup();
             mCurModule = null;
         }
     }

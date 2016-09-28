@@ -11,6 +11,7 @@ public class UIDepth : MonoBehaviour {
 			Canvas canvas = GetComponent<Canvas>();
 			if( canvas == null){
 				canvas = gameObject.AddComponent<Canvas>();
+                gameObject.AddComponent<GraphicRaycaster>();
 			}
 			canvas.overrideSorting = true;
 			canvas.sortingOrder = order;

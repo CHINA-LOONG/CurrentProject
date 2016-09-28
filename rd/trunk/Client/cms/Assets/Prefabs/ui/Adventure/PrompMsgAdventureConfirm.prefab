@@ -795,7 +795,7 @@ MonoBehaviour:
   textTitle: {fileID: 11498574}
   textStep: {fileID: 11495420}
   textMsg1: {fileID: 11429780}
-  objMsg2: {fileID: 108956}
+  objMsg2: {fileID: 133926}
   textMsg2: {fileID: 11460262}
   costText: {fileID: 11470308}
   btnCancel: {fileID: 11405158}
@@ -1202,10 +1202,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22405430}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 202.79303, y: -20}
+  m_SizeDelta: {x: 0, y: 27.9301758}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22493298
 RectTransform:

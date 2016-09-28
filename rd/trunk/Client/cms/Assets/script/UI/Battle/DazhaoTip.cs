@@ -12,11 +12,6 @@ public class DazhaoTip : MonoBehaviour
 	public Text attackText;
 	private bool isShow = false;
 	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-
 	public void SetTipInfo(int timeLeft,int useAttack,int allAttack)
 	{
 		timeText.text = timeLeft.ToString ();

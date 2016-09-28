@@ -13,11 +13,6 @@ public class UIRoot : MonoBehaviour {
         ScrollViewEventListener.Get(gmButton.gameObject).onClick = OnGMButtonClick;
 	}
     //------------------------------------------------------------------------------------------------------
-	// Update is called once per frame
-	void Update () {
-	
-	}
-    //------------------------------------------------------------------------------------------------------
     void OnGMButtonClick(GameObject go)
     {
         uiGM = UIMgr.Instance.OpenUI_(UIGM.ViewName) as UIGM;

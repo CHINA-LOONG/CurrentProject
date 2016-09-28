@@ -18,11 +18,6 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 	public	Text	likeFoodText;
 
 	// Use this for initialization
-	void Start ()
-	{
-
-	}
-
 	public void Init()
 	{
 		BindListener ();

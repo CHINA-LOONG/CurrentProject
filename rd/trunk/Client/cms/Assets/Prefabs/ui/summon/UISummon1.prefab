@@ -62,6 +62,7 @@ GameObject:
   - 222: {fileID: 22225296}
   - 114: {fileID: 11480230}
   - 114: {fileID: 11452178}
+  - 114: {fileID: 11490354}
   m_Layer: 5
   m_Name: Summon2
   m_TagString: Untagged
@@ -132,6 +133,7 @@ GameObject:
   - 114: {fileID: 11435680}
   - 95: {fileID: 9517224}
   - 114: {fileID: 11428938}
+  - 114: {fileID: 11438354}
   m_Layer: 5
   m_Name: UISummon1
   m_TagString: Untagged
@@ -337,6 +339,7 @@ GameObject:
   - 224: {fileID: 22464046}
   - 222: {fileID: 22263532}
   - 114: {fileID: 11403218}
+  - 114: {fileID: 11469636}
   m_Layer: 5
   m_Name: yueliang
   m_TagString: Untagged
@@ -626,6 +629,7 @@ GameObject:
   - 224: {fileID: 22403546}
   - 222: {fileID: 22277070}
   - 114: {fileID: 11449256}
+  - 114: {fileID: 11444180}
   m_Layer: 5
   m_Name: taiyang
   m_TagString: Untagged
@@ -747,6 +751,7 @@ GameObject:
   - 224: {fileID: 22448072}
   - 222: {fileID: 22239974}
   - 114: {fileID: 11447012}
+  - 114: {fileID: 11422742}
   m_Layer: 5
   m_Name: fazhen
   m_TagString: Untagged
@@ -1073,6 +1078,7 @@ GameObject:
   - 222: {fileID: 22267824}
   - 114: {fileID: 11450470}
   - 114: {fileID: 11437278}
+  - 114: {fileID: 11423736}
   m_Layer: 5
   m_Name: Summon1
   m_TagString: Untagged
@@ -1690,6 +1696,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11422742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -1
+  isUI: 0
 --- !u!114 &11422786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,6 +1768,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: General call
+--- !u!114 &11423736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -2
+  isUI: 1
 --- !u!114 &11424010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1848,12 +1880,14 @@ MonoBehaviour:
   zuanshiSumName: {fileID: 11478442}
   sumIntroduce1: {fileID: 11458304}
   sumIntroduce2: {fileID: 11478014}
+  jinbiText: {fileID: 11417968}
+  zuanshiText: {fileID: 11410700}
   jinbiButton: {fileID: 190030}
   zuanshiButton: {fileID: 105722}
   freeImage1: {fileID: 149070}
   freeImage2: {fileID: 186050}
-  jinbi: {fileID: 132408}
-  zuanshi: {fileID: 176752}
+  jinbi: {fileID: 101102}
+  zuanshi: {fileID: 191962}
   close: {fileID: 176290}
 --- !u!114 &11431984
 MonoBehaviour:
@@ -2036,6 +2070,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11438354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -2
+  isUI: 1
 --- !u!114 &11439418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2063,6 +2110,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11444180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -1
+  isUI: 0
 --- !u!114 &11445356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2549,6 +2609,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11469636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -1
+  isUI: 0
 --- !u!114 &11471450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2988,6 +3061,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11490354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: -2
+  isUI: 1
 --- !u!114 &11490506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12025,7 +12111,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -256.999664, y: 288.999969}
+  m_AnchoredPosition: {x: -77, y: 288.999969}
   m_SizeDelta: {x: 175.900024, y: 47.9750061}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22413588
@@ -12248,7 +12334,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -77.0001297, y: 288.999969}
+  m_AnchoredPosition: {x: -257, y: 288.999969}
   m_SizeDelta: {x: 175.900024, y: 47.9750061}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22435242

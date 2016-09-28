@@ -96,6 +96,8 @@ public class UISumReward : UIBase
                 ItemIcon icon = ItemIcon.CreateItemIcon(
                ItemData.valueof(UISummon.Instance.summonList[i].item.itemId, UISummon.Instance.summonList[i].item.count));
                 icon.transform.SetParent(tenReward.transform, false);
+                ItemStaticData itemData = StaticDataMgr.Instance.GetItemData(UISummon.Instance.summonList[i].item.itemId);
+                SetEffect(itemData.grade, icon.transform.gameObject);
                 rewardImage.Add(icon.transform.gameObject);
             }
             else if (UISummon.Instance.summonList[i].item.type == (int)PB.itemType.MONSTER)
@@ -106,6 +108,7 @@ public class UISumReward : UIBase
                 icon.SetMonsterStaticId(monster.cfgId);
                 icon.SetLevel(monster.level);
                 icon.SetStage(monster.stage);
+                SetEffect((StaticDataMgr.Instance.GetUnitRowData(monster.cfgId).rarity + 1), icon.transform.gameObject);
                 rewardImage.Add(icon.transform.gameObject);
             }
             else if (UISummon.Instance.summonList[i].item.type == (int)PB.itemType.EQUIP)
@@ -115,8 +118,19 @@ public class UISumReward : UIBase
                     UISummon.Instance.summonList[i].item.level, BattleConst.invalidMonsterID, null);
                 ItemIcon icon = ItemIcon.CreateItemIcon(equipData, true, false);
                 icon.transform.SetParent(tenReward.transform);
+                SetEffect(UISummon.Instance.summonList[i].item.stage, icon.transform.gameObject);
                 rewardImage.Add(icon.transform.gameObject);
             }
+        }
+    }
+    //-------------------------------------------------------
+    void SetEffect(int stage,GameObject go)
+    {
+        if (stage > 3)
+        {
+            GameObject effect = ResourceMgr.Instance.LoadAsset("tubiao_effect");
+            effect.transform.parent = go.transform;
+            effect.transform.localScale = go.transform.localScale;
         }
     }
     //-------------------------------------------------------

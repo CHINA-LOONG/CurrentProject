@@ -41,6 +41,16 @@ public abstract class UIBase : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    protected bool mDontDestroyWhenSwitchScene = false;
+    public bool DontDestroyWhenSwitchScene
+    {
+        get
+        {
+            return mDontDestroyWhenSwitchScene;
+        }
+    }
+
     //初始化界面操作，创建或激活后配置初始状态
     public virtual void Init()
     {

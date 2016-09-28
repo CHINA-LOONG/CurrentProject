@@ -174,7 +174,7 @@ public class AdventureDataMgr
         get {return adventureChangeBeginTime; }
         set
         {
-            if (AdventureChange < GameConfig.MaxAdventurePoint)
+            if (adventureChangeBeginTime != value && AdventureChange < GameConfig.MaxAdventurePoint)
             {
                 adventureChangeBeginTime = value;
                 Action endEvent = () =>
@@ -384,7 +384,7 @@ public class AdventureDataMgr
     {
         for (int i = 0; i < hiredMonsterId.Count; i++)
         {
-            if (monster.monsterId==hiredMonsterId[i])
+            if (monster.monsterId == hiredMonsterId[i])
             {
                 return true;
             }

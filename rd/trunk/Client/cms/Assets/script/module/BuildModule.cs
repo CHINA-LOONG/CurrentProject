@@ -11,9 +11,6 @@ public class BuildModule : ModuleBase
     }
     private int mCurrentInitState = -1;
     private object mParam = null;
-	void Start()
-	{
-	}
 
 	void BindListener()
 	{

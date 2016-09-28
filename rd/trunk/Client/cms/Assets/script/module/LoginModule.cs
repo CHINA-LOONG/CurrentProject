@@ -7,10 +7,6 @@ using System.IO;
 
 public class LoginModule : ModuleBase 
 {
-	void Start()
-	{
-		
-	}
 	void BindListener()
 	{
         GameEventMgr.Instance.AddListener<int>(NetEventList.NetConnectFinished, OnNetConnectFinished);

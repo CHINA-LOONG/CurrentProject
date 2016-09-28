@@ -393,7 +393,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		response.setChangeCount(statisticsEntity.getAdventureChange());
 		response.setChangeCountBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
-		sendProtocol(HawkProtocol.valueOf(HS.code.ADVENTURE_NEW_CONDITION_S, response));
+		sendProtocol(HawkProtocol.valueOf(HS.code.ADVENTURE_BUY_CONDITION_S, response));
 		return true;
 	}
 

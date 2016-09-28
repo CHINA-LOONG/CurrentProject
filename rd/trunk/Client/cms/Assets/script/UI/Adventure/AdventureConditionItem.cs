@@ -38,7 +38,7 @@ public class AdventureConditionItem : MonoBehaviour
     {
         curData = condition;
         conditionData = StaticDataMgr.Instance.GetAdventureConditionType(condition.conditionTypeCfgId);
-        textDesc.text =condition.monsterCount+ conditionData.desc;
+        textDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID(conditionData.desc), condition.monsterCount);
     }
 
     void OnClickFilterBtn(GameObject go)

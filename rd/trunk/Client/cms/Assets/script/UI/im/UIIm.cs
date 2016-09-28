@@ -72,6 +72,11 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
+    void Awake()
+    {
+        mDontDestroyWhenSwitchScene = true;
+    }
+    //------------------------------------------------------------------------------------------------------
 	// Use this for initialization
     void Start()
     {        
@@ -106,6 +111,20 @@ public class UIIm : UIBase
         playerBox.SetActive(false);
         RectTransform initTransform = msgPos.transform as RectTransform;
         msgPosY = -initTransform.anchoredPosition.y;
+    }
+    //------------------------------------------------------------------------------------------------------
+    public void HideIm(bool isHide)
+    {
+        if (isHide)
+        {
+             basicsChatBox.SetActive(false);
+             leftChatBox.transform.position = leftCahtVec;
+             msgBox.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            HideChat();
+        }
     }
     //------------------------------------------------------------------------------------------------------
     public void SetLevelVisible(bool visible)

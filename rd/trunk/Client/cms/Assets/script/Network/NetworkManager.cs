@@ -12,16 +12,7 @@ public class NetworkManager : MonoBehaviour
     private int count;
     private TimerInfo timer;
 	private static Queue<KeyValuePair<int, ProtocolMessage>> sEvents = new Queue<KeyValuePair<int, ProtocolMessage>>();
-
-    void Start()
-    {
-
-    }
-
-    public void OnInit()
-    {
-    }
-
+    
     ///------------------------------------------------------------------------------------
 	public static void AddEvent(int _event, ProtocolMessage data)
     {

@@ -32,6 +32,7 @@ public class UISummon : UIBase
     public GameObject tenButton;
     public GameObject skipButton;
     public GameObject SumTypeImg;
+    public GameObject SumTypeHide;
     public GameObject SumTypeImg1;
     public GameObject ui;
     public Text freeState;
@@ -73,20 +74,87 @@ public class UISummon : UIBase
     {
         if (consumB)
         {
-            SumTypeImg.GetComponent<Image>().sprite = jimbiIcon;
+            SumTypeHide.GetComponent<Image>().sprite = jimbiIcon;
             SumTypeImg1.GetComponent<Image>().sprite = jimbiIcon;
             consumOnceText.text = GameConfig.Instance.jinBiSum.ToString();
             int jinBi = GameConfig.Instance.jinBiSum * 9;
             consumTenText.text = jinBi.ToString();
+            if (GameDataMgr.Instance.PlayerDataAttr.coin < GameConfig.Instance.jinBiSum)
+            {
+                consumOnceText.color = Color.red;
+                consumTenText.color = Color.red;
+            }
+            else if (GameDataMgr.Instance.PlayerDataAttr.coin < (GameConfig.Instance.jinBiSum * 9))
+            {
+                consumOnceText.color = ColorConst.system_color_black;
+                consumTenText.color = Color.red;
+            }
+            else
+            {
+                consumOnceText.color = ColorConst.system_color_black;
+                consumTenText.color = ColorConst.system_color_black;
+            }
         }
         else
         {
-            SumTypeImg.GetComponent<Image>().sprite = zuanshiIcon;
+            SumTypeHide.GetComponent<Image>().sprite = zuanshiIcon;
             SumTypeImg1.GetComponent<Image>().sprite = zuanshiIcon;
             consumOnceText.text = GameConfig.Instance.zuanShiSum.ToString();
             int zuanshi = GameConfig.Instance.zuanShiSum * 9;
             consumTenText.text = zuanshi.ToString();
+            if (GameDataMgr.Instance.PlayerDataAttr.gold < GameConfig.Instance.zuanShiSum)
+            {
+                consumOnceText.color = Color.red;
+                consumTenText.color = Color.red;
+            }
+            else if (GameDataMgr.Instance.PlayerDataAttr.gold < (GameConfig.Instance.zuanShiSum * 9))
+            {
+                consumOnceText.color = ColorConst.system_color_black;
+                consumTenText.color = Color.red;
+            }
+            else
+            {
+                consumOnceText.color = ColorConst.system_color_black;
+                consumTenText.color = ColorConst.system_color_black;
+            }
         }
+    }
+    //---------------------------------------------------------------------------
+    bool CheckMoney(bool isTen)
+    {
+        if (consumB)
+        {
+            if (isTen)
+            {
+                if (GameDataMgr.Instance.PlayerDataAttr.coin < (GameConfig.Instance.jinBiSum * 9))
+                {
+                    GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+                    return true;
+                }
+            }
+            if (GameDataMgr.Instance.PlayerDataAttr.coin < GameConfig.Instance.jinBiSum)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+                return true;
+            }
+        }
+        else
+        {
+            if (isTen)
+            {
+                if (GameDataMgr.Instance.PlayerDataAttr.gold < (GameConfig.Instance.zuanShiSum * 9))
+                {
+                    GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                    return true;
+                }
+            }
+            if (GameDataMgr.Instance.PlayerDataAttr.gold < GameConfig.Instance.zuanShiSum)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                return true;
+            }
+        }
+        return false;
     }
     //---------------------------------------------------------------------------
     void SummonOnce(GameObject go)//单次召唤点击事件
@@ -95,7 +163,7 @@ public class UISummon : UIBase
         if (consumB)
         {
             cons = ConsumeType.Consume_jinbi;
-            if (GameDataMgr.Instance.freeJinbiSumNum <=5)
+            if (GameDataMgr.Instance.freeJinbiSumNum <5)
             {
                 if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
                 {
@@ -114,6 +182,13 @@ public class UISummon : UIBase
             }
             consum = cons;
         }
+        if (consum == ConsumeType.Consume_jinbi || consum == ConsumeType.Consume_zuanshi)
+        {
+            if (CheckMoney(false))
+            {
+                return;
+            } 
+        }
         showUI(false);
         SummonRequest(false);
     }
@@ -124,6 +199,10 @@ public class UISummon : UIBase
             consum = ConsumeType.Consume_jinbi;
         else
             consum = ConsumeType.Consume_zuanshi;
+        if (CheckMoney(true))
+        {
+            return;
+        } 
         showUI(false,true);
         SummonRequest(true);
     }
@@ -136,6 +215,7 @@ public class UISummon : UIBase
     IEnumerator BeginShowSummon()//开始召唤
     {
         choudanAnim.SetBool("nullAnim", false);
+        choudanAnim.SetBool("skip", false);
         if (PlayerPrefs.GetString("animSumBegin") != string.Empty)
             anim = PlayerPrefs.GetString("animSumBegin");
         choudanAnim.SetBool(anim, true);
@@ -202,14 +282,14 @@ public class UISummon : UIBase
         else if (summonList[summonNum].item.type == (int)PB.itemType.MONSTER)
         {
             PB.HSMonster monster = summonList[summonNum].item.monster;
-            ShowAnim(StaticDataMgr.Instance.GetUnitRowData(monster.cfgId).rarity, consumB);
+            ShowAnim((StaticDataMgr.Instance.GetUnitRowData(monster.cfgId).rarity+1), consumB);
         }
         else if (summonList[summonNum].item.type == (int)PB.itemType.EQUIP)
         {
             ShowAnim(summonList[summonNum].item.stage, consumB);
         }       
         choudanAnim.SetBool("loop", false);
-        yield return new WaitForSeconds(2.40f);
+        yield return new WaitForSeconds(2.50f);
         choudanAnim.SetBool(PlayerPrefs.GetString("animSumEnd"), false);
         choudanAnim.SetBool("nullAnim", true);
         yield return new WaitForSeconds(1f);
@@ -320,6 +400,7 @@ public class UISummon : UIBase
         {
             GameDataMgr.Instance.summonZuanshi = result.freeDiamondBeginTime;
         }
+        SetConsumIcon();
         SetFreeTime();
         SetSummonList(result.reward.RewardItems[0]);
     }
@@ -331,6 +412,7 @@ public class UISummon : UIBase
         {
             SetSummonList(result.reward[i].RewardItems[0]);
         }
+        SetConsumIcon();
     }
     //---------------------------------------------------------------------------
     void SetSummonList(PB.RewardItem reward)
@@ -360,17 +442,38 @@ public class UISummon : UIBase
         else
            skipButton.SetActive(true);
     }
-    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------public static   string CoinChanged  = "CoinChanged";//param int jinbi
+    //public static string ZuanshiChanged = "ZuanshiChanged";
     void exitClick(GameObject go)
     {
         showUI(true);
         summEffect.Reset();
         if (go != null)
+        {
+            if (timeEvent != null)
+            {
+                timeEvent.RemoveTimeEvent();
+                timeEvent.RemoveUpdateEvent(OnUpdateTime);
+            }
             UIMgr.Instance.CloseUI_(UISummon.ViewName);
+            MainSummon.Instance.SetReset();
+            freeState.text = "";
+        }
         else
         {
+            PlayerPrefs.DeleteKey("animSumBegin");
+            PlayerPrefs.DeleteKey("animSumEnd");
+            summEffect.Reset();
             choudanAnim.SetBool("loop", false);
-            choudanAnim.SetBool("xiaoJ", true);
+            choudanAnim.SetBool("jingyaK", false);
+            choudanAnim.SetBool("xiaoK", false);
+            choudanAnim.SetBool("kuK", false);
+            choudanAnim.SetBool("nullAnim", false);
+            choudanAnim.SetBool("xiaoJ", false);
+            choudanAnim.SetBool("kuJ", false);
+            choudanAnim.SetBool("jingJ", false);
+            choudanAnim.SetBool("skip", true);
+            PlayerPrefs.SetString("animSumBegin", "jingyaK");
         }
     }
     //---------------------------------------------------------------------------
@@ -387,10 +490,11 @@ public class UISummon : UIBase
         choudanAnim = summEffect.summAnim;
         onceButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_onetime");
         tenButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_tentime");
+        freeImage.text = StaticDataMgr.Instance.GetTextByID("summon_free");
         summEffect.SetSummonState(consumB);
         jimbiIcon = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_jinbi");
         zuanshiIcon = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_zuanshi");
-        SetConsumIcon();
+        SetConsumIcon();       
     }
     //---------------------------------------------------------------------------
     public void SetFreeTime()
@@ -457,6 +561,16 @@ public class UISummon : UIBase
             freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_recovertimegold"), UIUtil.Convert_hh_mm_ss(time));
     }
     //---------------------------------------------------------------------------
+    void OnCoinChanged(long coin)
+    {
+        SetConsumIcon();
+    }
+    //---------------------------------------------------------------------------
+    void OnZuanshiChanged(int zuanshi)
+    {
+        SetConsumIcon();
+    }
+    //---------------------------------------------------------------------------
     void OnEnable()
     {
         BindListener();
@@ -469,6 +583,8 @@ public class UISummon : UIBase
     //---------------------------------------------------------------------------
     void BindListener()
     {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SUMMON_ONE_C.GetHashCode().ToString(), OnOneSummonRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SUMMON_ONE_S.GetHashCode().ToString(), OnOneSummonRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SUMMON_TEN_S.GetHashCode().ToString(), OnTenSummonRet);
@@ -477,6 +593,8 @@ public class UISummon : UIBase
     //---------------------------------------------------------------------------
     void UnBindListener()
     {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_ONE_S.GetHashCode().ToString(), OnOneSummonRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_TEN_S.GetHashCode().ToString(), OnTenSummonRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_ONE_C.GetHashCode().ToString(), OnOneSummonRet);

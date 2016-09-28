@@ -362,6 +362,42 @@ public class UIMgr : MonoBehaviour
         uiLayerList.Clear();
     }
 
+    public void ClearUIOnSceneChange(bool ignoreDontDestroy)
+    {
+        //destroy all ui
+        DestroyAllPopup();
+        int count = uiList.Count;
+        List<UIBase> tmpList = new List<UIBase>();
+        tmpList.AddRange(uiList.Values);
+        if (ignoreDontDestroy == true)
+        {
+            for (int i = count - 1; i >= 0; --i)
+            {
+                if (tmpList[i] != null)
+                {
+                    RemoveFromStack(tmpList[i]);
+                    tmpList[i].Clean();
+                    ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
+                }
+            }
+        }
+        else
+        {
+            for (int i = count - 1; i >= 0; --i)
+            {
+                if (tmpList[i] != null && tmpList[i].DontDestroyWhenSwitchScene == false)
+                {
+                    RemoveFromStack(tmpList[i]);
+                    tmpList[i].Clean();
+                    ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
+                }
+            }
+        }
+        tmpList.Clear();
+        uiList.Clear();
+        ClearUILayerList();
+    }
+
     public void OpenUICallback(GameObject ui, System.EventArgs args)
     {
         LoadUIEventArgs uiEventArgs = args as LoadUIEventArgs;
@@ -587,19 +623,7 @@ public class UIMgr : MonoBehaviour
             //重置数据
             GameDataMgr.Instance.ClearAllData();
             //destroy all ui
-            DestroyAllPopup();
-            int count = uiList.Count;
-            List<UIBase> tmpList = new List<UIBase>();
-            tmpList.AddRange(uiList.Values);
-            for (int i = count -1; i >= 0; --i)
-            {
-                RemoveFromStack(tmpList[i]);
-                tmpList[i].Clean();
-                ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
-            }
-            tmpList.Clear();
-            uiList.Clear();
-            ClearUILayerList();
+            ClearUIOnSceneChange(true);
 
             //跳转到登录
             GameMain.Instance.ChangeModule<LoginModule>();

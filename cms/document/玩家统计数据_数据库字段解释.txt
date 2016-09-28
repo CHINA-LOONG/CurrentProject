@@ -1,7 +1,9 @@
+====HF===================================================
+
 // 活力值
 fatigue
 
-// 活力值开始计时时间
+// 活力值恢复开始计时时间
 fatigueBeginTime
 
 // 历史使用活力值数量
@@ -16,23 +18,16 @@ doubleExpLeft
 // 三倍剩余经验次数
 tripleExpLeft
 
-// 副本X完成星级：1-3
+// 副本X状态[历史通关次数，星级0-3，今日进入次数]
 instanceXStar
-
-// 今日副本X进入次数
-instanceXEnterTimesDaily
-
-// 历史普通副本完成次数
-normalTimes
 
 // 今日普通副本完成次数
 normalTimesDaily
 
-// 历史精英副本完成次数
-hardTimes
-
 // 今日精英副本完成次数
 hardTimesDaily
+
+====MF===================================================
 
 // 历史已完成的非周期任务
 questComplete
@@ -43,7 +38,7 @@ questCompleteDaily
 // 技能点
 skillPoint
 
-// 技能点开始计时时间
+// 技能点恢复开始计时时间
 skillPointBeginTime
 
 // 历史达到品级X怪物数量
@@ -58,19 +53,22 @@ arenaTimes
 // 今日竞技场次数
 arenaTimesDaily
 
-// 历史洞X次数
+// 历史进入洞X次数
 holeXTimes
 
-// 今日洞X次数
+// 今日进入洞X次数
 holeXTimesDaily
 
 // 塔X已完成层数
 towerXFloor
 
-// 历史大冒险次数
+// 今日已雇佣怪物
+hireMonsterDaily
+
+// 历史领取大冒险奖励次数
 adventureTimes
 
-// 今日大冒险次数
+// 今日领取大冒险奖励次数
 adventureTimesDaily
 
 // 历史提升技能次数
@@ -94,12 +92,6 @@ useItemXCountDaily
 // 历史获得通天塔币数量
 coinTowerCount
 
-// 历史获得竞技场币数量
-coinArenaCount
-
-// 今日获得竞技场币数量
-coinArenaCountDaily
-
 // 历史获得公会币数量
 coinAllianceCount
 
@@ -109,19 +101,21 @@ coinAllianceCountDaily
 // 历史购买物品X次数
 buyItemXTimes
 
+====LF===================================================
+
 // 怪物图鉴
 monsterCollect
 
-// 历史合成怪物X次数
-monsterXMixTimes
+// 历史合成怪物次数
+monsterMixTimes
 
 // 今日副本挑战次数重置次数
 instanceResetTimesDaily
 
-// 普通副本章节X宝箱状态
+// 普通副本章节X宝箱状态（-1不能领取，0可领取，1已领取）
 chapterXBoxNormal
 
-// 困难副本章节X宝箱状态
+// 困难副本章节X宝箱状态（-1不能领取，0可领取，1已领取）
 chapterXBoxHard
 
 // 历史购买金币次数
@@ -148,10 +142,10 @@ useDiamondCount
 // 今日使用钻石数量
 useDiamondCountDaily
 
-// 历史同时穿过达到品级X装备数量
+// 历史同一只宠物穿过≥X品级的装备数量
 equipStageXMaxCount
 
-// 今日同时穿过达到品级X装备数量
+// 今日同一只宠物穿过≥X品级的装备数量
 equipStageXMaxCountDaily
 
 // 历史打孔次数
@@ -175,26 +169,55 @@ synAllTimesDaily
 // 历史合成类型X宝石次数
 synTypeXTimes
 
+====LF2==================================================
+
 // 刷新时间点X上次刷新时间
 refreshTimeX
 
-// 历史金币抽蛋次数
-eggCoinTimes
+// 大冒险条件刷新次数
+adventureChange", nullable = false)
 
-// 今日金币抽蛋次数
-eggCoinTimesDaily
+// 大冒险条件刷新次数开始计时时间
+adventureChangeBeginTime")
 
-// 历史钻石抽蛋次数
-eggDiamondTimes
+// 历史金币单抽次数（免费+收费）
+eggCoin1Times
+
+// 今日金币免费单抽次数
+eggCoin1FreeTimesDaily
+
+// 今日金币收费单抽次数
+eggCoin1PayTimesDaily
+
+// 历史金币十连抽次数
+eggCoin10Times
+
+// 今日金币十连抽次数
+eggCoin10TimesDaily
+
+// 上次免费金币抽蛋时间
+eggCoin1FreeLastTime
+
+// 历史钻石免费单抽次数
+eggDiamond1FreeTimes
+
+// 历史钻石收费单抽次数
+eggDiamond1PayTimes
+
+// 历史钻石十连抽次数
+eggDiamond10Times
+
+// 免费钻石抽蛋点数
+eggDiamond1FreePoint
+
+// 免费钻石抽蛋点数开始计时时间
+eggDiamond1FreePointBeginTime
 
 // 历史抽到品级X宠物次数
 callMonsterStageXTimes
 
 // 历史抽到品级X装备次数
 callEquipStageXTimes
-
-// 历史抽到物品X次数
-callItemXTimes
 
 // 历史公会祈福次数
 alliancePrayTimes
@@ -217,7 +240,7 @@ allianceTaskCountDaily
 // 今日公会贡献值领奖数
 allianceContriRewardDaily
 
-// 历史刷新商店次数
+// 历史手动刷新商店次数
 shopRefreshTimes
 
 // 商品充值次数记录
@@ -231,6 +254,9 @@ signInTimes
 
 // 登录次数
 loginTimes
+
+// 禁言时间
+dumpTime
 
 // 在线时间
 totalOnlineTime

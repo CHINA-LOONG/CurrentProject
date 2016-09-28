@@ -33,7 +33,7 @@ public class UIGainPet : UIBase
 
             mConfirmBtn.gameObject.SetActive(true);
             mGainPetText.gameObject.SetActive(true);
-            mGainPetBo.TriggerEvent("chuchang", Time.time, null);
+            //mGainPetBo.TriggerEvent("chuchang", Time.time, null);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ public class UIGainPet : UIBase
     //---------------------------------------------------------------------------------------------
     public void ShowGainPet(string monsterID)
     {
-        UICamera.Instance.CameraAttr.enabled = true;
+        //UICamera.Instance.CameraAttr.enabled = true;
         GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
         ShowGainPetInternal(gainPet);
         //StartCoroutine(ShowGainPetFlash(monsterID));
@@ -96,19 +96,18 @@ public class UIGainPet : UIBase
         mGainPetRender = ResourceMgr.Instance.LoadAsset("GainPetCamera");
         if (mGainPetRender != null)
         {
-            GameObject startObj = Util.FindChildByName(mGainPetRender, "PetStartRoot");
+            //GameObject startObj = Util.FindChildByName(mGainPetRender, "PetStartRoot");
             GameObject endObj = Util.FindChildByName(mGainPetRender, "PetEndRoot");
-            Vector3 djflaj = startObj.transform.eulerAngles;
             Quaternion localRot = Quaternion.identity;
             mGainPetBo = ObjectDataMgr.Instance.CreateBattleObject(
                                         gainPet,
                                         mGainPetRender,
-                                        startObj.transform.localPosition,
-                                        startObj.transform.localRotation
+                                        endObj.transform.localPosition,
+                                        endObj.transform.localRotation
                                         );
-            mGainPetBo.SetTargetRotate(startObj.transform.localRotation, false);
+            mGainPetBo.SetTargetRotate(endObj.transform.localRotation, false);
 
-            mGainPetBo.transform.DOMove(endObj.transform.position, BattleConst.battleEndDelay);
+            //mGainPetBo.transform.DOMove(endObj.transform.position, BattleConst.battleEndDelay);
             mGainPetEndTime = Time.time + BattleConst.battleEndDelay;
             mGainPetBo.TriggerEvent("gainUnitMove", Time.time, null);
         }

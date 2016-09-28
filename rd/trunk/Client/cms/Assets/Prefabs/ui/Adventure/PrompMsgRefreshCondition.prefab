@@ -596,6 +596,7 @@ MonoBehaviour:
   mHidePreviouseUI: 1
   textTitle: {fileID: 11443528}
   textDesc: {fileID: 11400274}
+  objGold: {fileID: 112780}
   costText: {fileID: 11409832}
   btnCancel: {fileID: 11403546}
   btnConfirm: {fileID: 11422342}

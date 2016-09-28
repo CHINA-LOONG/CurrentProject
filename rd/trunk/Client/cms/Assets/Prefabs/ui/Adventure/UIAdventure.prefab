@@ -1354,6 +1354,10 @@ MonoBehaviour:
   text_Msg1: {fileID: 11436030}
   text_Msg2: {fileID: 11405622}
   text_Msg3: {fileID: 11410098}
+  msg2StartColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3StartColor: {r: 1, g: .800000012, b: 0, a: 1}
+  msg2FinishColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3FinishColor: {r: 1, g: .800000012, b: 0, a: 1}
 --- !u!114 &11430668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1581,6 +1585,10 @@ MonoBehaviour:
   text_Msg1: {fileID: 11459894}
   text_Msg2: {fileID: 11466510}
   text_Msg3: {fileID: 11400238}
+  msg2StartColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3StartColor: {r: 1, g: .800000012, b: 0, a: 1}
+  msg2FinishColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3FinishColor: {r: 1, g: .800000012, b: 0, a: 1}
 --- !u!114 &11445892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2226,6 +2234,10 @@ MonoBehaviour:
   text_Msg1: {fileID: 11492272}
   text_Msg2: {fileID: 11472172}
   text_Msg3: {fileID: 11402792}
+  msg2StartColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3StartColor: {r: 1, g: .800000012, b: 0, a: 1}
+  msg2FinishColor: {r: .478431374, g: 1, b: 0, a: 1}
+  msg3FinishColor: {r: 1, g: .800000012, b: 0, a: 1}
 --- !u!114 &11490088
 MonoBehaviour:
   m_ObjectHideFlags: 1

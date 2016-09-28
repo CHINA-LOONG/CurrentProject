@@ -202,6 +202,10 @@ public class InstanceMapService : MonoBehaviour
 		else
 		{
             bool isOpen = true;
+            if(listRunTimeInstance.Count > 0 )
+            {
+                isOpen = listRunTimeInstance[listRunTimeInstance.Count - 1].star > 0;
+            }
 			InstanceEntry subStaticData = null;
 			for(int i =0 ; i < listStaticInstance.Count ; ++ i)
 			{

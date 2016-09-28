@@ -35,7 +35,7 @@ public class SociatyList : UIBase
 
     public  static  void    OpenWith(string search)
     {
-        SociatyList thislist = (SociatyList)UIMgr.Instance.OpenUI_(ViewName);
+        SociatyList thislist = (SociatyList)UIMgr.Instance.OpenUI_(ViewName,false);
         thislist.InitWithSearch(search);
     }
 

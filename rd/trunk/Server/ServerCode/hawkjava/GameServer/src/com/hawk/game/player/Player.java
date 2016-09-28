@@ -1609,6 +1609,19 @@ public class Player extends HawkAppObj {
 		}
 		statisticsEntity.setSkillPoint(GsConst.MAX_SKILL_POINT);
 		statisticsEntity.setAdventureChange(GsConst.MAX_ADVENTURE_CHANGE);
+		statisticsEntity.setEggDiamond1FreePoint(GsConst.summon.MAX_DIAMOND_FREE_TIMES);
+
+		// 上次钻石免费抽蛋时间提前，避免自动恢复
+		// 因上限1点特殊情况，客户端已完成不修改了。其他情况采用通用自动恢复逻辑，如skillPoint
+		Calendar eggDiamondTime = Calendar.getInstance();
+		eggDiamondTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.summon.DIAMOND_FREE_TIME) * 1000L);
+		statisticsEntity.setEggDiamond1FreePointBeginTime(eggDiamondTime);
+
+		// 上次金币免费抽蛋时间提前，避免冷却时间
+		Calendar eggCoinTime = Calendar.getInstance();
+		eggCoinTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.summon.COIN_FREE_CD) * 1000L);
+		statisticsEntity.setEggCoin1FreeLastTime(eggCoinTime);
+
 		statisticsEntity.notifyUpdate(true);
 
 		// 所有大冒险

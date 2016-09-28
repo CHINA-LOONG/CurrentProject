@@ -94,8 +94,22 @@ public class SociatyContentMember : SociatyContentBase
         PB.HSAllianceMembersRet memberRet = message.GetProtocolBody<PB.HSAllianceMembersRet>();
         sociatyDataMgr.allianceMemberList.Clear();
         sociatyDataMgr.allianceMemberList.AddRange(memberRet.memberList);
+        CheckSelfAllianceData();
         sociatyDataMgr.lastSyncAllianceMemberTime = GameTimeMgr.Instance.TimeStamp();
         UpdateMemberItems();
+    }
+
+    void CheckSelfAllianceData()
+    {
+        PB.AllianceMember subMember = null;
+        for(int i =0;i<sociatyDataMgr.allianceMemberList.Count;++i)
+        {
+            subMember = sociatyDataMgr.allianceMemberList[i];
+            if(subMember.id == sociatyDataMgr.allianceSelfData.id)
+            {
+                sociatyDataMgr.allianceSelfData.postion = subMember.postion;
+            }
+        }
     }
 
     public  void UpdateMemberItems()

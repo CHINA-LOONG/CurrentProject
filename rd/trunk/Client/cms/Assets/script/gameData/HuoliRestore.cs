@@ -4,10 +4,6 @@ using System.Collections;
 
 public class HuoliRestore : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
     bool isRestoreing = false;
     public  bool IsRestoring
     {

@@ -12,11 +12,6 @@ public class UILoginDetail : UIBase {
         EventTriggerListener.Get(button.gameObject).onClick = OnButtonClick;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void OnButtonClick(GameObject go)
     {
 

@@ -230,7 +230,8 @@ public class UIAdventureLayout : UIBase,
         if (monster is AdventureSelfMonsterInfo)
         {
             AdventureSelfMonsterInfo thisMonster = monster as AdventureSelfMonsterInfo;
-            if (((needType != -1 && thisMonster.unitData.type == needType) || (needType == -1)) && (needProperty != -1 && thisMonster.unitData.property == needProperty) || (needProperty == -1))
+            if (((needType != -1 && thisMonster.unitData.type == needType) || (needType == -1)) && 
+                ((needProperty != -1 && thisMonster.unitData.property == needProperty) || (needProperty == -1)))
             {
                 return true;
             }
@@ -242,7 +243,7 @@ public class UIAdventureLayout : UIBase,
         else if (monster is AdventureGuildMonsterInfo)
         {
             AdventureGuildMonsterInfo thisMonster = monster as AdventureGuildMonsterInfo;
-            if (((filterType != -1 && thisMonster.unitData.type == filterType) || (filterType == -1)) && (filterProperty != -1 && thisMonster.unitData.property == filterProperty) || (filterProperty == -1))
+            if (((filterType != -1 && thisMonster.unitData.type == filterType) || (filterType == -1)) && ((filterProperty != -1 && thisMonster.unitData.property == filterProperty) || (filterProperty == -1)))
             {
                 return true;
             }
@@ -303,6 +304,7 @@ public class UIAdventureLayout : UIBase,
             item.IsFilter = false;
             itemPool.Remove(item);
         }
+        (item.transform as RectTransform).SetAsLastSibling();
         return item;
     }
     public void RemoveAllConditionItem()

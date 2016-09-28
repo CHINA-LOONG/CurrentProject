@@ -284,7 +284,7 @@ tips_go,进入,go to
 ,,
 xl_common,公用部分,
 pet_detail_skill_level,等级:,LVL:
-equip_forge_zhanli,战力:,BP:
+equip_forge_zhanli,战力:{0},BP:{0}
 common_attr_strenth,力量,STR
 common_attr_defence,防御,DEF
 common_attr_intelligence,智力,INT
@@ -760,86 +760,6 @@ chapter5_name,南拳,nan
 chapter6_name,北郊,bei
 chapter7_name,昌平,changping
 chapter8_name,大兴,daxing
-zhuxian10001,天赐神宠,Bestowed Upon You
-zhuxian10002,获得神宠,Deity Monster
-zhuxian10003,小试身手,First Test
-zhuxian10004,乘胜追击,Pursuit more victories
-zhuxian10005,你需要治愈,Healing Is Needed
-zhuxian10006,流浪狼人,Werewolf the ranger
-zhuxian10007,药不能停,Healthy Dose
-zhuxian10008,中BOSS罢了,Halfway There
-zhuxian10009,技巧的磨砺,Sharpening Your Skills
-zhuxian10010,花小仙子,Flower Pixie
-zhuxian10011,穿戴装备,Try It On
-zhuxian10012,逛逛商店,Browse The Shop
-zhuxian10013,训练宠物,Monster Training
-zhuxian10014,装备穿齐,Matching Outfit
-zhuxian10015,突破大街,Battle For Home
-zhuxian10016,打磨装备,Keep It Polished
-zhuxian10017,全部拿走,Perfectionist
-zhuxian10018,日常修炼,Daily Practice
-zhuxian10019,竞技生涯,Competitive Career
-zhuxian10020,装备进阶,Advanced Equipment
-zhuxian10021,训宠大师,Training Master
-zhuxian10022,能量灌注,Evolutionary Scale
-zhuxian10023,突破拦截,Interceptor 
-zhuxian10024,新的挑战,New Challenge
-zhuxian10025,限制突破,No Limits
-zhuxian10026,双重超量,Double Trouble
-zhuxian10027,冲向异界,Charging The Outerworld
-zhuxian10028,蓝色超量,Blue Power
-zhuxian10029,次元能力探秘,True Craftsman
-zhuxian10030,驾驭次元,Infused Power
-mubiao10001,抽蛋1次,Draw 1 time 
-mubiao10002,合成冰雪女王,Summon Chione 
-mubiao10003,通关1-1,Clear Stage 1-1 
-mubiao10004,通关1-2,Clear Stage 1-2
-mubiao10005,合成苗娃曼陀罗,Summon Mandrake 
-mubiao10006,通关1-3,Clear Stage 1-3
-mubiao10007,使用经验药三次,Use EXP Potion 3 times 
-mubiao10008,通关1-4,Clear Stage 1-4 
-mubiao10009,升级技能3次,Upgrade abilities 3 times 
-mubiao10010,通关1-5,Clear Stage 1-5
-mubiao10011,穿戴装备,Equip a piece of equipment 
-mubiao10012,商店刷新物品1次,Refresh shop goods 1 time 
-mubiao10013,其中一只宠物升级至5,Level up a monster to level 5 
-mubiao10014,将冰雪女王装备穿戴至少3件,Equip 3 equipment on Chione 
-mubiao10015,通关1-8,Clear Stage 1-8 
-mubiao10016,装备强化1次,Upgrade a piece of equipment 
-mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
-mubiao10018,完成一个每日任务,Complete a daily mission 
-mubiao10019,竞技场,Arena
-mubiao10020,装备进阶至绿,Advance equipment to green 
-mubiao10021,升级宠物2只至7级,Level up 2 monster to 7
-mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
-mubiao10023,通关2-4,Clear Stage 2-4 
-mubiao10024,挑战本开启完成挑战本1-1,Clear Stage 1-1 on Heroic 
-mubiao10025,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
-mubiao10026,有2件绿色装备,Have 2 pieces of green equipment 
-mubiao10027,通关2-8,Clear Stage 2-8 
-mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
-mubiao10029,装备开孔,Open an equipment socket 
-mubiao10030,装备镶嵌,Insert a gem in equipment
-richang1,每日剧情副本,Daily Campaign Stages
-richang2,每日通关挑战副本,Daily Heroic Stages
-richang3,每日技能升级,Daily Ability Upgrade
-richang4,每日装备升级,Daily Equipment Upgrade
-richang5,每日金币购买,Daily Coin Purchase
-richang6,每日商店刷新,Daily Store Refresh
-rimubiao1,剧情副本10次,Complete 10 Campaign Stages
-rimubiao2,通关挑战副本3次,Complete 3 Heroic Stages
-rimubiao3,技能升级3次,Level up abilities 3 times
-rimubiao4,装备升级1次,Upgrade equipment once
-rimubiao5,购买金币1次,Purchase Coins once
-rimubiao6,刷新商店1次,Refresh the Store once
-linshi1,合成狼人,Summon Werewolf
-linshi2,合成花魄,Summon Flower Spirit
-linmubiao1,合成狼人,Summon Werewolf
-linmubiao2,合成花魄,Summon Flower Spirit
-zhixian20001,扫荡2-3,Raid 2-3
-zhixian20002,扫荡2-7,Raid 2-7
-zhimubiao20001,通关2-3,Raid 2-3（even you pass）
-zhimubiao20002,通关2-7,Raid 2-7 （even you pass）
 login_denglu_001,当前登录服务器,Current server
 login_denglu_002,切换,Change
 login_gonggao_001,公告,Announcement
@@ -890,6 +810,7 @@ adventure_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} 
 adventure_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
 adventure_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
 adventure_paimonster,派遣宠物,Dispatch Monsters
+adventure_mymonster,我的宠物,My Monsters
 adventure_condition1,条件1,Req. 1
 adventure_condition2,条件2,Req. 2
 adventure_condition3,条件3,Req. 3
@@ -902,7 +823,7 @@ adventure_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
 sociaty_meijiaguild,尚未加入公会,not join guild
 adventure_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
 adventure_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
-adventure_tipsmax,次数已满,(full)
+adventure_tipsmax,10/10（次数已满）,10/10(full)
 adventure_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
 adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
 adventure_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?

@@ -12,6 +12,8 @@ public class MainSummon : UIBase
     public Text zuanshiSumName;
     public Text sumIntroduce1;
     public Text sumIntroduce2;
+    public Text jinbiText;
+    public Text zuanshiText;
     public GameObject jinbiButton;
     public GameObject zuanshiButton;
     public GameObject freeImage1;
@@ -20,6 +22,14 @@ public class MainSummon : UIBase
     public GameObject zuanshi;
     public GameObject close;
     private MainStageController mMainStageControl;
+    static MainSummon mInst = null;
+    public static MainSummon Instance
+    {
+        get
+        {
+            return mInst;
+        }
+    }
     //---------------------------------------------------------------------------------------------
     public void SetMainStageControl(MainStageController control)
     {
@@ -48,12 +58,14 @@ public class MainSummon : UIBase
         uiSummon = UIMgr.Instance.OpenUI_(UISummon.ViewName) as UISummon;
         uiSummon.OpenUISummon(consume);
 		uiSummon. SetFreeTime();
+        UIIm.Instance.HideIm(true);
     }
     //---------------------------------------------------------------------------
     void Exit(GameObject go)
     {
         UIMgr.Instance.CloseUI_(MainSummon.ViewName);
          mMainStageControl.QuitSelectGroup();
+         UIIm.Instance.HideIm(false);
     }
     //---------------------------------------------------------------------------
     void SetFree(bool isfree,GameObject free1,GameObject free2)
@@ -70,20 +82,9 @@ public class MainSummon : UIBase
         }
     }
     //---------------------------------------------------------------------------
-    void Start()
+    public void SetReset()
     {
-        EventTriggerListener.Get(jinbiButton).onClick = JinbiSummon;
-        EventTriggerListener.Get(zuanshiButton).onClick = ZhuanshiSummon;
-        EventTriggerListener.Get(close).onClick = Exit;
-        jinbiSumName.text = StaticDataMgr.Instance.GetTextByID("summon_titlecoin");
-        zuanshiSumName.text = StaticDataMgr.Instance.GetTextByID("summon_titlegold");
-        sumIntroduce1.text = StaticDataMgr.Instance.GetTextByID("summon_tipscoin");
-        sumIntroduce2.text = StaticDataMgr.Instance.GetTextByID("summon_tipsgold");
-        freeImage1.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
-        freeImage2.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
-        jinbi.gameObject.GetComponent<Text>().text = GameConfig.Instance.jinBiSum.ToString();
-        zuanshi.gameObject.GetComponent<Text>().text = GameConfig.Instance.zuanShiSum.ToString();
-        if (GameDataMgr.Instance.freeJinbiSumNum <  5)
+        if (GameDataMgr.Instance.freeJinbiSumNum < 5)
         {
             if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
                 SetFree(true, freeImage1, jinbi);
@@ -96,6 +97,62 @@ public class MainSummon : UIBase
             SetFree(true, freeImage2, zuanshi);
         else
             SetFree(false, freeImage2, zuanshi);
+        if (GameDataMgr.Instance.PlayerDataAttr.gold < GameConfig.Instance.zuanShiSum)
+            zuanshiText.color = Color.red;
+        else
+            zuanshiText.color = ColorConst.system_color_black;
+        if (GameDataMgr.Instance.PlayerDataAttr.coin < GameConfig.Instance.jinBiSum)
+            jinbiText.color = Color.red;
+        else
+            jinbiText.color = ColorConst.system_color_black;
     }
     //---------------------------------------------------------------------------
+    void Start()
+    {
+        mInst = this;
+        EventTriggerListener.Get(jinbiButton).onClick = JinbiSummon;
+        EventTriggerListener.Get(zuanshiButton).onClick = ZhuanshiSummon;
+        EventTriggerListener.Get(close).onClick = Exit;
+        jinbiSumName.text = StaticDataMgr.Instance.GetTextByID("summon_titlecoin");
+        zuanshiSumName.text = StaticDataMgr.Instance.GetTextByID("summon_titlegold");
+        sumIntroduce1.text = StaticDataMgr.Instance.GetTextByID("summon_tipscoin");
+        sumIntroduce2.text = StaticDataMgr.Instance.GetTextByID("summon_tipsgold");
+        freeImage1.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
+        freeImage2.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("summon_free");
+        jinbiText.text = GameConfig.Instance.jinBiSum.ToString();
+        zuanshiText.text = GameConfig.Instance.zuanShiSum.ToString();
+        SetReset();
+    }
+    //---------------------------------------------------------------------------
+    void OnCoinChanged(long coin)
+    {
+        SetReset();
+    }
+    //---------------------------------------------------------------------------
+    void OnZuanshiChanged(int zuanshi)
+    {
+        SetReset();
+    }
+    //---------------------------------------------------------------------------
+    void OnEnable()
+    {
+        BindListener();
+    }
+    //---------------------------------------------------------------------------
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+    //---------------------------------------------------------------------------
+    void BindListener()
+    {
+        GameEventMgr.Instance.AddListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+    }
+    //---------------------------------------------------------------------------
+    void UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+    }
 }

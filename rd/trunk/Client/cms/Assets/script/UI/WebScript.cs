@@ -16,7 +16,7 @@ public class WebScript : MonoBehaviour {
             mWebView = mWebParent.gameObject.AddComponent<UniWebView>();
             mWebView.OnLoadComplete += OnLoadComplete;
             //int bottomInset = (int)(UniWebViewHelper.screenHeight * 0.5f);
-            mWebView.insets = new UniWebViewEdgeInsets(1, 1, 40, 1);
+            mWebView.insets = new UniWebViewEdgeInsets(10, 10, 60, 10);
             mWebView.url = "https://www.baidu.com";
             mWebView.Load();
             //_webView.Show();

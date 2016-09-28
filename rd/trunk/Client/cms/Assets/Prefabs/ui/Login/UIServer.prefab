@@ -1699,6 +1699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   login: {fileID: 117814}
   loginClick: {fileID: 159286}
   selectServerBtn: {fileID: 131868}
@@ -1980,7 +1983,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1.52590001e-05, y: -290}
+  m_AnchoredPosition: {x: 1, y: -26.2999992}
   m_SizeDelta: {x: 138, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22412614
@@ -2096,11 +2099,11 @@ RectTransform:
   - {fileID: 22407834}
   m_Father: {fileID: 22428876}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: .5, y: 0}
 --- !u!224 &22432804
 RectTransform:
   m_ObjectHideFlags: 1

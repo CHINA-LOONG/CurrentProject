@@ -29,12 +29,9 @@ public class SpellService : MonoBehaviour
 
     public Spell mCurActionSpell = null;
     //---------------------------------------------------------------------------------------------
-    public void Start()
-    {
-    }
-    //---------------------------------------------------------------------------------------------
     public void Init()
     {
+
     }
     //---------------------------------------------------------------------------------------------
     public void AddDeadData(SpellUnitDeadArgs args, GameUnit deadUnit, EffectDamage causeDeadEffect)

@@ -29,13 +29,7 @@ public class MirrorTarget : MonoBehaviour
 	/// is 本体?
 	/// </summary>
 	public bool	isSelf = false;
-
-	// Use this for initialization
-	void Start () 
-	{
-	  
-	}
-
+    
 	public	WeakPointRuntimeData WpRuntimeData
 	{
 		get

@@ -17,11 +17,6 @@ public class UIGM : UIBase {
         EventTriggerListener.Get(okButton.gameObject).onClick = OKButtonClick;
         BindListener();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	} 
 
     void OnDestroy()
     {

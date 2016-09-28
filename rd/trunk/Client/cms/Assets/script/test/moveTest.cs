@@ -12,11 +12,6 @@ public class moveTest : MonoBehaviour {
            
     }
 
-    // Update is called once per frame  
-    void Update () {  
-
-    }
-
     void gmBtnPressEnter(GameObject go){
        
         StartCoroutine(OnMouseDown());

@@ -190,7 +190,7 @@ public class GameUnit : IComparable
 
 	//战斗单元统计数据 
 	public	int attackCount = 0;
-	public 	List<int> lazyList = new List<int>();
+	//public 	List<int> lazyList = new List<int>();
 	public	List<int> dazhaoList = new List<int>();
 
     public static GameUnit FromPb(PbUnit unit, bool isPlayer)

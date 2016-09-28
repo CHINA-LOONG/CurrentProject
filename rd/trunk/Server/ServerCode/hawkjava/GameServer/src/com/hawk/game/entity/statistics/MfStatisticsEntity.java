@@ -45,7 +45,7 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "skillPoint", nullable = false)
 	protected int skillPoint = 0;
 
-	// 技能点开始计时时间
+	// 技能点恢复开始计时时间
 	@Column(name = "skillPointBeginTime")
 	protected Calendar skillPointBeginTime = null;
 

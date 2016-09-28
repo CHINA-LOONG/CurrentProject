@@ -129,11 +129,6 @@ public class MusicManager : MonoBehaviour
 		tags = new string[0];
 		clipSequenceIndex = -1;
 	}
-	
-	void Start () 
-	{
-	}
-		
 	public void AddAudioClip(AudioClip clip, string audioTag)
 	{
 		AddAudioClip(clip, audioTag, 1);

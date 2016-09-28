@@ -114,11 +114,15 @@ public class UIAdventure : UIBase,
         }
         else
         {
-            UIMgr.Instance.CloseUI_(this);
+            OnExitAnimationEnd();
         }
     }
     void OnExitAnimationEnd()
     {
+        for (int i = 0; i < adventures.Count; i++)
+        {
+            adventures[i].curData = null;
+        }
         UIMgr.Instance.CloseUI_(this);
     }
 

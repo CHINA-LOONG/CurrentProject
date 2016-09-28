@@ -22,10 +22,6 @@ public class InstanceButton : MonoBehaviour
 		//EventTriggerListener.Get (button.gameObject).onClick = OnButtonClick;		
 	}
 
-	void OnButtonClick(GameObject go)
-	{
-	}
-
 	public	void SetStar(int star)
 	{
         //modify: xuelong 先把显示几星关闭掉---功能需要打开    2015-9-1 10:24:00

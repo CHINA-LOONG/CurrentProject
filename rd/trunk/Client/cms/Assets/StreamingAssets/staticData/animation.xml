@@ -18,8 +18,8 @@ state = 1 Remove
 		</Ani>
 		<Ani id="gainUnitMove" state="0">
 			<MotionList>
-				<Motion time="0" ani="" key="paobu" value="true"/>
-				<Motion time="2" ani="" key="paobu" value="false"/>
+				<Motion time = "0" ani="" key="dazhaoxuanyao" value="true"/>
+				<Motion time= "2" ani="" key="dazhaoxuanyao" value="false"/>
 			</MotionList>
 		</Ani>
 		<Ani id="test_sequence" state="0" action_delay="0">

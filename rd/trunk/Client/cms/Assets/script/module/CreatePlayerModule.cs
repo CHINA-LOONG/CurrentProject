@@ -3,11 +3,6 @@ using System.Collections;
 
 public class CreatePlayerModule : ModuleBase 
 {
-
-	void Start()
-	{
-	}
-
 	void BindListener()
 	{
         GameEventMgr.Instance.AddListener<string> (GameEventList.createPlayerClick, OnCreatePlayerClick);

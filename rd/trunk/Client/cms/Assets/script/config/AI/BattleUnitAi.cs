@@ -148,33 +148,6 @@ public class BattleUnitAi : MonoBehaviour {
 
 		return attackResult;
     }
-
-	void	InitLazyList(GameUnit battleUnit)
-	{
-		battleUnit.lazyList.Clear ();
-		int maxGroup = 0;
-
-		int lazyIndex = battleUnit.lazy;
-		LazyData lazyData = StaticDataMgr.Instance.GetLazyData (lazyIndex);
-		if (null == lazyData) 
-		{
-			Logger.LogError("static lazy data Can't contain index = " + lazyIndex);
-			return;
-		}
-
-		int lazyGroup = lazyData.lazyGroup;
-		maxGroup = attackMaxTimes / lazyGroup + 1;
-
-		int timesPerGroup = lazyData.lazyTimes;
-		for (int i = 0; i< maxGroup; ++ i) 
-		{
-			List<int> rondomList = Util.RondomNoneReatNumbers(0,lazyGroup,timesPerGroup);
-			foreach(int subRoodom in rondomList)
-			{
-				battleUnit.lazyList.Add(subRoodom + i * lazyGroup); 
-			}
-		}
-	}
 	
 	void InitDazhaoList(GameUnit battleUnit)
 	{
@@ -196,17 +169,18 @@ public class BattleUnitAi : MonoBehaviour {
 			//rondomIndex = Random.Range(0,dazhaoGroup);
 			rondomAdjust = Random.Range(0,dazhaoAdjust);
 			dazhaoIndex = (i+1) * dazhaoGroup - 1 - rondomAdjust;
+            battleUnit.dazhaoList.Add(dazhaoIndex);
 
-			int minDazhaoIndex = i*dazhaoGroup;
+			//int minDazhaoIndex = i*dazhaoGroup;
 
-			for(int j = dazhaoIndex;j>=minDazhaoIndex;--j)
-			{
-				if(!battleUnit.lazyList.Contains(j))
-				{
-					battleUnit.dazhaoList.Add(j);
-					break;
-				}
-			}
+   //         for (int j = dazhaoIndex;j>=minDazhaoIndex;--j)
+			//{
+			//	if(!battleUnit.lazyList.Contains(j))
+			//	{
+			//		battleUnit.dazhaoList.Add(j);
+			//		break;
+			//	}
+			//}
 		}
 	}
 	#region  -----------------------  AttackStyle---------------
@@ -222,10 +196,10 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		
 		//lazy 
-		if (battleUnit.lazyList.Contains (battleUnit.attackCount))
-		{
-			return AiAttackStyle.Lazy;
-		}
+		//if (battleUnit.lazyList.Contains (battleUnit.attackCount))
+		//{
+		//	return AiAttackStyle.Lazy;
+		//}
 		
 		//大招
 		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&

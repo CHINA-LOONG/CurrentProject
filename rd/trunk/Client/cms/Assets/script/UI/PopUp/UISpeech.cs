@@ -27,7 +27,7 @@ public class UISpeech : UIBase
         public Image imgFace;
         public Text textName;
         public Text textContent;
-        public Image imgNetTips;
+        public GameObject objNextTips;
 
         string strRole;
         string strFace;
@@ -38,15 +38,18 @@ public class UISpeech : UIBase
             {
                 strRole = data.image;
                 imgRole.sprite= ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
+                //imgRole.SetNativeSize();
             }
             if (string.IsNullOrEmpty(strFace) || !strFace.Equals(data.face))
             {
                 strFace = data.face;
-                imgFace.sprite= ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
+                imgFace.sprite= ResourceMgr.Instance.LoadAssetType<Sprite>(data.face);
+                imgFace.transform.localPosition = data.FacePos;
+                //imgFace.SetNativeSize();
             }
             textName.text = StaticDataMgr.Instance.GetTextByID(data.name);
             textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
-            imgNetTips.gameObject.SetActive(!isLast);
+            objNextTips.SetActive(!isLast);
         }
     }
     
@@ -95,8 +98,13 @@ public class UISpeech : UIBase
                 //TODO:播放动画
                 if (index != 0)
                 {
-                    animatorB.SetTrigger("exit");
+                    //animatorB.SetTrigger("exit");
+                    //Vector2 temp = (animatorB.transform as RectTransform).anchoredPosition;
+                    //temp.x = 1200;
+                    //(animatorB.transform as RectTransform).anchoredPosition = temp;
                 }
+                animatorB.gameObject.SetActive(false);
+                animatorA.gameObject.SetActive(true);
                 animatorA.SetTrigger("enter");
             }
             campA.SetSpeech(data, index == (info.speechList.Count - 1));
@@ -108,8 +116,13 @@ public class UISpeech : UIBase
                 //TODO:播放动画
                 if (index != 0)
                 {
-                    animatorA.SetTrigger("exit");
+                    //animatorA.SetTrigger("exit");
+                    //Vector2 temp = (animatorA.transform as RectTransform).anchoredPosition;
+                    //temp.x = 1200;
+                    //(animatorA.transform as RectTransform).anchoredPosition = temp;
                 }
+                animatorA.gameObject.SetActive(false);
+                animatorB.gameObject.SetActive(true);
                 animatorB.SetTrigger("enter");
             }
             campB.SetSpeech(data, index == (info.speechList.Count - 1));

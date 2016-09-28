@@ -91,9 +91,4 @@ public class UIHoleEntry : UIBase
         EventTriggerListener.Get(mReturnBtn.gameObject).onClick = OnReturn;
     }
     //---------------------------------------------------------------------------------------------
-    // Update is called once per frame
-    void Update () {
-
-    }
-    //---------------------------------------------------------------------------------------------
 }

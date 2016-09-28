@@ -9,6 +9,7 @@ public class PrompMsgRefreshCondition : UIBase
 
     public Text textTitle;
     public Text textDesc;
+    public GameObject objGold;
     public Text costText;
 
     public Button btnCancel;
@@ -45,7 +46,7 @@ public class PrompMsgRefreshCondition : UIBase
         textTitle.text = title;
         OnAdventureConditionCountChangeNotify();
 
-        costText.gameObject.SetActive(cost != 0);
+        objGold.SetActive(cost != 0);
         costText.text = cost.ToString();
     }
 

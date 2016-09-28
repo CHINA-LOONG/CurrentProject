@@ -246,7 +246,7 @@ public class PhyDazhaoController : MonoBehaviour
 			return;
 		}
 
-		if (DazhaoLeftTime < 1)
+		if (DazhaoLeftTime < 1.0f)
 		{
 			DazhaoFinished();
 		}

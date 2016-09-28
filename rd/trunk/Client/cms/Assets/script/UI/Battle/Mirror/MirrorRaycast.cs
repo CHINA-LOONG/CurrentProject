@@ -4,13 +4,6 @@ using System.Collections.Generic;
 
 public class MirrorRaycast : MonoBehaviour 
 {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-
-
 	public List<MirrorTarget> WeakpointRayCast(Vector3 startPosInScreen)
 	{
 		List<MirrorTarget> returnList = new List<MirrorTarget> ();

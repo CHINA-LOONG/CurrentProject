@@ -160,6 +160,7 @@ public class ResourceMgr : MonoBehaviour
 
         LoadAssetBundle("texture/icon", true);
         LoadAssetBundle("texture/common", true);
+        //LoadAssetBundle("ui/im", true);
     }
     public void LoadLevelAsyn(string levelName, bool isAdditive, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
     {
@@ -216,9 +217,9 @@ public class ResourceMgr : MonoBehaviour
             {
                 Logger.LogError("loading not finish!");
             }
-            Resources.UnloadUnusedAssets();
         }
 
+        Resources.UnloadUnusedAssets();
         System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
@@ -629,7 +630,17 @@ public class ResourceMgr : MonoBehaviour
         {
             if (--bundle.referencedCount == 0 && bundle.ignoreReferenceCount == false)
             {
-                bundle.assetBundle.Unload(false);
+                //test only
+                if (assetBundleName.Contains("scene") == false)
+                {
+                    //bundle.assetBundle.Unload(true);
+                    bundle.assetBundle.Unload(false);
+                }
+                else
+                {
+                    bundle.assetBundle.Unload(false);
+                }
+
                 loadedAssetBundleList.Remove(assetBundleName);
             }
         }

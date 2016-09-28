@@ -204,7 +204,7 @@ public class BattleController : MonoBehaviour
             double curTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
             if (curTime - beginChangeEnegyTime > 200)
             {
-                int times = (int)(curTime - beginChangeEnegyTime) / 200;
+                int times = (int)((curTime - beginChangeEnegyTime) * 0.005);
                 if(changeStep == 1)
                 {
                     MirrorEnegyAttr += times * GameConfig.Instance.RecoveryMirrorEnegyUnit;

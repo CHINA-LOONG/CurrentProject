@@ -18,17 +18,6 @@ public class MonsterIconBg : MonoBehaviour
         EventTriggerListener.Get(gameObject).onClick = OnBgClick;
 	}
 
-	public	void	AddIcon(Transform iconGo)
-	{
-	}
-
-	public	void	ClearIcon()
-	{
-		if (null != iconTranform)
-		{
-		}
-	}
-
 	public	void	SetEffectShow(bool bshow)
 	{
 		focusEffect.SetActive (bshow);

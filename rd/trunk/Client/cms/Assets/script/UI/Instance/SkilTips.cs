@@ -7,13 +7,6 @@ public class SkilTips : MonoBehaviour
 	public	Text	skillTypeText;
 	public	Text	skillDescText;
 	
-
-	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-
 	public	void	SetSpellId(string spellId,int level)
 	{
 		SpellProtoType spell = StaticDataMgr.Instance.GetSpellProtoData (spellId);
