@@ -65,11 +65,11 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "arenaTimesDaily", nullable = false)
 	protected int arenaTimesDaily = 0;
 
-	// 历史洞X次数
+	// 历史进入洞X次数
 	@Column(name = "holeXTimes", nullable = false)
 	protected String holeXTimesJson = "";
 
-	// 今日洞X次数
+	// 今日进入洞X次数
 	@Column(name = "holeXTimesDaily", nullable = false)
 	protected String holeXTimesDailyJson = "";
 
@@ -81,11 +81,11 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "hireMonsterDaily", nullable = false)
 	protected String hireMonsterDailyJson = "";
 
-	// 历史大冒险次数
+	// 历史领取大冒险奖励次数
 	@Column(name = "adventureTimes", nullable = false)
 	protected int adventureTimes = 0;
 
-	// 今日大冒险次数
+	// 今日领取大冒险奖励次数
 	@Column(name = "adventureTimesDaily", nullable = false)
 	protected int adventureTimesDaily = 0;
 
@@ -116,14 +116,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	// 历史获得通天塔币数量
 	@Column(name = "coinTowerCount", nullable = false)
 	protected int coinTowerCount = 0;
-
-	// 历史获得竞技场币数量
-	@Column(name = "coinArenaCount", nullable = false)
-	protected int coinArenaCount = 0;
-
-	// 今日获得竞技场币数量
-	@Column(name = "coinArenaCountDaily", nullable = false)
-	protected int coinArenaCountDaily = 0;
 
 	// 历史获得公会币数量
 	@Column(name = "coinAllianceCount", nullable = false)

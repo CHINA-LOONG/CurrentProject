@@ -200,68 +200,105 @@ public class StatisticsEntity {
 		hfUpdate = true;
 	}
 
-	// instanceStar--------------------------------------------
-	public Map<String, Integer> getInstanceStarMap() {
-		return hfEntity.instanceStarMap;
+	// instanceState--------------------------------------------
+	public Map<String, int[]> getInstanceStateMap() {
+		return hfEntity.instanceStateMap;
+	}
+
+	public void removeInstanceState(String instanceId) {
+		// 只有GM使用
+		hfEntity.instanceStateMap.remove(instanceId);
+		hfEntity.instanceStateFlag = true;
+		hfUpdate = true;
+	}
+
+	/**
+	 * @return 副本完成次数，如未完成返回0
+	 */
+	public int getInstanceWinTimes(String instanceId) {
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			return state[GsConst.Instance.STATE_WIN_INDEX];
+		}
+		return 0;
+	}
+
+	public void increaseInstanceWinTimes(String instanceId, int type, int times) {
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			state[GsConst.Instance.STATE_WIN_INDEX] += times;
+		} else {
+			if (type == Const.InstanceType.INSTANCE_STORY_VALUE) {
+				hfEntity.instanceStateMap.put(instanceId, new int[]{times, 0, 0});
+			} else {
+				hfEntity.instanceStateMap.put(instanceId, new int[]{times});
+			}
+		}
+		hfEntity.instanceStateFlag = true;
+		hfUpdate = true;
 	}
 
 	/**
 	 * @return 副本完成星级，如未完成返回0
 	 */
 	public int getInstanceStar(String instanceId) {
-		Integer star = hfEntity.instanceStarMap.get(instanceId);
-		if (null != star) {
-			return star;
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			return state[GsConst.Instance.STATE_STAR_INDEX];
 		}
 		return 0;
 	}
 
 	public void setInstanceStar(String instanceId, int star) {
-		// 如果没有星级，直接删除
-		if (star <= 0) {
-			hfEntity.instanceStarMap.remove(instanceId);
+		// star为0的情况正常逻辑只有最后一个副本会出现
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			state[GsConst.Instance.STATE_STAR_INDEX] = star;
 		} else {
-			hfEntity.instanceStarMap.put(instanceId, star);
+			hfEntity.instanceStateMap.put(instanceId, new int[] {0, star, 0});
 		}
-		hfEntity.instanceStarFlag = true;
+		hfEntity.instanceStateFlag = true;
 		hfUpdate = true;
 	}
 
-	// instanceEnterTimes--------------------------------------------
-	public Map<String, Integer> getInstanceEnterTimesDailyMap() {
-		return hfEntity.instanceEnterTimesDailyMap;
-	}
-
 	/**
-	 * @return 副本进入次数，如未进入返回0
+	 * @return 每日副本进入次数，如未进入返回0
 	 */
 	public int getInstanceEnterTimesDaily(String instanceId) {
-		Integer count = hfEntity.instanceEnterTimesDailyMap.get(instanceId);
-		if (null != count) {
-			return count;
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			return state[GsConst.Instance.STATE_ENTER_INDEX];
 		}
 		return 0;
 	}
 
 	public void increaseInstanceEnterTimesDaily(String instanceId, int times) {
-		Integer cur = hfEntity.instanceEnterTimesDailyMap.get(instanceId);
-		if (null == cur) {
-			cur = 0;
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			state[GsConst.Instance.STATE_ENTER_INDEX] += times;
+		} else {
+			hfEntity.instanceStateMap.put(instanceId, new int[] {0, 0, times});
 		}
-		hfEntity.instanceEnterTimesDailyMap.put(instanceId, cur + times);
-		hfEntity.instanceEnterTimesDailyFlag = true;
+		hfEntity.instanceStateFlag = true;
 		hfUpdate = true;
 	}
 
 	public void setInstanceEnterTimesDaily(String instanceId, int times) {
-		hfEntity.instanceEnterTimesDailyMap.put(instanceId, times);
-		hfEntity.instanceEnterTimesDailyFlag = true;
+		int[] state = hfEntity.instanceStateMap.get(instanceId);
+		if (null != state) {
+			state[GsConst.Instance.STATE_ENTER_INDEX] = times;
+		} else {
+			hfEntity.instanceStateMap.put(instanceId, new int[] {0, 0, times});
+		}
+		hfEntity.instanceStateFlag = true;
 		hfUpdate = true;
 	}
 
 	public void clearInstanceEnterTimesDaily() {
-		hfEntity.instanceEnterTimesDailyMap.clear();
-		hfEntity.instanceEnterTimesDailyFlag = true;
+		for (int[] state : hfEntity.instanceStateMap.values()) {
+			state[GsConst.Instance.STATE_ENTER_INDEX] = 0;
+		}
+		hfEntity.instanceStateFlag = true;
 		hfUpdate = true;
 	}
 
@@ -278,8 +315,8 @@ public class StatisticsEntity {
 		return hfEntity.normalTimes;
 	}
 
-	public void increaseInstanceNormalTimes() {
-		++hfEntity.normalTimes;
+	public void increaseInstanceNormalTimes(int times) {
+		hfEntity.normalTimes += times;
 		hfUpdate = true;
 	}
 
@@ -287,8 +324,8 @@ public class StatisticsEntity {
 		return hfEntity.normalTimesDaily;
 	}
 
-	public void increaseInstanceNormalTimesDaily() {
-		++hfEntity.normalTimesDaily;
+	public void increaseInstanceNormalTimesDaily(int times) {
+		hfEntity.normalTimesDaily += times;
 		hfUpdate = true;
 	}
 
@@ -301,8 +338,8 @@ public class StatisticsEntity {
 		return hfEntity.hardTimes;
 	}
 
-	public void increaseInstanceHardTimes() {
-		++hfEntity.hardTimes;
+	public void increaseInstanceHardTimes(int times) {
+		hfEntity.hardTimes += times;
 		hfUpdate = true;
 	}
 
@@ -310,8 +347,8 @@ public class StatisticsEntity {
 		return hfEntity.hardTimesDaily;
 	}
 
-	public void increaseInstanceHardTimesDaily() {
-		++hfEntity.hardTimesDaily;
+	public void increaseInstanceHardTimesDaily(int times) {
+		hfEntity.hardTimesDaily += times;
 		hfUpdate = true;
 	}
 
@@ -788,30 +825,6 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	// coinArena-----------------------------------------------
-	public int getCoinArenaCount() {
-		return mfEntity.coinArenaCount;
-	}
-
-	public void increaseCoinArenaCount(int count) {
-		mfEntity.coinArenaCount += count;
-		mfUpdate = true;
-	}
-
-	public int getCoinArenaCountDaily() {
-		return mfEntity.coinArenaCountDaily;
-	}
-
-	public void increaseCoinArenaCountDaily(int count) {
-		mfEntity.coinArenaCountDaily += count;
-		mfUpdate = true;
-	}
-
-	public void clearCoinArenaCountDaily() {
-		mfEntity.coinArenaCountDaily = 0;
-		mfUpdate = true;
-	}
-
 	// coinAlliance--------------------------------------------
 	public int getCoinAllianceCount() {
 		return mfEntity.coinAllianceCount;
@@ -876,36 +889,14 @@ public class StatisticsEntity {
 	}
 
 	// monsterMixTimes-----------------------------------------
-//	public Map<String, Integer> getMonsterMixTimesMap() {
-//		return lfEntity.monsterMixTimesMap;
-//	}
-
-	/**
-	 * @return 怪物合成次数，如未合成返回0
-	 */
-	public int getMonsterMixTimes(String monsterCfgId) {
-		Integer times = lfEntity.monsterMixTimesMap.get(monsterCfgId);
-		if (null != times) {
-			return times;
-		}
-		return 0;
+	public int getMonsterMixTimes() {
+		return lfEntity.monsterMixTimes;
 	}
 
-	public void increaseMonsterMixTimes(String monsterCfgId) {
-		Integer cur = lfEntity.monsterMixTimesMap.get(monsterCfgId);
-		if (null == cur) {
-			cur = 0;
-		}
-		lfEntity.monsterMixTimesMap.put(monsterCfgId, cur + 1);
-		lfEntity.monsterMixTimesFlag = true;
+	public void increaseMonsterMixTimes() {
+		++lfEntity.monsterMixTimes;
 		lfUpdate = true;
 	}
-
-//	public void setMonsterMixTimes(String monsterCfgId, int times) {
-//		lfEntity.monsterMixTimesMap.put(monsterCfgId, times);
-//		lfEntity.monsterMixTimesFlag = true;
-//		lfUpdate = true;
-//	}
 
 	// instanceResetTimes--------------------------------------
 	public int getInstanceResetTimesDaily() {
@@ -1267,99 +1258,121 @@ public class StatisticsEntity {
 	}
 
 	// eggTimes------------------------------------------------
-	// TODO 抽蛋功能未开发，开发后统计数据
-	public int getEggCoinTimes() {
-		return lf2Entity.eggCoinTimes;
+	public int getEggCoin1Times() {
+		return lf2Entity.eggCoin1Times;
 	}
 
-	public void increaseEggCoinTimes() {
-		++lf2Entity.eggCoinTimes;
+	public void increaseEggCoin1Times() {
+		++lf2Entity.eggCoin1Times;
 		lf2Update = true;
 	}
 
-	public int getEggCoinTimesDaily() {
-		return lf2Entity.eggCoinTimesDaily;
+	public int getEggCoin1FreeTimesDaily() {
+		return lf2Entity.eggCoin1FreeTimesDaily;
 	}
 
-	public void increaseEggCoinTimesDaily() {
-		++lf2Entity.eggCoinTimesDaily;
+	public void increaseEggCoin1FreeTimesDaily() {
+		++lf2Entity.eggCoin1FreeTimesDaily;
 		lf2Update = true;
 	}
 
-	public void clearEggCoinTimesDaily() {
-		lf2Entity.eggCoinTimesDaily = 0;
+	public void clearEggCoin1FreeTimesDaily() {
+		lf2Entity.eggCoin1FreeTimesDaily = 0;
 		lf2Update = true;
 	}
 
-	public int getEggCoinFreeTimesDaily() {
-		return lf2Entity.eggCoinFreeTimesDaily;
+	public int getEggCoin1PayTimesDaily() {
+		return lf2Entity.eggCoin1PayTimesDaily;
 	}
 
-	public void increaseEggCoinFreeTimesDaily() {
-		++lf2Entity.eggCoinFreeTimesDaily;
-		lf2Update = true;
-	}
-	
-	public void clearEggCoinFreeTimesDaily() {
-		lf2Entity.eggCoinFreeTimesDaily = 0;
+	public void increaseEggCoin1PayTimesDaily() {
+		++lf2Entity.eggCoin1PayTimesDaily;
 		lf2Update = true;
 	}
 
-	public int getEggDiamondFreeTimes() {
-		return lf2Entity.eggDiamondFreeTimes;
-	}
-
-	public void increaseEggDiamondFreeTimes() {
-		++lf2Entity.eggDiamondFreeTimes;
+	public void clearEggCoin1PayTimesDaily() {
+		lf2Entity.eggCoin1PayTimesDaily = 0;
 		lf2Update = true;
 	}
 
-	public int getEggDiamondOneTimes() {
-		return lf2Entity.eggDiamondOneTimes;
+	public int getEggCoin10Times() {
+		return lf2Entity.eggCoin10Times;
 	}
 
-	public void increaseEggDiamondOneTimes() {
-		++lf2Entity.eggDiamondOneTimes;
-		lf2Update = true;
-	}
-	
-	public int getEggDiamondTenTimes() {
-		return lf2Entity.eggDiamondTenTimes;
-	}
-
-	public void increaseEggDiamondTenTimes() {
-		++lf2Entity.eggDiamondTenTimes;
-		lf2Update = true;
-	}
-	public int getEggDiamondPoint() {
-		return lf2Entity.eggDiamondPoint;
-	}
-
-	public void setEggDiamondPoint(int point) {
-		lf2Entity.eggDiamondPoint = point;
+	public void increaseEggCoin10Times() {
+		++lf2Entity.eggCoin10Times;
 		lf2Update = true;
 	}
 
-	public Calendar getEggPointBeginTime() {
-		return lf2Entity.eggPointBeginTime;
+	public int getEggCoin10TimesDaily() {
+		return lf2Entity.eggCoin10TimesDaily;
 	}
 
-	public void setEggPointBeginTime(Calendar time) {
-		lf2Entity.eggPointBeginTime = time;
+	public void increaseEggCoin10TimesDaily() {
+		++lf2Entity.eggCoin10TimesDaily;
 		lf2Update = true;
 	}
 
-	public Calendar getEggCoinFreeLastTime() {
-		return lf2Entity.eggCoinFreeLastTime;
-	}
-
-	public void setEggCoinFreeLastTime(Calendar time) {
-		lf2Entity.eggCoinFreeLastTime = time;
+	public void clearEggCoin10TimesDaily() {
+		lf2Entity.eggCoin10TimesDaily = 0;
 		lf2Update = true;
 	}
 
-	// callMonsterTimes----------------------------------------
-	// TODO 抽蛋功能未开发，开发后统计数据
+	public Calendar getEggCoin1FreeLastTime() {
+		return lf2Entity.eggCoin1FreeLastTime;
+	}
+
+	public void setEggCoin1FreeLastTime(Calendar time) {
+		lf2Entity.eggCoin1FreeLastTime = time;
+		lf2Update = true;
+	}
+
+	public int getEggDiamond1FreeTimes() {
+		return lf2Entity.eggDiamond1FreeTimes;
+	}
+
+	public void increaseEggDiamond1FreeTimes() {
+		++lf2Entity.eggDiamond1FreeTimes;
+		lf2Update = true;
+	}
+
+	public int getEggDiamond1PayTimes() {
+		return lf2Entity.eggDiamond1PayTimes;
+	}
+
+	public void increaseEggDiamond1PayTimes() {
+		++lf2Entity.eggDiamond1PayTimes;
+		lf2Update = true;
+	}
+
+	public int getEggDiamond10Times() {
+		return lf2Entity.eggDiamond10Times;
+	}
+
+	public void increaseEggDiamond10Times() {
+		++lf2Entity.eggDiamond10Times;
+		lf2Update = true;
+	}
+
+	public int getEggDiamond1FreePoint() {
+		return lf2Entity.eggDiamond1FreePoint;
+	}
+
+	public void setEggDiamond1FreePoint(int point) {
+		lf2Entity.eggDiamond1FreePoint = point;
+		lf2Update = true;
+	}
+
+	public Calendar getEggDiamond1FreePointBeginTime() {
+		return lf2Entity.eggDiamond1FreePointBeginTime;
+	}
+
+	public void setEggDiamond1FreePointBeginTime(Calendar time) {
+		lf2Entity.eggDiamond1FreePointBeginTime = time;
+		lf2Update = true;
+	}
+
+	// callMonsterStageTimes----------------------------------------
 	public List<Integer> getCallMonsterStageTimesList() {
 		return lf2Entity.callMonsterStageTimesList;
 	}
@@ -1373,7 +1386,7 @@ public class StatisticsEntity {
 		return lf2Entity.callMonsterStageTimesList.get(index);
 	}
 
-	public void increaseCallMonsterTimes(int stage) {
+	public void increaseCallMonsterStageTimes(int stage) {
 		// 从0开始
 		int index = stage;
 		for (int i = lf2Entity.callMonsterStageTimesList.size(); i <= index; ++i) {
@@ -1384,8 +1397,7 @@ public class StatisticsEntity {
 		lf2Update = true;
 	}
 
-	// callEquipTimes------------------------------------------
-	// TODO 抽蛋功能未开发，开发后统计数据
+	// callEquipStageTimes------------------------------------------
 	public List<Integer> getCallEquipStageTimesList() {
 		return lf2Entity.callEquipStageTimesList;
 	}
@@ -1399,7 +1411,7 @@ public class StatisticsEntity {
 		return lf2Entity.callEquipStageTimesList.get(index);
 	}
 
-	public void increaseCallEquipTimes(int stage) {
+	public void increaseCallEquipStageTimes(int stage) {
 		// 从1开始
 		int index = stage - 1;
 		for (int i = lf2Entity.callEquipStageTimesList.size(); i <= index; ++i) {
@@ -1407,39 +1419,6 @@ public class StatisticsEntity {
 		}
 		lf2Entity.callEquipStageTimesList.set(index, lf2Entity.callEquipStageTimesList.get(index) + 1);
 		lf2Entity.callEquipStageTimesFlag = true;
-		lf2Update = true;
-	}
-
-	// callItemTimes-------------------------------------------
-	// TODO 抽蛋功能未开发，开发后统计数据
-	public Map<String, Integer> getCallItemTimesMap() {
-		return lf2Entity.callItemTimesMap;
-	}
-
-	/**
-	 * @return 抽到物品次数，如未抽到返回0
-	 */
-	public int getCallItemTimes(String itemCfgId) {
-		Integer times = lf2Entity.callItemTimesMap.get(itemCfgId);
-		if (null != times) {
-			return times;
-		}
-		return 0;
-	}
-
-	public void increaseCallItemTimes(String itemCfgId) {
-		Integer cur = lf2Entity.callItemTimesMap.get(itemCfgId);
-		if (null == cur) {
-			cur = 0;
-		}
-		lf2Entity.callItemTimesMap.put(itemCfgId, cur + 1);
-		lf2Entity.callItemTimesFlag = true;
-		lf2Update = true;
-	}
-
-	public void setCallItemTimes(String itemCfgId, int times) {
-		lf2Entity.callItemTimesMap.put(itemCfgId, times);
-		lf2Entity.callItemTimesFlag = true;
 		lf2Update = true;
 	}
 
@@ -1611,7 +1590,7 @@ public class StatisticsEntity {
 		lf2Entity.totalOnlineTime += onlineTime;
 		lf2Update = true;
 	}
-	
+
 	// dumpTime----------------------------------------------
 	public int getDumpTime() {
 		return lf2Entity.dumpTime;

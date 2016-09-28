@@ -19,7 +19,6 @@ import org.hawk.os.HawkTime;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.BILog.BIMissionFlowData;
 import com.hawk.game.config.QuestCfg;
-import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
@@ -270,380 +269,379 @@ public class PlayerQuestModule extends PlayerModule {
 	private int getQuestProgress(int questId) {
 		QuestCfg quest = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		int cycle = quest.getCycle();
 		int goalCount = quest.getGoalCount();
 		int progress = 0;
 
 		switch (quest.getGoalType()) {
-		// 通关X副本
-		case GsConst.QuestGoalType.INSTANCE: {
-			for (Object instanceId : quest.getGoalParamList()) {
-				if (0 < statisticsEntity.getInstanceStar((String) instanceId)) {
-					progress += 1;
-				}
-			}
+		// 免费领取
+		case GsConst.QuestGoalType.FREE: {
+			// 永远是完成状态
+			progress = goalCount;
 			break;
 		}
-		//	满星通关X副本
-		case GsConst.QuestGoalType.INSTANCE_STAR3: {
-			for (Object instanceId : quest.getGoalParamList()) {
-				if (3 == statisticsEntity.getInstanceStar((String) instanceId)) {
-					progress += 1;
-				}
-			}
-			break;
-		}
-		// 通关普通副本次数
-		case GsConst.QuestGoalType.INSTANCE_NORMAL_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceNormalTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceNormalTimesDaily();
-			}
-			break;
-		}
-		// 通关精英副本次数
-		case GsConst.QuestGoalType.INSTANCE_HARD_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceHardTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceHardTimesDaily();
-			}
-			break;
-		}
-		// 通关副本次数
-		case GsConst.QuestGoalType.INSTANCE_ALL_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceAllTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getInstanceAllTimesDaily();
-			}
-			break;
-		}
-		// 满星通关X普通章节
-		case GsConst.QuestGoalType.CHAPTER_NORMAL: {
-			Integer chapterId = (Integer) quest.getGoalParamList().get(0);
-			if (Const.ChapterBoxState.INVALID_VALUE != statisticsEntity.getNormalChapterBoxState(chapterId)) {
-				progress = goalCount;
-			}
-			break;
-		}
-		// 满星通关X精英章节
-		case GsConst.QuestGoalType.CHAPTER_HARD: {
-			Integer chapterId = (Integer) quest.getGoalParamList().get(0);
-			if (Const.ChapterBoxState.INVALID_VALUE != statisticsEntity.getHardChapterBoxState(chapterId)) {
-				progress = goalCount;
-			}
-			break;
-		}
-		// 达到X角色等级
+		// 角色等级达到N级
 		case GsConst.QuestGoalType.LEVEL: {
 			progress = player.getLevel();
 			break;
 		}
-		// 达到X品级宠物数量
-		case GsConst.QuestGoalType.MONSTER_STAGE_COUNT: {
-			Integer stage = (Integer) quest.getGoalParamList().get(0);
-			progress = statisticsEntity.getMonsterCountOverStage(stage);
-			break;
-		}
-		// 达到X等级宠物数量
-		case GsConst.QuestGoalType.MONSTER_LEVEL_COUNT: {
-			Integer level = (Integer) quest.getGoalParamList().get(0);
-			progress = statisticsEntity.getMonsterCountOverLevel(level);
-			break;
-		}
-		// 合成X宠物数量
-		case GsConst.QuestGoalType.MONSTER_MIX_TIMES: {
-			for (Object monsterCfgId : quest.getGoalParamList()) {
-				progress += statisticsEntity.getMonsterMixTimes((String) monsterCfgId);
-			}
-			break;
-		}
-		// 进行竞技场次数
-		case GsConst.QuestGoalType.ARENA_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getArenaTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getArenaTimesDaily();
-			}
-			break;
-		}
-		// 进行金币试炼次数
-		case GsConst.QuestGoalType.HOLE_COIN_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.COIN_HOLE);
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.COIN_HOLE);
-			}
-			break;
-		}
-		// 进行经验试炼次数
-		case GsConst.QuestGoalType.HOLE_EXP_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.EXP_HOLE);
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.EXP_HOLE);
-			}
-			break;
-		}
-		// 完成通天塔中X副本
-		case GsConst.QuestGoalType.TOWER_INSTANCE: {
+		//	三星通关X副本
+		case GsConst.QuestGoalType.INSTANCE_X_STAR_3: {
 			String instanceId = (String) quest.getGoalParamList().get(0);
-			Map<Object, TowerCfg> towerCfgMap = HawkConfigManager.getInstance().getConfigMap(TowerCfg.class);
-			for (TowerCfg towerCfg : towerCfgMap.values()) {
-				String[] instanceList = towerCfg.getInstanceList();
-				int towerId = towerCfg.getId();
-				int floor = statisticsEntity.getTowerFloor(towerId);
-
-				for (int i = 0; i < floor; ++i) {
-					if (instanceId.equals(instanceList[i])) {
-						progress = goalCount;
-						break;
-					}
-				}
-				if (0 != progress) {
-					break;
-				}
+			if (3 == statisticsEntity.getInstanceStar(instanceId)) {
+				progress = goalCount;
 			}
 			break;
 		}
-		// 完成大冒险次数
+		// 通关X副本N次
+		case GsConst.QuestGoalType.INSTANCE_X_TIMES: {
+			for (Object instanceId : quest.getGoalParamList()) {
+				progress += statisticsEntity.getInstanceWinTimes((String) instanceId);
+			}
+			break;
+		}
+		// 通关副本N次
+		case GsConst.QuestGoalType.INSTANCE_ALL_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceAllTimes();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceAllTimesDaily();
+			}
+			break;
+		}
+		// 通关普通副本N次
+		case GsConst.QuestGoalType.INSTANCE_NORMAL_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceNormalTimes();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceNormalTimesDaily();
+			}
+			break;
+		}
+		// 通关挑战副本N次
+		case GsConst.QuestGoalType.INSTANCE_HARD_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceHardTimes();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getInstanceHardTimesDaily();
+			}
+			break;
+		}
+		// 领取X普通章节的满星奖励
+		case GsConst.QuestGoalType.CHAPTER_X_NORMAL: {
+			Integer chapterId = (Integer) quest.getGoalParamList().get(0);
+			if (Const.ChapterBoxState.OPEN_VALUE == statisticsEntity.getNormalChapterBoxState(chapterId)) {
+				progress = goalCount;
+			}
+			break;
+		}
+		// 领取X困难章节的满星奖励
+		case GsConst.QuestGoalType.CHAPTER_X_HARD: {
+			Integer chapterId = (Integer) quest.getGoalParamList().get(0);
+			if (Const.ChapterBoxState.OPEN_VALUE == statisticsEntity.getHardChapterBoxState(chapterId)) {
+				progress = goalCount;
+			}
+			break;
+		}
+		// 领取大冒险奖励N次
 		case GsConst.QuestGoalType.ADVENTURE_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getAdventureTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getAdventureTimesDaily();
 			}
 			break;
 		}
-		// 升级技能次数
+		// 进行竞技场N次
+		case GsConst.QuestGoalType.ARENA_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getArenaTimes();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getArenaTimesDaily();
+			}
+			break;
+		}
+		// 进入金币试炼N次
+		case GsConst.QuestGoalType.HOLE_COIN_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.COIN_HOLE);
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.COIN_HOLE);
+			}
+			break;
+		}
+		// 进入经验试炼N次
+		case GsConst.QuestGoalType.HOLE_EXP_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getHoleTimes(GsConst.HoleType.EXP_HOLE);
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getHoleTimesDaily(GsConst.HoleType.EXP_HOLE);
+			}
+			break;
+		}
+		// 拥有过≥X品级的宠物N个
+		case GsConst.QuestGoalType.MONSTER_STAGE_X_COUNT: {
+			Integer stage = (Integer) quest.getGoalParamList().get(0);
+			progress = statisticsEntity.getMonsterCountOverStage(stage);
+			break;
+		}
+		// 拥有过≥X等级的宠物N个
+		case GsConst.QuestGoalType.MONSTER_LEVEL_X_COUNT: {
+			Integer level = (Integer) quest.getGoalParamList().get(0);
+			progress = statisticsEntity.getMonsterCountOverLevel(level);
+			break;
+		}
+		// 完成宠物合成N次
+		case GsConst.QuestGoalType.MONSTER_MIX_TIMES: {
+			progress = statisticsEntity.getMonsterMixTimes();
+			break;
+		}
+		// 同一只宠物穿过≥X品级的装备达到N个
+		case GsConst.QuestGoalType.EQUIP_WEAR_STAGE_X_COUNT: {
+			Integer stage = (Integer) quest.getGoalParamList().get(0);
+			progress = statisticsEntity.getEquipMaxCountOverStage(stage);
+			break;
+		}
+		// 装备打孔N次
+		case GsConst.QuestGoalType.EQUIP_SLOT_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getEquipPunchTimes();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getEquipPunchTimesDaily();
+			}
+			break;
+		}
+		// 升级技能N次
 		case GsConst.QuestGoalType.UP_SKILL_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getUpSkillTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getUpSkillTimesDaily();
 			}
 			break;
 		}
-		// 升级装备次数
+		// 升级装备N次
 		case GsConst.QuestGoalType.UP_EQUIP_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getUpEquipTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getUpEquipTimesDaily();
 			}
 			break;
 		}
-		// 购买金币次数
+		// 购买金币N次
 		case GsConst.QuestGoalType.BUY_COIN_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getBuyCoinTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getBuyCoinTimesDaily();
 			}
 			break;
 		}
-		// 购买礼包次数
+		// 购买礼包N次
 		case GsConst.QuestGoalType.BUY_GIFT_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getBuyGiftTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getBuyGiftTimesDaily();
 			}
 			break;
 		}
-		// 购买X物品次数
-		case GsConst.QuestGoalType.BUY_ITEM_TIMES: {
+		// 商店购买X道具N次
+		case GsConst.QuestGoalType.BUY_ITEM_X_TIMES: {
 			for (Object itemCfgId : quest.getGoalParamList()) {
 				progress += statisticsEntity.getBuyItemTimes((String) itemCfgId);
 			}
 			break;
 		}
-		// 购买钻石数量
+		// 充值钻石N个
 		case GsConst.QuestGoalType.PAY_DIAMOND_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getPayDiamondCount();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getPayDiamondCountDaily();
 			}
 			break;
 		}
-		// 消耗活力值数量
+		// 消耗活力值N个
 		case GsConst.QuestGoalType.USE_FATIGUE_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getUseFatigueCount();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getUseFatigueCountDaily();
 			}
 			break;
 		}
-		// 使用X物品数量
-		case GsConst.QuestGoalType.USE_ITEM_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+		// 使用钻石N个
+		case GsConst.QuestGoalType.USE_DIAMOND_COUNT: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getUseDiamondCount();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getUseDiamondCountDaily();
+			}
+			break;
+		}
+		// 使用X物品N个
+		case GsConst.QuestGoalType.USE_ITEM_X_COUNT: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				for (Object itemCfgId : quest.getGoalParamList()) {
 					progress += statisticsEntity.getUseItemCount((String) itemCfgId);
 				}
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				for (Object itemCfgId : quest.getGoalParamList()) {
 					progress += statisticsEntity.getUseItemCountDaily((String) itemCfgId);
 				}
 			}
 			break;
 		}
-		// 使用钻石数量
-		case GsConst.QuestGoalType.USE_DIAMOND_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getUseDiamondCount();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getUseDiamondCountDaily();
-			}
-			break;
-		}
-		// 镶嵌宝石次数
+		// 镶嵌宝石N次
 		case GsConst.QuestGoalType.INLAY_ALL_TIMES: {
 			progress = statisticsEntity.getInlayAllTimes();
 			break;
 		}
-		// 镶嵌X类型宝石次数
-		case GsConst.QuestGoalType.INLAY_TYPE_TIMES: {
+		// 镶嵌X类型宝石N次
+		case GsConst.QuestGoalType.INLAY_TYPE_X_TIMES: {
 			for (Object type : quest.getGoalParamList()) {
 				progress += statisticsEntity.getInlayTypeTimes((Integer) type);
 			}
 			break;
 		}
-		// 合成宝石次数
-		case GsConst.QuestGoalType.SYN_ALL_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+		// 合成宝石N个
+		case GsConst.QuestGoalType.SYN_ALL_COUNT: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getSynAllTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getSynAllTimesDaily();
 			}
 			break;
 		}
-		// 合成X类型宝石次数
-		case GsConst.QuestGoalType.SYN_TYPE_TIMES: {
+		// 合成X类型宝石N个
+		case GsConst.QuestGoalType.SYN_TYPE_X_COUNT: {
 			for (Object type : quest.getGoalParamList()) {
 				progress += statisticsEntity.getSynTypeTimes((Integer) type);
 			}
 			break;
 		}
-		// 金币抽蛋次数
-		case GsConst.QuestGoalType.EGG_COIN_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEggCoinTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEggCoinTimesDaily();
-			}
-			break;
-		}
-		// 钻石抽蛋次数
-		case GsConst.QuestGoalType.EGG_DIAMOND_TIMES: {
-			// progress = statisticsEntity.getEggDiamondTimes();
-			break;
-		}
-		// 抽蛋次数
+		// 抽蛋N次
 		case GsConst.QuestGoalType.EGG_ALL_TIMES: {
-			// progress = statisticsEntity.getEggCoinTimes() + statisticsEntity.getEggDiamondTimes();
+			 progress = statisticsEntity.getEggCoin1Times()
+					 + statisticsEntity.getEggDiamond1FreeTimes()
+					 + statisticsEntity.getEggDiamond1PayTimes()
+					 + statisticsEntity.getEggCoin10Times() * 10
+					 + statisticsEntity.getEggDiamond10Times() * 10;
 			break;
 		}
-		// 抽到X品级宠物次数
-		case GsConst.QuestGoalType.CALL_PET_STAGE_TIMES: {
-			for (Object stage : quest.getGoalParamList()) {
-				progress += statisticsEntity.getCallMonsterStageTimes((Integer) stage);
+		// 金币抽蛋N次
+		case GsConst.QuestGoalType.EGG_COIN_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getEggCoin1Times()
+						+ statisticsEntity.getEggCoin10Times() * 10;
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getEggCoin1FreeTimesDaily()
+						+ statisticsEntity.getEggCoin1PayTimesDaily()
+						+ statisticsEntity.getEggCoin10TimesDaily() * 10;
 			}
 			break;
 		}
-		// 抽到X品级装备次数
-		case GsConst.QuestGoalType.CALL_EQUIP_STAGE_TIMES: {
-			for (Object stage : quest.getGoalParamList()) {
-				progress += statisticsEntity.getCallEquipStageTimes((Integer) stage);
+		// 金币十连抽N次
+		case GsConst.QuestGoalType.EGG_COIN_10_TIMES: {
+			if (Cycle.NORMAL_CYCLE == cycle) {
+				progress = statisticsEntity.getEggCoin10Times();
+			} else if (Cycle.DAILY_CYCLE == cycle) {
+				progress = statisticsEntity.getEggCoin10TimesDaily();
 			}
 			break;
 		}
-		// 抽到X物品次数
-		case GsConst.QuestGoalType.CALL_ITEM_TIMES: {
-			for (Object itemCfgId : quest.getGoalParamList()) {
-				progress += statisticsEntity.getCallItemTimes((String) itemCfgId);
-			}
+		// 钻石抽蛋N次
+		case GsConst.QuestGoalType.EGG_DIAMOND_TIMES: {
+			progress = statisticsEntity.getEggDiamond1FreeTimes()
+					+ statisticsEntity.getEggDiamond1PayTimes()
+					+ statisticsEntity.getEggDiamond10Times() * 10;
 			break;
 		}
-		// 加入过公会
-		case GsConst.QuestGoalType.SOCIETY_JOIN: {
-			// 目前有公会或无公会但曾经加入过公会
+		// 钻石十连抽N次
+		case GsConst.QuestGoalType.EGG_DIAMOND_10_TIMES: {
+			progress = statisticsEntity.getEggDiamond10Times();
+			break;
+		}
+		// 抽到≥X品级的宠物N个
+		case GsConst.QuestGoalType.CALL_PET_STAGE_X_COUNT: {
+			Integer stage = (Integer) quest.getGoalParamList().get(0);
+			progress = statisticsEntity.getCallMonsterStageTimes(stage);
+			break;
+		}
+		// 抽到≥X品级的装备N个
+		case GsConst.QuestGoalType.CALL_EQUIP_STAGE_X_COUNT: {
+			Integer stage = (Integer) quest.getGoalParamList().get(0);
+			progress = statisticsEntity.getCallEquipStageTimes(stage);
+			break;
+		}
+		// 加入公会N次
+		case GsConst.QuestGoalType.SOCIETY_JOIN_TIMES: {
+			// (有公会) 或 (无公会但曾经加入过公会)
 			PlayerAllianceEntity allianceEntity = player.getPlayerData().getPlayerAllianceEntity();
-			if (0 != allianceEntity.getAllianceId()
-					|| 0 != allianceEntity.getPreAllianceId()) {
+			if (0 != allianceEntity.getAllianceId() || 0 != allianceEntity.getPreAllianceId()) {
 				progress = goalCount;
 			}
 			break;
 		}
-		// 公会祈福次数
+		// 公会祈福N次
 		case GsConst.QuestGoalType.SOCIETY_PRAY_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getAlliancePrayTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getAlliancePrayTimesDaily();
 			}
 			break;
 		}
-		// 公会boss次数
+		// 公会bossN次
 		case GsConst.QuestGoalType.SOCIETY_BOSS_TIMES: {
 			progress = statisticsEntity.getAllianceBossTimes();
 			break;
 		}
-		// 公会体力赠送次数
+		// 公会体力赠送N次
 		case GsConst.QuestGoalType.SOCIETY_FATIGUE_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getAllianceFatigueTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getAllianceFatigueTimesDaily();
 			}
 			break;
 		}
-		// 刷新商店次数
+		// 手动刷新商店N次
 		case GsConst.QuestGoalType.SHOP_REFRESH_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getShopRefreshTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = player.getPlayerData().getShopEntity().getAllShopRefreshNum();
 			}
 			break;
 		}
-		// 获得竞技场币数量
-		case GsConst.QuestGoalType.COIN_ARENA_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getCoinArenaCount();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getCoinArenaCountDaily();
-			}
-			break;
-		}
-		// 获得公会币数量
+		// 获得公会币N个
 		case GsConst.QuestGoalType.COIN_SOCIETY_COUNT: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
+			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getCoinAllianceCount();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
+			} else if (Cycle.DAILY_CYCLE == cycle) {
 				progress = statisticsEntity.getCoinAllianceCountDaily();
 			}
 			break;
 		}
-		// 获得通天塔币数量
+		// 获得通天塔币N个
 		case GsConst.QuestGoalType.COIN_TOWER_COUNT: {
 			progress = statisticsEntity.getCoinTowerCount();
 			break;
 		}
 		// 完成X任务
-		case GsConst.QuestGoalType.QUEST: {
-			for (Object goalQuestId : quest.getGoalParamList()) {
-				if (true == statisticsEntity.isQuestComplete((Integer) goalQuestId)
-						|| true == statisticsEntity.isQuestDailyComplete((Integer) goalQuestId)) {
-					progress += 1;
-				}
+		case GsConst.QuestGoalType.QUEST_X: {
+			Integer goalQuestId = (Integer) quest.getGoalParamList().get(0);
+			if (true == statisticsEntity.isQuestComplete(goalQuestId)
+					|| true == statisticsEntity.isQuestDailyComplete(goalQuestId)) {
+				progress = goalCount;
 			}
 			break;
 		}
-		// 完成X类型任务数量
-		case GsConst.QuestGoalType.QUEST_TYPE_COUNT: {
+		// 完成X类任务N个
+		case GsConst.QuestGoalType.QUEST_TYPE_X_COUNT: {
 			Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
 			Set<Integer> questDailyCompleteSet = statisticsEntity.getQuestDailyCompleteSet();
 
@@ -664,54 +662,28 @@ public class PlayerQuestModule extends PlayerModule {
 			}
 			break;
 		}
-		// 完成X循环性任务数量
-		case GsConst.QuestGoalType.QUEST_CYCLE_COUNT: {
+		// 完成X循环类任务N个
+		case GsConst.QuestGoalType.QUEST_CYCLE_X_COUNT: {
 			Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
 			Set<Integer> questDailyCompleteSet = statisticsEntity.getQuestDailyCompleteSet();
 
-			for (Object cycle : quest.getGoalParamList()) {
-				if (Cycle.NORMAL_CYCLE == (Integer)cycle) {
+			for (Object cycleType : quest.getGoalParamList()) {
+				if (Cycle.NORMAL_CYCLE == (Integer)cycleType) {
 					for (Integer questCompleteId : questCompleteSet) {
 						QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
-						if (questCfg.getCycle() == (Integer) cycle) {
+						if (questCfg.getCycle() == (Integer) cycleType) {
 							progress += 1;
 						}
 					}
-				} else if (Cycle.DAILY_CYCLE == (Integer)cycle) {
+				} else if (Cycle.DAILY_CYCLE == (Integer)cycleType) {
 					for (Integer questCompleteId : questDailyCompleteSet) {
 						QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questCompleteId);
-						if (questCfg.getCycle() == (Integer) cycle) {
+						if (questCfg.getCycle() == (Integer) cycleType) {
 							progress += 1;
 						}
 					}
 				}
 			}
-			break;
-		}
-		// 同时穿过达到X品级装备最大数量
-		case GsConst.QuestGoalType.EQUIP_STAGE_COUNT: {
-			Integer stage = (Integer) quest.getGoalParamList().get(0);
-
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEquipMaxCountOverStage(stage);
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEquipMaxCountOverStageDaily(stage);
-			}
-			break;
-		}
-		// 打孔次数
-		case GsConst.QuestGoalType.EQUIP_SLOT_TIMES: {
-			if (Cycle.NORMAL_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEquipPunchTimes();
-			} else if (Cycle.DAILY_CYCLE == quest.getCycle()) {
-				progress = statisticsEntity.getEquipPunchTimesDaily();
-			}
-			break;
-		}
-		// 免费领取
-		case GsConst.QuestGoalType.FREE_GOAL: {
-			// 永远是完成状态
-			progress = goalCount;
 			break;
 		}
 		default:

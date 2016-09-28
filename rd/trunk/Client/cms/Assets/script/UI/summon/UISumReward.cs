@@ -11,6 +11,7 @@ public class UISumReward : UIBase
     public GameObject okButton;
     public GameObject tenReward;
     public GameObject onceReward;
+    public GameObject skipButton;
     public Text title;
     private UIGainPet mGainPetUI;
     public List<GameObject> rewardImage = new List<GameObject>();
@@ -20,7 +21,7 @@ public class UISumReward : UIBase
         StartCoroutine(ShowReward(summonData, consime, isTen));
     }
     //-------------------------------------------------------
-    void SetEffect(ConsumeType consime, bool skip,bool isTen = false)
+    void SetEffect(ConsumeType consime, bool skip, bool isTen = false)
     {
         if (consime == ConsumeType.Consume_jinbi || consime == ConsumeType.Consume_Free_jinbi)
             sunlight.SetActive(true);
@@ -30,6 +31,12 @@ public class UISumReward : UIBase
             okButton.SetActive(false);
         else
             okButton.SetActive(true);
+        if (isTen && skip)
+            skipButton.SetActive(false);
+        else if (!skip)
+            skipButton.SetActive(false);
+        else if (isTen)
+            skipButton.SetActive(true);
     }
     //-------------------------------------------------------
     IEnumerator ShowReward(SummonItem summonData, ConsumeType consime, bool isTen = false)
@@ -39,7 +46,7 @@ public class UISumReward : UIBase
         {
             onceReward.SetActive(true);
             ItemIcon icon = ItemIcon.CreateItemIcon(
-                ItemData.valueof(summonData.item.itemId, summonData.item.count), false);
+                ItemData.valueof(summonData.item.itemId, summonData.item.count));
             icon.transform.SetParent(onceReward.transform,false);
             rewardImage.Add(icon.transform.gameObject);
             if (isTen)
@@ -87,7 +94,7 @@ public class UISumReward : UIBase
             if (UISummon.Instance.summonList[i].item.type == (int)PB.itemType.ITEM)//判断奖励
             {
                 ItemIcon icon = ItemIcon.CreateItemIcon(
-               ItemData.valueof(UISummon.Instance.summonList[i].item.itemId, UISummon.Instance.summonList[i].item.count), false);
+               ItemData.valueof(UISummon.Instance.summonList[i].item.itemId, UISummon.Instance.summonList[i].item.count));
                 icon.transform.SetParent(tenReward.transform, false);
                 rewardImage.Add(icon.transform.gameObject);
             }
@@ -132,6 +139,11 @@ public class UISumReward : UIBase
         Close();
     }
     //-------------------------------------------------------
+    void SkipClick(GameObject go)
+    { 
+        
+    }
+    //-------------------------------------------------------
     public void Close()
     {
         onceReward.SetActive(false);
@@ -159,5 +171,7 @@ public class UISumReward : UIBase
 	//-------------------------------------------------------
 	void Start () {
         EventTriggerListener.Get(okButton).onClick = okClick;
+        EventTriggerListener.Get(skipButton).onClick = SkipClick;
+        title.text = StaticDataMgr.Instance.GetTextByID("summon_result");
 	}
 }

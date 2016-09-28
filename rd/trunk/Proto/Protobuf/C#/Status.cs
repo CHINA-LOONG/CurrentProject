@@ -284,17 +284,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_COUNT", Value=393221)]
       INSTANCE_REVIVE_COUNT = 393221,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_STAR_COUNT", Value=393222)]
-      CHAPTER_BOX_STAR_COUNT = 393222,
+      [global::ProtoBuf.ProtoEnum(Name=@"SWEEP_STAR_COUNT", Value=393222)]
+      SWEEP_STAR_COUNT = 393222,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393223)]
-      CHAPTER_BOX_ALREADY_OPEN = 393223,
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_STAR_COUNT", Value=393223)]
+      CHAPTER_BOX_STAR_COUNT = 393223,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393224)]
-      INSTANCE_NOT_ENTER = 393224,
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393224)]
+      CHAPTER_BOX_ALREADY_OPEN = 393224,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393225)]
-      TOWER_FLOOR = 393225
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393225)]
+      INSTANCE_NOT_ENTER = 393225,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393226)]
+      TOWER_FLOOR = 393226
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]

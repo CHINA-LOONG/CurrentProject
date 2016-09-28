@@ -1848,3 +1848,85 @@ adventure_conditions32,{0}只暗属性人物类宠物,{0} dark type human monste
 adventure_conditions33,{0}只暗属性特异类宠物,{0} dark type peculiar monsters
 adventure_conditions34,{0}只暗属性植物类宠物,{0} dark type plant monsters
 adventure_conditions35,{0}只暗属性神类宠物,{0} dark type deity monsters
+zhuxian10001,天赐神宠,Bestowed Upon You
+zhuxian10002,获得神宠,Deity Monster
+zhuxian10003,小试身手,First Test
+zhuxian10004,乘胜追击,Pursuit more victories
+zhuxian10005,你需要治愈,Healing Is Needed
+zhuxian10006,蓝瞳小丑,Blueeyed Clown
+zhuxian10007,药不能停,Healthy Dose
+zhuxian10008,中BOSS罢了,Halfway There
+zhuxian10009,技巧的磨砺,Sharpening Your Skills
+zhuxian10010,穿戴装备,Flower Pixie
+zhuxian10011,不屈狼人,Indomitable Werewolf
+zhuxian10012,逛逛商店,Browse The Shop
+zhuxian10013,训练宠物,Monster Training
+zhuxian10014,装备穿齐,Matching Outfit
+zhuxian10015,突破大街,Battle For Home
+zhuxian10016,打磨装备,Keep It Polished
+zhuxian10017,全部拿走,Perfectionist
+zhuxian10018,日常修炼,Daily Practice
+zhuxian10019,竞技生涯,Competitive Career
+zhuxian10020,装备进阶,Advanced Equipment
+zhuxian10021,训宠大师,Training Master
+zhuxian10022,能量灌注,Evolutionary Scale
+zhuxian10023,突破拦截,Interceptor 
+zhuxian10024,新的挑战,New Challenge
+zhuxian10025,限制突破,No Limits
+zhuxian10026,双重超量,Double Trouble
+zhuxian10027,冲向异界,Charging The Outerworld
+zhuxian10028,蓝色超量,Blue Power
+zhuxian10029,次元能力探秘,True Craftsman
+zhuxian10030,驾驭次元,Infused Power
+mubiao10001,抽蛋1次,Draw 1 time 
+mubiao10002,合成花魄,Summon Flower Spirit
+mubiao10003,通关1-1,Clear Stage 1-1 
+mubiao10004,通关1-2,Clear Stage 1-2
+mubiao10005,合成苗娃曼陀罗,Summon Mandrake 
+mubiao10006,通关1-3,Clear Stage 1-3
+mubiao10007,使用经验药三次,Use EXP Potion 3 times 
+mubiao10008,通关1-4,Clear Stage 1-4 
+mubiao10009,升级技能3次,Upgrade abilities 3 times 
+mubiao10010,穿戴装备,Equip a piece of equipment 
+mubiao10011,通关1-5,Clear Stage 1-5
+mubiao10012,商店刷新物品1次,Refresh shop goods 1 time 
+mubiao10013,其中一只宠物升级至5,Level up a monster to level 5 
+mubiao10014,同时穿戴2件装备,Equip 2 equipment on Chione 
+mubiao10015,通关1-8,Clear Stage 1-8 
+mubiao10016,装备强化1次,Upgrade a piece of equipment 
+mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
+mubiao10018,完成一个每日任务,Complete a daily mission 
+mubiao10019,竞技场,Arena
+mubiao10020,装备进阶至绿,Advance equipment to green 
+mubiao10021,升级宠物1只至10级,Level up 1 monster to 10
+mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
+mubiao10023,通关2-4,Clear Stage 2-4 
+mubiao10024,完成挑战本1-1,Clear Stage 1-1 on Heroic 
+mubiao10025,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
+mubiao10026,有2件绿色装备,Have 2 pieces of green equipment 
+mubiao10027,通关2-8,Clear Stage 2-8 
+mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
+mubiao10029,装备开孔,Open an equipment socket 
+mubiao10030,装备镶嵌,Insert a gem in equipment
+richang1,每日剧情副本,Daily Campaign Stages
+richang2,每日通关挑战副本,Daily Heroic Stages
+richang3,每日技能升级,Daily Ability Upgrade
+richang4,每日装备升级,Daily Equipment Upgrade
+richang5,每日金币购买,Daily Coin Purchase
+richang6,每日商店刷新,Daily Store Refresh
+rimubiao1,剧情副本10次,Complete 10 Campaign Stages
+rimubiao2,通关挑战副本3次,Complete 3 Heroic Stages
+rimubiao3,技能升级3次,Level up abilities 3 times
+rimubiao4,装备升级1次,Upgrade equipment once
+rimubiao5,购买金币1次,Purchase Coins once
+rimubiao6,刷新商店1次,Refresh the Store once
+linshi1,合成狼人,Summon Werewolf
+linshi2,集齐碎片,Fully collected chips
+linshi3,合成冰雪女王,Summon Chione 
+linmubiao1,合成狼人,Summon Werewolf
+linmubiao2,通关1-6,Clear Stage 1-6 
+linmubiao3,合成冰雪女王,Summon Chione 
+zhixian20001,扫荡2-3,Raid 2-3
+zhixian20002,扫荡2-7,Raid 2-7
+zhimubiao20001,再次通关2-3  3次,Raid 2-3（even you pass）
+zhimubiao20002,再次通关2-7  3次,Raid 2-7 （even you pass）

@@ -177,7 +177,7 @@ public class GsConst {
 		public static final int ALLIANCE_BASE_RECALL = 121;
 		// 雇用奖励
 		public static final int ALLIANCE_HIRE_REWARD = 122;
-		
+
 		/**
 		 * 快照管理器消息定义
 		 */
@@ -385,61 +385,68 @@ public class GsConst {
 
 	// 任务目标类型
 	public static class QuestGoalType {
-		public static final int INSTANCE = 1;
-		public static final int INSTANCE_STAR3 = 2;
-		public static final int INSTANCE_NORMAL_TIMES = 3;
-		public static final int INSTANCE_HARD_TIMES = 4;
+		public static final int FREE = 1;
+		public static final int LEVEL = 2;
+		public static final int INSTANCE_X_STAR_3 = 3;
+		public static final int INSTANCE_X_TIMES = 4;
 		public static final int INSTANCE_ALL_TIMES = 5;
-		public static final int CHAPTER_NORMAL = 6;
-		public static final int CHAPTER_HARD = 7;
-		public static final int LEVEL = 8;
-		public static final int MONSTER_STAGE_COUNT = 9;
-		public static final int MONSTER_LEVEL_COUNT = 10;
-		public static final int MONSTER_MIX_TIMES = 11;
-		public static final int ARENA_TIMES = 12;
-		public static final int HOLE_COIN_TIMES = 13;
-		public static final int HOLE_EXP_TIMES = 14;
-		public static final int TOWER_INSTANCE = 15;
-		public static final int ADVENTURE_TIMES = 16;
-		public static final int UP_SKILL_TIMES = 17;
-		public static final int UP_EQUIP_TIMES = 18;
-		public static final int BUY_COIN_TIMES = 19;
-		public static final int BUY_GIFT_TIMES = 20;
-		public static final int BUY_ITEM_TIMES = 21;
-		public static final int PAY_DIAMOND_COUNT = 22;
-		public static final int USE_FATIGUE_COUNT = 23;
-		public static final int USE_ITEM_COUNT = 24;
-		public static final int USE_DIAMOND_COUNT = 25;
-		public static final int INLAY_ALL_TIMES = 26;
-		public static final int INLAY_TYPE_TIMES = 27;
-		public static final int SYN_ALL_TIMES = 28;
-		public static final int SYN_TYPE_TIMES = 29;
-		public static final int EGG_COIN_TIMES = 30;
-		public static final int EGG_DIAMOND_TIMES = 31;
+		public static final int INSTANCE_NORMAL_TIMES = 6;
+		public static final int INSTANCE_HARD_TIMES = 7;
+		public static final int CHAPTER_X_NORMAL = 8;
+		public static final int CHAPTER_X_HARD = 9;
+		public static final int ADVENTURE_TIMES = 10;
+		public static final int ARENA_TIMES = 11;
+		public static final int HOLE_COIN_TIMES = 12;
+		public static final int HOLE_EXP_TIMES = 13;
+		public static final int MONSTER_STAGE_X_COUNT = 14;
+		public static final int MONSTER_LEVEL_X_COUNT = 15;
+		public static final int MONSTER_MIX_TIMES = 16;
+		public static final int EQUIP_WEAR_STAGE_X_COUNT = 17;
+		public static final int EQUIP_SLOT_TIMES = 18;
+		public static final int UP_SKILL_TIMES = 19;
+		public static final int UP_EQUIP_TIMES = 20;
+		public static final int BUY_COIN_TIMES = 21;
+		public static final int BUY_GIFT_TIMES = 22;
+		public static final int BUY_ITEM_X_TIMES = 23;
+		public static final int PAY_DIAMOND_COUNT = 24;
+		public static final int USE_FATIGUE_COUNT = 25;
+		public static final int USE_DIAMOND_COUNT = 26;
+		public static final int USE_ITEM_X_COUNT = 27;
+		public static final int INLAY_ALL_TIMES = 28;
+		public static final int INLAY_TYPE_X_TIMES = 29;
+		public static final int SYN_ALL_COUNT = 30;
+		public static final int SYN_TYPE_X_COUNT = 31;
 		public static final int EGG_ALL_TIMES = 32;
-		public static final int CALL_PET_STAGE_TIMES = 33;
-		public static final int CALL_EQUIP_STAGE_TIMES = 34;
-		public static final int CALL_ITEM_TIMES = 35;
-		public static final int SOCIETY_JOIN = 36;
-		public static final int SOCIETY_PRAY_TIMES = 37;
-		public static final int SOCIETY_BOSS_TIMES = 38;
-		public static final int SOCIETY_FATIGUE_TIMES = 39;
-		public static final int SHOP_REFRESH_TIMES = 40;
-		public static final int COIN_ARENA_COUNT = 41;
-		public static final int COIN_SOCIETY_COUNT = 42;
-		public static final int COIN_TOWER_COUNT = 43;
-		public static final int QUEST = 44;
-		public static final int QUEST_TYPE_COUNT = 45;
-		public static final int QUEST_CYCLE_COUNT = 46;
-		public static final int EQUIP_STAGE_COUNT = 47;
-		public static final int EQUIP_SLOT_TIMES = 48;
-		public static final int FREE_GOAL = 49;
+		public static final int EGG_COIN_TIMES = 33;
+		public static final int EGG_COIN_10_TIMES = 34;
+		public static final int EGG_DIAMOND_TIMES = 35;
+		public static final int EGG_DIAMOND_10_TIMES = 36;
+		public static final int CALL_PET_STAGE_X_COUNT = 37;
+		public static final int CALL_EQUIP_STAGE_X_COUNT = 38;
+		public static final int SOCIETY_JOIN_TIMES = 39;
+		public static final int SOCIETY_PRAY_TIMES = 40;
+		public static final int SOCIETY_BOSS_TIMES = 41;
+		public static final int SOCIETY_FATIGUE_TIMES = 42;
+		public static final int SHOP_REFRESH_TIMES = 43;
+		public static final int COIN_SOCIETY_COUNT = 44;
+		public static final int COIN_TOWER_COUNT = 45;
+		public static final int QUEST_X = 46;
+		public static final int QUEST_TYPE_X_COUNT = 47;
+		public static final int QUEST_CYCLE_X_COUNT = 48;
 	}
 
 	// 副本难度
-	public static class InstanceDifficulty {
-		public static final int NORMAL_INSTANCE = 0;
-		public static final int HARD_INSTANCE = 1;
+	public static class Instance {
+		// 难度
+		public static final int NORMAL = 0;
+		public static final int HARD = 1;
+		// 状态索引
+		public static final int STATE_WIN_INDEX = 0;
+		public static final int STATE_STAR_INDEX = 1;
+		public static final int STATE_ENTER_INDEX = 2;
+		// 状态长度
+		public static final  int STATE_STORY_SIZE = 3;
+		public static final  int STATE_OTHER_SIZE = 1;
 	}
 
 	public static class Alliance {
@@ -523,7 +530,7 @@ public class GsConst {
 		public static final int TEN_COIN_PRICE = 900;
 		public static final int ONE_DIAMOND_PRICE = 10;
 		public static final int TEN_DIAMOND_PRICE = 90;
-		
+
 		public static final int MAX_COIN_FREE_TIMES_DAILY = 5;
 		public static final int MAX_DIAMOND_FREE_TIMES = 1;
 		// 免费钻石抽蛋恢复秒数

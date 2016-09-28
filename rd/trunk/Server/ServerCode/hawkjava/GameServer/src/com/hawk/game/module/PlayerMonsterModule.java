@@ -361,8 +361,8 @@ public class PlayerMonsterModule extends PlayerModule {
 
 		award.addMonster(cfgId, 0, 1, 1, monsterCfg.getDisposition());
 
-		consume.consumeTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);
-		award.rewardTakeAffectAndPush(player, Action.MONSTER_SUMMON, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
 
 		HSMonsterComposeRet.Builder response = HSMonsterComposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_COMPOSE_S_VALUE, response));

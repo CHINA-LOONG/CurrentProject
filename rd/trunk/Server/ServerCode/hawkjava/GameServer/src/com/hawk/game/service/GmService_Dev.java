@@ -476,11 +476,11 @@ public class GmService_Dev extends GameService {
 			actionHandled = true;
 			break;
 		}
-		// 设置副本星级
+		// 设置故事副本星级
 		case "setstar": {
 			// 因为是GM未优化
 			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
-			if (targetCfg == null) {
+			if (targetCfg == null || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
@@ -511,8 +511,8 @@ public class GmService_Dev extends GameService {
 									statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
 								}
 							}
-						} else if (targetDifficult == GsConst.InstanceDifficulty.HARD_INSTANCE
-								&& entry.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+						} else if (targetDifficult == GsConst.Instance.HARD
+								&& entry.getDifficult() == GsConst.Instance.NORMAL) {
 							if (entry.getChapter() <= targetChapter) {
 								if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
 									statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
@@ -526,22 +526,24 @@ public class GmService_Dev extends GameService {
 					int hardTopChapter = 0;
 					int normalTopIndex = 0;
 					int hardTopIndex = 0;
-					for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
-						if (entry.getValue() <= 0) {
+					for (Entry<String, int[]> entry : statisticsEntity.getInstanceStateMap().entrySet()) {
+						int[] state = entry.getValue();
+						if (state.length != GsConst.Instance.STATE_STORY_SIZE || state[GsConst.Instance.STATE_STAR_INDEX] <= 0) {
 							continue;
 						}
+
 						InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
 						if (entryCfg != null) {
 							int chapter = entryCfg.getChapter();
 							int index = entryCfg.getIndex();
-							if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+							if (entryCfg.getDifficult() == GsConst.Instance.NORMAL) {
 								if (chapter > normalTopChapter) {
 									normalTopChapter = chapter;
 									normalTopIndex = index;
 								} else if (chapter == normalTopChapter && index > normalTopIndex) {
 									normalTopIndex = index;
 								}
-							} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+							} else if (entryCfg.getDifficult() == GsConst.Instance.HARD) {
 								if (chapter > hardTopChapter) {
 									hardTopChapter = chapter;
 									hardTopIndex = index;
@@ -561,13 +563,19 @@ public class GmService_Dev extends GameService {
 
 				// 推送副本数据
 				GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
-				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+				for (Entry<String, int[]> entry : statisticsEntity.getInstanceStateMap().entrySet()) {
+					int[] state = entry.getValue();
+					if (state.length != GsConst.Instance.STATE_STORY_SIZE) {
+						continue;
+					}
 					InstanceState.Builder instanceState = InstanceState.newBuilder();
 					instanceState.setInstanceId(entry.getKey());
-					instanceState.setStar(entry.getValue());
-					instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
+					instanceState.setStar(state[GsConst.Instance.STATE_STAR_INDEX]);
+					instanceState.setCountDaily(state[GsConst.Instance.STATE_ENTER_INDEX]);
+
 					gmPush.addInstanceState(instanceState);
 				}
+
 				ChapterState.Builder chapterState = ChapterState.newBuilder();
 				chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
 				chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
@@ -582,11 +590,11 @@ public class GmService_Dev extends GameService {
 			actionHandled = true;
 			break;
 		}
-		// 设置副本是否通关
+		// 设置故事副本是否通关
 		case "setpass": {
 			// 因为是GM未优化
 			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
-			if (targetCfg == null) {
+			if (targetCfg == null || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
@@ -614,8 +622,8 @@ public class GmService_Dev extends GameService {
 								statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
 							}
 						}
-					} else if (targetDifficult == GsConst.InstanceDifficulty.HARD_INSTANCE
-							&& entry.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+					} else if (targetDifficult == GsConst.Instance.HARD
+							&& entry.getDifficult() == GsConst.Instance.NORMAL) {
 						if (entry.getChapter() <= targetChapter) {
 							if (0 == statisticsEntity.getInstanceStar(entry.getInstanceId())) {
 								statisticsEntity.setInstanceStar(entry.getInstanceId(), 1);
@@ -625,9 +633,9 @@ public class GmService_Dev extends GameService {
 				}
 			} else if (false == isPass && 0 != oldStar){
 				update = true;
-				statisticsEntity.setInstanceStar(gmItemId, 0);
+				statisticsEntity.removeInstanceState(gmItemId);
 
-				// 修改所有后续已完成副本星级
+				// 清理所有后续副本星级
 				int targetChapter = targetCfg.getChapter();
 				int targetIndex = targetCfg.getIndex();
 				int targetDifficult = targetCfg.getDifficult();
@@ -637,16 +645,12 @@ public class GmService_Dev extends GameService {
 					if (targetDifficult == entry.getDifficult()) {
 						if (entry.getChapter() > targetChapter
 								|| (entry.getChapter() == targetChapter && entry.getIndex() > targetIndex)) {
-							if (0 != statisticsEntity.getInstanceStar(entry.getInstanceId())) {
-								statisticsEntity.setInstanceStar(entry.getInstanceId(), 0);
-							}
+							statisticsEntity.removeInstanceState(entry.getInstanceId());
 						}
-					} else if (targetDifficult == GsConst.InstanceDifficulty.NORMAL_INSTANCE
-							&& entry.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+					} else if (targetDifficult == GsConst.Instance.NORMAL
+							&& entry.getDifficult() == GsConst.Instance.HARD) {
 						if (entry.getChapter() >= targetChapter) {
-							if (0 != statisticsEntity.getInstanceStar(entry.getInstanceId())) {
-								statisticsEntity.setInstanceStar(entry.getInstanceId(), 0);
-							}
+							statisticsEntity.removeInstanceState(entry.getInstanceId());
 						}
 					}
 				}
@@ -658,22 +662,24 @@ public class GmService_Dev extends GameService {
 				int hardTopChapter = 0;
 				int normalTopIndex = 0;
 				int hardTopIndex = 0;
-				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
-					if (entry.getValue() <= 0) {
+				for (Entry<String, int[]> entry : statisticsEntity.getInstanceStateMap().entrySet()) {
+					int[] state = entry.getValue();
+					if (state.length != GsConst.Instance.STATE_STORY_SIZE || state[GsConst.Instance.STATE_STAR_INDEX] <= 0) {
 						continue;
 					}
+
 					InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
 					if (entryCfg != null) {
 						int chapter = entryCfg.getChapter();
 						int index = entryCfg.getIndex();
-						if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+						if (entryCfg.getDifficult() == GsConst.Instance.NORMAL) {
 							if (chapter > normalTopChapter) {
 								normalTopChapter = chapter;
 								normalTopIndex = index;
 							} else if (chapter == normalTopChapter && index > normalTopIndex) {
 								normalTopIndex = index;
 							}
-						} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+						} else if (entryCfg.getDifficult() == GsConst.Instance.HARD) {
 							if (chapter > hardTopChapter) {
 								hardTopChapter = chapter;
 								hardTopIndex = index;
@@ -692,13 +698,19 @@ public class GmService_Dev extends GameService {
 
 				// 推送副本数据
 				GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
-				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+				for (Entry<String, int[]> entry : statisticsEntity.getInstanceStateMap().entrySet()) {
+					int[] state = entry.getValue();
+					if (state.length != GsConst.Instance.STATE_STORY_SIZE) {
+						continue;
+					}
 					InstanceState.Builder instanceState = InstanceState.newBuilder();
 					instanceState.setInstanceId(entry.getKey());
-					instanceState.setStar(entry.getValue());
-					instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
+					instanceState.setStar(state[GsConst.Instance.STATE_STAR_INDEX]);
+					instanceState.setCountDaily(state[GsConst.Instance.STATE_ENTER_INDEX]);
+
 					gmPush.addInstanceState(instanceState);
 				}
+
 				ChapterState.Builder chapterState = ChapterState.newBuilder();
 				chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
 				chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());

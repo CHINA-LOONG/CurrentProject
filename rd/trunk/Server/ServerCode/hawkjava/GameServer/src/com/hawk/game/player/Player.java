@@ -693,10 +693,6 @@ public class Player extends HawkAppObj {
 		if (0 != coinIncrease) {
 			playerData.getPlayerEntity().setArenaCoin(getArenaCoin() + coinIncrease);
 			playerData.getPlayerEntity().notifyUpdate(true);
-
-			playerData.getStatisticsEntity().increaseCoinArenaCount(coinIncrease);
-			playerData.getStatisticsEntity().increaseCoinArenaCountDaily(coinIncrease);
-			playerData.getStatisticsEntity().notifyUpdate(true);
 		}
 
 		// TODO BI
@@ -1041,11 +1037,14 @@ public class Player extends HawkAppObj {
 			if (equipEntity.notifyCreate()) {
 				playerData.addEquipEntity(equipEntity);
 
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 				if (action == Action.GUILD_SHOP_BUY     ||
 					action == Action.NORMAL_SHOP_BUY 	||
 					action == Action.TOWER_SHOP_BUY) {
-					StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 					statisticsEntity.increaseBuyItemTimes(equipId);
+					statisticsEntity.notifyUpdate(true);
+				} else if (action == Action.EGG) {
+					statisticsEntity.increaseCallEquipStageTimes(stage);
 					statisticsEntity.notifyUpdate(true);
 				}
 
@@ -1055,7 +1054,6 @@ public class Player extends HawkAppObj {
 				}
 
 				BILogger.getBIData(BIItemData.class).log(this, action, itemCfg, stage, 1, 0);
-
 				return equipEntity;
 			}
 		}
@@ -1125,14 +1123,16 @@ public class Player extends HawkAppObj {
 			playerData.setMonsterEntity(monsterEntity);
 			onIncreaseMonster(monsterEntity);
 
-			if (action == Action.MONSTER_SUMMON) {
-				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
-				statisticsEntity.increaseMonsterMixTimes(monsterCfgId);
+			StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+			if (action == Action.MONSTER_COMPOSE) {
+				statisticsEntity.increaseMonsterMixTimes();
+				statisticsEntity.notifyUpdate(true);
+			} else if (action == Action.EGG) {
+				statisticsEntity.increaseCallMonsterStageTimes(stage);
 				statisticsEntity.notifyUpdate(true);
 			}
 
 			BILogger.getBIData(BIPetFlowData.class).log(this, action, monsterEntity.getId(), monster, stage, 1, 0, 1, 0);
-
 			return monsterEntity;
 		}
 		return null;
@@ -1535,15 +1535,15 @@ public class Player extends HawkAppObj {
 	/**
 	 * 恢复免费钻石抽蛋点数
 	 */
-	public int regainEggDiamondPoint() {
+	public int regainEggDiamondFreePoint() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
-		int old = statisticsEntity.getEggDiamondPoint();
+		int old = statisticsEntity.getEggDiamond1FreePoint();
 		if (old == GsConst.summon.MAX_DIAMOND_FREE_TIMES) {
 			return old;
 		}
 
 		Calendar curTime = HawkTime.getCalendar();
-		Calendar beginTime = statisticsEntity.getEggPointBeginTime();
+		Calendar beginTime = statisticsEntity.getEggDiamond1FreePointBeginTime();
 
 		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
 		int cur = old + delta / GsConst.summon.DIAMOND_FREE_TIME;
@@ -1557,8 +1557,8 @@ public class Player extends HawkAppObj {
 		}
 
 		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.summon.DIAMOND_FREE_TIME  * 1000);
-		statisticsEntity.setEggDiamondPoint(cur);
-		statisticsEntity.setEggPointBeginTime(beginTime);
+		statisticsEntity.setEggDiamond1FreePoint(cur);
+		statisticsEntity.setEggDiamond1FreePointBeginTime(beginTime);
 
 		statisticsEntity.notifyUpdate(true);
 		return cur;

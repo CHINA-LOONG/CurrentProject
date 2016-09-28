@@ -252,7 +252,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		List<MonsterCfg> monsterList = new ArrayList<>(GsConst.ADVENTURE_MONSTER_COUNT);
 		for (Integer monsterId : teamEntity.getSelfMonsterList()) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
-			
+
 			if (null == monsterEntity) {
 				HawkLog.errPrintln(String.format("entity invalid MonsterEntity: %d", monsterId));
 			} else {
@@ -311,6 +311,11 @@ public class PlayerAdventureModule extends PlayerModule {
 			advenEntity.setConditionList(conditionList);
 		}
 		advenEntity.notifyUpdate(true);
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.increaseAdventureTimes();
+		statisticsEntity.increaseAdventureTimesDaily();
+		statisticsEntity.notifyUpdate(true);
 
 		HSAdventureSettleRet.Builder response = HSAdventureSettleRet.newBuilder();
 		response.setTeamId(teamId);

@@ -167,14 +167,24 @@ enum instanceError
 {
 	// 副本未开启
 	INSTANCE_NOT_OPEN          = 0x00060001;
+	// 等级不足
 	INSTANCE_LEVEL             = 0x00060002;
+	// 挑战次数已用完
 	INSTANCE_COUNT             = 0x00060003;
+	// 体力不足
 	INSTANCE_FATIGUE           = 0x00060004;
+	// 复活次数已用完
 	INSTANCE_REVIVE_COUNT      = 0x00060005;
-	CHAPTER_BOX_STAR_COUNT     = 0x00060006;
-	CHAPTER_BOX_ALREADY_OPEN   = 0x00060007;
-	INSTANCE_NOT_ENTER         = 0x00060008;
-	TOWER_FLOOR                = 0x00060009;
+	// 扫荡未满星
+	SWEEP_STAR_COUNT           = 0x00060006;
+	// 章节未满星
+	CHAPTER_BOX_STAR_COUNT     = 0x00060007;
+	// 章节宝箱已领取
+	CHAPTER_BOX_ALREADY_OPEN   = 0x00060008;
+	// 结算时未进入副本
+	INSTANCE_NOT_ENTER         = 0x00060009;
+	// 通天塔层数错误
+	TOWER_FLOOR                = 0x0006000A;
 }
 
 enum mailError

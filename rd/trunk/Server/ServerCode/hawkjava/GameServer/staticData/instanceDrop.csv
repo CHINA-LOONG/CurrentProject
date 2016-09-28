@@ -103,10 +103,10 @@ senlin11_bosssenlin31Wendige2,1033
 senlin12_xgHetong2,2031
 senlin12_xgLonggongtongzi3,2032
 senlin12_bosssenlin32Longnv3,2033
-senlin13_xgWendige3,3031
+senlin13_xgWendige2,3031
 senlin13_xgXiyiren2,3032
 senlin13_bosssenlin33Luoxinfu5,3033
-senlin14_xgWendige2,4031
+senlin14_xgWendige3,4031
 senlin14_xgShuigui3,4032
 senlin14_bosssenlin34Amute3,4033
 senlin15_xgSaibulesi5,5031
@@ -127,10 +127,10 @@ senlin21_bosssenlin31Wendige2,1133
 senlin22_xgHetong2,2031
 senlin22_xgLonggongtongzi3,2032
 senlin22_bosssenlin32Longnv3,2133
-senlin23_xgWendige3,3031
+senlin23_xgWendige2,3031
 senlin23_xgXiyiren2,3032
 senlin23_bosssenlin33Luoxinfu5,3133
-senlin24_xgWendige2,4031
+senlin24_xgWendige3,4031
 senlin24_xgShuigui3,4032
 senlin24_bosssenlin34Amute3,4133
 senlin25_xgSaibulesi5,5031
@@ -198,7 +198,7 @@ xueshan11_xgLonggongtongzi3,1052
 xueshan11_bosschaoxue51Langren5,1053
 xueshan12_xgLuoxinfu5,2051
 xueshan12_xgLangren3,2052
-xueshan12_bosschaoxue52Mengyan5,2053
+xueshan12_bosschaoxue52Yifanmumian3,2053
 xueshan13_xgMoguguai3,3051
 xueshan13_xgShuigui3,3052
 xueshan13_bosschaoxue53Xiaochou3,3053
@@ -246,7 +246,7 @@ xueshan21_xgLonggongtongzi3,1052
 xueshan21_bosschaoxue51Langren5,1153
 xueshan22_xgLuoxinfu5,2051
 xueshan22_xgLangren3,2052
-xueshan22_bosschaoxue52Mengyan5,2153
+xueshan22_bosschaoxue52Yifanmumian3,2153
 xueshan23_xgMoguguai3,3051
 xueshan23_xgShuigui3,3052
 xueshan23_bosschaoxue53Xiaochou3,3153
@@ -402,7 +402,7 @@ gonghuihuoshan17_xgAnpusha5,7042
 gonghuihuoshan17_bosshuoshan47Ifrit4,7043
 gonghuixueshan12_xgLuoxinfu5,2051
 gonghuixueshan12_xgLangren3,2052
-gonghuixueshan12_bosschaoxue52Mengyan5,2053
+gonghuixueshan12_bosschaoxue52Yifanmumian3,2053
 gonghuixueshan13_xgMoguguai3,3051
 gonghuixueshan13_xgShuigui3,3052
 gonghuixueshan13_bosschaoxue53Xiaochou3,3053

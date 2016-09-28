@@ -1,8 +1,8 @@
 ﻿#TEXT,TEXT,NUM
 name,desc,needlevel
 #功能名称,功能描述,开启等级
-hecheng_name,hecheng_desc,25
-fenjie_name,fenjie_desc,22
+hecheng_name,hecheng_desc,22
+fenjie_name,fenjie_desc,25
 dazao_name,dazao_desc,6
 saodang_name,saodang_desc,8
 saodangN_name,saodang_desc,15
@@ -16,5 +16,7 @@ xiangqian_name,hecheng_desc,20
 shengji_name,hecheng_desc,8
 huanchong_name,hecheng_desc,6
 shenhuashouhuzhe_name,hecheng_desc,15
-jiasu_name,hecheng_desc,5
+jiasu_name,hecheng_desc,2
 tuoguan_name,hecheng_desc,8
+shijieboss_name,hecheng_desc,28
+fragmentwish_title,hecheng_desc,18

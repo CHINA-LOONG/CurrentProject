@@ -1,10 +1,8 @@
 package com.hawk.game.entity.statistics;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -35,9 +33,9 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "monsterCollect", nullable = false)
 	protected String monsterCollectJson = "";
 
-	// 历史合成怪物X次数
-	@Column(name = "monsterXMixTimes", nullable = false)
-	protected String monsterXMixTimesJson = "";
+	// 历史合成怪物次数
+	@Column(name = "monsterMixTimes", nullable = false)
+	protected int monsterMixTimes = 0;
 
 	// 今日副本挑战次数重置次数
 	@Column(name = "instanceResetTimesDaily", nullable = false)
@@ -83,11 +81,11 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "useDiamondCountDaily", nullable = false)
 	protected int useDiamondCountDaily = 0;
 
-	// 历史同时穿过达到品级X装备数量
+	// 历史同一只宠物穿过≥X品级的装备数量
 	@Column(name = "equipStageXMaxCount", nullable = false)
 	protected String equipStageXMaxCountJson = "";
 
-	// 今日同时穿过达到品级X装备数量
+	// 今日同一只宠物穿过≥X品级的装备数量
 	@Column(name = "equipStageXMaxCountDaily", nullable = false)
 	protected String equipStageXMaxCountDailyJson = "";
 
@@ -134,11 +132,6 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	boolean monsterCollectFlag = false;
 
 	@Transient
-	protected Map<String, Integer> monsterMixTimesMap = new HashMap<String, Integer>();
-	@Transient
-	boolean monsterMixTimesFlag = false;
-
-	@Transient
 	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer>();
 	@Transient
 	boolean chapterBoxNormalFlag = false;
@@ -183,9 +176,6 @@ public class LfStatisticsEntity extends HawkDBEntity {
 		if (null != monsterCollectJson && false == "".equals(monsterCollectJson) && false == "null".equals(monsterCollectJson)) {
 			monsterCollectSet = HawkJsonUtil.getJsonInstance().fromJson(monsterCollectJson, new TypeToken<HashSet<String>>() {}.getType());
 		}
-		if (null != monsterXMixTimesJson && false == "".equals(monsterXMixTimesJson) && false == "null".equals(monsterXMixTimesJson)) {
-			monsterMixTimesMap = HawkJsonUtil.getJsonInstance().fromJson(monsterXMixTimesJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
-		}
 		if (null != chapterXBoxNormalJson && false == "".equals(chapterXBoxNormalJson) && false == "null".equals(chapterXBoxNormalJson)) {
 			chapterBoxNormalList = HawkJsonUtil.getJsonInstance().fromJson(chapterXBoxNormalJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
@@ -213,10 +203,6 @@ public class LfStatisticsEntity extends HawkDBEntity {
 		if (true == monsterCollectFlag) {
 			monsterCollectFlag = false;
 			monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
-		}
-		if (true == monsterMixTimesFlag) {
-			monsterMixTimesFlag = false;
-			monsterXMixTimesJson = HawkJsonUtil.getJsonInstance().toJson(monsterMixTimesMap);
 		}
 		if (true == chapterBoxNormalFlag) {
 			chapterBoxNormalFlag = false;

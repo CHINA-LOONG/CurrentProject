@@ -69,6 +69,7 @@ public class MainStageController : MonoBehaviour
                 mgr.DestroyUI(mUIHoleEntry);
                 mgr.DestroyUI(mUIHole);
                 mgr.DestroyUI(mUITower);
+                mgr.DestroyUI(mSummonMain);
                 mgr.MainstageInstance = null;
             }
         }
@@ -116,11 +117,11 @@ public class MainStageController : MonoBehaviour
         {
             if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
             {
-                SetCurrentSelectGroup((int)InstanceType.Hole);
+                SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Hole);
             }
             else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
             {
-                SetCurrentSelectGroup((int)InstanceType.Tower);
+                SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Tower);
                 if (
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Next ||
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry
@@ -618,13 +619,13 @@ public class MainStageController : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------
     //NOTE: for return back from battle only
-    public void SetCurrentSelectGroup(int instanceType)
+    public void SetCurrentSelectGroup(int groupType)
     {
-        if (instanceType == (int)InstanceType.Hole)
+        if (groupType == (int)SelectableGroupType.Select_Group_Hole)
         {
             mCurrentSelectedObjGroup = mHoleGroup;
         }
-        else if (instanceType == (int)InstanceType.Tower)
+        else if (groupType == (int)SelectableGroupType.Select_Group_Tower)
         {
             mCurrentSelectedObjGroup = mTowerGroup;
         }

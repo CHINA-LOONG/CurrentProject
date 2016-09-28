@@ -25,7 +25,6 @@ speech_expzhong,0,a,speechname_bingxuenvwang,lihui_bingxuenvwang3,lihui_bingxuen
 ,,a,speechname_bingxuenvwang,lihui_bingxuenvwang3,lihui_bingxuenvwang_haoqi,"227,90",speech_exp6
 ,,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_shengqi,"258,142",speech_exp7
 speech_equip,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_kaixin,"258,142",speech_equip1
-,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_kaixin,"258,142",speech_equip3
 ,,b,speechname_wo,lihui_wo,lihui_wo,"0,0",speech_equip4
 ,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_equip5
 speech_houbeiwei,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_houbeiwei
@@ -55,7 +54,8 @@ speech_xinshouadventure3,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_p
 speech_xinshouadventure4,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouadventure6
 speech_xinshouadventure5,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouadventure7
 speech_xinshouadventure6,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouadventure8
-speech_xinshoudecompose,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoudecompose
+speech_xinshoudecompose,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoudecompose1
+,,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoudecompose2
 speech_xinshouchongwujinjie,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouchongwujinjie
 speech_xinshouxiangqian,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouxiangqian1
 ,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouxiangqian2
@@ -86,6 +86,8 @@ speech_worldboss1,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"
 speech_worldboss2,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_worldboss2
 ,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_worldboss3
 speech_hero,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_hero1
+speech_fragmentwish,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_fragmentwish1
+,,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_fragmentwish2
 speech_blt_11,0,b,speechname_wo,lihui_wo,lihui_wo,"0,0",speech_blt_11_1
 ,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_tuoli,"258,142",speech_blt_11_2
 ,,a,speechname_bingxuenvwang,lihui_bingxuenvwang3,lihui_bingxuenvwang_haoqi,"227,90",speech_blt_11_3

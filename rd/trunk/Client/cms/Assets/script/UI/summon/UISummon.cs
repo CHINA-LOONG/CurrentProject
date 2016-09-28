@@ -25,25 +25,30 @@ public class UISummon : UIBase
 {
     public static string ViewName = "UISummon2";
     public List<SummonItem> summonList = new List<SummonItem>();
-    bool consumB;
     ConsumeType consum = ConsumeType.Num_Consume;
-    public float endTime = 0.0f;
-    public int summonNum = 0;
     UISumReward uiSumReward = null;
     public GameObject exit;
     public GameObject onceButton;
     public GameObject tenButton;
     public GameObject skipButton;
+    public GameObject SumTypeImg;
+    public GameObject SumTypeImg1;
     public GameObject ui;
     public Text freeState;
     public Text freeImage;
     public Text onceButtonText;
     public Text tenButtonText;
-	public GameObject SumTypeImg;
+    public Text consumOnceText;
+    public Text consumTenText;
     Animator choudanAnim;
     SummonEffects summEffect;
     TimeEventWrap timeEvent;
+    Sprite jimbiIcon;
+    Sprite zuanshiIcon;
+    bool consumB;
     string anim = "xiaoK";
+    public float endTime = 0.0f;
+    public int summonNum = 0;
     static UISummon mInst = null;
     public static UISummon Instance
     {
@@ -57,7 +62,31 @@ public class UISummon : UIBase
     {
         consumB = isJinBi;
         if (summEffect != null)
+        {
             summEffect.SetSummonState(isJinBi);
+        }
+        if (jimbiIcon != null)
+            SetConsumIcon();
+    }
+    //---------------------------------------------------------------------------
+    void SetConsumIcon()//初始化设置
+    {
+        if (consumB)
+        {
+            SumTypeImg.GetComponent<Image>().sprite = jimbiIcon;
+            SumTypeImg1.GetComponent<Image>().sprite = jimbiIcon;
+            consumOnceText.text = GameConfig.Instance.jinBiSum.ToString();
+            int jinBi = GameConfig.Instance.jinBiSum * 9;
+            consumTenText.text = jinBi.ToString();
+        }
+        else
+        {
+            SumTypeImg.GetComponent<Image>().sprite = zuanshiIcon;
+            SumTypeImg1.GetComponent<Image>().sprite = zuanshiIcon;
+            consumOnceText.text = GameConfig.Instance.zuanShiSum.ToString();
+            int zuanshi = GameConfig.Instance.zuanShiSum * 9;
+            consumTenText.text = zuanshi.ToString();
+        }
     }
     //---------------------------------------------------------------------------
     void SummonOnce(GameObject go)//单次召唤点击事件
@@ -95,7 +124,7 @@ public class UISummon : UIBase
             consum = ConsumeType.Consume_jinbi;
         else
             consum = ConsumeType.Consume_zuanshi;
-        showUI(false);
+        showUI(false,true);
         SummonRequest(true);
     }
     //---------------------------------------------------------------------------
@@ -314,7 +343,7 @@ public class UISummon : UIBase
         summonList[0].beginShow = true;
     }
     //---------------------------------------------------------------------------
-    public void showUI(bool isShow)
+    public void showUI(bool isShow,bool isTen = false)
     {
        if (isShow)
         {
@@ -326,6 +355,10 @@ public class UISummon : UIBase
             ui.SetActive(false);
             skipButton.SetActive(true);
         }
+       if (!isTen)
+            skipButton.SetActive(false);
+        else
+           skipButton.SetActive(true);
     }
     //---------------------------------------------------------------------------
     void exitClick(GameObject go)
@@ -341,7 +374,7 @@ public class UISummon : UIBase
         }
     }
     //---------------------------------------------------------------------------
-	void Start ()
+    void Start()
     {
         mInst = this;
         ui.SetActive(true);
@@ -355,25 +388,29 @@ public class UISummon : UIBase
         onceButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_onetime");
         tenButtonText.text = StaticDataMgr.Instance.GetTextByID("summon_tentime");
         summEffect.SetSummonState(consumB);
-	}
+        jimbiIcon = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_jinbi");
+        zuanshiIcon = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_zuanshi");
+        SetConsumIcon();
+    }
     //---------------------------------------------------------------------------
     public void SetFreeTime()
     {
         if (consumB)
         {
-            if (GameDataMgr.Instance.freeJinbiSumNum >=5)
+            if (GameDataMgr.Instance.freeJinbiSumNum >= 5)
             {
                 freeState.text = StaticDataMgr.Instance.GetTextByID("summon_useout");
-				freeState.gameObject.SetActive(true);
+                freeState.gameObject.SetActive(true);
                 freeImage.gameObject.SetActive(false);
-				SumTypeImg.gameObject.SetActive(true);
+                SumTypeImg.gameObject.SetActive(true);
             }
             else
             {
                 if ((GameDataMgr.Instance.summonJinbi + GameConfig.Instance.jinBiFree) < GameTimeMgr.Instance.GetServerTimeStamp())
                 {
                     freeImage.gameObject.SetActive(true);
-					SumTypeImg.gameObject.SetActive(false);
+                    SumTypeImg.gameObject.SetActive(false);
+                    freeState.gameObject.SetActive(true);
                     freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_lefttimecoin"), (5 - GameDataMgr.Instance.freeJinbiSumNum));
                 }
                 else
@@ -414,7 +451,10 @@ public class UISummon : UIBase
     //---------------------------------------------------------------------------
     void OnUpdateTime(int time)
     {
-		freeState.text = UIUtil.Convert_hh_mm_ss(time) ;
+        if (consumB)
+            freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_recovertimecoin"), UIUtil.Convert_hh_mm_ss(time));
+        else
+            freeState.text = string.Format(StaticDataMgr.Instance.GetTextByID("summon_recovertimegold"), UIUtil.Convert_hh_mm_ss(time));
     }
     //---------------------------------------------------------------------------
     void OnEnable()

@@ -18,6 +18,7 @@ import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -57,25 +58,13 @@ public class HfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "tripleExpLeft", nullable = false)
 	protected byte tripleExpLeft = 0;
 
-	// 副本X完成星级：1-3
-	@Column(name = "instanceXStar", nullable = false)
-	protected String instanceXStarJson = "";
-
-	// 今日副本X进入次数
-	@Column(name = "instanceXEnterTimesDaily", nullable = false)
-	protected String instanceXEnterTimesDailyJson = "";
-
-	// 历史普通副本完成次数
-	@Column(name = "normalTimes", nullable = false)
-	protected int normalTimes = 0;
+	// 副本X状态[历史通关次数，星级0-3，今日进入次数]
+	@Column(name = "instanceXState", nullable = false)
+	protected String instanceXStateJson = "";
 
 	// 今日普通副本完成次数
 	@Column(name = "normalTimesDaily", nullable = false)
 	protected int normalTimesDaily = 0;
-
-	// 历史精英副本完成次数
-	@Column(name = "hardTimes", nullable = false)
-	protected int hardTimes = 0;
 
 	// 今日精英副本完成次数
 	@Column(name = "hardTimesDaily", nullable = false)
@@ -91,14 +80,14 @@ public class HfStatisticsEntity extends HawkDBEntity {
 	// decode-------------------------------------------------------------------
 
 	@Transient
-	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer>();
+	protected Map<String, int[]> instanceStateMap = new HashMap<>();
 	@Transient
-	boolean instanceStarFlag = false;
+	boolean instanceStateFlag = false;
 
-	@Transient
-	protected Map<String, Integer> instanceEnterTimesDailyMap = new HashMap<String, Integer>();
-	@Transient
-	boolean  instanceEnterTimesDailyFlag = false;
+	@ Transient
+	protected int normalTimes = 0;
+	@ Transient
+	protected int hardTimes = 0;
 
 	// 最后普通副本所属章节
 	@Transient
@@ -128,13 +117,12 @@ public class HfStatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (null != instanceXStarJson && false == "".equals(instanceXStarJson) && false == "null".equals(instanceXStarJson)) {
-			instanceStarMap = HawkJsonUtil.getJsonInstance().fromJson(instanceXStarJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
-		}
-		if (null != instanceXEnterTimesDailyJson && false == "".equals(instanceXEnterTimesDailyJson) && false == "null".equals(instanceXEnterTimesDailyJson)) {
-			instanceEnterTimesDailyMap = HawkJsonUtil.getJsonInstance().fromJson(instanceXEnterTimesDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		if (null != instanceXStateJson && false == "".equals(instanceXStateJson) && false == "null".equals(instanceXStateJson)) {
+			instanceStateMap = HawkJsonUtil.getJsonInstance().fromJson(instanceXStateJson, new TypeToken<HashMap<String, int[]>>() {}.getType());
 		}
 
+		normalTimes = 0;
+		hardTimes = 0;
 		// 0表示未开始任何章节
 		normalTopChapter = 0;
 		hardTopChapter = 0;
@@ -142,29 +130,34 @@ public class HfStatisticsEntity extends HawkDBEntity {
 		normalTopIndex = 0;
 		hardTopIndex = 0;
 
-		// 计算章节和索引
-		for (Entry<String, Integer> entry : instanceStarMap.entrySet()) {
-			if (entry.getValue() <= 0) {
+		// 计算章节、索引和完成次数
+		for (Entry<String, int[]> entry : instanceStateMap.entrySet()) {
+			int[] state = entry.getValue();
+			if (state.length != GsConst.Instance.STATE_STORY_SIZE || state[GsConst.Instance.STATE_STAR_INDEX] <= 0) {
 				continue;
 			}
+
 			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
-			if (entryCfg != null) {
+			if (entryCfg != null && entryCfg.getType() == Const.InstanceType.INSTANCE_STORY_VALUE) {
 				int chapter = entryCfg.getChapter();
 				int index = entryCfg.getIndex();
-				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+				if (entryCfg.getDifficult() == GsConst.Instance.NORMAL) {
 					if (chapter > normalTopChapter) {
 						normalTopChapter = chapter;
 						normalTopIndex = index;
 					} else if (chapter == normalTopChapter && index > normalTopIndex) {
 						normalTopIndex = index;
 					}
-				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+					normalTimes += state[GsConst.Instance.STATE_WIN_INDEX];
+
+				} else if (entryCfg.getDifficult() == GsConst.Instance.HARD) {
 					if (chapter > hardTopChapter) {
 						hardTopChapter = chapter;
 						hardTopIndex = index;
 					} else if (chapter == hardTopChapter && index > hardTopIndex) {
 						hardTopIndex = index;
 					}
+					hardTimes += state[GsConst.Instance.STATE_WIN_INDEX];
 				}
 			}
 		}
@@ -174,13 +167,9 @@ public class HfStatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean encode() {
-		if (true == instanceStarFlag) {
-			instanceStarFlag = false;
-			instanceXStarJson = HawkJsonUtil.getJsonInstance().toJson(instanceStarMap);
-		}
-		if (true == instanceEnterTimesDailyFlag) {
-			instanceEnterTimesDailyFlag = false;
-			instanceXEnterTimesDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceEnterTimesDailyMap);
+		if (true == instanceStateFlag) {
+			instanceStateFlag = false;
+			instanceXStateJson = HawkJsonUtil.getJsonInstance().toJson(instanceStateMap);
 		}
 
 		return true;

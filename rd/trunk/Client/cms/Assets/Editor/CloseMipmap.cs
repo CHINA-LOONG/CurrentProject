@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using System;
 using System.Collections;
@@ -422,6 +423,19 @@ public class CloseMipmap : MonoBehaviour
         {
             //Renderer[] renderers = Resources.FindObjectsOfTypeAll<Renderer>();
             GameObject curObj = itor.Current.Value;
+            Image[] imageList = curObj.GetComponentsInChildren<Image>(true);
+            foreach(Image curImg in imageList)
+            {
+                FileUsedInfo fuInfo;
+                if (curImg.sprite != null)
+                {
+                    if (allTexList.TryGetValue(curImg.sprite.name, out fuInfo) == true)
+                    {
+                        fuInfo.used = true;
+                    }
+                }
+            }
+
             Renderer[] renderList = curObj.GetComponentsInChildren<Renderer>(true);
             foreach (Renderer curRenderer in renderList)
             {
@@ -445,17 +459,15 @@ public class CloseMipmap : MonoBehaviour
 
                     Texture curMainTex = curMat.GetTexture("_MainTex");
                     Texture noiseTex = null;
+                    //Texture tintTex = null;
+                    Texture maskTex = null;
                     if (curMat.HasProperty("_NoiseTex"))
                     {
                         noiseTex = curMat.GetTexture("_NoiseTex");
                     }
-                    if (curMat.HasProperty("Distort"))
+                    if (curMat.HasProperty("_MaskTex"))
                     {
-                        curMat.GetTexture("Distort");
-                    }
-                    if (curMat.HasProperty("Masked"))
-                    {
-                        curMat.GetTexture("Masked");
+                        maskTex = curMat.GetTexture("_MaskTex");
                     }
 
                     //Texture curBumpTex = curMat.GetTexture("_BumpMap");
@@ -475,14 +487,21 @@ public class CloseMipmap : MonoBehaviour
                             fuInfo.used = true;
                         }
                     }
-//                     if (curBumpTex != null)
-//                     {
-//                         textureList.Add(curMat.name, curMainTex.name);
-//                     }
-//                     if (curCubeTex != null)
-//                     {
-//                         textureList.Add(curMat.name, curMainTex.name);
-//                     }
+                    if (maskTex != null)
+                    {
+                        if (allTexList.TryGetValue(maskTex.name, out fuInfo) == true)
+                        {
+                            fuInfo.used = true;
+                        }
+                    }
+                    //                     if (curBumpTex != null)
+                    //                     {
+                    //                         textureList.Add(curMat.name, curMainTex.name);
+                    //                     }
+                    //                     if (curCubeTex != null)
+                    //                     {
+                    //                         textureList.Add(curMat.name, curMainTex.name);
+                    //                     }
                 }
             }
         }

@@ -19,72 +19,72 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 56
-        inSlope: 13
-        outSlope: -.193467692
+        value: 81.5999985
+        inSlope: 5.20000076
+        outSlope: .0467709452
         tangentMode: 1
-      - time: 1.60000002
-        value: 62
-        inSlope: -.267857075
-        outSlope: -.267857075
+      - time: 2
+        value: 92
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: 56
-        inSlope: -3.92512338e-05
-        outSlope: -13
+      - time: 4
+        value: 81.5999985
+        inSlope: 5.20000076
+        outSlope: .0467709452
         tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon1/taiyang
+    path: Summon2/image/yueliang
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 81.5999985
-        inSlope: 14.4000015
-        outSlope: 2.85512524e-05
+        value: 56
+        inSlope: 5
+        outSlope: -.0957274362
         tangentMode: 1
-      - time: 1.60000002
-        value: 87
-        inSlope: -.241071582
-        outSlope: -.241071582
+      - time: 2
+        value: 66
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: 81.5999985
-        inSlope: .164402574
-        outSlope: -14.4000015
+      - time: 4
+        value: 56
+        inSlope: -0
+        outSlope: -5
         tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon2/yueliang
+    path: Summon1/image/taiyang
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .196078435
-        inSlope: .502451003
-        outSlope: .502451003
+        value: .117647059
+        inSlope: .196078449
+        outSlope: .196078449
         tangentMode: 10
-      - time: 1.60000002
-        value: 1
-        inSlope: -.0355602205
-        outSlope: -.0355602205
+      - time: 2
+        value: .509803951
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: .196999997
-        inSlope: -.573571444
-        outSlope: -.573571444
+      - time: 4
+        value: .117647059
+        inSlope: -.196078449
+        outSlope: -.196078449
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.a
-    path: Summon2/fazhen
+    path: Summon2/image/fazhen
     classID: 114
     script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_PPtrCurves: []
@@ -95,19 +95,19 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 4108366908
+    - path: 4271446875
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 218406232
+    - path: 4175931794
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 3235794198
+    - path: 2201418213
       attribute: 304273561
       script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
       classID: 114
@@ -117,7 +117,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 3
+    m_StopTime: 4
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -136,72 +136,72 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 56
-        inSlope: 13
-        outSlope: -.193467692
+        value: 81.5999985
+        inSlope: 5.20000076
+        outSlope: .0467709452
         tangentMode: 1
-      - time: 1.60000002
-        value: 62
-        inSlope: -.267857075
-        outSlope: -.267857075
+      - time: 2
+        value: 92
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: 56
-        inSlope: -3.92512338e-05
-        outSlope: -13
+      - time: 4
+        value: 81.5999985
+        inSlope: 5.20000076
+        outSlope: .0467709452
         tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon1/taiyang
+    path: Summon2/image/yueliang
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 81.5999985
-        inSlope: 14.4000015
-        outSlope: 2.85512524e-05
+        value: 56
+        inSlope: 5
+        outSlope: -.0957274362
         tangentMode: 1
-      - time: 1.60000002
-        value: 87
-        inSlope: -.241071582
-        outSlope: -.241071582
+      - time: 2
+        value: 66
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: 81.5999985
-        inSlope: .164402574
-        outSlope: -14.4000015
+      - time: 4
+        value: 56
+        inSlope: -0
+        outSlope: -5
         tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon2/yueliang
+    path: Summon1/image/taiyang
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .196078435
-        inSlope: .502451003
-        outSlope: .502451003
+        value: .117647059
+        inSlope: .196078449
+        outSlope: .196078449
         tangentMode: 10
-      - time: 1.60000002
-        value: 1
-        inSlope: -.0355602205
-        outSlope: -.0355602205
+      - time: 2
+        value: .509803951
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: .196999997
-        inSlope: -.573571444
-        outSlope: -.573571444
+      - time: 4
+        value: .117647059
+        inSlope: -.196078449
+        outSlope: -.196078449
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.a
-    path: Summon2/fazhen
+    path: Summon2/image/fazhen
     classID: 114
     script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_EulerEditorCurves: []

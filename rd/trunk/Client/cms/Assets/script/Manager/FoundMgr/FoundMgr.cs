@@ -119,7 +119,11 @@ public class FoundMgr
     /// </summary>
     public void GoToLucky()
     {
-        Logger.Log("打开抽奖界面");
+        MainStageController mainStage = UIMgr.Instance.MainstageInstance;
+        if (mainStage != null)
+        {
+            mainStage.SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Summon);
+        }
     }
     /// <summary>
     /// 
@@ -224,7 +228,7 @@ public class FoundMgr
         MainStageController mainStage = UIMgr.Instance.MainstageInstance;
         if (mainStage != null)
         {
-            mainStage.SetCurrentSelectGroup((int)InstanceType.Tower);
+            mainStage.SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Tower);
         }
 
     }
@@ -236,7 +240,7 @@ public class FoundMgr
         MainStageController mainStage = UIMgr.Instance.MainstageInstance;
         if (mainStage != null)
         {
-            mainStage.SetCurrentSelectGroup((int)InstanceType.Hole);
+            mainStage.SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Hole);
         }
     }
     /// <summary>

@@ -938,7 +938,7 @@ summon_titlegold,纯粹聚合,Pure Gather
 summon_tipsgold,十连聚合必得宠物,Gather 10 guarantees a monster
 summon_onetime,聚合1次,Gather 1
 summon_lefttimecoin,免费次数：{0}/5,Free chances: {0}/5
-summon_recovertimecoin,冷却时间,CD time
+summon_recovertimecoin,冷却时间{0},CD time {0}
 summon_useout,今日免费次数已用完,You have used today's free chances.
 summon_tentime,聚合10次,Gather 10
 summon_recovertimegold,{0}后免费,Free in {0}

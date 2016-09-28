@@ -82,11 +82,15 @@ public class BuilderUtil {
 
 		builder.setTimeStamp(HawkTime.getSeconds());
 
-		for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+		for (Entry<String, int[]> entry : statisticsEntity.getInstanceStateMap().entrySet()) {
+			int[] state = entry.getValue();
+			if (state.length != GsConst.Instance.STATE_STORY_SIZE) {
+				continue;
+			}
 			InstanceState.Builder instanceState = InstanceState.newBuilder();
 			instanceState.setInstanceId(entry.getKey());
-			instanceState.setStar(entry.getValue());
-			instanceState.setCountDaily(statisticsEntity.getInstanceEnterTimesDaily(entry.getKey()));
+			instanceState.setStar(state[GsConst.Instance.STATE_STAR_INDEX]);
+			instanceState.setCountDaily(state[GsConst.Instance.STATE_ENTER_INDEX]);
 
 			builder.addInstanceState(instanceState);
 		}
@@ -141,9 +145,9 @@ public class BuilderUtil {
 		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		builder.setAdventureChange(statisticsEntity.getAdventureChange());
 		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
-		builder.setSummonDiamondFreeBeginTime((int)(statisticsEntity.getEggPointBeginTime().getTimeInMillis() / 1000));
-		builder.setSummonCoinFreeTimesDaily(statisticsEntity.getEggCoinFreeTimesDaily());
-		builder.setSummonCoinFreeLastTime((int)(statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() / 1000));
+		builder.setSummonDiamondFreeBeginTime((int)(statisticsEntity.getEggDiamond1FreePointBeginTime().getTimeInMillis() / 1000));
+		builder.setSummonCoinFreeTimesDaily(statisticsEntity.getEggCoin1FreeTimesDaily());
+		builder.setSummonCoinFreeLastTime((int)(statisticsEntity.getEggCoin1FreeLastTime().getTimeInMillis() / 1000));
 		builder.addAllHiredMonsterId(statisticsEntity.getHireMonsterDailySet());
 
 		return builder;
@@ -183,7 +187,7 @@ public class BuilderUtil {
 
 	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeBuilder(Player player, ShopEntity shopEntity) {
 		HSShopRefreshTimeSync.Builder builder = HSShopRefreshTimeSync.newBuilder();
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.TOWERSHOP_VALUE; ++i) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.ALLIANCESHOP_VALUE; ++i) {
 			ShopCfg shopCfg = ShopCfg.getShopCfg(i, player.getLevel());
 			if (i == Const.shopType.NORMALSHOP_VALUE) {
 				builder.setNormalShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));

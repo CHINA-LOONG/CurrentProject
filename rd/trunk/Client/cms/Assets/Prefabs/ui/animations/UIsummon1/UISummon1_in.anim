@@ -29,7 +29,7 @@ AnimationClip:
         outSlope: 3042.08423
         tangentMode: 1
       - time: .13333334
-        value: -209
+        value: -200
         inSlope: -15.5183382
         outSlope: 3042.08423
         tangentMode: 1
@@ -53,7 +53,7 @@ AnimationClip:
         outSlope: -3060.12036
         tangentMode: 1
       - time: .13333334
-        value: 195
+        value: 200
         inSlope: -22.7592125
         outSlope: -3060.12036
         tangentMode: 1
@@ -72,7 +72,7 @@ AnimationClip:
         outSlope: 2132.45166
         tangentMode: 1
       - time: .13333334
-        value: 49
+        value: 50
         inSlope: 8.71930752e-05
         outSlope: 984
         tangentMode: 1
@@ -124,64 +124,6 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: .0333333351
-        value: -124
-        inSlope: -622.499939
-        outSlope: 2.55984735
-        tangentMode: 1
-      - time: .0666666701
-        value: -124
-        inSlope: -622.499939
-        outSlope: 2.55984735
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.000015
-        outSlope: -249.000015
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon1/beijing_xia
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -124
-        inSlope: -622.499939
-        outSlope: 1.78269541
-        tangentMode: 1
-      - time: .0666666701
-        value: -124
-        inSlope: -622.499939
-        outSlope: 1.78269541
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.000015
-        outSlope: -249.000015
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon1/beijing_xia1
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
         value: -136
         inSlope: -622.499939
         outSlope: -2.78564453
@@ -205,64 +147,6 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
     path: Summon1/introduce
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: -2.13889241
-        tangentMode: 1
-      - time: .0666666701
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: -2.13889241
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.300003
-        outSlope: -249.300003
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon2/beijing_xia
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: 8.41864166e-05
-        tangentMode: 1
-      - time: .0666666701
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: 8.41864166e-05
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.300003
-        outSlope: -249.300003
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon2/beijing_xia1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -297,117 +181,145 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0666666701
-        value: 2
-        inSlope: -29.9999981
-        outSlope: -29.9999981
-        tangentMode: 10
       - time: .13333334
-        value: 0
-        inSlope: 1.90734863e-06
-        outSlope: 1.90734863e-06
+        value: -111
+        inSlope: -960.000061
+        outSlope: -960.000061
         tangentMode: 10
-      - time: .200000003
-        value: 2
-        inSlope: 15.000001
-        outSlope: 15.000001
+      - time: .233333334
+        value: -207
+        inSlope: -480.000031
+        outSlope: -480.000031
         tangentMode: 10
       - time: .300000012
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.x
-    path: Summon1/mofashu
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0666666701
-        value: -99
-        inSlope: 239.999985
-        outSlope: 239.999985
-        tangentMode: 10
-      - time: .13333334
-        value: -83
-        inSlope: -1.52587891e-05
-        outSlope: -1.52587891e-05
-        tangentMode: 10
-      - time: .200000003
-        value: -99
-        inSlope: -120.000008
-        outSlope: -120.000008
-        tangentMode: 10
-      - time: .300000012
-        value: -99
+        value: -207
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon1/mofashu
+    path: Summon1/image/beijing_xia
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0666666701
-        value: 2
-        inSlope: 59.9999962
-        outSlope: 59.9999962
-        tangentMode: 10
       - time: .13333334
-        value: 6
-        inSlope: -3.81469727e-06
-        outSlope: -3.81469727e-06
+        value: -111
+        inSlope: -960.000061
+        outSlope: -960.000061
         tangentMode: 10
-      - time: .200000003
-        value: 2
-        inSlope: -30.0000019
-        outSlope: -30.0000019
+      - time: .233333334
+        value: -207
+        inSlope: -480.000031
+        outSlope: -480.000031
         tangentMode: 10
       - time: .300000012
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.x
-    path: Summon2/mofashu
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0666666701
-        value: -99
-        inSlope: 209.999985
-        outSlope: 209.999985
-        tangentMode: 10
-      - time: .13333334
-        value: -85
-        inSlope: -1.52587891e-05
-        outSlope: -1.52587891e-05
-        tangentMode: 10
-      - time: .200000003
-        value: -99
-        inSlope: -105.000008
-        outSlope: -105.000008
-        tangentMode: 10
-      - time: .300000012
-        value: -99
+        value: -207
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon2/mofashu
+    path: Summon1/image/beijing_xia1
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .13333334
+        value: -121
+        inSlope: -860.000061
+        outSlope: -860.000061
+        tangentMode: 10
+      - time: .233333334
+        value: -207
+        inSlope: -430.000031
+        outSlope: -430.000031
+        tangentMode: 10
+      - time: .300000012
+        value: -207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/beijing_xia
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .13333334
+        value: -121
+        inSlope: -860.000061
+        outSlope: -860.000061
+        tangentMode: 10
+      - time: .233333334
+        value: -207
+        inSlope: -430.000031
+        outSlope: -430.000031
+        tangentMode: 10
+      - time: .300000012
+        value: -207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/beijing_xia1
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .0666666701
+        value: -99
+        inSlope: 382.499969
+        outSlope: 382.499969
+        tangentMode: 10
+      - time: .13333334
+        value: -73.5
+        inSlope: 63.7499771
+        outSlope: 63.7499771
+        tangentMode: 10
+      - time: .233333334
+        value: -99
+        inSlope: -255.000015
+        outSlope: -255.000015
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/mofashu
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .0666666701
+        value: -99
+        inSlope: 412.499969
+        outSlope: 412.499969
+        tangentMode: 10
+      - time: .13333334
+        value: -71.5
+        inSlope: 68.7499695
+        outSlope: 68.7499695
+        tangentMode: 10
+      - time: .233333334
+        value: -99
+        inSlope: -275.000031
+        outSlope: -275.000031
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon1/image/mofashu
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -448,31 +360,7 @@ AnimationClip:
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 1949661761
-      attribute: 538195251
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2188618699
-      attribute: 538195251
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
     - path: 2858473114
-      attribute: 538195251
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3388937871
-      attribute: 538195251
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
-    - path: 4262628880
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
@@ -484,25 +372,37 @@ AnimationClip:
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 2433762592
-      attribute: 1460864421
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2433762592
+    - path: 2341011128
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 2828892645
-      attribute: 1460864421
+    - path: 1189960951
+      attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 2828892645
+    - path: 685668369
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3913552189
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2355770103
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2635552910
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
@@ -541,7 +441,7 @@ AnimationClip:
         outSlope: 3042.08423
         tangentMode: 1
       - time: .13333334
-        value: -209
+        value: -200
         inSlope: -15.5183382
         outSlope: 3042.08423
         tangentMode: 1
@@ -565,7 +465,7 @@ AnimationClip:
         outSlope: -3060.12036
         tangentMode: 1
       - time: .13333334
-        value: 195
+        value: 200
         inSlope: -22.7592125
         outSlope: -3060.12036
         tangentMode: 1
@@ -584,7 +484,7 @@ AnimationClip:
         outSlope: 2132.45166
         tangentMode: 1
       - time: .13333334
-        value: 49
+        value: 50
         inSlope: 8.71930752e-05
         outSlope: 984
         tangentMode: 1
@@ -636,64 +536,6 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: .0333333351
-        value: -124
-        inSlope: -622.499939
-        outSlope: 2.55984735
-        tangentMode: 1
-      - time: .0666666701
-        value: -124
-        inSlope: -622.499939
-        outSlope: 2.55984735
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.000015
-        outSlope: -249.000015
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon1/beijing_xia
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -124
-        inSlope: -622.499939
-        outSlope: 1.78269541
-        tangentMode: 1
-      - time: .0666666701
-        value: -124
-        inSlope: -622.499939
-        outSlope: 1.78269541
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.000015
-        outSlope: -249.000015
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon1/beijing_xia1
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
         value: -136
         inSlope: -622.499939
         outSlope: -2.78564453
@@ -717,64 +559,6 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
     path: Summon1/introduce
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: -2.13889241
-        tangentMode: 1
-      - time: .0666666701
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: -2.13889241
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.300003
-        outSlope: -249.300003
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon2/beijing_xia
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0333333351
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: 8.41864166e-05
-        tangentMode: 1
-      - time: .0666666701
-        value: -123.900002
-        inSlope: -623.249939
-        outSlope: 8.41864166e-05
-        tangentMode: 1
-      - time: .233333334
-        value: -207
-        inSlope: -249.300003
-        outSlope: -249.300003
-        tangentMode: 10
-      - time: .333333343
-        value: -207
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.y
-    path: Summon2/beijing_xia1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -809,117 +593,145 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0666666701
-        value: 2
-        inSlope: -29.9999981
-        outSlope: -29.9999981
-        tangentMode: 10
       - time: .13333334
-        value: 0
-        inSlope: 1.90734863e-06
-        outSlope: 1.90734863e-06
+        value: -111
+        inSlope: -960.000061
+        outSlope: -960.000061
         tangentMode: 10
-      - time: .200000003
-        value: 2
-        inSlope: 15.000001
-        outSlope: 15.000001
+      - time: .233333334
+        value: -207
+        inSlope: -480.000031
+        outSlope: -480.000031
         tangentMode: 10
       - time: .300000012
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.x
-    path: Summon1/mofashu
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0666666701
-        value: -99
-        inSlope: 239.999985
-        outSlope: 239.999985
-        tangentMode: 10
-      - time: .13333334
-        value: -83
-        inSlope: -1.52587891e-05
-        outSlope: -1.52587891e-05
-        tangentMode: 10
-      - time: .200000003
-        value: -99
-        inSlope: -120.000008
-        outSlope: -120.000008
-        tangentMode: 10
-      - time: .300000012
-        value: -99
+        value: -207
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon1/mofashu
+    path: Summon1/image/beijing_xia
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0666666701
-        value: 2
-        inSlope: 59.9999962
-        outSlope: 59.9999962
-        tangentMode: 10
       - time: .13333334
-        value: 6
-        inSlope: -3.81469727e-06
-        outSlope: -3.81469727e-06
+        value: -111
+        inSlope: -960.000061
+        outSlope: -960.000061
         tangentMode: 10
-      - time: .200000003
-        value: 2
-        inSlope: -30.0000019
-        outSlope: -30.0000019
+      - time: .233333334
+        value: -207
+        inSlope: -480.000031
+        outSlope: -480.000031
         tangentMode: 10
       - time: .300000012
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_AnchoredPosition.x
-    path: Summon2/mofashu
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .0666666701
-        value: -99
-        inSlope: 209.999985
-        outSlope: 209.999985
-        tangentMode: 10
-      - time: .13333334
-        value: -85
-        inSlope: -1.52587891e-05
-        outSlope: -1.52587891e-05
-        tangentMode: 10
-      - time: .200000003
-        value: -99
-        inSlope: -105.000008
-        outSlope: -105.000008
-        tangentMode: 10
-      - time: .300000012
-        value: -99
+        value: -207
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Summon2/mofashu
+    path: Summon1/image/beijing_xia1
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .13333334
+        value: -121
+        inSlope: -860.000061
+        outSlope: -860.000061
+        tangentMode: 10
+      - time: .233333334
+        value: -207
+        inSlope: -430.000031
+        outSlope: -430.000031
+        tangentMode: 10
+      - time: .300000012
+        value: -207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/beijing_xia
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .13333334
+        value: -121
+        inSlope: -860.000061
+        outSlope: -860.000061
+        tangentMode: 10
+      - time: .233333334
+        value: -207
+        inSlope: -430.000031
+        outSlope: -430.000031
+        tangentMode: 10
+      - time: .300000012
+        value: -207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/beijing_xia1
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .0666666701
+        value: -99
+        inSlope: 382.499969
+        outSlope: 382.499969
+        tangentMode: 10
+      - time: .13333334
+        value: -73.5
+        inSlope: 63.7499771
+        outSlope: 63.7499771
+        tangentMode: 10
+      - time: .233333334
+        value: -99
+        inSlope: -255.000015
+        outSlope: -255.000015
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon2/image/mofashu
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: .0666666701
+        value: -99
+        inSlope: 412.499969
+        outSlope: 412.499969
+        tangentMode: 10
+      - time: .13333334
+        value: -71.5
+        inSlope: 68.7499695
+        outSlope: 68.7499695
+        tangentMode: 10
+      - time: .233333334
+        value: -99
+        inSlope: -275.000031
+        outSlope: -275.000031
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_AnchoredPosition.y
+    path: Summon1/image/mofashu
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

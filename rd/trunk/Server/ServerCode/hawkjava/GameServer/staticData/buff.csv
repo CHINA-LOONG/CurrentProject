@@ -238,7 +238,7 @@ psvDujiaoshou5b3,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed_magic,1,20,0.4,0,0,
 psvChange5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRateContainsbeneficialbuff_100,psvChange5e2",,999,0,0,0,,-1
 psvHuoniao3b1,11,,999,0,0,0,,,,,,,,,,,,,,"uncondition,psvHuoniao3e2",1,0,0,0,,-1
 bossdajie18Ladong55b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyStun_100,bossdajie18Ladong55e2",,999,0,0,0,,-1
-bosschaoxue51Langren55b1,11,,999,0,0,0,,,,,-0.1,,,,,,,,,,,0,0,0,,-1
+bosschaoxue51Langren55b1,11,,999,0,0,0,,,,,-0.3,,,,,,,,,,,0,0,0,,-1
 bosschaoxue51Langren55b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateDispelpsvLangren_100,dispelPassivee1",,1,0,0,0,,-1
 bosschaoxue52Mengyan52b1,5,,3,0,0,0,0.8,0,0,0,0,bufficon_buffAttack,0,,0,0,0,0,,,1,0,0,0,,-1
 bosschaoxue54Bingyan32b1,5,,3,0,0,0,0,0,0.8,0,0,bufficon_buffDefense,0,,0,0,0,0,,,1,0,0,0,,-1

@@ -34,9 +34,9 @@ public class InstanceUtil {
 			chapterMap.put(chapter.chapterId, chapter);
 		}
 
-		if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+		if (entryCfg.getDifficult() == GsConst.Instance.NORMAL) {
 			chapter.normalList.add(entryCfg);
-		} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+		} else if (entryCfg.getDifficult() == GsConst.Instance.HARD) {
 			chapter.hardList.add(entryCfg);
 		}
 

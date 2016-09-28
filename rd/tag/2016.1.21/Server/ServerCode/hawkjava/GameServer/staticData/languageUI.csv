@@ -244,23 +244,23 @@ decompose_title,分解,Discard
 decompose_equip,装备,Equipment
 decompose_monster,宠物,Monsters
 decompose_material,选择分解原料,Select materials to discard
-decompose_preview,分解预览,Discard preview
-decompose_choise,请选择要分解的目标,Select item to discard
-decompose_tips1,*分解装备将获得装备打造材料,*Discarding equipment yields the materials used to forge it
+decompose_preview,预览,Preview
+decompose_choise,请选择要操作目标,Please select target item
+decompose_tips1,*分解装备将获得金币,*Discarding equipment gives coins
 decompose_tips2,*装备镶嵌的纹章将自动返还到背包,*Any attached Insignia will automatically be returned to your Bag
-decompose_tips3,*分解宠物将获得宠物进阶材料,*Discarding monsters yields advance materials
+decompose_tips3,*炼化宠物将返还合成1只该宠物需要的碎片,*Refining a monster will return the fragments required for combining this monster once.
 decompose_tips4,*宠物佩戴的装备将自动返还到背包,*Any equipment on the monster will be automatically returned to your Bag
 decompose_choice,筛选,Filter
 decompose_white,白色品质,White Grade
 decompose_green,绿色品质,Green Grade
 decompose_blue,蓝色品质,Blue Grade
 decompose_coin1,金币,coin
-decompose_sure,确定分解操作么？,Confirm discard?
+decompose_sure,确定操作么？,Confirm this action?
 decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
-compose_record_001,分解成功！获得 ,Discard success!Received 
+compose_record_001,操作成功！获得 ,Action completed!Received 
 compose_record_003,已选择所有{0}目标,Selected all {0} items.
 compose_record_004,没有筛选到目标,No filter results.
-compose_record_005,请先选择分解原料,Please choose discard material first.
+compose_record_005,请先选择原料,Please select materials first
 compose_record_006,原料不足,Insufficent materials.
 compose_record_007,操作失败，至少要保留1只宠物,"Action failed, at least 1 monster must be retained"
 xl_monsterbook,,
@@ -407,7 +407,7 @@ energy_button_use,使用,Use
 energy_button_buy&use,购买使用,Buy & Use
 energy_times_enough,已达到上限,Limit reached
 energy_times,本日剩余次数 {0},Remaining today {0}
-energy_supple,补充活力,Add Energy
+energy_supple,购买   50  ,Purchase   50  
 energy_hint_unhint,本次登录不再提示该界面,Don't show again for current session.
 energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?
 energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe
@@ -755,7 +755,7 @@ towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
 im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
-im_battle_003,达到5级即可开启加速功能,Reach level 5 to unlock the speed-up feature
+im_battle_003,达到2级即可开启加速功能,Reach level 2 to unlock the speed-up feature
 im_battle_004,达到8级即可开启托管功能,Reach level 8 to unlock the auto-battle feature
 im_battle_005,通关后即可开启托管功能,Clear the stage to unlock the auto-battle feature
 im_battle_006,托管状态，无法进行换怪操作,"In auto-battle, unable to do any monster actions"
@@ -915,7 +915,7 @@ login_weihu_001,当前服务器正在维护，请稍后再试！,The current ser
 login_duankai_001,已与服务器断开连接，请重新登录！,"Disconnected from server, please re-login."
 login_dinghao_001,该账号已在其他设备上登录，请确认账号安全并重新登录！,This account is already logged in from another device. Please confirm your account is secure and re-login.
 hecheng_name,合成,Combine
-fenjie_name,分解,Discard
+fenjie_name,炼解,Refi/Disc
 dazao_name,装备打造,Equipment Forge
 saodang_name,扫荡,Raid
 saodangN_name,扫荡多次,Multiple Raids
@@ -1188,7 +1188,7 @@ loading_tips50,9种纹章提升的属性不同，选择适合宠物的才是明�
 loading_tips13,纹章有白、绿、蓝、紫、橙、红六个品质，通过合成能够达到更高品质。,"Insignia have White, Green, Blue, Purple, Orange, and Red grades. Insignia grades can be increased via Combining."
 loading_tips14,商店根据顾客的等级，商品的品质也会有所不同。,Items in the store may vary according to the level of the customer!
 loading_tips15,商店每天固定时间刷新商品，常去逛逛~,The Store will be refreshed with new items at set times each day. Make sure to check for new items often!
-loading_tips16,分解掉没有用处的装备或者宠物，变废为宝。,Remember to discard any unneeded equipment or monsters.
+loading_tips16,分解掉没有用处的装备，变废为宝。,Remember to discard any unneeded equipment.
 loading_tips17,纹章和有些材料能够通过合成获得更高品质的。,Insignias and some materials can be improved to a higher grade via Combining.
 loading_tips18,还在独自战斗？快加入公会，寻找一起并肩作战的小伙伴吧~,Still battling alone? Join a Guild and fight side by side with some new friends!
 loading_tips19,参与公会活动，获得的贡献值能够在公会商店中兑换各种道具。,Participate in Guild events to receive Contribution Points that can be used in the Guild Store to purchase equipment.
@@ -1254,7 +1254,7 @@ main_icon_renwu,任务,Quests
 main_icon_youjian,邮件,Inbox
 main_icon_beibao,背包,Bag
 main_icon_hecheng,合成,Combine
-main_icon_fenjie,分解,Discard
+main_icon_fenjie,炼解,Refi/Disc
 main_icon_qiandao,签到,Signin
 main_icon_shangdian,商店,Store
 main_icon_gonggao,公告,Event
@@ -1673,11 +1673,11 @@ giftspecial_suipian2_name,碎片礼包（稀有）,Fragment Package (Rare)
 giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>60 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!"
 giftspecial_huodong1_name,惊喜礼包,Surprise Package
 giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,The <color=#ffcc00>SS grade monster</color> you've been after is right in front of you!
-giftspecial_huodong2_name,惊喜怪物之魂！,惊喜怪物之魂！
-giftspecial_huodong2_desc,怪物之魂来临！！机会难得！,怪物之魂来临！！机会难得！
-giftspecial_xuanze1_name,新人钜惠,新人钜惠
-giftspecial_xuanze1_desc,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！
-giftspecial_xuanze2_name,超值钜惠,超值钜惠
+giftspecial_huodong2_name,惊喜怪物之魂！,Surprise Monster Souls
+giftspecial_huodong2_desc,怪物之魂来临！！机会难得！,Monsters souls have arrived! This is a rare opportunity!
+giftspecial_xuanze1_name,新人钜惠,Starter Package
+giftspecial_xuanze1_desc,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose<color=#ffcc00> one</color>!
+giftspecial_xuanze2_name,超值钜惠,Amazing Value
 giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>one</color>!
 xinyangzhilu_name,神话守护者,Myth Guardian
 main_icon_mythopath,神话守护者,"Myth
@@ -1960,8 +1960,8 @@ instance_zhuzhan_007,将支付给雇佣宠物所属玩家,the mercenary fee will
 3D_unlock_tips_xinyangzhilu,<color=#ffcc00>神话守护者</color>尚未达到开启条件,<color=#ffcc00>Mytho Guardian</color> has not been opened yet.
 giftspecial_huodong3_name,珍稀纹章礼包,Prized Insignia Package
 giftspecial_huodong3_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!
-giftspecial_huodong4_name,雪女降临,雪女降临
-giftspecial_huodong4_desc,冰雪女王来临！机会难得！,冰雪女王来临！机会难得！
+giftspecial_huodong4_name,雪女降临,Chione Appears
+giftspecial_huodong4_desc,冰雪女王来临！机会难得！,Chione has appeared! Take advantage of this rare opportunity!
 xinyangzhishu_name,神话守护者,Myth Guardian
 shijieboss_name,神怪入侵,Deity Invasion
 fragmentwish_title,幸运卡牌,Mytho Cards
@@ -1972,8 +1972,93 @@ fragmentwish_start,洗牌,Shuffle
 fregmentwish_record2,请先选择目标宠物,Please select a target monster first.
 fregmentwish_record3,新的一天到啦！重新开始吧！,With a new day comes a new beginning! Let's start again!
 fragmentwish_3Dtitle,幸运卡牌,Mytho Cards
-decompose_equipmenttitle,装备分解,装备分解
-decompose_monstertitle,宠物炼化,宠物炼化
-decompose_btndecompose,分解,分解
-decompose_btnlianhua,炼化,炼化
-decompose_s,稀有度S,稀有度S
+decompose_equipmenttitle,装备分解,Discard Equipment
+decompose_monstertitle,宠物炼化,Refine Monster
+decompose_btndecompose,分解,Discard
+decompose_btnlianhua,炼化,Refine
+decompose_s,稀有度S,S Class
+3D_unlock_tips_fragmentwish,<color=#ffcc00>幸运卡牌</color>尚未达到开启条件,<color=#ffcc00>Mytho Cards</color> has not been opened yet.
+energy_noduihuantimes,今日<color=#ffcc00>活力购买次数</color>已经用完。,You have already reached the <color=#ffcc00>Energy purchase limit</color> for today.
+loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该宠物的碎片。,Refining a monster will return any materials used for advancement as well as the fragments required for combining the monster once.
+201_name1,累计登录1天,Accumulate 1 login day
+201_name2,累计登录2天,Accumulate 2 login days
+201_name3,累计登录3天,Accumulate 3 login days
+201_name4,累计登录4天,Accumulate 4 login days
+201_name5,累计登录5天,Accumulate 5 login days
+201_name6,累计登录6天,Accumulate 6 login days
+201_name7,累计登录7天,Accumulate 7 login days
+201_name8,累计登录8天,Accumulate 8 login days
+201_name9,累计登录9天,Accumulate 9 login days
+201_name10,累计登录10天,Accumulate 10 login days
+203_name1,玩家等级达到5级,Reach player level 5
+203_name2,玩家等级达到10级,Reach player level 10
+203_name3,玩家等级达到15级,Reach player level 15
+203_name4,玩家等级达到20级,Reach player level 20
+203_name5,玩家等级达到25级,Reach player level 25
+203_name6,玩家等级达到30级,Reach player level 30
+203_name7,玩家等级达到35级,Reach player level 35
+203_name8,玩家等级达到40级,Reach player level 40
+203_name9,玩家等级达到45级,Reach player level 45
+203_name10,玩家等级达到50级,Reach player level 50
+203_name11,玩家等级达到55级,Reach player level 55
+203_name12,玩家等级达到60级,Reach player level 60
+204_name1,今日充值任意数量钻石,Top-up any amount of Diamonds today
+204_name2,今日充值1600个钻石,Top-up 1600 Diamonds today
+204_name3,今日充值4000个钻石,Top-up 4000 Diamonds today
+208_name1,累计充值200个钻石,Top-up up to 200 Diamonds
+208_name2,累计充值800个钻石,Top-up up to 800 Diamonds
+208_name3,累计充值1600个钻石,Top-up up to 1600 Diamonds
+208_name4,累计充值3200个钻石,Top-up up to 3200 Diamonds
+208_name5,累计充值4800个钻石,Top-up up to 4800 Diamonds
+208_name6,累计充值8000个钻石,Top-up up to 8000 Diamonds
+208_name7,累计充值12800个钻石,Top-up up to 12800 Diamonds
+208_name8,累计充值16000个钻石,Top-up up to 16000 Diamonds
+208_name9,累计充值24000个钻石,Top-up up to 24000 Diamonds
+208_name10,累计充值32000个钻石,Top-up up to 32000 Diamonds
+212_name1,今日参与竞技场3次,Battle the Arena 3 times today
+212_name2,今日参与竞技场5次,Battle the Arena 5 times today
+212_name3,今日参与竞技场10次,Battle the Arena 10 times today
+212_name4,竞技场累计胜利5次,Accumulate 5 Arena victories
+212_name5,竞技场累计胜利10次,Accumulate 10 Arena victories
+212_name6,竞技场累计胜利20次,Accumulate 20 Arena victories
+213_name1,通天塔累计胜利5次,Accumulate 5 Tower of Darkness victories
+213_name2,通天塔累计胜利10次,Accumulate 10 Tower of Darkness victories
+213_name3,通天塔累计胜利15次,Accumulate 15 Tower of Darkness victories
+213_name4,通天塔累计胜利20次,Accumulate 20 Tower of Darkness victories
+213_name5,通天塔累计胜利25次,Accumulate 25 Tower of Darkness victories
+213_name6,通天塔累计胜利30次,Accumulate 30 Tower of Darkness victories
+213_name7,通天塔累计胜利35次,Accumulate 35 Tower of Darkness victories
+213_name8,通天塔累计胜利40次,Accumulate 40 Tower of Darkness victories
+213_name9,通天塔累计胜利45次,Accumulate 45 Tower of Darkness victories
+213_name10,通天塔累计胜利50次,Accumulate 50 Tower of Darkness victories
+214_name1,今日完成1次许愿,Complete 1 Guild Wish today
+214_name2,今日向公会成员赠送10次体力,Send Energy to guild members 10 times today
+214_name3,累计完成梦之许愿1次,Complete 1 Dream Wishes 
+214_name4,累计开启公会任务1次,Open 1 Guild Quest
+214_name5,累计开启公会任务3次,Open 3 Guild Quest
+215_name1,今日领取大冒险奖励1次,Collect 1 Adventure reward today
+215_name2,今日领取大冒险奖励3次,Collect 3 Adventure reward today
+215_name3,今日领取大冒险奖励5次,Collect 5 Adventure reward today
+215_name4,今日大冒险使用雇佣兵1次,Use mercenary monsters in Adventure 1 times today
+215_name5,今日大冒险使用雇佣兵2次,Use mercenary monsters in Adventure 2 times today
+215_name6,今日大冒险使用雇佣兵3次,Use mercenary monsters in Adventure 3 times today
+216_name1,累计进行钻石十连抽1次,Complete '10 Diamond Summons' 1 times
+216_name2,累计进行钻石十连抽5次,Complete '10 Diamond Summons' 5 times
+216_name3,累计进行钻石十连抽10次,Complete '10 Diamond Summons' 10 times
+216_name4,累计进行钻石十连抽15次,Complete '10 Diamond Summons' 15 times
+216_name5,累计进行钻石十连抽20次,Complete '10 Diamond Summons' 20 times
+216_name6,累计进行钻石十连抽30次,Complete '10 Diamond Summons' 30 times
+216_name7,累计进行钻石十连抽50次,Complete '10 Diamond Summons' 50 times
+217_name1,神话守护者胜利1次,Completing 1 stage in Mytho Guardian
+217_name2,神话守护者胜利5次,Completing 5 stage in Mytho Guardian
+217_name3,神话守护者胜利9次,Completing 9 stage in Mytho Guardian
+217_name4,同一个时间段内进行boss挑战1次,Battling once in Deity Invasion
+217_name5,同一个时间段内进行boss挑战5次,Battling 5 times in Deity Invasion
+217_name6,同一个时间段内进行boss挑战9次,Battling 9 times in Deity Invasion
+217_name7,竞技场挑战1次,Battle the Arena once today
+217_name8,竞技场挑战5次,Battle the Arena 5 times today
+217_name9,竞技场挑战10次,Battle the Arena 10 times today
+217_name10,大冒险奖励1次,Collect 1 Adventure reward today
+217_name11,大冒险奖励5次,Collect 5 Adventure reward today
+217_name12,大冒险奖励10次,Collect 10 Adventure reward today
+217_name13,完成一次公会许愿,Complete 1 Guild Wish today

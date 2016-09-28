@@ -1013,6 +1013,7 @@ MonoBehaviour:
   okButton: {fileID: 162112}
   tenReward: {fileID: 145118}
   onceReward: {fileID: 115074}
+  skipButton: {fileID: 198994}
   title: {fileID: 11432122}
   rewardImage: []
 --- !u!114 &11488398

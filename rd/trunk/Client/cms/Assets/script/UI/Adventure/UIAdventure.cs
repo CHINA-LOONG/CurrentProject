@@ -41,6 +41,19 @@ public class UIAdventure : UIBase,
         }
     }
 
+    public Animator Animator
+    {
+        get
+        {
+            if (animator==null)
+            {
+                animator = GetComponent<Animator>();
+            }
+            return animator;
+        }
+    }
+    private Animator animator;
+
     private AdventureInfo curData;
 
     [HideInInspector]
@@ -95,6 +108,17 @@ public class UIAdventure : UIBase,
     }
     void OnClickCloseBtn()
     {
+        if (Animator != null)
+        {
+            Animator.SetTrigger("exit");
+        }
+        else
+        {
+            UIMgr.Instance.CloseUI_(this);
+        }
+    }
+    void OnExitAnimationEnd()
+    {
         UIMgr.Instance.CloseUI_(this);
     }
 
@@ -103,6 +127,7 @@ public class UIAdventure : UIBase,
     {
         tabIndex = -1;
         selIndex = 0;
+        Animator.SetTrigger("enter");
         //临时测试代码
         Refresh();
     }

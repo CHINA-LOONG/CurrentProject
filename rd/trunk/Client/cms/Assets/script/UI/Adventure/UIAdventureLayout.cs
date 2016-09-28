@@ -43,6 +43,19 @@ public class UIAdventureLayout : UIBase,
     private int filterProperty = -1;
     private int conditionStep = 0;
     public AdventureExtraConditon showConditonStep;
+    public Animator Animator
+    {
+        get
+        {
+            if (animator == null)
+            {
+                animator = GetComponent<Animator>();
+            }
+            return animator;
+        }
+    }
+    private Animator animator;
+
 
     private AdventureInfo curData;
     void Start()
@@ -384,7 +397,11 @@ public class UIAdventureLayout : UIBase,
             if (CheckIsMeetCondition(conditions[i]))
             {
                 count++;
-                //conditions[i].setMeet();
+                conditions[i].SetState(true);
+            }
+            else
+            {
+                conditions[i].SetState(false);
             }
         }
 
@@ -426,10 +443,24 @@ public class UIAdventureLayout : UIBase,
     #endregion
 
     #region 界面按钮事件
+    //点击关闭按钮和调用关闭事件共用
     void OnClickCloseBtn()
+    {
+        //if (Animator != null)
+        //{
+        //    Animator.SetTrigger("exit");
+        //}
+        //else
+        {
+            UIMgr.Instance.CloseUI_(this);
+        }
+    }
+
+    void OnExitAnimationEnd()
     {
         UIMgr.Instance.CloseUI_(this);
     }
+
     void OnClickRefeshConditionBtn()
     {
         if (AdventureDataMgr.Instance.AdventureChange>=1)//拥有变更次数
@@ -577,6 +608,10 @@ public class UIAdventureLayout : UIBase,
         {
             teamList[i].ReloadData<object>(null);
         }
+        if (Animator!=null)
+        {
+            Animator.SetTrigger("enter");
+        }
     }
     public override void Clean()
     {
@@ -695,8 +730,7 @@ public class UIAdventureLayout : UIBase,
         #endregion
 
         GameEventMgr.Instance.FireEvent(GameEventList.AdventureChange);
-
-        UIMgr.Instance.CloseUI_(this);
+        OnClickCloseBtn();
     }
     #endregion
 

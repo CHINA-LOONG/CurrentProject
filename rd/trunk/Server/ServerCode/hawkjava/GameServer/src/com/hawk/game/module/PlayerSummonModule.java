@@ -65,24 +65,25 @@ public class PlayerSummonModule extends PlayerModule {
 			}
 			consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 			reward.addItemInfos(summonCfg.getReward().getRewardList());
-			statisticsEntity.increaseEggCoinTimes();
-			statisticsEntity.increaseEggCoinTimesDaily();
+			statisticsEntity.increaseEggCoin1Times();
+			statisticsEntity.increaseEggCoin1PayTimesDaily();
 			break;
 		}
 
 		case Const.SummonType.SUMMON_COIN_FREE_VALUE: {
-			if (statisticsEntity.getEggCoinFreeTimesDaily() >= GsConst.summon.MAX_COIN_FREE_TIMES_DAILY) {
+			if (statisticsEntity.getEggCoin1FreeTimesDaily() >= GsConst.summon.MAX_COIN_FREE_TIMES_DAILY) {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_NO_FREE);
 				return true;
 			}
 			Calendar curTime = HawkTime.getCalendar();
-			if (curTime.getTimeInMillis() < statisticsEntity.getEggCoinFreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
+			if (curTime.getTimeInMillis() < statisticsEntity.getEggCoin1FreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_FREE_CD);
 				return true;
 			}
 			reward.addItemInfos(summonCfg.getReward().getRewardList());
-			statisticsEntity.increaseEggCoinFreeTimesDaily();
-			statisticsEntity.setEggCoinFreeLastTime(curTime);
+			statisticsEntity.increaseEggCoin1Times();
+			statisticsEntity.increaseEggCoin1FreeTimesDaily();
+			statisticsEntity.setEggCoin1FreeLastTime(curTime);
 			response.setFreeCoinLastTime((int)(curTime.getTimeInMillis() / 1000));
 			break;
 		}
@@ -95,26 +96,26 @@ public class PlayerSummonModule extends PlayerModule {
 			consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 			// 假奖励
 			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.summon.FIRST_N_ONE_PSEUDO_REWARD);
-			if (statisticsEntity.getEggDiamondOneTimes() <= pseudoCfg.getTimes()) {
+			if (statisticsEntity.getEggDiamond1PayTimes() < pseudoCfg.getTimes()) {
 				reward.addItemInfos(pseudoCfg.getReward().getRewardList());
 			} else {
 				reward.addItemInfos(summonCfg.getReward().getRewardList());
 			}
-			statisticsEntity.increaseEggDiamondOneTimes();
+			statisticsEntity.increaseEggDiamond1PayTimes();
 			break;
 		}
 
 		case Const.SummonType.SUMMON_DIAMOND_FREE_VALUE: {
-			if (0 >= player.regainEggDiamondPoint()) {
+			if (0 >= player.regainEggDiamondFreePoint()) {
 				sendError(hsCode, Status.summonError.SUMMON_DIAMOND_NO_FREE);
 				return true;
 			}
 			reward.addItemInfos(summonCfg.getReward().getRewardList());
 			Calendar curTime = HawkTime.getCalendar();
 			// 最大1点，直接重置
-			statisticsEntity.setEggDiamondPoint(0);
-			statisticsEntity.setEggPointBeginTime(curTime);
-			statisticsEntity.increaseEggDiamondFreeTimes();
+			statisticsEntity.increaseEggDiamond1FreeTimes();
+			statisticsEntity.setEggDiamond1FreePoint(0);
+			statisticsEntity.setEggDiamond1FreePointBeginTime(curTime);
 			response.setFreeDiamondBeginTime((int)(curTime.getTimeInMillis() / 1000));
 			break;
 		}
@@ -124,7 +125,7 @@ public class PlayerSummonModule extends PlayerModule {
 			return true;
 		}
 
-		reward.rewardTakeAffectAndPush(player, Action.NULL, hsCode);
+		reward.rewardTakeAffectAndPush(player, Action.EGG, hsCode);
 		statisticsEntity.notifyUpdate(true);
 
 		response.setReward(reward.getBuilder());
@@ -179,8 +180,8 @@ public class PlayerSummonModule extends PlayerModule {
 			// 乱序
 			HawkRand.randomOrder(tenRewardList);
 
-			statisticsEntity.increaseEggCoinTimes();
-			statisticsEntity.increaseEggCoinTimesDaily();
+			statisticsEntity.increaseEggCoin10Times();
+			statisticsEntity.increaseEggCoin10TimesDaily();
 			break;
 		}
 
@@ -192,8 +193,7 @@ public class PlayerSummonModule extends PlayerModule {
 			consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 			// 假奖励
 			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.summon.FIRST_N_TEN_PSEUDO_REWARD);
-			// TODO 统计数据
-			if (statisticsEntity.getEggDiamondTenTimes() <= pseudoCfg.getTimes()) {
+			if (statisticsEntity.getEggDiamond10Times() < pseudoCfg.getTimes()) {
 				for (int i = 0; i < 10; ++i) {
 					AwardItems reward = AwardItems.valueOf();
 					List<ItemInfo> rewardList = pseudoCfg.getReward().getRewardList();
@@ -220,7 +220,7 @@ public class PlayerSummonModule extends PlayerModule {
 				HawkRand.randomOrder(tenRewardList);
 			}
 
-			statisticsEntity.increaseEggDiamondTenTimes();
+			statisticsEntity.increaseEggDiamond10Times();
 			break;
 		}
 
@@ -229,7 +229,7 @@ public class PlayerSummonModule extends PlayerModule {
 			return true;
 		}
 
-		allReward.rewardTakeAffectAndPush(player, Action.NULL, hsCode);
+		allReward.rewardTakeAffectAndPush(player, Action.EGG, hsCode);
 		statisticsEntity.notifyUpdate(true);
 
 		HSSummonTenRet.Builder response = HSSummonTenRet.newBuilder();

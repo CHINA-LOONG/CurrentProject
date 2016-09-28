@@ -21,6 +21,7 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 11,UIMonsterCompose,合成按钮,0,,gd_petCompose_compose,,-1,50,guide_hechengpet4,,,
 12,PromptComposeMST,确定按钮,0,,gd_promptCompose_conform,,,,,,,
 106,UIQuestInfo,任务奖励展示界面的确定按钮,0,,gd_questInfo_okbutton,red_questInfo_huapofregment,,220,guide_hechengpet5,,,
+144,UIQuestInfo,任务奖励展示界面的确定按钮,0,,gd_questInfo_okbutton,,,220,,,,
 107,UIQuest,任务中第一条立即前往按钮,0,,gd_quest_goButton,,,50,guide_hechengpet6,,,
 110,UIScore,结算界面任务完成的go按钮,0,,gd_score_gobutton,,,50,guide_task3,,,
 111,UIQuest,任务中第一条领取按钮,0,,gd_quest_firstButton,red_questInfo_mantuoluofregment,,50,guide_task4,,,
@@ -40,7 +41,7 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 120,UIBuild,主界面更多按钮中的宠物按钮,180,,gd_build_pet,,-35,50,guide_exp1,,,
 29,UIBuild,,0,speech_equip,,,,,,,,
 13,UIBuild,主界面更多按钮中的宠物按钮,180,,gd_build_pet,,-35,50,guide_equip2,,,
-18,UIMonsters,第一个宠物,0,,gd_monsters_firstPet,,,50,guide_equip3,,,setBingxuenwangFirst
+18,UIMonsters,第一个宠物,0,,gd_monsters_firstPet,,,50,guide_equip3,,,setHuapoFirst
 30,UIPetDetails,第一个装备位置,0,,gd_petDetail_weapon,,5,50,guide_equip4,,,
 31,UISelectEquipList,第一条的装备按钮,0,,gd_selectEquip_equip,,,50,guide_equip5,1,,
 32,UIAdjustBattleTeam,,0,speech_houbeiwei,,,,,,1,,
@@ -134,3 +135,9 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 141,InstanceList,选择困难选项,0,,gd_inslist_difficulty,,-100,,guide_hero4,,,
 142,InstanceList,,,speech_hero,,,,,,,,
 143,InstanceList,点击困难难度的第三个宝箱,0,,gd_inslist_boxButton,,-50,-40,guide_hero5,,,
+145,UISummon2,钻石抽蛋界面返回按钮,0,,gd_summon2_exit,,,,,,,
+146,UISummon1,抽蛋界面返回按钮,0,,gd_summon1_exit,,,,,,,
+147,UIBuild,3D碎片许愿入口接口对象,0,,3D_MythoCardsEntry,,-100,,guide_fragmentwish1,,1,
+148,UIFragmentWish,,,speech_fragmentwish,,,,,,,,
+149,UIFragmentWish,选择目标宠物按钮,0,,gd_FragmentWish_addButton,,,50,guide_fragmentwish2,,,
+150,UIGainPet,召唤到宠物展示的确定按钮,0,,gd_GainPet_GainPetConfirm,,,,,,,

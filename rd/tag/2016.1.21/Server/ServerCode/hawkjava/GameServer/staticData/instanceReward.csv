@@ -1,7 +1,7 @@
 ﻿#TEXT,TEXT,TEXT,NUM,TEXT
 id,rewardId,sweepRewardId,pseudoTimes,pseudoRewardId
 #副本Id,额外奖励列表,扫荡奖励列表,假额外奖励出现次数,假额外奖励
-dajie11,10101,10111,0,
+dajie11,10101,10111,1,10121
 dajie12,10102,10112,1,10122
 dajie13,10103,10113,1,10123
 dajie14,10104,10114,1,10124

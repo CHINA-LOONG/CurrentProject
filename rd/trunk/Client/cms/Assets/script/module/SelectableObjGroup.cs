@@ -5,6 +5,7 @@ public enum SelectableGroupType
 {
     Select_Group_Hole,
     Select_Group_Tower,
+    Select_Group_Summon,
 
     Num_Select_Group_Type
 }

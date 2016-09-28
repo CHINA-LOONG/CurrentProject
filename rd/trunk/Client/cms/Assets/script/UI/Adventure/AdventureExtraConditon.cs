@@ -29,6 +29,13 @@ public class AdventureExtraConditon : MonoBehaviour
     }
     
     public float changeTime = 1.0f;
+
+    private Color color_0;
+    public Color color_33;
+    public Color color_50;
+    public Color color_66;
+    public Color color_100;
+
     public Text textStep;
 
     private int tarIndex;
@@ -38,6 +45,7 @@ public class AdventureExtraConditon : MonoBehaviour
         conditionStep = ConditionStep.STEP_0;
         curIndex = 0;
         textStep.text = string.Format("{0}%", curIndex);
+        color_0 = textStep.color;
     }
     public void RefreshStep(int step)
     {
@@ -68,6 +76,24 @@ public class AdventureExtraConditon : MonoBehaviour
             conditionStep = temp;
             StopCoroutine("UpdateIndex");
             StartCoroutine(UpdateIndex(step));
+            switch (conditionStep)
+            {
+                case ConditionStep.STEP_0:
+                    textStep.color = color_0;
+                    break;
+                case ConditionStep.STEP_33:
+                    textStep.color = color_33;
+                    break;
+                case ConditionStep.STEP_50:
+                    textStep.color = color_50;
+                    break;
+                case ConditionStep.STEP_66:
+                    textStep.color = color_66;
+                    break;
+                case ConditionStep.STEP_100:
+                    textStep.color = color_100;
+                    break;
+            }
         }
     }
 
@@ -77,6 +103,7 @@ public class AdventureExtraConditon : MonoBehaviour
         if (tarIndex > curIndex)
         {
             //TODO:播放动画
+            Animator.SetTrigger("play");
 
             float curtime = Time.time;
             int tempIndex = curIndex;

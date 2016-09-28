@@ -47,41 +47,49 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "adventureChangeBeginTime")
 	protected Calendar adventureChangeBeginTime = null;
 
-	// 历史金币抽蛋次数
-	@Column(name = "eggCoinTimes", nullable = false)
-	protected int eggCoinTimes = 0;
+	// 历史金币单抽次数（免费+收费）
+	@Column(name = "eggCoin1Times", nullable = false)
+	protected int eggCoin1Times = 0;
 
-	// 今日金币抽蛋次数
-	@Column(name = "eggCoinTimesDaily", nullable = false)
-	protected int eggCoinTimesDaily = 0;
+	// 今日金币免费单抽次数
+	@Column(name = "eggCoin1FreeTimesDaily", nullable = false)
+	protected int eggCoin1FreeTimesDaily = 0;
 
-	// 今日免费金币抽蛋次数
-	@Column(name = "eggCoinFreeTimesDaily", nullable = false)
-	protected int eggCoinFreeTimesDaily = 0;
+	// 今日金币收费单抽次数
+	@Column(name = "eggCoin1PayTimesDaily", nullable = false)
+	protected int eggCoin1PayTimesDaily = 0;
 
-	// 历史钻石免费单抽次数
-	@Column(name = "eggDiamondFreeTimes", nullable = false)
-	protected int eggDiamondFreeTimes = 0;
+	// 历史金币十连抽次数
+	@Column(name = "eggCoin10Times", nullable = false)
+	protected int eggCoin10Times = 0;
 
-	// 历史钻石收费单抽次数
-	@Column(name = "eggDiamondOneTimes", nullable = false)
-	protected int eggDiamondOneTimes = 0;
-
-	// 历史钻石十连抽次数
-	@Column(name = "eggDiamondTenTimes", nullable = false)
-	protected int eggDiamondTenTimes = 0;
-
-	// 免费钻石抽蛋点数
-	@Column(name = "eggDiamondPoint", nullable = false)
-	protected int eggDiamondPoint = 0;
-
-	// 免费钻石抽蛋点数开始计时时间
-	@Column(name = "eggDiamondPointBeginTime")
-	protected Calendar eggPointBeginTime = null;
+	// 今日金币十连抽次数
+	@Column(name = "eggCoin10TimesDaily", nullable = false)
+	protected int eggCoin10TimesDaily = 0;
 
 	// 上次免费金币抽蛋时间
-	@Column(name = "eggCoinFreeLastTime")
-	protected Calendar eggCoinFreeLastTime = null;
+	@Column(name = "eggCoin1FreeLastTime")
+	protected Calendar eggCoin1FreeLastTime = null;
+
+	// 历史钻石免费单抽次数
+	@Column(name = "eggDiamond1FreeTimes", nullable = false)
+	protected int eggDiamond1FreeTimes = 0;
+
+	// 历史钻石收费单抽次数
+	@Column(name = "eggDiamond1PayTimes", nullable = false)
+	protected int eggDiamond1PayTimes = 0;
+
+	// 历史钻石十连抽次数
+	@Column(name = "eggDiamond10Times", nullable = false)
+	protected int eggDiamond10Times = 0;
+
+	// 免费钻石抽蛋点数
+	@Column(name = "eggDiamond1FreePoint", nullable = false)
+	protected int eggDiamond1FreePoint = 0;
+
+	// 免费钻石抽蛋点数开始计时时间
+	@Column(name = "eggDiamond1FreePointBeginTime")
+	protected Calendar eggDiamond1FreePointBeginTime = null;
 
 	// 历史抽到品级X宠物次数
 	@Column(name = "callMonsterStageXTimes", nullable = false)
@@ -90,10 +98,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	// 历史抽到品级X装备次数
 	@Column(name = "callEquipStageXTimes", nullable = false)
 	protected String callEquipStageXTimesJson = "";
-
-	// 历史抽到物品X次数
-	@Column(name = "callItemXTimes", nullable = false)
-	protected String callItemXTimesJson = "";
 
 	// 历史公会祈福次数
 	@Column(name = "alliancePrayTimes", nullable = false)
@@ -123,7 +127,7 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "allianceContriRewardDaily", nullable = false)
 	protected int allianceContriRewardDaily = 0;
 
-	// 历史刷新商店次数
+	// 历史手动刷新商店次数
 	@Column(name = "shopRefreshTimes", nullable = false)
 	protected int shopRefreshTimes = 0;
 
@@ -146,7 +150,7 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	// 禁言时间
 	@Column(name = "dumpTime", nullable = false)
 	protected int dumpTime = 0;
-	
+
 	// 在线时间
 	@Column(name = "totalOnlineTime", nullable = false)
 	protected long totalOnlineTime = 0;
@@ -182,11 +186,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	boolean callEquipStageTimesFlag = false;
 
 	@Transient
-	protected Map<String, Integer> callItemTimesMap = new HashMap<String, Integer>();
-	@Transient
-	boolean callItemTimesFlag = false;
-
-	@Transient
 	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer>();
 	@Transient
 	boolean rechargeRecordFlag = false;
@@ -196,8 +195,8 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	protected Lf2StatisticsEntity() {
 		Calendar time = HawkTime.getCalendar();
 		this.adventureChangeBeginTime = time;
-		this.eggPointBeginTime = time;
-		this.eggCoinFreeLastTime = time;
+		this.eggDiamond1FreePointBeginTime = time;
+		this.eggCoin1FreeLastTime = time;
 		this.monthCardEndTime = time;
 	}
 
@@ -205,8 +204,8 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
 		this.adventureChangeBeginTime = time;
-		this.eggPointBeginTime = time;
-		this.eggCoinFreeLastTime = time;
+		this.eggDiamond1FreePointBeginTime = time;
+		this.eggCoin1FreeLastTime = time;
 		this.monthCardEndTime = time;
 	}
 
@@ -233,9 +232,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 		if (null != callEquipStageXTimesJson && false == "".equals(callEquipStageXTimesJson) && false == "null".equals(callEquipStageXTimesJson)) {
 			callEquipStageTimesList = HawkJsonUtil.getJsonInstance().fromJson(callEquipStageXTimesJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
-		if (null != callItemXTimesJson && false == "".equals(callItemXTimesJson) && false == "null".equals(callItemXTimesJson)) {
-			callItemTimesMap = HawkJsonUtil.getJsonInstance().fromJson(callItemXTimesJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
-		}
 		if (null != rechargeRecordJson && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
 			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
@@ -261,10 +257,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 		if (true == callEquipStageTimesFlag) {
 			callEquipStageTimesFlag = false;
 			callEquipStageXTimesJson = HawkJsonUtil.getJsonInstance().toJson(callEquipStageTimesList);
-		}
-		if (true == callItemTimesFlag) {
-			callItemTimesFlag = false;
-			callItemXTimesJson = HawkJsonUtil.getJsonInstance().toJson(callItemTimesMap);
 		}
 		if (true == rechargeRecordFlag) {
 			rechargeRecordFlag = false;

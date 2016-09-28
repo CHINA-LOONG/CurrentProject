@@ -191,7 +191,7 @@ public class BIBehaviorAction {
 		/**
 		 * 宠物合成图鉴
 		 */
-		MONSTER_SUMMON(2005),
+		MONSTER_COMPOSE(2005),
 		/**
 		 * 宠物进化
 		 */
@@ -430,9 +430,9 @@ public class BIBehaviorAction {
 		GUILD_JOIN_TEAM(10017),
 
 		/**
-		 * 抽蛋
+		 * 抽蛋 TODO
 		 */
-		// (11001)
+		EGG(11001),
 
 		/**
 		 * 签到

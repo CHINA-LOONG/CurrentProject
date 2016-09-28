@@ -475,7 +475,7 @@ mubiao2006,合成宠物狼人,Craft Monster Werewolf
 mubiao2007,升级宠物至5级,Upgrade a monster to LVL 5
 mubiao2008,同一只宠物穿戴2件装备,Equip 2 pieces of equipment on a monster
 mubiao5009,领取第一章普通难度全部星级奖励,Received rewards for All 3 Stars in Chapter 1 of Story Mode
-mubiao2010,打造装备1次,Forge your Equipment once
+mubiao2010,打造装备3次,Forge your Equipment 3 times
 mubiao2011,完成1次日常任务,Complete a daily quest
 mubiao2012,扫荡普通副本2-1,Raid Stage 2-1 (Normal)
 mubiao2013,完成3次日常任务,Complete 3 daily quests
@@ -541,9 +541,9 @@ mubiao3045,通关挑战副本6-5,Complete Stage 6-5 (Heroic)
 mubiao3046,通关挑战副本6-6,Complete Stage 6-6 (Heroic)
 mubiao3047,通关挑战副本6-7,Complete Stage 6-7 (Heroic)
 mubiao3048,通关挑战副本6-8,Complete Stage 6-8 (Heroic)
-mubiao4001,打造装备3次,Forge an equipment 3 times
+mubiao4001,打造装备5次,Forge an equipment 5 times
 mubiao4002,同一只宠物穿戴3件装备,Equip 3 equipments on a single monster
-mubiao4003,打造装备5次,Forge an equipment 5 times
+mubiao4003,打造装备10次,Forge an equipment 10 times
 mubiao4004,强化打造装备至绿色品质,Forge an equipment to green quality
 mubiao4005,同一只宠物穿戴2件绿色装备,Equip 2 green quality equipments on a single monster
 mubiao4006,强化打造装备至蓝色品质,Forge an equipment to blue quality
@@ -803,10 +803,9 @@ speech_exp4,获得了信仰之力，我们就会更强大！我们快去抢信�
 speech_exp5,其实有很多办法获得信仰之力，不一定非要抢其他妖怪的……,"Actually there are a lot of ways to get mytho essence, you don't always have to steal it from other monsters…"
 speech_exp6,不可能，现在镇上的妖怪都知道，这是最快的获得信仰之力的办法。,Who are you kidding? All the monsters in town know that's the quickest way to get more mytho essence.
 speech_exp7,肯定有人在散布谣言，这样下去大家都会死的。,"Hmm, I wonder who started spreading this kind of rumor. Everyone will die if this keeps up."
-speech_equip1,哼，笨影子还不是乖乖被我打趴下了，有了代行者的力量，本狐狸今非昔比了~,"See, I told you I could beat that stupid shadow! With my new keeper, I'm better than ever!"
-speech_equip3,能动手解决的，为什么要动口~多亏了笨影子，我们拿到了好东西呢。,"Sometimes it's better just to save your breath for the fight. Anyway, thanks to that stupid shadow, we got something super useful!"
+speech_equip1,有了代行者的力量，本狐狸今非昔比了~我们拿到了好东西呢。,"With my new keeper, I'm better than ever!We got something super useful!"
 speech_equip4,什么东西？,Like what?
-speech_equip5,<color=#ffcc00>装备</color>，看来笨影子来人界的时候还带过来了异界的装备，有了这些我们的实力也有了提高。,<color=#ffcc00>A piece of Equipment</color>! It looks like that puppet brought some equipment from Mythos. With this we will be much stronger!
+speech_equip5,<color=#ffcc00>装备</color>，有了这些我们的实力也有了提高。,<color=#ffcc00>A piece of Equipment</color>! With this we will be much stronger!
 speech_houbeiwei,<color=#ffcc00>支援位置</color>开启，可以统御更多的宠物了。多余三只宠物时，可以认真考虑一下让谁做前排，让谁做替补了哦！,"<color=#ffcc00>Backup positions</color> unlocked. You can control more monsters now. When you want to use more than 3 monsters, you should consider which to be active at the start, and which to be your backup."
 speech_shop,商店会有<color=#ffcc00>自动刷新时间</color>，当然，也可以通过<color=#ffcc00>消耗钻石刷新</color>，多来看看吧~,"The store <color=#ffcc00>automatically refreshes at a set time</color>, but of course you may also <color=#ffcc00>spend some diamonds</color> to manually refresh. Make sure to check often!"
 speech_xinshoushilian1,愿望树生长着两颗果实，金色果实通往拥有无限<color=#ffcc00>金币</color>的米达斯宫，银色果实通往可以获得大量<color=#ffcc00>信仰之力</color>的至福乐土。,"The Wishing Tree has 2 fruits: the golden fruit which leads to Palace of Midas and mountains of <color=#ffcc00>coins</color>, and the silver fruit which leads to the Fields of Elysium with tons of <color=#ffcc00>Mytho Essence</color>."
@@ -835,7 +834,7 @@ speech_xinshouadventure5,可以通过“<color=#ffcc00>筛选</color>”按钮�
 speech_xinshouadventure6,当你选择好冒险的5只宠物后，点击<color=#ffcc00>探险</color>按钮，就冒险成功啦！自己试试吧~,"After you have selected 5 monsters for the adventure, tap the <color=#ffcc00>explore</color> button, and the adventure will be successful. Let's try now!"
 speech_xinshouadventure7,悄悄的告诉你，如果不想等待冒险时间，也可以<color=#ffcc00>通过花费钻石快速完成探险</color>~跟我来看看吧~,"I'll let you in on a little secret… If you don't want to wait for the adventure time, you can also <color=#ffcc00>spend some diamonds to speed up the exploration</color>. Let's give it a shot!"
 speech_xinshouadventure8,这里列出了你所有小队的探险情况哟，点击“<color=#ffcc00>立即完成</color>”按钮，就可以<color=#ffcc00>立即召回冒险的宠物并获得冒险奖励</color>。,"The statuses of all your adventure teams are listed here. Tap the ""<color=#ffcc00>Complete Now</color>"" button to <color=#ffcc00>immediately recall your monsters and receive the adventure rewards</color>. "
-speech_xinshoudecompose,可以将没用的<color=#ffcc00>装备和宠物分解掉</color>，转化成<color=#ffcc00>打造或者进阶材料</color>，这可是变废为宝的好方法哦~,You may <color=#ffcc00>discard any useless monsters or equipment</color> and turn them into <color=#ffcc00>forge or evolution materials</color>. This is the best way to get value from any unused items.
+speech_xinshoudecompose1,可以将没用的<color=#ffcc00>装备分解掉</color>，转化成<color=#ffcc00>金币</color>。,You may <color=#ffcc00>discard any useless equipment</color> and turn them into <color=#ffcc00>coins</color>. 
 speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~进阶需要的<color=#ffcc00>化形之书</color>在每章副本<color=#ffcc00>挑战难度</color>的<color=#ffcc00>第四和第八个本</color>掉落。,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster.Advancing monsters requires <color=#ffcc00>Books of Transformation</color>, which can acquired via <color=#ffcc00>Stage 4 or Stage 8 of Story Mode (Heroic)</color>."
 speech_xinshouxiangqian1,装备达到<color=#ffcc00>蓝色品质</color>后就可以开孔了，<color=#ffcc00>品质越高，开孔上限越高</color>。,"<color=#ffcc00>Blue</color> equipment or higher can have slots, and <color=#ffcc00>the higher the grade of the equipment, the higher the slot limit</color>."
 speech_xinshouxiangqian2,开孔后，就可以将形状对应的<color=#ffcc00>纹章镶嵌</color>进去了，纹章分为9种，给装备附加的属性各不相同。,"After opening a slot, you can <color=#ffcc00>attach the corresponding insignia</color>. There are 9 types of insignia, each boosting different stats for the equipment."
@@ -1721,13 +1720,13 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10068_miaoshu,拥有绿色品质宠物达到5只,Have 5 green grade monsters
 10069_miaoshu,拥有蓝色品质宠物达到5只,Have 5 blue grade monsters
 10070_miaoshu,拥有紫色品质宠物达到5只,Have 5 purple grade monsters
-10071_miaoshu,进行10次宠物技能升级,Purchase raw iron of any grade 10 times 
-10072_miaoshu,进行50次宠物技能升级,Purchase raw iron of any grade 50 times 
-10073_miaoshu,进行100次宠物技能升级,Purchase raw iron of any grade 100 times 
-10074_miaoshu,进行500次宠物技能升级,Purchase raw iron of any grade 500 times 
-10075_miaoshu,进行1000次宠物技能升级,Purchase raw iron of any grade 1000 times 
-10076_miaoshu,进行5000次宠物技能升级,Purchase raw iron of any grade 5000 times 
-10077_miaoshu,进行10000次宠物技能升级,Purchase raw iron of any grade 10000 times 
+10071_miaoshu,进行10次宠物技能升级,Purchase Monster Ability Points 10 times 
+10072_miaoshu,进行50次宠物技能升级,Purchase Monster Ability Points 50 times 
+10073_miaoshu,进行100次宠物技能升级,Purchase Monster Ability Points 100 times 
+10074_miaoshu,进行500次宠物技能升级,Purchase Monster Ability Points 500 times 
+10075_miaoshu,进行1000次宠物技能升级,Purchase Monster Ability Points 1000 times 
+10076_miaoshu,进行5000次宠物技能升级,Purchase Monster Ability Points 5000 times 
+10077_miaoshu,进行10000次宠物技能升级,Purchase Monster Ability Points 10000 times 
 10078_miaoshu,普通商店购买任意等级灵铁10次,Purchase raw iron of any grade 10 times 
 10079_miaoshu,普通商店购买任意等级灵铁50次,Purchase raw iron of any grade 50 times 
 10080_miaoshu,普通商店购买任意等级灵铁100次,Purchase raw iron of any grade 100 times 
@@ -2408,5 +2407,104 @@ bossdajie18Ladong5wp04,金苹果,Golden Apple
 ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
 push_worldboss,神怪入侵活动将在5分钟后开启！快来和伙伴们一起征战吧！,Deity Invasion will be starting in 5 minutes! Come and battle alongside your friends!
 story_renyu,居住在深海的梦幻种族，拥有美妙的歌喉。人鱼族每月会随着潮汐来到海面歌唱，路过的海员听到歌声会被蛊惑跳海，投入人鱼的怀抱。,"A race of creatures that reside in fabled kingdoms shrouded in the depths of the sea. Mermaids will follow the tide once a month to the surface and sing beautiful songs. Any sailors that happen to hear the sound will become charmed and jump into the sea, right into the arms of the mermaids."
-story_shixianggui,守护城堡的石像在月光常年的浸润下获得了生命。拥有坚不可摧的躯体和怪力，攻击一切试图闯入城堡的探险者。,"Once stationary stone guardians perched on the lofty ledges of the castle, these statues came to life after years of absorbing the power of the moonlight. With durable bodies and monstrous strength, the gargoyles will attack anything that tries to enter the castle uninvited."
+story_shixianggui,守护城堡的石像在月光长年的浸润下获得了生命。拥有坚不可摧的躯体和怪力，攻击一切试图闯入城堡的探险者。,"Once stationary stone guardians perched on the lofty ledges of the castle, these statues came to life after years of absorbing the power of the moonlight. With durable bodies and monstrous strength, the gargoyles will attack anything that tries to enter the castle uninvited."
 story_senlinnvshen,森林意志汇聚而成的实体，高贵的王者。守护着森林中所有的生灵，对于破坏森林的入侵者给予严厉的制裁。,A race of noble rulers that were formed from the very essence of the forest’s will. They serve to protect all the creatures of the forest and punish anyone that threatens its tranquility.
+biaoti2028,挑战守护者,Face the Guardians
+biaoti2029,抵御入侵者,Resist the Invasion
+mubiao2028,完成1次神话守护者,Complete Myth Guardian mode once. 
+mubiao2029,完成1次神怪入侵,Complete Deity Invasion mode once.
+guide_fragmentwish1,<color=#ffcc00>幸运卡牌</color>玩法开启啦！,<color=#ffcc00>Mytho Cards</color> unlocked!
+guide_fragmentwish2,"先选择一个想要获得
+碎片的目标宠物吧。","First select a target monster that 
+you wish to receive fragments for."
+speech_fragmentwish1,幸运卡牌是获得宠物碎片的绝佳场所！可以<color=#ffcc00>自己选择</color>获得的<color=#ffcc00>宠物碎片目标</color>哦！,Mytho Cards is a great way to get monster fragments! You can even <color=#ffcc00>select which monster you would like to receive fragments for</color>!
+speech_fragmentwish2,翻开卡牌，即可获得牌面数字标示数量的碎片。每天有<color=#ffcc00>2次免费翻牌机会</color>呢！,Flip over cards to receive the amount of fragments indicated on the card. All players have <color=#ffcc00>2 free chances each day</color>!
+speech_xinshoudecompose2,<color=#ffcc00>炼化宠物</color>可以得到宠物<color=#ffcc00>进阶消耗的材料和合成1只该宠物的碎片</color>。这可是变废为宝的好方法哦~,<color=#ffcc00>Refining a monster</color> will return <color=#ffcc00>any materials used for advancement as well as the fragments required for combining the monster once</color>.This is the best way to get value from any unused items.
+huapo2_bubble_001,看我花瓣连击,看我花瓣连击
+huapo2_bubble_002,诶？我怎么不能连击了..我的花瓣呢,诶？我怎么不能连击了..我的花瓣呢
+mantuoluo2_bubble_001,有我的根在，你是打不过我的！哈哈,有我的根在，你是打不过我的！哈哈
+langren3_bubble_001,手环护体，天下无敌，嗷~,手环护体，天下无敌，嗷~
+zouyincao2_bubble_001,嘛咪嘛咪哄,嘛咪嘛咪哄
+huocike4_bubble_001,多亏了我的龟壳护体，嘿嘿,多亏了我的龟壳护体，嘿嘿
+ladong5_bubble_001,期待我的下一次攻击吧！,期待我的下一次攻击吧！
+ladong5_bubble_002,啊，我的苹果…,啊，我的苹果…
+ladong5_bubble_003,不要碰我的苹果…,不要碰我的苹果…
+shuigui3_bubble_001,啊，我~的~鸟~,啊，我~的~鸟~
+longgongtongzi3_bubble_001,宝物护体，你奈我何？,宝物护体，你奈我何？
+kairuisi5_bubble_001,勾魂镰刀，你可知道？,勾魂镰刀，你可知道？
+hetong2_bubble_001,可以打脸，不要碰我的围巾哦！,可以打脸，不要碰我的围巾哦！
+hetong2_bubble_002,竟然摧毁我的至爱~受死吧！,竟然摧毁我的至爱~受死吧！
+muling2_bubble_001,糟糕，被发现了~,糟糕，被发现了~
+muling2_bubble_002,打不过，我溜~,打不过，我溜~
+longnv3_bubble_001,看我灵印护体~,看我灵印护体~
+luoxinfu5_bubble_001,看我百爪连击,看我百爪连击
+luoxinfu5_bubble_002,诶？我连击的效果怎么有点差？,诶？我连击的效果怎么有点差？
+luoxinfu5_bubble_003,诶？我连击的效果怎么越来越差？,诶？我连击的效果怎么越来越差？
+amute3_bubble_001,没有人能揭掉我的面具后活着离开！,没有人能揭掉我的面具后活着离开！
+xiaochou2_bubble_001,大锤一挥，全部带走！,大锤一挥，全部带走！
+momo1_bubble_001,我的房子多么结实~,我的房子多么结实~
+momo1_bubble_002,诶？我的房子呢？,诶？我的房子呢？
+hapi1_bubble_001,翅膀会带着我飞得更快~,翅膀会带着我飞得更快~
+hapi1_bubble_002,我的翅膀呢~,我的翅膀呢~
+meidusha2_bubble_001,每一个凝视我的人都将被石化为雕像！,每一个凝视我的人都将被石化为雕像！
+meidusha2_bubble_002,啊！我的头发…,啊！我的头发…
+meidusha2_bubble_003,啊！我的头发…不要激怒我,啊！我的头发…不要激怒我
+meidusha2_bubble_004,啊！我的头发…你激怒了我,啊！我的头发…你激怒了我
+meidusha2_bubble_005,我..我的头...发…,我..我的头...发…
+hongniu4_bubble_001,看到我锋利的犄角了吗？有没有吓到你？,看到我锋利的犄角了吗？有没有吓到你？
+daochengsizhong4_bubble_001,绝招来咯，小心了哦~,绝招来咯，小心了哦~
+huoniao4_bubble_001,我有羽毛保护~,我有羽毛保护~
+huoniao4_bubble_002,来尝尝火旋风的厉害！,来尝尝火旋风的厉害！
+datiangou4_bubble_001,我的翅膀可是快如闪电！,我的翅膀可是快如闪电！
+datiangou4_bubble_002,让你见识下我的厉害！,让你见识下我的厉害！
+saibulesi4_bubble_001,看我三头连击,看我三头连击
+saibulesi4_bubble_002,诶？怎么打不出来效果了？,诶？怎么打不出来效果了？
+tianshizhang4_bubble_001,翅膀让我有更快的攻击速度,翅膀让我有更快的攻击速度
+tiejiang4_bubble_001,感受下锤子武器的厉害吧！,感受下锤子武器的厉害吧！
+tiejiang4_bubble_002,感受下钉子武器的厉害吧！,感受下钉子武器的厉害吧！
+tiejiang4_bubble_003,武器在手，天下我有！,武器在手，天下我有！
+tiejiang4_bubble_004,我的武器呢？,我的武器呢？
+langren5_bubble_001,尝试下“铁腕”的厉害吧！,尝试下“铁腕”的厉害吧！
+langren5_bubble_002,我..我的“铁腕”…,我..我的“铁腕”…
+yifanmumian3_bubble_001,挂饰挂饰，强我心智！,挂饰挂饰，强我心智！
+yifanmumian3_bubble_002,有“它”在，你岂能伤我？,有“它”在，你岂能伤我？
+bingyan3_bubble_001,你不可能找到我真正的弱点！,你不可能找到我真正的弱点！
+huoniao_bubble_001,让你见识下水旋风的厉害！,让你见识下水旋风的厉害！
+wendige3_bubble_001,啊，我脆弱的心脏~,啊，我脆弱的心脏~
+binglong3_bubble_001,哼，随便一件装备都会让我战斗力倍增！,哼，随便一件装备都会让我战斗力倍增！
+dujiaoshou5_bubble_001,准备好接受黑暗的诅咒了吗？,准备好接受黑暗的诅咒了吗？
+anpusha5_bubble_001,你觉得我的“心”好看吗？,你觉得我的“心”好看吗？
+ifrit5_bubble_001,我是不是比红色那家伙帅一些呢？,我是不是比红色那家伙帅一些呢？
+nvyao5_bubble_001,感觉魂器将我重生~,感觉魂器将我重生~
+weitianshi5_bubble_001,不要浪费了，光环会让你丧失回血能力的！,不要浪费了，光环会让你丧失回血能力的！
+saibulesi5_bubble_001,哼，我和红色哪只可不是兄弟！,哼，我和红色哪只可不是兄弟！
+change5_bubble_001,你还挺不好对付，我可要画阵啦！,你还挺不好对付，我可要画阵啦！
+change5_bubble_002,我的兔兔~我要你赔我..的..兔..兔..,我的兔兔~我要你赔我..的..兔..兔..
+karong5_bubble_001,你想见到我嘛？哈~哈~哈,你想见到我嘛？哈~哈~哈
+karong5_bubble_002,你居然识破了，那就让我来收拾你！,你居然识破了，那就让我来收拾你！
+weitianshi1_bubble_001,让你也感受下翅膀折断后的伤痛！,让你也感受下翅膀折断后的伤痛！
+nvyao1_bubble_001,回来吧，我亲爱的宝贝！,回来吧，我亲爱的宝贝！
+luoxinfu1_bubble_001,哈哈哈，你这愚蠢的人类！,哈哈哈，你这愚蠢的人类！
+piying1_bubble_001,三兄弟永远不分离！,三兄弟永远不分离！
+piying1_bubble_002,三兄弟永远不分离！,三兄弟永远不分离！
+piying1_bubble_003,兄弟在，护盾在！,兄弟在，护盾在！
+piying1_bubble_004,兄弟在，护盾在！,兄弟在，护盾在！
+yifanmumian1_bubble_001,啊，我的左手~,啊，我的左手~
+yifanmumian1_bubble_002,啊，我的右手~,啊，我的右手~
+yifanmumian1_bubble_003,宝贝吊坠赋予了我无限的护盾能力！,宝贝吊坠赋予了我无限的护盾能力！
+longnv1_bubble_001,哈哈，让你们尝尝眩晕的滋味！,哈哈，让你们尝尝眩晕的滋味！
+jinglingwangzi1_bubble_001,神圣的皇冠如同神圣的我一样不容侵犯！,神圣的皇冠如同神圣的我一样不容侵犯！
+jinglingwangzi1_bubble_002,所有人在我面前都需要低着头！,所有人在我面前都需要低着头！
+huapo2awaken_bubble_001,我感觉到他们的存在了，吼吼~,我感觉到他们的存在了，吼吼~
+huoniao4awaken_bubble_001,把~我~的~羽毛…还给我！,把~我~的~羽毛…还给我！
+amute3awaken_bubble_001,如果你与我不是一个属性，那么你是伤害不了我的！,如果你与我不是一个属性，那么你是伤害不了我的！
+amute3awaken_bubble_002,你以为这一回也是打掉面具你就赢了吗？哼！,你以为这一回也是打掉面具你就赢了吗？哼！
+anpusha5awaken_bubble_001,亲爱的，你的心...有所属了吗？,亲爱的，你的心...有所属了吗？
+anpusha5awaken_bubble_002,你怎么忍心破坏人家的小心肝呐…,你怎么忍心破坏人家的小心肝呐…
+dujiaoshou1awaken_bubble_001,凡人，你将无法再伤害我！,凡人，你将无法再伤害我！
+dujiaoshou1awaken_bubble_002,失去翅膀并不一定代表我会失败！,失去翅膀并不一定代表我会失败！
+landuo2_bubble_001,是谁吵醒了我？,是谁吵醒了我？
+baonu4_bubble_001,你感觉到我的怒火了吗？,你感觉到我的怒火了吗？
+baonu4_bubble_002,失去头盔的我会更加的愤怒！,失去头盔的我会更加的愤怒！
+yafogemeng5_bubble_001,感受到黑暗了吗？,感受到黑暗了吗？
+yafogemeng5_bubble_002,我还会回来的！,我还会回来的！

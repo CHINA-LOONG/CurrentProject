@@ -89,7 +89,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	private int curTowerId;
 	// 本次开始时间戳（秒）
 	private int curBeginTime;
-	// 刷新类型掩码，副本开始后如果发生刷新，旧周期开始的副本结算时不影响新周期的数据
+	// 刷新类型掩码，副本开始后如果发生刷新，旧周期开始的副本在结算时不影响新周期的数据
 	// 方法在单线程内调用，不需volatile
 	private int refreshMask;
 
@@ -206,10 +206,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
 
 		switch (entryCfg.getDifficult()) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "instance", this.curInstanceId, "normal", 0, 1, player.getPlayerData().getStatisticsEntity().getFatigue() - 1);
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_START, "instance", this.curInstanceId, "heroic", 0, 1, player.getPlayerData().getStatisticsEntity().getFatigue() - 1);
 			break;
 		}
@@ -545,6 +545,12 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
+		// 3星
+		if (3 != statisticsEntity.getInstanceStar(instanceId)) {
+			sendError(hsCode, Status.instanceError.SWEEP_STAR_COUNT);
+			return true;
+		}
+
 		// 体力
 		int fatigueChange = count * entryCfg.getFatigue();
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
@@ -591,19 +597,26 @@ public class PlayerInstanceModule extends PlayerModule {
 		consumeItem.consumeTakeAffectAndPush(player, Action.RAID_TICKET_USE, hsCode);
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 
-		String biDifficulty = "";
 		switch(entryCfg.getDifficult()) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			allReward.rewardTakeAffectAndPush(player, Action.RAID_NORMAL_INSTANCE, hsCode);
-			biDifficulty = "normal";
+			statisticsEntity.increaseInstanceNormalTimes(count);
+			statisticsEntity.increaseInstanceNormalTimesDaily(count);
+
+			BILogger.getBIData(BIRoundFlowData.class).log(player, Action.RAID, "instance", instanceId, "normal", 0, 0, 1);
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+
+		case GsConst.Instance.HARD:
 			allReward.rewardTakeAffectAndPush(player, Action.RAID_HEROIC_INSTANCE, hsCode);
-			biDifficulty = "heroic";
+			statisticsEntity.increaseInstanceHardTimes(count);
+			statisticsEntity.increaseInstanceHardTimesDaily(count);
+
+			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.RAID, "instance", instanceId, "heroic", 0, fatigueChange, statisticsEntity.getFatigue() - fatigueChange);
 			break;
 		}
 
 		statisticsEntity.increaseInstanceEnterTimesDaily(instanceId, count);
+		statisticsEntity.increaseInstanceWinTimes(instanceId, Const.InstanceType.INSTANCE_STORY_VALUE, count);
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceSweepRet.Builder response = HSInstanceSweepRet.newBuilder();
@@ -613,9 +626,6 @@ public class PlayerInstanceModule extends PlayerModule {
 		response.setSweepReward(sweepReward.getBuilder());
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SWEEP_S, response));
 
-
-		BILogger.getBIData(BIRoundFlowData.class).log(player, Action.RAID, "instance", instanceId, biDifficulty, 0, 0, 1);
-		BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.RAID, "instance", instanceId, biDifficulty, 0, fatigueChange, statisticsEntity.getFatigue() - fatigueChange);
 		return true;
 	}
 
@@ -716,7 +726,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		int chapterId = protocol.getChapterId();
 		int difficulty = protocol.getDifficulty();
 
-		if (difficulty != GsConst.InstanceDifficulty.NORMAL_INSTANCE && difficulty != GsConst.InstanceDifficulty.HARD_INSTANCE) {
+		if (difficulty != GsConst.Instance.NORMAL && difficulty != GsConst.Instance.HARD) {
 			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 			return true;
 		}
@@ -737,10 +747,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		int boxState = Const.ChapterBoxState.INVALID_VALUE;
 
 		switch (difficulty) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			boxState = statisticsEntity.getNormalChapterBoxState(chapterId);
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			boxState = statisticsEntity.getHardChapterBoxState(chapterId);
 			break;
 		}
@@ -760,10 +770,10 @@ public class PlayerInstanceModule extends PlayerModule {
 		awardItems.rewardTakeAffectAndPush(player,  Action.INSTANCE_STAGE_REWARD, hsCode);
 
 		switch (difficulty) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			statisticsEntity.setNormalChapterBoxState(chapterId, boxState);
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			statisticsEntity.setHardChapterBoxState(chapterId, boxState);
 			break;
 		}
@@ -795,7 +805,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		int topMaxIndex = 0;
 
 		switch (difficulty) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			topChapterId = statisticsEntity.getNormalTopChapter();
 			if (topChapterId == 0) {
 				return false;
@@ -806,7 +816,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			topIndex = statisticsEntity.getNormalTopIndex();
 			topMaxIndex = InstanceUtil.getInstanceChapter(topChapterId).normalList.size() - 1;
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			topChapterId = statisticsEntity.getHardTopChapter();
 			if (topChapterId == 0) {
 				return false;
@@ -837,11 +847,11 @@ public class PlayerInstanceModule extends PlayerModule {
 		List<InstanceEntryCfg> instanceList = null;
 
 		switch(difficulty) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			boxState = statisticsEntity.getNormalChapterBoxState(chapterId);
 			instanceList = chapter.normalList;
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			boxState = statisticsEntity.getHardChapterBoxState(chapterId);
 			instanceList = chapter.hardList;
 			break;
@@ -870,7 +880,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 必须通关前置副本、前置章节
 		// 精英副本必须通关普通章节
-		if (difficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+		if (difficulty == GsConst.Instance.NORMAL) {
 			int topIndex = statisticsEntity.getNormalTopIndex();
 			int topChapterId = statisticsEntity.getNormalTopChapter();
 
@@ -880,13 +890,13 @@ public class PlayerInstanceModule extends PlayerModule {
 					|| (chapterId == topChapterId && index > topIndex + 1))) {
 				return false;
 			}
-		} else if (difficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+		} else if (difficulty == GsConst.Instance.HARD) {
 			int topIndex = statisticsEntity.getHardTopIndex();
 			int topChapterId = statisticsEntity.getHardTopChapter();
 			int topNormalChapterId = statisticsEntity.getNormalTopChapter();
 
 			if (chapterId > topNormalChapterId
-					|| (chapterId == topNormalChapterId && false == isChapterComplete(topNormalChapterId, GsConst.InstanceDifficulty.NORMAL_INSTANCE))
+					|| (chapterId == topNormalChapterId && false == isChapterComplete(topNormalChapterId, GsConst.Instance.NORMAL))
 					|| chapterId > topChapterId + 1
 					|| (chapterId == topChapterId + 1
 						&& (index > 0 || false == isChapterComplete(topChapterId, difficulty))
@@ -1039,21 +1049,23 @@ public class PlayerInstanceModule extends PlayerModule {
 
 			response.setStarCount(starCount);
 
-			// 记录副本进度
+			// 记录副本状态
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
 			if (oldStar < starCount) {
 				statisticsEntity.setInstanceStar(this.curInstanceId, starCount);
 
 				if (true == isChapterFullStar(this.curChapterId, this.curDifficulty)) {
-					if (this.curDifficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+					if (this.curDifficulty == GsConst.Instance.NORMAL) {
 						statisticsEntity.setNormalChapterBoxState(this.curChapterId, Const.ChapterBoxState.VALID_VALUE);
-					} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+					} else if (this.curDifficulty == GsConst.Instance.HARD) {
 						statisticsEntity.setHardChapterBoxState(this.curChapterId, Const.ChapterBoxState.VALID_VALUE);
 					}
 				}
 			}
 
-			if (this.curDifficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+			statisticsEntity.increaseInstanceWinTimes(this.curInstanceId, Const.InstanceType.INSTANCE_STORY_VALUE, 1);
+
+			if (this.curDifficulty == GsConst.Instance.NORMAL) {
 				int oldChapter = statisticsEntity.getNormalTopChapter();
 				int oldIndex = statisticsEntity.getNormalTopIndex();
 				if (oldChapter < this.curChapterId) {
@@ -1064,14 +1076,14 @@ public class PlayerInstanceModule extends PlayerModule {
 				}
 
 				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
-					statisticsEntity.increaseInstanceNormalTimesDaily();
+					statisticsEntity.increaseInstanceNormalTimesDaily(1);
 				}
-				statisticsEntity.increaseInstanceNormalTimes();
+				statisticsEntity.increaseInstanceNormalTimes(1);
 
 				// 奖励
 				genSettleReward(0, null, Action.NORMAL_INSTANCE_REWARD, hsCode);
 
-			} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+			} else if (this.curDifficulty == GsConst.Instance.HARD) {
 				int oldChapter = statisticsEntity.getHardTopChapter();
 				int oldIndex = statisticsEntity.getHardTopIndex();
 				if (oldChapter < this.curChapterId) {
@@ -1082,9 +1094,9 @@ public class PlayerInstanceModule extends PlayerModule {
 				}
 
 				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
-					statisticsEntity.increaseInstanceHardTimesDaily();
+					statisticsEntity.increaseInstanceHardTimesDaily(1);
 				}
-				statisticsEntity.increaseInstanceHardTimes();
+				statisticsEntity.increaseInstanceHardTimes(1);
 
 				// 奖励
 				genSettleReward(0, null, Action.HEROIC_INSTANCE_REWARD, hsCode);
@@ -1103,11 +1115,11 @@ public class PlayerInstanceModule extends PlayerModule {
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
 
 		switch(this.curDifficulty) {
-		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+		case GsConst.Instance.NORMAL:
 			BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "instance", this.curInstanceId, "normal", starCount, time, isWin ? 1 : 0);
 			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_END, "instance", this.curInstanceId, "normal", 0, fatigueChange, player.getPlayerData().getStatisticsEntity().getFatigue() - fatigueChange);
 			break;
-		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+		case GsConst.Instance.HARD:
 			BILogger.getBIData(BIRoundFlowData.class).log(player, Action.FIGHT, "instance", this.curInstanceId, "heroic", starCount, time, isWin ? 1 : 0);
 			BILogger.getBIData(BIEnergyFlowData.class).log(player, Action.INSTANCE_END, "instance", this.curInstanceId, "heroic", 0, fatigueChange, player.getPlayerData().getStatisticsEntity().getFatigue() - fatigueChange);
 			break;
@@ -1142,6 +1154,8 @@ public class PlayerInstanceModule extends PlayerModule {
 				// 奖励
 				genSettleReward(moreCoinRatio, moreItemList, Action.COIN_HOLE_INSTANCE_REWARD, hsCode);
 			}
+
+			player.getPlayerData().getStatisticsEntity().increaseInstanceWinTimes(this.curInstanceId, Const.InstanceType.INSTANCE_HOLE_VALUE, 1);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
@@ -1175,6 +1189,8 @@ public class PlayerInstanceModule extends PlayerModule {
 
 			// 奖励
 			genSettleReward(0, null, Action.TOWER_INSTANCE_REWARD, hsCode);
+
+			player.getPlayerData().getStatisticsEntity().increaseInstanceWinTimes(this.curInstanceId, Const.InstanceType.INSTANCE_TOWER_VALUE, 1);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
