@@ -104,12 +104,24 @@ public class GameDataMgr : MonoBehaviour
             return sociatyDataMgr;
         }
     }
+
+    [SerializeField]
+    PvpDataMgr pvpDataMgr;
+    public PvpDataMgr PvpDataMgrAttr
+    {
+        get
+        {
+            return pvpDataMgr;
+        }
+    }
+
     //--------------------------------------------------------------------------------------------
     public void ClearAllData()//重新登录重置删除数据
     {
         mainPlayer.ClearData();
         shopDataMgr.ClearData();
         sociatyDataMgr.ClearData();
+        pvpDataMgr.ClearData();
     }
     //---------------------------------------------------------------------------------------------
     public void Init()
@@ -137,6 +149,10 @@ public class GameDataMgr : MonoBehaviour
         GameObject sociatyGo = new GameObject("SociatyDataMgr");
         sociatyGo.transform.SetParent(transform);
         sociatyDataMgr = sociatyGo.AddComponent<SociatyDataMgr>();
+
+        GameObject pvpGo = new GameObject("PvpDataMgr");
+        pvpGo.transform.SetParent(transform);
+        pvpDataMgr = pvpGo.AddComponent<PvpDataMgr>();
 
         BindListener();
     }

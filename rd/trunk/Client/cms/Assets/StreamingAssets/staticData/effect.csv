@@ -602,12 +602,12 @@ TankMagicFireCommone2,3,1,0,0,,,,,,,,1,0.2,0,4,,12345,,0,,1
 TankMagicEarthCommone1,2,1,0,0,,,,,TankMagicEarthCommone2,1,"""""",,,,,,12345,,,,1
 TankMagicEarthCommone2,3,1,0,0,,,,,,,,1,0.2,0,5,,12345,,0,,1
 TankMagicMetalStronge1,2,1,0,0,,,,,TankMagicMetalStronge2,1,"""""",,,,,,12345,,,,1
-TankMagicMetalStronge2,3,1,0,0,,,,,,,,1,0.5,0,1,,12345,,0,,1
+TankMagicMetalStronge2,3,1,0,0,,,,,,,,0,0.5,0,1,,12345,,0,,1
 TankMagicPlantStronge1,2,1,0,0,,,,,TankMagicPlantStronge2,1,"""""",,,,,,12345,,,,1
-TankMagicPlantStronge2,3,1,0,0,,,,,,,,1,0.5,0,2,,12345,,0,,1
+TankMagicPlantStronge2,3,1,0,0,,,,,,,,0,0.5,0,2,,12345,,0,,1
 TankMagicWaterStronge1,2,1,0,0,,,,,TankMagicWaterStronge2,1,"""""",,,,,,12345,,,,1
-TankMagicWaterStronge2,3,1,0,0,,,,,,,,1,0.5,0,3,,12345,,0,,1
+TankMagicWaterStronge2,3,1,0,0,,,,,,,,0,0.5,0,3,,12345,,0,,1
 TankMagicFireStronge1,2,1,0,0,,,,,TankMagicFireStronge2,1,"""""",,,,,,12345,,,,1
-TankMagicFireStronge2,3,1,0,0,,,,,,,,1,0.5,0,4,,12345,,0,,1
+TankMagicFireStronge2,3,1,0,0,,,,,,,,0,0.5,0,4,,12345,,0,,1
 TankMagicEarthStronge1,2,1,0,0,,,,,TankMagicEarthStronge2,1,"""""",,,,,,12345,,,,1
-TankMagicEarthStronge2,3,1,0,0,,,,,,,,1,0.5,0,5,,12345,,0,,1
+TankMagicEarthStronge2,3,1,0,0,,,,,,,,0,0.5,0,5,,12345,,0,,1

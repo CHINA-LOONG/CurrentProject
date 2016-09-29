@@ -7,13 +7,13 @@ pet_character_3,减益支援,Harmful
 pet_character_4,增益支援,Beneficial
 pet_character_5,治疗,Healer
 pet_character_6,肉盾,Tank
-Valor,物理输出,PHYS ATK
-Spiritual,法术输出,MAGIC ATK
+Valor,输出,Attack
+Spiritual,输出,Attack
 Mischievous,减益支援,Harmful
 Collaborate,增益支援,Beneficial
 Compassion,治疗,Healer
 Humility,肉盾,Tank
-descrip_valor,善于使用物理攻击的英勇战士,Brave attacker mainly using physical attack
+descrip_valor,善于使用物理攻击的英勇战士,Brave attacker mainly using attack skills
 descrip_spiritual,善于运用魔法能量的智慧学者,Intellectual attacker using magical power
 descrip_mischievous,善于给敌方添加减益效果的调皮支援,Mischievous by adding debuff to enemies
 descrip_collaborate,善于给己方添加增益效果的强力辅助,Support your team with a beneficial buffs

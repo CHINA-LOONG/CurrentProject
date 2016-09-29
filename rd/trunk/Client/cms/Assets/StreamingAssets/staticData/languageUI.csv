@@ -865,3 +865,134 @@ summon_tentime,聚合10次,Gather 10
 summon_recovertimegold,{0}后免费,Free in {0}
 summon_skip,跳过,Skip
 summon_result,聚合结果,You gathered
+,,
+pvp_title,竞技场,Arena
+pvp_daojishijiesuan,赛季结算倒计时：,Season ends in:
+pvp_daojishijiesuan1,{0}天,{0} days
+pvp_daojishijiesuan2,{0}小时,{0} hours
+pvp_daojishijiesuan3,不足1小时,< 1 hour
+pvp_copper3,青铜三阶,Bronze Rank 3
+pvp_copper2,青铜二阶,Bronze Rank 2
+pvp_copper1,青铜一阶,Bronze Rank 1
+pvp_silver3,白银三阶,Silver Rank 3
+pvp_silver2,白银二阶,Silver Rank 2
+pvp_silver1,白银一阶,Silver Rank 1
+pvp_gold3,黄金三阶,Gold Rank 3
+pvp_gold2,黄金二阶,Gold Rank 2
+pvp_gold1,黄金一阶,Gold Rank 1
+pvp_master3,大师三阶,Master Rank 3
+pvp_master2,大师二阶,Master Rank 2
+pvp_master1,大师一阶,Master Rank 1
+pvp_rank,排名  {0},Rank {0}
+pvp_notin,未进入排名,No ranking yet
+pvp_points,竞技积分,Arena Points
+pvp_honorpoint,荣誉点,Honor Points
+pvp_defense,防守阵容,Defense Team
+pvp_change,调整阵容,Edit Team
+pvp_pvpchoise,可竞技次数：{0}/10,Arena entries: {0}/10
+pvp_pvptime,（{0}后恢复1次）,({0} till 1 point)
+pvp_pipei,匹配对手,Matchmaking
+pvp_shop,竞技商店,Arena Store
+pvp_battlereward,竞技奖励,Arena Reward
+pvp_record,防守记录,Defense Record
+pvp_rules,规则说明,Rules
+pvp_ranking,排行榜,Rankings
+pvp_fangyumust,请先布置防守宠物,Please set defending monsters
+pvp_fangyumust1,（布置防守宠物后才能进行PVP）,(Setting defense monsters is required for PvP)
+pvp_first,当前没有其他玩家参与pvp，等等他们赶来吧,"There is no one else in PvP at the moment, wait for more to join."
+pvp_defense,防守阵容,Defense Team
+pvp_save,保存设置,Save Settings
+pvp_oneleast,防御至少要安排一个以上的宠物,At least 2 or more monsters are required for your Defense Team.
+pvp_buzufive,有栏位上未布置宠物，确定完成吗？,"Your team has empty positions, continue?"
+pvp_rewardyulan,奖励预览,Reward Preview
+pvp_winreward,胜利获得,Victory will give
+pvp_winreward,失败获得,Defeat will give
+pvp_exit,确定退出吗？,Are you sure you would like to exit?
+pvp_exitsure,退出不会返还已消耗的竞技次数,Exitting will not return your spent Arena entry.
+pvp_changecompetitor,确定更换对手吗？,Confirm change opponent?
+pvp_chuzhanmust,请先布置出战宠物,Please select your monsters for battle.
+pvp_chuzhanbuman5,出战宠物不满5只，是否确认开战？,"You have selected less than 5 monsters, continue?"
+pvp_titlerank,竞技场排行,Arena ranking
+pvp_paiming,排名,Ranking
+pvp_playername,玩家名称,Player name
+pvp_duanwei,段位,Title
+pvp_result,胜负,Victory
+pvp_gongjizhe,攻击者,Attacker
+sociaty_level,等级,Level
+pvp_resultwin,防守成功,Defense victory
+pvp_resultlose,防守失败,Defense defeated
+pvp_resultdraw,平局,Draw
+pvp_rulesneirong,"1.竞技场中战斗需要消耗竞技点数，每次消耗1点。竞技点数每小时恢复1点。
+2. 玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~
+3.若对匹配的对手不满意，可以通过花费金币刷新对手。
+4.竞技场中战斗采取5V5的方式，战斗过程中可以手动施放大招技能、集火敌人，但不能使用照妖镜。
+5.竞技成功时，会获得荣誉点奖励，荣誉点可以用来在竞技商店中换取物品。
+6.若与敌人僵持不下，出现平局按钮后，可以选择以平局结束本场竞技，平局仍会得到1点荣誉点。
+7.根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。
+8.竞技积分是评价玩家段位的唯一标准，当然，也是排行榜排名的唯一标准。
+9.竞技场每周周一凌晨1点都会根据玩家当时所在段位发放一次段位奖励，奖励通过邮件发放。
+10.竞技场中，每个赛季持续四周，赛季结束时，排名前100的玩家会获得排名奖励，奖励通过邮件发放，记得查收哦~
+
+竞技场段位与竞技积分
+段位                       竞技积分
+大师一阶                1550及以上
+大师二阶                1350~1549
+大师三阶                1150~1349
+黄金一阶                950~1149
+黄金二阶                800~949
+黄金三阶                650~799
+白银一阶                500~649
+白银二阶                400~499
+白银三阶                300~399
+青铜一阶                200~299
+青铜二阶                150~199
+青铜三阶                149及以下","1. Each battle in the Arena requires 1 Arena entry. Your Arena entries recover at a rate of 1 per hour.
+2. Players must set their own defense to defend against other players' challenges. Points are deducted when a player's defense is defeated.
+3. The opponent you are matched against can be changed by spending Coins.
+4. The Arena uses a 5v5 battle setting. In battle, the attacking player can manually cast ultimate abilities and select enemy targets, but cannot use the Magic Lens.
+5. When players are victorious in the Arena, they will receive Honor Points. These points can be used to purchase items in the Arena Store.
+6. If the battle turns into a stalemate between you and the opponent, a Draw button will appear, and the battle can be ended as a draw. A draw will still award 1 Honor Point.
+7. The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
+8. Arena Points are the standard for determining a player's Arena Title, as well as their Arena Ranking.
+9. Rewards based upon players' current Arena Titles will be sent via in-game mail each week on Monday at 1:00am.
+10. Each Arena season lasts for 4 weeks. After a season finishes, players ranking in the top 100 will receive a ranking reward via in-game mail. So remember to keep an eye out for that!
+
+Arena Points and Titles
+Title                       Arena Pts.
+Master Rank 1       1550 and above
+Master Rank 2       1350~1549
+Master Rank 3       1150~1349
+Gold Rank 1           950~1149
+Gold Rank 2           800~949
+Gold Rank 3           650~799
+Silver Rank 1          500~649
+Silver Rank 2          400~499
+Silver Rank 3          300~399
+Bronze Rank 1        200~299
+Bronze Rank 2        150~199
+Bronze Rank 3        149 and below"
+pvp_rankreward,赛季排名奖励,Season Ranking Reward
+pvp_duanweireward,每周段位奖励,Weekly Title Reward
+pvp_rewardstips,排名奖励在月结算时邮件发放，段位奖励在周结算时邮件发放，不要忘记查收哦！,Ranking rewards will be sent via in-game mail at the tabulation time each month. Title rewards are sent via in-game mail at the tabulation time each week. Don't forget to keep an out for your rewards!
+pvp_pingjutips,确定以平局结束本次战斗吗？,Confirm end current match in a draw?
+pvp_pingjutips1,（平局只能获得1荣誉点，积分变化以平局结果计算）,"(A 'draw' will reward 1 Honor Point, and points will be calculated according to a draw)"
+pvp_record_001,防守设置保存成功,Defense settings saved
+pvp_record_002,竞技次数已用完,No remaining Arena entries
+,,
+ui_battle_go,前往,Go
+lose_guide1,搜寻弱点,Search for weakpoints
+lose_guide2,聚合,Gather
+lose_guide3,升级宠物,Level up your monsters
+lose_guide4,进阶宠物,Advance your monsters
+lose_guide5,升级技能,Upgrade abilities
+lose_guide6,更新装备,Equip different equipment
+lose_guide7,打造装备,Forge equipment
+lose_guide8,镶嵌宝石,Embed gems
+lose_guidetips1,善于利用照妖镜搜寻boss弱点，会让你事半功倍！,Using the Magic Lens to spot enemy weakpoints can be a big help in defeating the enemy.
+lose_guidetips2,宠物不给力？试试聚合新的伙伴一同战斗吧！Fighting！,Need stronger monsters? Try gathering more to fight together!
+lose_guidetips3,通过战斗和宠物经验药可以提升宠物等级！,You can upgrade your monsters by battling or using EXP Potions.
+lose_guidetips4,进阶宠物可以极大地提升宠物实力！,Advancing a monster can greatly increase it's power!
+lose_guidetips5,提升宠物技能可以使宠物变得更强！,Increasing your monsters' abilities can improve their effectiveness in battle.
+lose_guidetips6,给宠物穿上装备，宠物会更强大。,Equip more equipment on your monsters to make them stronger.
+lose_guidetips7,打造装备能够提升装备属性，进而提升宠物实力。,Forging your equipment can improve equipment stats and increase your monster's power.
+lose_guidetips8,可以给蓝色及以上品质的装备镶嵌宝石，提升装备属性。,"Equipment that is blue grade or better can be embedded with gems, increasing its stats."

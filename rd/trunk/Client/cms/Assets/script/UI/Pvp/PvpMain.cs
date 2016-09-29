@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PvpMain : UIBase
 {
@@ -23,6 +24,13 @@ public class PvpMain : UIBase
     public Text pvpTimeCountDownText;
     public Button fightButton;
 
+    private PvpDataMgr  PvpDataMgrAttr
+    {
+        get
+        {
+            return GameDataMgr.Instance.PvpDataMgrAttr;
+        }
+    }
     public static PvpMain Open()
     {
         PvpMain pvpMain = (PvpMain)UIMgr.Instance.OpenUI_(ViewName);
@@ -55,13 +63,11 @@ public class PvpMain : UIBase
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
     }
 	
-    void OnFightButtonClick()
-    {
-
-    }
     void OnAdjustButtonClick()
     {
-
+        List<string> teamlist = new List<string>();
+        teamlist.AddRange(PvpDataMgrAttr.defenseTeamList);
+        PvpDefense.OpenWith(teamlist);
     }
     void OnRankButtonClick(GameObject go)
     {
@@ -86,5 +92,23 @@ public class PvpMain : UIBase
     void OnCloseButtonClick()
     {
         UIMgr.Instance.CloseUI_(this);
+    }
+
+    void OnFightButtonClick()
+    {
+        PvpDataMgrAttr.RequestSearchPvpOpponent(OnSearchOpponentFinished);
+    }
+
+    void OnSearchOpponentFinished(ProtocolMessage message)
+    {
+        //test
+        
+        return;
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
     }
 }

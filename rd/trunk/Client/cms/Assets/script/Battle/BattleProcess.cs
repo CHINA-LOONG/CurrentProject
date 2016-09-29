@@ -126,7 +126,7 @@ public class BattleProcess : MonoBehaviour
     //当前行动
     Action curAction = null;
     bool mPauseEnable = false;
-    byte mMagicDazhaoCount = 0;
+    bool mRestartAction = false;
 
     void BindListener()
     {
@@ -624,6 +624,7 @@ public class BattleProcess : MonoBehaviour
         yield return StartCoroutine(PlayCountDownAnim());
         if (battleLevelIndex == 0)
         {
+            mRestartAction = false;
             mCurrentReviveCount = 0;
             CastInstanceSpell();
         }
@@ -662,6 +663,12 @@ public class BattleProcess : MonoBehaviour
 
     void StartAction()
     {
+        if (mPauseEnable == true)
+        {
+            mRestartAction = true;
+            return;
+        }
+
 		Action action = GetNextAction();
 		curAction = action;
         GameUnit actionCaster = null;
@@ -870,7 +877,11 @@ public class BattleProcess : MonoBehaviour
 
     public void Pause(bool pauseEnable)
     {
-
+        mPauseEnable = pauseEnable;
+        if (pauseEnable == false && mRestartAction == true)
+        {
+            StartAction();
+        }
     }
 
 

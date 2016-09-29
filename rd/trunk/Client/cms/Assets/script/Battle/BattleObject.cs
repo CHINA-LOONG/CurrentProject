@@ -340,6 +340,7 @@ public class BattleObject : MonoBehaviour
                             //curEvent.psObject.transform.parent = transform.parent;
                             curParticleData.psObject.transform.localPosition = rootTransform.position;
                             curParticleData.psObject.transform.localScale = rootTransform.lossyScale;
+
                             //curParticleData.psObject.transform.localRotation = rootTransform.rotation;
                             curParticleData.psObject.transform.SetParent(transform.parent, false);
                             curParticleData.psParent = rootTransform;
@@ -357,6 +358,7 @@ public class BattleObject : MonoBehaviour
                                 curParticleData.psObject.transform.localRotation = transform.rotation * BattleConst.rotYPIDegree;
                             }
                         }
+                        SetParticleScale(curParticleData.psObject, rootTransform.lossyScale.x);
                         curParticleData.psDuration = Util.ParticleSystemLength(curParticleData.psObject.transform);
 
                         if (curParticleData.particleAni != null && curParticleData.particleAni.Length > 0)
@@ -626,6 +628,15 @@ public class BattleObject : MonoBehaviour
             }
         }
         activeEventList.Clear();
+    }
+    //---------------------------------------------------------------------------------------------
+    private void SetParticleScale(GameObject psObject, float scale)
+    {
+        ParticleSystem[] psList = psObject.GetComponentsInChildren<ParticleSystem>();
+        for (int psIndex = 0; psIndex < psList.Length; ++psIndex)
+        {
+            psList[psIndex].startSize *= scale;
+        }
     }
     //---------------------------------------------------------------------------------------------
 }
