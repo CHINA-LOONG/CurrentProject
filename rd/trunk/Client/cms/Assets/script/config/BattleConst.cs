@@ -23,6 +23,7 @@ public class BattleConst
     public const int slotIndexMax = 2;
 
     public const int maxFieldUnit = 3;
+    public const int maxRound = 100;
 
     //换宠冷却时间
     public const float switchPetCD = 15;

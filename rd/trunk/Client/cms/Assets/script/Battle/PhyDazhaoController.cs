@@ -65,23 +65,23 @@ public class PhyDazhaoController : MonoBehaviour
         ResourceMgr.Instance.DestroyAsset(dazhaoFocusController.gameObject);
     }
 
-	public void PrepareDazhao(BattleObject casterGo)
-	{
-		casterBattleGo = casterGo;
-		dazhaoState = DazhaoState.Wait;
+	//public void PrepareDazhao(BattleObject casterGo)
+	//{
+	//	casterBattleGo = casterGo;
+	//	dazhaoState = DazhaoState.Wait;
 
-		//蓄气效果
-		casterBattleGo.TriggerEvent ("phyDazhaoPrepare", Time.time, null);
+	//	//蓄气效果
+	//	casterBattleGo.TriggerEvent ("phyDazhaoPrepare", Time.time, null);
 
-		////中断检测
-		//dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
-		//if (null != dazhaoExitCheck)
-		//{
-		//	Destroy(dazhaoExitCheck);
-		//	dazhaoExitCheck = null;
-		//}
-		//dazhaoExitCheck = casterGo.gameObject.AddComponent<DazhaoExitCheck>();
-	}
+	//	////中断检测
+	//	//dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
+	//	//if (null != dazhaoExitCheck)
+	//	//{
+	//	//	Destroy(dazhaoExitCheck);
+	//	//	dazhaoExitCheck = null;
+	//	//}
+	//	//dazhaoExitCheck = casterGo.gameObject.AddComponent<DazhaoExitCheck>();
+	//}
 
 	public void RunActionWithDazhao(BattleObject casterGo)
 	{
@@ -208,13 +208,14 @@ public class PhyDazhaoController : MonoBehaviour
 
 		if (casterBattleGo.guid != casterID)
 		{
-			Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
+            //NOTE: no error, dazhao can trigger more than one after 2016.02.15
+			//Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
 			return;
 		}
 		if (dazhaoState == DazhaoState.Prepare)
 		{
 			//大招被打断
-			GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
+			//GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
 
 			//if(casterBattleGo.shifaNodeEffect !=null)
 			//{

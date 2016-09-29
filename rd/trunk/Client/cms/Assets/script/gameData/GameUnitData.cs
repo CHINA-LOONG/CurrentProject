@@ -799,6 +799,7 @@ public class GameUnit : IComparable
         spellmgReduceInjury = 0.0f;
         spellPhyShield = 0;
         spellMagicShield = 0;
+        attackCount = 0;
 
         //二级属性
         curLife = maxLife;

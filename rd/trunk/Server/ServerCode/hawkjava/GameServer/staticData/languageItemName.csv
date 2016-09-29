@@ -1,491 +1,493 @@
-﻿#TEXT,TEXT,TEXT
-id,chinese,english
-#文字Id,文字内容,文字内容
-name_10003_duihuanquan,扫荡券,Raid Ticket
-name_11001_chujizhuangbeiqianghuashi,初级灵铁,Basic Raw Iron
-name_11002_zhongjizhuangbeiqianghuashi,中级灵铁,Average Raw Iron
-name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Advanced Raw Iron
-name_10005_zhuangbeijinjieshi,妖力结晶,Crystal Ball
-name_10007_baoshikaikongcailiao,纹章开孔石,Insignia Stone
-name_10009_baoxiangyaoshi1,木质宝箱钥匙,Deadwood Chest key
-name_10010_baoxiangyaoshi2,白银宝箱钥匙,Gleaming Chest key
-name_10011_baoxiangyaoshi3,黄金宝箱钥匙,Golden Strongbox key
-name_10012_baoxiangyaoshi4,黄金宝箱钥匙,Gold Key
-name_10016_chongwuqianghuashi,贤者墨水,Sage's Ink
-name_10017_chongwujinjieshi,化形之书,Book of Transformation
-name_10021_gongpin,天使之羽,Angel's feather
-name_10022_gongpin,恶魔之羽,Demon's feather
-name_10023_gongpin,精灵之羽,Fairy's feather.
-name_20001_suipian_common,灵魂本源,Lore Cores
-name_20002_suipian_xiaochou3,小丑碎片（水）,Joker Fgmt(Water)
-name_20003_suipian_kairuisi4,凯瑞斯碎片（火）,Keres Fgmt(Fire)
-name_20004_suipian_hetong2,河童碎片（木）,Kappa Fgmt(Grass)
-name_20005_suipian_wagui3,哇鬼碎片（水）,Phase Frog Fgmt(Water)
-name_20006_suipian_xiaochou4,小丑碎片（火）,Joker Fgmt(Fire)
-name_20007_suipian_cike4,火刺壳碎片（火）,Fireshell Fgmt(Fire)
-name_20008_suipian_panshen2,潘神碎片（木）,Pans Fgmt(Grass)
-name_20009_suipian_huapo2,花魄碎片（木）,Flower Pixie Fgmt(Grass)
-name_20010_suipian_wushi3,舞狮碎片（水）,Dancing Lion Fgmt(Water)
-name_20011_suipian_wushi4,舞狮碎片（火）,Dancing Lion Fgmt(Fire)
-name_20012_suipian_xiyiren4,蜥蜴人碎片（火）,Lizardman Fgmt(Fire)
-name_20013_suipian_mantuoluo2,曼陀罗碎片（木）,Mandrake Fgmt(Grass)
-name_20014_suipian_hetong3,河童碎片（水）,Kappa Fgmt(Water)
-name_20015_suipian_longgongtongzi3,龙宫童子碎片（水）,Ryuku Doji Fgmt(Water)
-name_20016_suipian_xiyiren2,蜥蜴人碎片（木）,Lizardman Fgmt(Grass)
-name_20017_suipian_langren5,狼人碎片（暗）,Werewolf Fgmt(Dark)
-name_20018_suipian_langren3,狼人碎片（水）,Werewolf Fgmt(Water)
-name_20019_suipian_shuigui3,幽灵船长碎片（水）,Soul Pirate Fgmt(Water)
-name_20020_suipian_nvyao5,报丧女妖碎片（暗）,Banshee Fgmt(Dark)
-name_20021_suipian_hapi1,哈皮碎片（光）,Harpy Fgmt(Light)
-name_20022_suipian_piying5,皮影碎片（暗）,Shadow Puppet Fgmt(Dark)
-name_20023_suipian_kairuisi5,凯瑞斯碎片（暗）,Keres Fgmt(Dark)
-name_20024_suipian_bingxuenvwang3,冰雪女王碎片（水）,Chione Fgmt(Water)
-name_20025_suipian_wendige3,温迪戈碎片（水）,Wendigo Fgmt(Water)
-name_20026_suipian_wendige2,温迪戈碎片（木）,Wendigo Fgmt(Grass)
-name_20027_suipian_longnv3,龙女碎片（水）,Dragon Girl Fgmt(Water)
-name_20028_suipian_momo1,得莫非碎片（光）,Demovoy Fgmt(Light)
-name_20029_suipian_amute3,鳄鱼判官碎片（水）,Croc Warden Fgmt(Water)
-name_20030_suipian_luoxinfu5,络新妇碎片（暗）,Nephila Fgmt(Dark)
-name_20031_suipian_saibulesi5,地狱犬碎片（暗）,Hellhound Fgmt(Dark)
-name_20032_suipian_hongniu4,米诺到诺斯碎片（火）,Minotaur Fgmt(Fire)
-name_20033_suipian_anpusha5,安普沙碎片（暗）,Empusa Fgmt(Dark)
-name_20034_suipian_daochengsizhong4,道成寺妖碎片（火）,Maiden Dojoji Fgmt(Fire)
-name_20035_suipian_huoniao4,火鸟碎片（火）,Firebird Fgmt(Fire)
-name_20036_suipian_ifrit4,伊芙利特碎片（火）,Ifrit Fgmt(Fire)
-name_20037_suipian_moguguai4,蘑菇怪碎片（火）,Matango Fgmt(Fire)
-name_20038_suipian_tianshizhang4,天使长碎片（火）,Archangel Fgmt(Fire)
-name_20039_suipian_xiaochou2,小丑碎片（木）,Joker Fgmt(Grass)
-name_20040_suipian_saibulesi4,地狱犬碎片（火）,Hellhound Fgmt(Fire)
-name_20041_suipian_moguguai3,蘑菇怪碎片（水）,Matango Fgmt(Fire)
-name_20042_suipian_sheshouzuo1,星空射手碎片（光）,Astro Archer Fgmt(Light)
-name_20043_suipian_weitianshi5,伪天使碎片（暗）,Fallen Angel Fgmt(Dark)
-name_20044_suipian_sheshouzuo3,星空射手碎片（水）,Astro Archer Fgmt(Water)
-name_20045_suipian_bingyan3,史莱姆碎片（水）,Slime Fgmt(Water)
-name_20046_suipian_mengyan5,梦魇碎片（暗）,Bangungot Fgmt(Dark)
-name_20047_suipian_change1,嫦娥碎片（光）,Moon Devine Fgmt(Light)
-name_20048_suipian_dujiaoshou1,独角兽碎片（光）,Pegasus Fgmt(Light)
-name_20049_suipian_dujiaoshou5,独角兽碎片（暗）,Pegasus Fgmt(Dark)
-name_20050_suipian_change5,嫦娥碎片（暗）,Moon Devine Fgmt(Dark)
-name_20051_suipian_huoniao3,火鸟碎片（水）,Firebird Fgmt(Water)
-name_20052_suipian_ifrit5,伊芙利特碎片（暗）,Ifrit Fgmt(Dark)
-name_20053_suipian_datiangou4,大天狗碎片（火）,Tengu Fgmt(Fire)
-name_20054_suipian_tianshizhang1,天使长碎片（光）,Archangel Fgmt(Light)
-name_20055_suipian_longnv1,龙女碎片（光）,Dragon Girl Fgmt(Light)
-name_20056_suipian_weitianshi1,伪天使碎片（光）,Fallen Angel Fgmt(Light)
-name_20057_suipian_nvyao1,报丧女妖碎片（光）,Banshee Fgmt(Light)
-name_20058_suipian_piying1,皮影碎片（光）,Shadow Puppet Fgmt(Light)
-name_20059_suipian_kahuna2,卡胡纳碎片（木）,Kahuna Fgmt(Grass)
-name_20060_suipian_yifanmumian1,一反木棉碎片（光）,Ittan Momen Fgmt(Light)
-name_20061_suipian_jinglingwang2,精灵王子碎片（木）,Prince Elve Fgmt(Grass)
-name_20062_suipian_luoxinfu1,络新妇碎片（光）,Nephila Fgmt(Light)
-name_20063_suipian_amute2,鳄鱼判官碎片（木）,Croc Warden Fgmt(Grass)
-name_20064_suipian_amute4,鳄鱼判官碎片（火）,Croc Warden Fgmt(Fire)
-name_20065_suipian_cike2,火刺壳碎片（木）,Fireshell Fgmt(Grass)
-name_20066_suipian_cike3,火刺壳碎片（水）,Fireshell Fgmt(Water)
-name_20067_suipian_longgongtongzi1,龙宫童子碎片（光）,Ryuku Doji Fgmt(Light)
-name_20068_suipian_yifanmumian3,一反木棉碎片（水）,Ittan Momen Fgmt(Water)
-name_20069_suipian_renyu3,人鱼碎片（水）,Mermaid Fgmt(Water)
-name_20070_suipian_shixianggui5,石像鬼碎片（暗）,Gargolye Fgmt(Dark)
-name_20071_suipian_senlinnvshen2,森林女神碎皮（木）,Dryad Fgmt(Grass)
-name_30011_BloodStone_1,生命纹章lv1,Blood Insignia(lv1)
-name_30012_BloodStone_2,生命纹章lv2,Blood Insignia(lv2)
-name_30013_BloodStone_3,生命纹章lv3,Blood Insignia(lv3)
-name_30014_BloodStone_4,生命纹章lv4,Blood Insignia(lv4)
-name_30015_BloodStone_5,生命纹章lv5,Blood Insignia(lv5)
-name_30016_BloodStone_6,生命纹章lv6,Blood Insignia(lv6)
-name_30021_SageStone_1,海洋纹章lv1,Domain Insignia(lv1)
-name_30022_SageStone_2,海洋纹章lv2,Domain Insignia(lv2)
-name_30023_SageStone_3,海洋纹章lv3,Domain Insignia(lv3)
-name_30024_SageStone_4,海洋纹章lv4,Domain Insignia(lv4)
-name_30025_SageStone_5,海洋纹章lv5,Domain Insignia(lv5)
-name_30026_SageStone_6,海洋纹章lv6,Domain Insignia(lv6)
-name_30031_VitalityStone_1,烈炎纹章lv1,Ember Insignia(lv1)
-name_30032_VitalityStone_2,烈炎纹章lv2,Ember Insignia(lv2)
-name_30033_VitalityStone_3,烈炎纹章lv3,Ember Insignia(lv3)
-name_30034_VitalityStone_4,烈炎纹章lv4,Ember Insignia(lv4)
-name_30035_VitalityStone_5,烈炎纹章lv5,Ember Insignia(lv5)
-name_30036_VitalityStone_6,烈炎纹章lv6,Ember Insignia(lv6)
-name_30041_BastionStone_1,大地纹章lv1,Earth Insignia(lv1)
-name_30042_BastionStone_2,大地纹章lv2,Earth Insignia(lv2)
-name_30043_BastionStone_3,大地纹章lv3,Earth Insignia(lv3)
-name_30044_BastionStone_4,大地纹章lv4,Earth Insignia(lv4)
-name_30045_BastionStone_5,大地纹章lv5,Earth Insignia(lv5)
-name_30046_BastionStone_6,大地纹章lv6,Earth Insignia(lv6)
-name_30051_HasteStone_1,疾风纹章lv1,Wind Insignia(lv1)
-name_30052_HasteStone_2,疾风纹章lv2,Wind Insignia(lv2)
-name_30053_HasteStone_3,疾风纹章lv3,Wind Insignia(lv3)
-name_30054_HasteStone_4,疾风纹章lv4,Wind Insignia(lv4)
-name_30055_HasteStone_5,疾风纹章lv5,Wind Insignia(lv5)
-name_30056_HasteStone_6,疾风纹章lv6,Wind Insignia(lv6)
-name_30061_MendingStone_1,森林纹章lv1,Forest Insignia(lv1)
-name_30062_MendingStone_2,森林纹章lv2,Forest Insignia(lv2)
-name_30063_MendingStone_3,森林纹章lv3,Forest Insignia(lv3)
-name_30064_MendingStone_4,森林纹章lv4,Forest Insignia(lv4)
-name_30065_MendingStone_5,森林纹章lv5,Forest Insignia(lv5)
-name_30066_MendingStone_6,森林纹章lv6,Forest Insignia(lv6)
-name_30071_VolatileStone_1,月之纹章lv1,Moon Insignia(lv1)
-name_30072_VolatileStone_2,月之纹章lv2,Moon Insignia(lv2)
-name_30073_VolatileStone_3,月之纹章lv3,Moon Insignia(lv3)
-name_30074_VolatileStone_4,月之纹章lv4,Moon Insignia(lv4)
-name_30075_VolatileStone_5,月之纹章lv5,Moon Insignia(lv5)
-name_30076_VolatileStone_6,月之纹章lv6,Moon Insignia(lv6)
-name_30081_SourceStone_1,星之纹章lv1,Star Insignia(lv1)
-name_30082_SourceStone_2,星之纹章lv2,Star Insignia(lv2)
-name_30083_SourceStone_3,星之纹章lv3,Star Insignia(lv3)
-name_30084_SourceStone_4,星之纹章lv4,Star Insignia(lv4)
-name_30085_SourceStone_5,星之纹章lv5,Star Insignia(lv5)
-name_30086_SourceStone_6,星之纹章lv6,Star Insignia(lv6)
-name_30091_MorbidStone_1,日之纹章lv1,Sun Insignia(lv1)
-name_30092_MorbidStone_2,日之纹章lv2,Sun Insignia(lv2)
-name_30093_MorbidStone_3,日之纹章lv3,Sun Insignia(lv3)
-name_30094_MorbidStone_4,日之纹章lv4,Sun Insignia(lv4)
-name_30095_MorbidStone_5,日之纹章lv5,Sun Insignia(lv5)
-name_30096_MorbidStone_6,日之纹章lv6,Sun Insignia(lv6)
-name_40000_baoxiang,木质宝箱,Deadwood Chest
-name_40001_baoxiang,白银宝箱,Gleaming Chest
-name_40002_baoxiang,黄金宝箱,Golden Strongbox
-name_40005_bigTaskleader201,领袖宝箱（金币）lv1,Leader Chest(coins) (lv1)
-name_40006_bigTaskleader301,领袖宝箱（金币）lv2,Leader Chest(coins) (lv2)
-name_40007_bigTaskleader401,领袖宝箱（金币）lv3,Leader Chest(coins) (lv3)
-name_40007_bigTaskleader501,领袖宝箱（金币）lv4,Leader Chest(coins) (lv4)
-name_40008_bigTaskleader202,领袖宝箱（补给品）lv1,Leader Chest(supplies) (lv1)
-name_40009_bigTaskleader302,领袖宝箱（补给品）lv2,Leader Chest(supplies) (lv2)
-name_40010_bigTaskleader402,领袖宝箱（补给品）lv3,Leader Chest(supplies) (lv3)
-name_40010_bigTaskleader502,领袖宝箱（补给品）lv4,Leader Chest(supplies) (lv4)
-name_40052_pvpstagereward,1级纹章箱子,Level 1 Insignia Chest
-name_40053_pvpstagereward,2级纹章箱子,Level 2 Insignia Chest
-name_40054_pvpstagereward,3级纹章箱子,Level 3 Insignia Chest
-name_40055_pvpstagereward,4级纹章箱子,Level 4 Insignia Chest
-name_40056_pvprankreward,C级宠物碎片箱子（中）,Class C Monster Fragments(Medium)
-name_40057_pvprankreward,B级宠物碎片箱子（中）,Class B Monster Fragments(Medium)
-name_40058_pvprankreward,A级宠物碎片箱子（中）,Class A Monster Fragments(Medium)
-name_40059_pvprankreward,S级宠物碎片箱子（中）,Class S Monster Fragments(Medium)
-name_40060_pvprankxianshisuipian,中级宠物碎片箱子,Average Monster Fragments Chest
-name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Advanced Monster Fragments Chest
-name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragments Chest
-name_40063_advanturegoldbox,钻石箱子,Diamond Chest
-name_40064_pvpbox,竞技场碎片箱子,Arena Chest
-name_40065_towerbox,通天塔碎片箱子,Tower Chest
-name_40066_bfregmentda,B级宠物碎片箱子 (大),Class B Monster Fragments(Giant)
-name_40067_afregmentda,A级宠物碎片箱子 (大),Class A Monster Fragments(Giant)
-name_40068_bigTaskleader601,领袖宝箱（金币）lv5,Leader Chest(coins) (lv5)
-name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies) (lv5)
-name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragments Chest
-name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragments Chest
-name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest
-name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Mytho Essence
-name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Mytho Essence
-name_50004_gaojichongwujingyanyaoshui,高级信仰之力,Advanced Mytho Essence
-name_50005_chujipilaoyaoshui,苹果,Apple 
-name_50006_zhongjipilaoyaoshui,一袋苹果,Bag of Apples 
-name_50007_gaojipilaoyaoshui,一筐苹果,Basket of Apples 
-name_50008_shuangbeijingyanyao,初级经验卷轴,Basic EXP Scroll
-name_50009_sanbeijingyanyao,中级经验卷轴,Average EXP Scroll
-name_70001_fangyuxingwuqi,永恒之盾,Eternal Shield
-name_70002_fangyuxinghujia,荣耀重甲,Glory Armor
-name_70003_fangyuxingtoukui,荣耀头盔,Glory Helmet
-name_70004_fangyuxinghuwan,荣耀护手,Glory Gauntlet
-name_70005_fangyuxingjiezhi,荣耀战靴,Glory Treads
-name_70006_fangyuxingshipin,荣耀指环,Glory Ring
-name_70007_wulixingwuqi,破天之枪,Ruinate Spear
-name_70008_wulixinghujia,断罪之甲,Crimson Armor
-name_70009_wulixingtoukui,断罪头盔,Crimson Helmet
-name_70010_wulixinghuwan,断罪护手,Crimson Bracer
-name_70011_wulixingjiezhi,断罪战靴,Crimson Treads
-name_70012_wulixingshipin,断罪指环,Crimson Ring
-name_70013_fashuxingwuqi,死亡法杖,Death Wand
-name_70014_fashuxinghujia,混沌法袍,Chaos Armor
-name_70015_fashuxingtoukui,混沌假面,Chaos Mask
-name_70016_fashuxinghuwan,混沌手套,Chaos Gloves
-name_70017_fashuxingjiezhi,混沌之靴,Chaos Boots
-name_70018_fashuxingshipin,混沌指环,Chaos Ring
-name_70019_zhiyuanxingwuqi,原生魔仗,Primal Wand
-name_70020_zhiyuanxinghujia,贤者法袍,Sage's Robe
-name_70021_zhiyuanxingtoukui,贤者之帽,Sage's Hat
-name_70022_zhiyuanxinghuwan,贤者手套,Sage's Gloves
-name_70023_zhiyuanxingjiezhi,贤者之靴,Sage's Boots
-name_70024_zhiyuanxingshipin,贤者指环,Sage's Ring
-name_101,武器,weapon
-name_102,护甲,armor
-name_103,头盔,helmet
-name_104,护手,gauntlet
-name_105,鞋子,shoes
-name_106,戒指,ring
-tips_10003_duihuanquan,扫荡副本的凭证,Voucher used to pass a stage battle.
-tips_11001_chujizhuangbeiqianghuashi,用于低品质装备打造,For low-quality equipment to forge.
-tips_11002_zhongjizhuangbeiqianghuashi,用于中品质装备打造,For medium-quality equipment to forge.
-tips_11003_gaojizhuangbeiqianghuashi,用于高品质装备打造,For high-quality equipment to forge.
-tips_10005_zhuangbeijinjieshi,装备强化打造的材料，通过每个章节<color=#FFCC00>（除第一章）普通难度的第四个和第八个本产出</color>,"Equipment strengthening material, rewarded via <color=#FFCC00>Story mode stage 4 or stage 8 of each chapters (except for 1st chapter)</color>."
-tips_10007_baoshikaikongcailiao,纹章开孔道具,Use to open Insignia slots
-tips_10009_baoxiangyaoshi1,可以用来开启[木质宝箱],Used to open a Deadwood Chest.
-tips_10010_baoxiangyaoshi2,可以用来开启[白银宝箱],Used to open a Gleaming Chest.
-tips_10011_baoxiangyaoshi3,可以用来开启[黄金宝箱],Used to open a Golden Strongbox.
-tips_10012_baoxiangyaoshi4,开启黄金宝箱所需要的钥匙,The key to open the Gold Treasurecase
-tips_10016_chongwuqianghuashi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度任意副本（除第四个和第八个）产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) all stages (except for stage 4 and stage 8)</color>."
-tips_10017_chongwujinjieshi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度的第四个和第八个本产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) stage 4 or stage 8</color>."
-tips_10021_gongpin,天使的羽翼，光明的气息，可交给公会完成任务,"A feather from an Angel, bright and radiant. You can turn it in to the Guild to complete a quest."
-tips_10022_gongpin,恶魔的羽翼，黑暗的气息，可交给公会完成任务,"A feather from an Demon, dark and mysterious. You can turn it in to the Guild to complete a quest."
-tips_10023_gongpin,精灵的羽翼，自然的气息，可交给公会完成任务,"A feather from an Fairy, natural and light. You can turn it in to the Guild to complete a quest."
-tips_20001_suipian_common,传说中的灵魂本源，可以替代宠物碎片进行合成,"The legendary Lore Cores, can be used instead of monster fragments for crafting"
-tips_20002_suipian_xiaochou3,用于合成小丑（水）,To craft Joker(Water)
-tips_20003_suipian_kairuisi4,用于合成凯瑞斯（火）,To craft Keres(Fire)
-tips_20004_suipian_hetong2,用于合成河童（木）,To craft Kappa(Grass)
-tips_20005_suipian_wagui3,用于合成哇鬼（水）,To craft Phase Frog(Water)
-tips_20006_suipian_xiaochou4,用于合成小丑（火）,To craft Joker(Fire)
-tips_20007_suipian_cike4,用于合成火刺壳（火）,To craft Fireshell(Fire)
-tips_20008_suipian_panshen2,用于合成潘神（木）,To craft Pans(Grass)
-tips_20009_suipian_huapo2,用于合成花魄（木）,To craft Flower Pixie(Grass)
-tips_20010_suipian_wushi3,用于合成舞狮（水）,To craft Dancing Lion(Water)
-tips_20011_suipian_wushi4,用于合成舞狮（火）,To craft Dancing Lion(Fire)
-tips_20012_suipian_xiyiren4,用于合成蜥蜴人（火）,To craft Lizardman(Fire)
-tips_20013_suipian_mantuoluo2,用于合成曼陀罗（木）,To craft Mandrake(Grass)
-tips_20014_suipian_hetong3,用于合成河童（水）,To craft Kappa(Water)
-tips_20015_suipian_longgongtongzi3,用于合成龙宫童子（水）,To craft Ryuku Doji(Water)
-tips_20016_suipian_xiyiren2,用于合成蜥蜴人（木）,To craft Lizardman(Grass)
-tips_20017_suipian_langren5,用于合成狼人（暗）,To craft Werewolf(Dark)
-tips_20018_suipian_langren3,用于合成狼人（水）,To craft Werewolf(Water)
-tips_20019_suipian_shuigui3,用于合成幽灵船长（水）,To craft Soul Pirate(Water)
-tips_20020_suipian_nvyao5,用于合成报丧女妖（暗）,To craft Banshee(Dark)
-tips_20021_suipian_hapi1,用于合成哈皮（光）,To craft Harpy(Light)
-tips_20022_suipian_piying5,用于合成皮影（暗）,To craft Shadow Puppet(Dark)
-tips_20023_suipian_kairuisi5,用于合成凯瑞斯（暗）,To craft Keres(Dark)
-tips_20024_suipian_bingxuenvwang3,用于合成冰雪女王（水）,To craft Chione(Water)
-tips_20025_suipian_wendige3,用于合成温迪戈（水）,To craft Wendigo(Water)
-tips_20026_suipian_wendige2,用于合成温迪戈（木）,To craft Wendigo(Grass)
-tips_20027_suipian_longnv3,用于合成龙女（水）,To craft Dragon Girl(Water)
-tips_20028_suipian_momo1,用于合成得莫非（光）,To craft Demovoy(Light)
-tips_20029_suipian_amute3,用于合成鳄鱼判官（水）,To craft Croc Warden(Water)
-tips_20030_suipian_luoxinfu5,用于合成络新妇（暗）,To craft Nephila(Dark)
-tips_20031_suipian_saibulesi5,用于合成地狱犬（暗）,To craft Hellhound(Dark)
-tips_20032_suipian_hongniu4,用于合成米诺到诺斯（火）,To craft Minotaur(Fire)
-tips_20033_suipian_anpusha5,用于合成安普沙（暗）,To craft Empusa(Dark)
-tips_20034_suipian_daochengsizhong4,用于合成道成寺妖（火）,To craft Maiden Dojoji(Fire)
-tips_20035_suipian_huoniao4,用于合成火鸟（火）,To craft Firebird(Fire)
-tips_20036_suipian_ifrit4,用于合成伊芙利特（火）,To craft Ifrit(Fire)
-tips_20037_suipian_moguguai4,用于合成蘑菇怪（火）,To craft Matango(Fire)
-tips_20038_suipian_tianshizhang4,用于合成天使长（火）,To craft Archangel(Fire)
-tips_20039_suipian_xiaochou2,用于合成小丑（木）,To craft Joker(Grass)
-tips_20040_suipian_saibulesi4,用于合成地狱犬（火）,To craft Hellhound(Fire)
-tips_20041_suipian_moguguai3,用于合成蘑菇怪（水）,To craft Matango(Fire)
-tips_20042_suipian_sheshouzuo1,用于合成星空射手（光）,To craft Astro Archer(Light)
-tips_20043_suipian_weitianshi5,用于合成伪天使（暗）,To craft Fallen Angel(Dark)
-tips_20044_suipian_sheshouzuo3,用于合成星空射手（水）,To craft Astro Archer(Water)
-tips_20045_suipian_bingyan3,用于合成史莱姆（水）,To craft Slime(Water)
-tips_20046_suipian_mengyan5,用于合成梦魇（暗）,To craft Bangungot(Dark)
-tips_20047_suipian_change1,用于合成嫦娥（光）,To craft Moon Devine(Light)
-tips_20048_suipian_dujiaoshou1,用于合成独角兽（光）,To craft Pegasus(Light)
-tips_20049_suipian_dujiaoshou5,用于合成独角兽（暗）,To craft Pegasus(Dark)
-tips_20050_suipian_change5,用于合成嫦娥（暗）,To craft Moon Devine(Dark)
-tips_20051_suipian_huoniao3,用于合成火鸟（水）,To craft Firebird(Water)
-tips_20052_suipian_ifrit5,用于合成伊芙利特（暗）,To craft Ifrit(Dark)
-tips_20053_suipian_datiangou4,用于合成大天狗（火）,To craft Tengu(Fire)
-tips_20054_suipian_tianshizhang1,用于合成天使长（光）,To craft Archangel(Light)
-tips_20055_suipian_longnv1,用于合成龙女（光）,To craft Dragon Girl(Light)
-tips_20056_suipian_weitianshi1,用于合成伪天使（光）,To craft Fallen Angel(Light)
-tips_20057_suipian_nvyao1,用于合成报丧女妖（光）,To craft Banshee(Light)
-tips_20058_suipian_piying1,用于合成皮影（光）,To craft Shadow Puppet(Light)
-tips_20059_suipian_kahuna2,用于合成卡胡纳（木）,To craft Kahuna(Grass)
-tips_20060_suipian_yifanmumian1,用于合成一反木棉（光）,To craft Ittan Momen(Light)
-tips_20061_suipian_jinglingwang2,用于合成精灵王子（木）,To craft Prince Elve(Grass)
-tips_20062_suipian_luoxinfu1,用于合成络新妇（光）,To craft Nephila(Light)
-tips_20063_suipian_amute2,用于合成鳄鱼判官碎片（木）,To craft Croc Warden(Grass)
-tips_20064_suipian_amute4,用于合成鳄鱼判官碎片（火）,To craft Croc Warden(Fire)
-tips_20065_suipian_cike2,用于合成火刺壳碎片（木）,To craft Fireshell(Grass)
-tips_20066_suipian_cike3,用于合成火刺壳碎片（水）,To craft Fireshell(Water)
-tips_20067_suipian_longgongtongzi1,用于合成龙宫童子碎片（光）,To craft Ryuku Doji(Light)
-tips_20068_suipian_yifanmumian3,用于合成一反木棉碎片（水）,To craft Ittan Momen(Water)
-tips_20069_suipian_renyu3,用于合成人鱼碎片（水）,To craft Mermaid(Water)
-tips_20070_suipian_shixianggui5,用于合成石像鬼碎片（暗）,To craft Gargolye(Dark)
-tips_20071_suipian_senlinnvshen2,用于合成森林女神碎皮（木）,To craft Dryad(Grass)
-tips_30011_BloodStone_1,寄宿着生命之力的纹章，镶嵌在装备上可以提高50生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 50.
-tips_30012_BloodStone_2,寄宿着生命之力的纹章，镶嵌在装备上可以提高100生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 100.
-tips_30013_BloodStone_3,寄宿着生命之力的纹章，镶嵌在装备上可以提高180生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 180.
-tips_30014_BloodStone_4,寄宿着生命之力的纹章，镶嵌在装备上可以提高300生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 300.
-tips_30015_BloodStone_5,寄宿着生命之力的纹章，镶嵌在装备上可以提高450生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 450.
-tips_30016_BloodStone_6,寄宿着生命之力的纹章，镶嵌在装备上可以提高670生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 670.
-tips_30021_SageStone_1,寄宿着海洋之力的纹章，镶嵌在装备上可以提高15智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 15.
-tips_30022_SageStone_2,寄宿着海洋之力的纹章，镶嵌在装备上可以提高30智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 30.
-tips_30023_SageStone_3,寄宿着海洋之力的纹章，镶嵌在装备上可以提高55智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 55.
-tips_30024_SageStone_4,寄宿着海洋之力的纹章，镶嵌在装备上可以提高90智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 90.
-tips_30025_SageStone_5,寄宿着海洋之力的纹章，镶嵌在装备上可以提高140智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 140.
-tips_30026_SageStone_6,寄宿着海洋之力的纹章，镶嵌在装备上可以提高200智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 200.
-tips_30031_VitalityStone_1,寄宿着火炎之力的纹章，镶嵌在装备上可以提高15力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 15.
-tips_30032_VitalityStone_2,寄宿着火炎之力的纹章，镶嵌在装备上可以提高30力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 30.
-tips_30033_VitalityStone_3,寄宿着火炎之力的纹章，镶嵌在装备上可以提高55力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 55.
-tips_30034_VitalityStone_4,寄宿着火炎之力的纹章，镶嵌在装备上可以提高90力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 90.
-tips_30035_VitalityStone_5,寄宿着火炎之力的纹章，镶嵌在装备上可以提高140力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 140.
-tips_30036_VitalityStone_6,寄宿着火炎之力的纹章，镶嵌在装备上可以提高200力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 200.
-tips_30041_BastionStone_1,寄宿着大地之力的纹章，镶嵌在装备上可以提高20防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 20.
-tips_30042_BastionStone_2,寄宿着大地之力的纹章，镶嵌在装备上可以提高40防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 40.
-tips_30043_BastionStone_3,寄宿着大地之力的纹章，镶嵌在装备上可以提高70防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 70.
-tips_30044_BastionStone_4,寄宿着大地之力的纹章，镶嵌在装备上可以提高110防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 110.
-tips_30045_BastionStone_5,寄宿着大地之力的纹章，镶嵌在装备上可以提高170防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 170.
-tips_30046_BastionStone_6,寄宿着大地之力的纹章，镶嵌在装备上可以提高250防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 250.
-tips_30051_HasteStone_1,寄宿着疾风之力的纹章，镶嵌在装备上可以提高1速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 1.
-tips_30052_HasteStone_2,寄宿着疾风之力的纹章，镶嵌在装备上可以提高2速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 2.
-tips_30053_HasteStone_3,寄宿着疾风之力的纹章，镶嵌在装备上可以提高4速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 4.
-tips_30054_HasteStone_4,寄宿着疾风之力的纹章，镶嵌在装备上可以提高6速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 6.
-tips_30055_HasteStone_5,寄宿着疾风之力的纹章，镶嵌在装备上可以提高8速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 8.
-tips_30056_HasteStone_6,寄宿着疾风之力的纹章，镶嵌在装备上可以提高10速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 10.
-tips_30061_MendingStone_1,寄宿着森林之力的纹章，镶嵌在装备上可以提高2%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 2%.
-tips_30062_MendingStone_2,寄宿着森林之力的纹章，镶嵌在装备上可以提高4%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 4%.
-tips_30063_MendingStone_3,寄宿着森林之力的纹章，镶嵌在装备上可以提高6%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 6%.
-tips_30064_MendingStone_4,寄宿着森林之力的纹章，镶嵌在装备上可以提高8%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 8%.
-tips_30065_MendingStone_5,寄宿着森林之力的纹章，镶嵌在装备上可以提高10%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 10%.
-tips_30066_MendingStone_6,寄宿着森林之力的纹章，镶嵌在装备上可以提高12%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 12%.
-tips_30071_VolatileStone_1,寄宿着月亮之力的纹章，镶嵌在装备上可以提高2%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 2%.
-tips_30072_VolatileStone_2,寄宿着月亮之力的纹章，镶嵌在装备上可以提高3%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 3%.
-tips_30073_VolatileStone_3,寄宿着月亮之力的纹章，镶嵌在装备上可以提高4%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 4%.
-tips_30074_VolatileStone_4,寄宿着月亮之力的纹章，镶嵌在装备上可以提高5%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 5%.
-tips_30075_VolatileStone_5,寄宿着月亮之力的纹章，镶嵌在装备上可以提高6%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 6%.
-tips_30076_VolatileStone_6,寄宿着月亮之力的纹章，镶嵌在装备上可以提高7%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 7%.
-tips_30081_SourceStone_1,寄宿着繁星之力的纹章，镶嵌在装备上可以提高3前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 3.
-tips_30082_SourceStone_2,寄宿着繁星之力的纹章，镶嵌在装备上可以提高6前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 6.
-tips_30083_SourceStone_3,寄宿着繁星之力的纹章，镶嵌在装备上可以提高9前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 9.
-tips_30084_SourceStone_4,寄宿着繁星之力的纹章，镶嵌在装备上可以提高12前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 12.
-tips_30085_SourceStone_5,寄宿着繁星之力的纹章，镶嵌在装备上可以提高15前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 15.
-tips_30086_SourceStone_6,寄宿着繁星之力的纹章，镶嵌在装备上可以提高18前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 18.
-tips_30091_MorbidStone_1,寄宿着太阳之力的纹章，镶嵌在装备上可以提高2%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 2%.
-tips_30092_MorbidStone_2,寄宿着太阳之力的纹章，镶嵌在装备上可以提高4%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 4%.
-tips_30093_MorbidStone_3,寄宿着太阳之力的纹章，镶嵌在装备上可以提高6%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 6%.
-tips_30094_MorbidStone_4,寄宿着太阳之力的纹章，镶嵌在装备上可以提高8%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 8%.
-tips_30095_MorbidStone_5,寄宿着太阳之力的纹章，镶嵌在装备上可以提高10%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 10%.
-tips_30096_MorbidStone_6,寄宿着太阳之力的纹章，镶嵌在装备上可以提高12%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 12%.
-tips_40000_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
-tips_40001_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
-tips_40002_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.
+﻿#TEXT,TEXT,TEXT,TEXT
+id,chinese,english,traditional
+#文字Id,文字内容,文字内容,文字內容
+name_10003_duihuanquan,扫荡券,Raid Ticket,掃蕩券
+name_11001_chujizhuangbeiqianghuashi,初级灵铁,Basic Raw Iron,初級靈鐵
+name_11002_zhongjizhuangbeiqianghuashi,中级灵铁,Average Raw Iron,中級靈鐵
+name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Advanced Raw Iron,高級靈鐵
+name_10005_zhuangbeijinjieshi,妖力结晶,Crystal Ball,妖力結晶
+name_10007_baoshikaikongcailiao,纹章开孔石,Insignia Stone,紋章開孔石
+name_10009_baoxiangyaoshi1,木质宝箱钥匙,Deadwood Chest key,木質寶箱鑰匙
+name_10010_baoxiangyaoshi2,白银宝箱钥匙,Gleaming Chest key,白銀寶箱鑰匙
+name_10011_baoxiangyaoshi3,黄金宝箱钥匙,Golden Strongbox key,黃金寶箱鑰匙
+name_10012_baoxiangyaoshi4,黄金宝箱钥匙,Gold Key,黃金寶箱鑰匙
+name_10016_chongwuqianghuashi,贤者墨水,Sage's Ink,賢者墨水
+name_10017_chongwujinjieshi,化形之书,Book of Transformation,化形之書
+name_10021_gongpin,天使之羽,Angel's feather,天使之羽
+name_10022_gongpin,恶魔之羽,Demon's feather,惡魔之羽
+name_10023_gongpin,精灵之羽,Fairy's feather.,精靈之羽
+name_20001_suipian_common,灵魂本源,Lore Cores,靈魂本源
+name_20002_suipian_xiaochou3,小丑碎片（水）,Joker Fgmt(Water),小丑碎片（水）
+name_20003_suipian_kairuisi4,凯瑞斯碎片（火）,Keres Fgmt(Fire),凱瑞斯碎片（火）
+name_20004_suipian_hetong2,河童碎片（木）,Kappa Fgmt(Grass),河童碎片（木）
+name_20005_suipian_wagui3,哇鬼碎片（水）,Phase Frog Fgmt(Water),哇鬼碎片（水）
+name_20006_suipian_xiaochou4,小丑碎片（火）,Joker Fgmt(Fire),小丑碎片（火）
+name_20007_suipian_cike4,火刺壳碎片（火）,Fireshell Fgmt(Fire),火刺殼碎片（火）
+name_20008_suipian_panshen2,潘神碎片（木）,Pans Fgmt(Grass),潘神碎片（木）
+name_20009_suipian_huapo2,花魄碎片（木）,Flower Pixie Fgmt(Grass),花魄碎片（木）
+name_20010_suipian_wushi3,舞狮碎片（水）,Dancing Lion Fgmt(Water),舞獅碎片（水）
+name_20011_suipian_wushi4,舞狮碎片（火）,Dancing Lion Fgmt(Fire),舞獅碎片（火）
+name_20012_suipian_xiyiren4,蜥蜴人碎片（火）,Lizardman Fgmt(Fire),蜥蜴人碎片（火）
+name_20013_suipian_mantuoluo2,曼陀罗碎片（木）,Mandrake Fgmt(Grass),曼陀羅碎片（木）
+name_20014_suipian_hetong3,河童碎片（水）,Kappa Fgmt(Water),河童碎片（水）
+name_20015_suipian_longgongtongzi3,龙宫童子碎片（水）,Ryuku Doji Fgmt(Water),龍宮童子碎片（水）
+name_20016_suipian_xiyiren2,蜥蜴人碎片（木）,Lizardman Fgmt(Grass),蜥蜴人碎片（木）
+name_20017_suipian_langren5,狼人碎片（暗）,Werewolf Fgmt(Dark),狼人碎片（暗）
+name_20018_suipian_langren3,狼人碎片（水）,Werewolf Fgmt(Water),狼人碎片（水）
+name_20019_suipian_shuigui3,幽灵船长碎片（水）,Soul Pirate Fgmt(Water),幽靈船長碎片（水）
+name_20020_suipian_nvyao5,报丧女妖碎片（暗）,Banshee Fgmt(Dark),報喪女妖碎片（暗）
+name_20021_suipian_hapi1,哈皮碎片（光）,Harpy Fgmt(Light),哈皮碎片（光）
+name_20022_suipian_piying5,皮影碎片（暗）,Shadow Puppet Fgmt(Dark),皮影碎片（暗）
+name_20023_suipian_kairuisi5,凯瑞斯碎片（暗）,Keres Fgmt(Dark),凱瑞斯碎片（暗）
+name_20024_suipian_bingxuenvwang3,冰雪女王碎片（水）,Chione Fgmt(Water),冰雪女王碎片（水）
+name_20025_suipian_wendige3,温迪戈碎片（水）,Wendigo Fgmt(Water),溫蒂戈碎片（水）
+name_20026_suipian_wendige2,温迪戈碎片（木）,Wendigo Fgmt(Grass),溫蒂戈碎片（木）
+name_20027_suipian_longnv3,龙女碎片（水）,Dragon Girl Fgmt(Water),龍女碎片（水）
+name_20028_suipian_momo1,得莫非碎片（光）,Demovoy Fgmt(Light),得莫非碎片（光）
+name_20029_suipian_amute3,鳄鱼判官碎片（水）,Croc Warden Fgmt(Water),鱷魚判官碎片（水）
+name_20030_suipian_luoxinfu5,络新妇碎片（暗）,Nephila Fgmt(Dark),絡新婦碎片（暗）
+name_20031_suipian_saibulesi5,地狱犬碎片（暗）,Hellhound Fgmt(Dark),地獄犬碎片（暗）
+name_20032_suipian_hongniu4,米诺到诺斯碎片（火）,Minotaur Fgmt(Fire),米諾到諾斯碎片（火）
+name_20033_suipian_anpusha5,安普沙碎片（暗）,Empusa Fgmt(Dark),安普沙碎片（暗）
+name_20034_suipian_daochengsizhong4,道成寺妖碎片（火）,Maiden Dojoji Fgmt(Fire),道成寺妖碎片（火）
+name_20035_suipian_huoniao4,火鸟碎片（火）,Firebird Fgmt(Fire),火鳥碎片（火）
+name_20036_suipian_ifrit4,伊芙利特碎片（火）,Ifrit Fgmt(Fire),伊芙利特碎片（火）
+name_20037_suipian_moguguai4,蘑菇怪碎片（火）,Matango Fgmt(Fire),蘑菇怪碎片（火）
+name_20038_suipian_tianshizhang4,天使长碎片（火）,Archangel Fgmt(Fire),天使長碎片（火）
+name_20039_suipian_xiaochou2,小丑碎片（木）,Joker Fgmt(Grass),小丑碎片（木）
+name_20040_suipian_saibulesi4,地狱犬碎片（火）,Hellhound Fgmt(Fire),地獄犬碎片（火）
+name_20041_suipian_moguguai3,蘑菇怪碎片（水）,Matango Fgmt(Fire),蘑菇怪碎片（水）
+name_20042_suipian_sheshouzuo1,星空射手碎片（光）,Astro Archer Fgmt(Light),星空射手碎片（光）
+name_20043_suipian_weitianshi5,伪天使碎片（暗）,Fallen Angel Fgmt(Dark),偽天使碎片（暗）
+name_20044_suipian_sheshouzuo3,星空射手碎片（水）,Astro Archer Fgmt(Water),星空射手碎片（水）
+name_20045_suipian_bingyan3,史莱姆碎片（水）,Slime Fgmt(Water),史萊姆碎片（水）
+name_20046_suipian_mengyan5,梦魇碎片（暗）,Bangungot Fgmt(Dark),夢魘碎片（暗）
+name_20047_suipian_change1,嫦娥碎片（光）,Moon Devine Fgmt(Light),嫦娥碎片（光）
+name_20048_suipian_dujiaoshou1,独角兽碎片（光）,Pegasus Fgmt(Light),獨角獸碎片（光）
+name_20049_suipian_dujiaoshou5,独角兽碎片（暗）,Pegasus Fgmt(Dark),獨角獸碎片（暗）
+name_20050_suipian_change5,嫦娥碎片（暗）,Moon Devine Fgmt(Dark),嫦娥碎片（暗）
+name_20051_suipian_huoniao3,火鸟碎片（水）,Firebird Fgmt(Water),火鳥碎片（水）
+name_20052_suipian_ifrit5,伊芙利特碎片（暗）,Ifrit Fgmt(Dark),伊芙利特碎片（暗）
+name_20053_suipian_datiangou4,大天狗碎片（火）,Tengu Fgmt(Fire),大天狗碎片（火）
+name_20054_suipian_tianshizhang1,天使长碎片（光）,Archangel Fgmt(Light),天使長碎片（光）
+name_20055_suipian_longnv1,龙女碎片（光）,Dragon Girl Fgmt(Light),龍女碎片（光）
+name_20056_suipian_weitianshi1,伪天使碎片（光）,Fallen Angel Fgmt(Light),偽天使碎片（光）
+name_20057_suipian_nvyao1,报丧女妖碎片（光）,Banshee Fgmt(Light),報喪女妖碎片（光）
+name_20058_suipian_piying1,皮影碎片（光）,Shadow Puppet Fgmt(Light),皮影碎片（光）
+name_20059_suipian_kahuna2,卡胡纳碎片（木）,Kahuna Fgmt(Grass),卡胡納碎片（木）
+name_20060_suipian_yifanmumian1,一反木棉碎片（光）,Ittan Momen Fgmt(Light),一反木棉碎片（光）
+name_20061_suipian_jinglingwang2,精灵王子碎片（木）,Prince Elve Fgmt(Grass),精靈王子碎片（木）
+name_20062_suipian_luoxinfu1,络新妇碎片（光）,Nephila Fgmt(Light),絡新婦碎片（光）
+name_20063_suipian_amute2,鳄鱼判官碎片（木）,Croc Warden Fgmt(Grass),
+name_20064_suipian_amute4,鳄鱼判官碎片（火）,Croc Warden Fgmt(Fire),
+name_20065_suipian_cike2,火刺壳碎片（木）,Fireshell Fgmt(Grass),
+name_20066_suipian_cike3,火刺壳碎片（水）,Fireshell Fgmt(Water),
+name_20067_suipian_longgongtongzi1,龙宫童子碎片（光）,Ryuku Doji Fgmt(Light),
+name_20068_suipian_yifanmumian3,一反木棉碎片（水）,Ittan Momen Fgmt(Water),
+name_20069_suipian_renyu3,人鱼碎片（水）,Mermaid Fgmt(Water),
+name_20070_suipian_shixianggui5,石像鬼碎片（暗）,Gargolye Fgmt(Dark),
+name_20071_suipian_senlinnvshen2,森林女神碎皮（木）,Dryad Fgmt(Grass),
+name_20072_suipian_bingxuenvwang5,冰雪女王碎片（暗）,Chione Fgmt(Dark),
+name_30011_BloodStone_1,生命纹章lv1,Blood Insignia(lv1),生命紋章lv1
+name_30012_BloodStone_2,生命纹章lv2,Blood Insignia(lv2),生命紋章lv2
+name_30013_BloodStone_3,生命纹章lv3,Blood Insignia(lv3),生命紋章lv3
+name_30014_BloodStone_4,生命纹章lv4,Blood Insignia(lv4),生命紋章lv4
+name_30015_BloodStone_5,生命纹章lv5,Blood Insignia(lv5),生命紋章lv5
+name_30016_BloodStone_6,生命纹章lv6,Blood Insignia(lv6),生命紋章lv6
+name_30021_SageStone_1,海洋纹章lv1,Domain Insignia(lv1),海洋紋章lv1
+name_30022_SageStone_2,海洋纹章lv2,Domain Insignia(lv2),海洋紋章lv2
+name_30023_SageStone_3,海洋纹章lv3,Domain Insignia(lv3),海洋紋章lv3
+name_30024_SageStone_4,海洋纹章lv4,Domain Insignia(lv4),海洋紋章lv4
+name_30025_SageStone_5,海洋纹章lv5,Domain Insignia(lv5),海洋紋章lv5
+name_30026_SageStone_6,海洋纹章lv6,Domain Insignia(lv6),海洋紋章lv6
+name_30031_VitalityStone_1,烈炎纹章lv1,Ember Insignia(lv1),烈炎紋章lv1
+name_30032_VitalityStone_2,烈炎纹章lv2,Ember Insignia(lv2),烈炎紋章lv2
+name_30033_VitalityStone_3,烈炎纹章lv3,Ember Insignia(lv3),烈炎紋章lv3
+name_30034_VitalityStone_4,烈炎纹章lv4,Ember Insignia(lv4),烈炎紋章lv4
+name_30035_VitalityStone_5,烈炎纹章lv5,Ember Insignia(lv5),烈炎紋章lv5
+name_30036_VitalityStone_6,烈炎纹章lv6,Ember Insignia(lv6),烈炎紋章lv6
+name_30041_BastionStone_1,大地纹章lv1,Earth Insignia(lv1),大地紋章lv1
+name_30042_BastionStone_2,大地纹章lv2,Earth Insignia(lv2),大地紋章lv2
+name_30043_BastionStone_3,大地纹章lv3,Earth Insignia(lv3),大地紋章lv3
+name_30044_BastionStone_4,大地纹章lv4,Earth Insignia(lv4),大地紋章lv4
+name_30045_BastionStone_5,大地纹章lv5,Earth Insignia(lv5),大地紋章lv5
+name_30046_BastionStone_6,大地纹章lv6,Earth Insignia(lv6),大地紋章lv6
+name_30051_HasteStone_1,疾风纹章lv1,Wind Insignia(lv1),疾風紋章lv1
+name_30052_HasteStone_2,疾风纹章lv2,Wind Insignia(lv2),疾風紋章lv2
+name_30053_HasteStone_3,疾风纹章lv3,Wind Insignia(lv3),疾風紋章lv3
+name_30054_HasteStone_4,疾风纹章lv4,Wind Insignia(lv4),疾風紋章lv4
+name_30055_HasteStone_5,疾风纹章lv5,Wind Insignia(lv5),疾風紋章lv5
+name_30056_HasteStone_6,疾风纹章lv6,Wind Insignia(lv6),疾風紋章lv6
+name_30061_MendingStone_1,森林纹章lv1,Forest Insignia(lv1),森林紋章lv1
+name_30062_MendingStone_2,森林纹章lv2,Forest Insignia(lv2),森林紋章lv2
+name_30063_MendingStone_3,森林纹章lv3,Forest Insignia(lv3),森林紋章lv3
+name_30064_MendingStone_4,森林纹章lv4,Forest Insignia(lv4),森林紋章lv4
+name_30065_MendingStone_5,森林纹章lv5,Forest Insignia(lv5),森林紋章lv5
+name_30066_MendingStone_6,森林纹章lv6,Forest Insignia(lv6),森林紋章lv6
+name_30071_VolatileStone_1,月之纹章lv1,Moon Insignia(lv1),月之紋章lv1
+name_30072_VolatileStone_2,月之纹章lv2,Moon Insignia(lv2),月之紋章lv2
+name_30073_VolatileStone_3,月之纹章lv3,Moon Insignia(lv3),月之紋章lv3
+name_30074_VolatileStone_4,月之纹章lv4,Moon Insignia(lv4),月之紋章lv4
+name_30075_VolatileStone_5,月之纹章lv5,Moon Insignia(lv5),月之紋章lv5
+name_30076_VolatileStone_6,月之纹章lv6,Moon Insignia(lv6),月之紋章lv6
+name_30081_SourceStone_1,星之纹章lv1,Star Insignia(lv1),星之紋章lv1
+name_30082_SourceStone_2,星之纹章lv2,Star Insignia(lv2),星之紋章lv2
+name_30083_SourceStone_3,星之纹章lv3,Star Insignia(lv3),星之紋章lv3
+name_30084_SourceStone_4,星之纹章lv4,Star Insignia(lv4),星之紋章lv4
+name_30085_SourceStone_5,星之纹章lv5,Star Insignia(lv5),星之紋章lv5
+name_30086_SourceStone_6,星之纹章lv6,Star Insignia(lv6),星之紋章lv6
+name_30091_MorbidStone_1,日之纹章lv1,Sun Insignia(lv1),日之紋章lv1
+name_30092_MorbidStone_2,日之纹章lv2,Sun Insignia(lv2),日之紋章lv2
+name_30093_MorbidStone_3,日之纹章lv3,Sun Insignia(lv3),日之紋章lv3
+name_30094_MorbidStone_4,日之纹章lv4,Sun Insignia(lv4),日之紋章lv4
+name_30095_MorbidStone_5,日之纹章lv5,Sun Insignia(lv5),日之紋章lv5
+name_30096_MorbidStone_6,日之纹章lv6,Sun Insignia(lv6),日之紋章lv6
+name_40000_baoxiang,木质宝箱,Deadwood Chest,木質寶箱
+name_40001_baoxiang,白银宝箱,Gleaming Chest,白銀寶箱
+name_40002_baoxiang,黄金宝箱,Golden Strongbox,黃金寶箱
+name_40005_bigTaskleader201,领袖宝箱（金币）lv1,Leader Chest(coins) (lv1),領袖寶箱（金幣）lv1
+name_40006_bigTaskleader301,领袖宝箱（金币）lv2,Leader Chest(coins) (lv2),領袖寶箱（金幣）lv2
+name_40007_bigTaskleader401,领袖宝箱（金币）lv3,Leader Chest(coins) (lv3),領袖寶箱（金幣）lv3
+name_40007_bigTaskleader501,领袖宝箱（金币）lv4,Leader Chest(coins) (lv4),領袖寶箱（金幣）lv4
+name_40008_bigTaskleader202,领袖宝箱（补给品）lv1,Leader Chest(supplies) (lv1),領袖寶箱（補給品）lv1
+name_40009_bigTaskleader302,领袖宝箱（补给品）lv2,Leader Chest(supplies) (lv2),領袖寶箱（補給品）lv2
+name_40010_bigTaskleader402,领袖宝箱（补给品）lv3,Leader Chest(supplies) (lv3),領袖寶箱（補給品）lv3
+name_40010_bigTaskleader502,领袖宝箱（补给品）lv4,Leader Chest(supplies) (lv4),領袖寶箱（補給品）lv4
+name_40052_pvpstagereward,1级纹章箱子,Level 1 Insignia Chest,1級紋章箱子
+name_40053_pvpstagereward,2级纹章箱子,Level 2 Insignia Chest,2級紋章箱子
+name_40054_pvpstagereward,3级纹章箱子,Level 3 Insignia Chest,3級紋章箱子
+name_40055_pvpstagereward,4级纹章箱子,Level 4 Insignia Chest,4級紋章箱子
+name_40056_pvprankreward,C级宠物碎片箱子（中）,Class C Monster Fragments(Medium),C級寵物碎片箱子（中）
+name_40057_pvprankreward,B级宠物碎片箱子（中）,Class B Monster Fragments(Medium),B級寵物碎片箱子（中）
+name_40058_pvprankreward,A级宠物碎片箱子（中）,Class A Monster Fragments(Medium),A級寵物碎片箱子（中）
+name_40059_pvprankreward,S级宠物碎片箱子（中）,Class S Monster Fragments(Medium),S級寵物碎片箱子（中）
+name_40060_pvprankxianshisuipian,中级宠物碎片箱子,Average Monster Fragments Chest,中級寵物碎片箱子
+name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Advanced Monster Fragments Chest,高級寵物碎片箱子
+name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragments Chest,史詩寵物碎片箱子
+name_40063_advanturegoldbox,钻石箱子,Diamond Chest,鑽石箱子
+name_40064_pvpbox,竞技场碎片箱子,Arena Chest,競技場碎片箱子
+name_40065_towerbox,通天塔碎片箱子,Tower Chest,通天塔碎片箱子
+name_40066_bfregmentda,B级宠物碎片箱子 (大),Class B Monster Fragments(Giant),B級寵物碎片箱子 (大)
+name_40067_afregmentda,A级宠物碎片箱子 (大),Class A Monster Fragments(Giant),A級寵物碎片箱子 (大)
+name_40068_bigTaskleader601,领袖宝箱（金币）lv5,Leader Chest(coins) (lv5),領袖寶箱（金幣）lv5
+name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies) (lv5),領袖寶箱（補給品）lv5
+name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragments Chest,中級寵物碎片箱子
+name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragments Chest,高級寵物碎片箱子
+name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest,史詩寵物碎片箱子
+name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Mytho Essence,初級信仰之力
+name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Mytho Essence,中級信仰之力
+name_50004_gaojichongwujingyanyaoshui,高级信仰之力,Advanced Mytho Essence,高級信仰之力
+name_50005_chujipilaoyaoshui,苹果,Apple ,蘋果
+name_50006_zhongjipilaoyaoshui,一袋苹果,Bag of Apples ,一袋蘋果
+name_50007_gaojipilaoyaoshui,一筐苹果,Basket of Apples ,一筐蘋果
+name_50008_shuangbeijingyanyao,初级经验卷轴,Basic EXP Scroll,初級經驗卷軸
+name_50009_sanbeijingyanyao,中级经验卷轴,Average EXP Scroll,中級經驗卷軸
+name_70001_fangyuxingwuqi,永恒之盾,Eternal Shield,永恆之盾
+name_70002_fangyuxinghujia,荣耀重甲,Glory Armor,榮耀重甲
+name_70003_fangyuxingtoukui,荣耀头盔,Glory Helmet,榮耀頭盔
+name_70004_fangyuxinghuwan,荣耀护手,Glory Gauntlet,榮耀護手
+name_70005_fangyuxingjiezhi,荣耀战靴,Glory Treads,榮耀戰靴
+name_70006_fangyuxingshipin,荣耀指环,Glory Ring,榮耀指環
+name_70007_wulixingwuqi,破天之枪,Ruinate Spear,破天之槍
+name_70008_wulixinghujia,断罪之甲,Crimson Armor,斷罪之甲
+name_70009_wulixingtoukui,断罪头盔,Crimson Helmet,斷罪頭盔
+name_70010_wulixinghuwan,断罪护手,Crimson Bracer,斷罪護手
+name_70011_wulixingjiezhi,断罪战靴,Crimson Treads,斷罪戰靴
+name_70012_wulixingshipin,断罪指环,Crimson Ring,斷罪指環
+name_70013_fashuxingwuqi,死亡法杖,Death Wand,死亡法杖
+name_70014_fashuxinghujia,混沌法袍,Chaos Armor,混沌法袍
+name_70015_fashuxingtoukui,混沌假面,Chaos Mask,混沌假面
+name_70016_fashuxinghuwan,混沌手套,Chaos Gloves,混沌手套
+name_70017_fashuxingjiezhi,混沌之靴,Chaos Boots,混沌之靴
+name_70018_fashuxingshipin,混沌指环,Chaos Ring,混沌指環
+name_70019_zhiyuanxingwuqi,原生魔仗,Primal Wand,原生魔仗
+name_70020_zhiyuanxinghujia,贤者法袍,Sage's Robe,賢者法袍
+name_70021_zhiyuanxingtoukui,贤者之帽,Sage's Hat,賢者之帽
+name_70022_zhiyuanxinghuwan,贤者手套,Sage's Gloves,賢者手套
+name_70023_zhiyuanxingjiezhi,贤者之靴,Sage's Boots,賢者之靴
+name_70024_zhiyuanxingshipin,贤者指环,Sage's Ring,賢者指環
+name_101,武器,weapon,武器
+name_102,护甲,armor,護甲
+name_103,头盔,helmet,頭盔
+name_104,护手,gauntlet,護手
+name_105,鞋子,shoes,鞋子
+name_106,戒指,ring,戒指
+tips_10003_duihuanquan,扫荡副本的凭证,Voucher used to pass a stage battle.,掃蕩副本的憑證
+tips_11001_chujizhuangbeiqianghuashi,用于低品质装备打造,For low-quality equipment to forge.,用於低品質裝備打造
+tips_11002_zhongjizhuangbeiqianghuashi,用于中品质装备打造,For medium-quality equipment to forge.,用於中品質裝備打造
+tips_11003_gaojizhuangbeiqianghuashi,用于高品质装备打造,For high-quality equipment to forge.,用於高品質裝備打造
+tips_10005_zhuangbeijinjieshi,装备强化打造的材料，通过每个章节<color=#FFCC00>（除第一章）普通难度的第四个和第八个本产出</color>,"Equipment strengthening material, rewarded via <color=#FFCC00>Story mode stage 4 or stage 8 of each chapters (except for 1st chapter)</color>.",裝備強化打造的材料，通過每個章節<color=#FFCC00>（除第一章）普通難度的第四個和第八個本產出</color>
+tips_10007_baoshikaikongcailiao,纹章开孔道具,Use to open Insignia slots,紋章開孔道具
+tips_10009_baoxiangyaoshi1,可以用来开启[木质宝箱],Used to open a Deadwood Chest.,可以用來開啟[木質寶箱]
+tips_10010_baoxiangyaoshi2,可以用来开启[白银宝箱],Used to open a Gleaming Chest.,可以用來開啟[白銀寶箱]
+tips_10011_baoxiangyaoshi3,可以用来开启[黄金宝箱],Used to open a Golden Strongbox.,可以用來開啟[黃金寶箱]
+tips_10012_baoxiangyaoshi4,开启黄金宝箱所需要的钥匙,The key to open the Gold Treasurecase,開啟黃金寶箱所需要的鑰匙
+tips_10016_chongwuqianghuashi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度任意副本（除第四个和第八个）产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) all stages (except for stage 4 and stage 8)</color>.",寵物進階材料，通過每個章節<color=#FFCC00>挑戰難度任意副本（除第四個和第八個）產出</color>
+tips_10017_chongwujinjieshi,宠物进阶材料，通过每个章节<color=#FFCC00>挑战难度的第四个和第八个本产出</color>,"Monster advancement material, rewarded via <color=#FFCC00>Story mode(Heroic) stage 4 or stage 8</color>.",寵物進階材料，通過每個章節<color=#FFCC00>挑戰難度的第四個和第八個本產出</color>
+tips_10021_gongpin,天使的羽翼，光明的气息，可交给公会完成任务,"A feather from an Angel, bright and radiant. You can turn it in to the Guild to complete a quest.",天使的羽翼，光明的氣息，可交給公會完成任務
+tips_10022_gongpin,恶魔的羽翼，黑暗的气息，可交给公会完成任务,"A feather from an Demon, dark and mysterious. You can turn it in to the Guild to complete a quest.",惡魔的羽翼，黑暗的氣息，可交給公會完成任務
+tips_10023_gongpin,精灵的羽翼，自然的气息，可交给公会完成任务,"A feather from an Fairy, natural and light. You can turn it in to the Guild to complete a quest.",精靈的羽翼，自然的氣息，可交給公會完成任務
+tips_20001_suipian_common,传说中的灵魂本源，可以替代宠物碎片进行合成,"The legendary Lore Cores, can be used instead of monster fragments for crafting",傳說中的靈魂本源，可以替代寵物碎片進行合成
+tips_20002_suipian_xiaochou3,用于合成小丑（水）,To craft Joker(Water),用於合成小丑（水）
+tips_20003_suipian_kairuisi4,用于合成凯瑞斯（火）,To craft Keres(Fire),用於合成凱瑞斯（火）
+tips_20004_suipian_hetong2,用于合成河童（木）,To craft Kappa(Grass),用於合成河童（木）
+tips_20005_suipian_wagui3,用于合成哇鬼（水）,To craft Phase Frog(Water),用於合成哇鬼（水）
+tips_20006_suipian_xiaochou4,用于合成小丑（火）,To craft Joker(Fire),用於合成小丑（火）
+tips_20007_suipian_cike4,用于合成火刺壳（火）,To craft Fireshell(Fire),用於合成火刺殼（火）
+tips_20008_suipian_panshen2,用于合成潘神（木）,To craft Pans(Grass),用於合成潘神（木）
+tips_20009_suipian_huapo2,用于合成花魄（木）,To craft Flower Pixie(Grass),用於合成花魄（木）
+tips_20010_suipian_wushi3,用于合成舞狮（水）,To craft Dancing Lion(Water),用於合成舞獅（水）
+tips_20011_suipian_wushi4,用于合成舞狮（火）,To craft Dancing Lion(Fire),用於合成舞獅（火）
+tips_20012_suipian_xiyiren4,用于合成蜥蜴人（火）,To craft Lizardman(Fire),用於合成蜥蜴人（火）
+tips_20013_suipian_mantuoluo2,用于合成曼陀罗（木）,To craft Mandrake(Grass),用於合成曼陀羅（木）
+tips_20014_suipian_hetong3,用于合成河童（水）,To craft Kappa(Water),用於合成河童（水）
+tips_20015_suipian_longgongtongzi3,用于合成龙宫童子（水）,To craft Ryuku Doji(Water),用於合成龍宮童子（水）
+tips_20016_suipian_xiyiren2,用于合成蜥蜴人（木）,To craft Lizardman(Grass),用於合成蜥蜴人（木）
+tips_20017_suipian_langren5,用于合成狼人（暗）,To craft Werewolf(Dark),用於合成狼人（暗）
+tips_20018_suipian_langren3,用于合成狼人（水）,To craft Werewolf(Water),用於合成狼人（水）
+tips_20019_suipian_shuigui3,用于合成幽灵船长（水）,To craft Soul Pirate(Water),用於合成幽靈船長（水）
+tips_20020_suipian_nvyao5,用于合成报丧女妖（暗）,To craft Banshee(Dark),用於合成報喪女妖（暗）
+tips_20021_suipian_hapi1,用于合成哈皮（光）,To craft Harpy(Light),用於合成哈皮（光）
+tips_20022_suipian_piying5,用于合成皮影（暗）,To craft Shadow Puppet(Dark),用於合成皮影（暗）
+tips_20023_suipian_kairuisi5,用于合成凯瑞斯（暗）,To craft Keres(Dark),用於合成凱瑞斯（暗）
+tips_20024_suipian_bingxuenvwang3,用于合成冰雪女王（水）,To craft Chione(Water),用於合成冰雪女王（水）
+tips_20025_suipian_wendige3,用于合成温迪戈（水）,To craft Wendigo(Water),用於合成溫蒂戈（水）
+tips_20026_suipian_wendige2,用于合成温迪戈（木）,To craft Wendigo(Grass),用於合成溫蒂戈（木）
+tips_20027_suipian_longnv3,用于合成龙女（水）,To craft Dragon Girl(Water),用於合成龍女（水）
+tips_20028_suipian_momo1,用于合成得莫非（光）,To craft Demovoy(Light),用於合成得莫非（光）
+tips_20029_suipian_amute3,用于合成鳄鱼判官（水）,To craft Croc Warden(Water),用於合成鱷魚判官（水）
+tips_20030_suipian_luoxinfu5,用于合成络新妇（暗）,To craft Nephila(Dark),用於合成絡新婦（暗）
+tips_20031_suipian_saibulesi5,用于合成地狱犬（暗）,To craft Hellhound(Dark),用於合成地獄犬（暗）
+tips_20032_suipian_hongniu4,用于合成米诺到诺斯（火）,To craft Minotaur(Fire),用於合成米諾到諾斯（火）
+tips_20033_suipian_anpusha5,用于合成安普沙（暗）,To craft Empusa(Dark),用於合成安普沙（暗）
+tips_20034_suipian_daochengsizhong4,用于合成道成寺妖（火）,To craft Maiden Dojoji(Fire),用於合成道成寺妖（火）
+tips_20035_suipian_huoniao4,用于合成火鸟（火）,To craft Firebird(Fire),用於合成火鳥（火）
+tips_20036_suipian_ifrit4,用于合成伊芙利特（火）,To craft Ifrit(Fire),用於合成伊芙利特（火）
+tips_20037_suipian_moguguai4,用于合成蘑菇怪（火）,To craft Matango(Fire),用於合成蘑菇怪（火）
+tips_20038_suipian_tianshizhang4,用于合成天使长（火）,To craft Archangel(Fire),用於合成天使長（火）
+tips_20039_suipian_xiaochou2,用于合成小丑（木）,To craft Joker(Grass),用於合成小丑（木）
+tips_20040_suipian_saibulesi4,用于合成地狱犬（火）,To craft Hellhound(Fire),用於合成地獄犬（火）
+tips_20041_suipian_moguguai3,用于合成蘑菇怪（水）,To craft Matango(Fire),用於合成蘑菇怪（水）
+tips_20042_suipian_sheshouzuo1,用于合成星空射手（光）,To craft Astro Archer(Light),用於合成星空射手（光）
+tips_20043_suipian_weitianshi5,用于合成伪天使（暗）,To craft Fallen Angel(Dark),用於合成偽天使（暗）
+tips_20044_suipian_sheshouzuo3,用于合成星空射手（水）,To craft Astro Archer(Water),用於合成星空射手（水）
+tips_20045_suipian_bingyan3,用于合成史莱姆（水）,To craft Slime(Water),用於合成史萊姆（水）
+tips_20046_suipian_mengyan5,用于合成梦魇（暗）,To craft Bangungot(Dark),用於合成夢魘（暗）
+tips_20047_suipian_change1,用于合成嫦娥（光）,To craft Moon Devine(Light),用於合成嫦娥（光）
+tips_20048_suipian_dujiaoshou1,用于合成独角兽（光）,To craft Pegasus(Light),用於合成獨角獸（光）
+tips_20049_suipian_dujiaoshou5,用于合成独角兽（暗）,To craft Pegasus(Dark),用於合成獨角獸（暗）
+tips_20050_suipian_change5,用于合成嫦娥（暗）,To craft Moon Devine(Dark),用於合成嫦娥（暗）
+tips_20051_suipian_huoniao3,用于合成火鸟（水）,To craft Firebird(Water),用於合成火鳥（水）
+tips_20052_suipian_ifrit5,用于合成伊芙利特（暗）,To craft Ifrit(Dark),用於合成伊芙利特（暗）
+tips_20053_suipian_datiangou4,用于合成大天狗（火）,To craft Tengu(Fire),用於合成大天狗（火）
+tips_20054_suipian_tianshizhang1,用于合成天使长（光）,To craft Archangel(Light),用於合成天使長（光）
+tips_20055_suipian_longnv1,用于合成龙女（光）,To craft Dragon Girl(Light),用於合成龍女（光）
+tips_20056_suipian_weitianshi1,用于合成伪天使（光）,To craft Fallen Angel(Light),用於合成偽天使（光）
+tips_20057_suipian_nvyao1,用于合成报丧女妖（光）,To craft Banshee(Light),用於合成報喪女妖（光）
+tips_20058_suipian_piying1,用于合成皮影（光）,To craft Shadow Puppet(Light),用於合成皮影（光）
+tips_20059_suipian_kahuna2,用于合成卡胡纳（木）,To craft Kahuna(Grass),用於合成卡胡納（木）
+tips_20060_suipian_yifanmumian1,用于合成一反木棉（光）,To craft Ittan Momen(Light),用於合成一反木棉（光）
+tips_20061_suipian_jinglingwang2,用于合成精灵王子（木）,To craft Prince Elve(Grass),用於合成精靈王子（木）
+tips_20062_suipian_luoxinfu1,用于合成络新妇（光）,To craft Nephila(Light),用於合成絡新婦（光）
+tips_20063_suipian_amute2,用于合成鳄鱼判官碎片（木）,To craft Croc Warden(Grass),
+tips_20064_suipian_amute4,用于合成鳄鱼判官碎片（火）,To craft Croc Warden(Fire),
+tips_20065_suipian_cike2,用于合成火刺壳碎片（木）,To craft Fireshell(Grass),
+tips_20066_suipian_cike3,用于合成火刺壳碎片（水）,To craft Fireshell(Water),
+tips_20067_suipian_longgongtongzi1,用于合成龙宫童子碎片（光）,To craft Ryuku Doji(Light),
+tips_20068_suipian_yifanmumian3,用于合成一反木棉碎片（水）,To craft Ittan Momen(Water),
+tips_20069_suipian_renyu3,用于合成人鱼碎片（水）,To craft Mermaid(Water),
+tips_20070_suipian_shixianggui5,用于合成石像鬼碎片（暗）,To craft Gargolye(Dark),
+tips_20071_suipian_senlinnvshen2,用于合成森林女神碎皮（木）,To craft Dryad(Grass),
+tips_20072_suipian_bingxuenvwang5,用于合成冰雪女王碎片（暗）,To craft Chione(Dark),
+tips_30011_BloodStone_1,寄宿着生命之力的纹章，镶嵌在装备上可以提高50生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 50.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高50生命。
+tips_30012_BloodStone_2,寄宿着生命之力的纹章，镶嵌在装备上可以提高100生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 100.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高100生命。
+tips_30013_BloodStone_3,寄宿着生命之力的纹章，镶嵌在装备上可以提高180生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 180.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高180生命。
+tips_30014_BloodStone_4,寄宿着生命之力的纹章，镶嵌在装备上可以提高300生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 300.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高300生命。
+tips_30015_BloodStone_5,寄宿着生命之力的纹章，镶嵌在装备上可以提高450生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 450.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高450生命。
+tips_30016_BloodStone_6,寄宿着生命之力的纹章，镶嵌在装备上可以提高670生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 670.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高670生命。
+tips_30021_SageStone_1,寄宿着海洋之力的纹章，镶嵌在装备上可以提高15智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 15.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高15智力。
+tips_30022_SageStone_2,寄宿着海洋之力的纹章，镶嵌在装备上可以提高30智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 30.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高30智力。
+tips_30023_SageStone_3,寄宿着海洋之力的纹章，镶嵌在装备上可以提高55智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 55.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高55智力。
+tips_30024_SageStone_4,寄宿着海洋之力的纹章，镶嵌在装备上可以提高90智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 90.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高90智力。
+tips_30025_SageStone_5,寄宿着海洋之力的纹章，镶嵌在装备上可以提高140智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 140.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高140智力。
+tips_30026_SageStone_6,寄宿着海洋之力的纹章，镶嵌在装备上可以提高200智力。,An Insignia containing the power of the seas. Embed into a piece of Equipment to increase INT by 200.,寄宿著海洋之力的紋章，鑲嵌在裝備上可以提高200智力。
+tips_30031_VitalityStone_1,寄宿着火炎之力的纹章，镶嵌在装备上可以提高15力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 15.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高15力量。
+tips_30032_VitalityStone_2,寄宿着火炎之力的纹章，镶嵌在装备上可以提高30力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 30.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高30力量。
+tips_30033_VitalityStone_3,寄宿着火炎之力的纹章，镶嵌在装备上可以提高55力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 55.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高55力量。
+tips_30034_VitalityStone_4,寄宿着火炎之力的纹章，镶嵌在装备上可以提高90力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 90.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高90力量。
+tips_30035_VitalityStone_5,寄宿着火炎之力的纹章，镶嵌在装备上可以提高140力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 140.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高140力量。
+tips_30036_VitalityStone_6,寄宿着火炎之力的纹章，镶嵌在装备上可以提高200力量。,An Insignia containing the power of the fire. Embed into a piece of Equipment to increase STR by 200.,寄宿著火炎之力的紋章，鑲嵌在裝備上可以提高200力量。
+tips_30041_BastionStone_1,寄宿着大地之力的纹章，镶嵌在装备上可以提高20防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 20.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高20防禦。
+tips_30042_BastionStone_2,寄宿着大地之力的纹章，镶嵌在装备上可以提高40防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 40.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高40防禦。
+tips_30043_BastionStone_3,寄宿着大地之力的纹章，镶嵌在装备上可以提高70防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 70.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高70防禦。
+tips_30044_BastionStone_4,寄宿着大地之力的纹章，镶嵌在装备上可以提高110防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 110.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高110防禦。
+tips_30045_BastionStone_5,寄宿着大地之力的纹章，镶嵌在装备上可以提高170防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 170.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高170防禦。
+tips_30046_BastionStone_6,寄宿着大地之力的纹章，镶嵌在装备上可以提高250防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 250.,寄宿著大地之力的紋章，鑲嵌在裝備上可以提高250防禦。
+tips_30051_HasteStone_1,寄宿着疾风之力的纹章，镶嵌在装备上可以提高1速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 1.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高1速度。
+tips_30052_HasteStone_2,寄宿着疾风之力的纹章，镶嵌在装备上可以提高2速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 2.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高2速度。
+tips_30053_HasteStone_3,寄宿着疾风之力的纹章，镶嵌在装备上可以提高4速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 4.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高4速度。
+tips_30054_HasteStone_4,寄宿着疾风之力的纹章，镶嵌在装备上可以提高6速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 6.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高6速度。
+tips_30055_HasteStone_5,寄宿着疾风之力的纹章，镶嵌在装备上可以提高8速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 8.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高8速度。
+tips_30056_HasteStone_6,寄宿着疾风之力的纹章，镶嵌在装备上可以提高10速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 10.,寄宿著疾風之力的紋章，鑲嵌在裝備上可以提高10速度。
+tips_30061_MendingStone_1,寄宿着森林之力的纹章，镶嵌在装备上可以提高2%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 2%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高2%治療加成。
+tips_30062_MendingStone_2,寄宿着森林之力的纹章，镶嵌在装备上可以提高4%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 4%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高4%治療加成。
+tips_30063_MendingStone_3,寄宿着森林之力的纹章，镶嵌在装备上可以提高6%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 6%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高6%治療加成。
+tips_30064_MendingStone_4,寄宿着森林之力的纹章，镶嵌在装备上可以提高8%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 8%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高8%治療加成。
+tips_30065_MendingStone_5,寄宿着森林之力的纹章，镶嵌在装备上可以提高10%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 10%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高10%治療加成。
+tips_30066_MendingStone_6,寄宿着森林之力的纹章，镶嵌在装备上可以提高12%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 12%.,寄宿著森林之力的紋章，鑲嵌在裝備上可以提高12%治療加成。
+tips_30071_VolatileStone_1,寄宿着月亮之力的纹章，镶嵌在装备上可以提高2%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 2%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高2%暴擊。
+tips_30072_VolatileStone_2,寄宿着月亮之力的纹章，镶嵌在装备上可以提高3%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 3%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高3%暴擊。
+tips_30073_VolatileStone_3,寄宿着月亮之力的纹章，镶嵌在装备上可以提高4%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 4%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高4%暴擊。
+tips_30074_VolatileStone_4,寄宿着月亮之力的纹章，镶嵌在装备上可以提高5%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 5%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高5%暴擊。
+tips_30075_VolatileStone_5,寄宿着月亮之力的纹章，镶嵌在装备上可以提高6%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 6%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高6%暴擊。
+tips_30076_VolatileStone_6,寄宿着月亮之力的纹章，镶嵌在装备上可以提高7%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 7%.,寄宿著月亮之力的紋章，鑲嵌在裝備上可以提高7%暴擊。
+tips_30081_SourceStone_1,寄宿着繁星之力的纹章，镶嵌在装备上可以提高3前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 3.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高3前置能量。
+tips_30082_SourceStone_2,寄宿着繁星之力的纹章，镶嵌在装备上可以提高6前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 6.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高6前置能量。
+tips_30083_SourceStone_3,寄宿着繁星之力的纹章，镶嵌在装备上可以提高9前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 9.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高9前置能量。
+tips_30084_SourceStone_4,寄宿着繁星之力的纹章，镶嵌在装备上可以提高12前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 12.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高12前置能量。
+tips_30085_SourceStone_5,寄宿着繁星之力的纹章，镶嵌在装备上可以提高15前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 15.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高15前置能量。
+tips_30086_SourceStone_6,寄宿着繁星之力的纹章，镶嵌在装备上可以提高18前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase Start ENG by 18.,寄宿著繁星之力的紋章，鑲嵌在裝備上可以提高18前置能量。
+tips_30091_MorbidStone_1,寄宿着太阳之力的纹章，镶嵌在装备上可以提高2%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 2%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高2%暴擊傷害。
+tips_30092_MorbidStone_2,寄宿着太阳之力的纹章，镶嵌在装备上可以提高4%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 4%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高4%暴擊傷害。
+tips_30093_MorbidStone_3,寄宿着太阳之力的纹章，镶嵌在装备上可以提高6%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 6%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高6%暴擊傷害。
+tips_30094_MorbidStone_4,寄宿着太阳之力的纹章，镶嵌在装备上可以提高8%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 8%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高8%暴擊傷害。
+tips_30095_MorbidStone_5,寄宿着太阳之力的纹章，镶嵌在装备上可以提高10%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 10%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高10%暴擊傷害。
+tips_30096_MorbidStone_6,寄宿着太阳之力的纹章，镶嵌在装备上可以提高12%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 12%.,寄宿著太陽之力的紋章，鑲嵌在裝備上可以提高12%暴擊傷害。
+tips_40000_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.,"遊戲自然產出的寶箱,開啟獲得裝備打造素材"
+tips_40001_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.,"遊戲自然產出的寶箱,開啟獲得裝備打造素材"
+tips_40002_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.,"遊戲自然產出的寶箱,開啟獲得裝備打造素材"
 tips_40005_bigTaskleader201,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，金币*10000，祝福之力lv1*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Coin*10000, Blessing Power(lv1)*1</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*1, Coin*10000, Blessing Power(lv1)*1</color> sent to Team Leaders from Guild Quests",
 tips_40006_bigTaskleader301,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，金币*15000，祝福之力lv1*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1,  Coin*15000 , Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*1,  Coin*15000 , Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",
 tips_40007_bigTaskleader401,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*20000，祝福之力lv2*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*20000 , Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*20000 , Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",
 tips_40014_bigTaskleader501,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*25000，祝福之力lv2*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*25000 , Blessing Power(lv2)*2</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*25000 , Blessing Power(lv2)*2</color> sent to Team Leaders from Guild Quests",
 tips_40008_bigTaskleader202,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，初级灵铁*3，妖力结晶*1，祝福之力lv1*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*3 , Crystal Ball*1 ,Blessing Power(lv1)*1 </color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*3 , Crystal Ball*1 ,Blessing Power(lv1)*1 </color> sent to Team Leaders from Guild Quests",
 tips_40009_bigTaskleader302,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，初级灵铁*4，妖力结晶*1，祝福之力lv1*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*4 , Crystal Ball*1 ,Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*4 , Crystal Ball*1 ,Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",
 tips_40010_bigTaskleader402,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*2，妖力结晶*1，祝福之力lv2*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*2 , Crystal Ball*1 ,Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*2 , Crystal Ball*1 ,Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",
 tips_40015_bigTaskleader502,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*3，妖力结晶*2，祝福之力lv2*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*3 , Crystal Ball*2 ,Blessing Power(lv2)*2 </color> sent to Team Leaders from Guild Quests"
-tips_40052_pvpstagereward,随机开出1个1级纹章,Open to randomly receive 1 level 1 insignia
-tips_40053_pvpstagereward,随机开出1个2级纹章,Open to randomly receive 1 level 2 insignia
-tips_40054_pvpstagereward,随机开出1个3级纹章,Open to randomly receive 1 level 3 insignia
-tips_40055_pvpstagereward,随机开出1个4级纹章,Open to randomly receive 1 level 4 insignia
-tips_40056_pvprankreward,随机开出3个C级宠物碎片,Class C Monster Fragments (3 pcs)
-tips_40057_pvprankreward,随机开出3个B级宠物碎片,Class B Monster Fragments (3 pcs)
-tips_40058_pvprankreward,随机开出3个A级宠物碎片,Class A Monster Fragments (3 pcs)
-tips_40059_pvprankreward,随机开出3个S级宠物碎片,Class S Monster Fragments (3 pcs)
-tips_40060_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments
-tips_40061_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments
-tips_40062_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments
-tips_40063_advanturegoldbox,随机开出一定量钻石,Open to randomly receive amount of diamond
-tips_40064_pvpbox,开启宝箱可以随机获得嫦娥碎片（光）或道成寺钟碎片（火）或温迪戈碎片（木）1个,Open to randomly receive 1 Moon Devine Fragment(Light) or Maiden Dojoji Fragment(Fire) or Wendigo Fragment(Grass)
-tips_40065_towerbox,开启宝箱可以随机获得独角兽碎片（暗）或伊芙利特碎片（火）或龙宫童子碎片（水）1个,Open to randomly receive 1 Pegasus Fragment(Dark) or Ifrit Fragment(Fire) or Ryuku Doji Fragment(Water)
-tips_40066_bfregmentda,随机开出30个B级宠物碎片,Class B Monster Fragments (30 pcs)
-tips_40067_afregmentda,随机开出50个A级宠物碎片,Class A Monster Fragments (50 pcs)
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*3 , Crystal Ball*2 ,Blessing Power(lv2)*2 </color> sent to Team Leaders from Guild Quests",
+tips_40052_pvpstagereward,随机开出1个1级纹章,Open to randomly receive 1 level 1 insignia,隨機開出1個1級紋章
+tips_40053_pvpstagereward,随机开出1个2级纹章,Open to randomly receive 1 level 2 insignia,隨機開出1個2級紋章
+tips_40054_pvpstagereward,随机开出1个3级纹章,Open to randomly receive 1 level 3 insignia,隨機開出1個3級紋章
+tips_40055_pvpstagereward,随机开出1个4级纹章,Open to randomly receive 1 level 4 insignia,隨機開出1個4級紋章
+tips_40056_pvprankreward,随机开出3个C级宠物碎片,Class C Monster Fragments (3 pcs),隨機開出3個C級寵物碎片
+tips_40057_pvprankreward,随机开出3个B级宠物碎片,Class B Monster Fragments (3 pcs),隨機開出3個B級寵物碎片
+tips_40058_pvprankreward,随机开出3个A级宠物碎片,Class A Monster Fragments (3 pcs),隨機開出3個A級寵物碎片
+tips_40059_pvprankreward,随机开出3个S级宠物碎片,Class S Monster Fragments (3 pcs),隨機開出3個S級寵物碎片
+tips_40060_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments,隨機開出某寵物3個碎片
+tips_40061_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments,隨機開出某寵物3個碎片
+tips_40062_pvprankxianshisuipian,随机开出某宠物3个碎片,Open to randomly receive 3 monster fragments,隨機開出某寵物3個碎片
+tips_40063_advanturegoldbox,随机开出一定量钻石,Open to randomly receive amount of diamond,隨機開出一定量鑽石
+tips_40064_pvpbox,开启宝箱可以随机获得嫦娥碎片（光）或道成寺钟碎片（火）或温迪戈碎片（木）1个,Open to randomly receive 1 Moon Devine Fragment(Light) or Maiden Dojoji Fragment(Fire) or Wendigo Fragment(Grass),開啟寶箱可以隨機獲得嫦娥碎片（光）或道成寺鐘碎片（火）或溫蒂戈碎片（木）1個
+tips_40065_towerbox,开启宝箱可以随机获得独角兽碎片（暗）或伊芙利特碎片（火）或龙宫童子碎片（水）1个,Open to randomly receive 1 Pegasus Fragment(Dark) or Ifrit Fragment(Fire) or Ryuku Doji Fragment(Water),開啟寶箱可以隨機獲得獨角獸碎片（暗）或伊芙利特碎片（火）或龍宮童子碎片（水）1個
+tips_40066_bfregmentda,随机开出30个B级宠物碎片,Class B Monster Fragments (30 pcs),隨機開出30個B級寵物碎片
+tips_40067_afregmentda,随机开出50个A级宠物碎片,Class A Monster Fragments (50 pcs),隨機開出50個A級寵物碎片
 tips_40068_bigTaskleader601,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*30000，祝福之力lv3*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*30000 , Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests"
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*30000 , Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",
 tips_40069_bigTaskleader602,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*4，妖力结晶*2，祝福之力lv3*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*4 , Crystal Ball*2 ,Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests"
-tips_40070_commonfregmentda,随机开出整只B级宠物(通过碎片方式)，小概率开出A级宠物(通过碎片方式),"Reward one Class B Monster (by ways of fragments), or small chance of one Class A Monster (by ways of fragments)"
-tips_40071_rarefregmentda,随机开出整只A级宠物(通过碎片方式)，小概率开出S级宠物(通过碎片方式),"Reward one Class A Monster (by ways of fragments), or small chance of one Class S Monster (by ways of fragments)"
-tips_40072_epicfregmentda,随机开出整只S级宠物(通过碎片方式)，小概率开出SS级宠物(通过碎片方式),"Reward one Class S Monster (by ways of fragments), or small chance of one Class SS Monster (by ways of fragments)"
-tips_50002_chujichongwujingyanyaoshui,宠物经验提升 60点,Increases a monster's EXP by 60
-tips_50003_zhongjichongwujingyanyaoshui,宠物经验提升 300点,Increases a monster's EXP by 300
-tips_50004_gaojichongwujingyanyaoshui,宠物经验提升 1500点,Increases a monster's EXP by 1500
-tips_50005_chujipilaoyaoshui,恢复20点活力,Supply 20 enegry
-tips_50006_zhongjipilaoyaoshui,恢复50点活力,Supply 50 enegry
-tips_50007_gaojipilaoyaoshui,恢复100点活力,Supply 100 enegry
-tips_50008_shuangbeijingyanyao,宠物经验200%倍率获得提升，可生效3次,Increases a monster's EXP rate by 200% for 3 times
-tips_50009_sanbeijingyanyao,宠物经验300%倍率获得提升，可生效5次,Increases a monster's EXP rate by 300% for 5 times
-tips_70001_fangyuxingwuqi,宠物穿戴,Worn by monsters.
-tips_70002_fangyuxinghuyao,宠物穿戴,Worn by monsters.
-tips_70003_fangyuxinghujia,宠物穿戴,Worn by monsters.
-tips_70004_fangyuxingshouzhuo,宠物穿戴,Worn by monsters.
-tips_70005_fangyuxingjiezhi,宠物穿戴,Worn by monsters.
-tips_70006_fangyuxinghushenfu,宠物穿戴,Worn by monsters.
-tips_70007_wulixingwuqi,宠物穿戴,Worn by monsters.
-tips_70008_wulixinghuyao,宠物穿戴,Worn by monsters.
-tips_70009_wulixinghujia,宠物穿戴,Worn by monsters.
-tips_70010_wulixingshouzhuo,宠物穿戴,Worn by monsters.
-tips_70011_wulixingjiezhi,宠物穿戴,Worn by monsters.
-tips_70012_wulixinghushenfu,宠物穿戴,Worn by monsters.
-tips_70013_fashuxingwuqi,宠物穿戴,Worn by monsters.
-tips_70014_fashuxinghuyao,宠物穿戴,Worn by monsters.
-tips_70015_fashuxinghujia,宠物穿戴,Worn by monsters.
-tips_70016_fashuxingshouzhuo,宠物穿戴,Worn by monsters.
-tips_70017_fashuxingjiezhi,宠物穿戴,Worn by monsters.
-tips_70018_fashuxinghushenfu,宠物穿戴,Worn by monsters.
-tips_70019_zhiyuanxingwuqi,宠物穿戴,Worn by monsters.
-tips_70020_zhiyuanxinghuyao,宠物穿戴,Worn by monsters.
-tips_70021_zhiyuanxinghujia,宠物穿戴,Worn by monsters.
-tips_70022_zhiyuanxingshouzhuo,宠物穿戴,Worn by monsters.
-tips_70023_zhiyuanxingjiezhi,宠物穿戴,Worn by monsters.
-tips_70024_zhiyuanxinghushenfu,宠物穿戴,Worn by monsters.
-tips_101,会掉落武器,Will drop weapon
-tips_102,会掉落护甲,Will drop armor
-tips_103,会掉落头盔,Will drop helmet
-tips_104,会掉落护手,Will drop gauntlet
-tips_105,会掉落鞋子,Will drop shoes
-tips_106,会掉落戒指,Will drop ring
-name_90001_jinbi,金币,Coin
-name_90002_zuanshi,钻石,Diamond
-name_90003_rongyudian,荣誉点,Honor Points
-name_90004_tongtiantabi,暗黑碎片,Dark Fragment
-name_90005_gonghuibi,个人贡献值,Guild Pts
-name_90006_huolizhi,活力,Energy
-name_90007_jingyanzhi,经验值,EXP
-name_90008_huodongdian,活动积分,Event Points
-tips_90001,游戏中一般的货币,A common currency in the game
-tips_90002,游戏中最通用的货币,A common currency in the game
-tips_90003,竞技场货币，可通过竞技场商店购买商品,"Currency you get from PvP, to purchase merchandise in PvP Store"
-tips_90004_tongtiantabi,通天塔玩法获得的货币，可通过通天塔商店购买商品,"Currency obtained from Tower Of Darkness, use to purchase items in the Tower Store"
-tips_90005_gonghuibi,公会玩法获得的货币，可通过公会商店购买物品,"Currency obtained thru Guild Activities,use to purchase items in the Guild Store"
-tips_90006_huolizhi,玩家活力,Player Energy
-tips_90007_jingyanzhi,可以增加角色经验值,To increase character's experience
-tips_90008_huodongdian,活动期间，完成相应任务，收集活动积分可以兑换各类珍稀碎片以及道具哦！,"During the event period, complete the corresponding quests to accumulate event points that can be exchanged for rare fragments and items!"
-name_40011_pvprankxianshijinbi,小金币箱子,Small Box of Gold
-name_40012_pvprankxianshijinbi,中金币箱子,Medium Box of Gold
-name_40013_pvprankxianshijinbi,大金币箱子,Giant Box of Gold
-tips_40011_pvprankxianshijinbi,能获得一定量金币,Receive a certain amount of Gold
-tips_40012_pvprankxianshijinbi,能获得很多金币,Receive a lot of Gold
-tips_40013_pvprankxianshijinbi,能获得大量金币,Receive a large amount of Gold
-name_10018_jinjiejuanzhou,妖力晶核lv1,Crystal Ball Core lv 1
-name_10019_jinjiejuanzhou,妖力晶核lv2,Crystal Ball Core lv 2
-name_10020_jinjiejuanzhou,妖力晶核lv3,Crystal Ball Core lv 3
-tips_10018_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
-tips_10019_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
-tips_10020_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
-name_10024_caihongguai1,初级怪物之魂,Basic Monster Spirit
-name_10025_caihongguai2,中级怪物之魂,Average Monster Spirit
-name_10026_caihongguai3,高级怪物之魂,Advanced Monster Spirit
-name_10027_caihongguai4,史诗怪物之魂,Epic Monster Spirit
-tips_10024_caihongguai1,"初级宠物之魂,可以替代C,B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance."
-tips_10025_caihongguai2,"中级宠物之魂,可以替代A级宠物进行宠物进阶,可以通过3个初级怪物之魂合成","Average Monster Spirit, can be used instead of Class A whole monster for Monster Advance. Average Monster Spirit can be received by combining 3 Basic Monster Spirit."
-tips_10026_caihongguai3,"高级宠物之魂,可以替代S级宠物进行宠物进阶,可以通过3个中级怪物之魂合成","Advanced Monster Spirit, can be used instead of Class S whole monster for Monster Advance.Advanced Monster Spirit can be received by combining 3 Average Monster Spirit."
-tips_10027_caihongguai4,"史诗宠物之魂,可以替代SS级宠物进行宠物进阶,可以通过3个高级怪物之魂合成","Epic Monster Spirit, can be used instead of Class SS whole monster for Monster Advance.Epic Monster Spirit can be received by combining 3 Advanced Monster Spirit."
-name_40075_wenzhanglibao1,蓝色纹章箱子,Blue Insignia Chest
-name_40076_wenzhanglibao2,紫色纹章箱子,Purple Insignia Chest
-tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,Open to receive 1 random level 3 or 4 insignia
-tips_40076_wenzhanglibao2,随机开出1个5级或6级纹章,Open to receive 1 random level 5 or 6 insignia
-name_40073_suipianlibao1,碎片箱子,Fragment Chest
-name_40074_suipianlibao2,碎片箱子（稀有）,Fragment Chest (Rare)
-tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,"Open to randomly receive 20 B grade monster fragments, 10 A grade monster fragments, as well as 10 surprise fragments (10 B or A grade monster fragments)"
-tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)"
-name_90009_xinyangzhili,书魂,Soul Tome
-tips_90009_xinyangzhili,可以在神话守护者玩法中兑换珍稀奖励！,"Accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards！"
-name_10028_zhufuzhili1,祝福之力lv1,Blessing Power(lv1)
-name_10029_zhufuzhili2,祝福之力lv2,Blessing Power(lv2)
-name_10030_zhufuzhili3,祝福之力lv3,Blessing Power(lv3)
-name_10031_zhufuzhili4,祝福之力lv4,Blessing Power(lv4)
-name_10032_zhufuzhili5,祝福之力lv5,Blessing Power(lv5)
-tips_10028_zhufuzhili1,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv1 insignias to get a lv2 insignia of the same type.
-tips_10029_zhufuzhili2,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv2 insignias to get a lv3 insignia of the same type.
-tips_10030_zhufuzhili3,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv3 insignias to get a lv4 insignia of the same type.
-tips_10031_zhufuzhili4,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv4 insignias to get a lv5 insignia of the same type.
-tips_10032_zhufuzhili5,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv5 insignias to get a lv6 insignia of the same type.
-name_40077_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest
-tips_40077_epicfregmentda,随机开出整只SS级宠物(通过碎片方式),Reward one Class SS Monster (by ways of fragments)
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*4 , Crystal Ball*2 ,Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",
+tips_40070_commonfregmentda,随机开出整只B级宠物(通过碎片方式)，小概率开出A级宠物(通过碎片方式),"Reward one Class B Monster (by ways of fragments), or small chance of one Class A Monster (by ways of fragments)",隨機開出整只B級寵物(通過碎片方式)，小機率開出A級寵物(通過碎片方式)
+tips_40071_rarefregmentda,随机开出整只A级宠物(通过碎片方式)，小概率开出S级宠物(通过碎片方式),"Reward one Class A Monster (by ways of fragments), or small chance of one Class S Monster (by ways of fragments)",隨機開出整只A級寵物(通過碎片方式)，小機率開出S級寵物(通過碎片方式)
+tips_40072_epicfregmentda,随机开出整只S级宠物(通过碎片方式)，小概率开出SS级宠物(通过碎片方式),"Reward one Class S Monster (by ways of fragments), or small chance of one Class SS Monster (by ways of fragments)",隨機開出整只S級寵物(通過碎片方式)，小機率開出SS級寵物(通過碎片方式)
+tips_50002_chujichongwujingyanyaoshui,宠物经验提升 60点,Increases a monster's EXP by 60,寵物經驗提升 60點
+tips_50003_zhongjichongwujingyanyaoshui,宠物经验提升 300点,Increases a monster's EXP by 300,寵物經驗提升 300點
+tips_50004_gaojichongwujingyanyaoshui,宠物经验提升 1500点,Increases a monster's EXP by 1500,寵物經驗提升 1500點
+tips_50005_chujipilaoyaoshui,恢复20点活力,Supply 20 enegry,恢復20點活力
+tips_50006_zhongjipilaoyaoshui,恢复50点活力,Supply 50 enegry,恢復50點活力
+tips_50007_gaojipilaoyaoshui,恢复100点活力,Supply 100 enegry,恢復100點活力
+tips_50008_shuangbeijingyanyao,宠物经验200%倍率获得提升，可生效3次,Increases a monster's EXP rate by 200% for 3 times,寵物經驗200%倍率獲得提升，可生效3次
+tips_50009_sanbeijingyanyao,宠物经验300%倍率获得提升，可生效5次,Increases a monster's EXP rate by 300% for 5 times,寵物經驗300%倍率獲得提升，可生效5次
+tips_70001_fangyuxingwuqi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70002_fangyuxinghuyao,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70003_fangyuxinghujia,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70004_fangyuxingshouzhuo,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70005_fangyuxingjiezhi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70006_fangyuxinghushenfu,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70007_wulixingwuqi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70008_wulixinghuyao,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70009_wulixinghujia,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70010_wulixingshouzhuo,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70011_wulixingjiezhi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70012_wulixinghushenfu,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70013_fashuxingwuqi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70014_fashuxinghuyao,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70015_fashuxinghujia,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70016_fashuxingshouzhuo,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70017_fashuxingjiezhi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70018_fashuxinghushenfu,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70019_zhiyuanxingwuqi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70020_zhiyuanxinghuyao,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70021_zhiyuanxinghujia,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70022_zhiyuanxingshouzhuo,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70023_zhiyuanxingjiezhi,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_70024_zhiyuanxinghushenfu,宠物穿戴,Worn by monsters.,寵物穿戴
+tips_101,会掉落武器,Will drop weapon,會掉落武器
+tips_102,会掉落护甲,Will drop armor,會掉落護甲
+tips_103,会掉落头盔,Will drop helmet,會掉落頭盔
+tips_104,会掉落护手,Will drop gauntlet,會掉落護手
+tips_105,会掉落鞋子,Will drop shoes,會掉落鞋子
+tips_106,会掉落戒指,Will drop ring,會掉落戒指
+name_90001_jinbi,金币,Coin,金幣
+name_90002_zuanshi,钻石,Diamond,鑽石
+name_90003_rongyudian,荣誉点,Honor Points,榮譽點
+name_90004_tongtiantabi,暗黑碎片,Dark Fragment,暗黑碎片
+name_90005_gonghuibi,个人贡献值,Guild Pts,個人貢獻值
+name_90006_huolizhi,活力,Energy,活力
+name_90007_jingyanzhi,经验值,EXP,經驗值
+name_90008_huodongdian,活动积分,Event Points,活動積分
+tips_90001,游戏中一般的货币,A common currency in the game,遊戲中一般的貨幣
+tips_90002,游戏中最通用的货币,A common currency in the game,遊戲中最通用的貨幣
+tips_90003,竞技场货币，可通过竞技场商店购买商品,"Currency you get from PvP, to purchase merchandise in PvP Store",競技場貨幣，可通過競技場商店購買商品
+tips_90004_tongtiantabi,通天塔玩法获得的货币，可通过通天塔商店购买商品,"Currency obtained from Tower Of Darkness, use to purchase items in the Tower Store",通天塔玩法獲得的貨幣，可通過通天塔商店購買商品
+tips_90005_gonghuibi,公会玩法获得的货币，可通过公会商店购买物品,"Currency obtained thru Guild Activities,use to purchase items in the Guild Store",公會玩法獲得的貨幣，可通過公會商店購買物品
+tips_90006_huolizhi,玩家活力,Player Energy,玩家活力
+tips_90007_jingyanzhi,可以增加角色经验值,To increase character's experience,可以增加角色經驗值
+tips_90008_huodongdian,活动期间，完成相应任务，收集活动积分可以兑换各类珍稀碎片以及道具哦！,"During the event period, complete the corresponding quests to accumulate event points that can be exchanged for rare fragments and items!",活動期間，完成相應任務，收集活動積分可以兌換各類珍稀碎片以及道具哦！
+name_40011_pvprankxianshijinbi,小金币箱子,Small Box of Gold,小金幣箱子
+name_40012_pvprankxianshijinbi,中金币箱子,Medium Box of Gold,中金幣箱子
+name_40013_pvprankxianshijinbi,大金币箱子,Giant Box of Gold,大金幣箱子
+tips_40011_pvprankxianshijinbi,能获得一定量金币,Receive a certain amount of Gold,能獲得一定量金幣
+tips_40012_pvprankxianshijinbi,能获得很多金币,Receive a lot of Gold,能獲得很多金幣
+tips_40013_pvprankxianshijinbi,能获得大量金币,Receive a large amount of Gold,能獲得大量金幣
+name_10018_jinjiejuanzhou,妖力晶核lv1,Crystal Ball Core lv 1,妖力晶核lv1
+name_10019_jinjiejuanzhou,妖力晶核lv2,Crystal Ball Core lv 2,妖力晶核lv2
+name_10020_jinjiejuanzhou,妖力晶核lv3,Crystal Ball Core lv 3,妖力晶核lv3
+tips_10018_jinjiejuanzhou,装备强化打造的材料,Equipment forging material,裝備強化打造的材料
+tips_10019_jinjiejuanzhou,装备强化打造的材料,Equipment forging material,裝備強化打造的材料
+tips_10020_jinjiejuanzhou,装备强化打造的材料,Equipment forging material,裝備強化打造的材料
+name_10024_caihongguai1,初级怪物之魂,Basic Monster Spirit,初級怪物之魂
+name_10025_caihongguai2,中级怪物之魂,Average Monster Spirit,中級怪物之魂
+name_10026_caihongguai3,高级怪物之魂,Advanced Monster Spirit,高級怪物之魂
+name_10027_caihongguai4,史诗怪物之魂,Epic Monster Spirit,史詩怪物之魂
+tips_10024_caihongguai1,"初级宠物之魂,可以替代C,B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance.","初級寵物之魂,可以替代C,B級寵物進行寵物進階"
+tips_10025_caihongguai2,"中级宠物之魂,可以替代A级宠物进行宠物进阶,可以通过3个初级怪物之魂合成","Average Monster Spirit, can be used instead of Class A whole monster for Monster Advance. Average Monster Spirit can be received by combining 3 Basic Monster Spirit.","中級寵物之魂,可以替代A級寵物進行寵物進階,可以通過3個初級怪物之魂合成"
+tips_10026_caihongguai3,"高级宠物之魂,可以替代S级宠物进行宠物进阶,可以通过3个中级怪物之魂合成","Advanced Monster Spirit, can be used instead of Class S whole monster for Monster Advance.Advanced Monster Spirit can be received by combining 3 Average Monster Spirit.","高級寵物之魂,可以替代S級寵物進行寵物進階,可以通過3個中級怪物之魂合成"
+tips_10027_caihongguai4,"史诗宠物之魂,可以替代SS级宠物进行宠物进阶,可以通过3个高级怪物之魂合成","Epic Monster Spirit, can be used instead of Class SS whole monster for Monster Advance.Epic Monster Spirit can be received by combining 3 Advanced Monster Spirit.","史詩寵物之魂,可以替代SS級寵物進行寵物進階,可以通過3個高級怪物之魂合成"
+name_40075_wenzhanglibao1,蓝色纹章箱子,Blue Insignia Chest,藍色紋章箱子
+name_40076_wenzhanglibao2,紫色纹章箱子,Purple Insignia Chest,紫色紋章箱子
+tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,Open to receive 1 random level 3 or 4 insignia,隨機開出1個3級或4級紋章
+tips_40076_wenzhanglibao2,随机开出1个5级或6级纹章,Open to receive 1 random level 5 or 6 insignia,隨機開出1個5級或6級紋章
+name_40073_suipianlibao1,碎片箱子,Fragment Chest,碎片箱子
+name_40074_suipianlibao2,碎片箱子（稀有）,Fragment Chest (Rare),碎片箱子（稀有）
+tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,"Open to randomly receive 20 B grade monster fragments, 10 A grade monster fragments, as well as 10 surprise fragments (10 B or A grade monster fragments)",隨機開出20個B級寵物碎片、10個A級寵物碎片以及10個驚喜碎片（10個B級或者A級寵物碎片）
+tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)",隨機開出25個B級寵物碎片、15個A級寵物碎片以及20個驚喜碎片（10個A級、S級或者SS級寵物碎片）
+name_90009_xinyangzhili,书魂,Soul Tome,書魂
+tips_90009_xinyangzhili,可以在神话守护者玩法中兑换珍稀奖励！,"Accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards！",可以在神話守護者玩法中兌換珍稀獎勵！
+name_10028_zhufuzhili1,祝福之力lv1,Blessing Power(lv1),
+name_10029_zhufuzhili2,祝福之力lv2,Blessing Power(lv2),
+name_10030_zhufuzhili3,祝福之力lv3,Blessing Power(lv3),
+name_10031_zhufuzhili4,祝福之力lv4,Blessing Power(lv4),
+name_10032_zhufuzhili5,祝福之力lv5,Blessing Power(lv5),
+tips_10028_zhufuzhili1,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv1 insignias to get a lv2 insignia of the same type.,
+tips_10029_zhufuzhili2,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv2 insignias to get a lv3 insignia of the same type.,
+tips_10030_zhufuzhili3,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv3 insignias to get a lv4 insignia of the same type.,
+tips_10031_zhufuzhili4,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv4 insignias to get a lv5 insignia of the same type.,
+tips_10032_zhufuzhili5,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv5 insignias to get a lv6 insignia of the same type.,
+name_40077_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest,
+tips_40077_epicfregmentda,随机开出整只SS级宠物(通过碎片方式),Reward one Class SS Monster (by ways of fragments),

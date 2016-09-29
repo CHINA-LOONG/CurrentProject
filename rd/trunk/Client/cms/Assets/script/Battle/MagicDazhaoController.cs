@@ -14,7 +14,7 @@ public class MagicDazhaoController : MonoBehaviour
 	}
 
 	bool isActionDo = false;//大招事件进行了
-	BattleProcess.Action magicAction;//法术攻击action
+	//BattleProcess.Action magicAction;//法术攻击action
 	BattleObject  casterBattleGo;
 	Spell dazhaoSpell;
 	
@@ -85,6 +85,7 @@ public class MagicDazhaoController : MonoBehaviour
             }
             else
             {
+                //casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
                 StartCoroutine(DelayFinishPrepare());
             }
         }
@@ -95,11 +96,11 @@ public class MagicDazhaoController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
     }
-	public void PrepareShifa(BattleProcess.Action magicAction)
+	public void PrepareShifa(BattleObject caster)
 	{
-		this.magicAction = magicAction;
+		//this.magicAction = magicAction;
 		dazhaoState = DazhaoState.Shifa;
-		casterBattleGo = magicAction.caster;
+		casterBattleGo = caster;
 
         //蓄气
         //casterBattleGo.ShowDazhaoPrepareEffect ();
@@ -108,7 +109,7 @@ public class MagicDazhaoController : MonoBehaviour
         //casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
         //}
         //casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
-        BattleController.Instance.Process.InsertAction(magicAction);
+        //BattleController.Instance.Process.InsertAction(magicAction);
 
         //显示法阵
         //OpenFazhenUI ();
@@ -180,7 +181,7 @@ public class MagicDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Start;
 		//大招攻击
 		isActionDo = true;
-		BattleController.Instance.Process.RunMagicDazhao (magicAction);
+		BattleController.Instance.Process.RunMagicDazhao (casterBattleGo);
 		//慢镜头
 		//GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
 	}

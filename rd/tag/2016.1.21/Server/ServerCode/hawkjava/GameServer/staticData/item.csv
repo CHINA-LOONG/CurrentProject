@@ -98,6 +98,7 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 20069,name_20069_suipian_renyu3,-1,icon_xgRenyu_lan,2,1,1,0,1,-1,tips_20069_suipian_renyu3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,1
 20070,name_20070_suipian_shixianggui5,-1,icon_xgShixianggui_hei,2,1,1,0,1,-1,tips_20070_suipian_shixianggui5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,1
 20071,name_20071_suipian_senlinnvshen2,-1,icon_xgSenlinnvshen_lv,2,1,1,0,1,-1,tips_20071_suipian_senlinnvshen2,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,1
+20072,name_20072_suipian_bingxuenvwang5,-1,icon_xgBingxuenvwang_hei,2,1,1,0,1,-1,tips_20072_suipian_bingxuenvwang5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 30001,name_30011_BloodStone_1,-1,icon_BloodStone,3,1,1,0,1,-1,tips_30011_BloodStone_1,1,10000,2,200,1,100,1,,,,,-1,-1,-1,30001,1,-1,-1,"3_2,6,7_2",1
 30002,name_30012_BloodStone_2,-1,icon_BloodStone,3,1,2,0,1,-1,tips_30012_BloodStone_2,1,20000,2,200,1,100,1,,,,,-1,-1,-1,30002,1,-1,-1,"3_2,6,13_6,13_5",1
 30003,name_30013_BloodStone_3,-1,icon_BloodStone,3,1,3,0,1,-1,tips_30013_BloodStone_3,1,30000,2,200,1,100,1,,,,,-1,-1,-1,30003,1,-1,-1,"2_1,6,13_5",1

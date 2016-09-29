@@ -9,6 +9,7 @@ public enum BattleRetCode
     Normal,
     Success,
     Failed,
+    MaxRound,
 }
 
 public class BattleProcess : MonoBehaviour
@@ -124,6 +125,8 @@ public class BattleProcess : MonoBehaviour
 
     //当前行动
     Action curAction = null;
+    bool mPauseEnable = false;
+    byte mMagicDazhaoCount = 0;
 
     void BindListener()
     {
@@ -141,7 +144,8 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.AddListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
-		GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+		//GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+        //GameEventMgr.Instance.AddListener<int>(GameEventList.ExitDazhaoByPhyAttacked, OnRemoveDazhaoActtion);
     }
 
     void UnBindListener()
@@ -160,7 +164,8 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.RemoveListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
-		GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+		//GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+        //GameEventMgr.Instance.RemoveListener<int>(GameEventList.ExitDazhaoByPhyAttacked, OnRemoveDazhaoActtion);
     }
 
     public void Init()
@@ -692,21 +697,23 @@ public class BattleProcess : MonoBehaviour
             case ActionType.Dazhao:
 			        if (action.dazhaoType == DazhaoType.Phyics)
                     {
-                        inDazhaoAction = true;
+                        //inDazhaoAction = true;
 				        PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
 			        }
-                    else if (action.dazhaoType == DazhaoType.Magic_Prepare)
-                    {
-                        Spell curSpell = BattleUnitAi.Instance.GetSpell(BattleUnitAi.AiAttackStyle.DazhaoPrepare, action.caster.unit);
-                        if (curSpell != null)
-                        {
-                            SpellService.Instance.SpellRequest(curSpell.spellData.id, action.caster.unit, action.caster.unit, Time.time);
-                            MagicDazhaoController.Instance.SetDazhaoPrepareState(true);
-                        }
-                    }
+                    //else if (action.dazhaoType == DazhaoType.Magic_Prepare)
+                    //{
+                    //    Spell curSpell = BattleUnitAi.Instance.GetSpell(BattleUnitAi.AiAttackStyle.DazhaoPrepare, action.caster.unit);
+                    //    if (curSpell != null)
+                    //    {
+                    //        SpellService.Instance.SpellRequest(curSpell.spellData.id, action.caster.unit, action.caster.unit, Time.time);
+                    //        MagicDazhaoController.Instance.SetDazhaoPrepareState(true);
+                    //    }
+                    //}
                     else if (action.dazhaoType == DazhaoType.Magic)
                     {
                         MagicDazhaoController magicController = MagicDazhaoController.Instance;
+                        magicController.PrepareShifa(action.caster);
+                        magicController.SetDazhaoPrepareState(true);
                         magicController.RunActionWithDazhao(action.caster);
 			        }
 				
@@ -747,7 +754,6 @@ public class BattleProcess : MonoBehaviour
     void OnActionOver()
     {
         ++round;
-        curAction = null;
 
         //判断进程是否结束
         //返回不包含在配置表key中的值时，表示当前进程没有结束
@@ -765,6 +771,14 @@ public class BattleProcess : MonoBehaviour
         {
             battleResult = NormalScript.normalValiVic();
         }
+
+        //beyond maxround failed
+        if (curAction.caster != null && curAction.caster.unit.attackCount > BattleConst.maxRound)
+        {
+            battleResult = BattleRetCode.MaxRound;
+        }
+
+        curAction = null;
 
         if (forceResult == 0)
         {
@@ -791,6 +805,12 @@ public class BattleProcess : MonoBehaviour
                     insertAction.RemoveAt(i);
                 }
             }
+        }
+
+        if (battleResult == BattleRetCode.MaxRound)
+        {
+            BattleController.Instance.OnBattleOver(false);
+            return;
         }
 
         if (battleResult == BattleRetCode.Failed)
@@ -847,6 +867,12 @@ public class BattleProcess : MonoBehaviour
         //重新开始action
         StartAction();
     }
+
+    public void Pause(bool pauseEnable)
+    {
+
+    }
+
 
 
     public void ReviveSuccess(int reviveCount)
@@ -964,19 +990,20 @@ public class BattleProcess : MonoBehaviour
         }
         bo.unit.attackCount++;
 
-        if (bo.camp == UnitCamp.Player && aiResult.attackStyle == BattleUnitAi.AiAttackStyle.Dazhao)
-        {
-            Action action = new Action();
-            action.type = ActionType.Dazhao;
-            action.caster = bo;
-            bo.unit.energy = 0;
-            action.dazhaoType = DazhaoType.Magic;
-            InsertAction(action);
-            bo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
-            OnActionOver();
-            //MagicDazhaoController.Instance.RunActionWithDazhao(bo);
-            return;
-        }
+        //if (bo.camp == UnitCamp.Player && aiResult.attackStyle == BattleUnitAi.AiAttackStyle.Dazhao)
+        //{
+        //    MagicDazhaoController.Instance.PrepareShifa(bo);
+        //    Action action = new Action();
+        //    action.type = ActionType.Dazhao;
+        //    action.caster = bo;
+        //    bo.unit.energy = 0;
+        //    action.dazhaoType = DazhaoType.Magic;
+        //    InsertAction(action, 0);
+        //    bo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+        //    OnActionOver();
+        //    //MagicDazhaoController.Instance.RunActionWithDazhao(bo);
+        //    return;
+        //}
 
         if (aiResult.useSpell != null)
         {
@@ -1025,8 +1052,9 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
-	public void RunMagicDazhao(Action action)
+	public void RunMagicDazhao(BattleObject actionCaster)
 	{
+        GameUnit casterUnit = actionCaster.unit;
 		GameUnit attackTarget = null;
 		if(fireFocusTarget != null)
 		{
@@ -1035,7 +1063,7 @@ public class BattleProcess : MonoBehaviour
 		}
 		else
 		{
-			attackTarget = BattleUnitAi.Instance.GetMagicDazhaoAttackUnit(action.caster.unit);
+			attackTarget = BattleUnitAi.Instance.GetMagicDazhaoAttackUnit(casterUnit);
 		}
 		if (null == attackTarget) 
 		{
@@ -1043,16 +1071,16 @@ public class BattleProcess : MonoBehaviour
 			OnActionOver();
 			return;
 		}
-		Spell dazhaoSpell = action.caster.unit.GetDazhao ();
+		Spell dazhaoSpell = casterUnit.GetDazhao ();
 		if (null != dazhaoSpell) 
 		{
             if (dazhaoSpell.spellData.isAoe == 0)
             {
-                Vector3 relativePos = attackTarget.battleUnit.transform.position - action.caster.transform.position;
-                action.caster.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
+                Vector3 relativePos = attackTarget.battleUnit.transform.position - actionCaster.transform.position;
+                actionCaster.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
             }
-            SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, action.caster.unit, attackTarget, Time.time);
-            action.caster.unit.OnRoundEnd(Time.time);
+            SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, casterUnit, attackTarget, Time.time);
+            casterUnit.OnRoundEnd(Time.time);
 		}
 		else
 		{
@@ -1223,13 +1251,13 @@ public class BattleProcess : MonoBehaviour
 			return;
 		isCastDazhao = true;
 
-		if (IsHaveDazhaoAction())
-		{
-			isCastDazhao = false;
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_battle_002"), (int)PB.ImType.PROMPT);
-            //Logger.Log("had a dazhaoAction,can't insert Another!");
-            return;
-		}
+		//if (IsHaveDazhaoAction())
+		//{
+		//	isCastDazhao = false;
+  //          UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_battle_002"), (int)PB.ImType.PROMPT);
+  //          //Logger.Log("had a dazhaoAction,can't insert Another!");
+  //          return;
+		//}
 		//检测是否有换怪
 		if (IsChangePeting (bo)) 
 		{
@@ -1274,15 +1302,17 @@ public class BattleProcess : MonoBehaviour
 		{
 			action.dazhaoType = DazhaoType.Phyics;
 			InsertAction(action);
-			PhyDazhaoController.Instance.PrepareDazhao (bo);
-		}
-		else if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao) 
+			//PhyDazhaoController.Instance.PrepareDazhao (bo);
+            bo.TriggerEvent ("phyDazhaoPrepare", Time.time, null);
+        }
+        else if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao) 
 		{
-			action.dazhaoType = DazhaoType.Magic_Prepare;
+			action.dazhaoType = DazhaoType.Magic;
             MagicDazhaoController magicController = MagicDazhaoController.Instance;
-            magicController.PrepareShifa(action);
-            magicController.SetDazhaoPrepareState(false);
-		}
+            InsertAction(action);
+            action.caster.TriggerEvent("magicDazhaoPrepare", Time.time, null);
+            //magicController.SetDazhaoPrepareState(false);
+        }
 		isCastDazhao = false;
     }
 
@@ -1409,20 +1439,18 @@ public class BattleProcess : MonoBehaviour
         reviveList.Add(args);
     }
 
-	void OnRemoveDazhaoActtion()
-	{
-		for (int i =0; i < insertAction.Count; ++i)
-		{
-			Action subAction = insertAction[i];
-			if(subAction.type == ActionType.Dazhao)
-			{
-				insertAction.Remove(subAction);
-				break;
-			}
-		}
-
-		Logger.LogError ("大招被打断，删除插入事件。。。。!");
-	}
+	//void OnRemoveDazhaoActtion(int casterID)
+	//{
+	//	for (int i = 0; i < insertAction.Count; ++i)
+	//	{
+	//		Action subAction = insertAction[i];
+	//		if(subAction.type == ActionType.Dazhao && subAction.caster.guid == casterID)
+	//		{
+	//			insertAction.Remove(subAction);
+	//			break;
+	//		}
+	//	}
+ //   }
 
     //IEnumerator LoggerAnim(GameUnit movedUnit)
     //{

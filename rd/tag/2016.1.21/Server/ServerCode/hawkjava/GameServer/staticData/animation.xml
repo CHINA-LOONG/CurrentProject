@@ -6640,6 +6640,14 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="debuff"/>
 			</AudioList>
 		</Ani>
+		<Ani id="ultAmute4e7" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle time="0" asset="commonBuff" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
 		
 		<Ani id="txAmute4" state="0" AniType="Skill">
 			<ParticleList>
@@ -15583,6 +15591,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		<Ani id="Ladong5_state1to2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossdajie18Ladong5wp03" state="0"/>
+				<Wp time="0.5" name="bossdajie18Ladong5wp04" state="3"/>
 			</WpStateList>
 			<BubbleList>
 				<Bubble time="0" text="ladong5_bubble_002" duration="2" particle="" />
