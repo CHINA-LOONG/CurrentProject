@@ -900,13 +900,12 @@ pvp_ranking,排行榜,Rankings
 pvp_fangyumust,请先布置防守宠物,Please set defending monsters
 pvp_fangyumust1,（布置防守宠物后才能进行PVP）,(Setting defense monsters is required for PvP)
 pvp_first,当前没有其他玩家参与pvp，等等他们赶来吧,"There is no one else in PvP at the moment, wait for more to join."
-pvp_defense,防守阵容,Defense Team
 pvp_save,保存设置,Save Settings
 pvp_oneleast,防御至少要安排一个以上的宠物,At least 2 or more monsters are required for your Defense Team.
 pvp_buzufive,有栏位上未布置宠物，确定完成吗？,"Your team has empty positions, continue?"
 pvp_rewardyulan,奖励预览,Reward Preview
 pvp_winreward,胜利获得,Victory will give
-pvp_winreward,失败获得,Defeat will give
+pvp_losereward,失败获得,Defeat will give
 pvp_exit,确定退出吗？,Are you sure you would like to exit?
 pvp_exitsure,退出不会返还已消耗的竞技次数,Exitting will not return your spent Arena entry.
 pvp_changecompetitor,确定更换对手吗？,Confirm change opponent?
@@ -918,7 +917,6 @@ pvp_playername,玩家名称,Player name
 pvp_duanwei,段位,Title
 pvp_result,胜负,Victory
 pvp_gongjizhe,攻击者,Attacker
-sociaty_level,等级,Level
 pvp_resultwin,防守成功,Defense victory
 pvp_resultlose,防守失败,Defense defeated
 pvp_resultdraw,平局,Draw

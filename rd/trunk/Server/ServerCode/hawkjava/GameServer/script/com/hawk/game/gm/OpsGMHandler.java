@@ -14,6 +14,7 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.script.HawkScript;
 import org.hawk.script.HawkScriptManager;
+import org.hawk.util.HawkJsonUtil;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
@@ -26,38 +27,46 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.HS.gm;
 import com.hawk.game.protocol.HS.sys;
+import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.SysProtocol.HSWarnPlayer;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
+import com.hawk.game.util.QuestUtil;
 import com.sun.net.httpserver.HttpExchange;
 
 public class OpsGMHandler extends HawkScript{
 	public int GM_OK = 0;
 	public int GM_ERROR = 1;
-	
+
 	@Override
 	public void action(String params, HttpExchange httpExchange) {
-		JSONObject response = new JSONObject();	
+		JSONObject response = new JSONObject();
 		response.put("result", GM_ERROR);
-		
+
 		try {
 			JSONObject paramJson = JSONObject.fromObject(params);
-			response.put("sessionID", paramJson.getInt("sessionID"));
-			
+			if (false == paramJson.containsKey("sessionId")) {
+				response.put("info", "missing sessionId");
+				return;
+			}
+			response.put("sessionId", paramJson.getInt("sessionId"));
+
 			String puid = paramJson.containsKey("puid") ? paramJson.getString("puid") : "";
 			String nickname = paramJson.containsKey("nickname") ? paramJson.getString("nickname") : "";
 			int playerId = 0;
-			
+
 			if (puid == null || puid.equals("")) {
 				playerId = ServerData.getInstance().getPlayerIdByNickname(nickname);
 				puid = ServerData.getInstance().getPuidByPlayerId(playerId);
@@ -65,59 +74,52 @@ public class OpsGMHandler extends HawkScript{
 			else {
 				playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 			}
-			
+
 			if (playerId == 0) {
 				response.put("info", "player not exist");
-				HawkScriptManager.sendResponse(httpExchange, response.toString());
 				return;
 			}
-			
+
 			// 锁住玩家
 			HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
-			if(xid != null){
-				HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
-				try {
-					if (objBase == null || !objBase.isObjValid()) {
-						objBase = GsApp.getInstance().createObj(xid);
-						if (objBase != null) {
-							objBase.lockObj();
-						}
-						
-						if (objBase == null) {
-							response.put("info", "server error");
-							HawkScriptManager.sendResponse(httpExchange, response.toString());
-							return;
-						}
-					
-						// 加载离线数据
-						Player player = (Player) objBase.getImpl();
-						player.getPlayerData().setPuid(puid);
-						player.getPlayerData().loadPlayer();
-						player.getPlayerData().loadStatistics();
-						player.getPlayerData().loadAllMonster();
-						player.getPlayerData().loadAllItem();
-						player.getPlayerData().loadAllEquip();
-						player.getPlayerData().loadShop();				
-					}
-				   
-					handleGMCommnad((Player)objBase.getImpl(), paramJson, response);	
-				} 
-				finally {
+			HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
+			try {
+				if (objBase == null || false == objBase.isObjValid()) {
+					objBase = GsApp.getInstance().createObj(xid);
 					if (objBase != null) {
-						objBase.unlockObj();
+						objBase.lockObj();
 					}
+
+					if (objBase == null) {
+						response.put("info", "server error");
+						return;
+					}
+
+					// 加载离线数据
+					Player player = (Player) objBase.getImpl();
+					player.getPlayerData().setPuid(puid);
+					player.getPlayerData().loadPlayer();
+					player.getPlayerData().loadStatistics();
+					player.getPlayerData().loadAllMonster();
+					player.getPlayerData().loadAllItem();
+					player.getPlayerData().loadAllEquip();
+					player.getPlayerData().loadShop();
+					player.getPlayerData().loadPlayerAlliance();
+				}
+
+				handleGMCommnad((Player)objBase.getImpl(), paramJson, response);
+			} finally {
+				if (objBase != null) {
+					objBase.unlockObj();
 				}
 			}
-			
-			
 		} catch (Exception e) {
 			HawkException.catchException(e);
-		}
-		finally{
+		} finally{
 			HawkScriptManager.sendResponse(httpExchange, response.toString());
 		}
 	}
-	
+
 	/**
 	 *  处理GM命令
 	 * @param player
@@ -129,61 +131,73 @@ public class OpsGMHandler extends HawkScript{
 		boolean commadnHandled = false;
 		ConsumeItems consume = new ConsumeItems();
 		AwardItems award = new AwardItems();
-		
+
+		switch (command) {
 		// 禁言 / 取消禁言
-		if (command.equals("dump")) {
-			int minute = request.getInt("minute");
+		case "dump": {
+			int minute = request.containsKey("minute") ? request.getInt("minute") : 0;
 			if (minute > 0) {
 				player.getPlayerData().getStatisticsEntity().setDumpTime(HawkTime.getSeconds() + minute * 60);
 				player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
+				// TODO 通知客户端
+
 				commadnHandled = true;
 			}
+			break;
 		}
-		else if (command.equals("dump-")) {
+		case "dump-": {
 			player.getPlayerData().getStatisticsEntity().setDumpTime(0);
 			player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
+			// TODO 通知客户端
+
 			commadnHandled = true;
+			break;
 		}
 		// 锁定 / 取消锁定
-		if (command.equals("lock")) {
-			int minute = request.getInt("minute");
+		case "lock": {
+			int minute = request.containsKey("minute") ? request.getInt("minute") : 0;
 			if (minute > 0) {
 				player.getPlayerData().getPlayerEntity().setLockTime(HawkTime.getSeconds() + minute * 60);
 				player.getPlayerData().getPlayerEntity().notifyUpdate(true);
 				commadnHandled = true;
 			}
+			break;
 		}
-		else if (command.equals("lock-")) {
+		case "lock-": {
 			player.getPlayerData().getPlayerEntity().setLockTime(0);
 			player.getPlayerData().getPlayerEntity().notifyUpdate(true);
 			commadnHandled = true;
+			break;
 		}
 		// 踢角色下线
-		else if (command.equals("kickcharacter")) {
+		case "kickcharacter": {
 			if (player.getSession() != null) {
 				player.kickout(Const.kickReason.GM_VALUE);
 				player.getSession().setAppObject(null);
 				player.setSession(null);
 			}
 			commadnHandled = true;
+			break;
 		}
 		// 清空背包
-		else if (command.equals("removeallitem")) {
+		case "removeallitem": {
 			for (ItemEntity itemEntity : player.getPlayerData().getItemEntityMap().values()) {
 				if (itemEntity.isInvalid() == false && itemEntity.getCount() != 0) {
 					consume.addItem(itemEntity.getItemId(), itemEntity.getCount());
 				}
 			}
-
 			for (EquipEntity equipEntity : player.getPlayerData().getEquipEntityMap().values()) {
 				if (equipEntity.isInvalid() == false && equipEntity.getMonsterId() == GsConst.EQUIP_NOT_DRESS) {
 					consume.addEquip(equipEntity.getId(), equipEntity.getItemId());
 				}
 			}
+			// TODO 系统邮件
+
 			commadnHandled = true;
+			break;
 		}
-		// 清空背包
-		else if (command.equals("removeitem")) {
+		// 删除物品
+		case "removeitem": {
 			String itemID = request.containsKey("itemID") ? request.getString("itemID") : "";
 			int count = request.containsKey("count") ? request.getInt("count") : 0;
 			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemID);
@@ -201,12 +215,14 @@ public class OpsGMHandler extends HawkScript{
 				itemEntity.setCount(itemEntity.getCount() - count);
 				itemEntity.notifyUpdate(true);
 			}
+			// TODO 系统邮件
 
 			commadnHandled = true;
+			break;
 		}
-		// 发送邮件
-		else if (command.equals("sendmailID")) {
-			String mailID = request.containsKey("id") ? request.getString("id") : "";				
+		// 发送系统邮件
+		case "sendmailID": {
+			String mailID = request.containsKey("id") ? request.getString("id") : "";
 			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, Integer.parseInt(mailID));
 			if (mailCfg == null) {
 				response.put("info", "item not enough");
@@ -214,22 +230,23 @@ public class OpsGMHandler extends HawkScript{
 			else {
 				MailUtil.SendSysMail(mailCfg, player.getId());
 			}
-			
+
 			commadnHandled = true;
+			break;
 		}
 		// 发送邮件
-		else if (command.equals("sendmail")) {
+		case "sendmail": {
 			int coin = request.containsKey("coin") ? request.getInt("coin") : 0;
-			String subject = request.containsKey("subject") ? request.getString("subject") : "";	
-			String text = request.containsKey("text") ? request.getString("text") : "";	
+			String subject = request.containsKey("subject") ? request.getString("subject") : "";
+			String text = request.containsKey("text") ? request.getString("text") : "";
 			String itemJson = request.containsKey("item") ? request.getString("item") : "{}";
 			List<ItemInfo> rewardList = new LinkedList<ItemInfo>();
-			
+
 			if (coin > 0) {
 				ItemInfo item = ItemInfo.valueOf(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_COIN_VALUE), coin);
 				rewardList.add(item);
 			}
-			
+
 			JSONArray items = JSONArray.fromObject(itemJson);
 			for (Object element : items) {
 				JSONObject item = (JSONObject) element;
@@ -244,31 +261,33 @@ public class OpsGMHandler extends HawkScript{
 						int stage = item.containsKey("stage") ? item.getInt("stage") : 1;
 						int level = item.containsKey("level") ? item.getInt("level") : 1;
 						rewardList.add(ItemInfo.valueOf(Const.itemType.EQUIP_VALUE, itemID, count, stage, level));
-					}				
+					}
 				}
 			}
-			
+
 			MailInfo mailInfo = new MailInfo();
 			mailInfo.subject = subject;
-			mailInfo.content = text;	
+			mailInfo.content = text;
 			mailInfo.rewardList = rewardList;
-			MailUtil.SendMail(mailInfo, player.getId(), 0, "GM");	
-			
+			MailUtil.SendMail(mailInfo, player.getId(), 0, "GM");
+
 			commadnHandled = true;
+			break;
 		}
 		// 警告
-		else if (command.equals("warn")) {
+		case "warn": {
 			if (player.getSession() != null) {
 				String content = request.containsKey("content") ? request.getString("content") : "";
 				HSWarnPlayer.Builder builder = HSWarnPlayer.newBuilder();
 				builder.setContent(content);
 				player.sendProtocol(HawkProtocol.valueOf(sys.WARN_VALUE, builder));
 			}
-			
+
 			commadnHandled = true;
+			break;
 		}
 		// 查询玩家属性
-		else if (command.equals("showattr")) {
+		case "showattr": {
 			JSONObject attrObject = new JSONObject();
 			attrObject.put("platform", player.getPlatform());
 			attrObject.put("server", GsConfig.getInstance().getServerId());
@@ -280,11 +299,12 @@ public class OpsGMHandler extends HawkScript{
 			attrObject.put("freeGold", player.getPlayerData().getPlayerEntity().getFreeGold());
 			attrObject.put("energy", player.getPlayerData().getStatisticsEntity().getFatigue());
 			response.put("attr", attrObject);
-			
+
 			commadnHandled = true;
+			break;
 		}
 		// 查询道具
-		else if (command.equals("showitems")) {
+		case "showitems": {
 			JSONArray items = new JSONArray();
 			for (ItemEntity itemEntity : player.getPlayerData().getItemEntityMap().values()) {
 				if (itemEntity.isInvalid() == false && itemEntity.getCount() != 0) {
@@ -294,13 +314,13 @@ public class OpsGMHandler extends HawkScript{
 					items.add(item);
 				}
 			}
-			
-			response.put("item_list", items);
-			
+			response.put("itemList", items);
+
 			commadnHandled = true;
+			break;
 		}
 		// 查询装备
-		else if (command.equals("showequips")) {
+		case "showequips": {
 			JSONArray equips = new JSONArray();
 			for (EquipEntity equipEntity : player.getPlayerData().getEquipEntityMap().values()) {
 				if (equipEntity.isInvalid() == false) {
@@ -313,13 +333,13 @@ public class OpsGMHandler extends HawkScript{
 					equips.add(equip);
 				}
 			}
-			
-			response.put("equip_list", equips);
-			
+			response.put("equipList", equips);
+
 			commadnHandled = true;
+			break;
 		}
 		// 查询怪物
-		else if (command.equals("showmonsters")) {
+		case "showmonsters": {
 			JSONArray monsters = new JSONArray();
 			for (MonsterEntity monsterEntity : player.getPlayerData().getMonsterEntityMap().values()) {
 				if (monsterEntity.isInvalid() == false) {
@@ -332,13 +352,13 @@ public class OpsGMHandler extends HawkScript{
 					monsters.add(monster);
 				}
 			}
-			
-			response.put("monster_list", monsters);
-			
+			response.put("monsterList", monsters);
+
 			commadnHandled = true;
+			break;
 		}
-		// 查询工会
-		else if (command.equals("showguild")) {
+		// 查询公会
+		case "showguild": {
 			if (AllianceManager.getInstance().getPlayerAllinceId(player.getId()) != 0) {
 				PlayerAllianceEntity playerAllianceEntity = AllianceManager.getInstance().getPlayerAllianceEntity(player.getId());
 				if (playerAllianceEntity != null) {
@@ -347,18 +367,81 @@ public class OpsGMHandler extends HawkScript{
 					guild.put("position", playerAllianceEntity.getPostion());
 					guild.put("contribution", playerAllianceEntity.getContribution());
 					guild.put("totalContributuoin", playerAllianceEntity.getTotalContribution());
-					request.put("guild", guild);
+					response.put("guild", guild);
 				}
 			}
-			
+
 			commadnHandled = true;
+			break;
 		}
-		// 查询工会
-		else if (command.equals("showid")) {
-			request.put("puid", player.getPuid());
+		// 查询玩家puid
+		case "showid": {
+			response.put("puid", player.getPuid());
 			commadnHandled = true;
-		}	
-		
+			break;
+		}
+		// 查询进度
+		case "showjindu": {
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			response.put("instanceNormalTopChapter", statisticsEntity.getNormalTopChapter());
+			response.put("instanceNormalTopIndex", statisticsEntity.getNormalTopIndex());
+			response.put("instanceHardTopChapter", statisticsEntity.getHardTopChapter());
+			response.put("instanceHardTopIndex", statisticsEntity.getHardTopIndex());
+			response.put("hole", HawkJsonUtil.getJsonInstance().toJson(statisticsEntity.getHoleTimesMap()));
+			response.put("tower", HawkJsonUtil.getJsonInstance().toJson(statisticsEntity.getTowerFloorMap()));
+
+			commadnHandled = true;
+			break;
+		}
+		// 查询任务
+		case "showquest": {
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			response.put("complete", statisticsEntity.getQuestCompleteSet());
+			response.put("completeDaily", statisticsEntity.getQuestDailyCompleteSet());
+
+			if (false == player.isAssembleFinish()) {
+				PlayerQuestModule module = (PlayerQuestModule) player.getModule(GsConst.ModuleType.QUEST_MODULE);
+				module.loadQuest(QuestUtil.getQuestGroupMap());
+			}
+			JSONObject questMap = new JSONObject();
+			for (HSQuest quest : player.getPlayerData().getQuestMap().values()) {
+				questMap.put(quest.getQuestId(), quest.getProgress());
+			}
+			response.put("current", questMap);
+
+			commadnHandled = true;
+			break;
+		}
+		// 走马灯/系统公告
+		case "broadcast": {
+			// int count = request.containsKey("count") ? request.getInt("count") : 0;
+			// TODO
+			commadnHandled = true;
+			break;
+		}
+		case "deletebroadcast": {
+			// TODO
+			commadnHandled = true;
+			break;
+		}
+		// 修改人物昵称
+		case "rename": {
+			String newname = request.containsKey("newname") ? request.getString("newname") : "";
+			// player.getEntity().setNickname(newname);
+			// TODO
+			commadnHandled = true;
+			break;
+		}
+		// 扣金币
+		case "chargecoin": {
+			// TODO
+			commadnHandled = true;
+			break;
+		}
+		default:
+			break;
+		}
+
 		if (consume.hasConsumeItem() == true) {
 			if (consume.checkConsume(player, gm.GMOPERATION_C_VALUE) == false) {
 				return;
@@ -372,13 +455,13 @@ public class OpsGMHandler extends HawkScript{
 			}
 			award.rewardTakeAffectAndPush(player, Action.GM, HS.gm.GMOPERATION_C_VALUE);
 		}
-		
+
 		// gm处理结果
 		if (commadnHandled) {
 			response.put("result", GM_OK);
 		}
 		else {
 			response.put("info", "unsupport command");
-		}	
+		}
 	}
 }

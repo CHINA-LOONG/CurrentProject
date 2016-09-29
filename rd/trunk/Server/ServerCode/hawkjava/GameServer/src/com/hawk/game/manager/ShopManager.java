@@ -3,7 +3,6 @@ package com.hawk.game.manager;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.util.services.HawkOrderService;
-import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
@@ -106,19 +105,19 @@ public class ShopManager extends HawkAppObj {
 		HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeCfg.getGold(), giftGoldCount);
 		
 		// 上报充值数据
-		HawkReportService.RechargeData rechargeData = new HawkReportService.RechargeData(
-														  puid, 
-														  "", 
-														  player.getPlayerData().getId(),  
-														  player.getPlayerData().getNickname(), 
-														  player.getPlayerData().getLevel(),
-														  orderSerial,
-														  productId, 
-														  0,
-														  goldCount,
-														  giftGoldCount,
-														  "",
-														  "");
+		//HawkReportService.RechargeData rechargeData = new HawkReportService.RechargeData(
+		//												  puid, 
+		//												  "", 
+		//												  player.getPlayerData().getId(),  
+		//												  player.getPlayerData().getNickname(), 
+		//											  player.getPlayerData().getLevel(),
+		//												  orderSerial,
+		//												  productId, 
+		//												  0,
+		//												  goldCount,
+		//												  giftGoldCount,
+		//												  "",
+		//												  "");
 		
 		//HawkReportService.getInstance().report(rechargeData);
 		return true;

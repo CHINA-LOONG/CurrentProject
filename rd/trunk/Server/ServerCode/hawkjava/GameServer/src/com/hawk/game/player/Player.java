@@ -59,6 +59,7 @@ import com.hawk.game.module.PlayerItemModule;
 import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMailModule;
 import com.hawk.game.module.PlayerMonsterModule;
+import com.hawk.game.module.PlayerPVPModule;
 import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerSettingModule;
 import com.hawk.game.module.PlayerShopModule;
@@ -132,6 +133,7 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
 		registerModule(GsConst.ModuleType.ADVENTURE_MODULE, new PlayerAdventureModule(this));
 		registerModule(GsConst.ModuleType.SUMMON_MODULE, new PlayerSummonModule(this));
+		registerModule(GsConst.ModuleType.PVP_MODULE, new PlayerPVPModule(this));
 		// 任务模块放其它模块后，用到其它模块数据
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		// 最后注册空闲模块, 用来消息收尾处理

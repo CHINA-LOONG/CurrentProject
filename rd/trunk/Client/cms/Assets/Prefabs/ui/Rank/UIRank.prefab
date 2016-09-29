@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: .0361142457, g: .0392156877, b: .0330642052, a: .5}
+  m_EffectColor: {r: .352941185, g: .156862751, b: .0392156877, a: .5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!114 &11411662
@@ -796,6 +796,7 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   titleText: {fileID: 11456016}
   contentParent: {fileID: 22460958}
   closeButton: {fileID: 11478896}
@@ -1598,7 +1599,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64.5, y: -29.5}
+  m_AnchoredPosition: {x: 79.4000015, y: -31}
   m_SizeDelta: {x: 58, y: 48}
   m_Pivot: {x: 1, y: .5}
 --- !u!224 &22411702
@@ -1724,7 +1725,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
+  m_AnchoredPosition: {x: 0, y: -33.5}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444620
@@ -1792,7 +1793,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -238}
+  m_AnchoredPosition: {x: 0, y: -230}
   m_SizeDelta: {x: 1138.5, y: 9.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22454958
@@ -1882,8 +1883,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7}
-  m_SizeDelta: {x: 0, y: -149}
+  m_AnchoredPosition: {x: 0, y: 1.10000229}
+  m_SizeDelta: {x: 0, y: -149.199997}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22468520
 RectTransform:
@@ -1957,7 +1958,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 254.5}
+  m_AnchoredPosition: {x: 0, y: 252}
   m_SizeDelta: {x: 1138.5, y: 9.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22475446

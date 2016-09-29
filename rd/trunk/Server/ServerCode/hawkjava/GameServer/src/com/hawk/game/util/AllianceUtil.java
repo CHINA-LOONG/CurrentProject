@@ -151,7 +151,7 @@ public class AllianceUtil {
 	public static SociatyBaseCfg getAllianceBaseConfig(int bp){
 		List<SociatyBaseCfg> sociatyBaseList = HawkConfigManager.getInstance().getConfigList(SociatyBaseCfg.class);
 		int i = 0;
-		for (; i < sociatyBaseList.size(); i++) {
+		for (; i <= sociatyBaseList.size(); i++) {
 			if (bp < sociatyBaseList.get(i).getBpMax()) {
 				break;
 			}

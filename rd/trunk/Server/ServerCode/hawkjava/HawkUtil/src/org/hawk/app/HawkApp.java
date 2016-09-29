@@ -1469,6 +1469,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * @return
 	 */
 	public void printState() {
+		/*
 		int pushCount = 0;
 		int popCount = 0;
 		
@@ -1477,7 +1478,7 @@ public abstract class HawkApp extends HawkAppObj {
 			popCount += msgExecutor.getThread(i).getPopTaskCnt();
 		}
 		
-		//HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", pushCount, popCount));
+		HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", pushCount, popCount));
 
 		pushCount = 0;
 		popCount = 0;
@@ -1487,7 +1488,7 @@ public abstract class HawkApp extends HawkAppObj {
 			popCount += taskExecutor.getThread(i).getPopTaskCnt();
 		}
 		
-		//HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", pushCount, popCount));	
+		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", pushCount, popCount));	
 		
 		Runtime run = Runtime.getRuntime(); 
 		long max = run.maxMemory(); 
@@ -1495,6 +1496,7 @@ public abstract class HawkApp extends HawkAppObj {
 		long free = run.freeMemory(); 
 		long usable = max - total + free; 
 		
-		//HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));	
+		HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));
+		*/	
 	}
 }

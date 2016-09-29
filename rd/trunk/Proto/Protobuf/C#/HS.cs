@@ -126,6 +126,15 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_REWARD_S", Value=1104)]
       PLAYER_REWARD_S = 1104,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_C", Value=1201)]
+      SIGNIN_C = 1201,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FILL_C", Value=1202)]
+      SIGNIN_FILL_C = 1202,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_S", Value=1203)]
+      SIGNIN_S = 1203,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2001)]
       MONSTER_ADD_S = 2001,
             

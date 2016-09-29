@@ -251,19 +251,22 @@ zhuxian10021,训宠大师,Training Master
 zhuxian10022,能量灌注,Evolutionary Scale
 zhuxian10023,突破拦截,Interceptor 
 zhuxian10024,新的挑战,New Challenge
-zhuxian10025,限制突破,No Limits
-zhuxian10026,双重超量,Double Trouble
-zhuxian10027,冲向异界,Charging The Outerworld
-zhuxian10028,蓝色超量,Blue Power
-zhuxian10029,次元能力探秘,True Craftsman
-zhuxian10030,驾驭次元,Infused Power
+zhuxian10025,冲向异界,Charging The Outerworld
+zhuxian10026,限制突破,No Limits
+zhuxian10027,挑战关卡,Stage on Heroic
+zhuxian10028,双重超量,Double Trouble
+zhuxian10029,蓝色超量,Blue Power
+zhuxian10030,次元能力探秘,True Craftsman
+zhuxian10031,驾驭次元,Infused Power
+zhuxian10032,加入公会,
+zhuxian10033,公会祈福,
 mubiao10001,抽蛋1次,Draw 1 time 
 mubiao10002,合成花魄,Summon Flower Spirit
 mubiao10003,通关1-1,Clear Stage 1-1 
 mubiao10004,通关1-2,Clear Stage 1-2
 mubiao10005,合成苗娃曼陀罗,Summon Mandrake 
 mubiao10006,通关1-3,Clear Stage 1-3
-mubiao10007,使用经验药三次,Use EXP Potion 3 times 
+mubiao10007,使用经验药1次,Use EXP Potion 1 times 
 mubiao10008,通关1-4,Clear Stage 1-4 
 mubiao10009,升级技能3次,Upgrade abilities 3 times 
 mubiao10010,穿戴装备,Equip a piece of equipment 
@@ -275,18 +278,21 @@ mubiao10015,通关1-8,Clear Stage 1-8
 mubiao10016,装备强化1次,Upgrade a piece of equipment 
 mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
 mubiao10018,完成一个每日任务,Complete a daily mission 
-mubiao10019,竞技场,Arena
+mubiao10019,竞技场一次,Arena Battle once
 mubiao10020,装备进阶至绿,Advance equipment to green 
 mubiao10021,升级宠物1只至10级,Level up 1 monster to 10
 mubiao10022,进阶一只宠物至绿,Evolve a monster to green 
 mubiao10023,通关2-4,Clear Stage 2-4 
 mubiao10024,完成挑战本1-1,Clear Stage 1-1 on Heroic 
-mubiao10025,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
-mubiao10026,有2件绿色装备,Have 2 pieces of green equipment 
-mubiao10027,通关2-8,Clear Stage 2-8 
-mubiao10028,有1件蓝色品质装备,Have one piece of blue equipment 
-mubiao10029,装备开孔,Open an equipment socket 
-mubiao10030,装备镶嵌,Insert a gem in equipment
+mubiao10025,通关2-8,Clear Stage 2-8 
+mubiao10026,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
+mubiao10027,完成挑战本1-4,Clear Stage 1-4 on Heroic 
+mubiao10028,有2件绿色装备,Have 2 pieces of green equipment 
+mubiao10029,有1件蓝色品质装备,Have one piece of blue equipment 
+mubiao10030,装备开孔,Open an equipment socket 
+mubiao10031,装备镶嵌,Insert a gem in equipment
+mubiao10032,进入或创建一个公会,
+mubiao10033,进行一次公会祈福,
 richang1,每日剧情副本,Daily Campaign Stages
 richang2,每日通关挑战副本,Daily Heroic Stages
 richang3,每日技能升级,Daily Ability Upgrade
@@ -306,6 +312,10 @@ linmubiao1,合成狼人,Summon Werewolf
 linmubiao2,通关1-6,Clear Stage 1-6 
 linmubiao3,合成冰雪女王,Summon Chione 
 zhixian20001,扫荡2-3,Raid 2-3
-zhixian20002,扫荡2-7,Raid 2-7
-zhimubiao20001,再次通关2-3  3次,Raid 2-3（even you pass）
-zhimubiao20002,再次通关2-7  3次,Raid 2-7 （even you pass）
+zhixian20002,扫荡2-4,Raid 2-4
+zhixian20003,扫荡2-7,Raid 2-7
+zhixian20004,扫荡2-8,Raid 2-8
+zhimubiao20001,通关2-3  4次,Raid 2-3 4 times
+zhimubiao20002,通关2-4  4次,Raid 2-4 4 times
+zhimubiao20003,通关2-7  4次,Raid 2-7 4 times
+zhimubiao20004,通关2-8  4次,Raid 2-8 4 times

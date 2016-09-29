@@ -3443,6 +3443,121 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:summonError)
   }
 
+  /**
+   * Protobuf enum {@code pvpError}
+   */
+  public enum pvpError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>PVP_NOT_MATCH_TARGET = 917505;</code>
+     *
+     * <pre>
+     * 没有匹配到玩家
+     * </pre>
+     */
+    PVP_NOT_MATCH_TARGET(0, 917505),
+    /**
+     * <code>PVP_NOT_SET_DEFENCE = 917506;</code>
+     *
+     * <pre>
+     * 没有设置防守阵容
+     * </pre>
+     */
+    PVP_NOT_SET_DEFENCE(1, 917506),
+    /**
+     * <code>PVP_NOT_MATCH_BEFORE = 917507;</code>
+     *
+     * <pre>
+     * 没有匹配过玩家
+     * </pre>
+     */
+    PVP_NOT_MATCH_BEFORE(2, 917507),
+    ;
+
+    /**
+     * <code>PVP_NOT_MATCH_TARGET = 917505;</code>
+     *
+     * <pre>
+     * 没有匹配到玩家
+     * </pre>
+     */
+    public static final int PVP_NOT_MATCH_TARGET_VALUE = 917505;
+    /**
+     * <code>PVP_NOT_SET_DEFENCE = 917506;</code>
+     *
+     * <pre>
+     * 没有设置防守阵容
+     * </pre>
+     */
+    public static final int PVP_NOT_SET_DEFENCE_VALUE = 917506;
+    /**
+     * <code>PVP_NOT_MATCH_BEFORE = 917507;</code>
+     *
+     * <pre>
+     * 没有匹配过玩家
+     * </pre>
+     */
+    public static final int PVP_NOT_MATCH_BEFORE_VALUE = 917507;
+
+
+    public final int getNumber() { return value; }
+
+    public static pvpError valueOf(int value) {
+      switch (value) {
+        case 917505: return PVP_NOT_MATCH_TARGET;
+        case 917506: return PVP_NOT_SET_DEFENCE;
+        case 917507: return PVP_NOT_MATCH_BEFORE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<pvpError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<pvpError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<pvpError>() {
+            public pvpError findValueByNumber(int number) {
+              return pvpError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(14);
+    }
+
+    private static final pvpError[] VALUES = values();
+
+    public static pvpError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private pvpError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:pvpError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3559,8 +3674,10 @@ public final class Status {
       "\2000\022\027\n\021ADVENTURE_NOT_END\020\210\2000\022\034\n\026ADVENTURE" +
       "_HIRE_ALREADY\020\211\2000*a\n\013summonError\022\034\n\026SUMM" +
       "ON_DIAMOND_NO_FREE\020\201\2004\022\031\n\023SUMMON_COIN_NO" +
-      "_FREE\020\202\2004\022\031\n\023SUMMON_COIN_FREE_CD\020\203\2004B\030\n\026" +
-      "com.hawk.game.protocol"
+      "_FREE\020\202\2004\022\031\n\023SUMMON_COIN_FREE_CD\020\203\2004*]\n\010" +
+      "pvpError\022\032\n\024PVP_NOT_MATCH_TARGET\020\201\2008\022\031\n\023" +
+      "PVP_NOT_SET_DEFENCE\020\202\2008\022\032\n\024PVP_NOT_MATCH",
+      "_BEFORE\020\203\2008B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -11,6 +11,8 @@ public class PvpRankItem : MonoBehaviour
     public Text gradelevelText;
     public Text competivePointText;
 
+    public Button itemButton;
+
     public static   PvpRankItem CreateWith()
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("PvpRankItem");
@@ -21,11 +23,15 @@ public class PvpRankItem : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-	
+        itemButton.onClick.AddListener(OnItemButtonClick);
 	}
 
     public void InitWith()
     {
 
+    }
+    void OnItemButtonClick()
+    {
+        PvpOtherDefenseInfo.OpenWith();
     }
 }

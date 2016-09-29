@@ -45,6 +45,7 @@ import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
+import com.hawk.game.manager.PVPManager;
 import com.hawk.game.manager.ShopManager;
 import com.hawk.game.manager.SnapShotManager;
 import com.hawk.game.module.activity.http.ActivityHttpServer;
@@ -222,6 +223,11 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init snapshot manager......");
 		SnapShotManager.getInstance().init();
 
+		// pvp
+		HawkLog.logPrintln("init pvp manager......");
+		PVPManager.getInstance().init();
+		
+		
 		// 初始化开发版GmService
 		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
 
@@ -256,6 +262,8 @@ public class GsApp extends HawkApp {
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.SHOP));
 		// 公会管理器
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+		// pvp管理器
+		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 		return true;
 	}
 
@@ -444,6 +452,9 @@ public class GsApp extends HawkApp {
 			}
 			else if (xid.getId() == GsConst.ObjId.SNAPSHOT) {
 				appObj = new SnapShotManager(xid);
+			}
+			else if (xid.getId() == GsConst.ObjId.PVP) {
+				appObj = new PVPManager(xid);
 			}
 		}
 		else if (xid.getType() == GsConst.ObjType.PLAYER) {

@@ -19,6 +19,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public BuildButton m_ComposeButton;
     public BuildButton m_DecomposeButton;
     public BuildButton m_AdventureButton;
+    public BuildButton pvpButton;
 
     public Button huoliButton;
     public Text huoliText;
@@ -78,6 +79,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
         EventTriggerListener.Get(m_AdventureButton.gameObject).onClick = OnAdventureButtonClick;
+        EventTriggerListener.Get(pvpButton.gameObject).onClick = OnPvpButtonClick;
         EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
         EventTriggerListener.Get(huoliTipButton).onClick = OnHuoliTipButtonClick;
 
@@ -174,9 +176,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void BagButtonClick(GameObject go)
     {
-        //uiBag = UIBag.OpenWith();
+        uiBag = UIBag.OpenWith();
         // GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
-        PvpMain.Open();
 
     }
 
@@ -218,6 +219,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnAdventureButtonClick(GameObject go)
     {
         uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
+    }
+    void OnPvpButtonClick(GameObject go)
+    {
+        PvpMain.Open();
     }
 
     void    OnHuoliButtonClick (GameObject go)

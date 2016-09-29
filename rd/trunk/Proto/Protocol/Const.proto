@@ -340,6 +340,7 @@ enum MonsterState
 	LOCKED = 1;
 	IN_ALLIANCE_BASE = 2;
 	IN_ADVENTURE = 4;
+	IN_PVP_DEFENCE = 8;
 }
 
 enum SummonType
@@ -348,4 +349,12 @@ enum SummonType
 	SUMMON_DIAMOND = 2;
 	SUMMON_COIN_FREE = 3;
 	SUMMON_DIAMOND_FREE = 4;
+}
+
+enum PvpResult
+{
+	WIN = 0;
+	DRAW = 1;
+	LOSE = 2;
+	NUM = 2;
 }

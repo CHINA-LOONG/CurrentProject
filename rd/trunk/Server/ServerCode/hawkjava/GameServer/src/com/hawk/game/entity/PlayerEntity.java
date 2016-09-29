@@ -67,6 +67,9 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "exp", nullable = false)
 	protected int exp = 0;
 
+	@Column(name = "honorPoint", nullable = false)
+	protected int honorPoint = 0;	
+	
 	@Column(name = "goldBuy", nullable = false)
 	protected int goldBuy = 0;
 
@@ -168,6 +171,10 @@ public class PlayerEntity extends HawkDBEntity {
 		return this.nickname;
 	}
 
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public byte getCareer() {
 		return career;
 	}
@@ -190,6 +197,14 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public int getHonorPoint() {
+		return honorPoint;
+	}
+
+	public void addHonorPoint(int honorPoint) {
+		this.honorPoint += honorPoint;
 	}
 
 	public long getCoin() {

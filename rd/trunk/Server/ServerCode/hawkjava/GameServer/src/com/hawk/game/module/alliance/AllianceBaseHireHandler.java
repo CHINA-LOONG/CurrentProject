@@ -25,7 +25,7 @@ public class AllianceBaseHireHandler implements HawkMsgHandler{
 	{
 		Player player = (Player) msg.getParam(0);
 		int monsterId = (int) msg.getParam(1);
-	
+
 		if(player.getAllianceId() == 0){
 			return true;
 		}
@@ -41,12 +41,18 @@ public class AllianceBaseHireHandler implements HawkMsgHandler{
 		}
 		
 		AllianceBaseEntity allianceBaseEntity = allianceEntity.getAllianceBaseEntityMap().get(monsterId);
-		if (allianceBaseEntity != null) {
+		
+		if (allianceBaseEntity != null) {		
+			PlayerAllianceEntity targetAllianceEntity = allianceEntity.getMember(allianceBaseEntity.getPlayerId());
+			if (targetAllianceEntity == null) {
+				return true;
+			}
+			
 			// 找到对应的怪
-			for (BaseMonsterInfo baseMonsterInfo : playerAllianceEntity.getBaseMonsterInfo().values()) {
+			for (BaseMonsterInfo baseMonsterInfo : targetAllianceEntity.getBaseMonsterInfo().values()) {
 				if (baseMonsterInfo.getMonsterId() == monsterId) {
 					baseMonsterInfo.addReward(AllianceUtil.getAllianceBaseConfig(allianceBaseEntity.getBp()).getCoinHireget());
-					playerAllianceEntity.notifyUpdate(true);
+					targetAllianceEntity.notifyUpdate(true);
 					break;
 				}
 			}

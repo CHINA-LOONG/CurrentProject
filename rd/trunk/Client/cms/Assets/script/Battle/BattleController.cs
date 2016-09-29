@@ -117,6 +117,8 @@ public class BattleController : MonoBehaviour
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
     private bool battleSuccess;
+
+    public bool isUseWpFindWpInBattle = false;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     public void Init()
@@ -355,6 +357,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void StartBattle()
     {
+        isUseWpFindWpInBattle = false;
         mRevived = false;
         //ResourceMgr.Instance.UnloadCachedBundles(true);
         curProcessIndex = 0;

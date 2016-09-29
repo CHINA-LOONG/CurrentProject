@@ -201,7 +201,7 @@ public class AllianceManager extends HawkAppObj {
 			if (allianceEntity != null) {
 				PlayerAllianceEntity playerAllianceEntity = allianceEntity.getMember(allianceBase.getPlayerId());
 				if (playerAllianceEntity != null) {
-					allianceBase.convertMonsterBuilder();
+					allianceBase.decode();
 					allianceEntity.getAllianceBaseEntityMap().put(allianceBase.getMonsterBuilder().getMonsterId(), allianceBase);
 				}
 			}

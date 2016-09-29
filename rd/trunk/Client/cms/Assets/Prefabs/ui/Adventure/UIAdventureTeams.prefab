@@ -303,6 +303,7 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
+  mDontDestroyWhenSwitchScene: 0
   textTitle: {fileID: 11441898}
   textCount: {fileID: 11487426}
   itemParent: {fileID: 22495238}
@@ -924,9 +925,9 @@ RectTransform:
   - {fileID: 22426604}
   m_Father: {fileID: 22450274}
   m_RootOrder: 6
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 260, y: -277}
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
+  m_AnchoredPosition: {x: 260, y: 43}
   m_SizeDelta: {x: 134, y: 48}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22481040

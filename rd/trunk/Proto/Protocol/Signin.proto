@@ -1,0 +1,28 @@
+import "Protocol/Const.proto";
+import "Protocol/Reward.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+
+// protocol-----------------------------------------------------
+
+// SIGNIN_C
+message HSSignin
+{
+	required int32 month = 1;
+}
+
+// SIGNIN_FILL_C
+message HSSigninFill
+{
+	required int32 month = 1;
+}
+
+// SIGNIN_S
+message HSSigninRet
+{
+	required int32 signinTimes = 1;
+	required RewardItem reward = 2;
+}

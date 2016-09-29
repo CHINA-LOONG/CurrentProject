@@ -102,7 +102,7 @@ public class PvpMain : UIBase
     void OnSearchOpponentFinished(ProtocolMessage message)
     {
         //test
-        
+        PvpAdjustBattleTeam.OpenWith();
         return;
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {

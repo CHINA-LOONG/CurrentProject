@@ -72,25 +72,26 @@ public class AdventureUtil {
 	}
 
 	/**
-	 * 检测怪物组是否满足条件组
+	 * 检测怪物组满足条件组中的条件数量
 	 */
-	public static boolean isConditionMeet(List<AdventureCondition> conditionList, List<MonsterCfg> monsterList) {
-		// conditionList为空的情况视为符合条件，不予处理
+	public static int getConditionMeetCount(List<AdventureCondition> conditionList, List<MonsterCfg> monsterList) {
+		int conditionMeetCount = 0;
+
 		for (AdventureCondition condition : conditionList) {
-			int meetCount = 0;
+			int monsterMeetCount = 0;
 			for (MonsterCfg monsterCfg : monsterList) {
 				if ((GsConst.UNUSABLE == condition.monsterType || monsterCfg.getType() == condition.monsterType)
 						&& (GsConst.UNUSABLE == condition.monsterProperty || monsterCfg.getProperty() == condition.monsterProperty)) {
-					++meetCount;
+					++monsterMeetCount;
 				}
 			}
 
-			if (meetCount < condition.monsterCount) {
-				return false;
+			if (monsterMeetCount >= condition.monsterCount) {
+				++ conditionMeetCount;
 			}
 		}
 
-		return true;
+		return conditionMeetCount;
 	}
 
 	/**

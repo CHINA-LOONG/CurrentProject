@@ -247,7 +247,7 @@ public class QuestCfg extends HawkConfigBase {
 			goalTypeValue = GsConst.QuestGoalType.SOCIETY_PRAY_TIMES;
 			break;
 		//	三星通关X副本
-		case "star3":
+		case "star3-x":
 			goalTypeValue = GsConst.QuestGoalType.INSTANCE_X_STAR_3;
 			break;
 		// 合成宝石N个

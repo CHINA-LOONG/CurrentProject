@@ -538,7 +538,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		
 		HSAllianceBaseListRet.Builder response = HSAllianceBaseListRet.newBuilder();
 		for (AllianceBaseEntity baseEntity : allianceEntity.getAllianceBaseEntityMap().values()) {
-			if (!playerEntity.ismonsterSendtoBase(baseEntity.getMonsterBuilder().getMonsterId())) {
+			if (playerEntity.ismonsterSendtoBase(baseEntity.getMonsterBuilder().getMonsterId())) {
 				response.addMonsterInfo(BuilderUtil.genAllianceBaseMonster(baseEntity, false));
 			}	
 		}

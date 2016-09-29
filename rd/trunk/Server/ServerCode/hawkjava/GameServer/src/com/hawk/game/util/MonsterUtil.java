@@ -111,7 +111,7 @@ public class MonsterUtil {
 		injuryRatio = Math.max(injuryRatio, 0.25f);
     
 		float HP = (healthToLife * health) / injuryRatio * (1 + gemHealRatio * 0.33f);;
-		float DPS = (intelligenceToAttack * intelligence + strengthToAttack * strength) / 2 * speed * (gemCriticalRatio * gemCriticalDmg + (1 - gemCriticalRatio) * 1) * (1 + gemEnergy * 0.0033f);
+		float DPS = (intelligenceToAttack * intelligence + strengthToAttack * strength) / 2 * speed * (gemCriticalRatio * gemCriticalDmg + (1 - (gemCriticalRatio - criticalRatio)) * 1) * (1 + gemEnergy * 0.0033f);
 		float bpLvlAdjust = 0.000001f;
 		
 		float attrBattle = HP * DPS * bpLvlAdjust;

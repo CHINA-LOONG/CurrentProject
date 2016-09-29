@@ -28,6 +28,11 @@ message HSMonster
 	optional int32 state = 11;
 }
 
+message HSMonsterDefence
+{
+	repeated HSMonster monsterInfo = 1;
+}
+
 // protocol-----------------------------------------------------
 
 message HSMonsterInfoSync

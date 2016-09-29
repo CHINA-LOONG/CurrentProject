@@ -89,7 +89,7 @@ public class WeakPointController : MonoBehaviour
 			if(  !wpRuntime.IsFind )
 			{
 				wpRuntime.IsFind = true;
-
+                BattleController.Instance.isUseWpFindWpInBattle = true;
                 if (null != wpRuntime.appraisalWpEffect &&
 				   wpRuntime.appraisalWpStateEffect != null)
 				{

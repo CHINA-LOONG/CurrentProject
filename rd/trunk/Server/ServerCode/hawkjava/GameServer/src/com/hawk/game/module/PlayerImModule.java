@@ -42,8 +42,9 @@ public class PlayerImModule extends PlayerModule {
 		String chatText = protocol.getText();
 		String expansion = protocol.hasExpansion() ? protocol.getExpansion() : null;
 
+		// 禁言
 		if (player.getPlayerData().getStatisticsEntity().getDumpTime() > HawkTime.getSeconds()) {
-			sendError(hsCode, imError.IM_DUMP_ERROR_VALUE);
+			sendError(hsCode, imError.IM_DUMP_ERROR);
 			return true;
 		}
 
@@ -107,8 +108,7 @@ public class PlayerImModule extends PlayerModule {
 				imPlayer.setNickname(player.getName());
 				imPlayer.setLevel(player.getLevel());
 
-				int a = player.getAllianceId();
-				AllianceEntity alliance = AllianceManager.getInstance().getAlliance(a);
+				AllianceEntity alliance = AllianceManager.getInstance().getAlliance(player.getAllianceId());
 				if (alliance != null) {
 					imPlayer.setGuildId(alliance.getId());
 					imPlayer.setGuildName(alliance.getName());

@@ -27,7 +27,7 @@ public class GsConst {
 	// 技能点恢复秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
 	// 大冒险条件刷新次数恢复秒数
-	public static final int ADVENTURE_CHANGE_TIME = 30 * 60;
+	public static final int ADVENTURE_CHANGE_TIME = 60 * 60;
 	// 最大邮件数
 	public static final int MAX_MAIL_COUNT = 300;
 	// 最大品级数
@@ -114,6 +114,8 @@ public class GsConst {
 		public static final int ALLIANCE = 4;
 		// 快照
 		public static final int SNAPSHOT = 5;
+		// 快照
+		public static final int PVP = 6;
 	}
 
 	/**
@@ -178,6 +180,15 @@ public class GsConst {
 		// 雇用奖励
 		public static final int ALLIANCE_HIRE_REWARD = 122;
 
+		// 匹配对手
+		public static final int PVP_MATCH_TARGET = 201;
+		// 结算
+		public static final int PVP_SETTLE = 202;
+		// 防守记录
+		public static final int PVP_RECORD = 203;
+		// pvp排行榜
+		public static final int PVP_RANK_LIST = 204;
+		
 		/**
 		 * 快照管理器消息定义
 		 */
@@ -224,6 +235,8 @@ public class GsConst {
 		public static final int ADVENTURE_MODULE = 13;
 		// 抽蛋模块
 		public static final int SUMMON_MODULE = 14;
+		// PVP
+		public static final int PVP_MODULE = 15;
 
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -478,6 +491,14 @@ public class GsConst {
 		public static final String ALLIANCE_CONTRI_REWARD3 = "110001";
 	}
 
+	public static class PVP {
+		public static final int PVP_DEFAULT_POINT = 1000;
+		public static final int PVP_POOL_STAGE_MAX_SIZE = 100;
+		public static final int PVP_POOL_STAGE_INIT_SIZE = 10;
+		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
+		public static final int PVP_RANK_SIZE = 100;
+	}
+	
 	// 翻译系统，敏感词选项
 	public static class Profanity {
 		public static final String OFF = "off";

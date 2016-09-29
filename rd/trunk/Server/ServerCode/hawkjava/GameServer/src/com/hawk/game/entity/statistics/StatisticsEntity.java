@@ -551,9 +551,9 @@ public class StatisticsEntity {
 	}
 
 	// holeTimes-----------------------------------------------
-//	public Map<Integer, Integer> getHoleTimesMap() {
-//		return mfEntity.holeTimesMap;
-//	}
+	public Map<Integer, Integer> getHoleTimesMap() {
+		return mfEntity.holeTimesMap;
+	}
 
 	/**
 	 * @return 洞完成次数，如未完成返回0

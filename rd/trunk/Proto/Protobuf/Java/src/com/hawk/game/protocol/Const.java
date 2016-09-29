@@ -3439,6 +3439,10 @@ public final class Const {
      * <code>IN_ADVENTURE = 4;</code>
      */
     IN_ADVENTURE(2, 4),
+    /**
+     * <code>IN_PVP_DEFENCE = 8;</code>
+     */
+    IN_PVP_DEFENCE(3, 8),
     ;
 
     /**
@@ -3453,6 +3457,10 @@ public final class Const {
      * <code>IN_ADVENTURE = 4;</code>
      */
     public static final int IN_ADVENTURE_VALUE = 4;
+    /**
+     * <code>IN_PVP_DEFENCE = 8;</code>
+     */
+    public static final int IN_PVP_DEFENCE_VALUE = 8;
 
 
     public final int getNumber() { return value; }
@@ -3462,6 +3470,7 @@ public final class Const {
         case 1: return LOCKED;
         case 2: return IN_ALLIANCE_BASE;
         case 4: return IN_ADVENTURE;
+        case 8: return IN_PVP_DEFENCE;
         default: return null;
       }
     }
@@ -3613,6 +3622,107 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:SummonType)
   }
 
+  /**
+   * Protobuf enum {@code PvpResult}
+   */
+  public enum PvpResult
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>WIN = 0;</code>
+     */
+    WIN(0, 0),
+    /**
+     * <code>DRAW = 1;</code>
+     */
+    DRAW(1, 1),
+    /**
+     * <code>LOSE = 2;</code>
+     */
+    LOSE(2, 2),
+    ;
+
+    /**
+     * <code>NUM = 2;</code>
+     */
+    public static final PvpResult NUM = LOSE;
+    /**
+     * <code>WIN = 0;</code>
+     */
+    public static final int WIN_VALUE = 0;
+    /**
+     * <code>DRAW = 1;</code>
+     */
+    public static final int DRAW_VALUE = 1;
+    /**
+     * <code>LOSE = 2;</code>
+     */
+    public static final int LOSE_VALUE = 2;
+    /**
+     * <code>NUM = 2;</code>
+     */
+    public static final int NUM_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static PvpResult valueOf(int value) {
+      switch (value) {
+        case 0: return WIN;
+        case 1: return DRAW;
+        case 2: return LOSE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PvpResult>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PvpResult>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PvpResult>() {
+            public PvpResult findValueByNumber(int number) {
+              return PvpResult.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(24);
+    }
+
+    private static final PvpResult[] VALUES = {
+      WIN, DRAW, LOSE, NUM, 
+    };
+
+    public static PvpResult valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PvpResult(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:PvpResult)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3682,12 +3792,13 @@ public final class Const {
       "_Type_PhyDaZhao\020\010\022\032\n\026Spell_Type_MagicDaz" +
       "hao\020\t\022\034\n\030Spell_Type_PrepareDazhao\020\n\022\022\n\016S" +
       "pell_Type_Dot\020\013\022\022\n\016Spell_Type_Hot\020\014\022\022\n\016N",
-      "um_Spell_Type\020\r*B\n\014MonsterState\022\n\n\006LOCKE" +
+      "um_Spell_Type\020\r*V\n\014MonsterState\022\n\n\006LOCKE" +
       "D\020\001\022\024\n\020IN_ALLIANCE_BASE\020\002\022\020\n\014IN_ADVENTUR" +
-      "E\020\004*`\n\nSummonType\022\017\n\013SUMMON_COIN\020\001\022\022\n\016SU" +
-      "MMON_DIAMOND\020\002\022\024\n\020SUMMON_COIN_FREE\020\003\022\027\n\023" +
-      "SUMMON_DIAMOND_FREE\020\004B\030\n\026com.hawk.game.p" +
-      "rotocol"
+      "E\020\004\022\022\n\016IN_PVP_DEFENCE\020\010*`\n\nSummonType\022\017\n" +
+      "\013SUMMON_COIN\020\001\022\022\n\016SUMMON_DIAMOND\020\002\022\024\n\020SU" +
+      "MMON_COIN_FREE\020\003\022\027\n\023SUMMON_DIAMOND_FREE\020" +
+      "\004*1\n\tPvpResult\022\007\n\003WIN\020\000\022\010\n\004DRAW\020\001\022\010\n\004LOS" +
+      "E\020\002\022\007\n\003NUM\020\002B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

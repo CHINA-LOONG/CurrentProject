@@ -11,6 +11,8 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
+import org.hawk.os.HawkRand;
 import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
@@ -239,7 +241,7 @@ public class PlayerAdventureModule extends PlayerModule {
 			}
 
 			consume = ConsumeItems.valueOf();
-			consume.addGold((int) Math.ceil((teamEntity.getEndTime() - curTime) / 600) * 2);
+			consume.addGold(2 * (int) Math.ceil((teamEntity.getEndTime() - curTime) / 600.0));
 			if (false == consume.checkConsume(player, hsCode)) {
 				return true;
 			}
@@ -283,7 +285,20 @@ public class PlayerAdventureModule extends PlayerModule {
 		AwardItems extraReward = null;
 		AwardItems allReward = AwardItems.valueOf();
 
-		if (true == AdventureUtil.isConditionMeet(advenEntity.getConditionList(), monsterList)) {
+		// 没有条件按照满足处理
+		boolean hasExtra = true;
+		if (advenEntity.getConditionList().size() != 0) {
+			try {
+				int meetCount = AdventureUtil.getConditionMeetCount(advenEntity.getConditionList(), monsterList);
+				int randCount = HawkRand.randInt(1, advenEntity.getConditionList().size());
+				if (randCount > meetCount) {
+					hasExtra = false;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+		if (true == hasExtra) {
 			extraReward = AwardItems.valueOf();
 			List<ItemInfo> rewardList = advenCfg.getExtraReward().getRewardList();
 			extraReward.addItemInfos(rewardList);
@@ -320,7 +335,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		HSAdventureSettleRet.Builder response = HSAdventureSettleRet.newBuilder();
 		response.setTeamId(teamId);
 		response.addAllBasicReward(basicReward.getBuilder().getRewardItemsList());
-		if (null != extraReward) {
+		if (true == hasExtra) {
 			response.addAllExtraReward(extraReward.getBuilder().getRewardItemsList());
 		}
 		response.setAdventure(BuilderUtil.genAdventureBuilder(advenEntity));

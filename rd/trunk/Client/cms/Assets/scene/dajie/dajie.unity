@@ -10150,6 +10150,34 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.48000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.44000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .0109187802
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .707022548
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.0109187802
+      objectReference: {fileID: 0}
+    - target: {fileID: 483732, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .707022429
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 252ae9c67bb99934693f1cd01fc82002, type: 2}
   m_IsPrefabParent: 0

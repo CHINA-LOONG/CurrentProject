@@ -1,0 +1,75 @@
+option java_package = "com.hawk.game.protocol";
+import "Protocol/Const.proto";
+import "Protocol/Monster.proto";
+
+// ------------------------------------------------------- struct -------------------------------------------------------
+message PVPRankData
+{
+	required int32 rank = 1;
+	required string name = 2 ;
+	required int32 level = 3;
+	required int32 point = 4;
+}
+
+message PVPDefenceRecordData
+{
+	required int32 result = 1;
+	required int32 point = 2;
+	required string attacker = 3;
+	required int32 level = 4;
+	required int32 grade = 5;
+}
+
+// protocol-----------------------------------------------------
+
+message HSSetPVPDefenceMonster
+{
+	repeated int32 monsterId = 1;
+}
+
+message HSSetPVPDefenceMonsterRet
+{
+}
+
+message HSPVPMatchTarget
+{
+	
+}
+
+message HSPVPMatchTargetRet
+{
+	required int32 playerId = 1;
+	required string name = 2;
+	required int32 level = 3;
+	required int32 rank = 4;
+	required HSMonsterDefence defenceData = 5;
+}
+
+message HSPVPSettle
+{
+	required int32 result = 1;
+}
+
+message HSPVPSettleRet
+{
+	required int32 point = 1;
+	required int32 rank = 2;
+}
+
+message HSPVPRank
+{
+}
+
+message HSPVPRankRet
+{
+	repeated PVPRankData pvpRankList = 1;
+}
+
+message HSPVPDefenceRecord
+{
+}
+
+message HSPVPDefenceRecordRet
+{
+	repeated PVPDefenceRecordData pvpDefenceRecordList = 1;
+}

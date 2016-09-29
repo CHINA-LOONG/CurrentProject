@@ -27,7 +27,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import org.hawk.app.HawkApp;
 import org.hawk.config.HawkConfigBase.Id;
 import org.hawk.cryption.HawkMd5;
 import org.hawk.log.HawkLog;

@@ -138,7 +138,13 @@ public class AllianceBaseEntity extends HawkDBEntity{
 	public HSMonster.Builder getMonsterBuilder() {
 		return monsterBuilder;
 	}
-
+	
+	@Override
+	public boolean decode() {
+		this.convertMonsterBuilder();
+		return true;
+	}
+	
 	@Override
 	public int getCreateTime() {
 		return createTime;

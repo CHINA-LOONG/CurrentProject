@@ -354,3 +354,13 @@ enum summonError
 	// 免费金币抽蛋冷却中
 	SUMMON_COIN_FREE_CD        = 0x000D0003;
 }
+
+enum pvpError
+{
+	// 没有匹配到玩家
+	PVP_NOT_MATCH_TARGET     = 0x000E0001;
+	// 没有设置防守阵容
+	PVP_NOT_SET_DEFENCE      = 0x000E0002;
+	// 没有匹配过玩家
+	PVP_NOT_MATCH_BEFORE     = 0x000E0003;
+}

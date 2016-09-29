@@ -7,7 +7,7 @@ public class BattleTeamManager
 	public class	TeamList
 	{
 		public	static	string	Defualt = "default";
-
+        public static string Pvp = "PvpTeam";
 
 		public	static	string	Custome1 = "Custome1";
 	}

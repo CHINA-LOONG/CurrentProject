@@ -172,8 +172,9 @@ public class PlayerQuestModule extends PlayerModule {
 
 	/**
 	 * 从指定任务组集合中接取任务
+	 * GM调用，因此设为public。非GM不调用
 	 */
-	private List<HSQuest> loadQuest(Map<Integer, QuestGroup> questGroupMap) {
+	public List<HSQuest> loadQuest(Map<Integer, QuestGroup> questGroupMap) {
 		List<HSQuest> acceptQuestList = new ArrayList<HSQuest>();
 
 		Iterator<Entry<Integer, QuestGroup>>  iter = questGroupMap.entrySet().iterator();

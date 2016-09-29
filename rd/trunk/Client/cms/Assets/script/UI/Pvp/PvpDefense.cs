@@ -65,22 +65,7 @@ public class PvpDefense : UIBase
     }
     void OnPositionChanged()
     {
-        int bpValue = 0;
-        int guid = 0;
-        GameUnit subUnit = null;
-        for(int i =0;i<defenseTeamList.Count;++i)
-        {
-            if (!string.IsNullOrEmpty(defenseTeamList[i]))
-            {
-                guid = int.Parse(defenseTeamList[i]);
-                subUnit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
-                if(null!=subUnit)
-                {
-                    bpValue += subUnit.mBp;
-                }
-            }
-        }
-        bpValueText.text = bpValue.ToString();
+        bpValueText.text = PvpDataMgrAttr.GetBpWithGuidList(defenseTeamList).ToString();
     }
     void OnSaveButtonClick()
     {

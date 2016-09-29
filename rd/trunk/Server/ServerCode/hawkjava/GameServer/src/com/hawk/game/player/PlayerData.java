@@ -2,6 +2,7 @@ package com.hawk.game.player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,11 +18,15 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.PVPDefenceEntity;
+import com.hawk.game.entity.PVPDefenceRecordEntity;
+import com.hawk.game.entity.PVPRankEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.PVPManager;
 import com.hawk.game.protocol.Adventure.HSAdventureInfoSync;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
@@ -121,13 +126,23 @@ public class PlayerData {
 	private Map<Integer, AdventureTeamEntity> adventureTeamEntityMap = null;
 
 	/**
+	 * pvp 防守阵容数据
+	 */
+	private PVPDefenceEntity pvpDefenceEntity = null;
+	
+	/**
+	 * pvp 防守记录
+	 */
+	private LinkedList<PVPDefenceRecordEntity> pvpDefenceRecordEntityList = new LinkedList<PVPDefenceRecordEntity>();
+	
+	/**
 	 * 构造函数
 	 * 
 	 * @param player
 	 */
 	public PlayerData(Player player) {
 		this.player = player;
-	}
+	} 
 
 	/**
 	 * 设置玩家puid
@@ -622,6 +637,21 @@ public class PlayerData {
 		adventureTeamEntityMap.put(teamEntity.getTeamId(), teamEntity);
 	}
 
+	public PVPDefenceEntity getPVPDefenceEntity(){
+		return pvpDefenceEntity;
+	}
+	
+	public List<PVPDefenceRecordEntity> getPVPDefenceRecordList(){
+		return pvpDefenceRecordEntityList;
+	}
+	
+	public void addPVPDefenceRecord(PVPDefenceRecordEntity pvpDefenceRecordEntity){
+		pvpDefenceRecordEntityList.addFirst(pvpDefenceRecordEntity);
+		while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
+			pvpDefenceRecordEntityList.removeLast().delete(true);
+		}
+	}
+	
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -805,7 +835,44 @@ public class PlayerData {
 			}
 		}
 	}
+	
+	public void loadPVPDefenceData(){
+		if (pvpDefenceEntity == null) {			
+			pvpDefenceEntity = PVPManager.getInstance().getPVPDefenceEntity(getId(), getNickname(), getLevel());	
+		}
+	}
 
+	public PVPRankEntity loadPVPRankData(){
+		PVPRankEntity rankEntity = null;
+		List<PVPRankEntity> resultList = HawkDBManager.getInstance().query("from PVPRankEntity where playerId = ? and invalid = 0", getId());
+		if (resultList != null && resultList.size() > 0) {
+			rankEntity = resultList.get(0);
+		}
+		if (rankEntity == null) {
+			rankEntity = new PVPRankEntity();
+			rankEntity.setPlayerId(getId());
+			rankEntity.setName(player.getName());
+			rankEntity.setLevel(getLevel());
+			rankEntity.setPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			rankEntity.notifyCreate();
+		}
+		
+		return rankEntity;
+	}
+	
+	public void loadPVPDefenceRecordData(){
+		if (pvpDefenceRecordEntityList == null || pvpDefenceRecordEntityList.isEmpty()) {
+			List<PVPDefenceRecordEntity> resultList = HawkDBManager.getInstance().query("from PVPDefenceRecordEntity where playerId = ? and invalid = 0 order by id DESC ", getId());
+			if (resultList != null && resultList.size() > 0) {
+				pvpDefenceRecordEntityList.addAll(resultList);
+				while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
+					PVPDefenceRecordEntity pvpDefenceRecordEntity = pvpDefenceRecordEntityList.removeLast();
+					pvpDefenceRecordEntity.delete(true);
+				}
+			}
+		}
+	}
+	
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/

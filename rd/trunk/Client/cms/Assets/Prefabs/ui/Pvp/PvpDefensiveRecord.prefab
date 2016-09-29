@@ -198,6 +198,7 @@ GameObject:
   - 222: {fileID: 22260818}
   - 114: {fileID: 11497556}
   - 114: {fileID: 11459604}
+  - 95: {fileID: 9515750}
   m_Layer: 5
   m_Name: PvpDefensiveRecord
   m_TagString: Untagged
@@ -392,6 +393,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &9515750
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f42e599cf5367264b940a1bb2dee25e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11409744
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,7 +7,6 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderAdapter;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 import org.hawk.app.HawkApp;
-import org.hawk.app.HawkAppCfg;
 import org.hawk.cryption.HawkEncryption;
 import org.hawk.net.HawkNetStatistics;
 import org.hawk.net.HawkSession;

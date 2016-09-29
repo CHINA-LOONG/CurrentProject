@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.nativeapi.HawkNativeApi;
 import org.hawk.os.HawkException;
