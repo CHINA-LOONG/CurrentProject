@@ -17,6 +17,18 @@ public class PrompMsgRefreshCondition : UIBase
 
     private string content;
     private TimeEventWrap timeWrap;
+    public TimeEventWrap TimeWrap
+    {
+        get { return timeWrap; }
+        set
+        {
+            if (TimeWrap != null)
+            {
+                TimeWrap.RemoveUpdateEvent(OnUpdateTime);
+            }
+            timeWrap = value;
+        }
+    }
     private int changeAmount;
     private PromptMsg.PrompDelegate callBack;
     private bool autoClose;
@@ -52,15 +64,11 @@ public class PrompMsgRefreshCondition : UIBase
 
     void OnAdventureConditionCountChangeNotify()
     {
-        if (timeWrap!=null)
-        {
-            timeWrap.RemoveUpdateEvent(OnUpdateTime);
-        }
-        timeWrap = AdventureDataMgr.Instance.ConditionTimeEvent;
+        TimeWrap = AdventureDataMgr.Instance.ConditionTimeEvent;
         changeAmount = AdventureDataMgr.Instance.AdventureChange;
-        if (timeWrap!=null)
+        if (TimeWrap!=null)
         {
-            timeWrap.AddUpdateEvent(OnUpdateTime);
+            TimeWrap.AddUpdateEvent(OnUpdateTime);
         }
         else if (changeAmount >= GameConfig.MaxAdventurePoint)
         {
@@ -84,10 +92,7 @@ public class PrompMsgRefreshCondition : UIBase
 
     public void Close()
     {
-        if (timeWrap != null)
-        {
-            timeWrap.RemoveUpdateEvent(OnUpdateTime);
-        }
+        TimeWrap = null;
         UIMgr.Instance.DestroyUI(this);
     }
 

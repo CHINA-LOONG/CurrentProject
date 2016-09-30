@@ -27,35 +27,35 @@ public class AdventureGuildMonsterInfo
 
     public System.Action<bool,AdventureGuildMonsterInfo> setSelect;
 
-    public static bool operator ==(AdventureGuildMonsterInfo a, AdventureGuildMonsterInfo b)
-    {
-        if ((a as object) != null && (b as object) != null)
-        {
-            if (a.unit.monsterId == b.unit.monsterId)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if ((a as object) == null && (b as object) == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-    public static bool operator !=(AdventureGuildMonsterInfo a, AdventureGuildMonsterInfo b)
-    {
-        return !(a == b);
-    }
+    //public static bool operator ==(AdventureGuildMonsterInfo a, AdventureGuildMonsterInfo b)
+    //{
+    //    if ((a as object) != null && (b as object) != null)
+    //    {
+    //        if (a.unit.monsterId == b.unit.monsterId)
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if ((a as object) == null && (b as object) == null)
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //}
+    //public static bool operator !=(AdventureGuildMonsterInfo a, AdventureGuildMonsterInfo b)
+    //{
+    //    return !(a == b);
+    //}
 }
 
 public interface IAdventureGuildMonster
@@ -87,7 +87,8 @@ public class AdventureGuildMonster : MonoBehaviour
     {
         CurData = info;
 
-        textName.text = CurData.unit.nickname;
+        //textName.text = CurData.unit.nickname;
+        UIUtil.SubstringByText(textName, CurData.unit.nickname);
         textCoin.text = CurData.sociatyData.coinHire.ToString();
 
         if (monsterIcon==null)
@@ -95,6 +96,7 @@ public class AdventureGuildMonster : MonoBehaviour
             monsterIcon = MonsterIcon.CreateIcon();
             UIUtil.SetParentReset(monsterIcon.transform, iconPos);
             ScrollViewEventListener.Get(monsterIcon.iconButton.gameObject).onClick = OnClickGuildIcon;
+            ScrollViewEventListener.Get(monsterIcon.iconButton.gameObject).onPressEnter = OnPressEnterGuildIcon;
         }
         else
         {
@@ -128,6 +130,11 @@ public class AdventureGuildMonster : MonoBehaviour
         }
     }
 
+    void OnPressEnterGuildIcon(GameObject go)
+    {
+        AdventureGuildMonster micon = go.GetComponentInParent<AdventureGuildMonster>();
+        UIMonsterInfo.Open(micon.CurData.unit.id, micon.CurData.unit.cfgId, micon.CurData.unit.level, micon.CurData.unit.stage);
+    }
 
 
 }

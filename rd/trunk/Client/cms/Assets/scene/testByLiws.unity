@@ -295,7 +295,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: -1000431895
-  m_SortingOrder: 1
+  m_SortingOrder: 10
 --- !u!1 &180506909
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +414,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0615659d913cba7408a8f4e94dbb01d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &631427224 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 143772, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+  m_PrefabInternal: {fileID: 1505855636}
+--- !u!114 &631427227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631427224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 1
+  isUI: 1
 --- !u!1 &678950673
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +718,34 @@ Prefab:
     - target: {fileID: 22475310, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479156, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.r
+      value: .415686309
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479156, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.g
+      value: .34117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479156, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.b
+      value: .423529446
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.r
+      value: .415686309
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.g
+      value: .34117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.b
+      value: .423529446
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Color.a
+      value: .39199999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}

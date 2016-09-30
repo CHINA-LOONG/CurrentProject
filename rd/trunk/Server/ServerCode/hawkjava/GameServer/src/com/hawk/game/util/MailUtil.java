@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 import org.hawk.app.HawkApp;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.xid.HawkXID;
@@ -59,6 +60,22 @@ public class MailUtil {
 		SendMail(mailInfo, receiverId, 0, mailCfg.getSender(lang));
 	}
 
+	/**
+	 * 单发系统邮件，多语言
+	 */
+	public static void SendSysMailWithReward(MailSysCfg mailCfg, int receiverId, String rewardId, Object... contentArgs) {
+		MailInfo mailInfo = new MailInfo();
+		String lang = ServerData.getInstance().getPlayerLang(receiverId);
+		mailInfo.subject = mailCfg.getSubject(lang);
+		mailInfo.content = MessageFormat.format(mailCfg.getContent(lang), contentArgs);
+		RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
+		if (reward != null) {
+			mailInfo.rewardList = reward.getRewardList();
+		}
+
+		SendMail(mailInfo, receiverId, 0, mailCfg.getSender(lang));
+	}
+	
 	/**
 	 * 群发邮件，单语言
 	 */

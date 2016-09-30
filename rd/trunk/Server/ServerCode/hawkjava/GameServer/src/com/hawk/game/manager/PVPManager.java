@@ -18,7 +18,11 @@ import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.ServerData;
+import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.PVPCfg;
+import com.hawk.game.config.PVPRankRewardCfg;
+import com.hawk.game.config.PVPStageRewardCfg;
 import com.hawk.game.entity.PVPDefenceEntity;
 import com.hawk.game.entity.PVPDefenceRecordEntity;
 import com.hawk.game.entity.PVPRankEntity;
@@ -33,6 +37,7 @@ import com.hawk.game.protocol.PVP.HSPVPSettleRet;
 import com.hawk.game.protocol.PVP.PVPRankData;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
 
 public class PVPManager extends HawkAppObj {
 	
@@ -102,7 +107,7 @@ public class PVPManager extends HawkAppObj {
 	 * 数据加载
 	 */
 	public boolean init() {	
-		List<PVPRankEntity> PVPRankEntities = HawkDBManager.getInstance().query("from PVPRankEntity where invalid = 0 and point != 0 order by point desc");
+		List<PVPRankEntity> PVPRankEntities = HawkDBManager.getInstance().query("from PVPRankEntity where invalid = 0 and inRank = 1 order by point desc");
 		if (PVPRankEntities.isEmpty() == false) {
 			int rank = 0;
 			for (PVPRankEntity pvpRankEntity : PVPRankEntities) {
@@ -133,6 +138,14 @@ public class PVPManager extends HawkAppObj {
 		}
 		else if (msg.getMsg() == GsConst.MsgType.PVP_RANK_LIST) {
 			onPVPRankList(msg);
+			return true;
+		}
+		else if (msg.getMsg() == GsConst.MsgType.PVP_WEAK_REWARD) {
+			onPVPWeakReward(msg);
+			return true;
+		}
+		else if (msg.getMsg() == GsConst.MsgType.PLAYER_LEVEL_UP) {
+			onPlayerLevelUp(msg);
 			return true;
 		}
 		
@@ -240,6 +253,11 @@ public class PVPManager extends HawkAppObj {
 		PVPRankEntity rankEntity = playerRankMap.get(player.getId());
 		if (rankEntity == null) {
 			rankEntity = player.getPlayerData().loadPVPRankData();
+			if (rankEntity.getInRank() == false) {
+				rankEntity.setInRank(true);
+				rankEntity.notifyUpdate(true);
+			}
+			
 			// 进入匹配池
 			pvpCfg = PVPCfg.getPVPStageCfg(rankEntity.getPoint());
 			if (pvpCfg == null) {
@@ -303,6 +321,9 @@ public class PVPManager extends HawkAppObj {
 				return;
 			}
 		}
+		
+		rankEntity.setPvpCount(rankEntity.getPvpCount() + 1);
+		rankEntity.notifyUpdate(true);
 		
 		// 加入到房间
 		pvpRoomList.put(player.getId(), new PVPRoom(target.getPlayerId(), target));
@@ -395,6 +416,99 @@ public class PVPManager extends HawkAppObj {
 	public void onPVPRankList(HawkMsg msg){
 		Player player = msg.getParam(0);
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_RANK_LIST_S_VALUE, pvpRankBuilder));	
+	}
+	
+	/**
+	 * pvp 周结算
+	 * @param msg
+	 */
+	public void onPVPWeakReward(HawkMsg msg){
+		for (PVPRankEntity rankEntity : pvpRankList) {
+			PVPCfg pvpCfg = PVPCfg.getPVPStageCfg(rankEntity.getPoint());
+			if (pvpCfg == null) {
+				continue;
+			}
+			
+			PVPStageRewardCfg pvpStageRewardCfg = HawkConfigManager.getInstance().getConfigByKey(PVPStageRewardCfg.class, pvpCfg.getStage());
+			if (pvpStageRewardCfg == null) {
+				continue;
+			}
+			
+			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.PVP_WAEK_GRADE_REWARD);
+			if (mailCfg != null) {
+				MailUtil.SendSysMailWithReward(mailCfg, rankEntity.getPlayerId(), pvpStageRewardCfg.getReward1());
+			}
+		}
+		
+		//月结算
+		onPVPMonthReward();
+	}
+	
+	/**
+	 * pvp 月结算
+	 */
+	public void onPVPMonthReward(){
+		if (ServerData.getInstance().getPVPWeakRewardCount() == 3) {
+			ServerData.getInstance().setPVPWeakRewardCoutn(0);
+			
+			for (PVPRankEntity rankEntity: pvpRankList) {
+				PVPRankRewardCfg pvpRankRewardCfg = PVPRankRewardCfg.getPVPRankCfg(rankEntity.getLevel(), rankEntity.getRank() + 1);
+				if (pvpRankRewardCfg != null) {
+					MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.PVP_MONTH_RANK_REWARD);
+					if (mailCfg != null) {
+						MailUtil.SendSysMailWithReward(mailCfg, rankEntity.getPlayerId(), pvpRankRewardCfg.getReward1());
+					}
+				}
+			}
+			
+			// 新的排行榜  
+			Map<Integer, PVPRankEntity> playerRankMapTemp = new HashMap<>();
+			List<PVPRankEntity> pvpRankListTemp = new ArrayList<>(5000);
+			
+			for (PVPRankEntity rankEntity: pvpRankList) {
+				if (rankEntity.getPvpCount() == 0) {
+					rankEntity.setPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+					rankEntity.setInRank(false);
+				}
+				else {
+					rankEntity.setPoint((int) ((rankEntity.getPoint() - GsConst.PVP.PVP_DEFAULT_POINT) / GsConst.PVP.PVP_RERANK_K_VALUE + GsConst.PVP.PVP_DEFAULT_POINT));			
+					rankEntity.setInRank(true);
+					rankEntity.setRank(pvpRankListTemp.size());
+					rankEntity.setPvpCount(0);
+					pvpRankListTemp.add(rankEntity);
+					playerRankMapTemp.put(rankEntity.getPlayerId(), rankEntity);
+				}
+				
+				rankEntity.notifyUpdate(true);
+			}
+			
+			pvpRankList = pvpRankListTemp;
+			playerRankMap = playerRankMapTemp;
+			
+			generatePVPPool();
+		}
+		else {
+			ServerData.getInstance().setPVPWeakRewardCoutn(ServerData.getInstance().getPVPWeakRewardCount() + 1);
+		}
+	}
+	
+	/**
+	 * 玩家升级
+	 * @param msg
+	 */
+	public void onPlayerLevelUp(HawkMsg msg){
+		Player player = msg.getParam(0);
+		
+		PVPRankEntity rankEntity = playerRankMap.get(player.getId());
+		if (rankEntity != null) {
+			rankEntity.setLevel(player.getLevel());
+			rankEntity.notifyUpdate(true);
+		}
+		
+		if (player.getPlayerData().getPVPDefenceEntity() != null) {
+			player.getPlayerData().getPVPDefenceEntity().setLevel(player.getLevel());
+			player.getPlayerData().getPVPDefenceEntity().notifyUpdate(true);
+		}
 	}
 	
 	/**

@@ -16,7 +16,9 @@ public enum InstanceType
     Normal = PB.InstanceType.INSTANCE_STORY,
     Hole = PB.InstanceType.INSTANCE_HOLE,
     Tower = PB.InstanceType.INSTANCE_TOWER,
-    Guild = PB.InstanceType.INSTANCE_GUILD
+    Guild = PB.InstanceType.INSTANCE_GUILD,
+    //test
+    PVP
 }
 
 public class UIAdjustBattleTeam : UIBase
@@ -762,7 +764,7 @@ public class UIAdjustBattleTeam : UIBase
     {
         string msg = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi");
         int times = InstanceMapService.Instance.instanceResetTimes;
-        InstanceReset insReset = StaticDataMgr.Instance.GetInstanceReset("1");
+        InstanceReset insReset = StaticDataMgr.Instance.InstanceReset;
         resetInstanceCost = insReset.GetBaseZuanshiWithTime(times + 1);
 
         string optionMsg = string.Format(StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhiTimes"), times);
@@ -1108,6 +1110,10 @@ public class UIAdjustBattleTeam : UIBase
             }
 
             GameApp.Instance.netManager.SendMessage(PB.code.GUILD_INSTANCE_ENTER_C.GetHashCode(), param);
+        }
+        else if (instanceType == InstanceType.PVP)
+        {
+
         }
         else
         {

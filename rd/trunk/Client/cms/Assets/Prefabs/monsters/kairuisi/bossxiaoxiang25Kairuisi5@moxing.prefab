@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 412904}
   - 137: {fileID: 13717836}
+  - 114: {fileID: 11450964}
   m_Layer: 10
   m_Name: mesh_weapon
   m_TagString: Untagged
@@ -1194,7 +1195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .100000001, z: -.379999995}
   m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
   m_Children:
   - {fileID: 437864}
@@ -2243,6 +2244,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11450964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 10742517b99c0a242842437874b382c5, type: 2}
 --- !u!114 &11478518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2265,7 +2278,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ee0ea69ffce28464cae3d2178ae1e0c2, type: 2}
+  - {fileID: 2100000, guid: fa47717cf5bf9694a92febd99b330ce0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2355,7 +2368,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ee0ea69ffce28464cae3d2178ae1e0c2, type: 2}
+  - {fileID: 2100000, guid: fa47717cf5bf9694a92febd99b330ce0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

@@ -8848,6 +8848,60 @@ public final class Statistics {
      * </pre>
      */
     com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder getExpLeftTimesOrBuilder();
+
+    // required int32 signinTimesMonthly = 6;
+    /**
+     * <code>required int32 signinTimesMonthly = 6;</code>
+     *
+     * <pre>
+     * 本月签到次数（包括补签）
+     * </pre>
+     */
+    boolean hasSigninTimesMonthly();
+    /**
+     * <code>required int32 signinTimesMonthly = 6;</code>
+     *
+     * <pre>
+     * 本月签到次数（包括补签）
+     * </pre>
+     */
+    int getSigninTimesMonthly();
+
+    // required int32 signinFillTimesMonthly = 7;
+    /**
+     * <code>required int32 signinFillTimesMonthly = 7;</code>
+     *
+     * <pre>
+     * 本月补签次数
+     * </pre>
+     */
+    boolean hasSigninFillTimesMonthly();
+    /**
+     * <code>required int32 signinFillTimesMonthly = 7;</code>
+     *
+     * <pre>
+     * 本月补签次数
+     * </pre>
+     */
+    int getSigninFillTimesMonthly();
+
+    // required bool isSigninDaily = 8;
+    /**
+     * <code>required bool isSigninDaily = 8;</code>
+     *
+     * <pre>
+     * 今日是否已签到
+     * </pre>
+     */
+    boolean hasIsSigninDaily();
+    /**
+     * <code>required bool isSigninDaily = 8;</code>
+     *
+     * <pre>
+     * 今日是否已签到
+     * </pre>
+     */
+    boolean getIsSigninDaily();
   }
   /**
    * Protobuf type {@code HSStatisticsSyncPart3}
@@ -8934,6 +8988,21 @@ public final class Statistics {
                 expLeftTimes_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000008;
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              signinTimesMonthly_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              signinFillTimesMonthly_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000040;
+              isSigninDaily_ = input.readBool();
               break;
             }
           }
@@ -9172,12 +9241,87 @@ public final class Statistics {
       return expLeftTimes_;
     }
 
+    // required int32 signinTimesMonthly = 6;
+    public static final int SIGNINTIMESMONTHLY_FIELD_NUMBER = 6;
+    private int signinTimesMonthly_;
+    /**
+     * <code>required int32 signinTimesMonthly = 6;</code>
+     *
+     * <pre>
+     * 本月签到次数（包括补签）
+     * </pre>
+     */
+    public boolean hasSigninTimesMonthly() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 signinTimesMonthly = 6;</code>
+     *
+     * <pre>
+     * 本月签到次数（包括补签）
+     * </pre>
+     */
+    public int getSigninTimesMonthly() {
+      return signinTimesMonthly_;
+    }
+
+    // required int32 signinFillTimesMonthly = 7;
+    public static final int SIGNINFILLTIMESMONTHLY_FIELD_NUMBER = 7;
+    private int signinFillTimesMonthly_;
+    /**
+     * <code>required int32 signinFillTimesMonthly = 7;</code>
+     *
+     * <pre>
+     * 本月补签次数
+     * </pre>
+     */
+    public boolean hasSigninFillTimesMonthly() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 signinFillTimesMonthly = 7;</code>
+     *
+     * <pre>
+     * 本月补签次数
+     * </pre>
+     */
+    public int getSigninFillTimesMonthly() {
+      return signinFillTimesMonthly_;
+    }
+
+    // required bool isSigninDaily = 8;
+    public static final int ISSIGNINDAILY_FIELD_NUMBER = 8;
+    private boolean isSigninDaily_;
+    /**
+     * <code>required bool isSigninDaily = 8;</code>
+     *
+     * <pre>
+     * 今日是否已签到
+     * </pre>
+     */
+    public boolean hasIsSigninDaily() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required bool isSigninDaily = 8;</code>
+     *
+     * <pre>
+     * 今日是否已签到
+     * </pre>
+     */
+    public boolean getIsSigninDaily() {
+      return isSigninDaily_;
+    }
+
     private void initFields() {
       orderServerKey_ = "";
       rechargeState_ = java.util.Collections.emptyList();
       monthCardLeft_ = 0;
       gold2CoinTimes_ = 0;
       expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
+      signinTimesMonthly_ = 0;
+      signinFillTimesMonthly_ = 0;
+      isSigninDaily_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9197,6 +9341,18 @@ public final class Statistics {
         return false;
       }
       if (!hasExpLeftTimes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSigninTimesMonthly()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSigninFillTimesMonthly()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIsSigninDaily()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9232,6 +9388,15 @@ public final class Statistics {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(5, expLeftTimes_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(6, signinTimesMonthly_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, signinFillTimesMonthly_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(8, isSigninDaily_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9260,6 +9425,18 @@ public final class Statistics {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, expLeftTimes_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, signinTimesMonthly_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, signinFillTimesMonthly_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, isSigninDaily_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9397,6 +9574,12 @@ public final class Statistics {
           expLeftTimesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
+        signinTimesMonthly_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        signinFillTimesMonthly_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        isSigninDaily_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -9454,6 +9637,18 @@ public final class Statistics {
         } else {
           result.expLeftTimes_ = expLeftTimesBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.signinTimesMonthly_ = signinTimesMonthly_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.signinFillTimesMonthly_ = signinFillTimesMonthly_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.isSigninDaily_ = isSigninDaily_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9510,6 +9705,15 @@ public final class Statistics {
         if (other.hasExpLeftTimes()) {
           mergeExpLeftTimes(other.getExpLeftTimes());
         }
+        if (other.hasSigninTimesMonthly()) {
+          setSigninTimesMonthly(other.getSigninTimesMonthly());
+        }
+        if (other.hasSigninFillTimesMonthly()) {
+          setSigninFillTimesMonthly(other.getSigninFillTimesMonthly());
+        }
+        if (other.hasIsSigninDaily()) {
+          setIsSigninDaily(other.getIsSigninDaily());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -9528,6 +9732,18 @@ public final class Statistics {
           return false;
         }
         if (!hasExpLeftTimes()) {
+          
+          return false;
+        }
+        if (!hasSigninTimesMonthly()) {
+          
+          return false;
+        }
+        if (!hasSigninFillTimesMonthly()) {
+          
+          return false;
+        }
+        if (!hasIsSigninDaily()) {
           
           return false;
         }
@@ -10222,6 +10438,153 @@ public final class Statistics {
           expLeftTimes_ = null;
         }
         return expLeftTimesBuilder_;
+      }
+
+      // required int32 signinTimesMonthly = 6;
+      private int signinTimesMonthly_ ;
+      /**
+       * <code>required int32 signinTimesMonthly = 6;</code>
+       *
+       * <pre>
+       * 本月签到次数（包括补签）
+       * </pre>
+       */
+      public boolean hasSigninTimesMonthly() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 signinTimesMonthly = 6;</code>
+       *
+       * <pre>
+       * 本月签到次数（包括补签）
+       * </pre>
+       */
+      public int getSigninTimesMonthly() {
+        return signinTimesMonthly_;
+      }
+      /**
+       * <code>required int32 signinTimesMonthly = 6;</code>
+       *
+       * <pre>
+       * 本月签到次数（包括补签）
+       * </pre>
+       */
+      public Builder setSigninTimesMonthly(int value) {
+        bitField0_ |= 0x00000020;
+        signinTimesMonthly_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 signinTimesMonthly = 6;</code>
+       *
+       * <pre>
+       * 本月签到次数（包括补签）
+       * </pre>
+       */
+      public Builder clearSigninTimesMonthly() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        signinTimesMonthly_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 signinFillTimesMonthly = 7;
+      private int signinFillTimesMonthly_ ;
+      /**
+       * <code>required int32 signinFillTimesMonthly = 7;</code>
+       *
+       * <pre>
+       * 本月补签次数
+       * </pre>
+       */
+      public boolean hasSigninFillTimesMonthly() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int32 signinFillTimesMonthly = 7;</code>
+       *
+       * <pre>
+       * 本月补签次数
+       * </pre>
+       */
+      public int getSigninFillTimesMonthly() {
+        return signinFillTimesMonthly_;
+      }
+      /**
+       * <code>required int32 signinFillTimesMonthly = 7;</code>
+       *
+       * <pre>
+       * 本月补签次数
+       * </pre>
+       */
+      public Builder setSigninFillTimesMonthly(int value) {
+        bitField0_ |= 0x00000040;
+        signinFillTimesMonthly_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 signinFillTimesMonthly = 7;</code>
+       *
+       * <pre>
+       * 本月补签次数
+       * </pre>
+       */
+      public Builder clearSigninFillTimesMonthly() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        signinFillTimesMonthly_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool isSigninDaily = 8;
+      private boolean isSigninDaily_ ;
+      /**
+       * <code>required bool isSigninDaily = 8;</code>
+       *
+       * <pre>
+       * 今日是否已签到
+       * </pre>
+       */
+      public boolean hasIsSigninDaily() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required bool isSigninDaily = 8;</code>
+       *
+       * <pre>
+       * 今日是否已签到
+       * </pre>
+       */
+      public boolean getIsSigninDaily() {
+        return isSigninDaily_;
+      }
+      /**
+       * <code>required bool isSigninDaily = 8;</code>
+       *
+       * <pre>
+       * 今日是否已签到
+       * </pre>
+       */
+      public Builder setIsSigninDaily(boolean value) {
+        bitField0_ |= 0x00000080;
+        isSigninDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool isSigninDaily = 8;</code>
+       *
+       * <pre>
+       * 今日是否已签到
+       * </pre>
+       */
+      public Builder clearIsSigninDaily() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        isSigninDaily_ = false;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:HSStatisticsSyncPart3)
@@ -12355,16 +12718,18 @@ public final class Statistics {
       "(\005\022\"\n\032summonDiamondFreeBeginTime\030\t \002(\005\022 " +
       "\n\030summonCoinFreeTimesDaily\030\n \002(\005\022\036\n\026summ" +
       "onCoinFreeLastTime\030\013 \002(\005\022\026\n\016hiredMonster" +
-      "Id\030\014 \003(\005\"\260\001\n\025HSStatisticsSyncPart3\022\026\n\016or" +
+      "Id\030\014 \003(\005\"\203\002\n\025HSStatisticsSyncPart3\022\026\n\016or" +
       "derServerKey\030\001 \002(\t\022%\n\rrechargeState\030\002 \003(" +
       "\0132\016.RechargeState\022\025\n\rmonthCardLeft\030\003 \002(\005" +
       "\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeftTimes",
-      "\030\005 \002(\0132\023.HSSyncExpLeftTimes\"3\n\022HSSyncDai" +
-      "lyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState" +
-      "\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncShopRe" +
-      "fresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeft" +
-      "Times\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleEx" +
-      "pLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\030\005 \002(\0132\023.HSSyncExpLeftTimes\022\032\n\022signinTim" +
+      "esMonthly\030\006 \002(\005\022\036\n\026signinFillTimesMonthl" +
+      "y\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\"3\n\022HSSync" +
+      "DailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleSt" +
+      "ate\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncSho" +
+      "pRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpL" +
+      "eftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripl" +
+      "eExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12424,7 +12789,7 @@ public final class Statistics {
           internal_static_HSStatisticsSyncPart3_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart3_descriptor,
-              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
+              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", });
           internal_static_HSSyncDailyRefresh_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new

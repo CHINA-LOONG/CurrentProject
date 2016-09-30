@@ -134,6 +134,23 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterDefence")]
+  public partial class HSMonsterDefence : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterDefence() {}
+    
+    private readonly global::System.Collections.Generic.List<HSMonster> _monsterInfo = new global::System.Collections.Generic.List<HSMonster>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"monsterInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSMonster> monsterInfo
+    {
+      get { return _monsterInfo; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterInfoSync")]
   public partial class HSMonsterInfoSync : global::ProtoBuf.IExtensible
   {

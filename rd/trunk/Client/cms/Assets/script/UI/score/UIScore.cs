@@ -460,17 +460,24 @@ public class UIScore : UIBase
                 mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
                 break;
         }
-
-        mBackground.SetActive(true);
-        mLineMonsterItem.SetActive(true);
-        //show player info
-        mPlayerInfoRoot.SetActive(true);
-        //show monster info
-        mMonsterExpList.gameObject.SetActive(true);
-        //show item drop info
-        mItemGainList.gameObject.SetActive(true);
-        //show button
-        //normal instance
+        if (!mIsSuccess)
+        {
+            LoseGuide loseGuide = UIMgr.Instance.OpenUI_(LoseGuide.ViewName) as LoseGuide;
+            loseGuide.SetLoseGuide(BattleController.Instance.isUseWpFindWpInBattle);
+        }
+        else
+        {
+            mBackground.SetActive(true);
+            mLineMonsterItem.SetActive(true);
+            //show player info
+            mPlayerInfoRoot.SetActive(true);
+            //show monster info
+            mMonsterExpList.gameObject.SetActive(true);
+            //show item drop info
+            mItemGainList.gameObject.SetActive(true);
+            //show button
+            //normal instance
+        }
         if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
         {
             if (mIsSuccess == true)
@@ -537,7 +544,8 @@ public class UIScore : UIBase
     private void SetInitPlayerInfo(PlayerLevelAttr playerAttr, PlayerData playerData)
     {
         //TODO: duplicate code
-        //mPlayerInfoRoot.SetActive(true);
+        if (!mIsSuccess)
+            return;
         mPlayerGainGold.text = "+0";
         mPlayerGainExp.text = "+0";
         mPlayerProgress.SetLoopCount(0);

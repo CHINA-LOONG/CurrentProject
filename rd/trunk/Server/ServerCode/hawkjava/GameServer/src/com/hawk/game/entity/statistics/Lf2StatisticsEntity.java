@@ -139,9 +139,17 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "monthCardEndTime")
 	protected Calendar monthCardEndTime = null;
 
-	// 签到次数
-	@Column(name = "signInTimes", nullable = false)
-	protected int signInTimes = 0;
+	// 本月签到次数（包括补签）
+	@Column(name = "signinTimesMonthly", nullable = false)
+	protected int signinTimesMonthly = 0;
+
+	// 本月补签次数
+	@Column(name = "signinFillTimesMonthly", nullable = false)
+	protected int signinFillTimesMonthly = 0;
+
+	// 今日是否已签到
+	@Column(name = "signinDaily", nullable = false)
+	protected boolean signinDaily = false;
 
 	// 登录次数
 	@Column(name = "loginTimes", nullable = false)

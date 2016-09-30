@@ -854,6 +854,7 @@ public class PlayerData {
 			rankEntity.setName(player.getName());
 			rankEntity.setLevel(getLevel());
 			rankEntity.setPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			rankEntity.setInRank(true);
 			rankEntity.notifyCreate();
 		}
 		

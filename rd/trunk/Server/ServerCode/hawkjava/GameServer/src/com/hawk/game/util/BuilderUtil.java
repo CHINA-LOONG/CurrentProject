@@ -174,6 +174,9 @@ public class BuilderUtil {
 
 		builder.setGold2CoinTimes(statisticsEntity.getBuyCoinTimesDaily());
 		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
+		builder.setSigninTimesMonthly(statisticsEntity.getSigninTimesMonthly());
+		builder.setSigninFillTimesMonthly(statisticsEntity.getSigninFillTimesMonthly());
+		builder.setIsSigninDaily(statisticsEntity.isSigninDaily());
 
 		return builder;
 	}

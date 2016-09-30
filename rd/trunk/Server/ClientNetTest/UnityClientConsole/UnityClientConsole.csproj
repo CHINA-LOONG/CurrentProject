@@ -92,6 +92,7 @@
     <Compile Include="Protocol\Role.cs" />
     <Compile Include="Protocol\Setting.cs" />
     <Compile Include="Protocol\Shop.cs" />
+    <Compile Include="Protocol\Signin.cs" />
     <Compile Include="Protocol\Skill.cs" />
     <Compile Include="Protocol\Statistics.cs" />
     <Compile Include="Protocol\Status.cs" />

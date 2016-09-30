@@ -19,10 +19,11 @@ public enum AttrType
 public class BattleConst
 {
     public const int offsiteSlot = -1;
-    public const int slotIndexMin = 0;
-    public const int slotIndexMax = 2;
+    public const byte slotIndexMin = 0;
+    public const byte slotIndexMax = 2;
+    public const byte slotIndexMaxPVP = 4;
 
-    public const int maxFieldUnit = 3;
+    public const int maxFieldUnit = 5;
     public const int maxRound = 100;
 
     //换宠冷却时间

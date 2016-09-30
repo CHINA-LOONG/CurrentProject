@@ -1562,12 +1562,42 @@ public class StatisticsEntity {
 	}
 
 	// signInTimes---------------------------------------------
-	public int getSignInTimes() {
-		return lf2Entity.signInTimes;
+	public int getSigninTimesMonthly() {
+		return lf2Entity.signinTimesMonthly;
 	}
 
-	public void increaseSignInTimes() {
-		++lf2Entity.signInTimes;
+	public void increaseSigninTimesMonthly() {
+		++lf2Entity.signinTimesMonthly;
+		lf2Update = true;
+	}
+	
+	public void clearSigninTimesMonthly() {
+		lf2Entity.signinTimesMonthly = 0;
+		lf2Update = true;
+	}
+
+	// signInFillTimes-----------------------------------------
+	public int getSigninFillTimesMonthly() {
+		return lf2Entity.signinFillTimesMonthly;
+	}
+
+	public void increaseSigninFillTimesMonthly() {
+		++lf2Entity.signinFillTimesMonthly;
+		lf2Update = true;
+	}
+
+	public void clearSigninFillTimesMonthly() {
+		lf2Entity.signinFillTimesMonthly = 0;
+		lf2Update = true;
+	}
+
+	// signinDaily----------------------------------------------
+	public boolean isSigninDaily() {
+		return lf2Entity.signinDaily;
+	}
+
+	public void setSigninDaily(boolean isSignin) {
+		lf2Entity.signinDaily = isSignin;
 		lf2Update = true;
 	}
 

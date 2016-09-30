@@ -3,7 +3,6 @@ using System.Collections;
 
 public class InstanceReset
 {
-    public string id;
     public int maxTimes;
     public int consume;
     public int  consumeAdd;

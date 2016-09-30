@@ -24,7 +24,10 @@ namespace PB
       HEART_BEAT = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=4)]
-      ERROR_CODE = 4
+      ERROR_CODE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WARN", Value=5)]
+      WARN = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"gm")]
@@ -122,6 +125,15 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_REWARD_S", Value=1104)]
       PLAYER_REWARD_S = 1104,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_C", Value=1201)]
+      SIGNIN_C = 1201,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FILL_C", Value=1202)]
+      SIGNIN_FILL_C = 1202,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_S", Value=1203)]
+      SIGNIN_S = 1203,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2001)]
       MONSTER_ADD_S = 2001,
@@ -769,7 +781,37 @@ namespace PB
       SYNC_SHOP_REFRESH_S = 11003,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SYNC_EXP_LEFT_TIMES_S", Value=11004)]
-      SYNC_EXP_LEFT_TIMES_S = 11004
+      SYNC_EXP_LEFT_TIMES_S = 11004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SET_DEFENCE_MONSTERS_C", Value=12001)]
+      PVP_SET_DEFENCE_MONSTERS_C = 12001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SET_DEFENCE_MONSTERS_S", Value=12002)]
+      PVP_SET_DEFENCE_MONSTERS_S = 12002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_MATCH_TARGET_C", Value=12003)]
+      PVP_MATCH_TARGET_C = 12003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_MATCH_TARGET_S", Value=12004)]
+      PVP_MATCH_TARGET_S = 12004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SETTLE_C", Value=12005)]
+      PVP_SETTLE_C = 12005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SETTLE_S", Value=12006)]
+      PVP_SETTLE_S = 12006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_RANK_LIST_C", Value=12007)]
+      PVP_RANK_LIST_C = 12007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_RANK_LIST_S", Value=12008)]
+      PVP_RANK_LIST_S = 12008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_RECORD_C", Value=12009)]
+      PVP_DEFENCE_RECORD_C = 12009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_RECORD_S", Value=12010)]
+      PVP_DEFENCE_RECORD_S = 12010
     }
   
 }

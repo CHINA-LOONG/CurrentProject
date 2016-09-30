@@ -19,13 +19,24 @@ public class UIAdventureLayout : UIBase,
     public Button btnCondition;
     public Button btnAdventure;
 
+    public Text textTeam;
+    public Text textSelf;
+    public Text textGuild;
+    public Text textSelfTips;
+    public Text textGuildTips;
+
+    public Text textBaseReward;
+    public Text textExtraReward;
+    public Text textCondition;
+    public Text textExtraReward2;
+    public Text textAdventure;
+
     public FixCountScrollView scrollSelf;
     private List<AdventureSelfMonsterInfo> allSelfs;    //通过检测是否为空来检测获取数据
     private List<AdventureSelfMonsterInfo> showSelfs = new List<AdventureSelfMonsterInfo>();
     public FixCountScrollView scrollGuild;
     private List<AdventureGuildMonsterInfo> allGuilds;  //通过检测是否为空来检测获取数据
     private List<AdventureGuildMonsterInfo> showGuilds = new List<AdventureGuildMonsterInfo>();
-    public Text textGuildTips;
 
     public List<AdventureTeamMonster> teamList = new List<AdventureTeamMonster>();
     private List<int> selfMonsterId = new List<int>();
@@ -67,6 +78,16 @@ public class UIAdventureLayout : UIBase,
         {
             teamList[i].IAdventureTeamMonsterDelegate = this;
         }
+        textTeam.text = StaticDataMgr.Instance.GetTextByID("adventure_paimonster");
+        textSelf.text = StaticDataMgr.Instance.GetTextByID("adventure_mymonster");
+        textGuild.text = StaticDataMgr.Instance.GetTextByID("sociaty_jidi");
+        textSelfTips.text = StaticDataMgr.Instance.GetTextByID("list_empty");
+        //textGuildTips.text = StaticDataMgr.Instance.GetTextByID("list_empty");//多个多语言
+        textBaseReward.text = StaticDataMgr.Instance.GetTextByID("adventure_foundationreward");
+        textExtraReward.text = StaticDataMgr.Instance.GetTextByID("adventure_extrareward");
+        textCondition.text = StaticDataMgr.Instance.GetTextByID("adventure_tipsextracondition");
+        textExtraReward2.text = StaticDataMgr.Instance.GetTextByID("adventure_extrareward");
+        textAdventure.text = StaticDataMgr.Instance.GetTextByID("adventure_go");
     }
     
     public void ReloadData(AdventureInfo info)
@@ -179,6 +200,8 @@ public class UIAdventureLayout : UIBase,
                 showSelfs.Add(monster);
             }
         }
+        textSelfTips.gameObject.SetActive(showSelfs.Count <= 0);
+        showSelfs.Sort(SelfSort);
         scrollSelf.InitContentSize(showSelfs.Count, this);
     }
     void FilterGuildMonster()
@@ -208,6 +231,7 @@ public class UIAdventureLayout : UIBase,
             else
             {
                 textGuildTips.gameObject.SetActive(false);
+                showGuilds.Sort(GuildSort);
                 scrollGuild.InitContentSize(showGuilds.Count, this);
             }
         }
@@ -243,7 +267,8 @@ public class UIAdventureLayout : UIBase,
         else if (monster is AdventureGuildMonsterInfo)
         {
             AdventureGuildMonsterInfo thisMonster = monster as AdventureGuildMonsterInfo;
-            if (((filterType != -1 && thisMonster.unitData.type == filterType) || (filterType == -1)) && ((filterProperty != -1 && thisMonster.unitData.property == filterProperty) || (filterProperty == -1)))
+            if (((needType != -1 && thisMonster.unitData.type == needType) || (needType == -1)) && 
+                ((needProperty != -1 && thisMonster.unitData.property == needProperty) || (needProperty == -1)))
             {
                 return true;
             }
@@ -286,6 +311,7 @@ public class UIAdventureLayout : UIBase,
             condition.ReloadData(conditionList[i]);
             conditions.Add(condition);
         }
+        UpdateAdventureTeamSelect();
     }
     AdventureConditionItem GetConditionItem()
     {
@@ -671,6 +697,7 @@ public class UIAdventureLayout : UIBase,
             curData.conditions = result.adventure.condition;
             RefreshAdventureCondition(curData.conditions);
             FilterMonster(-1, -1);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_006"), (int)PB.ImType.PROMPT);
         }
         else
         {
@@ -835,6 +862,7 @@ public class UIAdventureLayout : UIBase,
         else
         {
             Logger.Log("上阵宠物已经包含公会宠物");
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_008"), (int)PB.ImType.PROMPT);
         }
     }
     #endregion
@@ -852,4 +880,89 @@ public class UIAdventureLayout : UIBase,
         }
     }
     #endregion
+
+    #region static Sort
+    /*
+    显示顺序如下：	
+    1.优先按照怪物的等级从低至高排列	
+    2.然后按照怪物品级从低至高排列	
+    3.最后按照怪物的稀有度从低至高排列
+    */
+    static int SelfSort(AdventureSelfMonsterInfo a, AdventureSelfMonsterInfo b)
+    {
+        int result = 0;
+        try
+        {
+            if (a.unit.pbUnit.level == b.unit.pbUnit.level)
+            {
+                if (a.unit.pbUnit.stage == b.unit.pbUnit.stage)
+                {
+                    int selfGrade = a.unitData.rarity;
+                    int targetGrade = b.unitData.rarity;
+                    if (selfGrade == targetGrade)
+                    {
+                        result = 0;
+                    }
+                    else
+                    {
+                        result = selfGrade < targetGrade ? -1 : 1;
+                    }
+                }
+                else
+                {
+                    result = a.unit.pbUnit.stage < b.unit.pbUnit.stage ? -1 : 1;
+                }
+            }
+            else
+            {
+                result = a.unit.pbUnit.level < b.unit.pbUnit.level ? -1 : 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        return result;
+    }
+
+static int GuildSort(AdventureGuildMonsterInfo a, AdventureGuildMonsterInfo b)
+    {
+        int result = 0;
+        try
+        {
+            if (a.unit.level == b.unit.level)
+            {
+                if (a.unit.stage == b.unit.stage)
+                {
+                    int selfGrade = a.unitData.rarity;
+                    int targetGrade = b.unitData.rarity;
+                    if (selfGrade == targetGrade)
+                    {
+                        result = 0;
+                    }
+                    else
+                    {
+                        result = selfGrade < targetGrade ? -1 : 1;
+                    }
+                }
+                else
+                {
+                    result = a.unit.stage < b.unit.stage ? -1 : 1;
+                }
+            }
+            else
+            {
+                result = a.unit.level < b.unit.level ? -1 : 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        return result;
+    }
+
+
+#endregion
+
 }

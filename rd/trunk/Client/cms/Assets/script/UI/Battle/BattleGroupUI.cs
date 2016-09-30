@@ -154,6 +154,7 @@ public class BattleGroupUI : MonoBehaviour
             if (lifeChange.vitalType != (int)VitalType.Vital_Type_Shield)
             {
                 enemyUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
+                enemyUI.StartShake();//血条震动
                 return;
             }
             else

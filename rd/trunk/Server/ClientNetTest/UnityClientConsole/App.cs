@@ -227,11 +227,11 @@ namespace UnityClientConsole
                // settingBlock.isBlock = true;
                // netmanaget.SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
                // Console.WriteLine("屏蔽");
-
-                //HSSettingLanguage settingLang = new HSSettingLanguage();
-                //settingLang.language = "zh-CN";
-                //NetManager.GetInstance().SendProtocol(code.SETTING_LANGUAGE_C.GetHashCode(), settingLang);
-                //Console.WriteLine("设置语言");
+// 
+//                 HSSettingLanguage settingLang = new HSSettingLanguage();
+//                 settingLang.language = "en";
+//                 netmanaget.SendProtocol(code.SETTING_LANGUAGE_C.GetHashCode(), settingLang);
+//                 Console.WriteLine("设置语言");
 
 //                 HSImChatSend chatSend = new HSImChatSend();
 //                 chatSend.channel = ImChannel.WORLD.GetHashCode();
@@ -426,6 +426,14 @@ namespace UnityClientConsole
 //                 HSSummonTen summonTen = new HSSummonTen();
 //                 summonTen.type = 4;
 //                 netmanaget.SendProtocol(code.SUMMON_TEN_C.GetHashCode(), summonTen);
+
+                HSSignin signin = new HSSignin();
+                signin.month = 2;
+                netmanaget.SendProtocol(code.SIGNIN_C.GetHashCode(), signin);
+
+                HSSigninFill signinFill = new HSSigninFill();
+                signinFill.month = 2;
+                netmanaget.SendProtocol(code.SIGNIN_FILL_C.GetHashCode(), signinFill);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
@@ -624,6 +632,12 @@ namespace UnityClientConsole
             {
                 HSSummonTenRet ten = protocol.GetProtocolBody<HSSummonTenRet>();
                 Console.WriteLine("十连抽");
+            }
+            // 签到----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.SIGNIN_S.GetHashCode()))
+            {
+                HSSigninRet signin = protocol.GetProtocolBody<HSSigninRet>();
+                Console.WriteLine("签到");
             }
         }
 

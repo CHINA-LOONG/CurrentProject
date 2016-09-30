@@ -63,6 +63,7 @@ import com.hawk.game.module.PlayerPVPModule;
 import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerSettingModule;
 import com.hawk.game.module.PlayerShopModule;
+import com.hawk.game.module.PlayerSigninModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.module.PlayerSummonModule;
 import com.hawk.game.protocol.Const;
@@ -134,6 +135,7 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.ADVENTURE_MODULE, new PlayerAdventureModule(this));
 		registerModule(GsConst.ModuleType.SUMMON_MODULE, new PlayerSummonModule(this));
 		registerModule(GsConst.ModuleType.PVP_MODULE, new PlayerPVPModule(this));
+		registerModule(GsConst.ModuleType.SIGNIN_MODULE, new PlayerSigninModule(this));
 		// 任务模块放其它模块后，用到其它模块数据
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		// 最后注册空闲模块, 用来消息收尾处理
@@ -761,7 +763,13 @@ public class Player extends HawkAppObj {
 			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post level up message failed: " + getName());
+				HawkLog.errPrintln("post level up message to alliance failed: " + getName());
+			}
+			
+			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+			msg.pushParam(this);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level up message to pvp failed: " + getName());
 			}
 		}
 
@@ -813,9 +821,15 @@ public class Player extends HawkAppObj {
 			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
-				HawkLog.errPrintln("post level up message failed: " + getName());
+				HawkLog.errPrintln("post level up message to alliance failed: " + getName());
 			}
 
+			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+			msg.pushParam(this);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level up message to pvp failed: " + getName());
+			}
+			
 			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
 		}
 

@@ -8,6 +8,7 @@ public class EnemyUnitUI : MonoBehaviour
 	public Text unitLevel;
 	public LifeBarUI lifeBar;
     public Image propertyImage;
+    public ShakeUi shakeUi;
 
     public BattleObject Unit
     {
@@ -69,6 +70,14 @@ public class EnemyUnitUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void StartShake()
+    {
+        if(null!=shakeUi)
+        {
+            shakeUi.SetShake();
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void Destroy()

@@ -11,7 +11,8 @@ public enum ExitInstanceType
     Exit_Instance_OK,
     Exit_Instance_Next,
     Exit_Instance_Retry,
-
+    Exit_Instance_Summon,
+    Exit_Instance_Pet,
     Num_Exit_Instance_Type
 }
 
@@ -117,6 +118,11 @@ public class BattleController : MonoBehaviour
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
     private bool battleSuccess;
+    private Byte mCurMaxSlotIndex;
+    public Byte CurMaxSlotIndex
+    {
+        get { return mCurMaxSlotIndex; }
+    }
 
     public bool isUseWpFindWpInBattle = false;
     //---------------------------------------------------------------------------------------------
@@ -357,6 +363,11 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void StartBattle()
     {
+        mCurMaxSlotIndex = BattleConst.slotIndexMax;
+        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.PVP)
+        {
+            mCurMaxSlotIndex = BattleConst.slotIndexMaxPVP;
+        }
         isUseWpFindWpInBattle = false;
         mRevived = false;
         //ResourceMgr.Instance.UnloadCachedBundles(true);
@@ -574,7 +585,7 @@ public class BattleController : MonoBehaviour
         {
             if (camp == UnitCamp.Enemy)
             {
-                slotID = slotID + BattleConst.slotIndexMax + 1;
+                slotID = slotID + mCurMaxSlotIndex + 1;
             }
 
             nodeName = nodeName + slotID.ToString();

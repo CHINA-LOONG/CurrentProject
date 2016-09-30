@@ -1,4 +1,3 @@
-import "Protocol/Const.proto";
 import "Protocol/Reward.proto";
 
 option java_package = "com.hawk.game.protocol";

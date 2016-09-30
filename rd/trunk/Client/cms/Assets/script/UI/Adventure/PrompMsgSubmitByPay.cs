@@ -20,6 +20,8 @@ public class PrompMsgSubmitByPay : UIBase
     private bool autoClose;
     //private bool autoFinish;
 
+    private int price = 0;
+
     public static PrompMsgSubmitByPay Open(string title, string content, TimeEventWrap timeWrap, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
     {
         PrompMsgSubmitByPay mInfo = UIMgr.Instance.OpenUI_(ViewName, false) as PrompMsgSubmitByPay;
@@ -53,7 +55,8 @@ public class PrompMsgSubmitByPay : UIBase
             Close();
         }
         textDesc.text = string.Format(content, UIUtil.Convert_hh_mm_ss(time));
-        textCost.text = (Mathf.Ceil((time / 60.0f) / 10.0f) * 2).ToString();
+        price = (int)Mathf.Ceil((time / 60.0f) / 10.0f) * 2;
+        textCost.text = price.ToString();
     }
 
     public void Close()
@@ -81,7 +84,14 @@ public class PrompMsgSubmitByPay : UIBase
         }
         if (callBack != null)
         {
-            callBack(PrompButtonClick.OK);
+            if (GameDataMgr.Instance.PlayerDataAttr.gold < price)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
+            else
+            {
+                callBack(PrompButtonClick.OK);
+            }
         }
     }
 

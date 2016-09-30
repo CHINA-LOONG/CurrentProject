@@ -62,7 +62,23 @@ public class AdventureTeamItem : MonoBehaviour
     public IAdventureTeamItem IAdventureTeamItemDelegate;
     private MonsterIcon[] monsters = new MonsterIcon[5];
 
-    private AdventureTeam curData;
+    private AdventureTeam curdata;
+
+    public AdventureTeam curData
+    {
+        get { return curdata; }
+        set
+        {
+            if (curdata!=null)
+            {
+                if (curdata.adventure!=null&&curdata.adventure.timeEvent != null)//正在进行
+                {
+                    curdata.adventure.timeEvent.RemoveUpdateEvent(OnUpdateTime);
+                }
+            }
+            curdata = value;
+        }
+    }
 
     void Start()
     {
@@ -72,8 +88,7 @@ public class AdventureTeamItem : MonoBehaviour
     public void RefreshData(AdventureTeam team)
     {
         curData = team;
-
-
+        
         textName.text = string.Format(StaticDataMgr.Instance.GetTextByID("adventure_teamname"),curData.teamId);
 
         if (curData.adventure != null)//大冒险中
@@ -117,6 +132,7 @@ public class AdventureTeamItem : MonoBehaviour
                 if (monsters[i] == null)
                 {
                     monsters[i] = MonsterIcon.CreateIcon();
+                    ScrollViewEventListener.Get(monsters[i].iconButton.gameObject).onPressEnter = OnPressEnterMonsterIcon;
                     UIUtil.SetParentReset(monsters[i].transform, memberParent);
                 }
                 else
@@ -185,5 +201,20 @@ public class AdventureTeamItem : MonoBehaviour
         {
             IAdventureTeamItemDelegate.OnClickToPaySubmit(curData);
         }
+    }
+
+    void OnPressEnterMonsterIcon(GameObject go)
+    {
+        MonsterIcon micon = go.GetComponentInParent<MonsterIcon>();
+
+        int guid = int.Parse(micon.Id);
+        GameUnit unit = null;
+
+        GameDataMgr.Instance.PlayerDataAttr.allUnitDic.TryGetValue(guid, out unit);
+        UIMonsterInfo.Open(guid, micon.monsterId, unit.pbUnit.level, unit.pbUnit.stage);
+    }
+    public void CleanItem()
+    {
+        curData = null;
     }
 }

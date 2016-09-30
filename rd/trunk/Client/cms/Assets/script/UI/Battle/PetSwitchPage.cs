@@ -8,15 +8,17 @@ public class PetSwitchPage : MonoBehaviour
     public List<Transform> itemPos = new List<Transform>();
     public List<PetSwitchItem> items = new List<PetSwitchItem>();
     RectTransform trans;
+    int itemPosCount = 0;
 
     void Awake()
     {
         trans = transform as RectTransform;
-        if (BattleConst.maxFieldUnit>itemPos.Count)
-        {
-            Logger.LogError("error:pet count ");
-        }
-        for (int i = 0; i < BattleConst.maxFieldUnit; ++i)
+        itemPosCount = itemPos.Count;
+        //if (BattleConst.maxFieldUnit>itemPos.Count)
+        //{
+        //    Logger.LogError("error:pet count ");
+        //}
+        for (int i = 0; i < itemPosCount; ++i)
         {
             var item = ResourceMgr.Instance.LoadAsset("petItem");
             item.transform.SetParent(itemPos[i].transform, false);
@@ -104,7 +106,7 @@ public class PetSwitchPage : MonoBehaviour
             }
         }
 
-        for (; j < BattleConst.maxFieldUnit; ++j)
+        for (; j < itemPosCount; ++j)
         {
             items[j].UpdateData(null, forceRefresh);
         }

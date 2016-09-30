@@ -107,19 +107,33 @@ public class WeakPointRuntimeData
 		WeakpointState lastWpstate = wpState;
 		wpState = state;
 
-		GameObject lastMesh = GetMeshWithState (lastWpstate);
-		if (lastMesh != null)
-		{
-			lastMesh.SetActive(false);
-		}
-
 		GameObject curMesh = GetMeshWithState (wpState);
-		if (curMesh != null) 
-		{
-			curMesh.SetActive(true);
-		}
+        GameObject lastMesh = GetMeshWithState(lastWpstate);
+        if (lastMesh != null)
+        {
+            if (curMesh == null)
+            {
+                DissolveController dissolve = lastMesh.GetComponent<DissolveController>();
+                if (dissolve != null)
+                {
+                    dissolve.StartDissolve();
+                }
+                else
+                {
+                    lastMesh.SetActive(false);
+                }
+            }
+            else
+            {
+                lastMesh.SetActive(false);
+            }
+        }
+        if (curMesh != null)
+        {
+            curMesh.SetActive(true);
+        }
 
-		string effectId = "";
+        string effectId = "";
 		wpStateEffectDic.TryGetValue(wpState,out effectId);
 		if(!string.IsNullOrEmpty(effectId))
 		{

@@ -651,7 +651,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			return true;
 		}
 
-		InstanceResetCfg resetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceResetCfg.class, GsConst.INSTANCE_RESET_ID);
+		InstanceResetCfg resetCfg = InstanceResetCfg.getSingleton();
 		if (resetCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
 			return true;
@@ -1181,7 +1181,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 胜利
 		if (true == isWin) {
-			if (0 == (this.refreshMask & GsConst.RefreshMask.TOWER)) {
+			if (0 == (this.refreshMask & GsConst.RefreshMask.MONTHLY)) {
 				StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 				statisticsEntity.increaseTowerFloor(this.curTowerId);
 				statisticsEntity.notifyUpdate(true);

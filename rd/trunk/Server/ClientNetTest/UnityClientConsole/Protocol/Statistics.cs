@@ -318,8 +318,22 @@ namespace PB
       get { return _summonDiamondFreeBeginTime; }
       set { _summonDiamondFreeBeginTime = value; }
     }
+    private int _summonCoinFreeTimesDaily;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"summonCoinFreeTimesDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int summonCoinFreeTimesDaily
+    {
+      get { return _summonCoinFreeTimesDaily; }
+      set { _summonCoinFreeTimesDaily = value; }
+    }
+    private int _summonCoinFreeLastTime;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"summonCoinFreeLastTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int summonCoinFreeLastTime
+    {
+      get { return _summonCoinFreeLastTime; }
+      set { _summonCoinFreeLastTime = value; }
+    }
     private readonly global::System.Collections.Generic.List<int> _hiredMonsterId = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(10, Name=@"hiredMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, Name=@"hiredMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public global::System.Collections.Generic.List<int> hiredMonsterId
     {
       get { return _hiredMonsterId; }
@@ -369,6 +383,27 @@ namespace PB
     {
       get { return _expLeftTimes; }
       set { _expLeftTimes = value; }
+    }
+    private int _signinTimesMonthly;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"signinTimesMonthly", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int signinTimesMonthly
+    {
+      get { return _signinTimesMonthly; }
+      set { _signinTimesMonthly = value; }
+    }
+    private int _signinFillTimesMonthly;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"signinFillTimesMonthly", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int signinFillTimesMonthly
+    {
+      get { return _signinFillTimesMonthly; }
+      set { _signinFillTimesMonthly = value; }
+    }
+    private bool _isSigninDaily;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"isSigninDaily", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool isSigninDaily
+    {
+      get { return _isSigninDaily; }
+      set { _isSigninDaily = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

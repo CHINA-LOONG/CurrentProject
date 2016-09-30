@@ -19,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.config.HoleCfg;
+import com.hawk.game.entity.ServerDataEntity;
+import com.hawk.game.util.GsConst;
 
 /**
  * 服务器数据
@@ -75,6 +77,12 @@ public class ServerData {
 	 * 洞开启状态的映射表
 	 */
 	protected ConcurrentHashMap<Integer, Boolean> holeStateMap;
+	
+	/**
+	 * 需要落地的数据
+	 */
+	protected ServerDataEntity serverDataEntity;
+	
 	/**
 	 * 上次信息显示时间
 	 */
@@ -118,6 +126,22 @@ public class ServerData {
 		Map<Object, HoleCfg> holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
 		for (HoleCfg hole : holeCfgMap.values()) {
 			holeStateMap.put(hole.getId(), false);
+		}
+		
+		List<ServerDataEntity> resultList = HawkDBManager.getInstance().query("from ServerDataEntity where invalid = 0");
+		if (resultList != null && resultList.size() > 0) {
+			serverDataEntity = resultList.get(0);
+		}
+		
+		if (serverDataEntity == null) {
+			serverDataEntity = new ServerDataEntity();
+			serverDataEntity.setPvpWeakRefreshTime(0);
+			serverDataEntity.setPvpWeakRewardCount(0);
+			serverDataEntity.notifyCreate();
+		}
+		
+		if (serverDataEntity != null) {
+			setRefreshTime(GsConst.PVP_WEAK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeakRefreshTime()));
 		}
 	}
 
@@ -363,6 +387,10 @@ public class ServerData {
 
 	public void setRefreshTime(int timeCfgId, Calendar time) {
 		this.refreshTimeMap.put(timeCfgId, time);
+		if (timeCfgId == GsConst.PVP_WEAK_REFRESH_TIME_ID) {
+			serverDataEntity.setPvpWeakRefreshTime(time.getTimeInMillis());
+			serverDataEntity.notifyUpdate(false);
+		}
 	}
 
 	public Map<Integer, Boolean> getHoleStateMap() {
@@ -377,6 +405,15 @@ public class ServerData {
 		this.holeStateMap.put(holeId, isOpen);
 	}
 
+	public int getPVPWeakRewardCount(){
+		return serverDataEntity.getPvpWeakRewardCount();
+	}
+	
+	public void setPVPWeakRewardCoutn(int pvpWeakRewardCount) {
+		this.serverDataEntity.setPvpWeakRewardCount(pvpWeakRewardCount);
+		this.serverDataEntity.notifyUpdate(true);
+	}
+	
 	/**
 	 * 打印服务器状态信息
 	 */
@@ -388,4 +425,5 @@ public class ServerData {
 			logger.info("online user: {}", onlineMap.size());
 		}
 	}
+
 }

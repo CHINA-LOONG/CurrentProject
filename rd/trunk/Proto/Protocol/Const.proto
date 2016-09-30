@@ -19,7 +19,7 @@ enum kickReason
 	LOGIN_FORBIDEN         = 3;
 	KICKED_OUT             = 4;
 	SERVER_RESTART         = 5;
-	GM				       = 6;
+	GM                     = 6;
 }
 
 // 获得道具/怪物原因
@@ -94,9 +94,9 @@ enum changeType
 	// 疲劳值
 	CHANGE_FATIGUE         = 7;
 	// 好感度
-	CHANGE_FAV	           = 8;
+	CHANGE_FAV             = 8;
 	// 充值钻石
-	CHANGE_GOLD_BUY	       = 9;
+	CHANGE_GOLD_BUY        = 9;
 	// 个人贡献值
 	CHANGE_PLAYER_CONTRIBUTION = 10;
 	// 通天塔币

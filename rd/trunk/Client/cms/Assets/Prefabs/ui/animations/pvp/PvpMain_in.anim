@@ -297,30 +297,6 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .00033333333
-        value: 0
-        inSlope: 7.51879692
-        outSlope: .0328061394
-        tangentMode: 1
-      - time: .13333334
-        value: 1
-        inSlope: 20.1015358
-        outSlope: 2.15731239
-        tangentMode: 1
-      - time: .233333334
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Color.a
-    path: bg
-    classID: 114
-    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
       - time: .233333334
         value: 553.000488
         inSlope: -13297.5098
@@ -469,12 +445,6 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - path: 1450797756
-      attribute: 304273561
-      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3318017825
       attribute: 304273561
       script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
       classID: 114
@@ -737,30 +707,6 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_Color.a
     path: bg2
-    classID: 114
-    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: .00033333333
-        value: 0
-        inSlope: 7.51879692
-        outSlope: .0328061394
-        tangentMode: 1
-      - time: .13333334
-        value: 1
-        inSlope: 20.1015358
-        outSlope: 2.15731239
-        tangentMode: 1
-      - time: .233333334
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Color.a
-    path: bg
     classID: 114
     script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   - curve:

@@ -48,7 +48,16 @@ namespace PB
       IM_ERROR = 655360,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_ERROR", Value=720896)]
-      SETTING_ERROR = 720896
+      SETTING_ERROR = 720896,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ADVENTURE_ERROR", Value=786432)]
+      ADVENTURE_ERROR = 786432,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ERROR", Value=851968)]
+      SUMMON_ERROR = 851968,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_ERROR", Value=917504)]
+      PVP_ERROR = 917504
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -84,6 +93,9 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_INTERVAL_SHORT", Value=9)]
       LOGIN_INTERVAL_SHORT = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_LOCK", Value=10)]
+      LOGIN_LOCK = 10,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
@@ -136,7 +148,22 @@ namespace PB
       CONTRIBUTION_NOT_ENOUGH = 131086,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_LIMIT", Value=131087)]
-      CONTRIBUTION_LIMIT = 131087
+      CONTRIBUTION_LIMIT = 131087,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_ALREADY", Value=135169)]
+      SIGNIN_ALREADY = 135169,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_NOT_YET", Value=135170)]
+      SIGNIN_NOT_YET = 135170,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FILL_ZERO", Value=135171)]
+      SIGNIN_FILL_ZERO = 135171,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FINISH", Value=135172)]
+      SIGNIN_FINISH = 135172,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_STOP", Value=135173)]
+      SIGNIN_STOP = 135173
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]
@@ -281,17 +308,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_COUNT", Value=393221)]
       INSTANCE_REVIVE_COUNT = 393221,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_STAR_COUNT", Value=393222)]
-      CHAPTER_BOX_STAR_COUNT = 393222,
+      [global::ProtoBuf.ProtoEnum(Name=@"SWEEP_STAR_COUNT", Value=393222)]
+      SWEEP_STAR_COUNT = 393222,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393223)]
-      CHAPTER_BOX_ALREADY_OPEN = 393223,
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_STAR_COUNT", Value=393223)]
+      CHAPTER_BOX_STAR_COUNT = 393223,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393224)]
-      INSTANCE_NOT_ENTER = 393224,
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393224)]
+      CHAPTER_BOX_ALREADY_OPEN = 393224,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393225)]
-      TOWER_FLOOR = 393225
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393225)]
+      INSTANCE_NOT_ENTER = 393225,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393226)]
+      TOWER_FLOOR = 393226
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]
@@ -479,7 +509,10 @@ namespace PB
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=655361)]
-      IM_CHAT_LENGTH = 655361
+      IM_CHAT_LENGTH = 655361,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_DUMP_ERROR", Value=655362)]
+      IM_DUMP_ERROR = 655362
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"settingError")]
@@ -526,11 +559,28 @@ namespace PB
     public enum summonError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851969)]
-      SUMMON_COIN_NO_FREE = 851969,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851969)]
+      SUMMON_DIAMOND_NO_FREE = 851969,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_NO_FREE", Value=851970)]
-      SUMMON_DIAMOND_NO_FREE = 851970
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_NO_FREE", Value=851970)]
+      SUMMON_COIN_NO_FREE = 851970,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_COIN_FREE_CD", Value=851971)]
+      SUMMON_COIN_FREE_CD = 851971
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"pvpError")]
+    public enum pvpError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_MATCH_TARGET", Value=917505)]
+      PVP_NOT_MATCH_TARGET = 917505,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_SET_DEFENCE", Value=917506)]
+      PVP_NOT_SET_DEFENCE = 917506,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_MATCH_BEFORE", Value=917507)]
+      PVP_NOT_MATCH_BEFORE = 917507
     }
   
 }

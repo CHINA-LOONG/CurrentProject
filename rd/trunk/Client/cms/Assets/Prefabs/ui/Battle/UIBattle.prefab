@@ -2687,6 +2687,7 @@ GameObject:
   - 224: {fileID: 22454624}
   - 114: {fileID: 11427928}
   - 114: {fileID: 11464820}
+  - 114: {fileID: 11428656}
   m_Layer: 5
   m_Name: EnemyUnitBossUI (1)
   m_TagString: Untagged
@@ -4023,6 +4024,7 @@ MonoBehaviour:
   unitLevel: {fileID: 11471688}
   lifeBar: {fileID: 11438896}
   propertyImage: {fileID: 11471566}
+  shakeUi: {fileID: 11428656}
 --- !u!114 &11428080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4104,6 +4106,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11428656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad5f2002db1cc84aa2a9c3c0a089b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDeltaX: .0199999996
+  shakeDeltaY: .0599999987
+  shakeOnceTime: .0199999996
+  shakeLong: 1
 --- !u!114 &11428834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5406,6 +5423,7 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   bottomLayer: {fileID: 22424888}
   dazhaoGroup: {fileID: 22480898}
   publicTopGroup: {fileID: 22406946}

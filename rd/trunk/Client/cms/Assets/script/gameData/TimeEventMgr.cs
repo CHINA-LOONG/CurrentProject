@@ -50,7 +50,9 @@ public class TimeEventWrap
     {
         if (!updateList.Contains(update))
         {
+            Logger.LogError("添加更新事件" + update.Method.Name);
             updateList.Add(update);
+            TimeEventMgr.Instance.UpdataEventInTime(this);
         }
         else
         {
@@ -61,6 +63,7 @@ public class TimeEventWrap
     {
         if (updateList.Contains(update))
         {
+            Logger.LogError("删除更新事件" + update.Method.Name);
             updateList.Remove(update);
         }
         else
@@ -125,11 +128,15 @@ public class TimeEventMgr : MonoBehaviour
                     times[i].refresh(GameTimeMgr.Instance.GetServerTimeStamp());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Logger.LogError("...............");
+                Logger.LogError("..............."+ex.Message);
             }
         }
     }
 
+    public void UpdataEventInTime(TimeEventWrap time)
+    {
+        time.refresh(GameTimeMgr.Instance.GetServerTimeStamp());
+    }
 }

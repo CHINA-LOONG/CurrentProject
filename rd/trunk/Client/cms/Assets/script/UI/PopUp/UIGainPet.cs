@@ -22,6 +22,7 @@ public class UIGainPet : UIBase
         mConfirmBtnText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         mConfirmBtn.gameObject.SetActive(false);
         mGainPetText.gameObject.SetActive(false);
+        mFadeWhite = Camera.main.GetComponent<Fade>();
     }
     //---------------------------------------------------------------------------------------------
     void Update()
@@ -61,15 +62,14 @@ public class UIGainPet : UIBase
     public void ShowGainPet(string monsterID)
     {
         //UICamera.Instance.CameraAttr.enabled = true;
-        GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
-        ShowGainPetInternal(gainPet);
-        //StartCoroutine(ShowGainPetFlash(monsterID));
+        //GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
+        //ShowGainPetInternal(gainPet);
+        StartCoroutine(ShowGainPetFlash(monsterID));
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator ShowGainPetFlash(string monsterID)
     {
         UICamera.Instance.CameraAttr.enabled = false;
-        mFadeWhite = Camera.main.GetComponent<Fade>();
         mFadeWhite.FadeOut(0.5f);
         yield return new WaitForSeconds(1.0f);
         mFadeWhite.FadeIn(2.0f);
@@ -121,7 +121,7 @@ public class UIGainPet : UIBase
         mGainPetRender = null;
         //minus time means invalidate time
         mGainPetEndTime = -1.0f;
-        //mFadeWhite.FadeIn(0.0f);
+        mFadeWhite.FadeIn(0.0f);
     }
     //---------------------------------------------------------------------------------------------
 }

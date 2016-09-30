@@ -20,6 +20,12 @@ public class AdventureItem : MonoBehaviour
     public Color msg2FinishColor = new Color();
     public Color msg3FinishColor = new Color();
 
+    public GameObject ObjEffect;
+
+    public Transform ImagePos;
+    private string ImageName;
+    private GameObject ObjImage;
+
     public enum State
     {
         WEIKAI,
@@ -75,6 +81,8 @@ public class AdventureItem : MonoBehaviour
             CurState = State.JIESHU;   //倒计时结束
             text_Msg2.text = StaticDataMgr.Instance.GetTextByID("adventure_alreadycom");
             text_Msg3.text = StaticDataMgr.Instance.GetTextByID("adventure_click");
+            text_Msg2.color = msg2FinishColor;
+            text_Msg3.color = msg3FinishColor;
         }
         else
         {
@@ -83,6 +91,18 @@ public class AdventureItem : MonoBehaviour
             text_Msg2.color = msg2StartColor;
             text_Msg3.color = msg3StartColor;
             curData.timeEvent.AddUpdateEvent(OnUpdateTime);
+        }
+
+        ObjEffect.SetActive(CurState == State.JIESHU);
+        if (!string.Equals(ImageName,curData.adventureData.image))
+        {
+            //TODO：使用ResourceMgr创建，在关闭界面后没有删除；检查是否需要删除
+            if (ObjImage!=null)
+            {
+                ResourceMgr.Instance.DestroyAsset(ObjImage);
+            }
+            ObjImage = ResourceMgr.Instance.LoadAsset(curData.adventureData.image);
+            UIUtil.SetParentReset(ObjImage.transform, ImagePos);
         }
     }
 
@@ -109,7 +129,13 @@ public class AdventureItem : MonoBehaviour
                         IAdventureItemDelegate.openAdventureLayout(curData);
                     }
                 }
-                else //队伍已满
+                else if(AdventureDataMgr.Instance.teamCount < BattleConst.maxAdventureTeam)
+                {
+                    MsgBox.PromptMsg prompt = MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+                                                                  StaticDataMgr.Instance.GetTextByID("adventure_jiadui"),
+                                                                  PrompButtonAddTeamCallBack);
+                }
+                else
                 {
                     UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_005"), (int)PB.ImType.PROMPT);
                 }
@@ -124,4 +150,14 @@ public class AdventureItem : MonoBehaviour
         }
     }
 
+    void PrompButtonAddTeamCallBack(MsgBox.PrompButtonClick click)
+    {
+        if (click == MsgBox.PrompButtonClick.Cancle)
+            return;
+        IAdventureItemDelegate.openAdventureTeams();
+    }
+    public void CleanItem()
+    {
+        curData = null;
+    }
 }

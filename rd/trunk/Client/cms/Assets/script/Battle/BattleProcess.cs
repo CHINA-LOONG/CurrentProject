@@ -941,7 +941,7 @@ public class BattleProcess : MonoBehaviour
             BattleObject tauntTarget = ObjectDataMgr.Instance.GetBattleObject(bo.unit.tauntTargetID);
             if (tauntTarget != null && 
                 tauntTarget.unit.pbUnit.slot >= BattleConst.slotIndexMin && 
-                tauntTarget.unit.pbUnit.slot <= BattleConst.slotIndexMax &&
+                tauntTarget.unit.pbUnit.slot <= BattleController.Instance.CurMaxSlotIndex &&
                 tauntTarget.unit.State != UnitState.Dead
                 )
             {
@@ -1127,7 +1127,7 @@ public class BattleProcess : MonoBehaviour
 
             //check if there is empty slot in field(only check once),since another pet may dead when switching
             int emptySlot = battleGroup.GetEmptyPlayerSlot();
-            if (emptySlot <= BattleConst.slotIndexMax && replaceDeadUnitCount == 0)
+            if (emptySlot <= BattleController.Instance.CurMaxSlotIndex && replaceDeadUnitCount == 0)
             {
                 exit.unit.CalcNextActionOrder(lastActionOrder);
                 battleGroup.OnUnitEnterField(exit, emptySlot);
@@ -1190,7 +1190,7 @@ public class BattleProcess : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         if (enter.camp == UnitCamp.Enemy)
         {
-            slotID = slotID + BattleConst.slotIndexMax + 1;
+            slotID = slotID + BattleController.Instance.CurMaxSlotIndex + 1;
         }
 
         GameObject posRoot = BattleController.Instance.GetPositionRoot();

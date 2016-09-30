@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class BattleGroup
 {
-    //BattleObject[] enemyField = new BattleObject[BattleConst.maxFieldUnit];
-    //BattleObject[] playerField = new BattleObject[BattleConst.maxFieldUnit];
     //enemy in front
     List<BattleObject> enemyField = new List<BattleObject>(BattleConst.maxFieldUnit);
     List<BattleObject> playerField = new List<BattleObject>(BattleConst.maxFieldUnit);
@@ -52,7 +50,7 @@ public class BattleGroup
         {
             GameUnit curUnit = GameUnit.FromPb(pb, false);
             BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
-            if (pb.slot >= BattleConst.slotIndexMin && pb.slot <= BattleConst.slotIndexMax)
+            if (pb.slot >= BattleConst.slotIndexMin && pb.slot <= BattleController.Instance.CurMaxSlotIndex)
             {
                 //enemyField[pb.slot] = bo;
                 //bo.OnEnterField();
@@ -76,7 +74,7 @@ public class BattleGroup
         while (itor.MoveNext())
         {
             itor.Current.unit.ResetAllState(false);
-            if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
+            if (slot >= BattleConst.slotIndexMin && slot <= BattleController.Instance.CurMaxSlotIndex)
             {
                 itor.Current.unit.pbUnit.slot = slot;
                 itor.Current.unit.backUp = false;
@@ -106,7 +104,7 @@ public class BattleGroup
         {
             slot = itor.Current.unit.pbUnit.slot;
             itor.Current.unit.ResetAllState(true);
-            if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
+            if (slot >= BattleConst.slotIndexMin && slot <= BattleController.Instance.CurMaxSlotIndex)
             {
                 itor.Current.unit.backUp = false;
                 playerField[slot] = itor.Current;
@@ -389,7 +387,7 @@ public class BattleGroup
         while (itor.MoveNext())
         {
             int slot = itor.Current.unit.pbUnit.slot;
-            if (slot == BattleConst.offsiteSlot)
+            if (slot == BattleConst.offsiteSlot && itor.Current.unit.State != UnitState.ToBeEnter)
             {
                 result.Add(itor.Current.unit);
             }
@@ -399,7 +397,7 @@ public class BattleGroup
 
     public void OnUnitEnterField(BattleObject bo, int slot)
     {
-        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
+        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleController.Instance.CurMaxSlotIndex);
         if (fixedSlot != slot)
         {
             Logger.LogError("Slot[1,3] error:" + slot);
@@ -446,7 +444,7 @@ public class BattleGroup
 
     public void OnUnitExitField(BattleObject bo, int slot)
     {
-        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
+        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleController.Instance.CurMaxSlotIndex);
         if (fixedSlot != slot)
         {
             Logger.LogError("Slot[1,3] error:" + fixedSlot + " slot=" + slot);

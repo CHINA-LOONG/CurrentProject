@@ -103,11 +103,11 @@ public class BuildModule : ModuleBase
             //exit from normal instance
             if (curInstanceType == (int)InstanceType.Normal)
             {
-                InstanceMap uiInstance = uiBuild.OpenInstanceUI();
                 switch (mCurrentInitState)
                 {
                     case (int)ExitInstanceType.Exit_Instance_Next:
                         {
+                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
@@ -117,6 +117,7 @@ public class BuildModule : ModuleBase
                         break;
                     case (int)ExitInstanceType.Exit_Instance_Retry:
                         {
+                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
@@ -126,11 +127,30 @@ public class BuildModule : ModuleBase
                         break;
                     case (int)ExitInstanceType.Exit_Instance_OK:
                         {
+                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
                                 InstanceMap.Instance.FocusOnChapterButton(curInstance.instanceData.instanceId);
                                 GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, curInstance.instanceData.instanceId);
+                            }
+                        }
+                        break;
+                    case (int)ExitInstanceType.Exit_Instance_Summon:
+                        {
+                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                            if (curInstance != null)
+                            {
+                                FoundMgr.Instance.GoToLucky();
+                            }
+                        }
+                        break;
+                    case (int)ExitInstanceType.Exit_Instance_Pet:
+                        {
+                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                            if (curInstance != null)
+                            {
+                                FoundMgr.Instance.GoToMonster(0);
                             }
                         }
                         break;

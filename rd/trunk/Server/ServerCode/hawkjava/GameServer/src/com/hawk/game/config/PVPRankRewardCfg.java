@@ -65,7 +65,7 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 		return reward2;
 	}
 	
-	public PVPRankRewardCfg getPVPRankCfg(int level, int rank){
+	public static PVPRankRewardCfg getPVPRankCfg(int level, int rank){
 		LinkedHashMap<Integer, PVPRankRewardCfg> levelList = null;
 		for (Map.Entry<Integer, LinkedHashMap<Integer, PVPRankRewardCfg>> entry: pvpRankCfgList.entrySet()) {
 			if (rank < entry.getKey()) {
@@ -78,7 +78,7 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 		PVPRankRewardCfg pvpRankCfg = null;
 		if (levelList != null) {
 			for (Map.Entry<Integer, PVPRankRewardCfg> entry : levelList.entrySet()) {
-				if (level > entry.getKey()) {
+				if (level < entry.getKey()) {
 					break;
 				}	
 				
@@ -94,6 +94,7 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 		LinkedHashMap<Integer, PVPRankRewardCfg> levelList = pvpRankCfgList.get(rank);
 		if (levelList == null) {
 			levelList = new LinkedHashMap<>();
+			pvpRankCfgList.put(rank, levelList);
 		}
 		
 		levelList.put(level, this);

@@ -33,6 +33,9 @@ public class PVPRankEntity extends HawkDBEntity{
 	@Column(name = "pvpCount")
 	private int pvpCount = 0;
 	
+	@Column(name = "inRank")
+	private boolean inRank = false;
+	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
 
@@ -94,6 +97,14 @@ public class PVPRankEntity extends HawkDBEntity{
 
 	public void setPvpCount(int pvpCount) {
 		this.pvpCount = pvpCount;
+	}
+
+	public boolean getInRank() {
+		return inRank;
+	}
+
+	public void setInRank(boolean inRank) {
+		this.inRank = inRank;
 	}
 
 	public int getRank() {

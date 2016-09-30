@@ -12,7 +12,7 @@ enum sys
 	// 错误码提示
 	ERROR_CODE                  = 4;
 	// 警告
-	WARN                		= 5;
+	WARN                        = 5;
 }
 
 // GM协议ID列表(100<=gm<1000)
@@ -276,13 +276,13 @@ enum code
 	ALLIANCE_CONTRI_REWARD_C    = 9080;
 	ALLIANCE_CONTRI_REWARD_S    = 9081;
 	ALLIANCE_INSTANCE_REWARD_S  = 9082;
-	ALLIANCE_BASE_SEND_C	    = 9083;
+	ALLIANCE_BASE_SEND_C        = 9083;
 	ALLIANCE_BASE_SEND_S        = 9084;
-	ALLIANCE_BASE_RECALL_C	    = 9085;
+	ALLIANCE_BASE_RECALL_C      = 9085;
 	ALLIANCE_BASE_RECALL_S      = 9086;
-	ALLIANCE_MY_BASE_LIST_C	   	= 9087;
+	ALLIANCE_MY_BASE_LIST_C     = 9087;
 	ALLIANCE_MY_BASE_LIST_S     = 9088;
-	ALLIANCE_BASE_LIST_C	    = 9089;
+	ALLIANCE_BASE_LIST_C        = 9089;
 	ALLIANCE_BASE_LIST_S        = 9090;
 
 	ALLIANCE_APPLY_N_S          = 9100;
@@ -299,7 +299,7 @@ enum code
 	ALLIANCE_TEMA_JOIN_N_S      = 9111;
 	ALLIANCE_TEMA_LEAVE_N_S     = 9112;
 	ALLIANCE_TASK_TIMEOUT_N_S   = 9113;
-	
+
 	// 系统设置
 	SETTING_LANGUAGE_C          = 10001;
 	SETTING_LANGUAGE_S          = 10002;
@@ -314,13 +314,13 @@ enum code
 
 	//PVP
 	PVP_SET_DEFENCE_MONSTERS_C  = 12001;  //设置pvp防守阵容
-	PVP_SET_DEFENCE_MONSTERS_S  = 12002;  
-	PVP_MATCH_TARGET_C  		= 12003;  //匹配玩家
-	PVP_MATCH_TARGET_S 			= 12004;  
-	PVP_SETTLE_C  				= 12005;  //战斗结算
-	PVP_SETTLE_S 				= 12006;  
-	PVP_RANK_LIST_C  			= 12007;  //排行榜
-	PVP_RANK_LIST_S 			= 12008;  
-	PVP_DEFENCE_RECORD_C  		= 12009;  //防守记录
-	PVP_DEFENCE_RECORD_S 		= 12010;  
+	PVP_SET_DEFENCE_MONSTERS_S  = 12002;
+	PVP_MATCH_TARGET_C          = 12003;  //匹配玩家
+	PVP_MATCH_TARGET_S          = 12004;
+	PVP_SETTLE_C                = 12005;  //战斗结算
+	PVP_SETTLE_S                = 12006;
+	PVP_RANK_LIST_C             = 12007;  //排行榜
+	PVP_RANK_LIST_S             = 12008;
+	PVP_DEFENCE_RECORD_C        = 12009;  //防守记录
+	PVP_DEFENCE_RECORD_S        = 12010;
 }

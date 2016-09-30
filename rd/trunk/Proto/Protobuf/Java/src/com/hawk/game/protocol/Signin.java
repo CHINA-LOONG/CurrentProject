@@ -1476,12 +1476,11 @@ public final class Signin {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Signin.proto\032\024Protocol/Const." +
-      "proto\032\025Protocol/Reward.proto\"\031\n\010HSSignin" +
-      "\022\r\n\005month\030\001 \002(\005\"\035\n\014HSSigninFill\022\r\n\005month" +
-      "\030\001 \002(\005\"?\n\013HSSigninRet\022\023\n\013signinTimes\030\001 \002" +
-      "(\005\022\033\n\006reward\030\002 \002(\0132\013.RewardItemB\030\n\026com.h" +
-      "awk.game.protocol"
+      "\n\025Protocol/Signin.proto\032\025Protocol/Reward" +
+      ".proto\"\031\n\010HSSignin\022\r\n\005month\030\001 \002(\005\"\035\n\014HSS" +
+      "igninFill\022\r\n\005month\030\001 \002(\005\"?\n\013HSSigninRet\022" +
+      "\023\n\013signinTimes\030\001 \002(\005\022\033\n\006reward\030\002 \002(\0132\013.R" +
+      "ewardItemB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1512,7 +1511,6 @@ public final class Signin {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.hawk.game.protocol.Const.getDescriptor(),
           com.hawk.game.protocol.Reward.getDescriptor(),
         }, assigner);
   }

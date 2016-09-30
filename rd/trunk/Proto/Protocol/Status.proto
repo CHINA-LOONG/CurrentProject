@@ -14,6 +14,9 @@ enum errorMask
 	SHOP_ERROR                 = 0x00090000;
 	IM_ERROR                   = 0x000A0000;
 	SETTING_ERROR              = 0x000B0000;
+	ADVENTURE_ERROR            = 0x000C0000;
+	SUMMON_ERROR               = 0x000D0000;
+	PVP_ERROR                  = 0x000E0000;
 }
 
 enum error
@@ -36,10 +39,10 @@ enum error
 	CONFIG_NOT_FOUND           = 0x00000007;
 	// 无效请求
 	UNSUPPORT_ACTION           = 0x00000008;
-	// 登陆太频繁
+	// 登录太频繁
 	LOGIN_INTERVAL_SHORT       = 0x00000009;
-	// 登陆被锁定
-	LOGIN_LOCK   		       = 0x0000000A;
+	// 登录被锁定
+	LOGIN_LOCK                 = 0x0000000A;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
 }
@@ -76,6 +79,17 @@ enum PlayerError
 	CONTRIBUTION_NOT_ENOUGH    = 0x0002000E;
 	// 公会贡献值上限
 	CONTRIBUTION_LIMIT         = 0x0002000F;
+
+	// 今日已签到
+	SIGNIN_ALREADY             = 0x00021001;
+	// 今日还未签到
+	SIGNIN_NOT_YET             = 0x00021002;
+	// 没有补签次数
+	SIGNIN_FILL_ZERO           = 0x00021003;
+	// 本月签到已完成
+	SIGNIN_FINISH              = 0x00021004;
+	// 本月签到已结束
+	SIGNIN_STOP                = 0x00021005;
 }
 
 enum monsterError
@@ -358,9 +372,9 @@ enum summonError
 enum pvpError
 {
 	// 没有匹配到玩家
-	PVP_NOT_MATCH_TARGET     = 0x000E0001;
+	PVP_NOT_MATCH_TARGET       = 0x000E0001;
 	// 没有设置防守阵容
-	PVP_NOT_SET_DEFENCE      = 0x000E0002;
+	PVP_NOT_SET_DEFENCE        = 0x000E0002;
 	// 没有匹配过玩家
-	PVP_NOT_MATCH_BEFORE     = 0x000E0003;
+	PVP_NOT_MATCH_BEFORE       = 0x000E0003;
 }

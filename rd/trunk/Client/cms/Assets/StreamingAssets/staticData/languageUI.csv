@@ -752,10 +752,42 @@ Alley1 - 5,小巷 - 5 - 挑战,Alley - 5 - Heroic
 Alley1 - 6,小巷 - 6 - 挑战,Alley - 6 - Heroic
 Alley1 - 7,小巷 - 7 - 挑战,Alley - 7 - Heroic
 Alley1 - 8,小巷 - 8 - 挑战,Alley - 8 - Heroic
+Forest - 1,森林 - 1 - 普通,Forest - 1 - Normal
+Forest - 2,森林 - 2 - 普通,Forest - 2 - Normal
+Forest - 3,森林 - 3 - 普通,Forest - 3 - Normal
+Forest - 4,森林 - 4 - 普通,Forest - 4 - Normal
+Forest - 5,森林 - 5 - 普通,Forest - 5 - Normal
+Forest - 6,森林 - 6 - 普通,Forest - 6 - Normal
+Forest - 7,森林 - 7 - 普通,Forest - 7 - Normal
+Forest - 8,森林 - 8 - 普通,Forest - 8 - Normal
+Forest1 - 1,森林 - 1 - 挑战,Forest - 1 - Heroic
+Forest1 - 2,森林 - 2 - 挑战,Forest - 2 - Heroic
+Forest1 - 3,森林 - 3 - 挑战,Forest - 3 - Heroic
+Forest1 - 4,森林 - 4 - 挑战,Forest - 4 - Heroic
+Forest1 - 5,森林 - 5 - 挑战,Forest - 5 - Heroic
+Forest1 - 6,森林 - 6 - 挑战,Forest - 6 - Heroic
+Forest1 - 7,森林 - 7 - 挑战,Forest - 7 - Heroic
+Forest1 - 8,森林 - 8 - 挑战,Forest - 8 - Heroic
+Volcano - 1,火山 - 1 - 普通,Volcano - 1 - Normal
+Volcano - 2,火山 - 2 - 普通,Volcano - 2 - Normal
+Volcano - 3,火山 - 3 - 普通,Volcano - 3 - Normal
+Volcano - 4,火山 - 4 - 普通,Volcano - 4 - Normal
+Volcano - 5,火山 - 5 - 普通,Volcano - 5 - Normal
+Volcano - 6,火山 - 6 - 普通,Volcano - 6 - Normal
+Volcano - 7,火山 - 7 - 普通,Volcano - 7 - Normal
+Volcano - 8,火山 - 8 - 普通,Volcano - 8 - Normal
+Volcano1 - 1,火山 - 1 - 挑战,Volcano - 1 - Heroic
+Volcano1 - 2,火山 - 2 - 挑战,Volcano - 2 - Heroic
+Volcano1 - 3,火山 - 3 - 挑战,Volcano - 3 - Heroic
+Volcano1 - 4,火山 - 4 - 挑战,Volcano - 4 - Heroic
+Volcano1 - 5,火山 - 5 - 挑战,Volcano - 5 - Heroic
+Volcano1 - 6,火山 - 6 - 挑战,Volcano - 6 - Heroic
+Volcano1 - 7,火山 - 7 - 挑战,Volcano - 7 - Heroic
+Volcano1 - 8,火山 - 8 - 挑战,Volcano - 8 - Heroic
 chapter1_name,大街,Street
 chapter2_name,小巷,Alley
-chapter3_name,东邪,dong
-chapter4_name,西毒,xi
+chapter3_name,森林,Forest
+chapter4_name,火山,Volcano
 chapter5_name,南拳,nan
 chapter6_name,北郊,bei
 chapter7_name,昌平,changping
@@ -794,11 +826,11 @@ tiaozhan_desc,去挑战难度更高的副本吧！,Go and challenge some more di
 gengduo_desc,更多精彩玩法请期待下个版本！,Please wait for the next version for even more exciting game modes!
 ,,
 adventure_title,大冒险,Adventure
-adventure_qianghuashi,破碎的裂隙,Crumbling
-adventure_jinjieshi,干扰的裂隙,Interference
-adventure_boss,纯粹的裂隙,Purity
+adventure_qianghuashi,破碎的裂隙,Fallen Ruins
+adventure_jinjieshi,干扰的裂隙,Static Ruins
+adventure_boss,纯粹的裂隙,Purity Ruins
 adventure_time,探险时间   <color=#ffcc00ff>{0}</color>小时,Exploration time  <color=#ffcc00ff>{0}</color> hrs
-adventure_teams,探险小队,Exploration team
+adventure_teams,探险小队,Team
 adventure_tip1,探索强化石宝藏能够获得宠物经验药水、宠物强化石、装备强化石,"Explore upgrade stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
 adventure_tip2,探索进阶石宝藏能够获得宠物经验药水、装备进阶石、宠物进阶石,"Explore evolution stone treasures to get Monster EXP Potions, Monster Upgrade Stones, and Equipment Upgrade Stones"
 adventure_tip3,探索BOSS巢穴能够获得宠物经验药水、BOSS宝箱,Explore the Boss Lair to get Monster EXP Potions and Boss Treasures
@@ -806,9 +838,9 @@ adventure_ing,探险中…,Exploring…
 adventure_alreadycom,已完成,Completed
 adventure_click,点击领奖,Tap to collect
 adventure_jiadui,没有空余小队，是否添加小队？,"No open team spots, create a team?"
-adventure_qianghuashitime,破碎的裂隙（{0}小时）,Crumbling Fissure ({0} hrs)
-adventure_jinjieshitime,干扰的裂隙（{0}小时）,Interference Fissure ({0} hrs)
-adventure_bosstime,纯粹的裂隙（{0}小时）,Purity Fissure ({0} hrs)
+adventure_qianghuashitime,破碎的裂隙（{0}小时）,Fallen Ruins ({0} hrs)
+adventure_jinjieshitime,干扰的裂隙（{0}小时）,Static Ruins ({0} hrs)
+adventure_bosstime,纯粹的裂隙（{0}小时）,Purity Ruins ({0} hrs)
 adventure_paimonster,派遣宠物,Dispatch Monsters
 adventure_mymonster,我的宠物,My Monsters
 adventure_condition1,条件1,Req. 1
@@ -825,7 +857,7 @@ adventure_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to ch
 adventure_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
 adventure_tipsmax,10/10（次数已满）,10/10(full)
 adventure_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
-adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch?"
+adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch? (Dispatched monsters cannot participate in any battles.)"
 adventure_tipsguyong,确定雇佣宠物进行探险么？,Confirm hiring monsters for exploration?
 adventure_tipsweight,额外奖励获得概率,Bonus reward droprate
 adventure_tipsguyongxinxi,雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color>,Hire <color=#ffcc00ff>{0}</color>'s <color=#ffcc00ff>{1}</color>
@@ -835,9 +867,9 @@ adventure_teamname,队伍{0},Team {0}
 adventure_free,空闲中,Idle
 adventure_goadventure,去探险,Go Explore
 adventure_complete,立即完成,Complete Now
-adventure_addteam,扩充小队,Add Team
+adventure_addteam,扩充小队,Expand Team
 adventure_completenow,立即完成探险么？,Complete exploration now?
-adventure_timeleft,剩余时间：{0},left time:{0}
+adventure_timeleft,剩余时间：{0},Remaining time:{0}
 adventure_addsure,确定添加新的队伍么？,Confirm add new team?
 adventure_successful,探险成功！,Exploration Success!
 adventure_record_001,添加小队成功,New team added.

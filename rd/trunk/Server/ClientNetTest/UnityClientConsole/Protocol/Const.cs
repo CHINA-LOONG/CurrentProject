@@ -41,7 +41,10 @@ namespace PB
       KICKED_OUT = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_RESTART", Value=5)]
-      SERVER_RESTART = 5
+      SERVER_RESTART = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GM", Value=6)]
+      GM = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"RewardReason")]
@@ -506,7 +509,10 @@ namespace PB
       IN_ALLIANCE_BASE = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"IN_ADVENTURE", Value=4)]
-      IN_ADVENTURE = 4
+      IN_ADVENTURE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_PVP_DEFENCE", Value=8)]
+      IN_PVP_DEFENCE = 8
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"SummonType")]
@@ -524,6 +530,23 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_DIAMOND_FREE", Value=4)]
       SUMMON_DIAMOND_FREE = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"PvpResult")]
+    public enum PvpResult
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WIN", Value=0)]
+      WIN = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DRAW", Value=1)]
+      DRAW = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOSE", Value=2)]
+      LOSE = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NUM", Value=2)]
+      NUM = 2
     }
   
 }

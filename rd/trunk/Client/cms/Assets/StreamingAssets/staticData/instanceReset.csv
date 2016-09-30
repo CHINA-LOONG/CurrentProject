@@ -1,4 +1,4 @@
-﻿#TEXT,NUM,NUM,NUM,NUM
-id,maxTimes,consume,consumeAdd,doubleTimes
-#id,最大次数,基础钻石消耗,次数消耗加成,翻倍次数
-1,-1,20,5,3
+﻿#NUM,NUM,NUM,NUM
+maxTimes,consume,consumeAdd,doubleTimes
+#最大次数,基础钻石消耗,次数消耗加成,翻倍次数
+-1,20,5,3

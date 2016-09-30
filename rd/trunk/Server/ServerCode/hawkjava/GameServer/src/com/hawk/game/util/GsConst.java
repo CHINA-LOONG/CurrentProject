@@ -66,8 +66,6 @@ public class GsConst {
 	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
 	// 钻石兑换金币索引
 	public static final int GOLD_TO_COIN_INDEX = 1;
-	// 副本次数重置索引
-	public static final String INSTANCE_RESET_ID = "1";
 	// 最大屏蔽玩家数
 	public static final int MAX_BLOCK_COUNT = 5;
 	// 合成上一级宝石数量
@@ -86,6 +84,8 @@ public class GsConst {
 	public static final String FUNPLUS_APP_ID = "1013";
 	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
 
+	public static final int PVP_WEAK_REFRESH_TIME_ID = 110;	
+	
 	/**
 	 * 对象类型
 	 * 
@@ -188,6 +188,8 @@ public class GsConst {
 		public static final int PVP_RECORD = 203;
 		// pvp排行榜
 		public static final int PVP_RANK_LIST = 204;
+		// pvp周结算
+		public static final int PVP_WEAK_REWARD = 205;
 		
 		/**
 		 * 快照管理器消息定义
@@ -237,6 +239,8 @@ public class GsConst {
 		public static final int SUMMON_MODULE = 14;
 		// PVP
 		public static final int PVP_MODULE = 15;
+		// 签到
+		public static final int SIGNIN_MODULE = 16;
 
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -247,15 +251,16 @@ public class GsConst {
 	 */
 	public static class RefreshMask {
 		public static final int DAILY = 1 << 0;
-		public static final int TOWER = 1 << 1;
+		public static final int MONTHLY = 1 << 1;
 		public static final int HOLE = 1 << 2;
 		public static final int SHOP_NORMAL = 1 << 3;
 		public static final int SHOP_ALLIANCE = 1 << 4;
 		public static final int SHOP_TOWER = 1 << 5;
+		public static final int PVP = 1 << 6;
 	}
 
-	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109 };
-	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4 };
+	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, PVP_WEAK_REFRESH_TIME_ID};
+	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4, 64};
 
 	public static int[] PlayerRefreshTime = { 101, 102, 201, 202, 203, 204,
 			205, 206, 207 };
@@ -497,6 +502,7 @@ public class GsConst {
 		public static final int PVP_POOL_STAGE_INIT_SIZE = 10;
 		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
 		public static final int PVP_RANK_SIZE = 100;
+		public static final float PVP_RERANK_K_VALUE = 5.0f;
 	}
 	
 	// 翻译系统，敏感词选项
@@ -528,6 +534,10 @@ public class GsConst {
 		public static final int ALLIANCE_KICK = 103;
 		// 离开公会发放基地奖励
 		public static final int ALLIANCE_LEAVE_BASE = 104;
+		// 周结算 段位奖励
+		public static final int PVP_WAEK_GRADE_REWARD = 105;
+		// 月结算 排名奖励
+		public static final int PVP_MONTH_RANK_REWARD = 106;
 	}
 
 	public static class SysIm {

@@ -26,7 +26,6 @@ public class UIQuestInfo : UIBase
     public Transform rewardParent;
 
     public Animator animator;
-    public GameObject effect;
 
     private QuestData info;
     public System.Action StartEvent;
@@ -36,7 +35,6 @@ public class UIQuestInfo : UIBase
 
     void Start()
     {
-        //TODO:
         animator.SetTrigger("PopupIn");
         OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;

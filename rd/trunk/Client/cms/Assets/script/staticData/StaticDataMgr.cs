@@ -71,8 +71,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, StoreStaticData> storeStaticDataDic = new Dictionary<string, StoreStaticData>();
 
 	Dictionary<string,RechargeStaticData> rechargeStaticDataDic = new Dictionary<string, RechargeStaticData>();
-    Dictionary<string, InstanceReset> instanceResetDic = new Dictionary<string, InstanceReset>();
-	Dictionary<string,GoldChargeData> goldChargeDic = new Dictionary<string, GoldChargeData>();
+    InstanceReset instanceReset;
+    Dictionary<string,GoldChargeData> goldChargeDic = new Dictionary<string, GoldChargeData>();
     Dictionary<string, FunctionData> functionDic = new Dictionary<string, FunctionData>();
     Dictionary<int, List<FunctionData>> functionLevelDic = new Dictionary<int, List<FunctionData>>();
 
@@ -712,6 +712,16 @@ public class StaticDataMgr : MonoBehaviour
             #endregion
         }
         {
+            #region SigninData
+            {
+
+            }
+            {
+
+            }
+            #endregion
+        }
+        {
             var data = InitTable<ShopAutoRefreshData>("shopAutoRefresh");
             foreach (var item in data)
             {
@@ -745,9 +755,13 @@ public class StaticDataMgr : MonoBehaviour
 
         {
             var data = InitTable<InstanceReset>("instanceReset");
-            foreach(var item in data)
+            if (data.Count == 1)
             {
-                instanceResetDic.Add(item.id, item);
+                instanceReset = data[0];
+            }
+            else
+            {
+                Logger.LogError("此配置应只包含一行数据");
             }
         }
 
@@ -1152,11 +1166,9 @@ public class StaticDataMgr : MonoBehaviour
 		return rechargeStaticDataDic;
 	}
 
-    public InstanceReset GetInstanceReset(string id)
+    public InstanceReset InstanceReset
     {
-        InstanceReset retObj = null;
-        instanceResetDic.TryGetValue(id, out retObj);
-        return retObj;
+        get { return instanceReset; }
     }
 
     public  FunctionData    GetFunctionStaticData(string name)
@@ -1352,7 +1364,7 @@ public class StaticDataMgr : MonoBehaviour
         int tempKey = -1;
         foreach (var item in sociatyBaseData)
         {
-            if (bp > item.Key && (tempKey < item.Key||tempKey==-1))
+            if (bp <= item.Key && (tempKey > item.Key||tempKey==-1))
             {
                 tempKey = item.Key;
             }

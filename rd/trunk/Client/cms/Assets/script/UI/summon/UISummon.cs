@@ -48,6 +48,8 @@ public class UISummon : UIBase
     Sprite zuanshiIcon;
     bool consumB;
     string anim = "xiaoK";
+    string animSumBegin = null;
+    string animSumEnd = null;
     public float endTime = 0.0f;
     public int summonNum = 0;
     static UISummon mInst = null;
@@ -216,8 +218,8 @@ public class UISummon : UIBase
     {
         choudanAnim.SetBool("nullAnim", false);
         choudanAnim.SetBool("skip", false);
-        if (PlayerPrefs.GetString("animSumBegin") != string.Empty)
-            anim = PlayerPrefs.GetString("animSumBegin");
+        if (animSumBegin != null)
+            anim = animSumBegin;
         choudanAnim.SetBool(anim, true);
         endTime = Time.time;
         if (summonNum < summonList.Count)
@@ -244,8 +246,8 @@ public class UISummon : UIBase
             summEffect.xiaoMian.SetActive(true);
             summEffect.xiaoEnd.SetActive(true);
             choudanAnim.SetBool("xiaoJ", true);
-            PlayerPrefs.SetString("animSumBegin", "xiaoK");
-            PlayerPrefs.SetString("animSumEnd", "xiaoJ");
+            animSumBegin =  "xiaoK";
+            animSumEnd = "xiaoJ";
         }
         else if (stage == 3)
         {
@@ -260,15 +262,15 @@ public class UISummon : UIBase
             summEffect.jingMian.SetActive(true);
             summEffect.jingEnd.SetActive(true);
             choudanAnim.SetBool("jingJ", true);
-            PlayerPrefs.SetString("animSumBegin", "jingyaK");
-            PlayerPrefs.SetString("animSumEnd", "jingJ");
+            animSumBegin = "jingyaK";
+            animSumEnd = "jingJ";
         }
         else
         {
             summEffect.kuEnd.SetActive(true);
             choudanAnim.SetBool("kuJ", true);
-            PlayerPrefs.SetString("animSumBegin", "kuK");
-            PlayerPrefs.SetString("animSumEnd", "kuJ");
+            animSumBegin = "kuK";
+            animSumEnd = "kuJ";
         }
     }
     //---------------------------------------------------------------------------
@@ -290,7 +292,7 @@ public class UISummon : UIBase
         }       
         choudanAnim.SetBool("loop", false);
         yield return new WaitForSeconds(2.50f);
-        choudanAnim.SetBool(PlayerPrefs.GetString("animSumEnd"), false);
+        choudanAnim.SetBool(animSumEnd, false);
         choudanAnim.SetBool("nullAnim", true);
         yield return new WaitForSeconds(1f);
         summEffect.Reset();
@@ -385,9 +387,8 @@ public class UISummon : UIBase
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-            Logger.LogError("RequestShopData Error errorCode: " + error.errCode);
-            choudanAnim.SetBool(PlayerPrefs.GetString("animSumBegin"), false);
-            choudanAnim.SetBool("loop", false);
+            Logger.LogError("Summon Error errorCode: " + error.errCode);
+            exitClick(null);
             showUI(true);
             return;
         }
@@ -461,8 +462,6 @@ public class UISummon : UIBase
         }
         else
         {
-            PlayerPrefs.DeleteKey("animSumBegin");
-            PlayerPrefs.DeleteKey("animSumEnd");
             summEffect.Reset();
             choudanAnim.SetBool("loop", false);
             choudanAnim.SetBool("jingyaK", false);
@@ -473,7 +472,7 @@ public class UISummon : UIBase
             choudanAnim.SetBool("kuJ", false);
             choudanAnim.SetBool("jingJ", false);
             choudanAnim.SetBool("skip", true);
-            PlayerPrefs.SetString("animSumBegin", "jingyaK");
+            animSumBegin = "jingyaK";
         }
     }
     //---------------------------------------------------------------------------

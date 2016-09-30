@@ -98,15 +98,19 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearUseDiamondCountDaily();
 				statisticsEntity.clearUseFatigueCountDaily();
 				statisticsEntity.clearUseItemCountDaily();
+				statisticsEntity.setSigninDaily(false);
 				statisticsEntity.notifyUpdate(true);
 
 				if (false == onLogin) {
 					player.getPlayerData().syncDailyRefreshInfo();
 				}
 
-			} else if (0 != (mask & GsConst.RefreshMask.TOWER)) {
+			} else if (0 != (mask & GsConst.RefreshMask.MONTHLY)) {
 				statisticsEntity.clearTowerFloorMap();
+				statisticsEntity.clearSigninTimesMonthly();
+				statisticsEntity.clearSigninFillTimesMonthly();
 				statisticsEntity.notifyUpdate(true);
+
 				if (false == onLogin) {
 					player.getPlayerData().syncMonthlyRefreshInfo();
 				}

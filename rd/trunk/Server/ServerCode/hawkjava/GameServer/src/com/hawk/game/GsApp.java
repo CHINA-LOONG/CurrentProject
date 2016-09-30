@@ -227,7 +227,6 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init pvp manager......");
 		PVPManager.getInstance().init();
 		
-		
 		// 初始化开发版GmService
 		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
 
@@ -333,9 +332,6 @@ public class GsApp extends HawkApp {
 			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
 			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
 			if (expectedRefreshTime != null) {
-				// 刷新时间点
-				ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
-
 				// 刷新数据
 				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
 					if (false == refreshHole) {
@@ -366,7 +362,17 @@ public class GsApp extends HawkApp {
 							}
 						}
 					}
+					
+					// 刷新时间点
+					ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 				}
+				else if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.PVP)) {
+			 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_WEAK_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+					if (HawkApp.getInstance().postMsg(msg)) {
+						// 刷新时间点
+						ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
+					}
+				}		
 			}
 		}
 

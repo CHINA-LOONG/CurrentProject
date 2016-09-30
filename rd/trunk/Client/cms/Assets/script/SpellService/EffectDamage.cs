@@ -332,8 +332,17 @@ public class EffectDamage : Effect
                         }
                     }
 
-                    //大招受击事件
-                    if (damageAmount < 0 && damageProto.isHeal == false)
+                    //受击事件
+                    bool generateHit = false;
+                    if (damageAmount < 0 && damageProto.isHeal ==  false)
+                    {
+                        generateHit = true;
+                        if (ownedBuff != null && ownedBuff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
+                        {
+                            generateHit = false;
+                        }
+                    }
+                    if (generateHit == true)
                     {
                         SpellEffectArgs effectArgs = new SpellEffectArgs();
                         if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||

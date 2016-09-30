@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
-@HawkConfigManager.CsvResource(file = "staticData/pvpStageReward.csv", struct = "list")
+@HawkConfigManager.CsvResource(file = "staticData/pvpStageReward.csv", struct = "map")
 public class PVPStageRewardCfg extends HawkConfigBase{
 	/**
 	 * grade
@@ -27,6 +27,18 @@ public class PVPStageRewardCfg extends HawkConfigBase{
 		reward2 = null;
 	}
 	
+	public int getGrade() {
+		return grade;
+	}
+
+	public String getReward1() {
+		return reward1;
+	}
+
+	public String getReward2() {
+		return reward2;
+	}
+
 	@Override
 	protected boolean checkValid() {
 		if (HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward1) == null) {

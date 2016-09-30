@@ -93,6 +93,7 @@ public class AdventureSelfMonster : MonoBehaviour
     void Start()
     {
         ScrollViewEventListener.Get(Icon.iconButton.gameObject).onClick = OnClickSelfIcon;
+        ScrollViewEventListener.Get(Icon.iconButton.gameObject).onPressEnter = OnPressEnterSelfIcon;
     }
     public void ReloadData(AdventureSelfMonsterInfo info)
     {
@@ -106,15 +107,17 @@ public class AdventureSelfMonster : MonoBehaviour
         
         icon.ShowMaoxianImage(CurData.unit.pbUnit.IsInAdventure());
         icon.ShowZhushouImage(CurData.unit.pbUnit.IsInAllianceBase());
-        icon.ShowLockImage(CurData.unit.pbUnit.IsLocked());
+        //icon.ShowLockImage(CurData.unit.pbUnit.IsLocked());
 
         if (CurData.unit.pbUnit.IsInAdventure()|| CurData.unit.pbUnit.IsInAllianceBase())
         {
+            icon.ShowLockImage(true);
             icon.ShowMaskImage(true);
             icon.ShowSelectImage(false);
         }
         else
         {
+            icon.ShowLockImage(false);
             SetIconState(CurData.IsSelect,CurData);
         }
     }
@@ -148,4 +151,11 @@ public class AdventureSelfMonster : MonoBehaviour
         }
     }
 
+    void OnPressEnterSelfIcon(GameObject go)
+    {
+        AdventureSelfMonster micon = go.GetComponentInParent<AdventureSelfMonster>();
+        PbUnit pbUnit = micon.CurData.unit.pbUnit;
+        UIMonsterInfo.Open(pbUnit.guid, pbUnit.id, pbUnit.level, pbUnit.stage);
+    }
+    
 }

@@ -29,7 +29,7 @@ GameObject:
   - 222: {fileID: 22210570}
   - 114: {fileID: 11473402}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,23 @@ GameObject:
   - 114: {fileID: 11472612}
   m_Layer: 5
   m_Name: FixCountScrollView_Guild
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &110294
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22400506}
+  - 222: {fileID: 22237522}
+  - 114: {fileID: 11420066}
+  m_Layer: 5
+  m_Name: GuildTips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +546,7 @@ GameObject:
   - 222: {fileID: 22252058}
   - 114: {fileID: 11429868}
   m_Layer: 5
-  m_Name: GuildTips
+  m_Name: SelfTips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1320,6 +1337,38 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11420066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!114 &11423590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1651,7 +1700,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 24
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2531,15 +2580,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mViewType: 0
   mIgnorePreviousHide: 0
-  mHidePreviouseUI: 0
+  mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
   text_Title: {fileID: 11415588}
   btnClose: {fileID: 11417136}
   btnCondition: {fileID: 11463324}
   btnAdventure: {fileID: 11466124}
+  textTeam: {fileID: 11473402}
+  textSelf: {fileID: 11434212}
+  textGuild: {fileID: 11469804}
+  textSelfTips: {fileID: 11429868}
+  textGuildTips: {fileID: 11420066}
+  textBaseReward: {fileID: 11436866}
+  textExtraReward: {fileID: 11473326}
+  textCondition: {fileID: 11440186}
+  textExtraReward2: {fileID: 11451834}
+  textAdventure: {fileID: 11443724}
   scrollSelf: {fileID: 11488656}
   scrollGuild: {fileID: 11472612}
-  textGuildTips: {fileID: 11429868}
   teamList:
   - {fileID: 11472968}
   - {fileID: 11424696}
@@ -2797,6 +2855,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126304}
+--- !u!222 &22237522
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110294}
 --- !u!222 &22242206
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -3021,6 +3085,23 @@ RectTransform:
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -200, y: -24}
   m_SizeDelta: {x: 525, y: 536.5}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22400506
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22473056}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22401462
 RectTransform:
@@ -3469,6 +3550,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22408660}
+  - {fileID: 22480842}
   m_Father: {fileID: 22401462}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -3661,7 +3743,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22423370}
-  - {fileID: 22480842}
+  - {fileID: 22400506}
   m_Father: {fileID: 22496340}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -3753,7 +3835,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22473056}
+  m_Father: {fileID: 22460270}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3981,7 +4063,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: mHidePreviouseUI
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Fade : MonoBehaviour
 {
-    public Material ma;
+    private Material ma;
 
     static float targetRatio = 1.0f;
     static float fadeBeginTime = 0.0f;
@@ -11,6 +11,14 @@ public class Fade : MonoBehaviour
     static bool fadeBegin = false;
     const string fadeRatioName = "_Float1";
     const string fadeColorName = "_FadeColor";
+    //---------------------------------------------------------------------------------------------
+    void Awake()
+    {
+        if (ma == null)
+        {
+            ma = new Material(Shader.Find("Custom/Fade"));
+        }
+    }
     //---------------------------------------------------------------------------------------------
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {

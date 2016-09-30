@@ -218,7 +218,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     }
     void OnAdventureButtonClick(GameObject go)
     {
+        //UISpeech.Open("speech_test");
         uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
+        uiAdventure.Refresh(0);
     }
     void OnPvpButtonClick(GameObject go)
     {

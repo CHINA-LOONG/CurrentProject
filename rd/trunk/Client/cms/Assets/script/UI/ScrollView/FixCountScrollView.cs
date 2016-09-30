@@ -20,7 +20,7 @@ public interface IScrollView
 public class FixCountScrollView : MonoBehaviour
 {
     public IScrollView iScrollViewDelegate;
-    
+
     /// <summary>
     /// ScrollRect
     /// </summary>
@@ -58,23 +58,105 @@ public class FixCountScrollView : MonoBehaviour
     /// 显示区域长度或高度的一半
     /// </summary>
     float extents = 0;
-    ///// <summary>
-    ///// 是否隐藏裁剪部分
-    ///// </summary>
-    //public bool cullContent = true;
-
 
     Vector2 SR_size = Vector2.zero;//SrollRect的尺寸
     Vector3[] conners = new Vector3[4];//ScrollRect四角的世界坐标 
     Vector2 startPos;//ScrollRect的初始位置
-    
+
+    public void InitContentSize(int count, IScrollView iScrollView, bool record = false)
+    {
+        maxCount = count;
+        record &= (m_Child.Count > 0);
+        this.iScrollViewDelegate = iScrollView;
+        if (!record)
+        {
+            m_ScrollView.pivot = new Vector2(0.5f, 0.5f);
+            m_Content.anchorMin = new Vector2(0.5f, 0.5f);
+            m_Content.anchorMax = new Vector2(0.5f, 0.5f);
+            m_Content.pivot = new Vector2(0, 1);
+            //Logger.Log(m_ScrollView.rect);
+            m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
+
+            //四角坐标  横着数  矩形区域
+            //一号位中心点
+            //①       ②
+            //
+            //③       ④
+
+            SR_size = m_ScrollView.rect.size;
+
+            conners[0] = new Vector3(-SR_size.x / 2f, SR_size.y / 2f, 0);
+            conners[1] = new Vector3(SR_size.x / 2f, SR_size.y / 2f, 0);
+            conners[2] = new Vector3(-SR_size.x / 2f, -SR_size.y / 2f, 0);
+            conners[3] = new Vector3(SR_size.x / 2f, -SR_size.y / 2f, 0);
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
+                conners[i].x = temp.x;
+                conners[i].y = temp.y;
+            }
+        }
+
+        int childCont = 0;                      //创建列表项的个数
+        Vector2 contentSize;                    //活动面板的大小
+
+        switch (m_Grid.constraint)
+        {
+            case GridLayoutGroup.Constraint.Flexible:
+                Logger.LogError("你不能这样做");
+                break;
+            case GridLayoutGroup.Constraint.FixedColumnCount:
+                childCont = ((int)Mathf.Ceil((m_ScrollView.rect.size.y - m_Grid.padding.top - m_Grid.padding.bottom + m_Grid.spacing.y) / (m_Grid.cellSize.y + m_Grid.spacing.y)) + 2) * m_Grid.constraintCount;
+
+                contentSize.x = m_ScrollView.rect.size.x;
+                contentSize.y = m_Grid.padding.top + m_Grid.padding.bottom + ((int)Mathf.Ceil((float)count / (float)m_Grid.constraintCount)) * (m_Grid.cellSize.y + m_Grid.spacing.y) - m_Grid.spacing.y;
+                contentSize.y = Mathf.Max(contentSize.y, m_ScrollView.rect.size.y);
+
+                m_Content.sizeDelta = contentSize;
+                break;
+            case GridLayoutGroup.Constraint.FixedRowCount:
+                childCont = ((int)Mathf.Ceil((m_ScrollView.rect.size.x - m_Grid.padding.left - m_Grid.padding.right + m_Grid.spacing.x) / (m_Grid.cellSize.x + m_Grid.spacing.x)) + 2) * m_Grid.constraintCount;
+
+                contentSize.y = m_ScrollView.rect.size.y;
+                contentSize.x = m_Grid.padding.left + m_Grid.padding.right + ((int)Mathf.Ceil((float)count / (float)m_Grid.constraintCount)) * (m_Grid.cellSize.x + m_Grid.spacing.x) - m_Grid.spacing.x;
+                contentSize.x = Mathf.Max(contentSize.x, m_ScrollView.rect.size.x);
+
+                m_Content.sizeDelta = contentSize;
+                break;
+        }
+        if (m_Child.Count <= 0)
+        {
+            CleanContent();
+            for (int i = 0; i < childCont; i++)
+            {
+                Transform item = iScrollViewDelegate.IScrollViewCreateItem(this, m_Content);
+                item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
+                m_Child.Add(item);
+            }
+        }
+        ResetChildPosition();
+        InitListData();
+    }
+    public void CleanContent()
+    {
+        if (iScrollViewDelegate != null)
+        {
+            iScrollViewDelegate.IScrollViewCleanItem(this, m_Child);
+        }
+        if (m_Child.Count != 0)
+        {
+            m_Child.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+            m_Child.Clear();
+        }
+    }
+
     void Awake()
     {
-        if (m_ScrollRect==null)
+        if (m_ScrollRect == null)
         {
             m_ScrollRect = GetComponent<ScrollRect>();
         }
-        m_ScrollRect.onValueChanged.AddListener(OnDrag);
 
         m_ScrollView = m_ScrollRect.viewport == null ? m_ScrollRect.transform as RectTransform :
                                                    m_ScrollRect.viewport;
@@ -100,6 +182,10 @@ public class FixCountScrollView : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        m_ScrollRect.onValueChanged.AddListener(OnDrag);
+    }
     void OnDrag(Vector2 delta)
     {
         Vector3[] conner_local = new Vector3[4];
@@ -182,96 +268,7 @@ public class FixCountScrollView : MonoBehaviour
             realIndex = x + m_Grid.constraintCount * y;
         return realIndex;
     }
-
-    public void InitContentSize(int count, IScrollView iScrollView, bool record = false)
-    {
-        maxCount = count;
-        record &= (m_Child.Count > 0);
-        this.iScrollViewDelegate = iScrollView;
-        if (!record)
-        {
-            m_ScrollView.pivot = new Vector2(0.5f, 0.5f);
-            m_Content.anchorMin = new Vector2(0.5f, 0.5f);
-            m_Content.anchorMax = new Vector2(0.5f, 0.5f);
-            m_Content.pivot = new Vector2(0, 1);
-            //Logger.Log(m_ScrollView.rect);
-            m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
-
-            //四角坐标  横着数  矩形区域
-            //一号位中心点
-            //①       ②
-            //
-            //③       ④
-
-            SR_size = m_ScrollView.rect.size;
-
-            conners[0] = new Vector3(-SR_size.x / 2f, SR_size.y / 2f, 0);
-            conners[1] = new Vector3(SR_size.x / 2f, SR_size.y / 2f, 0);
-            conners[2] = new Vector3(-SR_size.x / 2f, -SR_size.y / 2f, 0);
-            conners[3] = new Vector3(SR_size.x / 2f, -SR_size.y / 2f, 0);
-
-            for (int i = 0; i < 4; i++)
-            {
-                Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
-                conners[i].x = temp.x;
-                conners[i].y = temp.y;
-            }
-        }
-
-        int childCont = 0;                      //创建列表项的个数
-        Vector2 contentSize;                    //活动面板的大小
-
-        switch (m_Grid.constraint)
-        {
-            case GridLayoutGroup.Constraint.Flexible:
-                Logger.LogError("你不能这样做");
-                break;
-            case GridLayoutGroup.Constraint.FixedColumnCount:
-                childCont = ((int)Mathf.Ceil((m_ScrollView.rect.size.y - m_Grid.padding.top - m_Grid.padding.bottom + m_Grid.spacing.y) / (m_Grid.cellSize.y + m_Grid.spacing.y)) + 2) * m_Grid.constraintCount;
-
-                contentSize.x = m_ScrollView.rect.size.x;
-                contentSize.y = m_Grid.padding.top + m_Grid.padding.bottom + ((int)Mathf.Ceil((float)count / (float)m_Grid.constraintCount)) * (m_Grid.cellSize.y + m_Grid.spacing.y) - m_Grid.spacing.y;
-                contentSize.y = Mathf.Max(contentSize.y, m_ScrollView.rect.size.y);
-
-                m_Content.sizeDelta = contentSize;
-                break;
-            case GridLayoutGroup.Constraint.FixedRowCount:
-                childCont = ((int)Mathf.Ceil((m_ScrollView.rect.size.x - m_Grid.padding.left - m_Grid.padding.right + m_Grid.spacing.x) / (m_Grid.cellSize.x + m_Grid.spacing.x)) + 2) * m_Grid.constraintCount;
-
-                contentSize.y = m_ScrollView.rect.size.y;
-                contentSize.x = m_Grid.padding.left + m_Grid.padding.right + ((int)Mathf.Ceil((float)count / (float)m_Grid.constraintCount)) * (m_Grid.cellSize.x + m_Grid.spacing.x) - m_Grid.spacing.x;
-                contentSize.x = Mathf.Max(contentSize.x, m_ScrollView.rect.size.x);
-
-                m_Content.sizeDelta = contentSize;
-                break;
-        }
-        if (m_Child.Count <= 0)
-        {
-            CleanContent();
-            for (int i = 0; i < childCont; i++)
-            {
-                Transform item = iScrollViewDelegate.IScrollViewCreateItem(this, m_Content);
-                item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
-                m_Child.Add(item);
-            }
-        }
-        ResetChildPosition();
-        InitListData();
-    }
-
-    public void CleanContent()
-    {
-        if (iScrollViewDelegate != null)
-        {
-            iScrollViewDelegate.IScrollViewCleanItem(this, m_Child);
-        }
-        if (m_Child.Count != 0)
-        {
-            m_Child.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
-            m_Child.Clear();
-        }
-    }
-
+    
     void ResetChildPosition()
     {
         Vector2 startAxis;                      //元素开始的位置
@@ -310,7 +307,6 @@ public class FixCountScrollView : MonoBehaviour
 
     void InitListData()
     {
-        OnDrag(Vector2.zero);
         int realIndex;
         for (int i = 0; i < m_Child.Count; i++)
         {
@@ -328,11 +324,6 @@ public class FixCountScrollView : MonoBehaviour
             {
                 iScrollViewDelegate.IScrollViewReloadItem(this, item, index);
             }
-            //Text text = item.GetComponent<Text>();
-            //if (text != null)
-            //{
-            //    text.text = index.ToString();
-            //}
         }
         else
         {

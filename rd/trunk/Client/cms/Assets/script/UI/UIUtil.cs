@@ -658,4 +658,19 @@ public class UIUtil
 
     }
 
+    public static void SubstringByText(Text text, string content)
+    {
+        text.text = content;
+        RectTransform textRt = text.transform as RectTransform;
+        if (text.preferredWidth > textRt.rect.width)
+        {
+            string temp = content;
+            while (text.preferredWidth > textRt.rect.width)
+            {
+                temp = temp.Substring(0, temp.Length - 1);
+                text.text = temp + "…";
+            }
+        }
+    }
+
 }

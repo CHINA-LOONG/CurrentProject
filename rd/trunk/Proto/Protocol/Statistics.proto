@@ -110,6 +110,12 @@ message HSStatisticsSyncPart3
 	required int32 gold2CoinTimes = 4;
 	// 多倍经验剩余次数
 	required HSSyncExpLeftTimes expLeftTimes = 5;
+	// 本月签到次数（包括补签）
+	required int32 signinTimesMonthly = 6;
+	// 本月补签次数
+	required int32 signinFillTimesMonthly = 7;
+	// 今日是否已签到
+	required bool isSigninDaily = 8;
 }
 
 // SYNC_DAILY_REFRESH_S

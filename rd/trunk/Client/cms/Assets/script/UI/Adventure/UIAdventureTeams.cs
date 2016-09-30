@@ -37,6 +37,7 @@ public class UIAdventureTeams : UIBase,
     }
     public override void Clean()
     {
+        scrollView.CleanContent();
         UIMgr.Instance.DestroyUI(uiAdventureReward);
     }
 
@@ -59,11 +60,21 @@ public class UIAdventureTeams : UIBase,
     {
         if (click == MsgBox.PrompButtonClick.Cancle)
             return;
-        GameApp.Instance.netManager.SendMessage(PB.code.ADVENTURE_BUY_TEAM_C.GetHashCode(), new PB.HSAdventureBuyTeam());
+
+        AdventureTeamPriceData teamPriceData = StaticDataMgr.Instance.GetAdventureTeamPriceData(AdventureDataMgr.Instance.teamCount + 1);
+        if (GameDataMgr.Instance.PlayerDataAttr.gold <teamPriceData.gold)
+        {
+            GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+        }
+        else
+        {
+            GameApp.Instance.netManager.SendMessage(PB.code.ADVENTURE_BUY_TEAM_C.GetHashCode(), new PB.HSAdventureBuyTeam());
+        }
     }
 
     void OnClickCloseBtn()
     {
+        scrollView.CleanContent();
         UIMgr.Instance.CloseUI_(this);
     }
 
@@ -103,6 +114,11 @@ public class UIAdventureTeams : UIBase,
         if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("添加队伍失败");
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            if (error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
             return;
         }
         PB.HSAdventureBuyTeamRet result = msg.GetProtocolBody<PB.HSAdventureBuyTeamRet>();
@@ -114,9 +130,15 @@ public class UIAdventureTeams : UIBase,
         UINetRequest.Close();
         if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            if (error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
             Logger.LogError("领取奖励失败");
             return;
         }
+        
         PB.HSAdventureSettleRet result = msg.GetProtocolBody<PB.HSAdventureSettleRet>();
         
         uiAdventureReward = UIMgr.Instance.OpenUI_(UIAdventureReward.ViewName) as UIAdventureReward;
@@ -151,7 +173,18 @@ public class UIAdventureTeams : UIBase,
 
     public void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList)
     {
-        itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+        //itemList.ForEach(delegate (Transform item) 
+        //{
+        //    AdventureTeamItem team = item.GetComponent<AdventureTeamItem>();
+        //    team.CleanItem();
+        //    Destroy(item.gameObject);
+        //});
+        for (int i = itemList.Count - 1; i >= 0; i--)
+        {
+            AdventureTeamItem team = itemList[i].GetComponent<AdventureTeamItem>();
+            team.CleanItem();
+            Destroy(itemList[i].gameObject);
+        }
         itemList.Clear();
     }
     #endregion
@@ -159,7 +192,7 @@ public class UIAdventureTeams : UIBase,
     #region IAdventureTeamItem
     public void OnClickToAdventure()
     {
-        UIMgr.Instance.CloseUI_(this);
+        OnClickCloseBtn();
     }
 
     public void OnClickToPaySubmit(AdventureTeam team)

@@ -374,7 +374,7 @@ public class BattleUnitAi : MonoBehaviour {
 			BattleObject tauntTarget = ObjectDataMgr.Instance.GetBattleObject( tauntId );
 			if (tauntTarget != null && 
 			    tauntTarget.unit.pbUnit.slot >= BattleConst.slotIndexMin && 
-			    tauntTarget.unit.pbUnit.slot <= BattleConst.slotIndexMax &&
+			    tauntTarget.unit.pbUnit.slot <= BattleController.Instance.CurMaxSlotIndex &&
 			    tauntTarget.unit.State != UnitState.Dead
 			    )
 			{

@@ -781,7 +781,37 @@ namespace PB
       SYNC_SHOP_REFRESH_S = 11003,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SYNC_EXP_LEFT_TIMES_S", Value=11004)]
-      SYNC_EXP_LEFT_TIMES_S = 11004
+      SYNC_EXP_LEFT_TIMES_S = 11004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SET_DEFENCE_MONSTERS_C", Value=12001)]
+      PVP_SET_DEFENCE_MONSTERS_C = 12001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SET_DEFENCE_MONSTERS_S", Value=12002)]
+      PVP_SET_DEFENCE_MONSTERS_S = 12002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_MATCH_TARGET_C", Value=12003)]
+      PVP_MATCH_TARGET_C = 12003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_MATCH_TARGET_S", Value=12004)]
+      PVP_MATCH_TARGET_S = 12004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SETTLE_C", Value=12005)]
+      PVP_SETTLE_C = 12005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_SETTLE_S", Value=12006)]
+      PVP_SETTLE_S = 12006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_RANK_LIST_C", Value=12007)]
+      PVP_RANK_LIST_C = 12007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_RANK_LIST_S", Value=12008)]
+      PVP_RANK_LIST_S = 12008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_RECORD_C", Value=12009)]
+      PVP_DEFENCE_RECORD_C = 12009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_RECORD_S", Value=12010)]
+      PVP_DEFENCE_RECORD_S = 12010
     }
   
 }

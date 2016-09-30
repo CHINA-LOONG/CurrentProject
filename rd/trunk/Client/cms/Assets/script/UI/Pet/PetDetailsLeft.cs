@@ -101,7 +101,7 @@ public class PetDetailsLeft : MonoBehaviour,
         IsLocked = curData.pbUnit.IsLocked();
         RefreshLevelExp(curData.pbUnit.level, curData.pbUnit.curExp);
 
-        dispositionData = StaticDataMgr.Instance.GetCharacterData(curUnitData.disposition);
+        dispositionData = StaticDataMgr.Instance.GetCharacterData(curData.pbUnit.character);
         SetDisposition(dispositionData.index);
         textDisposition.text = StaticDataMgr.Instance.GetTextByID(dispositionData.name);
         objDispositionTips.gameObject.SetActive(false);

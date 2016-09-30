@@ -45,7 +45,7 @@ public class UIAdventure : UIBase,
     {
         get
         {
-            if (animator==null)
+            if (animator == null)
             {
                 animator = GetComponent<Animator>();
             }
@@ -79,7 +79,7 @@ public class UIAdventure : UIBase,
         }
     }
 
-    public void Refresh(int select=-1)
+    public void Refresh(int select = -1)
     {
         selIndex = (select == -1 ? selIndex : select);
 
@@ -100,6 +100,7 @@ public class UIAdventure : UIBase,
         {
             adventures[i].ReloadData(adventureDict[i + 1]);
         }
+        text_Tips.text = StaticDataMgr.Instance.GetTextByID("adventure_tip" + (index + 1));
     }
 
     void OnClickExpeditionBtn()
@@ -121,7 +122,7 @@ public class UIAdventure : UIBase,
     {
         for (int i = 0; i < adventures.Count; i++)
         {
-            adventures[i].curData = null;
+            adventures[i].CleanItem();
         }
         UIMgr.Instance.CloseUI_(this);
     }
@@ -133,15 +134,25 @@ public class UIAdventure : UIBase,
         selIndex = 0;
         Animator.SetTrigger("enter");
         //临时测试代码
-        Refresh();
+        //Refresh();
     }
     public override void Clean()
     {
+        for (int i = 0; i < adventures.Count; i++)
+        {
+            adventures[i].CleanItem();
+        }
         UIMgr.Instance.DestroyUI(uiAdventureLayout);
         UIMgr.Instance.DestroyUI(uiAdventureTeams);
     }
+
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        Refresh();
+    }
     #endregion
-    
+
     #region BindListener
     void OnEnable()
     {
@@ -191,5 +202,6 @@ public class UIAdventure : UIBase,
         uiAdventureLayout = UIMgr.Instance.OpenUI_(UIAdventureLayout.ViewName) as UIAdventureLayout;
         uiAdventureLayout.ReloadData(info);
     }
+
     #endregion
 }
