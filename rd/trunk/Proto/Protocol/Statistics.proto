@@ -120,6 +120,8 @@ message HSStatisticsSyncPart3
 	required int32 signinFillTimesMonthly = 7;
 	// 今日是否已签到
 	required bool isSigninDaily = 8;
+	// 今日登录次数
+	required int32 loginTimesDaily = 9;
 }
 
 // SYNC_DAILY_REFRESH_S

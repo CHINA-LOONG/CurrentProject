@@ -84,10 +84,9 @@ public class PrompMsgRefreshCondition : UIBase
     {
         if (time <= 0)
         {
-            Close();
+            OnClickConfirmBtn();
         }
         textDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("adventure_tipshuifu"),changeAmount, UIUtil.Convert_hh_mm_ss(time));
-        
     }
 
     public void Close()

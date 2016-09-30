@@ -188,4 +188,9 @@ public class UISumReward : UIBase
         EventTriggerListener.Get(skipButton).onClick = SkipClick;
         title.text = StaticDataMgr.Instance.GetTextByID("summon_result");
 	}
+
+    public override void Clean()
+    {
+        UIMgr.Instance.DestroyUI(mGainPetUI);
+    }
 }

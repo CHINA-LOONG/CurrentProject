@@ -61,6 +61,10 @@ public class SociatyTechnologyItem : MonoBehaviour
                 mContributeConsumValue.text = data.levelUp.ToString();
                 mTecCurLvl.text = string.Empty;
                 mOpenLvlText.text = string.Empty;
+
+                Sprite iconImg = ResourceMgr.Instance.LoadAssetType<Sprite>(data.icon) as Sprite;
+                if (null != iconImg)
+                    mTecIcon.sprite = iconImg;
             }
 
             return;

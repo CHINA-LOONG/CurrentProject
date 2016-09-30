@@ -20,6 +20,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public BuildButton m_DecomposeButton;
     public BuildButton m_AdventureButton;
     public BuildButton pvpButton;
+    public BuildButton m_SigninButton;
 
     public Button huoliButton;
     public Text huoliText;
@@ -80,6 +81,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
         EventTriggerListener.Get(m_AdventureButton.gameObject).onClick = OnAdventureButtonClick;
         EventTriggerListener.Get(pvpButton.gameObject).onClick = OnPvpButtonClick;
+        EventTriggerListener.Get(m_SigninButton.gameObject).onClick = OnSigninButtonClick;
         EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
         EventTriggerListener.Get(huoliTipButton).onClick = OnHuoliTipButtonClick;
 
@@ -101,6 +103,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.AddListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
+        GameEventMgr.Instance.AddListener(GameEventList.SignInChange, OnSigninChanged);
         GameEventMgr.Instance.AddListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_C.GetHashCode().ToString(), OnSettingLanguageRet);
@@ -113,6 +116,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
+        GameEventMgr.Instance.RemoveListener(GameEventList.SignInChange, OnSigninChanged);
         GameEventMgr.Instance.RemoveListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_C.GetHashCode().ToString(), OnSettingLanguageRet);
@@ -172,8 +176,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameQuestData questData = GameDataMgr.Instance.PlayerDataAttr.gameQuestData;
         m_QuestButton.SetRemind(questData.StoryFinish||questData.DailyFinish||questData.OtherFinish);
     }
-
-
+    void OnSigninChanged()
+    {
+        m_SigninButton.SetRemind(!SigninDataMgr.Instance.isSigninDaily||(!SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.canSigninFillTimes > 0));
+    }
+    
     void BagButtonClick(GameObject go)
     {
         uiBag = UIBag.OpenWith();
@@ -225,6 +232,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnPvpButtonClick(GameObject go)
     {
         PvpMain.Open();
+    }
+
+    void OnSigninButtonClick(GameObject go)
+    {
+        //签到作为弹出框层popup
+        UISignIn.Open();
     }
 
     void    OnHuoliButtonClick (GameObject go)
@@ -312,6 +325,13 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         OnLevelChanged(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr,false);
         OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+
+        if (!SigninDataMgr.Instance.isSigninDaily && !SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.loginTimesDaily <= 0)
+        {
+            OnSigninButtonClick(null);
+            SigninDataMgr.Instance.isPopup = true;
+        }
+        OnSigninChanged();
     }
     public override void Clean()
     {

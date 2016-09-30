@@ -124,7 +124,10 @@ namespace PB
       TOWER_COIN = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN", Value=5)]
-      ARENA_COIN = 5
+      ARENA_COIN = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT", Value=6)]
+      HONOR_POINT = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -165,7 +168,10 @@ namespace PB
       CHANGE_TOWER_COIN = 11,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_ARENA_COIN", Value=12)]
-      CHANGE_ARENA_COIN = 12
+      CHANGE_ARENA_COIN = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_HONOR_COIN", Value=13)]
+      CHANGE_HONOR_COIN = 13
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -366,7 +372,13 @@ namespace PB
       TOWERSHOP = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=3)]
-      ALLIANCESHOP = 3
+      ALLIANCESHOP = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVPSHOP", Value=4)]
+      PVPSHOP = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOPNUM", Value=4)]
+      SHOPNUM = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]

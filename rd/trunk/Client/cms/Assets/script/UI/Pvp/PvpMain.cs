@@ -24,6 +24,8 @@ public class PvpMain : UIBase
     public Text pvpTimeCountDownText;
     public Button fightButton;
 
+    private List<MonsterIcon> defenseMonsterIcon = new List<MonsterIcon>();
+
     private PvpDataMgr  PvpDataMgrAttr
     {
         get
@@ -62,7 +64,32 @@ public class PvpMain : UIBase
         functionEntryButtons[3].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_rules");
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
     }
-	
+    public override void Init()
+    {
+        if(GameDataMgr.Instance.PvpDataMgrAttr.IsSelfHaveDefensePositon())
+        {
+            RefreshDefensePosition();
+        }
+        else
+        {
+            RequestDefensePosition();
+        }
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        RefreshDefensePosition();
+    }
+
+    void RequestDefensePosition()
+    {
+
+    }
+    void RefreshDefensePosition()
+    {
+        if (!GameDataMgr.Instance.PvpDataMgrAttr.IsSelfHaveDefensePositon())
+            return;
+
+    }
     void OnAdjustButtonClick()
     {
         List<string> teamlist = new List<string>();
@@ -101,14 +128,14 @@ public class PvpMain : UIBase
 
     void OnSearchOpponentFinished(ProtocolMessage message)
     {
-        //test
-        PvpAdjustBattleTeam.OpenWith();
-        return;
+        UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
             PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
+        PB.HSPVPMatchTargetRet msgRet = message.GetProtocolBody<PB.HSPVPMatchTargetRet>();
+        PvpAdjustBattleTeam.OpenWith(msgRet);
     }
 }

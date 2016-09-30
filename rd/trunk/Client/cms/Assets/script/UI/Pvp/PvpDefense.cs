@@ -110,6 +110,7 @@ public class PvpDefense : UIBase
 
     void OnSaveDefensePositionFinished(ProtocolMessage message)
     {
+        UINetRequest.Close();
         if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();

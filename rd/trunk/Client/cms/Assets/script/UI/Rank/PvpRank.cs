@@ -21,22 +21,39 @@ public class PvpRank : MonoBehaviour, IScrollView
             return instance;
         }
     }
+
+    private List<PB.PVPRankData> listPvpRankData = new List<PB.PVPRankData>();
     
-    // Use this for initialization
-	void Start ()
+     void RequestPvpRank()
     {
-        scrollView.InitContentSize(60, this, true);
+        GameDataMgr.Instance.PvpDataMgrAttr.RequestPvpRank(OnRequestPvpRankFinished);
     }
+
+    void OnRequestPvpRankFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+        PB.HSPVPRankRet msgRet = message.GetProtocolBody<PB.HSPVPRankRet>();
+        listPvpRankData.Clear();
+        listPvpRankData.AddRange(msgRet.pvpRankList);
+        scrollView.InitContentSize(listPvpRankData.Count, this, true);
+    }
+
 
     #region IScrollView
     public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
-        // questItem quest = item.GetComponent<questItem>();
-        // quest.ReLoadData(CurrentList[index]);
+         PvpRankItem rankItem = item.GetComponent<PvpRankItem>();
+        rankItem.InitWith(listPvpRankData[index]);
     }
     public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
-        PvpRankItem subItem = PvpRankItem.CreateWith();
+        PvpRankItem subItem = PvpRankItem.Create();
         UIUtil.SetParentReset(subItem.transform, parent);
         return subItem.transform;
     }

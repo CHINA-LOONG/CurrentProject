@@ -137,6 +137,8 @@ public class FixCountScrollView : MonoBehaviour
         }
         ResetChildPosition();
         InitListData();
+        OnDrag(Vector2.zero);
+        m_ScrollRect.onValueChanged.AddListener(OnDrag);
     }
     public void CleanContent()
     {
@@ -184,10 +186,10 @@ public class FixCountScrollView : MonoBehaviour
 
     void Start()
     {
-        m_ScrollRect.onValueChanged.AddListener(OnDrag);
     }
     void OnDrag(Vector2 delta)
     {
+        Debug.Log(Time.time+"    "+delta);
         Vector3[] conner_local = new Vector3[4];
 
         for (int i = 0; i < 4; i++)
@@ -210,18 +212,16 @@ public class FixCountScrollView : MonoBehaviour
                 {
                     Vector2 pos = temp.localPosition;
                     pos.y += extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents);
-                    int realIndex = getRealIndex(pos);
                     temp.localPosition = pos;
-
+                    int realIndex = getRealIndex(pos);
                     ReloadData(temp, realIndex);
                 }
                 else if (distance > extents * 0.5f)
                 {
                     Vector2 pos = temp.localPosition;
                     pos.y -= extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents); ;
-                    int realIndex = getRealIndex(pos);
                     temp.localPosition = pos;
-
+                    int realIndex = getRealIndex(pos);
                     ReloadData(temp, realIndex);
                 }
             }
@@ -240,15 +240,13 @@ public class FixCountScrollView : MonoBehaviour
                 {
                     Vector2 pos = temp.localPosition;
                     pos.x += extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents);
-                    int realIndex = getRealIndex(pos);
                     temp.localPosition = pos;
-
+                    int realIndex = getRealIndex(pos);
                     ReloadData(temp, realIndex);
                 }
                 else if (distance > extents * 0.5f)
                 {
                     Vector2 pos = temp.localPosition;
-                    int a = (int)Mathf.Ceil(Mathf.Abs(distance) / extents);
                     pos.x -= extents * (int)Mathf.Ceil(Mathf.Abs(distance) / extents);
                     temp.localPosition = pos;
                     int realIndex = getRealIndex(pos);

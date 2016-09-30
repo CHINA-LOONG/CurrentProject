@@ -136,16 +136,13 @@ public class PlayerLoginModule extends PlayerModule {
 			player.sendError(HS.code.SYNCINFO_C_VALUE, error.LOGIN_LOCK_VALUE);
 			return true;
 		}
-		
-		// 登录回复协议
-		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
-		response.setStatus(error.NONE_ERROR_VALUE);
-		 
-		// 绑定会话
+
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
-		// 发送登录成功协议
+		// 登录回复协议
+		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
+		response.setStatus(error.NONE_ERROR_VALUE);
 		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
 
 		// 通知玩家其他模块玩家登录成功
@@ -160,7 +157,7 @@ public class PlayerLoginModule extends PlayerModule {
 	
 	@Override
 	protected boolean onPlayerReconnect(HawkMsg msg){
-
+		player.getEntity().setLoginTime(HawkTime.getCalendar());
 		// TODO 检测设备信息
 		return true;
 	}

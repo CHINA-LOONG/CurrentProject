@@ -1468,33 +1468,33 @@ public final class Player {
      */
     int getHair();
 
-    // optional int32 hairColor = 14;
+    // optional int32 hairColor = 13;
     /**
-     * <code>optional int32 hairColor = 14;</code>
+     * <code>optional int32 hairColor = 13;</code>
      */
     boolean hasHairColor();
     /**
-     * <code>optional int32 hairColor = 14;</code>
+     * <code>optional int32 hairColor = 13;</code>
      */
     int getHairColor();
 
-    // required int32 recharge = 15;
+    // required int32 recharge = 14;
     /**
-     * <code>required int32 recharge = 15;</code>
+     * <code>required int32 recharge = 14;</code>
      */
     boolean hasRecharge();
     /**
-     * <code>required int32 recharge = 15;</code>
+     * <code>required int32 recharge = 14;</code>
      */
     int getRecharge();
 
-    // required int32 vipLevel = 16;
+    // required int32 vipLevel = 15;
     /**
-     * <code>required int32 vipLevel = 16;</code>
+     * <code>required int32 vipLevel = 15;</code>
      */
     boolean hasVipLevel();
     /**
-     * <code>required int32 vipLevel = 16;</code>
+     * <code>required int32 vipLevel = 15;</code>
      */
     int getVipLevel();
   }
@@ -1609,17 +1609,17 @@ public final class Player {
               hair_ = input.readInt32();
               break;
             }
-            case 112: {
+            case 104: {
               bitField0_ |= 0x00001000;
               hairColor_ = input.readInt32();
               break;
             }
-            case 120: {
+            case 112: {
               bitField0_ |= 0x00002000;
               recharge_ = input.readInt32();
               break;
             }
-            case 128: {
+            case 120: {
               bitField0_ |= 0x00004000;
               vipLevel_ = input.readInt32();
               break;
@@ -1883,49 +1883,49 @@ public final class Player {
       return hair_;
     }
 
-    // optional int32 hairColor = 14;
-    public static final int HAIRCOLOR_FIELD_NUMBER = 14;
+    // optional int32 hairColor = 13;
+    public static final int HAIRCOLOR_FIELD_NUMBER = 13;
     private int hairColor_;
     /**
-     * <code>optional int32 hairColor = 14;</code>
+     * <code>optional int32 hairColor = 13;</code>
      */
     public boolean hasHairColor() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>optional int32 hairColor = 14;</code>
+     * <code>optional int32 hairColor = 13;</code>
      */
     public int getHairColor() {
       return hairColor_;
     }
 
-    // required int32 recharge = 15;
-    public static final int RECHARGE_FIELD_NUMBER = 15;
+    // required int32 recharge = 14;
+    public static final int RECHARGE_FIELD_NUMBER = 14;
     private int recharge_;
     /**
-     * <code>required int32 recharge = 15;</code>
+     * <code>required int32 recharge = 14;</code>
      */
     public boolean hasRecharge() {
       return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>required int32 recharge = 15;</code>
+     * <code>required int32 recharge = 14;</code>
      */
     public int getRecharge() {
       return recharge_;
     }
 
-    // required int32 vipLevel = 16;
-    public static final int VIPLEVEL_FIELD_NUMBER = 16;
+    // required int32 vipLevel = 15;
+    public static final int VIPLEVEL_FIELD_NUMBER = 15;
     private int vipLevel_;
     /**
-     * <code>required int32 vipLevel = 16;</code>
+     * <code>required int32 vipLevel = 15;</code>
      */
     public boolean hasVipLevel() {
       return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
-     * <code>required int32 vipLevel = 16;</code>
+     * <code>required int32 vipLevel = 15;</code>
      */
     public int getVipLevel() {
       return vipLevel_;
@@ -2041,13 +2041,13 @@ public final class Player {
         output.writeInt32(12, hair_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(14, hairColor_);
+        output.writeInt32(13, hairColor_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeInt32(15, recharge_);
+        output.writeInt32(14, recharge_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        output.writeInt32(16, vipLevel_);
+        output.writeInt32(15, vipLevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2108,15 +2108,15 @@ public final class Player {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, hairColor_);
+          .computeInt32Size(13, hairColor_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(15, recharge_);
+          .computeInt32Size(14, recharge_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(16, vipLevel_);
+          .computeInt32Size(15, vipLevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2923,22 +2923,22 @@ public final class Player {
         return this;
       }
 
-      // optional int32 hairColor = 14;
+      // optional int32 hairColor = 13;
       private int hairColor_ ;
       /**
-       * <code>optional int32 hairColor = 14;</code>
+       * <code>optional int32 hairColor = 13;</code>
        */
       public boolean hasHairColor() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>optional int32 hairColor = 14;</code>
+       * <code>optional int32 hairColor = 13;</code>
        */
       public int getHairColor() {
         return hairColor_;
       }
       /**
-       * <code>optional int32 hairColor = 14;</code>
+       * <code>optional int32 hairColor = 13;</code>
        */
       public Builder setHairColor(int value) {
         bitField0_ |= 0x00001000;
@@ -2947,7 +2947,7 @@ public final class Player {
         return this;
       }
       /**
-       * <code>optional int32 hairColor = 14;</code>
+       * <code>optional int32 hairColor = 13;</code>
        */
       public Builder clearHairColor() {
         bitField0_ = (bitField0_ & ~0x00001000);
@@ -2956,22 +2956,22 @@ public final class Player {
         return this;
       }
 
-      // required int32 recharge = 15;
+      // required int32 recharge = 14;
       private int recharge_ ;
       /**
-       * <code>required int32 recharge = 15;</code>
+       * <code>required int32 recharge = 14;</code>
        */
       public boolean hasRecharge() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>required int32 recharge = 15;</code>
+       * <code>required int32 recharge = 14;</code>
        */
       public int getRecharge() {
         return recharge_;
       }
       /**
-       * <code>required int32 recharge = 15;</code>
+       * <code>required int32 recharge = 14;</code>
        */
       public Builder setRecharge(int value) {
         bitField0_ |= 0x00002000;
@@ -2980,7 +2980,7 @@ public final class Player {
         return this;
       }
       /**
-       * <code>required int32 recharge = 15;</code>
+       * <code>required int32 recharge = 14;</code>
        */
       public Builder clearRecharge() {
         bitField0_ = (bitField0_ & ~0x00002000);
@@ -2989,22 +2989,22 @@ public final class Player {
         return this;
       }
 
-      // required int32 vipLevel = 16;
+      // required int32 vipLevel = 15;
       private int vipLevel_ ;
       /**
-       * <code>required int32 vipLevel = 16;</code>
+       * <code>required int32 vipLevel = 15;</code>
        */
       public boolean hasVipLevel() {
         return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
-       * <code>required int32 vipLevel = 16;</code>
+       * <code>required int32 vipLevel = 15;</code>
        */
       public int getVipLevel() {
         return vipLevel_;
       }
       /**
-       * <code>required int32 vipLevel = 16;</code>
+       * <code>required int32 vipLevel = 15;</code>
        */
       public Builder setVipLevel(int value) {
         bitField0_ |= 0x00004000;
@@ -3013,7 +3013,7 @@ public final class Player {
         return this;
       }
       /**
-       * <code>required int32 vipLevel = 16;</code>
+       * <code>required int32 vipLevel = 15;</code>
        */
       public Builder clearVipLevel() {
         bitField0_ = (bitField0_ & ~0x00004000);
@@ -6209,8 +6209,8 @@ public final class Player {
       "\n\003exp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022" +
       "\021\n\ttowerCoin\030\010 \002(\005\022\r\n\005honor\030\t \002(\005\022\016\n\006gen" +
       "der\030\n \001(\005\022\013\n\003eye\030\013 \001(\005\022\014\n\004hair\030\014 \001(\005\022\021\n\t",
-      "hairColor\030\016 \001(\005\022\020\n\010recharge\030\017 \002(\005\022\020\n\010vip" +
-      "Level\030\020 \002(\005\"!\n\017HSPlayerKickout\022\016\n\006reason" +
+      "hairColor\030\r \001(\005\022\020\n\010recharge\030\016 \002(\005\022\020\n\010vip" +
+      "Level\030\017 \002(\005\"!\n\017HSPlayerKickout\022\016\n\006reason" +
       "\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004puid\030\001 \002(\t\022\020" +
       "\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gend" +
       "er\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\th" +

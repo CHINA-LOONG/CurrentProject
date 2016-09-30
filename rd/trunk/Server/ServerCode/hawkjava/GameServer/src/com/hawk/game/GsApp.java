@@ -533,7 +533,7 @@ public class GsApp extends HawkApp {
 						// 登陆协议时间间隔控制
 						synchronized (puidLoginTime) {
 							if (puidLoginTime.containsKey(puid) && HawkTime.getMillisecond() <= puidLoginTime.get(puid) + 5000) {
-								session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE,Status.error.LOGIN_INTERVAL_SHORT_VALUE, 1));
+								session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE, Status.error.LOGIN_INTERVAL_SHORT_VALUE, 1));
 								return true;
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
@@ -543,7 +543,7 @@ public class GsApp extends HawkApp {
 							return true;
 						}
 
-						if (!preparePuidSession(HS.code.RECCONECT_C_VALUE, puid, session)) {
+						if (!preparePuidSession(HS.code.LOGIN_C_VALUE, puid, session)) {
 							return true;
 						}
 
@@ -561,7 +561,7 @@ public class GsApp extends HawkApp {
 							return true;
 						}
 
-						if (!preparePuidSession(HS.code.RECCONECT_C_VALUE, puid, session)) {
+						if (!preparePuidSession(HS.code.PLAYER_CREATE_C_VALUE, puid, session)) {
 							return true;
 						}
 
@@ -781,7 +781,7 @@ public class GsApp extends HawkApp {
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
 		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
 		try {
-			// 对象不存在即创建
+			// 对象不存在不能重连
 			if (objBase == null || !objBase.isObjValid()) {
 				return false;
 			}

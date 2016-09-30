@@ -39,6 +39,7 @@ import com.hawk.game.util.GsConst;
 import com.hawk.game.util.GsConst.Cycle;
 import com.hawk.game.util.ProtoUtil;
 import com.hawk.game.util.QuestUtil;
+import com.hawk.game.util.ShopUtil;
 import com.hawk.game.util.QuestUtil.QuestGroup;
 import com.hawk.game.util.TimeUtil;
 
@@ -614,7 +615,7 @@ public class PlayerQuestModule extends PlayerModule {
 			if (Cycle.NORMAL_CYCLE == cycle) {
 				progress = statisticsEntity.getShopRefreshTimes();
 			} else if (Cycle.DAILY_CYCLE == cycle) {
-				progress = player.getPlayerData().getShopEntity().getAllShopRefreshNum();
+				progress = ShopUtil.getAllRefreshTimes(player);
 			}
 			break;
 		}

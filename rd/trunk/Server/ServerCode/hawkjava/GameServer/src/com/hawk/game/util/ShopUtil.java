@@ -37,15 +37,15 @@ public class ShopUtil {
 	
 	public static ShopData.Builder generateShopData(Player player, int shopType) {
 		ShopData.Builder response = ShopData.newBuilder();
-		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+		ShopEntity shopEntity = player.getPlayerData().getShopEntity(shopType);
 		ShopCfg shopCfg = ShopCfg.getShopCfg(shopType, player.getLevel());
 		if (shopCfg == null ) {
 			return response;
 		}
 		response.setType(shopType);
-		response.setShopId(shopEntity.getShopId(shopType));
-		response.setRefreshTimesLeft(shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(shopType));
-		for (ShopItemInfo element : shopEntity.getShopItemsList(shopType)) {
+		response.setShopId(shopEntity.getShopId());
+		response.setRefreshTimesLeft(shopCfg.getRefreshMaxNumByHand() - shopEntity.getRefreshNums());
+		for (ShopItemInfo element : shopEntity.getShopItemsList()) {
 			ShopItem.Builder shopItem = ShopItem.newBuilder();
 			shopItem.setType(element.getType());
 			shopItem.setItemId(element.getItemId());
@@ -65,14 +65,24 @@ public class ShopUtil {
 		return response;
 	}
 	
+	public static int getAllRefreshTimes(Player player){
+		int num = 0;
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+			ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
+			num += shopEntity.getRefreshNums();
+		}
+		
+		return num;
+	}
+	
 	public static void refreshShopData(Player player){
-		refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
-		refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
-		refreshShopData(Const.shopType.TOWERSHOP_VALUE, player);
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+			refreshShopData(i, player);
+		}
 	}
 	
 	public static void refreshShopData(int type, Player player){
-		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+		ShopEntity shopEntity = player.getPlayerData().getShopEntity(type);
 		List<ShopItemInfo> shopItemList = ShopUtil.getPlayerShopItems(player, type);
 		for (int i = 0; i < shopItemList.size(); i++) {
 			shopItemList.get(i).setSlot(i);
@@ -83,10 +93,13 @@ public class ShopUtil {
 			else if (type == Const.shopType.TOWERSHOP_VALUE){
 				shopItemList.get(i).setPriceType(Const.moneyType.TOWER_COIN_VALUE);
 			}
+			else if (type == Const.shopType.PVPSHOP_VALUE) {
+				shopItemList.get(i).setPriceType(Const.moneyType.HONOR_POINT_VALUE);
+			}
 		}
-		shopEntity.increaseShopId(type);
-		shopEntity.setRefreshDate(type, HawkTime.getSeconds());
-		shopEntity.setShopItemsList(type, shopItemList);
+		shopEntity.increaseShopId();
+		shopEntity.setRefreshDate(HawkTime.getSeconds());
+		shopEntity.setShopItemsList(shopItemList);
 		shopEntity.notifyUpdate(true);
 	}
 }

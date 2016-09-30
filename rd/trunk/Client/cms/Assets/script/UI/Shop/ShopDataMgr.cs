@@ -11,7 +11,6 @@ public class ShopDataMgr : MonoBehaviour
 		public	int	minLevel;
 		public	int	maxLevel;
 	}
-
 	//商城中数据
 	public	int	monthCardLeft = 0;
 	public	List<PB.RechargeState> listRechageState;

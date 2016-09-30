@@ -102,6 +102,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1027)]
       QUEST_INFO_SYNC_S = 1027,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_SYNC_S", Value=1028)]
+      PVP_DEFENCE_SYNC_S = 1028,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART1_S", Value=1030)]
       STATISTICS_SYNC_PART1_S = 1030,
             
@@ -811,7 +814,19 @@ namespace PB
       PVP_DEFENCE_RECORD_C = 12009,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_RECORD_S", Value=12010)]
-      PVP_DEFENCE_RECORD_S = 12010
+      PVP_DEFENCE_RECORD_S = 12010,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_DEFENCE_MONSTERS_C", Value=12011)]
+      PVP_GET_DEFENCE_MONSTERS_C = 12011,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_DEFENCE_MONSTERS_S", Value=12012)]
+      PVP_GET_DEFENCE_MONSTERS_S = 12012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_C", Value=12013)]
+      PVP_GET_MY_INFO_C = 12013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_S", Value=12014)]
+      PVP_GET_MY_INFO_S = 12014
     }
   
 }

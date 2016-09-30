@@ -117,6 +117,9 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.summonJinbi = msgData.summonCoinFreeLastTime;
         GameDataMgr.Instance.summonZuanshi = msgData.summonDiamondFreeBeginTime;
         GameDataMgr.Instance.freeJinbiSumNum = msgData.summonCoinFreeTimesDaily;
+
+        GameDataMgr.Instance.PvpDataMgrAttr.selfPvpTiems = msgData.pvpTimes;
+        GameDataMgr.Instance.PvpDataMgrAttr.selfPvpTimesBeginTime = msgData.pvpTimesBeginTime;
     }
     void OnStatisticsPart3Sync(ProtocolMessage message)
     {
@@ -131,6 +134,8 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = msgData.rechargeState;
         expLeftTime = msgData.expLeftTimes;
         gold2coinExchargeTimes = msgData.gold2CoinTimes;
+
+        SigninDataMgr.Instance.ReloadDateInfo(msgData.signinTimesMonthly, msgData.signinFillTimesMonthly, msgData.isSigninDaily,msgData.loginTimesDaily);
     }
     void OnExpLeftTimesSync(ProtocolMessage message)
 	{
@@ -164,6 +169,8 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.SociatyDataMgrAttr.taskCount = 0;
         //清理大冒险已经使用公会宠物列表
         AdventureDataMgr.Instance.CleanHiredMonster();
+        //更新登陆数据
+        SigninDataMgr.Instance.ReloadDateInfo(SigninDataMgr.Instance.signinTimesMonthly, SigninDataMgr.Instance.signinFillTimesMonthly, false);
     }
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {

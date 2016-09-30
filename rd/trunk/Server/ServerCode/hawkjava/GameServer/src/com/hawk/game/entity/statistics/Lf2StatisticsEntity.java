@@ -151,9 +151,13 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "signinDaily", nullable = false)
 	protected boolean signinDaily = false;
 
-	// 登录次数
+	// 历史登录次数
 	@Column(name = "loginTimes", nullable = false)
 	protected int loginTimes = 0;
+
+	// 今日登录次数
+	@Column(name = "loginTimesDaily", nullable = false)
+	protected int loginTimesDaily = 0;
 
 	// 禁言时间
 	@Column(name = "dumpTime", nullable = false)

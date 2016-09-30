@@ -12,7 +12,7 @@ public class PvpDefensiveRecord : UIBase, IScrollView
     public Text[] listTitleText;
     public FixCountScrollView scrollView;
 
-    private List<int> defensiveData = new List<int>();
+    private List<PB.PVPDefenceRecordData> defensiveData = new List<PB.PVPDefenceRecordData>();
 
     public static   PvpDefensiveRecord Open()
     {
@@ -21,17 +21,19 @@ public class PvpDefensiveRecord : UIBase, IScrollView
         return record;
     }
 
-    // Use this for initialization
-	void Start ()
+    public override void Init()
     {
-        //test
-        for (int i = 0; i < 100; ++i)
-        {
-            defensiveData.Add(i+1);
-        }
-        closeButton.onClick.AddListener(OnCloseButtonClick);
+        RequestRecordData();
+    }
 
-        scrollView.InitContentSize(defensiveData.Count, this, true);
+    public override void Clean()
+    {
+        
+    }
+    // Use this for initialization
+    void Start ()
+    {
+        closeButton.onClick.AddListener(OnCloseButtonClick); 
     }
 
     void OnCloseButtonClick()
@@ -39,15 +41,35 @@ public class PvpDefensiveRecord : UIBase, IScrollView
         UIMgr.Instance.CloseUI_(this);
     }
 
+   void RequestRecordData()
+    {
+        GameDataMgr.Instance.PvpDataMgrAttr.RequestPvpDefenseRecord(OnRequestRecordDataFinished);
+    }
+
+    void OnRequestRecordDataFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+        PB.HSPVPDefenceRecordRet msgRet = message.GetProtocolBody<PB.HSPVPDefenceRecordRet>();
+        defensiveData.Clear();
+        defensiveData.AddRange(msgRet.pvpDefenceRecordList);
+        scrollView.InitContentSize(defensiveData.Count, this, true);
+    }
+
     #region IScrollView
     public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {
-       // questItem quest = item.GetComponent<questItem>();
-       // quest.ReLoadData(CurrentList[index]);
+        DefensiveRecordItem subRecordItem = item.GetComponent<DefensiveRecordItem>();
+        subRecordItem.RefreshWith(defensiveData[index]);
     }
     public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)
     {
-        DefensiveRecordItem subItem = DefensiveRecordItem.CreateWith();
+        DefensiveRecordItem subItem = DefensiveRecordItem.Create();
         UIUtil.SetParentReset(subItem.transform, parent);
         return subItem.transform;
     }

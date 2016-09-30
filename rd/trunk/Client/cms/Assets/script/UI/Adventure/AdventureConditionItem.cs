@@ -10,6 +10,7 @@ public class AdventureConditionItem : MonoBehaviour
 
     public Text textDesc;
     public HomeButton btnFilter;
+    public Text textFilter;
     private Color defaultColor;
     public Color meetColor;
 
@@ -32,6 +33,7 @@ public class AdventureConditionItem : MonoBehaviour
     void Start()
     {
         btnFilter.onClick = OnClickFilterBtn;
+        textFilter.text = StaticDataMgr.Instance.GetTextByID("adventure_filter");
     }
 
     public void ReloadData(PB.HSAdventureCondition condition)

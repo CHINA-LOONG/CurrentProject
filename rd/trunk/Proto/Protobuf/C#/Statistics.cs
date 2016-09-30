@@ -419,6 +419,13 @@ namespace PB
       get { return _isSigninDaily; }
       set { _isSigninDaily = value; }
     }
+    private int _loginTimesDaily;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"loginTimesDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int loginTimesDaily
+    {
+      get { return _loginTimesDaily; }
+      set { _loginTimesDaily = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

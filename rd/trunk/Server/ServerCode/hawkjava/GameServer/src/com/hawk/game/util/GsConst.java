@@ -260,15 +260,16 @@ public class GsConst {
 		public static final int SHOP_NORMAL = 1 << 3;
 		public static final int SHOP_ALLIANCE = 1 << 4;
 		public static final int SHOP_TOWER = 1 << 5;
-		public static final int PVP = 1 << 6;
+		public static final int SHOP_PVP = 1 << 6;
+		public static final int PVP = 1 << 7;
 	}
 
 	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, PVP_WEAK_REFRESH_TIME_ID};
-	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4, 64};
+	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4, 128};
 
 	public static int[] PlayerRefreshTime = { 101, 102, 201, 202, 203, 204,
-			205, 206, 207 };
-	public static int[] PlayerRefreshMask = { 1, 2, 8, 8, 8, 16, 16, 16, 32 };
+			205, 206, 207, 208};
+	public static int[] PlayerRefreshMask = { 1, 2, 8, 8, 8, 16, 16, 16, 32, 64};
 
 	/**
 	 * 属性类型定义

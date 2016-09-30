@@ -596,6 +596,82 @@ public class SpellFunctions
         }
         return 0;
     }
+	public static int LifeLower_75_100(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        if (damageEffect != null &&
+		    damageEffect.targetID == triggerBuff.targetID)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 1.00f && lifeRatio >= 0.75f)
+                return 1;
+        }
+        return 0;
+    }
+	public static int LifeLower_50_75(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        if (damageEffect != null &&
+		    damageEffect.targetID == triggerBuff.targetID)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 0.75f && lifeRatio >= 0.50f)
+                return 1;
+        }
+        return 0;
+    }
+	public static int LifeLower_25_50(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        if (damageEffect != null &&
+		    damageEffect.targetID == triggerBuff.targetID)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 0.50f && lifeRatio >= 0.25f)
+                return 1;
+        }
+        return 0;
+    }
+	public static int LifeLower_0_25(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        if (damageEffect != null &&
+		    damageEffect.targetID == triggerBuff.targetID)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 0.25f && lifeRatio > 0.00f)
+                return 1;
+        }
+        return 0;
+    }
 	
 
 	

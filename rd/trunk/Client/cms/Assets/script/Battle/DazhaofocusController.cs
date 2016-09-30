@@ -38,7 +38,7 @@ public class DazhaofocusController : MonoBehaviour
         if (string.IsNullOrEmpty(testname) == false)
             go.name = testname;
 
-		return focus;
+        return focus;
 	}
 
 	// Use this for initialization
@@ -72,7 +72,8 @@ public class DazhaofocusController : MonoBehaviour
 		gameObject.SetActive (true);
 		StartCoroutine (MonsterShowoffCo ());
 
-		UIBattle.Instance.ShowUI (false);
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
+        UIBattle.Instance.ShowUI (false);
         UIBattle.Instance.ShowDazhaoReleateUI(false);
 	}
 

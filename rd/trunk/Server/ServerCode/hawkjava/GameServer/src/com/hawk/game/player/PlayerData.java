@@ -29,6 +29,7 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.PVPManager;
 import com.hawk.game.protocol.Adventure.HSAdventureInfoSync;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
@@ -110,7 +111,7 @@ public class PlayerData {
 	/**
 	 * 角色商城数据
 	 */
-	private ShopEntity shopEntity = null;
+	private Map<Integer, ShopEntity> shopEntityMap = null;
 
 	/**
 	 * 公会基本信息
@@ -253,8 +254,13 @@ public class PlayerData {
 	 * 获取商店实体对象
 	 * @return
 	 */
-	public ShopEntity getShopEntity() {
-		return shopEntity;
+	public ShopEntity getShopEntity(int type) {
+		// 避免登陆调用refresh时数据没有assemble完成
+		if (shopEntityMap == null) {
+			loadShop();
+		}
+		
+		return shopEntityMap.get(type);
 	}
 
 	/**
@@ -769,21 +775,29 @@ public class PlayerData {
 	/**
 	 * 加载角色商城
 	 */
-	public ShopEntity loadShop() {
-		if (shopEntity == null) {
+	public void loadShop() {
+		if (shopEntityMap == null) {
+			shopEntityMap = new HashMap<>();
 			List<ShopEntity> resultList = HawkDBManager.getInstance().query("from ShopEntity where playerId = ? and invalid = 0", getId());
 			if (resultList != null && resultList.size() > 0) {
-				shopEntity = resultList.get(0);
-				shopEntity.decode();
-			} else {
-				shopEntity= new ShopEntity();
+				for (ShopEntity shopEntity : resultList) {
+					shopEntity.decode();
+					shopEntityMap.put(shopEntity.getType(), shopEntity);
+				}
+			}	
+		}
+		
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
+			if (!shopEntityMap.containsKey(i)) {
+				ShopEntity shopEntity= new ShopEntity();
 				shopEntity.setPlayerId(player.getId());
+				shopEntity.setType(i);
 				shopEntity.notifyCreate();
 				shopEntity.decode();
-				ShopUtil.refreshShopData(player);
+				shopEntityMap.put(i, shopEntity);
+				ShopUtil.refreshShopData(i, player);
 			}
 		}
-		return shopEntity;
 	}
 
 	/**
@@ -909,7 +923,7 @@ public class PlayerData {
 	 * 同步商店刷新次数信息
 	 */
 	public void syncShopRefreshTimeInfo() {
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_TIMES, BuilderUtil.genShopRefreshTimeBuilder(player, shopEntity)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_TIMES, BuilderUtil.genShopRefreshTimeBuilder(player)));
 	}
 
 	/**
@@ -1083,7 +1097,7 @@ public class PlayerData {
 			response.addMonsterId(monster.getMonsterId());
 		}
 		
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_DEFENCE_MONSTERS_S_VALUE, response));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_DEFENCE_SYNC_S_VALUE, response));
 	}
 	
 	/**

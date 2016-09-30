@@ -58,6 +58,18 @@ public class PlayerData : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.TowerCoinChanged, gonghuiCoin);
         }
     }
+
+    private int honor;
+    public int HonorAtr
+    {
+        get { return honor; }
+        set
+        {
+            honor = value;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.HonorValueChanged, honor);
+        }
+    }
+
 	public	int	gender;
 	public	int	eye;
 	public	int	hair;

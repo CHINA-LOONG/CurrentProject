@@ -1590,7 +1590,7 @@ public class StatisticsEntity {
 		++lf2Entity.signinTimesMonthly;
 		lf2Update = true;
 	}
-	
+
 	public void clearSigninTimesMonthly() {
 		lf2Entity.signinTimesMonthly = 0;
 		lf2Update = true;
@@ -1628,6 +1628,20 @@ public class StatisticsEntity {
 
 	public void increaseLoginTimes() {
 		++lf2Entity.loginTimes;
+		lf2Update = true;
+	}
+
+	public int getLoginTimesDaily() {
+		return lf2Entity.loginTimesDaily;
+	}
+
+	public void increaseLoginTimesDaily() {
+		++lf2Entity.loginTimesDaily;
+		lf2Update = true;
+	}
+
+	public void clearLoginTimesDaily() {
+		lf2Entity.loginTimesDaily = 0;
 		lf2Update = true;
 	}
 

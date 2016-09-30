@@ -713,6 +713,14 @@ public final class Const {
      * </pre>
      */
     ARENA_COIN(4, 5),
+    /**
+     * <code>HONOR_POINT = 6;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    HONOR_POINT(5, 6),
     ;
 
     /**
@@ -755,6 +763,14 @@ public final class Const {
      * </pre>
      */
     public static final int ARENA_COIN_VALUE = 5;
+    /**
+     * <code>HONOR_POINT = 6;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    public static final int HONOR_POINT_VALUE = 6;
 
 
     public final int getNumber() { return value; }
@@ -766,6 +782,7 @@ public final class Const {
         case 3: return ALLIANCE_COTRIBUTION;
         case 4: return TOWER_COIN;
         case 5: return ARENA_COIN;
+        case 6: return HONOR_POINT;
         default: return null;
       }
     }
@@ -2504,8 +2521,16 @@ public final class Const {
      * <code>ALLIANCESHOP = 3;</code>
      */
     ALLIANCESHOP(2, 3),
+    /**
+     * <code>PVPSHOP = 4;</code>
+     */
+    PVPSHOP(3, 4),
     ;
 
+    /**
+     * <code>SHOPNUM = 4;</code>
+     */
+    public static final shopType SHOPNUM = PVPSHOP;
     /**
      * <code>NORMALSHOP = 1;</code>
      */
@@ -2518,6 +2543,14 @@ public final class Const {
      * <code>ALLIANCESHOP = 3;</code>
      */
     public static final int ALLIANCESHOP_VALUE = 3;
+    /**
+     * <code>PVPSHOP = 4;</code>
+     */
+    public static final int PVPSHOP_VALUE = 4;
+    /**
+     * <code>SHOPNUM = 4;</code>
+     */
+    public static final int SHOPNUM_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -2527,6 +2560,7 @@ public final class Const {
         case 1: return NORMALSHOP;
         case 2: return TOWERSHOP;
         case 3: return ALLIANCESHOP;
+        case 4: return PVPSHOP;
         default: return null;
       }
     }
@@ -2556,7 +2590,9 @@ public final class Const {
       return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
     }
 
-    private static final shopType[] VALUES = values();
+    private static final shopType[] VALUES = {
+      NORMALSHOP, TOWERSHOP, ALLIANCESHOP, PVPSHOP, SHOPNUM, 
+    };
 
     public static shopType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -3760,63 +3796,64 @@ public final class Const {
       "\020\n\014MONSTER_TYPE\020\002*t\n\010itemType\022\r\n\tNONE_IT" +
       "EM\020\000\022\017\n\013PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022",
       "\010\n\004ITEM\020\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP" +
-      "\020\006\022\013\n\007MONSTER\020\007*e\n\tmoneyType\022\016\n\nMONEY_GO" +
+      "\020\006\022\013\n\007MONSTER\020\007*v\n\tmoneyType\022\016\n\nMONEY_GO" +
       "LD\020\001\022\016\n\nMONEY_COIN\020\002\022\030\n\024ALLIANCE_COTRIBU" +
-      "TION\020\003\022\016\n\nTOWER_COIN\020\004\022\016\n\nARENA_COIN\020\005*\256" +
-      "\002\n\nchangeType\022\017\n\013CHANGE_GOLD\020\001\022\017\n\013CHANGE" +
-      "_COIN\020\002\022\025\n\021CHANGE_PLAYER_EXP\020\003\022\027\n\023CHANGE" +
-      "_PLAYER_LEVEL\020\004\022\026\n\022CHANGE_MONSTER_EXP\020\005\022" +
-      "\030\n\024CHANGE_MONSTER_LEVEL\020\006\022\022\n\016CHANGE_FATI" +
-      "GUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n\017CHANGE_GOLD_BUY" +
-      "\020\t\022\036\n\032CHANGE_PLAYER_CONTRIBUTION\020\n\022\025\n\021CH",
-      "ANGE_TOWER_COIN\020\013\022\025\n\021CHANGE_ARENA_COIN\020\014" +
-      "\022\025\n\021CHANGE_HONOR_COIN\020\r*\365\001\n\004attr\022\r\n\tEMPT" +
-      "YATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022" +
-      "\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rD" +
-      "EFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICAL" +
-      "WEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE" +
-      "\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAM" +
-      "AGEREDUCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserC" +
-      "ondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010" +
-      "bindType\022\014\n\010NON_BIND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\t",
-      "TAKE_BIND\020\003*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022" +
-      "\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOO" +
-      "L\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*.\n\013FragS" +
-      "ubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRAG_TOOL\020\002*" +
-      "p\n\016UseToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USE" +
-      "TOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n" +
-      "\016USETOOLFATIGUE\020\004\022\016\n\nRAIDTICKET\020\005*\204\001\n\teq" +
-      "uipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022" +
-      "\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014" +
-      "\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NE",
-      "CKLACE\020\n*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005G" +
-      "REEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005" +
-      "\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\r\n" +
-      "\tTOWERSHOP\020\002\022\020\n\014ALLIANCESHOP\020\003*H\n\tmailSt" +
-      "ate\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014" +
-      "\n\010OVERFLOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImType\022\010\n\004CH" +
-      "AT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020" +
-      "\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n" +
-      "\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377" +
-      "\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014Instan",
-      "ceType\022\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANCE_H" +
-      "OLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE_GU" +
-      "ILD\020\004*\336\002\n\tSpellType\022\030\n\024Spell_Type_PhyAtt" +
-      "ack\020\000\022\031\n\025Spell_Type_MgicAttack\020\001\022\023\n\017Spel" +
-      "l_Type_Cure\020\002\022\026\n\022Spell_Type_Defense\020\003\022\026\n" +
-      "\022Spell_Type_Passive\020\004\022\031\n\025Spell_Type_Bene" +
-      "ficial\020\005\022\027\n\023Spell_Type_Negative\020\006\022\023\n\017Spe" +
-      "ll_Type_Lazy\020\007\022\030\n\024Spell_Type_PhyDaZhao\020\010" +
-      "\022\032\n\026Spell_Type_MagicDazhao\020\t\022\034\n\030Spell_Ty" +
-      "pe_PrepareDazhao\020\n\022\022\n\016Spell_Type_Dot\020\013\022\022",
-      "\n\016Spell_Type_Hot\020\014\022\022\n\016Num_Spell_Type\020\r*V" +
-      "\n\014MonsterState\022\n\n\006LOCKED\020\001\022\024\n\020IN_ALLIANC" +
-      "E_BASE\020\002\022\020\n\014IN_ADVENTURE\020\004\022\022\n\016IN_PVP_DEF" +
-      "ENCE\020\010*`\n\nSummonType\022\017\n\013SUMMON_COIN\020\001\022\022\n" +
-      "\016SUMMON_DIAMOND\020\002\022\024\n\020SUMMON_COIN_FREE\020\003\022" +
-      "\027\n\023SUMMON_DIAMOND_FREE\020\004*1\n\tPvpResult\022\007\n" +
-      "\003WIN\020\000\022\010\n\004DRAW\020\001\022\010\n\004LOSE\020\002\022\007\n\003NUM\020\002B\030\n\026c" +
-      "om.hawk.game.protocol"
+      "TION\020\003\022\016\n\nTOWER_COIN\020\004\022\016\n\nARENA_COIN\020\005\022\017" +
+      "\n\013HONOR_POINT\020\006*\256\002\n\nchangeType\022\017\n\013CHANGE" +
+      "_GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYE" +
+      "R_EXP\020\003\022\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHAN" +
+      "GE_MONSTER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL" +
+      "\020\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023" +
+      "\n\017CHANGE_GOLD_BUY\020\t\022\036\n\032CHANGE_PLAYER_CON",
+      "TRIBUTION\020\n\022\025\n\021CHANGE_TOWER_COIN\020\013\022\025\n\021CH" +
+      "ANGE_ARENA_COIN\020\014\022\025\n\021CHANGE_HONOR_COIN\020\r" +
+      "*\365\001\n\004attr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENGHT\020\001\022\020" +
+      "\n\014INTELLIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004" +
+      "\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n\010CRITI" +
+      "CAL\020f\022\022\n\016CRITICALWEAKEN\020g\022\014\n\010RECOVERY\020h\022" +
+      "\022\n\016CRITICALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020\n\014CURE" +
+      "INCREASE\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DAMAGEIN" +
+      "CREASE\020m*+\n\ruserCondition\022\n\n\006BATTLE\020\001\022\016\n" +
+      "\nNON_BATTLE\020\002*5\n\010bindType\022\014\n\010NON_BIND\020\001\022",
+      "\014\n\010USE_BIND\020\002\022\r\n\tTAKE_BIND\020\003*b\n\010toolType" +
+      "\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GE" +
+      "MTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQU" +
+      "IPTOOL\020\007*.\n\013FragSubType\022\020\n\014FRAG_MONSTER\020" +
+      "\001\022\r\n\tFRAG_TOOL\020\002*p\n\016UseToolSubType\022\016\n\nUS" +
+      "ETOOLEXP\020\001\022\024\n\020USETOOLDOUBLEEXP\020\002\022\024\n\020USET" +
+      "OOLTRIPLEEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004\022\016\n\nRA" +
+      "IDTICKET\020\005*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004" +
+      "RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1" +
+      "\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010",
+      "\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQualit" +
+      "y\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PUR" +
+      "PLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*U\n\010shopType\022\016" +
+      "\n\nNORMALSHOP\020\001\022\r\n\tTOWERSHOP\020\002\022\020\n\014ALLIANC" +
+      "ESHOP\020\003\022\013\n\007PVPSHOP\020\004\022\013\n\007SHOPNUM\020\004*H\n\tmai" +
+      "lState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020" +
+      "\003\022\014\n\010OVERFLOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImType\022\010\n" +
+      "\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTI" +
+      "CE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002" +
+      "\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007INVALI",
+      "D\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n\014Ins" +
+      "tanceType\022\022\n\016INSTANCE_STORY\020\001\022\021\n\rINSTANC" +
+      "E_HOLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n\016INSTANCE" +
+      "_GUILD\020\004*\336\002\n\tSpellType\022\030\n\024Spell_Type_Phy" +
+      "Attack\020\000\022\031\n\025Spell_Type_MgicAttack\020\001\022\023\n\017S" +
+      "pell_Type_Cure\020\002\022\026\n\022Spell_Type_Defense\020\003" +
+      "\022\026\n\022Spell_Type_Passive\020\004\022\031\n\025Spell_Type_B" +
+      "eneficial\020\005\022\027\n\023Spell_Type_Negative\020\006\022\023\n\017" +
+      "Spell_Type_Lazy\020\007\022\030\n\024Spell_Type_PhyDaZha" +
+      "o\020\010\022\032\n\026Spell_Type_MagicDazhao\020\t\022\034\n\030Spell",
+      "_Type_PrepareDazhao\020\n\022\022\n\016Spell_Type_Dot\020" +
+      "\013\022\022\n\016Spell_Type_Hot\020\014\022\022\n\016Num_Spell_Type\020" +
+      "\r*V\n\014MonsterState\022\n\n\006LOCKED\020\001\022\024\n\020IN_ALLI" +
+      "ANCE_BASE\020\002\022\020\n\014IN_ADVENTURE\020\004\022\022\n\016IN_PVP_" +
+      "DEFENCE\020\010*`\n\nSummonType\022\017\n\013SUMMON_COIN\020\001" +
+      "\022\022\n\016SUMMON_DIAMOND\020\002\022\024\n\020SUMMON_COIN_FREE" +
+      "\020\003\022\027\n\023SUMMON_DIAMOND_FREE\020\004*1\n\tPvpResult" +
+      "\022\007\n\003WIN\020\000\022\010\n\004DRAW\020\001\022\010\n\004LOSE\020\002\022\007\n\003NUM\020\002B\030" +
+      "\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

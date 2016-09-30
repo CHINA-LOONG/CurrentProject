@@ -124,7 +124,10 @@ namespace PB
       TOWER_COIN = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN", Value=5)]
-      ARENA_COIN = 5
+      ARENA_COIN = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT", Value=6)]
+      HONOR_POINT = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -369,7 +372,13 @@ namespace PB
       TOWERSHOP = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=3)]
-      ALLIANCESHOP = 3
+      ALLIANCESHOP = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVPSHOP", Value=4)]
+      PVPSHOP = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOPNUM", Value=4)]
+      SHOPNUM = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]

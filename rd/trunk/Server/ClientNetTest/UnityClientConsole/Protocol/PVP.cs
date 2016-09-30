@@ -122,6 +122,67 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSGetPVPDefenceMonster")]
+  public partial class HSGetPVPDefenceMonster : global::ProtoBuf.IExtensible
+  {
+    public HSGetPVPDefenceMonster() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSGetPVPDefenceMonsterRet")]
+  public partial class HSGetPVPDefenceMonsterRet : global::ProtoBuf.IExtensible
+  {
+    public HSGetPVPDefenceMonsterRet() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _monsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> monsterId
+    {
+      get { return _monsterId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPVPInfo")]
+  public partial class HSPVPInfo : global::ProtoBuf.IExtensible
+  {
+    public HSPVPInfo() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPVPInfoRet")]
+  public partial class HSPVPInfoRet : global::ProtoBuf.IExtensible
+  {
+    public HSPVPInfoRet() {}
+    
+    private int _pvpPoint;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"pvpPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpPoint
+    {
+      get { return _pvpPoint; }
+      set { _pvpPoint = value; }
+    }
+    private int _pvpRank;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pvpRank", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpRank
+    {
+      get { return _pvpRank; }
+      set { _pvpRank = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPVPMatchTarget")]
   public partial class HSPVPMatchTarget : global::ProtoBuf.IExtensible
   {
@@ -172,6 +233,20 @@ namespace PB
       get { return _defenceData; }
       set { _defenceData = value; }
     }
+    private int _pvpTime;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"pvpTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpTime
+    {
+      get { return _pvpTime; }
+      set { _pvpTime = value; }
+    }
+    private int _pvpTimeBeginTime;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"pvpTimeBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpTimeBeginTime
+    {
+      get { return _pvpTimeBeginTime; }
+      set { _pvpTimeBeginTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -212,6 +287,13 @@ namespace PB
     {
       get { return _rank; }
       set { _rank = value; }
+    }
+    private int _rewardPoint;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"rewardPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int rewardPoint
+    {
+      get { return _rewardPoint; }
+      set { _rewardPoint = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

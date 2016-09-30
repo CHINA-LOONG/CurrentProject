@@ -83,6 +83,7 @@ public class GameEventList
 	public static   string ZuanshiChanged = "ZuanshiChanged";
     public static string GonghuiCoinChanged = "GonghuiCoinChanged"; //param int
     public static string TowerCoinChanged = "TowerCoinChanged";// param int
+    public static string HonorValueChanged = "HonorValueChanged";
     public static string PlayerExpChanged = "PlayerExpChanged";//param int int (oldexp，newexp)
     public static string HuoliChanged = "HuoliChanged";//param int (huoli)
 
@@ -97,6 +98,8 @@ public class GameEventList
     //Mail
     public static string MailAdd = "MailAdd";
     public static string MailRead = "MailRead";
+    //SignIn
+    public static string SignInChange = "SignInChange";
 
     public static string PreUnit = "PreUnit";//param gameUnit
     public static string NextUnit = "NextUnit";//param gameUnit

@@ -339,6 +339,20 @@ namespace PB
       get { return _hiredMonsterId; }
     }
   
+    private int _pvpTimes;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"pvpTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpTimes
+    {
+      get { return _pvpTimes; }
+      set { _pvpTimes = value; }
+    }
+    private int _pvpTimesBeginTime;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"pvpTimesBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pvpTimesBeginTime
+    {
+      get { return _pvpTimesBeginTime; }
+      set { _pvpTimesBeginTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -404,6 +418,13 @@ namespace PB
     {
       get { return _isSigninDaily; }
       set { _isSigninDaily = value; }
+    }
+    private int _loginTimesDaily;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"loginTimesDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int loginTimesDaily
+    {
+      get { return _loginTimesDaily; }
+      set { _loginTimesDaily = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

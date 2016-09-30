@@ -8,10 +8,10 @@ public class UIMonsterInfo : UIBase
 
 	public static string ViewName = "UIMonsterInfo";
 
-	public static void Open(int guid, string monsterid,int level,int stage)
+	public static void Open(int guid, string monsterid,int level,int stage, int bp = 0)
 	{
         UIMonsterInfo mInfo = UIMgr.Instance.OpenUI_(UIMonsterInfo.ViewName) as UIMonsterInfo;
-		mInfo.ShowWithData (guid, monsterid,level,stage);
+		mInfo.ShowWithData (guid, monsterid,level,stage,bp);
 	}
 
 	public Button closeButton;
@@ -51,7 +51,7 @@ public class UIMonsterInfo : UIBase
 		UIMgr.Instance.DestroyUI (this);
 	}
 
-    public void ShowWithData(int guid, string monsterid, int level, int stage)
+    public void ShowWithData(int guid, string monsterid, int level, int stage, int bp = 0)
     {
         UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(monsterid);
         if (null == unitData)
@@ -89,6 +89,10 @@ public class UIMonsterInfo : UIBase
                 monsterCharacter = pet.character;
             }
             zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), pet.mBp);
+        }
+        else if (bp > 0)
+        {
+            zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), bp);
         }
         else
         {

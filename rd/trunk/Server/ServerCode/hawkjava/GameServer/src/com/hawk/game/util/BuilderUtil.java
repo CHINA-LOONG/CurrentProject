@@ -180,6 +180,7 @@ public class BuilderUtil {
 		builder.setSigninTimesMonthly(statisticsEntity.getSigninTimesMonthly());
 		builder.setSigninFillTimesMonthly(statisticsEntity.getSigninFillTimesMonthly());
 		builder.setIsSigninDaily(statisticsEntity.isSigninDaily());
+		builder.setLoginTimesDaily(statisticsEntity.getLoginTimesDaily());
 
 		return builder;
 	}
@@ -191,18 +192,22 @@ public class BuilderUtil {
 		return builder;
 	}
 
-	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeBuilder(Player player, ShopEntity shopEntity) {
+	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeBuilder(Player player) {
 		HSShopRefreshTimeSync.Builder builder = HSShopRefreshTimeSync.newBuilder();
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.ALLIANCESHOP_VALUE; ++i) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; ++i) {
 			ShopCfg shopCfg = ShopCfg.getShopCfg(i, player.getLevel());
+			ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
 			if (i == Const.shopType.NORMALSHOP_VALUE) {
-				builder.setNormalShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+				builder.setNormalShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getRefreshNums()));
 			}
 			else if (i == Const.shopType.ALLIANCESHOP_VALUE) {
-				builder.setAllianceShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+				builder.setAllianceShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getRefreshNums()));
 			}
 			else if (i == Const.shopType.TOWERSHOP_VALUE) {
-				builder.setTowerShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+				builder.setTowerShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getRefreshNums()));
+			}
+			else if (i == Const.shopType.PVPSHOP_VALUE) {
+				builder.setTowerShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getRefreshNums()));
 			}
 		}
 		return builder;

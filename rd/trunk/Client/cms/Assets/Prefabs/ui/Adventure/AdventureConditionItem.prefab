@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDesc: {fileID: 11455130}
   btnFilter: {fileID: 11471834}
+  textFilter: {fileID: 11406300}
   meetColor: {r: .478431374, g: 1, b: 0, a: 1}
 --- !u!114 &11455130
 MonoBehaviour:

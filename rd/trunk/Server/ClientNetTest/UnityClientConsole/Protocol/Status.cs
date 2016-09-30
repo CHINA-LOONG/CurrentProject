@@ -150,6 +150,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_LIMIT", Value=131087)]
       CONTRIBUTION_LIMIT = 131087,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_LIMIT", Value=131088)]
+      HONOR_POINT_LIMIT = 131088,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_NOT_ENOUGH", Value=131089)]
+      HONOR_POINT_NOT_ENOUGH = 131089,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_ALREADY", Value=135169)]
       SIGNIN_ALREADY = 135169,
             
@@ -580,7 +586,10 @@ namespace PB
       PVP_NOT_SET_DEFENCE = 917506,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_MATCH_BEFORE", Value=917507)]
-      PVP_NOT_MATCH_BEFORE = 917507
+      PVP_NOT_MATCH_BEFORE = 917507,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_TIMES_NOT_ENOUGH", Value=917508)]
+      PVP_TIMES_NOT_ENOUGH = 917508
     }
   
 }

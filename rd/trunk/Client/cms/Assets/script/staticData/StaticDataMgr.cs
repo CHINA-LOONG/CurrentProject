@@ -91,10 +91,13 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, AdventureConditionTypeData> adventureConditionTypeData = new Dictionary<int, AdventureConditionTypeData>();
     Dictionary<int, AdventureTeamPriceData> adventureTeamPriceData = new Dictionary<int, AdventureTeamPriceData>();
     Dictionary<int, Sociatybase> sociatyBaseData = new Dictionary<int, Sociatybase>();
-
+    //签到
+    Dictionary<int, List<SigninData>> signinDataDic = new Dictionary<int, List<SigninData>>();
+    SigninFillPriceData signinFillPriceData;
     //PVP
     List<PvpRankRewardUiStaticData> listRankRewardUiStaticData = new List<PvpRankRewardUiStaticData>();
     List<PvpStageRewardStaticData> listStageRewardStaticData = new List<PvpStageRewardStaticData>();
+    Dictionary<int, PvpStaticData> pvpStaticDataDic = new Dictionary<int, PvpStaticData>(); 
 
     public void Init()
     {
@@ -718,10 +721,28 @@ public class StaticDataMgr : MonoBehaviour
         {
             #region SigninData
             {
-
+                var data = InitTable<SigninData>("signin");
+                List<SigninData> signinDataList;
+                foreach (var item in data)
+                {
+                    if (!signinDataDic.TryGetValue(item.month,out signinDataList))
+                    {
+                        signinDataList = new List<SigninData>();
+                        signinDataDic.Add(item.month, signinDataList);
+                    }
+                    signinDataList.Add(item);
+                }
             }
             {
-
+                var data = InitTable<SigninFillPriceData>("signinFillPrice");
+                if (data.Count == 1)
+                {
+                    signinFillPriceData = data[0];
+                }
+                else
+                {
+                    Logger.LogError("此配置应只包含一行数据");
+                }
             }
             #endregion
         }
@@ -869,6 +890,12 @@ public class StaticDataMgr : MonoBehaviour
             foreach(var item in data2)
             {
                 listRankRewardUiStaticData.Add(item);
+            }
+
+            var data3 = InitTable<PvpStaticData>("pvp");
+            foreach (var item in data3)
+            {
+                pvpStaticDataDic.Add(item.stage, item);
             }
         }
     }
@@ -1390,6 +1417,19 @@ public class StaticDataMgr : MonoBehaviour
         return sociatyBaseData[tempKey];
     }
 
+    public List<SigninData> GetSigninDataByMonth(int month)
+    {
+        List<SigninData> list;
+        if (signinDataDic.TryGetValue(month,out list))
+        {
+            return list;
+        }
+        return null;
+    }
+    public SigninFillPriceData SigninFillPriceData
+    {
+        get { return signinFillPriceData; }
+    }
     public List<PvpRankRewardUiStaticData> GetRankRewardUiStaticDataList()
     {
         return listRankRewardUiStaticData;
@@ -1397,6 +1437,13 @@ public class StaticDataMgr : MonoBehaviour
     public List<PvpStageRewardStaticData> GetStageRewardStaticDataList()
     {
         return listStageRewardStaticData;
+    }
+
+    public PvpStaticData GetPvpStaticDataWithStage(int stage)
+    {
+        PvpStaticData result = null;
+        pvpStaticDataDic.TryGetValue(stage ,out result);
+        return result;
     }
 
     #endregion

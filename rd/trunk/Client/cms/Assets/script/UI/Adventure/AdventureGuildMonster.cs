@@ -133,7 +133,7 @@ public class AdventureGuildMonster : MonoBehaviour
     void OnPressEnterGuildIcon(GameObject go)
     {
         AdventureGuildMonster micon = go.GetComponentInParent<AdventureGuildMonster>();
-        UIMonsterInfo.Open(micon.CurData.unit.id, micon.CurData.unit.cfgId, micon.CurData.unit.level, micon.CurData.unit.stage);
+        UIMonsterInfo.Open(-1, micon.CurData.unit.cfgId, micon.CurData.unit.level, micon.CurData.unit.stage, micon.CurData.unit.bp);
     }
 
 

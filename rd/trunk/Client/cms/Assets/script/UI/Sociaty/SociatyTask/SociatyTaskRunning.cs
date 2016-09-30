@@ -107,7 +107,7 @@ public class SociatyTaskRunning : MonoBehaviour
         if (leftSecond > 0)
         {
             hour = leftSecond / 3600;
-            minute = leftSecond / 60;
+            minute = (leftSecond%3600) / 60;
             second = leftSecond % 60;
         }
         else
@@ -574,7 +574,7 @@ public class SociatyTaskRunning : MonoBehaviour
             }
             if (questStData.goalCount > itemCount)
             {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_048"), (int)PB.ImType.PROMPT);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_034"), (int)PB.ImType.PROMPT);
                 return;
             }
         }

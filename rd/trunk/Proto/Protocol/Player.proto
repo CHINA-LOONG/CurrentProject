@@ -38,9 +38,9 @@ message PlayerInfo
 	optional int32  gender = 10;
 	optional int32  eye = 11;
 	optional int32  hair = 12;
-	optional int32  hairColor = 14;
-	required int32  recharge = 15;
-	required int32  vipLevel = 16;
+	optional int32  hairColor = 13;
+	required int32  recharge = 14;
+	required int32  vipLevel = 15;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------

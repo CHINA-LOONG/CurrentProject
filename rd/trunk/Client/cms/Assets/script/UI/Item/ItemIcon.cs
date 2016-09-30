@@ -310,7 +310,7 @@ public class ItemIcon : MonoBehaviour
 			pieceImage.sprite = headImg;
 	}
 
-    void OnClickIconBtn(GameObject go)
+    public void OnClickIconBtn(GameObject go)
     {
         string itemStaticId;
         if(iconType == IconType.Equip)

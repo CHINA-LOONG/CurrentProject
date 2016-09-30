@@ -186,6 +186,8 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_INFO_SYNC_S.GetHashCode().ToString(), OnAdventureInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_CONDITION_PUSH_S.GetHashCode().ToString(), OnAdventureUpdate);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_DEFENCE_SYNC_S.GetHashCode().ToString(), OnSelfPvpDefenseSync);
     }
     //---------------------------------------------------------------------------------------------
     void UnBindListener()
@@ -212,6 +214,8 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_INFO_SYNC_S.GetHashCode().ToString(), OnAdventureInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_CONDITION_PUSH_S.GetHashCode().ToString(), OnAdventureUpdate);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_DEFENCE_SYNC_S.GetHashCode().ToString(), OnSelfPvpDefenseSync);
     }
     //---------------------------------------------------------------------------------------------
     public void OnBattleStart()
@@ -403,6 +407,7 @@ public class GameDataMgr : MonoBehaviour
         }
 
         mainPlayer.TowerCoinAttr = playerInfo.towerCoin;
+        //playerInfo.honor;
 
         mainPlayer.gender = playerInfo.gender;
         mainPlayer.eye = playerInfo.eye;
@@ -518,8 +523,20 @@ public class GameDataMgr : MonoBehaviour
         PB.HSAdventureConditionPush adventureUpdate = msg.GetProtocolBody<PB.HSAdventureConditionPush>();
         AdventureDataMgr.Instance.AdvestureInfoUpdate(adventureUpdate);
     }
-
-
+    //mail----------------------------------------------------------------------------------------------
+    void OnSelfPvpDefenseSync(ProtocolMessage msg)
+    {
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSGetPVPDefenceMonsterRet msgRet = msg.GetProtocolBody<PB.HSGetPVPDefenceMonsterRet>();
+        PvpDataMgrAttr.ClearDefensePosition();
+        for (int i = 0; i < msgRet.monsterId.Count; ++i)
+        {
+            PvpDataMgrAttr.defenseTeamList[i] = msgRet.monsterId[i].ToString();
+        }     
+    }
     //mail----------------------------------------------------------------------------------------------
     void OnMailInfoSync(ProtocolMessage msg)
     {

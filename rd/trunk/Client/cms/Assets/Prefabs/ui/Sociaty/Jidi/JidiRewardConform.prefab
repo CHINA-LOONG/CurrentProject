@@ -563,9 +563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833b2a3b0d75a0847baacedf94c7bf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   zhuzhaLabelText: {fileID: 11400840}
   zhuzhaValueText: {fileID: 11404176}
   maoxianLabelText: {fileID: 11429142}

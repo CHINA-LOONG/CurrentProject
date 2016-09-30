@@ -70,14 +70,19 @@ public class SociatyPray : UIBase
         else
         {
             GameDataMgr.Instance.SociatyDataMgrAttr.allianceParyCount = 1;
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_029"), (int)PB.ImType.PROMPT);
             PB.HSAlliancePrayRet playerSync = msg.GetProtocolBody<PB.HSAlliancePrayRet>();
             if (playerSync != null)
             {
                 SociatyDataMgr mgr = GameDataMgr.Instance.SociatyDataMgrAttr;
                 mgr.allianceSelfData.contribution = playerSync.selfContribution;
+                int selfContribute = playerSync.selfContribution - int.Parse(mSelfContributeValue.text);
+                int allianceContribute = playerSync.allianceContribution - int.Parse(mSociatyLiveValue.text);
                 mSelfContributeValue.text = playerSync.selfContribution.ToString();
                 mSociatyLiveValue.text = playerSync.allianceContribution.ToString();
+                UIIm.Instance.ShowSystemHints(
+                    string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_029"), selfContribute, allianceContribute),
+                    (int)PB.ImType.PROMPT
+                    );
             }
         }
     }

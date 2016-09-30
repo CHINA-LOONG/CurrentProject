@@ -148,7 +148,9 @@ public class BattleController : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnScoreReward);
-	}
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_SETTLE_C.GetHashCode().ToString(), OnPvpSettleResult);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_SETTLE_S.GetHashCode().ToString(), OnPvpSettleResult);
+    }
     //---------------------------------------------------------------------------------------------
 	void UnBindListener()
 	{
@@ -156,7 +158,9 @@ public class BattleController : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnScoreReward);
-	}
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_SETTLE_C.GetHashCode().ToString(), OnPvpSettleResult);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_SETTLE_S.GetHashCode().ToString(), OnPvpSettleResult);
+    }
     //---------------------------------------------------------------------------------------------
 	void  OnMirrorClilced(Vector3 inputPos)
 	{
@@ -283,15 +287,16 @@ public class BattleController : MonoBehaviour
         if (battleGo.camp == UnitCamp.Enemy)
         {
             //集火或者大招
-			process.OnHitBattleObject(battleGo, weakpointName);
+            process.OnHitBattleObject(battleGo, weakpointName);
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
-           // Logger.LogWarning("hit enemy gameobject....");
+            // Logger.LogWarning("hit enemy gameobject....");
         }
         else if (
             battleGo.camp == UnitCamp.Player &&
-            process.SwitchingPet == false && 
+            process.SwitchingPet == false &&
             uiBattle.gameObject.activeSelf == true &&
-            battleGo.unit.backUp == false
+            battleGo.unit.backUp == false &&
+            process.InPhyDazhao == false
             )
         {
             //换宠
@@ -1013,7 +1018,6 @@ public class BattleController : MonoBehaviour
             {
                 mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
             }
-
             int starCount = 0;
             if(battleSuccess)
             {
@@ -1021,7 +1025,31 @@ public class BattleController : MonoBehaviour
                 GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, scoreInfo.starCount, instanceData.instanceProtoData.id);
                 starCount = scoreInfo.starCount;
             }
-            mUIScore.ShowScoreUI(battleSuccess, starCount);
+            mUIScore.ShowScoreUI(battleSuccess, starCount, null);
+            uiBattle.HideBattleUI();
+
+            GameDataMgr.Instance.OnBattleOver(battleSuccess);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnPvpSettleResult(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            Logger.LogError("pvp settle result error");
+            UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
+        }
+        else
+        {
+            GameSpeedService.Instance.SetBattleSpeed(1.0f);
+            if (mUIScore == null)
+            {
+                mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+            }
+
+            PB.HSPVPSettleRet scoreInfo = msg.GetProtocolBody<PB.HSPVPSettleRet>();
+            mUIScore.ShowScoreUI(battleSuccess, 0, scoreInfo);
             uiBattle.HideBattleUI();
 
             GameDataMgr.Instance.OnBattleOver(battleSuccess);

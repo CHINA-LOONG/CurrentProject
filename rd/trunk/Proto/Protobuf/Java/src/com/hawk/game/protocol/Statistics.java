@@ -9144,6 +9144,24 @@ public final class Statistics {
      * </pre>
      */
     boolean getIsSigninDaily();
+
+    // required int32 loginTimesDaily = 9;
+    /**
+     * <code>required int32 loginTimesDaily = 9;</code>
+     *
+     * <pre>
+     * 今日登录次数
+     * </pre>
+     */
+    boolean hasLoginTimesDaily();
+    /**
+     * <code>required int32 loginTimesDaily = 9;</code>
+     *
+     * <pre>
+     * 今日登录次数
+     * </pre>
+     */
+    int getLoginTimesDaily();
   }
   /**
    * Protobuf type {@code HSStatisticsSyncPart3}
@@ -9245,6 +9263,11 @@ public final class Statistics {
             case 64: {
               bitField0_ |= 0x00000040;
               isSigninDaily_ = input.readBool();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000080;
+              loginTimesDaily_ = input.readInt32();
               break;
             }
           }
@@ -9555,6 +9578,30 @@ public final class Statistics {
       return isSigninDaily_;
     }
 
+    // required int32 loginTimesDaily = 9;
+    public static final int LOGINTIMESDAILY_FIELD_NUMBER = 9;
+    private int loginTimesDaily_;
+    /**
+     * <code>required int32 loginTimesDaily = 9;</code>
+     *
+     * <pre>
+     * 今日登录次数
+     * </pre>
+     */
+    public boolean hasLoginTimesDaily() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int32 loginTimesDaily = 9;</code>
+     *
+     * <pre>
+     * 今日登录次数
+     * </pre>
+     */
+    public int getLoginTimesDaily() {
+      return loginTimesDaily_;
+    }
+
     private void initFields() {
       orderServerKey_ = "";
       rechargeState_ = java.util.Collections.emptyList();
@@ -9564,6 +9611,7 @@ public final class Statistics {
       signinTimesMonthly_ = 0;
       signinFillTimesMonthly_ = 0;
       isSigninDaily_ = false;
+      loginTimesDaily_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9595,6 +9643,10 @@ public final class Statistics {
         return false;
       }
       if (!hasIsSigninDaily()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLoginTimesDaily()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9639,6 +9691,9 @@ public final class Statistics {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeBool(8, isSigninDaily_);
       }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(9, loginTimesDaily_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9679,6 +9734,10 @@ public final class Statistics {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, isSigninDaily_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, loginTimesDaily_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9822,6 +9881,8 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000040);
         isSigninDaily_ = false;
         bitField0_ = (bitField0_ & ~0x00000080);
+        loginTimesDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -9891,6 +9952,10 @@ public final class Statistics {
           to_bitField0_ |= 0x00000040;
         }
         result.isSigninDaily_ = isSigninDaily_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.loginTimesDaily_ = loginTimesDaily_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9956,6 +10021,9 @@ public final class Statistics {
         if (other.hasIsSigninDaily()) {
           setIsSigninDaily(other.getIsSigninDaily());
         }
+        if (other.hasLoginTimesDaily()) {
+          setLoginTimesDaily(other.getLoginTimesDaily());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -9986,6 +10054,10 @@ public final class Statistics {
           return false;
         }
         if (!hasIsSigninDaily()) {
+          
+          return false;
+        }
+        if (!hasLoginTimesDaily()) {
           
           return false;
         }
@@ -10825,6 +10897,55 @@ public final class Statistics {
       public Builder clearIsSigninDaily() {
         bitField0_ = (bitField0_ & ~0x00000080);
         isSigninDaily_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required int32 loginTimesDaily = 9;
+      private int loginTimesDaily_ ;
+      /**
+       * <code>required int32 loginTimesDaily = 9;</code>
+       *
+       * <pre>
+       * 今日登录次数
+       * </pre>
+       */
+      public boolean hasLoginTimesDaily() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required int32 loginTimesDaily = 9;</code>
+       *
+       * <pre>
+       * 今日登录次数
+       * </pre>
+       */
+      public int getLoginTimesDaily() {
+        return loginTimesDaily_;
+      }
+      /**
+       * <code>required int32 loginTimesDaily = 9;</code>
+       *
+       * <pre>
+       * 今日登录次数
+       * </pre>
+       */
+      public Builder setLoginTimesDaily(int value) {
+        bitField0_ |= 0x00000100;
+        loginTimesDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 loginTimesDaily = 9;</code>
+       *
+       * <pre>
+       * 今日登录次数
+       * </pre>
+       */
+      public Builder clearLoginTimesDaily() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        loginTimesDaily_ = 0;
         onChanged();
         return this;
       }
@@ -12961,19 +13082,19 @@ public final class Statistics {
       "\n\030summonCoinFreeTimesDaily\030\n \002(\005\022\036\n\026summ" +
       "onCoinFreeLastTime\030\013 \002(\005\022\026\n\016hiredMonster" +
       "Id\030\014 \003(\005\022\020\n\010pvpTimes\030\r \002(\005\022\031\n\021pvpTimesBe" +
-      "ginTime\030\016 \002(\005\"\203\002\n\025HSStatisticsSyncPart3\022" +
+      "ginTime\030\016 \002(\005\"\234\002\n\025HSStatisticsSyncPart3\022" +
       "\026\n\016orderServerKey\030\001 \002(\t\022%\n\rrechargeState" +
       "\030\002 \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030",
       "\003 \002(\005\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeft" +
       "Times\030\005 \002(\0132\023.HSSyncExpLeftTimes\022\032\n\022sign" +
       "inTimesMonthly\030\006 \002(\005\022\036\n\026signinFillTimesM" +
-      "onthly\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\"3\n\022H" +
-      "SSyncDailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.H" +
-      "oleState\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSy" +
-      "ncShopRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyn" +
-      "cExpLeftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\r" +
-      "tripleExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.pro" +
-      "tocol"
+      "onthly\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\022\027\n\017l" +
+      "oginTimesDaily\030\t \002(\005\"3\n\022HSSyncDailyRefre" +
+      "sh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState\"\026\n\024HSS" +
+      "yncMonthlyRefresh\"%\n\021HSSyncShopRefresh\022\020" +
+      "\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeftTimes\022\025" +
+      "\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002" +
+      " \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13033,7 +13154,7 @@ public final class Statistics {
           internal_static_HSStatisticsSyncPart3_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart3_descriptor,
-              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", });
+              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", "LoginTimesDaily", });
           internal_static_HSSyncDailyRefresh_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new

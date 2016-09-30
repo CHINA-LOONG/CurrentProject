@@ -232,8 +232,8 @@ public class UIAdventureLayout : UIBase,
             {
                 textGuildTips.gameObject.SetActive(false);
                 showGuilds.Sort(GuildSort);
-                scrollGuild.InitContentSize(showGuilds.Count, this);
             }
+            scrollGuild.InitContentSize(showGuilds.Count, this);
         }
         else
         {
@@ -717,7 +717,7 @@ public class UIAdventureLayout : UIBase,
         PB.HSAdventureBuyConditionRet result = msg.GetProtocolBody<PB.HSAdventureBuyConditionRet>();
         AdventureDataMgr.Instance.AdventureChange = result.changeCount;
         AdventureDataMgr.Instance.AdventureChangeBeginTime = result.changeCountBeginTime;
-
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_003"), (int)PB.ImType.PROMPT);
         OnClickRefeshConditionBtn();
     }
     void OnAdventureEnterReturn(ProtocolMessage msg)

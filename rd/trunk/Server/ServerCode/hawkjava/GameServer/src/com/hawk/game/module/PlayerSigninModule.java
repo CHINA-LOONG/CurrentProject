@@ -113,6 +113,9 @@ public class PlayerSigninModule extends PlayerModule {
 		ConsumeItems consume = ConsumeItems.valueOf();
 		int mutiple = (int)Math.pow(2, fillTimes / priceCfg.getDoubleTimes());
 		int goldCost = mutiple * (priceCfg.getConsume() + fillTimes * priceCfg.getConsumeAdd());
+		if (goldCost > priceCfg.getCeiling()) {
+			goldCost = priceCfg.getCeiling();
+		}
 		consume.addGold(goldCost);
 
 		if (false == consume.checkConsume(player, hsCode)) {

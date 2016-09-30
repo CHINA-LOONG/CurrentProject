@@ -820,7 +820,13 @@ namespace PB
       PVP_GET_DEFENCE_MONSTERS_C = 12011,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_DEFENCE_MONSTERS_S", Value=12012)]
-      PVP_GET_DEFENCE_MONSTERS_S = 12012
+      PVP_GET_DEFENCE_MONSTERS_S = 12012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_C", Value=12013)]
+      PVP_GET_MY_INFO_C = 12013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_S", Value=12014)]
+      PVP_GET_MY_INFO_S = 12014
     }
   
 }

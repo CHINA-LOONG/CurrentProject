@@ -115,9 +115,9 @@ public class PlayerShopModule extends PlayerModule{
 	@ProtocolHandler(code = HS.code.SHOP_DATA_INIT_C_VALUE)
 	private boolean onShopDataInit(HawkProtocol cmd){
 		HSShopDataInitRet.Builder response = HSShopDataInitRet.newBuilder();
-		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.NORMALSHOP_VALUE));
-		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.ALLIANCESHOP_VALUE));
-		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.TOWERSHOP_VALUE));
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+			response.addShopDatas(ShopUtil.generateShopData(player, i));
+		}
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_DATA_INIT_S_VALUE, response));
 		return true;
 	} 
@@ -134,9 +134,9 @@ public class PlayerShopModule extends PlayerModule{
 	@ProtocolHandler(code = HS.code.SHOP_REFRESH_C_VALUE)
 	private boolean onShopRefresh(HawkProtocol cmd){
 		HSShopRefresh protocol = cmd.parseProtocol(HSShopRefresh.getDefaultInstance());
-		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+		ShopEntity shopEntity = player.getPlayerData().getShopEntity(protocol.getType());
 		ShopCfg shopCfg = ShopCfg.getShopCfg(protocol.getType(), player.getLevel());
-		if (shopCfg.getRefreshMaxNumByHand() != GsConst.UNUSABLE && shopEntity.getShopRefreshNum(protocol.getType()) >= shopCfg.getRefreshMaxNumByHand()) {
+		if (shopCfg.getRefreshMaxNumByHand() != GsConst.UNUSABLE && shopEntity.getRefreshNums() >= shopCfg.getRefreshMaxNumByHand()) {
 			sendError(HS.code.SHOP_REFRESH_C_VALUE, Status.shopError.SHOP_REFRESH_MAX_COUNT_VALUE);
 			return true;
 		}
@@ -149,7 +149,7 @@ public class PlayerShopModule extends PlayerModule{
 		
 		ShopUtil.refreshShopData(protocol.getType(), player);
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_REFRESH, HS.code.SHOP_REFRESH_C_VALUE);
-		shopEntity.increaseShopRefreshNum(protocol.getType());
+		shopEntity.increaseShopRefreshNum();
 		shopEntity.notifyUpdate(true);
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -174,25 +174,25 @@ public class PlayerShopModule extends PlayerModule{
 	private boolean onShopItemBuy(HawkProtocol cmd){
 		HSShopItemBuy protocol = cmd.parseProtocol(HSShopItemBuy.getDefaultInstance());
 		int hsCode = cmd.getType();
-		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
-		ShopItemInfo itemInfo = shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot());
+		ShopEntity shopEntity = player.getPlayerData().getShopEntity(protocol.getType());
+		ShopItemInfo itemInfo = shopEntity.getShopItemsList().get(protocol.getSlot());
 
 		if (itemInfo == null) {
 			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 			return true;
 		}
 		
-		if (protocol.getShopId() != shopEntity.getShopId(protocol.getType())) {
+		if (protocol.getShopId() != shopEntity.getShopId()) {
 			sendError(hsCode, Status.shopError.SHOP_REFRESH_TIMEOUT_VALUE);
 			return true;
 		}
 		
-		if (shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).isHasBuy() == true) {
+		if (shopEntity.getShopItemsList().get(protocol.getSlot()).isHasBuy() == true) {
 			sendError(hsCode, Status.shopError.SHOP_ITEM_ALREADY_BUY_VALUE);
 			return true;
 		}
 			
-		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).getItemId());
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, shopEntity.getShopItemsList().get(protocol.getSlot()).getItemId());
 		if (itemCfg == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return true;	
@@ -220,6 +220,9 @@ public class PlayerShopModule extends PlayerModule{
 		else if (protocol.getType() == Const.shopType.TOWERSHOP_VALUE) {
 			consume.addTowerCoin((itemInfo.getCount() * discountPrice));
 		}
+		else if (protocol.getType() == Const.shopType.PVPSHOP_VALUE) {
+			consume.addHonorPoint((itemInfo.getCount() * discountPrice));
+		}
 
 		if (consume.checkConsume(player, hsCode) == false) {
 			return true;
@@ -246,7 +249,7 @@ public class PlayerShopModule extends PlayerModule{
 		
 		consume.consumeTakeAffectAndPush(player, action, hsCode);
 		award.rewardTakeAffectAndPush(player, action, hsCode);
-		shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).setHasBuy(true);
+		shopEntity.getShopItemsList().get(protocol.getSlot()).setHasBuy(true);
 		shopEntity.notifyUpdate(true);
 
 		HSShopItemBuyRet.Builder response = HSShopItemBuyRet.newBuilder();
@@ -287,15 +290,14 @@ public class PlayerShopModule extends PlayerModule{
 	
 	@Override
 	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
-		ShopEntity shopEntity = player.getPlayerData().loadShop();
-
 		for (int index : refreshIndexList) {
 			int mask = GsConst.PlayerRefreshMask[index];
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
-				shopEntity.setAllianceRefreshNums(0);
-				shopEntity.setNormalRefreshNums(0);
-				shopEntity.setTowerRefreshNums(0);
-				shopEntity.notifyUpdate(true);
+
+				for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+					ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
+					shopEntity.notifyUpdate(true);
+				}
 				if (false == onLogin) {
 					player.getPlayerData().syncShopRefreshTimeInfo();
 				}
@@ -316,6 +318,11 @@ public class PlayerShopModule extends PlayerModule{
 				ShopUtil.refreshShopData(Const.shopType.TOWERSHOP_VALUE, player);
 				if (false == onLogin) {
 					player.getPlayerData().syncShopRefreshInfo(Const.shopType.TOWERSHOP_VALUE);
+				}
+			} else if (0 != (mask & GsConst.RefreshMask.SHOP_PVP)) {
+				ShopUtil.refreshShopData(Const.shopType.PVPSHOP_VALUE, player);
+				if (false == onLogin) {
+					player.getPlayerData().syncShopRefreshInfo(Const.shopType.PVPSHOP_VALUE);
 				}
 			}
 		}

@@ -33,6 +33,14 @@ public class UIScore : UIBase
     public GameObject mBackground;
     public GameObject mLineMonsterItem;
 
+    public GameObject mPvpRoot;
+    public PvpScoreInfo mSelfPvpScore;
+    public PvpScoreInfo mEnemyPvpScore;
+
+    //NOTE:may use instance module instead of this
+    private bool mIsPvp;
+    private PB.HSPVPSettleRet mPvpResult;
+
     private UIGainPet mGainPetUI;
     private GameObject mEndBattleUI;
 
@@ -172,7 +180,7 @@ public class UIScore : UIBase
         ResourceMgr.Instance.DestroyAsset(mEndBattleUI);
     }
     //---------------------------------------------------------------------------------------------
-    public void ShowScoreUI(bool success, int starCount)
+    public void ShowScoreUI(bool success, int starCount, PB.HSPVPSettleRet pvpResult)
     {
         mStarCount = starCount;
         if (UIIm.Instance != null)
@@ -182,32 +190,40 @@ public class UIScore : UIBase
         }
         mIsSuccess = success;
         gameObject.SetActive(true);
-        if (mInstanceSettleResult != null)
+        mPvpRoot.SetActive(pvpResult != null);
+        if (pvpResult != null)
         {
-            int count = mInstanceSettleResult.RewardItems.Count;
-            for (int i = 0; i < count; ++i)
+            mPvpResult = pvpResult;
+        }
+        else
+        {
+            if (mInstanceSettleResult != null)
             {
-                PB.RewardItem item = mInstanceSettleResult.RewardItems[i];
-                if (item.type == (int)PB.itemType.MONSTER)
+                int count = mInstanceSettleResult.RewardItems.Count;
+                for (int i = 0; i < count; ++i)
                 {
-                    UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(item.itemId);
-                    PB.HSMonster monster = item.monster;
-                    if (unitRowData != null)
+                    PB.RewardItem item = mInstanceSettleResult.RewardItems[i];
+                    if (item.type == (int)PB.itemType.MONSTER)
                     {
-                        //add monster icon
-                        MonsterIcon icon = MonsterIcon.CreateIcon();
-                        icon.transform.SetParent(mItemGainList.transform, false);
-                        icon.SetMonsterStaticId(monster.cfgId);
-                        icon.SetLevel(monster.level);
-                        icon.SetStage(monster.stage);
-                        if (unitRowData.rarity >= 3)
+                        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(item.itemId);
+                        PB.HSMonster monster = item.monster;
+                        if (unitRowData != null)
                         {
-                            AddGainMonster(monster.cfgId, monster.level, monster.stage);
-                            return;
+                            //add monster icon
+                            MonsterIcon icon = MonsterIcon.CreateIcon();
+                            icon.transform.SetParent(mItemGainList.transform, false);
+                            icon.SetMonsterStaticId(monster.cfgId);
+                            icon.SetLevel(monster.level);
+                            icon.SetStage(monster.stage);
+                            if (unitRowData.rarity >= 3)
+                            {
+                                AddGainMonster(monster.cfgId, monster.level, monster.stage);
+                                return;
+                            }
                         }
-                    }
 
-                    break;
+                        break;
+                    }
                 }
             }
         }
@@ -258,13 +274,17 @@ public class UIScore : UIBase
     {
         //Logger.LogFormat("get star {0}", mInstanceSettleResult.starCount);
         EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
-        endBattleUI.SetStarVisiblebool(mIsSuccess);
-        if (mIsSuccess == true)
+        mWaitStarTime = 0.0f;
+        if (mPvpResult == null)
         {
-            endBattleUI.ShowStar();
+            endBattleUI.SetStarVisiblebool(mIsSuccess);
+            if (mIsSuccess == true)
+            {
+                endBattleUI.ShowStar();
+                mWaitStarTime = mStarCount * BattleConst.scoreStarInterval;
+            }
         }
 
-        mWaitStarTime = mStarCount * BattleConst.scoreStarInterval;
         StartCoroutine(ShowScoreInfo());
     }
     //---------------------------------------------------------------------------------------------
@@ -424,6 +444,11 @@ public class UIScore : UIBase
                     //icon.ShowTips = true;
                 }
             }
+        }
+        else if (mPvpResult != null)
+        {
+            mSelfPvpScore.SetPvpInfo("self", 100, true, mPvpResult);
+            mEnemyPvpScore.SetPvpInfo("enemy", -100, false, mPvpResult);
         }
         //failed
         else

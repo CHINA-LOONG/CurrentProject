@@ -98,6 +98,12 @@ public class BattleProcess : MonoBehaviour
     int replaceDeadUnitCount = 0;//total replace deadreplace
     bool hasInsertReplaceDeadUnitAction = false;//not insertaction deadreplace
     bool inDazhaoAction = false;
+    bool mInPhyDazhao = false;//TODO: maybe duplicate with inDazhaoAction
+    public bool InPhyDazhao
+    {
+        get { return mInPhyDazhao; }
+    }
+
     public int mCurrentReviveCount = 0;
     //强制结果（GM）
     public int forceResult = -1;
@@ -523,6 +529,7 @@ public class BattleProcess : MonoBehaviour
 	void OnDazhaoActionOver(BattleObject casterObject)
 	{
         inDazhaoAction = false;
+        mInPhyDazhao = false;
 		OnUnitFightOver (casterObject, false);
 	}
 
@@ -535,6 +542,7 @@ public class BattleProcess : MonoBehaviour
         lastUpdateTime = Time.time;
         //battleVictorMethod = victorMethod;
         processData = battleLevelData;
+        mInPhyDazhao = false;
 
         Logger.Log("[Battle.Process]Start process");
         battleGroup = BattleController.Instance.BattleGroup;
@@ -708,8 +716,9 @@ public class BattleProcess : MonoBehaviour
             case ActionType.Dazhao:
 			        if (action.dazhaoType == DazhaoType.Phyics)
                     {
+                        mInPhyDazhao = true;
                         //inDazhaoAction = true;
-				        PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
+                        PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
 			        }
                     //else if (action.dazhaoType == DazhaoType.Magic_Prepare)
                     //{
@@ -782,7 +791,7 @@ public class BattleProcess : MonoBehaviour
         {
             battleResult = NormalScript.normalValiVic();
         }
-
+        
         //beyond maxround failed
         if (curAction.caster != null && curAction.caster.unit.attackCount > BattleConst.maxRound)
         {
@@ -900,6 +909,7 @@ public class BattleProcess : MonoBehaviour
             {
                 if (mRestartAction == true)
                 {
+                    mRestartAction = false;
                     StartAction();
                 }
             }
@@ -908,6 +918,7 @@ public class BattleProcess : MonoBehaviour
                 forceResult = 0;
                 if (mRestartAction == true)
                 {
+                    mRestartAction = false;
                     Action exitAciton = new Action();
                     exitAciton.type = ActionType.None;
                     InsertAction(exitAciton);

@@ -426,7 +426,7 @@ public class OpsGMHandler extends HawkScript{
 		}
 		// 修改人物昵称
 		case "rename": {
-			String newname = request.containsKey("newname") ? request.getString("newname") : "";
+			//String newname = request.containsKey("newname") ? request.getString("newname") : "";
 			// player.getEntity().setNickname(newname);
 			// TODO
 			commadnHandled = true;

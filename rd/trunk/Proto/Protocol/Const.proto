@@ -74,6 +74,8 @@ enum moneyType
 	TOWER_COIN             = 4;
 	// 竞技场币
 	ARENA_COIN             = 5;
+	// 荣誉点
+	HONOR_POINT            = 6;
 }
 
 // 变换的数值类型
@@ -252,6 +254,8 @@ enum shopType
 	NORMALSHOP             = 1;
 	TOWERSHOP              = 2;
 	ALLIANCESHOP           = 3;
+	PVPSHOP		           = 4;
+	SHOPNUM                = 4;
 }
 
 // 邮件状态

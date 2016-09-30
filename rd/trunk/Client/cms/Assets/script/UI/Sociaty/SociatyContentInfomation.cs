@@ -57,7 +57,7 @@ public class SociatyContentInfomation : SociatyContentBase
         memberLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_peoplenum1");
         personalContributionLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_onecontribution");
         sociatyContributionLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_comcontribution");
-        todayContributionText.text = StaticDataMgr.Instance.GetTextByID("sociaty_comcontribution");
+        todayContributionText.text = StaticDataMgr.Instance.GetTextByID("sociaty_oneliveness");
 
         contributionBoxArray[0].SetRewordValue(0,GameConfig.Instance.contributionRewordLevel1);
         contributionBoxArray[1].SetRewordValue(1,GameConfig.Instance.contributionRewordLevel2);

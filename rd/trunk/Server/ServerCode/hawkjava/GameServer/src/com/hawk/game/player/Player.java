@@ -1696,6 +1696,7 @@ public class Player extends HawkAppObj {
 		}
 
 		statisticsEntity.increaseLoginTimes();
+		statisticsEntity.increaseLoginTimesDaily();
 		statisticsEntity.notifyUpdate(true);
 
 		// 登录时刷新

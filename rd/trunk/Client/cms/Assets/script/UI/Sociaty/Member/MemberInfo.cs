@@ -132,13 +132,13 @@ public class MemberInfo : UIBase
     void OnAppointmentButtonClick()
     {
         string msg = "";
-        if(memberData.postion ==0)
+        if(memberData.postion == 1)
         {
-            msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tips4"), memberData.name);
+            msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_jiechu"), memberData.name);
         }
         else
         {
-            msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_jiechu"), memberData.name);
+            msg = string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_tips4"), memberData.name);
         }
         
         MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, msg, OnConformAppointment);

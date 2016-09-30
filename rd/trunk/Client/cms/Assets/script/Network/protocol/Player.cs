@@ -185,7 +185,7 @@ namespace PB
       set { _hair = value; }
     }
     private int _hairColor = default(int);
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int hairColor
     {
@@ -193,14 +193,14 @@ namespace PB
       set { _hairColor = value; }
     }
     private int _recharge;
-    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int recharge
     {
       get { return _recharge; }
       set { _recharge = value; }
     }
     private int _vipLevel;
-    [global::ProtoBuf.ProtoMember(16, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int vipLevel
     {
       get { return _vipLevel; }

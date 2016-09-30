@@ -92,6 +92,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearInstanceHardTimesDaily();
 				statisticsEntity.clearInstanceNormalTimesDaily();
 				statisticsEntity.clearInstanceResetTimesDaily();
+				statisticsEntity.clearLoginTimesDaily();
 				statisticsEntity.clearPayDiamondCountDaily();
 				statisticsEntity.clearQuestDailyComplete();
 				statisticsEntity.clearSynAllTimesDaily();
