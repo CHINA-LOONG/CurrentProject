@@ -430,6 +430,16 @@ public class BIBehaviorAction {
 		GUILD_JOIN_TEAM(10017),
 
 		/**
+		 * PVP 匹配
+		 */
+		PVP_MATCH(10018),
+
+		/**
+		 * PVP 结算
+		 */
+		PVP_SETTLE(10019),
+
+		/**
 		 * 抽蛋 TODO
 		 */
 		EGG(11001),

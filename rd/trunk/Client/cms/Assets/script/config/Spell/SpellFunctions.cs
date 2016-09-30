@@ -89,16 +89,22 @@ public class SpellFunctions
         return 1;
     }
 
-    public static int ContainsXXXBuff(GameUnit caster, GameUnit target)
+    public static int ContainsBeneficialBuff(GameUnit caster, GameUnit target)
     {
-        int count = target.buffList.Count;
+        int count = caster.buffList.Count;
         for (int i = 0; i < count; ++i)
         {
-
+			if (caster.buffList[count].buffProto.category == 5)
+				return 1 ;
         }
-
-        return 1;
+		return 0;
     }
+	
+	
+	
+	
+	
+	
 
     public static int Default(GameUnit caster, GameUnit target)
     {

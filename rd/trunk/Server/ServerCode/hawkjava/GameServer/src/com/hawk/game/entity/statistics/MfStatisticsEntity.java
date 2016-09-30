@@ -1,7 +1,6 @@
 package com.hawk.game.entity.statistics;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,8 +46,16 @@ public class MfStatisticsEntity extends HawkDBEntity {
 
 	// 技能点恢复开始计时时间
 	@Column(name = "skillPointBeginTime")
-	protected Calendar skillPointBeginTime = null;
+	protected int skillPointBeginTime = 0;
 
+	// pvp次数
+	@Column(name = "pvpTime", nullable = false)
+	protected int pvpTime = 0;
+
+	// pvp次数开始计时时间
+	@Column(name = "pvpTimeBeginTime")
+	protected int pvpTimeBeginTime = 0;
+	
 	// 历史达到品级X怪物数量
 	@Column(name = "monsterStageXCount", nullable = false)
 	protected String monsterStageXCountJson = "";
@@ -196,14 +203,12 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	// method-------------------------------------------------------------------
 
 	protected MfStatisticsEntity() {
-		Calendar time = HawkTime.getCalendar();
-		this.skillPointBeginTime = time;
+		this.skillPointBeginTime = HawkTime.getSeconds();
 	}
 
 	protected MfStatisticsEntity(int playerId) {
-		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
-		this.skillPointBeginTime = time;
+		this.skillPointBeginTime = HawkTime.getSeconds();
 	}
 
 	@Override

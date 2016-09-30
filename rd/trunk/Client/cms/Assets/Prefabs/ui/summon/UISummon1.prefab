@@ -1876,6 +1876,7 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   jinbiSumName: {fileID: 11422824}
   zuanshiSumName: {fileID: 11478442}
   sumIntroduce1: {fileID: 11458304}

@@ -31,6 +31,26 @@ message HSSetPVPDefenceMonsterRet
 {
 }
 
+message HSGetPVPDefenceMonster
+{
+	
+}
+
+message HSGetPVPDefenceMonsterRet
+{
+	repeated int32 monsterId = 1;
+}
+
+message HSPVPInfo
+{
+
+}
+
+message HSPVPInfoRet
+{
+	required int32 pvpPoint = 1;
+	required int32 pvpRank = 2;
+}
 message HSPVPMatchTarget
 {
 	
@@ -43,6 +63,8 @@ message HSPVPMatchTargetRet
 	required int32 level = 3;
 	required int32 rank = 4;
 	required HSMonsterDefence defenceData = 5;
+	required int32 pvpTime = 6;
+	required int32 pvpTimeBeginTime = 7;
 }
 
 message HSPVPSettle
@@ -54,6 +76,7 @@ message HSPVPSettleRet
 {
 	required int32 point = 1;
 	required int32 rank = 2;
+	required int32 rewardPoint = 3;
 }
 
 message HSPVPRank

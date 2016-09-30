@@ -228,6 +228,13 @@ public class ConsumeItems {
 		return this;
 	}
 
+	public ConsumeItems addHonorPoint(int honorPoint) {
+		if (honorPoint > 0) {
+			addAttr(changeType.CHANGE_HONOR_COIN_VALUE, honorPoint);
+		}
+		return this;
+	}
+
 	/**
 	 * 检测是否可消耗
 	 * 
@@ -278,8 +285,8 @@ public class ConsumeItems {
 					case ConsumeCheckResult.NOT_IN_ALLIANCE:
 						player.sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
 						break;
-					case ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH:
-						player.sendError(hsCode, Status.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH_VALUE);
+					case ConsumeCheckResult.HONOR_POINT_NOT_ENOUGH:
+						player.sendError(hsCode, Status.PlayerError.HONOR_POINT_NOT_ENOUGH_VALUE);
 						break;
 					default:
 						break;
@@ -337,6 +344,11 @@ public class ConsumeItems {
 						if (player.getPlayerData().getPlayerAllianceEntity().getContribution() < consumeItem.getCount()) {
 							return ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH;
 						}
+					}
+				}
+				else if (changeType == Const.changeType.CHANGE_HONOR_COIN_VALUE) {
+					if (player.getHonorPoint() < consumeItem.getCount()) {
+						return ConsumeCheckResult.HONOR_POINT_NOT_ENOUGH;
 					}
 				}
 				break;
@@ -411,6 +423,10 @@ public class ConsumeItems {
 						player.consumeContribution(item.getCount(), action);
 						break;
 
+					case changeType.CHANGE_HONOR_COIN_VALUE:
+						player.consumeHonorPoint(item.getCount(), action);
+						break;
+
 					default:
 						break;
 					}
@@ -420,6 +436,7 @@ public class ConsumeItems {
 					playerBuilder.setTowerCoin(player.getTowerCoin());
 					playerBuilder.setContribution(player.getAllianceId() != 0 ? player.getPlayerData().getPlayerAllianceEntity().getContribution() : 0);
 					playerBuilder.setExp(player.getExp());
+					playerBuilder.setHonor(player.getHonorPoint());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));

@@ -232,7 +232,7 @@ public class GmService_Dev extends GameService {
 		//恢复技能点数到满
 		case "resp": {
 			player.getPlayerData().getStatisticsEntity().setSkillPoint(GsConst.MAX_SKILL_POINT);
-			player.getPlayerData().getStatisticsEntity().setSkillPointBeginTime(HawkTime.getCalendar());
+			player.getPlayerData().getStatisticsEntity().setSkillPointBeginTime(HawkTime.getSeconds());
 			player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 			actionHandled = true;
 			break;

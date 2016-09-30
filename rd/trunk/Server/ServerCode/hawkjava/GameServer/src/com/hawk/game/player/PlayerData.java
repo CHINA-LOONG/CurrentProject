@@ -32,7 +32,9 @@ import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
+import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
+import com.hawk.game.protocol.PVP.HSGetPVPDefenceMonsterRet;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
@@ -1072,6 +1074,18 @@ public class PlayerData {
 		player.sendProtocol(protocol);
 	}
 
+	/**
+	 * 同步PVP防守阵容
+	 */
+	public void syncPVPDefenceInfo(){		
+		HSGetPVPDefenceMonsterRet.Builder response = HSGetPVPDefenceMonsterRet.newBuilder();
+		for (HSMonster.Builder monster : getPVPDefenceEntity().getMonsterDefenceBuilder().getMonsterInfoBuilderList()) {
+			response.addMonsterId(monster.getMonsterId());
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_DEFENCE_MONSTERS_S_VALUE, response));
+	}
+	
 	/**
 	 * 获取在线玩家快照数据
 	 * @return

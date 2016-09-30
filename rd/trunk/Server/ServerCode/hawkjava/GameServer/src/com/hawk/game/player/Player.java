@@ -437,6 +437,13 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 获取公会贡献值
+	 */
+	public int getContribution() {
+		return playerData.getPlayerAllianceEntity().getContribution();
+	}
+
+	/**
 	 * 获取通天塔币
 	 */
 	public int getTowerCoin() {
@@ -448,6 +455,13 @@ public class Player extends HawkAppObj {
 	 */
 	public int getArenaCoin() {
 		return playerData.getPlayerEntity().getArenaCoin();
+	}
+
+	/**
+	 * 获取荣誉点
+	 */
+	public int getHonorPoint() {
+		return playerData.getPlayerEntity().getHonorPoint();
 	}
 
 	/**
@@ -717,6 +731,39 @@ public class Player extends HawkAppObj {
 		//TODO BI
 	}
 
+	/**
+	 * 增加荣誉点
+	 */
+	public int increaseHonorPoint(int honorPoint, Action action) {
+		if (honorPoint <= 0) {
+			throw new RuntimeException("increaseHonorPoint");
+		}
+
+		int honorRemain = getHonorPoint() + honorPoint - GsConst.MAX_COIN_COUNT;
+		int honorIncrease = honorPoint - (honorRemain > 0 ? honorRemain : 0);
+		if (0 != honorIncrease) {
+			playerData.getPlayerEntity().addHonorPoint(honorIncrease);
+			playerData.getPlayerEntity().notifyUpdate(true);
+		}
+
+		// TODO BI
+		return honorIncrease;
+	}
+
+	/**
+	 * 消耗竞技场币
+	 */
+	public void consumeHonorPoint(int honorPoint, Action action) {
+		if (honorPoint <= 0 || honorPoint > getHonorPoint()) {
+			throw new RuntimeException("consumeHonorPoint");
+		}
+
+		playerData.getPlayerEntity().addHonorPoint(-honorPoint);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		//TODO BI
+	}
+	
 	/**
 	 * 设置玩家等级
 	 * 
@@ -1428,7 +1475,7 @@ public class Player extends HawkAppObj {
 
 		// 从低于上限的时间开始恢复
 		if (old >= GsConst.MAX_SKILL_POINT && cur < GsConst.MAX_SKILL_POINT) {
-			statisticsEntity.setSkillPointBeginTime(HawkTime.getCalendar());
+			statisticsEntity.setSkillPointBeginTime(HawkTime.getSeconds());
 		}
 
 		statisticsEntity.setSkillPoint(cur);
@@ -1447,10 +1494,10 @@ public class Player extends HawkAppObj {
 			return old;
 		}
 
-		Calendar curTime = HawkTime.getCalendar();
-		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
+		int curTime = HawkTime.getSeconds();
+		int beginTime = statisticsEntity.getSkillPointBeginTime();
 
-		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int delta = curTime - beginTime;
 		int cur = old + delta / GsConst.SKILL_POINT_TIME;
 
 		if (cur > GsConst.MAX_SKILL_POINT) {
@@ -1461,14 +1508,67 @@ public class Player extends HawkAppObj {
 			return cur;
 		}
 
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
 		statisticsEntity.setSkillPoint(cur);
-		statisticsEntity.setSkillPointBeginTime(beginTime);
+		statisticsEntity.setSkillPointBeginTime(curTime - delta % GsConst.SKILL_POINT_TIME);
 
 		statisticsEntity.notifyUpdate(true);
 		return cur;
 	}
 
+	/**
+	 * 消耗PVP次数
+	 */
+	public void consumePVPTime(int pvpTime, Action action) {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		if (pvpTime <= 0 || pvpTime > statisticsEntity.getPVPTime()) {
+			throw new RuntimeException("consumePVPTime");
+		}
+
+		int old = statisticsEntity.getPVPTime();
+		int cur = old - pvpTime;
+
+		// 从低于上限的时间开始恢复
+		if (old >= GsConst.MAX_PVP_TIME && cur < GsConst.MAX_PVP_TIME) {
+			statisticsEntity.setPVPTimeBeginTime(HawkTime.getSeconds());
+		}
+
+		statisticsEntity.setPVPTime(cur);
+		statisticsEntity.notifyUpdate(true);
+
+		// TODO BI
+	}
+
+	/**
+	 * 恢复PVP次数
+	 */
+	public int regainPVPTime() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		int old = statisticsEntity.getPVPTime();
+		if (old == GsConst.MAX_PVP_TIME) {
+			return old;
+		}
+
+		int curTime = HawkTime.getSeconds();
+		int beginTime = statisticsEntity.getPVPTimeBeginTime();
+
+		int delta = curTime - beginTime;
+		int cur = old + delta / GsConst.PVP_TIMES_TIME;
+
+		if (cur > GsConst.MAX_SKILL_POINT) {
+			cur = GsConst.MAX_SKILL_POINT;
+		}
+
+		if (old == cur) {
+			return cur;
+		}
+
+		statisticsEntity.setPVPTime(cur);
+		statisticsEntity.setPVPTimeBeginTime(curTime - delta % GsConst.PVP_TIMES_TIME);
+
+		statisticsEntity.notifyUpdate(true);
+		return cur;
+	}
+	
 	/**
 	 * 增加大冒险条件刷新次数
 	 */

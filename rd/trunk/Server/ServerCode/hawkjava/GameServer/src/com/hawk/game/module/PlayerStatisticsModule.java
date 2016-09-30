@@ -28,6 +28,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 
 		// 登录时更新数据
 		player.regainSkillPoint();
+		player.regainPVPTime();
 		player.regainFatigue();
 		player.regainAdventureChangeTimes();
 
@@ -40,6 +41,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	protected boolean onPlayerReconnect(HawkMsg msg) {
 		// 登录时更新数据
 		player.regainSkillPoint();
+		player.regainPVPTime();
 		player.regainFatigue();
 		player.regainAdventureChangeTimes();
 

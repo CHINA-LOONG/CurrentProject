@@ -353,6 +353,13 @@ public class AwardItems {
 		}
 		return this;
 	}
+	
+	public AwardItems addHonorPoint(int honorPoint){
+		if (honorPoint > 0) {
+			addAttr(changeType.CHANGE_HONOR_COIN_VALUE, honorPoint);
+		}
+		return this;
+	}
 
 	public AwardItems addLevel(int level) {
 		addAttr(changeType.CHANGE_PLAYER_LEVEL_VALUE, level);
@@ -407,6 +414,9 @@ public class AwardItems {
 				case AwardCheckResult.CONTRIBUTION_LIMIT:
 					player.sendError(hsCode, Status.PlayerError.CONTRIBUTION_LIMIT_VALUE);
 					break;
+				case AwardCheckResult.HONOR_POINT_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.HONOR_POINT_LIMIT_VALUE);
+					break;
 				}
 			}
 			return false;
@@ -444,7 +454,12 @@ public class AwardItems {
 					}
 				}
 				else if (changeType == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-					if(player.getTowerCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+					if(player.getContribution() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+						return AwardCheckResult.CONTRIBUTION_LIMIT;
+					}
+				}
+				else if (changeType == Const.changeType.CHANGE_HONOR_COIN_VALUE) {
+					if(player.getHonorPoint() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
 						return AwardCheckResult.CONTRIBUTION_LIMIT;
 					}
 				}
@@ -552,6 +567,10 @@ public class AwardItems {
 						player.increaseContribution(item.getCount(), action);
 						break;
 
+					case changeType.CHANGE_HONOR_COIN_VALUE:
+						player.increaseHonorPoint(item.getCount(), action);
+						break;
+
 					default:
 						invalidType = true;
 						break;
@@ -563,6 +582,7 @@ public class AwardItems {
 					playerBuilder.setTowerCoin(player.getTowerCoin());
 					playerBuilder.setContribution(player.getAllianceId() != 0 ? player.getPlayerData().getPlayerAllianceEntity().getContribution() : 0);
 					playerBuilder.setExp(player.getExp());
+					playerBuilder.setHonor(player.getHonorPoint());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));

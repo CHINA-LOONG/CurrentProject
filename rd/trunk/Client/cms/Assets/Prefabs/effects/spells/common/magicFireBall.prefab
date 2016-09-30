@@ -334,7 +334,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104250}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -1382,7 +1382,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143088}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -2430,7 +2430,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182034}
   lengthInSec: .200000003
-  startDelay: .400000006
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -3613,7 +3613,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124690}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -4671,7 +4671,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192250}
   lengthInSec: .200000003
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -5689,7 +5689,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165054}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -6712,7 +6712,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161008}
   lengthInSec: .200000003
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -7755,7 +7755,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184182}
   lengthInSec: .100000001
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -8798,7 +8798,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167252}
   lengthInSec: .200000003
-  startDelay: .400000006
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -9811,7 +9811,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151430}
   lengthInSec: 5
-  startDelay: .5
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0

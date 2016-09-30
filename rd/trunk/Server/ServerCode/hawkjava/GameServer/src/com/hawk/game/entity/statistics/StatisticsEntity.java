@@ -468,14 +468,34 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	public Calendar getSkillPointBeginTime() {
+	public int getSkillPointBeginTime() {
 		return mfEntity.skillPointBeginTime;
 	}
 
-	public void setSkillPointBeginTime(Calendar time) {
+	public void setSkillPointBeginTime(int time) {
 		mfEntity.skillPointBeginTime = time;
 		mfUpdate = true;
 	}
+	
+	// pvpTime----------------------------------------------
+	public int getPVPTime() {
+		return mfEntity.pvpTime;
+	}
+
+	public void setPVPTime(int times) {
+		mfEntity.pvpTime = times;
+		mfUpdate = true;
+	}
+
+	public int getPVPTimeBeginTime() {
+		return mfEntity.pvpTimeBeginTime;
+	}
+
+	public void setPVPTimeBeginTime(int time) {
+		mfEntity.pvpTimeBeginTime = time;
+		mfUpdate = true;
+	}
+	
 
 	// monsterCount--------------------------------------------
 //	public List<Integer> getMonsterCountOverStageList() {

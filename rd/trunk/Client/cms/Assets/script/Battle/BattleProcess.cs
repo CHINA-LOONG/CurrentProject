@@ -102,6 +102,10 @@ public class BattleProcess : MonoBehaviour
     //强制结果（GM）
     public int forceResult = -1;
     bool mIsProcessFinish = false;
+    public bool IsProcessFinish
+    {
+        get { return mIsProcessFinish; }
+    }
 
     bool switchingPet = false;
     public bool SwitchingPet
@@ -816,15 +820,23 @@ public class BattleProcess : MonoBehaviour
 
         if (battleResult == BattleRetCode.MaxRound)
         {
+            //close setting window if necessary
+            mPauseEnable = false;
+            UIBattle.Instance.CloseBattleSetting();
+
             BattleController.Instance.OnBattleOver(false);
             return;
         }
 
         if (battleResult == BattleRetCode.Failed)
         {
+            //close setting window if necessary
+            mPauseEnable = false;
+            UIBattle.Instance.CloseBattleSetting();
+
             BattleController.Instance.IsRevived = true;
             insertAction.Clear();
-            if (mCurrentReviveCount < BattleConst.maxReviveCount)
+            if (mCurrentReviveCount < BattleConst.maxReviveCount && forceResult < 0)
             {
                 StartCoroutine(ShowReviveUI());
             }
@@ -845,6 +857,10 @@ public class BattleProcess : MonoBehaviour
         }
         else if (battleResult == BattleRetCode.Success)
         {
+            //close setting window if necessary
+            mPauseEnable = false;
+            UIBattle.Instance.CloseBattleSetting();
+
             insertAction.Clear();
             if (BattleController.Instance.HasNextProcess() && forceResult == -1)
             {
@@ -875,12 +891,31 @@ public class BattleProcess : MonoBehaviour
         StartAction();
     }
 
-    public void Pause(bool pauseEnable)
+    public void Pause(bool pauseEnable, bool exit)
     {
         mPauseEnable = pauseEnable;
-        if (pauseEnable == false && mRestartAction == true)
+        if (pauseEnable == false)
         {
-            StartAction();
+            if (exit == false)
+            {
+                if (mRestartAction == true)
+                {
+                    StartAction();
+                }
+            }
+            else
+            {
+                forceResult = 0;
+                if (mRestartAction == true)
+                {
+                    Action exitAciton = new Action();
+                    exitAciton.type = ActionType.None;
+                    InsertAction(exitAciton);
+                    StartAction();
+                }
+            }
+
+            UIBattle.Instance.CloseBattleSetting();
         }
     }
 

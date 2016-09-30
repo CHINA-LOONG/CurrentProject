@@ -96,6 +96,10 @@ message HSStatisticsSyncPart2
 	required int32 summonCoinFreeLastTime = 11;
 	// 今日已雇佣公会怪物
 	repeated int32 hiredMonsterId = 12;
+	// pvp 次数
+	required int32 pvpTimes = 13;
+	// 当前正在累计PVP次数恢复时间开始时间戳（秒）
+	required int32 pvpTimesBeginTime = 14;
 }
 
 message HSStatisticsSyncPart3

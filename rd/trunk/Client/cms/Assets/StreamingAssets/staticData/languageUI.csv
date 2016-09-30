@@ -169,6 +169,13 @@ mail_zidongshantips,邮件将在领取附件后自动删除,Mails are automatica
 mail_shouquall,确认收取所有邮件吗？,Confirm collect all mails?
 mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,"* If Coin/Diamond limit is reached, any exceeding amount will not be collected."
 ,,
+xl_equip_forge,薛龙_签到界面,
+monthlyevent_title,本月签到奖励,Monthly Login Reward
+monthlyevent_count_001,当月已签到：{0}/{1},Logins this month: {0}/{1}
+monthlyevent_count_002,可补签次数：{0},Claimable missed logins: {0}
+monthlyevent_anniu,补签,Missed Login
+monthlyevent_reward_001,签到成功,Successfully logged in!
+Sign_buqian_001,请先完成当日签到后再进行补签操作,Please complete today's login before claiming missed logins.
 ,,
 xl_equip_forge,薛龙_装备强化进阶,
 equip_forge_xiaohao,消耗材料,Materials Consumed
@@ -854,7 +861,7 @@ adventure_extrareward,额外奖励,Bonus Rewards
 adventure_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
 sociaty_meijiaguild,尚未加入公会,not join guild
 adventure_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
-adventure_tipshuifu,{0}/10（{1}后回复1次）,{0}/10 ({1} till 1 point)
+adventure_tipshuifu,{0}/10（{1}后回复1次）,<color=#ffcc00ff>{0}/10</color> (<color=#ffcc00ff>{1}</color> till 1 point)
 adventure_tipsmax,10/10（次数已满）,10/10(full)
 adventure_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
 adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch? (Dispatched monsters cannot participate in any battles.)"
@@ -883,6 +890,7 @@ adventure_record_008,一次探险只能雇佣一只宠物,Only 1 monster may be 
 adventure_record_009,该宠物正在公会驻守，无法上阵哦,This monster is garrisoned in the guild and cannot be used.
 adventure_record_011,探险任务已完成,complete
 arrayselect_bp_001,综合战力,Team BP
+adventure_filter,筛选,Filter
 ,,
 summon_titlecoin,聚合,Gather
 summon_tipscoin,聚合获得物品或宠物,Gathering gives items or monsters

@@ -44,6 +44,38 @@ public class PvpDataMgr : MonoBehaviour
         return bpValue;
     }
 
+    public string GetStageNameWithId(int stageId)
+    {
+        switch(stageId)
+        {
+            case 1:
+                return StaticDataMgr.Instance.GetTextByID("pvp_copper3");
+            case 2:
+                return StaticDataMgr.Instance.GetTextByID("pvp_copper2");
+            case 3:
+                return StaticDataMgr.Instance.GetTextByID("pvp_copper1");
+            case 4:
+                return StaticDataMgr.Instance.GetTextByID("pvp_silver3");
+            case 5:
+                return StaticDataMgr.Instance.GetTextByID("pvp_silver2");
+            case 6:
+                return StaticDataMgr.Instance.GetTextByID("pvp_silver1");
+            case 7:
+                return StaticDataMgr.Instance.GetTextByID("pvp_gold3");
+            case 8:
+                return StaticDataMgr.Instance.GetTextByID("pvp_gold2");
+            case 9:
+                return StaticDataMgr.Instance.GetTextByID("pvp_gold1");
+            case 10:
+                return StaticDataMgr.Instance.GetTextByID("pvp_master3");
+            case 11:
+                return StaticDataMgr.Instance.GetTextByID("pvp_master2");
+            case 12:
+                return StaticDataMgr.Instance.GetTextByID("pvp_master1");
+        }
+        return "";
+    }
+
     public void RequestSaveDefensePosition(List<string> defenseList, NetMessageDelegate callBack)
     {
         this.callBack = callBack;

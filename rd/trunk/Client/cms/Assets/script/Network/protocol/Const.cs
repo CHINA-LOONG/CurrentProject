@@ -165,7 +165,10 @@ namespace PB
       CHANGE_TOWER_COIN = 11,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_ARENA_COIN", Value=12)]
-      CHANGE_ARENA_COIN = 12
+      CHANGE_ARENA_COIN = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_HONOR_COIN", Value=13)]
+      CHANGE_HONOR_COIN = 13
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]

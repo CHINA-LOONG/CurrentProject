@@ -19,6 +19,7 @@ import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
+import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.PVPCfg;
 import com.hawk.game.config.PVPRankRewardCfg;
@@ -26,6 +27,7 @@ import com.hawk.game.config.PVPStageRewardCfg;
 import com.hawk.game.entity.PVPDefenceEntity;
 import com.hawk.game.entity.PVPDefenceRecordEntity;
 import com.hawk.game.entity.PVPRankEntity;
+import com.hawk.game.item.AwardItems;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -249,6 +251,12 @@ public class PVPManager extends HawkAppObj {
 			return ;
 		}
 		
+		player.regainPVPTime();
+		if (player.getPlayerData().getStatisticsEntity().getPVPTime() < 1) {
+			player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_TIMES_NOT_ENOUGH_VALUE);
+			return ;
+		}
+		
 		PVPCfg pvpCfg = null;
 		PVPRankEntity rankEntity = playerRankMap.get(player.getId());
 		if (rankEntity == null) {
@@ -328,13 +336,16 @@ public class PVPManager extends HawkAppObj {
 		// 加入到房间
 		pvpRoomList.put(player.getId(), new PVPRoom(target.getPlayerId(), target));
 		
+		player.consumePVPTime(1, Action.PVP_MATCH);
+		
 		HSPVPMatchTargetRet.Builder response = HSPVPMatchTargetRet.newBuilder();
 		response.setPlayerId(target.getPlayerId());
 		response.setName(target.getName());
 		response.setLevel(target.getLevel());
 		response.setRank(0);
 		response.setDefenceData(target.getMonsterDefenceBuilder());
-		
+		response.setPvpTime(player.getPlayerData().getStatisticsEntity().getPVPTime());
+		response.setPvpTimeBeginTime(player.getPlayerData().getStatisticsEntity().getPVPTimeBeginTime());
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_MATCH_TARGET_S_VALUE, response));
 	}
 	
@@ -373,14 +384,17 @@ public class PVPManager extends HawkAppObj {
 			pvpRankEntity.notifyUpdate(true);
 			reRank(pvpRankEntity);
 			
+			AwardItems reward = new AwardItems();
 			if (protocol.getResult() == Const.PvpResult.WIN_VALUE) {
-				player.getPlayerData().getPlayerEntity().addHonorPoint(pvpCfg.getWin());
-				player.getPlayerData().getPlayerEntity().notifyUpdate(true);
+				reward.addHonorPoint(pvpCfg.getWin());
 			}
 			else if (protocol.getResult() == Const.PvpResult.DRAW_VALUE) {
-				player.getPlayerData().getPlayerEntity().addHonorPoint(pvpCfg.getDraw());
-				player.getPlayerData().getPlayerEntity().notifyUpdate(true);
+				reward.addHonorPoint(pvpCfg.getDraw());
 			}	
+			
+			if (reward.hasAwardItem()) {
+				reward.rewardTakeAffectAndPush(player, Action.PVP_SETTLE, cmd.getType());
+			}
 			
 			PVPDefenceRecordEntity pvpDefenceRecordEntity = new PVPDefenceRecordEntity();
 			pvpDefenceRecordEntity.setPlayerId(pvpRoom.targetId);
@@ -405,7 +419,8 @@ public class PVPManager extends HawkAppObj {
 		
 		HSPVPSettleRet.Builder response = HSPVPSettleRet.newBuilder();
 		response.setPoint(pvpRankEntity.getPoint());
-		response.setRank(pvpRankEntity.getRank());
+		response.setRank(pvpRankEntity.getRank() + 1);
+		response.setRewardPoint(changePoint);
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_SETTLE_S_VALUE, response));
 	}
 	

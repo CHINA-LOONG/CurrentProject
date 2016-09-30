@@ -103,6 +103,8 @@ enum changeType
 	CHANGE_TOWER_COIN      = 11;
 	// 竞技场币
 	CHANGE_ARENA_COIN      = 12;
+	// 荣誉点
+	CHANGE_HONOR_COIN      = 13;
 }
 
 // 附加属性类型定义

@@ -6631,6 +6631,42 @@ public final class Statistics {
      * </pre>
      */
     int getHiredMonsterId(int index);
+
+    // required int32 pvpTimes = 13;
+    /**
+     * <code>required int32 pvpTimes = 13;</code>
+     *
+     * <pre>
+     * pvp 次数
+     * </pre>
+     */
+    boolean hasPvpTimes();
+    /**
+     * <code>required int32 pvpTimes = 13;</code>
+     *
+     * <pre>
+     * pvp 次数
+     * </pre>
+     */
+    int getPvpTimes();
+
+    // required int32 pvpTimesBeginTime = 14;
+    /**
+     * <code>required int32 pvpTimesBeginTime = 14;</code>
+     *
+     * <pre>
+     * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    boolean hasPvpTimesBeginTime();
+    /**
+     * <code>required int32 pvpTimesBeginTime = 14;</code>
+     *
+     * <pre>
+     * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    int getPvpTimesBeginTime();
   }
   /**
    * Protobuf type {@code HSStatisticsSyncPart2}
@@ -6763,6 +6799,16 @@ public final class Statistics {
                 hiredMonsterId_.add(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000200;
+              pvpTimes_ = input.readInt32();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00000400;
+              pvpTimesBeginTime_ = input.readInt32();
               break;
             }
           }
@@ -7167,6 +7213,54 @@ public final class Statistics {
       return hiredMonsterId_.get(index);
     }
 
+    // required int32 pvpTimes = 13;
+    public static final int PVPTIMES_FIELD_NUMBER = 13;
+    private int pvpTimes_;
+    /**
+     * <code>required int32 pvpTimes = 13;</code>
+     *
+     * <pre>
+     * pvp 次数
+     * </pre>
+     */
+    public boolean hasPvpTimes() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required int32 pvpTimes = 13;</code>
+     *
+     * <pre>
+     * pvp 次数
+     * </pre>
+     */
+    public int getPvpTimes() {
+      return pvpTimes_;
+    }
+
+    // required int32 pvpTimesBeginTime = 14;
+    public static final int PVPTIMESBEGINTIME_FIELD_NUMBER = 14;
+    private int pvpTimesBeginTime_;
+    /**
+     * <code>required int32 pvpTimesBeginTime = 14;</code>
+     *
+     * <pre>
+     * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public boolean hasPvpTimesBeginTime() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required int32 pvpTimesBeginTime = 14;</code>
+     *
+     * <pre>
+     * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public int getPvpTimesBeginTime() {
+      return pvpTimesBeginTime_;
+    }
+
     private void initFields() {
       monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       itemState_ = java.util.Collections.emptyList();
@@ -7180,6 +7274,8 @@ public final class Statistics {
       summonCoinFreeTimesDaily_ = 0;
       summonCoinFreeLastTime_ = 0;
       hiredMonsterId_ = java.util.Collections.emptyList();
+      pvpTimes_ = 0;
+      pvpTimesBeginTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7219,6 +7315,14 @@ public final class Statistics {
         return false;
       }
       if (!hasSummonCoinFreeLastTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPvpTimes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPvpTimesBeginTime()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7270,6 +7374,12 @@ public final class Statistics {
       }
       for (int i = 0; i < hiredMonsterId_.size(); i++) {
         output.writeInt32(12, hiredMonsterId_.get(i));
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(13, pvpTimes_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(14, pvpTimesBeginTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7337,6 +7447,14 @@ public final class Statistics {
         }
         size += dataSize;
         size += 1 * getHiredMonsterIdList().size();
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(13, pvpTimes_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, pvpTimesBeginTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7483,6 +7601,10 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000400);
         hiredMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000800);
+        pvpTimes_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        pvpTimesBeginTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -7567,6 +7689,14 @@ public final class Statistics {
           bitField0_ = (bitField0_ & ~0x00000800);
         }
         result.hiredMonsterId_ = hiredMonsterId_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.pvpTimes_ = pvpTimes_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.pvpTimesBeginTime_ = pvpTimesBeginTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7656,6 +7786,12 @@ public final class Statistics {
           }
           onChanged();
         }
+        if (other.hasPvpTimes()) {
+          setPvpTimes(other.getPvpTimes());
+        }
+        if (other.hasPvpTimesBeginTime()) {
+          setPvpTimesBeginTime(other.getPvpTimesBeginTime());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -7694,6 +7830,14 @@ public final class Statistics {
           return false;
         }
         if (!hasSummonCoinFreeLastTime()) {
+          
+          return false;
+        }
+        if (!hasPvpTimes()) {
+          
+          return false;
+        }
+        if (!hasPvpTimesBeginTime()) {
           
           return false;
         }
@@ -8697,6 +8841,104 @@ public final class Statistics {
       public Builder clearHiredMonsterId() {
         hiredMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000800);
+        onChanged();
+        return this;
+      }
+
+      // required int32 pvpTimes = 13;
+      private int pvpTimes_ ;
+      /**
+       * <code>required int32 pvpTimes = 13;</code>
+       *
+       * <pre>
+       * pvp 次数
+       * </pre>
+       */
+      public boolean hasPvpTimes() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>required int32 pvpTimes = 13;</code>
+       *
+       * <pre>
+       * pvp 次数
+       * </pre>
+       */
+      public int getPvpTimes() {
+        return pvpTimes_;
+      }
+      /**
+       * <code>required int32 pvpTimes = 13;</code>
+       *
+       * <pre>
+       * pvp 次数
+       * </pre>
+       */
+      public Builder setPvpTimes(int value) {
+        bitField0_ |= 0x00001000;
+        pvpTimes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 pvpTimes = 13;</code>
+       *
+       * <pre>
+       * pvp 次数
+       * </pre>
+       */
+      public Builder clearPvpTimes() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        pvpTimes_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 pvpTimesBeginTime = 14;
+      private int pvpTimesBeginTime_ ;
+      /**
+       * <code>required int32 pvpTimesBeginTime = 14;</code>
+       *
+       * <pre>
+       * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public boolean hasPvpTimesBeginTime() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>required int32 pvpTimesBeginTime = 14;</code>
+       *
+       * <pre>
+       * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public int getPvpTimesBeginTime() {
+        return pvpTimesBeginTime_;
+      }
+      /**
+       * <code>required int32 pvpTimesBeginTime = 14;</code>
+       *
+       * <pre>
+       * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder setPvpTimesBeginTime(int value) {
+        bitField0_ |= 0x00002000;
+        pvpTimesBeginTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 pvpTimesBeginTime = 14;</code>
+       *
+       * <pre>
+       * 当前正在累计PVP次数恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder clearPvpTimesBeginTime() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        pvpTimesBeginTime_ = 0;
         onChanged();
         return this;
       }
@@ -12709,7 +12951,7 @@ public final class Statistics {
       "e\022#\n\014chapterState\030\003 \002(\0132\r.ChapterState\022\035" +
       "\n\tholeState\030\004 \003(\0132\n.HoleState\022\037\n\ntowerSt" +
       "ate\030\005 \003(\0132\013.TowerState\022\032\n\022instanceResetC" +
-      "ount\030\006 \002(\005\"\343\002\n\025HSStatisticsSyncPart2\022\026\n\016" +
+      "ount\030\006 \002(\005\"\220\003\n\025HSStatisticsSyncPart2\022\026\n\016" +
       "monsterCollect\030\001 \003(\t\022\035\n\titemState\030\002 \003(\0132" +
       "\n.ItemState\022\017\n\007fatigue\030\003 \002(\005\022\030\n\020fatigueB",
       "eginTime\030\004 \002(\005\022\022\n\nskillPoint\030\005 \002(\005\022\033\n\023sk" +
@@ -12718,18 +12960,20 @@ public final class Statistics {
       "(\005\022\"\n\032summonDiamondFreeBeginTime\030\t \002(\005\022 " +
       "\n\030summonCoinFreeTimesDaily\030\n \002(\005\022\036\n\026summ" +
       "onCoinFreeLastTime\030\013 \002(\005\022\026\n\016hiredMonster" +
-      "Id\030\014 \003(\005\"\203\002\n\025HSStatisticsSyncPart3\022\026\n\016or" +
-      "derServerKey\030\001 \002(\t\022%\n\rrechargeState\030\002 \003(" +
-      "\0132\016.RechargeState\022\025\n\rmonthCardLeft\030\003 \002(\005" +
-      "\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeftTimes",
-      "\030\005 \002(\0132\023.HSSyncExpLeftTimes\022\032\n\022signinTim" +
-      "esMonthly\030\006 \002(\005\022\036\n\026signinFillTimesMonthl" +
-      "y\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\"3\n\022HSSync" +
-      "DailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleSt" +
-      "ate\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncSho" +
-      "pRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpL" +
-      "eftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripl" +
-      "eExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
+      "Id\030\014 \003(\005\022\020\n\010pvpTimes\030\r \002(\005\022\031\n\021pvpTimesBe" +
+      "ginTime\030\016 \002(\005\"\203\002\n\025HSStatisticsSyncPart3\022" +
+      "\026\n\016orderServerKey\030\001 \002(\t\022%\n\rrechargeState" +
+      "\030\002 \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030",
+      "\003 \002(\005\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeft" +
+      "Times\030\005 \002(\0132\023.HSSyncExpLeftTimes\022\032\n\022sign" +
+      "inTimesMonthly\030\006 \002(\005\022\036\n\026signinFillTimesM" +
+      "onthly\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\"3\n\022H" +
+      "SSyncDailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.H" +
+      "oleState\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSy" +
+      "ncShopRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyn" +
+      "cExpLeftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\r" +
+      "tripleExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.pro" +
+      "tocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12783,7 +13027,7 @@ public final class Statistics {
           internal_static_HSStatisticsSyncPart2_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart2_descriptor,
-              new java.lang.String[] { "MonsterCollect", "ItemState", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "AdventureChange", "AdventureChangeBeginTime", "SummonDiamondFreeBeginTime", "SummonCoinFreeTimesDaily", "SummonCoinFreeLastTime", "HiredMonsterId", });
+              new java.lang.String[] { "MonsterCollect", "ItemState", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "AdventureChange", "AdventureChangeBeginTime", "SummonDiamondFreeBeginTime", "SummonCoinFreeTimesDaily", "SummonCoinFreeLastTime", "HiredMonsterId", "PvpTimes", "PvpTimesBeginTime", });
           internal_static_HSStatisticsSyncPart3_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_HSStatisticsSyncPart3_fieldAccessorTable = new

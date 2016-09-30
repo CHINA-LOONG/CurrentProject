@@ -12,14 +12,16 @@ message SynPlayerAttr
 	optional int32 towerCoin = 3;
 	// 公会币
 	optional int32 contribution = 4;
+	// 荣誉点
+	optional int32 honor = 5;
 	// 主卡等级
-	optional int32 level = 5;
+	optional int32 level = 6;
 	// 主卡经验
-	optional int32 exp = 6;
+	optional int32 exp = 7;
 	// 活力值
-	optional int32 fatigue = 7;
+	optional int32 fatigue = 8;
 	// 正在累计活力值恢复时间开始时间戳（秒）
-	optional int32 fatigueBeginTime = 8;
+	optional int32 fatigueBeginTime = 9;
 }
 
 message PlayerInfo
@@ -32,12 +34,13 @@ message PlayerInfo
 	required int32  gold = 6;
 	required int64  coin = 7;
 	required int32  towerCoin = 8;
-	optional int32  gender = 9;
-	optional int32  eye = 10;
-	optional int32  hair = 11;
-	optional int32  hairColor = 12;
-	required int32  recharge = 13;
-	required int32  vipLevel = 14;
+	required int32  honor = 9;
+	optional int32  gender = 10;
+	optional int32  eye = 11;
+	optional int32  hair = 12;
+	optional int32  hairColor = 14;
+	required int32  recharge = 15;
+	required int32  vipLevel = 16;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------

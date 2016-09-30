@@ -68,6 +68,7 @@ public class BuilderUtil {
 		builder.setGold(playerEntity.getBuyGold() + playerEntity.getFreeGold());
 		builder.setCoin(playerEntity.getCoin());
 		builder.setTowerCoin(playerEntity.getTowerCoin());
+		builder.setHonor(playerEntity.getHonorPoint());
 		builder.setGender(playerEntity.getLevel());
 		builder.setEye(playerEntity.getExp());
 		builder.setHair(playerEntity.getHair());
@@ -142,7 +143,9 @@ public class BuilderUtil {
 		builder.setFatigue(statisticsEntity.getFatigue());
 		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
-		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+		builder.setSkillPointBeginTime(statisticsEntity.getSkillPointBeginTime());
+		builder.setPvpTimes(statisticsEntity.getPVPTime());
+		builder.setPvpTimesBeginTime(statisticsEntity.getPVPTimeBeginTime());
 		builder.setAdventureChange(statisticsEntity.getAdventureChange());
 		builder.setAdventureChangeBeginTime((int)(statisticsEntity.getAdventureChangeBeginTime().getTimeInMillis() / 1000));
 		builder.setSummonDiamondFreeBeginTime((int)(statisticsEntity.getEggDiamond1FreePointBeginTime().getTimeInMillis() / 1000));

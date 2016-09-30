@@ -92,6 +92,10 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, AdventureTeamPriceData> adventureTeamPriceData = new Dictionary<int, AdventureTeamPriceData>();
     Dictionary<int, Sociatybase> sociatyBaseData = new Dictionary<int, Sociatybase>();
 
+    //PVP
+    List<PvpRankRewardUiStaticData> listRankRewardUiStaticData = new List<PvpRankRewardUiStaticData>();
+    List<PvpStageRewardStaticData> listStageRewardStaticData = new List<PvpStageRewardStaticData>();
+
     public void Init()
     {
         DontDestroyOnLoad(gameObject);
@@ -853,6 +857,20 @@ public class StaticDataMgr : MonoBehaviour
             sociatyTechnologyList = InitTable<SociatyTechnologyData>("sociatytechnology");
 
         }
+        {
+            //Pvp
+            var data = InitTable<PvpStageRewardStaticData>("pvpStageReward");
+            foreach (var item in data)
+            {
+                listStageRewardStaticData.Add(item);
+            }
+
+            var data2 = InitTable<PvpRankRewardUiStaticData>("pvpRankRewardUI");
+            foreach(var item in data2)
+            {
+                listRankRewardUiStaticData.Add(item);
+            }
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -1372,6 +1390,14 @@ public class StaticDataMgr : MonoBehaviour
         return sociatyBaseData[tempKey];
     }
 
+    public List<PvpRankRewardUiStaticData> GetRankRewardUiStaticDataList()
+    {
+        return listRankRewardUiStaticData;
+    }
+    public List<PvpStageRewardStaticData> GetStageRewardStaticDataList()
+    {
+        return listStageRewardStaticData;
+    }
 
     #endregion
 }

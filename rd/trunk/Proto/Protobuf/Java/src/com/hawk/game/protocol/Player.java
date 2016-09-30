@@ -83,9 +83,27 @@ public final class Player {
      */
     int getContribution();
 
-    // optional int32 level = 5;
+    // optional int32 honor = 5;
     /**
-     * <code>optional int32 level = 5;</code>
+     * <code>optional int32 honor = 5;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    boolean hasHonor();
+    /**
+     * <code>optional int32 honor = 5;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    int getHonor();
+
+    // optional int32 level = 6;
+    /**
+     * <code>optional int32 level = 6;</code>
      *
      * <pre>
      * 主卡等级
@@ -93,7 +111,7 @@ public final class Player {
      */
     boolean hasLevel();
     /**
-     * <code>optional int32 level = 5;</code>
+     * <code>optional int32 level = 6;</code>
      *
      * <pre>
      * 主卡等级
@@ -101,9 +119,9 @@ public final class Player {
      */
     int getLevel();
 
-    // optional int32 exp = 6;
+    // optional int32 exp = 7;
     /**
-     * <code>optional int32 exp = 6;</code>
+     * <code>optional int32 exp = 7;</code>
      *
      * <pre>
      * 主卡经验
@@ -111,7 +129,7 @@ public final class Player {
      */
     boolean hasExp();
     /**
-     * <code>optional int32 exp = 6;</code>
+     * <code>optional int32 exp = 7;</code>
      *
      * <pre>
      * 主卡经验
@@ -119,9 +137,9 @@ public final class Player {
      */
     int getExp();
 
-    // optional int32 fatigue = 7;
+    // optional int32 fatigue = 8;
     /**
-     * <code>optional int32 fatigue = 7;</code>
+     * <code>optional int32 fatigue = 8;</code>
      *
      * <pre>
      * 活力值
@@ -129,7 +147,7 @@ public final class Player {
      */
     boolean hasFatigue();
     /**
-     * <code>optional int32 fatigue = 7;</code>
+     * <code>optional int32 fatigue = 8;</code>
      *
      * <pre>
      * 活力值
@@ -137,9 +155,9 @@ public final class Player {
      */
     int getFatigue();
 
-    // optional int32 fatigueBeginTime = 8;
+    // optional int32 fatigueBeginTime = 9;
     /**
-     * <code>optional int32 fatigueBeginTime = 8;</code>
+     * <code>optional int32 fatigueBeginTime = 9;</code>
      *
      * <pre>
      * 正在累计活力值恢复时间开始时间戳（秒）
@@ -147,7 +165,7 @@ public final class Player {
      */
     boolean hasFatigueBeginTime();
     /**
-     * <code>optional int32 fatigueBeginTime = 8;</code>
+     * <code>optional int32 fatigueBeginTime = 9;</code>
      *
      * <pre>
      * 正在累计活力值恢复时间开始时间戳（秒）
@@ -228,21 +246,26 @@ public final class Player {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              level_ = input.readInt32();
+              honor_ = input.readInt32();
               break;
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              exp_ = input.readInt32();
+              level_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              fatigue_ = input.readInt32();
+              exp_ = input.readInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
+              fatigue_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
               fatigueBeginTime_ = input.readInt32();
               break;
             }
@@ -382,21 +405,45 @@ public final class Player {
       return contribution_;
     }
 
-    // optional int32 level = 5;
-    public static final int LEVEL_FIELD_NUMBER = 5;
+    // optional int32 honor = 5;
+    public static final int HONOR_FIELD_NUMBER = 5;
+    private int honor_;
+    /**
+     * <code>optional int32 honor = 5;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    public boolean hasHonor() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 honor = 5;</code>
+     *
+     * <pre>
+     * 荣誉点
+     * </pre>
+     */
+    public int getHonor() {
+      return honor_;
+    }
+
+    // optional int32 level = 6;
+    public static final int LEVEL_FIELD_NUMBER = 6;
     private int level_;
     /**
-     * <code>optional int32 level = 5;</code>
+     * <code>optional int32 level = 6;</code>
      *
      * <pre>
      * 主卡等级
      * </pre>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional int32 level = 5;</code>
+     * <code>optional int32 level = 6;</code>
      *
      * <pre>
      * 主卡等级
@@ -406,21 +453,21 @@ public final class Player {
       return level_;
     }
 
-    // optional int32 exp = 6;
-    public static final int EXP_FIELD_NUMBER = 6;
+    // optional int32 exp = 7;
+    public static final int EXP_FIELD_NUMBER = 7;
     private int exp_;
     /**
-     * <code>optional int32 exp = 6;</code>
+     * <code>optional int32 exp = 7;</code>
      *
      * <pre>
      * 主卡经验
      * </pre>
      */
     public boolean hasExp() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 exp = 6;</code>
+     * <code>optional int32 exp = 7;</code>
      *
      * <pre>
      * 主卡经验
@@ -430,21 +477,21 @@ public final class Player {
       return exp_;
     }
 
-    // optional int32 fatigue = 7;
-    public static final int FATIGUE_FIELD_NUMBER = 7;
+    // optional int32 fatigue = 8;
+    public static final int FATIGUE_FIELD_NUMBER = 8;
     private int fatigue_;
     /**
-     * <code>optional int32 fatigue = 7;</code>
+     * <code>optional int32 fatigue = 8;</code>
      *
      * <pre>
      * 活力值
      * </pre>
      */
     public boolean hasFatigue() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional int32 fatigue = 7;</code>
+     * <code>optional int32 fatigue = 8;</code>
      *
      * <pre>
      * 活力值
@@ -454,21 +501,21 @@ public final class Player {
       return fatigue_;
     }
 
-    // optional int32 fatigueBeginTime = 8;
-    public static final int FATIGUEBEGINTIME_FIELD_NUMBER = 8;
+    // optional int32 fatigueBeginTime = 9;
+    public static final int FATIGUEBEGINTIME_FIELD_NUMBER = 9;
     private int fatigueBeginTime_;
     /**
-     * <code>optional int32 fatigueBeginTime = 8;</code>
+     * <code>optional int32 fatigueBeginTime = 9;</code>
      *
      * <pre>
      * 正在累计活力值恢复时间开始时间戳（秒）
      * </pre>
      */
     public boolean hasFatigueBeginTime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional int32 fatigueBeginTime = 8;</code>
+     * <code>optional int32 fatigueBeginTime = 9;</code>
      *
      * <pre>
      * 正在累计活力值恢复时间开始时间戳（秒）
@@ -483,6 +530,7 @@ public final class Player {
       coin_ = 0L;
       towerCoin_ = 0;
       contribution_ = 0;
+      honor_ = 0;
       level_ = 0;
       exp_ = 0;
       fatigue_ = 0;
@@ -513,16 +561,19 @@ public final class Player {
         output.writeInt32(4, contribution_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, level_);
+        output.writeInt32(5, honor_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, exp_);
+        output.writeInt32(6, level_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, fatigue_);
+        output.writeInt32(7, exp_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, fatigueBeginTime_);
+        output.writeInt32(8, fatigue_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, fatigueBeginTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -551,19 +602,23 @@ public final class Player {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, level_);
+          .computeInt32Size(5, honor_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, exp_);
+          .computeInt32Size(6, level_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, fatigue_);
+          .computeInt32Size(7, exp_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, fatigueBeginTime_);
+          .computeInt32Size(8, fatigue_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, fatigueBeginTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -689,14 +744,16 @@ public final class Player {
         bitField0_ = (bitField0_ & ~0x00000004);
         contribution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        level_ = 0;
+        honor_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        exp_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        fatigue_ = 0;
+        exp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        fatigueBeginTime_ = 0;
+        fatigue_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        fatigueBeginTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -744,17 +801,21 @@ public final class Player {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.level_ = level_;
+        result.honor_ = honor_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.exp_ = exp_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.fatigue_ = fatigue_;
+        result.exp_ = exp_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
+        }
+        result.fatigue_ = fatigue_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
         }
         result.fatigueBeginTime_ = fatigueBeginTime_;
         result.bitField0_ = to_bitField0_;
@@ -784,6 +845,9 @@ public final class Player {
         }
         if (other.hasContribution()) {
           setContribution(other.getContribution());
+        }
+        if (other.hasHonor()) {
+          setHonor(other.getHonor());
         }
         if (other.hasLevel()) {
           setLevel(other.getLevel());
@@ -1020,20 +1084,69 @@ public final class Player {
         return this;
       }
 
-      // optional int32 level = 5;
+      // optional int32 honor = 5;
+      private int honor_ ;
+      /**
+       * <code>optional int32 honor = 5;</code>
+       *
+       * <pre>
+       * 荣誉点
+       * </pre>
+       */
+      public boolean hasHonor() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 honor = 5;</code>
+       *
+       * <pre>
+       * 荣誉点
+       * </pre>
+       */
+      public int getHonor() {
+        return honor_;
+      }
+      /**
+       * <code>optional int32 honor = 5;</code>
+       *
+       * <pre>
+       * 荣誉点
+       * </pre>
+       */
+      public Builder setHonor(int value) {
+        bitField0_ |= 0x00000010;
+        honor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 honor = 5;</code>
+       *
+       * <pre>
+       * 荣誉点
+       * </pre>
+       */
+      public Builder clearHonor() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        honor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 6;
       private int level_ ;
       /**
-       * <code>optional int32 level = 5;</code>
+       * <code>optional int32 level = 6;</code>
        *
        * <pre>
        * 主卡等级
        * </pre>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional int32 level = 5;</code>
+       * <code>optional int32 level = 6;</code>
        *
        * <pre>
        * 主卡等级
@@ -1043,46 +1156,46 @@ public final class Player {
         return level_;
       }
       /**
-       * <code>optional int32 level = 5;</code>
+       * <code>optional int32 level = 6;</code>
        *
        * <pre>
        * 主卡等级
        * </pre>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         level_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 level = 5;</code>
+       * <code>optional int32 level = 6;</code>
        *
        * <pre>
        * 主卡等级
        * </pre>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         level_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 exp = 6;
+      // optional int32 exp = 7;
       private int exp_ ;
       /**
-       * <code>optional int32 exp = 6;</code>
+       * <code>optional int32 exp = 7;</code>
        *
        * <pre>
        * 主卡经验
        * </pre>
        */
       public boolean hasExp() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional int32 exp = 6;</code>
+       * <code>optional int32 exp = 7;</code>
        *
        * <pre>
        * 主卡经验
@@ -1092,46 +1205,46 @@ public final class Player {
         return exp_;
       }
       /**
-       * <code>optional int32 exp = 6;</code>
+       * <code>optional int32 exp = 7;</code>
        *
        * <pre>
        * 主卡经验
        * </pre>
        */
       public Builder setExp(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         exp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 exp = 6;</code>
+       * <code>optional int32 exp = 7;</code>
        *
        * <pre>
        * 主卡经验
        * </pre>
        */
       public Builder clearExp() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         exp_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 fatigue = 7;
+      // optional int32 fatigue = 8;
       private int fatigue_ ;
       /**
-       * <code>optional int32 fatigue = 7;</code>
+       * <code>optional int32 fatigue = 8;</code>
        *
        * <pre>
        * 活力值
        * </pre>
        */
       public boolean hasFatigue() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional int32 fatigue = 7;</code>
+       * <code>optional int32 fatigue = 8;</code>
        *
        * <pre>
        * 活力值
@@ -1141,46 +1254,46 @@ public final class Player {
         return fatigue_;
       }
       /**
-       * <code>optional int32 fatigue = 7;</code>
+       * <code>optional int32 fatigue = 8;</code>
        *
        * <pre>
        * 活力值
        * </pre>
        */
       public Builder setFatigue(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         fatigue_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 fatigue = 7;</code>
+       * <code>optional int32 fatigue = 8;</code>
        *
        * <pre>
        * 活力值
        * </pre>
        */
       public Builder clearFatigue() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         fatigue_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 fatigueBeginTime = 8;
+      // optional int32 fatigueBeginTime = 9;
       private int fatigueBeginTime_ ;
       /**
-       * <code>optional int32 fatigueBeginTime = 8;</code>
+       * <code>optional int32 fatigueBeginTime = 9;</code>
        *
        * <pre>
        * 正在累计活力值恢复时间开始时间戳（秒）
        * </pre>
        */
       public boolean hasFatigueBeginTime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 fatigueBeginTime = 8;</code>
+       * <code>optional int32 fatigueBeginTime = 9;</code>
        *
        * <pre>
        * 正在累计活力值恢复时间开始时间戳（秒）
@@ -1190,27 +1303,27 @@ public final class Player {
         return fatigueBeginTime_;
       }
       /**
-       * <code>optional int32 fatigueBeginTime = 8;</code>
+       * <code>optional int32 fatigueBeginTime = 9;</code>
        *
        * <pre>
        * 正在累计活力值恢复时间开始时间戳（秒）
        * </pre>
        */
       public Builder setFatigueBeginTime(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         fatigueBeginTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 fatigueBeginTime = 8;</code>
+       * <code>optional int32 fatigueBeginTime = 9;</code>
        *
        * <pre>
        * 正在累计活力值恢复时间开始时间戳（秒）
        * </pre>
        */
       public Builder clearFatigueBeginTime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         fatigueBeginTime_ = 0;
         onChanged();
         return this;
@@ -1315,63 +1428,73 @@ public final class Player {
      */
     int getTowerCoin();
 
-    // optional int32 gender = 9;
+    // required int32 honor = 9;
     /**
-     * <code>optional int32 gender = 9;</code>
+     * <code>required int32 honor = 9;</code>
+     */
+    boolean hasHonor();
+    /**
+     * <code>required int32 honor = 9;</code>
+     */
+    int getHonor();
+
+    // optional int32 gender = 10;
+    /**
+     * <code>optional int32 gender = 10;</code>
      */
     boolean hasGender();
     /**
-     * <code>optional int32 gender = 9;</code>
+     * <code>optional int32 gender = 10;</code>
      */
     int getGender();
 
-    // optional int32 eye = 10;
+    // optional int32 eye = 11;
     /**
-     * <code>optional int32 eye = 10;</code>
+     * <code>optional int32 eye = 11;</code>
      */
     boolean hasEye();
     /**
-     * <code>optional int32 eye = 10;</code>
+     * <code>optional int32 eye = 11;</code>
      */
     int getEye();
 
-    // optional int32 hair = 11;
+    // optional int32 hair = 12;
     /**
-     * <code>optional int32 hair = 11;</code>
+     * <code>optional int32 hair = 12;</code>
      */
     boolean hasHair();
     /**
-     * <code>optional int32 hair = 11;</code>
+     * <code>optional int32 hair = 12;</code>
      */
     int getHair();
 
-    // optional int32 hairColor = 12;
+    // optional int32 hairColor = 14;
     /**
-     * <code>optional int32 hairColor = 12;</code>
+     * <code>optional int32 hairColor = 14;</code>
      */
     boolean hasHairColor();
     /**
-     * <code>optional int32 hairColor = 12;</code>
+     * <code>optional int32 hairColor = 14;</code>
      */
     int getHairColor();
 
-    // required int32 recharge = 13;
+    // required int32 recharge = 15;
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 15;</code>
      */
     boolean hasRecharge();
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 15;</code>
      */
     int getRecharge();
 
-    // required int32 vipLevel = 14;
+    // required int32 vipLevel = 16;
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 16;</code>
      */
     boolean hasVipLevel();
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 16;</code>
      */
     int getVipLevel();
   }
@@ -1468,31 +1591,36 @@ public final class Player {
             }
             case 72: {
               bitField0_ |= 0x00000100;
-              gender_ = input.readInt32();
+              honor_ = input.readInt32();
               break;
             }
             case 80: {
               bitField0_ |= 0x00000200;
-              eye_ = input.readInt32();
+              gender_ = input.readInt32();
               break;
             }
             case 88: {
               bitField0_ |= 0x00000400;
-              hair_ = input.readInt32();
+              eye_ = input.readInt32();
               break;
             }
             case 96: {
               bitField0_ |= 0x00000800;
-              hairColor_ = input.readInt32();
-              break;
-            }
-            case 104: {
-              bitField0_ |= 0x00001000;
-              recharge_ = input.readInt32();
+              hair_ = input.readInt32();
               break;
             }
             case 112: {
+              bitField0_ |= 0x00001000;
+              hairColor_ = input.readInt32();
+              break;
+            }
+            case 120: {
               bitField0_ |= 0x00002000;
+              recharge_ = input.readInt32();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00004000;
               vipLevel_ = input.readInt32();
               break;
             }
@@ -1691,97 +1819,113 @@ public final class Player {
       return towerCoin_;
     }
 
-    // optional int32 gender = 9;
-    public static final int GENDER_FIELD_NUMBER = 9;
-    private int gender_;
+    // required int32 honor = 9;
+    public static final int HONOR_FIELD_NUMBER = 9;
+    private int honor_;
     /**
-     * <code>optional int32 gender = 9;</code>
+     * <code>required int32 honor = 9;</code>
      */
-    public boolean hasGender() {
+    public boolean hasHonor() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional int32 gender = 9;</code>
+     * <code>required int32 honor = 9;</code>
+     */
+    public int getHonor() {
+      return honor_;
+    }
+
+    // optional int32 gender = 10;
+    public static final int GENDER_FIELD_NUMBER = 10;
+    private int gender_;
+    /**
+     * <code>optional int32 gender = 10;</code>
+     */
+    public boolean hasGender() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 gender = 10;</code>
      */
     public int getGender() {
       return gender_;
     }
 
-    // optional int32 eye = 10;
-    public static final int EYE_FIELD_NUMBER = 10;
+    // optional int32 eye = 11;
+    public static final int EYE_FIELD_NUMBER = 11;
     private int eye_;
     /**
-     * <code>optional int32 eye = 10;</code>
+     * <code>optional int32 eye = 11;</code>
      */
     public boolean hasEye() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional int32 eye = 10;</code>
+     * <code>optional int32 eye = 11;</code>
      */
     public int getEye() {
       return eye_;
     }
 
-    // optional int32 hair = 11;
-    public static final int HAIR_FIELD_NUMBER = 11;
+    // optional int32 hair = 12;
+    public static final int HAIR_FIELD_NUMBER = 12;
     private int hair_;
     /**
-     * <code>optional int32 hair = 11;</code>
+     * <code>optional int32 hair = 12;</code>
      */
     public boolean hasHair() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>optional int32 hair = 11;</code>
+     * <code>optional int32 hair = 12;</code>
      */
     public int getHair() {
       return hair_;
     }
 
-    // optional int32 hairColor = 12;
-    public static final int HAIRCOLOR_FIELD_NUMBER = 12;
+    // optional int32 hairColor = 14;
+    public static final int HAIRCOLOR_FIELD_NUMBER = 14;
     private int hairColor_;
     /**
-     * <code>optional int32 hairColor = 12;</code>
+     * <code>optional int32 hairColor = 14;</code>
      */
     public boolean hasHairColor() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>optional int32 hairColor = 12;</code>
+     * <code>optional int32 hairColor = 14;</code>
      */
     public int getHairColor() {
       return hairColor_;
     }
 
-    // required int32 recharge = 13;
-    public static final int RECHARGE_FIELD_NUMBER = 13;
+    // required int32 recharge = 15;
+    public static final int RECHARGE_FIELD_NUMBER = 15;
     private int recharge_;
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 15;</code>
      */
     public boolean hasRecharge() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 15;</code>
      */
     public int getRecharge() {
       return recharge_;
     }
 
-    // required int32 vipLevel = 14;
-    public static final int VIPLEVEL_FIELD_NUMBER = 14;
+    // required int32 vipLevel = 16;
+    public static final int VIPLEVEL_FIELD_NUMBER = 16;
     private int vipLevel_;
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 16;</code>
      */
     public boolean hasVipLevel() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 16;</code>
      */
     public int getVipLevel() {
       return vipLevel_;
@@ -1796,6 +1940,7 @@ public final class Player {
       gold_ = 0;
       coin_ = 0L;
       towerCoin_ = 0;
+      honor_ = 0;
       gender_ = 0;
       eye_ = 0;
       hair_ = 0;
@@ -1840,6 +1985,10 @@ public final class Player {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasHonor()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasRecharge()) {
         memoizedIsInitialized = 0;
         return false;
@@ -1880,22 +2029,25 @@ public final class Player {
         output.writeInt32(8, towerCoin_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, gender_);
+        output.writeInt32(9, honor_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, eye_);
+        output.writeInt32(10, gender_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, hair_);
+        output.writeInt32(11, eye_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, hairColor_);
+        output.writeInt32(12, hair_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(13, recharge_);
+        output.writeInt32(14, hairColor_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeInt32(14, vipLevel_);
+        output.writeInt32(15, recharge_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeInt32(16, vipLevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1940,27 +2092,31 @@ public final class Player {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, gender_);
+          .computeInt32Size(9, honor_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, eye_);
+          .computeInt32Size(10, gender_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, hair_);
+          .computeInt32Size(11, eye_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, hairColor_);
+          .computeInt32Size(12, hair_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, recharge_);
+          .computeInt32Size(14, hairColor_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, vipLevel_);
+          .computeInt32Size(15, recharge_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(16, vipLevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2094,18 +2250,20 @@ public final class Player {
         bitField0_ = (bitField0_ & ~0x00000040);
         towerCoin_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        gender_ = 0;
+        honor_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        eye_ = 0;
+        gender_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        hair_ = 0;
+        eye_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
-        hairColor_ = 0;
+        hair_ = 0;
         bitField0_ = (bitField0_ & ~0x00000800);
-        recharge_ = 0;
+        hairColor_ = 0;
         bitField0_ = (bitField0_ & ~0x00001000);
-        vipLevel_ = 0;
+        recharge_ = 0;
         bitField0_ = (bitField0_ & ~0x00002000);
+        vipLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -2169,25 +2327,29 @@ public final class Player {
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.gender_ = gender_;
+        result.honor_ = honor_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.eye_ = eye_;
+        result.gender_ = gender_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.hair_ = hair_;
+        result.eye_ = eye_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000800;
         }
-        result.hairColor_ = hairColor_;
+        result.hair_ = hair_;
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00001000;
         }
-        result.recharge_ = recharge_;
+        result.hairColor_ = hairColor_;
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00002000;
+        }
+        result.recharge_ = recharge_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
         }
         result.vipLevel_ = vipLevel_;
         result.bitField0_ = to_bitField0_;
@@ -2231,6 +2393,9 @@ public final class Player {
         }
         if (other.hasTowerCoin()) {
           setTowerCoin(other.getTowerCoin());
+        }
+        if (other.hasHonor()) {
+          setHonor(other.getHonor());
         }
         if (other.hasGender()) {
           setGender(other.getGender());
@@ -2284,6 +2449,10 @@ public final class Player {
           return false;
         }
         if (!hasTowerCoin()) {
+          
+          return false;
+        }
+        if (!hasHonor()) {
           
           return false;
         }
@@ -2622,199 +2791,232 @@ public final class Player {
         return this;
       }
 
-      // optional int32 gender = 9;
-      private int gender_ ;
+      // required int32 honor = 9;
+      private int honor_ ;
       /**
-       * <code>optional int32 gender = 9;</code>
+       * <code>required int32 honor = 9;</code>
        */
-      public boolean hasGender() {
+      public boolean hasHonor() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 gender = 9;</code>
+       * <code>required int32 honor = 9;</code>
+       */
+      public int getHonor() {
+        return honor_;
+      }
+      /**
+       * <code>required int32 honor = 9;</code>
+       */
+      public Builder setHonor(int value) {
+        bitField0_ |= 0x00000100;
+        honor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 honor = 9;</code>
+       */
+      public Builder clearHonor() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        honor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 gender = 10;
+      private int gender_ ;
+      /**
+       * <code>optional int32 gender = 10;</code>
+       */
+      public boolean hasGender() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 gender = 10;</code>
        */
       public int getGender() {
         return gender_;
       }
       /**
-       * <code>optional int32 gender = 9;</code>
+       * <code>optional int32 gender = 10;</code>
        */
       public Builder setGender(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         gender_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 gender = 9;</code>
+       * <code>optional int32 gender = 10;</code>
        */
       public Builder clearGender() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         gender_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 eye = 10;
+      // optional int32 eye = 11;
       private int eye_ ;
       /**
-       * <code>optional int32 eye = 10;</code>
+       * <code>optional int32 eye = 11;</code>
        */
       public boolean hasEye() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional int32 eye = 10;</code>
+       * <code>optional int32 eye = 11;</code>
        */
       public int getEye() {
         return eye_;
       }
       /**
-       * <code>optional int32 eye = 10;</code>
+       * <code>optional int32 eye = 11;</code>
        */
       public Builder setEye(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         eye_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 eye = 10;</code>
+       * <code>optional int32 eye = 11;</code>
        */
       public Builder clearEye() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         eye_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 hair = 11;
+      // optional int32 hair = 12;
       private int hair_ ;
       /**
-       * <code>optional int32 hair = 11;</code>
+       * <code>optional int32 hair = 12;</code>
        */
       public boolean hasHair() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>optional int32 hair = 11;</code>
+       * <code>optional int32 hair = 12;</code>
        */
       public int getHair() {
         return hair_;
       }
       /**
-       * <code>optional int32 hair = 11;</code>
+       * <code>optional int32 hair = 12;</code>
        */
       public Builder setHair(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         hair_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 hair = 11;</code>
+       * <code>optional int32 hair = 12;</code>
        */
       public Builder clearHair() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         hair_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 hairColor = 12;
+      // optional int32 hairColor = 14;
       private int hairColor_ ;
       /**
-       * <code>optional int32 hairColor = 12;</code>
+       * <code>optional int32 hairColor = 14;</code>
        */
       public boolean hasHairColor() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>optional int32 hairColor = 12;</code>
+       * <code>optional int32 hairColor = 14;</code>
        */
       public int getHairColor() {
         return hairColor_;
       }
       /**
-       * <code>optional int32 hairColor = 12;</code>
+       * <code>optional int32 hairColor = 14;</code>
        */
       public Builder setHairColor(int value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         hairColor_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 hairColor = 12;</code>
+       * <code>optional int32 hairColor = 14;</code>
        */
       public Builder clearHairColor() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         hairColor_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 recharge = 13;
+      // required int32 recharge = 15;
       private int recharge_ ;
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 15;</code>
        */
       public boolean hasRecharge() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 15;</code>
        */
       public int getRecharge() {
         return recharge_;
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 15;</code>
        */
       public Builder setRecharge(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
         recharge_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 15;</code>
        */
       public Builder clearRecharge() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         recharge_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 vipLevel = 14;
+      // required int32 vipLevel = 16;
       private int vipLevel_ ;
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 16;</code>
        */
       public boolean hasVipLevel() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 16;</code>
        */
       public int getVipLevel() {
         return vipLevel_;
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 16;</code>
        */
       public Builder setVipLevel(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         vipLevel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 16;</code>
        */
       public Builder clearVipLevel() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         vipLevel_ = 0;
         onChanged();
         return this;
@@ -5997,26 +6199,27 @@ public final class Player {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Player.proto\"\233\001\n\rSynPlayerAtt" +
+      "\n\025Protocol/Player.proto\"\252\001\n\rSynPlayerAtt" +
       "r\022\014\n\004gold\030\001 \001(\005\022\014\n\004coin\030\002 \001(\003\022\021\n\ttowerCo" +
-      "in\030\003 \001(\005\022\024\n\014contribution\030\004 \001(\005\022\r\n\005level\030" +
-      "\005 \001(\005\022\013\n\003exp\030\006 \001(\005\022\017\n\007fatigue\030\007 \001(\005\022\030\n\020f" +
-      "atigueBeginTime\030\010 \001(\005\"\355\001\n\nPlayerInfo\022\020\n\010" +
-      "playerId\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\016\n\006care" +
-      "er\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004" +
-      "gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\021\n\ttowerCoin\030\010 " +
-      "\002(\005\022\016\n\006gender\030\t \001(\005\022\013\n\003eye\030\n \001(\005\022\014\n\004hair" +
-      "\030\013 \001(\005\022\021\n\thairColor\030\014 \001(\005\022\020\n\010recharge\030\r ",
-      "\002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!\n\017HSPlayerKickout" +
-      "\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004pu" +
-      "id\030\001 \002(\t\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003 \002" +
-      "(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hair\030" +
-      "\006 \002(\005\022\021\n\thairColor\030\007 \002(\005\"5\n\021HSPlayerCrea" +
-      "teRet\022\016\n\006status\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(\005\"" +
-      "-\n\020HSPlayerInfoSync\022\031\n\004info\030\001 \002(\0132\013.Play" +
-      "erInfo\"N\n\020HSAssembleFinish\022\020\n\010playerId\030\001" +
-      " \002(\005\022\022\n\nallianceID\030\002 \002(\005\022\024\n\014contribution" +
-      "\030\003 \002(\005B\030\n\026com.hawk.game.protocol"
+      "in\030\003 \001(\005\022\024\n\014contribution\030\004 \001(\005\022\r\n\005honor\030" +
+      "\005 \001(\005\022\r\n\005level\030\006 \001(\005\022\013\n\003exp\030\007 \001(\005\022\017\n\007fat" +
+      "igue\030\010 \001(\005\022\030\n\020fatigueBeginTime\030\t \001(\005\"\374\001\n" +
+      "\nPlayerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nicknam" +
+      "e\030\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013" +
+      "\n\003exp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022" +
+      "\021\n\ttowerCoin\030\010 \002(\005\022\r\n\005honor\030\t \002(\005\022\016\n\006gen" +
+      "der\030\n \001(\005\022\013\n\003eye\030\013 \001(\005\022\014\n\004hair\030\014 \001(\005\022\021\n\t",
+      "hairColor\030\016 \001(\005\022\020\n\010recharge\030\017 \002(\005\022\020\n\010vip" +
+      "Level\030\020 \002(\005\"!\n\017HSPlayerKickout\022\016\n\006reason" +
+      "\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004puid\030\001 \002(\t\022\020" +
+      "\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gend" +
+      "er\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\th" +
+      "airColor\030\007 \002(\005\"5\n\021HSPlayerCreateRet\022\016\n\006s" +
+      "tatus\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(\005\"-\n\020HSPlaye" +
+      "rInfoSync\022\031\n\004info\030\001 \002(\0132\013.PlayerInfo\"N\n\020" +
+      "HSAssembleFinish\022\020\n\010playerId\030\001 \002(\005\022\022\n\nal" +
+      "lianceID\030\002 \002(\005\022\024\n\014contribution\030\003 \002(\005B\030\n\026",
+      "com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6028,13 +6231,13 @@ public final class Player {
           internal_static_SynPlayerAttr_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SynPlayerAttr_descriptor,
-              new java.lang.String[] { "Gold", "Coin", "TowerCoin", "Contribution", "Level", "Exp", "Fatigue", "FatigueBeginTime", });
+              new java.lang.String[] { "Gold", "Coin", "TowerCoin", "Contribution", "Honor", "Level", "Exp", "Fatigue", "FatigueBeginTime", });
           internal_static_PlayerInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PlayerInfo_descriptor,
-              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "TowerCoin", "Gender", "Eye", "Hair", "HairColor", "Recharge", "VipLevel", });
+              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "TowerCoin", "Honor", "Gender", "Eye", "Hair", "HairColor", "Recharge", "VipLevel", });
           internal_static_HSPlayerKickout_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSPlayerKickout_fieldAccessorTable = new

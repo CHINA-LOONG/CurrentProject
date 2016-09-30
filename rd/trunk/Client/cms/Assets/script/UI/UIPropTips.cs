@@ -48,9 +48,14 @@ public class UIPropTips : UIBase {
         outline.effectColor = ColorConst.GetStageOutLineColor(itemData.grade);
         propName.color = ColorConst.GetStageTextColor(itemData.grade);
         if (itemData.minLevel > 0)
+        {
+            Requirement.gameObject.SetActive(true);
             propRequire.text = itemData.minLevel.ToString();
+        }
         else
             Requirement.gameObject.SetActive(false);
+
+        typeTips.gameObject.SetActive(true);
         if (itemData.type == 1)
             propType.text = StaticDataMgr.Instance.GetTextByID("bag_tag_item");
         else if (itemData.type == 2)
@@ -61,6 +66,9 @@ public class UIPropTips : UIBase {
             propType.text = StaticDataMgr.Instance.GetTextByID("bag_tag_box");
         else if (itemData.type == 5)
             propType.text = StaticDataMgr.Instance.GetTextByID("bag_tag_use");
+        else
+            typeTips.gameObject.SetActive(false);
+
 
         propDescription.text = itemData.TipsAttr;
 

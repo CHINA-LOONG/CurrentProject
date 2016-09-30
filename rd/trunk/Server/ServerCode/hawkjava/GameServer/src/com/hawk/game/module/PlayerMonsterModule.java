@@ -105,7 +105,7 @@ public class PlayerMonsterModule extends PlayerModule {
 
 		HSMonsterSkillUpRet.Builder response = HSMonsterSkillUpRet.newBuilder();
 		response.setSkillPoint(newSkillPoint);
-		response.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+		response.setSkillPointTimeStamp(statisticsEntity.getSkillPointBeginTime());
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_SKILL_UP_S, response));
 
 		return true;

@@ -50,6 +50,7 @@ enum code
 	MAIL_INFO_SYNC_S            = 1025;
 	ADVENTURE_INFO_SYNC_S       = 1026;
 	QUEST_INFO_SYNC_S           = 1027;
+	PVP_DEFENCE_SYNC_S          = 1028;
 
 	STATISTICS_SYNC_PART1_S     = 1030;
 	STATISTICS_SYNC_PART2_S     = 1031;
@@ -323,4 +324,8 @@ enum code
 	PVP_RANK_LIST_S             = 12008;
 	PVP_DEFENCE_RECORD_C        = 12009;  //防守记录
 	PVP_DEFENCE_RECORD_S        = 12010;
+	PVP_GET_DEFENCE_MONSTERS_C  = 12011;  //同步pvp防守阵容
+	PVP_GET_DEFENCE_MONSTERS_S  = 12012;
+	PVP_GET_MY_INFO_C  		    = 12013;  //获得我的排名
+	PVP_GET_MY_INFO_S		    = 12014;
 }

@@ -1150,17 +1150,6 @@ public class UIAdjustBattleTeam : UIBase
             isBattleClick = false;
             return;
         }
-
-        if(instanceEntryData.chapter == 1)
-        {
-            GameConfig.Instance.RecoveryMirrorEnegyUnit = GameConfig.Instance.RecoveryMirrorEnegyUnitOne;
-            GameConfig.Instance.ConsumMirrorEnegyUnit = GameConfig.Instance.ConsumMirrorEnegyUnitOne;
-        }
-        else if (instanceEntryData.chapter == 2)
-        {
-            GameConfig.Instance.RecoveryMirrorEnegyUnit = GameConfig.Instance.RecoveryMirrorEnegyUnitTwo;
-            GameConfig.Instance.ConsumMirrorEnegyUnit = GameConfig.Instance.ConsumMirrorEnegyUnitTwo;
-        }
         
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
 		enterInstanceParam.instanceData = responseData;

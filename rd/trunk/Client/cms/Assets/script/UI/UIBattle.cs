@@ -33,12 +33,14 @@ public class UIBattle : UIBase
 	public HomeButton m_ButtonMirror = null;
     public HomeButton m_ButtonTuoguan = null;
 	public HomeButton m_ButtonMomo = null;
+    public Button mSetting = null;
 
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
     public DazhaoTip dazhaoTip;
     //public Text levelIndex;
     public WeakpointUI wpUI;
+    private UIBattleSetting mUIBattleSetting;
 
     [HideInInspector]
     //public UIFazhen uiFazhen;
@@ -471,6 +473,7 @@ public class UIBattle : UIBase
     {
         EventTriggerListener.Get(m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
         EventTriggerListener.Get(m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
+        mSetting.onClick.AddListener(OnSettingClicked);
 		//m_ButtonDaoju.onClick = OnButtonDaojuClicked;
 
 		m_ButtonMirror.onClick = OnToggleMirrorClicked;
@@ -572,17 +575,36 @@ public class UIBattle : UIBase
             return;
 
         m_BattleSpeed += 0.6f;
-		if (m_BattleSpeed > m_MaxSpeed)
+        if (m_BattleSpeed > m_MaxSpeed)
         {
             m_BattleSpeed = 1.0f;
         }
 
         PlayerPrefs.SetFloat("battleSpeed", m_BattleSpeed);
         GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
-		UpdateButton ();
+        UpdateButton();
     }
 
-	void UpdateButton()
+    void OnSettingClicked()
+    {
+        BattleProcess curProcess = BattleController.Instance.Process;
+        if (curProcess.IsProcessFinish == false)
+        {
+            curProcess.Pause(true, false);
+            mUIBattleSetting = UIMgr.Instance.OpenUI_(UIBattleSetting.ViewName) as UIBattleSetting;
+        }
+    }
+
+    public void CloseBattleSetting()
+    {
+        if (mUIBattleSetting != null)
+        {
+            mUIBattleSetting.CloseEnsureExitWnd();
+            UIMgr.Instance.DestroyUI(mUIBattleSetting);
+        }
+    }
+
+    void UpdateButton()
 	{
 		Image subImg = null;
 		for (int i = 0; i < m_SpeedNumImageList.Count; ++i)

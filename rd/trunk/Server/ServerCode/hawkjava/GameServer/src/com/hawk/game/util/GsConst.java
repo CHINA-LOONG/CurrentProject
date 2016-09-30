@@ -20,12 +20,16 @@ public class GsConst {
 	public static final int MAX_FATIGUE_COUNT = 5000;
 	// 技能点最大值
 	public static final int MAX_SKILL_POINT = 10;
+	// PVP次数最大值
+	public static final int MAX_PVP_TIME = 10;
 	// 大冒险条件刷新次数最大值
 	public static final int MAX_ADVENTURE_CHANGE = 10;
 	// 活力值恢复秒数
 	public static final int FATIGUE_TIME = 10 * 60;
 	// 技能点恢复秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
+	// PVP恢复秒数
+	public static final int PVP_TIMES_TIME = 6 * 60;
 	// 大冒险条件刷新次数恢复秒数
 	public static final int ADVENTURE_CHANGE_TIME = 60 * 60;
 	// 最大邮件数
@@ -365,8 +369,8 @@ public class GsConst {
 		public static final int NOT_IN_ALLIANCE = 12;
 		// 贡献值不足
 		public static final int CONTRIBUTION_NOT_ENOUGH = 13;
-
-
+		// 荣誉点不足
+		public static final int HONOR_POINT_NOT_ENOUGH = 14;
 	}
 
 	/**
@@ -379,6 +383,7 @@ public class GsConst {
 		public static final int ARENA_COIN_LIMIT = 4;
 		public static final int FATIGUE_LIMIT = 5;
 		public static final int CONTRIBUTION_LIMIT = 6;
+		public static final int HONOR_POINT_LIMIT = 7;
 	}
 
 	// 循环性

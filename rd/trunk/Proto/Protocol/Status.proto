@@ -79,6 +79,10 @@ enum PlayerError
 	CONTRIBUTION_NOT_ENOUGH    = 0x0002000E;
 	// 公会贡献值上限
 	CONTRIBUTION_LIMIT         = 0x0002000F;
+	// 荣誉点上限
+	HONOR_POINT_LIMIT          = 0x00020010;
+	// 荣誉点不足
+	HONOR_POINT_NOT_ENOUGH     = 0x00020011;
 
 	// 今日已签到
 	SIGNIN_ALREADY             = 0x00021001;
@@ -377,4 +381,6 @@ enum pvpError
 	PVP_NOT_SET_DEFENCE        = 0x000E0002;
 	// 没有匹配过玩家
 	PVP_NOT_MATCH_BEFORE       = 0x000E0003;
+	// pvp次数不足
+	PVP_TIMES_NOT_ENOUGH       = 0x000E0004;
 }
