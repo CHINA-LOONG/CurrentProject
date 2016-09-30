@@ -510,8 +510,6 @@ public class GsConst {
 
 	public static class PVP {
 		public static final int PVP_DEFAULT_POINT = 1000;
-		public static final int PVP_POOL_STAGE_MAX_SIZE = 100;
-		public static final int PVP_POOL_STAGE_INIT_SIZE = 10;
 		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
 		public static final int PVP_RANK_SIZE = 100;
 		public static final float PVP_RERANK_K_VALUE = 5.0f;

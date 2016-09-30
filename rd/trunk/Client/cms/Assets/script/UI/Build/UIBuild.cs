@@ -196,6 +196,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public void PetLoadCallback(GameObject instance, System.EventArgs args)
     {
         uiMonsters = instance.GetComponent<UIBase>() as UIMonsters;
+        uiMonsters.Refresh();
     }
 
 

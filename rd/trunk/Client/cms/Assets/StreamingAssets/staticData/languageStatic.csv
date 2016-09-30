@@ -20,11 +20,6 @@ descrip_collaborate,善于给己方添加增益效果的强力辅助,Support you
 descrip_compassion,善于恢复己方血量的善良祭祀,Compassionate in healing your team most of the time
 descrip_humility,善于吸引敌方伤害保护队友的坚毅肉盾,Attracts enemies' damages and defend your team
 miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
-amutehide_lian,猜猜我在哪,Find me
-amutehide_mianju,猜猜我在哪,Find me
-amutenormal1_lian,弱点,Weakness
-amutenormal1_shenti,本体,Default
-amutenormal1_mianju,保护弱点,Protect Weakness
 wpName24,脸,Face
 wpName25,胸,Body
 wpName26,面具,Mask
@@ -136,18 +131,6 @@ bigTaskname401,火山探秘,Volcano Explore
 bigTaskname402,火山寻宝,Volcano Treasure
 bigTaskdesc1,（主产宠物碎片）,(Drops Monster Fragments)
 bigTaskdesc2,（主产宝石）,(Drops Gems)
-name_40005_bigTaskleader201,队长礼包,Team Leader Gift
-name_40006_bigTaskleader301,队长礼包,Team Leader Gift
-name_40007_bigTaskleader401,队长礼包,Team Leader Gift
-name_40008_bigTaskleader202,队长礼包,Team Leader Gift
-name_40009_bigTaskleader302,队长礼包,Team Leader Gift
-name_40010_bigTaskleader402,队长礼包,Team Leader Gift
-tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-tips_40008_bigTaskleader202,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-tips_40009_bigTaskleader302,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
-tips_40010_bigTaskleader402,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 smallTarget10001,提交1000金币,Retrieve 1000 Coins
 smallTarget10002,提交2000金币,Retrieve 2000 Coins
 smallTarget10003,提交3000金币,Retrieve 3000 Coins
@@ -260,7 +243,7 @@ zhuxian10030,次元能力探秘,True Craftsman
 zhuxian10031,驾驭次元,Infused Power
 zhuxian10032,加入公会,
 zhuxian10033,公会祈福,
-mubiao10001,抽蛋1次,Draw 1 time 
+mubiao10001,聚合1次,Draw 1 time 
 mubiao10002,合成花魄,Summon Flower Spirit
 mubiao10003,通关1-1,Clear Stage 1-1 
 mubiao10004,通关1-2,Clear Stage 1-2
@@ -275,7 +258,7 @@ mubiao10012,商店刷新物品1次,Refresh shop goods 1 time
 mubiao10013,其中一只宠物升级至5,Level up a monster to level 5 
 mubiao10014,同时穿戴2件装备,Equip 2 equipment on Chione 
 mubiao10015,通关1-8,Clear Stage 1-8 
-mubiao10016,装备强化1次,Upgrade a piece of equipment 
+mubiao10016,装备打造1次,Upgrade a piece of equipment 
 mubiao10017,领取关底满星奖励,Collect the all stages 3-Star reward 
 mubiao10018,完成一个每日任务,Complete a daily mission 
 mubiao10019,竞技场一次,Arena Battle once
@@ -285,7 +268,7 @@ mubiao10022,进阶一只宠物至绿,Evolve a monster to green
 mubiao10023,通关2-4,Clear Stage 2-4 
 mubiao10024,完成挑战本1-1,Clear Stage 1-1 on Heroic 
 mubiao10025,通关2-8,Clear Stage 2-8 
-mubiao10026,宠物强化(任一宠物为绿+1),Evolve any monster to green +1 
+mubiao10026,任一宠物为绿+1,Evolve any monster to green +1 
 mubiao10027,完成挑战本1-4,Clear Stage 1-4 on Heroic 
 mubiao10028,有2件绿色装备,Have 2 pieces of green equipment 
 mubiao10029,有1件蓝色品质装备,Have one piece of blue equipment 
@@ -296,7 +279,7 @@ mubiao10033,进行一次公会祈福,
 richang1,每日剧情副本,Daily Campaign Stages
 richang2,每日通关挑战副本,Daily Heroic Stages
 richang3,每日技能升级,Daily Ability Upgrade
-richang4,每日装备升级,Daily Equipment Upgrade
+richang4,每日装备打造,Daily Equipment Upgrade
 richang5,每日金币购买,Daily Coin Purchase
 richang6,每日商店刷新,Daily Store Refresh
 rimubiao1,剧情副本10次,Complete 10 Campaign Stages
@@ -319,7 +302,6 @@ zhimubiao20001,通关2-3  4次,Raid 2-3 4 times
 zhimubiao20002,通关2-4  4次,Raid 2-4 4 times
 zhimubiao20003,通关2-7  4次,Raid 2-7 4 times
 zhimubiao20004,通关2-8  4次,Raid 2-8 4 times
-,,
 bosssenlin31Wendige2wp01,胸,Body
 bosssenlin31Wendige2wp02,右角,Right Horn
 bosssenlin31Wendige2wp03,左角,Life Horn
@@ -380,7 +362,6 @@ bosshuoshan48Hehuaisituosi4wp03,右下武器,Bottom Right Weapon
 bosshuoshan48Hehuaisituosi4wp04,左上武器,Top Left Weapon
 bosshuoshan48Hehuaisituosi4wp05,左下武器,Bottom Left Weapon
 bosshuoshan48Hehuaisituosi4wp06,头,Head
-,,
 wendige2hide_lhorn,猜猜我在哪,Find me
 wendige2hide_rhorn,猜猜我在哪,Find me
 longnv3hide_body,猜猜我在哪,Find me
@@ -401,7 +382,6 @@ momo1hide_body,猜猜我在哪,Find me
 momo1hide_dun,猜猜我在哪,Find me
 meidushahide_zuoshetou,猜猜我在哪,Find me
 meidushahide_youshetou,猜猜我在哪,Find me
-meidushahide_xiaoshetou,猜猜我在哪,Find me
 meidushahide_xiaoshetou,猜猜我在哪,Find me
 wendige2normal1_body,本体,Default
 wendige2normal1_lhorn,添加dot效果,添加dot效果
@@ -425,5 +405,4 @@ momo1normal1_dun,反伤护盾,Against injury
 meidushanormal1_xiong,一定有别的方法摧毁它,Default
 meidushanormal1_zuoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
 meidushanormal1_youshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
-meidushanormal1_xiaoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
 meidushanormal1_xiaoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发

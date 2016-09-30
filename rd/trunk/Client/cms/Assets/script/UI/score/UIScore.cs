@@ -503,7 +503,15 @@ public class UIScore : UIBase
             if (!mIsSuccess)
             {
                 LoseGuide loseGuide = UIMgr.Instance.OpenUI_(LoseGuide.ViewName) as LoseGuide;
-                loseGuide.SetLoseGuide(BattleController.Instance.isUseWpFindWpInBattle);
+                if (BattleController.Instance.battleType == BattleType.Boss)
+                {
+                    loseGuide.SetLoseGuide(BattleController.Instance.isUseWpFindWpInBattle);
+                }
+                else
+                {
+                    loseGuide.SetLoseGuide(true);
+                }
+               
             }
             else
             {

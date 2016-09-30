@@ -28,12 +28,15 @@ public class SignInItemInfo
     }
     
     public PB.RewardItem protocolData;
+
 }
 public class SignInItem : MonoBehaviour
 {
     public Transform iconPos;
     private ItemIcon itemIcon;
     private MonsterIcon monsterIcon;
+    public Transform effectPos;
+    private GameObject objEffect;
     
     public GameObject objBackground;
     public GameObject objMask;
@@ -64,9 +67,9 @@ public class SignInItem : MonoBehaviour
     public void ReloadData(SignInItemInfo data)
     {
         CurData = data;
-        if (CurData.protocolData.type == (int)PB.itemType.ITEM)
+        if (CurData.protocolData.type == (int)PB.itemType.ITEM|| CurData.protocolData.type == (int)PB.itemType.PLAYER_ATTR)
         {
-            ItemData itemData = new ItemData() { itemId = CurData.protocolData.itemId, count = (int)CurData.protocolData.count };
+            ItemData itemData = RewardItemData.GetItemData(CurData.protocolData);
             if (itemIcon == null)
             {
                 itemIcon = ItemIcon.CreateItemIcon(itemData);
@@ -77,7 +80,7 @@ public class SignInItem : MonoBehaviour
                 itemIcon.gameObject.SetActive(true);
                 itemIcon.RefreshWithItemInfo(itemData);
             }
-            if (monsterIcon!=null)
+            if (monsterIcon != null)
             {
                 monsterIcon.gameObject.SetActive(false);
             }
@@ -116,13 +119,21 @@ public class SignInItem : MonoBehaviour
         objRetroactive.gameObject.SetActive(false);
         objBackground.gameObject.SetActive(false);
         objMask.gameObject.SetActive(false);
+        if (objEffect != null && CurData.Type != SignInType.KeQianDao)
+        {
+            ResourceMgr.Instance.DestroyAsset(objEffect);
+        }
         switch (CurData.Type)
         {
             case SignInType.YiQianDao:
                 objMask.gameObject.SetActive(true);
                 break;
             case SignInType.KeQianDao:
-                //TODO:设置特效;
+                if (objEffect == null)
+                {
+                    objEffect = ResourceMgr.Instance.LoadAsset("UISignIn_effect") as GameObject;
+                    UIUtil.SetParentReset(objEffect.transform, effectPos);
+                }
                 break;
             case SignInType.KeBuQian:
                 objRetroactive.gameObject.SetActive(true);
@@ -148,7 +159,7 @@ public class SignInItem : MonoBehaviour
             case SignInType.YiQianDao:
             case SignInType.KeBuQian:
             case SignInType.WeiQianDao:
-                if (CurData.protocolData.type == (int)PB.itemType.ITEM)
+                if (CurData.protocolData.type == (int)PB.itemType.ITEM || CurData.protocolData.type == (int)PB.itemType.PLAYER_ATTR)
                 {
                     itemIcon.OnClickIconBtn(itemIcon.iconButton.gameObject);
                 }

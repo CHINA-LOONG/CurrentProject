@@ -9,7 +9,8 @@ public class CoinButton : MonoBehaviour
 		Zuanshi = 0,
 		Jinbi,
 		GonghuiBi,
-        TowerCoin
+        TowerCoin,
+        PvpHonor
     }
 
 	public	static CoinButton CreateWithType(CoinType cType)
@@ -39,7 +40,8 @@ public class CoinButton : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuiBiChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
-	}
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
+    }
 	
 	void UnBindListener()
 	{
@@ -48,6 +50,7 @@ public class CoinButton : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuiBiChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
     }
 	[SerializeField]
 	private	CoinType	coinType = CoinType.Jinbi;
@@ -94,6 +97,12 @@ public class CoinButton : MonoBehaviour
         {
             OnTowerCoinChanged(GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr);
             coinImg = "icon_towercoin";
+            HideAddCoinButton(true);
+        }
+        else if (coinType == CoinType.PvpHonor)
+        {
+            OnPvpHonorChanged(GameDataMgr.Instance.PlayerDataAttr.HonorAtr);
+            coinImg = "icon_jingjijifen";
             HideAddCoinButton(true);
         }
 		
@@ -154,6 +163,13 @@ public class CoinButton : MonoBehaviour
         if (coinType == CoinType.TowerCoin)
         {
             coinCount.text = string.Format("{0:N0}", towerCoin);
+        }
+    }
+    void  OnPvpHonorChanged(int pvpHonor)
+    {
+        if(coinType == CoinType.PvpHonor)
+        {
+            coinCount.text = string.Format("{0:N0}", pvpHonor);
         }
     }
 }

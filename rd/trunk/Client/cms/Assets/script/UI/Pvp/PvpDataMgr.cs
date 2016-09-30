@@ -23,8 +23,6 @@ public class PvpDataMgr : MonoBehaviour
     public List<string> defenseTeamList = new List<string>();
     private NetMessageDelegate callBack = null;
 
-    public int refreshTimes = 0;
-
     void Start ()
     {
         ClearDefensePosition();
@@ -82,11 +80,11 @@ public class PvpDataMgr : MonoBehaviour
         }
     }
 
-    public int GetRereshCost()
+    public int GetRereshCost(int changeTimes)
     {
         int k = 10;
         int b = 5;
-        int rTimes = refreshTimes + 1;
+        int rTimes = changeTimes + 1;
 
         int result = k * rTimes * rTimes + b;
         return result;
@@ -197,6 +195,15 @@ public class PvpDataMgr : MonoBehaviour
     {
         this.callBack = callBack;
         PB.HSPVPMatchTarget param = new PB.HSPVPMatchTarget();
+        param.changeTarget = false;
+        GameApp.Instance.netManager.SendMessage(PB.code.PVP_MATCH_TARGET_C.GetHashCode(), param);
+    }
+
+    public void RequestChangeOpponent(NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSPVPMatchTarget param = new PB.HSPVPMatchTarget();
+        param.changeTarget = true;
         GameApp.Instance.netManager.SendMessage(PB.code.PVP_MATCH_TARGET_C.GetHashCode(), param);
     }
 

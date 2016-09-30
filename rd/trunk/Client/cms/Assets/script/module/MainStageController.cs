@@ -46,13 +46,16 @@ public class MainStageController : MonoBehaviour
     private float mRotAngle = 0.0f;
     private bool mDisableMove = false;
     //---------------------------------------------------------------------------------------------
+    void Awake()
+    {
+        UIMgr.Instance.MainstageInstance = this;
+    }
+    //---------------------------------------------------------------------------------------------
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
         GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
         GameDataMgr.Instance.mTowerRefreshed = false;
-
-        UIMgr.Instance.MainstageInstance = this;
     }
     //---------------------------------------------------------------------------------------------
     public void OnDisable()
@@ -115,6 +118,10 @@ public class MainStageController : MonoBehaviour
         BuildModule curModule = GameMain.Instance.GetBuildModule();
         if (curModule != null)
         {
+            if (curModule.isSummon)
+            {
+                 FoundMgr.Instance.GoToLucky();
+            }
             if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
             {
                 SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Hole);
@@ -628,6 +635,10 @@ public class MainStageController : MonoBehaviour
         else if (groupType == (int)SelectableGroupType.Select_Group_Tower)
         {
             mCurrentSelectedObjGroup = mTowerGroup;
+        }
+        else if (groupType == (int)SelectableGroupType.Select_Group_Summon)
+        {
+             mCurrentSelectedObjGroup = mChoudanGroup;
         }
         EnterSelectGroup(ref mCurrentSelectedObjGroup);
     }

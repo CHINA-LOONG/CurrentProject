@@ -86,10 +86,38 @@ public class PrompMsgRefreshCondition : UIBase
     {
         if (time <= 0)
         {
-            autofinish();
+            //Debug.Log("刷新点数" + AdventureDataMgr.Instance.AdventureChange);
+            if (autofinish != null)
+            {
+                TimeWrap = null;
+                StartCoroutine(IEAutoFinish());
+            }
+            //else
+            //{
+            //    TimeWrap = null;
+            //    StartCoroutine(IEAutoUpdate());
+            //}
         }
         textDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("adventure_tipshuifu"),changeAmount, UIUtil.Convert_hh_mm_ss(time));
     }
+    IEnumerator IEAutoFinish()
+    {
+        yield return null;
+        //Debug.Log("刷新点数" + AdventureDataMgr.Instance.AdventureChange);
+        Close();
+        if (autofinish != null)
+        {
+            autofinish();
+        }
+    }
+
+    //IEnumerator IEAutoUpdate()
+    //{
+    //    yield return null;
+    //    Debug.Log("刷新点数" + AdventureDataMgr.Instance.AdventureChange);
+
+    //    this.SetData(title, cost, callback, autoClose, autofinish);
+    //}
 
     public void Close()
     {

@@ -115,7 +115,7 @@ public class PlayerShopModule extends PlayerModule{
 	@ProtocolHandler(code = HS.code.SHOP_DATA_INIT_C_VALUE)
 	private boolean onShopDataInit(HawkProtocol cmd){
 		HSShopDataInitRet.Builder response = HSShopDataInitRet.newBuilder();
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 			response.addShopDatas(ShopUtil.generateShopData(player, i));
 		}
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_DATA_INIT_S_VALUE, response));
@@ -294,7 +294,7 @@ public class PlayerShopModule extends PlayerModule{
 			int mask = GsConst.PlayerRefreshMask[index];
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
 
-				for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+				for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 					ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
 					shopEntity.notifyUpdate(true);
 				}

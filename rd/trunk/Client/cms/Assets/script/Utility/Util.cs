@@ -358,4 +358,10 @@ public class Util
 
         return unit;
     }
+    public static int GetBpFromHsMonster(PB.HSMonster monster)
+    {
+        PbUnit tmpPbUnit = Util.CreatePbUnitFromHsMonster(monster, UnitCamp.Player);
+        GameUnit tmpUnit = GameUnit.FromPb(tmpPbUnit, true);
+        return tmpUnit.mBp;
+    }
 }

@@ -656,6 +656,7 @@ MonoBehaviour:
   loseImage: {fileID: 11410944}
   loseHint: {fileID: 11457330}
   goToButton: {fileID: 121598}
+  goText: {fileID: 11474168}
   loseType: 0
 --- !u!114 &11440040
 MonoBehaviour:
@@ -746,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .862745106, g: .639215708, b: .0784313753, a: 1}
+  m_Color: {r: 1, g: .800000012, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -755,7 +756,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 681583c2e07349f44aedf62612c9076e, type: 3}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -778,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .862745106, g: .639215708, b: .0784313753, a: 1}
+  m_Color: {r: 1, g: .800000012, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -787,7 +788,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 681583c2e07349f44aedf62612c9076e, type: 3}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -874,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .862745106, g: .639215708, b: .0784313753, a: 1}
+  m_Color: {r: 1, g: .800000012, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -883,7 +884,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 681583c2e07349f44aedf62612c9076e, type: 3}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -909,6 +910,7 @@ MonoBehaviour:
   loseImage: {fileID: 11497318}
   loseHint: {fileID: 11402870}
   goToButton: {fileID: 118260}
+  goText: {fileID: 11462300}
   loseType: 0
 --- !u!114 &11462300
 MonoBehaviour:
@@ -1193,6 +1195,7 @@ MonoBehaviour:
   loseImage: {fileID: 11412756}
   loseHint: {fileID: 11472624}
   goToButton: {fileID: 195840}
+  goText: {fileID: 11456002}
   loseType: 0
 --- !u!222 &22203548
 CanvasRenderer:

@@ -97,7 +97,8 @@ public class StaticDataMgr : MonoBehaviour
     //PVP
     List<PvpRankRewardUiStaticData> listRankRewardUiStaticData = new List<PvpRankRewardUiStaticData>();
     List<PvpStageRewardStaticData> listStageRewardStaticData = new List<PvpStageRewardStaticData>();
-    Dictionary<int, PvpStaticData> pvpStaticDataDic = new Dictionary<int, PvpStaticData>(); 
+    Dictionary<int, PvpStaticData> pvpStaticDataDic = new Dictionary<int, PvpStaticData>();
+    Dictionary<int, LoadingData> loadingData = new Dictionary<int, LoadingData>();
 
     public void Init()
     {
@@ -898,6 +899,27 @@ public class StaticDataMgr : MonoBehaviour
                 pvpStaticDataDic.Add(item.stage, item);
             }
         }
+        //loading    
+        {
+            var data = InitTable<Loading>("loading");
+            ArrayList array;
+            ArrayList array1;
+            foreach (var item in data)
+            {
+                LoadingData loadingList = new LoadingData();
+                array = MiniJsonExtensions.arrayListFromJson(item.content);
+                array1 = MiniJsonExtensions.arrayListFromJson(item.resource);
+                loadingList.content = new string[array.Count];
+                loadingList.imageResource = new string[array1.Count];
+                for (int i = 0; i < array.Count; i++)
+                    loadingList.content[i] = array[i].ToString();
+                for (int i = 0; i < array1.Count; i++)
+                    loadingList.imageResource[i] = array1[i].ToString();
+                loadingData.Add(item.type, loadingList);
+                array.Clear();
+                array1.Clear();
+            }
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -1446,5 +1468,11 @@ public class StaticDataMgr : MonoBehaviour
         return result;
     }
 
+    public LoadingData GetLoadingData(int id)
+    {
+        LoadingData item = null;
+        loadingData.TryGetValue(id, out item);
+        return item;
+    }
     #endregion
 }

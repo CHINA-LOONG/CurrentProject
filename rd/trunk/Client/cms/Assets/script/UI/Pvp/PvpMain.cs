@@ -24,6 +24,11 @@ public class PvpMain : UIBase
     public Text pvpTimeCountDownText;
     public Button fightButton;
 
+    public GameObject[] stageImageObject;
+    public GameObject[] stageEffectObject;
+
+    private Animator animator = null;
+
     private List<MonsterIcon> defenseMonsterIcon = new List<MonsterIcon>();
 
     bool pvpTimesIsFull = true;
@@ -67,6 +72,16 @@ public class PvpMain : UIBase
         functionEntryButtons[2].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_record");
         functionEntryButtons[3].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_rules");
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
+
+        animator = GetComponent<Animator>();
+        for (int i = 0; i < stageImageObject.Length; ++i)
+        {
+            stageImageObject[i].SetActive(i == PvpDataMgrAttr.selfPvpStage);
+        }
+        for (int i = 0; i < stageEffectObject.Length;++i)
+        {
+            stageEffectObject[i].SetActive(i == PvpDataMgrAttr.selfPvpStage / 3);
+        }
     }
     public override void Init()
     {
@@ -91,6 +106,7 @@ public class PvpMain : UIBase
             pvpTimeCountDownText.text = StaticDataMgr.Instance.GetTextByID("pet_detail_skill_max_point");
         }
     }
+
     int refreshCount = 0;
     void Update()
     {
@@ -140,6 +156,8 @@ public class PvpMain : UIBase
         competetivePointText.text = string.Format(StaticDataMgr.Instance.GetTextByID("pvp_points"), PvpDataMgrAttr.SelfPvpPointAttr);
 
         honorPointText.text = string.Format(StaticDataMgr.Instance.GetTextByID("pvp_honorpoint"), GameDataMgr.Instance.PlayerDataAttr.HonorAtr);
+
+        RefreshSeasonCountDown(msgRet.monthRewardTimeLeft);
     }
 
     void RefreshDefensePosition()
@@ -190,6 +208,38 @@ public class PvpMain : UIBase
             subIconItem.gameObject.SetActive(false);
         }
     }
+
+    void RefreshSeasonCountDown(int leftsecond)
+    {
+        string leftTimeStr = null;
+        int secondPerDay = 3600 * 24;
+        int day = leftsecond / secondPerDay;
+        if (day > 0)
+        {
+            if(leftsecond % secondPerDay > 500)
+            {
+                day++;
+            }
+            leftTimeStr = string.Format(StaticDataMgr.Instance.GetTextByID("pvp_daojishijiesuan1"), day);
+        }
+        else
+        {
+            int hour = leftsecond / 3600;
+            if(hour > 0)
+            {
+                if(leftsecond %3600 > 60)
+                {
+                    hour++;
+                }
+                leftTimeStr = string.Format(StaticDataMgr.Instance.GetTextByID("pvp_daojishijiesuan2"), hour);
+            }
+            else
+            {
+                leftTimeStr = StaticDataMgr.Instance.GetTextByID("pvp_daojishijiesuan3");
+            }
+        }
+        seasonCountDownText.text = string.Format("{0}{1}", StaticDataMgr.Instance.GetTextByID("pvp_daojishijiesuan"), leftTimeStr);
+    }
     void OnAdjustButtonClick()
     {
         List<string> teamlist = new List<string>();
@@ -214,9 +264,22 @@ public class PvpMain : UIBase
     }
     void OnPvpShopButtonClick(GameObject go)
     {
-
+        UIShop  uiShop = UIMgr.Instance.OpenUI_(UIShop.ViewName) as UIShop;
+        uiShop.RefreshShopData((int)PB.shopType.PVPSHOP);
     }
     void OnCloseButtonClick()
+    {
+        if(animator != null)
+        {
+            animator.SetTrigger("outTriger");
+        }
+        else
+        {
+            UIMgr.Instance.CloseUI_(this);
+        }
+    }
+
+    void OnOutAniEnd()
     {
         UIMgr.Instance.CloseUI_(this);
     }

@@ -13,6 +13,46 @@ public class RewardItemData
     public PB.RewardItem protocolData=new PB.RewardItem();
     public float prob;
 
+    private ItemData itemData;
+    public ItemData ItemData
+    {
+        get
+        {
+            if (itemData == null && (protocolData.type == (int)PB.itemType.ITEM || protocolData.type == (int)PB.itemType.PLAYER_ATTR))
+            {
+                itemData = RewardItemData.GetItemData(protocolData);
+            }
+            return itemData;
+        }
+    }
+
+    public static ItemData GetItemData(PB.RewardItem protocolData)
+    {
+        ItemData itemData = null;
+        if (protocolData.type == (int)PB.itemType.ITEM || protocolData.type == (int)PB.itemType.PLAYER_ATTR)
+        {
+            if (protocolData.type == (int)PB.itemType.ITEM)
+            {
+                itemData = new ItemData() { itemId = protocolData.itemId, count = (int)protocolData.count };
+            }
+            else
+            {
+                switch ((PB.changeType)(int.Parse(protocolData.itemId)))
+                {
+                    case PB.changeType.CHANGE_GOLD:
+                        itemData = new ItemData() { itemId = "90002", count = (int)protocolData.count };
+                        break;
+                    case PB.changeType.CHANGE_COIN:
+                        itemData = new ItemData() { itemId = "90001", count = (int)protocolData.count };
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        return itemData;
+    }
+
     public RewardItemData(int type, string itemId, int count, float prob)
     {
         this.protocolData.type = type;

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &112188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22442296}
+  - 222: {fileID: 22216572}
+  m_Layer: 5
+  m_Name: IconPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &114170
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,8 +197,9 @@ GameObject:
   m_Component:
   - 224: {fileID: 22402272}
   - 222: {fileID: 22217330}
+  - 114: {fileID: 11409694}
   m_Layer: 5
-  m_Name: IconPos
+  m_Name: EffectPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,11 +234,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4e94c8a25adb4991b97f5a56a6b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconPos: {fileID: 22402272}
+  iconPos: {fileID: 22442296}
+  effectPos: {fileID: 22402272}
   objBackground: {fileID: 128624}
   objMask: {fileID: 114170}
   objRetroactive: {fileID: 146318}
   textRetroactive: {fileID: 11492668}
+--- !u!114 &11409694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 1
+  isUI: 0
 --- !u!114 &11411910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +512,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128624}
+--- !u!222 &22216572
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112188}
 --- !u!222 &22217330
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -552,10 +589,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22429094}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5.24520874e-05, y: -.000190258026}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22413048
@@ -570,7 +607,7 @@ RectTransform:
   m_Children:
   - {fileID: 22431292}
   m_Father: {fileID: 22429094}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -7.0810318e-05, y: .000126004219}
@@ -624,7 +661,7 @@ RectTransform:
   - {fileID: 22486094}
   - {fileID: 22453480}
   m_Father: {fileID: 22429094}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 36.4599991}
@@ -642,6 +679,7 @@ RectTransform:
   m_Children:
   - {fileID: 22419778}
   - {fileID: 22459288}
+  - {fileID: 22442296}
   - {fileID: 22402272}
   - {fileID: 22421292}
   - {fileID: 22413048}
@@ -669,6 +707,23 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 73.9000015, y: 33.5}
   m_SizeDelta: {x: 44, y: 40}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22442296
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22429094}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453480
 RectTransform:
@@ -732,7 +787,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22429094}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -6.10351562e-05, y: 0}
@@ -749,6 +804,10 @@ Prefab:
       propertyPath: iconPos
       value: 
       objectReference: {fileID: 22402272}
+    - target: {fileID: 0}
+      propertyPath: isUI
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162748}

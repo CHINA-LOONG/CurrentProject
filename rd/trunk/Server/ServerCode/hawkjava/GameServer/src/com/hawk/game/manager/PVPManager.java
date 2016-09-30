@@ -24,6 +24,7 @@ import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.PVPCfg;
 import com.hawk.game.config.PVPRankRewardCfg;
 import com.hawk.game.config.PVPStageRewardCfg;
+import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.PVPDefenceEntity;
 import com.hawk.game.entity.PVPDefenceRecordEntity;
 import com.hawk.game.entity.PVPRankEntity;
@@ -101,6 +102,11 @@ public class PVPManager extends HawkAppObj {
 	 * 前一百名的数据
 	 */
 	private HSPVPRankRet.Builder pvpRankBuilder = null;
+	
+	/**
+	 * gm 匹配玩家
+	 */
+	static public int GMTargetID = 0;
 	
 	/**
 	 * 获取全局实例对象
@@ -192,8 +198,8 @@ public class PVPManager extends HawkAppObj {
 			}
 			
 			// 选取种子用户
-			if (endIndex - beginIndex > 2 * GsConst.PVP.PVP_POOL_STAGE_INIT_SIZE) {
-				while (randomPlayers.size() < GsConst.PVP.PVP_POOL_STAGE_INIT_SIZE) {
+			if (endIndex - beginIndex > 2 * SysBasicCfg.getInstance().getPvpStageInitSize()) {
+				while (randomPlayers.size() < SysBasicCfg.getInstance().getPvpStageInitSize()) {
 					try {
 						randomPlayers.add(HawkRand.randInt(beginIndex + 1, endIndex));
 					} catch (Exception e) {
@@ -201,8 +207,8 @@ public class PVPManager extends HawkAppObj {
 					}
 				}
 			}
-			else if (endIndex - beginIndex > GsConst.PVP.PVP_POOL_STAGE_INIT_SIZE) {
-				for (int i = beginIndex + 1; i < beginIndex + GsConst.PVP.PVP_POOL_STAGE_INIT_SIZE; i++) {
+			else if (endIndex - beginIndex > SysBasicCfg.getInstance().getPvpStageInitSize()) {
+				for (int i = beginIndex + 1; i < beginIndex + SysBasicCfg.getInstance().getPvpStageInitSize(); i++) {
 					randomPlayers.add(i);
 				}
 			}
@@ -347,6 +353,14 @@ public class PVPManager extends HawkAppObj {
 		// 匹配玩家
 		PVPDefenceEntity target = null;
 		while (true) {	
+			if (GMTargetID != 0) {
+				GMTargetID = 0;
+				target = getPVPDefenceEntityFromPool(GMTargetID);
+				if (target != null) {
+					break;
+				}
+			}
+			
 			int i = pvpCfg.getStage();
 			for (; i > 0; i--) {
 				stageList = pvpPoolList.get(i);
@@ -624,7 +638,7 @@ public class PVPManager extends HawkAppObj {
 	 * @param rankEntity
 	 */
 	public void addToPool(Map<Integer, PVPDefenceEntity> stageList, PVPDefenceEntity defenceEntity, PVPRankEntity rankEntity){
-		if (stageList.size() >= GsConst.PVP.PVP_POOL_STAGE_MAX_SIZE) {
+		if (stageList.size() >= SysBasicCfg.getInstance().getPvpStageMaxSize()) {
 			stageList.remove(randomPlayer(stageList));
 			stageList.put(defenceEntity.getPlayerId(), defenceEntity);
 		}
@@ -671,7 +685,7 @@ public class PVPManager extends HawkAppObj {
 		else if (pvpPoolList.get(currentPvpCfg.getStage()).containsKey(rankEntity.getPlayerId())) {
 			PVPDefenceEntity defenceEntity = pvpPoolList.get(currentPvpCfg.getStage()).remove(rankEntity.getPlayerId());
 			Map<Integer, PVPDefenceEntity> stageList = pvpPoolList.get(nextPvpCfg.getStage());
-			if (stageList.size() >= GsConst.PVP.PVP_POOL_STAGE_MAX_SIZE) {
+			if (stageList.size() >= SysBasicCfg.getInstance().getPvpStageMaxSize()) {
 				stageList.remove(randomPlayer(stageList));
 			}
 			stageList.put(defenceEntity.getPlayerId(), defenceEntity);

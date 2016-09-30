@@ -407,7 +407,7 @@ public class GameDataMgr : MonoBehaviour
         }
 
         mainPlayer.TowerCoinAttr = playerInfo.towerCoin;
-        //playerInfo.honor;
+        mainPlayer.HonorAtr = playerInfo.honor;
 
         mainPlayer.gender = playerInfo.gender;
         mainPlayer.eye = playerInfo.eye;
@@ -618,7 +618,8 @@ public class GameDataMgr : MonoBehaviour
 
             PlayerDataAttr.TowerCoinAttr = reward.playerAttr.towerCoin;
             PlayerDataAttr.GonghuiCoinAttr = reward.playerAttr.contribution;
-           
+
+            PlayerDataAttr.HonorAtr = reward.playerAttr.honor;
         }
 
         GameUnit unit = null;
@@ -727,6 +728,8 @@ public class GameDataMgr : MonoBehaviour
 
             PlayerDataAttr.TowerCoinAttr = reward.playerAttr.towerCoin;
             PlayerDataAttr.GonghuiCoinAttr = reward.playerAttr.contribution;
+
+            PlayerDataAttr.HonorAtr = reward.playerAttr.honor;
         }
         GameUnit unit = null;
         foreach (PB.SynMonsterAttr item in reward.monstersAttr)

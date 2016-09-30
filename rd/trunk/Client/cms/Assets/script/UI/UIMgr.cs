@@ -368,7 +368,9 @@ public class UIMgr : MonoBehaviour
         DestroyAllPopup();
         int count = uiList.Count;
         List<UIBase> tmpList = new List<UIBase>();
+        List<string> tmpKeyList = new List<string>();
         tmpList.AddRange(uiList.Values);
+        tmpKeyList.AddRange(uiList.Keys);
         if (ignoreDontDestroy == true)
         {
             for (int i = count - 1; i >= 0; --i)
@@ -377,6 +379,7 @@ public class UIMgr : MonoBehaviour
                 {
                     RemoveFromStack(tmpList[i]);
                     tmpList[i].Clean();
+                    tmpKeyList[i] = null;
                     ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
                 }
             }
@@ -389,13 +392,23 @@ public class UIMgr : MonoBehaviour
                 {
                     RemoveFromStack(tmpList[i]);
                     tmpList[i].Clean();
+                    tmpKeyList[i] = null;
                     ResourceMgr.Instance.DestroyAsset(tmpList[i].gameObject);
                 }
             }
         }
-        tmpList.Clear();
         uiList.Clear();
         ClearUILayerList();
+        count = tmpKeyList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (tmpKeyList[i] != null)
+            {
+                uiList.Add(tmpKeyList[i], tmpList[i]);
+            }
+        }
+        tmpList.Clear();
+        tmpKeyList.Clear();
     }
 
     public void OpenUICallback(GameObject ui, System.EventArgs args)

@@ -80,6 +80,7 @@ public class UIShop : UIBase
         GameEventMgr.Instance.AddListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
     }
 	
 	void OnDisable()
@@ -90,6 +91,7 @@ public class UIShop : UIBase
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
     }
 
 	void OnRefreshButtonClilck(GameObject go)
@@ -175,7 +177,11 @@ public class UIShop : UIBase
     {
         leftButton.gameObject.SetActive(true);
         rightButton.gameObject.SetActive(true);
-        if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
+        if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForPvp)
+        {
+            maxOpenShopIndex = (int)PB.shopType.PVPSHOP;
+        }
+        else if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.OpenLevelForGonghui)
         {
             maxOpenShopIndex = (int)PB.shopType.ALLIANCESHOP;
         }
@@ -213,6 +219,10 @@ public class UIShop : UIBase
         RefreshUIWithNormalizedScrollPosition(false);
     }
     void OnTowerCoinChanged(int towerCoin)
+    {
+        RefreshUIWithNormalizedScrollPosition(false);
+    }
+    void OnPvpHonorChanged(int pvpHonor)
     {
         RefreshUIWithNormalizedScrollPosition(false);
     }
@@ -307,18 +317,20 @@ public class UIShop : UIBase
 	
 	CoinButton.CoinType GetCoinType(int stype)
 	{
-		switch (stype) 
-		{
-		case (int)PB.shopType.NORMALSHOP:
-			return CoinButton.CoinType.Jinbi;
-		case (int)PB.shopType.ALLIANCESHOP:
-			return CoinButton.CoinType.GonghuiBi;
+        switch (stype)
+        {
+            case (int)PB.shopType.NORMALSHOP:
+                return CoinButton.CoinType.Jinbi;
+            case (int)PB.shopType.ALLIANCESHOP:
+                return CoinButton.CoinType.GonghuiBi;
             case (int)PB.shopType.TOWERSHOP:
                 return CoinButton.CoinType.TowerCoin;
-		default:
-			return CoinButton.CoinType.Jinbi;
-		}
-	}
+            case (int)PB.shopType.PVPSHOP:
+                return CoinButton.CoinType.PvpHonor;
+            default:
+                return CoinButton.CoinType.Jinbi;
+        }
+    }
 
 	string GetShopName(int stype)
 	{
@@ -329,7 +341,9 @@ public class UIShop : UIBase
 		case (int)PB.shopType.ALLIANCESHOP:
 			 return StaticDataMgr.Instance.GetTextByID("shop_gonghui");
             case (int)PB.shopType.TOWERSHOP:
-                return StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop"); 
+                return StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop");
+            case (int)PB.shopType.PVPSHOP:
+                return StaticDataMgr.Instance.GetTextByID("pvp_shop"); 
 		default:
 			return "";
 		}

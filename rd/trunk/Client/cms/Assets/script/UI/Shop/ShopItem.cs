@@ -117,6 +117,8 @@ public class ShopItem : MonoBehaviour
                 return "icon_gonghuibi";
             case (int)PB.shopType.TOWERSHOP:
                 return "icon_towercoin";
+            case (int)PB.shopType.PVPSHOP:
+                return "icon_jingjijifen";
             default:
                 return "";
         }
@@ -156,6 +158,13 @@ public class ShopItem : MonoBehaviour
             case (int)PB.shopType.TOWERSHOP:
                 isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.TowerCoinAttr;
                 if (showNotEnoughTip && !isEnough)
+                {
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_record_003"), (int)PB.ImType.PROMPT);
+                }
+                break;
+            case (int)PB.shopType.PVPSHOP:
+                isEnough = costCoin <= GameDataMgr.Instance.PlayerDataAttr.HonorAtr;
+                if(showNotEnoughTip && !isEnough)
                 {
                     UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_record_003"), (int)PB.ImType.PROMPT);
                 }

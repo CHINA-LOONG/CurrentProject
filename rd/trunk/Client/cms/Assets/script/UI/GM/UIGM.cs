@@ -306,6 +306,36 @@ public class UIGM : UIBase {
             gmOperation.value = int.Parse(command[1] as string);
             gmOperation.itemId = command[2] as string;
         }
+        else if (command[0].Equals("pvp"))
+        {
+            if (command.Count < 2)
+            {
+                text.text = "格式错误";
+                return;
+            }
+
+            if (command[1].Equals("vs"))
+            {
+                if (command.Count != 3)
+                {
+                    text.text = "格式错误";
+                    return;
+                }
+
+                gmOperation.operation = command[1] as string;
+                gmOperation.targetId = int.Parse(command[2] as string);
+            }
+            else if (command[1].Equals("week"))
+            {
+                if (command.Count != 2)
+                {
+                    text.text = "格式错误";
+                    return;
+                }
+
+                gmOperation.operation = command[1] as string;
+            }
+        }
 
         GameApp.Instance.netManager.SendMessage(PB.gm.GMOPERATION_C.GetHashCode(), gmOperation);
     }

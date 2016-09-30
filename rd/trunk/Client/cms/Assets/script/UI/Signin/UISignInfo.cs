@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 public class UISignInfo : UIBase
 {
-    public static string ViewName = "UIQuestInfo";
+    public static string ViewName = "UISignInfo";
 
     public static UISignInfo Open(PB.RewardItem reward)
     {
@@ -21,7 +21,7 @@ public class UISignInfo : UIBase
 
     public Text textTitle;
     public Transform rewardParent;
-    public GameObject rewardItem;
+    private GameObject rewardItem;
     public Button btnConfirm;
 
     private Animator animator;
@@ -44,6 +44,7 @@ public class UISignInfo : UIBase
     // Use this for initialization
     void Start()
     {
+        textTitle.text = StaticDataMgr.Instance.GetTextByID("monthlyevent_reward_001");
         UIUtil.SetButtonTitle(btnConfirm.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
         btnConfirm.onClick.AddListener(OnClickConfirmBtn);
     }
@@ -63,9 +64,9 @@ public class UISignInfo : UIBase
         {
             ResourceMgr.Instance.DestroyAsset(rewardItem);
         }
-        if (info.type == (int)PB.itemType.ITEM)
+        if (info.type == (int)PB.itemType.ITEM|| info.type == (int)PB.itemType.PLAYER_ATTR)
         {
-            ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = (int)info.count }, true, false);
+            ItemIcon icon = ItemIcon.CreateItemIcon(RewardItemData.GetItemData(info), true, false);
             UIUtil.SetParentReset(icon.transform, rewardParent);
             rewardItem = icon.gameObject;
         }

@@ -182,7 +182,8 @@ public class FoundMgr
         if (curUIPanel as UIMonsters == null)
         {
             uibuild.uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
-            uibuild.uiMonsters.Refresh(index);
+            if (uibuild.uiMonsters != null)
+                uibuild.uiMonsters.Refresh(index);
         }
         else
         {
@@ -263,6 +264,6 @@ public class FoundMgr
     /// </summary>
     public void GoToArena()
     {
-
+        PvpMain.Open();
     }
 }

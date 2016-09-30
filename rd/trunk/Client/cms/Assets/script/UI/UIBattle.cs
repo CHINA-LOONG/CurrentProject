@@ -671,9 +671,11 @@ public class UIBattle : UIBase
     //switch pet
     void OnShowSwitchPetUIAtIndex(EventArgs sArgs)
     {
-        var args = sArgs as ShowSwitchPetUIArgs;
-        m_PetPanel.Show(args);
-
+        if (LevelLimits.IsOpen(LimitsType.changePetLimits) == true)
+        {
+            var args = sArgs as ShowSwitchPetUIArgs;
+            m_PetPanel.Show(args);
+        }
         //GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 

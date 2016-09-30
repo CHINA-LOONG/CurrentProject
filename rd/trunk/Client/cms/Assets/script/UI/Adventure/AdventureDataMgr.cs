@@ -185,6 +185,10 @@ public class AdventureDataMgr
                 };
                 ConditionTimeEvent = new TimeEventWrap(adventureChangeBeginTime + GameConfig.AdventurePointTime, endEvent);
             }
+            else if(AdventureChange >= GameConfig.MaxAdventurePoint)
+            {
+                ConditionTimeEvent = null;
+            }
         }
     }
     

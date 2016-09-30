@@ -64,6 +64,15 @@ public class SysBasicCfg extends HawkConfigBase {
 	 */
 	protected final float allianceThirdPositionContribution;
 	/**
+	 * pvp匹配池初始化大小
+	 */
+	protected final int pvpStageInitSize;
+	/**
+	 * pvp匹配池初始化最大值
+	 */
+	protected final int pvpStageMaxSize;
+	
+	/**
 	 * 全局静态对象
 	 */
 	private static SysBasicCfg instance = null;
@@ -93,6 +102,8 @@ public class SysBasicCfg extends HawkConfigBase {
 		allianceDissoveGoldRate = .0f;
 		allianceSecondPositionContribution = 0;
 		allianceThirdPositionContribution = 0;
+		pvpStageInitSize = 0;
+		pvpStageMaxSize = 0;
 	}
 
 	public int getPlayerCacheTime() {
@@ -152,5 +163,13 @@ public class SysBasicCfg extends HawkConfigBase {
 
 	public float getAllianceThirdPositionContribution() {
 		return allianceThirdPositionContribution;
+	}
+
+	public int getPvpStageInitSize() {
+		return pvpStageInitSize;
+	}
+
+	public int getPvpStageMaxSize() {
+		return pvpStageMaxSize;
 	}
 }

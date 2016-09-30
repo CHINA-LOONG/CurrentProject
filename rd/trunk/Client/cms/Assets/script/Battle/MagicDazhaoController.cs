@@ -125,15 +125,15 @@ public class MagicDazhaoController : MonoBehaviour
     }
 
 	public void RunActionWithDazhao(BattleObject casterGo)
-	{
+    {
+        GameSpeedService.Instance.SetBattleSpeed(1.0f);
+        //if(casterBattleGo.shifaNodeEffect !=null)
+        //{
+        //	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+        //}
+        //casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 
-		//if(casterBattleGo.shifaNodeEffect !=null)
-		//{
-		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		//}
-		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
-		
-		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
+        dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
 		{
 			Logger.LogErrorFormat("[SERIOUS]Unit {0}'s dazhao error! No dazhao is configured! Exit dazhao mode!!!", casterBattleGo.guid);

@@ -45,6 +45,18 @@ public class UISignIn : UIBase,
     // Use this for initialization
 
     private int priceRetroactive;
+    public Animator Animator
+    {
+        get
+        {
+            if (animator == null)
+            {
+                animator = GetComponent<Animator>();
+            }
+            return animator;
+        }
+    }
+    private Animator animator;
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("monthlyevent_title");
@@ -64,9 +76,9 @@ public class UISignIn : UIBase,
         {
             RewardData reward = StaticDataMgr.Instance.GetRewardData(rewardList[i]);
 
-            if (reward == null || 
-                reward.itemList.Count != 1 || 
-                (reward.itemList[0].protocolData.type != (int)PB.itemType.ITEM && reward.itemList[0].protocolData.type != (int)PB.itemType.MONSTER))
+            if (reward == null ||
+                reward.itemList.Count != 1 ||
+                (reward.itemList[0].protocolData.type != (int)PB.itemType.ITEM && reward.itemList[0].protocolData.type != (int)PB.itemType.PLAYER_ATTR && reward.itemList[0].protocolData.type != (int)PB.itemType.MONSTER))
             {
                 Logger.Log("签到奖励配置错误奖励没有配置：i=" + i);
                 continue;
@@ -157,6 +169,10 @@ public class UISignIn : UIBase,
 
     public override void Init()
     {
+        if (Animator != null)
+        {
+            Animator.SetTrigger("enter");
+        }
     }
     public override void Clean()
     {
@@ -247,7 +263,7 @@ public class UISignIn : UIBase,
             GameEventMgr.Instance.FireEvent(GameEventList.SignInChange);
 
             //TODO:弹出窗口
-            if (result.reward.type == (int)PB.itemType.ITEM)
+            if (result.reward.type == (int)PB.itemType.ITEM || result.reward.type == (int)PB.itemType.PLAYER_ATTR)
             {
                 uiSignInfo = UISignInfo.Open(result.reward);
             }

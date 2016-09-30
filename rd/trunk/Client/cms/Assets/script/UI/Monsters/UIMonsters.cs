@@ -141,7 +141,7 @@ public class UIMonsters : UIBase,
                        StaticDataMgr.Instance.GetTextByID("pet_tip_full2"));
         }
 
-        Refresh();
+        //Refresh();
     }
     public override void Clean()
     {

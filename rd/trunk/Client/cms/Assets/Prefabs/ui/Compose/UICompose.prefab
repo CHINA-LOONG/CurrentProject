@@ -1654,6 +1654,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11409258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2063,6 +2064,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   text_Title: {fileID: 11455152}
   btnClose: {fileID: 11486244}
   text_Tab1: {fileID: 11401804}
@@ -2639,6 +2643,7 @@ MonoBehaviour:
   outlineNormalColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   outlineSelectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   isOn: 0
+  tipImage: {fileID: 0}
 --- !u!114 &11454598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3721,6 +3726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ScrollRect: {fileID: 11427756}
   m_Grid: {fileID: 11441146}
+  ElementSize: {x: 0, y: 0}
 --- !u!222 &22202612
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -5016,7 +5022,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
+  m_SizeDelta: {x: -20, y: -10}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22451144
 RectTransform:
@@ -5633,7 +5639,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
+  m_SizeDelta: {x: -20, y: -10}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22494762
 RectTransform:

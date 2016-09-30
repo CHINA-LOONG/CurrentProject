@@ -35,6 +35,7 @@ import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
+import com.hawk.game.manager.PVPManager;
 import com.hawk.game.manager.ImManager.ImMsg;
 import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.player.Player;
@@ -445,32 +446,15 @@ public class GmService_Dev extends GameService {
 			break;
 		}
 		// 每日刷新
-		case "dailyrefresh": {
-			List<Integer> refreshIndexList = new ArrayList<Integer>();
-			for (int i = 0; i < GsConst.PlayerRefreshMask.length; ++i) {
-				if (0 != (GsConst.PlayerRefreshMask[i] & GsConst.RefreshMask.DAILY )) {
-					refreshIndexList.add(i);
-					break;
-				}
+		case "pvp": {
+			if (gmOperation.equals("vs")) {
+				PVPManager.GMTargetID = (int) gmTargetId;
+				actionHandled = true;
 			}
-			if (false == refreshIndexList.isEmpty()) {
-				for (HawkObjModule module : player.getObjModules().values()) {
-					PlayerModule playerModule = (PlayerModule) module;
-					try {
-						playerModule.onPlayerRefresh(refreshIndexList, false);
-					} catch (Exception e) {
-						HawkException.catchException(e);
-					}
-				}
+			else if (gmOperation.equals("week")) {
+				PVPManager.getInstance().onPVPWeekReward(null);
 			}
-
-			// 公会不走统一刷新机制
-			for (AllianceEntity alliance : AllianceManager.getInstance().getAllianceMap().values()) {
-				alliance.dailyRefresh();
-				alliance.notifyUpdate(true);
-			}
-
-			actionHandled = true;
+			
 			break;
 		}
 		// 设置故事副本星级
@@ -721,7 +705,39 @@ public class GmService_Dev extends GameService {
 
 			actionHandled = true;
 			break;
+			
 		}
+
+		// 每日刷新
+		case "dailyrefresh": {
+			List<Integer> refreshIndexList = new ArrayList<Integer>();
+			for (int i = 0; i < GsConst.PlayerRefreshMask.length; ++i) {
+				if (0 != (GsConst.PlayerRefreshMask[i] & GsConst.RefreshMask.DAILY )) {
+					refreshIndexList.add(i);
+					break;
+				}
+			}
+			if (false == refreshIndexList.isEmpty()) {
+				for (HawkObjModule module : player.getObjModules().values()) {
+					PlayerModule playerModule = (PlayerModule) module;
+					try {
+						playerModule.onPlayerRefresh(refreshIndexList, false);
+					} catch (Exception e) {
+						HawkException.catchException(e);
+					}
+				}
+			}
+
+			// 公会不走统一刷新机制
+			for (AllianceEntity alliance : AllianceManager.getInstance().getAllianceMap().values()) {
+				alliance.dailyRefresh();
+				alliance.notifyUpdate(true);
+			}
+
+			actionHandled = true;
+			break;
+		}
+		
 		default:
 			break;
 		}

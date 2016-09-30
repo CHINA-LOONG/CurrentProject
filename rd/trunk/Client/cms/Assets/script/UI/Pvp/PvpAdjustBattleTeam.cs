@@ -7,6 +7,8 @@ public class PvpFightParam
 {
     public List<int> playerTeam;
     public PB.HSPVPMatchTargetRet targetData;
+    public int myBp;
+    public int enemyBp;
 }
 
 [RequireComponent(typeof(BattlePositionAdjust))]
@@ -38,7 +40,8 @@ public class PvpAdjustBattleTeam : UIBase
     private PB.HSPVPMatchTargetRet opponentData = null;
     private List<MonsterIcon> listOpponentMonsterIcon = new List<MonsterIcon>();
     private List<ItemIcon> listDropItemIcon = new List<ItemIcon>();
-
+    private int opponentBp = 0;
+    private int myBp = 0;
 
     private List<string> pvpFightTeam = new List<string>();
     private BattlePositionAdjust battlePositionAdjust = null;
@@ -111,6 +114,7 @@ public class PvpAdjustBattleTeam : UIBase
             }
         }
 
+        opponentBp = 0;
         List<PB.HSMonster> monsterList = opponentData.defenceData.monsterInfo;
         MonsterIcon mIcon = null;
         for(int i =0;i<listOpponentMonsterIcon.Count;++i)
@@ -121,14 +125,32 @@ public class PvpAdjustBattleTeam : UIBase
                 mIcon.gameObject.SetActive(false);
                 continue;
             }
+           
             mIcon.gameObject.SetActive(true);
             var subMonster = monsterList[i];
             mIcon.SetMonsterStaticId(subMonster.cfgId);
             mIcon.SetLevel(subMonster.level);
             mIcon.SetStage(subMonster.stage);
+            mIcon.SetId(i.ToString());
+            ScrollViewEventListener.Get(mIcon.iconButton.gameObject).onPressEnter = OnOpponentMonsterClicked;
+            opponentBp += Util.GetBpFromHsMonster(subMonster);
         }
 
-        refreshCostCoinText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost().ToString();
+        refreshCostCoinText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost(opponentData.changeTime).ToString();
+        enemBpValueText.text = opponentBp.ToString();
+
+        OnFightTeamChanged();//一方战力发生改变，我方战力颜色可能要改变
+    }
+    void OnOpponentMonsterClicked(GameObject go)
+    {
+        MonsterIcon clickIcon = go.GetComponentInParent<MonsterIcon>();
+        if(null != clickIcon)
+        {
+            int defenseIndex = int.Parse(clickIcon.Id);
+            PB.HSMonster monsterData = opponentData.defenceData.monsterInfo[defenseIndex];
+            int bp = Util.GetBpFromHsMonster(monsterData);
+            UIMonsterInfo.Open(-1, monsterData.cfgId, monsterData.level, monsterData.stage,bp);
+        }
     }
     void InitDropInformation()
     {
@@ -166,7 +188,16 @@ public class PvpAdjustBattleTeam : UIBase
 
     void OnFightTeamChanged()
     {
-        myBpValueText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetBpWithGuidList(pvpFightTeam).ToString();
+        myBp = GameDataMgr.Instance.PvpDataMgrAttr.GetBpWithGuidList(pvpFightTeam);
+        myBpValueText.text = myBp.ToString();
+        if (myBp < opponentBp)
+        {
+            myBpValueText.color = new Color(1, 0, 0);
+        }
+        else
+        {
+            myBpValueText.color = new Color(122.0f / 255.0f, 1, 0);
+        }
     }
     void OnFightButtonClick()
     {
@@ -188,6 +219,8 @@ public class PvpAdjustBattleTeam : UIBase
             PvpFightParam param = new PvpFightParam();
             param.playerTeam = battleTeam;
             param.targetData = opponentData;
+            param.enemyBp = opponentBp;
+            param.myBp = myBp;
             GameMain.Instance.LoadBattleLevelPvp(param);
         }
     }
@@ -240,7 +273,7 @@ public class PvpAdjustBattleTeam : UIBase
 
     void OnRefreshButtonClick()
     {
-        MsgBox.PrompCostMsg.Open(GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost(), 
+        MsgBox.PrompCostMsg.Open(GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost(opponentData.changeTime), 
             StaticDataMgr.Instance.GetTextByID("pvp_changecompetitor"),
             "",
             CostType.JinBiCoin,
@@ -251,13 +284,30 @@ public class PvpAdjustBattleTeam : UIBase
     {
         if(click == MsgBox.PrompButtonClick.OK)
         {
-
+            int costCoin = GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost(opponentData.changeTime);
+            if (GameDataMgr.Instance.PlayerDataAttr.coin < costCoin)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.JinbiNoEnough();
+            }
+            else
+            {
+                GameDataMgr.Instance.PvpDataMgrAttr.RequestChangeOpponent(OnRequestRefreshOpponentFinished);
+            }
         }
     }
 
    void OnRequestRefreshOpponentFinished(ProtocolMessage message)
     {
-
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+        PB.HSPVPMatchTargetRet msgRet = message.GetProtocolBody<PB.HSPVPMatchTargetRet>();
+        opponentData = msgRet;
+        InitOppenentInformation();
     }
 
     void OnCloseButtonClick()

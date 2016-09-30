@@ -67,7 +67,7 @@ public class ShopUtil {
 	
 	public static int getAllRefreshTimes(Player player){
 		int num = 0;
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 			ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
 			num += shopEntity.getRefreshNums();
 		}
@@ -76,7 +76,7 @@ public class ShopUtil {
 	}
 	
 	public static void refreshShopData(Player player){
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i < Const.shopType.SHOPNUM_VALUE; i++) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 			refreshShopData(i, player);
 		}
 	}

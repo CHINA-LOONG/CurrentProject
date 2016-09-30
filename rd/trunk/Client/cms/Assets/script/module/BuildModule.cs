@@ -9,6 +9,7 @@ public class BuildModule : ModuleBase
     {
         get { return mCurrentInitState; }
     }
+    public bool isSummon = false;
     private int mCurrentInitState = -1;
     private object mParam = null;
 
@@ -138,11 +139,7 @@ public class BuildModule : ModuleBase
                         break;
                     case (int)ExitInstanceType.Exit_Instance_Summon:
                         {
-                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-                            if (curInstance != null)
-                            {
-                                FoundMgr.Instance.GoToLucky();
-                            }
+                            isSummon = true;
                         }
                         break;
                     case (int)ExitInstanceType.Exit_Instance_Pet:

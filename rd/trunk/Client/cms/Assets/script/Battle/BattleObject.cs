@@ -326,7 +326,7 @@ public class BattleObject : MonoBehaviour
                             {
                                 curParticleData.psObject.transform.localPosition = rootTransform.position;
                                 curParticleData.psObject.transform.SetParent(transform.parent, false);
-                                curParticleData.psParent = transform.parent;
+                                curParticleData.psParent = rootTransform;
                                 curParticleData.psObject.transform.localScale = rootTransform.lossyScale;
                             }
                             else

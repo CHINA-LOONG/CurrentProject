@@ -37,13 +37,8 @@ public class DazhaofocusController : MonoBehaviour
 
         if (string.IsNullOrEmpty(testname) == false)
             go.name = testname;
-
+        
         return focus;
-	}
-
-	// Use this for initialization
-	void Start ()
-	{
 	}
 
 	public void InitWithType(bool isMagicDazhao)

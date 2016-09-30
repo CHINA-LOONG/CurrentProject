@@ -24,6 +24,7 @@ public class PvpOtherDefenseInfo : UIBase
     {
         List<PB.HSMonster> listMonster = defenseMonster.monsterInfo;
         PB.HSMonster subMonster = null;
+        int bp = 0;
         for (int i =0;i<listMonster.Count;++i)
         {
             subMonster = listMonster[i];
@@ -40,7 +41,9 @@ public class PvpOtherDefenseInfo : UIBase
                 monsterSclae = petParentArray[0].rect.width / iconRt.rect.width;
             }
             subIcon.transform.localScale = new Vector3(monsterSclae, monsterSclae, monsterSclae);
+            bp += Util.GetBpFromHsMonster(subMonster);
         }
+        bpValueText.text = bp.ToString();
     }
 
 	// Use this for initialization

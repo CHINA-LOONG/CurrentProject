@@ -86,6 +86,7 @@ public class GameConfig : MonoBehaviour {
     public int JidiPosition2Contribution = 2000;
 
     //功能开启等级限制
+    public int OpenLevelForPvp = 25;//公会开发等级
     public int OpenLevelForGonghui = 20;//公会开发等级
     public int OpenLevelForTower = 10;//通天塔开放等级
     //抽蛋消耗

@@ -84,8 +84,9 @@ public class PhyDazhaoController : MonoBehaviour
 	//}
 
 	public void RunActionWithDazhao(BattleObject casterGo)
-	{
-		casterBattleGo = casterGo;
+    {
+        GameSpeedService.Instance.SetBattleSpeed(1.0f);
+        casterBattleGo = casterGo;
 		dazhaoUseCount = 0;
 		dazhaoFinishCount = 0;
 

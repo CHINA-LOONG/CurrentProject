@@ -228,8 +228,13 @@ public class PlayerPVPModule extends PlayerModule{
 		}
 		
 		Calendar refreshTime = TimeUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
-		int timeDiff = (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
-		response.setMonthRewardTimeLeft((3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEAK_SECOND + timeDiff);
+		if (refreshTime != null) {
+			int timeDiff = (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
+			response.setMonthRewardTimeLeft((3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEAK_SECOND + timeDiff);
+		}
+		else {
+			response.setMonthRewardTimeLeft((3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEAK_SECOND );
+		}
 		
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_MY_INFO_S_VALUE, response));
 		return true;

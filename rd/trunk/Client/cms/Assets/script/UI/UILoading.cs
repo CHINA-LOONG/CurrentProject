@@ -9,11 +9,12 @@ public class UILoading : UIBase
     public Image loadingProgress;
     public Text loadingText;
     public LoadingFinishCallback mLoadingCallback = null;
-
+    public Image loadingBackground;
+    public Text gamePrompt;
     private bool beginLoading = false;
     private int totalAssetCount = 0;
 
-    //---------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------
     public override void Init()
     {
         mLoadingCallback = null;
@@ -62,11 +63,20 @@ public class UILoading : UIBase
         loadingProgress.fillAmount = ratio;
     }
     //---------------------------------------------------------------------------------------------
+    public void SetLoading(int loadingType = 1000)
+    {
+        LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData(loadingType);
+        int randomNum = Random.Range(0, (loadingData.imageResource.Length - 1));
+        loadingBackground.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingData.imageResource[randomNum]);
+        randomNum = Random.Range(0, (loadingData.content.Length - 1));
+        gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.content[randomNum]);
+    }
+    //---------------------------------------------------------------------------------------------
     void OnEnable()
     {
         beginLoading = false;
         loadingProgress.fillAmount = 0.0f;
         loadingText.text = string.Empty;
     }
-    //---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------    
 }
