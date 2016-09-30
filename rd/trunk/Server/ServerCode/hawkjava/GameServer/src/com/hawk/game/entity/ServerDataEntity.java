@@ -10,42 +10,42 @@ import org.hawk.db.HawkDBEntity;
 import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "serverData")
-public class ServerDataEntity extends HawkDBEntity{	
+public class ServerDataEntity extends HawkDBEntity{
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
 	@GeneratedValue(generator = "AUTO_INCREMENT")
 	@Column(name = "id", unique = true)
 	private int id = 0;
-	
-	@Column(name = "pvpWeakRefreshTime")
-	protected long pvpWeakRefreshTime = 0;
-	
-	@Column(name = "pvpWeakRewardCount")
-	protected int pvpWeakRewardCount = 0;	
-	
+
+	@Column(name = "pvpWeekRefreshTime")
+	protected long pvpWeekRefreshTime = 0;
+
+	@Column(name = "pvpWeekRewardCount")
+	protected int pvpWeekRewardCount = 0;
+
 	@Column(name = "createTime")
 	protected int createTime = 0;
 
 	@Column(name = "updateTime")
 	protected int updateTime = 0;
-	
+
 	@Column(name = "invalid")
-	protected boolean invalid;	
-	
-	public long getPvpWeakRefreshTime() {
-		return pvpWeakRefreshTime;
+	protected boolean invalid;
+
+	public long getPvpWeekRefreshTime() {
+		return pvpWeekRefreshTime;
 	}
 
-	public void setPvpWeakRefreshTime(long pvpWeakRefreshTime) {
-		this.pvpWeakRefreshTime = pvpWeakRefreshTime;
+	public void setPvpWeekRefreshTime(long pvpWeekRefreshTime) {
+		this.pvpWeekRefreshTime = pvpWeekRefreshTime;
 	}
 
-	public int getPvpWeakRewardCount() {
-		return pvpWeakRewardCount;
+	public int getPvpWeekRewardCount() {
+		return pvpWeekRewardCount;
 	}
 
-	public void setPvpWeakRewardCount(int pvpWeakRewardCount) {
-		this.pvpWeakRewardCount = pvpWeakRewardCount;
+	public void setPvpWeekRewardCount(int pvpWeekRewardCount) {
+		this.pvpWeekRewardCount = pvpWeekRewardCount;
 	}
 
 	@Override

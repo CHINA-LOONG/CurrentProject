@@ -12,7 +12,7 @@ public class RewardItemCreator
         switch (rewardItemData.type)
         {
             case (int)PB.itemType.ITEM:
-                ItemData itemData = ItemData.valueof(rewardItemData.itemId, rewardItemData.count);
+                ItemData itemData = ItemData.valueof(rewardItemData.itemId, (int)rewardItemData.count);
                 go = InitItem(itemData,isTips, showGetby);
                 break;
 
@@ -26,7 +26,7 @@ public class RewardItemCreator
                 go = InitMonsterItem(monster);
                 break;
             case (int)PB.itemType.PLAYER_ATTR:
-                    go = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(rewardItemData.itemId)), rewardItemData.count).gameObject;
+                    go = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(rewardItemData.itemId)), (int)rewardItemData.count).gameObject;
                     UIUtil.SetParentReset(go.transform, parent);
                 break;
                 

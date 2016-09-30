@@ -32,12 +32,13 @@ public class PrompMsgRefreshCondition : UIBase
     private int changeAmount;
     private PromptMsg.PrompDelegate callBack;
     private bool autoClose;
+    private System.Action autofinish;
 
 
-    public static PrompMsgRefreshCondition Open(string title, int cost=0, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
+    public static PrompMsgRefreshCondition Open(string title, int cost=0, PromptMsg.PrompDelegate callback = null, bool autoClose = true,System.Action autofinish = null)
     {
         PrompMsgRefreshCondition mInfo = UIMgr.Instance.OpenUI_(ViewName, false) as PrompMsgRefreshCondition;
-        mInfo.SetData(title, cost, callback, autoClose);
+        mInfo.SetData(title, cost, callback, autoClose,autofinish);
         return mInfo;
     }
 
@@ -50,10 +51,11 @@ public class PrompMsgRefreshCondition : UIBase
         UIUtil.SetButtonTitle(btnConfirm.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
     }
 
-    public void SetData(string title, int cost, PromptMsg.PrompDelegate callback, bool autoClose)
+    public void SetData(string title, int cost, PromptMsg.PrompDelegate callback, bool autoClose, System.Action autofinish)
     {
         this.callBack = callback;
         this.autoClose = autoClose;
+        this.autofinish = autofinish;
 
         textTitle.text = title;
         OnAdventureConditionCountChangeNotify();
@@ -84,7 +86,7 @@ public class PrompMsgRefreshCondition : UIBase
     {
         if (time <= 0)
         {
-            OnClickConfirmBtn();
+            autofinish();
         }
         textDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("adventure_tipshuifu"),changeAmount, UIUtil.Convert_hh_mm_ss(time));
     }

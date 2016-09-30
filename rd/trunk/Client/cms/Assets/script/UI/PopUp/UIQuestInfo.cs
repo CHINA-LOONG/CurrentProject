@@ -67,7 +67,7 @@ public class UIQuestInfo : UIBase
             info = list[i].protocolData;
             if (info.type == (int)PB.itemType.ITEM)
             {
-                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count },true,false);
+                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = (int)info.count },true,false);
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }
@@ -80,7 +80,7 @@ public class UIQuestInfo : UIBase
             }
             else if (info.type == (int)PB.itemType.PLAYER_ATTR)
             {
-                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), info.count);
+                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)info.count);
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }

@@ -1,6 +1,7 @@
 ﻿#TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT
 id,preStartEvent,startEvent,endStartEvent,appearType,winFunc,loseFunc,endEvent,monsterList
 #对局id,#第一进程前事件,#开场动画,#刷怪完毕事件,#出现方式,#胜利条件,#失败条件,#结束剧情动画,怪物列表
+pvp_test1,,,,0,,,,"{""bossMinghe14Amute"":""1""}"
 yueguangsenlin11Level1,,,,0,,,,"{""xgMantuoluo"":""2""}"
 yueguangsenlin11Level2,,,,0,,,,"{""xgLangren"":""4""}"
 yueguangsenlin11Boss1,,,demo_tishi,0,,,,"{""bossMinghe14Amute"":""1""}"

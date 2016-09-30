@@ -68,12 +68,18 @@ public class EquipListItem : MonoBehaviour
     void RefreshGem(List<GemInfo> gems)
     {
         RemoveAllElement();
-        foreach (var info in gems)
+        for (int i = gems.Count - 1; i >= 0; i--)
         {
             EquipGemItem item = GetElement();
-            item.Refresh(info);
+            item.Refresh(gems[i]);
             item.transform.SetAsLastSibling();
         }
+        //foreach (var info in gems)
+        //{
+        //    EquipGemItem item = GetElement();
+        //    item.Refresh(info);
+        //    item.transform.SetAsLastSibling();
+        //}
     }
 
     public EquipGemItem GetElement()

@@ -31,14 +31,14 @@ public class UserLevelUpHandler implements HttpHandler{
 					params.get("game"), params.get("platform"), params.get("channel"), params.get("server"), 
 					params.get("puid"), Integer.valueOf(params.get("playerid")), Integer.valueOf(params.get("level")));
 
-			HawkLog.logPrintln("report_createRole: " + value);
+			HawkLog.logPrintln("report_levelUp: " + value);
 
 			// 更新
 			String sql = String.format("UPDATE role SET level = %d WHERE game = \"%s\" AND channel = \"%s\" AND platform = \"%s\" AND server = %d AND puid = \"%s\" AND playerid = %d", 
 					Integer.valueOf(params.get("level")), params.get("game"), params.get("channel"), params.get("platform"), 
 					Integer.valueOf(params.get("server")), params.get("puid"), Integer.valueOf(params.get("playerid")));
 
-			HawkLog.logPrintln("report_UpdateLevel: " + sql);
+			HawkLog.logPrintln("report_levelUp: " + sql);
 			DBManager.getInstance().executeSql("account", sql);
 		}
 	}

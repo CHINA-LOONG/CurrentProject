@@ -274,11 +274,11 @@ attackFireSmashStrongTips,给单体目标造成{0}%物攻的火属性伤害,Deal
 attackEarthSmashSlightTips,给单体目标造成{0}%物攻的暗属性伤害,Deals ({0}% of physical ATK) dark type physical damage to a single target
 attackEarthSmashMediumTips,给单体目标造成{0}%物攻的暗属性伤害,Deals ({0}% of physical ATK) dark type physical damage to a single target
 attackEarthSmashStrongTips,给单体目标造成{0}%物攻的暗属性伤害,Deals ({0}% of physical ATK) dark type physical damage to a single target
-attackMetalSlightTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type physical damage to a single target
-attackPlantSlightTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type physical damage to a single target
-attackWaterSlightTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type physical damage to a single target
-attackFireSlightTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type physical damage to a single target
-attackEarthSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type physical damage to a single target
+attackMetalSlightTips,给单体目标造成{0}%物攻的光属性伤害,Deals ({0}% of physical ATK) light type physical damage to a single target
+attackPlantSlightTips,给单体目标造成{0}%物攻的木属性伤害,Deals ({0}% of physical ATK) grass type physical damage to a single target
+attackWaterSlightTips,给单体目标造成{0}%物攻的水属性伤害,Deals ({0}% of physical ATK) water type physical damage to a single target
+attackFireSlightTips,给单体目标造成{0}%物攻的火属性伤害,Deals ({0}% of physical ATK) fire type physical damage to a single target
+attackEarthSlightTips,给单体目标造成{0}%物攻的暗属性伤害,Deals ({0}% of physical ATK) dark type physical damage to a single target
 magicMetalBallSlightTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
 magicMetalBallMediumTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
 magicMetalBallStrongTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
@@ -309,11 +309,11 @@ magicEarthBallStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals
 magicEarthColumnSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnMediumTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicEarthColumnStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
-magicMetalSlightTips,给单体目标造成{0}%物攻的光属性伤害,Deals ({0}% of physical ATK) light type magic damage to a single target
-magicPlantSlightTips,给单体目标造成{0}%物攻的木属性伤害,Deals ({0}% of physical ATK) grass type magic damage to a single target
-magicWaterSlightTips,给单体目标造成{0}%物攻的水属性伤害,Deals ({0}% of physical ATK) water type magic damage to a single target
-magicFireSlightTips,给单体目标造成{0}%物攻的火属性伤害,Deals ({0}% of physical ATK) fire type magic damage to a single target
-magicEarthSlightTips,给单体目标造成{0}%物攻的暗属性伤害,Deals ({0}% of physical ATK) dark type magic damage to a single target
+magicMetalSlightTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicPlantSlightTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicWaterSlightTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicFireSlightTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicEarthSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
 magicCureSlightTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
 magicCureMediumTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
 magicCureStrongTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
@@ -500,11 +500,11 @@ attackFireSmashStrongDescription,给单体目标造成火属性物理伤害,Deal
 attackEarthSmashSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
 attackEarthSmashMediumDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
 attackEarthSmashStrongDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
-attackMetalSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
-attackPlantSlightDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
-attackWaterSlightDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
-attackFireSlightDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
-attackEarthSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
+attackMetalSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
+attackPlantSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
+attackWaterSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
+attackFireSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+attackEarthSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
 magicMetalBallSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
 magicMetalBallMediumDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
 magicMetalBallStrongDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
@@ -535,11 +535,11 @@ magicEarthBallStrongDescription,给单体目标造成暗属性法术伤害,Deals
 magicEarthColumnSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
 magicEarthColumnMediumDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
 magicEarthColumnStrongDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
-magicMetalSlightDescription,给单体目标造成光属性物理伤害,Deals light type physical damage to a single target
-magicPlantSlightDescription,给单体目标造成木属性物理伤害,Deals grass type physical damage to a single target
-magicWaterSlightDescription,给单体目标造成水属性物理伤害,Deals water type physical damage to a single target
-magicFireSlightDescription,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
-magicEarthSlightDescription,给单体目标造成暗属性物理伤害,Deals dark type physical damage to a single target
+magicMetalSlightDescription,给单体目标造成光属性法术伤害,Deals light type magic damage to a single target
+magicPlantSlightDescription,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+magicWaterSlightDescription,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target
+magicFireSlightDescription,给单体目标造成火属性法术伤害,Deals fire type magic damage to a single target
+magicEarthSlightDescription,给单体目标造成暗属性法术伤害,Deals dark type magic damage to a single target
 magicCureSlightDescription,给单体目标回复生命值,Recovers HP for a single target
 magicCureMediumDescription,给单体目标回复生命值,Recovers HP for a single target
 magicCureStrongDescription,给单体目标回复生命值,Recovers HP for a single target
@@ -675,11 +675,11 @@ attackFireSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashMediumCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashStrongCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
-attackMetalSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackPlantSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackWaterSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackFireSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackEarthSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+attackMetalSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
 magicMetalBallSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicMetalBallMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicMetalBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
@@ -710,11 +710,11 @@ magicEarthBallStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnMediumCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnStrongCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
-magicMetalSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicPlantSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicWaterSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicFireSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicEarthSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicMetalSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthSlightCurlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicCureSlightCurlvl,{0}%法攻生命,{0}% of magic ATK HP
 magicCureMediumCurlvl,{0}%法攻生命,{0}% of magic ATK HP
 magicCureStrongCurlvl,{0}%法攻生命,{0}% of magic ATK HP
@@ -846,11 +846,11 @@ attackFireSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackEarthSmashStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-attackMetalSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackPlantSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackWaterSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackFireSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-attackEarthSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+attackMetalSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackPlantSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackWaterSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackFireSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+attackEarthSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 magicMetalBallSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicMetalBallMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicMetalBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
@@ -881,11 +881,11 @@ magicEarthBallStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnMediumNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicEarthColumnStrongNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-magicMetalSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicPlantSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicWaterSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicFireSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-magicEarthSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
+magicMetalSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicPlantSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicWaterSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicFireSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+magicEarthSlightNextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 magicCureSlightNextlvl,{0}%法攻生命,{0}% of magic ATK HP
 magicCureMediumNextlvl,{0}%法攻生命,{0}% of magic ATK HP
 magicCureStrongNextlvl,{0}%法攻生命,{0}% of magic ATK HP

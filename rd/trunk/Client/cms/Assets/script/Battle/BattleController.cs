@@ -13,6 +13,7 @@ public enum ExitInstanceType
     Exit_Instance_Retry,
     Exit_Instance_Summon,
     Exit_Instance_Pet,
+    Exit_Instance_PVP,
     Num_Exit_Instance_Type
 }
 
@@ -32,7 +33,6 @@ public class BattleController : MonoBehaviour
     int battleStartID = BattleConst.enemyStartID;
     public  BattleType battleType;
     InstanceData instanceData;
-    PB.HSInstanceEnterRet curInstance = null;
     BattleLevelData curBattleLevel = null;
     int instanceStar = 0;
     GameObject occlusionY;
@@ -117,6 +117,7 @@ public class BattleController : MonoBehaviour
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
+    private PvpFightParam mCurPvpParam;
     private bool battleSuccess;
     private Byte mCurMaxSlotIndex;
     public Byte CurMaxSlotIndex
@@ -275,7 +276,6 @@ public class BattleController : MonoBehaviour
 						return;
 					}
 				}
-
 			}
 		}
            
@@ -309,6 +309,7 @@ public class BattleController : MonoBehaviour
     public void StartBattlePrepare(EnterInstanceParam enterParam)
     {
         curInstanceParam = enterParam;
+        mCurPvpParam = null;
         //add player to load
         PbUnit pb = null;
         Dictionary<int, PbUnit> unitPbList = GameDataMgr.Instance.PlayerDataAttr.unitPbList;
@@ -321,12 +322,11 @@ public class BattleController : MonoBehaviour
             }
         }
         //add enemy to load
-        curInstance = enterParam.instanceData;
         instanceData = StaticDataMgr.Instance.GetInstanceData(enterParam.instanceData.instanceId);
-        count = curInstance.battle.Count;
+        count = enterParam.instanceData.battle.Count;
         for (int index = 0; index < count; ++index)
         {
-            PB.HSBattle curBattle = curInstance.battle[index];
+            PB.HSBattle curBattle = enterParam.instanceData.battle[index];
             int monsterCount = curBattle.monsterCfgId.Count;
             for (int i = 0; i < curBattle.monsterCfgId.Count; ++i)
             {
@@ -334,6 +334,41 @@ public class BattleController : MonoBehaviour
             }
         }
 
+        mHuoliBeforeScore = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
+        StartBattlePrepareCommon();
+    }
+    //---------------------------------------------------------------------------------------------
+    public void StartBattlePvpPrepare(PvpFightParam pvpParam)
+    {
+        mCurPvpParam = pvpParam;
+        curInstanceParam = null;
+        //add player to load
+        PbUnit pb = null;
+        Dictionary<int, PbUnit> unitPbList = GameDataMgr.Instance.PlayerDataAttr.unitPbList;
+        int count = pvpParam.playerTeam.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (unitPbList.TryGetValue(pvpParam.playerTeam[i], out pb))
+            {
+                AddUnitDataRequestInternal(pb.id);
+            }
+        }
+
+        //add enemy to load
+        List<PB.HSMonster> defendList = pvpParam.targetData.defenceData.monsterInfo;
+        count = defendList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            AddUnitDataRequestInternal(defendList[i].cfgId);
+        }
+
+        instanceData = StaticDataMgr.Instance.GetInstanceData("pvp_scene");
+
+        StartBattlePrepareCommon();
+    }
+    //---------------------------------------------------------------------------------------------
+    private void StartBattlePrepareCommon()
+    {
         ActorEventService.Instance.AddResourceGroup("common");
         ActorEventService.Instance.AddResourceGroup("commonAttack");
         ActorEventService.Instance.AddResourceGroup("commonBuff");
@@ -343,8 +378,7 @@ public class BattleController : MonoBehaviour
 
         //add scoreui
         UIScore.AddResourceRequest();
-        mHuoliBeforeScore = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
-
+        //add hint message
         ResourceMgr.Instance.AddAssetRequest(new AssetRequest("hintMessage"));
     }
     //---------------------------------------------------------------------------------------------
@@ -369,7 +403,7 @@ public class BattleController : MonoBehaviour
     public void StartBattle()
     {
         mCurMaxSlotIndex = BattleConst.slotIndexMax;
-        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.PVP)
+        if (mCurPvpParam != null)
         {
             mCurMaxSlotIndex = BattleConst.slotIndexMaxPVP;
         }
@@ -379,25 +413,29 @@ public class BattleController : MonoBehaviour
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;
-        curInstance = curInstanceParam.instanceData;
-        //battleType = (BattleType)proto.battleType;
-        instanceData = StaticDataMgr.Instance.GetInstanceData(curInstanceParam.instanceData.instanceId);
-        maxProcessIndex = curInstanceParam.instanceData.battle.Count;
-
-        InstanceEntryRuntimeData instanceRuntimeData = InstanceMapService.Instance.GetRuntimeInstance(curInstanceParam.instanceData.instanceId);
-        if (instanceRuntimeData!=null)
+        if (curInstanceParam != null)
         {
-            instanceStar = instanceRuntimeData.star;
+            //battleType = (BattleType)proto.battleType;
+            instanceData = StaticDataMgr.Instance.GetInstanceData(curInstanceParam.instanceData.instanceId);
+            maxProcessIndex = curInstanceParam.instanceData.battle.Count;
+            InstanceEntryRuntimeData instanceRuntimeData = InstanceMapService.Instance.GetRuntimeInstance(curInstanceParam.instanceData.instanceId);
+            if (instanceRuntimeData != null)
+            {
+                instanceStar = instanceRuntimeData.star;
+            }
+            //GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(curInstanceParam.playerTeam);
         }
-        if (!InitVictorMethod())
-            return;
+        else if (mCurPvpParam != null)
+        {
+            instanceData = StaticDataMgr.Instance.GetInstanceData("pvp_scene");
+            maxProcessIndex = 1;
+            instanceStar = 0;
+        }
+
         AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
-        //设置battlegroup 并且创建模型
-        //battleGroup.SetEnemyList(proto.enemyList);
-        GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(curInstanceParam.playerTeam);
 
         //加载场景
-        LoadBattleScene(instanceData.instanceProtoData.sceneID);
+        LoadBattleScene();
     }
     //---------------------------------------------------------------------------------------------
     public UIBattle GetUIBattle()
@@ -410,16 +448,9 @@ public class BattleController : MonoBehaviour
         return (curBattleScene != null) ? curBattleScene.gameObject : null;
     }
     //---------------------------------------------------------------------------------------------
-    void LoadBattleScene(string sceneName)
+    void LoadBattleScene()
     {
         battleGroup = new BattleGroup();
-        ////int index = sceneName.LastIndexOf('/');
-        ////string assetbundle = sceneName.Substring(0, index);
-        ////string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
-        ////curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, "", "scene_root");
-        ////OnSceneLoaded(null, null);
-
-        //ResourceMgr.Instance.LoadLevelAsyn(sceneName, false, OnSceneLoaded);
         GameObject sceneRoot = GameObject.Find("Root");
         if (sceneRoot == null)
         {
@@ -455,43 +486,26 @@ public class BattleController : MonoBehaviour
                 }
             }
         }
+        
+        if (mCurPvpParam != null)
+        {
+            battleGroup.SetPlayerList(ref mCurPvpParam.playerTeam);
+        }
+        else if (curInstanceParam != null)
+        {
+            battleGroup.SetPlayerList(ref curInstanceParam.playerTeam);
+        }
 
-        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
-        battleGroup.SetPlayerList();
         SetCameraDefault();
-
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
         uiBattle.Initialize();
         uiBattle.ShowUI(false);
         mUILevelInfo = UIMgr.Instance.OpenUI_(UILevelInfo.ViewName) as UILevelInfo;
-        mUILevelInfo.SetInstanceName(entryData.NameAttr);
-        //UIIm.Instance.transform.SetAsLastSibling();
-        StartProcess(curProcessIndex);
-    }
-    //---------------------------------------------------------------------------------------------
-    public void OnSceneLoaded(GameObject instance, System.EventArgs args)
-    {
-        GameObject sceneRoot = GameObject.Find("Root");
-        if (sceneRoot == null)
+        if (entryData != null)
         {
-            Logger.LogError("can not find pos slot parent!");
-            sceneRoot = gameObject;
+            mUILevelInfo.SetInstanceName(entryData.NameAttr);
         }
-        curBattleScene = ObjectDataMgr.Instance.AddSceneObject(BattleConst.battleSceneGuid, sceneRoot);
-        StartCoroutine(LoadBattleUI());
-    }
-    //---------------------------------------------------------------------------------------------
-    public IEnumerator LoadBattleUI()
-    {
-        yield return new WaitForSeconds(1.0f);
-        //SetCameraDefault();
-
-        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
-        battleGroup.SetPlayerList();
-
-        //uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
-        //uiBattle.Initialize();
-        //uiBattle.ShowUI();
+        //UIIm.Instance.transform.SetAsLastSibling();
         StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
@@ -550,16 +564,9 @@ public class BattleController : MonoBehaviour
         //state 1 next back to instance info
         //state 2 retry back to team choose
         battleGroup.DestroyEnemys();
+        battleGroup.DestroyPlayers();
         curBattleScene.ClearEvent();
         ObjectDataMgr.Instance.RemoveBattleObject(BattleConst.battleSceneGuid);
-        //Destroy(curBattleScene);
-        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
-        for (int i = 0; i < playerUnitList.Count; ++i)
-        {
-            playerUnitList[i].ClearEvent();
-            ObjectDataMgr.Instance.RemoveBattleObject(playerUnitList[i].guid);
-            //playerUnitList[i].gameObject.SetActive(false);
-        }
         battleGroup = null;
         curBattleScene = null;
 
@@ -617,109 +624,6 @@ public class BattleController : MonoBehaviour
         return posParent;
     }
     //---------------------------------------------------------------------------------------------
-    /// <summary>
-    /// 反射获取战斗/进程胜利的方法
-    /// </summary>
-    bool InitVictorMethod()
-    {
-        //获取战斗胜利的func
-        //switch (battleType)
-        //{ 
-        //    case BattleType.Normal:
-        //        {
-        //            if (instanceData.normalValiVicMethod != null)
-        //            {
-        //                victorMethod = instanceData.normalValiVicMethod;
-        //                break;
-        //            }
-
-        //            string funcName = instanceData.normalValiVic;
-        //            var cls = typeof(NormalScript);
-        //            victorMethod = cls.GetMethod(funcName);
-        //            if (victorMethod == null)
-        //            {
-        //                Logger.LogErrorFormat("Instance {0}'s normalValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-        //                return false;
-        //            }
-        //            instanceData.normalValiVicMethod = victorMethod;
-        //            break;
-        //        }
-        //    case BattleType.Boss:
-        //        {
-        //            if (instanceData.bossValiVicMethod != null)
-        //            {
-        //                victorMethod = instanceData.bossValiVicMethod;
-        //                break;
-        //            }
-
-        //            string funcName = instanceData.bossValiVic;
-        //            var cls = typeof(BossScript);
-        //            victorMethod = cls.GetMethod(funcName);
-        //            if (victorMethod == null)
-        //            {
-        //                Logger.LogErrorFormat("Instance {0}'s bossValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-        //                return false;
-        //            }
-        //            instanceData.bossValiVicMethod = victorMethod;
-
-        //            foreach (var item in instanceData.bossProcess)
-        //            {
-        //                if (item.method != null)
-        //                    break;
-
-        //                funcName = item.func;
-        //                var method = cls.GetMethod(funcName);
-        //                if (method == null)
-        //                {
-        //                    Logger.LogErrorFormat("Instance {0}'s BossProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-        //                    return false;
-        //                }
-        //                item.method = method;
-        //            }
-        //            break;
-        //        }
-        //    case BattleType.Rare:
-        //        {
-        //            if (instanceData.rareValiVicMethod != null)
-        //            {
-        //                victorMethod = instanceData.rareValiVicMethod;
-        //                break;
-        //            }
-
-        //            string funcName = instanceData.rareValiVic;
-        //            var cls = typeof(RareScript);
-        //            victorMethod = cls.GetMethod(funcName);
-        //            if (victorMethod == null)
-        //            {
-        //                Logger.LogErrorFormat("Instance {0}'s rareValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-        //                return false;
-        //            }
-        //            instanceData.rareValiVicMethod = victorMethod;
-
-        //            foreach (var item in instanceData.rareProcess)
-        //            {
-        //                if (item.method != null)
-        //                    break;
-
-        //                funcName = item.func;
-        //                var method = cls.GetMethod(funcName);
-        //                if (method == null)
-        //                {
-        //                    Logger.LogErrorFormat("Instance {0}'s RareProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-        //                    return false;
-        //                }
-        //                item.method = method;
-        //            }
-        //            break;
-        //        }
-        //    default:
-        //        Logger.LogError("Battle type error" + battleType);
-        //        return false;
-        //}
-
-        return true;
-    }
-    //---------------------------------------------------------------------------------------------
     //void ShowUI()
     //{
     //    GameEventMgr.Instance.FireEvent(GameEventList.ShowBattleUI);
@@ -746,61 +650,72 @@ public class BattleController : MonoBehaviour
         {
             GameObject slotNode = BattleController.Instance.GetSlotNode(UnitCamp.Player, 0, false);
             floorHeight = slotNode.transform.position.y;
-
             process.ClearRewardItem();
-            PB.HSBattle curBattle = curInstance.battle[index];
-            curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
-            if (curBattleLevel.battleProtoData.id.Contains("Boss"))
+
+            if (mCurPvpParam != null)
             {
-                battleType = BattleType.Boss;
+                curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(instanceData.battleLevelList[0]);
+                List<PbUnit> pbList = new List<PbUnit>();
+                List<PB.HSMonster> pvpEnemyList = mCurPvpParam.targetData.defenceData.monsterInfo;
+                int count = pvpEnemyList.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    PbUnit curPbUnit = Util.CreatePbUnitFromHsMonster(pvpEnemyList[i], UnitCamp.Enemy);
+                    curPbUnit.slot = i;
+                    pbList.Add(curPbUnit);
+                }
+                battleGroup.SetEnemyList(pbList, true);
             }
             else
             {
-                battleType = BattleType.Normal;
-            }
-
-            List<PbUnit> pbList = new List<PbUnit>();
-
-            int monsterCount = curBattle.monsterCfgId.Count;
-            int dropCount = curBattle.monsterDrop.Count;
-            if (monsterCount != dropCount)
-            {
-                Logger.LogError("monster count not equal to drop count!");
-            }
-
-            for (int i = 0; i < curBattle.monsterCfgId.Count; ++i)
-            {
-                PbUnit pbUnit = new PbUnit();
-                //enemy use minus uid
-                pbUnit.guid = --battleStartID;
-                //if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
-                //    pbUnit.id = instanceData.bossID;
-                //else
-                pbUnit.id = curBattle.monsterCfgId[i]; //instanceData.rareID;
-                pbUnit.level = instanceData.instanceProtoData.level;
-                pbUnit.camp = UnitCamp.Enemy;
-                pbUnit.slot = i;
-                pbUnit.lazy = BattleConst.defaultLazy;
-
-                pbList.Add(pbUnit);
-
-                if (i < dropCount)
+                PB.HSBattle curBattle = curInstanceParam.instanceData.battle[index];
+                curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
+                if (curBattleLevel.battleProtoData.id.Contains("Boss"))
                 {
-                    process.AddRewardItem(pbUnit.guid, curBattle.monsterDrop[i]);
+                    battleType = BattleType.Boss;
                 }
+                else
+                {
+                    battleType = BattleType.Normal;
+                }
+
+                List<PbUnit> pbList = new List<PbUnit>();
+
+                int monsterCount = curBattle.monsterCfgId.Count;
+                int dropCount = curBattle.monsterDrop.Count;
+                if (monsterCount != dropCount)
+                {
+                    Logger.LogError("monster count not equal to drop count!");
+                }
+
+                for (int i = 0; i < curBattle.monsterCfgId.Count; ++i)
+                {
+                    PbUnit pbUnit = new PbUnit();
+                    //enemy use minus uid
+                    pbUnit.guid = --battleStartID;
+                    //if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
+                    //    pbUnit.id = instanceData.bossID;
+                    //else
+                    pbUnit.id = curBattle.monsterCfgId[i]; //instanceData.rareID;
+                    pbUnit.level = instanceData.instanceProtoData.level;
+                    pbUnit.camp = UnitCamp.Enemy;
+                    pbUnit.slot = i;
+                    pbUnit.lazy = BattleConst.defaultLazy;
+
+                    pbList.Add(pbUnit);
+
+                    if (i < dropCount)
+                    {
+                        process.AddRewardItem(pbUnit.guid, curBattle.monsterDrop[i]);
+                    }
+                }
+                battleGroup.SetEnemyList(pbList);
             }
-            battleGroup.SetEnemyList(pbList);
-            //if (index == 0)
-            //{
-            //    AudioSystemMgr.Instance.PlayMusic(BattleController.Instance.InstanceData.instanceProtoData.backgroundmusic);
-            //}
-            //TODO:动画1
+
             System.Action<float> preStartEvent = (delayTime) =>
             {
                 process.StartProcess(index, curBattleLevel);
             };
-            //Logger.Log("当前副本ID：" + curBattleLevel.battleProtoData.id);
-            //demo_1_level2
             if (!string.IsNullOrEmpty(curBattleLevel.battleProtoData.preStartEvent) && InstanceStar == 0)
             {
                 UISpeech.Open(curBattleLevel.battleProtoData.preStartEvent, preStartEvent);
@@ -824,22 +739,11 @@ public class BattleController : MonoBehaviour
             yield return new WaitForSeconds(delayTime);
         }
 
-        //对局切换过度
-        battleGroup.DestroyEnemys();
-        //int playerCount = battleGroup.PlayerFieldList.Count;
-        //for (int index = 0; index < playerCount; ++index)
-        //{
-        //    BattleObject bo = battleGroup.PlayerFieldList[index];
-        //    if (bo != null)
-        //    {
-        //        bo.unit.OnStartNextProcess();
-        //    }
-        //}
-        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
-        var itor = playerUnitList.GetEnumerator();
-        while (itor.MoveNext())
+        List<BattleObject> playerUnitList = battleGroup.GetAllUnitList((int)UnitCamp.Player);
+        int count = playerUnitList.Count;
+        for (int i = 0; i < count; ++i)
         {
-            itor.Current.unit.OnStartNextProcess();
+            playerUnitList[i].unit.OnStartNextProcess();
         }
 
         MagicDazhaoController.Instance.ClearAll ();
@@ -976,31 +880,48 @@ public class BattleController : MonoBehaviour
         PhyDazhaoController.Instance.ClearAll();
         process.HideFireFocus();
 
-        PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
-        instanceParam.deadMonsterCount = 0;
-        if (mRevived == false)
+        if (mCurPvpParam != null)
         {
-            List<BattleObject>boList = battleGroup.GetAllUnitList((int)UnitCamp.Player);
-            for (int i = 0; i < boList.Count; ++i)
+            PB.HSPVPSettle pvpInstanceParam = new PB.HSPVPSettle();
+            if (isSuccess)
             {
-                BattleObject bo = boList[i];
-                if (bo != null)
+                pvpInstanceParam.result = (int)PB.PvpResult.WIN;
+            }
+            else
+            {
+                pvpInstanceParam.result = (int)PB.PvpResult.LOSE;
+            }
+
+            GameApp.Instance.netManager.SendMessage(PB.code.PVP_SETTLE_C.GetHashCode(), pvpInstanceParam, false);
+        }
+        else if (curInstanceParam != null)
+        {
+            PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
+            instanceParam.deadMonsterCount = 0;
+            if (mRevived == false)
+            {
+                List<BattleObject> boList = battleGroup.GetAllUnitList((int)UnitCamp.Player);
+                for (int i = 0; i < boList.Count; ++i)
                 {
-                    if (bo.unit.curLife <= 0 || bo.unit.State == UnitState.Dead)
+                    BattleObject bo = boList[i];
+                    if (bo != null)
                     {
-                        instanceParam.deadMonsterCount++;
+                        if (bo.unit.curLife <= 0 || bo.unit.State == UnitState.Dead)
+                        {
+                            instanceParam.deadMonsterCount++;
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            //3 means 1 star
-            instanceParam.deadMonsterCount = 3;
-        }
+            else
+            {
+                //3 means 1 star
+                instanceParam.deadMonsterCount = 3;
+            }
 
-        instanceParam.passBattleCount = isSuccess ? maxProcessIndex : curProcessIndex;
-        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
+            instanceParam.passBattleCount = isSuccess ? maxProcessIndex : curProcessIndex;
+            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
+        }
     } 
     //---------------------------------------------------------------------------------------------
     void OnInstanceSettleResult(ProtocolMessage msg)

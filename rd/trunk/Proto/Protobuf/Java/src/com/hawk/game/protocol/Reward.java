@@ -74,9 +74,9 @@ public final class Reward {
     com.google.protobuf.ByteString
         getItemIdBytes();
 
-    // optional int32 count = 4;
+    // optional int64 count = 4;
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 数量
@@ -84,13 +84,13 @@ public final class Reward {
      */
     boolean hasCount();
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 数量
      * </pre>
      */
-    int getCount();
+    long getCount();
 
     // optional int32 stage = 5;
     /**
@@ -271,7 +271,7 @@ public final class Reward {
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              count_ = input.readInt32();
+              count_ = input.readInt64();
               break;
             }
             case 40: {
@@ -451,11 +451,11 @@ public final class Reward {
       }
     }
 
-    // optional int32 count = 4;
+    // optional int64 count = 4;
     public static final int COUNT_FIELD_NUMBER = 4;
-    private int count_;
+    private long count_;
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 数量
@@ -465,13 +465,13 @@ public final class Reward {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 数量
      * </pre>
      */
-    public int getCount() {
+    public long getCount() {
       return count_;
     }
 
@@ -617,7 +617,7 @@ public final class Reward {
       type_ = 0;
       id_ = 0L;
       itemId_ = "";
-      count_ = 0;
+      count_ = 0L;
       stage_ = 0;
       level_ = 0;
       attrDatas_ = java.util.Collections.emptyList();
@@ -665,7 +665,7 @@ public final class Reward {
         output.writeBytes(3, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, count_);
+        output.writeInt64(4, count_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, stage_);
@@ -702,7 +702,7 @@ public final class Reward {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, count_);
+          .computeInt64Size(4, count_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
@@ -848,7 +848,7 @@ public final class Reward {
         bitField0_ = (bitField0_ & ~0x00000002);
         itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        count_ = 0;
+        count_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
         stage_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -1243,10 +1243,10 @@ public final class Reward {
         return this;
       }
 
-      // optional int32 count = 4;
-      private int count_ ;
+      // optional int64 count = 4;
+      private long count_ ;
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 数量
@@ -1256,30 +1256,30 @@ public final class Reward {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 数量
        * </pre>
        */
-      public int getCount() {
+      public long getCount() {
         return count_;
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 数量
        * </pre>
        */
-      public Builder setCount(int value) {
+      public Builder setCount(long value) {
         bitField0_ |= 0x00000008;
         count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 数量
@@ -1287,7 +1287,7 @@ public final class Reward {
        */
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        count_ = 0;
+        count_ = 0L;
         onChanged();
         return this;
       }
@@ -3405,7 +3405,7 @@ public final class Reward {
       "e.proto\032\030Protocol/Attribute.proto\032\025Proto" +
       "col/Player.proto\032\026Protocol/Monster.proto" +
       "\"\232\001\n\nRewardItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(" +
-      "\003\022\016\n\006itemId\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\022\r\n\005stag" +
+      "\003\022\016\n\006itemId\030\003 \002(\t\022\r\n\005count\030\004 \001(\003\022\r\n\005stag" +
       "e\030\005 \001(\005\022\r\n\005level\030\006 \001(\005\022\030\n\tattrDatas\030\007 \003(" +
       "\0132\005.Attr\022\033\n\007monster\030\010 \001(\0132\n.HSMonster\"\213\001" +
       "\n\014HSRewardInfo\022\"\n\nplayerAttr\030\001 \001(\0132\016.Syn" +

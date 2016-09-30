@@ -501,7 +501,7 @@ public class UIAdventureLayout : UIBase,
         {
             PrompMsgRefreshCondition prompt = PrompMsgRefreshCondition.Open(StaticDataMgr.Instance.GetTextByID("adventure_tipsbuy"),
                                                                            50,
-                                                                           PrompButtonBuyCallBack);
+                                                                           PrompButtonBuyCallBack,true,OnClickRefeshConditionBtn);
         }
     }
     void PrompButtonRefreshCallBack(MsgBox.PrompButtonClick click)

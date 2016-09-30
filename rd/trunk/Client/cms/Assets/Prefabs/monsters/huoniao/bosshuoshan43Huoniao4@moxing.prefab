@@ -867,6 +867,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475278}
   - 95: {fileID: 9544328}
+  - 114: {fileID: 11465960}
   m_Layer: 0
   m_Name: bosshuoshan43Huoniao4@moxing
   m_TagString: Untagged
@@ -1473,7 +1474,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133126}
-  m_LocalRotation: {x: .0999418944, y: -.647511959, z: .69999522, w: .28415969}
+  m_LocalRotation: {x: .0999418795, y: -.647511899, z: .69999516, w: .28415966}
   m_LocalPosition: {x: .0348120108, y: -.0465288162, z: -.0380624384}
   m_LocalScale: {x: .99999994, y: 1, z: 1.00000012}
   m_Children:
@@ -2149,6 +2150,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11465960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4134488cf739b6848a5b594e85bb11e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUseXgAi: 0
 --- !u!137 &13724964
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -23,6 +23,11 @@ public class UIAdventureTeams : UIBase,
     public FixCountScrollView scrollView;
     private List<AdventureTeam> teams=new List<AdventureTeam>();
     private UIAdventureReward uiAdventureReward;
+    
+    public ScrollRect scrollRect
+    {
+        get { return scrollView.GetComponent<ScrollRect>(); }
+    }
     void Start()
     {
         textTitle.text = StaticDataMgr.Instance.GetTextByID("adventure_title");
@@ -54,7 +59,7 @@ public class UIAdventureTeams : UIBase,
     void OnClickAddTeamBtn()
     {
         AdventureTeamPriceData teamPriceData = StaticDataMgr.Instance.GetAdventureTeamPriceData(AdventureDataMgr.Instance.teamCount + 1);
-        MsgBox.PrompCostMsg.Open(teamPriceData.gold, StaticDataMgr.Instance.GetTextByID("adventure_addsure"), "", ConformOpenTask);
+        MsgBox.PrompCostMsg.Open(teamPriceData.gold, StaticDataMgr.Instance.GetTextByID("adventure_addsure"), "", CostType.ZuanshiCoin, ConformOpenTask);
     }
     void ConformOpenTask(MsgBox.PrompButtonClick click)
     {
@@ -91,7 +96,7 @@ public class UIAdventureTeams : UIBase,
 
     void BindListener()
     {
-        GameEventMgr.Instance.AddListener(GameEventList.AdventureAddTeam, RefreshData);
+        //GameEventMgr.Instance.AddListener(GameEventList.AdventureAddTeam, RefreshData);
         GameEventMgr.Instance.AddListener(GameEventList.AdventureChange, RefreshData);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_BUY_TEAM_C.GetHashCode().ToString(), OnAdventureBuyTeamReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ADVENTURE_BUY_TEAM_S.GetHashCode().ToString(), OnAdventureBuyTeamReturn);
@@ -100,7 +105,7 @@ public class UIAdventureTeams : UIBase,
     }
     void UnBindListener()
     {
-        GameEventMgr.Instance.RemoveListener(GameEventList.AdventureAddTeam, RefreshData);
+        //GameEventMgr.Instance.RemoveListener(GameEventList.AdventureAddTeam, RefreshData);
         GameEventMgr.Instance.RemoveListener(GameEventList.AdventureChange, RefreshData);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_BUY_TEAM_C.GetHashCode().ToString(), OnAdventureBuyTeamReturn);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ADVENTURE_BUY_TEAM_S.GetHashCode().ToString(), OnAdventureBuyTeamReturn);
@@ -123,7 +128,10 @@ public class UIAdventureTeams : UIBase,
         }
         PB.HSAdventureBuyTeamRet result = msg.GetProtocolBody<PB.HSAdventureBuyTeamRet>();
         AdventureDataMgr.Instance.AdventureAddTeam(result.teamId);
-        GameEventMgr.Instance.FireEvent(GameEventList.AdventureAddTeam);
+        //GameEventMgr.Instance.FireEvent(GameEventList.AdventureAddTeam);
+        RefreshData();
+        scrollRect.verticalNormalizedPosition = 0.0f;
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_001"), (int)PB.ImType.PROMPT);
     }
     void OnAdventureSettleReturn(ProtocolMessage msg)
     {

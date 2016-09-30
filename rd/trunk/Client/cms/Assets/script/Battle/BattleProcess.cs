@@ -845,7 +845,11 @@ public class BattleProcess : MonoBehaviour
 
             BattleController.Instance.IsRevived = true;
             insertAction.Clear();
-            if (mCurrentReviveCount < BattleConst.maxReviveCount && forceResult < 0)
+            if (
+                mCurrentReviveCount < BattleConst.maxReviveCount &&
+                forceResult < 0 &&
+                BattleController.Instance.CurMaxSlotIndex == BattleConst.slotIndexMax
+                )
             {
                 StartCoroutine(ShowReviveUI());
             }

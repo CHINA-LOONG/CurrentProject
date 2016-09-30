@@ -25,7 +25,6 @@ public class PvpRankItem : MonoBehaviour
     {
         itemButton.onClick.AddListener(OnItemButtonClick);
 	}
-
     public void InitWith(PB.PVPRankData rankData)
     {
         pvpRankData = rankData;
@@ -42,11 +41,24 @@ public class PvpRankItem : MonoBehaviour
         }
         nameText.text = rankData.name;
         lvlText.text = rankData.level.ToString();
-        gradelevelText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetPvpStageWithPoint(rankData.point).ToString();
+        int stage = GameDataMgr.Instance.PvpDataMgrAttr.GetPvpStageWithPoint(rankData.point);
+        gradelevelText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetStageNameWithId(stage);
         competivePointText.text = rankData.point.ToString();
     }
     void OnItemButtonClick()
     {
-        PvpOtherDefenseInfo.OpenWith();
+        GameDataMgr.Instance.PvpDataMgrAttr.RequestPlayerDefense(pvpRankData.playerId, OnRequestDefenseFinished);
+    }
+    void OnRequestDefenseFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
+        PB.HSPVPRankDefenceRet msgRet = message.GetProtocolBody<PB.HSPVPRankDefenceRet>();
+        PvpOtherDefenseInfo.OpenWith(msgRet.monsterDefence);
     }
 }

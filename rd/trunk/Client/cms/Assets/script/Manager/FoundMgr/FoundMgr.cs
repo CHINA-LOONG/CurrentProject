@@ -182,7 +182,7 @@ public class FoundMgr
         if (curUIPanel as UIMonsters == null)
         {
             uibuild.uiMonsters = UIMgr.Instance.OpenUI_(UIMonsters.ViewName) as UIMonsters;
-            uibuild.uiQuest.Refresh(index);
+            uibuild.uiMonsters.Refresh(index);
         }
         else
         {
@@ -215,7 +215,8 @@ public class FoundMgr
         }
         if (!isOpened)
         {
-            Logger.LogError("章节为开启 for Xiaolong");
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_004"), (int)PB.ImType.PROMPT);
+            //Logger.LogError("章节为开启 for Xiaolong");
             return;
         }
         InstanceMap.OpenMapAndInstanceList(chapter, instanceDiff);
@@ -250,7 +251,7 @@ public class FoundMgr
     {
         if (curUIPanel as UIAdventure == null)
         {
-            uibuild.uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
+            uibuild.OnAdventureButtonClick(null);
         }
         else
         {

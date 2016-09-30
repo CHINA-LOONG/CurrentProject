@@ -52,6 +52,12 @@ public class SociatyContentInfomation : SociatyContentBase
         jidiButton.onClick.AddListener(OnJiDiButtonClick);
         bossButton.onClick.AddListener(OnBossButtonClick);
 
+        UIUtil.SetButtonTitle(qifuButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_pray"));
+        UIUtil.SetButtonTitle(taskButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_task"));
+        UIUtil.SetButtonTitle(shopButton.transform, StaticDataMgr.Instance.GetTextByID("shop_gonghui"));
+        UIUtil.SetButtonTitle(jidiButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_jidi"));
+        UIUtil.SetButtonTitle(bossButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_boss"));
+
         captionLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_chairmanname");
         idLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_id1");
         memberLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_peoplenum1");

@@ -65,7 +65,7 @@ public class UISignInfo : UIBase
         }
         if (info.type == (int)PB.itemType.ITEM)
         {
-            ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count }, true, false);
+            ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = (int)info.count }, true, false);
             UIUtil.SetParentReset(icon.transform, rewardParent);
             rewardItem = icon.gameObject;
         }

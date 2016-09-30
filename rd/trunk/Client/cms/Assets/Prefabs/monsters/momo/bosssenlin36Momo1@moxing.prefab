@@ -209,6 +209,7 @@ GameObject:
   - 4: {fileID: 464024}
   - 95: {fileID: 9555156}
   - 65: {fileID: 6505070}
+  - 114: {fileID: 11485860}
   m_Layer: 10
   m_Name: bosssenlin36Momo1@moxing
   m_TagString: Untagged
@@ -286,6 +287,21 @@ GameObject:
   - 4: {fileID: 423574}
   m_Layer: 10
   m_Name: Bip001 R Finger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &137442
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403738}
+  m_Layer: 10
+  m_Name: wp_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +751,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 493354}
   m_Layer: 10
-  m_Name: wp_body
+  m_Name: wp_dun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,6 +847,18 @@ Transform:
   - {fileID: 426472}
   m_Father: {fileID: 452734}
   m_RootOrder: 0
+--- !u!4 &403738
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137442}
+  m_LocalRotation: {x: .49999997, y: -.50000006, z: .50000006, w: .49999997}
+  m_LocalPosition: {x: -.0516765751, y: .180554524, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459868}
+  m_RootOrder: 2
 --- !u!4 &403868
 Transform:
   m_ObjectHideFlags: 1
@@ -1222,8 +1250,9 @@ Transform:
   m_Children:
   - {fileID: 444296}
   - {fileID: 475356}
-  - {fileID: 493354}
+  - {fileID: 403738}
   - {fileID: 458944}
+  - {fileID: 493354}
   m_Father: {fileID: 428378}
   m_RootOrder: 2
 --- !u!4 &461360
@@ -1454,12 +1483,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195692}
-  m_LocalRotation: {x: .49999997, y: -.50000006, z: .50000006, w: .49999997}
+  m_LocalRotation: {x: .499999911, y: -.50000006, z: .500000119, w: .5}
   m_LocalPosition: {x: -.0516765751, y: .180554524, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459868}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!4 &493510
 Transform:
   m_ObjectHideFlags: 1
@@ -1589,6 +1618,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11485860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e4abdf1d280234aba4970408add647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUseXgAi: 0
 --- !u!137 &13725738
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

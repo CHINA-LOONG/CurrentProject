@@ -28,7 +28,7 @@ public class DropItem : MonoBehaviour
         switch(subItem.type)
         {
             case (int)PB.itemType.ITEM:
-                ItemData itemData = ItemData.valueof(subItem.itemId, subItem.count);
+                ItemData itemData = ItemData.valueof(subItem.itemId, (int)subItem.count);
                 return  InitItem(itemData);
 
             case (int)PB.itemType.EQUIP:

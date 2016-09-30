@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public enum UnitCamp
@@ -129,7 +130,7 @@ public class BattleConst
     public const float bpMagicLvl = 1.0f;
     public const float bpDotLvl = 1.0f;
 
-    public const float lifeBarDistance = 0.15f;
+    public const float lifeBarDistance = 0.1f;
     public const float floatZero = 0.00001f;
 
     public static Vector2 uiFarDistance = new Vector2(0.0f, 100000.0f);

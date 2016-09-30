@@ -130,26 +130,44 @@ public class GameMain : MonoBehaviour
         UIMgr.Instance.ClearUILayerList();
     }
     //---------------------------------------------------------------------------------------------
+    public void LoadBattleLevelPvp(PvpFightParam pvpParam)
+    {
+        SwitchLevelEventArgs args = new SwitchLevelEventArgs();
+        args.enterParam = null;
+        args.pvpParam = pvpParam;
+
+        InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData("pvp_scene");
+        ResourceMgr.Instance.LoadLevelAsyn(instanceData.instanceProtoData.sceneID, false, OnSceneLoaded, args);
+        UIMgr.Instance.ClearUILayerList();
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnSceneLoaded(GameObject instance, System.EventArgs args)
     {
         ClearModule();
         SwitchLevelEventArgs slArgs = args as SwitchLevelEventArgs;
-        ChangeModuleDirect<BattleModule>(slArgs.enterParam);
+        if (slArgs.enterParam != null)
+        {
+            ChangeModuleDirect<BattleModule>(slArgs.enterParam);
+        }
+        else if (slArgs.pvpParam != null)
+        {
+            ChangeModuleDirect<BattleModule>(slArgs.pvpParam);
+        }
         //StartCoroutine(FuckingU3d(args));
     }
     //---------------------------------------------------------------------------------------------
-    public IEnumerator FuckingU3d(System.EventArgs args)
-    {
-        SwitchLevelEventArgs slArgs = args as SwitchLevelEventArgs;
-        //fucking u3d 0.5s, or it will crash
-        yield return new WaitForSeconds(0.5f);
-        ChangeModuleDirect<BattleModule>(slArgs.enterParam);
-    }
+    //public IEnumerator FuckingU3d(System.EventArgs args)
+    //{
+    //    SwitchLevelEventArgs slArgs = args as SwitchLevelEventArgs;
+    //    //fucking u3d 0.5s, or it will crash
+    //    yield return new WaitForSeconds(0.5f);
+    //    ChangeModuleDirect<BattleModule>(slArgs.enterParam);
+    //}
     //---------------------------------------------------------------------------------------------
-    public void LoadBattleLevelFinish()
-    {
+    //public void LoadBattleLevelFinish()
+    //{
 
-    }
+    //}
     //---------------------------------------------------------------------------------------------
     public void ClearModule()
     {

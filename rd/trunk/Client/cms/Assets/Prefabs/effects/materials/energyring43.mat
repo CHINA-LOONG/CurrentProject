@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: energyring43
+  m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: d1b5900c8cb6e374b98c1a7805c6d1d8, type: 3}
+          m_Scale: {x: .5, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NoiseTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 9c86161bea25f6e4cb0d727f778c9d43, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _ForceX
+        second: .397000015
+      data:
+        first:
+          name: _ForceY
+        second: .465000004
+      data:
+        first:
+          name: _HeatTime
+        second: .100000001
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: .34117648}

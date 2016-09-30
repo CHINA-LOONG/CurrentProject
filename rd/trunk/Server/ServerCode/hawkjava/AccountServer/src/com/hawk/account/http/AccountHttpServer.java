@@ -16,6 +16,7 @@ import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
 import com.hawk.account.httpHandler.UserCreateRoleHandler;
 import com.hawk.account.httpHandler.UserLevelUpHandler;
+import com.hawk.account.httpHandler.UserRenameRoleHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
@@ -60,6 +61,7 @@ public class AccountHttpServer {
 				// TODO: 暂时不支持多线程(若以后性能不足, 及时修改)
 				httpServer.setExecutor(Executors.newFixedThreadPool(1));
 				httpServer.createContext("/report_roleCreate", new UserCreateRoleHandler());
+				httpServer.createContext("/report_roleName", new UserRenameRoleHandler());
 				httpServer.createContext("/report_LevelUp", new UserLevelUpHandler());
 				httpServer.createContext("/regist_gameserver", new RegistGameServerHandler());
 				httpServer.createContext("/unregist_gameserver", new UnRegistGameServerHandler());

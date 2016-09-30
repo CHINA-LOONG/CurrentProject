@@ -6,6 +6,7 @@ using System.Collections;
 public class SwitchLevelEventArgs : EventArgs
 {
     public EnterInstanceParam enterParam;
+    public PvpFightParam pvpParam;
 }
 
 public class SwitchLevelMgr : MonoBehaviour

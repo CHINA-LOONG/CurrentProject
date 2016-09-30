@@ -42,7 +42,7 @@ public class BaoxiangSubReward : MonoBehaviour
 		} 
 		else  if (reward.type == (int)PB.itemType.ITEM) 
 		{
-			ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(reward.itemId, reward.count),true,false);
+			ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(reward.itemId, (int)reward.count),true,false);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;
 			//name = GetItemName(reward.itemId);

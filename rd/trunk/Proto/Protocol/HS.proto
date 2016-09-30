@@ -144,7 +144,7 @@ enum code
 	EQUIP_SELL_C                = 4101;
 	EQUIP_SELL_S                = 4102;
 	EQUIP_BUY_C                 = 4103;
-	EQUIP_BUY_S                 = 4104;	
+	EQUIP_BUY_S                 = 4104;
 	EQUIP_COMPOSE_C             = 4105;
 	EQUIP_COMPOSE_S             = 4106;
 	EQUIP_INCREASE_LEVEL_C      = 4107;
@@ -187,6 +187,7 @@ enum code
 	IM_PUSH_S                   = 7002;
 	IM_PLAYER_GET_C             = 7003;
 	IM_PLAYER_GET_S             = 7004;
+	IM_DUMP_S                   = 7005;
 
 	// 商店
 	SHOP_DATA_INIT_C            = 8001;
@@ -326,6 +327,8 @@ enum code
 	PVP_DEFENCE_RECORD_S        = 12010;
 	PVP_GET_DEFENCE_MONSTERS_C  = 12011;  //同步pvp防守阵容
 	PVP_GET_DEFENCE_MONSTERS_S  = 12012;
-	PVP_GET_MY_INFO_C  		    = 12013;  //获得我的排名
-	PVP_GET_MY_INFO_S		    = 12014;
+	PVP_GET_MY_INFO_C           = 12013;  //获得我的排名
+	PVP_GET_MY_INFO_S           = 12014;
+	PVP_GET_RANK_DEFENCE_C      = 12015;  //获得排行榜防守数据
+	PVP_GET_RANK_DEFENCE_S      = 12016;
 }

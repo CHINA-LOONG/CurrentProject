@@ -257,10 +257,11 @@ public class GameQuestData
         list.Clear();
 
         #region 添加到对应类型表
-        
+        //Debug.Log("类型：" + type.ToString());
         Dictionary<int, QuestData> groupUsedTime = new Dictionary<int, QuestData>();
         foreach (var item in questList)
         {
+            //Debug.Log("遍历任务"+"group "+item.Value.staticData.group+"     " +item.Value.questId);
             QuestData info = item.Value;
             if (info.staticData.type == (int)type)
             {
@@ -268,7 +269,7 @@ public class GameQuestData
                 TimeStaticData endTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeEndId);
                 if (beginTime != null && endTime != null)
                 {
-                    if (endTime < GameTimeMgr.Instance.GetServerTime())
+                    if (endTime <= GameTimeMgr.Instance.GetServerTime())
                         continue;//任务已经结束
                     //保证每个时间任务组仅且只显示一个任务
                     if (groupUsedTime.ContainsKey(info.staticData.group))
@@ -304,18 +305,23 @@ public class GameQuestData
             {
                 Action endEvent = () =>
                 {
+                    //Debug.Log("有任务开始" + info.questId);
                     RefreshQuest((QuestType)info.staticData.type);
                     GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
                 };
+                //Debug.Log("有任务将要进行" + info.questId);
                 info.TimeEvent = new TimeEventWrap(GameTimeMgr.GetTimeStamp(new DateTime(curDateTime.Year,curDateTime.Month,curDateTime.Day,beginTime.hour,beginTime.minute,0)), endEvent);
             }
             else if(endTime> GameTimeMgr.Instance.GetServerTime())//任务已开始
             {
                 Action endEvent = () =>
                 {
+                    //Debug.Log("有任务结束" + info.questId);
                     RefreshQuest((QuestType)info.staticData.type);
                     GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
                 };
+
+                //Debug.Log("有任务正在进行" + info.questId);
                 info.TimeEvent = new TimeEventWrap(GameTimeMgr.GetTimeStamp(new DateTime(curDateTime.Year, curDateTime.Month, curDateTime.Day, endTime.hour, endTime.minute, 0)), endEvent);
             }
             else

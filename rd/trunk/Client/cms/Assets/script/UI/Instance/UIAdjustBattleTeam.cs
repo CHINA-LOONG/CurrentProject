@@ -17,8 +17,6 @@ public enum InstanceType
     Hole = PB.InstanceType.INSTANCE_HOLE,
     Tower = PB.InstanceType.INSTANCE_TOWER,
     Guild = PB.InstanceType.INSTANCE_GUILD,
-    //test
-    PVP
 }
 
 public class UIAdjustBattleTeam : UIBase
@@ -769,7 +767,7 @@ public class UIAdjustBattleTeam : UIBase
 
         string optionMsg = string.Format(StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhiTimes"), times);
 
-        MsgBox.PrompCostMsg.Open(resetInstanceCost, msg, optionMsg, OnInstanceRestPrompClick);
+        MsgBox.PrompCostMsg.Open(resetInstanceCost, msg, optionMsg, CostType.ZuanshiCoin,OnInstanceRestPrompClick);
     }
 
     void OnInstanceRestPrompClick(MsgBox.PrompButtonClick sel)
@@ -1110,10 +1108,6 @@ public class UIAdjustBattleTeam : UIBase
             }
 
             GameApp.Instance.netManager.SendMessage(PB.code.GUILD_INSTANCE_ENTER_C.GetHashCode(), param);
-        }
-        else if (instanceType == InstanceType.PVP)
-        {
-
         }
         else
         {

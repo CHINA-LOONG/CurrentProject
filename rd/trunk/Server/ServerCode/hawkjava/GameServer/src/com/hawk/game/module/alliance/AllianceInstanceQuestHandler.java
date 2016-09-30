@@ -91,7 +91,7 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 					teamEntity.notifyUpdate(true);
 					AwardItems reward = new AwardItems();
 					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
-					int contribution = reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE)) ;
+					int contribution = (int) reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE)) ;
 					if (contribution != 0) {
 						allianceEntity.addContribution(contribution);
 						allianceEntity.notifyUpdate(true);

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: dazhao_003
-  m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6e381a1c5f8eb804ebdcb0db1b91bc80, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: bf87a0ec17d4dda4e92816e48634db16, type: 3}
+          m_Texture: {fileID: 2800000, guid: d66f9433dd5bc57479f208c64156ad90, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -28,6 +28,13 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: fa6a925d664610c419e1771a9dd707c7, type: 3}
           m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MaskTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 5ff418f3e0fb2cf48aa7a5e0b8fd83d0, type: 3}
+          m_Scale: {x: 1, y: -1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
@@ -46,4 +53,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .580882311, g: .635801136, b: 1, a: .5}
+        second: {r: .134083018, g: .588235259, b: .588235259, a: .501960814}

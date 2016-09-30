@@ -867,6 +867,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475278}
   - 95: {fileID: 9544328}
+  - 65: {fileID: 6538378}
   m_Layer: 0
   m_Name: xgHuoniao4@moxing
   m_TagString: Untagged
@@ -1473,7 +1474,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133126}
-  m_LocalRotation: {x: .099941887, y: -.647511899, z: .69999516, w: .28415966}
+  m_LocalRotation: {x: .099941887, y: -.647511959, z: .69999522, w: .28415969}
   m_LocalPosition: {x: .0348120108, y: -.0465288162, z: -.0380624384}
   m_LocalScale: {x: .99999994, y: 1, z: 1.00000012}
   m_Children:
@@ -2132,6 +2133,18 @@ Transform:
   - {fileID: 416326}
   m_Father: {fileID: 469948}
   m_RootOrder: 1
+--- !u!65 &6538378
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
+  m_Center: {x: 0, y: .800000012, z: 0}
 --- !u!95 &9544328
 Animator:
   serializedVersion: 3

@@ -93,4 +93,8 @@ public class GameConfig : MonoBehaviour {
     public int zuanShiSum = 10;
     public int zuanShiFree = 60;
     public int jinBiFree = 180;
+
+    //Pvp
+    public int pvpFightTimesMax = 10;
+    public int pvpRestorTimeNeedSecond = 3600;
 }

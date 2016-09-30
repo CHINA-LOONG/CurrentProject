@@ -25,7 +25,7 @@ public class SociatyJidiMemberItem : MonoBehaviour
     {
         this.baseMonster = baseMonster;
         nameText.text = baseMonster.nickname;
-        bpText.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli"), baseMonster.bp);
+        bpText.text = string.Format("{0}{1}", StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli"), baseMonster.bp);
         itemIcon = MonsterIcon.CreateIcon();
         itemIcon.SetMonsterStaticId(baseMonster.cfgId);
         itemIcon.SetId(baseMonster.id.ToString());

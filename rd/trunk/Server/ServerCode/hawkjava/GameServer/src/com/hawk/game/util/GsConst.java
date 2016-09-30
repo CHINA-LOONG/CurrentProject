@@ -88,8 +88,12 @@ public class GsConst {
 	public static final String FUNPLUS_APP_ID = "1013";
 	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
 
-	public static final int PVP_WEAK_REFRESH_TIME_ID = 110;	
-	
+	public static final int PVP_WEEK_REFRESH_TIME_ID = 110;
+
+	public static final int PVP_RANK_BUILDER_REFRESH_TIME = 60000;
+
+	public static final int WEAK_SECOND = 604800;
+
 	/**
 	 * 对象类型
 	 * 
@@ -194,7 +198,9 @@ public class GsConst {
 		public static final int PVP_RANK_LIST = 204;
 		// pvp周结算
 		public static final int PVP_WEAK_REWARD = 205;
-		
+		// pvp排行榜防守数据
+		public static final int PVP_RANK_DEFENCE = 206;
+
 		/**
 		 * 快照管理器消息定义
 		 */
@@ -264,7 +270,7 @@ public class GsConst {
 		public static final int PVP = 1 << 7;
 	}
 
-	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, PVP_WEAK_REFRESH_TIME_ID};
+	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, PVP_WEEK_REFRESH_TIME_ID};
 	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4, 128};
 
 	public static int[] PlayerRefreshTime = { 101, 102, 201, 202, 203, 204,
@@ -509,8 +515,11 @@ public class GsConst {
 		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
 		public static final int PVP_RANK_SIZE = 100;
 		public static final float PVP_RERANK_K_VALUE = 5.0f;
+		public static final float PVP_CHANGE_TARGET_K = 2.0f;
+		public static final int PVP_CHANGE_TARGET_B = 100;
+
 	}
-	
+
 	// 翻译系统，敏感词选项
 	public static class Profanity {
 		public static final String OFF = "off";
@@ -544,6 +553,17 @@ public class GsConst {
 		public static final int PVP_WAEK_GRADE_REWARD = 105;
 		// 月结算 排名奖励
 		public static final int PVP_MONTH_RANK_REWARD = 106;
+
+		// GM 修改人物昵称
+		public static final int GM_RENAME = 1000;
+		// GM 删除所有物品
+		public static final int GM_REMOVE_ALL_ITEM = 1001;
+		// GM 删除物品
+		public static final int GM_REMOVE_ITEM = 1002;
+		// GM 扣金币
+		public static final int GM_DECUCT_COIN = 1003;
+		// GM 扣钻石
+		public static final int GM_DECUCT_DIAMOND = 1004;
 	}
 
 	public static class SysIm {

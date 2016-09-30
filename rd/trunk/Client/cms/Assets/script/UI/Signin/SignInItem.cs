@@ -66,7 +66,7 @@ public class SignInItem : MonoBehaviour
         CurData = data;
         if (CurData.protocolData.type == (int)PB.itemType.ITEM)
         {
-            ItemData itemData = new ItemData() { itemId = CurData.protocolData.itemId, count = CurData.protocolData.count };
+            ItemData itemData = new ItemData() { itemId = CurData.protocolData.itemId, count = (int)CurData.protocolData.count };
             if (itemIcon == null)
             {
                 itemIcon = ItemIcon.CreateItemIcon(itemData);

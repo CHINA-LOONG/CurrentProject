@@ -87,9 +87,9 @@ public enum FoundGuildType
 public enum FoundMonsterType
 {
     /// <summary> 拥有宠物 </summary>
-    Owned,                      
+    Owned = 1,
     /// <summary> 宠物图鉴 </summary>
-    Collection                  
+    Collection = 2
 }
 public enum FoundBagType
 {
@@ -710,7 +710,7 @@ public class ChapterParse : ParseBase
         }
         else
         {
-            //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(""), (int)PB.ImType.PROMPT);
+            //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_004"), (int)PB.ImType.PROMPT);
         }
     }
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -788,6 +788,7 @@ public class BagParse : ParseBase
                 condition = false;
                 break;
         }
+        this.condition = condition;
     }
 }
 /// <summary>
@@ -928,5 +929,6 @@ public class ActivityParse : ParseBase
                 condition = false;
                 break;
         }
+        this.condition = condition;
     }
 }

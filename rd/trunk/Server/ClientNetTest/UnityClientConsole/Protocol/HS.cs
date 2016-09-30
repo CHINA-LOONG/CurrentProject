@@ -444,6 +444,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"IM_PLAYER_GET_S", Value=7004)]
       IM_PLAYER_GET_S = 7004,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_DUMP_S", Value=7005)]
+      IM_DUMP_S = 7005,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_INIT_C", Value=8001)]
       SHOP_DATA_INIT_C = 8001,
             

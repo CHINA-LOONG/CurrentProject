@@ -33,6 +33,8 @@ public class FixCountScrollView : MonoBehaviour
     public GridLayoutGroup m_Grid;
     RectTransform m_Content;
 
+    public Vector2 ElementSize = Vector2.zero;
+
     /// <summary>
     /// 排列方式枚举
     /// </summary>
@@ -90,12 +92,12 @@ public class FixCountScrollView : MonoBehaviour
             conners[2] = new Vector3(-SR_size.x / 2f, -SR_size.y / 2f, 0);
             conners[3] = new Vector3(SR_size.x / 2f, -SR_size.y / 2f, 0);
 
-            for (int i = 0; i < 4; i++)
-            {
-                Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
-                conners[i].x = temp.x;
-                conners[i].y = temp.y;
-            }
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    Vector3 temp = m_Content.parent.TransformPoint(conners[i]);
+            //    conners[i].x = temp.x;
+            //    conners[i].y = temp.y;
+            //}
         }
 
         int childCont = 0;                      //创建列表项的个数
@@ -128,10 +130,19 @@ public class FixCountScrollView : MonoBehaviour
         if (m_Child.Count <= 0)
         {
             CleanContent();
+            Vector2 size = m_Grid.cellSize;
+            Vector3 scale = Vector3.one;
+            if (ElementSize != Vector2.zero)
+            {
+                size = ElementSize;
+                scale.x = m_Grid.cellSize.x / ElementSize.x;
+                scale.y = m_Grid.cellSize.y / ElementSize.y;
+            }
             for (int i = 0; i < childCont; i++)
             {
                 Transform item = iScrollViewDelegate.IScrollViewCreateItem(this, m_Content);
-                item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
+                item.localScale = scale;
+                item.GetComponent<RectTransform>().sizeDelta = size;
                 m_Child.Add(item);
             }
         }
@@ -189,12 +200,12 @@ public class FixCountScrollView : MonoBehaviour
     }
     void OnDrag(Vector2 delta)
     {
-        Debug.Log(Time.time+"    "+delta);
+        //Debug.Log(gameObject.name+"         "+ Time.time+"    "+delta);
         Vector3[] conner_local = new Vector3[4];
 
         for (int i = 0; i < 4; i++)
         {
-            conner_local[i] = m_Content.InverseTransformPoint(conners[i]);
+            conner_local[i] = m_Content.InverseTransformPoint(m_Content.parent.TransformPoint(conners[i]));
         }
         //计算ScrollRect的中心坐标 相对于this的坐标
         Vector2 center = (conner_local[3] + conner_local[0]) / 2f;

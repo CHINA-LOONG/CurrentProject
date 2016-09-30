@@ -6,6 +6,28 @@ using ICSharpCode.SharpZipLib.Zip;
 
 public class Util
 {
+    public static List<System.Diagnostics.Stopwatch> sWatchList = new List<System.Diagnostics.Stopwatch>();
+    public static void EnterFunction()
+    {
+        System.Diagnostics.Stopwatch sWatch = new System.Diagnostics.Stopwatch();
+        sWatchList.Add(sWatch);
+        sWatch.Start();
+    }
+
+    public static void ExitFunction(string functionName)
+    {
+        int count = sWatchList.Count - 1;
+        sWatchList[count].Stop(); //  停止监视
+        System.TimeSpan timeSpan = sWatchList[count].Elapsed; //  获取总时间
+        double milliseconds = timeSpan.TotalMilliseconds;  //  毫秒数
+
+        Debug.LogFormat("{0}: ms:{1}", functionName, milliseconds);
+
+        sWatchList.RemoveAt(count);
+    }
+
+
+
     /// <summary>
     /// 应用程序内容路径
     /// </summary>
@@ -317,5 +339,23 @@ public class Util
             }
         }
         return true;
+    }
+
+    public static PbUnit CreatePbUnitFromHsMonster(PB.HSMonster monster, UnitCamp camp)
+    {
+        PbUnit unit = new PbUnit();
+        unit.slot = -1;
+        unit.guid = monster.monsterId;
+        unit.camp = camp;
+        unit.id = monster.cfgId;
+        unit.character = monster.disposition;
+        unit.lazy = monster.lazy;
+        unit.level = monster.level;
+        unit.curExp = monster.exp;
+        unit.stage = monster.stage;
+        unit.spellPbList = monster.skill;
+        unit.monsterState = monster.state;
+
+        return unit;
     }
 }

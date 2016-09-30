@@ -178,6 +178,7 @@ public class UIBattle : UIBase
             reviveCount,
             StaticDataMgr.Instance.GetTextByID("battle_revive"),
             null,
+            CostType.ZuanshiCoin,
             ChooseReviveOrNot,
             false
             );

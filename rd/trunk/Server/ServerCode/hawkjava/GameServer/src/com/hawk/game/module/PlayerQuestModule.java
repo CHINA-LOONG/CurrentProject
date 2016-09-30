@@ -156,8 +156,12 @@ public class PlayerQuestModule extends PlayerModule {
 			QuestCfg nextQuestCfg = QuestUtil.getNextQuest(questId);
 			if (null != nextQuestCfg) {
 				List<HSQuest> acceptList = new ArrayList<HSQuest>();
-				acceptQuest(nextQuestCfg, acceptList);
-				if (false == acceptList.isEmpty()) {
+				boolean active = acceptQuest(nextQuestCfg, acceptList);
+				if (false == active) {
+					// 任务无法接取，将任务组设为未激活
+					QuestGroup group = QuestUtil.getQuestGroupByQuest(questId);
+					inactiveQuestGroupMap.put(group.groupId, group);
+				} else {
 					HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
 					acceptBuilder.addAllQuest(acceptList);
 					sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
@@ -173,9 +177,8 @@ public class PlayerQuestModule extends PlayerModule {
 
 	/**
 	 * 从指定任务组集合中接取任务
-	 * GM调用，因此设为public。非GM不调用
 	 */
-	public List<HSQuest> loadQuest(Map<Integer, QuestGroup> questGroupMap) {
+	private List<HSQuest> loadQuest(Map<Integer, QuestGroup> questGroupMap) {
 		List<HSQuest> acceptQuestList = new ArrayList<HSQuest>();
 
 		Iterator<Entry<Integer, QuestGroup>>  iter = questGroupMap.entrySet().iterator();

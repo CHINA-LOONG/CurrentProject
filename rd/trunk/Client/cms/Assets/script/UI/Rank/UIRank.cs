@@ -36,6 +36,7 @@ public class UIRank : UIBase
             RectTransform pvpRankRt = pvpRank.transform as RectTransform;
             pvpRankRt.anchoredPosition = new Vector2(0, 0);
         }
+        pvpRank.RequestPvpRank();
     }
     public override void Clean()
     {

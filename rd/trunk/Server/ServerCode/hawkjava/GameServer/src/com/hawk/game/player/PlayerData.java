@@ -854,7 +854,7 @@ public class PlayerData {
 	
 	public void loadPVPDefenceData(){
 		if (pvpDefenceEntity == null) {			
-			pvpDefenceEntity = PVPManager.getInstance().getPVPDefenceEntity(getId(), getNickname(), getLevel());	
+			pvpDefenceEntity = PVPManager.getInstance().getPVPDefenceEntity(getId(), getNickname(), getLevel(), true);	
 		}
 	}
 

@@ -23,8 +23,8 @@ public class PvpRank : MonoBehaviour, IScrollView
     }
 
     private List<PB.PVPRankData> listPvpRankData = new List<PB.PVPRankData>();
-    
-     void RequestPvpRank()
+
+    public void RequestPvpRank()
     {
         GameDataMgr.Instance.PvpDataMgrAttr.RequestPvpRank(OnRequestPvpRankFinished);
     }
@@ -43,8 +43,6 @@ public class PvpRank : MonoBehaviour, IScrollView
         listPvpRankData.AddRange(msgRet.pvpRankList);
         scrollView.InitContentSize(listPvpRankData.Count, this, true);
     }
-
-
     #region IScrollView
     public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)
     {

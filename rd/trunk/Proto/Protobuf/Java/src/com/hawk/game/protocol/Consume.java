@@ -74,9 +74,9 @@ public final class Consume {
     com.google.protobuf.ByteString
         getItemIdBytes();
 
-    // optional int32 count = 4;
+    // optional int64 count = 4;
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 实体对象直接移除对象
@@ -84,13 +84,13 @@ public final class Consume {
      */
     boolean hasCount();
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 实体对象直接移除对象
      * </pre>
      */
-    int getCount();
+    long getCount();
   }
   /**
    * Protobuf type {@code ConsumeItem}
@@ -165,7 +165,7 @@ public final class Consume {
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              count_ = input.readInt32();
+              count_ = input.readInt64();
               break;
             }
           }
@@ -311,11 +311,11 @@ public final class Consume {
       }
     }
 
-    // optional int32 count = 4;
+    // optional int64 count = 4;
     public static final int COUNT_FIELD_NUMBER = 4;
-    private int count_;
+    private long count_;
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 实体对象直接移除对象
@@ -325,13 +325,13 @@ public final class Consume {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 count = 4;</code>
+     * <code>optional int64 count = 4;</code>
      *
      * <pre>
      * 实体对象直接移除对象
      * </pre>
      */
-    public int getCount() {
+    public long getCount() {
       return count_;
     }
 
@@ -339,7 +339,7 @@ public final class Consume {
       type_ = 0;
       id_ = 0L;
       itemId_ = "";
-      count_ = 0;
+      count_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -371,7 +371,7 @@ public final class Consume {
         output.writeBytes(3, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, count_);
+        output.writeInt64(4, count_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -396,7 +396,7 @@ public final class Consume {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, count_);
+          .computeInt64Size(4, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -525,7 +525,7 @@ public final class Consume {
         bitField0_ = (bitField0_ & ~0x00000002);
         itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        count_ = 0;
+        count_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -832,10 +832,10 @@ public final class Consume {
         return this;
       }
 
-      // optional int32 count = 4;
-      private int count_ ;
+      // optional int64 count = 4;
+      private long count_ ;
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 实体对象直接移除对象
@@ -845,30 +845,30 @@ public final class Consume {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 实体对象直接移除对象
        * </pre>
        */
-      public int getCount() {
+      public long getCount() {
         return count_;
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 实体对象直接移除对象
        * </pre>
        */
-      public Builder setCount(int value) {
+      public Builder setCount(long value) {
         bitField0_ |= 0x00000008;
         count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 count = 4;</code>
+       * <code>optional int64 count = 4;</code>
        *
        * <pre>
        * 实体对象直接移除对象
@@ -876,7 +876,7 @@ public final class Consume {
        */
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        count_ = 0;
+        count_ = 0L;
         onChanged();
         return this;
       }
@@ -2542,7 +2542,7 @@ public final class Consume {
       "\n\026Protocol/Consume.proto\032\025Protocol/Playe" +
       "r.proto\032\026Protocol/Monster.proto\"F\n\013Consu" +
       "meItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006item" +
-      "Id\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\"\216\001\n\rHSConsumeInf" +
+      "Id\030\003 \002(\t\022\r\n\005count\030\004 \001(\003\"\216\001\n\rHSConsumeInf" +
       "o\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynPlayerAttr\022%\n" +
       "\014monstersAttr\030\002 \003(\0132\017.SynMonsterAttr\022\"\n\014" +
       "consumeItems\030\003 \003(\0132\014.ConsumeItem\022\016\n\006hsCo" +

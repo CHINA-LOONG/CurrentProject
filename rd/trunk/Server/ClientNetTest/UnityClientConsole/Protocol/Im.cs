@@ -202,4 +202,21 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSImDump")]
+  public partial class HSImDump : global::ProtoBuf.IExtensible
+  {
+    public HSImDump() {}
+    
+    private int _dumpEndTime;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"dumpEndTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int dumpEndTime
+    {
+      get { return _dumpEndTime; }
+      set { _dumpEndTime = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

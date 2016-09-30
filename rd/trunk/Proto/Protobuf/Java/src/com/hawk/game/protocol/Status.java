@@ -3626,6 +3626,14 @@ public final class Status {
      * </pre>
      */
     PVP_TIMES_NOT_ENOUGH(3, 917508),
+    /**
+     * <code>PVP_NOT_IN_RANK_LIST = 917509;</code>
+     *
+     * <pre>
+     * 不在排行榜上
+     * </pre>
+     */
+    PVP_NOT_IN_RANK_LIST(4, 917509),
     ;
 
     /**
@@ -3660,6 +3668,14 @@ public final class Status {
      * </pre>
      */
     public static final int PVP_TIMES_NOT_ENOUGH_VALUE = 917508;
+    /**
+     * <code>PVP_NOT_IN_RANK_LIST = 917509;</code>
+     *
+     * <pre>
+     * 不在排行榜上
+     * </pre>
+     */
+    public static final int PVP_NOT_IN_RANK_LIST_VALUE = 917509;
 
 
     public final int getNumber() { return value; }
@@ -3670,6 +3686,7 @@ public final class Status {
         case 917506: return PVP_NOT_SET_DEFENCE;
         case 917507: return PVP_NOT_MATCH_BEFORE;
         case 917508: return PVP_TIMES_NOT_ENOUGH;
+        case 917509: return PVP_NOT_IN_RANK_LIST;
         default: return null;
       }
     }
@@ -3843,11 +3860,11 @@ public final class Status {
       "OT_END\020\210\2000\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\2000" +
       "*a\n\013summonError\022\034\n\026SUMMON_DIAMOND_NO_FRE" +
       "E\020\201\2004\022\031\n\023SUMMON_COIN_NO_FREE\020\202\2004\022\031\n\023SUMM" +
-      "ON_COIN_FREE_CD\020\203\2004*y\n\010pvpError\022\032\n\024PVP_N" +
-      "OT_MATCH_TARGET\020\201\2008\022\031\n\023PVP_NOT_SET_DEFEN" +
-      "CE\020\202\2008\022\032\n\024PVP_NOT_MATCH_BEFORE\020\203\2008\022\032\n\024PV" +
-      "P_TIMES_NOT_ENOUGH\020\204\2008B\030\n\026com.hawk.game." +
-      "protocol"
+      "ON_COIN_FREE_CD\020\203\2004*\225\001\n\010pvpError\022\032\n\024PVP_" +
+      "NOT_MATCH_TARGET\020\201\2008\022\031\n\023PVP_NOT_SET_DEFE" +
+      "NCE\020\202\2008\022\032\n\024PVP_NOT_MATCH_BEFORE\020\203\2008\022\032\n\024P" +
+      "VP_TIMES_NOT_ENOUGH\020\204\2008\022\032\n\024PVP_NOT_IN_RA" +
+      "NK_LIST\020\205\2008B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

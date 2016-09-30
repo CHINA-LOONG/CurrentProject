@@ -1,6 +1,7 @@
 ﻿#TEXT,NUM,FLOAT,FLOAT,TEXT,NUM,NUM,TEXT,TEXT,TEXT
 id,level,lifeCoef,attackCoef,sceneID,dazhaoGroup,dazhaoAdjust,battleLevelList,battleBoss,backgroundmusic
 #副本id,副本怪物等级,血量修正,伤害修正,对局场景,一次大招攻击需要的出手次数,大招攻击次序调整,对局数列表,boss对局,背景音乐
+pvp_scene,0,0,0,pvp_scene,7,2,"[""pvp_test1""]",dajie11Boss1,bg_yueguangsenlin11
 yueguangsenlin11,10,999,999,minghe1,7,2,"[""dajie11Level1"",""dajie11Level2""]",dajie11Boss1,bg_yueguangsenlin11
 yueguangsenlin12,10,0.4,0.4,forest1,3,1,"[""minghe17Level1"",""minghe12Level1""]",yueguangsenlin18Boss1,bg_yueguangsenlin12
 yueguangsenlin14,15,0.4,0.45,forest,5,2,"[""yueguangsenlin14Level1"",""yueguangsenlin14Level2""]",yueguangsenlin14Boss1,bg_yueguangsenlin14

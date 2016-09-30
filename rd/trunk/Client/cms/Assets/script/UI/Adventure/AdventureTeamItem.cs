@@ -206,12 +206,18 @@ public class AdventureTeamItem : MonoBehaviour
     void OnPressEnterMonsterIcon(GameObject go)
     {
         MonsterIcon micon = go.GetComponentInParent<MonsterIcon>();
-
+        AdventureTeam team = curData.adventure.adventureTeam;
         int guid = int.Parse(micon.Id);
-        GameUnit unit = null;
-
-        GameDataMgr.Instance.PlayerDataAttr.allUnitDic.TryGetValue(guid, out unit);
-        UIMonsterInfo.Open(guid, micon.monsterId, unit.pbUnit.level, unit.pbUnit.stage);
+        if (team.selfIdList.Contains(guid))
+        {
+            GameUnit unit = null;
+            GameDataMgr.Instance.PlayerDataAttr.allUnitDic.TryGetValue(guid, out unit);
+            UIMonsterInfo.Open(guid, micon.monsterId, unit.pbUnit.level, unit.pbUnit.stage);
+        }
+        else if(guid==team.guildMonster.monsterId)
+        {
+            UIMonsterInfo.Open(-1, team.guildMonster.cfgId, team.guildMonster.level, team.guildMonster.stage, team.guildMonster.bp);
+        }
     }
     public void CleanItem()
     {

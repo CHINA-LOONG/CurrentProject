@@ -132,10 +132,10 @@ public class WeakpointUI : MonoBehaviour
             return;
 
         RectTransform iconRt = icon.transform as RectTransform;
-        Vector3 iconPosition = UIUtil.GetSpacePos(iconRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
-        float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
+        findEffectObject.SetParent(iconRt);
+        findEffectObject.localScale = Vector3.one;
+        findEffectObject.anchoredPosition = new Vector2(0, 0);
         findEffectObject.gameObject.SetActive(false);
-        findEffectObject.anchoredPosition = new Vector2((iconPosition.x - 25.0f)/ fscale, (iconPosition.y + 6.3f)/ fscale);
         findEffectObject.gameObject.SetActive(true);
     }
 

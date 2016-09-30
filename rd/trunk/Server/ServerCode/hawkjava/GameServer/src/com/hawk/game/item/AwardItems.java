@@ -183,11 +183,11 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems addAttr(int attrType, int count) {
+	public AwardItems addAttr(int attrType, long count) {
 		return addAttr(String.valueOf(attrType), count);
 	}
 
-	public AwardItems addAttr(String attrType, int count) {
+	public AwardItems addAttr(String attrType, long count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
 			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId().equals(String.valueOf(attrType))) {
@@ -303,7 +303,7 @@ public class AwardItems {
 		return this;
 	}
 
-	public int getRewardCount(int type, String itemId){
+	public long getRewardCount(int type, String itemId){
 		for (RewardItem.Builder rewardItem : rewardInfo.getRewardItemsBuilderList()) {
 			if (rewardItem.getType() == type && itemId.equals(rewardItem.getItemId())) {
 				return rewardItem.getCount();
@@ -326,7 +326,7 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems addCoin(int coin) {
+	public AwardItems addCoin(long coin) {
 		if (coin > 0) {
 			addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		}
@@ -493,28 +493,28 @@ public class AwardItems {
 						break;
 
 					case changeType.CHANGE_GOLD_VALUE:
-						player.increaseFreeGold(item.getCount(), action);
+						player.increaseFreeGold((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_GOLD_BUY_VALUE:
-						player.increaseBuyGold(item.getCount(), action);
+						player.increaseBuyGold((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_TOWER_COIN_VALUE:
-						player.increaseTowerCoin(item.getCount(), action);
+						player.increaseTowerCoin((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_ARENA_COIN_VALUE:
-						player.increaseArenaCoin(item.getCount(), action);
+						player.increaseArenaCoin((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_FATIGUE_VALUE:
-						player.increaseFatigue(item.getCount(), action);
+						player.increaseFatigue((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
 						int oldLevel = player.getLevel();
-						player.increaseExp(item.getCount(), action);
+						player.increaseExp((int) item.getCount(), action);
 						int newLevel = player.getLevel();
 
 						if (newLevel > oldLevel) {
@@ -540,7 +540,7 @@ public class AwardItems {
 					// GM命令 ,不会和CHANGE_PLAYER_EXP_VALUE同时出现
 					case changeType.CHANGE_PLAYER_LEVEL_VALUE:
 						oldLevel = player.getLevel();
-						player.setLevel(item.getCount(), action);
+						player.setLevel((int) item.getCount(), action);
 						newLevel = player.getLevel();
 
 						if (newLevel > oldLevel) {
@@ -564,11 +564,11 @@ public class AwardItems {
 						break;
 
 					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
-						player.increaseContribution(item.getCount(), action);
+						player.increaseContribution((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_HONOR_COIN_VALUE:
-						player.increaseHonorPoint(item.getCount(), action);
+						player.increaseHonorPoint((int) item.getCount(), action);
 						break;
 
 					default:
@@ -585,7 +585,7 @@ public class AwardItems {
 					playerBuilder.setHonor(player.getHonorPoint());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
-					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
+					playerBuilder.setFatigueBeginTime((int) (player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
 				}
 
 				if (invalidType== true) {
@@ -607,38 +607,38 @@ public class AwardItems {
 					break;
 
 				case itemType.MONSTER_ATTR_VALUE:
-					if (item.getId() == 0 || player.getPlayerData().getMonsterEntity((int)item.getId()) == null) {
+					if (item.getId() == 0 || player.getPlayerData().getMonsterEntity((int) item.getId()) == null) {
 						// 强制清除没有id的怪物奖励
 						invalidType = true;
 					} else {
 						if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
-							player.increaseMonsterExp((int)item.getId(), item.getCount(), action);
+							player.increaseMonsterExp((int) item.getId(), (int) item.getCount(), action);
 						} else if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_LEVEL_VALUE) {
-							player.setMonsterLevel((int)item.getId(), item.getCount(), action);
+							player.setMonsterLevel((int) item.getId(), (int) item.getCount(), action);
 						}
 
 						SynMonsterAttr.Builder monsterBuilder = null;
 						for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
-							if (builder.getMonsterId() == (int)item.getId()) {
+							if (builder.getMonsterId() == (int) item.getId()) {
 								monsterBuilder = builder;
 								break;
 							}
 						}
 						if (monsterBuilder == null) {
 							monsterBuilder = SynMonsterAttr.newBuilder();
-							monsterBuilder.setMonsterId((int)item.getId());
-							monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-							monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
+							monsterBuilder.setMonsterId((int) item.getId());
+							monsterBuilder.setExp(player.getMonsterExp((int) item.getId()));
+							monsterBuilder.setLevel(player.getMonsterLevel((int) item.getId()));
 							rewardInfo.addMonstersAttr(monsterBuilder);
 						} else {
-							monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-							monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
+							monsterBuilder.setExp(player.getMonsterExp((int) item.getId()));
+							monsterBuilder.setLevel(player.getMonsterLevel((int) item.getId()));
 						}
 					}
 					break;
 
 				case itemType.ITEM_VALUE:
-					ItemEntity itemEntity = player.increaseItem(item.getItemId(), item.getCount(), action);
+					ItemEntity itemEntity = player.increaseItem(item.getItemId(), (int) item.getCount(), action);
 					if (itemEntity == null) {
 						rewardFail = true;
 					}
@@ -663,9 +663,9 @@ public class AwardItems {
 						if (monster != null) {
 							monsterEntity.setLevel(monster.getLevel());
 							monsterEntity.setExp(monster.getExp());
-							monsterEntity.setLazy((byte)monster.getLazy());
+							monsterEntity.setLazy((byte) monster.getLazy());
 							monsterEntity.setLazyExp(monster.getLazyExp());
-							monsterEntity.setDisposition((byte)monster.getDisposition());
+							monsterEntity.setDisposition((byte) monster.getDisposition());
 							monsterEntity.notifyUpdate(false);
 						}
 

@@ -17,12 +17,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HawkAccountService extends HawkTickable {
-	
+
 	/**
 	 * 默认心跳时间周期
 	 */
 	public final static int HEART_PERIOD = 60000;
-	
+
 	public static class RegitsterGameServer {
 		String gameServerHost;
 		int port;
@@ -35,18 +35,18 @@ public class HawkAccountService extends HawkTickable {
 	}
 
 	public static class UnRegitsterGameServer {
-		
+
 	}
-	
+
 	public static class HeartBeatData {
-		
+
 	}
 
 	public static class CreateRoleData {
 		public String puid;
 		public int playerId;
 		public String nickname;
-		
+
 		public CreateRoleData (String puid, int playerId, String nickname) {
 			this.puid = puid;
 			this.playerId = playerId;
@@ -64,47 +64,60 @@ public class HawkAccountService extends HawkTickable {
 			this.level = level;
 		}
 	}
-	
+
+	public static class RenameRoleData {
+		public String puid;
+		public int playerId;
+		public String newName;
+		public RenameRoleData(String puid, int playerId, String newName) {
+			this.puid = puid;
+			this.playerId = playerId;
+			this.newName = newName;
+		}
+	}
+
 	/**
 	 * 调试日志对象
 	 */
 	static Logger accountLogger = LoggerFactory.getLogger("Account");
-	
+
 	/**
 	 * zmq对象
 	 */
 	private HawkZmq accountZmq = null;
-	
+
 	/**
 	 * 汇报数据
 	 */
 	private Lock reportLock = null;
 	List<Object> reportDatas = null;
-	
+
 	/**
 	 * 连接成功
 	 */
 
 	private boolean connectOK = false;
-	
+
 	/**
 	 * 上次beat周期时间
 	 */
 	private long lastBeatTime = 0;
-	
+
 	// 账号上报路径
 	private static final String roleCreatePath      = "/report_roleCreate";
+	private static final String roleRenamePath      = "/report_roleRename";
 	private static final String levelUpPath         = "/report_levelUp";
 	private static final String serverRegistPath    = "/regist_gameserver";
 	private static final String serverUnRegistPath  = "/unregist_gameserver";
-	private static final String heartBeatPath    	= "/heartBeat";
-	
+	private static final String heartBeatPath       = "/heartBeat";
+
 	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&nickname=%s";
+	private static final String roleRenameParam     = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&nickname=%s";
 	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%d&puid=%s&playerid=%d&level=%d";
 	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%d&ip=%s&port=%d&scriptPort=%d";
 	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%d";
 	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%d";
-	
+
 	/**
 	 * 服务器信息
 	 */
@@ -113,7 +126,7 @@ public class HawkAccountService extends HawkTickable {
 	private String platform = "";
 	private String channel = "";
 	private int serverId = 0;
-	
+
 	/**
 	 * 实例对象
 	 */
@@ -130,7 +143,7 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return instance;
 	}
-	
+
 	private HawkAccountService () {
 		reportLock = new ReentrantLock();
 		reportDatas = new LinkedList<Object>();
@@ -139,7 +152,7 @@ public class HawkAccountService extends HawkTickable {
 			HawkApp.getInstance().addTickable(this);
 		}
 	}
-	
+
 	/**
 	 * 初始化账号服务
 	 * 
@@ -153,7 +166,7 @@ public class HawkAccountService extends HawkTickable {
 			this.serverId = serverId;
 			this.accountZmqHost = zmqAddress;
 			lastBeatTime = HawkTime.getMillisecond();
-			
+
 			// 可重复调用
 			HawkZmqManager.getInstance().init(HawkZmq.HZMQ_CONTEXT_THREAD);
 			if (createAccountZmq(accountZmqHost) == false) {
@@ -161,7 +174,7 @@ public class HawkAccountService extends HawkTickable {
 			}
 			else{
 				accountLogger.info("create account server success");
-			}	
+			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
@@ -173,7 +186,7 @@ public class HawkAccountService extends HawkTickable {
 
 		return true;
 	}
-	
+
 	/**
 	 * 执行http请求
 	 * 
@@ -181,7 +194,7 @@ public class HawkAccountService extends HawkTickable {
 	 * @param params
 	 * @return
 	 */
-	public synchronized int executeMethod(String path, String params) {	
+	public synchronized int executeMethod(String path, String params) {
 		if (accountZmq != null) {
 			try {
 				if (!accountZmq.send(path.getBytes(), HawkZmq.HZMQ_SNDMORE)) {
@@ -197,10 +210,10 @@ public class HawkAccountService extends HawkTickable {
 				HawkException.catchException(e);
 			}
 		} 
-		
+
 		return -1;
 	}
-	
+
 	/**
 	 * 创建zmq对象
 	 * 
@@ -236,7 +249,7 @@ public class HawkAccountService extends HawkTickable {
 			reportLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * 卸载游戏服务器
 	 * 
@@ -250,7 +263,7 @@ public class HawkAccountService extends HawkTickable {
 			reportLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * 心跳检测
 	 * 
@@ -264,7 +277,7 @@ public class HawkAccountService extends HawkTickable {
 			reportLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * 上报创建角色
 	 * 
@@ -278,7 +291,7 @@ public class HawkAccountService extends HawkTickable {
 			reportLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * 上报角色升级
 	 * 
@@ -292,12 +305,21 @@ public class HawkAccountService extends HawkTickable {
 			reportLock.unlock();
 		}
 	}
-	
+
 	/**
-	 * 上报数据
-	 * 
-	 * @param registerData
-	 * @return
+	 * 上报角色修改昵称
+	 */
+	public void report(RenameRoleData renameRoleData) {
+		reportLock.lock();
+		try {
+			reportDatas.add(renameRoleData);
+		} finally {
+			reportLock.unlock();
+		}
+	}
+
+	/**
+	 * 执行上报
 	 */
 	private boolean doReport(RegitsterGameServer gameServerData) {
 		if (accountZmq != null) {
@@ -315,12 +337,9 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * 上报数据
-	 * 
-	 * @param registerData
-	 * @return
+	 * 执行上报
 	 */
 	private boolean doReport(UnRegitsterGameServer gameServerData) {
 		if (accountZmq != null) {
@@ -340,16 +359,13 @@ public class HawkAccountService extends HawkTickable {
 	}
 
 	/**
-	 * 上报数据
-	 * 
-	 * @param heartBeatData
-	 * @return
+	 * 执行上报
 	 */
 	private boolean doReport(HeartBeatData heartBeatData) {
 		if (accountZmq != null) {
 			try {
 				String queryParam = String.format(heartBeatParam, gameName, platform, channel, serverId);
-				
+
 				accountLogger.info("report:"  + queryParam);
 
 				int status = executeMethod(heartBeatPath, queryParam);
@@ -362,12 +378,9 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * 上报数据
-	 * 
-	 * @param registerData
-	 * @return
+	 * 执行上报
 	 */
 	private boolean doReport(CreateRoleData createRoleData) {
 		if (accountZmq != null) {
@@ -387,12 +400,9 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * 上报数据
-	 * 
-	 * @param registerData
-	 * @return
+	 * 执行上报
 	 */
 	private boolean doReport(LevelUpData levelUpData) {
 		if (accountZmq != null) {
@@ -410,7 +420,27 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * 执行上报
+	 */
+	private boolean doReport(RenameRoleData renameRoleData) {
+		if (accountZmq != null) {
+			try {
+				String queryParam = String.format(roleRenameParam, gameName, platform, channel, serverId, renameRoleData.puid, renameRoleData.playerId, renameRoleData.newName);
+				accountLogger.info("report: " + roleRenamePath + "?" + queryParam);
+
+				int status = executeMethod(roleRenamePath, queryParam);
+				if (status == HttpStatus.SC_OK) {
+					return true;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * 停止服务，把当前数据全部上报
 	 */
@@ -424,6 +454,8 @@ public class HawkAccountService extends HawkTickable {
 					if (gameName.length() > 0 && platform.length() > 0) {
 						if (reportData instanceof CreateRoleData) {
 							doReport((CreateRoleData) reportData);
+						} else if (reportData instanceof RenameRoleData) {
+							doReport((RenameRoleData) reportData);
 						} else if (reportData instanceof LevelUpData) {
 							doReport((LevelUpData) reportData);
 						} else if (reportData instanceof RegitsterGameServer) {
@@ -440,11 +472,10 @@ public class HawkAccountService extends HawkTickable {
 			}finally {
 				reportLock.unlock();
 			}
-	
+
 		}
 	}
-	
-	
+
 	/**
 	 * 帧更新上报数据
 	 */
@@ -466,11 +497,11 @@ public class HawkAccountService extends HawkTickable {
 			else if ((events & HawkZmq.SocketEvent.CONNECT_DELAYED) > 0) {
 				HawkLog.logPrintln("account zmq client connect delayed: " + this.accountZmqHost);
 			}
-			
+
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
-		
+
 		if (connectOK == true) {
 			// 心跳检测
 			long curTime = HawkTime.getMillisecond();
@@ -478,7 +509,7 @@ public class HawkAccountService extends HawkTickable {
 				lastBeatTime = curTime;
 				report(new HeartBeatData());
 			}
-			
+
 			if (reportDatas.size() > 0) {
 				// 取出队列首个上报数据对象
 				Object reportData = null;
@@ -494,6 +525,8 @@ public class HawkAccountService extends HawkTickable {
 					if (gameName.length() > 0 && platform.length() > 0) {
 						if (reportData instanceof CreateRoleData) {
 							doReport((CreateRoleData) reportData);
+						} else if (reportData instanceof RenameRoleData) {
+							doReport((RenameRoleData) reportData);
 						} else if (reportData instanceof LevelUpData) {
 							doReport((LevelUpData) reportData);
 						} else if (reportData instanceof RegitsterGameServer) {
@@ -516,7 +549,7 @@ public class HawkAccountService extends HawkTickable {
 					}
 				}
 		}
-			
+
 		}
 	}
 

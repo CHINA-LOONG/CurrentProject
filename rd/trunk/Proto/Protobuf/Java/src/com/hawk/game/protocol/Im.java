@@ -4589,6 +4589,450 @@ public final class Im {
     // @@protoc_insertion_point(class_scope:HSImPlayerGetRet)
   }
 
+  public interface HSImDumpOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 dumpEndTime = 1;
+    /**
+     * <code>required int32 dumpEndTime = 1;</code>
+     *
+     * <pre>
+     * 禁言结束时间（秒）
+     * </pre>
+     */
+    boolean hasDumpEndTime();
+    /**
+     * <code>required int32 dumpEndTime = 1;</code>
+     *
+     * <pre>
+     * 禁言结束时间（秒）
+     * </pre>
+     */
+    int getDumpEndTime();
+  }
+  /**
+   * Protobuf type {@code HSImDump}
+   *
+   * <pre>
+   * IM_DUMP_S
+   * </pre>
+   */
+  public static final class HSImDump extends
+      com.google.protobuf.GeneratedMessage
+      implements HSImDumpOrBuilder {
+    // Use HSImDump.newBuilder() to construct.
+    private HSImDump(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSImDump(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSImDump defaultInstance;
+    public static HSImDump getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSImDump getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSImDump(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              dumpEndTime_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Im.internal_static_HSImDump_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Im.internal_static_HSImDump_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Im.HSImDump.class, com.hawk.game.protocol.Im.HSImDump.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSImDump> PARSER =
+        new com.google.protobuf.AbstractParser<HSImDump>() {
+      public HSImDump parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSImDump(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSImDump> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 dumpEndTime = 1;
+    public static final int DUMPENDTIME_FIELD_NUMBER = 1;
+    private int dumpEndTime_;
+    /**
+     * <code>required int32 dumpEndTime = 1;</code>
+     *
+     * <pre>
+     * 禁言结束时间（秒）
+     * </pre>
+     */
+    public boolean hasDumpEndTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 dumpEndTime = 1;</code>
+     *
+     * <pre>
+     * 禁言结束时间（秒）
+     * </pre>
+     */
+    public int getDumpEndTime() {
+      return dumpEndTime_;
+    }
+
+    private void initFields() {
+      dumpEndTime_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasDumpEndTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, dumpEndTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, dumpEndTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImDump parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Im.HSImDump prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSImDump}
+     *
+     * <pre>
+     * IM_DUMP_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Im.HSImDumpOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Im.internal_static_HSImDump_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Im.internal_static_HSImDump_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Im.HSImDump.class, com.hawk.game.protocol.Im.HSImDump.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Im.HSImDump.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        dumpEndTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Im.internal_static_HSImDump_descriptor;
+      }
+
+      public com.hawk.game.protocol.Im.HSImDump getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Im.HSImDump.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Im.HSImDump build() {
+        com.hawk.game.protocol.Im.HSImDump result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Im.HSImDump buildPartial() {
+        com.hawk.game.protocol.Im.HSImDump result = new com.hawk.game.protocol.Im.HSImDump(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.dumpEndTime_ = dumpEndTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Im.HSImDump) {
+          return mergeFrom((com.hawk.game.protocol.Im.HSImDump)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Im.HSImDump other) {
+        if (other == com.hawk.game.protocol.Im.HSImDump.getDefaultInstance()) return this;
+        if (other.hasDumpEndTime()) {
+          setDumpEndTime(other.getDumpEndTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasDumpEndTime()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Im.HSImDump parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Im.HSImDump) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 dumpEndTime = 1;
+      private int dumpEndTime_ ;
+      /**
+       * <code>required int32 dumpEndTime = 1;</code>
+       *
+       * <pre>
+       * 禁言结束时间（秒）
+       * </pre>
+       */
+      public boolean hasDumpEndTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 dumpEndTime = 1;</code>
+       *
+       * <pre>
+       * 禁言结束时间（秒）
+       * </pre>
+       */
+      public int getDumpEndTime() {
+        return dumpEndTime_;
+      }
+      /**
+       * <code>required int32 dumpEndTime = 1;</code>
+       *
+       * <pre>
+       * 禁言结束时间（秒）
+       * </pre>
+       */
+      public Builder setDumpEndTime(int value) {
+        bitField0_ |= 0x00000001;
+        dumpEndTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 dumpEndTime = 1;</code>
+       *
+       * <pre>
+       * 禁言结束时间（秒）
+       * </pre>
+       */
+      public Builder clearDumpEndTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        dumpEndTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSImDump)
+    }
+
+    static {
+      defaultInstance = new HSImDump(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSImDump)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSImMsg_descriptor;
   private static
@@ -4619,6 +5063,11 @@ public final class Im {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSImPlayerGetRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSImDump_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSImDump_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4639,7 +5088,8 @@ public final class Im {
       "\001(\t\"#\n\010HSImPush\022\027\n\005imMsg\030\001 \003(\0132\010.HSImMsg" +
       "\"!\n\rHSImPlayerGet\022\020\n\010playerId\030\001 \002(\005\"1\n\020H",
       "SImPlayerGetRet\022\035\n\010imPlayer\030\001 \002(\0132\013.HSIm" +
-      "PlayerB\030\n\026com.hawk.game.protocol"
+      "Player\"\037\n\010HSImDump\022\023\n\013dumpEndTime\030\001 \002(\005B" +
+      "\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4682,6 +5132,12 @@ public final class Im {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImPlayerGetRet_descriptor,
               new java.lang.String[] { "ImPlayer", });
+          internal_static_HSImDump_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_HSImDump_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSImDump_descriptor,
+              new java.lang.String[] { "DumpEndTime", });
           return null;
         }
       };

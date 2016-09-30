@@ -13,15 +13,34 @@ public class PvpOtherDefenseInfo : UIBase
     public Text bpValueText;
 
     public RectTransform[] petParentArray;
-
-    public static void OpenWith()
+    float monsterSclae = -1;
+    public static void OpenWith(PB.HSMonsterDefence defenseMonster)
     {
         PvpOtherDefenseInfo defenseInfo = UIMgr.Instance.OpenUI_(ViewName) as PvpOtherDefenseInfo;
-        defenseInfo.InitWith();
+        defenseInfo.InitWith(defenseMonster);
     }
 
-    public void InitWith()
+    public void InitWith(PB.HSMonsterDefence defenseMonster)
     {
+        List<PB.HSMonster> listMonster = defenseMonster.monsterInfo;
+        PB.HSMonster subMonster = null;
+        for (int i =0;i<listMonster.Count;++i)
+        {
+            subMonster = listMonster[i];
+            MonsterIcon subIcon = MonsterIcon.CreateIcon();
+            subIcon.SetMonsterStaticId(subMonster.cfgId);
+            subIcon.SetStage(subMonster.stage);
+            subIcon.SetLevel(subMonster.level);
+
+            subIcon.transform.SetParent(petParentArray[i]);
+            subIcon.transform.localPosition = Vector3.zero;
+            if(monsterSclae < 0)
+            {
+                RectTransform iconRt = subIcon.transform as RectTransform;
+                monsterSclae = petParentArray[0].rect.width / iconRt.rect.width;
+            }
+            subIcon.transform.localScale = new Vector3(monsterSclae, monsterSclae, monsterSclae);
+        }
     }
 
 	// Use this for initialization

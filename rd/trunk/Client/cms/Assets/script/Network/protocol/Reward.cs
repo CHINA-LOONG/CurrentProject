@@ -41,10 +41,10 @@ namespace PB
       get { return _itemId; }
       set { _itemId = value; }
     }
-    private int _count = default(int);
+    private long _count = default(long);
     [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int count
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long count
     {
       get { return _count; }
       set { _count = value; }

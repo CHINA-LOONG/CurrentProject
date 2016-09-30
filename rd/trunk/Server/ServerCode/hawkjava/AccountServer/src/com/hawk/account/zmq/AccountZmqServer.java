@@ -18,6 +18,7 @@ import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
 import com.hawk.account.httpHandler.UserCreateRoleHandler;
 import com.hawk.account.httpHandler.UserLevelUpHandler;
+import com.hawk.account.httpHandler.UserRenameRoleHandler;
 
 public class AccountZmqServer extends HawkTickable{
 	/**
@@ -218,6 +219,8 @@ public class AccountZmqServer extends HawkTickable{
 				UnRegistGameServerHandler.doReport(params);
 			}else if (reportPath.equals("/report_roleCreate")) {
 				UserCreateRoleHandler.doReport(params);
+			}else if (reportPath.equals("/report_roleRename")) {
+				UserRenameRoleHandler.doReport(params);
 			} else if (reportPath.equals("/report_levelUp")) {
 				UserLevelUpHandler.doReport(params);
 			}  else if (reportPath.equals("/heartBeat")) {

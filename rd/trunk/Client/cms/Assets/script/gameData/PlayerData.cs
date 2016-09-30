@@ -143,9 +143,9 @@ public class PlayerData : MonoBehaviour
     public float fireDamageRatio;
     public float earthDamageRatio;
     
-    //上阵宠物
-    public List<int> mainUnitID = new List<int>();
-    public List<BattleObject> mainUnitList = new List<BattleObject>();
+    //上阵宠物(pve)
+    //private List<int> mainUnitID = new List<int>();
+    //public List<BattleObject> mainUnitList = new List<BattleObject>();
     public Dictionary<int, PbUnit> unitPbList = new Dictionary<int, PbUnit>();
 	public Dictionary<int,GameUnit> allUnitDic = new Dictionary<int, GameUnit> ();
     //图鉴收藏
@@ -169,46 +169,17 @@ public class PlayerData : MonoBehaviour
                                                                                                     {0,0,0,0,0,0 },
                                                                                                     {0,0,0,0,0,0 }};
     //---------------------------------------------------------------------------------------------
-    public void InitMainUnitList()
-    {
-        mainUnitList.Clear();
-        foreach (int unitID in mainUnitID)
-        {
-            //PbUnit pb = null;
-            //if (unitPbList.TryGetValue(unitID, out pb))
-            //{
-            //    GameUnit curUnit = GameUnit.FromPb(pb, true);
-            //    //TODO: use event to create battleobject
-            //    //Vector3 testPos = new Vector3(-0.5f + (i % 3) * 0.5f, 0.5f - (int)(i / 3) * 0.5f);
-            //    BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
-            //    bo.gameObject.SetActive(false);
-            //    mainUnitList.Add(bo);
-            //}
-            GameUnit curGameUnit = null;
-            if (allUnitDic.TryGetValue(unitID, out curGameUnit))
-            {
-                BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curGameUnit, null, Vector3.zero, Quaternion.identity);
-                bo.gameObject.SetActive(false);
-                mainUnitList.Add(bo);
-            }
-            else
-            {
-                Logger.LogErrorFormat("can not find monster id={0}", unitID);
-            }
-        }
-    }
-    //---------------------------------------------------------------------------------------------
     public void ClearData()
     {
-        mainUnitID.Clear();
-        BattleObject subObj = null;
-        for (int i =0;i< mainUnitList.Count;++i)
-        {
-            subObj = mainUnitList[i];
-            if (subObj != null)
-                ObjectDataMgr.Instance.RemoveBattleObject(subObj.guid);
-        }
-		mainUnitList.Clear();
+        //mainUnitID.Clear();
+  //      BattleObject subObj = null;
+  //      for (int i =0;i< mainUnitList.Count;++i)
+  //      {
+  //          subObj = mainUnitList[i];
+  //          if (subObj != null)
+  //              ObjectDataMgr.Instance.RemoveBattleObject(subObj.guid);
+  //      }
+		//mainUnitList.Clear();
         unitPbList.Clear();
         allUnitDic.Clear();
         petCollect.Clear();
@@ -228,19 +199,14 @@ public class PlayerData : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void SetMainUnits(List<int> playerTeam)
-    {
-        mainUnitID.Clear();
-        foreach (int unitID in playerTeam)
-        {
-            mainUnitID.Add(unitID);
-        }
-    }
-    //---------------------------------------------------------------------------------------------
-    public List<BattleObject> GetMainUnits()
-    {
-        return mainUnitList;
-    }
+    //public void SetMainUnits(List<int> playerTeam)
+    //{
+    //    mainUnitID.Clear();
+    //    foreach (int unitID in playerTeam)
+    //    {
+    //        mainUnitID.Add(unitID);
+    //    }
+    //}
     //---------------------------------------------------------------------------------------------
     public bool RemoveUnit(int guid)
     {
@@ -248,8 +214,8 @@ public class PlayerData : MonoBehaviour
         {
             allUnitDic.Remove(guid);
             unitPbList.Remove(guid);
-            mainUnitID.Remove(guid);
-            InitMainUnitList();
+            //mainUnitID.Remove(guid);
+            //InitMainUnitList();
 
             return true;
         }

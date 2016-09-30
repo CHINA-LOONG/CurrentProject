@@ -41,7 +41,7 @@ public class UIComposeResult : UIBase
         {
             if (rewardInfos[i].type == (int)PB.itemType.ITEM)
             {
-                GetElement(new ItemData() { itemId = rewardInfos[i].itemId, count = rewardInfos[i].count });
+                GetElement(new ItemData() { itemId = rewardInfos[i].itemId, count = (int)rewardInfos[i].count });
             }
         }
     }

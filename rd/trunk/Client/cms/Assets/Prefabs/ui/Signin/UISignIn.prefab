@@ -782,6 +782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ScrollRect: {fileID: 11498378}
   m_Grid: {fileID: 11472426}
+  ElementSize: {x: 0, y: 0}
 --- !u!114 &11433138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1246,8 +1247,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4.5}
+  m_SizeDelta: {x: 0, y: -13}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22408574
 RectTransform:

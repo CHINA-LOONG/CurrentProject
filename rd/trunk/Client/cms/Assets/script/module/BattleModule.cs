@@ -62,6 +62,12 @@ public class BattleModule : ModuleBase
     {
         BindListener();
         EnterInstanceParam enterParam = param as EnterInstanceParam;
+        PvpFightParam pvpParam = null;
+        if (enterParam == null)
+        {
+            pvpParam = param as PvpFightParam;
+        }
+        //pve
         if (enterParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
@@ -69,6 +75,17 @@ public class BattleModule : ModuleBase
             {
                 UIMgr.Instance.FixBrokenWord();
                 controller.StartBattlePrepare(enterParam);
+                loading.SetLoadingCallback(LoadResourceFinish);
+                loading.UpdateTotalAssetCount();
+            }
+        }
+        else if (pvpParam != null)
+        {
+            UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+            if (loading != null)
+            {
+                UIMgr.Instance.FixBrokenWord();
+                controller.StartBattlePvpPrepare(pvpParam);
                 loading.SetLoadingCallback(LoadResourceFinish);
                 loading.UpdateTotalAssetCount();
             }

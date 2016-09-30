@@ -21,38 +21,48 @@ public final class PVP {
      */
     int getRank();
 
-    // required string name = 2;
+    // required int32 playerId = 2;
     /**
-     * <code>required string name = 2;</code>
+     * <code>required int32 playerId = 2;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 2;</code>
+     */
+    int getPlayerId();
+
+    // required string name = 3;
+    /**
+     * <code>required string name = 3;</code>
      */
     boolean hasName();
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 3;</code>
      */
     java.lang.String getName();
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 3;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // required int32 level = 3;
+    // required int32 level = 4;
     /**
-     * <code>required int32 level = 3;</code>
+     * <code>required int32 level = 4;</code>
      */
     boolean hasLevel();
     /**
-     * <code>required int32 level = 3;</code>
+     * <code>required int32 level = 4;</code>
      */
     int getLevel();
 
-    // required int32 point = 4;
+    // required int32 point = 5;
     /**
-     * <code>required int32 point = 4;</code>
+     * <code>required int32 point = 5;</code>
      */
     boolean hasPoint();
     /**
-     * <code>required int32 point = 4;</code>
+     * <code>required int32 point = 5;</code>
      */
     int getPoint();
   }
@@ -116,18 +126,23 @@ public final class PVP {
               rank_ = input.readInt32();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
+              playerId_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 26: {
               bitField0_ |= 0x00000004;
-              level_ = input.readInt32();
+              name_ = input.readBytes();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
+              level_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
               point_ = input.readInt32();
               break;
             }
@@ -187,17 +202,33 @@ public final class PVP {
       return rank_;
     }
 
-    // required string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
+    // required int32 playerId = 2;
+    public static final int PLAYERID_FIELD_NUMBER = 2;
+    private int playerId_;
     /**
-     * <code>required string name = 2;</code>
+     * <code>required int32 playerId = 2;</code>
      */
-    public boolean hasName() {
+    public boolean hasPlayerId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string name = 2;</code>
+     * <code>required int32 playerId = 2;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // required string name = 3;
+    public static final int NAME_FIELD_NUMBER = 3;
+    private java.lang.Object name_;
+    /**
+     * <code>required string name = 3;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string name = 3;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -214,7 +245,7 @@ public final class PVP {
       }
     }
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -230,33 +261,33 @@ public final class PVP {
       }
     }
 
-    // required int32 level = 3;
-    public static final int LEVEL_FIELD_NUMBER = 3;
+    // required int32 level = 4;
+    public static final int LEVEL_FIELD_NUMBER = 4;
     private int level_;
     /**
-     * <code>required int32 level = 3;</code>
+     * <code>required int32 level = 4;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 level = 3;</code>
+     * <code>required int32 level = 4;</code>
      */
     public int getLevel() {
       return level_;
     }
 
-    // required int32 point = 4;
-    public static final int POINT_FIELD_NUMBER = 4;
+    // required int32 point = 5;
+    public static final int POINT_FIELD_NUMBER = 5;
     private int point_;
     /**
-     * <code>required int32 point = 4;</code>
+     * <code>required int32 point = 5;</code>
      */
     public boolean hasPoint() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 point = 4;</code>
+     * <code>required int32 point = 5;</code>
      */
     public int getPoint() {
       return point_;
@@ -264,6 +295,7 @@ public final class PVP {
 
     private void initFields() {
       rank_ = 0;
+      playerId_ = 0;
       name_ = "";
       level_ = 0;
       point_ = 0;
@@ -274,6 +306,10 @@ public final class PVP {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasRank()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPlayerId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -300,13 +336,16 @@ public final class PVP {
         output.writeInt32(1, rank_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
+        output.writeInt32(2, playerId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, level_);
+        output.writeBytes(3, getNameBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, point_);
+        output.writeInt32(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, point_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -323,15 +362,19 @@ public final class PVP {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
+          .computeInt32Size(2, playerId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, level_);
+          .computeBytesSize(3, getNameBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, point_);
+          .computeInt32Size(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, point_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -455,12 +498,14 @@ public final class PVP {
         super.clear();
         rank_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
+        playerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        level_ = 0;
+        name_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        point_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        point_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -496,13 +541,17 @@ public final class PVP {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.name_ = name_;
+        result.playerId_ = playerId_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.level_ = level_;
+        result.name_ = name_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.point_ = point_;
         result.bitField0_ = to_bitField0_;
@@ -524,8 +573,11 @@ public final class PVP {
         if (other.hasRank()) {
           setRank(other.getRank());
         }
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
         if (other.hasName()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           name_ = other.name_;
           onChanged();
         }
@@ -541,6 +593,10 @@ public final class PVP {
 
       public final boolean isInitialized() {
         if (!hasRank()) {
+          
+          return false;
+        }
+        if (!hasPlayerId()) {
           
           return false;
         }
@@ -611,16 +667,49 @@ public final class PVP {
         return this;
       }
 
-      // required string name = 2;
-      private java.lang.Object name_ = "";
+      // required int32 playerId = 2;
+      private int playerId_ ;
       /**
-       * <code>required string name = 2;</code>
+       * <code>required int32 playerId = 2;</code>
        */
-      public boolean hasName() {
+      public boolean hasPlayerId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required int32 playerId = 2;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000002;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string name = 3;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 3;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string name = 3;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -634,7 +723,7 @@ public final class PVP {
         }
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -650,102 +739,102 @@ public final class PVP {
         }
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 3;</code>
        */
       public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 3;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 3;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
       }
 
-      // required int32 level = 3;
+      // required int32 level = 4;
       private int level_ ;
       /**
-       * <code>required int32 level = 3;</code>
+       * <code>required int32 level = 4;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 level = 3;</code>
+       * <code>required int32 level = 4;</code>
        */
       public int getLevel() {
         return level_;
       }
       /**
-       * <code>required int32 level = 3;</code>
+       * <code>required int32 level = 4;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         level_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level = 3;</code>
+       * <code>required int32 level = 4;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         level_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 point = 4;
+      // required int32 point = 5;
       private int point_ ;
       /**
-       * <code>required int32 point = 4;</code>
+       * <code>required int32 point = 5;</code>
        */
       public boolean hasPoint() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 point = 4;</code>
+       * <code>required int32 point = 5;</code>
        */
       public int getPoint() {
         return point_;
       }
       /**
-       * <code>required int32 point = 4;</code>
+       * <code>required int32 point = 5;</code>
        */
       public Builder setPoint(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         point_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 point = 4;</code>
+       * <code>required int32 point = 5;</code>
        */
       public Builder clearPoint() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         point_ = 0;
         onChanged();
         return this;
@@ -3484,6 +3573,16 @@ public final class PVP {
      * <code>required int32 pvpRank = 2;</code>
      */
     int getPvpRank();
+
+    // required int32 monthRewardTimeLeft = 3;
+    /**
+     * <code>required int32 monthRewardTimeLeft = 3;</code>
+     */
+    boolean hasMonthRewardTimeLeft();
+    /**
+     * <code>required int32 monthRewardTimeLeft = 3;</code>
+     */
+    int getMonthRewardTimeLeft();
   }
   /**
    * Protobuf type {@code HSPVPInfoRet}
@@ -3544,6 +3643,11 @@ public final class PVP {
             case 16: {
               bitField0_ |= 0x00000002;
               pvpRank_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              monthRewardTimeLeft_ = input.readInt32();
               break;
             }
           }
@@ -3618,9 +3722,26 @@ public final class PVP {
       return pvpRank_;
     }
 
+    // required int32 monthRewardTimeLeft = 3;
+    public static final int MONTHREWARDTIMELEFT_FIELD_NUMBER = 3;
+    private int monthRewardTimeLeft_;
+    /**
+     * <code>required int32 monthRewardTimeLeft = 3;</code>
+     */
+    public boolean hasMonthRewardTimeLeft() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 monthRewardTimeLeft = 3;</code>
+     */
+    public int getMonthRewardTimeLeft() {
+      return monthRewardTimeLeft_;
+    }
+
     private void initFields() {
       pvpPoint_ = 0;
       pvpRank_ = 0;
+      monthRewardTimeLeft_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3632,6 +3753,10 @@ public final class PVP {
         return false;
       }
       if (!hasPvpRank()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonthRewardTimeLeft()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3647,6 +3772,9 @@ public final class PVP {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, pvpRank_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, monthRewardTimeLeft_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3664,6 +3792,10 @@ public final class PVP {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, pvpRank_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, monthRewardTimeLeft_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3785,6 +3917,8 @@ public final class PVP {
         bitField0_ = (bitField0_ & ~0x00000001);
         pvpRank_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        monthRewardTimeLeft_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -3821,6 +3955,10 @@ public final class PVP {
           to_bitField0_ |= 0x00000002;
         }
         result.pvpRank_ = pvpRank_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.monthRewardTimeLeft_ = monthRewardTimeLeft_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3843,6 +3981,9 @@ public final class PVP {
         if (other.hasPvpRank()) {
           setPvpRank(other.getPvpRank());
         }
+        if (other.hasMonthRewardTimeLeft()) {
+          setMonthRewardTimeLeft(other.getMonthRewardTimeLeft());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3853,6 +3994,10 @@ public final class PVP {
           return false;
         }
         if (!hasPvpRank()) {
+          
+          return false;
+        }
+        if (!hasMonthRewardTimeLeft()) {
           
           return false;
         }
@@ -3944,6 +4089,39 @@ public final class PVP {
         return this;
       }
 
+      // required int32 monthRewardTimeLeft = 3;
+      private int monthRewardTimeLeft_ ;
+      /**
+       * <code>required int32 monthRewardTimeLeft = 3;</code>
+       */
+      public boolean hasMonthRewardTimeLeft() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 monthRewardTimeLeft = 3;</code>
+       */
+      public int getMonthRewardTimeLeft() {
+        return monthRewardTimeLeft_;
+      }
+      /**
+       * <code>required int32 monthRewardTimeLeft = 3;</code>
+       */
+      public Builder setMonthRewardTimeLeft(int value) {
+        bitField0_ |= 0x00000004;
+        monthRewardTimeLeft_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monthRewardTimeLeft = 3;</code>
+       */
+      public Builder clearMonthRewardTimeLeft() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        monthRewardTimeLeft_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSPVPInfoRet)
     }
 
@@ -3957,6 +4135,16 @@ public final class PVP {
 
   public interface HSPVPMatchTargetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required bool changeTarget = 1;
+    /**
+     * <code>required bool changeTarget = 1;</code>
+     */
+    boolean hasChangeTarget();
+    /**
+     * <code>required bool changeTarget = 1;</code>
+     */
+    boolean getChangeTarget();
   }
   /**
    * Protobuf type {@code HSPVPMatchTarget}
@@ -3991,6 +4179,7 @@ public final class PVP {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4006,6 +4195,11 @@ public final class PVP {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              changeTarget_ = input.readBool();
               break;
             }
           }
@@ -4047,13 +4241,35 @@ public final class PVP {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required bool changeTarget = 1;
+    public static final int CHANGETARGET_FIELD_NUMBER = 1;
+    private boolean changeTarget_;
+    /**
+     * <code>required bool changeTarget = 1;</code>
+     */
+    public boolean hasChangeTarget() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool changeTarget = 1;</code>
+     */
+    public boolean getChangeTarget() {
+      return changeTarget_;
+    }
+
     private void initFields() {
+      changeTarget_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasChangeTarget()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4061,6 +4277,9 @@ public final class PVP {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, changeTarget_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4070,6 +4289,10 @@ public final class PVP {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, changeTarget_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -4186,6 +4409,8 @@ public final class PVP {
 
       public Builder clear() {
         super.clear();
+        changeTarget_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -4212,6 +4437,13 @@ public final class PVP {
 
       public com.hawk.game.protocol.PVP.HSPVPMatchTarget buildPartial() {
         com.hawk.game.protocol.PVP.HSPVPMatchTarget result = new com.hawk.game.protocol.PVP.HSPVPMatchTarget(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.changeTarget_ = changeTarget_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4227,11 +4459,18 @@ public final class PVP {
 
       public Builder mergeFrom(com.hawk.game.protocol.PVP.HSPVPMatchTarget other) {
         if (other == com.hawk.game.protocol.PVP.HSPVPMatchTarget.getDefaultInstance()) return this;
+        if (other.hasChangeTarget()) {
+          setChangeTarget(other.getChangeTarget());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasChangeTarget()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -4250,6 +4489,40 @@ public final class PVP {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // required bool changeTarget = 1;
+      private boolean changeTarget_ ;
+      /**
+       * <code>required bool changeTarget = 1;</code>
+       */
+      public boolean hasChangeTarget() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required bool changeTarget = 1;</code>
+       */
+      public boolean getChangeTarget() {
+        return changeTarget_;
+      }
+      /**
+       * <code>required bool changeTarget = 1;</code>
+       */
+      public Builder setChangeTarget(boolean value) {
+        bitField0_ |= 0x00000001;
+        changeTarget_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool changeTarget = 1;</code>
+       */
+      public Builder clearChangeTarget() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        changeTarget_ = false;
+        onChanged();
         return this;
       }
 
@@ -4345,6 +4618,16 @@ public final class PVP {
      * <code>required int32 pvpTimeBeginTime = 7;</code>
      */
     int getPvpTimeBeginTime();
+
+    // required int32 changeTime = 8;
+    /**
+     * <code>required int32 changeTime = 8;</code>
+     */
+    boolean hasChangeTime();
+    /**
+     * <code>required int32 changeTime = 8;</code>
+     */
+    int getChangeTime();
   }
   /**
    * Protobuf type {@code HSPVPMatchTargetRet}
@@ -4438,6 +4721,11 @@ public final class PVP {
             case 56: {
               bitField0_ |= 0x00000040;
               pvpTimeBeginTime_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              changeTime_ = input.readInt32();
               break;
             }
           }
@@ -4625,6 +4913,22 @@ public final class PVP {
       return pvpTimeBeginTime_;
     }
 
+    // required int32 changeTime = 8;
+    public static final int CHANGETIME_FIELD_NUMBER = 8;
+    private int changeTime_;
+    /**
+     * <code>required int32 changeTime = 8;</code>
+     */
+    public boolean hasChangeTime() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int32 changeTime = 8;</code>
+     */
+    public int getChangeTime() {
+      return changeTime_;
+    }
+
     private void initFields() {
       playerId_ = 0;
       name_ = "";
@@ -4633,6 +4937,7 @@ public final class PVP {
       defenceData_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
       pvpTime_ = 0;
       pvpTimeBeginTime_ = 0;
+      changeTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4667,6 +4972,10 @@ public final class PVP {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasChangeTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!getDefenceData().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
@@ -4698,6 +5007,9 @@ public final class PVP {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(7, pvpTimeBeginTime_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(8, changeTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4735,6 +5047,10 @@ public final class PVP {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, pvpTimeBeginTime_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, changeTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4871,6 +5187,8 @@ public final class PVP {
         bitField0_ = (bitField0_ & ~0x00000020);
         pvpTimeBeginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        changeTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -4931,6 +5249,10 @@ public final class PVP {
           to_bitField0_ |= 0x00000040;
         }
         result.pvpTimeBeginTime_ = pvpTimeBeginTime_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.changeTime_ = changeTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4970,6 +5292,9 @@ public final class PVP {
         if (other.hasPvpTimeBeginTime()) {
           setPvpTimeBeginTime(other.getPvpTimeBeginTime());
         }
+        if (other.hasChangeTime()) {
+          setChangeTime(other.getChangeTime());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -5000,6 +5325,10 @@ public final class PVP {
           return false;
         }
         if (!hasPvpTimeBeginTime()) {
+          
+          return false;
+        }
+        if (!hasChangeTime()) {
           
           return false;
         }
@@ -5381,6 +5710,39 @@ public final class PVP {
       public Builder clearPvpTimeBeginTime() {
         bitField0_ = (bitField0_ & ~0x00000040);
         pvpTimeBeginTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 changeTime = 8;
+      private int changeTime_ ;
+      /**
+       * <code>required int32 changeTime = 8;</code>
+       */
+      public boolean hasChangeTime() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int32 changeTime = 8;</code>
+       */
+      public int getChangeTime() {
+        return changeTime_;
+      }
+      /**
+       * <code>required int32 changeTime = 8;</code>
+       */
+      public Builder setChangeTime(int value) {
+        bitField0_ |= 0x00000080;
+        changeTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 changeTime = 8;</code>
+       */
+      public Builder clearChangeTime() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        changeTime_ = 0;
         onChanged();
         return this;
       }
@@ -7377,6 +7739,933 @@ public final class PVP {
     // @@protoc_insertion_point(class_scope:HSPVPRankRet)
   }
 
+  public interface HSPVPRankDefenceOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 playerId = 1;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    int getPlayerId();
+  }
+  /**
+   * Protobuf type {@code HSPVPRankDefence}
+   */
+  public static final class HSPVPRankDefence extends
+      com.google.protobuf.GeneratedMessage
+      implements HSPVPRankDefenceOrBuilder {
+    // Use HSPVPRankDefence.newBuilder() to construct.
+    private HSPVPRankDefence(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSPVPRankDefence(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSPVPRankDefence defaultInstance;
+    public static HSPVPRankDefence getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSPVPRankDefence getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSPVPRankDefence(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              playerId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefence_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefence_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.PVP.HSPVPRankDefence.class, com.hawk.game.protocol.PVP.HSPVPRankDefence.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSPVPRankDefence> PARSER =
+        new com.google.protobuf.AbstractParser<HSPVPRankDefence>() {
+      public HSPVPRankDefence parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSPVPRankDefence(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSPVPRankDefence> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 playerId = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    private void initFields() {
+      playerId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, playerId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, playerId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefence parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.PVP.HSPVPRankDefence prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSPVPRankDefence}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.PVP.HSPVPRankDefenceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefence_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefence_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.PVP.HSPVPRankDefence.class, com.hawk.game.protocol.PVP.HSPVPRankDefence.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.PVP.HSPVPRankDefence.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefence_descriptor;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefence getDefaultInstanceForType() {
+        return com.hawk.game.protocol.PVP.HSPVPRankDefence.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefence build() {
+        com.hawk.game.protocol.PVP.HSPVPRankDefence result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefence buildPartial() {
+        com.hawk.game.protocol.PVP.HSPVPRankDefence result = new com.hawk.game.protocol.PVP.HSPVPRankDefence(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.playerId_ = playerId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.PVP.HSPVPRankDefence) {
+          return mergeFrom((com.hawk.game.protocol.PVP.HSPVPRankDefence)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.PVP.HSPVPRankDefence other) {
+        if (other == com.hawk.game.protocol.PVP.HSPVPRankDefence.getDefaultInstance()) return this;
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.PVP.HSPVPRankDefence parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.PVP.HSPVPRankDefence) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 playerId = 1;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000001;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSPVPRankDefence)
+    }
+
+    static {
+      defaultInstance = new HSPVPRankDefence(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSPVPRankDefence)
+  }
+
+  public interface HSPVPRankDefenceRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .HSMonsterDefence monsterDefence = 1;
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    boolean hasMonsterDefence();
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    com.hawk.game.protocol.Monster.HSMonsterDefence getMonsterDefence();
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder getMonsterDefenceOrBuilder();
+  }
+  /**
+   * Protobuf type {@code HSPVPRankDefenceRet}
+   */
+  public static final class HSPVPRankDefenceRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSPVPRankDefenceRetOrBuilder {
+    // Use HSPVPRankDefenceRet.newBuilder() to construct.
+    private HSPVPRankDefenceRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSPVPRankDefenceRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSPVPRankDefenceRet defaultInstance;
+    public static HSPVPRankDefenceRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSPVPRankDefenceRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSPVPRankDefenceRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.hawk.game.protocol.Monster.HSMonsterDefence.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = monsterDefence_.toBuilder();
+              }
+              monsterDefence_ = input.readMessage(com.hawk.game.protocol.Monster.HSMonsterDefence.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(monsterDefence_);
+                monsterDefence_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefenceRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefenceRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.class, com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSPVPRankDefenceRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSPVPRankDefenceRet>() {
+      public HSPVPRankDefenceRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSPVPRankDefenceRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSPVPRankDefenceRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .HSMonsterDefence monsterDefence = 1;
+    public static final int MONSTERDEFENCE_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Monster.HSMonsterDefence monsterDefence_;
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    public boolean hasMonsterDefence() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    public com.hawk.game.protocol.Monster.HSMonsterDefence getMonsterDefence() {
+      return monsterDefence_;
+    }
+    /**
+     * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+     */
+    public com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder getMonsterDefenceOrBuilder() {
+      return monsterDefence_;
+    }
+
+    private void initFields() {
+      monsterDefence_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterDefence()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getMonsterDefence().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, monsterDefence_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, monsterDefence_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.PVP.HSPVPRankDefenceRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSPVPRankDefenceRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.PVP.HSPVPRankDefenceRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefenceRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefenceRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.class, com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMonsterDefenceFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (monsterDefenceBuilder_ == null) {
+          monsterDefence_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
+        } else {
+          monsterDefenceBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPRankDefenceRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefenceRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefenceRet build() {
+        com.hawk.game.protocol.PVP.HSPVPRankDefenceRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPRankDefenceRet buildPartial() {
+        com.hawk.game.protocol.PVP.HSPVPRankDefenceRet result = new com.hawk.game.protocol.PVP.HSPVPRankDefenceRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (monsterDefenceBuilder_ == null) {
+          result.monsterDefence_ = monsterDefence_;
+        } else {
+          result.monsterDefence_ = monsterDefenceBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.PVP.HSPVPRankDefenceRet) {
+          return mergeFrom((com.hawk.game.protocol.PVP.HSPVPRankDefenceRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.PVP.HSPVPRankDefenceRet other) {
+        if (other == com.hawk.game.protocol.PVP.HSPVPRankDefenceRet.getDefaultInstance()) return this;
+        if (other.hasMonsterDefence()) {
+          mergeMonsterDefence(other.getMonsterDefence());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterDefence()) {
+          
+          return false;
+        }
+        if (!getMonsterDefence().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.PVP.HSPVPRankDefenceRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.PVP.HSPVPRankDefenceRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .HSMonsterDefence monsterDefence = 1;
+      private com.hawk.game.protocol.Monster.HSMonsterDefence monsterDefence_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonsterDefence, com.hawk.game.protocol.Monster.HSMonsterDefence.Builder, com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder> monsterDefenceBuilder_;
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public boolean hasMonsterDefence() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonsterDefence getMonsterDefence() {
+        if (monsterDefenceBuilder_ == null) {
+          return monsterDefence_;
+        } else {
+          return monsterDefenceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public Builder setMonsterDefence(com.hawk.game.protocol.Monster.HSMonsterDefence value) {
+        if (monsterDefenceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          monsterDefence_ = value;
+          onChanged();
+        } else {
+          monsterDefenceBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public Builder setMonsterDefence(
+          com.hawk.game.protocol.Monster.HSMonsterDefence.Builder builderForValue) {
+        if (monsterDefenceBuilder_ == null) {
+          monsterDefence_ = builderForValue.build();
+          onChanged();
+        } else {
+          monsterDefenceBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public Builder mergeMonsterDefence(com.hawk.game.protocol.Monster.HSMonsterDefence value) {
+        if (monsterDefenceBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              monsterDefence_ != com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance()) {
+            monsterDefence_ =
+              com.hawk.game.protocol.Monster.HSMonsterDefence.newBuilder(monsterDefence_).mergeFrom(value).buildPartial();
+          } else {
+            monsterDefence_ = value;
+          }
+          onChanged();
+        } else {
+          monsterDefenceBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public Builder clearMonsterDefence() {
+        if (monsterDefenceBuilder_ == null) {
+          monsterDefence_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
+          onChanged();
+        } else {
+          monsterDefenceBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonsterDefence.Builder getMonsterDefenceBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getMonsterDefenceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder getMonsterDefenceOrBuilder() {
+        if (monsterDefenceBuilder_ != null) {
+          return monsterDefenceBuilder_.getMessageOrBuilder();
+        } else {
+          return monsterDefence_;
+        }
+      }
+      /**
+       * <code>required .HSMonsterDefence monsterDefence = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonsterDefence, com.hawk.game.protocol.Monster.HSMonsterDefence.Builder, com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder> 
+          getMonsterDefenceFieldBuilder() {
+        if (monsterDefenceBuilder_ == null) {
+          monsterDefenceBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Monster.HSMonsterDefence, com.hawk.game.protocol.Monster.HSMonsterDefence.Builder, com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder>(
+                  monsterDefence_,
+                  getParentForChildren(),
+                  isClean());
+          monsterDefence_ = null;
+        }
+        return monsterDefenceBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSPVPRankDefenceRet)
+    }
+
+    static {
+      defaultInstance = new HSPVPRankDefenceRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSPVPRankDefenceRet)
+  }
+
   public interface HSPVPDefenceRecordOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
   }
@@ -8443,6 +9732,16 @@ public final class PVP {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSPVPRankRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSPVPRankDefence_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSPVPRankDefence_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSPVPRankDefenceRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSPVPRankDefenceRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSPVPDefenceRecord_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -8462,29 +9761,34 @@ public final class PVP {
   static {
     java.lang.String[] descriptorData = {
       "\n\022Protocol/PVP.proto\032\024Protocol/Const.pro" +
-      "to\032\026Protocol/Monster.proto\"G\n\013PVPRankDat" +
-      "a\022\014\n\004rank\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\r\n\005level\030\003" +
-      " \002(\005\022\r\n\005point\030\004 \002(\005\"e\n\024PVPDefenceRecordD" +
-      "ata\022\016\n\006result\030\001 \002(\005\022\r\n\005point\030\002 \002(\005\022\020\n\010at" +
-      "tacker\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\022\r\n\005grade\030\005 \002" +
-      "(\005\"+\n\026HSSetPVPDefenceMonster\022\021\n\tmonsterI" +
-      "d\030\001 \003(\005\"\033\n\031HSSetPVPDefenceMonsterRet\"\030\n\026" +
-      "HSGetPVPDefenceMonster\".\n\031HSGetPVPDefenc" +
-      "eMonsterRet\022\021\n\tmonsterId\030\001 \003(\005\"\013\n\tHSPVPI",
-      "nfo\"1\n\014HSPVPInfoRet\022\020\n\010pvpPoint\030\001 \002(\005\022\017\n" +
-      "\007pvpRank\030\002 \002(\005\"\022\n\020HSPVPMatchTarget\"\245\001\n\023H" +
-      "SPVPMatchTargetRet\022\020\n\010playerId\030\001 \002(\005\022\014\n\004" +
-      "name\030\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\014\n\004rank\030\004 \002(\005\022" +
-      "&\n\013defenceData\030\005 \002(\0132\021.HSMonsterDefence\022" +
-      "\017\n\007pvpTime\030\006 \002(\005\022\030\n\020pvpTimeBeginTime\030\007 \002" +
-      "(\005\"\035\n\013HSPVPSettle\022\016\n\006result\030\001 \002(\005\"B\n\016HSP" +
-      "VPSettleRet\022\r\n\005point\030\001 \002(\005\022\014\n\004rank\030\002 \002(\005" +
-      "\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\tHSPVPRank\"1\n\014HS" +
-      "PVPRankRet\022!\n\013pvpRankList\030\001 \003(\0132\014.PVPRan",
-      "kData\"\024\n\022HSPVPDefenceRecord\"L\n\025HSPVPDefe" +
-      "nceRecordRet\0223\n\024pvpDefenceRecordList\030\001 \003" +
-      "(\0132\025.PVPDefenceRecordDataB\030\n\026com.hawk.ga" +
-      "me.protocol"
+      "to\032\026Protocol/Monster.proto\"Y\n\013PVPRankDat" +
+      "a\022\014\n\004rank\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005\022\014\n\004nam" +
+      "e\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\022\r\n\005point\030\005 \002(\005\"e\n" +
+      "\024PVPDefenceRecordData\022\016\n\006result\030\001 \002(\005\022\r\n" +
+      "\005point\030\002 \002(\005\022\020\n\010attacker\030\003 \002(\t\022\r\n\005level\030" +
+      "\004 \002(\005\022\r\n\005grade\030\005 \002(\005\"+\n\026HSSetPVPDefenceM" +
+      "onster\022\021\n\tmonsterId\030\001 \003(\005\"\033\n\031HSSetPVPDef" +
+      "enceMonsterRet\"\030\n\026HSGetPVPDefenceMonster" +
+      "\".\n\031HSGetPVPDefenceMonsterRet\022\021\n\tmonster",
+      "Id\030\001 \003(\005\"\013\n\tHSPVPInfo\"N\n\014HSPVPInfoRet\022\020\n" +
+      "\010pvpPoint\030\001 \002(\005\022\017\n\007pvpRank\030\002 \002(\005\022\033\n\023mont" +
+      "hRewardTimeLeft\030\003 \002(\005\"(\n\020HSPVPMatchTarge" +
+      "t\022\024\n\014changeTarget\030\001 \002(\010\"\271\001\n\023HSPVPMatchTa" +
+      "rgetRet\022\020\n\010playerId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022" +
+      "\r\n\005level\030\003 \002(\005\022\014\n\004rank\030\004 \002(\005\022&\n\013defenceD" +
+      "ata\030\005 \002(\0132\021.HSMonsterDefence\022\017\n\007pvpTime\030" +
+      "\006 \002(\005\022\030\n\020pvpTimeBeginTime\030\007 \002(\005\022\022\n\nchang" +
+      "eTime\030\010 \002(\005\"\035\n\013HSPVPSettle\022\016\n\006result\030\001 \002" +
+      "(\005\"B\n\016HSPVPSettleRet\022\r\n\005point\030\001 \002(\005\022\014\n\004r",
+      "ank\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\tHSPVPR" +
+      "ank\"1\n\014HSPVPRankRet\022!\n\013pvpRankList\030\001 \003(\013" +
+      "2\014.PVPRankData\"$\n\020HSPVPRankDefence\022\020\n\010pl" +
+      "ayerId\030\001 \002(\005\"@\n\023HSPVPRankDefenceRet\022)\n\016m" +
+      "onsterDefence\030\001 \002(\0132\021.HSMonsterDefence\"\024" +
+      "\n\022HSPVPDefenceRecord\"L\n\025HSPVPDefenceReco" +
+      "rdRet\0223\n\024pvpDefenceRecordList\030\001 \003(\0132\025.PV" +
+      "PDefenceRecordDataB\030\n\026com.hawk.game.prot" +
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8496,7 +9800,7 @@ public final class PVP {
           internal_static_PVPRankData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PVPRankData_descriptor,
-              new java.lang.String[] { "Rank", "Name", "Level", "Point", });
+              new java.lang.String[] { "Rank", "PlayerId", "Name", "Level", "Point", });
           internal_static_PVPDefenceRecordData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_PVPDefenceRecordData_fieldAccessorTable = new
@@ -8538,19 +9842,19 @@ public final class PVP {
           internal_static_HSPVPInfoRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPInfoRet_descriptor,
-              new java.lang.String[] { "PvpPoint", "PvpRank", });
+              new java.lang.String[] { "PvpPoint", "PvpRank", "MonthRewardTimeLeft", });
           internal_static_HSPVPMatchTarget_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_HSPVPMatchTarget_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPMatchTarget_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "ChangeTarget", });
           internal_static_HSPVPMatchTargetRet_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_HSPVPMatchTargetRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPMatchTargetRet_descriptor,
-              new java.lang.String[] { "PlayerId", "Name", "Level", "Rank", "DefenceData", "PvpTime", "PvpTimeBeginTime", });
+              new java.lang.String[] { "PlayerId", "Name", "Level", "Rank", "DefenceData", "PvpTime", "PvpTimeBeginTime", "ChangeTime", });
           internal_static_HSPVPSettle_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_HSPVPSettle_fieldAccessorTable = new
@@ -8575,14 +9879,26 @@ public final class PVP {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRankRet_descriptor,
               new java.lang.String[] { "PvpRankList", });
-          internal_static_HSPVPDefenceRecord_descriptor =
+          internal_static_HSPVPRankDefence_descriptor =
             getDescriptor().getMessageTypes().get(14);
+          internal_static_HSPVPRankDefence_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSPVPRankDefence_descriptor,
+              new java.lang.String[] { "PlayerId", });
+          internal_static_HSPVPRankDefenceRet_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_HSPVPRankDefenceRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSPVPRankDefenceRet_descriptor,
+              new java.lang.String[] { "MonsterDefence", });
+          internal_static_HSPVPDefenceRecord_descriptor =
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSPVPDefenceRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPDefenceRecord_descriptor,
               new java.lang.String[] { });
           internal_static_HSPVPDefenceRecordRet_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSPVPDefenceRecordRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPDefenceRecordRet_descriptor,

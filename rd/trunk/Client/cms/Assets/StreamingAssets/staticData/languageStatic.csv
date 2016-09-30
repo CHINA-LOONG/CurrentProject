@@ -369,14 +369,61 @@ bosshuoshan47Ifrit4wp01,胸,Body
 bosshuoshan47Ifrit4wp02,武器,Weapon
 bosshuoshan47Ifrit4wp03,右裤脚,Right Trousers
 bosshuoshan47Ifrit4wp04,左裤脚,Left Trousers
-bosssenlin38Meidusha2wp01,右上蛇头,Top Right Snake
+bosssenlin38Meidusha2wp01,身体,Body
 bosssenlin38Meidusha2wp02,右下蛇头,Bottom Right Snake
-bosssenlin38Meidusha2wp03,左上蛇头,Top Left Snake
-bosssenlin38Meidusha2wp04,左下蛇头,Bottom Left Snake
-bosssenlin38Meidusha2wp05,身体,Body
+bosssenlin38Meidusha2wp03,左下蛇头,Bottom Left Snake
+bosssenlin38Meidusha2wp04,右上蛇头,Top Right Snake
+bosssenlin38Meidusha2wp05,左上蛇头,Top Left Snake
 bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
 bosshuoshan48Hehuaisituosi4wp02,右上武器,Top Right Weapon
 bosshuoshan48Hehuaisituosi4wp03,右下武器,Bottom Right Weapon
 bosshuoshan48Hehuaisituosi4wp04,左上武器,Top Left Weapon
 bosshuoshan48Hehuaisituosi4wp05,左下武器,Bottom Left Weapon
 bosshuoshan48Hehuaisituosi4wp06,头,Head
+,,
+wendige2hide_lhorn,猜猜我在哪,Find me
+wendige2hide_rhorn,猜猜我在哪,Find me
+longnv3hide_body,猜猜我在哪,Find me
+longnv3hide_head,猜猜我在哪,Find me
+longnv3hide_lingyin1,,
+longnv3hide_lingyin2,,
+luoxinfu5hide_body,猜猜我在哪,Find me
+luoxinfu5hide_leg6,猜猜我在哪,Find me
+luoxinfu5hide_leg5,猜猜我在哪,Find me
+luoxinfu5hide_leg1,猜猜我在哪,Find me
+luoxinfu5hide_leg2,猜猜我在哪,Find me
+amutehide_shenti,猜猜我在哪,Find me
+amutehide_lian,猜猜我在哪,Find me
+amutehide_mianju,猜猜我在哪,Find me
+xiaochou2hide_body,猜猜我在哪,Find me
+xiaochou2hide_weapon,猜猜我在哪,Find me
+momo1hide_body,猜猜我在哪,Find me
+momo1hide_dun,猜猜我在哪,Find me
+meidushahide_zuoshetou,猜猜我在哪,Find me
+meidushahide_youshetou,猜猜我在哪,Find me
+meidushahide_xiaoshetou,猜猜我在哪,Find me
+meidushahide_xiaoshetou,猜猜我在哪,Find me
+wendige2normal1_body,本体,Default
+wendige2normal1_lhorn,添加dot效果,添加dot效果
+wendige2normal1_rhorn,添加dot效果,添加dot效果
+longnv3normal1_body,本体,Default
+longnv3normal1_head,弱点,Weakness
+longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,
+longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,
+luoxinfu5normal1_body,本体,Default
+luoxinfu5normal1_leg6,提高大招连击次数,Increase Number of Strikes per turn
+luoxinfu5normal1_leg5,提高大招连击次数,Increase Number of Strikes per turn
+luoxinfu5normal1_leg1,提高大招连击次数,Increase Number of Strikes per turn
+luoxinfu5normal1_leg2,提高大招连击次数,Increase Number of Strikes per turn
+amutenormal1_shenti,本体,Default
+amutenormal1_lian,弱点,Weakness
+amutenormal1_mianju,保护弱点,Protect Weakness
+xiaochou2normal1_body,本体,Default
+xiaochou2normal1_weapon,提高智力,Increase Intelligence
+momo1normal1_body,本体,Default
+momo1normal1_dun,反伤护盾,Against injury
+meidushanormal1_xiong,一定有别的方法摧毁它,Default
+meidushanormal1_zuoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
+meidushanormal1_youshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
+meidushanormal1_xiaoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
+meidushanormal1_xiaoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发

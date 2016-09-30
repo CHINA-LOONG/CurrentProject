@@ -151,7 +151,7 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
 					reward.rewardTakeAffectAndPush(player, Action.GUILD_SUB_MISSION, protocol.getType());
 					
-					int contribution = reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+					int contribution = (int) reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
 					if (contribution != 0) {
 						allianceEntity.addContribution(contribution);
 						allianceEntity.notifyUpdate(true);

@@ -383,4 +383,6 @@ enum pvpError
 	PVP_NOT_MATCH_BEFORE       = 0x000E0003;
 	// pvp次数不足
 	PVP_TIMES_NOT_ENOUGH       = 0x000E0004;
+	// 不在排行榜上
+	PVP_NOT_IN_RANK_LIST       = 0x000E0005;
 }

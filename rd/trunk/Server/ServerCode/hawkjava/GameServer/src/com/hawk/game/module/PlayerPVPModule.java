@@ -1,10 +1,14 @@
 package com.hawk.game.module;
 
+import java.util.Calendar;
+
 import org.hawk.app.HawkApp;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkTime;
 import org.hawk.xid.HawkXID;
 
+import com.hawk.game.ServerData;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PVPDefenceRecordEntity;
 import com.hawk.game.entity.PVPRankEntity;
@@ -24,6 +28,7 @@ import com.hawk.game.protocol.PVP.HSSetPVPDefenceMonster;
 import com.hawk.game.protocol.PVP.HSSetPVPDefenceMonsterRet;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.TimeUtil;
 
 public class PlayerPVPModule extends PlayerModule{
 	
@@ -36,6 +41,7 @@ public class PlayerPVPModule extends PlayerModule{
 		listenProto(HS.code.PVP_RANK_LIST_C_VALUE);
 		listenProto(HS.code.PVP_DEFENCE_RECORD_C_VALUE);
 		listenProto(HS.code.PVP_GET_MY_INFO_C_VALUE);
+		listenProto(HS.code.PVP_GET_RANK_DEFENCE_C_VALUE);
 		listenMsg(GsConst.MsgType.PVP_RECORD);
 	}
 	
@@ -96,6 +102,13 @@ public class PlayerPVPModule extends PlayerModule{
 		}
 		else if (protocol.getType() == HS.code.PVP_RANK_LIST_C_VALUE) {
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_RANK_LIST, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.getType() == HS.code.PVP_GET_RANK_DEFENCE_C_VALUE) {
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_RANK_DEFENCE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 	 		msg.pushParam(player);
 	 		msg.pushParam(protocol);
 			HawkApp.getInstance().postMsg(msg);
@@ -202,13 +215,22 @@ public class PlayerPVPModule extends PlayerModule{
 		return true;
 	}
 	
-	private boolean onGetPVPMyInfo(HawkProtocol cmd){
-		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
+	private boolean onGetPVPMyInfo(HawkProtocol cmd){;
 		PVPRankEntity rankEntity = PVPManager.getInstance().getPVPRankEntity(player.getId());
-		if (rankEntity != null) {
+		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
+		if (rankEntity != null) {			
 			response.setPvpPoint(rankEntity.getPoint());
 			response.setPvpRank(rankEntity.getRank() + 1);
 		}
+		else{
+			response.setPvpPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			response.setPvpRank(0);
+		}
+		
+		Calendar refreshTime = TimeUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
+		int timeDiff = (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
+		response.setMonthRewardTimeLeft((3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEAK_SECOND + timeDiff);
+		
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_MY_INFO_S_VALUE, response));
 		return true;
 	}

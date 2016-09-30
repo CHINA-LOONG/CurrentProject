@@ -444,6 +444,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"IM_PLAYER_GET_S", Value=7004)]
       IM_PLAYER_GET_S = 7004,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_DUMP_S", Value=7005)]
+      IM_DUMP_S = 7005,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_INIT_C", Value=8001)]
       SHOP_DATA_INIT_C = 8001,
             
@@ -826,7 +829,13 @@ namespace PB
       PVP_GET_MY_INFO_C = 12013,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_S", Value=12014)]
-      PVP_GET_MY_INFO_S = 12014
+      PVP_GET_MY_INFO_S = 12014,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_RANK_DEFENCE_C", Value=12015)]
+      PVP_GET_RANK_DEFENCE_C = 12015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_RANK_DEFENCE_S", Value=12016)]
+      PVP_GET_RANK_DEFENCE_S = 12016
     }
   
 }

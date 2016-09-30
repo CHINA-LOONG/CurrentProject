@@ -2,6 +2,11 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum CostType
+{
+    ZuanshiCoin =0,
+    JinBiCoin
+}
 namespace MsgBox
 {
     public class PrompCostMsg : UIBase
@@ -13,15 +18,18 @@ namespace MsgBox
 
         public Button cancelButton;
         public Button conformButton;
+        public GameObject[] costTypeObjectArray;
 
         private PromptMsg.PrompDelegate callBack;
-        private bool autoClose; 
+        private bool autoClose;
+
+        
 
 
-        public static PrompCostMsg Open(int cost,string title, string opthionMsg, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
+        public static PrompCostMsg Open(int cost,string title, string opthionMsg, CostType costType, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
         {
             PrompCostMsg mInfo = UIMgr.Instance.OpenUI_(ViewName, false) as PrompCostMsg;
-            mInfo.SetData(cost,title, opthionMsg, callback,autoClose);
+            mInfo.SetData(cost,title, opthionMsg, costType, callback,autoClose);
             return mInfo;
         }
 
@@ -39,7 +47,7 @@ namespace MsgBox
             UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
         }
 
-        public  void SetData(int cost, string title, string opthionMsg, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
+        public  void SetData(int cost, string title, string opthionMsg, CostType costType, PromptMsg.PrompDelegate callback = null, bool autoClose = true)
         {
             this.callBack = callback;
             this.autoClose = autoClose;
@@ -54,6 +62,8 @@ namespace MsgBox
             {
                 opthionDesc.text = opthionMsg;
             }
+            costTypeObjectArray[0].SetActive(costType == CostType.ZuanshiCoin);
+            costTypeObjectArray[1].SetActive(costType == CostType.JinBiCoin);
         }
 
         void OnCancelButtonClick()

@@ -46,7 +46,7 @@ public class UISumReward : UIBase
         {
             onceReward.SetActive(true);
             ItemIcon icon = ItemIcon.CreateItemIcon(
-                ItemData.valueof(summonData.item.itemId, summonData.item.count));
+                ItemData.valueof(summonData.item.itemId, (int)summonData.item.count));
             icon.transform.SetParent(onceReward.transform,false);
             rewardImage.Add(icon.transform.gameObject);
             if (isTen)
@@ -94,7 +94,7 @@ public class UISumReward : UIBase
             if (UISummon.Instance.summonList[i].item.type == (int)PB.itemType.ITEM)//判断奖励
             {
                 ItemIcon icon = ItemIcon.CreateItemIcon(
-               ItemData.valueof(UISummon.Instance.summonList[i].item.itemId, UISummon.Instance.summonList[i].item.count));
+               ItemData.valueof(UISummon.Instance.summonList[i].item.itemId, (int)UISummon.Instance.summonList[i].item.count));
                 icon.transform.SetParent(tenReward.transform, false);
                 ItemStaticData itemData = StaticDataMgr.Instance.GetItemData(UISummon.Instance.summonList[i].item.itemId);
                 SetEffect(itemData.grade, icon.transform.gameObject);

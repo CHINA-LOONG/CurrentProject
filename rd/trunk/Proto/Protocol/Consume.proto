@@ -14,7 +14,7 @@ message ConsumeItem
 	// 物品编号
 	required string itemId = 3;
 	// 实体对象直接移除对象
-	optional int32 count = 4;
+	optional int64 count = 4;
 }
 
 // ------------------------------------------------------- protocol -------------------------------------------------------
@@ -26,7 +26,7 @@ message HSConsumeInfo
 	optional SynPlayerAttr playerAttr = 1;
 	// 宠物同步信息
 	repeated SynMonsterAttr monstersAttr = 2;
-	
+
 	// 移除的物品 
 	repeated ConsumeItem  consumeItems = 3;
 	optional int32  hsCode = 4;

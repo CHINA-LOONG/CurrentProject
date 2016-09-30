@@ -426,6 +426,14 @@ namespace PB
       get { return _loginTimesDaily; }
       set { _loginTimesDaily = value; }
     }
+    private int _dumpEndTime = default(int);
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"dumpEndTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int dumpEndTime
+    {
+      get { return _dumpEndTime; }
+      set { _dumpEndTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

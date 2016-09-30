@@ -440,19 +440,7 @@ public class GameDataMgr : MonoBehaviour
         int monsterCount = monsterSync.monsterInfo.Count;
         for (int i = 0; i < monsterCount; ++i)
         {
-            PbUnit unit = new PbUnit();
-            PB.HSMonster monster = monsterSync.monsterInfo[i];
-            unit.slot = -1;
-            unit.guid = monster.monsterId;
-            unit.camp = UnitCamp.Player;
-            unit.id = monster.cfgId;
-            unit.character = monster.disposition;
-            unit.lazy = monster.lazy;
-            unit.level = monster.level;
-            unit.curExp = monster.exp;
-            unit.stage = monster.stage;
-            unit.spellPbList = monster.skill;
-            unit.monsterState = monster.state;
+            PbUnit unit = Util.CreatePbUnitFromHsMonster(monsterSync.monsterInfo[i], UnitCamp.Player);
             mainPlayer.unitPbList.Add(unit.guid, unit);
             mainPlayer.allUnitDic.Add(unit.guid, GameUnit.FromPb(unit, true));
         }
@@ -671,7 +659,7 @@ public class GameDataMgr : MonoBehaviour
             //}
             if (item.type == (int)PB.itemType.ITEM)
             {
-                GameDataMgr.Instance.mainPlayer.gameItemData.AddItem(item.itemId, item.count);
+                GameDataMgr.Instance.mainPlayer.gameItemData.AddItem(item.itemId, (int)item.count);
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {
@@ -774,7 +762,7 @@ public class GameDataMgr : MonoBehaviour
             //}
             if (item.type == (int)PB.itemType.ITEM)
             {
-                GameDataMgr.Instance.mainPlayer.gameItemData.RemoveItem(item.itemId, item.count);
+                GameDataMgr.Instance.mainPlayer.gameItemData.RemoveItem(item.itemId, (int)item.count);
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {

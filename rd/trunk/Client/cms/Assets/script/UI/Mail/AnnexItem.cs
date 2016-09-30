@@ -21,7 +21,7 @@ public class AnnexItem : MonoBehaviour
         }
         if (info.type==(int)PB.itemType.ITEM)
         {
-            icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count });
+            icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = (int)info.count });
             UIUtil.SetParentReset(icon.transform, transIcon);
         }
         else if (info.type == (int)PB.itemType.EQUIP)
@@ -32,7 +32,7 @@ public class AnnexItem : MonoBehaviour
         }
         else if(info.type==(int)PB.itemType.PLAYER_ATTR)
         {
-            icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), info.count);
+            icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)info.count);
             UIUtil.SetParentReset(icon.transform, transIcon);
         }
         else

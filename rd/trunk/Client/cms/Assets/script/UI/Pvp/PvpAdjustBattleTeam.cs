@@ -37,6 +37,7 @@ public class PvpAdjustBattleTeam : UIBase
 
     private PB.HSPVPMatchTargetRet opponentData = null;
     private List<MonsterIcon> listOpponentMonsterIcon = new List<MonsterIcon>();
+    private List<ItemIcon> listDropItemIcon = new List<ItemIcon>();
 
 
     private List<string> pvpFightTeam = new List<string>();
@@ -60,6 +61,7 @@ public class PvpAdjustBattleTeam : UIBase
     }
     public void InitWith(PB.HSPVPMatchTargetRet opponentData)
     {
+        GameDataMgr.Instance.curInstanceType = (int)InstanceType.Normal;
         this.opponentData = opponentData;
         List<string> pvpTeamList = BattleTeamManager.GetTeamWithKey(BattleTeamManager.TeamList.Pvp);
         pvpFightTeam.Clear();
@@ -86,6 +88,7 @@ public class PvpAdjustBattleTeam : UIBase
 
         fightButton.onClick.AddListener(OnFightButtonClick);
         closeButton.onClick.AddListener(OnCloseButtonClick);
+        refreshButton.onClick.AddListener(OnRefreshButtonClick);
 	}
 
     void InitOppenentInformation()
@@ -123,11 +126,41 @@ public class PvpAdjustBattleTeam : UIBase
             mIcon.SetMonsterStaticId(subMonster.cfgId);
             mIcon.SetLevel(subMonster.level);
             mIcon.SetStage(subMonster.stage);
-            
         }
+
+        refreshCostCoinText.text = GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost().ToString();
     }
     void InitDropInformation()
     {
+        if (listDropItemIcon.Count < 1)
+        {
+            float parentWith = victoryDropParent.rect.width;
+            for(int i =0;i< 2;++i)
+            {
+                ItemData subItemData = ItemData.valueof("90003", 1);
+                ItemIcon subIcon = ItemIcon.CreateItemIcon(subItemData, true, false);
+                listDropItemIcon.Add(subIcon);
+                if(0 ==i)
+                {
+                    subIcon.transform.SetParent(victoryDropParent);
+                }
+                else
+                {
+                    subIcon.transform.SetParent(loseDropParent);
+                }
+                RectTransform iconRt = subIcon.transform as RectTransform;
+                float scale = parentWith / iconRt.rect.width;
+                subIcon.transform.localScale = new Vector3(scale, scale, scale);
+                subIcon.transform.localPosition = Vector3.zero;
+            }
+        }
+        ///
+        PvpStaticData pvpStaticData = StaticDataMgr.Instance.GetPvpStaticDataWithStage(GameDataMgr.Instance.PvpDataMgrAttr.selfPvpStage);
+        if(null != pvpStaticData)
+        {
+            listDropItemIcon[0].RefreshWithItemInfo(ItemData.valueof("90003", pvpStaticData.win), true,false);
+            listDropItemIcon[1].RefreshWithItemInfo(ItemData.valueof("90003", pvpStaticData.lose), true, false);
+        }
 
     }
 
@@ -143,14 +176,31 @@ public class PvpAdjustBattleTeam : UIBase
             // MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"), (int)PB.ImType.PROMPT);
         }
+        else if (battleTeam.Count < 5)
+        {
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+                StaticDataMgr.Instance.GetTextByID("pvp_chuzhanbuman5"),
+                ConformFightOrNot);
+        }
         else
         {
             // GameDataMgr.Instance.OnBattleStart();
             PvpFightParam param = new PvpFightParam();
             param.playerTeam = battleTeam;
             param.targetData = opponentData;
-            //todo:pvp fight
+            GameMain.Instance.LoadBattleLevelPvp(param);
         }
+    }
+    void ConformFightOrNot(MsgBox.PrompButtonClick click)
+    {
+        if(click == MsgBox.PrompButtonClick.OK)
+        {
+            Fight();
+        }
+    }
+    void Fight()
+    {
+
     }
 
     List<int> SaveBattleTeam()
@@ -186,6 +236,28 @@ public class PvpAdjustBattleTeam : UIBase
         BattleTeamManager.SetTeam(saveTeam, BattleTeamManager.TeamList.Pvp);
 
         return battleTeam;
+    }
+
+    void OnRefreshButtonClick()
+    {
+        MsgBox.PrompCostMsg.Open(GameDataMgr.Instance.PvpDataMgrAttr.GetRereshCost(), 
+            StaticDataMgr.Instance.GetTextByID("pvp_changecompetitor"),
+            "",
+            CostType.JinBiCoin,
+            OnConformRefresh);
+    }
+
+    void OnConformRefresh(MsgBox.PrompButtonClick click)
+    {
+        if(click == MsgBox.PrompButtonClick.OK)
+        {
+
+        }
+    }
+
+   void OnRequestRefreshOpponentFinished(ProtocolMessage message)
+    {
+
     }
 
     void OnCloseButtonClick()

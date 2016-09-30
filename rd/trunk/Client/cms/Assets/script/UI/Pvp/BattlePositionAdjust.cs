@@ -25,6 +25,8 @@ public class BattlePositionAdjust : MonoBehaviour
     private AdjustType adjustType = AdjustType.PvpDefensse;
     private AdjustPositionDelegate positionChangedCallback = null;
 
+    private float   monsterIconScale = -1;
+
     public void InitWithDefaultPosition(ref List<string> defalutTeam, AdjustType adjustType, AdjustPositionDelegate changedCallback)
     {
         teamList = defalutTeam;
@@ -67,11 +69,19 @@ public class BattlePositionAdjust : MonoBehaviour
                 MonsterIcon subIcon = MonsterIcon.CreateIcon();
                 playerIcons.Add(subIcon);//添加列表用于维护
 
+                
+
                 subIcon.transform.SetParent(subBg.transform, false);
 
                 rectTrans = subIcon.transform as RectTransform;
                 rectTrans.anchoredPosition = new Vector2(0, 0);
-                rectTrans.localScale = Vector3.one;
+
+                if (monsterIconScale < 0)
+                {
+                    RectTransform parentWith = subBg.transform as RectTransform;
+                    monsterIconScale = parentWith.rect.width / rectTrans.rect.width;
+                }
+                rectTrans.localScale = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
 
                 subIcon.SetId(guid);
                 subIcon.SetMonsterStaticId(unit.pbUnit.id);
@@ -197,7 +207,13 @@ public class BattlePositionAdjust : MonoBehaviour
 
             RectTransform rectTrans = subIcon.transform as RectTransform;
             rectTrans.anchoredPosition = new Vector2(0, 0);
-            rectTrans.localScale = Vector3.one;
+
+            if (monsterIconScale < 0)
+            {
+                RectTransform parentWith = iconBg.transform as RectTransform;
+                monsterIconScale = parentWith.rect.width / rectTrans.rect.width;
+            }
+            rectTrans.localScale = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
             EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnPlayerTeamIconClick;
         }
         subIcon.gameObject.SetActive(true);

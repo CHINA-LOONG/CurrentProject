@@ -193,13 +193,13 @@ public class GameUnit : IComparable
 	//public 	List<int> lazyList = new List<int>();
 	public	List<int> dazhaoList = new List<int>();
 
-    public static GameUnit FromPb(PbUnit unit, bool isPlayer)
+    public static GameUnit FromPb(PbUnit unit, bool isPlayer, bool isPvp = false)
     {
         var gameUnit = new GameUnit();
         gameUnit.pbUnit = unit;
 
         //初始化属性
-        gameUnit.Init(isPlayer);
+        gameUnit.Init(isPlayer, isPvp);
 
         return gameUnit;
     }
@@ -235,7 +235,7 @@ public class GameUnit : IComparable
         return gameUnit;
     }
 
-    void Init(bool isPlayer)
+    void Init(bool isPlayer, bool isPvp)
     {
 		buffList = new List<Buff>();
 
@@ -294,7 +294,7 @@ public class GameUnit : IComparable
         spellEnduranceRatio = 0.0f;
 
         //不是玩家宠物有副本加成 
-        if (isPlayer == false)
+        if (isPlayer == false && isPvp == false)
         {
             //test only
             if (assetID.Contains("boss"))

@@ -169,7 +169,7 @@ mail_zidongshantips,邮件将在领取附件后自动删除,Mails are automatica
 mail_shouquall,确认收取所有邮件吗？,Confirm collect all mails?
 mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,"* If Coin/Diamond limit is reached, any exceeding amount will not be collected."
 ,,
-xl_equip_forge,薛龙_签到界面,
+xl_signin,薛龙_签到界面,
 monthlyevent_title,本月签到奖励,Monthly Login Reward
 monthlyevent_count_001,当月已签到：{0}/{1},Logins this month: {0}/{1}
 monthlyevent_count_002,可补签次数：{0},Claimable missed logins: {0}
@@ -861,7 +861,7 @@ adventure_extrareward,额外奖励,Bonus Rewards
 adventure_tipsextracondition,获得额外奖励条件,Bonus reward reqs.
 sociaty_meijiaguild,尚未加入公会,not join guild
 adventure_tipschange,确定消耗1次机会变更条件么？,Use 1 chance to change requirements?
-adventure_tipshuifu,{0}/10（{1}后回复1次）,<color=#ffcc00ff>{0}/10</color> (<color=#ffcc00ff>{1}</color> till 1 point)
+adventure_tipshuifu,<color=#ffcc00ff>{0}/10</color>（<color=#ffcc00ff>{1}</color>后回复1次）,<color=#ffcc00ff>{0}/10</color> (<color=#ffcc00ff>{1}</color> till 1 point)
 adventure_tipsmax,10/10（次数已满）,10/10(full)
 adventure_tipsbuy,变更次数不足，使用钻石购买次数么？,"(Not enough chances, use Diamonds to get more?)"
 adventure_numbuzuti,派遣后，宠物数量已不足5只，是否确认派遣？（派出的宠物不能参加任何战斗）,"After dispatching, you will have less than 5 remaining monsters. Confirm dispatch? (Dispatched monsters cannot participate in any battles.)"
@@ -1027,7 +1027,8 @@ lose_guide6,更新装备,Equip different equipment
 lose_guide7,打造装备,Forge equipment
 lose_guide8,镶嵌宝石,Embed gems
 lose_guidetips1,善于利用照妖镜搜寻boss弱点，会让你事半功倍！,Using the Magic Lens to spot enemy weakpoints can be a big help in defeating the enemy.
-lose_guidetips2,宠物不给力？试试聚合新的伙伴一同战斗吧！Fighting！,Need stronger monsters? Try gathering more to fight together!
+lose_guidetips2,"宠物不给力？试试聚合新的伙伴一同战斗吧！
+Fighting！",Need stronger monsters? Try gathering more to fight together!
 lose_guidetips3,通过战斗和宠物经验药可以提升宠物等级！,You can upgrade your monsters by battling or using EXP Potions.
 lose_guidetips4,进阶宠物可以极大地提升宠物实力！,Advancing a monster can greatly increase it's power!
 lose_guidetips5,提升宠物技能可以使宠物变得更强！,Increasing your monsters' abilities can improve their effectiveness in battle.

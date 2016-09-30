@@ -12,7 +12,7 @@ public class ItemData
     {
         ItemData itemData = new ItemData();
         itemData.itemId = itemId;
-        itemData.count = count;
+        itemData.count = (int)count;
         return itemData;
     }
 }

@@ -154,6 +154,11 @@ public class BuildModule : ModuleBase
                             }
                         }
                         break;
+                    case (int)ExitInstanceType.Exit_Instance_PVP:
+                        {
+                            PvpMain.Open();
+                        }
+                        break;
                 }
             }
             else if (curInstanceType == (int)InstanceType.Guild)

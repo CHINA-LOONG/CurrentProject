@@ -77,12 +77,12 @@ public class ServerData {
 	 * 洞开启状态的映射表
 	 */
 	protected ConcurrentHashMap<Integer, Boolean> holeStateMap;
-	
+
 	/**
 	 * 需要落地的数据
 	 */
 	protected ServerDataEntity serverDataEntity;
-	
+
 	/**
 	 * 上次信息显示时间
 	 */
@@ -127,21 +127,21 @@ public class ServerData {
 		for (HoleCfg hole : holeCfgMap.values()) {
 			holeStateMap.put(hole.getId(), false);
 		}
-		
+
 		List<ServerDataEntity> resultList = HawkDBManager.getInstance().query("from ServerDataEntity where invalid = 0");
 		if (resultList != null && resultList.size() > 0) {
 			serverDataEntity = resultList.get(0);
 		}
-		
+
 		if (serverDataEntity == null) {
 			serverDataEntity = new ServerDataEntity();
-			serverDataEntity.setPvpWeakRefreshTime(0);
-			serverDataEntity.setPvpWeakRewardCount(0);
+			serverDataEntity.setPvpWeekRefreshTime(0);
+			serverDataEntity.setPvpWeekRewardCount(0);
 			serverDataEntity.notifyCreate();
 		}
-		
+
 		if (serverDataEntity != null) {
-			setRefreshTime(GsConst.PVP_WEAK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeakRefreshTime()));
+			setRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeekRefreshTime()));
 		}
 	}
 
@@ -267,10 +267,10 @@ public class ServerData {
 		if (playerId == null) {
 			return 0;
 		}
-		
+
 		return playerId;
 	}
-	
+
 	/**
 	 * 增加puid和玩家id的映射
 	 */
@@ -285,7 +285,12 @@ public class ServerData {
 	public void addNameAndPlayerId(String name, int playerId) {
 		nameMap.put(name.toLowerCase(), playerId);
 	}
-	
+
+	public void replaceNameAndPlayerId(String oldName, String newName, int playerId) {
+		nameMap.remove(oldName.toLowerCase());
+		nameMap.put(newName.toLowerCase(), playerId);
+	}
+
 	/**
 	 * 增加name和玩家id的映射
 	 */
@@ -387,8 +392,8 @@ public class ServerData {
 
 	public void setRefreshTime(int timeCfgId, Calendar time) {
 		this.refreshTimeMap.put(timeCfgId, time);
-		if (timeCfgId == GsConst.PVP_WEAK_REFRESH_TIME_ID) {
-			serverDataEntity.setPvpWeakRefreshTime(time.getTimeInMillis());
+		if (timeCfgId == GsConst.PVP_WEEK_REFRESH_TIME_ID) {
+			serverDataEntity.setPvpWeekRefreshTime(time.getTimeInMillis());
 			serverDataEntity.notifyUpdate(false);
 		}
 	}
@@ -405,15 +410,15 @@ public class ServerData {
 		this.holeStateMap.put(holeId, isOpen);
 	}
 
-	public int getPVPWeakRewardCount(){
-		return serverDataEntity.getPvpWeakRewardCount();
+	public int getPVPWeekRewardCount(){
+		return serverDataEntity.getPvpWeekRewardCount();
 	}
-	
-	public void setPVPWeakRewardCoutn(int pvpWeakRewardCount) {
-		this.serverDataEntity.setPvpWeakRewardCount(pvpWeakRewardCount);
+
+	public void setPVPWeekRewardCoutn(int pvpWeekRewardCount) {
+		this.serverDataEntity.setPvpWeekRewardCount(pvpWeekRewardCount);
 		this.serverDataEntity.notifyUpdate(true);
 	}
-	
+
 	/**
 	 * 打印服务器状态信息
 	 */

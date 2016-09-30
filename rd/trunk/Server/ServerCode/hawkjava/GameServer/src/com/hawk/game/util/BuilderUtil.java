@@ -181,6 +181,7 @@ public class BuilderUtil {
 		builder.setSigninFillTimesMonthly(statisticsEntity.getSigninFillTimesMonthly());
 		builder.setIsSigninDaily(statisticsEntity.isSigninDaily());
 		builder.setLoginTimesDaily(statisticsEntity.getLoginTimesDaily());
+		builder.setDumpEndTime(statisticsEntity.getDumpTime());
 
 		return builder;
 	}

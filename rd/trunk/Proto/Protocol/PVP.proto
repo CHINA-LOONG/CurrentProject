@@ -6,9 +6,10 @@ import "Protocol/Monster.proto";
 message PVPRankData
 {
 	required int32 rank = 1;
-	required string name = 2 ;
-	required int32 level = 3;
-	required int32 point = 4;
+	required int32 playerId = 2;
+	required string name = 3 ;
+	required int32 level = 4;
+	required int32 point = 5;
 }
 
 message PVPDefenceRecordData
@@ -50,10 +51,12 @@ message HSPVPInfoRet
 {
 	required int32 pvpPoint = 1;
 	required int32 pvpRank = 2;
+	required int32 monthRewardTimeLeft = 3;
 }
+
 message HSPVPMatchTarget
 {
-	
+	required bool changeTarget = 1;
 }
 
 message HSPVPMatchTargetRet
@@ -65,6 +68,7 @@ message HSPVPMatchTargetRet
 	required HSMonsterDefence defenceData = 5;
 	required int32 pvpTime = 6;
 	required int32 pvpTimeBeginTime = 7;
+	required int32 changeTime = 8;
 }
 
 message HSPVPSettle
@@ -88,8 +92,19 @@ message HSPVPRankRet
 	repeated PVPRankData pvpRankList = 1;
 }
 
+message HSPVPRankDefence
+{
+	required int32 playerId = 1;
+}
+
+message HSPVPRankDefenceRet
+{
+	required HSMonsterDefence monsterDefence = 1;
+}
+
 message HSPVPDefenceRecord
 {
+	
 }
 
 message HSPVPDefenceRecordRet

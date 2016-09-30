@@ -100,7 +100,7 @@ public class ConsumeItems {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.ITEM_VALUE);
 			consumeItem.setItemId(itemId);
-			consumeItem.setCount( count);
+			consumeItem.setCount(count);
 			consumeInfo.addConsumeItems(consumeItem);
 		}
 		else {
@@ -119,11 +119,11 @@ public class ConsumeItems {
 		return this;
 	}
 
-	public ConsumeItems addAttr(int attrType, int count) {
+	public ConsumeItems addAttr(int attrType, long count) {
 		return addAttr(String.valueOf(attrType), count);
 	}
 
-	public ConsumeItems addAttr(String attrType, int count) {
+	public ConsumeItems addAttr(String attrType, long count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
 			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId().equals(String.valueOf(attrType))) {
@@ -200,7 +200,7 @@ public class ConsumeItems {
 		return this;
 	}
 
-	public ConsumeItems addCoin(int coin) {
+	public ConsumeItems addCoin(long coin) {
 		if (coin > 0 ) {
 			addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		}
@@ -361,7 +361,7 @@ public class ConsumeItems {
 				break;
 
 			case itemType.MONSTER_VALUE:
-				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
+				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int) consumeItem.getId());
 				if(monsterEntity == null) {
 					return ConsumeCheckResult.MONSTER_NOT_ENOUGH;
 				}
@@ -404,27 +404,27 @@ public class ConsumeItems {
 						break;
 
 					case changeType.CHANGE_GOLD_VALUE:
-						player.consumeGold(item.getCount(), action);
+						player.consumeGold((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_TOWER_COIN_VALUE:
-						player.consumeTowerCoin(item.getCount(), action);
+						player.consumeTowerCoin((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_ARENA_COIN_VALUE:
-						player.consumeArenaCoin(item.getCount(), action);
+						player.consumeArenaCoin((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_FATIGUE_VALUE:
-						player.consumeFatigue(item.getCount(), action);
+						player.consumeFatigue((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE:
-						player.consumeContribution(item.getCount(), action);
+						player.consumeContribution((int) item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_HONOR_COIN_VALUE:
-						player.consumeHonorPoint(item.getCount(), action);
+						player.consumeHonorPoint((int) item.getCount(), action);
 						break;
 
 					default:
@@ -439,11 +439,11 @@ public class ConsumeItems {
 					playerBuilder.setHonor(player.getHonorPoint());
 					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
-					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
+					playerBuilder.setFatigueBeginTime((int) (player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
 					break;
 
 				case itemType.ITEM_VALUE:
-					if (null == player.consumeItem(item.getItemId(), item.getCount(), action)) {
+					if (null == player.consumeItem(item.getItemId(), (int) item.getCount(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}
@@ -457,7 +457,7 @@ public class ConsumeItems {
 					break;
 
 				case itemType.MONSTER_VALUE:
-					if (false == player.consumeMonster((int)item.getId(), action)) {
+					if (false == player.consumeMonster((int) item.getId(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}

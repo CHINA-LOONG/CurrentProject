@@ -227,6 +227,11 @@ public class UIQuest : UIBase,
     {
         UIMgr.Instance.DestroyUI(uiQuestInfo);
     }
+
+    public override void RefreshOnPreviousUIHide()
+    {
+        Refresh();
+    }
     #endregion
 
     #region TabButtonDelegate

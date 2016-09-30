@@ -401,6 +401,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454296}
   - 95: {fileID: 9510764}
+  - 114: {fileID: 11481940}
   m_Layer: 0
   m_Name: bosshuoshan47Ifrit4@moxing
   m_TagString: Untagged
@@ -1981,6 +1982,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11481940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c362e76e5cbad47bebbcc3c38c144d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUseXgAi: 0
 --- !u!137 &13703416
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

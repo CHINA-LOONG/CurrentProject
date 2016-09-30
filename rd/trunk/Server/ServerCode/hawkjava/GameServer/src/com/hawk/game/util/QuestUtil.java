@@ -55,6 +55,17 @@ public class QuestUtil {
 	// 使用阶段----------------------------------------------------------------------
 
 	/**
+	 * 获得任务所属组
+	 */
+	public static QuestGroup getQuestGroupByQuest(int questId) {
+		QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
+		if (questCfg == null) {
+			return null;
+		}
+		return questGroupMap.get(questCfg.getGroup());
+	}
+
+	/**
 	 * 获得同组下个任务
 	 */
 	public static QuestCfg getNextQuest(int questId) {

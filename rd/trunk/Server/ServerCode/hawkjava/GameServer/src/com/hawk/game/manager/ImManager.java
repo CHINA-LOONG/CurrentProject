@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -41,12 +42,12 @@ public class ImManager extends HawkAppObj {
 	// 结构----------------------------------------------------------------------------------------------------------
 
 	public class ImMsg {
-		// 必须的
+		// 必须的----------------------------
 		public int type = 0;
 		public int channel = 0;
 		public int senderId = 0;
 
-		// 可选的
+		// 可选的----------------------------
 		public int guildId = 0;
 		public int receiverId = 0;
 		public ImPlayer receiver = null;
@@ -62,6 +63,11 @@ public class ImManager extends HawkAppObj {
 		public String origText = "";
 		/** @key 语言IOS代码 */
 		public Map<String, String> transText = null;
+
+		// 定时消息-------------------
+		public int times = 0;
+		public int intervalSecond = 0;
+		public int nextTime = 0;
 	}
 
 	/**
@@ -138,6 +144,11 @@ public class ImManager extends HawkAppObj {
 	 */
 	private ConcurrentLinkedQueue<ImMsg> transMsgQueue;
 
+	/**
+	 * 定时消息队列
+	 */
+	private List<ImMsg> clockMsgList;
+
 	private static ImManager instance = null;
 	public static ImManager getInstance() {
 		return instance;
@@ -159,6 +170,7 @@ public class ImManager extends HawkAppObj {
 		//worldMsgQueue = new LinkedList<ImMsg>();
 		guildMsgQueueMap = new ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>>();
 		transMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
+		clockMsgList = new LinkedList<ImMsg>();
 	}
 
 	/**
@@ -347,11 +359,27 @@ public class ImManager extends HawkAppObj {
 			// 加入待翻译列表
 			if (false == transMsgQueue.offer(msgObj)) {
 				// 失败直接加入待推送列表
-				enqueueMsg(msgObj);
+				queueMsg(msgObj);
 			}
 		} else {
 			// 加入待推送列表
-			enqueueMsg(msgObj);
+			queueMsg(msgObj);
+		}
+	}
+
+	/**
+	 * 删除某类型的待发送定时消息
+	 */
+	public void clearClockMsg(int type) {
+		if (false == clockMsgList.isEmpty()) {
+			synchronized (clockMsgList) {
+				Iterator<ImMsg> iter = clockMsgList.iterator();
+				while (iter.hasNext()) {
+					if (iter.next().type == type) {
+						iter.remove();
+					}
+				}
+			}
 		}
 	}
 
@@ -361,6 +389,26 @@ public class ImManager extends HawkAppObj {
 	@Override
 	public boolean onTick(long tickTime) {
 		ImMsg msgObj = null;
+
+		// 定时消息----------------------------------------------------------------------------------
+		if (false == clockMsgList.isEmpty()) {
+			synchronized (clockMsgList) {
+				int curSecond = (int) (tickTime / 1000);
+				Iterator<ImMsg> iter = clockMsgList.iterator();
+				while (iter.hasNext()) {
+					msgObj = iter.next();
+					if (curSecond >= msgObj.nextTime) {
+						queueOneTimeMsg(msgObj);
+
+						if (--msgObj.times == 0) {
+							iter.remove();
+						} else {
+							msgObj.nextTime += msgObj.intervalSecond;
+						}
+					}
+				}
+			}
+		}
 
 		// 推送---------------------------------------------------------------------------------------
 		Map<ImPlayer, List<ImMsg>> pushPersonMap = null;
@@ -443,7 +491,27 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 消息进队列
 	 */
-	private void enqueueMsg(ImMsg msgObj) {
+	private void queueMsg(ImMsg msgObj) {
+		if (msgObj.times != 0) {
+			queueClockMsg(msgObj);
+		} else {
+			queueOneTimeMsg(msgObj);
+		}
+	}
+
+	/**
+	 * 定时消息进队列
+	 */
+	private void queueClockMsg(ImMsg msgObj) {
+		synchronized (clockMsgList) {
+			clockMsgList.add(msgObj);
+		}
+	}
+
+	/**
+	 * 一次性消息进队列
+	 */
+	private void queueOneTimeMsg(ImMsg msgObj) {
 		switch (msgObj.channel) {
 			case Const.ImChannel.PERSON_VALUE: {
 				personMsgQueue.offer(msgObj);
@@ -551,7 +619,7 @@ public class ImManager extends HawkAppObj {
 						}
 					}
 				}
-				enqueueMsg(msgObj);
+				queueMsg(msgObj);
 			}
 
 			return 0;

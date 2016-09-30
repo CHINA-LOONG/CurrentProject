@@ -102,7 +102,7 @@ public class questItem : MonoBehaviour
             info = list[i].protocolData;
             if (info.type == (int)PB.itemType.ITEM)
             {
-                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = info.count });
+                ItemIcon icon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.itemId, count = (int)info.count });
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }
@@ -115,7 +115,7 @@ public class questItem : MonoBehaviour
             }
             else if (info.type == (int)PB.itemType.PLAYER_ATTR)
             {
-                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), info.count);
+                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)info.count);
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }

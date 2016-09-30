@@ -570,7 +570,21 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
     //检测是否是上阵的宠物
     bool CheckMainMonster(GameUnit monster)
     {
-        return GameDataMgr.Instance.PlayerDataAttr.mainUnitID.Contains(monster.pbUnit.guid);
+        List<string> defaultTeam = BattleTeamManager.GetTeamWithKey(BattleTeamManager.TeamList.Defualt);
+        if (defaultTeam != null)
+        {
+            string monsterID = monster.pbUnit.guid.ToString();
+            int count = defaultTeam.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                if (defaultTeam[i] == monsterID)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        //return GameDataMgr.Instance.PlayerDataAttr.IsMainUnit(monster.pbUnit.guid);
     }
 
     void OnClickCloseBtn(GameObject go)

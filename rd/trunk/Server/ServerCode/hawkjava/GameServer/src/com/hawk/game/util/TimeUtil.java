@@ -110,6 +110,95 @@ public class TimeUtil {
 	}
 
 	/**
+	 * 获取配置时间点的大于等于当前时间的刷新时间
+	 * @return 如果该时间点拥有未来，返回预期刷新时间，否则返回null
+	 */
+	public static Calendar getComingRefreshTime(int timeCfgId, Calendar curTime) {
+		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
+		if (null != timeCfg) {
+				Calendar nextRefreshTime = HawkTime.getCalendar();
+
+				final int scaleField = timeCfg.getScaleField();
+				final int cycleField = timeCfg.getCycleField();
+				final int year = timeCfg.getYear();
+				final int month = timeCfg.getMonth();
+				final int dayOfMonth = timeCfg.getDayOfMonth();
+				final int dayOfWeek = timeCfg.getDayOfWeek();
+				final int hour = timeCfg.getHour();
+				final int minute = timeCfg.getMinute();
+
+				// 设置为当前时间，进行推演
+				nextRefreshTime.setTimeInMillis(curTime.getTimeInMillis());
+
+				// 尺度和尺度以前的时间设为配置，周期及以后使用当前时间
+				switch (scaleField) {
+				case Calendar.MINUTE:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					break;
+
+				case Calendar.HOUR_OF_DAY:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
+					break;
+
+				case Calendar.DAY_OF_WEEK:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
+					nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+					break;
+
+				case Calendar.DAY_OF_MONTH:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
+					nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+					break;
+
+				case Calendar.MONTH:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
+					if (dayOfWeek != GsConst.UNUSABLE) {
+						nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+					} else if (dayOfMonth != GsConst.UNUSABLE) {
+						nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+					}
+					nextRefreshTime.set(Calendar.MONTH, month);
+					break;
+
+				case Calendar.YEAR:
+					nextRefreshTime.set(Calendar.MINUTE, minute);
+					nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
+					if (dayOfWeek != GsConst.UNUSABLE) {
+						nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+					} else if (dayOfMonth != GsConst.UNUSABLE) {
+						nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+					}
+					nextRefreshTime.set(Calendar.MONTH, month);
+					nextRefreshTime.set(Calendar.YEAR, year);
+					break;
+
+				default:
+					break;
+				}
+
+				// 最小尺度为分，秒和毫秒设为0
+				nextRefreshTime.set(Calendar.SECOND, 0);
+				nextRefreshTime.set(Calendar.MILLISECOND, 0);
+
+				// 如果下次刷新时间<当前时间，加1个周期
+				if (nextRefreshTime.compareTo(curTime) < 0) {
+					// 固定时间没有周期
+					if (cycleField == GsConst.UNUSABLE) {
+						return null;
+					}
+					nextRefreshTime.add(cycleField, 1);
+				}
+				
+				// TODO
+		}
+		return null;
+	}
+
+	/**
 	 * 获取配置时间点的预期刷新时间
 	 * @return 如果该时间点需要刷新，返回预期刷新时间，否则返回null
 	 */
@@ -244,7 +333,7 @@ public class TimeUtil {
 		expectedRefreshTime.set(Calendar.MILLISECOND, 0);
 
 		// 如果预期刷新时间>当前时间，减1个周期
-		if (expectedRefreshTime.compareTo(curTime) >= 0) {
+		if (expectedRefreshTime.compareTo(curTime) > 0) {
 			// 固定时间没有周期
 			if (cycleField == GsConst.UNUSABLE) {
 				return false;

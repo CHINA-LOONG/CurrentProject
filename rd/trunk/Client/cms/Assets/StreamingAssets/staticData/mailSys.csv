@@ -1,15 +1,6 @@
 ﻿#NUM,#TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
 id,textId,comments,rewardId,lang_1,sender_1,subject_1,content_1,lang_2,sender_2,subject_2,content_2
 #id,mail_系统名_001,注释,附件,语言1,发信人1,主题1,内容1,语言2,发信人2,主题2,内容2
-1,mail_sys_001,测试,110001,zh-CN,系统,压岁钱,啦啦啦,en,sys,hello,world
-2,mail_sys_002,测试,110001,zh-CN,六个文字显示,主题十个汉字能显示全,每十九个文字一换行每十九个文字一换行每十九个文字一换行每十九个文字一换行,en,sys,hello,world
-3,mail_sys_003,测试,110001,zh-CN,大于六个文字显示,主题大于十个汉字显示十个,文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多的时候也能显示文字特别多500,en,sys,hello,world
-4,mail_sys_004,测试,110001,zh-CN,english,subjectabcdefgabcdefg,abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz,en,sys,hello,world
-5,mail_sys_005,测试,110001,zh-CN,englishafasdfas,subjectabcdefgabcdefgaaaaaaaa,abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc500,en,sys,hello,world
-6,mail_sys_006,测试,110001,zh-CN,混搭hunda￥%,混搭%&……75^&%hunda,fasdfasd混搭混啊发送到发送到发生地方发送到发疯%d%d{0}？？￥@#￥@#￥3234车发生的发生地方,en,sys,hello,world
-7,mail_sys_007,测试,110001,zh-CN,附件,金币钻石经验,附件,en,sys,hello,world
-8,mail_sys_008,测试,110001,zh-CN,,金币道具道具道具经验,,en,sys,hello,world
-9,mail_sys_009,集体测试,110001,zh-CN,系统,欢迎参加集体测试,今天进行的是超级复杂的集体测试，希望你们喜欢,en,sys,hello,world
 100,mail_new_001,新手欢迎邮件,mail_new_001,zh-CN,系统,新手经验礼包,欢迎参加集体测试,en,System,Novice experience packs,Welcome to the collective test
 101,mail_sociaty_001,移交会长,,zh-CN,系统,会内职务变更,"亲爱的玩家：
 您已成为{0}公会会长！",en,System,Guild Role Change,"Dear player: 
@@ -23,3 +14,8 @@ Attached is your weekly Arena Title reward, congratulations! Be sure to collect 
 106,mail_pvp_002,竞技场排名奖励,,zh-CN,系统,竞技场赛季结算排名奖励,"亲爱的玩家：
 这是您的本月竞技场排名奖励，请查收",en,System,Arena Season Ranking Reward,"Dear player: 
 Attached is your Arena Season ranking reward, congratulations! Be sure to collect it!"
+1000,mail_gm_rename,修改人物昵称,,zh-CN,系统,GM通知,由于您的昵称中存在违规文字，现将您的昵称修改为“{0}”，感谢您的理解与配合！,en,System,GM Notice,xxxx{0}
+1001,mail_gm_removeallitem,删除所有物品,,zh-CN,系统,GM通知,由于您使用非正常的途径获得物品，现将您的物品全部删除。感谢您的理解与配合！,en,System,GM Notice,xxxx
+1002,mail_gm_removeitem,删除物品,,zh-CN,系统,GM通知,由于您使用非正常的途径获得某些物品，现将这些物品删除：{0}*{1}。感谢您的理解与配合！,en,System,GM Notice,xxxx{0}*{1}
+1003,mail_gm_decuct_coin,扣金币,,zh-CN,系统,GM通知,由于您非法获得{0}金币。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,xxxx{0}
+1004,mail_gm_decuct_diamond,扣钻石,,zh-CN,系统,GM通知,由于您非法获得{0}钻石。现将其扣除。谢谢您的理解与配合！,en,System,GM Notice,xxxx{0}

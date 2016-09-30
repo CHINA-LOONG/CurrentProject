@@ -262,8 +262,8 @@ public class UIMail : UIBase//,TabButtonDelegate
         }
         GameEventMgr.Instance.FireEvent<int>(GameEventList.MailRead,0);
         mailContent.SetMailContentActive(false);
-        OnMailChanged();
         readMail = null;
+        OnMailChanged();
         CheckPlayerData();
     }
     //点击关闭

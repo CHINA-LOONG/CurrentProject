@@ -143,7 +143,7 @@ public class SociatyTaskList : MonoBehaviour
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_030"), (int)PB.ImType.PROMPT);
             return;
         }
-        MsgBox.PrompCostMsg.Open(curSelItem.sociatyTaskData.taskStart, StaticDataMgr.Instance.GetTextByID("sociaty_spendtips"), "", ConformOpenTask);
+        MsgBox.PrompCostMsg.Open(curSelItem.sociatyTaskData.taskStart, StaticDataMgr.Instance.GetTextByID("sociaty_spendtips"), "", CostType.ZuanshiCoin, ConformOpenTask);
     }
 
     void ConformOpenTask(MsgBox.PrompButtonClick click)

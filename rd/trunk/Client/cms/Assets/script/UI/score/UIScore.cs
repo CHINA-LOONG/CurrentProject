@@ -105,17 +105,24 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     void OnNextLevel(GameObject go)
     {
-        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
+        if (mPvpResult != null)
         {
-            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
+            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_PVP);
         }
-        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
+        else
         {
-            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
-        }
-        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
-        {
-            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
+            if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
+            {
+                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
+            }
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
+            {
+                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
+            }
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
+            {
+                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -190,7 +197,6 @@ public class UIScore : UIBase
         }
         mIsSuccess = success;
         gameObject.SetActive(true);
-        mPvpRoot.SetActive(pvpResult != null);
         if (pvpResult != null)
         {
             mPvpResult = pvpResult;
@@ -375,7 +381,8 @@ public class UIScore : UIBase
                         monsterInfoList[i].level,
                         originalMonster.pbUnit.stage
                         );
-                    mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
+                    //mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
+                    originalMonster.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
                     if (UIUtil.CheckPetIsMaxLevel(monsterInfoList[i].level) == 0)
                     {
                         mUIMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
@@ -401,22 +408,23 @@ public class UIScore : UIBase
             }
             else
             {
-                count = mainPlayer.mainUnitList.Count;
-                for (int i = 0; i < count; ++i)
-                {
-                    UIMonsterIconExp monsterIconExp = UIMonsterIconExp.Create();
-                    monsterIconExp.transform.SetParent(mMonsterExpList.transform, false);
-                    GameUnit curUnit = mainPlayer.mainUnitList[i].unit;
-                    monsterIconExp.SetMonsterIconExpInfo(
-                        curUnit.pbUnit.id,
-                        curUnit.currentExp,
-                        curUnit.currentExp,
-                        curUnit.pbUnit.level,
-                        curUnit.pbUnit.level,
-                        curUnit.pbUnit.stage,
-                        0
-                        );
-                }
+                Logger.LogError("error in score no monster info");
+                //count = mainPlayer.mainUnitList.Count;
+                //for (int i = 0; i < count; ++i)
+                //{
+                //    UIMonsterIconExp monsterIconExp = UIMonsterIconExp.Create();
+                //    monsterIconExp.transform.SetParent(mMonsterExpList.transform, false);
+                //    GameUnit curUnit = mainPlayer.mainUnitList[i].unit;
+                //    monsterIconExp.SetMonsterIconExpInfo(
+                //        curUnit.pbUnit.id,
+                //        curUnit.currentExp,
+                //        curUnit.currentExp,
+                //        curUnit.pbUnit.level,
+                //        curUnit.pbUnit.level,
+                //        curUnit.pbUnit.stage,
+                //        0
+                //        );
+                //}
             }
 
             //show item drop info
@@ -427,7 +435,7 @@ public class UIScore : UIBase
                 if (item.type == (int)PB.itemType.ITEM)
                 {
                     ItemIcon icon = ItemIcon.CreateItemIcon(
-                        ItemData.valueof(item.itemId, item.count),
+                        ItemData.valueof(item.itemId, (int)item.count),
                         true,
                         false
                         );
@@ -464,105 +472,113 @@ public class UIScore : UIBase
             mWaitStarTime -= Time.unscaledDeltaTime;
             yield return null;
         }
+        mPvpRoot.SetActive(mPvpResult != null);
         mRetryBtn.gameObject.SetActive(false);
         mNextLevelBtn.gameObject.SetActive(false);
         mConfirmBtn.gameObject.SetActive(false);
-        //TODO: use enum
-        //0:normal 1:hole 2:tower
-        switch (GameDataMgr.Instance.curInstanceType)
+
+        if (mPvpResult != null)
         {
-            case (int)InstanceType.Normal:
-                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
-                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
-                mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
-                break;
-            case (int)InstanceType.Hole:
-                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
-                break;
-            case (int)InstanceType.Tower:
-                break;
-            case (int)InstanceType.Guild:
-                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
-                break;
-        }
-        if (!mIsSuccess)
-        {
-            LoseGuide loseGuide = UIMgr.Instance.OpenUI_(LoseGuide.ViewName) as LoseGuide;
-            loseGuide.SetLoseGuide(BattleController.Instance.isUseWpFindWpInBattle);
+            mNextLevelBtn.gameObject.SetActive(true);
+            mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         }
         else
         {
-            mBackground.SetActive(true);
-            mLineMonsterItem.SetActive(true);
-            //show player info
-            mPlayerInfoRoot.SetActive(true);
-            //show monster info
-            mMonsterExpList.gameObject.SetActive(true);
-            //show item drop info
-            mItemGainList.gameObject.SetActive(true);
-            //show button
-            //normal instance
-        }
-        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
-        {
-            if (mIsSuccess == true)
+            switch (GameDataMgr.Instance.curInstanceType)
             {
-                EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-                if (curInstance != null)
-                {
-                    InstanceEntryRuntimeData curData = InstanceMapService.Instance.GetNextRuntimeInstance(curInstance.instanceData.instanceId);
-                    mNextLevelBtn.gameObject.SetActive(curData != null);
-                }
+                case (int)InstanceType.Normal:
+                    mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
+                    mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                    mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                    break;
+                case (int)InstanceType.Hole:
+                    mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                    break;
+                case (int)InstanceType.Tower:
+                    break;
+                case (int)InstanceType.Guild:
+                    mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                    break;
+            }
+            if (!mIsSuccess)
+            {
+                LoseGuide loseGuide = UIMgr.Instance.OpenUI_(LoseGuide.ViewName) as LoseGuide;
+                loseGuide.SetLoseGuide(BattleController.Instance.isUseWpFindWpInBattle);
             }
             else
             {
-                mNextLevelBtn.gameObject.SetActive(false);
+                mBackground.SetActive(true);
+                mLineMonsterItem.SetActive(true);
+                //show player info
+                mPlayerInfoRoot.SetActive(true);
+                //show monster info
+                mMonsterExpList.gameObject.SetActive(true);
+                //show item drop info
+                mItemGainList.gameObject.SetActive(true);
+                //show button
+                //normal instance
             }
-            mRetryBtn.gameObject.SetActive(true);
-            mConfirmBtn.gameObject.SetActive(true);
-        }
-        //hole instance
-        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
-        {
-            mNextLevelBtn.gameObject.SetActive(true);
-        }
-        //tower instance
-        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
-        {
-            if (mIsSuccess == true)
+            if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
             {
-                string nextTowerFloor;
-                int nextFloor;
-                GameDataMgr.Instance.GetNextTowerFloor(out nextTowerFloor, out nextFloor);
-                if (nextTowerFloor != null)
+                if (mIsSuccess == true)
                 {
-                    mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                    EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                    if (curInstance != null)
+                    {
+                        InstanceEntryRuntimeData curData = InstanceMapService.Instance.GetNextRuntimeInstance(curInstance.instanceData.instanceId);
+                        mNextLevelBtn.gameObject.SetActive(curData != null);
+                    }
+                }
+                else
+                {
+                    mNextLevelBtn.gameObject.SetActive(false);
+                }
+                mRetryBtn.gameObject.SetActive(true);
+                mConfirmBtn.gameObject.SetActive(true);
+            }
+            //hole instance
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
+            {
+                mNextLevelBtn.gameObject.SetActive(true);
+            }
+            //tower instance
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
+            {
+                if (mIsSuccess == true)
+                {
+                    string nextTowerFloor;
+                    int nextFloor;
+                    GameDataMgr.Instance.GetNextTowerFloor(out nextTowerFloor, out nextFloor);
+                    if (nextTowerFloor != null)
+                    {
+                        mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                        mRetryBtn.gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
                     mRetryBtn.gameObject.SetActive(true);
                 }
+
+                mConfirmBtn.gameObject.SetActive(true);
             }
-            else
+            //guild instance
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
             {
-                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
-                mRetryBtn.gameObject.SetActive(true);
+                mNextLevelBtn.gameObject.SetActive(true);
             }
 
-            mConfirmBtn.gameObject.SetActive(true);
-        }
-        //guild instance
-        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
-        {
-            mNextLevelBtn.gameObject.SetActive(true);
-        }
+            if (mCheckCoin)
+            {
+                GameDataMgr.Instance.CheckCoinFull();
+            }
 
-        if (mCheckCoin)
-        {
-            GameDataMgr.Instance.CheckCoinFull();
-        }
-
-        if (mOriginalPlayerLvl != mCurrentPlayerLvl)
-        {
-            PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
-            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mCurrentHuoli, mainPlayer.HuoliAttr);
+            if (mOriginalPlayerLvl != mCurrentPlayerLvl)
+            {
+                PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
+                LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mCurrentHuoli, mainPlayer.HuoliAttr);
+            }
         }
     }
     //---------------------------------------------------------------------------------------------

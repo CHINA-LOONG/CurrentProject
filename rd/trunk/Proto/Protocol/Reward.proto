@@ -15,7 +15,7 @@ message RewardItem
 	// 配置id
 	required string itemId = 3;
 	// 数量
-	optional int32 count = 4;
+	optional int64 count = 4;
 	// 装备品级
 	optional int32  stage = 5;
 	// 装备等级
@@ -33,7 +33,7 @@ message HSRewardInfo
 	optional SynPlayerAttr playerAttr = 1;
 	// 宠物同步信息
 	repeated SynMonsterAttr monstersAttr = 2;
-	
-	repeated RewardItem RewardItems = 3;	
+
+	repeated RewardItem RewardItems = 3;
 	optional int32  hsCode = 4;
 }

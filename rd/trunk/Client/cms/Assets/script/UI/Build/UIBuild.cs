@@ -223,7 +223,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     {
         uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
     }
-    void OnAdventureButtonClick(GameObject go)
+    public void OnAdventureButtonClick(GameObject go)
     {
         //UISpeech.Open("speech_test");
         uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;

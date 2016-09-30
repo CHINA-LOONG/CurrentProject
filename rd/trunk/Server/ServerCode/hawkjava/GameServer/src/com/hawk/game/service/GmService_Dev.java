@@ -45,7 +45,6 @@ import com.hawk.game.protocol.GM.GMOperation;
 import com.hawk.game.protocol.GM.GMOperationRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.HS.gm;
-import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.InstanceState;
 import com.hawk.game.protocol.Status.error;
@@ -405,8 +404,7 @@ public class GmService_Dev extends GameService {
 			statisticsEntity.notifyUpdate(true);
 
 			// 重新加载并推送任务
-			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
-			questMap.clear();
+			player.getPlayerData().getQuestMap().clear();
 			PlayerQuestModule module = (PlayerQuestModule)player.getModule(GsConst.ModuleType.QUEST_MODULE);
 			try {
 				Method loadQuest = module.getClass().getDeclaredMethod("loadQuest", Map.class);
@@ -430,8 +428,7 @@ public class GmService_Dev extends GameService {
 			statisticsEntity.notifyUpdate(true);
 
 			// 重新加载并推送任务
-			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
-			questMap.clear();
+			player.getPlayerData().getQuestMap().clear();
 			PlayerQuestModule module = (PlayerQuestModule)player.getModule(GsConst.ModuleType.QUEST_MODULE);
 			try {
 				Method loadQuest = module.getClass().getDeclaredMethod("loadQuest", Map.class);
