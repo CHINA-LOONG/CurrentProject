@@ -71,6 +71,10 @@ public class SysBasicCfg extends HawkConfigBase {
 	 * pvp匹配池初始化最大值
 	 */
 	protected final int pvpStageMaxSize;
+	/**
+	 * pvp排行榜缓存时间
+	 */
+	protected final int pvpRankBuilderRefreshTime;
 	
 	/**
 	 * 全局静态对象
@@ -104,6 +108,7 @@ public class SysBasicCfg extends HawkConfigBase {
 		allianceThirdPositionContribution = 0;
 		pvpStageInitSize = 0;
 		pvpStageMaxSize = 0;
+		pvpRankBuilderRefreshTime = 0;
 	}
 
 	public int getPlayerCacheTime() {
@@ -171,5 +176,9 @@ public class SysBasicCfg extends HawkConfigBase {
 
 	public int getPvpStageMaxSize() {
 		return pvpStageMaxSize;
+	}
+
+	public int getPvpRankBuilderRefreshTime() {
+		return pvpRankBuilderRefreshTime;
 	}
 }

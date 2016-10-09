@@ -34,6 +34,9 @@ public class PVPDefenceEntity extends HawkDBEntity {
 	@Column(name = "monsterInfo", nullable = false)
 	private byte[] monsterInfo = null;
 	
+	@Column(name = "BP")
+	private int BP = 0;
+	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
 
@@ -100,6 +103,14 @@ public class PVPDefenceEntity extends HawkDBEntity {
 		return monsterDefenceBuilder != null && monsterDefenceBuilder.getMonsterInfoBuilderList().size() > 0;
 	}
 	
+	public int getBP() {
+		return BP;
+	}
+
+	public void setBP(int bP) {
+		BP = bP;
+	}
+
 	@Override
 	public boolean decode() {
 		this.convertMonsterDefenceBuilder();

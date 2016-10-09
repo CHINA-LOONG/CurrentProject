@@ -1029,7 +1029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109dc7be4c895344caefda09e32ae67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   szItemIcon:
   - {fileID: 11499138}
   - {fileID: 11431626}

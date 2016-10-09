@@ -100,6 +100,8 @@ public class GameEventList
     public static string MailRead = "MailRead";
     //SignIn
     public static string SignInChange = "SignInChange";
+    public static string SignInPopupChange = "SignInPopupChange";
+    public static string SignInDataChange = "SignInDataChange";
 
     public static string PreUnit = "PreUnit";//param gameUnit
     public static string NextUnit = "NextUnit";//param gameUnit

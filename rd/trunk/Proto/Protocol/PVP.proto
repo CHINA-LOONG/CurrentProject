@@ -100,6 +100,7 @@ message HSPVPRankDefence
 message HSPVPRankDefenceRet
 {
 	required HSMonsterDefence monsterDefence = 1;
+	required int32 bp = 2;
 }
 
 message HSPVPDefenceRecord

@@ -171,6 +171,8 @@ public class StatisticsDataMgr : MonoBehaviour {
         AdventureDataMgr.Instance.CleanHiredMonster();
         //更新登陆数据
         SigninDataMgr.Instance.ReloadDateInfo(SigninDataMgr.Instance.signinTimesMonthly, SigninDataMgr.Instance.signinFillTimesMonthly, false);
+
+        //SigninDataMgr.Instance.ReloadDateInfo(0, 0, false);
     }
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {
@@ -178,6 +180,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.mTowerInvalidate = true;
         GameDataMgr.Instance.mTowerRefreshed = true;
         GameDataMgr.Instance.SyncTowerData(null);
+        SigninDataMgr.Instance.ReloadDateInfo(0, 0, SigninDataMgr.Instance.isSigninDaily);
     }
 
     void OnGMInstanceStateChange(ProtocolMessage messge)

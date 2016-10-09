@@ -70,7 +70,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &135692
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &150874
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &159312
 GameObject:
   m_ObjectHideFlags: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
   - {fileID: 11471060}
   mScoreResultImg: {fileID: 11456048}
   mScoreResultRoot: {fileID: 164946}
-  mVictorySprite: {fileID: 21300000, guid: adf759861c89e3842a0ed55680fee45f, type: 3}
+  mVictorySprite: {fileID: 21300000, guid: 86e85b826fdf6024197854fa637b168e, type: 3}
   mFailedSprite: {fileID: 21300000, guid: 1ee3f92fa55771846ae2e0b7a615f49f, type: 3}
   mEndBattleAni: {fileID: 9535994}
 --- !u!114 &11441872
@@ -496,7 +496,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: adf759861c89e3842a0ed55680fee45f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86e85b826fdf6024197854fa637b168e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4051,11 +4051,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22463934}
   - {fileID: 22448274}
   - {fileID: 22449900}
   - {fileID: 22481402}
   - {fileID: 22455908}
+  - {fileID: 22463934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -4074,11 +4074,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22447186}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 2.28881836e-05, y: 9.53674316e-06}
-  m_SizeDelta: {x: 382.000061, y: 110}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 315, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22449900
 RectTransform:
@@ -4092,10 +4092,10 @@ RectTransform:
   m_Children:
   - {fileID: 22418436}
   m_Father: {fileID: 22447186}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -98, y: -66}
+  m_AnchoredPosition: {x: -98, y: -62}
   m_SizeDelta: {x: 60, y: 58}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22455908
@@ -4110,10 +4110,10 @@ RectTransform:
   m_Children:
   - {fileID: 22441506}
   m_Father: {fileID: 22447186}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 101, y: -62}
+  m_AnchoredPosition: {x: 98, y: -62}
   m_SizeDelta: {x: 59, y: 58}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22463934
@@ -4129,7 +4129,7 @@ RectTransform:
   - {fileID: 22479956}
   - {fileID: 22473084}
   m_Father: {fileID: 22447186}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 50}
@@ -4181,10 +4181,10 @@ RectTransform:
   m_Children:
   - {fileID: 22428934}
   m_Father: {fileID: 22447186}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1, y: -56}
+  m_AnchoredPosition: {x: 0, y: -87}
   m_SizeDelta: {x: 60, y: 58}
   m_Pivot: {x: .5, y: .5}
 --- !u!225 &22542952

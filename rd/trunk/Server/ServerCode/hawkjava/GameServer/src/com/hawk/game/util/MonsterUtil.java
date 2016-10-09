@@ -1,5 +1,7 @@
 package com.hawk.game.util;
 
+import java.util.List;
+
 import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.config.BaseAttrCfg;
@@ -17,7 +19,20 @@ import com.hawk.game.protocol.Skill.HSSkill;
 
 public class MonsterUtil {
 
-	public static float calculateBP(HSMonster.Builder monsterBuilder){
+	public static float calculateBP(List<HSMonster.Builder> monsters){
+		float result = 0;
+		for (HSMonster.Builder monsterBuilder : monsters) {
+			result += calculateBP(monsterBuilder);
+		}
+		return result;
+	}
+	
+	/**
+	 * 计算宠物战斗力
+	 * @param monsterBuilder
+	 * @return
+	 */
+ 	public static float calculateBP(HSMonster.Builder monsterBuilder){
 		
 		float strengthToAttack = 1.0f;
 	    float intelligenceToAttack = 1.0f;
@@ -129,7 +144,11 @@ public class MonsterUtil {
         int dotLvl = 0;
         
         for (HSSkill skill : monsterBuilder.getSkillList()) {
-        	int category = HawkConfigManager.getInstance().getConfigByKey(SpellCfg.class, skill.getSkillId()).getCategory();
+        	SpellCfg spellCfg = HawkConfigManager.getInstance().getConfigByKey(SpellCfg.class, skill.getSkillId());
+        	if (spellCfg == null) {
+				continue;
+			}
+        	int category = spellCfg.getCategory();
 			if (category == Const.SpellType.Spell_Type_PhyDaZhao_VALUE || category == Const.SpellType.Spell_Type_MagicDazhao_VALUE) {
 				dazhaoLvl = skill.getLevel();
 			}

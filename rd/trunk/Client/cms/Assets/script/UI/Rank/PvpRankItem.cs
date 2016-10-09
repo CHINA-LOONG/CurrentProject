@@ -59,6 +59,6 @@ public class PvpRankItem : MonoBehaviour
             return;
         }
         PB.HSPVPRankDefenceRet msgRet = message.GetProtocolBody<PB.HSPVPRankDefenceRet>();
-        PvpOtherDefenseInfo.OpenWith(msgRet.monsterDefence);
+        PvpOtherDefenseInfo.OpenWith(msgRet.monsterDefence,msgRet.bp);
     }
 }

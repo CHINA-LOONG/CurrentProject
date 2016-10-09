@@ -18,6 +18,11 @@ public class UISignIn : UIBase,
     {
         UISignIn uiSignIn = UIMgr.Instance.OpenUI_(UISignIn.ViewName, false) as UISignIn;
         uiSignIn.ReloadData();
+        if (!SigninDataMgr.Instance.isPopup)
+        {
+            SigninDataMgr.Instance.isPopup = true;
+            GameEventMgr.Instance.FireEvent(GameEventList.SignInPopupChange);
+        }
         return uiSignIn;
     }
 
@@ -64,13 +69,10 @@ public class UISignIn : UIBase,
         btnRetroactive.onClick.AddListener(OnClickRetroactiveBtn);
     }
 
-    public void ReloadData()
+    void ReloadData()
     {
         List<string> rewardList = SigninDataMgr.Instance.SigninList;
-
-        textMsg1.text = string.Format(StaticDataMgr.Instance.GetTextByID("monthlyevent_count_001"), SigninDataMgr.Instance.signinTimesMonthly, rewardList.Count);
-        textMsg2.text = string.Format(StaticDataMgr.Instance.GetTextByID("monthlyevent_count_002"), SigninDataMgr.Instance.canSigninFillTimes);
-
+        
         dataList.Clear();
         for (int i = 0; i < rewardList.Count; i++)
         {
@@ -112,7 +114,19 @@ public class UISignIn : UIBase,
         {
             scrollRect.verticalNormalizedPosition = 0.0f;
         }
-        UpdateRetroactivePrice();
+        textMsg1.text = string.Format(StaticDataMgr.Instance.GetTextByID("monthlyevent_count_001"), SigninDataMgr.Instance.signinTimesMonthly, rewardList.Count);
+        if (SigninDataMgr.Instance.canSigninFillTimes > 0)
+        {
+            textMsg2.gameObject.SetActive(true);
+            textMsg2.text = string.Format(StaticDataMgr.Instance.GetTextByID("monthlyevent_count_002"), SigninDataMgr.Instance.canSigninFillTimes);
+            btnRetroactive.gameObject.SetActive(true);
+            UpdateRetroactivePrice();
+        }
+        else
+        {
+            textMsg2.gameObject.SetActive(false);
+            btnRetroactive.gameObject.SetActive(false);
+        }
     }
 
     //更新签到次数
@@ -225,6 +239,8 @@ public class UISignIn : UIBase,
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SIGNIN_S.GetHashCode().ToString(), OnSignInReturn);
 
         GameEventMgr.Instance.AddListener(GameEventList.SignInChange, ReloadData);
+        GameEventMgr.Instance.AddListener(GameEventList.SignInDataChange, OnClickCloseBtn);
+        //GameEventMgr.Instance.AddListener(GameEventList.si)
     }
     void UnBindListener()
     {
@@ -233,6 +249,7 @@ public class UISignIn : UIBase,
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SIGNIN_S.GetHashCode().ToString(), OnSignInReturn);
 
         GameEventMgr.Instance.RemoveListener(GameEventList.SignInChange, ReloadData);
+        GameEventMgr.Instance.RemoveListener(GameEventList.SignInDataChange, OnClickCloseBtn);
     }
 
     void OnSignInReturn(ProtocolMessage msg)

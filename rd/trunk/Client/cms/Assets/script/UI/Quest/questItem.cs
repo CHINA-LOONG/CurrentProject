@@ -115,7 +115,15 @@ public class questItem : MonoBehaviour
             }
             else if (info.type == (int)PB.itemType.PLAYER_ATTR)
             {
-                changeTypeIcon icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)info.count);
+                changeTypeIcon icon;
+                if ((PB.changeType)(int.Parse(info.itemId)) == PB.changeType.CHANGE_PLAYER_EXP)
+                {
+                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)(info.count * curData.staticData.expK + curData.staticData.expB));
+                }
+                else
+                {
+                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)info.count);
+                }
                 UIUtil.SetParentReset(icon.transform, rewardParent);
                 reward = icon.gameObject;
             }

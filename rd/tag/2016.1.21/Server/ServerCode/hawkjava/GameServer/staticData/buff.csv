@@ -332,8 +332,8 @@ psvRenyu3b1,11,,999,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,0,0,0,0,,13
 ultAmute2b1,7,,2,0,0,0,0,0,0,0,0,bufficon_buffDerate,0,,0,0.2,0,0,,,1,0,0,0,,-1
 ultAmute2b2,8,,2,0,0,0,0,0,0,0,0,bufficon_buffDerate,0,,0,0,0.2,0,,,1,0,0,0,,-1
 psvSenlinnvshen2b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingBuffRate_25,dispelNegativee1",,999,0,0,0,,-1
-ultShixianggui5eb1,9,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed_attack,1,20,0.7,0,0,0,,,1,0,0,0,,-1
-ultShixianggui5eb2,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed_magic,1,20,0.7,0,0,0,,,1,0,0,0,,-1
+ultShixianggui5eb1,9,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed_attack,1,0,2,0,0,0,,,1,0,0,0,,-1
+ultShixianggui5eb2,10,,3,0,0,0,0,0,0,0,0,bufficon_buffAbsorbed_magic,1,0,2,0,0,0,,,1,0,0,0,,-1
 psvShixianggui5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalMagicRate_90,psvShixianggui5e4",,999,0,0,0,,-1
 psvShixianggui5b2,11,,999,0,0,0,,,,,,,,,,,,,"UsingDefenseRate_100,psvShixianggui5e5",,999,0,0,0,,-1
 psvYifanmumian3b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_50,psvYifanmumian3e2",,999,0,0,0,,-1

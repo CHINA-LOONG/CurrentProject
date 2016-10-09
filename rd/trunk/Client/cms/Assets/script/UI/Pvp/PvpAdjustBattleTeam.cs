@@ -199,9 +199,10 @@ public class PvpAdjustBattleTeam : UIBase
             myBpValueText.color = new Color(122.0f / 255.0f, 1, 0);
         }
     }
+    List<int> battleTeam;
     void OnFightButtonClick()
     {
-        List<int> battleTeam = SaveBattleTeam();
+        battleTeam = SaveBattleTeam();
         if (null == battleTeam || battleTeam.Count < 1)
         {
             // MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
@@ -216,12 +217,7 @@ public class PvpAdjustBattleTeam : UIBase
         else
         {
             // GameDataMgr.Instance.OnBattleStart();
-            PvpFightParam param = new PvpFightParam();
-            param.playerTeam = battleTeam;
-            param.targetData = opponentData;
-            param.enemyBp = opponentBp;
-            param.myBp = myBp;
-            GameMain.Instance.LoadBattleLevelPvp(param);
+            Fight();
         }
     }
     void ConformFightOrNot(MsgBox.PrompButtonClick click)
@@ -233,7 +229,12 @@ public class PvpAdjustBattleTeam : UIBase
     }
     void Fight()
     {
-
+        PvpFightParam param = new PvpFightParam();
+        param.playerTeam = battleTeam;
+        param.targetData = opponentData;
+        param.enemyBp = opponentBp;
+        param.myBp = myBp;
+        GameMain.Instance.LoadBattleLevelPvp(param);
     }
 
     List<int> SaveBattleTeam()

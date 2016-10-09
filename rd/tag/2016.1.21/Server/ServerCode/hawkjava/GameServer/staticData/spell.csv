@@ -149,7 +149,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 146,ultXiyiren4,ultXiyiren4e1,25,3,100,0,8,0.002,icon_ultXiyiren4,ultXiyiren4Name,ultXiyiren4Tips,0.175,0,,ultXiyiren4Description,ultXiyiren4Curlvl,ultXiyiren4Nextlvl
 147,ultXiyiren2,ultXiyiren2e1,0,0,100,0,9,0,icon_ultXiyiren2,ultXiyiren2Name,ultXiyiren2Tips,0,1,,ultXiyiren2Description,,
 148,ultMantuoluo2,ultMantuoluo2e1,0,0,100,0,9,0.005,icon_ultMantuoluo2,ultMantuoluo2Name,ultMantuoluo2Tips,0.55,1,,ultMantuoluo2Description,ultMantuoluo2Curlvl,ultMantuoluo2Nextlvl
-149,ultHetong3,ultHetong3e1,0,0,100,0,9,0.01,icon_ultXiaochou3,ultHetong3Name,ultHetong3Tips,1.95,1,,ultHetong3Description,ultHetong3Curlvl,ultHetong3Nextlvl
+149,ultHetong3,ultHetong3e1,0,0,100,0,9,0.01,icon_ultXiaochou3,ultHetong3Name,ultHetong3Tips,1.95,1,,ultHetong3Description,,
 150,ultLonggongtongzi3,ultLonggongtongzi3e1,0,0,100,0,9,0.005,icon_ultLonggongtongzi3,ultLonggongtongzi3Name,ultLonggongtongzi3Tips,0.7,1,,ultLonggongtongzi3Description,ultLonggongtongzi3Curlvl,ultLonggongtongzi3Nextlvl
 151,ultLangren5,ultLangren5e1,25,3,100,0,9,0.015,icon_ultMengyan5,ultLangren5Name,ultLangren5Tips,2.4,0,,ultLangren5Description,ultLangren5Curlvl,ultLangren5Nextlvl
 152,ultLangren3,ultLangren3e1,0,0,100,0,9,0,icon_ultLangren3,ultLangren3Name,ultLangren3Tips,0,1,,ultLangren3Description,,

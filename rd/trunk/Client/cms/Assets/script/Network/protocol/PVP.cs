@@ -384,6 +384,13 @@ namespace PB
       get { return _monsterDefence; }
       set { _monsterDefence = value; }
     }
+    private int _bp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"bp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int bp
+    {
+      get { return _bp; }
+      set { _bp = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

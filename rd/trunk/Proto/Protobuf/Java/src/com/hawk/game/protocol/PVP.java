@@ -8159,6 +8159,16 @@ public final class PVP {
      * <code>required .HSMonsterDefence monsterDefence = 1;</code>
      */
     com.hawk.game.protocol.Monster.HSMonsterDefenceOrBuilder getMonsterDefenceOrBuilder();
+
+    // required int32 bp = 2;
+    /**
+     * <code>required int32 bp = 2;</code>
+     */
+    boolean hasBp();
+    /**
+     * <code>required int32 bp = 2;</code>
+     */
+    int getBp();
   }
   /**
    * Protobuf type {@code HSPVPRankDefenceRet}
@@ -8224,6 +8234,11 @@ public final class PVP {
               bitField0_ |= 0x00000001;
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              bp_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8286,8 +8301,25 @@ public final class PVP {
       return monsterDefence_;
     }
 
+    // required int32 bp = 2;
+    public static final int BP_FIELD_NUMBER = 2;
+    private int bp_;
+    /**
+     * <code>required int32 bp = 2;</code>
+     */
+    public boolean hasBp() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 bp = 2;</code>
+     */
+    public int getBp() {
+      return bp_;
+    }
+
     private void initFields() {
       monsterDefence_ = com.hawk.game.protocol.Monster.HSMonsterDefence.getDefaultInstance();
+      bp_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8295,6 +8327,10 @@ public final class PVP {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasMonsterDefence()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBp()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -8312,6 +8348,9 @@ public final class PVP {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, monsterDefence_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, bp_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -8324,6 +8363,10 @@ public final class PVP {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, monsterDefence_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, bp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8448,6 +8491,8 @@ public final class PVP {
           monsterDefenceBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        bp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -8484,6 +8529,10 @@ public final class PVP {
         } else {
           result.monsterDefence_ = monsterDefenceBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bp_ = bp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8503,12 +8552,19 @@ public final class PVP {
         if (other.hasMonsterDefence()) {
           mergeMonsterDefence(other.getMonsterDefence());
         }
+        if (other.hasBp()) {
+          setBp(other.getBp());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasMonsterDefence()) {
+          
+          return false;
+        }
+        if (!hasBp()) {
           
           return false;
         }
@@ -8653,6 +8709,39 @@ public final class PVP {
           monsterDefence_ = null;
         }
         return monsterDefenceBuilder_;
+      }
+
+      // required int32 bp = 2;
+      private int bp_ ;
+      /**
+       * <code>required int32 bp = 2;</code>
+       */
+      public boolean hasBp() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 bp = 2;</code>
+       */
+      public int getBp() {
+        return bp_;
+      }
+      /**
+       * <code>required int32 bp = 2;</code>
+       */
+      public Builder setBp(int value) {
+        bitField0_ |= 0x00000002;
+        bp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 bp = 2;</code>
+       */
+      public Builder clearBp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        bp_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:HSPVPRankDefenceRet)
@@ -9783,12 +9872,12 @@ public final class PVP {
       "ank\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\tHSPVPR" +
       "ank\"1\n\014HSPVPRankRet\022!\n\013pvpRankList\030\001 \003(\013" +
       "2\014.PVPRankData\"$\n\020HSPVPRankDefence\022\020\n\010pl" +
-      "ayerId\030\001 \002(\005\"@\n\023HSPVPRankDefenceRet\022)\n\016m" +
-      "onsterDefence\030\001 \002(\0132\021.HSMonsterDefence\"\024" +
-      "\n\022HSPVPDefenceRecord\"L\n\025HSPVPDefenceReco" +
-      "rdRet\0223\n\024pvpDefenceRecordList\030\001 \003(\0132\025.PV" +
-      "PDefenceRecordDataB\030\n\026com.hawk.game.prot" +
-      "ocol"
+      "ayerId\030\001 \002(\005\"L\n\023HSPVPRankDefenceRet\022)\n\016m" +
+      "onsterDefence\030\001 \002(\0132\021.HSMonsterDefence\022\n" +
+      "\n\002bp\030\002 \002(\005\"\024\n\022HSPVPDefenceRecord\"L\n\025HSPV" +
+      "PDefenceRecordRet\0223\n\024pvpDefenceRecordLis" +
+      "t\030\001 \003(\0132\025.PVPDefenceRecordDataB\030\n\026com.ha" +
+      "wk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9890,7 +9979,7 @@ public final class PVP {
           internal_static_HSPVPRankDefenceRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRankDefenceRet_descriptor,
-              new java.lang.String[] { "MonsterDefence", });
+              new java.lang.String[] { "MonsterDefence", "Bp", });
           internal_static_HSPVPDefenceRecord_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_HSPVPDefenceRecord_fieldAccessorTable = new

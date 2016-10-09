@@ -1301,7 +1301,7 @@ setting_sound_open,开启,On,開啟
 setting_sound_close,关闭,Off,關閉
 setting_music_name,音乐,Music,音樂
 setting_language_name,语言,Language,語言
-setting_language_chinese,简体中文,简体中文,繁體中文
+setting_language_chinese,简体中文,简体中文,简体中文
 setting_language_english,English,English,English
 setting_language_001,您确定要更改语言为“<color=#ffcc00>{0}</color>”吗？（需要重新启动游戏）,"Confirm language change to ""<color=#ffcc00>{0}</color>""? (Game will restart)",您確定要更改語言為“<color=#ffcc00>{0}</color>”嗎？（需要重新開機遊戲）
 setting_urs_name,用户中心,UserCenter,用戶中心
@@ -1406,8 +1406,8 @@ lv508_op1,YouTube,YouTube,YouTube
 lv508_op2,Reddit,Reddit,Reddit
 lv508_op3,Facebook,Facebook,Facebook
 lv508_op4,Gaming forums/websites,Gaming forums/websites,Gaming forums/websites
-lv508_op5,twitter,twitter,twitter
-lv508_op6,instergram,instergram,instergram
+lv508_op5,Twitter,Twitter,Twitter
+lv508_op6,Instagram,Instagram,Instagram
 lv2001_op1,第一章,Chapter 1,第一章
 lv2001_op2,第二章,Chapter 2,第二章
 lv2001_op3,第三章,Chapter 3,第三章
@@ -2101,3 +2101,36 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 217_name11,大冒险奖励5次,Collect 5 Adventure reward today,
 217_name12,大冒险奖励10次,Collect 10 Adventure reward today,
 217_name13,完成一次公会许愿,Complete 1 Guild Wish today,
+eventinstance_UI_title,封印之日,Rift Day,封印之日
+eventinstance_monster1_name,主战怪,Primary Monster,主戰怪
+eventinstance_monster2_name,辅战怪,Support Monsters,輔戰怪
+eventinstance_time,活动剩余时间,Time remaining,活動剩余時間
+eventinstance_guize_desc,"<color=#ffcc00>受星象运行影响,两界封印松动,灵界深处的罕见神怪苏醒侵扰人间,so……勇敢的少年快去收服神怪加固封印吧！</color>
+
+1.“封印日”为<color=#ffcc00>每周六中午12点至周日中午12点</color>，开放期间玩家可以<color=#ffcc00>消耗活力</color>进行挑战。
+
+2.每逢“封印日”封印松动之时，会由异界来临一位<color=#ffcc00>主战神怪</color>与一位<color=#ffcc00>辅战神怪</color>降临，玩家挑战成功则有机会获得该<color=#ffcc00>神怪的碎片</color>！
+
+3.每次挑战需要经过<color=#ffcc00>9层</color>考验，通关层数<color=#ffcc00>越多</color>，获得主战神怪的碎片几率<color=#ffcc00>越大</color>、数量<color=#ffcc00>越多</color>！
+
+4.“封印日”降临的神怪每周<color=#ffcc00>各不相同</color>，遇到喜欢的神怪要抓紧时间进行挑战哦！","<color=#ffcc00>As the constellations moved in the night sky, a rift has mysteriously appeared in the seal between the two worlds. Rare monsters from the depths of the spirit world have now been awakened and are moving to invade the real world. Warriors, we must move quickly to defend our world!</color>
+
+1. “Rift Day” is open each Saturday<color=#ffcc00> from 12:00 noon to Sunday 12:00</color>. During the event time, players may <color=#ffcc00>spend Energy</color> to join the battles.
+
+2. During the ""Rift Day” event, players will be able to battle a <color=#ffcc00>deity monster</color> from Mythos along with its <color=#ffcc00>supporting monsters</color>. If the battle is successful, players have a chance of receiving that <color=#ffcc00>deity monster’s fragments</color>!
+
+3. Each battle will require passing through <color=#ffcc00>9 trials</color>. With <color=#ffcc00>more trials</color> completed, players have <color=#ffcc00>better chances</color> of getting deity fragments, and receiving them in a <color=#ffcc00>larger amounts</color>!
+
+4. The monsters that appear in “Rift Day” will be <color=#ffcc00>different each week</color>. If you encounter a deity monster that you want to collect, then take advantage of the opportunity and join the battle!","<color=#ffcc00>受星象運行影響,兩界封印松動,靈界深處的罕見神怪蘇醒侵擾人間,so……勇敢的少年快去收服神怪加固封印吧！</color>
+
+1.“封印日”為<color=#ffcc00>每周六中午12點至周日中午12點</color>，開放期間玩家可以<color=#ffcc00>消耗活力</color>進行挑戰。
+
+2.每逢“封印日”封印松動之時，會由異界來臨壹位<color=#ffcc00>主戰神怪</color>與壹位<color=#ffcc00>輔戰神怪</color>降臨，玩家挑戰成功則有機會獲得該<color=#ffcc00>神怪的碎片</color>！
+
+3.每次挑戰需要經過<color=#ffcc00>9層</color>考驗，通關層數<color=#ffcc00>越多</color>，獲得主戰神怪的碎片幾率<color=#ffcc00>越大</color>、數量<color=#ffcc00>越多</color>！
+
+4.“封印日”降臨的神怪每周<color=#ffcc00>各不相同</color>，遇到喜歡的神怪要抓緊時間進行挑戰哦！"
+eventinstance_surprise_title,碎片宝箱,Fragment Chest,碎片寶箱
+eventinstance_close_desc,活动已经结束，下次活动见！,"This event has already ended, please come back again!",活動已經結束，下次活動見！
+setting_language_chineseTW,繁體中文,繁體中文,繁體中文
+eventinstance_title,封印之日,Rift Day,封印之日

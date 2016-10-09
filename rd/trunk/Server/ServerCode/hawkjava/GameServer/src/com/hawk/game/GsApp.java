@@ -750,6 +750,10 @@ public class GsApp extends HawkApp {
 				if (player != null && player.getSession() != null && player.getSession() != session) {	
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 					player.getSession().setAppObject(null);
+			 		
+					HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_LOGOUT, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+			 		msg.pushParam(player);
+					HawkApp.getInstance().postMsg(msg);			
 				}
 
 				// 设置玩家puid

@@ -33,7 +33,9 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterDefence;
+import com.hawk.game.protocol.PVP.HSPVPInfoRet;
 import com.hawk.game.protocol.PVP.HSPVPMatchTarget;
 import com.hawk.game.protocol.PVP.HSPVPMatchTargetRet;
 import com.hawk.game.protocol.PVP.HSPVPRankDefence;
@@ -172,6 +174,14 @@ public class PVPManager extends HawkAppObj {
 		}
 		else if (msg.getMsg() == GsConst.MsgType.PVP_RANK_DEFENCE) {
 			onPVPRankListDecence(msg);
+			return true;
+		}
+		else if (msg.getMsg() == GsConst.MsgType.PVP_MY_INFO) {
+			onPVPMyInfo(msg);
+			return true;
+		}
+		else if (msg.getMsg() == GsConst.MsgType.PVP_LOGOUT) {
+			onPVPLogout(msg);
 			return true;
 		}
 		
@@ -434,6 +444,7 @@ public class PVPManager extends HawkAppObj {
 	public void onPVPSettle(HawkMsg msg){
 		Player player = msg.getParam(0);
 		HawkProtocol cmd = msg.getParam(1);
+		HSPVPSettle protocol = cmd.parseProtocol(HSPVPSettle.getDefaultInstance());
 		
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom == null) {
@@ -444,49 +455,60 @@ public class PVPManager extends HawkAppObj {
 		pvpRoomList.remove(player.getId());
 		
 		PVPRankEntity pvpRankEntity = playerRankMap.get(player.getId());
-		PVPRankEntity targetRankEntity = playerRankMap.get(pvpRoom.targetId);
+		if (pvpRankEntity == null) {
+			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.error.SERVER_ERROR_VALUE);
+			return;
+		}
+
+		AwardItems reward = new AwardItems();
+		int changePoint = PVPSettle(pvpRankEntity, pvpRoom.targetId, protocol.getResult(), reward);
+		
+		if (reward.hasAwardItem()) {
+			reward.rewardTakeAffectAndPush(player, Action.PVP_SETTLE, cmd.getType());
+		}
+		
+		HSPVPSettleRet.Builder response = HSPVPSettleRet.newBuilder();
+		response.setPoint(pvpRankEntity.getPoint());
+		response.setRank(pvpRankEntity.getRank() + 1);
+		response.setRewardPoint(changePoint);
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_SETTLE_S_VALUE, response));
+	}
+	
+	public int PVPSettle(PVPRankEntity pvpRankEntity, int targetId, int result, AwardItems reward){
+		PVPRankEntity targetRankEntity = playerRankMap.get(targetId);
 		int selfPoint = pvpRankEntity != null ? pvpRankEntity.getPoint() : GsConst.PVP.PVP_DEFAULT_POINT;
 		int targetPoint = targetRankEntity != null ? targetRankEntity.getPoint() : GsConst.PVP.PVP_DEFAULT_POINT;
 		
 		PVPCfg pvpCfg = PVPCfg.getPVPStageCfg(selfPoint);
 		if (pvpCfg == null) {
-			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.error.CONFIG_NOT_FOUND_VALUE);
-			return;
+			return 0;
 		}
 		
-		HSPVPSettle protocol = cmd.parseProtocol(HSPVPSettle.getDefaultInstance());
-		int changePoint = calculatePVPPoint(selfPoint, targetPoint, pvpCfg, protocol.getResult());
-		if (pvpRankEntity != null) {	
-			changePoolStage(pvpRankEntity, changePoint);
-			pvpRankEntity.setPoint(pvpRankEntity.getPoint() + changePoint);
-			pvpRankEntity.notifyUpdate(true);
-			reRank(pvpRankEntity);
-			
-			AwardItems reward = new AwardItems();
-			if (protocol.getResult() == Const.PvpResult.WIN_VALUE) {
-				reward.addHonorPoint(pvpCfg.getWin());
-			}
-			else if (protocol.getResult() == Const.PvpResult.DRAW_VALUE) {
-				reward.addHonorPoint(pvpCfg.getDraw());
-			}	
-			
-			if (reward.hasAwardItem()) {
-				reward.rewardTakeAffectAndPush(player, Action.PVP_SETTLE, cmd.getType());
-			}
-			
-			PVPDefenceRecordEntity pvpDefenceRecordEntity = new PVPDefenceRecordEntity();
-			pvpDefenceRecordEntity.setPlayerId(pvpRoom.targetId);
-			pvpDefenceRecordEntity.setPoint(-changePoint);
-			pvpDefenceRecordEntity.setResult(Const.PvpResult.NUM_VALUE - protocol.getResult());
-			pvpDefenceRecordEntity.setAttackerGrade(pvpCfg.getStage());
-			pvpDefenceRecordEntity.setAttackerName(pvpRankEntity.getName());
-			pvpDefenceRecordEntity.setAttackerLevel(pvpRankEntity.getLevel());
-			pvpDefenceRecordEntity.notifyCreate();
-			
-	 		HawkMsg recordMsg = HawkMsg.valueOf(GsConst.MsgType.PVP_RECORD, HawkXID.valueOf( GsConst.ObjType.PLAYER, pvpRoom.targetId));
-	 		recordMsg.pushParam(pvpDefenceRecordEntity);
-			HawkApp.getInstance().postMsg(recordMsg);
+		int changePoint = calculatePVPPoint(selfPoint, targetPoint, pvpCfg, result);
+		changePoolStage(pvpRankEntity, changePoint);
+		pvpRankEntity.setPoint(pvpRankEntity.getPoint() + changePoint);
+		pvpRankEntity.notifyUpdate(true);
+		reRank(pvpRankEntity);
+		
+		if (result== Const.PvpResult.WIN_VALUE) {
+			reward.addHonorPoint(pvpCfg.getWin());
 		}
+		else if (result == Const.PvpResult.DRAW_VALUE) {
+			reward.addHonorPoint(pvpCfg.getDraw());
+		}	
+		
+		PVPDefenceRecordEntity pvpDefenceRecordEntity = new PVPDefenceRecordEntity();
+		pvpDefenceRecordEntity.setPlayerId(targetId);
+		pvpDefenceRecordEntity.setPoint(-changePoint);
+		pvpDefenceRecordEntity.setResult(Const.PvpResult.NUM_VALUE - result);
+		pvpDefenceRecordEntity.setAttackerGrade(pvpCfg.getStage());
+		pvpDefenceRecordEntity.setAttackerName(pvpRankEntity.getName());
+		pvpDefenceRecordEntity.setAttackerLevel(pvpRankEntity.getLevel());
+		pvpDefenceRecordEntity.notifyCreate();
+		
+ 		HawkMsg recordMsg = HawkMsg.valueOf(GsConst.MsgType.PVP_RECORD, HawkXID.valueOf( GsConst.ObjType.PLAYER, targetId));
+ 		recordMsg.pushParam(pvpDefenceRecordEntity);
+		HawkApp.getInstance().postMsg(recordMsg);
 		
 		if (targetRankEntity != null) {
 			changePoolStage(targetRankEntity, -changePoint);
@@ -495,11 +517,7 @@ public class PVPManager extends HawkAppObj {
 			reRank(targetRankEntity);
 		}
 		
-		HSPVPSettleRet.Builder response = HSPVPSettleRet.newBuilder();
-		response.setPoint(pvpRankEntity.getPoint());
-		response.setRank(pvpRankEntity.getRank() + 1);
-		response.setRewardPoint(changePoint);
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_SETTLE_S_VALUE, response));
+		return changePoint;
 	}
 	
 	/**
@@ -534,8 +552,67 @@ public class PVPManager extends HawkAppObj {
 		
 		HSPVPRankDefenceRet.Builder response = HSPVPRankDefenceRet.newBuilder();
 		response.setMonsterDefence(defenceEntity.getMonsterDefenceBuilder());
+		for (HSMonster.Builder builder : response.getMonsterDefenceBuilder().getMonsterInfoBuilderList()) {
+			builder.clearSkill();
+			builder.clearEquipInfos();
+		}
 		
+		response.setBp(defenceEntity.getBP());
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_RANK_DEFENCE_S_VALUE, response));
+	}
+	
+	/**
+	 * 排行榜之内的玩家需要计算并列情况
+	 * @param msg
+	 */
+	public void onPVPMyInfo(HawkMsg msg){
+		Player player = msg.getParam(0);
+		int leftTime = msg.getParam(1);
+		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
+		response.setMonthRewardTimeLeft(leftTime);
+		PVPRankEntity rankEntity = playerRankMap.get(player.getId());
+		if (rankEntity != null) {	
+			// 排行榜之内的需要考虑并列情况
+			response.setPvpPoint(rankEntity.getPoint());
+			int rank = rankEntity.getRank();
+			while (rank > 0) {
+				if (pvpRankList.get(rank).getPoint() == pvpRankList.get(rank - 1).getPoint()) {
+					rank--;
+				}
+				else {
+					break;
+				}
+			}
+			response.setPvpRank(rank + 1);		
+		}
+		else{
+			response.setPvpPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			response.setPvpRank(0);
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_MY_INFO_S_VALUE, response));
+	}
+	
+	/**
+	 * 退出结算
+	 * @param msg
+	 */
+	public void onPVPLogout(HawkMsg msg){
+		Player player = msg.getParam(0);
+		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
+		if (pvpRoom != null) {
+			PVPRankEntity pvpRankEntity = playerRankMap.get(player.getId());
+			if (pvpRankEntity == null) {
+				return;
+			}
+			pvpRoomList.remove(player.getId());
+			AwardItems reward = new AwardItems();
+			PVPSettle(pvpRankEntity, pvpRoom.targetId, Const.PvpResult.LOSE_VALUE, reward);
+			
+			if (reward.hasAwardItem()) {
+				reward.rewardTakeAffect(player, Action.PVP_SETTLE);
+			}	
+		}
 	}
 	
 	/**
@@ -820,7 +897,7 @@ public class PVPManager extends HawkAppObj {
 	
 	@Override
 	public boolean onTick(long tickTime) {
-		if (refreshTime + GsConst.PVP_RANK_BUILDER_REFRESH_TIME < tickTime) {
+		if (refreshTime + SysBasicCfg.getInstance().getPvpRankBuilderRefreshTime() * 1000 < tickTime) {
 			refreshTime = tickTime;
 			
 			HawkLog.logPrintln("排行榜:");

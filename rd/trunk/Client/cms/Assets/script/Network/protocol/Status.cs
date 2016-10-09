@@ -589,7 +589,10 @@ namespace PB
       PVP_NOT_MATCH_BEFORE = 917507,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_TIMES_NOT_ENOUGH", Value=917508)]
-      PVP_TIMES_NOT_ENOUGH = 917508
+      PVP_TIMES_NOT_ENOUGH = 917508,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_IN_RANK_LIST", Value=917509)]
+      PVP_NOT_IN_RANK_LIST = 917509
     }
   
 }

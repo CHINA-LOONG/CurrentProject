@@ -235,6 +235,12 @@ public class InstanceMapService : MonoBehaviour
         {
             return false;
         }
+
+        //检测挑战本是否开启
+        if(difftype == InstanceDifficulty.Normal && nextChapter > 1)
+        {
+            CheckAndOpenHardChapter(nextChapter - 1);
+        }
         List<InstanceEntry> listStaticInstance = GetStaticInstance (difftype, nextChapter);
 		if (listStaticInstance.Count == 0)
 			return false;
@@ -295,6 +301,11 @@ public class InstanceMapService : MonoBehaviour
 		}
 		return true;
 	}
+
+    void CheckAndOpenHardChapter(int hardChapter)
+    {
+        CheckAndOpenNextChapter(InstanceDifficulty.Hard, hardChapter);
+    }
 
 	private	void AddNoFinishedInstance(InstanceEntry staticData,bool isOpen = false)
 	{

@@ -103,6 +103,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.AddListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
+        GameEventMgr.Instance.AddListener(GameEventList.SignInPopupChange, OnSigninChanged);
         GameEventMgr.Instance.AddListener(GameEventList.SignInChange, OnSigninChanged);
         GameEventMgr.Instance.AddListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
@@ -116,6 +117,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
+        GameEventMgr.Instance.RemoveListener(GameEventList.SignInPopupChange, OnSigninChanged);
         GameEventMgr.Instance.RemoveListener(GameEventList.SignInChange, OnSigninChanged);
         GameEventMgr.Instance.RemoveListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
@@ -178,7 +180,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     }
     void OnSigninChanged()
     {
-        m_SigninButton.SetRemind(!SigninDataMgr.Instance.isSigninDaily||(!SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.canSigninFillTimes > 0));
+        //Logger.Log(!SigninDataMgr.Instance.isSigninDaily);
+        //Logger.Log((!SigninDataMgr.Instance.isPopup));
+        //Logger.Log(SigninDataMgr.Instance.canSigninFillTimes > 0);
+
+        //Logger.Log(!SigninDataMgr.Instance.isSigninDaily || ((!SigninDataMgr.Instance.isPopup) && (SigninDataMgr.Instance.canSigninFillTimes > 0)));
+        m_SigninButton.SetRemind(!SigninDataMgr.Instance.isSigninDaily || ((!SigninDataMgr.Instance.isPopup) && (SigninDataMgr.Instance.canSigninFillTimes > 0)));
     }
     
     void BagButtonClick(GameObject go)
@@ -330,7 +337,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         if (!SigninDataMgr.Instance.isSigninDaily && !SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.loginTimesDaily <= 0)
         {
             OnSigninButtonClick(null);
-            SigninDataMgr.Instance.isPopup = true;
         }
         OnSigninChanged();
     }

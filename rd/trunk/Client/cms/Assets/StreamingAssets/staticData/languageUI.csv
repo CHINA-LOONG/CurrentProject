@@ -171,8 +171,8 @@ mail_coinmanle,*若金币/钻石达到上限，收取将无法继续获得,"* If
 ,,
 xl_signin,薛龙_签到界面,
 monthlyevent_title,本月签到奖励,Monthly Login Reward
-monthlyevent_count_001,当月已签到：{0}/{1},Logins this month: {0}/{1}
-monthlyevent_count_002,可补签次数：{0},Claimable missed logins: {0}
+monthlyevent_count_001,当月已签到：<color=#FFCC00>{0}/{1}</color>,Logins this month:<color=#FFCC00> {0}/{1}</color>
+monthlyevent_count_002,可补签次数：<color=#FFCC00>{0}</color>,Claimable missed logins: <color=#FFCC00>{0}</color>
 monthlyevent_anniu,补签,Missed Login
 monthlyevent_reward_001,签到成功,Successfully logged in!
 Sign_buqian_001,请先完成当日签到后再进行补签操作,Please complete today's login before claiming missed logins.
@@ -908,9 +908,9 @@ summon_result,聚合结果,You gathered
 ,,
 pvp_title,竞技场,Arena
 pvp_daojishijiesuan,赛季结算倒计时：,Season ends in:
-pvp_daojishijiesuan1,{0}天,{0} days
-pvp_daojishijiesuan2,{0}小时,{0} hours
-pvp_daojishijiesuan3,不足1小时,< 1 hour
+pvp_daojishijiesuan1,<color=#ffcc00>{0}天</color>,<color=#ffcc00>{0} days</color>
+pvp_daojishijiesuan2,<color=#ffcc00>{0}小时</color>,<color=#ffcc00>{0} hours</color>
+pvp_daojishijiesuan3,<color=#ffcc00>不足1小时</color>,<color=#ffcc00>< 1 hour</color>
 pvp_copper3,青铜三阶,Bronze Rank 3
 pvp_copper2,青铜二阶,Bronze Rank 2
 pvp_copper1,青铜一阶,Bronze Rank 1
@@ -925,8 +925,8 @@ pvp_master2,大师二阶,Master Rank 2
 pvp_master1,大师一阶,Master Rank 1
 pvp_rank,排名  {0},Rank {0}
 pvp_notin,未进入排名,No ranking yet
-pvp_points,竞技积分,Arena Points
-pvp_honorpoint,荣誉点,Honor Points
+pvp_points,竞技积分  {0},Arena Points  {0}
+pvp_honorpoint,荣誉点  {0},Honor Points  {0}
 pvp_defense,防守阵容,Defense Team
 pvp_change,调整阵容,Edit Team
 pvp_pvpchoise,可竞技次数：{0}/10,Arena entries: {0}/10
@@ -961,7 +961,7 @@ pvp_resultwin,防守成功,Defense victory
 pvp_resultlose,防守失败,Defense defeated
 pvp_resultdraw,平局,Draw
 pvp_rulesneirong,"1.竞技场中战斗需要消耗竞技点数，每次消耗1点。竞技点数每小时恢复1点。
-2. 玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~
+2.玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~
 3.若对匹配的对手不满意，可以通过花费金币刷新对手。
 4.竞技场中战斗采取5V5的方式，战斗过程中可以手动施放大招技能、集火敌人，但不能使用照妖镜。
 5.竞技成功时，会获得荣誉点奖励，荣誉点可以用来在竞技商店中换取物品。
@@ -1016,6 +1016,8 @@ pvp_pingjutips,确定以平局结束本次战斗吗？,Confirm end current match
 pvp_pingjutips1,（平局只能获得1荣誉点，积分变化以平局结果计算）,"(A 'draw' will reward 1 Honor Point, and points will be calculated according to a draw)"
 pvp_record_001,防守设置保存成功,Defense settings saved
 pvp_record_002,竞技次数已用完,No remaining Arena entries
+pvp_record_003,防御至少要安排一个以上的宠物,one at  least
+pvp_battle,开战,Start Battle
 ,,
 ui_battle_go,前往,Go
 lose_guide1,搜寻弱点,Search for weakpoints

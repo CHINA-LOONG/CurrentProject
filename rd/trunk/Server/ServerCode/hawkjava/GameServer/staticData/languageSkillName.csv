@@ -1218,7 +1218,7 @@ psvshiliantaChange1Name,溃伤存形,Festering Presence,潰傷存形
 ultshiliantaDujiaoshou1Name,圣能,Purification,聖能
 psvshiliantaDujiaoshou1Name,天界保护,Celestial Protection,天界保護
 ultSheshou1Tips,给群体目标造成{0}%物攻的光属性物理伤害50%附加破防效果，若目标为暗属性则必附加破防效果,Deals ({0}% of physical ATK) light type physical damage to all enemies with a 50% chance of sunder effect; if the target is dark type then deal sunder effect for sure,給群體目標造成{0}%物攻的光屬性物理傷害50%附加破防效果，若目標為暗屬性則必附加破防效果
-psvSheshou1Tips,使用物理技能时，25%给被攻击者附加眩晕效果[被动],"Whenever you use a physical ability, there is a 25% chance of stunning the target [Passive]",使用物理技能時，25%給被攻擊者附加眩暈效果[被動]
+psvSheshou1Tips,使用物理技能时，15%给被攻击者附加眩晕效果[被动],"Whenever you use a physical ability, there is a 15% chance of stunning the target [Passive]",使用物理技能時，15%給被攻擊者附加眩暈效果[被動]
 ultWeitianshi5Tips,给群体目标造成{0}%法攻的暗属性法术伤害附加禁止回血效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,"Deals ({0}% of magic ATK) dark type magic damage to all enemies with a prevented healing effect, affinity damage to dark type monsters and greater damage to light type monsters",給群體目標造成{0}%法攻的暗屬性法術傷害附加禁止回血效果，該傷害對暗屬性會造成克制效果同時對光屬性克制效果更明顯
 psvWeitianshi5Tips,使用buff技能时，25%恢复群体30%生命值[被动],"Whenever you cast a buff ability, there is a 25% chance of recovering 30% HP for all allies [Passive]",使用buff技能時，25%恢復群體30%生命值[被動]
 ultSheshou3Tips,给己方全体目标提升40%速度和80%防御力，持续3回合,Increases all allies' SPD by 40% and INT by 80% for 3 turns,給己方全體目標提升40%速度和80%防禦力，持續3回合
@@ -1262,7 +1262,7 @@ ultChange5Description,在3秒内进行操作，每次操作给单体目标造成
 ultHuoniao3Description,给群体目标造成水属性法术伤害并给己方群体附加加速效果,Deals water type magic damage to all enemy targets and increases SPD of all allies,給群體目標造成水屬性法術傷害並給己方群體附加加速效果
 psvChange1Description,使用法术技能时，若目标拥有减益效果则伤害量提升25%[被动],"Whenever you cast a magic ability, if the target is affected by a debuff effect, the damage is increased by 25% [Passive]",使用法術技能時，若目標擁有減益效果則傷害量提升25%[被動]
 psvDujiaoshou1Description,血量首次小于等于总血量50%时，给自身添加物理和法术吸收护盾[被动],"When HP drops below 50% of max HP for the first time, add a shield for yourself the absorbs physical and magic damage [Passive]",血量首次小於等於總血量50%時，給自身添加物理和法術吸收護盾[被動]
-psvSheshou1Description,使用物理技能时，25%给被攻击者附加眩晕效果[被动],"Whenever you use a physical ability, there is a 25% chance of stunning the target [Passive]",使用物理技能時，25%給被攻擊者附加眩暈效果[被動]
+psvSheshou1Description,使用物理技能时，15%给被攻击者附加眩晕效果[被动],"Whenever you use a physical ability, there is a 15% chance of stunning the target [Passive]",使用物理技能時，15%給被攻擊者附加眩暈效果[被動]
 psvWeitianshi5Description,使用buff技能时，25%恢复群体30%生命值[被动],"Whenever you cast a buff ability, there is a 25% chance of recovering 30% HP for all allies [Passive]",使用buff技能時，25%恢復群體30%生命值[被動]
 psvSheshou3Description,血量大于等于总血量80%时，提升自身40%速度[被动],"When HP is greater than or equal to 80%, increases your SPD by 40% [Passive]",血量大於等於總血量80%時，提升自身40%速度[被動]
 psvBingyan3Description,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；受到伤害时，50%反弹攻击者50%法攻的水属性法术伤害[被动],"Whenever you cast a physical and magic ability, 90% chance of provoking the target for 2 turns; whenever you take damage,there is a 50% chance of reflecting (50% of magic ATK) water type magic damage to the attacker [Passive]",使用物理和法術技能時，90%嘲諷被攻擊者，持續2回合；受到傷害時，50%反彈攻擊者50%法攻的水屬性法術傷害[被動]

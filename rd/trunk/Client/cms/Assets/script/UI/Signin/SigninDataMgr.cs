@@ -90,7 +90,7 @@ public class SigninDataMgr
         signinFillTimesMonthly = signinFillTimes;
         isSigninDaily = isSignin;
         loginTimesDaily = loginTimes == 0 ? loginTimesDaily : loginTimes;
-
+        GameEventMgr.Instance.FireEvent(GameEventList.SignInDataChange);
         GameEventMgr.Instance.FireEvent(GameEventList.SignInChange);
     }
     

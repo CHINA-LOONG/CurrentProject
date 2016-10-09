@@ -90,8 +90,6 @@ public class GsConst {
 
 	public static final int PVP_WEEK_REFRESH_TIME_ID = 110;
 
-	public static final int PVP_RANK_BUILDER_REFRESH_TIME = 60000;
-
 	public static final int WEAK_SECOND = 604800;
 
 	/**
@@ -200,7 +198,11 @@ public class GsConst {
 		public static final int PVP_WEAK_REWARD = 205;
 		// pvp排行榜防守数据
 		public static final int PVP_RANK_DEFENCE = 206;
-
+		// pvp 我的数据
+		public static final int PVP_MY_INFO = 207;
+		// pvp 登出
+		public static final int PVP_LOGOUT = 208;
+		
 		/**
 		 * 快照管理器消息定义
 		 */
