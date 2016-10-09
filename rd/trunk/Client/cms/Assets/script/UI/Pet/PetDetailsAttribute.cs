@@ -95,17 +95,24 @@ public class PetDetailsAttribute : PetDetailsRight
     void BindListerner()
     {
         GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetLevelNotify, PetAttributeChangeNotify);
-        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.ReloadPetEquipNotify, PetAttributeChangeNotify);
+        GameEventMgr.Instance.AddListener<EquipData>(GameEventList.ReloadPetEquipNotify, PetAttributeChangeNotify);
     }
     void UnBindListerner()
     {
         GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetLevelNotify, PetAttributeChangeNotify);
-        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.ReloadPetEquipNotify, PetAttributeChangeNotify);
+        GameEventMgr.Instance.RemoveListener<EquipData>(GameEventList.ReloadPetEquipNotify, PetAttributeChangeNotify);
     }
 
     void PetAttributeChangeNotify(GameUnit unit)
     {
         if (curData==unit)
+        {
+            ReloadData(curData);
+        }
+    }
+    void PetAttributeChangeNotify(EquipData equip)
+    {
+        if (equip != null && equip.monsterId == curData.pbUnit.guid)
         {
             ReloadData(curData);
         }

@@ -9,6 +9,7 @@ public class EnemyUnitUI : MonoBehaviour
 	public LifeBarUI lifeBar;
     public Image propertyImage;
     public ShakeUi shakeUi;
+    public EnegyBarUI mEnergyBar;
 
     public BattleObject Unit
     {
@@ -83,6 +84,18 @@ public class EnemyUnitUI : MonoBehaviour
     public void Destroy()
     {
         ResourceMgr.Instance.DestroyAsset(gameObject);
+    }
+    //---------------------------------------------------------------------------------------------
+    //for pve
+    public void SetEnergyBar(float fraction)
+    {
+        mEnergyBar.value = fraction;
+    }
+    //---------------------------------------------------------------------------------------------
+    //for pvp
+    public void SetEnergy(int currentVital)
+    {
+        mEnergyBar.value = Mathf.Clamp01(currentVital / (float)BattleConst.enegyMax);
     }
     //---------------------------------------------------------------------------------------------
     void RefreshPos()

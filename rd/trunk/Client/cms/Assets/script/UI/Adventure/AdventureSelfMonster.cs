@@ -107,9 +107,10 @@ public class AdventureSelfMonster : MonoBehaviour
         
         icon.ShowMaoxianImage(CurData.unit.pbUnit.IsInAdventure());
         icon.ShowZhushouImage(CurData.unit.pbUnit.IsInAllianceBase());
+        icon.ShowPvpImage(CurData.unit.pbUnit.IsInPvp());
         //icon.ShowLockImage(CurData.unit.pbUnit.IsLocked());
 
-        if (CurData.unit.pbUnit.IsInAdventure()|| CurData.unit.pbUnit.IsInAllianceBase())
+        if (CurData.unit.pbUnit.IsInAdventure() || CurData.unit.pbUnit.IsInAllianceBase() || CurData.unit.pbUnit.IsInPvp())
         {
             icon.ShowLockImage(true);
             icon.ShowMaskImage(true);
@@ -118,7 +119,7 @@ public class AdventureSelfMonster : MonoBehaviour
         else
         {
             icon.ShowLockImage(false);
-            SetIconState(CurData.IsSelect,CurData);
+            SetIconState(CurData.IsSelect, CurData);
         }
     }
 
@@ -126,8 +127,8 @@ public class AdventureSelfMonster : MonoBehaviour
     {
         if (CurData == info)
         {
-            icon.ShowSelectImage(isSelect);
             icon.ShowMaskImage(isSelect);
+            icon.ShowSelectImage(isSelect);
         }
     }
 

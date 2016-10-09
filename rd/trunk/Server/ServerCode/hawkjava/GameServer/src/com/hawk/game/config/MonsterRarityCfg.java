@@ -12,7 +12,7 @@ public class MonsterRarityCfg extends HawkConfigBase {
 
 	// client only
 	protected final String desc = null;
-	
+
 	public MonsterRarityCfg() {
 		rarity = 0;
 		commonRatio = 0.0f;

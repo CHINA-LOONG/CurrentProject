@@ -19,15 +19,15 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	protected final int difficulty;
 	protected final int fatigue;
 	protected final int count;
-	protected final String enemy1;
-	protected final String enemy2;
-	protected final String enemy3;
-	protected final String enemy4;
-	protected final String enemy5;
-	protected final String enemy6;
 	protected final String reward;
 
 	// client only
+	protected final String enemy1 = null;
+	protected final String enemy2 = null;
+	protected final String enemy3 = null;
+	protected final String enemy4 = null;
+	protected final String enemy5 = null;
+	protected final String enemy6 = null;
 	protected final String desc= null;
 	protected final int bp = 0;
 	protected final String bgzhuangshi = null;
@@ -35,7 +35,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	// assemble
 	protected InstanceChapterCfg chapterCfg;
-//	protected List<MonsterCfg> enemyList;
 	protected RewardCfg rewardCfg;
 
 	public InstanceEntryCfg() {
@@ -47,7 +46,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		difficulty = 0;
 		fatigue = 0;
 		count = 0;
-		enemy1= enemy2 = enemy3= enemy4 = enemy5= enemy6 = "";
 		reward = "";
 	}
 
@@ -60,7 +58,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 		// 计算InstanceChapter
 		InstanceUtil.addInstance(this);
-//		enemyList = new ArrayList<MonsterCfg>();
+
 		return true;
 	}
 
@@ -73,56 +71,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 				return false;
 			}
 		}
-
-//		// 检测敌人是否存在，并建立引用
-//		if (enemy1 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy1);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy1));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
-//		if (enemy2 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy2);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy2));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
-//		if (enemy3 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy3);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy3));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
-//		if (enemy4 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy4);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy4));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
-//		if (enemy5 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy5);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy5));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
-//		if (enemy6 != "") {
-//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy6);
-//			if (null == enemy) {
-//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy6));
-//				return false;
-//			}
-//			enemyList.add(enemy);
-//		}
 
 		// 检测奖励是否存在，并建立引用
 		if (reward != null && reward.equals("") == false) {
@@ -171,10 +119,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	public int getCount() {
 		return count;
 	}
-
-//	public List<MonsterCfg> getEnemyList() {
-//		return Collections.unmodifiableList(enemyList);
-//	}
 
 	public RewardCfg getReward() {
 		return rewardCfg;

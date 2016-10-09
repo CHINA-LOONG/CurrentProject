@@ -11,7 +11,7 @@ GameObject:
   - 222: {fileID: 22229344}
   - 114: {fileID: 11471628}
   m_Layer: 5
-  m_Name: zhushouImage
+  m_Name: pvpzhushou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +225,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &185962
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22467852}
+  - 222: {fileID: 22250748}
+  - 114: {fileID: 11416688}
+  m_Layer: 5
+  m_Name: zhushouImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &195632
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +335,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11416688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 705717cbd12157147b25b8cd3731ffe4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11427596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,7 +385,8 @@ MonoBehaviour:
   qualityText: {fileID: 11481050}
   nickNameText: {fileID: 11401650}
   maoxianImage: {fileID: 11475538}
-  zhushouImage: {fileID: 11471628}
+  zhushouImage: {fileID: 11416688}
+  pvpImage: {fileID: 11471628}
   lockImage: {fileID: 11441960}
   Id: 
   monsterId: 
@@ -609,7 +654,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 705717cbd12157147b25b8cd3731ffe4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c43f4296877ddd40a7bf95a170bcb25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -791,6 +836,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130746}
+--- !u!222 &22250748
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185962}
 --- !u!222 &22260610
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -888,9 +939,10 @@ RectTransform:
   - {fileID: 22426000}
   - {fileID: 22413912}
   - {fileID: 22436718}
-  - {fileID: 22495940}
+  - {fileID: 22467852}
   - {fileID: 22497508}
   - {fileID: 22490442}
+  - {fileID: 22495940}
   m_Father: {fileID: 22478038}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -1017,6 +1069,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: 5}
+--- !u!224 &22467852
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22412338}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -18, y: 20}
+  m_SizeDelta: {x: 28, y: 28}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22478038
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1085,10 +1154,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22412338}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -18, y: 20}
+  m_AnchoredPosition: {x: -18.0000305, y: 19.9999809}
   m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22497508

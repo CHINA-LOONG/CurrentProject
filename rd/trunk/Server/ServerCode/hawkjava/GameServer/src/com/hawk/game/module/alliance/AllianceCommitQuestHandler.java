@@ -9,9 +9,8 @@ import org.hawk.obj.HawkObjBase;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
-import com.hawk.game.BILog.BIGuildFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
-import com.hawk.game.config.RewardCfg;
+import com.hawk.game.BILog.BIGuildFlowData;
 import com.hawk.game.config.SociatyQuestCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
@@ -22,12 +21,12 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskCommit;
 import com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet;
 import com.hawk.game.protocol.Alliance.HSAllianceTeamQuestFinishNotify;
+import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 
 public class AllianceCommitQuestHandler implements HawkMsgHandler{
@@ -71,7 +70,7 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 		SociatyQuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, request.getQuestId());
 		if (questCfg == null) {
 			player.sendError(protocol.getType(), Status.error.CONFIG_ERROR_VALUE);
-			return true;			
+			return true;
 		}
 		
 		// 锁住玩家
@@ -148,7 +147,7 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 					consume.consumeTakeAffectAndPush(player, Action.GUILD_SUB_MISSION, protocol.getType());
 					
 					AwardItems reward = new AwardItems();
-					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
+					reward.addItemInfos(questCfg.getReward().getRewardList());
 					reward.rewardTakeAffectAndPush(player, Action.GUILD_SUB_MISSION, protocol.getType());
 					
 					int contribution = (int) reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));

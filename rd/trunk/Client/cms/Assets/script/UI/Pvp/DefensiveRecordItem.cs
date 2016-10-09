@@ -38,6 +38,10 @@ public class DefensiveRecordItem : MonoBehaviour
         if (defenseData.point >= 0)
         {
             scoreText.color = new Color(55.0f / 255.0f, 155.0f / 255.0f, 7.0f / 255.0f);
+            if(defenseData.point > 0)
+            {
+                scoreText.text = string.Format("+{0}", defenseData.point);
+            }
         }
         else
         {

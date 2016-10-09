@@ -10,11 +10,11 @@ public class SociatyBaseCfg  extends HawkConfigBase{
 	 */
 	@Id
 	protected final int bpMax;
-	
+
 	protected final int coinDefend;
-	
+
 	protected final int coinHire;
-	
+
 	protected final int coinHireget;
 
 	public SociatyBaseCfg() {

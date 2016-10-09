@@ -10,7 +10,7 @@ public class InstanceDropCfg extends HawkConfigBase {
 	@Id
 	protected final String id;
 	protected final String rewardId;
-	
+
 	// assemble
 	protected RewardCfg rewardCfg;
 
@@ -18,12 +18,12 @@ public class InstanceDropCfg extends HawkConfigBase {
 		id = "";
 		rewardId = "";
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
 		// 检测奖励是否存在，并建立引用
@@ -34,13 +34,13 @@ public class InstanceDropCfg extends HawkConfigBase {
 		}
 		return true;
 	}
-	
+
 	public String getInstanceMonsterId() {
 		return id;
 	}
-	
+
 	public RewardCfg getReward() {
 		return rewardCfg;
 	}
-	
+
 }

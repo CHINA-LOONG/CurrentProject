@@ -303,3 +303,9 @@ name_90003_rongyudian,荣誉点,Honor Points
 tips_90001,游戏中的常见货币,游戏中的常见货币
 tips_90002,游戏中的常见货币,游戏中的常见货币
 tips_90003,荣誉点好像是pvp中获得的,荣誉点好像是pvp中获得的
+name_40011_pvprankbaoxiang1,大金币箱子,big coin box
+name_40011_pvprankbaoxiang2,中金币箱子,middle coin box
+name_40011_pvprankbaoxiang3,小金币箱子,small coin box
+tips_40011_pvprankbaoxiang1,能获得大量金币,Can get large amount of gold
+tips_40011_pvprankbaoxiang2,能获得很多金币,Can get a lot of gold
+tips_40011_pvprankbaoxiang3,能获得一定量金币,Can get some gold

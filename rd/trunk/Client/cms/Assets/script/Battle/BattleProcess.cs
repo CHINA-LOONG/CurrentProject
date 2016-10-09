@@ -155,7 +155,8 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.AddListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
-		//GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.UnitRoundChange, OnUnitRoundChange);
+        //GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
         //GameEventMgr.Instance.AddListener<int>(GameEventList.ExitDazhaoByPhyAttacked, OnRemoveDazhaoActtion);
     }
 
@@ -175,7 +176,8 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.RemoveListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
-		//GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.UnitRoundChange, OnUnitRoundChange);
+        //GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
         //GameEventMgr.Instance.RemoveListener<int>(GameEventList.ExitDazhaoByPhyAttacked, OnRemoveDazhaoActtion);
     }
 
@@ -804,7 +806,7 @@ public class BattleProcess : MonoBehaviour
         else
         {
             //beyond maxround failed
-            if (curAction.caster != null && curAction.caster.unit.attackCount > BattleConst.maxRound)
+            if (curAction.caster != null && curAction.caster.unit.AttackCount > BattleConst.maxRound)
             {
                 battleResult = BattleRetCode.MaxRound;
             }
@@ -1079,7 +1081,7 @@ public class BattleProcess : MonoBehaviour
             Vector3 relativePos = curTarget.battleUnit.transform.position - bo.transform.position;
             bo.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
         }
-        bo.unit.attackCount++;
+        bo.unit.AttackCount++;
 
         //if (bo.camp == UnitCamp.Player && aiResult.attackStyle == BattleUnitAi.AiAttackStyle.Dazhao)
         //{
@@ -1516,6 +1518,15 @@ public class BattleProcess : MonoBehaviour
 
         SpellVitalChangeArgs vitalArgs = sArgs as SpellVitalChangeArgs;
         energyEventList.Add(vitalArgs);
+    }
+
+    void OnUnitRoundChange(EventArgs sAgrs)
+    {
+        if (BattleController.Instance.PvpParam == null)
+        {
+            RoundChangeEventArgs args = sAgrs as RoundChangeEventArgs;
+            BattleController.Instance.GetUIBattle().RoundChangedOnPve(args);
+        }
     }
 
     void OnUnitDead(EventArgs sArgs)

@@ -1,5 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public class SoundEffectInfo
+{
+    public SoundEffectInfo(string soundName, float triggerTime)
+    {
+        this.soundName = soundName;
+        this.triggerTime = triggerTime;
+    }
+
+    public string soundName;
+    public float triggerTime;
+}
 
 public class AudioSystemMgr : MonoBehaviour {
 
@@ -21,6 +34,9 @@ public class AudioSystemMgr : MonoBehaviour {
             return AudioSystemMgr.mInst; 
         }
     }
+
+    //sound effect list used to pick effect has same name
+    private List<SoundEffectInfo> mSoundEffectList = new List<SoundEffectInfo>();
 
     ////背景----副本使用音轨音源数量
     //private static readonly int audioMusicLength = 2;
@@ -192,8 +208,32 @@ public class AudioSystemMgr : MonoBehaviour {
         } 
         PlaySoundByName(clipName);
     }
+
+    void Update()
+    {
+        float curTime = Time.time;
+        int count = mSoundEffectList.Count;
+        for (int i = count - 1; i >= 0; --i)
+        {
+            if (curTime - mSoundEffectList[i].triggerTime >= BattleConst.sameAudioClipInterval)
+            {
+                mSoundEffectList.RemoveAt(i);
+            }
+        }
+    }
+
     public void PlaySoundByName(string clipName)
     {
+        int effectCount = mSoundEffectList.Count;
+        for (int i = 0; i < effectCount; ++i)
+        {
+            if (mSoundEffectList[i].soundName == clipName)
+            {
+                return;
+            }
+        }
+
+        mSoundEffectList.Add(new SoundEffectInfo(clipName, Time.time));
         AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
         if (clip==null)
         {
@@ -203,27 +243,27 @@ public class AudioSystemMgr : MonoBehaviour {
         AudioSource.PlayClipAtPoint(clip, transform.position, SoundVolume);
     }
     //播放界面音效
-    public void PlaySound(GameObject go, SoundType type, TriggerType trigger = TriggerType.UI_Open)
-    {
-        PlaySound sound = go.GetComponent<PlaySound>();
-        string clipId = "";
-        switch (type)
-        {
-            case SoundType.UI:
-                if (trigger == TriggerType.UI_Open)
-                    clipId = sound.Sound1;
-                else
-                    clipId = sound.Sound2;
-                break;
-            case SoundType.Tips:
-            case SoundType.Click:
-                clipId = sound.Sound1;
-                break;
-        }
-        PlaySoundByID(clipId);
-    }
+    //public void PlaySound(GameObject go, SoundType type, TriggerType trigger = TriggerType.UI_Open)
+    //{
+    //    PlaySound sound = go.GetComponent<PlaySound>();
+    //    string clipId = "";
+    //    switch (type)
+    //    {
+    //        case SoundType.UI:
+    //            if (trigger == TriggerType.UI_Open)
+    //                clipId = sound.Sound1;
+    //            else
+    //                clipId = sound.Sound2;
+    //            break;
+    //        case SoundType.Tips:
+    //        case SoundType.Click:
+    //            clipId = sound.Sound1;
+    //            break;
+    //    }
+    //    PlaySoundByID(clipId);
+    //}
 
-    public void PlayMusic(string clipId)
+    public void PlayMusicByID(string clipId)
     {
         if (string.IsNullOrEmpty(clipId))
         {
@@ -231,9 +271,13 @@ public class AudioSystemMgr : MonoBehaviour {
             return;
         }
         string clipName = StaticDataMgr.Instance.GetAudioByID(clipId);
+        PlayMusicByName(clipName);
+    }
+    public void PlayMusicByName(string clipName)
+    {
         if (string.IsNullOrEmpty(clipName))
         {
-            Logger.LogError("Can not found ClipId:" + clipId);
+            Logger.LogError("Can not found ClipId:" + clipName);
         }
         AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
         if (clip == null)

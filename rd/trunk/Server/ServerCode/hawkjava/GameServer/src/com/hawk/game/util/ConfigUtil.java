@@ -17,57 +17,49 @@ import com.hawk.game.protocol.Const;
 public class ConfigUtil {
 
 	/**
-	 * 检测itemType的itemId 
-	 * 
-	 * @param itemType
-	 * @param itemId
-	 * @return
+	 * 检测itemInfo是否合法
 	 */
-	public static boolean check(int itemType, String itemId) {
-		if (itemType == Const.itemType.PLAYER_ATTR_VALUE) {
+	public static boolean checkItemInfoValid(ItemInfo itemInfo) {
+		return checkItemValid(itemInfo.getType(), itemInfo.getItemId());
+	}
+
+	/**
+	 * 检测item是否合法
+	 */
+	public static boolean checkItemValid(int itemType, String itemId){
+		if (itemType == Const.itemType.PLAYER_ATTR_VALUE 
+				|| itemType == Const.itemType.SKILL_VALUE 
+				|| itemType == Const.itemType.NONE_ITEM_VALUE) {
 			return true;
-		}
+		} 
 		else if (itemType == Const.itemType.ITEM_VALUE || itemType == Const.itemType.EQUIP_VALUE) {
-			if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId) == null) {
-				HawkLog.errPrintln("item config not found, itemId: " + itemId);
+			if (null == HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId)) {
+				HawkLog.errPrintln("Item config not found : " + itemId);
 				return false;
 			}
-			return true;
 		}
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param itemInfo
-	 * @return
-	 */
-	public static boolean checkItemValid(ItemInfo itemInfo){
-		if (itemInfo.getType() == Const.itemType.NONE_ITEM_VALUE) {
-			return true;
-		}
-		else if (itemInfo.getType() == Const.itemType.ITEM_VALUE || itemInfo.getType() == Const.itemType.EQUIP_VALUE) {
-			return HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId()) != null;
-		}
-		else if (itemInfo.getType() == Const.itemType.GROUP_VALUE) {
-			return HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, itemInfo.getItemId()) != null;
-		}
-		else if (itemInfo.getType() == Const.itemType.MONSTER_VALUE) {
-			return HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, itemInfo.getItemId()) != null;
-		}
-		else if (itemInfo.getType() == Const.itemType.MONSTER_ATTR_VALUE) {
-			if (itemInfo.getItemId().equals(String.valueOf(Const.changeType.CHANGE_MONSTER_EXP_VALUE)) ||
-				itemInfo.getItemId().equals(String.valueOf(Const.changeType.CHANGE_MONSTER_LEVEL_VALUE))) {
-				return true;
+		else if (itemType == Const.itemType.GROUP_VALUE) {
+			if (null == HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, itemId)) {
+				HawkLog.errPrintln("RewardGroup config not found : " + itemId);
+				return false;
 			}
 		}
-		else if (itemInfo.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
-			return true;
+		else if (itemType == Const.itemType.MONSTER_VALUE) {
+			if (null == HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, itemId)) {
+				HawkLog.errPrintln("Monster config not found : " + itemId);
+				return false;
+			}
 		}
-		else if (itemInfo.getType() == Const.itemType.SKILL_VALUE) {
-			return true;
+		else if (itemType == Const.itemType.MONSTER_ATTR_VALUE) {
+			if (false == itemId.equals(String.valueOf(Const.changeType.CHANGE_MONSTER_EXP_VALUE))
+					&& false == itemId.equals(String.valueOf(Const.changeType.CHANGE_MONSTER_LEVEL_VALUE))) {
+				HawkLog.errPrintln("Item monster attr config invalid : " + itemId);
+				return false;
+			}
+		} else {
+			return false;
 		}
-		
-		return false;
+
+		return true;
 	}
 }

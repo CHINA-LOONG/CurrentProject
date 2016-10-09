@@ -1018,7 +1018,7 @@ pvp_record_001,防守设置保存成功,Defense settings saved
 pvp_record_002,竞技次数已用完,No remaining Arena entries
 pvp_record_003,防御至少要安排一个以上的宠物,one at  least
 pvp_battle,开战,Start Battle
-,,
+pvp_titleshengduan,进阶成功！,Advancement complete!
 ui_battle_go,前往,Go
 lose_guide1,搜寻弱点,Search for weakpoints
 lose_guide2,聚合,Gather

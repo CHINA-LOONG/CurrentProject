@@ -9,7 +9,7 @@ public class SysBasicCfg extends HawkConfigBase {
 	 * 玩家对象缓存时间
 	 */
 	protected final int playerCacheTime;
-	
+
 	/**
 	 * 创建公会级别限制
 	 */
@@ -114,15 +114,15 @@ public class SysBasicCfg extends HawkConfigBase {
 	public int getPlayerCacheTime() {
 		return playerCacheTime;
 	}
-	
+
 	public int getAllianceMinLevel() {
 		return allianceMinLevel;
 	}
-	
+
 	public int getAllianceCreateCoin() {
 		return allianceCreateCoin;
 	}
-	
+
 	public int getShopRefreshGold() {
 		return shopRefreshGold;
 	}
@@ -130,23 +130,23 @@ public class SysBasicCfg extends HawkConfigBase {
 	public int getMaxPlayerSnapShotQty() {
 		return maxPlayerSnapShotQty;
 	}
-	
+
 	public int getAlliancePrayCount() {
 		return alliancePrayCount;
 	}
-	
+
 	public int getAllianceFrizenTime() {
-		
+
 		return allianceFrizenTime;
 	}
 
 	public int getAllianceMaxFatigueReceived() {
-		
+
 		return allianceMaxFatigueReceived;
 	}
 
 	public int getAllianceMaxApply() {
-		
+
 		return allianceMaxApply;
 	}
 

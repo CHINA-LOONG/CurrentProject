@@ -136,11 +136,11 @@ public class AllianceUtil {
 		}
 		
 		SociatyTechnologyCfg techCfg = SociatyTechnologyCfg.getSociatyTechnologyCfg(GsConst.Alliance.ALLIANCE_TEC_EXP, allianeEntity.getExpLevel());
-		if (techCfg == null || techCfg.getGainExp() == null || techCfg.getGainExp().equals("")) {
+		if (techCfg == null) {
 			return null;
 		}
 		
-		return ItemInfo.valueOf(techCfg.getGainExp(), GsConst.ItemParseType.PARSE_DEFAULT);
+		return techCfg.getExpItem();
 	}
 	
 	/**

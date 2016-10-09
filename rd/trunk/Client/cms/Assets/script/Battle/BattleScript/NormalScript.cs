@@ -32,7 +32,7 @@ public static class NormalScript
         {
             if (enemyList[i] != null && enemyList[i].unit.isBoss)
             {
-                round = enemyList[i].unit.attackCount;
+                round = enemyList[i].unit.AttackCount;
                 break;
             }
         }

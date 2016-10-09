@@ -46,8 +46,21 @@ public class PlaySound : MonoBehaviour,IPointerClickHandler
     {
         if (type==SoundType.Click&&!string.IsNullOrEmpty(sound1))
         {
-            //TODO：临时关闭按钮声音
-            //AudioSystemMgr.Instance.PlaySoundByID(sound1);
+            AudioSystemMgr.Instance.PlaySoundByID(Sound1);
         }
     }
+    //void OnEnable()
+    //{
+    //    if (type==SoundType.UI)
+    //    {
+    //        AudioSystemMgr.Instance.PlaySoundByID(Sound1);
+    //    }
+    //}
+    //void OnDisable()
+    //{
+    //    if (type == SoundType.UI)
+    //    {
+    //        AudioSystemMgr.Instance.PlaySoundByID(Sound2);
+    //    }
+    //}
 }

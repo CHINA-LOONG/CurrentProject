@@ -10,6 +10,7 @@ import org.hawk.config.HawkConfigManager;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.itemType;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.RatioUtil;
 import com.hawk.game.util.RatioUtil.RatioItem;
 
@@ -24,11 +25,13 @@ public class RewardCfg extends HawkConfigBase  {
 	 * 奖励配置
 	 */
 	protected final String reward;
+
+	// assemble
 	/**
 	 * 奖励概率列表
 	 */
 	private List<RatioItem<ItemInfo>> ratioList;
-	
+
 	public RewardCfg() {
 		id = null;
 		reward = null;
@@ -38,7 +41,7 @@ public class RewardCfg extends HawkConfigBase  {
 	public List<RatioItem<ItemInfo>> getRatioList() {
 		return Collections.unmodifiableList(ratioList);
 	}
-	
+
 	public List<ItemInfo> getRewardList() {
 		List<ItemInfo> groupItems = RatioUtil.random(getRatioList());
 		List<ItemInfo> result = new LinkedList<>();
@@ -59,10 +62,10 @@ public class RewardCfg extends HawkConfigBase  {
 							else if (weightItem.getType() != itemType.NONE_ITEM_VALUE) {
 								result.add(weightItem);
 							}
-							
+
 							break;
 						}
-						
+
 					}
 				}
 			}
@@ -70,14 +73,14 @@ public class RewardCfg extends HawkConfigBase  {
 				result.add(item);
 			}
 		}
-		
+
 		return result;
-	}  
+	}
 
 	@Override
 	protected boolean assemble() {
 		ratioList.clear();
-		
+
 		if (reward != null && reward.length() > 0 && !"0".equals(reward)) {
 			String[] itemArrays = reward.split(",");
 			for (String itemArray : itemArrays) {
@@ -90,7 +93,7 @@ public class RewardCfg extends HawkConfigBase  {
 					}
 					else {
 						return false;
-					}	
+					}
 				}
 				else if (items.length == 5) {
 					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]));
@@ -111,14 +114,19 @@ public class RewardCfg extends HawkConfigBase  {
 					else {
 						return false;
 					}
-				}			
+				}
 			}
-		}	
+		}
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
+		for (RatioItem<ItemInfo> ratioItem : ratioList) {
+			if (false == ConfigUtil.checkItemInfoValid(ratioItem.getValue())) {
+				return false;
+			}
+		}
 		return true;
 	}
 }

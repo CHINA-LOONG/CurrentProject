@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca37f75b33219c84093be2440de9f311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
   mDontDestroyWhenSwitchScene: 0

@@ -490,7 +490,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		if (this.curInstanceId == ""){
 			sendError(hsCode, Status.instanceError.INSTANCE_NOT_ENTER_VALUE);
-			HawkException.catchException(new RuntimeException("instanceSettle"));
+			//HawkException.catchException(new RuntimeException("instanceSettle"));
 			return true;
 		}
 

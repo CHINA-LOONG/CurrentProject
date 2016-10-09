@@ -1448,6 +1448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   jinbiCoinBtn: {fileID: 11481208}
   zuanshiCoinBtn: {fileID: 11474970}
   shopItemsScrollView: {fileID: 11415300}
@@ -1932,7 +1935,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -84.6000061, y: -29.3999329}
+  m_AnchoredPosition: {x: -264, y: -30}
   m_SizeDelta: {x: 175.899994, y: 47.9749985}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22420522
@@ -2194,7 +2197,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -264.000061, y: -29.999939}
+  m_AnchoredPosition: {x: -84, y: -30}
   m_SizeDelta: {x: 175.899994, y: 47.9749985}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22480424

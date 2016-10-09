@@ -32,16 +32,16 @@ Material:
     m_Floats:
       data:
         first:
+          name: _HeatTime
+        second: -.360000014
+      data:
+        first:
           name: _ForceX
         second: .129999995
       data:
         first:
           name: _ForceY
         second: .0799999982
-      data:
-        first:
-          name: _HeatTime
-        second: -.360000014
     m_Colors:
       data:
         first:

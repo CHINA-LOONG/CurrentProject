@@ -337,6 +337,14 @@ public class UIBattle : UIBase
         m_PlayerGroupUI.ChangeEnergy(energyChange);
     }
 
+    public void RoundChangedOnPve(RoundChangeEventArgs args)
+    {
+        if (args != null)
+        {
+            m_PlayerGroupUI.SetRoundChange(args.casterID, args.fraction);
+        }
+    }
+
     public void SetBattleUnitVisible(int id, bool visible)
     {
         m_PlayerGroupUI.SetBattleUnitVisible(id, visible);

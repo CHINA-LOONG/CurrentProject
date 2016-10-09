@@ -1,6 +1,6 @@
 ﻿#TEXT,NUM,NUM,NUM,TEXT
 id,type,refreshMaxNumByHand,maxLevel,sellItemId
-#id,#商店类型,每天手动最大刷新次数,最大级别,商品列表
+#id,商店类型,每天手动最大刷新次数,最大级别,商品列表
 1,1,5,10,1001
 2,1,5,25,1002
 3,1,10,35,1001

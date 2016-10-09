@@ -122,6 +122,13 @@ public class BattleController : MonoBehaviour
         get { return mCurPvpParam; }
     }
     private PvpFightParam mCurPvpParam;
+    public int PvpHornorPointGet
+    {
+        get { return mPvpHornorPointGet; }
+        set { mPvpHornorPointGet = value; }
+    }
+    private int mPvpHornorPointGet;
+
     private byte mBattleResult;
     private byte mCurMaxSlotIndex;
     public byte CurMaxSlotIndex
@@ -345,6 +352,7 @@ public class BattleController : MonoBehaviour
     public void StartBattlePvpPrepare(PvpFightParam pvpParam)
     {
         mCurPvpParam = pvpParam;
+        mPvpHornorPointGet = 0;
         curInstanceParam = null;
         //add player to load
         PbUnit pb = null;
@@ -436,7 +444,7 @@ public class BattleController : MonoBehaviour
             instanceStar = 0;
         }
 
-        AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
+        AudioSystemMgr.Instance.PlayMusicByID(instanceData.instanceProtoData.backgroundmusic);
 
         //加载场景
         LoadBattleScene();

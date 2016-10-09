@@ -7,11 +7,11 @@ public class EndBattleUI : MonoBehaviour {
     public StarUI[] mStarList;
     //public float mShowStarInterval;
     public Image mScoreResultImg;
-    public GameObject mScoreResultRoot;
+    //public GameObject mScoreResultRoot;
     public Sprite mVictorySprite;
     public Sprite mFailedSprite;
     public Sprite mDrawSprite;
-    public Animator mEndBattleAni;
+    //public Animator mEndBattleAni;
 
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
@@ -66,19 +66,41 @@ public class EndBattleUI : MonoBehaviour {
     //---------------------------------------------------------------------------------------------
     public void SetSuccess(byte battleResult)
     {
-        mScoreResultRoot.SetActive(battleResult == 0);
+        //mScoreResultRoot.SetActive(battleResult == 0);
+        ResourceMgr resMgr = ResourceMgr.Instance;
         if (battleResult == 0)
         {
             mScoreResultImg.sprite = mVictorySprite;
-            mEndBattleAni.Play("endbattle_guang");
+            //mEndBattleAni.Play("endbattle_guang");
+
+            GameObject shengliEffect1 = resMgr.LoadAsset("pve_shengli_chixu");
+            GameObject shengliEffect2 = resMgr.LoadAsset("pve_shengli_shanguang");
+            if (shengliEffect1 != null)
+            {
+                shengliEffect1.transform.SetParent(transform, false);
+            }
+            if (shengliEffect2 != null)
+            {
+                shengliEffect2.transform.SetParent(transform, false);
+            }
         }
         else if (battleResult == 1)
         {
             mScoreResultImg.sprite = mDrawSprite;
+            GameObject pingjuEffect = resMgr.LoadAsset("pvp_pingju_chixu");
+            if (pingjuEffect != null)
+            {
+                pingjuEffect.transform.SetParent(transform, false);
+            }
         }
         else
         {
             mScoreResultImg.sprite = mFailedSprite;
+            GameObject failedEffect = resMgr.LoadAsset("pvp_shibai_chixu");
+            if (failedEffect != null)
+            {
+                failedEffect.transform.SetParent(transform, false);
+            }
         }
 
         mScoreResultImg.SetNativeSize();

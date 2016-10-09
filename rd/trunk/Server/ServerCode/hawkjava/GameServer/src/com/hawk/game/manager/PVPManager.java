@@ -898,7 +898,6 @@ public class PVPManager extends HawkAppObj {
 	public boolean onTick(long tickTime) {
 		if (refreshTime + SysBasicCfg.getInstance().getPvpRankBuilderRefreshTime() * 1000 < tickTime) {
 			refreshTime = tickTime;
-			/*
 			HawkLog.logPrintln("排行榜:");
 			for (PVPRankEntity rankEntity : pvpRankList) {
 				HawkLog.logPrintln(rankEntity.getName() + " " + rankEntity.getPlayerId() + " " + rankEntity.getRank() + " " + rankEntity.getPoint());
@@ -911,7 +910,6 @@ public class PVPManager extends HawkAppObj {
 					HawkLog.logPrintln(pvpDefenceEntity.getName() + " " + pvpDefenceEntity.getPlayerId() + " ");
 				}
 			}
-			*/
 			generatePVPRankBuilder();
 		}
 	

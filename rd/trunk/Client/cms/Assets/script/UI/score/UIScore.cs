@@ -48,7 +48,7 @@ public class UIScore : UIBase
     private PB.HSRewardInfo mInstanceSettleResult;
     private Dictionary<long, UIMonsterIconExp> mUIMonsterExpList = new Dictionary<long, UIMonsterIconExp>();
     private bool mSkipEnable = false;
-    private Tweener mBattleTitleTw;
+    //private Tweener mBattleTitleTw;
     private int mOriginalPlayerLvl;
     private int mCurrentPlayerLvl;
     private int mCurrentHuoli;
@@ -137,10 +137,10 @@ public class UIScore : UIBase
         if (mSkipEnable == true)
         {
             mSkipEnable = false;
-            if (mBattleTitleTw != null)
-            {
-                mBattleTitleTw.Complete();
-            }
+            //if (mBattleTitleTw != null)
+            //{
+            //    mBattleTitleTw.Complete();
+            //}
             mPlayerProgress.SkipAnimation();
 
             var itor = mUIMonsterExpList.GetEnumerator();
@@ -184,7 +184,7 @@ public class UIScore : UIBase
     {
         base.Clean();
         mUIMonsterExpList.Clear();
-        mBattleTitleTw = null;
+        //mBattleTitleTw = null;
         ResourceMgr.Instance.DestroyAsset(mEndBattleUI);
     }
     //---------------------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ public class UIScore : UIBase
         SetScoreInternal();
         mEndBattleUI = ResourceMgr.Instance.LoadAsset("endBattle");
         mEndBattleUI.transform.SetParent(transform, false);
-        mEndBattleUI.transform.localPosition = mCenterPos.localPosition;
+        mEndBattleUI.transform.localPosition = mTopPos.localPosition;
         EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
         endBattleUI.SetSuccess(mBattleResult);
         if (mBattleResult == 0)
@@ -265,10 +265,11 @@ public class UIScore : UIBase
             endBattleUI.SetStarCount(mStarCount);
         }
 
-        mBattleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
-        mBattleTitleTw.OnComplete(ShowStar);
-        mBattleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
-        
+        //mBattleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
+        //mBattleTitleTw.OnComplete(ShowStar);
+        //mBattleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
+        ShowStar();
+
         mSkipEnable = true;
     }
     //---------------------------------------------------------------------------------------------
@@ -462,23 +463,21 @@ public class UIScore : UIBase
         {
             PvpDataMgr pvpDataMgr = GameDataMgr.Instance.PvpDataMgrAttr;
             int originalPvpStage = pvpDataMgr.selfPvpStage;
-            int originalPvpScore = pvpDataMgr.SelfPvpPointAttr;
             pvpDataMgr.SelfPvpPointAttr = mPvpResult.point;
             if (originalPvpStage != pvpDataMgr.selfPvpStage)
             {
                 StartCoroutine(ShowPvpStageUp());
             }
-
-            int scoreGet = pvpDataMgr.SelfPvpPointAttr - originalPvpScore;
+            
             mSelfPvpScore.SetPvpInfo(
                 true,
-                scoreGet,
+                BattleController.Instance.PvpHornorPointGet,
                 mPvpResult,
                 BattleController.Instance.PvpParam
                 );
             mEnemyPvpScore.SetPvpInfo(
                 false,
-                scoreGet,
+                BattleController.Instance.PvpHornorPointGet,
                 mPvpResult,
                 BattleController.Instance.PvpParam
                 );

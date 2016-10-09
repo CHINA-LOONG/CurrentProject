@@ -61,7 +61,7 @@ public class AnimControl : MonoBehaviour
         AnimatorClipInfo[] aniList = animator.GetCurrentAnimatorClipInfo(0);
         for (int i = 0; i < aniList.Length; ++i)
         {
-            if (aniList[i].clip.name.Contains("daiji") || aniList[i].clip.name.Contains("dazhaoxuanyao"))
+            if (aniList[i].clip.name.Contains("daiji"))
             {
                 animator.speed = 1.0f / Time.timeScale;
                 //animator.updateMode = AnimatorUpdateMode.UnscaledTime;
@@ -163,7 +163,7 @@ public class AnimControl : MonoBehaviour
 	//---------------------------------------------------------------------------------------------
 	public void OnDaZhaoxuanyaoEnd()
 	{
-		animator.SetBool(hashDazhaoxuanyao, false);
+        animator.SetBool(hashDazhaoxuanyao, false);
 	}
     //---------------------------------------------------------------------------------------------
     public void OnDShoujiBegin()

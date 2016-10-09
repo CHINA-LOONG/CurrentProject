@@ -11,6 +11,13 @@ public enum UnitState
     ToBeEnter,
     Dead,
 }
+//---------------------------------------------------------------------------------------------
+public class RoundChangeEventArgs : EventArgs
+{
+    //public float triggerTime;
+    public int casterID;
+    public float fraction;
+}
 
 //////////////////////////////////////////////////////////////////////////
 /// <summary>
@@ -202,8 +209,39 @@ public class GameUnit : IComparable
     public Sprite headImg;
     public BattleObject battleUnit;
 
-	//战斗单元统计数据 
-	public	int attackCount = 0;
+	//战斗单元统计数据
+    public int AttackCount
+    {
+        get { return attackCount; }
+        set {
+            attackCount = value;
+            if (pbUnit.camp == UnitCamp.Enemy)
+            {
+                RoundChangeEventArgs args = new RoundChangeEventArgs();
+                args.casterID = pbUnit.guid;
+                args.fraction = 0.0f;
+                int count = dazhaoList.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    if (attackCount <= dazhaoList[i])
+                    {
+                        if (i == 0)
+                        {
+                            args.fraction = ((float)attackCount) / dazhaoList[i];
+                        }
+                        else
+                        {
+                            args.fraction = ((float)(attackCount - dazhaoList[i])) / (dazhaoList[i] - dazhaoList[i - 1]);
+                        }
+
+                        break;
+                    }
+                }
+                GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.UnitRoundChange, args);
+            }
+        }
+    } 
+	private	int attackCount = 0;
 	//public 	List<int> lazyList = new List<int>();
 	public	List<int> dazhaoList = new List<int>();
 

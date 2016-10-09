@@ -18,7 +18,7 @@ public class AllianceCfg extends HawkConfigBase{
 	 * 容量
 	 */
 	protected final int pop;
-	
+
 	public AllianceCfg(){
 		this.level = 0;
 		this.exp = 0;
@@ -36,5 +36,5 @@ public class AllianceCfg extends HawkConfigBase{
 	public int getPop() {
 		return pop;
 	}
-	
+
 }

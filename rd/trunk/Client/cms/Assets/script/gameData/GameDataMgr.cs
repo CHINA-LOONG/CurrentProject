@@ -619,6 +619,11 @@ public class GameDataMgr : MonoBehaviour
             PlayerDataAttr.TowerCoinAttr = reward.playerAttr.towerCoin;
             PlayerDataAttr.GonghuiCoinAttr = reward.playerAttr.contribution;
 
+            //change later in pvp score
+            if (reward.hsCode == PB.code.PVP_SETTLE_C.GetHashCode())
+            {
+                BattleController.Instance.PvpHornorPointGet = reward.playerAttr.honor - PlayerDataAttr.HonorAtr;
+            }
             PlayerDataAttr.HonorAtr = reward.playerAttr.honor;
         }
 

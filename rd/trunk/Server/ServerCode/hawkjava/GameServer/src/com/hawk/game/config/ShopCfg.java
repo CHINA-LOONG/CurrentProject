@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 @HawkConfigManager.CsvResource(file = "staticData/shop.csv", struct = "map")
 public class ShopCfg extends HawkConfigBase{
@@ -15,34 +16,34 @@ public class ShopCfg extends HawkConfigBase{
 	 */
 	@Id
 	protected final String id;
-
 	/**
 	 * 商店类型
 	 */
 	protected final int type;
 	/**
-	 * 手动刷新上限
+	 * 每天手动刷新上限
 	 */
 	protected final int refreshMaxNumByHand;
 	/**
-	 * 手动刷新上限
+	 * 最大级别
 	 */
 	protected final int maxLevel;
 	/**
-	 * 手动刷新上限
+	 * 商品列表
 	 */
 	protected final String sellItemId;
-	
+
+	// assemble
 	private static Map<Integer, List<ShopCfg>> shopTypeList = new HashMap<Integer, List<ShopCfg>>();
-	
+
 	public ShopCfg() {
 		id = null;
 		type = 0;
 		refreshMaxNumByHand = 0;
-		maxLevel = 0;		
+		maxLevel = 0;
 		sellItemId = null;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -80,19 +81,19 @@ public class ShopCfg extends HawkConfigBase{
 					break;
 				}
 			}
-			
+
 			if (i == shopList.size()) {
 				i--;
 			}
-			
-			return shopList.get(i);		
+
+			return shopList.get(i);
 		}
-		
+
 		return null;
 	}
-	
+
 	@Override
-	protected boolean assemble() {	
+	protected boolean assemble() {
 		List<ShopCfg> shopList = shopTypeList.get(this.type);
 		if (shopList == null) {
 			shopList = new LinkedList<ShopCfg>();
@@ -105,6 +106,7 @@ public class ShopCfg extends HawkConfigBase{
 	@Override
 	protected boolean checkValid() {
 		if (HawkConfigManager.getInstance().getConfigByKey(SellItemCfg.class, sellItemId) == null) {
+			HawkLog.errPrintln("Item config not found : " + sellItemId);
 			return false;
 		}
 		return true;

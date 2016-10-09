@@ -8,10 +8,13 @@ import java.util.Map;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.GsConst.ItemParseType;
 
 @HawkConfigManager.CsvResource(file = "staticData/item.csv", struct = "map")
 public class ItemCfg extends HawkConfigBase {
@@ -73,7 +76,7 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final int stack;
 	/**
-	 * 宝箱的奖励列表
+	 * 宝箱的奖励id
 	 */
 	protected final String rewardId;
 	/**
@@ -124,18 +127,10 @@ public class ItemCfg extends HawkConfigBase {
 	protected final String itemfounds = null;
 
 	// assemble
-	/**
-	 * 合成该装备需要的道具列表
-	 */
-	private List<ItemInfo> componentItemList;
-	/**
-	 * 匹配使用装备列表
-	 */
-	private List<ItemInfo> needItemList;
-	/**
-	 * 合成/兑换装备列表
-	 */
-	private List<ItemInfo> targetItemList;
+	protected RewardCfg rewardCfg;
+	protected List<ItemInfo> componentItemList;
+	protected List<ItemInfo> needItemList;
+	protected List<ItemInfo> targetItemList;
 
 	// global
 	/**
@@ -186,11 +181,11 @@ public class ItemCfg extends HawkConfigBase {
 	public int getSubType() {
 		return subType;
 	}
-	
+
 	public int getGrade() {
 		return grade;
 	}
-	
+
 	public int getMinLevel() {
 		return minLevel;
 	}
@@ -225,10 +220,6 @@ public class ItemCfg extends HawkConfigBase {
 
 	public int getStack() {
 		return stack;
-	}
-
-	public String getRewardId() {
-		return rewardId;
 	}
 
 	public int getNeedCount() {
@@ -275,6 +266,10 @@ public class ItemCfg extends HawkConfigBase {
 		return tips;
 	}
 
+	public RewardCfg getReward() {
+		return rewardCfg;
+	}
+
 	public List<ItemInfo> getComponentItemList() {
 		return Collections.unmodifiableList(componentItemList);
 	}
@@ -299,99 +294,20 @@ public class ItemCfg extends HawkConfigBase {
 
 		// 合成该物品需要的道具列表
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
-			String[] itemArrays = componentItem.split(",");
-			for (String itemArray : itemArrays) {
-				// TODO: 调用ItemInfo函数替换
-				String[] items = itemArray.split("_");
-				if (items.length == 3) {
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(items[1]);
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					componentItemList.add(itemInfo);
-				}
-				else if (items.length == 5){
-					if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
-						return false;
-					}
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(items[1]);
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					itemInfo.setStage(Integer.valueOf(items[3]));
-					itemInfo.setLevel(Integer.valueOf(items[4]));
-					componentItemList.add(itemInfo);
-				}
-				else {
-					return false;
-				}
-			}
+			componentItemList = ItemInfo.GetItemInfoList(this.componentItem, ItemParseType.PARSE_EQUIP_ATTR);
 		}
 
 		// 合成列表
 		if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
-			String[] itemArrays = targetItem.split(",");
-			for (String itemArray : itemArrays) {
-				// TODO: 调用ItemInfo函数替换
-				String[] items = itemArray.split("_");
-				if (items.length == 3) {
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(items[1]);
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					targetItemList.add(itemInfo);
-				}
-				else if (items.length == 5){
-					if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
-						return false;
-					}
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(items[1]);
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					itemInfo.setStage(Integer.valueOf(items[3]));
-					itemInfo.setLevel(Integer.valueOf(items[4]));
-					targetItemList.add(itemInfo);
-				}
-				else {
-					return false;
-				}
-			}
+			targetItemList = ItemInfo.GetItemInfoList(this.targetItem, ItemParseType.PARSE_EQUIP_ATTR);
 		}
 
 		// 宝箱需要配对的钥匙
 		if (this.type == Const.toolType.BOXTOOL_VALUE) {
 			if (this.needItem != null && this.needItem.length() > 0 && !"0".equals(this.needItem)) {
-				String[] itemArrays = needItem.split(",");
-				for (String itemArray : itemArrays) {
-					// TODO: 调用ItemInfo函数替换
-					String[] items = itemArray.split("_");
-					if (items.length == 3) {
-						ItemInfo itemInfo = new ItemInfo();
-						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(items[1]);
-						itemInfo.setCount(Integer.valueOf(items[2]));
-						needItemList.add(itemInfo);
-					}
-					else if (items.length == 5){
-						if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
-							return false;
-						}
-						ItemInfo itemInfo = new ItemInfo();
-						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(items[1]);
-						itemInfo.setCount(Integer.valueOf(items[2]));
-						itemInfo.setStage(Integer.valueOf(items[3]));
-						itemInfo.setLevel(Integer.valueOf(items[4]));
-						needItemList.add(itemInfo);
-					}
-					else {
-						return false;
-					}
-				}
+				needItemList = ItemInfo.GetItemInfoList(this.needItem, ItemParseType.PARSE_EQUIP_ATTR);
 			}
-		}
-		else if (this.type == Const.toolType.GEMTOOL_VALUE) {
+		} else if (this.type == Const.toolType.GEMTOOL_VALUE) {
 			if (gemList.get(grade) == null) {
 				Map<Integer, ItemCfg> gradeList = new HashMap<Integer, ItemCfg>();
 				gradeList.put(gemType, this);
@@ -410,49 +326,87 @@ public class ItemCfg extends HawkConfigBase {
 		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE ) {
 			if (this.subType == Const.FragSubType.FRAG_MONSTER_VALUE) {
 				if (this.needCount != GsConst.UNUSABLE) {
+					HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 					return false;
 				}
 			} else if (this.subType == Const.FragSubType.FRAG_TOOL_VALUE ) {
 				if (this.needCount <= 0) {
+					HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 					return false;
 				}
 			} else {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 				return false;
 			}
 		} else if (this.type == Const.toolType.BOXTOOL_VALUE && (this.rewardId == null || this.rewardId.equals(""))) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		}
 
 		if (this.sellType == GsConst.UNUSABLE && this.sellPrice != GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		} else if (this.sellType != GsConst.UNUSABLE && this.sellPrice == GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		}
 
 		if (this.buyType == GsConst.UNUSABLE && this.buyPrice != GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		} else if (this.buyType != GsConst.UNUSABLE && this.buyPrice == GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		}
 
 		if (this.targetItemList.isEmpty() == true && this.needCount != GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		} else if (this.targetItemList.isEmpty() == false && this.needCount == GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		}
 
 		if (this.addAttrType == GsConst.UNUSABLE && this.addAttrValue != GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		} else if (this.addAttrType != GsConst.UNUSABLE && this.addAttrValue == GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
 		}
 
 		if (this.gemId != null && this.gemId.length() > 0) {
 			if (this.gemType == GsConst.UNUSABLE) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 				return false;
 			}
 		} else if (this.gemType != GsConst.UNUSABLE) {
+			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;
+		}
+
+		// 检测奖励是否存在，并建立引用
+		if (rewardId != null && rewardId.equals("") == false) {
+			rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
+			if (null == rewardCfg) {
+				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
+				return false;
+			}
+		}
+		for (ItemInfo itemInfo: componentItemList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
+		}
+		for (ItemInfo itemInfo: needItemList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
+		}
+		for (ItemInfo itemInfo: targetItemList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
 		}
 
 		return true;

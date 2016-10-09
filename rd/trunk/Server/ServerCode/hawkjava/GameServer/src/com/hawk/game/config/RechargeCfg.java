@@ -18,7 +18,7 @@ public class RechargeCfg extends HawkConfigBase{
 	 * 容量
 	 */
 	protected final float gift;
-	
+
 	public RechargeCfg(){
 		this.id = "";
 		this.gold = 0;

@@ -14,6 +14,7 @@ public class PvpOtherDefenseInfo : UIBase
 
     public RectTransform[] petParentArray;
     float monsterSclae = -1;
+    List<PB.HSMonster> listMonster;
     public static void OpenWith(PB.HSMonsterDefence defenseMonster,int bp)
     {
         PvpOtherDefenseInfo defenseInfo = UIMgr.Instance.OpenUI_(ViewName) as PvpOtherDefenseInfo;
@@ -22,7 +23,7 @@ public class PvpOtherDefenseInfo : UIBase
 
     public void InitWith(PB.HSMonsterDefence defenseMonster,int bp)
     {
-        List<PB.HSMonster> listMonster = defenseMonster.monsterInfo;
+        listMonster = defenseMonster.monsterInfo;
         PB.HSMonster subMonster = null;
         for (int i =0;i<listMonster.Count;++i)
         {
@@ -31,6 +32,8 @@ public class PvpOtherDefenseInfo : UIBase
             subIcon.SetMonsterStaticId(subMonster.cfgId);
             subIcon.SetStage(subMonster.stage);
             subIcon.SetLevel(subMonster.level);
+            subIcon.SetId(i.ToString());
+            EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnItemIconClick;
 
             subIcon.transform.SetParent(petParentArray[i]);
             subIcon.transform.localPosition = Vector3.zero;
@@ -43,6 +46,17 @@ public class PvpOtherDefenseInfo : UIBase
         }
         
         bpValueText.text = bp.ToString();
+    }
+
+    void OnItemIconClick(GameObject go)
+    {
+        MonsterIcon itemIcon = go.GetComponentInParent<MonsterIcon>();
+        int monsterIndex = int.Parse(itemIcon.Id);
+        PB.HSMonster clickMonster = listMonster[monsterIndex];
+        if (null != clickMonster)
+        {
+            UIMonsterInfo.Open(-1, clickMonster.cfgId,clickMonster.level, clickMonster.stage);
+        }
     }
 
 	// Use this for initialization

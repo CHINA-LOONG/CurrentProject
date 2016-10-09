@@ -140,16 +140,16 @@ Material:
         second: 1
       data:
         first:
+          name: _HeatTime
+        second: .200000003
+      data:
+        first:
           name: _ForceX
         second: .100000001
       data:
         first:
           name: _ForceY
         second: .100000001
-      data:
-        first:
-          name: _HeatTime
-        second: .200000003
     m_Colors:
       data:
         first:

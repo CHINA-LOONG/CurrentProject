@@ -9,6 +9,7 @@ import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
 
@@ -27,7 +28,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 	 * 奖励权重列表
 	 */
 	private List<WeightItem<ItemInfo>> weightList;
-	
+
 	public RewardGroupCfg() {
 		id = null;
 		rewardGroup = null;
@@ -41,11 +42,11 @@ public class RewardGroupCfg extends HawkConfigBase  {
 	public ItemInfo getRewardItem() {
 		return WeightUtil.random(weightList);
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		weightList.clear();
-		
+
 		if (rewardGroup != null && rewardGroup.length() > 0 && !"0".equals(rewardGroup)) {
 			String[] itemArrays = rewardGroup.split(",");
 			for (String itemArray : itemArrays) {
@@ -57,12 +58,12 @@ public class RewardGroupCfg extends HawkConfigBase  {
 						if (item.getType() == Const.itemType.GROUP_VALUE && item.getCount() != 1) {
 							return false;
 						}
-						
+
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[3])));
 					}
 					else {
 						return false;
-					}	
+					}
 				}
 				if (items.length == 5) {
 					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]));
@@ -72,7 +73,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 					}
 					else {
 						return false;
-					}	
+					}
 				}
 				else if (items.length == 6) {
 					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
@@ -83,14 +84,19 @@ public class RewardGroupCfg extends HawkConfigBase  {
 					else {
 						return false;
 					}
-				}			
+				}
 			}
-		}	
+		}
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
+		for (WeightItem<ItemInfo> weightItem : weightList) {
+			if (false == ConfigUtil.checkItemInfoValid(weightItem.getValue())) {
+				return false;
+			}
+		}
 		return true;
 	}
 }

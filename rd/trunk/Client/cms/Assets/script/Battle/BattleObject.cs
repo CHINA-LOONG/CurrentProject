@@ -15,8 +15,7 @@ public class BattleObject : MonoBehaviour
     public UnitCamp camp;
     public int guid;
     public GameUnit unit;
-	public GameObject shifaGo;
-	public GameObject dazhaoPrepareEffect;
+    public GameObject dazhaoPrepareEffect;
 
     public ActorEventService actorEventService;
     public AnimControl aniControl;

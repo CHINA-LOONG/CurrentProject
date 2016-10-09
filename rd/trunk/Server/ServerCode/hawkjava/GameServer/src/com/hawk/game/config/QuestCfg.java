@@ -288,10 +288,16 @@ public class QuestCfg extends HawkConfigBase {
 
 		goalParamList = new ArrayList<Object>();
 		if (true == paramClass.isAssignableFrom(String.class)) {
+			if (0 == params.length) {
+				return false;
+			}
 			for (String ps : params) {
 				goalParamList.add(ps);
 			}
 		} else if (true == paramClass.isAssignableFrom(Integer.class)) {
+			if (0 == params.length) {
+				return false;
+			}
 			for (String ps : params) {
 				goalParamList.add(Integer.parseInt(ps));
 			}
@@ -321,6 +327,54 @@ public class QuestCfg extends HawkConfigBase {
 		if (null == rewardCfg) {
 			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
 			return false;
+		}
+
+		switch (goalTypeValue) {
+		// 商店购买X道具N次
+		case GsConst.QuestGoalType.BUY_ITEM_X_TIMES:
+		// 使用X物品N个
+		case GsConst.QuestGoalType.USE_ITEM_X_COUNT:
+			for (Object itemCfgId : goalParamList) {
+				if (null == HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, (String) itemCfgId)) {
+					HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", itemCfgId));
+					return false;
+				}
+			}
+			break;
+
+		// 领取X困难章节的满星奖励
+		case GsConst.QuestGoalType.CHAPTER_X_HARD:
+		// 领取X普通章节的满星奖励
+		case GsConst.QuestGoalType.CHAPTER_X_NORMAL:
+			for (Object chapterId : goalParamList) {
+				if (null == HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, (Integer) chapterId)) {
+					HawkLog.errPrintln(String.format("config invalid InstanceChapterCfg : %d", chapterId));
+					return false;
+				}
+			}
+			break;
+
+		// 通关X副本N次
+		case GsConst.QuestGoalType.INSTANCE_X_TIMES:
+		//	三星通关X副本
+		case GsConst.QuestGoalType.INSTANCE_X_STAR_3:
+			for (Object instanceId : goalParamList) {
+				if (null == HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, (String) instanceId)) {
+					HawkLog.errPrintln(String.format("config invalid InstanceCfg : %d", instanceId));
+					return false;
+				}
+			}
+			break;
+
+			// 完成X任务
+		case GsConst.QuestGoalType.QUEST_X:
+			for (Object questId : goalParamList) {
+				if (null == HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, (Integer) questId)) {
+					HawkLog.errPrintln(String.format("config invalid QuestCfg : %d", questId));
+					return false;
+				}
+			}
+			break;
 		}
 
 		return true;

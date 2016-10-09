@@ -368,7 +368,7 @@ public class ComposeParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = UIUtil.CheckIsComposeOpened();
+        condition = LevelLimits.IsOpen(LimitsType.synthesisLimits);
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("compose_title"));
 
         switch ((FoundComposeType)int.Parse(Info[1]))
@@ -428,22 +428,22 @@ public class ShopParse : ParseBase
         {
             case FoundShopType.Normal:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("shop_putong"));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.shopLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundShopType.Guild:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("shop_gonghui"));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.guildLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundShopType.Wishing:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop"));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.towerLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundShopType.PVPShop:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(""));
-                condition = false;
+                condition = LevelLimits.IsOpen(LimitsType.pvpLimits);
                 //TODO： 判断是否开启功能
                 break;
             default:
@@ -638,6 +638,8 @@ public class GuildParse : ParseBase
                 condition = false;
                 break;
         }
+        //TODO 公会开启等级是公会部分的最小值  其他的扔需要单独设置
+        condition = (condition && LevelLimits.IsOpen(LimitsType.guildLimits));
         this.condition = condition;
     }
 }
@@ -849,7 +851,7 @@ public class DecomposeParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = UIUtil.CheckIsDecomposeOpened();
+        condition = LevelLimits.IsOpen(LimitsType.decomposeLimits);
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("decompose_title"));
 
         switch ((FoundDecomposeType)int.Parse(Info[1]))
@@ -907,22 +909,22 @@ public class ActivityParse : ParseBase
         {
             case FoundActivityType.Adventure:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(""));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.adventureLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundActivityType.Arena:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(""));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.pvpLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundActivityType.Hole:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(""));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.expJinbiLimits);
                 //TODO： 判断是否开启功能
                 break;
             case FoundActivityType.Trials:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(""));
-                condition = true;
+                condition = LevelLimits.IsOpen(LimitsType.towerLimits);
                 //TODO： 判断是否开启功能
                 break;
             default:

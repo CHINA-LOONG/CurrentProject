@@ -367,6 +367,7 @@ public class HawkSession {
 				
 				// 二进制模式协议发送
 				session.write(protocol);
+				HawkNetStatistics.getInstance().onPrepareSendProto();
 				return true;
 			} catch (Exception e) {
 				HawkException.catchException(e);
@@ -410,7 +411,6 @@ public class HawkSession {
 				HawkLog.logPrintln(String.format("session be closing, ipaddr: %s", ipAddr));
 			}
 			
-			HawkLog.logPrintln("##########################");
 			// 参数true表示立即关闭, false表示等待写操作完成
 			this.session.close(immediately);
 		}
@@ -534,6 +534,9 @@ public class HawkSession {
 	 * 会话空闲
 	 */
 	public boolean onIdle(IdleStatus status) {
+		
+		HawkLog.logPrintln("##############");
+		
 		// 心跳停止, 关闭会话
 		if (this.session != null && session.getConfig().getBothIdleTimeInMillis() > 0) {
 			HawkLog.logPrintln(String.format("session idle closed, ipaddr: %s, status: %s", getIpAddr(), status.toString()));
@@ -546,7 +549,8 @@ public class HawkSession {
 	 * 会话被关闭
 	 */
 	public boolean onClosed() {
-		HawkLog.logPrintln("$$$$$$$$$$$$$$$$$$$$$$$");
+		
+		HawkLog.logPrintln("$$$$$$$$$$$$$$");
 		if (this.session != null) {
 			HawkApp.getInstance().onSessionClosed(this);
 			if (HawkApp.getInstance().isRunning()) {

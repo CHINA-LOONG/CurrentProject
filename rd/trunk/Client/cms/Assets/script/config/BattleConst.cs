@@ -112,8 +112,8 @@ public class BattleConst
     //金币图标资源名
     public const string icon_jinbi = "icon_jinbi";
     //结算动画相关
-    public const float scoreTitleStayTime = 0.0f;
-    public const float scoreTitleUpTime = 0.0f;
+    //public const float scoreTitleStayTime = 0.0f;
+    //public const float scoreTitleUpTime = 0.0f;
     public const float scoreStarInterval = 0.4f;
     //最大消息数
     public const int maxMsg = 100;
@@ -148,4 +148,6 @@ public class BattleConst
     //public const int adventureTime_1 = 5;
     //public const int adventureTime_2 = 8;
     //public const int adventureTime_3 = 12;
+
+    public const float sameAudioClipInterval = 0.05f; //50ms
 }

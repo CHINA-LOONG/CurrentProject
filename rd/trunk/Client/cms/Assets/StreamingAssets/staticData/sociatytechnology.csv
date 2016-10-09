@@ -1,6 +1,6 @@
 ﻿#NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,TEXT,TEXT
 id,type,level,sociatyLevel,levelUp,gainPeople,gainCoin,gainExp,icon,tecDescript,tecName
-#id,#科技类型,本科技等级,公会等级,升级消耗,本级公会最大人数,本级金钱试炼获得的增益百分比,本级金钱试炼获得的增益百分比,工会科技图标,科技描述,科技名称
+#id,科技类型,本科技等级,公会等级,升级消耗,本级公会最大人数,本级金钱试炼获得的增益百分比,本级经验试炼获得的item,工会科技图标,科技描述,科技名称
 1,1,1,-1,1,-1,0,,icon_gonghuikeji_dengji,sociaty_leveltips,sociaty_levelname
 2,1,2,-1,1,-1,0,,icon_gonghuikeji_dengji,sociaty_leveltips,sociaty_levelname
 3,1,3,-1,1,-1,0,,icon_gonghuikeji_dengji,sociaty_leveltips,sociaty_levelname

@@ -1,6 +1,6 @@
 ﻿#TEXT,TEXT,TEXT
 id,rewardId,sweepRewardId
-#副本Id_难度,额外奖励列表,扫荡奖励列表
+#副本Id,额外奖励列表,扫荡奖励列表
 demo,110001,110001
 yueguangsenlin11,110001,110001
 yueguangsenlin12,110001,110001

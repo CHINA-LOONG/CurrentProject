@@ -24,11 +24,11 @@ public class PvpStageUp : UIBase {
         //TODO: duplicate code as pvpmain
         for (int i = 0; i < mStageImage.Length; ++i)
         {
-            mStageImage[i].SetActive(i == pvpDataMgr.selfPvpStage);
+            mStageImage[i].SetActive((i+1) == pvpDataMgr.selfPvpStage);
         }
         for (int i = 0; i < mStageImage.Length; ++i)
         {
-            mStageEffect[i].SetActive(i == pvpDataMgr.selfPvpStage / 3);
+            mStageEffect[i].SetActive(i == (pvpDataMgr.selfPvpStage - 1) / 3);
         }
     }
     //---------------------------------------------------------------------------------------------

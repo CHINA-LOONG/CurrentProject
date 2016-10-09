@@ -393,12 +393,12 @@ GameObject:
   - 114: {fileID: 11465024}
   - 114: {fileID: 11453456}
   m_Layer: 5
-  m_Name: TextName
+  m_Name: unitLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &188810
 GameObject:
   m_ObjectHideFlags: 1
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dazhaoBtn: {fileID: 11484924}
   unitDazhao: {fileID: 11436658}
-  unitName: {fileID: 11465024}
+  unitLevel: {fileID: 11465024}
   lifeBar: {fileID: 11480624}
   enegyBar: {fileID: 11417002}
 --- !u!114 &11433386
@@ -2717,8 +2717,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 22, y: 11.3999996}
-  m_SizeDelta: {x: 148, y: 41.5}
+  m_AnchoredPosition: {x: -28, y: 46.5999985}
+  m_SizeDelta: {x: 60, y: 41.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22425168
 RectTransform:

@@ -1003,7 +1003,7 @@ public class Player extends HawkAppObj {
 	 * 增加物品
 	 */
 	public ItemEntity increaseItem(String itemId, int itemCount, Action action) {
-		if(!ConfigUtil.check(Const.itemType.ITEM_VALUE, itemId)) {
+		if (!ConfigUtil.checkItemValid(Const.itemType.ITEM_VALUE, itemId)) {
 			return null;
 		}
 
@@ -1091,7 +1091,7 @@ public class Player extends HawkAppObj {
 	 * 增加装备
 	 */
 	public EquipEntity increaseEquip(String equipId, int stage, int level, Action action) {
-		if(!ConfigUtil.check(Const.itemType.EQUIP_VALUE, equipId)) {
+		if (!ConfigUtil.checkItemValid(Const.itemType.EQUIP_VALUE, equipId)) {
 			return null;
 		}
 
@@ -1175,7 +1175,7 @@ public class Player extends HawkAppObj {
 		byte lazy = 1;
 		int lazyExp = 0;
 		byte disposition = (byte)monster.getDisposition();
-		String[] skillList = monster.getSpellIdList();
+		String[] skillList = monster.getSkillIdList();
 
 		MonsterEntity monsterEntity = new MonsterEntity(monsterCfgId, playerId, (byte)stage, level, exp, lazy, lazyExp, disposition);
 		for (String skillId : skillList) {

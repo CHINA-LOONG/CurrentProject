@@ -1,6 +1,6 @@
-﻿#NUM,#NUM,NUM,NUM,NUM,NUM
+﻿#NUM,NUM,NUM,NUM,NUM,NUM
 stage,point,win,lose,draw,K
-#段位,分数上限,胜利积分,失败积分,平局积分,用于Elo
+#段位,分数上限,胜利荣誉点,失败荣誉点,平局荣誉点,用于Elo
 1,150,2,0,1,16
 2,200,2,0,1,16
 3,300,2,0,1,16

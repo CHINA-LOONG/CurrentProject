@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: raodong_07
-  m_Shader: {fileID: 4800000, guid: 6e381a1c5f8eb804ebdcb0db1b91bc80, type: 3}
+  m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 51d1c810a6718ec4a86fa989922e3be1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 9926ac2b6cc01cd42a57509809fe3e2e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -34,13 +34,6 @@ Material:
           name: _DetailNormalMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MaskTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 03fb6c3b94f41024591ae1e379992c28, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -89,7 +82,7 @@ Material:
         first:
           name: _NoiseTex
         second:
-          m_Texture: {fileID: 2800000, guid: 522e31f727795854c89766cdaea11a8b, type: 3}
+          m_Texture: {fileID: 2800000, guid: f3b3b81a476b39c47be4971cbfc55822, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -105,10 +98,6 @@ Material:
         first:
           name: _Cutoff
         second: .5
-      data:
-        first:
-          name: _InvFade
-        second: 1
       data:
         first:
           name: _Parallax
@@ -147,16 +136,16 @@ Material:
         second: 0
       data:
         first:
+          name: _HeatTime
+        second: .239999995
+      data:
+        first:
           name: _ForceX
-        second: .0480000004
+        second: .0500000007
       data:
         first:
           name: _ForceY
-        second: .0970000029
-      data:
-        first:
-          name: _HeatTime
-        second: .200000003
+        second: .270000011
     m_Colors:
       data:
         first:

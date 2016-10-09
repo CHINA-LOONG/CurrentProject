@@ -8,6 +8,7 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.GsConst.ItemParseType;
 
 @HawkConfigManager.CsvResource(file = "staticData/equipForge.csv", struct = "list")
@@ -28,28 +29,21 @@ public class EquipForgeCfg extends HawkConfigBase {
 	/**
 	 * 升级消耗列表
 	 */
-	protected final String levelDemand;	
+	protected final String levelDemand;
 	/**
 	 * 打孔消耗列表
 	 */
-	protected final String punchDemand;	
-	/**
-	 * 
-	 */
-	protected final String decompose;	
-	/**
-	 * 升级消耗
-	 */
-	private List<ItemInfo> levelDemandList;
-	/**
-	 * 开孔消耗
-	 */
-	private List<ItemInfo> punchDemandList;
+	protected final String punchDemand;
 	/**
 	 * 分解列表
 	 */
+	protected final String decompose;
+
+	// assemble
+	private List<ItemInfo> levelDemandList;
+	private List<ItemInfo> punchDemandList;
 	private List<ItemInfo> decomposeList;
-	
+
 	public  EquipForgeCfg() {
 		stageLevel = null;
 		successRate = .0f;
@@ -61,7 +55,7 @@ public class EquipForgeCfg extends HawkConfigBase {
 		punchDemandList = new LinkedList<ItemInfo>();
 		decomposeList = new LinkedList<ItemInfo>();
 	}
-	
+
 	public String getStageLevel() {
 		return stageLevel;
 	}
@@ -93,31 +87,45 @@ public class EquipForgeCfg extends HawkConfigBase {
 	public List<ItemInfo> getDecomposeList() {
 		return decomposeList;
 	}
-	
+
 	@Override
 	protected boolean assemble() {
-		levelDemandList.clear();
-		punchDemandList.clear();
 		if (levelDemand != null && levelDemand.length() > 0 && !"0".equals(levelDemand)) {
-			levelDemandList = ItemInfo.GetItemInfo(levelDemand, ItemParseType.PARSE_EQUIP_ATTR);
+			levelDemandList = ItemInfo.GetItemInfoList(levelDemand, ItemParseType.PARSE_EQUIP_ATTR);
 		}
-				
+
 		if (punchDemand != null && punchDemand.length() > 0 && !"0".equals(punchDemand)) {
-			punchDemandList = ItemInfo.GetItemInfo(punchDemand, ItemParseType.PARSE_EQUIP_ATTR);
-		}	
+			punchDemandList = ItemInfo.GetItemInfoList(punchDemand, ItemParseType.PARSE_EQUIP_ATTR);
+		}
 
 		if (decompose != null && decompose.length() > 0 && !"0".equals(decompose)) {
-			decomposeList = ItemInfo.GetItemInfo(decompose, ItemParseType.PARSE_EQUIP_ATTR);
-		}	
-		
+			decomposeList = ItemInfo.GetItemInfoList(decompose, ItemParseType.PARSE_EQUIP_ATTR);
+		}
+
 		return true;
 	} 
-	
+
 	@Override
 	protected boolean checkValid() {
+		for (ItemInfo itemInfo: levelDemandList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
+		}
+		for (ItemInfo itemInfo: punchDemandList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
+		}
+		for (ItemInfo itemInfo: decomposeList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
+				return false;
+			}
+		}
+
 		return true;
 	}
-	
+
 	public static List<ItemInfo> getLevelDemandList(int stage, int level)
 	{
 		EquipForgeCfg equipForgeCfg = HawkConfigManager.getInstance().getConfigByIndex(EquipForgeCfg.class, (stage - 1) * 10 + level);
@@ -126,7 +134,7 @@ public class EquipForgeCfg extends HawkConfigBase {
 		}
 		return null;
 	}
-	
+
 	public static List<ItemInfo> getPunchDemandList(int stage, int level)
 	{
 		EquipForgeCfg equipForgeCfg = HawkConfigManager.getInstance().getConfigByIndex(EquipForgeCfg.class, (stage - 1) * 10 + level );
@@ -135,7 +143,7 @@ public class EquipForgeCfg extends HawkConfigBase {
 		}
 		return null;
 	}
-	
+
 	public static List<ItemInfo> getDecomposeDemandList(int stage, int level)
 	{
 		EquipForgeCfg equipForgeCfg = HawkConfigManager.getInstance().getConfigByIndex(EquipForgeCfg.class, (stage - 1) * 10 + level );
@@ -144,7 +152,7 @@ public class EquipForgeCfg extends HawkConfigBase {
 		}
 		return null;
 	}
-	
+
 	public static float getSuccessRate(int stage, int level)
 	{
 		EquipForgeCfg equipForgeCfg = HawkConfigManager.getInstance().getConfigByIndex(EquipForgeCfg.class, (stage - 1) * 10 + level);
@@ -153,7 +161,7 @@ public class EquipForgeCfg extends HawkConfigBase {
 		}
 		return 0;
 	}
-	
+
 	public static int getPlayerLevelDemand(int stage, int level)
 	{
 		EquipForgeCfg equipForgeCfg = HawkConfigManager.getInstance().getConfigByIndex(EquipForgeCfg.class, (stage - 1) * 10 + level);

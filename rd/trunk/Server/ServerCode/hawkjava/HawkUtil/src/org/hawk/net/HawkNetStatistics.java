@@ -20,6 +20,8 @@ public class HawkNetStatistics extends HawkTickable {
 	protected AtomicLong totalRecvProto;
 	// 总发送字节数
 	protected AtomicLong totalSendBytes;
+	// 准备发送协议数
+	protected AtomicLong totalPrepareSendProto;
 	// 总发送协议数
 	protected AtomicLong totalSendProto;
 	// 压缩节省的字节数
@@ -64,6 +66,7 @@ public class HawkNetStatistics extends HawkTickable {
 	private HawkNetStatistics() {
 		totalSendBytes = new AtomicLong();
 		totalSendProto = new AtomicLong();
+		totalPrepareSendProto = new AtomicLong();
 		totalRecvBytes = new AtomicLong();
 		totalRecvProto = new AtomicLong();
 		totolCompressBytes = new AtomicLong();
@@ -104,7 +107,7 @@ public class HawkNetStatistics extends HawkTickable {
 		
 		if (curTime - infoLogTime >= 30000) {
 			infoLogTime = curTime;
-			HawkLog.logPrintln("net-statistics: " + toString());
+			HawkLog.errPrintln("net-statistics: " + toString());
 		}
 	}
 
@@ -121,6 +124,7 @@ public class HawkNetStatistics extends HawkTickable {
 		jsonObject.addProperty("totalRecvBytes", getTotalRecvBytes());
 		jsonObject.addProperty("totalRecvProto", getTotalRecvProto());
 		jsonObject.addProperty("totalSendBytes", getTotalSendBytes());
+		jsonObject.addProperty("totalPrepareSendProto", getTotalPrepareSendProto());
 		jsonObject.addProperty("totalSendProto", getTotalSendProto());
 		jsonObject.addProperty("totalCompressBytes",getTotalCompressBytes());
 		jsonObject.addProperty("curRecvRate", getCurRecvRate());
@@ -203,6 +207,13 @@ public class HawkNetStatistics extends HawkTickable {
 	/**
 	 * 通知发送协议
 	 */
+	public void onPrepareSendProto() {
+		totalPrepareSendProto.incrementAndGet();
+	}
+	
+	/**
+	 * 通知发送协议
+	 */
 	public void onSendProto() {
 		totalSendProto.incrementAndGet();
 	}
@@ -250,6 +261,15 @@ public class HawkNetStatistics extends HawkTickable {
 	 */
 	public long getTotalSendProto() {
 		return totalSendProto.get();
+	}
+
+	/**
+	 * 获取准备发送协议数
+	 * 
+	 * @return
+	 */
+	public long getTotalPrepareSendProto() {
+		return totalPrepareSendProto.get();
 	}
 
 	/**

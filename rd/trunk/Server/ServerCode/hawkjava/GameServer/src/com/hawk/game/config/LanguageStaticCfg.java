@@ -9,12 +9,10 @@ public class LanguageStaticCfg extends HawkConfigBase{
 	 */
 	@Id
 	protected final String id;
-	
 	/**
 	 * 中文
 	 */
 	protected final String chinese;
-	
 	/**
 	 * 英文
 	 */
@@ -38,7 +36,7 @@ public class LanguageStaticCfg extends HawkConfigBase{
 	public String getEnglish() {
 		return english;
 	}
-	
+
 	/**
 	 *  获取多语言英文名称
 	 * @param nameId
@@ -49,7 +47,7 @@ public class LanguageStaticCfg extends HawkConfigBase{
 		if (languageCfg != null) {
 			return languageCfg.getEnglish();
 		}
-		
+
 		return "";
 	}
 }

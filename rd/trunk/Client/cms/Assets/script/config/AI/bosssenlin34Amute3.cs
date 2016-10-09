@@ -67,15 +67,15 @@ public class bosssenlin34Amute3 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Amute3wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Amute3_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosssenlin34Amute3wp02" && jishu==0)
+		{
+			target.TriggerEvent("Amute_state1to2", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
+			jishu ++;
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

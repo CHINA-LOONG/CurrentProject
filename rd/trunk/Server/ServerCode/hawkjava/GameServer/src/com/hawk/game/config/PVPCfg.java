@@ -20,7 +20,7 @@ public class PVPCfg extends HawkConfigBase{
 	final protected int draw ;
 
 	final protected int K ;
-	
+
 	public PVPCfg() {
 		super();
 		stage = 0;
@@ -54,7 +54,7 @@ public class PVPCfg extends HawkConfigBase{
 	public int getK() {
 		return K;
 	}
-	
+
 	/**
 	 * 获取PVP cfg
 	 * @param point

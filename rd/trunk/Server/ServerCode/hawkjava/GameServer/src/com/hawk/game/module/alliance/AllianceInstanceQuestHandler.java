@@ -11,7 +11,6 @@ import org.hawk.xid.HawkXID;
 import com.hawk.game.GsApp;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.BILog.BIGuildFlowData;
-import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SociatyQuestCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
@@ -20,9 +19,9 @@ import com.hawk.game.item.AwardItems;
 import com.hawk.game.log.BILogger;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamQuestFinishNotify;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Alliance.HSAllianceTeamQuestFinishNotify;
 import com.hawk.game.util.GsConst;
 
 public class AllianceInstanceQuestHandler implements HawkMsgHandler{
@@ -76,7 +75,7 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 		if(xid != null){
 			HawkObjBase<HawkXID, HawkAppObj> objBase = GsApp.getInstance().lockObject(xid);
 			try {
-				if (objBase != null && objBase.isObjValid()) {				
+				if (objBase != null && objBase.isObjValid()) {
 					if (teamEntity.getInstanceQuest1PlayerId() == 0) {
 						teamEntity.setQuestFinish(teamEntity.getInstanceQuest1(), player.getId());
 						HSAllianceTeamQuestFinishNotify.Builder notify = HSAllianceTeamQuestFinishNotify.newBuilder();
@@ -90,7 +89,7 @@ public class AllianceInstanceQuestHandler implements HawkMsgHandler{
 					teamEntity.getAcceptList().remove(player.getId());
 					teamEntity.notifyUpdate(true);
 					AwardItems reward = new AwardItems();
-					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, questCfg.getRewardId()).getRewardList());
+					reward.addItemInfos(questCfg.getReward().getRewardList());
 					int contribution = (int) reward.getRewardCount(Const.itemType.PLAYER_ATTR_VALUE, String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE)) ;
 					if (contribution != 0) {
 						allianceEntity.addContribution(contribution);

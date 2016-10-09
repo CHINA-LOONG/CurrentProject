@@ -35,7 +35,7 @@ public class AdventureConditionNumCfg extends HawkConfigBase {
 		}
 		minLevel = Integer.parseInt(levelRange[0]);
 		maxLevel = Integer.parseInt(levelRange[1]);
-		
+
 		String[] numList = num.split("_");
 		if (numList.length != 3) {
 			return false;

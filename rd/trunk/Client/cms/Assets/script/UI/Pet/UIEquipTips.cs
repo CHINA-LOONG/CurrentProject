@@ -57,7 +57,7 @@ public class UIEquipTips : UIBase
 
         if (EquipIcon == null)
         {
-            EquipIcon = ItemIcon.CreateItemIcon(curData);
+            EquipIcon = ItemIcon.CreateItemIcon(curData,false);
             UIUtil.SetParentReset(EquipIcon.transform, iconPos);
         }
         else

@@ -16,7 +16,6 @@ public class MonsterBaseCfg extends HawkConfigBase {
 	protected final int defense;
 	protected final int endurance;
 	protected final int recovery;
-	protected final int output;
 
 	public MonsterBaseCfg() {
 		level = 0;
@@ -28,7 +27,6 @@ public class MonsterBaseCfg extends HawkConfigBase {
 		defense = 0;
 		endurance = 0;
 		recovery = 0;
-		output = 0;
 	}
 
 	public int getLevel() {
@@ -65,10 +63,6 @@ public class MonsterBaseCfg extends HawkConfigBase {
 
 	public int getRecovery() {
 		return recovery;
-	}
-
-	public int getOutput() {
-		return output;
 	}
 
 }

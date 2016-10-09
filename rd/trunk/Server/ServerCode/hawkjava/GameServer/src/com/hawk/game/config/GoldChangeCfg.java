@@ -12,7 +12,7 @@ public class GoldChangeCfg extends HawkConfigBase{
 	protected final int id;
 	/**
 	 * 最大刷新次数
-	 */	
+	 */
 	protected final int maxTimes;
 	/**
 	 * 基础钻石消耗
@@ -50,7 +50,7 @@ public class GoldChangeCfg extends HawkConfigBase{
 	 * 对应暴击概率及暴击倍数3
 	 */
 	protected final float tenMultiple;
-	
+
 	public GoldChangeCfg(){
 		this.id = 0;
 		this.maxTimes = 0;
@@ -64,7 +64,7 @@ public class GoldChangeCfg extends HawkConfigBase{
 		this.fiveMultiple = 0;
 		this.tenMultiple = 0;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -72,7 +72,7 @@ public class GoldChangeCfg extends HawkConfigBase{
 	public int getMaxTimes() {
 		return maxTimes;
 	}
-	
+
 	public int getConsume() {
 		return consume;
 	}

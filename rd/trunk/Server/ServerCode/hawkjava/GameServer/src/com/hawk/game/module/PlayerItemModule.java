@@ -348,7 +348,7 @@ public class PlayerItemModule extends PlayerModule{
 
 		for (int i = 0 ; i < itemCount; ++i) {
 			consumeItems.addItemInfos(itemCfg.getNeedItemList());
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, itemCfg.getRewardId());
+			RewardCfg reward = itemCfg.getReward();
 			if (reward == null) {
 				return;
 			}

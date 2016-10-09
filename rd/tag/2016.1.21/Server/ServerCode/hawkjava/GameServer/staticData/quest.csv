@@ -67,7 +67,7 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 1070,2,1,通关普通副本8-8,biaoti1070,mubiao1070,task_rmb_icon,40,1,-1,-1,instance-x,renjie18,1,10070,0,0,,1_renjie18
 1033,6,1,玩家等级达到25级,biaoti1033,mubiao1033,task_rmb_icon,23,1,-1,-1,level,,25,10033,0,0,,
 1042,6,1,玩家等级达到32级,biaoti1042,mubiao1042,task_rmb_icon,30,1,-1,-1,level,,32,10042,0,0,,
-1051,6,1,玩家等级达到40级,biaoti1051,mubiao1051,task_rmb_icon,28,1,-1,-1,level,,40,10051,0,0,,
+1051,6,1,玩家等级达到40级,biaoti1051,mubiao1051,task_rmb_icon,38,1,-1,-1,level,,40,10051,0,0,,
 1056,6,1,玩家等级达到45级,biaoti1056,mubiao1056,task_rmb_icon,43,1,-1,-1,level,,45,10056,0,0,,
 1061,6,1,玩家等级达到50级,biaoti1061,mubiao1061,task_rmb_icon,48,1,-1,-1,level,,50,10061,0,0,,
 1066,6,1,玩家等级达到55级,biaoti1066,mubiao1066,task_rmb_icon,53,1,-1,-1,level,,55,10066,0,0,,

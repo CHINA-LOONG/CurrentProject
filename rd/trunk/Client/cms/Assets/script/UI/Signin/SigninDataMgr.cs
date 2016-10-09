@@ -118,7 +118,7 @@ public class SigninDataMgr
 
         signinTimesMonthly = signinTimes;
         signinFillTimesMonthly = signinFillTimes;
-        isSigninDaily = (isSignin && (signinTimesMonthly < SigninList.Count));
+        isSigninDaily = (isSignin || (signinTimesMonthly >= SigninList.Count));
         loginTimesDaily = loginTimes == 0 ? loginTimesDaily : loginTimes;
         GameEventMgr.Instance.FireEvent(GameEventList.SignInDataChange);
         GameEventMgr.Instance.FireEvent(GameEventList.SignInChange);

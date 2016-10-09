@@ -9,6 +9,7 @@ import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.item.ShopItemInfo;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
 
@@ -19,17 +20,17 @@ public class ItemRandomCfg extends HawkConfigBase{
 	 */
 	@Id
 	protected final String id;
-
 	/**
 	 * 随机商品列表
 	 */
 	protected final String itemRandom;
-	
+
+	// assemble
 	/**
 	 * 奖励权重列表
 	 */
 	private List<WeightItem<ShopItemInfo>> weightList;
-	
+
 	public ItemRandomCfg(){
 		this.id = null;
 		this.itemRandom = null;
@@ -51,11 +52,9 @@ public class ItemRandomCfg extends HawkConfigBase{
 	public ShopItemInfo getRandomItem() {
 		return WeightUtil.random(weightList);
 	}
-	
+
 	@Override
 	protected boolean assemble() {
-		weightList.clear();
-		
 		if (itemRandom != null && itemRandom.length() > 0 && !"0".equals(itemRandom)) {
 			String[] itemArrays = itemRandom.split(",");
 			for (String itemArray : itemArrays) {
@@ -68,7 +67,7 @@ public class ItemRandomCfg extends HawkConfigBase{
 					}
 					else {
 						return false;
-					}	
+					}
 				}
 				else if (items.length == 9) {
 					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Integer.valueOf(items[6]), Float.valueOf(items[7]));
@@ -79,15 +78,19 @@ public class ItemRandomCfg extends HawkConfigBase{
 					else {
 						return false;
 					}
-				}			
+				}
 			}
-		}	
+		}
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
-	
+		for (WeightItem<ShopItemInfo> weightItem : weightList) {
+			if (false == ConfigUtil.checkItemInfoValid(weightItem.getValue())) {
+				return false;
+			}
+		}
 		return true;
 	}
 }

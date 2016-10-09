@@ -1,11 +1,11 @@
 package com.hawk.game.config;
 
-import net.sf.json.JSONArray;
-
-import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
+import org.hawk.util.HawkJsonUtil;
 
+import com.google.gson.reflect.TypeToken;
 import com.hawk.game.util.GsConst;
 
 @HawkConfigManager.CsvResource(file = "staticData/unitData.csv", struct = "map")
@@ -13,13 +13,9 @@ public class MonsterCfg extends HawkConfigBase {
 
 	@Id
 	protected final String id;
-	protected final String assetID;
-	protected final String uiAsset;
 	protected final String nickName;
 	protected final int type;
 	protected final int rarity;
-	protected final int isEvolutionable;
-	protected final String evolutionID;
 	protected final int property;
 	protected final float levelUpExpRate;
 	protected final float healthModifyRate;
@@ -31,32 +27,30 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final float recoveryRate;
 	protected final int equip;
 	protected final String spellIDList;
-	protected final String weakpointList;
-	protected final int friendship;
 	protected final int disposition;
 	protected final String fragmentId;
 	protected final int fragmentCount;
 
 	//client only
+	protected final String assetID = null;
+	protected final String uiAsset = null;
+	protected final int isEvolutionable = 0;
+	protected final String evolutionID = null;
+	protected final int friendship = 0;
+	protected final String weakpointList = null;
 	protected final String closeUp = null;
 	protected final String say = null;
 	protected final String monsterfounds = null;
 
 	// assemble
-	protected boolean canEvolve;
-	protected String[] spellIdListAssemble;
-	protected String[] weakpointListAssemble;
+	protected String[] skillIdList;
 	protected ItemCfg fragment;
 
 	public MonsterCfg() {
 		id = "";
-		assetID = "";
-		uiAsset = "";
 		nickName = "";
 		type = 0;
 		rarity = 0;
-		isEvolutionable = 0;
-		evolutionID = "";
 		property = 0;
 		levelUpExpRate = 1.0f;
 		healthModifyRate = 1.0f;
@@ -68,8 +62,6 @@ public class MonsterCfg extends HawkConfigBase {
 		recoveryRate = 1.0f;
 		equip = 0;
 		spellIDList = "";
-		weakpointList = "";
-		friendship = 0;
 		disposition = 0;
 		fragmentId = "";
 		fragmentCount = 0;
@@ -77,26 +69,7 @@ public class MonsterCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
-		canEvolve = (isEvolutionable != 0);
-
-		JSONArray jsonArray = JSONArray.fromObject(spellIDList);
-		if (jsonArray == null || jsonArray.isArray() == false) {
-			return false;
-		}
-		spellIdListAssemble = new String[jsonArray.size()];
-		for (int i = 0; i < jsonArray.size(); ++i) {
-			spellIdListAssemble[i] = jsonArray.getString(i);
-		}
-
-		jsonArray = JSONArray.fromObject(weakpointList);
-		if (jsonArray == null || jsonArray.isArray() == false) {
-			return false;
-		}
-		weakpointListAssemble = new String[jsonArray.size()];
-		for (int i = 0; i < jsonArray.size(); ++i) {
-			weakpointListAssemble[i] = jsonArray.getString(i);
-		}
-
+		skillIdList = HawkJsonUtil.getJsonInstance().fromJson(spellIDList, new TypeToken<String[]>() {}.getType());
 		return true;
 	}
 
@@ -131,14 +104,6 @@ public class MonsterCfg extends HawkConfigBase {
 
 	public int getRarity() {
 		return rarity;
-	}
-
-	public boolean getCanEvolve() {
-		return canEvolve;
-	}
-
-	public String getEvolveId() {
-		return evolutionID;
 	}
 
 	public int getProperty() {
@@ -181,16 +146,8 @@ public class MonsterCfg extends HawkConfigBase {
 		return equip;
 	}
 
-	public String[] getSpellIdList() {
-		return spellIdListAssemble;
-	}
-
-	public String[] getWeakpointList() {
-		return weakpointListAssemble;
-	}
-
-	public int getFriendship() {
-		return friendship;
+	public String[] getSkillIdList() {
+		return skillIdList;
 	}
 
 	public int getDisposition() {

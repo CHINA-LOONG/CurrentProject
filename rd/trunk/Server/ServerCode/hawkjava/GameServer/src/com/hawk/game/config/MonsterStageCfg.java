@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.GsConst.ItemParseType;
 
@@ -41,15 +41,12 @@ public class MonsterStageCfg extends HawkConfigBase {
 	 * 分解列表字符串
 	 */
 	protected final String decompose;
-	
+
 	// assemble
-	List<ItemInfo> demandItemList;
-	List<ItemInfo> demandMonsterList;
-	/**
-	 * 分解列表
-	 */
-	private List<ItemInfo> decomposeList;
-	
+	protected List<ItemInfo> demandItemList;
+	protected List<ItemInfo> demandMonsterList;
+	protected List<ItemInfo> decomposeList;
+
 	public MonsterStageCfg() {
 		stage = 0;
 		health = 0;
@@ -72,11 +69,10 @@ public class MonsterStageCfg extends HawkConfigBase {
 	protected boolean assemble() {
 		// TODO: 合并重复的
 		try {
-			demandItemList = ItemInfo.GetItemInfo(demandItem, ItemParseType.PARSE_MONSTER_STAGE);
-			demandMonsterList = ItemInfo.GetItemInfo(demandMonster, ItemParseType.PARSE_MONSTER_STAGE);
-			decomposeList.clear();
+			demandItemList = ItemInfo.GetItemInfoList(demandItem, ItemParseType.PARSE_MONSTER_STAGE);
+			demandMonsterList = ItemInfo.GetItemInfoList(demandMonster, ItemParseType.PARSE_MONSTER_STAGE);
 			if (decompose != null && decompose.length() > 0 && ! "0".equals(decompose)) {
-				decomposeList = ItemInfo.GetItemInfo(decompose, ItemParseType.PARSE_EQUIP_ATTR);
+				decomposeList = ItemInfo.GetItemInfoList(decompose, ItemParseType.PARSE_EQUIP_ATTR);
 			}
 		}
 		catch (Exception e) {
@@ -88,21 +84,23 @@ public class MonsterStageCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
-		for (ItemInfo item: demandItemList) {
-			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, item.getItemId());
-			if (null == itemCfg) {
-				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", item.getItemId()));
+		for (ItemInfo itemInfo: demandItemList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
 				return false;
 			}
 		}
 
-		for (ItemInfo monster : demandMonsterList) {			
+		for (ItemInfo monster : demandMonsterList) {
 			if (monster.getItemId().equals(GsConst.MONSTER_CONSUME_SELF)) {
 				continue;
 			}
-			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getItemId());
-			if (null == monsterCfg) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", monster.getItemId()));
+			if (false == ConfigUtil.checkItemInfoValid(monster)) {
+				return false;
+			}
+		}
+
+		for (ItemInfo itemInfo: decomposeList) {
+			if (false == ConfigUtil.checkItemInfoValid(itemInfo)) {
 				return false;
 			}
 		}
@@ -168,6 +166,7 @@ public class MonsterStageCfg extends HawkConfigBase {
 	public List<ItemInfo> getDemandMonsterList() {
 		return Collections.unmodifiableList(demandMonsterList);
 	}
+
 	public List<ItemInfo> getDecomposeList() {
 		return Collections.unmodifiableList(decomposeList);
 	}

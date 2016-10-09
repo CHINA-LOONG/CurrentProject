@@ -134,4 +134,7 @@ public class GameEventList
     //
     public const string DailyRefresh = "DailyRefresh";
 
+    //battle
+    public const string UnitRoundChange = "UnitRoundChange";
+
 }

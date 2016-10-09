@@ -45,7 +45,8 @@ public class RewardItemData
                     case PB.changeType.CHANGE_COIN:
                         itemData = new ItemData() { itemId = "90001", count = (int)protocolData.count };
                         break;
-                    default:
+                    case PB.changeType.CHANGE_HONOR_COIN:
+                        itemData = new ItemData() { itemId = "90003", count = (int)protocolData.count };
                         break;
                 }
             }

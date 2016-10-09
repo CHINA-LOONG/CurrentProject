@@ -215,15 +215,24 @@ public class BattleUnitAi : MonoBehaviour {
                 if (battleUnit.energy >= BattleConst.enegyMax)
                 {
                     battleUnit.energy = 0;
-                    return AiAttackStyle.DazhaoPrepare;
+                    //能量扣除
+                    SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+                    energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
+                    energyArgs.triggerTime = Time.time;
+                    energyArgs.casterID = battleUnit.pbUnit.guid;
+                    energyArgs.vitalChange = BattleConst.enegyMax;
+                    energyArgs.vitalCurrent = 0;
+                    energyArgs.vitalMax = 0;
+                    SpellService.Instance.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
 
+                    return AiAttackStyle.DazhaoPrepare;
                 }
             }
         }
         else
         {
             if (UnitCamp.Enemy == battleUnit.pbUnit.camp &&
-            battleUnit.dazhaoList.Contains(battleUnit.attackCount))
+            battleUnit.dazhaoList.Contains(battleUnit.AttackCount))
             {
                 if (battleUnit.energy >= BattleConst.enegyMax)
                 {

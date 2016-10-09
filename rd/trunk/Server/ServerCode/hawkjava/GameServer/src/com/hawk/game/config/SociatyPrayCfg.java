@@ -10,15 +10,15 @@ public class SociatyPrayCfg extends HawkConfigBase{
 	 */
 	@Id
 	protected final int id;
-	
+
 	protected final int memberReward;
-	
+
 	protected final int allianceReward;
-	
+
 	protected final int coinConsume;
-	
+
 	protected final int goldConsume;
-	
+
 	public SociatyPrayCfg(){
 		id = 0;
 		memberReward = 0;
@@ -30,15 +30,15 @@ public class SociatyPrayCfg extends HawkConfigBase{
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getMemberReward() {
 		return memberReward;
 	}
-	
+
 	public int getAllianceReward() {
 		return allianceReward;
 	}
-	
+
 	public int getCoinConsume() {
 		return coinConsume;
 	}
@@ -47,9 +47,9 @@ public class SociatyPrayCfg extends HawkConfigBase{
 		return goldConsume;
 	}
 
-	
+
 	@Override
-	protected boolean assemble() {		
+	protected boolean assemble() {
 		return true;
 	}
 }

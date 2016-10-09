@@ -1,4 +1,4 @@
-﻿#TEXT,NUM,NUM
+﻿#TEXT,TEXT,NUM
 name,desc,needlevel
 #功能名称,功能描述,开启等级
 hecheng_name,hecheng_desc,4

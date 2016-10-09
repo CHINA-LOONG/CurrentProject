@@ -86,8 +86,6 @@ public class ObjectDataMgr : MonoBehaviour
         bo.originalScale = unitObject.transform.localScale.x;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
 
-		bo.shifaGo = Util.FindChildByName(unitObject,"e_shifa");
-
 		//weakpoint
 		if (bo.camp == UnitCamp.Enemy) {
 

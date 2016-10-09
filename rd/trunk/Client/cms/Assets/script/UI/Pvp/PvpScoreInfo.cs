@@ -17,7 +17,7 @@ public class PvpScoreInfo : MonoBehaviour {
 
     public void SetPvpInfo(
         bool isself,
-        int scoreGet,
+        int hornorGet,
         PB.HSPVPSettleRet pvpScore,
         PvpFightParam pvpParam
         )
@@ -26,29 +26,36 @@ public class PvpScoreInfo : MonoBehaviour {
         if (isself == true)
         {
             mNickname.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
-            if (scoreGet >= 0)
+            if (pvpScore.rewardPoint >= 0)
             {
-                mPvpScore.text = string.Format("+{0}", scoreGet);
+                mPvpScore.text = string.Format("+{0}", pvpScore.rewardPoint);
             }
             else
             {
-                mPvpScore.text = scoreGet.ToString();
+                mPvpScore.text = pvpScore.rewardPoint.ToString();
             }
             mPvpMoney.gameObject.SetActive(true);
-            mPvpMoney.text = string.Format("+{0}", pvpScore.rewardPoint);
+            if (hornorGet >= 0)
+            {
+                mPvpMoney.text = string.Format("+{0}", hornorGet);
+            }
+            else
+            {
+                mPvpMoney.text = string.Format("-{0}", hornorGet);
+            }
             mBp.text = pvpParam.myBp.ToString();
         }
         else
         {
             mNickname.text = pvpParam.targetData.name;
             mPvpMoney.gameObject.SetActive(false);
-            if (scoreGet >= 0)
+            if (pvpScore.rewardPoint >= 0)
             {
-                mPvpScore.text = string.Format("-{0}", scoreGet);
+                mPvpScore.text = string.Format("-{0}", pvpScore.rewardPoint);
             }
             else
             {
-                mPvpScore.text = string.Format("+{0}", scoreGet * -1);
+                mPvpScore.text = string.Format("+{0}", pvpScore.rewardPoint * -1);
             }
             mBp.text = pvpParam.enemyBp.ToString();
         }

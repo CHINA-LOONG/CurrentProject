@@ -42,7 +42,7 @@ public class ItemInfo {
 		this.itemId = itemId;
 		this.count = count;
 	}
-	
+
 	public ItemInfo(int type, String itemId, int count, int stage) {
 		super();
 		this.type = type;
@@ -50,7 +50,7 @@ public class ItemInfo {
 		this.count = count;
 		this.stage = stage;
 	}
-	
+
 	public ItemInfo(int type, String itemId, int count, int stage, int level) {
 		super();
 		this.type = type;
@@ -59,7 +59,7 @@ public class ItemInfo {
 		this.stage = stage;
 		this.level = level;
 	}
-	
+
 	public int getType() {
 		return type;
 	}
@@ -122,35 +122,9 @@ public class ItemInfo {
 	public static ItemInfo valueOf(int type, String itemId, int count, int stage) {
 		return new ItemInfo(type, itemId, count, stage);
 	}
-	
+
 	public static ItemInfo valueOf(int type, String itemId, int count, int stage, int level) {
 		return new ItemInfo(type, itemId, count, stage, level);
-	}
-	
-	public boolean initByString(String info, int parseType) {
-		if (info != null && info.length() > 0 && !info.equals("0") && !info.equals("none")) {
-			String[] items = info.split("_");
-			if (items.length < 3) {
-				return false;
-			}
-			
-			type = Integer.parseInt(items[0]);
-			itemId = items[1];
-			count = Integer.parseInt(items[2]);
-			if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
-				if (items.length == 4)
-				{
-					stage = Integer.parseInt(items[3]);	
-				}
-				else if (items.length == 5) {
-					stage = Integer.parseInt(items[3]);
-					level = Integer.parseInt(items[4]);		
-				}
-			}
-			
-			return true;
-		}
-		return false;
 	}
 
 	public static ItemInfo valueOf(String info, int parseType) {
@@ -160,8 +134,8 @@ public class ItemInfo {
 		}
 		return null;
 	}
-	
-	public static List<ItemInfo> GetItemInfo(String info, int parseType) {	
+
+	public static List<ItemInfo> GetItemInfoList(String info, int parseType) {
 		List<ItemInfo> result = new LinkedList<ItemInfo>();
 		String[] items = info.split(",");
 		for(String item : items) {
@@ -172,5 +146,31 @@ public class ItemInfo {
 		}
 		return result;
 	}
-	
+
+	private boolean initByString(String info, int parseType) {
+		if (info != null && info.length() > 0 && !info.equals("0") && !info.equals("none")) {
+			String[] items = info.split("_");
+			if (items.length < 3) {
+				return false;
+			}
+
+			type = Integer.parseInt(items[0]);
+			itemId = items[1];
+			count = Integer.parseInt(items[2]);
+			if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
+				if (items.length == 4)
+				{
+					stage = Integer.parseInt(items[3]);
+				}
+				else if (items.length == 5) {
+					stage = Integer.parseInt(items[3]);
+					level = Integer.parseInt(items[4]);
+				}
+			}
+
+			return true;
+		}
+		return false;
+	}
+
 }

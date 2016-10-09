@@ -74,14 +74,6 @@ public class PvpMain : UIBase
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
 
         animator = GetComponent<Animator>();
-        for (int i = 0; i < stageImageObject.Length; ++i)
-        {
-            stageImageObject[i].SetActive(i == PvpDataMgrAttr.selfPvpStage);
-        }
-        for (int i = 0; i < stageEffectObject.Length;++i)
-        {
-            stageEffectObject[i].SetActive(i == PvpDataMgrAttr.selfPvpStage / 3);
-        }
     }
     public override void Init()
     {
@@ -158,6 +150,15 @@ public class PvpMain : UIBase
         honorPointText.text = string.Format(StaticDataMgr.Instance.GetTextByID("pvp_honorpoint"), GameDataMgr.Instance.PlayerDataAttr.HonorAtr);
 
         RefreshSeasonCountDown(msgRet.monthRewardTimeLeft);
+
+        for (int i = 0; i < stageImageObject.Length; ++i)
+        {
+            stageImageObject[i].SetActive((i + 1) == PvpDataMgrAttr.selfPvpStage);
+        }
+        for (int i = 0; i < stageEffectObject.Length; ++i)
+        {
+            stageEffectObject[i].SetActive(i == (PvpDataMgrAttr.selfPvpStage - 1) / 3);
+        }
     }
 
     void RefreshDefensePosition()

@@ -22,5 +22,5 @@ public class UnitBaseData
     public int goldNoteMax;
     public int expMin;
     public int expMax;
-    public int output;
+    //public int output;
 }

@@ -6,7 +6,7 @@ public class BattleUnitUI : MonoBehaviour
 {
     public Button dazhaoBtn;
     public Image unitDazhao;
-    public Text unitName;
+    public Text unitLevel;
     public LifeBarUI lifeBar;
     public EnegyBarUI enegyBar;
 
@@ -57,7 +57,7 @@ public class BattleUnitUI : MonoBehaviour
         }
 
         dazhaoBtn.gameObject.SetActive(false);
-        unitName.text = Unit.unit.name;
+        unitLevel.text = Unit.unit.pbUnit.level.ToString();
         string icon = Unit.unit.GetDazhao().spellData.icon;
         if (!string.IsNullOrEmpty(icon))
         {

@@ -5,7 +5,7 @@ import org.hawk.config.HawkConfigManager;
 
 @HawkConfigManager.CsvResource(file = "staticData/signinFillPrice.csv", struct = "list")
 public class SigninFillPriceCfg extends HawkConfigBase {
-	
+
 	protected final int consume;
 	protected final int consumeAdd;
 	protected final int doubleTimes;

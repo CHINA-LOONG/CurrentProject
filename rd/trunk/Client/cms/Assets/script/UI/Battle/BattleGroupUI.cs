@@ -173,12 +173,24 @@ public class BattleGroupUI : MonoBehaviour
             return;
         }
 
-        //EnemyUnitUI enemyUI = GetEnemyUI(lifeChange.targetID);
-        //if (enemyUI != null)
-        //{
-        //    enemyUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
-        //    return;
-        //}
+        if (BattleController.Instance.PvpParam != null)
+        {
+            EnemyUnitUI enemyUI = GetEnemyUI(energyChange.casterID);
+            if (enemyUI != null)
+            {
+                enemyUI.SetEnergy(energyChange.vitalCurrent);
+                return;
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetRoundChange(int unitID, float fraction)
+    {
+        EnemyUnitUI enemyUI = GetEnemyUI(unitID);
+        if (enemyUI != null)
+        {
+            enemyUI.SetEnergyBar(fraction);
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void SetBattleUnitVisible(int id, bool visible)

@@ -96,6 +96,8 @@ public class BuildModule : ModuleBase
 
         UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
         UIIm imUI = UIMgr.Instance.OpenUI_(UIIm.ViewName) as UIIm;
+        //播放循环的主界面背景音乐
+        AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
         imUI.transform.SetAsLastSibling();
         if (mParam != null)
         {

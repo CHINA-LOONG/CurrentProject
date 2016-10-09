@@ -45,7 +45,7 @@ public class BaseAttrCfg extends HawkConfigBase{
 	 * 暴击加成
 	 */
 	protected final float criticalDmg;
-	
+
 	public BaseAttrCfg(){
 		this.id = null;
 		this.strength = .0f;
@@ -98,7 +98,7 @@ public class BaseAttrCfg extends HawkConfigBase{
 	public float getHealth() {
 		return health;
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		return true;

@@ -13,29 +13,29 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 	 */
 	@Id
 	final protected int id;
-	
+
 	/**
 	 * 最低级别
 	 */
 	final protected int level;
-	
+
 	/**
 	 * 最低排名
 	 */
 	final protected int rank;
-	
+
 	/**
 	 * 奖励
 	 */
 	final protected String reward1;
-	
+
 	/**
 	 * 界面显示奖励
 	 */
 	final protected String reward2;
 
 	static Map<Integer, LinkedHashMap<Integer, PVPRankRewardCfg>> pvpRankCfgList = new LinkedHashMap<Integer, LinkedHashMap<Integer,PVPRankRewardCfg>>();
-	
+
 	public PVPRankRewardCfg() {
 		super();
 		id = 0;
@@ -64,31 +64,31 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 	public String getReward2() {
 		return reward2;
 	}
-	
+
 	public static PVPRankRewardCfg getPVPRankCfg(int level, int rank){
 		LinkedHashMap<Integer, PVPRankRewardCfg> levelList = null;
 		for (Map.Entry<Integer, LinkedHashMap<Integer, PVPRankRewardCfg>> entry: pvpRankCfgList.entrySet()) {
 			if (rank < entry.getKey()) {
 				break;
-			}		
-			
+			}
+
 			levelList = entry.getValue();
 		}
-		
+
 		PVPRankRewardCfg pvpRankCfg = null;
 		if (levelList != null) {
 			for (Map.Entry<Integer, PVPRankRewardCfg> entry : levelList.entrySet()) {
 				if (level < entry.getKey()) {
 					break;
-				}	
-				
+				}
+
 				pvpRankCfg = entry.getValue();
 			}
 		}
-		
+
 		return pvpRankCfg;
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		LinkedHashMap<Integer, PVPRankRewardCfg> levelList = pvpRankCfgList.get(rank);
@@ -96,22 +96,22 @@ public class PVPRankRewardCfg extends HawkConfigBase{
 			levelList = new LinkedHashMap<>();
 			pvpRankCfgList.put(rank, levelList);
 		}
-		
+
 		levelList.put(level, this);
-		
+
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
 		if (HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward1) == null) {
 			return false;
 		}
-		
+
 		if (HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward2) == null) {
 			return false;
 		}
-		
+
 		return true;
 	}
 }

@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 @HawkConfigManager.CsvResource(file = "staticData/store.csv")
 public class StoreCfg extends HawkConfigBase{
@@ -18,7 +19,7 @@ public class StoreCfg extends HawkConfigBase{
 	 * 折扣
 	 */
 	protected final float discount;
-	
+
 	public StoreCfg(){
 		this.itemId = null;
 		this.price = 0;
@@ -36,10 +37,11 @@ public class StoreCfg extends HawkConfigBase{
 	public float getDiscount() {
 		return discount;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
 		if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId) == null) {
+			HawkLog.errPrintln("Item config not found : " + itemId);
 			return false;
 		}
 		return true;

@@ -18,7 +18,7 @@ public class BattleLevelCfg extends HawkConfigBase {
 	@Id
 	protected final String id;
 	protected final String monsterList;
-	
+
 	// client only
 	protected final String preStartEvent = null;
 	protected final String startEvent = null;
@@ -41,7 +41,7 @@ public class BattleLevelCfg extends HawkConfigBase {
 		monsterMap = HawkJsonUtil.getJsonInstance().fromJson(monsterList, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
 		for (Entry<String, Integer> entry : monsterMap.entrySet()) {
@@ -53,11 +53,11 @@ public class BattleLevelCfg extends HawkConfigBase {
 		}
 		return true;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
-	
+
 	public Map<String, Integer> getMonsterMap() {
 		return Collections.unmodifiableMap(monsterMap);
 	}

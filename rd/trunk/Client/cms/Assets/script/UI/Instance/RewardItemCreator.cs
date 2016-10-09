@@ -26,8 +26,16 @@ public class RewardItemCreator
                 go = InitMonsterItem(monster);
                 break;
             case (int)PB.itemType.PLAYER_ATTR:
+                ItemData itemDataPlayerAttr = RewardItemData.GetItemData(rewardItemData);
+                if (itemDataPlayerAttr != null)
+                {
+                    go = InitItem(itemDataPlayerAttr, isTips, showGetby);
+                }
+                else
+                {
                     go = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(rewardItemData.itemId)), (int)rewardItemData.count).gameObject;
                     UIUtil.SetParentReset(go.transform, parent);
+                }
                 break;
                 
         }

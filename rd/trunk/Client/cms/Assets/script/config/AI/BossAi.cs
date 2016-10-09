@@ -46,7 +46,7 @@ public class BossAi : MonoBehaviour
 
     protected int GetAttackCount(GameUnit battleUnit)
     {
-        return battleUnit.attackCount;
+        return battleUnit.AttackCount;
     }
 
     protected Dictionary<string, Spell> GetUnitSpellList(GameUnit battleUnit)
