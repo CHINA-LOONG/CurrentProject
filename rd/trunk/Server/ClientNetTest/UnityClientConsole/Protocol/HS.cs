@@ -829,7 +829,13 @@ namespace PB
       PVP_GET_MY_INFO_C = 12013,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_MY_INFO_S", Value=12014)]
-      PVP_GET_MY_INFO_S = 12014
+      PVP_GET_MY_INFO_S = 12014,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_RANK_DEFENCE_C", Value=12015)]
+      PVP_GET_RANK_DEFENCE_C = 12015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_RANK_DEFENCE_S", Value=12016)]
+      PVP_GET_RANK_DEFENCE_S = 12016
     }
   
 }

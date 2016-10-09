@@ -7,6 +7,7 @@ public class PvpRule : UIBase
     public Button closeButton;
     public Text titleText;
     public Text ruleContentText;
+    public ScrollRect scrollRect;
 
     public static string ViewName = "PvpRule";
 
@@ -14,12 +15,17 @@ public class PvpRule : UIBase
     {
         UIMgr.Instance.OpenUI_(ViewName);
     }
-
     void Start()
     {
+        ruleContentText.text = "";
         closeButton.onClick.AddListener(OnCloseButtonClick);
         titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_record");
+    }
+
+    void OnEnterAnimationFinish()
+    {
         ruleContentText.text = StaticDataMgr.Instance.GetTextByID("pvp_rulesneirong");
+         scrollRect.normalizedPosition = Vector2.one;
     }
 
     void    OnCloseButtonClick()

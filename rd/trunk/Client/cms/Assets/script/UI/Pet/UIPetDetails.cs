@@ -47,6 +47,7 @@ public class UIPetDetails : UIBase,
     private PetDetailsEquipInfo petDetailsEquipInfo;
     private PetDetailsAbilities petDetailsAbilities;
     private PetDetailsAdvance petDetailsAdvance;
+    private PetDetailsAttribute petDetailsAttribute;
 
     //popup
     private UISelectEquipList uiSelectEquipList;
@@ -83,7 +84,7 @@ public class UIPetDetails : UIBase,
         btnStage.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
         btnRoles.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_roles");
         btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_left_advance");
-        btnDetails.gameObject.SetActive(false);
+        //btnDetails.gameObject.SetActive(false);
         btnRoles.gameObject.SetActive(false);
 
         leftView.IPetDetailsLeftDelegate = this;
@@ -107,7 +108,7 @@ public class UIPetDetails : UIBase,
     
     void OnClickDetailsBtn()
     {
-
+        OpenPetDetailsAttribute(CurData);
     }
     void OnClickSkillBtn()
     {
@@ -189,6 +190,11 @@ public class UIPetDetails : UIBase,
     {
         OpenRightView(PetDetailsAdvance.ViewName, ref petDetailsAdvance);
         petDetailsAdvance.ReloadData(unit);
+    }
+    public void OpenPetDetailsAttribute(GameUnit unit)
+    {
+        OpenRightView(PetDetailsAttribute.ViewName, ref petDetailsAttribute);
+        petDetailsAttribute.ReloadData(unit);
     }
 
     //打开选择装备列表弹窗

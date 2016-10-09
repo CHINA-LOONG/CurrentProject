@@ -856,4 +856,11 @@ public class HawkDBManager implements Runnable {
 		executeAsyncList();
 		HawkLog.logPrintln("hawk dbmanager exit dataland complete");
 	}
+	
+	/**
+	 * 没有落地的entity数量
+	 */
+	public int getUnUpdateEntitySize(){
+		return asyncList.size();
+	}
 }

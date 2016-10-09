@@ -364,8 +364,8 @@ public class PVPManager extends HawkAppObj {
 		PVPDefenceEntity target = null;
 		while (true) {	
 			if (GMTargetID != 0) {
-				GMTargetID = 0;
 				target = getPVPDefenceEntityFromPool(GMTargetID);
+				GMTargetID = 0;
 				if (target != null) {
 					break;
 				}
@@ -421,10 +421,9 @@ public class PVPManager extends HawkAppObj {
 		}
 		else{
 			pvpRoomList.put(player.getId(), new PVPRoom(target.getPlayerId(), 0, target));
+			player.consumePVPTime(1, Action.PVP_MATCH);
 		}
-		
-		player.consumePVPTime(1, Action.PVP_MATCH);
-		
+			
 		HSPVPMatchTargetRet.Builder response = HSPVPMatchTargetRet.newBuilder();
 		response.setPlayerId(target.getPlayerId());
 		response.setName(target.getName());
@@ -899,7 +898,7 @@ public class PVPManager extends HawkAppObj {
 	public boolean onTick(long tickTime) {
 		if (refreshTime + SysBasicCfg.getInstance().getPvpRankBuilderRefreshTime() * 1000 < tickTime) {
 			refreshTime = tickTime;
-			
+			/*
 			HawkLog.logPrintln("排行榜:");
 			for (PVPRankEntity rankEntity : pvpRankList) {
 				HawkLog.logPrintln(rankEntity.getName() + " " + rankEntity.getPlayerId() + " " + rankEntity.getRank() + " " + rankEntity.getPoint());
@@ -912,7 +911,7 @@ public class PVPManager extends HawkAppObj {
 					HawkLog.logPrintln(pvpDefenceEntity.getName() + " " + pvpDefenceEntity.getPlayerId() + " ");
 				}
 			}
-			
+			*/
 			generatePVPRankBuilder();
 		}
 	

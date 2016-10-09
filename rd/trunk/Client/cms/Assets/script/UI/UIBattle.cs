@@ -34,6 +34,8 @@ public class UIBattle : UIBase
     public HomeButton m_ButtonTuoguan = null;
 	public HomeButton m_ButtonMomo = null;
     public Button mSetting = null;
+    public Button mDrawBtn = null;
+    public Text mDrawTxt = null;
 
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
@@ -47,8 +49,9 @@ public class UIBattle : UIBase
 
     public MirrorDray m_MirrorDray = null;
 
-    private float m_BattleSpeed = 1.0f;
-	private	float m_MaxSpeed = 2.2f;
+    private float m_BattleSpeed = 1.2f;
+	private	float m_MaxSpeed = 2.4f;
+    private float m_MinSpeed = 1.2f;
     private Animator animator;
     private MsgBox.PrompCostMsg reviveWnd;
     private RectTransform mRootTrans;
@@ -94,7 +97,7 @@ public class UIBattle : UIBase
         m_BattleSpeed = PlayerPrefs.GetFloat("battleSpeed");
         if (Mathf.Abs(m_BattleSpeed) <= BattleConst.floatZero)
         {
-            m_BattleSpeed = 1.0f;
+            m_BattleSpeed = m_MinSpeed;
         }
         GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
@@ -112,6 +115,8 @@ public class UIBattle : UIBase
         //gameObject.SetActive(true);
         mRootTrans = transform as RectTransform;
         m_PetPanel.Hide(BattleConst.closeSwitchPetUI);
+        mDrawBtn.gameObject.SetActive(false);
+        mDrawTxt.text = StaticDataMgr.Instance.GetTextByID("pvp_resultdraw");
     }
 
     public override void Clean()
@@ -214,7 +219,7 @@ public class UIBattle : UIBase
         }
         else if (state == MsgBox.PrompButtonClick.Cancle)
         {
-            BattleController.Instance.OnBattleOver(false);
+            BattleController.Instance.OnBattleOver(2);
             CloseReviveUI();
         }
     }
@@ -229,7 +234,7 @@ public class UIBattle : UIBase
             {
                 case (int)PB.instanceError.INSTANCE_REVIVE_COUNT:
                     UIBattle.Instance.CloseReviveUI();
-                    BattleController.Instance.OnBattleOver(false);
+                    BattleController.Instance.OnBattleOver(2);
                     break;
                 case (int)PB.PlayerError.GOLD_NOT_ENOUGH:
                     GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
@@ -475,9 +480,10 @@ public class UIBattle : UIBase
         EventTriggerListener.Get(m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
         EventTriggerListener.Get(m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
         mSetting.onClick.AddListener(OnSettingClicked);
-		//m_ButtonDaoju.onClick = OnButtonDaojuClicked;
+        mDrawBtn.onClick.AddListener(OnDrawClicked);
+        //m_ButtonDaoju.onClick = OnButtonDaojuClicked;
 
-		m_ButtonMirror.onClick = OnToggleMirrorClicked;
+        m_ButtonMirror.onClick = OnToggleMirrorClicked;
 		m_ButtonTuoguan.onClick = OnTuoguanButtonClick;
 
 		//m_ButtonMomo.onClick = OnMomoCliced;
@@ -578,7 +584,7 @@ public class UIBattle : UIBase
         m_BattleSpeed += 0.6f;
         if (m_BattleSpeed > m_MaxSpeed)
         {
-            m_BattleSpeed = 1.0f;
+            m_BattleSpeed = m_MinSpeed;
         }
 
         PlayerPrefs.SetFloat("battleSpeed", m_BattleSpeed);
@@ -593,6 +599,26 @@ public class UIBattle : UIBase
         {
             curProcess.Pause(true, false);
             mUIBattleSetting = UIMgr.Instance.OpenUI_(UIBattleSetting.ViewName) as UIBattleSetting;
+        }
+    }
+
+    void OnDrawClicked()
+    {
+        BattleProcess curProcess = BattleController.Instance.Process;
+        if (curProcess.IsProcessFinish == false)
+        {
+            MsgBox.PromptMsg.Open(
+                MsgBox.MsgBoxType.Conform_Cancel,
+                StaticDataMgr.Instance.GetTextByID("pvp_pingjutips"),
+                DrawClickCallBack
+                );
+        }
+    }
+    void DrawClickCallBack(MsgBox.PrompButtonClick click)
+    {
+        if (click == MsgBox.PrompButtonClick.OK)
+        {
+            BattleController.Instance.Process.forceResult = 2;
         }
     }
 
@@ -611,7 +637,7 @@ public class UIBattle : UIBase
 		for (int i = 0; i < m_SpeedNumImageList.Count; ++i)
 		{
 			subImg = m_SpeedNumImageList[i] as Image;
-			if (Mathf.Abs(m_BattleSpeed - 1.0f - 0.6f * i) <= BattleConst.floatZero)
+			if (Mathf.Abs(m_BattleSpeed - m_MinSpeed - 0.6f * i) <= BattleConst.floatZero)
 			{
 				subImg.gameObject.SetActive(true);
 			}

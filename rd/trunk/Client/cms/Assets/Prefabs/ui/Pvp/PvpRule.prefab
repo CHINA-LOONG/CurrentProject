@@ -312,6 +312,7 @@ MonoBehaviour:
   closeButton: {fileID: 11493706}
   titleText: {fileID: 11416728}
   ruleContentText: {fileID: 11439096}
+  scrollRect: {fileID: 11465644}
 --- !u!114 &11402700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,7 +984,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1140, y: 640}
+  m_SizeDelta: {x: 1140, y: 730}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22433234
 RectTransform:

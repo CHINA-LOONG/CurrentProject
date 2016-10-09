@@ -1846,7 +1846,7 @@ gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领
 xinyang_instance_title,神话守护者,Myth Guardian,神話守護者
 setting_pvpweikai,尚未开启竞技场玩法,Arena has not been opened yet,尚未開啟競技場玩法
 setting_headpicturetips,拥有过的宠物可以设置为头像,Monsters that you have collected can be set as your avatar.,
-decompose_sureother,选择宠物包含<color=#ffcc00>绿色及以上品质</color>，确定分解操作么？,Selection includes monsters <color=#ffcc00>green grade or above</color>. Continue?,
+decompose_sureother,确定操作么？,Confirm this action?,確定操作嗎？
 decompose_c,稀有度C,C Class,
 decompose_b,稀有度B,B Class,
 compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.,

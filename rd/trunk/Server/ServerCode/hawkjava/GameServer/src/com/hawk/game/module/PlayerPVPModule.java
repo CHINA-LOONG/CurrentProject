@@ -239,7 +239,7 @@ public class PlayerPVPModule extends PlayerModule{
 		
 		if (rankEntity != null) {	
 			// 排行榜之内的需要考虑并列情况
-			if (rankEntity.getRank() > GsConst.PVP.PVP_RANK_SIZE) {
+			if (rankEntity.getRank() > GsConst.PVP.PVP_RANK_SIZE + 10) {
 				response.setPvpPoint(rankEntity.getPoint());
 				response.setPvpRank(rankEntity.getRank() + 1);
 			}

@@ -10,6 +10,7 @@ public class EndBattleUI : MonoBehaviour {
     public GameObject mScoreResultRoot;
     public Sprite mVictorySprite;
     public Sprite mFailedSprite;
+    public Sprite mDrawSprite;
     public Animator mEndBattleAni;
 
     //---------------------------------------------------------------------------------------------
@@ -63,18 +64,23 @@ public class EndBattleUI : MonoBehaviour {
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void SetSuccess(bool success)
+    public void SetSuccess(byte battleResult)
     {
-        mScoreResultRoot.SetActive(success);
-        if (success)
+        mScoreResultRoot.SetActive(battleResult == 0);
+        if (battleResult == 0)
         {
             mScoreResultImg.sprite = mVictorySprite;
             mEndBattleAni.Play("endbattle_guang");
+        }
+        else if (battleResult == 1)
+        {
+            mScoreResultImg.sprite = mDrawSprite;
         }
         else
         {
             mScoreResultImg.sprite = mFailedSprite;
         }
+
         mScoreResultImg.SetNativeSize();
     }
     //---------------------------------------------------------------------------------------------

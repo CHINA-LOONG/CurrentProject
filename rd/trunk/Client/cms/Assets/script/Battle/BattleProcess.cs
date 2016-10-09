@@ -9,6 +9,7 @@ public enum BattleRetCode
     Normal,
     Success,
     Failed,
+    Draw,
     MaxRound,
 }
 
@@ -98,10 +99,10 @@ public class BattleProcess : MonoBehaviour
     int replaceDeadUnitCount = 0;//total replace deadreplace
     bool hasInsertReplaceDeadUnitAction = false;//not insertaction deadreplace
     bool inDazhaoAction = false;
-    bool mInPhyDazhao = false;//TODO: maybe duplicate with inDazhaoAction
-    public bool InPhyDazhao
+    //bool mInPhyDazhao = false;//TODO: maybe duplicate with inDazhaoAction
+    public bool InDazhao
     {
-        get { return mInPhyDazhao; }
+        get { return inDazhaoAction; }
     }
 
     public int mCurrentReviveCount = 0;
@@ -529,7 +530,7 @@ public class BattleProcess : MonoBehaviour
 	void OnDazhaoActionOver(BattleObject casterObject)
 	{
         inDazhaoAction = false;
-        mInPhyDazhao = false;
+        //mInPhyDazhao = false;
 		OnUnitFightOver (casterObject, false);
 	}
 
@@ -542,7 +543,8 @@ public class BattleProcess : MonoBehaviour
         lastUpdateTime = Time.time;
         //battleVictorMethod = victorMethod;
         processData = battleLevelData;
-        mInPhyDazhao = false;
+        //mInPhyDazhao = false;
+        inDazhaoAction = false;
 
         Logger.Log("[Battle.Process]Start process");
         battleGroup = BattleController.Instance.BattleGroup;
@@ -714,12 +716,12 @@ public class BattleProcess : MonoBehaviour
 				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
 				break;
             case ActionType.Dazhao:
-			        if (action.dazhaoType == DazhaoType.Phyics)
+                    inDazhaoAction = true;
+                    if (action.dazhaoType == DazhaoType.Phyics)
                     {
-                        mInPhyDazhao = true;
-                        //inDazhaoAction = true;
+                        //mInPhyDazhao = true;
                         PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
-			        }
+                    }
                     //else if (action.dazhaoType == DazhaoType.Magic_Prepare)
                     //{
                     //    Spell curSpell = BattleUnitAi.Instance.GetSpell(BattleUnitAi.AiAttackStyle.DazhaoPrepare, action.caster.unit);
@@ -792,10 +794,20 @@ public class BattleProcess : MonoBehaviour
             battleResult = NormalScript.normalValiVic();
         }
         
-        //beyond maxround failed
-        if (curAction.caster != null && curAction.caster.unit.attackCount > BattleConst.maxRound)
+        if (BattleController.Instance.PvpParam != null)
         {
-            battleResult = BattleRetCode.MaxRound;
+            if (NormalScript.GetTotalRound() >= BattleConst.maxPvpRound)
+            {
+                BattleController.Instance.GetUIBattle().mDrawBtn.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            //beyond maxround failed
+            if (curAction.caster != null && curAction.caster.unit.attackCount > BattleConst.maxRound)
+            {
+                battleResult = BattleRetCode.MaxRound;
+            }
         }
 
         curAction = null;
@@ -807,6 +819,10 @@ public class BattleProcess : MonoBehaviour
         else if (forceResult == 1)
         {
             battleResult = BattleRetCode.Success;
+        }
+        else if (forceResult == 2)
+        {
+            battleResult = BattleRetCode.Draw;
         }
         
         if (battleResult != BattleRetCode.Normal)
@@ -826,16 +842,17 @@ public class BattleProcess : MonoBehaviour
                 }
             }
         }
-
+        
         if (battleResult == BattleRetCode.MaxRound)
         {
             //close setting window if necessary
             mPauseEnable = false;
             UIBattle.Instance.CloseBattleSetting();
 
-            BattleController.Instance.OnBattleOver(false);
+            BattleController.Instance.OnBattleOver(2);
             return;
         }
+        
 
         if (battleResult == BattleRetCode.Failed)
         {
@@ -855,7 +872,7 @@ public class BattleProcess : MonoBehaviour
             }
             else
             {
-                BattleController.Instance.OnBattleOver(false);
+                BattleController.Instance.OnBattleOver(2);
             }
             //System.Action<float> failProcess = (delayTime) =>
             //{
@@ -890,7 +907,7 @@ public class BattleProcess : MonoBehaviour
             {
                 System.Action<float> successProcess = (delayTime) =>
                 {
-                    BattleController.Instance.OnBattleOver(true);
+                    BattleController.Instance.OnBattleOver(0);
                 };
                 if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
                     UISpeech.Open(processData.battleProtoData.endEvent, successProcess);
@@ -899,6 +916,19 @@ public class BattleProcess : MonoBehaviour
             }
             return;
         }
+        else if (battleResult == BattleRetCode.Draw)
+        {
+            //close setting window if necessary
+            mPauseEnable = false;
+            UIBattle.Instance.CloseBattleSetting();
+
+            insertAction.Clear();
+            {
+                BattleController.Instance.OnBattleOver(1);
+            }
+            return;
+        }
+
 
         //重新开始action
         StartAction();
@@ -1041,7 +1071,7 @@ public class BattleProcess : MonoBehaviour
         var curTarget = aiResult.attackTarget;
         if (null == curTarget)
         {
-            Logger.LogError("Error for BattleUnitAI....");
+            Logger.LogErrorFormat("Error for BattleUnitAi casterObj = {0} battleStyle = {1}", bo.unit.pbUnit.id, aiResult.attackStyle);
         }
 
         if (needRotate == true && curTarget != null && curTarget.battleUnit != bo)
@@ -1206,7 +1236,7 @@ public class BattleProcess : MonoBehaviour
         action.isInsert = false;
 
         ++replaceDeadUnitCount;
-        if (replaceDeadUnitCount == 1 && inDazhaoAction == false)
+        if (replaceDeadUnitCount == 1)// && inDazhaoAction == false)
         {
             action.isInsert = true;
             hasInsertReplaceDeadUnitAction = true;
@@ -1258,7 +1288,7 @@ public class BattleProcess : MonoBehaviour
         battleGroup.OnUnitEnterField(enter, action.slot);
 
         --replaceDeadUnitCount;
-        if (inDazhaoAction == false)
+        //if (inDazhaoAction == false)
         {
             if (replaceDeadUnitCount == 0 ||    //the last action
                 (replaceDeadUnitCount == 1 && hasInsertReplaceDeadUnitAction == true)

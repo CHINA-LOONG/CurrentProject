@@ -16,26 +16,41 @@ public class PvpScoreInfo : MonoBehaviour {
 	}
 
     public void SetPvpInfo(
-        string nickname,
-        int bp,
         bool isself,
-        PB.HSPVPSettleRet pvpScore
+        int scoreGet,
+        PB.HSPVPSettleRet pvpScore,
+        PvpFightParam pvpParam
         )
     {
-        mNickname.text = nickname;
-        mBp.text = bp.ToString();
+        //mBp.text = bp.ToString();
         if (isself == true)
         {
-            mPvpScore.text = pvpScore.point.ToString();
+            mNickname.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
+            if (scoreGet >= 0)
+            {
+                mPvpScore.text = string.Format("+{0}", scoreGet);
+            }
+            else
+            {
+                mPvpScore.text = scoreGet.ToString();
+            }
             mPvpMoney.gameObject.SetActive(true);
-            mPvpMoney.text = pvpScore.rewardPoint.ToString();
+            mPvpMoney.text = string.Format("+{0}", pvpScore.rewardPoint);
+            mBp.text = pvpParam.myBp.ToString();
         }
         else
         {
+            mNickname.text = pvpParam.targetData.name;
             mPvpMoney.gameObject.SetActive(false);
-            mPvpScore.text = (pvpScore.point * -1).ToString();
+            if (scoreGet >= 0)
+            {
+                mPvpScore.text = string.Format("-{0}", scoreGet);
+            }
+            else
+            {
+                mPvpScore.text = string.Format("+{0}", scoreGet * -1);
+            }
+            mBp.text = pvpParam.enemyBp.ToString();
         }
-
-        //TODO: rank
     }
 }

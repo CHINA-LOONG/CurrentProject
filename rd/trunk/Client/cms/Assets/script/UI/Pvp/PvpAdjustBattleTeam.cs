@@ -45,6 +45,7 @@ public class PvpAdjustBattleTeam : UIBase
 
     private List<string> pvpFightTeam = new List<string>();
     private BattlePositionAdjust battlePositionAdjust = null;
+    private List<int> battleTeam = null;
     private BattlePositionAdjust BattlePositionAdjustAttr
     {
         get
@@ -199,7 +200,6 @@ public class PvpAdjustBattleTeam : UIBase
             myBpValueText.color = new Color(122.0f / 255.0f, 1, 0);
         }
     }
-    List<int> battleTeam;
     void OnFightButtonClick()
     {
         battleTeam = SaveBattleTeam();

@@ -1,6 +1,9 @@
 package com.hawk.game.log;
 
 import org.apache.log4j.Logger;
+import org.hawk.app.HawkAppCfg;
+
+import com.hawk.game.GsConfig;
 import com.hawk.game.BILog.BIData;
 
 public class BILogger {
@@ -23,10 +26,14 @@ public class BILogger {
 	}
 	
 	public static void log(String biData){
-		BI_LOGGER.info(biData);
+		if (GsConfig.getInstance().isLogBI()) {
+			BI_LOGGER.info(biData);
+		}
 	}
 	
 	public static void log(BIData bidata){
-		BI_LOGGER.info(bidata.toString());
+		if (GsConfig.getInstance().isLogBI()) {
+			BI_LOGGER.info(bidata.toString());
+		}	
 	}
 }

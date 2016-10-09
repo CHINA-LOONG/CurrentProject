@@ -200,12 +200,24 @@ public class PvpMain : UIBase
                             subIconItem.SetMonsterStaticId(unit.pbUnit.id);
                             subIconItem.SetLevel(unit.pbUnit.level);
                             subIconItem.SetStage(unit.pbUnit.stage);
+                            EventTriggerListener.Get(subIconItem.iconButton.gameObject).onClick = OnDefenseIconClick;
                             continue;
                         }
                     }
                 }
             }
             subIconItem.gameObject.SetActive(false);
+        }
+    }
+
+    void OnDefenseIconClick(GameObject go)
+    {
+        MonsterIcon itemIcon = go.GetComponentInParent<MonsterIcon>();
+        int guid = int.Parse(itemIcon.Id);
+        GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
+        if(null != unit)
+        {
+            UIMonsterInfo.Open(guid, unit.pbUnit.id, unit.pbUnit.level, unit.pbUnit.stage, unit.mBp);
         }
     }
 

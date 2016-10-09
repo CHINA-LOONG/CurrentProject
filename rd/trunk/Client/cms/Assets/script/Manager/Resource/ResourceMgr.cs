@@ -160,6 +160,7 @@ public class ResourceMgr : MonoBehaviour
 
         LoadAssetBundle("texture/icon", true);
         LoadAssetBundle("texture/common", true);
+        LoadAssetBundle("texture/pvp", true);
         //LoadAssetBundle("ui/im", true);
     }
     public void LoadLevelAsyn(string levelName, bool isAdditive, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
@@ -620,7 +621,7 @@ public class ResourceMgr : MonoBehaviour
     void UnloadAssetBundle(string abname)
     {
         UnloadAssetBundleInternal(abname);
-        UnloadDependencies(abname);
+        //UnloadDependencies(abname);
     }
     //---------------------------------------------------------------------------------------------
     void UnloadAssetBundleInternal(string assetBundleName)
@@ -642,8 +643,24 @@ public class ResourceMgr : MonoBehaviour
                 }
 
                 loadedAssetBundleList.Remove(assetBundleName);
+                UnloadDependencies(assetBundleName);
             }
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    void UnloadDependencies(string assetBundleName)
+    {
+        string[] dependencies = null;
+        if (!dependenceList.TryGetValue(assetBundleName, out dependencies))
+            return;
+
+        // Loop dependencies.
+        foreach (var dependency in dependencies)
+        {
+            UnloadAssetBundleInternal(dependency);
+        }
+
+        dependenceList.Remove(assetBundleName);
     }
     //---------------------------------------------------------------------------------------------
     public void CreateBattleObjPool()
@@ -692,21 +709,6 @@ public class ResourceMgr : MonoBehaviour
                 LoadAssetBundleAsync(dependencies[i]);
             }
         }
-    }
-    //---------------------------------------------------------------------------------------------
-    void UnloadDependencies(string assetBundleName)
-    {
-        string[] dependencies = null;
-        if (!dependenceList.TryGetValue(assetBundleName, out dependencies))
-            return;
-
-        // Loop dependencies.
-        foreach (var dependency in dependencies)
-        {
-            UnloadAssetBundleInternal(dependency);
-        }
-
-        dependenceList.Remove(assetBundleName);
     }
     //---------------------------------------------------------------------------------------------
     // Remaps the asset bundle name to the best fitting asset bundle variant.

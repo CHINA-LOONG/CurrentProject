@@ -344,7 +344,7 @@ public class Player extends HawkAppObj {
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
-		HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
+		//HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
 		if (onPlayerProtocol(protocol)) {
 			return true;
 		}
@@ -1785,6 +1785,10 @@ public class Player extends HawkAppObj {
 		playerData.loadAllMonster();
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
 			increaseMonster("xgXiaochou3", 0, Action.NULL);
 		}
 		// TEST END-------------------------------------------------------------------------------------

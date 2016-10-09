@@ -955,7 +955,7 @@ pvp_titlerank,竞技场排行,Arena ranking
 pvp_paiming,排名,Ranking
 pvp_playername,玩家名称,Player name
 pvp_duanwei,段位,Title
-pvp_result,胜负,Victory
+pvp_result,胜负,Victory/Defeat
 pvp_gongjizhe,攻击者,Attacker
 pvp_resultwin,防守成功,Defense victory
 pvp_resultlose,防守失败,Defense defeated

@@ -25,8 +25,22 @@ public class SigninDataMgr
     public const int maxCount = 30;
     public bool isPopup = false;//首次登陆弹出
 
-    public int curMonth;
-    public int curDay;
+    private int month;
+    private int day;
+    public int CurMonth
+    {
+        get { return month; }
+        set
+        {
+            month = value;
+            SigninList = GetCurSigninList(month);
+        }
+    }
+    public int CurDay
+    {
+        get { return day; }
+        set { day = value; }
+    }
 
     // 本月签到次数（包括补签）
     public int signinTimesMonthly;
@@ -37,58 +51,74 @@ public class SigninDataMgr
     //今日登陆次数
     public int loginTimesDaily = 0;
 
+    private List<string> signinList;
     //当月签到列表
     public List<string> SigninList
     {
         get
         {
-            List<SigninData> list = StaticDataMgr.Instance.GetSigninDataByMonth(curMonth);
-            List<string> signinList=new List<string>();
-            if (list!=null)
+            if (signinList == null)
             {
-                SigninData data;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    data = list[i];
-                    if (!string.IsNullOrEmpty(data.col1))
-                        signinList.Add(data.col1);
-                    if (!string.IsNullOrEmpty(data.col2))
-                        signinList.Add(data.col2);
-                    if (!string.IsNullOrEmpty(data.col3))
-                        signinList.Add(data.col3);
-                    if (!string.IsNullOrEmpty(data.col4))
-                        signinList.Add(data.col4);
-                    if (!string.IsNullOrEmpty(data.col5))
-                        signinList.Add(data.col5);
-                    if (!string.IsNullOrEmpty(data.col6))
-                        signinList.Add(data.col6);
-                }
-            }
-            if (signinList.Count>30||signinList.Count<28)
-            {
-                Logger.LogError("配置可能存在异常");
+                signinList = GetCurSigninList(CurMonth);
             }
             return signinList;
         }
+        set
+        {
+            signinList = value;
+        }
     }
+
+    List<string> GetCurSigninList(int month)
+    {
+        List<SigninData> list = StaticDataMgr.Instance.GetSigninDataByMonth(month);
+        List<string> signinList = new List<string>();
+        if (list != null)
+        {
+            SigninData data;
+            for (int i = 0; i < list.Count; i++)
+            {
+                data = list[i];
+                if (!string.IsNullOrEmpty(data.col1))
+                    signinList.Add(data.col1);
+                if (!string.IsNullOrEmpty(data.col2))
+                    signinList.Add(data.col2);
+                if (!string.IsNullOrEmpty(data.col3))
+                    signinList.Add(data.col3);
+                if (!string.IsNullOrEmpty(data.col4))
+                    signinList.Add(data.col4);
+                if (!string.IsNullOrEmpty(data.col5))
+                    signinList.Add(data.col5);
+                if (!string.IsNullOrEmpty(data.col6))
+                    signinList.Add(data.col6);
+            }
+        }
+        if (signinList.Count > 30 || signinList.Count < 28)
+        {
+            Logger.LogError("配置可能存在异常");
+        }
+        return signinList;
+    }
+
     //可补签次数
     public int canSigninFillTimes
     {
         get
         {
-            return curDay - signinTimesMonthly - (isSigninDaily ? 0 : 1);
+            return Math.Min(CurDay, SigninList.Count) - signinTimesMonthly - (isSigninDaily ? 0 : 1);
         }
     }
 
     public void ReloadDateInfo(int signinTimes, int signinFillTimes, bool isSignin, int loginTimes = 0)
     {
         DateTime curDateTime = GameTimeMgr.Instance.GetServerDateTime();
-        curMonth = curDateTime.Month;
-        curDay = Math.Min(curDateTime.Day, maxCount);//最多30个奖励
+        CurMonth = curDateTime.Month;
+
+        CurDay = Math.Min(curDateTime.Day, maxCount);//最多30个奖励
 
         signinTimesMonthly = signinTimes;
         signinFillTimesMonthly = signinFillTimes;
-        isSigninDaily = isSignin;
+        isSigninDaily = (isSignin && (signinTimesMonthly < SigninList.Count));
         loginTimesDaily = loginTimes == 0 ? loginTimesDaily : loginTimes;
         GameEventMgr.Instance.FireEvent(GameEventList.SignInDataChange);
         GameEventMgr.Instance.FireEvent(GameEventList.SignInChange);

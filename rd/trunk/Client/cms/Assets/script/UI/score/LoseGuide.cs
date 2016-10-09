@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 public class LoseGuide : UIBase
 {
     public static string ViewName = "uiLoseGuide";
@@ -8,22 +9,34 @@ public class LoseGuide : UIBase
     string[] loseImage = new string[] {"shibaizhiyin_zhaoyaojing", "shibaizhiyin_choudan", "shibaizhiyin_chongwushengji",
     "shibaizhiyin_chongwujinjie","shibaizhiyin_jinengshengji"
     ,"shibaizhiyin_zhuangbeizhuangbei",
-    "shibaizhiyin_dazaozhuangbei","shibaizhiyin_xiangqianbaoshi"};
-    //-----------------------------------------------------------
+		"shibaizhiyin_dazaozhuangbei","shibaizhiyin_xiangqianbaoshi"};
+	List<int> level = new List<int>();
+    //----------------------------------------------------------
     public void SetLoseGuide(bool hasWp)
     {
+		level.Clear();
+        for (int j = 1; j < loseImage.Length; j++)
+        {
+            if (!LevelLimits.IsOpen(LimitsType.petPromotionLimits) && j == 3)
+                continue;
+            else if (!LevelLimits.IsOpen(LimitsType.equipstrengthenLimits) && j == 6)
+                continue;
+            else if (!LevelLimits.IsOpen(LimitsType.equipinlayLimits) && j == 7)
+                continue;
+            level.Add(j);
+        }
         int i = 0;
         int[] randomNumList = new int[3];
-        randomNumList[0] = Random.Range(1, 8);
-        randomNumList[1] = Random.Range(1, 8);
-        randomNumList[2] = Random.Range(1, 8);
+        randomNumList[0] = Random.Range(1, level.Count);
+        randomNumList[1] = Random.Range(1, level.Count);
+        randomNumList[2] = Random.Range(1, level.Count);
         while (randomNumList[0] == randomNumList[1])
         {
-            randomNumList[1] = Random.Range(1, 8);
+            randomNumList[1] = Random.Range(1, level.Count);
         }
         while (randomNumList[2] == randomNumList[1] || randomNumList[2] == randomNumList[0])
         {
-            randomNumList[2] = Random.Range(1, 8);
+            randomNumList[2] = Random.Range(1, level.Count);
         }
         LoseGuideData loseGuideData = guide[0].GetComponent<LoseGuideData>();
         if (!hasWp)

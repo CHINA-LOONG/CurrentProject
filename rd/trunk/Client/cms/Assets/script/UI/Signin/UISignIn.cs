@@ -96,7 +96,7 @@ public class UISignIn : UIBase,
             {
                 data.Type = SignInType.KeQianDao;
             }
-            else if (i < SigninDataMgr.Instance.curDay)
+            else if (i < SigninDataMgr.Instance.CurDay)
             {
                 data.Type = SignInType.KeBuQian;
             }
@@ -152,7 +152,7 @@ public class UISignIn : UIBase,
             return;
         }
         PB.HSSignin param = new PB.HSSignin();
-        param.month = SigninDataMgr.Instance.curMonth;
+        param.month = SigninDataMgr.Instance.CurMonth;
         GameApp.Instance.netManager.SendMessage(PB.code.SIGNIN_C.GetHashCode(), param);
     }
     //补签
@@ -170,7 +170,7 @@ public class UISignIn : UIBase,
             return;
         }
         PB.HSSigninFill param = new PB.HSSigninFill();
-        param.month = SigninDataMgr.Instance.curMonth;
+        param.month = SigninDataMgr.Instance.CurMonth;
         GameApp.Instance.netManager.SendMessage(PB.code.SIGNIN_FILL_C.GetHashCode(), param);
     }
 

@@ -89,7 +89,7 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 16,1,1,完成竞技场3次,biaoti2016,mubiao2016,task_rmb_icon,12,1,-1,-1,arenaenter,,3,20016,0,0,,13_2
 17,1,1,宠物升阶至绿色品质,biaoti2017,mubiao2017,task_rmb_icon,13,1,-1,-1,petstage-x,1,1,20017,0,0,,8_1
 18,1,1,升级宠物至14级,biaoti2018,mubiao2018,task_rmb_icon,14,1,-1,-1,petlevel-x,14,1,20018,0,0,,8_1
-28,1,1,挑战神话守护者关卡1次,biaoti2028,mubiao2028,task_rmb_icon,15,1,-1,-1,mythoenter,,1,20028,0,0,,13_5
+28,1,1,挑战神话守护者关卡1次,biaoti2028,mubiao2028,task_rmb_icon,15,1,-1,-1,mythoenter,,1,20028,0,0,,
 19,1,1,2只宠物升阶至绿色品质,biaoti2019,mubiao2019,task_rmb_icon,17,1,-1,-1,petstage-x,1,2,20019,0,0,,8_1
 20,1,1,升级宠物至17级,biaoti2020,mubiao2020,task_rmb_icon,18,1,-1,-1,petlevel-x,17,1,20020,0,0,,8_1
 21,1,1,升级宠物至20级,biaoti2021,mubiao2021,task_rmb_icon,20,1,-1,-1,petlevel-x,20,1,20021,0,0,,8_1

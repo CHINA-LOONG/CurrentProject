@@ -41,7 +41,7 @@ Material:
           name: _Splat1
         second:
           m_Texture: {fileID: 2800000, guid: a1ed5938a607ddc4d9d7380e535bb110, type: 3}
-          m_Scale: {x: 6, y: 6}
+          m_Scale: {x: 6, y: 8}
           m_Offset: {x: 0, y: 0}
       data:
         first:

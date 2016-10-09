@@ -55,6 +55,20 @@ public class PbUnit
     {
         return (int)PB.MonsterState.IN_ADVENTURE == (monsterState & (int)PB.MonsterState.IN_ADVENTURE);
     }
+
+    public bool IsInPvp()
+    {
+        List<string> defenseList = GameDataMgr.Instance.PvpDataMgrAttr.defenseTeamList;
+        for(int i =0;i < defenseList.Count;++i)
+        {
+            if (string.Equals(guid.ToString(), defenseList[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void SetLocked(bool isLock)
     {
         if(isLock)
@@ -535,7 +549,7 @@ public class GameUnit : IComparable
         float previousBp = mBp;
 
         float bpHp = (maxLife / mInjuryratio * (1.0f + additionHealRatio * 0.33f));
-        float bpDps = (magicAttack + phyAttack) * 0.5f * speed * ((criticalRatio + SpellConst.criticalRatio) * (criticalDamageRatio + SpellConst.criticalDamgeRatio) + (1.0f - criticalRatio)) * (1 + additionEnergy * 0.0033f);
+        float bpDps = (magicAttack + phyAttack) * 0.5f * speed * ((criticalRatio + SpellConst.criticalRatio) * (criticalDamageRatio + SpellConst.criticalDamgeRatio) + (1.0f - criticalRatio - SpellConst.criticalRatio)) * (1 + additionEnergy * 0.0033f);
         //TODO: save spell lvl
         int dazhaoLvl = 0;
         int phyLvl = 0;

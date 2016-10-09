@@ -6608,7 +6608,7 @@ state = 1 Remove
 			</ParticleList>
 		</Ani>
 		
-		<Ani id="bosssenlin32Longnv34b1Finish" state="1" finish_event="bosssenlin32Longnv34b2">
+		<Ani id="bosssenlin32Longnv34b2Finish" state="1" finish_event="bosssenlin32Longnv34b2">
 		</Ani>
 	</AniList>
 
@@ -6653,15 +6653,6 @@ state = 1 Remove
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="stab"/>
-			</AudioList>
-		</Ani>
-		
-		<Ani id="bosssenlin33Luoxinfu52e3" state="0" AniType="Damage">
-			<ParticleList>
-				<Particle time="0" asset="magicPlantColumn" bundle="effect/particle" parent="" locky=""/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name=""/>
 			</AudioList>
 		</Ani>
 		

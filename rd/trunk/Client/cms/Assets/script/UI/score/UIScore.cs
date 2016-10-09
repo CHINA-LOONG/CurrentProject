@@ -44,7 +44,7 @@ public class UIScore : UIBase
     private UIGainPet mGainPetUI;
     private GameObject mEndBattleUI;
 
-    private bool mIsSuccess;
+    private byte mBattleResult;
     private PB.HSRewardInfo mInstanceSettleResult;
     private Dictionary<long, UIMonsterIconExp> mUIMonsterExpList = new Dictionary<long, UIMonsterIconExp>();
     private bool mSkipEnable = false;
@@ -64,6 +64,7 @@ public class UIScore : UIBase
         resMgr.AddAssetRequest(new AssetRequest("endBattle"));
         resMgr.AddAssetRequest(new AssetRequest("star_ui"));
         resMgr.AddAssetRequest(new AssetRequest(ViewName));
+        //resMgr.AddAssetRequest(new AssetRequest(PvpStageUp.ViewName));
         //TODO: always keep this
         ResourceMgr.Instance.AddAssetRequest(new AssetRequest("monsterIcon"));
     }
@@ -87,7 +88,7 @@ public class UIScore : UIBase
         {
             if (GameDataMgr.Instance.mTowerRefreshed == false)
             {
-                if (mIsSuccess == true)
+                if (mBattleResult == 0)
                 {
                     BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
                 }
@@ -148,7 +149,7 @@ public class UIScore : UIBase
                 itor.Current.Value.SkipAnimation();
             }
 
-            if (mIsSuccess == true)
+            if (mBattleResult == 0)
             {
                 EndBattleUI endBattleComponent = mEndBattleUI.GetComponent<EndBattleUI>();
                 endBattleComponent.SkipShowStarAni();
@@ -187,7 +188,7 @@ public class UIScore : UIBase
         ResourceMgr.Instance.DestroyAsset(mEndBattleUI);
     }
     //---------------------------------------------------------------------------------------------
-    public void ShowScoreUI(bool success, int starCount, PB.HSPVPSettleRet pvpResult)
+    public void ShowScoreUI(byte battleResult, int starCount, PB.HSPVPSettleRet pvpResult)
     {
         mStarCount = starCount;
         if (UIIm.Instance != null)
@@ -195,7 +196,7 @@ public class UIScore : UIBase
             UIIm.Instance.SetLevelVisible(false);
             //UIIm.Instance.HideChat();
         }
-        mIsSuccess = success;
+        mBattleResult = battleResult;
         gameObject.SetActive(true);
         if (pvpResult != null)
         {
@@ -258,8 +259,8 @@ public class UIScore : UIBase
         mEndBattleUI.transform.SetParent(transform, false);
         mEndBattleUI.transform.localPosition = mCenterPos.localPosition;
         EndBattleUI endBattleUI = mEndBattleUI.GetComponent<EndBattleUI>();
-        endBattleUI.SetSuccess(mIsSuccess);
-        if (mIsSuccess == true)
+        endBattleUI.SetSuccess(mBattleResult);
+        if (mBattleResult == 0)
         {
             endBattleUI.SetStarCount(mStarCount);
         }
@@ -283,12 +284,16 @@ public class UIScore : UIBase
         mWaitStarTime = 0.0f;
         if (mPvpResult == null)
         {
-            endBattleUI.SetStarVisiblebool(mIsSuccess);
-            if (mIsSuccess == true)
+            endBattleUI.SetStarVisiblebool(mBattleResult == 0);
+            if (mBattleResult == 0)
             {
                 endBattleUI.ShowStar();
                 mWaitStarTime = mStarCount * BattleConst.scoreStarInterval;
             }
+        }
+        else
+        {
+            endBattleUI.SetStarVisiblebool(false);
         }
 
         StartCoroutine(ShowScoreInfo());
@@ -455,14 +460,41 @@ public class UIScore : UIBase
         }
         else if (mPvpResult != null)
         {
-            mSelfPvpScore.SetPvpInfo("self", 100, true, mPvpResult);
-            mEnemyPvpScore.SetPvpInfo("enemy", -100, false, mPvpResult);
+            PvpDataMgr pvpDataMgr = GameDataMgr.Instance.PvpDataMgrAttr;
+            int originalPvpStage = pvpDataMgr.selfPvpStage;
+            int originalPvpScore = pvpDataMgr.SelfPvpPointAttr;
+            pvpDataMgr.SelfPvpPointAttr = mPvpResult.point;
+            if (originalPvpStage != pvpDataMgr.selfPvpStage)
+            {
+                StartCoroutine(ShowPvpStageUp());
+            }
+
+            int scoreGet = pvpDataMgr.SelfPvpPointAttr - originalPvpScore;
+            mSelfPvpScore.SetPvpInfo(
+                true,
+                scoreGet,
+                mPvpResult,
+                BattleController.Instance.PvpParam
+                );
+            mEnemyPvpScore.SetPvpInfo(
+                false,
+                scoreGet,
+                mPvpResult,
+                BattleController.Instance.PvpParam
+                );
         }
         //failed
         else
         {
             SetInitPlayerInfo(originalAttr, mainPlayer);
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    private IEnumerator ShowPvpStageUp()
+    {
+        yield return null;
+
+        PvpStageUp stageUp = UIMgr.Instance.OpenUI_(PvpStageUp.ViewName) as PvpStageUp;
     }
     //---------------------------------------------------------------------------------------------
     private IEnumerator ShowScoreInfo()
@@ -479,6 +511,7 @@ public class UIScore : UIBase
 
         if (mPvpResult != null)
         {
+            mBackground.SetActive(true);
             mNextLevelBtn.gameObject.SetActive(true);
             mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         }
@@ -500,7 +533,7 @@ public class UIScore : UIBase
                     mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
                     break;
             }
-            if (!mIsSuccess)
+            if (mBattleResult != 0)
             {
                 LoseGuide loseGuide = UIMgr.Instance.OpenUI_(LoseGuide.ViewName) as LoseGuide;
                 if (BattleController.Instance.battleType == BattleType.Boss)
@@ -528,7 +561,7 @@ public class UIScore : UIBase
             }
             if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
             {
-                if (mIsSuccess == true)
+                if (mBattleResult == 0)
                 {
                     EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                     if (curInstance != null)
@@ -552,7 +585,7 @@ public class UIScore : UIBase
             //tower instance
             else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
             {
-                if (mIsSuccess == true)
+                if (mBattleResult == 0)
                 {
                     string nextTowerFloor;
                     int nextFloor;
@@ -593,7 +626,7 @@ public class UIScore : UIBase
     private void SetInitPlayerInfo(PlayerLevelAttr playerAttr, PlayerData playerData)
     {
         //TODO: duplicate code
-        if (!mIsSuccess)
+        if (mBattleResult != 0)
             return;
         mPlayerGainGold.text = "+0";
         mPlayerGainExp.text = "+0";

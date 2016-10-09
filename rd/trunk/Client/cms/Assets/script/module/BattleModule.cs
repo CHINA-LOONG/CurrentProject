@@ -42,6 +42,17 @@ public class BattleModule : ModuleBase
 
     public override void OnInit(object param)
     {
+        BattleUnitAi.BattleStyle battleStyle;
+        EnterInstanceParam enterParam = param as EnterInstanceParam;
+        if (enterParam != null)
+        {
+            battleStyle = BattleUnitAi.BattleStyle.PVE;
+        }
+        else
+        {
+            battleStyle = BattleUnitAi.BattleStyle.PVP;
+        }
+
         controller = gameObject.AddComponent<BattleController>();
         //process = gameObject.AddComponent<BattleProcess>();
         controller.Init();
@@ -50,7 +61,7 @@ public class BattleModule : ModuleBase
 		weakPointController.Init ();
 
         battleUnitAi = gameObject.AddComponent<BattleUnitAi>();
-		battleUnitAi.Init ();
+		battleUnitAi.Init (battleStyle);
 
 		phyDazhaoController = gameObject.AddComponent<PhyDazhaoController> ();
 
@@ -82,6 +93,7 @@ public class BattleModule : ModuleBase
         else if (pvpParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+            loading.OpenPvploading(pvpParam);
             if (loading != null)
             {
                 UIMgr.Instance.FixBrokenWord();

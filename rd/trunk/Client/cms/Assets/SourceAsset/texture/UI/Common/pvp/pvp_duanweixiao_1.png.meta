@@ -50,7 +50,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: 
+  spritePackingTag: pvp
   userData: 
-  assetBundleName: ui/pvp
+  assetBundleName: texture/pvp
   assetBundleVariant: 

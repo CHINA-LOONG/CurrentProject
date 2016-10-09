@@ -296,6 +296,7 @@ public class PlayerShopModule extends PlayerModule{
 
 				for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 					ShopEntity shopEntity = player.getPlayerData().getShopEntity(i);
+					shopEntity.setRefreshNums(0);
 					shopEntity.notifyUpdate(true);
 				}
 				if (false == onLogin) {

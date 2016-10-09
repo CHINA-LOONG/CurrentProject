@@ -74,6 +74,10 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final boolean translate;
 	/**
+	 * BI log
+	 */
+	protected final boolean logBI;
+	/**
 	 * 邮箱用户名
 	 */
 	protected final String emailUser;
@@ -114,6 +118,7 @@ public class GsConfig extends HawkAppCfg {
 		translate = false;
 		emailUser = "";
 		emailPwd = "";
+		logBI = false;
 	}
 
 	public int getRegisterMaxSize() {
@@ -178,6 +183,10 @@ public class GsConfig extends HawkAppCfg {
 
 	public boolean isTranslate() {
 		return translate;
+	}
+
+	public boolean isLogBI() {
+		return logBI;
 	}
 
 	public String getEmailUser() {

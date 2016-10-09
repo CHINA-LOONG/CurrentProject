@@ -117,10 +117,14 @@ public class BattleController : MonoBehaviour
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
+    public PvpFightParam PvpParam
+    {
+        get { return mCurPvpParam; }
+    }
     private PvpFightParam mCurPvpParam;
-    private bool battleSuccess;
-    private Byte mCurMaxSlotIndex;
-    public Byte CurMaxSlotIndex
+    private byte mBattleResult;
+    private byte mCurMaxSlotIndex;
+    public byte CurMaxSlotIndex
     {
         get { return mCurMaxSlotIndex; }
     }
@@ -296,7 +300,7 @@ public class BattleController : MonoBehaviour
             process.SwitchingPet == false &&
             uiBattle.gameObject.activeSelf == true &&
             battleGo.unit.backUp == false &&
-            process.InPhyDazhao == false
+            process.InDazhao == false
             )
         {
             //换宠
@@ -728,7 +732,7 @@ public class BattleController : MonoBehaviour
         else 
         {
             curBattleLevel = null;
-            OnBattleOver(true);
+            OnBattleOver(0);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -849,31 +853,45 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void OnBattleOver(bool isSuccess)
+    public void OnBattleOver(byte battleResult)
     {
         mirrorState = MirrorState.CannotUse;
-        battleSuccess = isSuccess;
+        mBattleResult = battleResult;
         ItemDropManager.Instance.ClearDropItem();
         processStart = false;
         //Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         AudioSystemMgr.Instance.StopMusic();
-        string selfEvent = isSuccess ? "win" : "failed";
-        string enemyEvent = isSuccess ? "failed" : "win";
-        float curTime = Time.time;
-        for (int i = 0; i < battleGroup.PlayerFieldList.Count; ++i)
+        string selfEvent = null;
+        string enemyEvent = null;
+        if (mBattleResult == 0)
         {
-            BattleObject bo = battleGroup.PlayerFieldList[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
-            {
-                battleGroup.PlayerFieldList[i].TriggerEvent(selfEvent, curTime, null);
-            }
+            selfEvent = "win";
+            enemyEvent = "failed";
         }
-        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        else if (mBattleResult == 2)
         {
-            BattleObject bo = battleGroup.EnemyFieldList[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+            selfEvent = "failed";
+            enemyEvent = "win";
+        }
+
+        float curTime = Time.time;
+        if (string.IsNullOrEmpty(selfEvent) == false)
+        {
+            for (int i = 0; i < battleGroup.PlayerFieldList.Count; ++i)
             {
-                battleGroup.EnemyFieldList[i].TriggerEvent(enemyEvent, curTime, null);
+                BattleObject bo = battleGroup.PlayerFieldList[i];
+                if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+                {
+                    battleGroup.PlayerFieldList[i].TriggerEvent(selfEvent, curTime, null);
+                }
+            }
+            for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+            {
+                BattleObject bo = battleGroup.EnemyFieldList[i];
+                if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+                {
+                    battleGroup.EnemyFieldList[i].TriggerEvent(enemyEvent, curTime, null);
+                }
             }
         }
         MagicDazhaoController.Instance.ClearAll();
@@ -883,14 +901,7 @@ public class BattleController : MonoBehaviour
         if (mCurPvpParam != null)
         {
             PB.HSPVPSettle pvpInstanceParam = new PB.HSPVPSettle();
-            if (isSuccess)
-            {
-                pvpInstanceParam.result = (int)PB.PvpResult.WIN;
-            }
-            else
-            {
-                pvpInstanceParam.result = (int)PB.PvpResult.LOSE;
-            }
+            pvpInstanceParam.result = mBattleResult;
 
             GameApp.Instance.netManager.SendMessage(PB.code.PVP_SETTLE_C.GetHashCode(), pvpInstanceParam, false);
         }
@@ -919,7 +930,7 @@ public class BattleController : MonoBehaviour
                 instanceParam.deadMonsterCount = 3;
             }
 
-            instanceParam.passBattleCount = isSuccess ? maxProcessIndex : curProcessIndex;
+            instanceParam.passBattleCount = (mBattleResult == 0) ? maxProcessIndex : curProcessIndex;
             GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
         }
     } 
@@ -940,16 +951,16 @@ public class BattleController : MonoBehaviour
                 mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
             }
             int starCount = 0;
-            if(battleSuccess)
+            if(mBattleResult == 0)
             {
                 PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
                 GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, scoreInfo.starCount, instanceData.instanceProtoData.id);
                 starCount = scoreInfo.starCount;
             }
-            mUIScore.ShowScoreUI(battleSuccess, starCount, null);
+            mUIScore.ShowScoreUI(mBattleResult, starCount, null);
             uiBattle.HideBattleUI();
 
-            GameDataMgr.Instance.OnBattleOver(battleSuccess);
+            GameDataMgr.Instance.OnBattleOver(mBattleResult == 0);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -970,10 +981,10 @@ public class BattleController : MonoBehaviour
             }
 
             PB.HSPVPSettleRet scoreInfo = msg.GetProtocolBody<PB.HSPVPSettleRet>();
-            mUIScore.ShowScoreUI(battleSuccess, 0, scoreInfo);
+            mUIScore.ShowScoreUI(mBattleResult, 0, scoreInfo);
             uiBattle.HideBattleUI();
 
-            GameDataMgr.Instance.OnBattleOver(battleSuccess);
+            GameDataMgr.Instance.OnBattleOver(mBattleResult == 0);
         }
     }
     //---------------------------------------------------------------------------------------------

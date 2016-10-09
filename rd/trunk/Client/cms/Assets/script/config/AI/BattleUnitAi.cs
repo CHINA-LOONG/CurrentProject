@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 
 public class BattleUnitAi : MonoBehaviour {
-
+    public enum BattleStyle
+    {
+        PVE,
+        PVP
+    }
 	public enum AiAttackStyle
 	{
 		Lazy = 0,
@@ -35,10 +39,12 @@ public class BattleUnitAi : MonoBehaviour {
 
 	// 
 	int	attackMaxTimes = 100;
+    BattleStyle battleStyle;
 
-	public	void	Init()
+    public	void	Init(BattleStyle battleStyle)
 	{
 		instance = this;
+        this.battleStyle = battleStyle;
 	}
 
     void OnDestroy()
@@ -134,7 +140,7 @@ public class BattleUnitAi : MonoBehaviour {
 		//{
 			//InitLazyList(battleUnit);
 	//	}
-		if (UnitCamp.Enemy == battleUnit.pbUnit.camp && battleUnit.dazhaoList.Count < 1)
+		if (battleStyle==BattleStyle.PVE && ( UnitCamp.Enemy == battleUnit.pbUnit.camp && battleUnit.dazhaoList.Count < 1))
 		{
 			InitDazhaoList(battleUnit);
 		}
@@ -201,15 +207,31 @@ public class BattleUnitAi : MonoBehaviour {
 		//	return AiAttackStyle.Lazy;
 		//}
 		
-		//大招
-		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
-		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
-		{
-			if(battleUnit.energy >= BattleConst.enegyMax)
-			{
-				return AiAttackStyle.DazhaoPrepare;
-			}
-		}
+		//大招 
+        if(battleStyle == BattleStyle.PVP)
+        {
+            if (UnitCamp.Enemy == battleUnit.pbUnit.camp)
+            {
+                if (battleUnit.energy >= BattleConst.enegyMax)
+                {
+                    battleUnit.energy = 0;
+                    return AiAttackStyle.DazhaoPrepare;
+
+                }
+            }
+        }
+        else
+        {
+            if (UnitCamp.Enemy == battleUnit.pbUnit.camp &&
+            battleUnit.dazhaoList.Contains(battleUnit.attackCount))
+            {
+                if (battleUnit.energy >= BattleConst.enegyMax)
+                {
+                    return AiAttackStyle.DazhaoPrepare;
+
+                }
+            }
+        }
 		
 		int unitCharacter = battleUnit.character;
 		

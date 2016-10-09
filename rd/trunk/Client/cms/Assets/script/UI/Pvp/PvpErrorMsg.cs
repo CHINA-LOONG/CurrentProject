@@ -6,11 +6,15 @@ public class PvpErrorMsg
 
     public static void ShowImWithErrorCode(int error)
     {
-        //test
-        switch ((PB.allianceError)error)
+        switch ((PB.pvpError)error)
         {
-            case PB.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH:
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
+            case PB.pvpError.PVP_TIMES_NOT_ENOUGH:
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("pvp_record_002"), (int)PB.ImType.PROMPT);
+                break;
+            case PB.pvpError.PVP_NOT_MATCH_BEFORE:
+                break;
+            case PB.pvpError.PVP_NOT_MATCH_TARGET:
+                MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("pvp_first"));
                 break;
         }
     }

@@ -410,6 +410,7 @@ public class HawkSession {
 				HawkLog.logPrintln(String.format("session be closing, ipaddr: %s", ipAddr));
 			}
 			
+			HawkLog.logPrintln("##########################");
 			// 参数true表示立即关闭, false表示等待写操作完成
 			this.session.close(immediately);
 		}
@@ -545,6 +546,7 @@ public class HawkSession {
 	 * 会话被关闭
 	 */
 	public boolean onClosed() {
+		HawkLog.logPrintln("$$$$$$$$$$$$$$$$$$$$$$$");
 		if (this.session != null) {
 			HawkApp.getInstance().onSessionClosed(this);
 			if (HawkApp.getInstance().isRunning()) {

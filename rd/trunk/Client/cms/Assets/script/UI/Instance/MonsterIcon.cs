@@ -21,6 +21,7 @@ public class MonsterIcon : MonoBehaviour
 
     public Image maoxianImage;
     public Image zhushouImage;
+    public Image pvpImage;
     public Image lockImage;
 
 	private	List<Transform> listItems;
@@ -193,6 +194,11 @@ public class MonsterIcon : MonoBehaviour
     public void ShowZhushouImage(bool bShow = true)
     {
         zhushouImage.gameObject.SetActive(bShow);
+    }
+    public void ShowPvpImage(bool bShow = true)
+    {
+        if (null != pvpImage)
+            pvpImage.gameObject.SetActive(bShow);
     }
     public void ShowLockImage(bool bShow = true)
     {
