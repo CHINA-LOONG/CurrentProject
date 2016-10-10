@@ -21,6 +21,8 @@ public class WeakPointData
 	//-----------------------------------------
 
     public int initialStatus;
+    public int scaleX;
+    public int scaleY;
 
 	public float damageRate1;//伤害系数
 	public float damageRate2;//伤害系数

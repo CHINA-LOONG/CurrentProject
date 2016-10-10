@@ -38,7 +38,8 @@ public class PvpDefensiveRecord : UIBase, IScrollView
         listTitleText[0].text = StaticDataMgr.Instance.GetTextByID("pvp_result");
         listTitleText[1].text = StaticDataMgr.Instance.GetTextByID("pvp_gongjizhe");
         listTitleText[2].text = StaticDataMgr.Instance.GetTextByID("sociaty_level");
-        listTitleText[3].text = StaticDataMgr.Instance.GetTextByID("pvp_points");
+        listTitleText[3].text = StaticDataMgr.Instance.GetTextByID("pvp_points1");
+        titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_record");
     }
 
     void OnCloseButtonClick()

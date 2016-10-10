@@ -344,6 +344,7 @@ public class UIAdventureLayout : UIBase,
     #region 设置队伍宠物
     void AddAdventureTeamMonster<T>(T monster)
     {
+        //bool flag = false;
         for (int i = 0; i < teamList.Count; i++)
         {
             if (teamList[i].type == AdventureTeamMonster.MonsterType.NULL)
@@ -363,10 +364,18 @@ public class UIAdventureLayout : UIBase,
                     thisMonster.IsSelect = true;
                 }
                 teamList[i].ReloadData(monster);
+                //flag = true;
                 break;
             }
         }
-        UpdateAdventureTeamSelect();
+        //if (!flag)
+        //{
+        //    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("arrayselect_count_003"), (int)PB.ImType.PROMPT);
+        //}
+        //else
+        //{
+            UpdateAdventureTeamSelect();
+        //}
     }
     void RemoveAdventureTeamMonster<T>(T monster)
     {
@@ -845,24 +854,35 @@ public class UIAdventureLayout : UIBase,
         {
             AddAdventureTeamMonster(monster);
         }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("arrayselect_count_003"), (int)PB.ImType.PROMPT);
+        }
     }
     #endregion
 
     #region IAdventureGuildMonster
     public void OnClickGuildMonster(AdventureGuildMonsterInfo monster)
     {
-        if (hireMonster==null)
-        {
-            AddAdventureTeamMonster(monster);
-        }
-        else if(hireMonster==monster.unit)
+        if (hireMonster == monster.unit)
         {
             RemoveAdventureTeamMonster(monster);
         }
+        else if ((selfMonsterId.Count < 4 && hireMonster != null) || (selfMonsterId.Count < 5))
+        {
+            if (hireMonster == null)
+            {
+                AddAdventureTeamMonster(monster);
+            }
+            else
+            {
+                Logger.Log("上阵宠物已经包含公会宠物");
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_008"), (int)PB.ImType.PROMPT);
+            }
+        }
         else
         {
-            Logger.Log("上阵宠物已经包含公会宠物");
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_008"), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("arrayselect_count_003"), (int)PB.ImType.PROMPT);
         }
     }
     #endregion

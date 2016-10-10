@@ -640,6 +640,7 @@ GameObject:
   - 4: {fileID: 472614}
   - 95: {fileID: 9561566}
   - 65: {fileID: 6545172}
+  - 114: {fileID: 11461124}
   m_Layer: 10
   m_Name: xgWagui3@moxing
   m_TagString: Untagged
@@ -2019,6 +2020,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11461124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 189282}
+  mShadowProjectPos: {fileID: 171694}
 --- !u!137 &13724580
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

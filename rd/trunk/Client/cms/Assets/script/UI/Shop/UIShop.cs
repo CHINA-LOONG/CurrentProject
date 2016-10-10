@@ -161,7 +161,14 @@ public class UIShop : UIBase
             curShopType = maxOpenShopIndex;
         }
 
-		if (forceRefresh || shopDataMgr.IsNeedUpdateShopData ())
+        //if shopdata error ,must update
+        PB.ShopData shopData = shopDataMgr.GetShopData(curShopType);
+        if (null == shopData)
+        {
+            forceRefresh = true;
+        }
+
+        if (forceRefresh || shopDataMgr.IsNeedUpdateShopData ())
 		{
 			shopDataMgr.RequestShopData();
 		}

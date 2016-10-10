@@ -78,15 +78,25 @@ public class bosssenlin33Luoxinfu5 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Luoxinfu5wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Luoxinfu5_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosssenlin33Luoxinfu5wp02")
+		{
+			target.TriggerEvent("luoxinfu5_wp02dead", Time.time, null);
+		}
+		if (args.wpID == "bosssenlin33Luoxinfu5wp03")
+		{
+			target.TriggerEvent("luoxinfu5_wp03dead", Time.time, null);
+		}
+		if (args.wpID == "bosssenlin33Luoxinfu5wp04")
+		{
+			target.TriggerEvent("luoxinfu5_wp04dead", Time.time, null);
+		}
+		if (args.wpID == "bosssenlin33Luoxinfu5wp03")
+		{
+			target.TriggerEvent("luoxinfu5_wp05dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

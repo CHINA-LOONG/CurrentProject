@@ -29,6 +29,8 @@ public class BattleObject : MonoBehaviour
 	public WeakPointGroup wpGroup = null;
     public float originalScale = 1.0f;
 
+    public SimpleShadow mSimpleShadow;
+
     //---------------------------------------------------------------------------------------------
     void Awake()
     {
@@ -130,6 +132,11 @@ public class BattleObject : MonoBehaviour
             transform.localScale = slotNode.transform.localScale * originalScale;
             targetRot = gameObject.transform.localRotation;
             gameObject.transform.SetParent(GameMain.Instance.transform, false);
+            if (mSimpleShadow != null)
+            {
+                mSimpleShadow.SetShadowScale(slotNode.transform.localScale);
+                mSimpleShadow.SetShadowFixedYPos(slotNode.transform.position.y - BattleConst.shadowDistanceFromFloor);
+            }
            // if (camp == UnitCamp.Enemy)
            // {
                // GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
@@ -177,7 +184,7 @@ public class BattleObject : MonoBehaviour
                 unit.State = UnitState.None;
             }
 
-            gameObject.transform.localPosition = new Vector3(0.0f, 10000f, 0.0f);
+            gameObject.transform.localPosition = new Vector3(10000.0f, 10000f, 10000.0f);
             //gameObject.SetActive(false);
             Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
         }
@@ -316,7 +323,30 @@ public class BattleObject : MonoBehaviour
                             }
                         }
 
-                        if (curParticleData.attach == "true")
+                        if (curParticleData.attach == "scene")
+                        {
+                            if (GameMain.Instance.IsCurModule<BattleModule>() == true)
+                            {
+                                UnitCamp targetCamp = (curParticleData.particleParent == "0") ? UnitCamp.Player : UnitCamp.Enemy;
+                                rootTransform = BattleController.Instance.GetAoeNode(camp, targetCamp).transform;
+                                
+                                //TODO: duplicate code
+                                curParticleData.psObject.transform.localRotation = BattleConst.rotYPIDegree;
+                                if (curParticleData.locky == "true")
+                                {
+                                    curParticleData.psObject.transform.localPosition = rootTransform.position;
+                                    curParticleData.psObject.transform.SetParent(transform.parent, false);
+                                    curParticleData.psParent = rootTransform;
+                                    curParticleData.psObject.transform.localScale = rootTransform.lossyScale;
+                                }
+                                else
+                                {
+                                    curParticleData.psObject.transform.SetParent(rootTransform, false);
+                                    curParticleData.psParent = rootTransform;
+                                }
+                            }
+                        }
+                        else if (curParticleData.attach == "true")
                         {
                             //curParticleData.psObject.transform.localRotation = prefab.transform.localRotation;
                             curParticleData.psObject.transform.localRotation = BattleConst.rotYPIDegree;

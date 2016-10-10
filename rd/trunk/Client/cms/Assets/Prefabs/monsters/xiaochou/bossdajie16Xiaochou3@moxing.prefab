@@ -58,6 +58,7 @@ GameObject:
   - 4: {fileID: 421156}
   - 137: {fileID: 13745428}
   - 65: {fileID: 6506534}
+  - 114: {fileID: 11408638}
   m_Layer: 10
   m_Name: mesh_weapon
   m_TagString: Untagged
@@ -413,6 +414,7 @@ GameObject:
   - 65: {fileID: 6533344}
   - 114: {fileID: 11402894}
   - 114: {fileID: 11474308}
+  - 114: {fileID: 11494754}
   m_Layer: 10
   m_Name: bossdajie16Xiaochou3@moxing
   m_TagString: Untagged
@@ -1765,6 +1767,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11408638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: c8af7326dff8afe4d8f3b29a0469bd4f, type: 2}
 --- !u!114 &11474308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1776,6 +1790,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11494754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 142932}
+  mShadowProjectPos: {fileID: 197434}
 --- !u!137 &13715718
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

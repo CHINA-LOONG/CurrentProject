@@ -69,6 +69,7 @@ public class bossxiaoxiang24Shuigui3 : BossAi {
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 		if (args.wpID == "bossxiaoxiang24Shuigui3wp02" && jishu1 == 0) 
 		{
+			target.TriggerEvent("shuigui3_wp02dead", Time.time, null);
 			jishu1 ++;
 		}
 		else if (args.wpID == "bossxiaoxiang24Shuigui3wp04" && (jishu==0&&jishu1==0))

@@ -20,8 +20,8 @@ public class PVPDefenceRecordEntity extends HawkDBEntity{
 	@Column(name = "playerId")
 	private int playerId = 0;
 	
-	@Column(name = "point")
-	private int point = 0;
+	@Column(name = "changePoint")
+	private int changePoint = 0;
 	
 	@Column(name = "result")
 	private int result = 0;
@@ -32,8 +32,8 @@ public class PVPDefenceRecordEntity extends HawkDBEntity{
 	@Column(name = "attackerLevel")
 	private int attackerLevel = 0;
 	
-	@Column(name = "attackerGrade")
-	private int attackerGrade = 0;
+	@Column(name = "attackerPoint")
+	private int attackerPoint = 0;
 	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -52,12 +52,12 @@ public class PVPDefenceRecordEntity extends HawkDBEntity{
 		this.playerId = playerId;
 	}
 
-	public int getPoint() {
-		return point;
+	public int getChangePoint() {
+		return changePoint;
 	}
 
-	public void setPoint(int point) {
-		this.point = point;
+	public void setChangePoint(int changePoint) {
+		this.changePoint = changePoint;
 	}
 
 	public int getResult() {
@@ -84,12 +84,12 @@ public class PVPDefenceRecordEntity extends HawkDBEntity{
 		this.attackerLevel = attackerLevel;
 	}
 
-	public int getAttackerGrade() {
-		return attackerGrade;
+	public int getAttackerPoint() {
+		return attackerPoint;
 	}
 
-	public void setAttackerGrade(int attackerGrade) {
-		this.attackerGrade = attackerGrade;
+	public void setAttackerPoint(int attackerPoint) {
+		this.attackerPoint = attackerPoint;
 	}
 
 	public int getId() {

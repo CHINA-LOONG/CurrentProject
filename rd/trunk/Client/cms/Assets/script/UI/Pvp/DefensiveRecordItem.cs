@@ -30,17 +30,17 @@ public class DefensiveRecordItem : MonoBehaviour
         {
             resultText.text = StaticDataMgr.Instance.GetTextByID("pvp_resultdraw");
         }
-        scoreText.text =  defenseData.point.ToString();
+        scoreText.text =  defenseData.changePoint.ToString();
         attackerText.text = defenseData.attacker;
         lvlText.text = defenseData.level.ToString();
-        gradeLevelText.text = defenseData.grade.ToString();
+        gradeLevelText.text = defenseData.point.ToString();
 
-        if (defenseData.point >= 0)
+        if (defenseData.changePoint >= 0)
         {
-            scoreText.color = new Color(55.0f / 255.0f, 155.0f / 255.0f, 7.0f / 255.0f);
+            scoreText.color = new Color(56.0f / 255.0f, 155.0f / 255.0f, 7.0f / 255.0f);
             if(defenseData.point > 0)
             {
-                scoreText.text = string.Format("+{0}", defenseData.point);
+                scoreText.text = string.Format("+{0}", defenseData.changePoint);
             }
         }
         else

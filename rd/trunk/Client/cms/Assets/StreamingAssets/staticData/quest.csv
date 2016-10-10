@@ -23,7 +23,7 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 10013,1,1,通关1-6,linshi2,linmubiao2,task_rmb_icon,3,1,-1,-1,instance-x,dajie16,1,linshi2,1,1,,1_dajie16
 10014,1,1,合成冰霜女王,linshi3,linmubiao3,task_rmb_icon,3,1,-1,-1,petmix,,4,linshi1,1,1,,8_2
 10015,1,1,升级宠物,zhuxian10013,mubiao10013,task_rmb_icon,3,1,-1,-1,petlevel-x,5,1,50013,1,1,,8_1
-10016,1,1,穿戴装备2,zhuxian10014,mubiao10014,task_rmb_icon,3,1,-1,-1,equipstage-x,1,2,50014,1,1,,8_2
+10016,1,1,穿戴装备2,zhuxian10014,mubiao10014,task_rmb_icon,3,1,-1,-1,equipstage-x,1,2,50014,1,1,,8_1
 10017,1,1,通关1-8,zhuxian10015,mubiao10015,task_rmb_icon,5,1,-1,-1,instance-x,dajie18,1,50015,1,1,,1_dajie18
 10018,1,1,装备强化,zhuxian10016,mubiao10016,task_rmb_icon,5,1,-1,-1,upequip,,1,50016,1,1,,8_1
 10019,2,1,领取普通章节1满星奖励,zhuxian10017,mubiao10017,task_rmb_icon,7,1,-1,-1,chapternormal-x,1,1,50017,1,1,,9_1_0

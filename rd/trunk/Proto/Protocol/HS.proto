@@ -204,10 +204,10 @@ enum code
 	SHOP_STORE_BUY_C            = 8012;
 	SHOP_STORE_BUY_S            = 8013;
 
-	SUMMON_ONE_C                = 9101;
-	SUMMON_ONE_S                = 9102;
-	SUMMON_TEN_C                = 9103;
-	SUMMON_TEN_S                = 9104;
+	SUMMON_ONE_C                = 9201;
+	SUMMON_ONE_S                = 9202;
+	SUMMON_TEN_C                = 9203;
+	SUMMON_TEN_S                = 9204;
 
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;

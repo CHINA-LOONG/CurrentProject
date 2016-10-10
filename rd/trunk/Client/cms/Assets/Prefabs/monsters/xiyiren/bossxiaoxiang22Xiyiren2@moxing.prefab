@@ -481,6 +481,7 @@ GameObject:
   - 65: {fileID: 6564236}
   - 114: {fileID: 11421646}
   - 114: {fileID: 11446166}
+  - 114: {fileID: 11492210}
   m_Layer: 10
   m_Name: bossxiaoxiang22Xiyiren2@moxing
   m_TagString: Untagged
@@ -2127,6 +2128,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11492210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 184816}
+  mShadowProjectPos: {fileID: 167394}
 --- !u!137 &13708038
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

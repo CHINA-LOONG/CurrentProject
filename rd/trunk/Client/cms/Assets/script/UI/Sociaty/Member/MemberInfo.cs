@@ -238,8 +238,9 @@ public class MemberInfo : UIBase
         }
         else
         {
+            UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("sociaty_record_017"),memberData.name), (int)PB.ImType.PROMPT);
             GameDataMgr.Instance.SociatyDataMgrAttr.allianceMemberList.Remove(memberData);
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_017"), (int)PB.ImType.PROMPT);
+            
             SociatyContentMember.Instance.UpdateMemberItems();
             OnCloseButtonClick();
         }

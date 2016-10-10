@@ -24,6 +24,10 @@ public class UIQuest : UIBase,
 
     private int tabIndex = -1;
     private int selIndex = 0;
+    public int TabIndex
+    {
+        get { return tabIndex; }
+    }
 
     private UIQuestInfo uiQuestInfo;
 

@@ -322,6 +322,7 @@ pet_list_option_property4,光属性,Light
 pet_list_option_property5,暗属性,Dark
 pet_detail,,
 pet_detail_left_detail_attr,详细属性,Details
+detail_title2,战斗属性,Battle Attributes
 pet_detail_left_skill,技能,Abilities
 pet_detail_left_advance,进化,Evolve
 pet_detail_roles,性格,roles
@@ -891,7 +892,7 @@ adventure_record_009,该宠物正在公会驻守，无法上阵哦,This monster 
 adventure_record_011,探险任务已完成,complete
 arrayselect_bp_001,综合战力,Team BP
 adventure_filter,筛选,Filter
-,,
+adventure_record_012,该宠物正在PVP防守，无法上阵哦,This monster is garrisoned in the PVP.
 summon_titlecoin,聚合,Gather
 summon_tipscoin,聚合获得物品或宠物,Gathering gives items or monsters
 summon_free,免费,Free
@@ -925,12 +926,13 @@ pvp_master2,大师二阶,Master Rank 2
 pvp_master1,大师一阶,Master Rank 1
 pvp_rank,排名  {0},Rank {0}
 pvp_notin,未进入排名,No ranking yet
-pvp_points,竞技积分  {0},Arena Points  {0}
-pvp_honorpoint,荣誉点  {0},Honor Points  {0}
+pvp_points,竞技积分  <color=#ffcc00>{0}</color>,Arena Points  <color=#ffcc00>{0}</color>
+pvp_points1,竞技积分,Arena Points
+pvp_honorpoint,荣誉点  <color=#ffcc00>{0}</color>,Honor Points  <color=#ffcc00>{0}</color>
 pvp_defense,防守阵容,Defense Team
 pvp_change,调整阵容,Edit Team
 pvp_pvpchoise,可竞技次数：{0}/10,Arena entries: {0}/10
-pvp_pvptime,（{0}后恢复1次）,({0} till 1 point)
+pvp_pvptime,（{0}:{1}:{2}后恢复1次）,({0}:{1}:{2} till 1 point)
 pvp_pipei,匹配对手,Matchmaking
 pvp_shop,竞技商店,Arena Store
 pvp_battlereward,竞技奖励,Arena Reward
@@ -970,6 +972,7 @@ pvp_rulesneirong,"1.竞技场中战斗需要消耗竞技点数，每次消耗1�
 8.竞技积分是评价玩家段位的唯一标准，当然，也是排行榜排名的唯一标准。
 9.竞技场每周周一凌晨1点都会根据玩家当时所在段位发放一次段位奖励，奖励通过邮件发放。
 10.竞技场中，每个赛季持续四周，赛季结束时，排名前100的玩家会获得排名奖励，奖励通过邮件发放，记得查收哦~
+11.竞技场前100名的排行数据每10分钟刷新一次。
 
 竞技场段位与竞技积分
 段位                       竞技积分
@@ -994,6 +997,7 @@ pvp_rulesneirong,"1.竞技场中战斗需要消耗竞技点数，每次消耗1�
 8. Arena Points are the standard for determining a player's Arena Title, as well as their Arena Ranking.
 9. Rewards based upon players' current Arena Titles will be sent via in-game mail each week on Monday at 1:00am.
 10. Each Arena season lasts for 4 weeks. After a season finishes, players ranking in the top 100 will receive a ranking reward via in-game mail. So remember to keep an eye out for that!
+11. The top 100 player rankings are updated every 10 minutes.
 
 Arena Points and Titles
 Title                       Arena Pts.
@@ -1037,3 +1041,6 @@ lose_guidetips5,提升宠物技能可以使宠物变得更强！,Increasing your
 lose_guidetips6,给宠物穿上装备，宠物会更强大。,Equip more equipment on your monsters to make them stronger.
 lose_guidetips7,打造装备能够提升装备属性，进而提升宠物实力。,Forging your equipment can improve equipment stats and increase your monster's power.
 lose_guidetips8,可以给蓝色及以上品质的装备镶嵌宝石，提升装备属性。,"Equipment that is blue grade or better can be embedded with gems, increasing its stats."
+setting_exit,退出,Exit
+setting_continue,继续战斗,Continue
+setting_exit_tips,确定要退出战斗吗？,Are you sure you want to quit?

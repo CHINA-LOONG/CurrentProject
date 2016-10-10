@@ -1,0 +1,141 @@
+**************************************************
+* jenkins发布与部署服务器配置与脚本（内网/公网） *
+* author: walker                                 *
+**************************************************
+
+java + ant + svn + jenkins
+ant脚本由eclipse导出，分为编译脚本和打包脚本。
+	编译脚本build.xml：eclipse--export--Ant Buildfiles--不勾选create target to compile project--finish
+	打包脚本buildGS.xml: eclipse--export--Runnable JAR file--勾选Extract required libraries into generated JAR--勾选Save as ANT script--finish
+jenkins使用系统root用户，避免ant和svn生成的一些文件权限不足，但是不知为何在jenkins的shell中还需sudo
+本地拷贝和远程拷贝都用rsync
+jenkins目录：/var/lib/jenkins。其中包括每个项目自己的工作目录
+
+====release=====================================================================================
+----jenkins.sh----------------------------------
+#!/bin/sh
+set -e
+
+srcPath="./Server/ServerCode/hawkjava/GameServer"
+destPath="/home/share/_server/release/GameServer"
+jarPath="./Server/Build"
+buildPath="./Server/Build/buildGS.xml"
+
+sudo ant -buildfile ${srcPath} cleanall
+sudo ant -buildfile ${srcPath} build
+sudo ant -buildfile ${buildPath}
+
+mv -f  ${jarPath}/GameServer.jar    ${destPath}
+cp -Rf ${srcPath}/cfg               ${destPath}
+cp -Rf ${srcPath}/lib               ${destPath}
+cp -Rf ${srcPath}/script            ${destPath}
+cp -Rf ${srcPath}/sysData           ${destPath}
+cp -Rf ${srcPath}/staticData        ${destPath}
+
+
+====inner deploy=================================================================================
+----jenkins.sh----------------------------------
+#!/bin/sh
+set -e
+
+OLD_BUILD_ID=$BUILD_ID
+BUILD_ID=dontKillMe
+
+cd /home/hs/runspace/GameServer_RD/jar
+sudo ./stop.sh
+sudo ./update.sh
+sudo ./run.sh
+
+BUILD_ID=$OLD_BUILD_ID
+
+
+----stop.sh----------------------------------------------------------------------------------
+#!/bin/sh
+
+pid=`ps aux | grep GameServer_RD.jar | grep -v grep | awk '{print $2}'`
+if [ -n "$pid" ]; then
+  echo 123 | sudo -S kill $pid
+fi
+
+
+----update.sh---------------------------------------------------------------------------------
+#!/bin/sh
+
+releasePath="/home/share/_server/release/GameServer"
+
+rsync -av --exclude=".*" ${releasePath}/* ./
+echo 123 | sudo chown -R hs:hs ./
+
+mv GameServer.jar GameServer_RD.jar
+
+sed -i 's/acceptorPort =.*/acceptorPort = 9596/' cfg/gs.cfg
+sed -i 's/dbConnUrl =.*/dbConnUrl = jdbc:mysql:\/\/192.168.199.122:3306\/game/' cfg/gs.cfg
+sed -i 's/serverId =.*/serverId = 2/' cfg/gs.cfg
+sed -i 's/reportHost =.*/reportHost = http:\/\/123.59.45.55:9001/' cfg/gs.cfg
+sed -i 's/httpAddr="[^"]*"/httpAddr="0.0.0.0:5140"/' script/script.xml
+sed -i 's/activityServerPort =.*/activityServerPort = 9902/' cfg/gs.cfg
+
+> out.log
+
+
+----run.sh------------------------------------------------------------------------------------
+#!/bin/sh
+
+nohup java -jar GameServer_RD.jar > out.log 2>&1 &
+
+
+====outer deploy===================================================================================
+----jenkins.sh--------------------------------------------------------------------------------
+#!/bin/sh
+set -e
+
+OLD_BUILD_ID=$BUILD_ID
+BUILD_ID=dontKillMe
+
+pub="ubuntu@123.59.45.55"
+
+rsync -av --exclude=".*" /home/share/_server/release/* ${pub}:/home/ubuntu/GameServer/release/GameServer
+ssh ${pub} "cd /home/ubuntu/GameServer ; ./deploy.sh"
+
+BUILD_ID=$OLD_BUILD_ID
+
+
+----stop.sh-----------------------------------------------------------------------------------------
+#!/bin/sh
+
+pid=`ps aux | grep GameServer.jar | grep -v grep | awk '{print $2}'`
+if [ -n "$pid" ]; then
+  echo CYMX1qfa | sudo -S kill $pid
+fi
+
+
+----update.sh---------------------------------------------------------------------------------------
+#!/bin/sh
+
+releasePath="/home/ubuntu/GameServer/release/GameServer"
+
+rsync -av --exclude=".*" ${releasePath}/* ./
+
+sed -i 's/acceptorPort =.*/acceptorPort = 9595/' cfg/gs.cfg
+sed -i 's/dbConnUrl =.*/dbConnUrl = jdbc:mysql:\/\/123.59.45.55:3306\/game/' cfg/gs.cfg
+sed -i 's/serverId =.*/serverId = 1/' cfg/gs.cfg
+sed -i 's/reportHost =.*/reportHost = http:\/\/123.59.45.55:9001/' cfg/gs.cfg
+sed -i 's/httpAddr="[^"]*"/httpAddr="0.0.0.0:5139"/' script/script.xml
+sed -i 's/activityServerPort =.*/activityServerPort = 9901/' cfg/gs.cfg
+
+> out.log
+
+
+----run.sh(注意头不同）------------------------------------------------------------------------------
+#!/bin/bash --login
+
+nohup java -jar GameServer.jar > out.log 2>&1 &
+
+
+----deploy.sh（远程直接调用该脚本）-----------------------------------------------------------------
+#!/bin/sh
+
+cd jar
+./stop.sh
+./update.sh
+./run.sh

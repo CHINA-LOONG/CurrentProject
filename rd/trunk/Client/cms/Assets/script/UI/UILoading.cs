@@ -2,6 +2,16 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+public enum LoadingType
+{ 
+    loadingDefault = 1,
+    loadingFb = 2,
+    loadingTrials = 3,
+    loadingTower = 4,
+    loadingGuild = 5,
+    loadingPvp = 6
+}
+
 public class UILoading : UIBase
 {
     public delegate IEnumerator LoadingFinishCallback();
@@ -21,7 +31,12 @@ public class UILoading : UIBase
     public GameObject player2lineup;
     public Text powerText1;
     public Text powerText2;
+    public Text contentName;
+    public Image contentImage;
+    public Vector3[] contentNameVec;
+    public Vector3[] contentImageVec;
     public GameObject pvploadingG;
+    public GameObject loadingContent;
     //-------------------------------------------------------------------------------------------
     public override void Init()
     {
@@ -71,13 +86,21 @@ public class UILoading : UIBase
         loadingProgress.fillAmount = ratio;
     }
     //---------------------------------------------------------------------------------------------
-    public void SetLoading(int loadingType = 1000)
+    public void SetLoading(LoadingType loadingType)
     {
-        LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData(loadingType);
-        int randomNum = Random.Range(0, loadingData.imageResource.Length);
-        loadingBackground.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingData.imageResource[randomNum]);
-        randomNum = Random.Range(0, loadingData.content.Length);
-        gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.content[randomNum]);
+        loadingContent.SetActive(true);
+        LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData((int)loadingType);
+        int randomNum = Random.Range(0, loadingData.loadingResource.Length);
+        Loadinglocation loadingLocation = StaticDataMgr.Instance.GetLoadinglocationData(loadingData.loadingResource[randomNum]);
+        contentName.text = StaticDataMgr.Instance.GetTextByID(loadingLocation.tips);
+
+        loadingBackground.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.background);
+        contentImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.asset);
+
+        contentImage.gameObject.transform.localPosition = contentImageVec[loadingLocation.location];
+        contentName.gameObject.transform.localPosition = contentNameVec[loadingLocation.location];
+        randomNum = Random.Range(0, loadingData.loadingTips.Length);
+        gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.loadingTips[randomNum]);
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()

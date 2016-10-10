@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Loading
+public class LoadingStaticData
 {
-    public int type;
-    public string content;
-    public string resource;
+    public int id;
+    public int scene;
+    public string tips;
+    public string picture;
 }
 
 public class LoadingData
 {
-    public string[] content;
-    public string[] imageResource;
+    public string[] loadingTips;
+    public string[] loadingResource;
+}
+public class Loadinglocation
+{
+    public int id;
+    public string picture;
+    public int location;
+    public string background;
+    public string tips;
+    public string asset;
 }

@@ -177,7 +177,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 满足条件，进入副本
 		if (false == isCurDataClear()) {
-			HawkLog.errPrintln("instance data is not empty when enter instance");
+			//HawkLog.errPrintln("instance data is not empty when enter instance");
 			clearCurData();
 		}
 		this.curType = Const.InstanceType.INSTANCE_STORY_VALUE;
@@ -667,7 +667,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		ConsumeItems consume = ConsumeItems.valueOf();
 		int mutiple = (int)Math.pow(2, resetTimes / resetCfg.getDoubleTimes());
 		int goldCost = mutiple * (resetCfg.getConsume() + resetTimes * resetCfg.getConsumeAdd());
-		consume.addGold(goldCost);
+		consume.addGold(1);
 
 		if (false == consume.checkConsume(player, hsCode)) {
 			return true;

@@ -134,6 +134,7 @@ public class UIAdjustBattleTeam : UIBase
         {
             uiBuild.uiAdjustBattleTeam = uiadust;
         }
+        AudioSystemMgr.Instance.PlayMusicByName("Entermusic");
     }
 
    public void FirstInit()
@@ -179,6 +180,15 @@ public class UIAdjustBattleTeam : UIBase
     {
         UnBindListener();
         isBattleClick = false;
+
+        if (InstanceMap.Instance!=null&&InstanceMap.Instance.gameObject.activeSelf)
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Instancemusic");
+        }
+        else
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
+        }
     }
 
 	void BindListener()

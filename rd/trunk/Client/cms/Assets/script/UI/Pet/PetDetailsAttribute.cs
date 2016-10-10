@@ -78,7 +78,7 @@ public class PetDetailsAttribute : PetDetailsRight
         textHP.text = ((int)curData.maxLife).ToString();
         textMagicATK.text = ((int)curData.magicAttack).ToString();
         textENG.text = ((int)curData.additionEnergy).ToString();
-        textCRate.text = (curData.antiCriticalRatio * 100).ToString("f1") + "%";
+        textCRate.text = (curData.criticalRatio * 100).ToString("f1") + "%";
         textCDMG.text = (curData.criticalDamageRatio * 100).ToString("f1") + "%";
         textAMNT.text = (curData.additionHealRatio * 100).ToString("f1") + "%";
     }

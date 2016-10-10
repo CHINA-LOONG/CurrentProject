@@ -68,7 +68,7 @@ public class PlayerPVPModule extends PlayerModule{
 			for (HSMonster monster : player.getPlayerData().getPVPDefenceEntity().getMonsterDefenceBuilder().getMonsterInfoList()) {
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monster.getMonsterId());
 				if (monsterEntity != null) {
-					monstersBuilder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntity, null));
+					monstersBuilder.addMonsterInfo(BuilderUtil.genCompleteMonsterBuilder(player, monsterEntity));
 				}
 			}
 		}
@@ -148,7 +148,7 @@ public class PlayerPVPModule extends PlayerModule{
 		for (int monsterId : protocol.getMonsterIdList()) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 			if (monsterEntity != null) {
-				monstersBuilder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntity, null));
+				monstersBuilder.addMonsterInfo(BuilderUtil.genCompleteMonsterBuilder(player, monsterEntity));
 			}
 			else {
 				sendError(HS.code.PVP_SET_DEFENCE_MONSTERS_C_VALUE, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
@@ -211,8 +211,8 @@ public class PlayerPVPModule extends PlayerModule{
 		for (PVPDefenceRecordEntity pvpDefenceRecordEntity : player.getPlayerData().getPVPDefenceRecordList()) {
 			PVPDefenceRecordData.Builder pvpDefenceRecordData = PVPDefenceRecordData.newBuilder();
 			pvpDefenceRecordData.setAttacker(pvpDefenceRecordEntity.getAttackerName());
-			pvpDefenceRecordData.setPoint(pvpDefenceRecordEntity.getPoint());
-			pvpDefenceRecordData.setGrade(pvpDefenceRecordEntity.getAttackerGrade());
+			pvpDefenceRecordData.setChangePoint(pvpDefenceRecordEntity.getChangePoint());
+			pvpDefenceRecordData.setPoint(pvpDefenceRecordEntity.getAttackerPoint());
 			pvpDefenceRecordData.setLevel(pvpDefenceRecordEntity.getAttackerLevel());
 			pvpDefenceRecordData.setResult(pvpDefenceRecordEntity.getResult());
 			

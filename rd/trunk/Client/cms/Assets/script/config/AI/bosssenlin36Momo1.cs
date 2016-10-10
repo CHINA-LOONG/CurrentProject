@@ -65,15 +65,13 @@ public class bosssenlin36Momo1 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Momo1wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Momo1_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosssenlin36Momo1wp02")
+		{
+			target.TriggerEvent("momo1_wp02dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

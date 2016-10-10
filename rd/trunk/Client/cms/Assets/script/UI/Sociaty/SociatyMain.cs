@@ -73,6 +73,14 @@ public class SociatyMain : UIBase, TabButtonDelegate
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
     //---------------------------------------------------------------------------------------------
+    public override void RefreshOnPreviousUIHide()
+    {
+       if(contentType == SociatyContenType.Infomation)
+        {
+            contentPages[(int)SociatyContenType.Infomation].RefreshUI();
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnTabButtonChanged(int index)
     {
        // if((int)contentType != index)

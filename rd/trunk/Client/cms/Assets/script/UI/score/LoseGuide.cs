@@ -51,10 +51,10 @@ public class LoseGuide : UIBase
         for (; i < guide.Length; i++)
         {       
             loseGuideData = guide[i].GetComponent<LoseGuideData>();
-            loseGuideData.loseTitle.text = StaticDataMgr.Instance.GetTextByID("lose_guide" + (randomNumList[i] + 1));
-            loseGuideData.loseHint.text = StaticDataMgr.Instance.GetTextByID("lose_guidetips" + (randomNumList[i] + 1));
-            loseGuideData.loseImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loseImage[randomNumList[i]]);
-            loseGuideData.loseType = randomNumList[i];
+            loseGuideData.loseTitle.text = StaticDataMgr.Instance.GetTextByID("lose_guide" + (level[randomNumList[i]] + 1));
+            loseGuideData.loseHint.text = StaticDataMgr.Instance.GetTextByID("lose_guidetips" + (level[randomNumList[i]] + 1));
+            loseGuideData.loseImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loseImage[level[randomNumList[i]]]);
+            loseGuideData.loseType = level[randomNumList[i]];
         }
     }
 }

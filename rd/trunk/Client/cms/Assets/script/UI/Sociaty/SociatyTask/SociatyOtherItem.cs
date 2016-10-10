@@ -91,7 +91,7 @@ public class SociatyOtherItem : MonoBehaviour
        if(leftSecond > 0)
         {
             hour = leftSecond / 3600;
-            minute = leftSecond / 60;
+            minute = (leftSecond%3600) / 60;
             second = leftSecond % 60;
         }
        else

@@ -10,6 +10,7 @@ public class EnemyUnitUI : MonoBehaviour
     public Image propertyImage;
     public ShakeUi shakeUi;
     public EnegyBarUI mEnergyBar;
+    public Image dazhaoImage;
 
     public BattleObject Unit
     {
@@ -60,6 +61,18 @@ public class EnemyUnitUI : MonoBehaviour
             propertyImage.sprite = psprite;
         }
 
+        if (dazhaoImage != null)
+        {
+            Spell dazhao = Unit.unit.GetDazhao();
+            if (dazhao != null)
+            {
+                string icon = dazhao.spellData.icon;
+                if (!string.IsNullOrEmpty(icon))
+                {
+                    dazhaoImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(icon) as Sprite;
+                }
+            }
+        }
 
         unitName.text = sUnit.unit.name;
         unitLevel.text = sUnit.unit.pbUnit.level.ToString();
@@ -89,13 +102,19 @@ public class EnemyUnitUI : MonoBehaviour
     //for pve
     public void SetEnergyBar(float fraction)
     {
-        mEnergyBar.value = fraction;
+        if (mEnergyBar != null)
+        {
+            mEnergyBar.value = fraction;
+        }
     }
     //---------------------------------------------------------------------------------------------
     //for pvp
     public void SetEnergy(int currentVital)
     {
-        mEnergyBar.value = Mathf.Clamp01(currentVital / (float)BattleConst.enegyMax);
+        if (mEnergyBar != null)
+        {
+            mEnergyBar.value = Mathf.Clamp01(currentVital / (float)BattleConst.enegyMax);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void RefreshPos()

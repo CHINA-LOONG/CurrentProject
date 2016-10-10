@@ -402,13 +402,10 @@ public class UIBattle : UIBase
 
     void Update()
     {
-        if (dazhaoTip.IsShow())
-        {
-			//dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)PhyDazhaoController.Instance.DazhaoLeftTime + "秒 剩余次数：" + PhyDazhaoController.Instance.DazhaoLeftCount;
-			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
-			                     PhyDazhaoController.Instance.DazhaoUseCount,
-			                     PhyDazhaoController.Instance.DazhaoAllCount);
-        }
+   //     if (dazhaoTip.IsShow())
+   //     {
+			//dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime);
+   //     }
 
         for (int i = mSpellNameList.Count - 1; i >= 0; i--)
         {
@@ -724,12 +721,14 @@ public class UIBattle : UIBase
     {
       //  dazhaoTip.gameObject.SetActive(true);
 		dazhaoTip.Show ();
+        dazhaoTip.SetTotalTime(PhyDazhaoController.Instance.DazhaoTotalTime);
     }
 
     void OnHideDazhaoTip()
     {
        // dazhaoTip.gameObject.SetActive(false);
 		dazhaoTip.Hide ();
+        dazhaoTip.SetTotalTime(0);
     }
 
 	//void OnChangeUIState(UiState uiState)

@@ -656,6 +656,7 @@ GameObject:
   - 4: {fileID: 460086}
   - 95: {fileID: 9552382}
   - 65: {fileID: 6547208}
+  - 114: {fileID: 11438156}
   m_Layer: 10
   m_Name: xgPanshen2@moxing
   m_TagString: Untagged
@@ -1992,6 +1993,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11438156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 103154}
+  mShadowProjectPos: {fileID: 144370}
 --- !u!137 &13745918
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -3,6 +3,11 @@
 state = 0 Add
 state = 1 Remove
 <Camera ani="" />
+特殊规则
+parent = “hook_001”父节点为触发者
+attach = “scene”
+parent = "0"仅在attach=“scene”时有意义，代表和触发者同阵营的aoe节点 
+parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营的aoe节点 
 -->
 <AniGroupList>
 	<AniList group="common">
@@ -967,7 +972,7 @@ state = 1 Remove
 		</Ani-->
 		<Ani id="magicMetalColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale2"/>
@@ -994,7 +999,7 @@ state = 1 Remove
 		</Ani-->
 		<Ani id="magicMetalColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale2"/>
@@ -1021,7 +1026,7 @@ state = 1 Remove
 		</Ani-->
 		<Ani id="magicMetalColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicMetalColumn" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="metale2"/>
@@ -1040,14 +1045,14 @@ state = 1 Remove
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<!--Ani id="magicPlantBallSlighte1" state="0" AniType="Persistent">
+		<Ani id="magicPlantBallSlighte1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle time="1" asset="magicPlantBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani-->
+		</Ani>
 		<Ani id="magicPlantBallSlighte2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1067,14 +1072,14 @@ state = 1 Remove
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<!--Ani id="magicPlantBallMediume1" state="0" AniType="Persistent">
+		<Ani id="magicPlantBallMediume1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle time="1" asset="magicPlantBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani-->
+		</Ani>
 		<Ani id="magicPlantBallMediume2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1094,14 +1099,14 @@ state = 1 Remove
 				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
-		<!--Ani id="magicPlantBallStronge1" state="0" AniType="Persistent">
+		<Ani id="magicPlantBallStronge1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1" asset="" bundle="effect/particle" parent="" attach="" locky=""/>
+				<Particle time="1" asset="magicPlantBallp" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name=""/>
 			</AudioList>
-		</Ani-->
+		</Ani>
 		<Ani id="magicPlantBallStronge2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicPlantBall" bundle="effect/particle" parent="" attach=""/>
@@ -1132,7 +1137,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicPlantColumnSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="magicPlantColumnp" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="magicPlantColumnMedium" state="0" AniType="Skill">
@@ -1156,7 +1161,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicPlantColumnMediume2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="magicPlantColumnp" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="magicPlantColumnStrong" state="0" AniType="Skill">
@@ -1180,7 +1185,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicPlantColumnStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="magicPlantColumnp" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 		</Ani>
 		<!--WaterBall-->
@@ -3873,23 +3878,23 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 	
-		<!--Ani id="ultHetong3e3" state="0" AniType="Damage">
+		<Ani id="ultHetong3e2" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="1" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="waterp2"/>
+				<Audio time="1" name="waterp2"/>
 			</AudioList>
 			<SpeedList>
 			</SpeedList>
-		</Ani-->
+		</Ani>
 		
 		<Ani id="ultHetong3e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicWaterBall" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="waterp2"/>
+				<Audio time="0" name="watere1"/>
 			</AudioList>
 			<SpeedList>
 			</SpeedList>
@@ -4430,6 +4435,28 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
+		<Ani id="psvLongnv3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="psvLongnv3e3" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffDefense" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		
 	</AniList>
 	<AniList group="xgMomo1">
 	
@@ -4820,7 +4847,7 @@ state = 1 Remove
 				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Amute31"/>
+				<Audio time="0" name="Amute1"/>
 			</AudioList>
 		</Ani>
 		
@@ -4847,7 +4874,7 @@ state = 1 Remove
 				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Amute31"/>
+				<Audio time="0" name="Amute1"/>
 			</AudioList>
 		</Ani>
 	</AniList>
@@ -5661,18 +5688,10 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossdajie17Zouyincao22e2" state="0" AniType="ParticleList">
-			<ParticleList>
-				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="1.5" name="plantp1"/>
-			</AudioList>
-		</Ani>
 		
 		<Ani id="bossdajie17Zouyincao22e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicPlantColumn" bundle="effect/particle" parent="" locky=""/>
+				<Particle time="0" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>
@@ -6342,7 +6361,7 @@ state = 1 Remove
 		
 		<Ani id="bossxiaoxiang28Muling22e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicPlantColumn" bundle="effect/particle" parent="" locky=""/>
+				<Particle time="0" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>
@@ -6386,18 +6405,10 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossxiaoxiang28Muling24e2" state="0" AniType="Persistent">
-			<ParticleList>
-				<Particle time="1.5" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<!--Audio time="1.5" name="plantp1"/-->
-			</AudioList>
-		</Ani>
 		
 		<Ani id="bossxiaoxiang28Muling24e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicPlantColumn" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="magicPlantColumnp" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>
@@ -6614,10 +6625,10 @@ state = 1 Remove
 		
 		<Ani id="bosssenlin33Luoxinfu51e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackEarthStab" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<!--Audio time="0" name="cut"/-->
+				<Audio time="0" name="stab"/>
 			</AudioList>
 		</Ani>
 		
@@ -6714,7 +6725,7 @@ state = 1 Remove
 		
 		<Ani id="bosssenlin34Amute31e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="attackWaterSmash" bundle="effect/particle" parent="" attach=""/>
+				<Particle asset="attackWaterSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -6781,7 +6792,7 @@ state = 1 Remove
 				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Amute31"/>
+				<Audio time="0" name="Amute1"/>
 			</AudioList>
 		</Ani>
 		
@@ -7262,9 +7273,12 @@ state = 1 Remove
 		</Ani>
 		<Ani id="Amute_state1to2" state="0" action_delay="0">
 			<WpStateList>
-				<Wp time="0.1" name="bossMinghe14Amutewp02" state="0"/>
+				<Wp time="0.1" name="bosssenlin34Amute3wp02" state="0"/>
 				<Wp time="0.1" name="bosssenlin34Amute3wp03" state="3"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="Mantuoluo2_state1to2" state="0" action_delay="2">
 			<WpStateList>
@@ -7328,6 +7342,9 @@ state = 1 Remove
 				<Wp time="0.1" name="bossxiaoxiang24Shuigui3wp04" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang24Shuigui3wp03" state="0"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="Shuigui3_state1to3" state="0" action_delay="0">
 			<WpStateList>
@@ -7335,6 +7352,9 @@ state = 1 Remove
 				<Wp time="0.1" name="bossxiaoxiang24Shuigui3wp02" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang24Shuigui3wp03" state="0"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="Kairuisi5_state1to2" state="0" action_delay="2">
 			<WpStateList>
@@ -7356,24 +7376,36 @@ state = 1 Remove
 				<Wp time="0.1" name="bossxiaoxiang22Xiyiren2wp03" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang22Xiyiren2wp02" state="0"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="xiaoren1_state3to1" state="0" action_delay="0">
 			<WpStateList>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp05" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp04" state="1"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="xiaoren2_state3to1" state="0" action_delay="0">
 			<WpStateList>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp07" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp06" state="1"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="xiaoren3_state3to1" state="0" action_delay="0">
 			<WpStateList>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp03" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang28Muling2wp02" state="1"/>
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
 		</Ani>
 		<Ani id="xiaoren_chongzhi" state="0" action_delay="0">
 			<WpStateList>
@@ -7388,6 +7420,313 @@ state = 1 Remove
 				<Wp time="1.1" name="bossxiaoxiang28Muling2wp07" state="0"/>
 			</WpStateList>
 		</Ani>
+		<Ani id="wendige2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="wendige2_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="mantuoluo2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="langren3_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="langren3_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="piying5_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="piying5_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="huapo2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="xiaochou3_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="zouyincao2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hongniu4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hongniu4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="daochengsizhong4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="huoniao4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="huoniao4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="huoniao4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="datiangou4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="datiangou4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="datiangou4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="saibulesi4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="saibulesi4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="saibulesi4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="tianshizhang4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="tianshizhang4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="tianshizhang4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="ifrit4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="ifrit4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="ifrit4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		<Ani id="hehuaisituosi4_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hehuaisituosi4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hehuaisituosi4_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hehuaisituosi4_wp05dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="longnv3_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="longnv3_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="luoxinfu5_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="luoxinfu5_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="luoxinfu5_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="luoxinfu5_wp05dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="xiaochou2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="momo1_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hapi1_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hapi1_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="meidusha2_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="meidusha2_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="meidusha2_wp04dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="meidusha2_wp05dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="wushi4_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="shuigui3_wp02dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="kairuisi5_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="longgongtongzi3_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		<Ani id="hetong2_wp03dead" state="0" action_delay="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.5" duration="2"/>
+			</SpeedList>
+		</Ani>
+		
+		
+		
 		
 	</AniList>
 </AniGroupList>

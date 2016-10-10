@@ -186,7 +186,7 @@ public class HawkNetStatistics extends HawkTickable {
 	public void onSendBytes(int bytes) {
 		totalSendBytes.addAndGet(bytes);
 	}
-
+	
 	/**
 	 * 通知压缩了多少字节
 	 * 
@@ -195,7 +195,6 @@ public class HawkNetStatistics extends HawkTickable {
 	public void onCompressBytes(int bytes) {
 		totolCompressBytes.addAndGet(bytes);
 	}
-
 	
 	/**
 	 * 通知接收到协议
@@ -253,7 +252,7 @@ public class HawkNetStatistics extends HawkTickable {
 	public long getTotalSendBytes() {
 		return totalSendBytes.get();
 	}
-
+	
 	/**
 	 * 获取总发送协议数
 	 * 
@@ -262,7 +261,7 @@ public class HawkNetStatistics extends HawkTickable {
 	public long getTotalSendProto() {
 		return totalSendProto.get();
 	}
-
+	
 	/**
 	 * 获取准备发送协议数
 	 * 

@@ -102,7 +102,7 @@ public class CoinButton : MonoBehaviour
         else if (coinType == CoinType.PvpHonor)
         {
             OnPvpHonorChanged(GameDataMgr.Instance.PlayerDataAttr.HonorAtr);
-            coinImg = "icon_jingjijifen";
+            coinImg = "icon_rongyudian";
             HideAddCoinButton(true);
         }
 		

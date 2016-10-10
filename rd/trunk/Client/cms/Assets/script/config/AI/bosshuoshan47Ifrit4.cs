@@ -82,15 +82,21 @@ public class bosshuoshan47Ifrit4 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Ifrit4wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Ifrit4_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosshuoshan47Ifrit4wp02")
+		{
+			target.TriggerEvent("ifrit4_wp02dead", Time.time, null);
+		}
+		if (args.wpID == "bosshuoshan47Ifrit4wp03")
+		{
+			target.TriggerEvent("ifrit4_wp02dead", Time.time, null);
+		}
+		if (args.wpID == "bosshuoshan47Ifrit4wp04")
+		{
+			target.TriggerEvent("ifrit4_wp02dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

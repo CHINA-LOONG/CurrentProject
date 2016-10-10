@@ -97,7 +97,7 @@ public class PvpAdjustBattleTeam : UIBase
 
     void InitOppenentInformation()
     {
-        enemyNameText.text = opponentData.name;
+        enemyNameText.text = string.Format("{0}  LVL{1}", opponentData.name,opponentData.level);
         if(listOpponentMonsterIcon.Count ==0)
         {
             for(int i =0;i<enemyMonsterIconParentArray.Length;++i)

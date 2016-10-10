@@ -98,7 +98,9 @@ public class StaticDataMgr : MonoBehaviour
     List<PvpRankRewardUiStaticData> listRankRewardUiStaticData = new List<PvpRankRewardUiStaticData>();
     List<PvpStageRewardStaticData> listStageRewardStaticData = new List<PvpStageRewardStaticData>();
     Dictionary<int, PvpStaticData> pvpStaticDataDic = new Dictionary<int, PvpStaticData>();
+    //loading
     Dictionary<int, LoadingData> loadingData = new Dictionary<int, LoadingData>();
+    Dictionary<string, Loadinglocation> loadinglocationData = new Dictionary<string, Loadinglocation>();
 
     public void Init()
     {
@@ -484,7 +486,7 @@ public class StaticDataMgr : MonoBehaviour
                 //if (string.IsNullOrEmpty(item.id))
                 //    continue;
 
-                if (!string.IsNullOrEmpty(item.id)&&speechData.ContainsKey(item.id))
+                if (!string.IsNullOrEmpty(item.id) && speechData.ContainsKey(item.id))
                 {
                     speechData[item.id].speechList.Add(item);
                     continue;
@@ -521,7 +523,7 @@ public class StaticDataMgr : MonoBehaviour
         {
             #region language
 
-            System.Action<LangStaticData,Dictionary<string,LangStaticData>> addElement = (item,dataDic)=>
+            System.Action<LangStaticData, Dictionary<string, LangStaticData>> addElement = (item, dataDic) =>
             {
                 if (string.IsNullOrEmpty(item.id))
                     return;
@@ -539,30 +541,30 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<LangStaticData>("languageUI");
             foreach (var item in data)
             {
-                addElement(item,langData);
+                addElement(item, langData);
             }
             var data2 = InitTable<LangStaticData>("languageStatic");
             foreach (var item in data2)
             {
                 addElement(item, langData);
             }
-            
+
             var data3 = InitTable<LangStaticData>("languageItemName");
             foreach (var item in data3)
             {
-                addElement(item,languageItemData);
+                addElement(item, languageItemData);
             }
 
             var data4 = InitTable<LangStaticData>("languagePetName");
             foreach (var item in data4)
             {
-                addElement(item,languagePetData);
+                addElement(item, languagePetData);
             }
 
             var data5 = InitTable<LangStaticData>("languageSkillName");
             foreach (var item in data5)
             {
-                addElement(item,languageSkillData);
+                addElement(item, languageSkillData);
             }
             #endregion
         }
@@ -588,7 +590,7 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
-        
+
         {
             #region assetMap
             var data = InitTable<AssetMapData>("assetMap");
@@ -726,7 +728,7 @@ public class StaticDataMgr : MonoBehaviour
                 List<SigninData> signinDataList;
                 foreach (var item in data)
                 {
-                    if (!signinDataDic.TryGetValue(item.month,out signinDataList))
+                    if (!signinDataDic.TryGetValue(item.month, out signinDataList))
                     {
                         signinDataList = new List<SigninData>();
                         signinDataDic.Add(item.month, signinDataList);
@@ -791,21 +793,21 @@ public class StaticDataMgr : MonoBehaviour
             }
         }
 
-		{
-			var	data = InitTable<GoldChargeData>("goldChange");
-			foreach( var item in data)
-			{
-				goldChargeDic.Add(item.id,item);
-			}
-		}
+        {
+            var data = InitTable<GoldChargeData>("goldChange");
+            foreach (var item in data)
+            {
+                goldChargeDic.Add(item.id, item);
+            }
+        }
 
         {
             var data = InitTable<FunctionData>("function");
-            foreach(var item in data)
+            foreach (var item in data)
             {
                 functionDic.Add(item.name, item);
 
-                if(functionLevelDic.ContainsKey(item.needlevel))
+                if (functionLevelDic.ContainsKey(item.needlevel))
                 {
                     functionLevelDic[item.needlevel].Add(item);
                 }
@@ -852,7 +854,7 @@ public class StaticDataMgr : MonoBehaviour
                 for (int i = 0; i < difficultyData.Count; i++)
                 {
                     holeData.difficultyList.Add(difficultyData[i].ToString());
-                } 
+                }
                 holeList.Add(item.id, holeData);
             }
 
@@ -869,7 +871,7 @@ public class StaticDataMgr : MonoBehaviour
             }
 
             sociatyTaskList = InitTable<SociatyTask>("sociatyTask");
-            
+
             var squest = InitTable<SociatyQuest>("sociatyQuest");
             foreach (var item in squest)
             {
@@ -888,7 +890,7 @@ public class StaticDataMgr : MonoBehaviour
             }
 
             var data2 = InitTable<PvpRankRewardUiStaticData>("pvpRankRewardUI");
-            foreach(var item in data2)
+            foreach (var item in data2)
             {
                 listRankRewardUiStaticData.Add(item);
             }
@@ -901,23 +903,20 @@ public class StaticDataMgr : MonoBehaviour
         }
         //loading    
         {
-            var data = InitTable<Loading>("loading");
-            ArrayList array;
-            ArrayList array1;
+            var data = InitTable<LoadingStaticData>("loading");
             foreach (var item in data)
             {
                 LoadingData loadingList = new LoadingData();
-                array = MiniJsonExtensions.arrayListFromJson(item.content);
-                array1 = MiniJsonExtensions.arrayListFromJson(item.resource);
-                loadingList.content = new string[array.Count];
-                loadingList.imageResource = new string[array1.Count];
-                for (int i = 0; i < array.Count; i++)
-                    loadingList.content[i] = array[i].ToString();
-                for (int i = 0; i < array1.Count; i++)
-                    loadingList.imageResource[i] = array1[i].ToString();
-                loadingData.Add(item.type, loadingList);
-                array.Clear();
-                array1.Clear();
+                loadingList.loadingTips = item.tips.Split(',');
+                loadingList.loadingResource = item.picture.Split(',');
+                loadingData.Add(item.scene, loadingList);
+            }
+        }
+        {
+            var data = InitTable<Loadinglocation>("loadinglocation");
+            foreach (var item in data)
+            {
+                loadinglocationData.Add(item.picture, item);
             }
         }
     }
@@ -1472,6 +1471,13 @@ public class StaticDataMgr : MonoBehaviour
     {
         LoadingData item = null;
         loadingData.TryGetValue(id, out item);
+        return item;
+    }
+
+    public Loadinglocation GetLoadinglocationData(string picture)
+    {
+        Loadinglocation item = null;
+        loadinglocationData.TryGetValue(picture, out item);
         return item;
     }
     #endregion

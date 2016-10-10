@@ -108,10 +108,13 @@ public class FoundMgr
             uibuild.uiQuest = UIMgr.Instance.OpenUI_(UIQuest.ViewName) as UIQuest;
             uibuild.uiQuest.Refresh(index);
         }
+        else if (uibuild.uiQuest.TabIndex != index)
+        {
+            uibuild.uiQuest.Refresh(index);
+        }
         else
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("record_item_found2"), (int)PB.ImType.PROMPT);
-            //(curUIPanel as UIDecompose).Refresh(index);
         }
     }
     /// <summary>

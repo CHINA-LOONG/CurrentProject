@@ -54,6 +54,7 @@ public class ObjectDataMgr : MonoBehaviour
         if (battleObjectList.TryGetValue(guid, out bo) == true)
         {
             Destroy(bo.aniControl);
+            Destroy(bo.mSimpleShadow);
             Destroy(bo);
 
             ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type != BattleObjectType.Scene);
@@ -85,6 +86,7 @@ public class ObjectDataMgr : MonoBehaviour
         bo.unit = unit;
         bo.originalScale = unitObject.transform.localScale.x;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
+        bo.mSimpleShadow = unitObject.GetComponent<SimpleShadow>();
 
 		//weakpoint
 		if (bo.camp == UnitCamp.Enemy) {

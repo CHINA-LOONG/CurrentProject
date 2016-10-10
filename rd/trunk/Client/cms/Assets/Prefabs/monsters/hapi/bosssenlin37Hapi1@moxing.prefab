@@ -146,6 +146,7 @@ GameObject:
   - 95: {fileID: 9558642}
   - 65: {fileID: 6503532}
   - 114: {fileID: 11460856}
+  - 114: {fileID: 11494240}
   m_Layer: 10
   m_Name: bosssenlin37Hapi1@moxing
   m_TagString: Untagged
@@ -1619,7 +1620,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162604}
-  m_LocalRotation: {x: -.541260302, y: -.315225363, z: .77840203, w: -.0419576094}
+  m_LocalRotation: {x: -.541260362, y: -.315225393, z: .77840215, w: -.0419576131}
   m_LocalPosition: {x: .00172027375, y: .00610455219, z: .0281320252}
   m_LocalScale: {x: .99999994, y: 1, z: 1}
   m_Children:
@@ -2282,6 +2283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11494240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 191484}
+  mShadowProjectPos: {fileID: 192734}
 --- !u!137 &13721738
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

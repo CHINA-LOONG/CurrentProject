@@ -11,7 +11,6 @@ import org.hawk.xid.HawkXID;
 import com.hawk.game.GsApp;
 import com.hawk.game.BILog.BIGuildFlowData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
-import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SociatyTaskCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.AllianceTeamEntity;
@@ -82,10 +81,10 @@ public class AllianceTaskRewardHandler implements HawkMsgHandler{
 			try {
 				if (objBase != null && objBase.isObjValid()) {
 					AwardItems reward = new AwardItems();
-					reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, taskCfg.getReward()).getRewardList());
+					reward.addItemInfos(taskCfg.getReward().getRewardList());
 					
 					if (teamEntity.getCaptain() == player.getId()) {
-						reward.addItemInfos(HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, taskCfg.getLeaderReward()).getRewardList());
+						reward.addItemInfos(taskCfg.getLeaderReward().getRewardList());
 					}
 					
 					reward.rewardTakeAffectAndPush(player, Action.GUILD_TASK_REWARD, protocol.getType());

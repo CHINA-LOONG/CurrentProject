@@ -212,6 +212,7 @@ public class LoginModule : ModuleBase
 	public override void OnEnter(object param)
 	{
 		BindListener();
+        AudioSystemMgr.Instance.PlayMusicByName("Loginmusic");
 	}
 	
 	public override void OnExecute()

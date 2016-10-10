@@ -118,7 +118,7 @@ public class ShopItem : MonoBehaviour
             case (int)PB.shopType.TOWERSHOP:
                 return "icon_towercoin";
             case (int)PB.shopType.PVPSHOP:
-                return "icon_jingjijifen";
+                return "icon_rongyudian";
             default:
                 return "";
         }

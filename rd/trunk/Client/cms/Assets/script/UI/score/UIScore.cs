@@ -197,6 +197,22 @@ public class UIScore : UIBase
             //UIIm.Instance.HideChat();
         }
         mBattleResult = battleResult;
+        switch (mBattleResult)
+        {
+            case 0:
+                AudioSystemMgr.Instance.PlayMusicByName("Victorymusic");
+                break;
+            case 1:
+                AudioSystemMgr.Instance.PlayMusicByName("Defeatmusic");
+                break;
+            case 2:
+                AudioSystemMgr.Instance.PlayMusicByName("Drawmusic");
+                break;
+            default:
+                Logger.LogError("战斗结果异常");
+                break;
+        }
+
         gameObject.SetActive(true);
         if (pvpResult != null)
         {

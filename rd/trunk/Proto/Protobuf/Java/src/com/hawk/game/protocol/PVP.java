@@ -864,15 +864,15 @@ public final class PVP {
      */
     int getResult();
 
-    // required int32 point = 2;
+    // required int32 changePoint = 2;
     /**
-     * <code>required int32 point = 2;</code>
+     * <code>required int32 changePoint = 2;</code>
      */
-    boolean hasPoint();
+    boolean hasChangePoint();
     /**
-     * <code>required int32 point = 2;</code>
+     * <code>required int32 changePoint = 2;</code>
      */
-    int getPoint();
+    int getChangePoint();
 
     // required string attacker = 3;
     /**
@@ -899,15 +899,15 @@ public final class PVP {
      */
     int getLevel();
 
-    // required int32 grade = 5;
+    // required int32 point = 5;
     /**
-     * <code>required int32 grade = 5;</code>
+     * <code>required int32 point = 5;</code>
      */
-    boolean hasGrade();
+    boolean hasPoint();
     /**
-     * <code>required int32 grade = 5;</code>
+     * <code>required int32 point = 5;</code>
      */
-    int getGrade();
+    int getPoint();
   }
   /**
    * Protobuf type {@code PVPDefenceRecordData}
@@ -967,7 +967,7 @@ public final class PVP {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              point_ = input.readInt32();
+              changePoint_ = input.readInt32();
               break;
             }
             case 26: {
@@ -982,7 +982,7 @@ public final class PVP {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              grade_ = input.readInt32();
+              point_ = input.readInt32();
               break;
             }
           }
@@ -1041,20 +1041,20 @@ public final class PVP {
       return result_;
     }
 
-    // required int32 point = 2;
-    public static final int POINT_FIELD_NUMBER = 2;
-    private int point_;
+    // required int32 changePoint = 2;
+    public static final int CHANGEPOINT_FIELD_NUMBER = 2;
+    private int changePoint_;
     /**
-     * <code>required int32 point = 2;</code>
+     * <code>required int32 changePoint = 2;</code>
      */
-    public boolean hasPoint() {
+    public boolean hasChangePoint() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 point = 2;</code>
+     * <code>required int32 changePoint = 2;</code>
      */
-    public int getPoint() {
-      return point_;
+    public int getChangePoint() {
+      return changePoint_;
     }
 
     // required string attacker = 3;
@@ -1116,28 +1116,28 @@ public final class PVP {
       return level_;
     }
 
-    // required int32 grade = 5;
-    public static final int GRADE_FIELD_NUMBER = 5;
-    private int grade_;
+    // required int32 point = 5;
+    public static final int POINT_FIELD_NUMBER = 5;
+    private int point_;
     /**
-     * <code>required int32 grade = 5;</code>
+     * <code>required int32 point = 5;</code>
      */
-    public boolean hasGrade() {
+    public boolean hasPoint() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 grade = 5;</code>
+     * <code>required int32 point = 5;</code>
      */
-    public int getGrade() {
-      return grade_;
+    public int getPoint() {
+      return point_;
     }
 
     private void initFields() {
       result_ = 0;
-      point_ = 0;
+      changePoint_ = 0;
       attacker_ = "";
       level_ = 0;
-      grade_ = 0;
+      point_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1148,7 +1148,7 @@ public final class PVP {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasPoint()) {
+      if (!hasChangePoint()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1160,7 +1160,7 @@ public final class PVP {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasGrade()) {
+      if (!hasPoint()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1175,7 +1175,7 @@ public final class PVP {
         output.writeInt32(1, result_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, point_);
+        output.writeInt32(2, changePoint_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getAttackerBytes());
@@ -1184,7 +1184,7 @@ public final class PVP {
         output.writeInt32(4, level_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, grade_);
+        output.writeInt32(5, point_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1201,7 +1201,7 @@ public final class PVP {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, point_);
+          .computeInt32Size(2, changePoint_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1213,7 +1213,7 @@ public final class PVP {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, grade_);
+          .computeInt32Size(5, point_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1333,13 +1333,13 @@ public final class PVP {
         super.clear();
         result_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        point_ = 0;
+        changePoint_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         attacker_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        grade_ = 0;
+        point_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -1376,7 +1376,7 @@ public final class PVP {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.point_ = point_;
+        result.changePoint_ = changePoint_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -1388,7 +1388,7 @@ public final class PVP {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.grade_ = grade_;
+        result.point_ = point_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1408,8 +1408,8 @@ public final class PVP {
         if (other.hasResult()) {
           setResult(other.getResult());
         }
-        if (other.hasPoint()) {
-          setPoint(other.getPoint());
+        if (other.hasChangePoint()) {
+          setChangePoint(other.getChangePoint());
         }
         if (other.hasAttacker()) {
           bitField0_ |= 0x00000004;
@@ -1419,8 +1419,8 @@ public final class PVP {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
-        if (other.hasGrade()) {
-          setGrade(other.getGrade());
+        if (other.hasPoint()) {
+          setPoint(other.getPoint());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1431,7 +1431,7 @@ public final class PVP {
           
           return false;
         }
-        if (!hasPoint()) {
+        if (!hasChangePoint()) {
           
           return false;
         }
@@ -1443,7 +1443,7 @@ public final class PVP {
           
           return false;
         }
-        if (!hasGrade()) {
+        if (!hasPoint()) {
           
           return false;
         }
@@ -1502,35 +1502,35 @@ public final class PVP {
         return this;
       }
 
-      // required int32 point = 2;
-      private int point_ ;
+      // required int32 changePoint = 2;
+      private int changePoint_ ;
       /**
-       * <code>required int32 point = 2;</code>
+       * <code>required int32 changePoint = 2;</code>
        */
-      public boolean hasPoint() {
+      public boolean hasChangePoint() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 point = 2;</code>
+       * <code>required int32 changePoint = 2;</code>
        */
-      public int getPoint() {
-        return point_;
+      public int getChangePoint() {
+        return changePoint_;
       }
       /**
-       * <code>required int32 point = 2;</code>
+       * <code>required int32 changePoint = 2;</code>
        */
-      public Builder setPoint(int value) {
+      public Builder setChangePoint(int value) {
         bitField0_ |= 0x00000002;
-        point_ = value;
+        changePoint_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 point = 2;</code>
+       * <code>required int32 changePoint = 2;</code>
        */
-      public Builder clearPoint() {
+      public Builder clearChangePoint() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        point_ = 0;
+        changePoint_ = 0;
         onChanged();
         return this;
       }
@@ -1642,35 +1642,35 @@ public final class PVP {
         return this;
       }
 
-      // required int32 grade = 5;
-      private int grade_ ;
+      // required int32 point = 5;
+      private int point_ ;
       /**
-       * <code>required int32 grade = 5;</code>
+       * <code>required int32 point = 5;</code>
        */
-      public boolean hasGrade() {
+      public boolean hasPoint() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 grade = 5;</code>
+       * <code>required int32 point = 5;</code>
        */
-      public int getGrade() {
-        return grade_;
+      public int getPoint() {
+        return point_;
       }
       /**
-       * <code>required int32 grade = 5;</code>
+       * <code>required int32 point = 5;</code>
        */
-      public Builder setGrade(int value) {
+      public Builder setPoint(int value) {
         bitField0_ |= 0x00000010;
-        grade_ = value;
+        point_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 grade = 5;</code>
+       * <code>required int32 point = 5;</code>
        */
-      public Builder clearGrade() {
+      public Builder clearPoint() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        grade_ = 0;
+        point_ = 0;
         onChanged();
         return this;
       }
@@ -9852,32 +9852,32 @@ public final class PVP {
       "\n\022Protocol/PVP.proto\032\024Protocol/Const.pro" +
       "to\032\026Protocol/Monster.proto\"Y\n\013PVPRankDat" +
       "a\022\014\n\004rank\030\001 \002(\005\022\020\n\010playerId\030\002 \002(\005\022\014\n\004nam" +
-      "e\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\022\r\n\005point\030\005 \002(\005\"e\n" +
-      "\024PVPDefenceRecordData\022\016\n\006result\030\001 \002(\005\022\r\n" +
-      "\005point\030\002 \002(\005\022\020\n\010attacker\030\003 \002(\t\022\r\n\005level\030" +
-      "\004 \002(\005\022\r\n\005grade\030\005 \002(\005\"+\n\026HSSetPVPDefenceM" +
-      "onster\022\021\n\tmonsterId\030\001 \003(\005\"\033\n\031HSSetPVPDef" +
-      "enceMonsterRet\"\030\n\026HSGetPVPDefenceMonster" +
-      "\".\n\031HSGetPVPDefenceMonsterRet\022\021\n\tmonster",
-      "Id\030\001 \003(\005\"\013\n\tHSPVPInfo\"N\n\014HSPVPInfoRet\022\020\n" +
-      "\010pvpPoint\030\001 \002(\005\022\017\n\007pvpRank\030\002 \002(\005\022\033\n\023mont" +
-      "hRewardTimeLeft\030\003 \002(\005\"(\n\020HSPVPMatchTarge" +
-      "t\022\024\n\014changeTarget\030\001 \002(\010\"\271\001\n\023HSPVPMatchTa" +
-      "rgetRet\022\020\n\010playerId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022" +
-      "\r\n\005level\030\003 \002(\005\022\014\n\004rank\030\004 \002(\005\022&\n\013defenceD" +
-      "ata\030\005 \002(\0132\021.HSMonsterDefence\022\017\n\007pvpTime\030" +
-      "\006 \002(\005\022\030\n\020pvpTimeBeginTime\030\007 \002(\005\022\022\n\nchang" +
-      "eTime\030\010 \002(\005\"\035\n\013HSPVPSettle\022\016\n\006result\030\001 \002" +
-      "(\005\"B\n\016HSPVPSettleRet\022\r\n\005point\030\001 \002(\005\022\014\n\004r",
-      "ank\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\tHSPVPR" +
-      "ank\"1\n\014HSPVPRankRet\022!\n\013pvpRankList\030\001 \003(\013" +
-      "2\014.PVPRankData\"$\n\020HSPVPRankDefence\022\020\n\010pl" +
-      "ayerId\030\001 \002(\005\"L\n\023HSPVPRankDefenceRet\022)\n\016m" +
-      "onsterDefence\030\001 \002(\0132\021.HSMonsterDefence\022\n" +
-      "\n\002bp\030\002 \002(\005\"\024\n\022HSPVPDefenceRecord\"L\n\025HSPV" +
-      "PDefenceRecordRet\0223\n\024pvpDefenceRecordLis" +
-      "t\030\001 \003(\0132\025.PVPDefenceRecordDataB\030\n\026com.ha" +
-      "wk.game.protocol"
+      "e\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\022\r\n\005point\030\005 \002(\005\"k\n" +
+      "\024PVPDefenceRecordData\022\016\n\006result\030\001 \002(\005\022\023\n" +
+      "\013changePoint\030\002 \002(\005\022\020\n\010attacker\030\003 \002(\t\022\r\n\005" +
+      "level\030\004 \002(\005\022\r\n\005point\030\005 \002(\005\"+\n\026HSSetPVPDe" +
+      "fenceMonster\022\021\n\tmonsterId\030\001 \003(\005\"\033\n\031HSSet" +
+      "PVPDefenceMonsterRet\"\030\n\026HSGetPVPDefenceM" +
+      "onster\".\n\031HSGetPVPDefenceMonsterRet\022\021\n\tm",
+      "onsterId\030\001 \003(\005\"\013\n\tHSPVPInfo\"N\n\014HSPVPInfo" +
+      "Ret\022\020\n\010pvpPoint\030\001 \002(\005\022\017\n\007pvpRank\030\002 \002(\005\022\033" +
+      "\n\023monthRewardTimeLeft\030\003 \002(\005\"(\n\020HSPVPMatc" +
+      "hTarget\022\024\n\014changeTarget\030\001 \002(\010\"\271\001\n\023HSPVPM" +
+      "atchTargetRet\022\020\n\010playerId\030\001 \002(\005\022\014\n\004name\030" +
+      "\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\014\n\004rank\030\004 \002(\005\022&\n\013de" +
+      "fenceData\030\005 \002(\0132\021.HSMonsterDefence\022\017\n\007pv" +
+      "pTime\030\006 \002(\005\022\030\n\020pvpTimeBeginTime\030\007 \002(\005\022\022\n" +
+      "\nchangeTime\030\010 \002(\005\"\035\n\013HSPVPSettle\022\016\n\006resu" +
+      "lt\030\001 \002(\005\"B\n\016HSPVPSettleRet\022\r\n\005point\030\001 \002(",
+      "\005\022\014\n\004rank\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\t" +
+      "HSPVPRank\"1\n\014HSPVPRankRet\022!\n\013pvpRankList" +
+      "\030\001 \003(\0132\014.PVPRankData\"$\n\020HSPVPRankDefence" +
+      "\022\020\n\010playerId\030\001 \002(\005\"L\n\023HSPVPRankDefenceRe" +
+      "t\022)\n\016monsterDefence\030\001 \002(\0132\021.HSMonsterDef" +
+      "ence\022\n\n\002bp\030\002 \002(\005\"\024\n\022HSPVPDefenceRecord\"L" +
+      "\n\025HSPVPDefenceRecordRet\0223\n\024pvpDefenceRec" +
+      "ordList\030\001 \003(\0132\025.PVPDefenceRecordDataB\030\n\026" +
+      "com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9895,7 +9895,7 @@ public final class PVP {
           internal_static_PVPDefenceRecordData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PVPDefenceRecordData_descriptor,
-              new java.lang.String[] { "Result", "Point", "Attacker", "Level", "Grade", });
+              new java.lang.String[] { "Result", "ChangePoint", "Attacker", "Level", "Point", });
           internal_static_HSSetPVPDefenceMonster_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSSetPVPDefenceMonster_fieldAccessorTable = new

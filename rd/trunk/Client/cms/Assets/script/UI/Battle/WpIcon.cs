@@ -42,6 +42,7 @@ public class WpIcon : MonoBehaviour
     public  void    RefreshWithWp(WeakPointRuntimeData wpRealData)
     {
         this.wpRealData = wpRealData;
+        iconImage.transform.localScale = new Vector3(wpRealData.staticData.scaleX, wpRealData.staticData.scaleY, 1);
         progressBar.gameObject.SetActive(false);
         deadMask.gameObject.SetActive(false);
 
@@ -98,13 +99,15 @@ public class WpIcon : MonoBehaviour
 
     public  void    ShowoffIcon(bool showoff)
     {
+        float scaleX = wpRealData.staticData.scaleX;
+        float scaleY = wpRealData.staticData.scaleY;
         if(showoff)
         {
-            iconImage.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            iconImage.transform.localScale = new Vector3(1.2f*scaleX , 1.2f * scaleY, 1.2f);
         }
         else
         {
-            iconImage.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            iconImage.transform.localScale = new Vector3(1.0f*scaleX, 1.0f*scaleY, 1.0f);
         }
     }
 

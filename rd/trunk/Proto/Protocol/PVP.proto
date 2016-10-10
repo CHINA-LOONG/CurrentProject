@@ -15,10 +15,10 @@ message PVPRankData
 message PVPDefenceRecordData
 {
 	required int32 result = 1;
-	required int32 point = 2;
+	required int32 changePoint = 2;
 	required string attacker = 3;
 	required int32 level = 4;
-	required int32 grade = 5;
+	required int32 point = 5;
 }
 
 // protocol-----------------------------------------------------

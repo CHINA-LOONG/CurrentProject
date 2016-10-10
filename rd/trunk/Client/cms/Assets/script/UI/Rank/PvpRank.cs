@@ -24,6 +24,15 @@ public class PvpRank : MonoBehaviour, IScrollView
 
     private List<PB.PVPRankData> listPvpRankData = new List<PB.PVPRankData>();
 
+    void    Start()
+    {
+        titlesText[0].text = StaticDataMgr.Instance.GetTextByID("pvp_paiming");
+        titlesText[1].text = StaticDataMgr.Instance.GetTextByID("pvp_playername");
+        titlesText[2].text = StaticDataMgr.Instance.GetTextByID("sociaty_level");
+        titlesText[3].text = StaticDataMgr.Instance.GetTextByID("pvp_duanwei");
+        titlesText[4].text = StaticDataMgr.Instance.GetTextByID("pvp_points1");
+    }
+
     public void RequestPvpRank()
     {
         GameDataMgr.Instance.PvpDataMgrAttr.RequestPvpRank(OnRequestPvpRankFinished);
@@ -42,6 +51,8 @@ public class PvpRank : MonoBehaviour, IScrollView
         listPvpRankData.Clear();
         listPvpRankData.AddRange(msgRet.pvpRankList);
         scrollView.InitContentSize(listPvpRankData.Count, this, true);
+        ScrollRect srt = scrollView.GetComponent<ScrollRect>();
+        srt.normalizedPosition = Vector2.one;
     }
     #region IScrollView
     public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)

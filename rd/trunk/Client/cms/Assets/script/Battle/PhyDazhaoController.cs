@@ -10,6 +10,11 @@ public class PhyDazhaoController : MonoBehaviour
 	int	dazhaoUseCount = 0;
 	int dazhaoFinishCount =0;
 	int dazhaoLeftTime =0;
+    int dazhaoTotalTime = 0;
+    public int DazhaoTotalTime
+    {
+        get { return dazhaoTotalTime; }
+    }
 	float dazhaoStartTime = 0;
 
 	//DazhaoExitCheck  dazhaoExitCheck = null;
@@ -129,11 +134,12 @@ public class PhyDazhaoController : MonoBehaviour
 	{
 		dazhaoState = DazhaoState.Start;
 		dazhaoStartTime = Time.time;
-		GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
 		if (dazhaoSpell != null)
 		{
 			dazhaoLeftTime = dazhaoSpell.spellData.channelTime;
-			StopCoroutine("LeftTimeCo");
+            dazhaoTotalTime = dazhaoLeftTime;
+            GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
+            StopCoroutine("LeftTimeCo");
 			StartCoroutine("LeftTimeCo");
 		}
 	}
@@ -248,7 +254,7 @@ public class PhyDazhaoController : MonoBehaviour
 			return;
 		}
 
-		if (DazhaoLeftTime < 1.0f)
+		if (DazhaoLeftTime < 1)
 		{
 			DazhaoFinished();
 		}
@@ -323,7 +329,7 @@ public class PhyDazhaoController : MonoBehaviour
 		}
 	}
 
-	public float DazhaoLeftTime
+	public int DazhaoLeftTime
 	{
 		get 
 		{

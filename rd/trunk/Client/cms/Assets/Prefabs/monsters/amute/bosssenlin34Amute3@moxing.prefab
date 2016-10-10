@@ -605,6 +605,7 @@ GameObject:
   - 4: {fileID: 442618}
   - 95: {fileID: 9520376}
   - 114: {fileID: 11422218}
+  - 114: {fileID: 11446036}
   m_Layer: 10
   m_Name: bosssenlin34Amute3@moxing
   m_TagString: Untagged
@@ -2103,6 +2104,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11446036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 124260}
+  mShadowProjectPos: {fileID: 153878}
 --- !u!137 &13725216
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -17,7 +17,8 @@ public enum LimitsType
     shopLimits = 8,//普通商店
     changePetLimits = 6,//换宠
     automaticFightLimits = 6,//自动战斗
-    sweepLimits = 8//扫荡
+    sweepOneLimits = 8,//单次扫荡
+    sweepManyLimits = 0//多次扫荡
 }
 
 public class LevelLimits

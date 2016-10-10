@@ -105,7 +105,7 @@ public class PvpDataMgr : MonoBehaviour
                 }
                 else
                 {
-                    if (selfPvpPoint <= subData.point)
+                    if (point <= subData.point)
                     {
                         return i;
                     }

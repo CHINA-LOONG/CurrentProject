@@ -69,15 +69,13 @@ public class bossxiaoxiang25Kairuisi5 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossxiaoxiang25Kairuisi5wp03" && jishu==0)
-	//    {
-	//		target.TriggerEvent("Kairuisi5_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(3.0f);
-	//		jishu ++;
-	//   }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bossxiaoxiang25Kairuisi5wp03")
+		{
+			target.TriggerEvent("kairuisi5_wp03dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

@@ -190,15 +190,15 @@ public class SociatyContentOther : SociatyContentBase
         AllianceInfoItem itemUi = null;
         ResetCacheItem();
 
-        for(int i =0;i<listAllianceInfo.Count;++i)
-        {
-            var subAlliance = listAllianceInfo[i];
-            if(subAlliance.id == GameDataMgr.Instance.SociatyDataMgrAttr.allianceID)
-            {
-                listAllianceInfo.Remove(subAlliance);
-                break;
-            }
-        }
+        //for(int i =0;i<listAllianceInfo.Count;++i)
+        //{
+        //    var subAlliance = listAllianceInfo[i];
+        //    if(subAlliance.id == GameDataMgr.Instance.SociatyDataMgrAttr.allianceID)
+        //    {
+        //        listAllianceInfo.Remove(subAlliance);
+        //        break;
+        //    }
+        //}
 
         for (int i = 0; i < listAllianceInfo.Count; ++i)
         {

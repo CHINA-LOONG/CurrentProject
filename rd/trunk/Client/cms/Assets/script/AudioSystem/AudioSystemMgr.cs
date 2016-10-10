@@ -279,6 +279,18 @@ public class AudioSystemMgr : MonoBehaviour {
         {
             Logger.LogError("Can not found ClipId:" + clipName);
         }
+        if (AudioMusic.clip != null && AudioMusic.clip.name == clipName)
+        {
+            if (AudioMusic.isPlaying)
+            {
+                return;
+            }
+            else
+            {
+                AudioMusic.Play();
+                return;
+            }
+        }
         AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
         if (clip == null)
         {

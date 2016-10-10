@@ -231,7 +231,7 @@ public class GameUnit : IComparable
                         }
                         else
                         {
-                            args.fraction = ((float)(attackCount - dazhaoList[i])) / (dazhaoList[i] - dazhaoList[i - 1]);
+                            args.fraction = ((float)(attackCount - dazhaoList[i - 1])) / (dazhaoList[i] - dazhaoList[i - 1]);
                         }
 
                         break;

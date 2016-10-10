@@ -67,15 +67,21 @@ public class bosshuoshan44Datiangou4 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Datiangou4wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Datiangou4_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosshuoshan44Datiangou4wp02")
+		{
+			target.TriggerEvent("datiangou4_wp02dead", Time.time, null);
+		}
+		if (args.wpID == "bosshuoshan44Datiangou4wp03")
+		{
+			target.TriggerEvent("datiangou4_wp03dead", Time.time, null);
+		}
+		if (args.wpID == "bosshuoshan44Datiangou4wp04")
+		{
+			target.TriggerEvent("datiangou4_wp04dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

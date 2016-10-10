@@ -591,6 +591,48 @@ public class BattleController : MonoBehaviour
         //curInstanceParam = null;
     }
     //---------------------------------------------------------------------------------------------
+    public GameObject GetAoeNode(UnitCamp curCamp, UnitCamp targetCamp)
+    {
+        if (curBattleScene == null)
+        {
+            Logger.LogError("battle scene is null");
+            return GameMain.Instance.gameObject;
+        }
+        GameObject posParent = GetPositionRoot();
+
+        string aoeNodeName = null;
+        if (curCamp == UnitCamp.Player)
+        {
+            if (targetCamp == UnitCamp.Player)
+            {
+                aoeNodeName = "aoe_player";
+            }
+            else
+            {
+                aoeNodeName = "aoe_enemy";
+            }
+        }
+        else
+        {
+            if (targetCamp == UnitCamp.Player)
+            {
+                aoeNodeName = "aoe_enemy";
+            }
+            else
+            {
+                aoeNodeName = "aoe_player";
+            }
+        }
+
+        GameObject aoeNode = Util.FindChildByName(posParent, aoeNodeName);
+        if (aoeNode != null)
+        {
+            return aoeNode;
+        }
+
+        return GameMain.Instance.gameObject;
+    }
+    //---------------------------------------------------------------------------------------------
     public GameObject GetSlotNode(UnitCamp camp, int slotID, bool isBoss)
     {
         if (curBattleScene == null)
@@ -618,13 +660,13 @@ public class BattleController : MonoBehaviour
         GameObject slotNode = Util.FindChildByName(posParent, nodeName);
         if (slotNode != null)
         {
-            string testName = slotNode.name;
             return slotNode;
         }
 
         return GameMain.Instance.gameObject;
     }
     //---------------------------------------------------------------------------------------------
+    //TODO: only need get once every battle level
     public GameObject GetPositionRoot()
     {
         GameObject posParent = Util.FindChildByName(curBattleScene.gameObject, "battlePosition" + curProcessIndex.ToString());

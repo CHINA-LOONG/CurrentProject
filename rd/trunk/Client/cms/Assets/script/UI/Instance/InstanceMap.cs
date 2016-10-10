@@ -46,6 +46,7 @@ public class InstanceMap : UIBase
         }
         RefreshChapterButtons();
         OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+        AudioSystemMgr.Instance.PlayMusicByName("Instancemusic");
     }
     public override void Clean()
     {
@@ -241,4 +242,17 @@ public class InstanceMap : UIBase
     //{
     //    yield break;
     //}
+    
+    void OnDisable()
+    {
+        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild != null && (uiBuild.uiAdjustBattleTeam != null && uiBuild.uiAdjustBattleTeam.gameObject.activeSelf))
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Entermusic");
+        }
+        else
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
+        }
+    }
 }

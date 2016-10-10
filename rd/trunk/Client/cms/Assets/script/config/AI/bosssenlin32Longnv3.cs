@@ -50,15 +50,17 @@ public class bosssenlin32Longnv3 : BossAi {
     //---------------------------------------------------------------------------------------------
     
     //---------------------------------------------------------------------------------------------
-	// public override void OnWpDead(WeakPointDeadArgs args)
-	//{
-	//	BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-	//	if (args.wpID == "bossMinghe14Longnv3wp03" && jishu==0)
-	//  {
-	//target.TriggerEvent("Longnv3_state1to2", Time.time, null);
-	//		BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-	//		jishu ++;
-	//  }
-	//}
+	public override void OnWpDead(WeakPointDeadArgs args)
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+		if (args.wpID == "bosssenlin31Longnv3wp03")
+		{
+			target.TriggerEvent("longnv3_wp03dead", Time.time, null);
+		}
+		if (args.wpID == "bosssenlin31Longnv3wp04")
+		{
+			target.TriggerEvent("longnv3_wp04dead", Time.time, null);
+		}
+	}
 	//---------------------------------------------------------------------------------------------
 }

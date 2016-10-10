@@ -150,4 +150,5 @@ public class BattleConst
     //public const int adventureTime_3 = 12;
 
     public const float sameAudioClipInterval = 0.05f; //50ms
+    public const float shadowDistanceFromFloor = 0.01f;
 }

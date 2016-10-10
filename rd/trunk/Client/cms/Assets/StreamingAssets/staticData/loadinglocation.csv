@@ -1,0 +1,5 @@
+#NUM,TEXT,NUM,TEXT,TEXT,TEXT
+id,picture,location,background,tips,asset
+id,展示内容,坐标组编号,背景,提示文字,展示内容资源
+1,Q,1,denglu_bg1,aaa,baojiditu
+2,S,2,tongyong_bg_1,bbb,duiju_bossditu

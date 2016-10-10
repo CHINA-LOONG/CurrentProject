@@ -41,6 +41,7 @@ GameObject:
   - 95: {fileID: 9520646}
   - 114: {fileID: 11489606}
   - 114: {fileID: 11492406}
+  - 114: {fileID: 11402172}
   m_Layer: 10
   m_Name: bossdajie17Zouyincao2@moxing
   m_TagString: Untagged
@@ -781,6 +782,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 465166}
   - 137: {fileID: 13715470}
+  - 114: {fileID: 11495578}
   m_Layer: 10
   m_Name: mesh_trumpet
   m_TagString: Untagged
@@ -1737,6 +1739,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11402172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 160678}
+  mShadowProjectPos: {fileID: 195542}
 --- !u!114 &11489606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1760,6 +1775,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11495578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 0d93273eb1b3795469cb6560f5e4188b, type: 2}
 --- !u!137 &13715470
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

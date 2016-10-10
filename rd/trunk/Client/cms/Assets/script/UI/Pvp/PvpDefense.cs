@@ -62,6 +62,7 @@ public class PvpDefense : UIBase
         titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_defense");
         bpLabelText.text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
         myPetLabelText.text = StaticDataMgr.Instance.GetTextByID("instance_wofangzhenrong");
+        UIUtil.SetButtonTitle(saveButton.transform, StaticDataMgr.Instance.GetTextByID("pvp_save"));
     }
     void OnPositionChanged()
     {

@@ -229,6 +229,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 493698}
   - 137: {fileID: 13758318}
+  - 114: {fileID: 11488796}
   m_Layer: 10
   m_Name: mesh_ball
   m_TagString: Untagged
@@ -383,6 +384,7 @@ GameObject:
   - 65: {fileID: 6517024}
   - 114: {fileID: 11475830}
   - 114: {fileID: 11464330}
+  - 114: {fileID: 11474588}
   m_Layer: 10
   m_Name: bossxiaoxiang21Wushi4@moxing
   m_TagString: Untagged
@@ -1332,6 +1334,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11474588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 123224}
+  mShadowProjectPos: {fileID: 100294}
 --- !u!114 &11475830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1344,6 +1359,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11488796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 26a42fbc85f7c514e90fa1ba1cff78e8, type: 2}
 --- !u!137 &13749098
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

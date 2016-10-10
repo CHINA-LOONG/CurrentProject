@@ -485,7 +485,7 @@ public class PVPManager extends HawkAppObj {
 		
 		int changePoint = calculatePVPPoint(selfPoint, targetPoint, pvpCfg, result);
 		changePoolStage(pvpRankEntity, changePoint);
-		pvpRankEntity.setPoint(pvpRankEntity.getPoint() + changePoint);
+		pvpRankEntity.setPoint(pvpRankEntity.getPoint() + changePoint > 0 ? pvpRankEntity.getPoint() + changePoint : 0);
 		pvpRankEntity.notifyUpdate(true);
 		reRank(pvpRankEntity);
 		
@@ -498,9 +498,9 @@ public class PVPManager extends HawkAppObj {
 		
 		PVPDefenceRecordEntity pvpDefenceRecordEntity = new PVPDefenceRecordEntity();
 		pvpDefenceRecordEntity.setPlayerId(targetId);
-		pvpDefenceRecordEntity.setPoint(-changePoint);
+		pvpDefenceRecordEntity.setChangePoint(-changePoint);
 		pvpDefenceRecordEntity.setResult(Const.PvpResult.NUM_VALUE - result);
-		pvpDefenceRecordEntity.setAttackerGrade(pvpCfg.getStage());
+		pvpDefenceRecordEntity.setAttackerPoint(pvpRankEntity.getPoint());
 		pvpDefenceRecordEntity.setAttackerName(pvpRankEntity.getName());
 		pvpDefenceRecordEntity.setAttackerLevel(pvpRankEntity.getLevel());
 		pvpDefenceRecordEntity.notifyCreate();
@@ -511,7 +511,7 @@ public class PVPManager extends HawkAppObj {
 		
 		if (targetRankEntity != null) {
 			changePoolStage(targetRankEntity, -changePoint);
-			targetRankEntity.setPoint(targetRankEntity.getPoint() - changePoint);
+			targetRankEntity.setPoint(targetRankEntity.getPoint() - changePoint > 0 ? targetRankEntity.getPoint() - changePoint : 0);
 			targetRankEntity.notifyUpdate(true);
 			reRank(targetRankEntity);
 		}
