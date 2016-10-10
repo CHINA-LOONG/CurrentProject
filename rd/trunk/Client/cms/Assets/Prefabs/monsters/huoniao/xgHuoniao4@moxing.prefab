@@ -868,6 +868,7 @@ GameObject:
   - 4: {fileID: 475278}
   - 95: {fileID: 9544328}
   - 65: {fileID: 6538378}
+  - 114: {fileID: 11448822}
   m_Layer: 0
   m_Name: xgHuoniao4@moxing
   m_TagString: Untagged
@@ -1065,6 +1066,21 @@ GameObject:
   - 4: {fileID: 490760}
   m_Layer: 0
   m_Name: Bip001 L Toe01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &186104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 440902}
+  m_Layer: 0
+  m_Name: shadowp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1558,6 +1574,18 @@ Transform:
   - {fileID: 488798}
   m_Father: {fileID: 423300}
   m_RootOrder: 0
+--- !u!4 &440902
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475278}
+  m_RootOrder: 7
 --- !u!4 &441288
 Transform:
   m_ObjectHideFlags: 1
@@ -1876,6 +1904,7 @@ Transform:
   - {fileID: 496886}
   - {fileID: 433868}
   - {fileID: 409510}
+  - {fileID: 440902}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &476632
@@ -2162,6 +2191,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11448822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 469948}
+  mShadowProjectPos: {fileID: 440902}
 --- !u!137 &13724964
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -121,11 +121,11 @@ public class EffectDamage : Effect
                 float damageRatio = 1.0f;
                 float randKey = UnityEngine.Random.Range(0.0f, 1.0f);
                 //暴击率 = 暴击常数 + 施法者暴击率 - 目标抗暴
-                isCritical = randKey <= (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
+                isCritical = randKey <= (caster.criticalRatio - target.antiCriticalRatio);
                 if (isCritical)
                 {
-                    //暴击加成 =   暴击加成常数 + 附加暴击加成
-                    damageRatio = SpellConst.criticalDamgeRatio + caster.criticalDamageRatio;
+                    //暴击加成 =   暴击加成常数 + 附加暴击加成(常数已经包括了)
+                    damageRatio = caster.criticalDamageRatio;
                 }
 
                 //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)

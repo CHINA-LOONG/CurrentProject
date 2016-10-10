@@ -25,6 +25,8 @@ public class PetSwitchPage : MonoBehaviour
             var itemTrans = item.GetComponent<RectTransform>();
             //itemTrans.anchoredPosition += new Vector2(100 * i, 0);
             var com = item.GetComponent<PetSwitchItem>();
+            if (i > 0)
+                com.InverseX();
 
             items.Add(com);
         }

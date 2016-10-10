@@ -70,6 +70,7 @@ GameObject:
   - 4: {fileID: 458944}
   - 95: {fileID: 9561302}
   - 65: {fileID: 6556570}
+  - 114: {fileID: 11424446}
   m_Layer: 0
   m_Name: xgDaochengsizhong4@moxing
   m_TagString: Untagged
@@ -207,6 +208,21 @@ GameObject:
   - 4: {fileID: 420950}
   m_Layer: 0
   m_Name: wp_head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &119506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414680}
+  m_Layer: 0
+  m_Name: shadowp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,6 +1164,18 @@ Transform:
   - {fileID: 480394}
   m_Father: {fileID: 419710}
   m_RootOrder: 0
+--- !u!4 &414680
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 458944}
+  m_RootOrder: 7
 --- !u!4 &415630
 Transform:
   m_ObjectHideFlags: 1
@@ -1537,6 +1565,7 @@ Transform:
   - {fileID: 419710}
   - {fileID: 406444}
   - {fileID: 447902}
+  - {fileID: 414680}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &459092
@@ -1909,6 +1938,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11424446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 499548}
+  mShadowProjectPos: {fileID: 414680}
 --- !u!137 &13719038
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

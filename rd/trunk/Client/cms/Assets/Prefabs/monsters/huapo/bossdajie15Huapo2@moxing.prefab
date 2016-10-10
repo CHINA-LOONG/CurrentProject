@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414602}
+  m_Layer: 10
+  m_Name: shadowp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &101380
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +989,7 @@ Transform:
   - {fileID: 451060}
   - {fileID: 436206}
   - {fileID: 437706}
+  - {fileID: 414602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &414418
@@ -989,6 +1005,18 @@ Transform:
   - {fileID: 426260}
   m_Father: {fileID: 485228}
   m_RootOrder: 0
+--- !u!4 &414602
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 411710}
+  m_RootOrder: 5
 --- !u!4 &415228
 Transform:
   m_ObjectHideFlags: 1
@@ -1751,8 +1779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShadowPos: {fileID: 150608}
-  mShadowProjectPos: {fileID: 119756}
+  mShadowPos: {fileID: 427194}
+  mShadowProjectPos: {fileID: 414602}
 --- !u!114 &11473082
 MonoBehaviour:
   m_ObjectHideFlags: 1

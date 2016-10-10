@@ -75,7 +75,14 @@ public class SociatyMain : UIBase, TabButtonDelegate
     //---------------------------------------------------------------------------------------------
     public override void RefreshOnPreviousUIHide()
     {
-       if(contentType == SociatyContenType.Infomation)
+       if( GameDataMgr.Instance.SociatyDataMgrAttr.allianceID == 0)
+        {
+            Close();
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("sociaty_beiqingli"));
+            return;
+        }
+        
+        if (contentType == SociatyContenType.Infomation)
         {
             contentPages[(int)SociatyContenType.Infomation].RefreshUI();
         }

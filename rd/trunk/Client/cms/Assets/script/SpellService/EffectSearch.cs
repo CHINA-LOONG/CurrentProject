@@ -53,7 +53,7 @@ public class EffectSearch : Effect
 			List<string> wpList = null;
 			if(bo.wpGroup != null)
 			{
-				wpList = bo.wpGroup.GetAiCanAttackList();
+				wpList = bo.wpGroup.GetAoeCanAttackList();
 			}
 
             if (null == wpList || wpList.Count == 0)

@@ -196,14 +196,30 @@ public class WeakPointRuntimeData
 			return false;
 		}
 
-		if(staticData.isTarget == 1)
+		if((staticData.isTarget & 1) != 0)
 			return true;
 
 		return false;
 
 	}
 
-	public bool IsCanMirror()
+    public bool IsAoeCanAttack()
+    {
+        if (wpState == WeakpointState.Dead ||
+            wpState == WeakpointState.Hide ||
+            wpState == WeakpointState.Ice)
+        {
+            return false;
+        }
+
+        if ((staticData.isTarget & 2) != 0)
+            return true;
+
+        return false;
+
+    }
+
+    public bool IsCanMirror()
 	{
 		if (wpState == WeakpointState.Hide ||
 		    wpState == WeakpointState.Normal1 ||

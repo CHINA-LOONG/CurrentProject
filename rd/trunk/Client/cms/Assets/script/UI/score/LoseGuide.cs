@@ -27,16 +27,16 @@ public class LoseGuide : UIBase
         }
         int i = 0;
         int[] randomNumList = new int[3];
-        randomNumList[0] = Random.Range(1, level.Count);
-        randomNumList[1] = Random.Range(1, level.Count);
-        randomNumList[2] = Random.Range(1, level.Count);
+        randomNumList[0] = Random.Range(0, level.Count);
+        randomNumList[1] = Random.Range(0, level.Count);
+        randomNumList[2] = Random.Range(0, level.Count);
         while (randomNumList[0] == randomNumList[1])
         {
-            randomNumList[1] = Random.Range(1, level.Count);
+            randomNumList[1] = Random.Range(0, level.Count);
         }
         while (randomNumList[2] == randomNumList[1] || randomNumList[2] == randomNumList[0])
         {
-            randomNumList[2] = Random.Range(1, level.Count);
+            randomNumList[2] = Random.Range(0, level.Count);
         }
         LoseGuideData loseGuideData = guide[0].GetComponent<LoseGuideData>();
         if (!hasWp)

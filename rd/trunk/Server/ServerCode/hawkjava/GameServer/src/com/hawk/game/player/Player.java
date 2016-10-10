@@ -1521,7 +1521,7 @@ public class Player extends HawkAppObj {
 	public void consumePVPTime(int pvpTime, Action action) {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		if (pvpTime <= 0 || pvpTime > statisticsEntity.getPVPTime()) {
-			throw new RuntimeException("consumePVPTime");
+			//throw new RuntimeException("consumePVPTime");
 		}
 
 		int old = statisticsEntity.getPVPTime();

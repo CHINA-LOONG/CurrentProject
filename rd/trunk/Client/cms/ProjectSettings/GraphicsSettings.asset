@@ -25,6 +25,7 @@ GraphicsSettings:
   - {fileID: 10623, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 4800000, guid: ca62b01680d0dfa4792f7fafeb8e94b2, type: 3}
   - {fileID: 4800000, guid: be93f418d9da52046bcb542d4c90df3e, type: 3}
+  - {fileID: 4800000, guid: 8a69c3f6efdf0864a8483455a769622f, type: 3}
   m_PreloadedShaders: []
   m_LightmapStripping: 0
   m_LightmapKeepPlain: 1

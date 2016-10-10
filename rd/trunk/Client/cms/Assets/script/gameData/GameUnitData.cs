@@ -231,7 +231,7 @@ public class GameUnit : IComparable
                         }
                         else
                         {
-                            args.fraction = ((float)(attackCount - dazhaoList[i - 1])) / (dazhaoList[i] - dazhaoList[i - 1]);
+                            args.fraction = ((float)(attackCount - dazhaoList[i - 1] - 1)) / (dazhaoList[i] - dazhaoList[i - 1] - 1);
                         }
 
                         break;
@@ -428,11 +428,11 @@ public class GameUnit : IComparable
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(pbUnit.stage);
 
-        criticalRatio = 0.0f;
+        criticalRatio = SpellConst.criticalRatio;
         hitRatio = 0.0f;
         additionEnergy = 0;
         additionHealRatio = 0.0f;
-        criticalDamageRatio = 0.0f;
+        criticalDamageRatio = SpellConst.criticalDamgeRatio;
         //一级属性
         float stageRatio = 1.0f + unitStageData.modifyRate;
         health = (
@@ -587,7 +587,7 @@ public class GameUnit : IComparable
         float previousBp = mBp;
 
         float bpHp = (maxLife / mInjuryratio * (1.0f + additionHealRatio * 0.33f));
-        float bpDps = (magicAttack + phyAttack) * 0.5f * speed * ((criticalRatio + SpellConst.criticalRatio) * (criticalDamageRatio + SpellConst.criticalDamgeRatio) + (1.0f - criticalRatio - SpellConst.criticalRatio)) * (1 + additionEnergy * 0.0033f);
+        float bpDps = (magicAttack + phyAttack) * 0.5f * speed * ((criticalRatio) * (criticalDamageRatio) + (1.0f - criticalRatio)) * (1 + additionEnergy * 0.0033f);
         //TODO: save spell lvl
         int dazhaoLvl = 0;
         int phyLvl = 0;

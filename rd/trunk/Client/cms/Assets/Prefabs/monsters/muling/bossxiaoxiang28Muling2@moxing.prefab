@@ -2848,8 +2848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShadowPos: {fileID: 164912}
-  mShadowProjectPos: {fileID: 185242}
+  mShadowPos: {fileID: 484884}
+  mShadowProjectPos: {fileID: 469640}
 --- !u!137 &13707518
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -18,13 +18,15 @@ public class WpIcon : MonoBehaviour
     public Image deadMask;
     public UIProgressbar progressBar;
     public Image buttonImage;
-
+    public GameObject bloodBrokenObject;
     private ShakeUi shakeUi;
     private bool isArmor = false;//是否是铠甲
     private WeakPointRuntimeData wpRealData;
+
     // Use this for initialization
     void Start ()
     {
+        bloodBrokenObject.SetActive(false);
         EventTriggerListener.Get(buttonImage.gameObject).onEnter = OnTouchEnter;
         EventTriggerListener.Get(buttonImage.gameObject).onExit = OnTouchExit;
         shakeUi = progressBar.GetComponent<ShakeUi>();
@@ -41,9 +43,13 @@ public class WpIcon : MonoBehaviour
 
     public  void    RefreshWithWp(WeakPointRuntimeData wpRealData)
     {
+        if (bloodBrokenObject != null)
+        {
+            bloodBrokenObject.SetActive(false);
+        }
         this.wpRealData = wpRealData;
         iconImage.transform.localScale = new Vector3(wpRealData.staticData.scaleX, wpRealData.staticData.scaleY, 1);
-        progressBar.gameObject.SetActive(false);
+       // progressBar.gameObject.SetActive(false);
         deadMask.gameObject.SetActive(false);
 
         isArmor = false;
@@ -54,7 +60,15 @@ public class WpIcon : MonoBehaviour
                 return;
             case WeakpointState.Dead:
                 deadMask.gameObject.SetActive(true);
-                return;
+                if(progressBar.gameObject.activeInHierarchy)
+                {
+                    //破碎
+                    if(bloodBrokenObject != null)
+                    {
+                        bloodBrokenObject.SetActive(true);
+                    }
+                }
+                break;
             case WeakpointState.Hide:
                 wpIconname = wpRealData.staticData.state0Icon;
                 break;
@@ -69,7 +83,11 @@ public class WpIcon : MonoBehaviour
                 isArmor = wpRealData.staticData.state2WpType >= 0 && wpRealData.staticData.state2WpType <= 2;
                 break;
         }
-        Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite>(wpIconname);
+        Sprite iconSp = null;
+        if(!string.IsNullOrEmpty(wpIconname))
+        {
+            iconSp = ResourceMgr.Instance.LoadAssetType<Sprite>(wpIconname);
+        }
         if(null != iconSp)
         {
             iconImage.sprite = iconSp;

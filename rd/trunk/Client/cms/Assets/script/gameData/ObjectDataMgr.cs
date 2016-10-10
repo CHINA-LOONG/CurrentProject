@@ -54,7 +54,11 @@ public class ObjectDataMgr : MonoBehaviour
         if (battleObjectList.TryGetValue(guid, out bo) == true)
         {
             Destroy(bo.aniControl);
-            Destroy(bo.mSimpleShadow);
+            if (bo.mSimpleShadow != null)
+            {
+                bo.mSimpleShadow.DestroyShadowObj();
+                Destroy(bo.mSimpleShadow);
+            }
             Destroy(bo);
 
             ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type != BattleObjectType.Scene);

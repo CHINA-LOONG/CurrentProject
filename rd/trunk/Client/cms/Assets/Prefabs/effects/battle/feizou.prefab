@@ -44,7 +44,6 @@ GameObject:
   - 4: {fileID: 407940}
   - 95: {fileID: 9546924}
   - 96: {fileID: 9673532}
-  - 114: {fileID: 11420876}
   m_Layer: 0
   m_Name: feizou
   m_TagString: Untagged
@@ -117,7 +116,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3d91e8fe897fd8a44959c3ac90274634, type: 2}
+  - {fileID: 2100000, guid: ac1fc28ecf2083d428cb7ab30b2e2bef, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -137,34 +136,21 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4294931634
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4294927729
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4294925990
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4294923432
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 16735343
   m_MinVertexDistance: .100000001
   m_Autodestruct: 0
---- !u!114 &11420876
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd7eee7d96ec6e4e9920dab948582e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleScale: .300000012
-  alsoScaleGameobject: 1
 --- !u!198 &19871044
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -515,13 +501,13 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 11815258
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4294934167
         key2:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 15028102
         key3:
           serializedVersion: 2
           rgba: 0
@@ -1538,13 +1524,13 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 35110
+          rgba: 8716353
         key1:
           serializedVersion: 2
-          rgba: 4284654420
+          rgba: 4288894065
         key2:
           serializedVersion: 2
-          rgba: 5308239
+          rgba: 16732033
         key3:
           serializedVersion: 2
           rgba: 0
@@ -2221,7 +2207,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8aed881b792c0ce458f6d94bb86ff01e, type: 2}
+  - {fileID: 2100000, guid: 571dad467cbf60f4d85c30e579d1ebf6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

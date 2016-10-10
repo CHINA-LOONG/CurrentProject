@@ -218,6 +218,7 @@ public class SociatyContentOther : SociatyContentBase
             }
         }
         pageText.text = string.Format("{0}/{1}", curPage, totalPage);
+        search = null;
     }
 
     void ResetCacheItem()

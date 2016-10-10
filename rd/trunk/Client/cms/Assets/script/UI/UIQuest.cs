@@ -48,6 +48,7 @@ public class UIQuest : UIBase,
     public List<HomeButton> tabControl = new List<HomeButton>();
 
     private List<QuestData> CurrentList;
+    
 
     void Start()
     {
@@ -139,7 +140,7 @@ public class UIQuest : UIBase,
                 CheckPlayerData();
             };
             GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
-            uiQuestInfo = UIQuestInfo.Open(quest, startEvent, endEvent);
+            uiQuestInfo = UIQuestInfo.Open(quest,playerLevel, startEvent, endEvent);
         }
     }
 

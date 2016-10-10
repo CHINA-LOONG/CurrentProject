@@ -2,11 +2,8 @@
 using System.Collections;
 
 public class SimpleShadow : MonoBehaviour {
-    public GameObject mShadowPos;
-    public GameObject mShadowProjectPos;
-    private float mShadowAutoDistance;
-    private float mShadowFixedYPos = 0.0f;
-    private bool mShadowAutoMode = true;
+    public Transform mShadowPos;
+    public Transform mShadowProjectPos;
     private GameObject mShadowObj;
 
     //---------------------------------------------------------------------------------------------
@@ -16,50 +13,17 @@ public class SimpleShadow : MonoBehaviour {
         mShadowObj = ResourceMgr.Instance.LoadAsset("simpleShadow");
     }
     //---------------------------------------------------------------------------------------------
-    void Start()
-    {
-        //mShadowPos = Util.FindChildByName(gameObject, "Bip001 Spine");
-        //mShadowProjectPos = Util.FindChildByName(gameObject, "Bip001 L Toe0");
-        //if (mShadowPos == null || mShadowProjectPos == null)
-        //{
-        //    Logger.LogError("no Bip001 Spine or Bip001 L Toe0 node");
-        //}
-        mShadowAutoDistance = mShadowProjectPos.transform.position.y - mShadowPos.transform.position.y;
-    }
-    //---------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update ()
     {
         if (mShadowObj != null)
         {
-            if (mShadowAutoMode == true)
-            {
-                mShadowObj.transform.position = new Vector3(
-                    mShadowPos.transform.position.x,
-                    mShadowPos.transform.position.y + mShadowAutoDistance,
-                    mShadowPos.transform.position.z
-                    );
-            }
-            else
-            {
-                mShadowObj.transform.position = new Vector3(
-                    mShadowPos.transform.position.x,
-                    mShadowFixedYPos,
-                    mShadowPos.transform.position.z
-                    );
-            }
+            mShadowObj.transform.position = new Vector3(
+                mShadowPos.position.x,
+                mShadowProjectPos.position.y,
+                mShadowPos.position.z
+                );
         }
-    }
-    //---------------------------------------------------------------------------------------------
-    //void OnDestroy()
-    //{
-    //    ResourceMgr.Instance.DestroyAsset(mShadowObj);
-    //}
-    //---------------------------------------------------------------------------------------------
-    public void SetShadowFixedYPos(float yPos)
-    {
-        mShadowFixedYPos = yPos;
-        mShadowAutoMode = false;
     }
     //---------------------------------------------------------------------------------------------
     public void SetShadowScale(Vector3 scale)
@@ -67,6 +31,23 @@ public class SimpleShadow : MonoBehaviour {
         if (mShadowObj != null)
         {
             mShadowObj.transform.localScale = scale;
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetShadowVisible(bool visible)
+    {
+        if (mShadowObj != null)
+        {
+            mShadowObj.SetActive(visible);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void DestroyShadowObj()
+    {
+        if (mShadowObj != null)
+        {
+            ResourceMgr.Instance.DestroyAsset(mShadowObj);
+            mShadowObj = null;
         }
     }
     //---------------------------------------------------------------------------------------------

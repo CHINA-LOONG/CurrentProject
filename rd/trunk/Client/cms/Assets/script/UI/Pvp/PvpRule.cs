@@ -19,7 +19,7 @@ public class PvpRule : UIBase
     {
         ruleContentText.text = "";
         closeButton.onClick.AddListener(OnCloseButtonClick);
-        titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_record");
+        titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_rules");
     }
 
     void OnEnterAnimationFinish()

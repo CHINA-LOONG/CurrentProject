@@ -222,23 +222,31 @@ public class BattleController : MonoBehaviour
                 changeStep = -1;
             }
         }
-        
-        if(changeStep != 0)
+
+        if (changeStep != 0 && process.PauseEnable == false)
         {
-            double curTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
-            if (curTime - beginChangeEnegyTime > 200)
+            //double curTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
+            if (changeStep == 1)
             {
-                int times = (int)((curTime - beginChangeEnegyTime) * 0.005);
-                if(changeStep == 1)
-                {
-                    MirrorEnegyAttr += times * GameConfig.Instance.RecoveryMirrorEnegyUnit;
-                }
-                else
-                {
-                    MirrorEnegyAttr -= times * GameConfig.Instance.ConsumMirrorEnegyUnit;
-                }
-                beginChangeEnegyTime += times * 200;
+                MirrorEnegyAttr += (GameConfig.Instance.RecoveryMirrorEnegyUnit * Time.unscaledDeltaTime);
             }
+            else
+            {
+                MirrorEnegyAttr -= (GameConfig.Instance.ConsumMirrorEnegyUnit * Time.unscaledDeltaTime);
+            }
+            //if (curTime - beginChangeEnegyTime > 200)
+            //{
+            //    int times = (int)((curTime - beginChangeEnegyTime) * 0.005);
+            //    if(changeStep == 1)
+            //    {
+            //        MirrorEnegyAttr += times * GameConfig.Instance.RecoveryMirrorEnegyUnit;
+            //    }
+            //    else
+            //    {
+            //        MirrorEnegyAttr -= times * GameConfig.Instance.ConsumMirrorEnegyUnit;
+            //    }
+            //    beginChangeEnegyTime += times * 200;
+            //}
             if(changeStep == -1 && MirrorEnegyAttr < 0.001)
             {
                 GameEventMgr.Instance.FireEvent<bool,bool>(GameEventList.SetMirrorModeState, false,true);
@@ -304,6 +312,7 @@ public class BattleController : MonoBehaviour
         }
         else if (
             battleGo.camp == UnitCamp.Player &&
+            mCurPvpParam == null &&
             process.SwitchingPet == false &&
             uiBattle.gameObject.activeSelf == true &&
             battleGo.unit.backUp == false &&

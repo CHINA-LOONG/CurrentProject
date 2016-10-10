@@ -118,7 +118,7 @@ public class questItem : MonoBehaviour
                 changeTypeIcon icon;
                 if ((PB.changeType)(int.Parse(info.itemId)) == PB.changeType.CHANGE_PLAYER_EXP)
                 {
-                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)(info.count * curData.staticData.expK + curData.staticData.expB));
+                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)(GameDataMgr.Instance.PlayerDataAttr.LevelAttr * curData.staticData.expK + curData.staticData.expB + info.count));
                 }
                 else
                 {

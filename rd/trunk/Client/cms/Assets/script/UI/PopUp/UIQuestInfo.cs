@@ -9,12 +9,12 @@ public class UIQuestInfo : UIBase
     public static string ViewName = "UIQuestInfo";
 
     //public static void Open(int questId)
-    public static UIQuestInfo Open(QuestData quest, System.Action StartEvent = null, System.Action<float> EndEvent = null)
+    public static UIQuestInfo Open(QuestData quest,int playerLevel, System.Action StartEvent = null, System.Action<float> EndEvent = null)
     {
         //questItem quest = StaticDataMgr.Instance.GetQuestData(questId);
 
         UIQuestInfo mInfo = UIMgr.Instance.OpenUI_(UIQuestInfo.ViewName)as UIQuestInfo;
-        mInfo.ShowWithData(quest,StartEvent,EndEvent);
+        mInfo.ShowWithData(quest, playerLevel, StartEvent, EndEvent);
         return mInfo;
     }
 
@@ -28,6 +28,7 @@ public class UIQuestInfo : UIBase
     public Animator animator;
 
     private QuestData info;
+    private int playerLevel;
     public System.Action StartEvent;
     public System.Action<float> EndEvent;
 
@@ -39,9 +40,10 @@ public class UIQuestInfo : UIBase
         OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;
     }
-    void ShowWithData(QuestData info, System.Action StartEvent, System.Action<float> EndEvent)
+    void ShowWithData(QuestData info, int playerLevel, System.Action StartEvent, System.Action<float> EndEvent)
     {
         this.info = info;
+        this.playerLevel = playerLevel;
         this.StartEvent = StartEvent;
         this.EndEvent = EndEvent;
         text_Name.text =StaticDataMgr.Instance.GetTextByID(info.staticData.name);
@@ -83,7 +85,7 @@ public class UIQuestInfo : UIBase
                 changeTypeIcon icon;
                 if ((PB.changeType)(int.Parse(info.itemId)) == PB.changeType.CHANGE_PLAYER_EXP)
                 {
-                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)(info.count * this.info.staticData.expK + this.info.staticData.expB));
+                    icon = changeTypeIcon.CreateIcon((PB.changeType)(int.Parse(info.itemId)), (int)(playerLevel * this.info.staticData.expK + this.info.staticData.expB + info.count));
                 }
                 else
                 {

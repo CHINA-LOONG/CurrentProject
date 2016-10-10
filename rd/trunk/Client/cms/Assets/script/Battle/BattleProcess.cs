@@ -128,15 +128,23 @@ public class BattleProcess : MonoBehaviour
         }
     }
     //换宠cd
-    float lastSwitchTime = -BattleConst.switchPetCD;
+    float lastSwitchTime = 0;
     public float SwitchPetCD
     {
-        get { return Mathf.Clamp(BattleConst.switchPetCD - (Time.time - lastSwitchTime), 0, BattleConst.switchPetCD); }
+        get
+        {
+            return Mathf.Clamp(lastSwitchTime, 0, BattleConst.switchPetCD);
+            //return Mathf.Clamp(BattleConst.switchPetCD - (Time.time - lastSwitchTime), 0, BattleConst.switchPetCD);
+        }
     }
 
     //当前行动
     Action curAction = null;
     bool mPauseEnable = false;
+    public bool PauseEnable
+    {
+        get { return mPauseEnable; }
+    }
     bool mRestartAction = false;
 
     void BindListener()
@@ -184,6 +192,17 @@ public class BattleProcess : MonoBehaviour
     public void Init()
     {
         BindListener();
+    }
+
+    void Update()
+    {
+        if (lastSwitchTime > 0)
+        {
+            if (mPauseEnable == false)
+            {
+                lastSwitchTime -= Time.deltaTime;
+            }
+        }
     }
 
     void LateUpdate()
@@ -281,26 +300,24 @@ public class BattleProcess : MonoBehaviour
                     //PB.RewardItem reward = null;
                     if (rewardInfoList.TryGetValue(deadId, out rewardInfo) == true)
                     {
-                        int rewardID = 0;
+                        int gold = 0;
+                        int prop = 0;
                         foreach (var item in rewardInfo.RewardItems)
                         {
                             if (item.type == (int)PB.itemType.NONE_ITEM)
                                 continue;
                             if (item.type <= (int)PB.itemType.MONSTER_ATTR)
                             {
-                                rewardID = int.Parse(item.itemId);
-                                if (rewardID != (int)PB.changeType.CHANGE_COIN || rewardID != (int)PB.changeType.CHANGE_GOLD)//lixiaofei
-                                    continue;
+                                if (int.Parse(item.itemId) == (int)PB.changeType.CHANGE_COIN || int.Parse(item.itemId) == (int)PB.changeType.CHANGE_GOLD)
+                                    gold = int.Parse(item.itemId);
                             }
-                            else if (item.type == (int)PB.itemType.ITEM || item.type == (int)PB.itemType.EQUIP)
-                            {
-                                rewardID = item.type;
-                            }
-                            ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
-
+                            if (item.type == (int)PB.itemType.ITEM || item.type == (int)PB.itemType.EQUIP)
+                                prop = item.type;
                         }
-                        //ItemDropManager.Instance.Fall(1, deadUnit.transform);
-                        //ItemDropManager.Instance.Fall(3, deadUnit.transform);
+                        if (gold != 0)
+                            ItemDropManager.Instance.Fall(gold, deadUnit.transform);
+                        if (prop != 0)
+                            ItemDropManager.Instance.Fall(prop, deadUnit.transform);
                     }
                 }
                 if (fireFocusTarget != null && fireFocusTarget.pbUnit.guid == deadUnit.guid)
@@ -505,6 +522,8 @@ public class BattleProcess : MonoBehaviour
                     {
                         deadUnit.unit.OnDead();
                         deadUnit.gameObject.SetActive(false);
+                        if (deadUnit.mSimpleShadow != null)
+                            deadUnit.mSimpleShadow.SetShadowVisible(false);
                     }
                     //else
                     //{
@@ -1081,7 +1100,10 @@ public class BattleProcess : MonoBehaviour
             Vector3 relativePos = curTarget.battleUnit.transform.position - bo.transform.position;
             bo.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
         }
-        bo.unit.AttackCount++;
+
+        //ignore dazhao prepare
+        if (aiResult.attackStyle != BattleUnitAi.AiAttackStyle.DazhaoPrepare)
+            bo.unit.AttackCount++;
 
         //if (bo.camp == UnitCamp.Player && aiResult.attackStyle == BattleUnitAi.AiAttackStyle.Dazhao)
         //{
@@ -1333,7 +1355,8 @@ public class BattleProcess : MonoBehaviour
         //action.caster.TriggerEvent("unitBeReplaced", Time.time, null);
 
         InsertAction(action);
-        lastSwitchTime = Time.time;
+        //lastSwitchTime = Time.time;
+        lastSwitchTime = BattleConst.switchPetCD;
         switchingPet = true;
     }
 

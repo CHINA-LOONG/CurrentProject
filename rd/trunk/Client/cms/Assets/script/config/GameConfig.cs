@@ -24,8 +24,8 @@ public class GameConfig : MonoBehaviour {
     public float MirrorInitallyEnegy = 50;
     public float MirrorMaxEnegy = 100;
     public float UseMirrorMinEnegy = 20;
-    public float RecoveryMirrorEnegyUnit = 2;//每200毫秒恢复能量数值
-    public float ConsumMirrorEnegyUnit = 4;//
+    public float RecoveryMirrorEnegyUnit = 10;//每200毫秒恢复能量数值
+    public float ConsumMirrorEnegyUnit = 20;//
 
     //battle
     public  DG.Tweening.Ease InPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;

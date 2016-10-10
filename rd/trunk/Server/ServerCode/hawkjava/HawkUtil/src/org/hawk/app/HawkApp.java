@@ -1474,8 +1474,8 @@ public abstract class HawkApp extends HawkAppObj {
 		int popCount = 0;
 		
 		for (int i = 0; i < msgExecutor.getThreadNum(); i++) {
-			pushCount += msgExecutor.getThread(i).getPushTaskCnt();
-			popCount += msgExecutor.getThread(i).getPopTaskCnt();
+			pushCount = (int)msgExecutor.getThread(i).getPushTaskCnt();
+			popCount = (int)msgExecutor.getThread(i).getPopTaskCnt();
 			HawkLog.errPrintln(String.format("线程ID : %d, msg任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
 		
@@ -1486,8 +1486,8 @@ public abstract class HawkApp extends HawkAppObj {
 		popCount = 0;
 		
 		for (int i = 0; i < taskExecutor.getThreadNum(); i++) {
-			pushCount += taskExecutor.getThread(i).getPushTaskCnt();
-			popCount += taskExecutor.getThread(i).getPopTaskCnt();
+			pushCount = (int)taskExecutor.getThread(i).getPushTaskCnt();
+			popCount = (int)taskExecutor.getThread(i).getPopTaskCnt();
 			HawkLog.errPrintln(String.format("线程ID : %d, tsk任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
 		

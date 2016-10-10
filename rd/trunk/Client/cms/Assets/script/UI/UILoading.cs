@@ -37,6 +37,25 @@ public class UILoading : UIBase
     public Vector3[] contentImageVec;
     public GameObject pvploadingG;
     public GameObject loadingContent;
+
+    private float loadingBarSizeDelthaX = 100;
+    private float loadingBarSizeDelthaY = 9;
+
+    private RectTransform _loadingProgressRt;
+    private RectTransform loadingProgressRt
+    {
+        get
+        {
+            if(null == _loadingProgressRt)
+            {
+                _loadingProgressRt = loadingProgress.transform as RectTransform;
+                loadingBarSizeDelthaX = loadingProgressRt.sizeDelta.x;
+                loadingBarSizeDelthaY = loadingProgressRt.sizeDelta.y;
+            }
+            return _loadingProgressRt;
+        }
+    }
+
     //-------------------------------------------------------------------------------------------
     public override void Init()
     {
@@ -55,11 +74,11 @@ public class UILoading : UIBase
             int remainCount = ResourceMgr.Instance.GetAssetRequestCount();
             if (totalAssetCount == 0)
             {
-                loadingProgress.fillAmount = 1.0f;
+                loadingProgressRt.sizeDelta = new Vector2(loadingBarSizeDelthaX, loadingBarSizeDelthaY);
             }
             else
             {
-                loadingProgress.fillAmount = 1.0f - (float)remainCount / totalAssetCount;
+                loadingProgressRt.sizeDelta = new Vector2((1.0f - (float)remainCount / totalAssetCount) * loadingBarSizeDelthaX, loadingBarSizeDelthaY);
             }
             loadingText.text = (totalAssetCount - remainCount).ToString() + "/" + totalAssetCount.ToString();
 
@@ -77,13 +96,13 @@ public class UILoading : UIBase
     public void UpdateTotalAssetCount()
     {
         beginLoading = true;
-        loadingProgress.fillAmount = 0.0f;
+        loadingProgressRt.sizeDelta = new Vector2(0, loadingBarSizeDelthaY);
         totalAssetCount = ResourceMgr.Instance.GetAssetRequestCount();
     }
     //---------------------------------------------------------------------------------------------
     public void SetProgress(float ratio)
     {
-        loadingProgress.fillAmount = ratio;
+        loadingProgressRt.sizeDelta = new Vector2(ratio * loadingBarSizeDelthaX, loadingBarSizeDelthaY);
     }
     //---------------------------------------------------------------------------------------------
     public void SetLoading(LoadingType loadingType)
@@ -106,7 +125,7 @@ public class UILoading : UIBase
     void OnEnable()
     {
         beginLoading = false;
-        loadingProgress.fillAmount = 0.0f;
+        loadingProgressRt.sizeDelta = new Vector2(0, loadingBarSizeDelthaY);
         loadingText.text = string.Empty;
         pvploadingG.SetActive(false);
     }

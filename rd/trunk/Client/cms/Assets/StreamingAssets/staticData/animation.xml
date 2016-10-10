@@ -57,7 +57,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="unitBeReplaced" state="0">
 			<ParticleList>
-				<Particle asset="juqihuanguai" bundle="effect/battle" parent=""/>
+				<Particle asset="juqihuanguai" bundle="effect/battle" parent="" locky="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="unitExit" state="0">
@@ -67,7 +67,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="unitEnter" state="0">
 			<ParticleList>
-				<Particle asset="sankai" bundle="effect/battle" parent=""/>
+				<Particle asset="sankai" bundle="effect/battle" parent="true" locky="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="unitExitandenter" state="0">
@@ -2815,21 +2815,21 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="phyReduceb1" state="0" AniType="Passive">
 			<ParticleList>
-				<Particle asset="bd_wulijianmian" bundle="effect/particle" ani="" attach="true" parent=""/>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="phyReduceb1Finish" state="1" finish_event="phyReduceb1" AniType="Passive">
 		</Ani>
 		<Ani id="magicShiledb1" state="0" AniType="Passive">
 			<ParticleList>
-				<Particle asset="bd_mofaxishou" bundle="effect/particle" ani="" attach="true" parent=""/>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="magicShiledb1Finish" state="1" finish_event="magicShiledb1" AniType="Passive">
 		</Ani>
 		<Ani id="ultLonggongtongzib1" state="0" AniType="Passive">
 			<ParticleList>
-				<Particle asset="bd_mofaxishou" bundle="effect/particle" ani="" attach="true" parent=""/>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" ani="" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="ultLonggongtongzib1Finish" state="1" finish_event="ultLonggongtongzib1" AniType="Passive">
@@ -3317,8 +3317,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<AudioList>
 				<Audio time="0" name="plantp1"/>
 			</AudioList>
-			<SpeedList>
-			</SpeedList>
 		</Ani>
 		
 	</AniList>
@@ -4853,7 +4851,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="ultAmute3b1" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -4862,7 +4860,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="ultAmute3b2" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -5112,7 +5110,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -5295,8 +5293,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossdajie13Langren32e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="hook_001" attach="" locky="" ignore_rot=""/>
-				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="hook_001" attach="" locky="" ignore_rot=""/>
+				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
+				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="buff"/>
@@ -5314,8 +5312,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossdajie13Langren33e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
-				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
+				<Particle time="1.5" asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
+				<Particle time="1.5" asset="bd_mofajianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="1.5" name="buff"/>
@@ -6592,7 +6590,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin32Longnv34b1" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_wulijianmian" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -6601,7 +6599,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin32Longnv34b2" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -6798,7 +6796,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin34Amute34b1" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -6807,7 +6805,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin34Amute34b2" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" locky="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		

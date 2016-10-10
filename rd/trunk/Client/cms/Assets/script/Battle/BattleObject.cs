@@ -134,8 +134,9 @@ public class BattleObject : MonoBehaviour
             gameObject.transform.SetParent(GameMain.Instance.transform, false);
             if (mSimpleShadow != null)
             {
+                mSimpleShadow.SetShadowVisible(true);
                 mSimpleShadow.SetShadowScale(slotNode.transform.localScale);
-                mSimpleShadow.SetShadowFixedYPos(slotNode.transform.position.y - BattleConst.shadowDistanceFromFloor);
+                //mSimpleShadow.SetShadowFixedYPos(slotNode.transform.position.y - BattleConst.shadowDistanceFromFloor);
             }
            // if (camp == UnitCamp.Enemy)
            // {

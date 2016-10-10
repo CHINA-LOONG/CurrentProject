@@ -184,9 +184,21 @@ public class WeakPointGroup
 			}
 		}
 		return listReturn;
-	}
+    }
+    public List<string> GetAoeCanAttackList()
+    {
+        List<string> listReturn = new List<string>();
+        foreach (var subItem in allWpDic.Values)
+        {
+            if (subItem.IsAoeCanAttack())
+            {
+                listReturn.Add(subItem.id);
+            }
+        }
+        return listReturn;
+    }
 
-	public	List<string> GetCanFireFocsList()
+    public	List<string> GetCanFireFocsList()
 	{
 		List<string> listReturn = new List<string> ();
 		foreach (var subItem in allWpDic.Values)

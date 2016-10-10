@@ -353,6 +353,7 @@ public class UIBattle : UIBase
     public void ShowDazhaoReleateUI(bool isShow)
     {
         m_ButtonSpeed.gameObject.SetActive(isShow);
+        mSetting.gameObject.SetActive(isShow);
         RectTransform mirrorTrans = mirrorUI.gameObject.transform as RectTransform;
         if (isShow == true)
         {

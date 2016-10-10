@@ -317,8 +317,8 @@ public class PVPManager extends HawkAppObj {
 		
 		player.regainPVPTime();
 		if (player.getPlayerData().getStatisticsEntity().getPVPTime() < 1) {
-			player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_TIMES_NOT_ENOUGH_VALUE);
-			return ;
+			//player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_TIMES_NOT_ENOUGH_VALUE);
+			//return ;
 		}
 		
 		PVPCfg pvpCfg = null;
@@ -405,6 +405,9 @@ public class PVPManager extends HawkAppObj {
 		rankEntity.setPvpCount(rankEntity.getPvpCount() + 1);
 		rankEntity.notifyUpdate(true);
 		
+		
+		int preSize = pvpRoomList.size();
+		
 		if (protocol.getChangeTarget()) {
 			PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 			if (pvpRoom == null) {
@@ -422,6 +425,15 @@ public class PVPManager extends HawkAppObj {
 		else{
 			pvpRoomList.put(player.getId(), new PVPRoom(target.getPlayerId(), 0, target));
 			player.consumePVPTime(1, Action.PVP_MATCH);
+		}
+		
+		if (preSize == pvpRoomList.size()) {
+			if (pvpRoomList.containsKey(player.getId())) {
+
+				throw new RuntimeException(" SAME SIZE 1" + player.getId());
+			}
+
+			throw new RuntimeException(" SAME SIZE 2");
 		}
 			
 		HSPVPMatchTargetRet.Builder response = HSPVPMatchTargetRet.newBuilder();
@@ -447,8 +459,9 @@ public class PVPManager extends HawkAppObj {
 		
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom == null) {
-			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
-			return;
+			throw new RuntimeException("ROOM NULL" + player.getId());
+			//player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
+			//return;
 		}
 		
 		pvpRoomList.remove(player.getId());
@@ -459,6 +472,7 @@ public class PVPManager extends HawkAppObj {
 			return;
 		}
 
+		// 只涉及到PVP荣誉点  不需要加锁操作
 		AwardItems reward = new AwardItems();
 		int changePoint = PVPSettle(pvpRankEntity, pvpRoom.targetId, protocol.getResult(), reward);
 		
@@ -600,11 +614,11 @@ public class PVPManager extends HawkAppObj {
 		Player player = msg.getParam(0);
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom != null) {
+			pvpRoomList.remove(player.getId());
 			PVPRankEntity pvpRankEntity = playerRankMap.get(player.getId());
 			if (pvpRankEntity == null) {
 				return;
 			}
-			pvpRoomList.remove(player.getId());
 			AwardItems reward = new AwardItems();
 			PVPSettle(pvpRankEntity, pvpRoom.targetId, Const.PvpResult.LOSE_VALUE, reward);
 			

@@ -12,11 +12,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public Image cdmask;
     public Text nameText;
     public Image tips;
-    public Sprite normalFrame;
     public Sprite emptyFrame;
     public Sprite deadFrame;
     public Sprite defaulthead;
-    public Sprite toBeEntreFrame;
+    public RectTransform mBackgroud;
 
     public int targetId
     {
@@ -26,11 +25,26 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     GameUnit unit;
 
     float maskHeight;
+    RectTransform lifebarSize;
+    float lifebarX;
+    float lifebarY;
+    RectTransform energybarSize;
+    float energybarX;
+    float energybarY;
 
     // Use this for initialization
     void Awake()
     {
         maskHeight = cdmask.rectTransform.sizeDelta.y;
+
+        lifebarSize = lifeBar.transform as RectTransform;
+        lifebarX = lifebarSize.sizeDelta.x;
+        lifebarY = lifebarSize.sizeDelta.y;
+    
+        energybarSize = energyBar.transform as RectTransform;
+        energybarX = energybarSize.sizeDelta.x;
+        energybarY = energybarSize.sizeDelta.y;
+
         ShowEmpty(false);
     }
 
@@ -85,23 +99,28 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public void ShowEmpty(bool isDead)
     {
         //血条为空
-        lifeBar.fillAmount = 0.0f;
+        lifebarSize.sizeDelta = Vector2.zero;
         lifeBar.gameObject.SetActive(false);
 
         //能量为空
-        energyBar.fillAmount = 0.0f;
+        energybarSize.sizeDelta = Vector2.zero;
         energyBar.gameObject.SetActive(false);
 
         tips.gameObject.SetActive(true);
         if (isDead)
         {
             tips.sprite = deadFrame;
+            cdmask.gameObject.SetActive(true);
+            var size = cdmask.rectTransform.sizeDelta;
+            size.y = maskHeight;
+            cdmask.rectTransform.sizeDelta = size;
         }
         else
         {
             unit = null;
             nameText.text = "";
-            tips.sprite = emptyFrame;
+            //tips.sprite = emptyFrame;
+            tips.gameObject.SetActive(false);
             head.sprite = defaulthead;
         }
         tips.SetNativeSize();
@@ -117,27 +136,13 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         }
         if(unit!=null)
         {
-            lifeBar.fillAmount = Mathf.Clamp01(unit.curLife / (float)unit.maxLife);
-            energyBar.fillAmount = Mathf.Clamp01(unit.energy / (float)BattleConst.enegyMax);
+            lifebarSize.sizeDelta = new Vector2(Mathf.Clamp01(unit.curLife / (float)unit.maxLife) * lifebarX, lifebarY);
+            energybarSize.sizeDelta = new Vector2(Mathf.Clamp01(unit.energy / (float)BattleConst.enegyMax) * energybarX, energybarY);
             tips.gameObject.SetActive(false);
-
-            if (unit.State == UnitState.ToBeEnter)
-            {
-                tips.gameObject.SetActive(true);
-                tips.sprite = toBeEntreFrame;
-                tips.SetNativeSize();
-                if (cdmask.gameObject.activeInHierarchy)
-                {
-                    cdmask.gameObject.SetActive(false);
-                }
-            }
+            
             if (unit.State == UnitState.Dead)
 	        {
                 ShowEmpty(true);
-                if (cdmask.gameObject.activeInHierarchy)
-                {
-                    cdmask.gameObject.SetActive(false);
-                }
 	        }
             else if (BattleController.Instance.Process.SwitchPetCD > 0)
             {
@@ -157,5 +162,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
                 }
             }
         }
+    }
+
+    public void InverseX()
+    {
+        mBackgroud.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
     }
 }

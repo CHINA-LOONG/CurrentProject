@@ -15,21 +15,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &102970
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 425578}
-  m_Layer: 10
-  m_Name: tubiguadian
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &104552
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +755,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &197266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 423788}
+  m_Layer: 10
+  m_Name: shadowp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &197434
 GameObject:
   m_ObjectHideFlags: 1
@@ -995,6 +995,18 @@ Transform:
   - {fileID: 425108}
   m_Father: {fileID: 409174}
   m_RootOrder: 0
+--- !u!4 &423788
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 474158}
+  m_RootOrder: 5
 --- !u!4 &425108
 Transform:
   m_ObjectHideFlags: 1
@@ -1007,18 +1019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 423780}
   m_RootOrder: 0
---- !u!4 &425578
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102970}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .800000012, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 474158}
-  m_RootOrder: 5
 --- !u!4 &427358
 Transform:
   m_ObjectHideFlags: 1
@@ -1279,7 +1279,7 @@ Transform:
   - {fileID: 421156}
   - {fileID: 473110}
   - {fileID: 416214}
-  - {fileID: 425578}
+  - {fileID: 423788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &474626
@@ -1556,8 +1556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShadowPos: {fileID: 142932}
-  mShadowProjectPos: {fileID: 197434}
+  mShadowPos: {fileID: 498502}
+  mShadowProjectPos: {fileID: 423788}
 --- !u!137 &13715718
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

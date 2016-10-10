@@ -1977,8 +1977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShadowPos: {fileID: 136136}
-  mShadowProjectPos: {fileID: 108562}
+  mShadowPos: {fileID: 425660}
+  mShadowProjectPos: {fileID: 403056}
 --- !u!137 &13741766
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

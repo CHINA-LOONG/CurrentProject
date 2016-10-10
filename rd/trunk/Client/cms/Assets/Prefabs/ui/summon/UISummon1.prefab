@@ -6721,7 +6721,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 1
   UVModule:
-    enabled: 0
+    enabled: 1
     frameOverTime:
       scalar: 1
       maxCurve:
@@ -6755,8 +6755,8 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 1
-    tilesX: 1
-    tilesY: 1
+    tilesX: 3
+    tilesY: 3
     animationType: 0
     rowIndex: 0
     cycles: 1
@@ -11340,7 +11340,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 27fe562c42cb2d4478bb9d704f6112a2, type: 2}
+  - {fileID: 2100000, guid: 37ad36793c38089469c6c321810da66f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -11376,7 +11376,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 27fe562c42cb2d4478bb9d704f6112a2, type: 2}
+  - {fileID: 2100000, guid: 37ad36793c38089469c6c321810da66f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -11412,7 +11412,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6e24d8603ac078f45aed9f3bd0ade347, type: 2}
+  - {fileID: 2100000, guid: 5e9d0e175fe327048a8d5e5c6d7f49f4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

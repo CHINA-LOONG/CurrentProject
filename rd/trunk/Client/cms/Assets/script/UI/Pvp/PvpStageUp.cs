@@ -26,7 +26,7 @@ public class PvpStageUp : UIBase {
         {
             mStageImage[i].SetActive((i+1) == pvpDataMgr.selfPvpStage);
         }
-        for (int i = 0; i < mStageImage.Length; ++i)
+        for (int i = 0; i < mStageEffect.Length; ++i)
         {
             mStageEffect[i].SetActive(i == (pvpDataMgr.selfPvpStage - 1) / 3);
         }

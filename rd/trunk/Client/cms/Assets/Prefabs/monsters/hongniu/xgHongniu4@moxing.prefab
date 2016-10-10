@@ -391,6 +391,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &143452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 487184}
+  m_Layer: 0
+  m_Name: shadowp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &143902
 GameObject:
   m_ObjectHideFlags: 1
@@ -431,6 +446,7 @@ GameObject:
   - 4: {fileID: 414054}
   - 95: {fileID: 9568066}
   - 65: {fileID: 6560720}
+  - 114: {fileID: 11498190}
   m_Layer: 0
   m_Name: xgHongniu4@moxing
   m_TagString: Untagged
@@ -880,6 +896,7 @@ Transform:
   - {fileID: 492708}
   - {fileID: 415054}
   - {fileID: 430952}
+  - {fileID: 487184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &414624
@@ -1381,6 +1398,18 @@ Transform:
   - {fileID: 497192}
   m_Father: {fileID: 489976}
   m_RootOrder: 0
+--- !u!4 &487184
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 414054}
+  m_RootOrder: 6
 --- !u!4 &489212
 Transform:
   m_ObjectHideFlags: 1
@@ -1545,6 +1574,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11498190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 415928}
+  mShadowProjectPos: {fileID: 487184}
 --- !u!137 &13708314
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

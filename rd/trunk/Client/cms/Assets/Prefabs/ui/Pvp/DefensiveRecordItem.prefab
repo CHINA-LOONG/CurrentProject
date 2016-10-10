@@ -349,7 +349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: tiemaji
+  m_Text: papapapapapa
 --- !u!222 &22200212
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -474,7 +474,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 40.5, y: 5}
+  m_AnchoredPosition: {x: 30.0300007, y: 5}
   m_SizeDelta: {x: 97.1999969, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22458424

@@ -868,6 +868,7 @@ GameObject:
   - 4: {fileID: 475278}
   - 95: {fileID: 9544328}
   - 114: {fileID: 11465960}
+  - 114: {fileID: 11406352}
   m_Layer: 0
   m_Name: bosshuoshan43Huoniao4@moxing
   m_TagString: Untagged
@@ -885,6 +886,21 @@ GameObject:
   - 4: {fileID: 489312}
   m_Layer: 0
   m_Name: e_shifa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &165396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 462916}
+  m_Layer: 0
+  m_Name: shadowp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,7 +1490,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133126}
-  m_LocalRotation: {x: .0999418795, y: -.647511899, z: .69999516, w: .28415966}
+  m_LocalRotation: {x: .099941887, y: -.647511959, z: .69999522, w: .28415969}
   m_LocalPosition: {x: .0348120108, y: -.0465288162, z: -.0380624384}
   m_LocalScale: {x: .99999994, y: 1, z: 1.00000012}
   m_Children:
@@ -1762,6 +1778,18 @@ Transform:
   - {fileID: 412512}
   m_Father: {fileID: 424642}
   m_RootOrder: 0
+--- !u!4 &462916
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475278}
+  m_RootOrder: 7
 --- !u!4 &463470
 Transform:
   m_ObjectHideFlags: 1
@@ -1876,6 +1904,7 @@ Transform:
   - {fileID: 496886}
   - {fileID: 433868}
   - {fileID: 409510}
+  - {fileID: 462916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &476632
@@ -2150,6 +2179,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31a48a8458974aa6c62f93f6829fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShadowPos: {fileID: 469948}
+  mShadowProjectPos: {fileID: 462916}
 --- !u!114 &11465960
 MonoBehaviour:
   m_ObjectHideFlags: 1

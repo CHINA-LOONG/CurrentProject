@@ -219,7 +219,7 @@ public class FoundMgr
         }
         if (!isOpened)
         {
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_004"), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_005"), (int)PB.ImType.PROMPT);
             //Logger.LogError("章节为开启 for Xiaolong");
             return;
         }

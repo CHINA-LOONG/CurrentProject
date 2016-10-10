@@ -283,6 +283,7 @@ record_notopen2,合成功能未开启,The combine function has not been opened y
 record_notopen3,分解功能未开启,The disenchant function has not been opened yet.
 record_notopen4,该商店未开启,This shop has not been opened yet.
 record_notopen5,尚未加入公会,You have not joined a Guild yet.
+instanceselect_open_005,章节未开启,This capter has not been opened yet.
 compose_item,材料合成,材料合成
 compose_gem,宝石合成,宝石合成
 decompose_item,道具分解,道具分解

@@ -480,7 +480,7 @@ public class UIScore : UIBase
             PvpDataMgr pvpDataMgr = GameDataMgr.Instance.PvpDataMgrAttr;
             int originalPvpStage = pvpDataMgr.selfPvpStage;
             pvpDataMgr.SelfPvpPointAttr = mPvpResult.point;
-            if (originalPvpStage != pvpDataMgr.selfPvpStage)
+            if (originalPvpStage < pvpDataMgr.selfPvpStage)
             {
                 StartCoroutine(ShowPvpStageUp());
             }

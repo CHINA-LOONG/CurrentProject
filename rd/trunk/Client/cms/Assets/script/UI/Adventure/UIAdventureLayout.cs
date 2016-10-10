@@ -850,7 +850,7 @@ public class UIAdventureLayout : UIBase,
         {
             RemoveAdventureTeamMonster(monster);
         }
-        else if ((selfMonsterId.Count < 4 && hireMonster != null) || (selfMonsterId.Count < 5))
+        else if ((selfMonsterId.Count < 4 && hireMonster != null) || (selfMonsterId.Count < 5 && hireMonster == null))
         {
             AddAdventureTeamMonster(monster);
         }
@@ -868,7 +868,7 @@ public class UIAdventureLayout : UIBase,
         {
             RemoveAdventureTeamMonster(monster);
         }
-        else if ((selfMonsterId.Count < 4 && hireMonster != null) || (selfMonsterId.Count < 5))
+        else if ((selfMonsterId.Count < 4 && hireMonster != null) || (selfMonsterId.Count < 5 && hireMonster == null))
         {
             if (hireMonster == null)
             {
