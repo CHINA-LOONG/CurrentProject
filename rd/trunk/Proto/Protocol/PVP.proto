@@ -71,6 +71,15 @@ message HSPVPMatchTargetRet
 	required int32 changeTime = 8;
 }
 
+message HSPVPEnter
+{
+
+}
+
+message HSPVPEnterRet
+{
+}
+
 message HSPVPSettle
 {
 	required int32 result = 1;

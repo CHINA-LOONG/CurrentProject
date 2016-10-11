@@ -534,9 +534,6 @@ public class HawkSession {
 	 * 会话空闲
 	 */
 	public boolean onIdle(IdleStatus status) {
-		
-		HawkLog.logPrintln("##############");
-		
 		// 心跳停止, 关闭会话
 		if (this.session != null && session.getConfig().getBothIdleTimeInMillis() > 0) {
 			HawkLog.logPrintln(String.format("session idle closed, ipaddr: %s, status: %s", getIpAddr(), status.toString()));
@@ -549,8 +546,6 @@ public class HawkSession {
 	 * 会话被关闭
 	 */
 	public boolean onClosed() {
-		
-		HawkLog.logPrintln("$$$$$$$$$$$$$$");
 		if (this.session != null) {
 			HawkApp.getInstance().onSessionClosed(this);
 			if (HawkApp.getInstance().isRunning()) {

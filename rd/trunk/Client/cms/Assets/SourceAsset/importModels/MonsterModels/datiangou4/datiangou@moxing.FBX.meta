@@ -65,6 +65,21 @@ ModelImporter:
     100114: Bone043
     100116: datiangou
     100118: //RootNode
+    100120: e_jihuo
+    100122: e_shifa
+    100124: e_shouji
+    100126: mesh_body
+    100128: mesh_fan
+    100130: mesh_head
+    100132: mesh_lwing
+    100134: mesh_mask
+    100136: mesh_rwing
+    100138: mesh_rwing 1
+    100140: wp_body
+    100142: wp_fan
+    100144: wp_head
+    100146: wp_lwing
+    100148: wp_mask
     400000: Bip001
     400002: Bip001 Head
     400004: Bip001 L Calf
@@ -125,9 +140,37 @@ ModelImporter:
     400114: Bone043
     400116: datiangou
     400118: //RootNode
+    400120: e_jihuo
+    400122: e_shifa
+    400124: e_shouji
+    400126: mesh_body
+    400128: mesh_fan
+    400130: mesh_head
+    400132: mesh_lwing
+    400134: mesh_mask
+    400136: mesh_rwing
+    400138: mesh_rwing 1
+    400140: wp_body
+    400142: wp_fan
+    400144: wp_head
+    400146: wp_lwing
+    400148: wp_mask
     4300000: datiangou
+    4300002: mesh_mask
+    4300004: mesh_lwing
+    4300006: mesh_rwing
+    4300008: mesh_body
+    4300010: mesh_fan
+    4300012: mesh_head
+    7400000: Take 001
     9500000: //RootNode
     13700000: datiangou
+    13700002: mesh_body
+    13700004: mesh_fan
+    13700006: mesh_head
+    13700008: mesh_lwing
+    13700010: mesh_mask
+    13700012: mesh_rwing
   materials:
     importMaterials: 1
     materialName: 0

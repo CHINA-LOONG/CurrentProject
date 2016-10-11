@@ -217,18 +217,29 @@ public class PvpAdjustBattleTeam : UIBase
         else
         {
             // GameDataMgr.Instance.OnBattleStart();
-            Fight();
+            RequestFight();
         }
     }
     void ConformFightOrNot(MsgBox.PrompButtonClick click)
     {
         if(click == MsgBox.PrompButtonClick.OK)
         {
-            Fight();
+            RequestFight();
         }
     }
-    void Fight()
+    void RequestFight()
     {
+        GameDataMgr.Instance.PvpDataMgrAttr.RequestPvpFight(OnRequestPvpFightFinished);
+    }
+    void OnRequestPvpFightFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = message.GetProtocolBody<PB.HSErrorCode>();
+            PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
+            return;
+        }
         PvpFightParam param = new PvpFightParam();
         param.playerTeam = battleTeam;
         param.targetData = opponentData;

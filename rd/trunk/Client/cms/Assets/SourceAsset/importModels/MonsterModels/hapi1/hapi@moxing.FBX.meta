@@ -69,6 +69,15 @@ ModelImporter:
     100122: Bone004(mirrored)(mirrored)
     100124: hapi
     100126: //RootNode
+    100128: e_jihuo
+    100130: e_shifa
+    100132: e_shouji
+    100134: mesh_body
+    100136: mesh_lwing
+    100138: mesh_rwing
+    100140: wp_body
+    100142: wp_lwing
+    100144: wp_rwing
     400000: Bip001
     400002: Bip001 Head
     400004: Bip001 L Calf
@@ -133,9 +142,25 @@ ModelImporter:
     400122: Bone004(mirrored)(mirrored)
     400124: hapi
     400126: //RootNode
+    400128: e_jihuo
+    400130: e_shifa
+    400132: e_shouji
+    400134: mesh_body
+    400136: mesh_lwing
+    400138: mesh_rwing
+    400140: wp_body
+    400142: wp_lwing
+    400144: wp_rwing
     4300000: hapi
+    4300002: mesh_lwing
+    4300004: mesh_rwing
+    4300006: mesh_body
+    7400000: Take 001
     9500000: //RootNode
     13700000: hapi
+    13700002: mesh_body
+    13700004: mesh_lwing
+    13700006: mesh_rwing
   materials:
     importMaterials: 1
     materialName: 0
@@ -192,8 +217,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

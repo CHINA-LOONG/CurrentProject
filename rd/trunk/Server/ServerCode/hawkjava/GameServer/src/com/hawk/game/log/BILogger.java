@@ -1,7 +1,6 @@
 package com.hawk.game.log;
 
 import org.apache.log4j.Logger;
-import org.hawk.app.HawkAppCfg;
 
 import com.hawk.game.GsConfig;
 import com.hawk.game.BILog.BIData;

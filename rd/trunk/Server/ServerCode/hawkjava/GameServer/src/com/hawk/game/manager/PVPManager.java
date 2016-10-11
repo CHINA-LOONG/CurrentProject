@@ -35,6 +35,7 @@ import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterDefence;
+import com.hawk.game.protocol.PVP.HSPVPEnterRet;
 import com.hawk.game.protocol.PVP.HSPVPInfoRet;
 import com.hawk.game.protocol.PVP.HSPVPMatchTarget;
 import com.hawk.game.protocol.PVP.HSPVPMatchTargetRet;
@@ -55,6 +56,7 @@ public class PVPManager extends HawkAppObj {
 		PVPDefenceEntity pvpDefenceEntity;
 		int startTime;
 		int changeTime;
+		boolean isEnter;
 		
 		public PVPRoom(int targetId, int changeTime, PVPDefenceEntity pvpDefenceEntity) {
 			super();
@@ -62,6 +64,7 @@ public class PVPManager extends HawkAppObj {
 			this.changeTime = changeTime;
 			this.pvpDefenceEntity = pvpDefenceEntity;
 			this.startTime = HawkTime.getSeconds();
+			isEnter = false;
 		}
 	}
 	
@@ -156,6 +159,10 @@ public class PVPManager extends HawkAppObj {
 			onPVPMatch(msg);
 			return true;
 		}
+		else if (msg.getMsg() == GsConst.MsgType.PVP_ENTER_ROOM) {
+			onPVPEnterRoom(msg);
+			return true;
+		}
 		else if (msg.getMsg() == GsConst.MsgType.PVP_SETTLE) {
 			onPVPSettle(msg);
 			return true;
@@ -164,7 +171,7 @@ public class PVPManager extends HawkAppObj {
 			onPVPRankList(msg);
 			return true;
 		}
-		else if (msg.getMsg() == GsConst.MsgType.PVP_WEAK_REWARD) {
+		else if (msg.getMsg() == GsConst.MsgType.PVP_WEEK_REWARD) {
 			onPVPWeekReward(msg);
 			return true;
 		}
@@ -405,13 +412,15 @@ public class PVPManager extends HawkAppObj {
 		rankEntity.setPvpCount(rankEntity.getPvpCount() + 1);
 		rankEntity.notifyUpdate(true);
 		
-		
-		int preSize = pvpRoomList.size();
-		
 		if (protocol.getChangeTarget()) {
 			PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 			if (pvpRoom == null) {
 				player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
+				return;
+			}
+			
+			if (pvpRoom.isEnter == true) {
+				player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_ENTER_BEFORE_VALUE);
 				return;
 			}
 			
@@ -427,15 +436,6 @@ public class PVPManager extends HawkAppObj {
 			player.consumePVPTime(1, Action.PVP_MATCH);
 		}
 		
-		if (preSize == pvpRoomList.size()) {
-			if (pvpRoomList.containsKey(player.getId())) {
-
-				throw new RuntimeException(" SAME SIZE 1" + player.getId());
-			}
-
-			throw new RuntimeException(" SAME SIZE 2");
-		}
-			
 		HSPVPMatchTargetRet.Builder response = HSPVPMatchTargetRet.newBuilder();
 		response.setPlayerId(target.getPlayerId());
 		response.setName(target.getName());
@@ -449,6 +449,29 @@ public class PVPManager extends HawkAppObj {
 	}
 	
 	/**
+	 * pvp 进入房间
+	 * @param msg
+	 */
+	public void onPVPEnterRoom(HawkMsg msg){
+		Player player = msg.getParam(0);
+		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
+		if (pvpRoom == null) {
+			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
+			return;
+		}
+		
+		if (pvpRoom.isEnter == true) {
+			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_ENTER_BEFORE_VALUE);
+			return;
+		}
+		
+		pvpRoom.isEnter = true;
+		
+		HSPVPEnterRet.Builder response = HSPVPEnterRet.newBuilder();
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_ENTER_ROOM_S_VALUE, response));
+	}
+	
+	/**
 	 * pvp结算
 	 * @param msg
 	 */
@@ -459,9 +482,13 @@ public class PVPManager extends HawkAppObj {
 		
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom == null) {
-			throw new RuntimeException("ROOM NULL" + player.getId());
-			//player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
-			//return;
+			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_MATCH_BEFORE_VALUE);
+			return;
+		}
+		
+		if (pvpRoom.isEnter == false) {
+			player.sendError(HS.code.PVP_SETTLE_C_VALUE, Status.pvpError.PVP_NOT_ENTER_VALUE);
+			return;
 		}
 		
 		pvpRoomList.remove(player.getId());
@@ -487,6 +514,14 @@ public class PVPManager extends HawkAppObj {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_SETTLE_S_VALUE, response));
 	}
 	
+	/**
+	 * 内部结算函数
+	 * @param pvpRankEntity
+	 * @param targetId
+	 * @param result
+	 * @param reward
+	 * @return
+	 */
 	public int PVPSettle(PVPRankEntity pvpRankEntity, int targetId, int result, AwardItems reward){
 		PVPRankEntity targetRankEntity = playerRankMap.get(targetId);
 		int selfPoint = pvpRankEntity != null ? pvpRankEntity.getPoint() : GsConst.PVP.PVP_DEFAULT_POINT;
@@ -615,15 +650,19 @@ public class PVPManager extends HawkAppObj {
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom != null) {
 			pvpRoomList.remove(player.getId());
+			
 			PVPRankEntity pvpRankEntity = playerRankMap.get(player.getId());
 			if (pvpRankEntity == null) {
 				return;
 			}
-			AwardItems reward = new AwardItems();
-			PVPSettle(pvpRankEntity, pvpRoom.targetId, Const.PvpResult.LOSE_VALUE, reward);
 			
-			if (reward.hasAwardItem()) {
-				reward.rewardTakeAffect(player, Action.PVP_SETTLE);
+			if (pvpRoom.isEnter == true) {
+				AwardItems reward = new AwardItems();
+				PVPSettle(pvpRankEntity, pvpRoom.targetId, Const.PvpResult.LOSE_VALUE, reward);
+				
+				if (reward.hasAwardItem()) {
+					reward.rewardTakeAffect(player, Action.PVP_SETTLE);
+				}
 			}	
 		}
 	}
@@ -644,7 +683,7 @@ public class PVPManager extends HawkAppObj {
 				continue;
 			}
 			
-			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.PVP_WAEK_GRADE_REWARD);
+			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.PVP_WEEK_GRADE_REWARD);
 			if (mailCfg != null) {
 				MailUtil.SendSysMailWithReward(mailCfg, rankEntity.getPlayerId(), pvpStageRewardCfg.getReward1());
 			}

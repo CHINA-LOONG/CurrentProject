@@ -321,8 +321,10 @@ public class PvpMain : UIBase
             PvpErrorMsg.ShowImWithErrorCode(errorCode.errCode);
             return;
         }
-        PvpDataMgrAttr.selfPvpTiems -= 1;
+
         PB.HSPVPMatchTargetRet msgRet = message.GetProtocolBody<PB.HSPVPMatchTargetRet>();
+        PvpDataMgrAttr.selfPvpTiems = msgRet.pvpTime;
+        PvpDataMgrAttr.selfPvpTimesBeginTime = msgRet.pvpTimeBeginTime;
         PvpAdjustBattleTeam.OpenWith(msgRet);
     }
 }

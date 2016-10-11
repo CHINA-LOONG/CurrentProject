@@ -919,21 +919,21 @@ public final class HS {
      */
     SHOP_STORE_BUY_S(144, 8013),
     /**
-     * <code>SUMMON_ONE_C = 9201;</code>
+     * <code>SUMMON_ONE_C = 8101;</code>
      */
-    SUMMON_ONE_C(145, 9201),
+    SUMMON_ONE_C(145, 8101),
     /**
-     * <code>SUMMON_ONE_S = 9202;</code>
+     * <code>SUMMON_ONE_S = 8102;</code>
      */
-    SUMMON_ONE_S(146, 9202),
+    SUMMON_ONE_S(146, 8102),
     /**
-     * <code>SUMMON_TEN_C = 9203;</code>
+     * <code>SUMMON_TEN_C = 8103;</code>
      */
-    SUMMON_TEN_C(147, 9203),
+    SUMMON_TEN_C(147, 8103),
     /**
-     * <code>SUMMON_TEN_S = 9204;</code>
+     * <code>SUMMON_TEN_S = 8104;</code>
      */
-    SUMMON_TEN_S(148, 9204),
+    SUMMON_TEN_S(148, 8104),
     /**
      * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
@@ -1442,6 +1442,18 @@ public final class HS {
      * <code>PVP_GET_RANK_DEFENCE_S = 12016;</code>
      */
     PVP_GET_RANK_DEFENCE_S(261, 12016),
+    /**
+     * <code>PVP_ENTER_ROOM_C = 12017;</code>
+     *
+     * <pre>
+     *进入房间
+     * </pre>
+     */
+    PVP_ENTER_ROOM_C(262, 12017),
+    /**
+     * <code>PVP_ENTER_ROOM_S = 12018;</code>
+     */
+    PVP_ENTER_ROOM_S(263, 12018),
     ;
 
     /**
@@ -2065,21 +2077,21 @@ public final class HS {
      */
     public static final int SHOP_STORE_BUY_S_VALUE = 8013;
     /**
-     * <code>SUMMON_ONE_C = 9201;</code>
+     * <code>SUMMON_ONE_C = 8101;</code>
      */
-    public static final int SUMMON_ONE_C_VALUE = 9201;
+    public static final int SUMMON_ONE_C_VALUE = 8101;
     /**
-     * <code>SUMMON_ONE_S = 9202;</code>
+     * <code>SUMMON_ONE_S = 8102;</code>
      */
-    public static final int SUMMON_ONE_S_VALUE = 9202;
+    public static final int SUMMON_ONE_S_VALUE = 8102;
     /**
-     * <code>SUMMON_TEN_C = 9203;</code>
+     * <code>SUMMON_TEN_C = 8103;</code>
      */
-    public static final int SUMMON_TEN_C_VALUE = 9203;
+    public static final int SUMMON_TEN_C_VALUE = 8103;
     /**
-     * <code>SUMMON_TEN_S = 9204;</code>
+     * <code>SUMMON_TEN_S = 8104;</code>
      */
-    public static final int SUMMON_TEN_S_VALUE = 9204;
+    public static final int SUMMON_TEN_S_VALUE = 8104;
     /**
      * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
@@ -2588,6 +2600,18 @@ public final class HS {
      * <code>PVP_GET_RANK_DEFENCE_S = 12016;</code>
      */
     public static final int PVP_GET_RANK_DEFENCE_S_VALUE = 12016;
+    /**
+     * <code>PVP_ENTER_ROOM_C = 12017;</code>
+     *
+     * <pre>
+     *进入房间
+     * </pre>
+     */
+    public static final int PVP_ENTER_ROOM_C_VALUE = 12017;
+    /**
+     * <code>PVP_ENTER_ROOM_S = 12018;</code>
+     */
+    public static final int PVP_ENTER_ROOM_S_VALUE = 12018;
 
 
     public final int getNumber() { return value; }
@@ -2739,10 +2763,10 @@ public final class HS {
         case 8011: return SHOP_REFRESH_TIMES;
         case 8012: return SHOP_STORE_BUY_C;
         case 8013: return SHOP_STORE_BUY_S;
-        case 9201: return SUMMON_ONE_C;
-        case 9202: return SUMMON_ONE_S;
-        case 9203: return SUMMON_TEN_C;
-        case 9204: return SUMMON_TEN_S;
+        case 8101: return SUMMON_ONE_C;
+        case 8102: return SUMMON_ONE_S;
+        case 8103: return SUMMON_TEN_C;
+        case 8104: return SUMMON_TEN_S;
         case 9001: return ALLIANCE_CREATE_C;
         case 9002: return ALLIANCE_CREATE_S;
         case 9003: return ALLIANCE_LIST_C;
@@ -2856,6 +2880,8 @@ public final class HS {
         case 12014: return PVP_GET_MY_INFO_S;
         case 12015: return PVP_GET_RANK_DEFENCE_C;
         case 12016: return PVP_GET_RANK_DEFENCE_S;
+        case 12017: return PVP_ENTER_ROOM_C;
+        case 12018: return PVP_ENTER_ROOM_S;
         default: return null;
       }
     }
@@ -2920,7 +2946,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004\022\010\n\004WARN\020\005*Y\n\002gm\022\024\n\020GEN_TE" +
       "ST_ACCOUNT\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPE" +
-      "RATION_S\020f\022\027\n\022GM_INSTANCE_PUSH_S\020\310\001*\3172\n\004" +
+      "RATION_S\020f\022\027\n\022GM_INSTANCE_PUSH_S\020\310\001*\3752\n\004" +
       "code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n\010LOGO" +
       "UT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S\020\354\007\022\017" +
       "\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\020\n\013RECC" +
@@ -3004,8 +3030,8 @@ public final class HS {
       "\020\310>\022\025\n\020SHOP_GOLD2COIN_C\020\311>\022\025\n\020SHOP_GOLD2" +
       "COIN_S\020\312>\022\027\n\022SHOP_REFRESH_TIMES\020\313>\022\025\n\020SH" +
       "OP_STORE_BUY_C\020\314>\022\025\n\020SHOP_STORE_BUY_S\020\315>" +
-      "\022\021\n\014SUMMON_ONE_C\020\361G\022\021\n\014SUMMON_ONE_S\020\362G\022\021" +
-      "\n\014SUMMON_TEN_C\020\363G\022\021\n\014SUMMON_TEN_S\020\364G\022\026\n\021",
+      "\022\021\n\014SUMMON_ONE_C\020\245?\022\021\n\014SUMMON_ONE_S\020\246?\022\021" +
+      "\n\014SUMMON_TEN_C\020\247?\022\021\n\014SUMMON_TEN_S\020\250?\022\026\n\021",
       "ALLIANCE_CREATE_C\020\251F\022\026\n\021ALLIANCE_CREATE_" +
       "S\020\252F\022\024\n\017ALLIANCE_LIST_C\020\253F\022\024\n\017ALLIANCE_L" +
       "IST_S\020\254F\022\026\n\021ALLIANCE_SEARCH_C\020\255F\022\026\n\021ALLI" +
@@ -3082,8 +3108,9 @@ public final class HS {
       "ENCE_MONSTERS_C\020\353]\022\037\n\032PVP_GET_DEFENCE_MO" +
       "NSTERS_S\020\354]\022\026\n\021PVP_GET_MY_INFO_C\020\355]\022\026\n\021P" +
       "VP_GET_MY_INFO_S\020\356]\022\033\n\026PVP_GET_RANK_DEFE" +
-      "NCE_C\020\357]\022\033\n\026PVP_GET_RANK_DEFENCE_S\020\360]B\030\n" +
-      "\026com.hawk.game.protocol"
+      "NCE_C\020\357]\022\033\n\026PVP_GET_RANK_DEFENCE_S\020\360]\022\025\n" +
+      "\020PVP_ENTER_ROOM_C\020\361]\022\025\n\020PVP_ENTER_ROOM_S" +
+      "\020\362]B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

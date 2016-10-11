@@ -36,6 +36,7 @@ public class PlayerPVPModule extends PlayerModule{
 	public PlayerPVPModule(Player player) {
 		super(player);
 		listenProto(HS.code.PVP_MATCH_TARGET_C_VALUE);
+		listenProto(HS.code.PVP_ENTER_ROOM_C_VALUE);
 		listenProto(HS.code.PVP_SETTLE_C_VALUE);
 		listenProto(HS.code.PVP_SET_DEFENCE_MONSTERS_C_VALUE);
 		listenProto(HS.code.PVP_GET_DEFENCE_MONSTERS_C_VALUE);
@@ -94,6 +95,13 @@ public class PlayerPVPModule extends PlayerModule{
 	public boolean onProtocol(HawkProtocol protocol) {
 		if (protocol.getType() == HS.code.PVP_MATCH_TARGET_C_VALUE) {
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_MATCH_TARGET, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.getType() == HS.code.PVP_ENTER_ROOM_C_VALUE) {
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_ENTER_ROOM, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 	 		msg.pushParam(player);
 	 		msg.pushParam(protocol);
 			HawkApp.getInstance().postMsg(msg);
@@ -232,7 +240,7 @@ public class PlayerPVPModule extends PlayerModule{
 		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
 		
 		Calendar refreshTime = TimeUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
-		int leftTime = (3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEAK_SECOND;
+		int leftTime = (3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEEK_SECOND;
 		if (refreshTime != null) {
 			leftTime += (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
 		}

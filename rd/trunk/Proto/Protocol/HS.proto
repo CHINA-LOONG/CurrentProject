@@ -204,10 +204,10 @@ enum code
 	SHOP_STORE_BUY_C            = 8012;
 	SHOP_STORE_BUY_S            = 8013;
 
-	SUMMON_ONE_C                = 9201;
-	SUMMON_ONE_S                = 9202;
-	SUMMON_TEN_C                = 9203;
-	SUMMON_TEN_S                = 9204;
+	SUMMON_ONE_C                = 8101;
+	SUMMON_ONE_S                = 8102;
+	SUMMON_TEN_C                = 8103;
+	SUMMON_TEN_S                = 8104;
 
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;
@@ -331,4 +331,6 @@ enum code
 	PVP_GET_MY_INFO_S           = 12014;
 	PVP_GET_RANK_DEFENCE_C      = 12015;  //获得排行榜防守数据
 	PVP_GET_RANK_DEFENCE_S      = 12016;
+	PVP_ENTER_ROOM_C            = 12017;  //进入房间
+	PVP_ENTER_ROOM_S            = 12018;
 }

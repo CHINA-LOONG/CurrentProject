@@ -3634,6 +3634,22 @@ public final class Status {
      * </pre>
      */
     PVP_NOT_IN_RANK_LIST(4, 917509),
+    /**
+     * <code>PVP_NOT_ENTER = 917510;</code>
+     *
+     * <pre>
+     * 没有开始战斗
+     * </pre>
+     */
+    PVP_NOT_ENTER(5, 917510),
+    /**
+     * <code>PVP_ENTER_BEFORE = 917511;</code>
+     *
+     * <pre>
+     * 之前进入过房间
+     * </pre>
+     */
+    PVP_ENTER_BEFORE(6, 917511),
     ;
 
     /**
@@ -3676,6 +3692,22 @@ public final class Status {
      * </pre>
      */
     public static final int PVP_NOT_IN_RANK_LIST_VALUE = 917509;
+    /**
+     * <code>PVP_NOT_ENTER = 917510;</code>
+     *
+     * <pre>
+     * 没有开始战斗
+     * </pre>
+     */
+    public static final int PVP_NOT_ENTER_VALUE = 917510;
+    /**
+     * <code>PVP_ENTER_BEFORE = 917511;</code>
+     *
+     * <pre>
+     * 之前进入过房间
+     * </pre>
+     */
+    public static final int PVP_ENTER_BEFORE_VALUE = 917511;
 
 
     public final int getNumber() { return value; }
@@ -3687,6 +3719,8 @@ public final class Status {
         case 917507: return PVP_NOT_MATCH_BEFORE;
         case 917508: return PVP_TIMES_NOT_ENOUGH;
         case 917509: return PVP_NOT_IN_RANK_LIST;
+        case 917510: return PVP_NOT_ENTER;
+        case 917511: return PVP_ENTER_BEFORE;
         default: return null;
       }
     }
@@ -3860,11 +3894,13 @@ public final class Status {
       "OT_END\020\210\2000\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\2000" +
       "*a\n\013summonError\022\034\n\026SUMMON_DIAMOND_NO_FRE" +
       "E\020\201\2004\022\031\n\023SUMMON_COIN_NO_FREE\020\202\2004\022\031\n\023SUMM" +
-      "ON_COIN_FREE_CD\020\203\2004*\225\001\n\010pvpError\022\032\n\024PVP_" +
+      "ON_COIN_FREE_CD\020\203\2004*\302\001\n\010pvpError\022\032\n\024PVP_" +
       "NOT_MATCH_TARGET\020\201\2008\022\031\n\023PVP_NOT_SET_DEFE" +
       "NCE\020\202\2008\022\032\n\024PVP_NOT_MATCH_BEFORE\020\203\2008\022\032\n\024P" +
       "VP_TIMES_NOT_ENOUGH\020\204\2008\022\032\n\024PVP_NOT_IN_RA" +
-      "NK_LIST\020\205\2008B\030\n\026com.hawk.game.protocol"
+      "NK_LIST\020\205\2008\022\023\n\rPVP_NOT_ENTER\020\206\2008\022\026\n\020PVP_" +
+      "ENTER_BEFORE\020\207\2008B\030\n\026com.hawk.game.protoc" +
+      "ol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

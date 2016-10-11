@@ -148,20 +148,20 @@ Material:
         second: 0
       data:
         first:
-          name: _InnerColorPower
-        second: 0
-      data:
-        first:
-          name: _RimPower
-        second: 3.00999999
+          name: _AllPower
+        second: 1.94000006
       data:
         first:
           name: _AlphaPower
         second: 6.15999985
       data:
         first:
-          name: _AllPower
-        second: 1.94000006
+          name: _InnerColorPower
+        second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 3.00999999
     m_Colors:
       data:
         first:
@@ -177,9 +177,9 @@ Material:
         second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
-          name: _RimColor
-        second: {r: .433823526, g: .601724148, b: 1, a: .5}
-      data:
-        first:
           name: _InnerColor
         second: {r: .0588235259, g: .0653145686, b: 1, a: .5}
+      data:
+        first:
+          name: _RimColor
+        second: {r: .433823526, g: .601724148, b: 1, a: .5}

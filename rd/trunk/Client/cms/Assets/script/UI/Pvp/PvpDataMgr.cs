@@ -43,6 +43,9 @@ public class PvpDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_GET_RANK_DEFENCE_C.GetHashCode().ToString(), OnReceivPvpMessage);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_GET_RANK_DEFENCE_S.GetHashCode().ToString(), OnReceivPvpMessage);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_ENTER_ROOM_C.GetHashCode().ToString(), OnReceivPvpMessage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PVP_ENTER_ROOM_S.GetHashCode().ToString(), OnReceivPvpMessage);
     }
     void OnDestroy()
     {
@@ -63,6 +66,9 @@ public class PvpDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_GET_RANK_DEFENCE_C.GetHashCode().ToString(), OnReceivPvpMessage);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_GET_RANK_DEFENCE_S.GetHashCode().ToString(), OnReceivPvpMessage);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_ENTER_ROOM_C.GetHashCode().ToString(), OnReceivPvpMessage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PVP_ENTER_ROOM_S.GetHashCode().ToString(), OnReceivPvpMessage);
     }
 
     public  void ClearData()
@@ -234,6 +240,13 @@ public class PvpDataMgr : MonoBehaviour
         PB.HSPVPRankDefence param = new PB.HSPVPRankDefence();
         param.playerId = playerId;
         GameApp.Instance.netManager.SendMessage(PB.code.PVP_GET_RANK_DEFENCE_C.GetHashCode(), param);
+    }
+
+    public void RequestPvpFight(NetMessageDelegate callBack)
+    {
+        this.callBack = callBack;
+        PB.HSPVPEnter param = new PB.HSPVPEnter();
+        GameApp.Instance.netManager.SendMessage(PB.code.PVP_ENTER_ROOM_C.GetHashCode(), param);
     }
     void OnReceivPvpMessage(ProtocolMessage msg)
     {

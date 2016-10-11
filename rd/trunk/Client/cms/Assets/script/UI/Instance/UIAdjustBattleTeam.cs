@@ -121,6 +121,18 @@ public class UIAdjustBattleTeam : UIBase
         }
     }
 
+    Animator animator = null;
+    Animator AnimatorAttr
+    {
+        get
+        {
+            if(null == animator)
+            {
+                animator = GetComponent<Animator>();
+            }
+            return animator;
+        }
+    }
 
     public  static void OpenWith(string instanceId,int star,bool showInstanceListWhenExit, InstanceType insType = InstanceType.Normal, int towerFloor = 0)
     {
@@ -163,6 +175,10 @@ public class UIAdjustBattleTeam : UIBase
 
         bpLabelArray[0].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
         bpLabelArray[1].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
+    }
+    public override void Init()
+    {
+        AnimatorAttr.SetTrigger("animationIn"); 
     }
     public override void Clean()
     {
@@ -972,7 +988,11 @@ public class UIAdjustBattleTeam : UIBase
     {
         if (isBattleClick) return;
 
-        if(showInstanceListExit)
+        AnimatorAttr.SetTrigger("animationOut");
+    }
+    void OnExitAnimationFinish()
+    {
+        if (showInstanceListExit)
         {
             GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
         }

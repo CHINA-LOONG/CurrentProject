@@ -1786,10 +1786,6 @@ public class Player extends HawkAppObj {
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
 			increaseMonster("xgXiaochou3", 0, Action.NULL);
-			increaseMonster("xgXiaochou3", 0, Action.NULL);
-			increaseMonster("xgXiaochou3", 0, Action.NULL);
-			increaseMonster("xgXiaochou3", 0, Action.NULL);
-			increaseMonster("xgXiaochou3", 0, Action.NULL);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

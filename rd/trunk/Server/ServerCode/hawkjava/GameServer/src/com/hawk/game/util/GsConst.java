@@ -90,7 +90,7 @@ public class GsConst {
 
 	public static final int PVP_WEEK_REFRESH_TIME_ID = 110;
 
-	public static final int WEAK_SECOND = 604800;
+	public static final int WEEK_SECOND = 604800;
 
 	/**
 	 * 对象类型
@@ -188,20 +188,22 @@ public class GsConst {
 
 		// 匹配对手
 		public static final int PVP_MATCH_TARGET = 201;
+		// 进入对局
+		public static final int PVP_ENTER_ROOM = 202;
 		// 结算
-		public static final int PVP_SETTLE = 202;
+		public static final int PVP_SETTLE = 203;
 		// 防守记录
-		public static final int PVP_RECORD = 203;
+		public static final int PVP_RECORD = 204;
 		// pvp排行榜
-		public static final int PVP_RANK_LIST = 204;
+		public static final int PVP_RANK_LIST = 205;
 		// pvp周结算
-		public static final int PVP_WEAK_REWARD = 205;
+		public static final int PVP_WEEK_REWARD = 206;
 		// pvp排行榜防守数据
-		public static final int PVP_RANK_DEFENCE = 206;
+		public static final int PVP_RANK_DEFENCE = 207;
 		// pvp 我的数据
-		public static final int PVP_MY_INFO = 207;
+		public static final int PVP_MY_INFO = 208;
 		// pvp 登出
-		public static final int PVP_LOGOUT = 208;
+		public static final int PVP_LOGOUT = 209;
 		
 		/**
 		 * 快照管理器消息定义
@@ -272,7 +274,7 @@ public class GsConst {
 		public static final int PVP = 1 << 7;
 	}
 
-	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, PVP_WEEK_REFRESH_TIME_ID};
+	public static int[] SysRefreshTime = { 103, 104, 105, 106, 107, 108, 109, 110};
 	public static int[] SysRefreshMask = { 4, 4, 4, 4, 4, 4, 4, 128};
 
 	public static int[] PlayerRefreshTime = { 101, 102, 201, 202, 203, 204,
@@ -550,7 +552,7 @@ public class GsConst {
 		// 离开公会发放基地奖励
 		public static final int ALLIANCE_LEAVE_BASE = 104;
 		// 周结算 段位奖励
-		public static final int PVP_WAEK_GRADE_REWARD = 105;
+		public static final int PVP_WEEK_GRADE_REWARD = 105;
 		// 月结算 排名奖励
 		public static final int PVP_MONTH_RANK_REWARD = 106;
 

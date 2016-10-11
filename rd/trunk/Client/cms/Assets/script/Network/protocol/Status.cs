@@ -592,7 +592,13 @@ namespace PB
       PVP_TIMES_NOT_ENOUGH = 917508,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_IN_RANK_LIST", Value=917509)]
-      PVP_NOT_IN_RANK_LIST = 917509
+      PVP_NOT_IN_RANK_LIST = 917509,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_NOT_ENTER", Value=917510)]
+      PVP_NOT_ENTER = 917510,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_ENTER_BEFORE", Value=917511)]
+      PVP_ENTER_BEFORE = 917511
     }
   
 }

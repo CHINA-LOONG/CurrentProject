@@ -5758,6 +5758,624 @@ public final class PVP {
     // @@protoc_insertion_point(class_scope:HSPVPMatchTargetRet)
   }
 
+  public interface HSPVPEnterOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSPVPEnter}
+   */
+  public static final class HSPVPEnter extends
+      com.google.protobuf.GeneratedMessage
+      implements HSPVPEnterOrBuilder {
+    // Use HSPVPEnter.newBuilder() to construct.
+    private HSPVPEnter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSPVPEnter(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSPVPEnter defaultInstance;
+    public static HSPVPEnter getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSPVPEnter getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSPVPEnter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPEnter_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPEnter_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.PVP.HSPVPEnter.class, com.hawk.game.protocol.PVP.HSPVPEnter.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSPVPEnter> PARSER =
+        new com.google.protobuf.AbstractParser<HSPVPEnter>() {
+      public HSPVPEnter parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSPVPEnter(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSPVPEnter> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnter parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.PVP.HSPVPEnter prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSPVPEnter}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.PVP.HSPVPEnterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnter_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnter_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.PVP.HSPVPEnter.class, com.hawk.game.protocol.PVP.HSPVPEnter.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.PVP.HSPVPEnter.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnter_descriptor;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnter getDefaultInstanceForType() {
+        return com.hawk.game.protocol.PVP.HSPVPEnter.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnter build() {
+        com.hawk.game.protocol.PVP.HSPVPEnter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnter buildPartial() {
+        com.hawk.game.protocol.PVP.HSPVPEnter result = new com.hawk.game.protocol.PVP.HSPVPEnter(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.PVP.HSPVPEnter) {
+          return mergeFrom((com.hawk.game.protocol.PVP.HSPVPEnter)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.PVP.HSPVPEnter other) {
+        if (other == com.hawk.game.protocol.PVP.HSPVPEnter.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.PVP.HSPVPEnter parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.PVP.HSPVPEnter) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSPVPEnter)
+    }
+
+    static {
+      defaultInstance = new HSPVPEnter(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSPVPEnter)
+  }
+
+  public interface HSPVPEnterRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSPVPEnterRet}
+   */
+  public static final class HSPVPEnterRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSPVPEnterRetOrBuilder {
+    // Use HSPVPEnterRet.newBuilder() to construct.
+    private HSPVPEnterRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSPVPEnterRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSPVPEnterRet defaultInstance;
+    public static HSPVPEnterRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSPVPEnterRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSPVPEnterRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPEnterRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.PVP.internal_static_HSPVPEnterRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.PVP.HSPVPEnterRet.class, com.hawk.game.protocol.PVP.HSPVPEnterRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSPVPEnterRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSPVPEnterRet>() {
+      public HSPVPEnterRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSPVPEnterRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSPVPEnterRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.PVP.HSPVPEnterRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.PVP.HSPVPEnterRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSPVPEnterRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.PVP.HSPVPEnterRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnterRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnterRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.PVP.HSPVPEnterRet.class, com.hawk.game.protocol.PVP.HSPVPEnterRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.PVP.HSPVPEnterRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.PVP.internal_static_HSPVPEnterRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnterRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.PVP.HSPVPEnterRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnterRet build() {
+        com.hawk.game.protocol.PVP.HSPVPEnterRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.PVP.HSPVPEnterRet buildPartial() {
+        com.hawk.game.protocol.PVP.HSPVPEnterRet result = new com.hawk.game.protocol.PVP.HSPVPEnterRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.PVP.HSPVPEnterRet) {
+          return mergeFrom((com.hawk.game.protocol.PVP.HSPVPEnterRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.PVP.HSPVPEnterRet other) {
+        if (other == com.hawk.game.protocol.PVP.HSPVPEnterRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.PVP.HSPVPEnterRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.PVP.HSPVPEnterRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSPVPEnterRet)
+    }
+
+    static {
+      defaultInstance = new HSPVPEnterRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSPVPEnterRet)
+  }
+
   public interface HSPVPSettleOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -9801,6 +10419,16 @@ public final class PVP {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSPVPMatchTargetRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSPVPEnter_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSPVPEnter_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSPVPEnterRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSPVPEnterRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSPVPSettle_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9867,17 +10495,18 @@ public final class PVP {
       "\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\014\n\004rank\030\004 \002(\005\022&\n\013de" +
       "fenceData\030\005 \002(\0132\021.HSMonsterDefence\022\017\n\007pv" +
       "pTime\030\006 \002(\005\022\030\n\020pvpTimeBeginTime\030\007 \002(\005\022\022\n" +
-      "\nchangeTime\030\010 \002(\005\"\035\n\013HSPVPSettle\022\016\n\006resu" +
-      "lt\030\001 \002(\005\"B\n\016HSPVPSettleRet\022\r\n\005point\030\001 \002(",
-      "\005\022\014\n\004rank\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\t" +
-      "HSPVPRank\"1\n\014HSPVPRankRet\022!\n\013pvpRankList" +
-      "\030\001 \003(\0132\014.PVPRankData\"$\n\020HSPVPRankDefence" +
-      "\022\020\n\010playerId\030\001 \002(\005\"L\n\023HSPVPRankDefenceRe" +
-      "t\022)\n\016monsterDefence\030\001 \002(\0132\021.HSMonsterDef" +
-      "ence\022\n\n\002bp\030\002 \002(\005\"\024\n\022HSPVPDefenceRecord\"L" +
-      "\n\025HSPVPDefenceRecordRet\0223\n\024pvpDefenceRec" +
-      "ordList\030\001 \003(\0132\025.PVPDefenceRecordDataB\030\n\026" +
-      "com.hawk.game.protocol"
+      "\nchangeTime\030\010 \002(\005\"\014\n\nHSPVPEnter\"\017\n\rHSPVP" +
+      "EnterRet\"\035\n\013HSPVPSettle\022\016\n\006result\030\001 \002(\005\"",
+      "B\n\016HSPVPSettleRet\022\r\n\005point\030\001 \002(\005\022\014\n\004rank" +
+      "\030\002 \002(\005\022\023\n\013rewardPoint\030\003 \002(\005\"\013\n\tHSPVPRank" +
+      "\"1\n\014HSPVPRankRet\022!\n\013pvpRankList\030\001 \003(\0132\014." +
+      "PVPRankData\"$\n\020HSPVPRankDefence\022\020\n\010playe" +
+      "rId\030\001 \002(\005\"L\n\023HSPVPRankDefenceRet\022)\n\016mons" +
+      "terDefence\030\001 \002(\0132\021.HSMonsterDefence\022\n\n\002b" +
+      "p\030\002 \002(\005\"\024\n\022HSPVPDefenceRecord\"L\n\025HSPVPDe" +
+      "fenceRecordRet\0223\n\024pvpDefenceRecordList\030\001" +
+      " \003(\0132\025.PVPDefenceRecordDataB\030\n\026com.hawk." +
+      "game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9944,50 +10573,62 @@ public final class PVP {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPMatchTargetRet_descriptor,
               new java.lang.String[] { "PlayerId", "Name", "Level", "Rank", "DefenceData", "PvpTime", "PvpTimeBeginTime", "ChangeTime", });
-          internal_static_HSPVPSettle_descriptor =
+          internal_static_HSPVPEnter_descriptor =
             getDescriptor().getMessageTypes().get(10);
+          internal_static_HSPVPEnter_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSPVPEnter_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSPVPEnterRet_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_HSPVPEnterRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSPVPEnterRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSPVPSettle_descriptor =
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSPVPSettle_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPSettle_descriptor,
               new java.lang.String[] { "Result", });
           internal_static_HSPVPSettleRet_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSPVPSettleRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPSettleRet_descriptor,
               new java.lang.String[] { "Point", "Rank", "RewardPoint", });
           internal_static_HSPVPRank_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_HSPVPRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRank_descriptor,
               new java.lang.String[] { });
           internal_static_HSPVPRankRet_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSPVPRankRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRankRet_descriptor,
               new java.lang.String[] { "PvpRankList", });
           internal_static_HSPVPRankDefence_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSPVPRankDefence_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRankDefence_descriptor,
               new java.lang.String[] { "PlayerId", });
           internal_static_HSPVPRankDefenceRet_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSPVPRankDefenceRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPRankDefenceRet_descriptor,
               new java.lang.String[] { "MonsterDefence", "Bp", });
           internal_static_HSPVPDefenceRecord_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_HSPVPDefenceRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPDefenceRecord_descriptor,
               new java.lang.String[] { });
           internal_static_HSPVPDefenceRecordRet_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_HSPVPDefenceRecordRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPVPDefenceRecordRet_descriptor,

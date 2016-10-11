@@ -367,7 +367,7 @@ public class GsApp extends HawkApp {
 					ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 				}
 				else if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.PVP)) {
-			 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_WEAK_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
+			 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_WEEK_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 					if (HawkApp.getInstance().postMsg(msg)) {
 						// 刷新时间点
 						ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);

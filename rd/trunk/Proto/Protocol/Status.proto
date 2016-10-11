@@ -385,4 +385,8 @@ enum pvpError
 	PVP_TIMES_NOT_ENOUGH       = 0x000E0004;
 	// 不在排行榜上
 	PVP_NOT_IN_RANK_LIST       = 0x000E0005;
+	// 没有开始战斗
+	PVP_NOT_ENTER		       = 0x000E0006;
+	// 之前进入过房间
+	PVP_ENTER_BEFORE	       = 0x000E0007;
 }

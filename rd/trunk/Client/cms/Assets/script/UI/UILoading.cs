@@ -33,8 +33,6 @@ public class UILoading : UIBase
     public Text powerText2;
     public Text contentName;
     public Image contentImage;
-    public Vector3[] contentNameVec;
-    public Vector3[] contentImageVec;
     public GameObject pvploadingG;
     public GameObject loadingContent;
 
@@ -116,8 +114,9 @@ public class UILoading : UIBase
         loadingBackground.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.background);
         contentImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.asset);
 
-        contentImage.gameObject.transform.localPosition = contentImageVec[loadingLocation.location];
-        contentName.gameObject.transform.localPosition = contentNameVec[loadingLocation.location];
+        contentImage.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentImage" + loadingLocation.location).transform.localPosition;
+        contentName.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentText" + loadingLocation.location).transform.localPosition;
+
         randomNum = Random.Range(0, loadingData.loadingTips.Length);
         gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.loadingTips[randomNum]);
     }

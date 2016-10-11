@@ -129,7 +129,7 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		httpRquest.AddField ("platform", Const.platform);
 		httpRquest.Send ();
 		yield return StartCoroutine (httpRquest);
-		if (!httpRquest.Response.IsSuccess)
+		if (httpRquest.Response== null || !httpRquest.Response.IsSuccess)
 		{
 			OnUpdateFailed(string.Empty);
 			yield break;
@@ -172,7 +172,8 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 
 			msgText.text = string.Format("更新资源{0},共有{1}个资源", tempIndex ++ ,versionList.Count );
 			httpRquest = new HTTPRequest( new Uri( string.Format("{0}/{1}",resServer,verZip)));
-			httpRquest.Send();
+            httpRquest.OnProgress = OnDownloadProgressDelegate;
+            httpRquest.Send();
 			yield return StartCoroutine(httpRquest);
 			if (!httpRquest.Response.IsSuccess)
 			{
@@ -192,8 +193,12 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		Logger.Log("更新完成!!");
 		OnUpdateFinished ();
 	}
-	
-	void OnUpdateFailed(string msg)
+    void OnDownloadProgressDelegate(HTTPRequest originalRequest, int downloaded, int downloadLength)
+    {
+        Debug.LogErrorFormat("ri.... {0} ---{1}", downloaded, downloadLength);
+    }
+
+    void OnUpdateFailed(string msg)
 	{
 		msgText.text = msg;
 		userCanRequestUpdate = true;

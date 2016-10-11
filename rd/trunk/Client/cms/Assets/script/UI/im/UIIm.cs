@@ -361,30 +361,20 @@ public class UIIm : UIBase
         for (; i < msgList.Count; i++)
         {
             msgObj[i].transform.localPosition = msgPos.transform.localPosition;
-            imMsgData = msgObj[i].gameObject.GetComponent<ImMessageData>();     
+            imMsgData = msgObj[i].gameObject.GetComponent<ImMessageData>();
             if (i != 0)
             {
                 GameObject msgText = Util.FindChildByName(msgObj[i - 1], "msgText");
                 if (msgText != null)
                 {
-                    if (msgList[i - 1].type == (int)PB.ImType.NOTICE)
-                    {
-                        RectTransform msgTrans = msgText.transform as RectTransform;
-                        msgHeight = 0 - msgTrans.localPosition.y;
-                        newMsgPos = msgObj[i - 1].transform.localPosition.y - msgHeight;
-                        msgObj[i].transform.localPosition = new Vector3(msgPos.transform.localPosition.x, newMsgPos, 0);
-                    }
-                    else
-                    {
-                        RectTransform msgTrans = msgText.transform as RectTransform;
-                        msgHeight = msgTrans.sizeDelta.y - msgTrans.localPosition.y;
-                        newMsgPos = msgObj[i - 1].transform.localPosition.y - msgHeight;
-                        msgObj[i].transform.localPosition = new Vector3(msgPos.transform.localPosition.x, newMsgPos, 0);
-                    }
-                }            
+                    RectTransform msgTrans = msgText.transform as RectTransform;
+                    msgHeight = msgTrans.sizeDelta.y - msgTrans.localPosition.y;
+                    newMsgPos = msgObj[i - 1].transform.localPosition.y - msgHeight;
+                    msgObj[i].transform.localPosition = new Vector3(msgPos.transform.localPosition.x, newMsgPos, 0);
+                }
             }
             Color textColor;
-            msgObj[i].SetActive(true);            
+            msgObj[i].SetActive(true);
             if (msgList[i].type == (int)PB.ImType.NOTICE)
             {
                 textColor = ColorConst.systemColor;
@@ -406,10 +396,10 @@ public class UIIm : UIBase
                 imMsgData.mSpeaker.color = ColorConst.nameColor;
                 imMsgData.mPlayer.rectTransform.sizeDelta = new Vector2(imMsgData.mSpeaker.preferredWidth,
                         imMsgData.mPlayer.rectTransform.sizeDelta.y);
-            }           
-            imMsgData.playerName = msgList[i].senderName;            
+            }
+            imMsgData.playerName = msgList[i].senderName;
             imMsgData.mContent.color = textColor;
-            imMsgData.speakerID = msgList[i].senderId;             
+            imMsgData.speakerID = msgList[i].senderId;
             imMsgData.mChannel.color = textColor;
             if (msgList[i].expansion != null)
             {
