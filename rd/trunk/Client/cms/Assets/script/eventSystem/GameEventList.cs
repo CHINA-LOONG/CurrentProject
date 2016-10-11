@@ -39,6 +39,7 @@ public class GameEventList
 	public static string ShowFireFocus = "ShowFireFocus";//param GameUnit
 	public static string HideFireFocus = "HideFireFocus";// no param
 	public static string DazhaoActionOver = "DazhaoActionOver";//param BattleObject
+    public static string ShowBattleUI = "ShowBattleUI";
 
 	public static string WeakpoingDead = "WeakpointDead";//param GameUnit,string
 

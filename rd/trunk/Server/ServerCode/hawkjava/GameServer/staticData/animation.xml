@@ -3336,6 +3336,25 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
+		<Ani id="psvHetong2" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" attach=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cplant"/>
+			</AudioList>
+		</Ani>
+		<Ani id="psvHetong2e3" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuffDefense" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
 		
 		
 	</AniList>	

@@ -6,15 +6,15 @@ enum errorMask
 	LOGIN_ERROR                = 0x00010000;
 	PLAYER_ERROR               = 0x00020000;
 	MONSTER_ERROR              = 0x00030000;
-	ITEM_ERROR                 = 0x00040000;
-	QUEST_ERROR                = 0x00050000;
-	INSTANCE_ERROR             = 0x00060000;
-	MAIL_ERROR                 = 0x00070000;
-	ALLIANCE_ERROR             = 0x00080000;
-	SHOP_ERROR                 = 0x00090000;
-	IM_ERROR                   = 0x000A0000;
+	ITEM_ERROR                 = 0x00030000;
+	QUEST_ERROR                = 0x00040000;
+	INSTANCE_ERROR             = 0x00050000;
+	MAIL_ERROR                 = 0x00060000;
+	ALLIANCE_ERROR             = 0x00090000;
+	SHOP_ERROR                 = 0x00080000;
+	IM_ERROR                   = 0x00090000;
 	SETTING_ERROR              = 0x000B0000;
-	ADVENTURE_ERROR            = 0x000C0000;
+	ADVENTURE_ERROR            = 0x000A0000;
 	SUMMON_ERROR               = 0x000D0000;
 	PVP_ERROR                  = 0x000E0000;
 }
@@ -50,289 +50,311 @@ enum error
 enum PlayerError
 {
 	// 角色不存在
-	PLAYER_NOT_EXIST           = 0x00020001;
+	PLAYER_NOT_EXIST           = 0x00010001;
 	// 昵称存在
-	PLAYER_NICKNAME_EXIST      = 0x00020002;
+	PLAYER_NICKNAME_EXIST      = 0x00010002;
 	// 账号名成重复
-	PUID_EXIST                 = 0x00020003;
+	PUID_EXIST                 = 0x00010003;
 	// 金币不足
-	COIN_NOT_ENOUGH            = 0x00020004;
+	COIN_NOT_ENOUGH            = 0x00010004;
 	// 金币上限
-	COIN_LIMIT                 = 0x00020005;
+	COIN_LIMIT                 = 0x00010005;
 	// 钻石不足
-	GOLD_NOT_ENOUGH            = 0x00020006;
+	GOLD_NOT_ENOUGH            = 0x00010006;
 	// 钻石上限
-	GOLD_LIMIT                 = 0x00020007;
+	GOLD_LIMIT                 = 0x00010007;
 	// 疲劳值不足
-	FATIGUE_NOT_ENOUGH         = 0x00020008;
+	FATIGUE_NOT_ENOUGH         = 0x00010008;
 	// 疲劳值上限
-	FATIGUE_LIMIT              = 0x00020009;
+	FATIGUE_LIMIT              = 0x00010009;
 	// 通天塔币不足
-	TOWER_COIN_NOT_ENOUGH      = 0x0002000A;
+	TOWER_COIN_NOT_ENOUGH      = 0x0001000A;
 	// 通天塔币上限
-	TOWER_COIN_LIMIT           = 0x0002000B;
+	TOWER_COIN_LIMIT           = 0x0001000B;
 	// 竞技场币不足
-	ARENA_COIN_NOT_ENOUGH      = 0x0002000C;
+	ARENA_COIN_NOT_ENOUGH      = 0x0001000C;
 	// 竞技场币上限
-	ARENA_COIN_LIMIT           = 0x0002000D;
+	ARENA_COIN_LIMIT           = 0x0001000D;
 	// 公会贡献值不足
-	CONTRIBUTION_NOT_ENOUGH    = 0x0002000E;
+	CONTRIBUTION_NOT_ENOUGH    = 0x0001000E;
 	// 公会贡献值上限
-	CONTRIBUTION_LIMIT         = 0x0002000F;
+	CONTRIBUTION_LIMIT         = 0x0001000F;
 	// 荣誉点上限
-	HONOR_POINT_LIMIT          = 0x00020010;
+	HONOR_POINT_LIMIT          = 0x00010010;
 	// 荣誉点不足
-	HONOR_POINT_NOT_ENOUGH     = 0x00020011;
+	HONOR_POINT_NOT_ENOUGH     = 0x00010011;
 
 	// 今日已签到
-	SIGNIN_ALREADY             = 0x00021001;
+	SIGNIN_ALREADY             = 0x00011001;
 	// 今日还未签到
-	SIGNIN_NOT_YET             = 0x00021002;
+	SIGNIN_NOT_YET             = 0x00011002;
 	// 没有补签次数
-	SIGNIN_FILL_ZERO           = 0x00021003;
+	SIGNIN_FILL_ZERO           = 0x00011003;
 	// 本月签到已完成
-	SIGNIN_FINISH              = 0x00021004;
+	SIGNIN_FINISH              = 0x00011004;
 	// 本月签到已结束
-	SIGNIN_STOP                = 0x00021005;
+	SIGNIN_STOP                = 0x00011005;
 }
 
 enum monsterError
 {
 	// 怪物数量达到上限
-	MONSTER_MAX_SIZE           = 0x00030001;
-	// 怪物不存在
-	MONSTER_NOT_EXIST          = 0x00030002;
-	// 技能点不足
-	SKILL_POINT_NOT_ENOUGH     = 0x00030003;
-	// 技能等级达到上限
-	SKILL_LEVEL_LIMIT          = 0x00030004;
-	// 品级达到上限
-	STAGE_LIMIT                = 0x00030005;
-	// 进阶等级不足
-	STAGE_LEVEL_NOT_ENOUGH     = 0x00030006;
-	// 进阶材料不足
-	STAGE_CONSUME              = 0x00030007;
-	// 上阵怪物数量错误
-	BATTLE_MONSTER_COUNT       = 0x00030008;
-	// 锁定
-	MONSTER_LOCKED             = 0x00030009;
-	// 已经锁定
-	LOCK_ALREADY               = 0x0003000A;
-	// 已经解锁
-	UNLOCK_ALREADY             = 0x0003000B;
-	// 不可上阵
-	MONSTER_BUSY               = 0x0003000C;
+	MONSTER_MAX_SIZE           = 0x00020001;
+	// 怪物不存在                     
+	MONSTER_NOT_EXIST          = 0x00020002;
+	// 技能点不足                     
+	SKILL_POINT_NOT_ENOUGH     = 0x00020003;
+	// 技能等级达到上限               
+	SKILL_LEVEL_LIMIT          = 0x00020004;
+	// 品级达到上限                   
+	STAGE_LIMIT                = 0x00020005;
+	// 进阶等级不足                   
+	STAGE_LEVEL_NOT_ENOUGH     = 0x00020006;
+	// 进阶材料不足                   
+	STAGE_CONSUME              = 0x00020007;
+	// 上阵怪物数量错误               
+	BATTLE_MONSTER_COUNT       = 0x00020008;
+	// 锁定                           
+	MONSTER_LOCKED             = 0x00020009;
+	// 已经锁定                       
+	LOCK_ALREADY               = 0x0002000A;
+	// 已经解锁                       
+	UNLOCK_ALREADY             = 0x0002000B;
+	// 不可上阵                       
+	MONSTER_BUSY               = 0x0002000C;
 }
 
 enum itemError
 {
 	// 道具不存在
-	ITEM_NOT_FOUND             = 0x00040001;
+	ITEM_NOT_FOUND             = 0x00030001;
 	// 道具数量不足
-	ITEM_NOT_ENOUGH            = 0x00040002;
+	ITEM_NOT_ENOUGH            = 0x00030002;
 	// 道具不能买
-	ITEM_BUY_NOT_ALLOW         = 0x00040003;
+	ITEM_BUY_NOT_ALLOW         = 0x00030003;
 	// 道具不能卖
-	ITEM_SELL_NOT_ALLOW        = 0x00040004;
+	ITEM_SELL_NOT_ALLOW        = 0x00030004;
 	// 多倍经验还有剩余
-	ITEM_EXP_LEFT_TIMES        = 0x00040005;
+	ITEM_EXP_LEFT_TIMES        = 0x00030005;
 	// 物品使用次数已满
-	ITEM_USE_COUNT             = 0x00040006;
+	ITEM_USE_COUNT             = 0x00030006;
 
 	// 装备不足
-	EQUIP_NOT_FOUND            = 0x00041001;
+	EQUIP_NOT_FOUND            = 0x00031001;
 	// 装备最大等级
-	EQUIP_MAX_LEVEL_ALREADY    = 0x00041002;
+	EQUIP_MAX_LEVEL_ALREADY    = 0x00031002;
 	// 装备等级不够进阶
-	EQUIP_LEVEL_NOT_ENOUGH     = 0x00041003;
+	EQUIP_LEVEL_NOT_ENOUGH     = 0x00031003;
 	// 装备最大品级
-	EQUIP_MAX_STAGE_ALREADY    = 0x00041004;
+	EQUIP_MAX_STAGE_ALREADY    = 0x00031004;
 	// 装备不在背包
-	EQUIP_DRESS_ALREADY        = 0x00041005;
+	EQUIP_DRESS_ALREADY        = 0x00031005;
 	// 该位置没有其他装备
-	EQUIP_NOT_DRESS_OTHER      = 0x00041006;
+	EQUIP_NOT_DRESS_OTHER      = 0x00031006;
 	// 该位置已经有其他装备
-	EQUIP_DRESS_OTHER_ALREADY  = 0x00041007;
+	EQUIP_DRESS_OTHER_ALREADY  = 0x00031007;
 	// 装备不在身上
-	EQUIP_NOT_DRESSED          = 0x00041008;
+	EQUIP_NOT_DRESSED          = 0x00031008;
 	// 槽位已经镶嵌宝石
-	EQUIP_SLOT_NOT_EMPTY       = 0x00041009;
+	EQUIP_SLOT_NOT_EMPTY       = 0x00031009;
 	// 槽位没有镶嵌宝石
-	EQUIP_SLOT_EMPTY           = 0x0004100A;
+	EQUIP_SLOT_EMPTY           = 0x0003100A;
 	// 宝石不存在
-	EQUIP_GEM_NOT_FOUND        = 0x0004100B;
+	EQUIP_GEM_NOT_FOUND        = 0x0003100B;
 	// 装备不能开孔
-	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x0004100C;
+	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x0003100C;
 	// 镶嵌宝石不符
-	EQUIP_GEM_MISMATCH         = 0x0004100D;
+	EQUIP_GEM_MISMATCH         = 0x0003100D;
 	// 槽位没有开孔
-	EQUIP_SLOT_NOT_PUNCH       = 0x0004100E;
+	EQUIP_SLOT_NOT_PUNCH       = 0x0003100E;
 	// 玩家等级限制
-	EQUIP_PLAYER_LEVEL_DEMAND  = 0x0004100F;
+	EQUIP_PLAYER_LEVEL_DEMAND  = 0x0003100F;
 }
 
 enum questError
 {
 	// 当前没有该任务
-	QUEST_NOT_ACCEPT           = 0x00050001;
+	QUEST_NOT_ACCEPT           = 0x00040001;
 	// 任务未完成
-	QUEST_NOT_COMPLETE         = 0x00050002;
+	QUEST_NOT_COMPLETE         = 0x00040002;
 	// 现在不可领奖
-	QUEST_NOT_OPEN             = 0x00050003;
+	QUEST_NOT_OPEN             = 0x00040003;
 }
 
 enum instanceError
 {
 	// 副本未开启
-	INSTANCE_NOT_OPEN          = 0x00060001;
+	INSTANCE_NOT_OPEN          = 0x00050001;
 	// 等级不足
-	INSTANCE_LEVEL             = 0x00060002;
+	INSTANCE_LEVEL             = 0x00050002;
 	// 挑战次数已用完
-	INSTANCE_COUNT             = 0x00060003;
+	INSTANCE_COUNT             = 0x00050003;
 	// 体力不足
-	INSTANCE_FATIGUE           = 0x00060004;
+	INSTANCE_FATIGUE           = 0x00050004;
 	// 复活次数已用完
-	INSTANCE_REVIVE_COUNT      = 0x00060005;
+	INSTANCE_REVIVE_COUNT      = 0x00050005;
 	// 扫荡未满星
-	SWEEP_STAR_COUNT           = 0x00060006;
+	SWEEP_STAR_COUNT           = 0x00050006;
 	// 章节未满星
-	CHAPTER_BOX_STAR_COUNT     = 0x00060007;
+	CHAPTER_BOX_STAR_COUNT     = 0x00050007;
 	// 章节宝箱已领取
-	CHAPTER_BOX_ALREADY_OPEN   = 0x00060008;
+	CHAPTER_BOX_ALREADY_OPEN   = 0x00050008;
 	// 结算时未进入副本
-	INSTANCE_NOT_ENTER         = 0x00060009;
+	INSTANCE_NOT_ENTER         = 0x00050009;
 	// 通天塔层数错误
-	TOWER_FLOOR                = 0x0006000A;
+	TOWER_FLOOR                = 0x0005000A;
 }
 
 enum mailError
 {
 	// 邮件不存在
-	MAIL_NOT_EXIST             = 0x00070001;
+	MAIL_NOT_EXIST             = 0x00060001;
 	// 没有邮件
-	MAIL_NONE                  = 0x00070002;
+	MAIL_NONE                  = 0x00060002;
 	// 金币已满收取失败
-	MAIL_COIN_FULL             = 0x00070003;
+	MAIL_COIN_FULL             = 0x00060003;
 	// 钻石已满收取失败
-	MAIL_GOLD_FULL             = 0x00070004;
-}
-
-enum allianceError
-{
-	// 创建公会等级不足
-	ALLIANCE_LEVEL_NOT_ENOUGH     = 0x00080001;
-	// 已经在公会中
-	ALLIANCE_ALREADY_IN           = 0x00080002;
-	// 工会不存在
-	ALLIANCE_NOT_EXIST            = 0x00080003;
-	// 公会名称错误
-	ALLIANCE_NAME_ERROR           = 0x00080004;
-	// 已经名称重复
-	ALLIANCE_NAME_EXIST           = 0x00080005;
-	// 未加入公会
-	ALLIANCE_NOT_JOIN             = 0x00080006;
-	// 非会长
-	ALLIANCE_NO_MAIN              = 0x00080007;
-	// 通告错误
-	ALLIANCE_NOTICE_ERROR         = 0x00080008;
-	// 已经申请过了
-	ALLIANCE_ALREADY_APPLY        = 0x00080009;
-	// 工会已满
-	ALLIANCE_ALREADY_FULL         = 0x0008000A;
-	// 申请不存在
-	ALLIANCE_APPLY_NOT_EXIST      = 0x0008000B;
-	// 工会职位有误
-	ALLIANCE_POSITION_ERROR	      = 0x0008000C;
-	// 公会会长退出时不空
-	ALLIANCE__LEAVE_NOT_EMPTY     = 0x0008000D;
-	// 操作对象未加入公会
-	ALLIANCE_TARGET_NOT_JOIN      = 0x0008000E;
-	// 操作对象已加入公会
-	ALLIANCE_TARGET_ALREADY_JOIN  = 0x0008000F;
-	// 工会科技等级满级
-	ALLIANCE_TECH_FULL            = 0x00080010;
-	// 工会等级不足
-	ALLIANCE_LEVEL_LIMIT          = 0x00080011;
-	// 公会贡献值不足
-	ALLIANCE_CONTRI_NOT_ENOUGH    = 0x00080012;
-	// 公会祈福最大值
-	ALLIANCE_PRAY_MAX_COUNT       = 0x00080013;
-	// 退出公会冻结时间
-	ALLIANCE_FRIZEN_TIME          = 0x00080014;
-	// 赠送次数已满
-	ALLIANCE_MAX_FAGIGUE_COUNT    = 0x00080015;
-	// 已经赠送过疲劳值
-	ALLIANCE_FAGIGUE_GIVE_ALREADY = 0x00080016;
-	// 容量不足
-	ALLIANCE_CAPACITY_NOT_ENOUGH  = 0x00080017;
-	// 职位相同
-	ALLIANCE_SAME_POSITION        = 0x00080018;
-	// 申请上限
-	ALLIANCE_MAX_APPLY            = 0x00080019;
-	// 已经在队伍中
-	ALLIANCE_ALREADY_IN_TEAM      = 0x0008001A;
-	// 队伍不存在
-	ALLIANCE_TEAM_NOT_EXIST       = 0x0008001B;
-	// 队伍任务全部完成
-	ALLIANCE_TEAM_FINISH          = 0x0008001C;
-	// 队伍满员
-	ALLIANCE_TEAM_FULL            = 0x0008001D;
-	// 大任务已完成
-	ALLIANCE_TASK_FINISH          = 0x0008001E;
-	// 不再队伍中
-	ALLIANCE_NOT_IN_TEAM          = 0x0008001F;
-	// 大任务不存在
-	ALLIANCE_TASK_NOT_EXIST       = 0x00080020;
-	// 大任务最大值
-	ALLIANCE_MAX_BIG_TASK         = 0x00080021;
-	// 小任务最大值
-	ALLIANCE_MAX_SMALL_TASK       = 0x00080022;
-	// 小任务不存在
-	ALLIANCE_QUEST_NOT_EXIST      = 0x00080023;
-	// 小任务已完成
-	ALLIANCE_QUEST_FINISH         = 0x00080024;
-	// 大任务未完成
-	ALLIANCE_TASK_NOT_FINISH      = 0x00080025;
-	// 不是队长
-	ALLIANCE_NOT_CAPTAIN          = 0x00080026;
-	// 队伍中有队友
-	ALLIANCE_HAVE_MEMBER          = 0x00080027;
-	// 奖励已领取
-	ALLIANCE_REWARD_ALREADY_GIVE  = 0x00080028;
-	// 副会长最大值
-	ALLIANCE_MAX_COPY_MAIN        = 0x00080029;
-	// 申请列表为空
-	ALLIANCE_APPLY_LIST_EMPTY     = 0x0008002A;
-	// 基地对应位置已经派兵
-	ALLIANCE_BASE_HAVE_MONSTER    = 0x0008002B;
-	// 基地对应位置没有派兵
-	ALLIANCE_BASE_HAVE_NO_MONSTER = 0x0008002C;
-	// 基地对应位置被锁定
-	ALLIANCE_BASE_POSITION_LOCK   = 0x0008002D;
-	// 基地宠物已派出
-	ALLIANCE_BASE_MONSTER_HAVE_SEND = 0x0008002E;
-	// 基地宠物最小时间限制
-	ALLIANCE_BASE_TIME_LIMIT      = 0x0008002F;
-}
-
-enum shopError
-{
-	// 商店过期
-	SHOP_REFRESH_TIMEOUT       = 0x00090001;
-	// 商品已经买过了
-	SHOP_ITEM_ALREADY_BUY      = 0x00090002;
-	// 商品刷新最大次数
-	SHOP_REFRESH_MAX_COUNT     = 0x00090003;
-	// 钻石购买最大次数
-	SHOP_GOLD2COIN_MAX_COUNT   = 0x00090004;
+	MAIL_GOLD_FULL             = 0x00060004;
 }
 
 enum imError
 {
 	// 聊天内容太长
-	IM_CHAT_LENGTH             = 0x000A0001;
+	IM_CHAT_LENGTH             = 0x00070001;
 	// 禁言
-	IM_DUMP_ERROR              = 0x000A0002;
+	IM_DUMP_ERROR              = 0x00070002;
+}
+
+enum shopError
+{
+	// 商店过期
+	SHOP_REFRESH_TIMEOUT       = 0x00080001;
+	// 商品已经买过了
+	SHOP_ITEM_ALREADY_BUY      = 0x00080002;
+	// 商品刷新最大次数
+	SHOP_REFRESH_MAX_COUNT     = 0x00080003;
+	// 钻石购买最大次数
+	SHOP_GOLD2COIN_MAX_COUNT   = 0x00080004;
+}
+
+enum allianceError
+{
+	// 创建公会等级不足
+	ALLIANCE_LEVEL_NOT_ENOUGH     = 0x00090001;
+	// 已经在公会中
+	ALLIANCE_ALREADY_IN           = 0x00090002;
+	// 工会不存在
+	ALLIANCE_NOT_EXIST            = 0x00090003;
+	// 公会名称错误
+	ALLIANCE_NAME_ERROR           = 0x00090004;
+	// 已经名称重复
+	ALLIANCE_NAME_EXIST           = 0x00090005;
+	// 未加入公会
+	ALLIANCE_NOT_JOIN             = 0x00090006;
+	// 非会长
+	ALLIANCE_NO_MAIN              = 0x00090007;
+	// 通告错误
+	ALLIANCE_NOTICE_ERROR         = 0x00090008;
+	// 已经申请过了
+	ALLIANCE_ALREADY_APPLY        = 0x00090009;
+	// 工会已满
+	ALLIANCE_ALREADY_FULL         = 0x0009000A;
+	// 申请不存在
+	ALLIANCE_APPLY_NOT_EXIST      = 0x0009000B;
+	// 工会职位有误
+	ALLIANCE_POSITION_ERROR	      = 0x0009000C;
+	// 公会会长退出时不空
+	ALLIANCE__LEAVE_NOT_EMPTY     = 0x0009000D;
+	// 操作对象未加入公会
+	ALLIANCE_TARGET_NOT_JOIN      = 0x0009000E;
+	// 操作对象已加入公会
+	ALLIANCE_TARGET_ALREADY_JOIN  = 0x0009000F;
+	// 工会科技等级满级
+	ALLIANCE_TECH_FULL            = 0x00090010;
+	// 工会等级不足
+	ALLIANCE_LEVEL_LIMIT          = 0x00090011;
+	// 公会贡献值不足
+	ALLIANCE_CONTRI_NOT_ENOUGH    = 0x00090012;
+	// 公会祈福最大值
+	ALLIANCE_PRAY_MAX_COUNT       = 0x00090013;
+	// 退出公会冻结时间
+	ALLIANCE_FRIZEN_TIME          = 0x00090014;
+	// 赠送次数已满
+	ALLIANCE_MAX_FAGIGUE_COUNT    = 0x00090015;
+	// 已经赠送过疲劳值
+	ALLIANCE_FAGIGUE_GIVE_ALREADY = 0x00090016;
+	// 容量不足
+	ALLIANCE_CAPACITY_NOT_ENOUGH  = 0x00090017;
+	// 职位相同
+	ALLIANCE_SAME_POSITION        = 0x00090018;
+	// 申请上限
+	ALLIANCE_MAX_APPLY            = 0x00090019;
+	// 已经在队伍中
+	ALLIANCE_ALREADY_IN_TEAM      = 0x0009001A;
+	// 队伍不存在
+	ALLIANCE_TEAM_NOT_EXIST       = 0x0009001B;
+	// 队伍任务全部完成
+	ALLIANCE_TEAM_FINISH          = 0x0009001C;
+	// 队伍满员
+	ALLIANCE_TEAM_FULL            = 0x0009001D;
+	// 大任务已完成
+	ALLIANCE_TASK_FINISH          = 0x0009001E;
+	// 不再队伍中
+	ALLIANCE_NOT_IN_TEAM          = 0x0009001F;
+	// 大任务不存在
+	ALLIANCE_TASK_NOT_EXIST       = 0x00090020;
+	// 大任务最大值
+	ALLIANCE_MAX_BIG_TASK         = 0x00090021;
+	// 小任务最大值
+	ALLIANCE_MAX_SMALL_TASK       = 0x00090022;
+	// 小任务不存在
+	ALLIANCE_QUEST_NOT_EXIST      = 0x00090023;
+	// 小任务已完成
+	ALLIANCE_QUEST_FINISH         = 0x00090024;
+	// 大任务未完成
+	ALLIANCE_TASK_NOT_FINISH      = 0x00090025;
+	// 不是队长
+	ALLIANCE_NOT_CAPTAIN          = 0x00090026;
+	// 队伍中有队友
+	ALLIANCE_HAVE_MEMBER          = 0x00090027;
+	// 奖励已领取
+	ALLIANCE_REWARD_ALREADY_GIVE  = 0x00090028;
+	// 副会长最大值
+	ALLIANCE_MAX_COPY_MAIN        = 0x00090029;
+	// 申请列表为空
+	ALLIANCE_APPLY_LIST_EMPTY     = 0x0009002A;
+	// 基地对应位置已经派兵
+	ALLIANCE_BASE_HAVE_MONSTER    = 0x0009002B;
+	// 基地对应位置没有派兵
+	ALLIANCE_BASE_HAVE_NO_MONSTER = 0x0009002C;
+	// 基地对应位置被锁定
+	ALLIANCE_BASE_POSITION_LOCK   = 0x0009002D;
+	// 基地宠物已派出
+	ALLIANCE_BASE_MONSTER_HAVE_SEND = 0x0009002E;
+	// 基地宠物最小时间限制
+	ALLIANCE_BASE_TIME_LIMIT      = 0x0009002F;
+}
+
+enum adventureError
+{
+	// 队伍数量已达最大值
+	ADVENTURE_TEAM_COUNT       = 0x000A0001;
+	// 没有刷新条件次数
+	ADVENTURE_CHANGE_ZERO      = 0x000A0002;
+	// 还有刷新条件次数
+	ADVENTURE_CHANGE_NOT_ZERO  = 0x000A0003;
+	// 上阵怪物数错误
+	ADVENTURE_MONSTER_COUNT    = 0x000A0004;
+	// 队伍未解锁
+	ADVENTURE_TEAM_NOT_OPEN    = 0x000A0005;
+	// 队伍已在冒险中
+	ADVENTURE_TEAM_BUSY        = 0x000A0006;
+	// 队伍未加入冒险
+	ADVENTURE_TEAM_IDLE        = 0x000A0007;
+	// 冒险未完成
+	ADVENTURE_NOT_END          = 0x000A0008;
+	// 怪物今日已雇佣
+	ADVENTURE_HIRE_ALREADY     = 0x000A0009;
 }
 
 enum settingError
@@ -341,36 +363,14 @@ enum settingError
 	SETTING_BLOCK_FULL         = 0x000B0001;
 }
 
-enum adventureError
-{
-	// 队伍数量已达最大值
-	ADVENTURE_TEAM_COUNT       = 0x000C0001;
-	// 没有刷新条件次数
-	ADVENTURE_CHANGE_ZERO      = 0x000C0002;
-	// 还有刷新条件次数
-	ADVENTURE_CHANGE_NOT_ZERO  = 0x000C0003;
-	// 上阵怪物数错误
-	ADVENTURE_MONSTER_COUNT    = 0x000C0004;
-	// 队伍未解锁
-	ADVENTURE_TEAM_NOT_OPEN    = 0x000C0005;
-	// 队伍已在冒险中
-	ADVENTURE_TEAM_BUSY        = 0x000C0006;
-	// 队伍未加入冒险
-	ADVENTURE_TEAM_IDLE        = 0x000C0007;
-	// 冒险未完成
-	ADVENTURE_NOT_END          = 0x000C0008;
-	// 怪物今日已雇佣
-	ADVENTURE_HIRE_ALREADY     = 0x000C0009;
-}
-
 enum summonError
 {
 	// 没有免费钻石抽蛋次数
-	SUMMON_DIAMOND_NO_FREE     = 0x000D0001;
+	SUMMON_DIAMOND_NO_FREE     = 0x000C0001;
 	// 没有免费金币抽蛋次数
-	SUMMON_COIN_NO_FREE        = 0x000D0002;
+	SUMMON_COIN_NO_FREE        = 0x000C0002;
 	// 免费金币抽蛋冷却中
-	SUMMON_COIN_FREE_CD        = 0x000D0003;
+	SUMMON_COIN_FREE_CD        = 0x000C0003;
 }
 
 enum pvpError

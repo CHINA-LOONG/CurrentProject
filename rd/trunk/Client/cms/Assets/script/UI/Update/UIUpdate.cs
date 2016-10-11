@@ -8,14 +8,39 @@ using BestHTTP;
 
 public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 {
-
 	private bool userCanRequestUpdate = false;
 
 	public	Text	msgText;
-	// Use this for initialization
-	IEnumerator Start () 
+    public RectTransform progressRt;
+    public Text progressRateText;
+    public Text progressMsgText;
+
+    private float progressSizeDelthaX;
+    private float progressSizeDelthaY;
+
+    private int zipTotal;
+    private int zipCurrent;
+    
+    StreamFileDownload filedownload;
+    ArrayList downloadVersionList;
+    string resourceServer;
+    private string downloadZipFileName;
+    private int downloadVersionId;
+
+    // Use this for initialization
+    IEnumerator Start () 
 	{
-		msgText.text = null;
+        msgText.text = "";
+        progressRateText.text = "";
+        progressMsgText.text = "";
+        progressSizeDelthaX = progressRt.sizeDelta.x;
+        progressSizeDelthaY = progressRt.sizeDelta.y;
+        progressRt.sizeDelta = new Vector2(0, progressSizeDelthaY);
+
+        if (null == filedownload)
+        {
+            filedownload = gameObject.AddComponent<StreamFileDownload>();
+        }
 
 		yield return new WaitForEndOfFrame ();
 		CheckExtractResource ();
@@ -125,8 +150,8 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 	
 		httpRquest = new HTTPRequest (new Uri(url),HTTPMethods.Post);
 		httpRquest.AddField ("channel", Const.channel);
-		httpRquest.AddField ("vid", UpdateHelpter.GetResouceCode().ToString());
-		httpRquest.AddField ("platform", Const.platform);
+		httpRquest.AddField ("vid", UpdateHelpter.GetResouceCode().ToString());// 
+        httpRquest.AddField ("platform", Const.platform);
 		httpRquest.Send ();
 		yield return StartCoroutine (httpRquest);
 		if (httpRquest.Response== null || !httpRquest.Response.IsSuccess)
@@ -161,41 +186,68 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 			yield break;
 		}
 
-		string resServer = ht ["resourceServer"] as String;
-		ArrayList versionList = ht ["resources"] as ArrayList;
-		int tempIndex = 1;
-		foreach(Hashtable subVersion in versionList)
-		{
-			int verId = int.Parse(subVersion["vid"].ToString());
-			string verZip = string.Format("{0}.zip",subVersion["resourceName"].ToString());
-            float fileSizeKb = float.Parse(subVersion["resourceSize"].ToString());
+		resourceServer = ht ["resourceServer"] as String;
+        downloadVersionList = ht ["resources"] as ArrayList;
+        zipTotal = 0;
+        zipCurrent = 1;
+        if(null != downloadVersionList)
+        {
+            zipTotal = downloadVersionList.Count;
+        }
 
-			msgText.text = string.Format("更新资源{0},共有{1}个资源", tempIndex ++ ,versionList.Count );
-			httpRquest = new HTTPRequest( new Uri( string.Format("{0}/{1}",resServer,verZip)));
-            httpRquest.OnProgress = OnDownloadProgressDelegate;
-            httpRquest.Send();
-			yield return StartCoroutine(httpRquest);
-			if (!httpRquest.Response.IsSuccess)
-			{
-				OnUpdateFailed("");
-				yield break;
-			}
-			
-			//解压zip，写入本地目录
-			Util.UnZipFromBytes(httpRquest.Response.Data, dataPath);
-			
-			//更新成功后写入客户端的version文件
-
-			UpdateHelpter.SetResouceCode(verId);
-
-			yield return new WaitForEndOfFrame();
-		}
-		Logger.Log("更新完成!!");
-		OnUpdateFinished ();
+        StartDownLoadResouce();
 	}
-    void OnDownloadProgressDelegate(HTTPRequest originalRequest, int downloaded, int downloadLength)
+
+    void StartDownLoadResouce()
     {
-        Debug.LogErrorFormat("ri.... {0} ---{1}", downloaded, downloadLength);
+        if (zipCurrent > zipTotal)
+        {
+            OnUpdateFinished();
+            return;
+        }
+
+        Hashtable subVersion = downloadVersionList[zipCurrent - 1] as Hashtable;
+
+        downloadVersionId = int.Parse(subVersion["vid"].ToString());
+        string verZip = string.Format("{0}.zip", subVersion["resourceName"].ToString());
+        float fileSizeKb = float.Parse(subVersion["resourceSize"].ToString());
+        downloadZipFileName = Path.Combine(Util.ResPath, verZip);
+        filedownload.RequestDownload(downloadZipFileName, string.Format("{0}/{1}", resourceServer, verZip), OnDownloadProgress, OnDownloadFinish);
+
+    }
+
+    void OnDownloadProgress(HTTPRequest originalRequest, int downloaded, int downloadLength)
+    {
+        if(downloadLength > 0)
+        {
+            float rate = downloaded / (float)downloadLength;
+            progressRateText.text = string.Format("{0:D}%", (int)(rate * 100));
+            float totalSizeM = downloadLength / (1024.0f*1024.0f);
+            progressMsgText.text = string.Format("共有{0}个更新，当前第{1}个({2:F2}M)", zipTotal, zipCurrent, totalSizeM);
+            progressRt.sizeDelta = new Vector2(rate * progressSizeDelthaX, progressSizeDelthaY);
+        }
+        else
+        {
+            Debug.LogErrorFormat("r.... {0} ---{1}", downloaded, downloadLength);
+        }
+    }
+    void OnDownloadFinish(int state ,string errmsg)
+    {
+        if (state == 0)
+        {
+            //unzip
+            //解压zip，写入本地目录
+            Util.UnZipFromFile(downloadZipFileName, Util.ResPath, false);
+            //更新成功后写入客户端的version文件
+            UpdateHelpter.SetResouceCode(downloadVersionId);
+
+            zipCurrent++;
+            StartDownLoadResouce();
+        }
+        else
+        {
+            Logger.LogError(errmsg);
+        }
     }
 
     void OnUpdateFailed(string msg)

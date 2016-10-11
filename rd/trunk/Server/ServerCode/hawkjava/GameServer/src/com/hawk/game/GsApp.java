@@ -711,7 +711,7 @@ public class GsApp extends HawkApp {
 			response.setPalyerID(playerId);
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
 
-			//HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, protocol.getNickname()));
+			HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, protocol.getNickname()));
 			return true;
 		}
 		else {

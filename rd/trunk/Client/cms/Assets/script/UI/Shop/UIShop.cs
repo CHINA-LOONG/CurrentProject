@@ -177,7 +177,7 @@ public class UIShop : UIBase
 			OnRefreshShopUi();
 		}
 		timeNextRefresh = shopDataMgr.GetNextFreeRefreshTime (curShopType);
-        zuanshiCoinBtn.gameObject.SetActive(shopType == (int)PB.shopType.NORMALSHOP);
+        //zuanshiCoinBtn.gameObject.SetActive(shopType == (int)PB.shopType.NORMALSHOP);
     }
 
     void CheckOpendShop()

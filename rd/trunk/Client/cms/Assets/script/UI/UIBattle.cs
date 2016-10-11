@@ -367,10 +367,12 @@ public class UIBattle : UIBase
     }
 	public void ShowUI(bool ishow)
     {
+        GameEventMgr.Instance.FireEvent<bool>(GameEventList.ShowBattleUI, ishow);
         //if (ishow == false)
         //{
         //    gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
         //}
+
         bool isbossBattle = BattleController.Instance.battleType == BattleType.Boss;
         if (mirrorUI != null)
         {

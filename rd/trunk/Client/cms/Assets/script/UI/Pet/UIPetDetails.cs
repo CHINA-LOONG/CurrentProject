@@ -23,9 +23,12 @@ public class UIPetDetails : UIBase,
             UIUtil.SetParentReset(goldBtn.transform, goldButtonPos);
         }
     }
-    public override void Clean()
+    public override void Disable()
     {
         leftView.imageView.CleanImageView();
+    }
+    public override void Clean()
+    {
         UIMgr.Instance.DestroyUI(uiSelectEquipList);
     }
 

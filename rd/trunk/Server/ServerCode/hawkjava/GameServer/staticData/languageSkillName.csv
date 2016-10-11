@@ -159,7 +159,7 @@ ultShuigui3Name,瀑布急流,Torrent,瀑布急流
 psvXiaochou3Name,戏耍,Joker's Wit,戲耍
 psvXiaochou4Name,戏耍,Joker's Wit,戲耍
 psvKairuisi4Name,灵魂烈焰,Soulfire,靈魂烈焰
-psvHetong2Name,不屈意志,Resolute Will,不屈意志
+psvHetong2Name,强固阵型,Rugged Formation,強固陣型
 psvWagui3Name,粘性皮肤,Viscous Skin,粘性皮膚
 psvHuapo2Name,自然生长,Natural Growth,自然生長
 psvCike4Name,轻视,Scorn,輕視
@@ -385,7 +385,7 @@ ultShuigui3Tips,给己方全体目标提升80%智力同时给敌方全体目标�
 psvXiaochou3Tips,死亡时，80%给群体目标造成150%法攻水属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) water type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]",死亡時，80%給群體目標造成150%法攻水屬性法術傷害或20%給群體目標恢復50%法攻生命值[被動]
 psvXiaochou4Tips,死亡时，80%给群体目标造成150%法攻火属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) fire type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]",死亡時，80%給群體目標造成150%法攻火屬性法術傷害或20%給群體目標恢復50%法攻生命值[被動]
 psvKairuisi4Tips,使用法术技能时，10%提升自身80%智力，持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of increasing your INT by 80% for 3 turns [Passive]",使用法術技能時，10%提升自身80%智力，持續3回合[被動]
-psvHetong2Tips,血量大于等于总血量80%时，提升自身80%智力[被动],"When HP amount is greater than or equal to 80% of your total HP, increase INT by 80% [Passive]",血量大於等於總血量80%時，提升自身80%智力[被動]
+psvHetong2Tips,战斗开始时，提升己方全体80%防御力，持续1回合[被动],"At the start of battle, increase all allies' DEF by 80% for 1 turns [Passive]",戰鬥開始時，提升己方全體80%防禦力，持續1回合[被動]
 psvWagui3Tips,受到伤害时，25%降低攻击者40%速度，持续3回合[被动],Gives an 25% chance of reducing the SPD of your attacker by 40% whenever you take damage for 3 turns [Passive],受到傷害時，25%降低攻擊者40%速度，持續3回合[被動]
 psvHuapo2Tips,使用物理技能时，10%提升自身80%力量，持续3回合[被动],"Whenever you cast a physical ability, there is a 10% chance of increasing your STR by 80% for 3 turns [Passive] ",使用物理技能時，10%提升自身80%力量，持續3回合[被動]
 psvCike4Tips,受到伤害时，80%嘲讽攻击者，持续2回合[被动],Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage [Passive],受到傷害時，80%嘲諷攻擊者，持續2回合[被動]
@@ -611,7 +611,7 @@ ultShuigui3Description,给己方全体目标提升80%智力同时给敌方全体
 psvXiaochou3Description,死亡时，80%给群体目标造成150%法攻水属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) water type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]",死亡時，80%給群體目標造成150%法攻水屬性法術傷害或20%給群體目標恢復50%法攻生命值[被動]
 psvXiaochou4Description,死亡时，80%给群体目标造成150%法攻火属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) fire type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]",死亡時，80%給群體目標造成150%法攻火屬性法術傷害或20%給群體目標恢復50%法攻生命值[被動]
 psvKairuisi4Description,使用法术技能时，10%提升自身80%智力，持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of increasing your INT by 80% for 3 turns [Passive]",使用法術技能時，10%提升自身80%智力，持續3回合[被動]
-psvHetong2Description,血量大于等于总血量80%时，提升自身80%智力[被动],"When HP amount is greater than or equal to 80% of your total HP, increase INT by 80% [Passive]",血量大於等於總血量80%時，提升自身80%智力[被動]
+psvHetong2Description,战斗开始时，提升己方全体80%防御力，持续1回合[被动],"At the start of battle, increase all allies' DEF by 80% for 1 turns [Passive]",戰鬥開始時，提升己方全體80%防禦力，持續1回合[被動]
 psvWagui3Description,受到伤害时，25%降低攻击者40%速度，持续3回合[被动],Gives an 25% chance of reducing the SPD of your attacker by 40% whenever you take damage for 3 turns [Passive],受到傷害時，25%降低攻擊者40%速度，持續3回合[被動]
 psvHuapo2Description,使用物理技能时，10%提升自身80%力量，持续3回合[被动],"Whenever you cast a physical ability, there is a 10% chance of increasing your STR by 80% for 3 turns [Passive] ",使用物理技能時，10%提升自身80%力量，持續3回合[被動]
 psvCike4Description,受到伤害时，80%嘲讽攻击者，持续2回合[被动],Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage [Passive],受到傷害時，80%嘲諷攻擊者，持續2回合[被動]

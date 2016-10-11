@@ -984,110 +984,173 @@ bossAmute1Name,水球,Liquid Sphere
 bossAmute2Name,水龙卷,Waterspout
 bossAmute1Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
 bossAmute2Tips,给群体目标造成100%法攻水属性伤害,Deals (100% of magic ATK) water type magic damage to all enemy targets 
-ultWendige3Name,撕咬,撕咬
-ultWendige2Name,撕咬,撕咬
-ultLongnv3Name,水之吐息,水之吐息
-ultMomo1Name,博爱,博爱
-ultAmute3Name,护佑,护佑
-ultLuoxinfu5Name,毒网,毒网
-ultSaibulesi5Name,火焰连弹,火焰连弹
-ultHongniu4Name,嘲讽冲撞,嘲讽冲撞
-ultAnpusha5Name,魅惑,魅惑
-ultDaochengsizhong4Name,精神火焰,精神火焰
-ultHuoniao4Name,延缓之火,延缓之火
-ultIfrit4Name,净化之焰,净化之焰
-ultMoguguai4Name,火磷粉,火磷粉
-ultSaibulesi4Name,火焰连弹,火焰连弹
-ultTianshizhang4Name,大天使的祝福,大天使的祝福
-ultXiaochou2Name,唤枝,唤枝
-psvXiaochou2Name,戏耍,戏耍
-psvWendige3Name,尸毒,尸毒
-psvWendige2Name,尸毒,尸毒
-psvLongnv3Name,龙威,龙威
-psvMomo1Name,天使祝福,天使祝福
-psvAmute3Name,冥王回归,冥王回归
-psvLuoxinfu5Name,毒爪,毒爪
-psvSaibulesi5Name,愈战愈勇,愈战愈勇
-psvHongniu4Name,挑战的呐喊,挑战的呐喊
-psvAnpusha5Name,引诱,引诱
-psvDaochengsizhong4Name,钟鸣,钟鸣
-psvHuoniao4Name,涅槃,涅槃
-psvIfrit4Name,灼烧,灼烧
-psvMoguguai4Name,成长,成长
-psvSaibulesi4Name,愈战愈勇,愈战愈勇
-psvTianshizhang4Name,天佑,天佑
-bosssenlin31Wendige21Name,刺穿,刺穿
-bosssenlin31Wendige22Name,刺穿,刺穿
-bosssenlin31Wendige23Name,啃食,啃食
-bosssenlin32Longnv31Name,水流,水流
-bosssenlin32Longnv32Name,水浪,水浪
-bosssenlin32Longnv33Name,龙吟,龙吟
-bosssenlin32Longnv34Name,潮汐之盾,潮汐之盾
-bosssenlin33Luoxinfu51Name,毒爪,毒爪
-bosssenlin33Luoxinfu52Name,疯狂毒爪,疯狂毒爪
-bosssenlin33Luoxinfu53Name,疯狂毒爪,疯狂毒爪
-bosssenlin33Luoxinfu54Name,疯狂毒爪,疯狂毒爪
-bosssenlin33Luoxinfu55Name,疯狂毒爪,疯狂毒爪
-bosssenlin33Luoxinfu56Name,疯狂毒爪,疯狂毒爪
-bosssenlin34Amute31Name,水球,水球
-bosssenlin34Amute32Name,愤怒,愤怒
-bosssenlin34Amute33Name,水龙卷,水龙卷
-bosssenlin34Amute34Name,神之庇护,神之庇护
-bosssenlin35Xiaochou21Name,叶刃,叶刃
-bosssenlin35Xiaochou22Name,叶刃,叶刃
-bosssenlin35Xiaochou23Name,飞叶快刀,飞叶快刀
-bosssenlin35Xiaochou24Name,叶浪,叶浪
-bosssenlin35Xiaochou25Name,叶浪,叶浪
-bosssenlin36Momo11Name,光爆术,光爆术
-bosssenlin36Momo12Name,光疗术,光疗术
-bosssenlin36Momo13Name,光能爆发,光能爆发
-bosssenlin36Momo14Name,反伤护盾,反伤护盾
-bosssenlin37Hapi11Name,天使庇护,天使庇护
-bosssenlin37Hapi12Name,爪击,爪击
-bosssenlin37Hapi13Name,顺风,顺风
-bosssenlin37Hapi14Name,顺风,顺风
-bosssenlin37Hapi15Name,一闪,一闪
-bosshuoshan41Hongniu41Name,冲撞,冲撞
-bosshuoshan41Hongniu42Name,冲撞,冲撞
-bosshuoshan41Hongniu43Name,冲撞,冲撞
-bosshuoshan41Hongniu44Name,连续冲撞,连续冲撞
-bosshuoshan42Daochengsizhong41Name,钟鸣,钟鸣
-bosshuoshan42Daochengsizhong42Name,火舌,火舌
-bosshuoshan42Daochengsizhong43Name,喷火,喷火
-bosshuoshan42Daochengsizhong44Name,喷火,喷火
-bosshuoshan43Huoniao41Name,火羽,火羽
-bosshuoshan43Huoniao42Name,灵魂之焰,灵魂之焰
-bosshuoshan43Huoniao43Name,净化之焰,净化之焰
-bosshuoshan43Huoniao44Name,涅槃重生,涅槃重生
-bosshuoshan44Datiangou41Name,慌乱击,慌乱击
-bosshuoshan44Datiangou42Name,唤火术,唤火术
-bosshuoshan44Datiangou43Name,速度爆发,速度爆发
-bosshuoshan44Datiangou44Name,须左之炎,须左之炎
-bosshuoshan45Saibulesi41Name,撕咬,撕咬
-bosshuoshan45Saibulesi42Name,地狱之焰,地狱之焰
-bosshuoshan45Saibulesi43Name,火焰连弹,火焰连弹
-bosshuoshan45Saibulesi44Name,火焰连弹,火焰连弹
-bosshuoshan45Saibulesi45Name,火焰连弹,火焰连弹
-bosshuoshan46Tianshizhang41Name,圣焰,圣焰
-bosshuoshan46Tianshizhang42Name,圣焰,圣焰
-bosshuoshan46Tianshizhang43Name,神圣祝福,神圣祝福
-bosshuoshan46Tianshizhang44Name,神圣祝福,神圣祝福
-bosshuoshan46Tianshizhang45Name,神圣祝福,神圣祝福
-bosshuoshan46Tianshizhang46Name,神圣庇护,神圣庇护
-bosshuoshan47Ifrit41Name,火焰踢,火焰踢
-bosshuoshan47Ifrit42Name,火焰踢,火焰踢
-bosshuoshan47Ifrit43Name,火焰踢,火焰踢
-bosshuoshan47Ifrit44Name,净化之焰,净化之焰
-bosshuoshan47Ifrit45Name,净化之焰,净化之焰
-bosssenlin38Meidusha21Name,怒火,怒火
-bosssenlin38Meidusha22Name,怒火,怒火
-bosssenlin38Meidusha23Name,怒火,怒火
-bosssenlin38Meidusha24Name,怒火,怒火
-bosssenlin38Meidusha25Name,拍打,拍打
-bosssenlin38Meidusha26Name,乱舞,乱舞
-bosssenlin38Meidusha27Name,石化光线,石化光线
-bosshuoshan48Hehuaisituosi41Name,敲打,敲打
-bosshuoshan48Hehuaisituosi42Name,疯狂制造,疯狂制造
-bosshuoshan48Hehuaisituosi43Name,潘多拉盒子,潘多拉盒子
-bosshuoshan48Hehuaisituosi44Name,黄金之网,黄金之网
-bosshuoshan48Hehuaisituosi45Name,制造之神,制造之神
+ultWendige3Name,撕咬,Bite
+psvWendige3Name,尸毒,Death Tide
+ultWendige2Name,撕咬,Bite
+psvWendige2Name,尸毒,Deathly Poison
+ultLongnv3Name,水之吐息,Water Vapor
+psvLongnv3Name,龙威,Dragon Power
+ultMomo1Name,涅槃,Nirvana
+psvMomo1Name,天使祝福,Angelic Blessing
+ultAmute3Name,护佑,Protection
+psvAmute3Name,冥王回归,Return to Hades
+ultLuoxinfu5Name,毒网,Poison Net
+psvLuoxinfu5Name,毒爪,Stinger
+ultSaibulesi5Name,火焰连弹,Fire Blasts
+psvSaibulesi5Name,愈战愈勇,Newfound Courage
+ultHongniu4Name,嘲讽冲撞,Mocking Collision
+psvHongniu4Name,挑战的呐喊,Warcry
+ultAnpusha5Name,魅惑,Bewitch
+psvAnpusha5Name,引诱,Decoy
+ultDaochengsizhong4Name,精神火焰,Flame Spirit
+psvDaochengsizhong4Name,钟鸣,Bell Chime
+ultHuoniao4Name,延缓之火,Decaying Fire
+psvHuoniao4Name,最后一息,Last Breath
+ultIfrit4Name,净化之焰,Purifying Flame
+psvIfrit4Name,灼烧,Ignition
+ultMoguguai4Name,火磷粉,Gunpowder
+psvMoguguai4Name,成长,Unnatural Growth
+ultSaibulesi4Name,火焰连弹,Combustive Shots
+psvSaibulesi4Name,愈战愈勇,Newfound Courage
+ultTianshizhang4Name,大天使的祝福,Holy Bestowment
+psvTianshizhang4Name,天佑,Blessing
+ultXiaochou2Name,召唤戏法,Summoned Trickery
+psvXiaochou2Name,戏耍,Tease
+bosssenlin31Wendige21Name,刺穿,Skewer
+bosssenlin31Wendige23Name,啃食,Grazing
+bosssenlin32Longnv31Name,水流,Gusher
+bosssenlin32Longnv32Name,水浪,Tidal Wave
+bosssenlin32Longnv33Name,龙吟,Dragon Chant
+bosssenlin32Longnv34Name,分散之盾,Dispersion Shield
+bosssenlin33Luoxinfu51Name,感染袭击,Infecting Strike
+bosssenlin33Luoxinfu52Name,疯狂毒爪,Quick Sting
+bosssenlin34Amute31Name,水球,Liquid Sphere
+bosssenlin34Amute32Name,愤怒,Rage
+bosssenlin34Amute33Name,水龙卷,Waterspout
+bosssenlin34Amute34Name,天使存在,Angelic Presence
+bosssenlin35Xiaochou21Name,叶刃,Cutting Cards
+bosssenlin35Xiaochou23Name,飞叶快刀,Razorleaves
+bosssenlin35Xiaochou24Name,叶浪,Engulfing Leaves
+bosssenlin36Momo11Name,光爆术,Light Burst
+bosssenlin36Momo12Name,光疗术,Companion Healing
+bosssenlin36Momo13Name,过载,Overload
+bosssenlin36Momo14Name,反伤护盾,Deflection Shield
+bosssenlin37Hapi11Name,天使存在,Angelic Presence
+bosssenlin37Hapi12Name,爪击,Claw
+bosssenlin37Hapi13Name,顺风,Windward Flight
+bosssenlin37Hapi15Name,一闪,Flash
+bosshuoshan41Hongniu41Name,冲撞,Tackle
+bosshuoshan41Hongniu44Name,连续冲撞,Rentless Assault
+bosshuoshan42Daochengsizhong41Name,钟鸣,Bell Chime
+bosshuoshan42Daochengsizhong42Name,照明弹,Flare
+bosshuoshan42Daochengsizhong43Name,精神火焰,Fire Essence
+bosshuoshan43Huoniao41Name,火羽,Fire Wings
+bosshuoshan43Huoniao42Name,灵魂之焰,Spirit Fire
+bosshuoshan43Huoniao43Name,净化之焰,Purifying Flame
+bosshuoshan43Huoniao44Name,奇迹复活,Miracle Recovery
+bosshuoshan44Datiangou41Name,飞行击,Flying Attack
+bosshuoshan44Datiangou42Name,唤火术,Fire Summon
+bosshuoshan44Datiangou43Name,速度爆发,Sprint
+bosshuoshan44Datiangou44Name,须左之炎,Ruthless Flames
+bosshuoshan45Saibulesi41Name,撕咬,Bite
+bosshuoshan45Saibulesi42Name,地狱之焰,Hell Flames
+bosshuoshan45Saibulesi43Name,火焰连弹,Fire Blasts
+bosshuoshan46Tianshizhang41Name,圣焰,Sacred Flame
+bosshuoshan46Tianshizhang43Name,神圣祝福,Holy Cleansing
+bosshuoshan46Tianshizhang46Name,神圣庇护,Sanctuary
+bosshuoshan47Ifrit41Name,火焰踢,Flamefield
+bosshuoshan47Ifrit44Name,净化之焰,Purifying Flame
+bosssenlin38Meidusha25Name,拍打,Slap
+bosssenlin38Meidusha26Name,乱舞,Flurry
+bosssenlin38Meidusha27Name,石化凝视,Petrifying Gaze
+bosssenlin38Meidusha28Name,狡诈智识,Cunning Intellect
+bosshuoshan48Hehuaisituosi41Name,燃烧碰撞,Burning Impact
+bosshuoshan48Hehuaisituosi42Name,怒火中烧,Inner Rage
+bosshuoshan48Hehuaisituosi43Name,潘多拉盒子,Pandora's Box
+bosshuoshan48Hehuaisituosi44Name,炎镣铐,Searing Shackles
+bosshuoshan48Hehuaisituosi45Name,觅焰师,Flameseeker
+ultWendige3Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的木属性物理伤害概率附加溺水效果,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target, with a chance of Drowning effect"
+psvWendige3Tips,死亡时，给敌方全体附加溺水效果,"Upon dying, cast Drowning effect on all enemies"
+ultWendige2Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的木属性物理伤害概率附加施毒效果,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) grass type physical damage to a single target, with a chance of Poison effect"
+psvWendige2Tips,死亡时，给敌方全体附加施毒效果,"Upon dying, cast Poison effect on all enemies"
+ultLongnv3Tips,给群体目标造成{0}%法攻的暗属性法术伤害概率附加溺水效果,"Deals ({0}% of magic ATK) dark type magic damage to all enemy targets, with a chance of Drowning effect"
+psvLongnv3Tips,战斗开始时，降低敌方群体{0}%防御力，持续XX回合,"At the start of battle, reduces all enemies' defense by {0}% for XX turns"
+ultMomo1Tips,给群体目标回复{0}%法攻的生命值概率附加物理减免护盾,"Recovers ({0}% of magic ATK) HP for all allies, with a chance of casting a physical immunity shield"
+psvMomo1Tips,使用治疗技能时，{0}%给被治疗者添加恢复效果,"Whenever you cast a healing ability, there is a {0}% chance of giving the target an additional HP regen effect"
+ultAmute3Tips,给群体目标添加{0}%法攻的法术、物理吸收护盾,Casts a shield for allies that can absorb ({0}% of magic ATK) physical and magic damage
+psvAmute3Tips,使用物理和法术技能时，{0}%嘲讽被攻击者，持续XX回合；首次死亡时回复自身{0}%生命值,"Whenever you cast a physical or magic ability, there is a {0}% chance of provoking the target for XX turns; upon dying the first time, recover {0}% of your HP"
+ultLuoxinfu5Tips,给群体目标添加痛楚效果,Casts Anguish effect on all enemy targets
+psvLuoxinfu5Tips,使用法术技能时，给被攻击者添加痛楚效果,"Whenever you cast a magic ability, there is a Anguish effect to the target"
+ultSaibulesi5Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的暗属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) dark type magic damage to a single target"
+psvSaibulesi5Tips,血量小于等于总血量{0}%时，提升自身{0}%智力,"When remaining HP drops below {0}%, your INT increases by {0}%"
+ultHongniu4Tips,在3秒内进行操作，每次操作给单体目标造成{0}%物攻的火属性物理伤害概率附加嘲讽效果,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) fire type physical damage to a single target, with a chance of Provoke effect"
+psvHongniu4Tips,使用物理和法术技能时，{0}%嘲讽被攻击者，持续XX回合；受到伤害时，{0}%给自己添加物理和法术吸收护盾,"Whenever you cast a physical or magic ability, there is a {0}% chance of provoking the target for XX turns; whenever you take damage, there is a {0}% chance of casting a shield absorbing physical and magic damage"
+ultAnpusha5Tips,使单体目标速度，力量，智力，防御下降{0}%，持续XX回合,"Reduces the SPD, STR, INT, and DEF of a single target by {0}% for XX turns"
+psvAnpusha5Tips,使用buff技能时，{0}%驱散被攻击者增益效果,"Whenever you cast a Buff ability, there is a {0}% chance of removing the attacked unit's Buff effects"
+ultDaochengsizhong4Tips,给群体目标造成{0}%法攻的火属性法术伤害概率附加眩晕效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a chance of stun effect"
+psvDaochengsizhong4Tips,受到伤害时，{0}%给攻击者添加眩晕效果,"Whenever you take damage, there is a {0}% chance of stunning the attacker"
+ultHuoniao4Tips,给群体目标造成{0}%法攻的火属性法术伤害附加缓速效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a chance of slow effect"
+psvHuoniao4Tips,首次死亡时回复自身{0}%生命值,"Upon dying the first time, recover {0}% of your HP"
+ultIfrit4Tips,给群体目标造成{0}%物攻的火属性物理伤害概率驱散自身减益效果,"Deals ({0}% of physical ATK) fire type physical damage to all enemy targets, with a chance of removing any debuffs on yourself"
+psvIfrit4Tips,使用物理技能时，{0}%给被攻击者添加点燃效果,"Whenever you use a physical ability, there is a {0}% chance of causing ignition effect to the target"
+ultMoguguai4Tips,给群体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemies
+psvMoguguai4Tips,永久提升10%体力,Increases Power permanently by 10%
+ultSaibulesi4Tips,在3秒内进行操作，每次操作给单体目标造成{0}%法攻的火属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({0}% of magic ATK) fire type magic damage to a single target"
+psvSaibulesi4Tips,血量小于等于总血量{0}%时，提升自身{0}%智力,"When remaining HP drops below {0}%, your INT increases by {0}%"
+ultTianshizhang4Tips,给群体目标回复{0}%法攻的生命值概率附加物理、法术吸收护盾,"Recovers ({0}% of magic ATK) HP for all allies, with a chance of casting a shield that can absorb physical and magic damage"
+psvTianshizhang4Tips,使用治疗技能时，{0}%驱散被治疗者dot效果,"Whenever you cast a healing ability, there is a {0}% chance of removing any DOT effect from the target"
+ultXiaochou2Tips,给群体目标造成{0}%法攻的木属性法术伤害,Deals ({0}% of magic ATK) grass type magic damage to all enemy targets
+psvXiaochou2Tips,永久提升10%智力,Increases your INT permanently by 10%
+bosssenlin31Wendige21Tips,给单体目标造成{0}%物攻的木属性物理伤害,Deals ({0}% of physical ATK) grass type physical damage to a single target
+bosssenlin31Wendige23Tips,给单体目标造成{0}%物攻的木属性物理伤害并回复自身{0}%法攻的生命值,"Deals ({0}% of physical ATK) grass type physical damage to a single target, and recover ({0}% of magic ATK) of your HP"
+bosssenlin32Longnv31Tips,给单体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+bosssenlin32Longnv32Tips,给群体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to all enemy targets
+bosssenlin32Longnv33Tips,给群体目标造成{0}%法攻的水属性法术伤害概率附加缓速效果,"Deals ({0}% of magic ATK) water type magic damage to all enemy targets, with a chance of slow effect"
+bosssenlin32Longnv34Tips,给自身添加物理、法术减免护盾，持续6回合,Casts a shield on yourself that reduces physical and magic damage for 6 turns
+bosssenlin33Luoxinfu51Tips,给单体目标造成{0}%法攻的暗属性法术伤害概率添加痛楚效果,"Deals ({0}% of magic ATK) dark type magic damage to a single target, with a chance of Anguish effect"
+bosssenlin33Luoxinfu52Tips,给单体目标连续造成多次{0}%法攻的暗属性法术伤害概率添加痛楚效果,"Repeatedly deals ({0}% of magic ATK) dark type magic damage to a single target, with a chance of causing Anguish effect"
+bosssenlin34Amute31Tips,给单体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+bosssenlin34Amute32Tips,提升自身{0}%智力，持续XX回合,Increases your INT by {0}% for XX turns
+bosssenlin34Amute33Tips,给群体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to all enemy targets
+bosssenlin34Amute34Tips,给自身添加{0}%法攻的物理、法术吸收护盾，持续XX回合,Casts a shield on yourself that absorbs ({0}% of magic ATK) physical and magic damage for XX turns
+bosssenlin35Xiaochou21Tips,给单体目标造成木属性法术伤害,Deals grass type magic damage to a single target
+bosssenlin35Xiaochou23Tips,给群体目标造成{0}%法攻的木属性法术伤害,Deals ({0}% of magic ATK) grass type magic damage to all enemy targets
+bosssenlin35Xiaochou24Tips,给敌方目标造成木属性法术伤害,Deals grass type magic damage to a single target
+bosssenlin36Momo11Tips,给单体目标造成{0}%法攻的光属性法术伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+bosssenlin36Momo12Tips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+bosssenlin36Momo13Tips,给群体目标造成{0}%法攻的光属性法术伤害并使自身眩晕1回合,"Deals ({0}% of magic ATK) light type magic damage to all enemy targets, and stuns yourself for 1 turn"
+bosssenlin36Momo14Tips,受到伤害时，反弹攻击者{0}%法攻的光属性法术伤害,"Whenever you take damage, reflect ({0}% of magic ATK) light type magic damage back at the attacker"
+bosssenlin37Hapi11Tips,每回合回复自身{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for yourself each turn
+bosssenlin37Hapi12Tips,给单体目标造成{0}%物攻的光属性物理伤害,Deals ({0}% of physical ATK) light type physical damage to a single target
+bosssenlin37Hapi13Tips,提升自身速度，持续XX回合,Increases your SPD for XX turns
+bosssenlin37Hapi15Tips,给群体目标造成{0}%法攻的光属性法术伤害,Deals ({0}% of magic ATK) light type magic damage to all enemy targets
+bosshuoshan41Hongniu41Tips,给单体目标造成火属性物理伤害,Deals fire type physical damage to a single target
+bosshuoshan41Hongniu44Tips,给单体目标连续造成6次{0}%物攻的火属性物理伤害,Repeatedly deals ({0}% of physical ATK) fire type physical damage 6 times to a single target
+bosshuoshan42Daochengsizhong41Tips,受到伤害时，{0}%给攻击者添加眩晕效果,"Whenever you take damage, there is a {0}% chance of stunning the attacker"
+bosshuoshan42Daochengsizhong42Tips,给单体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+bosshuoshan42Daochengsizhong43Tips,给群体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
+bosshuoshan43Huoniao41Tips,给单体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+bosshuoshan43Huoniao42Tips,给群体目标添加点燃效果,Causes Ignition effect to all enemy targets
+bosshuoshan43Huoniao43Tips,给群体目标造成{0}%法攻的火属性法术伤害附加驱散增益效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a chance of removing buff effects"
+bosshuoshan43Huoniao44Tips,给自身回复大量生命值,Recovers a large amount of HP for yourself
+bosshuoshan44Datiangou41Tips,给单体目标造成{0}%物攻的火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to a single target
+bosshuoshan44Datiangou42Tips,给单体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+bosshuoshan44Datiangou43Tips,提升自身{0}%速度，持续XX回合,Increases your SPD by {0}% for XX turns
+bosshuoshan44Datiangou44Tips,给单体目标连续造成3次{0}%法攻的火属性法术伤害，若自身存在增益buff则伤害翻倍,"Repeatedly deals ({0}% of magic ATK) fire type magic damage 3 times to a single target. If you are currently buffed, then the effects will be doubled"
+bosshuoshan45Saibulesi41Tips,给单体目标造成{0}%物攻的火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to a single target
+bosshuoshan45Saibulesi42Tips,给群体目标造成{0}%法攻的火属性法术伤害概率附加点燃效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemies, with a chance of ignition effect"
+bosshuoshan45Saibulesi43Tips,给单体目标连续造成多次{0}%法攻的火属性法术伤害,Repeatedly deals ({0}% of magic ATK) fire type magic damage to a single target
+bosshuoshan46Tianshizhang41Tips,给群体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
+bosshuoshan46Tianshizhang43Tips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+bosshuoshan46Tianshizhang46Tips,给自身添加免疫物理，法术伤害效果，持续XX回合,Casts a physical and magic damage immunity effect on yourself for XX turns
+bosshuoshan47Ifrit41Tips,给单体目标造成{0}%物攻的火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to a single target
+bosshuoshan47Ifrit44Tips,给敌方目标造成火属性物理伤害,Deals fire type physical damage to an enemy target
+bosssenlin38Meidusha25Tips,给单体目标造成{0}%法攻的木属性法术伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+bosssenlin38Meidusha26Tips,给群体目标造成{0}%法攻的木属性法术伤害,Deals ({0}% of magic ATK) grass type magic damage to all enemy targets
+bosssenlin38Meidusha27Tips,给群体目标造成{0}%法攻的木属性法术伤害概率附加眩晕效果,"Deals ({0}% of magic ATK) grass type magic damage to all enemy targets, with a chance of stun effect"
+bosssenlin38Meidusha28Tips,根据自身生命值，提升自身智力,Increases your INT based upon your HP amount
+bosshuoshan48Hehuaisituosi41Tips,给单体目标造成{0}%物攻的火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to a single target
+bosshuoshan48Hehuaisituosi42Tips,给群体目标造成{0}%物攻的火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to all enemy targets
+bosshuoshan48Hehuaisituosi43Tips,给群体目标造成{0}%物攻的火属性物理伤害附加点燃效果,"Deals ({0}% of physical ATK) fire type physical damage to all enemy targets, with a chance of causing ignition effect"
+bosshuoshan48Hehuaisituosi44Tips,给群体目标添加眩晕效果，持续1回合,Casts a stun effect on enemy targets for 1 turn
+bosshuoshan48Hehuaisituosi45Tips,给群体目标造成{0}%物攻的火属性物理伤害附加点燃和眩晕效果,"Deals ({0}% of physical ATK) fire type physical damage to all enemy targets, with a chance of causing ignition and stun effect"

@@ -433,7 +433,7 @@ public class PVPManager extends HawkAppObj {
 		}
 		else{
 			pvpRoomList.put(player.getId(), new PVPRoom(target.getPlayerId(), 0, target));
-			player.consumePVPTime(1, Action.PVP_MATCH);
+			//player.consumePVPTime(1, Action.PVP_MATCH);
 		}
 		
 		HSPVPMatchTargetRet.Builder response = HSPVPMatchTargetRet.newBuilder();

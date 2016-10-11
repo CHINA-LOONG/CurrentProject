@@ -574,7 +574,15 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void UnLoadBattleScene(ExitInstanceType state)
     {
-        UIMgr.Instance.OpenUI_(UILoading.ViewName);
+        UILoading uiloading = UIMgr.Instance.GetUI(UILoading.ViewName) as UILoading;
+        if (uiloading == null)
+        {
+            uiloading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+        }
+        if (uiloading.gameObject.activeSelf == false)
+        {
+            uiloading.SetLoading(LoadingType.loadingDefault);
+        }
         StartCoroutine(UnLoadBattleSceneInternal(state));
     }
     //---------------------------------------------------------------------------------------------

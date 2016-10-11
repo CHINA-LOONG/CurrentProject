@@ -78,7 +78,7 @@ buffTauntb1,12,,2,0,0,0,0,0,0,0,0,bufficon_debuffTaunt,0,,0,0,0,0,,,0,0,0,0,,-1
 Interruptb1,17,,3,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,0,0,0,0,,-1
 psvMagicb1,11,,999,,,,,0.2,,,,,,,,,,,,,,0,0,0,,-1
 psvKairuisi4b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_10,buffMagicSelfe2",,999,0,0,0,,-1
-psvHetong2b1,11,,999,0,0,0,,,,,,,,,,,,,"LifeUper_80,buffMagicSelfe2",,999,0,0,0,,-1
+psvHetong2b1,5,,1,0,0,0,0,0,0.8,0,0,bufficon_buffDefense,0,,0,0,0,0,,,1,0,0,0,,-1
 psvWagui3b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_25,debuffSpeede2",,999,0,0,0,,-1
 psvKahuna2b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_80,psvKahuna2e4",,999,0,0,0,,-1
 psvHuapo2b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_10,buffAttackSelfe2",,999,0,0,0,,-1

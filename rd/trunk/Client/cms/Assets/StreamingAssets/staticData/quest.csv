@@ -8,7 +8,7 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 40005,22,2,今日购买金币次数,richang5,rimubiao5,task_rmb_icon,10,2,-1,-1,buycoin,,1,51005,1,1,,11
 40007,24,2,今日商店刷新,richang6,rimubiao6,task_rmb_icon,8,2,-1,-1,shoprefresh,,1,51007,1,1,,3_1
 40008,27,2,今日大冒险数,多语言id,多语言id,task_rmb_icon,101,2,-1,-1,adventure,,2,110001,1,1,,13_1
-10001,1,1,首次抽蛋,zhuxian10001,mubiao10001,task_rmb_icon,1,1,-1,-1,petlevel-x,1,1,50001,1,1,,
+10001,1,1,首次抽蛋,zhuxian10001,mubiao10001,task_rmb_icon,1,1,-1,-1,eggdiamond,,1,50001,1,1,,
 10002,1,1,合成宠物(1-1),zhuxian10002,mubiao10002,task_rmb_icon,1,1,-1,-1,petmix,,1,50002,1,1,,8_2
 10003,1,1,击败小丑,zhuxian10003,mubiao10003,task_rmb_icon,1,1,-1,-1,instance-x,dajie11,1,50003,1,1,,1_dajie11
 10004,1,1,通关1-2,zhuxian10004,mubiao10004,task_rmb_icon,2,1,-1,-1,instance-x,dajie12,1,50004,1,1,,1_dajie12

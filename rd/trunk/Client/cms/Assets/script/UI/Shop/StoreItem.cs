@@ -73,7 +73,7 @@ public class StoreItem : MonoBehaviour
         {
             ItemData itemData = ItemData.valueof(storeItemData.itemId, 0);
 
-            itemIcon.RefreshWithItemInfo(itemData);
+            itemIcon.RefreshWithItemInfo(itemData,true,false);
         }
     }
     bool IsCoinEnough( )

@@ -6,7 +6,7 @@ public enum LoadingType
 { 
     loadingDefault = 1,
     loadingFb = 2,
-    loadingTrials = 3,
+    loadingHole = 3,
     loadingTower = 4,
     loadingGuild = 5,
     loadingPvp = 6
@@ -106,6 +106,8 @@ public class UILoading : UIBase
     public void SetLoading(LoadingType loadingType)
     {
         loadingContent.SetActive(true);
+        if (StaticDataMgr.Instance.GetLoadingData((int)loadingType) == null)
+            loadingType = LoadingType.loadingDefault;
         LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData((int)loadingType);
         int randomNum = Random.Range(0, loadingData.loadingResource.Length);
         Loadinglocation loadingLocation = StaticDataMgr.Instance.GetLoadinglocationData(loadingData.loadingResource[randomNum]);

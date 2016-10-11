@@ -1521,7 +1521,7 @@ public class Player extends HawkAppObj {
 	public void consumePVPTime(int pvpTime, Action action) {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		if (pvpTime <= 0 || pvpTime > statisticsEntity.getPVPTime()) {
-			//throw new RuntimeException("consumePVPTime");
+			throw new RuntimeException("consumePVPTime");
 		}
 
 		int old = statisticsEntity.getPVPTime();
@@ -1785,6 +1785,15 @@ public class Player extends HawkAppObj {
 		playerData.loadAllMonster();
 		// default monster
 		if (true == statisticsEntity.getMonsterCollectSet().isEmpty()) {
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
+			increaseMonster("xgXiaochou3", 0, Action.NULL);
 			increaseMonster("xgXiaochou3", 0, Action.NULL);
 		}
 		// TEST END-------------------------------------------------------------------------------------

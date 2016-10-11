@@ -2,14 +2,21 @@ package com.hawk.game.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hawk.db.HawkDBEntity;
+import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "recharge")
 public class RechargeEntity extends HawkDBEntity{
 	@Id
+	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
+	@GeneratedValue(generator = "AUTO_INCREMENT")
+	@Column(name = "id", unique = true)
+	private int id = 0;
+	
 	@Column(name = "orderSerial", unique = true)
 	private String orderSerial = "";
 	

@@ -2057,9 +2057,9 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 212_name1,今日参与竞技场3次,Battle the Arena 3 times today,今日參與競技場3次
 212_name2,今日参与竞技场5次,Battle the Arena 5 times today,今日參與競技場5次
 212_name3,今日参与竞技场10次,Battle the Arena 10 times today,今日參與競技場10次
-212_name4,竞技场累计胜利5次,Accumulate 5 Arena victories,競技場累計勝利5次
-212_name5,竞技场累计胜利10次,Accumulate 10 Arena victories,競技場累計勝利10次
-212_name6,竞技场累计胜利20次,Accumulate 20 Arena victories,競技場累計勝利20次
+212_name4,今日竞技场胜利5次,5 Arena victories today,今日競技場勝利5次
+212_name5,今日竞技场胜利10次,10 Arena victories today,今日競技場勝利10次
+212_name6,今日竞技场胜利20次,20 Arena victories today,今日競技場勝利20次
 213_name1,通天塔累计胜利5次,Accumulate 5 Tower of Darkness victories,通天塔累計勝利5次
 213_name2,通天塔累计胜利10次,Accumulate 10 Tower of Darkness victories,通天塔累計勝利10次
 213_name3,通天塔累计胜利15次,Accumulate 15 Tower of Darkness victories,通天塔累計勝利15次
@@ -2072,9 +2072,9 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 213_name10,通天塔累计胜利50次,Accumulate 50 Tower of Darkness victories,通天塔累計勝利50次
 214_name1,今日完成1次许愿,Complete 1 Guild Wish today,今日完成1次許願
 214_name2,今日向公会成员赠送10次体力,Send Energy to guild members 10 times today,今日向公會成員贈送10次體力
-214_name3,累计完成梦之许愿1次,Complete 1 Dream Wishes ,累計完成夢之許願1次
-214_name4,累计开启公会任务1次,Open 1 Guild Quest,累計開啟公會任務1次
-214_name5,累计开启公会任务3次,Open 3 Guild Quest,累計開啟公會任務3次
+214_name3,今日完成梦之许愿1次,Complete 1 Dream Wishes today,今日完成夢之許願1次
+214_name4,今日开启公会任务1次,Open 1 Guild Quest today,今日開啟公會任務1次
+214_name5,今日开启公会任务3次,Open 3 Guild Quest today,今日開啟公會任務3次
 215_name1,今日领取大冒险奖励1次,Collect 1 Adventure reward today,今日領取大冒險獎勵1次
 215_name2,今日领取大冒险奖励3次,Collect 3 Adventure reward today,今日領取大冒險獎勵3次
 215_name3,今日领取大冒险奖励5次,Collect 5 Adventure reward today,今日領取大冒險獎勵5次
@@ -2092,8 +2092,8 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 217_name2,神话守护者胜利5次,Completing 5 stage in Mytho Guardian,
 217_name3,神话守护者胜利9次,Completing 9 stage in Mytho Guardian,
 217_name4,同一个时间段内进行boss挑战1次,Battling once in Deity Invasion,
-217_name5,同一个时间段内进行boss挑战5次,Battling 5 times in Deity Invasion,
-217_name6,同一个时间段内进行boss挑战9次,Battling 9 times in Deity Invasion,
+217_name5,同一个时间段内进行boss挑战3次,Battling 3 times in Deity Invasion,
+217_name6,同一个时间段内进行boss挑战6次,Battling 6 times in Deity Invasion,
 217_name7,竞技场挑战1次,Battle the Arena once today,
 217_name8,竞技场挑战5次,Battle the Arena 5 times today,
 217_name9,竞技场挑战10次,Battle the Arena 10 times today,

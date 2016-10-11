@@ -1,7 +1,6 @@
 ﻿#NUM,#TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
 id,textId,comments,rewardId,lang_1,sender_1,subject_1,content_1,lang_2,sender_2,subject_2,content_2
 #id,mail_系统名_001,注释,附件,语言1,发信人1,主题1,内容1,语言2,发信人2,主题2,内容2
-100,mail_new_001,新手欢迎邮件,mail_new_001,zh-CN,系统,新手活力礼包,欢迎参加测试,en,System,Novice Energy packs,Welcome to the test
 101,mail_sociaty_001,移交会长,,zh-CN,系统,会内职务变更,"亲爱的玩家：
 您已成为{0}公会会长！",en,System,Guild Role Change,"Dear player: 
 You have been promoted to Guild Master of {0}!"

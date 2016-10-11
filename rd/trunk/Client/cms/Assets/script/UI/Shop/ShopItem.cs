@@ -180,13 +180,13 @@ public class ShopItem : MonoBehaviour
 		if (shopItemData.type == (int)PB.itemType.EQUIP)
         {
             EquipData equipData = EquipData.valueof(0, shopItemData.itemId, shopItemData.stage, shopItemData.level, BattleConst.invalidMonsterID, null);
-			itemIcon.RefreshWithEquipInfo (equipData);
+			itemIcon.RefreshWithEquipInfo (equipData,true,false);
 		}
 		else 
 		{
 			ItemData itemData = ItemData.valueof(shopItemData.itemId,0);
 
-			itemIcon.RefreshWithItemInfo(itemData);
+			itemIcon.RefreshWithItemInfo(itemData,true,false);
 		}
 	}
 

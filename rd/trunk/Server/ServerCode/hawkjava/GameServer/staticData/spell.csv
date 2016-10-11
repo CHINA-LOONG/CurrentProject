@@ -161,7 +161,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 158,psvXiaochou3,psvXiaochou3e1,0,0,0,0,4,0,icon_psvXiaochou3,psvXiaochou3Name,psvXiaochou3Tips,0,0,,psvXiaochou3Description,,
 159,psvXiaochou4,psvXiaochou4e1,0,0,0,0,4,0,icon_psvXiaochou4,psvXiaochou4Name,psvXiaochou4Tips,0,0,,psvXiaochou4Description,,
 160,psvKairuisi4,psvKairuisi4e1,0,0,0,0,4,0,icon_psvKairuisi4,psvKairuisi4Name,psvKairuisi4Tips,0,0,,psvKairuisi4Description,,
-161,psvHetong2,psvHetong2e1,0,0,0,0,4,0,icon_psvHetong2,psvHetong2Name,psvHetong2Tips,0,0,,psvHetong2Description,,
+161,psvHetong2,psvHetong2e1,0,0,0,0,4,0,icon_psvKahuna2,psvHetong2Name,psvHetong2Tips,0,0,psvHetong2,psvHetong2Description,,
 162,psvWagui3,psvWagui3e1,0,0,0,0,4,0,icon_psvWagui3,psvWagui3Name,psvWagui3Tips,0,0,,psvWagui3Description,,
 163,psvHuapo2,psvHuapo2e1,0,0,0,0,4,0,icon_psvHuapo2,psvHuapo2Name,psvHuapo2Tips,0,0,,psvHuapo2Description,,
 164,psvCike4,psvCike4e1,0,0,0,0,4,0,icon_psvCike4,psvCike4Name,psvCike4Tips,0,0,,psvCike4Description,,

@@ -135,6 +135,53 @@ public class Util
         }
     }
 
+    public static  void UnZipFromFile(string zipFile,string destDir,bool finishDeleteZip)
+    {
+        if (!File.Exists(zipFile))
+        {
+            return;
+        }
+        FileStream fileStream = File.Open(zipFile, FileMode.Open);
+        using (ZipInputStream s = new ZipInputStream(fileStream))
+        {
+            ZipEntry theEntry;
+            while ((theEntry = s.GetNextEntry()) != null)
+            {
+                string directoryName = Path.GetDirectoryName(theEntry.Name);
+                string fileName = Path.GetFileName(theEntry.Name);
+
+                // create directory
+                if (directoryName.Length > 0)
+                    Directory.CreateDirectory(Path.Combine(destDir, directoryName));
+
+                if (fileName != string.Empty)
+                {
+                    using (FileStream streamWriter = File.Create(Path.Combine(destDir, theEntry.Name)))
+                    {
+                        int size = 2048;
+                        byte[] data = new byte[2048];
+                        while (true)
+                        {
+                            size = s.Read(data, 0, data.Length);
+                            if (size > 0)
+                                streamWriter.Write(data, 0, size);
+                            else
+                            {
+                                streamWriter.Flush();
+                                streamWriter.Close();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(finishDeleteZip)
+        {
+            File.Delete(zipFile);
+        }
+    }
+
     /// <summary>
     /// 清理内存
     /// </summary>

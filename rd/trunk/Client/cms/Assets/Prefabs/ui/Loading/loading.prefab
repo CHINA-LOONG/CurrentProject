@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22418476}
   m_Layer: 5
-  m_Name: contentText2
+  m_Name: contentText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -99,7 +99,15 @@ public class MonsterUtil {
 			equipSpeed += baseAttrCfg.getSpeed() *equipInfo.getLevel();
 			
 			for (GemPunch gem : equipInfo.getGemItemsList()) {
+				if (gem.getGemItemId().equals(GsConst.EQUIP_GEM_NONE)) {
+					continue;
+				}
+				
 				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, gem.getGemItemId());
+				if (itemCfg == null) {
+					continue;
+				}
+				
 				baseAttrCfg = HawkConfigManager.getInstance().getConfigByKey(BaseAttrCfg.class, itemCfg.getGemId());
 				equipHealth += baseAttrCfg.getHealth();
 				equipIntelligence += baseAttrCfg.getIntelligence();

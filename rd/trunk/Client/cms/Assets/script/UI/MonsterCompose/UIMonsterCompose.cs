@@ -85,10 +85,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
     private ItemData comFragment;
     private int comCount;
 
-    public override void Init()
-    {
-    }
-    public override void Clean()
+    public override void Disable()
     {
         imageView.CleanImageView();//关闭时释放模型资源
     }

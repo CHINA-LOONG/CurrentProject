@@ -484,6 +484,7 @@ public class UIMgr : MonoBehaviour
             OnUILayerClose(uiItem);
             if (uiList.ContainsValue(uiItem))
             {
+                uiItem.Disable();
                 uiItem.gameObject.SetActive(false);
                 RemoveFromStack(uiItem);
             }
@@ -518,6 +519,7 @@ public class UIMgr : MonoBehaviour
             {
                 popupList.Remove(uiItem);
             }
+            uiItem.Disable();
             uiItem.Clean();
             ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
         }

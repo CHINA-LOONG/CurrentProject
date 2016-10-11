@@ -56,6 +56,11 @@ public abstract class UIBase : MonoBehaviour
     {
  
     }
+    //关闭界面时调用，隐藏和销毁都会调用
+    public virtual void Disable()
+    {
+
+    }
     //删除界面，对子对象的清理操作
     public virtual void Clean()
     {

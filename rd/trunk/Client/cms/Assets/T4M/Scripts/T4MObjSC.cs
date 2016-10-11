@@ -41,7 +41,7 @@ public class T4MObjSC : MonoBehaviour {
 	[HideInInspector] 
 	public T4MBillBObjSC[] BillScript ;
 	[HideInInspector] 
-	public bool enabledLayerCul=true;
+	public bool enabledLayerCul=false;
 	[HideInInspector] 
 	public float BackGroundView  = 1000f;
 	[HideInInspector] 
@@ -80,22 +80,22 @@ public class T4MObjSC : MonoBehaviour {
 	public void Awake()
 	{
 		if (Master ==1){
-			if (PlayerCamera == null && Camera.main)
-				PlayerCamera = Camera.main.transform;
-			else if (PlayerCamera == null && !Camera.main){
-				Camera[] Cam =  GameObject.FindObjectsOfType(typeof(Camera)) as Camera[];
-				for (var b =0; b <Cam.Length;b++){
-					if (Cam[b].GetComponent<AudioListener>()){
-						PlayerCamera = Cam[b].transform; 
-					}
-				}
-			}
+			//if (PlayerCamera == null && Camera.main)
+			//	PlayerCamera = Camera.main.transform;
+			//else if (PlayerCamera == null && !Camera.main){
+			//	Camera[] Cam =  GameObject.FindObjectsOfType(typeof(Camera)) as Camera[];
+			//	for (var b =0; b <Cam.Length;b++){
+			//		if (Cam[b].GetComponent<AudioListener>()){
+			//			PlayerCamera = Cam[b].transform; 
+			//		}
+			//	}
+			//}
 			if (enabledLayerCul){
 				distances[26] = CloseView;
 				distances[27] = NormalView;
 				distances[28] = FarView;
 				distances[29] = BackGroundView;
-			    PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;
+			//    PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;
 			}
 			
 			if (EnabledLODSystem && ObjPosition.Length>0 && Mode ==1){
@@ -175,13 +175,13 @@ public class T4MObjSC : MonoBehaviour {
 				distances[27] = NormalView;
 				distances[28] = FarView;
 				distances[29] = BackGroundView;
-			    PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;
+			    //PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;
 			}else{
 				distances[26] = PlayerCamera.GetComponent<Camera>().farClipPlane;
 				distances[27] = PlayerCamera.GetComponent<Camera>().farClipPlane;
 				distances[28] = PlayerCamera.GetComponent<Camera>().farClipPlane;
 				distances[29] = PlayerCamera.GetComponent<Camera>().farClipPlane;
-			    PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;	
+			    //PlayerCamera.GetComponent<Camera>().layerCullDistances = distances;	
 			}
 			
 			if (LODPreview){

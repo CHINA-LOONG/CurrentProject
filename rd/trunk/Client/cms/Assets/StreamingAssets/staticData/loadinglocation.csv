@@ -1,5 +1,5 @@
-#NUM,TEXT,NUM,TEXT,TEXT,TEXT
+ï»¿#NUM,TEXT,NUM,TEXT,TEXT,TEXT
 id,picture,location,background,tips,asset
-id,Õ¹Ê¾ÄÚÈİ,×ø±ê×é±àºÅ,±³¾°,ÌáÊ¾ÎÄ×Ö,Õ¹Ê¾ÄÚÈİ×ÊÔ´
-1,Q,1,denglu_bg1,aaa,baojiditu
-2,S,2,tongyong_bg_1,bbb,duiju_bossditu
+id,å±•ç¤ºå†…å®¹,åæ ‡ç»„ç¼–å·,èƒŒæ™¯,æç¤ºæ–‡å­—,å±•ç¤ºå†…å®¹èµ„æº
+1,Q,0,denglu_bg1,aaa,baojiditu
+2,S,1,tongyong_bg_1,bbb,duiju_bossditu

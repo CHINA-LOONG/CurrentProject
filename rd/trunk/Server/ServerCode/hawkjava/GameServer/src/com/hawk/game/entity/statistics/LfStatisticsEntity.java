@@ -7,12 +7,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
 import org.hawk.util.HawkJsonUtil;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -26,6 +28,11 @@ import com.google.gson.reflect.TypeToken;
 @Table(name = "statistics_lf")
 public class LfStatisticsEntity extends HawkDBEntity {
 	@Id
+	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
+	@GeneratedValue(generator = "AUTO_INCREMENT")
+	@Column(name = "id", unique = true)
+	private int id = 0;
+
 	@Column(name = "playerId", unique = true)
 	protected int playerId = 0;
 

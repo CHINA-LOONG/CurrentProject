@@ -38,7 +38,7 @@ public class ItemStaticData
 	public	int	buyType;
 
 	public	int	stack;
-	public	int	rewardId;
+	public	string	rewardId;
 	public	string	componentItem;
 	public	string	needItem;
 	public	string	targetItem;

@@ -60,6 +60,7 @@ public class BuildModule : ModuleBase
         //ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
 
         UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+        loading.SetLoading(LoadingType.loadingDefault);
         if (loading != null)
         {
             UIMgr.Instance.FixBrokenWord();
