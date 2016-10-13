@@ -176,10 +176,6 @@ public class UIAdjustBattleTeam : UIBase
         bpLabelArray[0].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
         bpLabelArray[1].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
     }
-    public override void Init()
-    {
-        AnimatorAttr.SetTrigger("animationIn"); 
-    }
     public override void Clean()
     {
         //TODO: destroy MonsterIcon
@@ -988,15 +984,15 @@ public class UIAdjustBattleTeam : UIBase
     {
         if (isBattleClick) return;
 
-        AnimatorAttr.SetTrigger("animationOut");
+        RequestCloseUi();
     }
-    void OnExitAnimationFinish()
+    public override void CloseUi()
     {
         if (showInstanceListExit)
         {
             GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
         }
-        UIMgr.Instance.CloseUI_(this);
+        base.CloseUi();
     }
     #endregion
 

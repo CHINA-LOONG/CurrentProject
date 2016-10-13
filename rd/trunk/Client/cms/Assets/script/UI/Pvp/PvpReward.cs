@@ -63,6 +63,6 @@ public class PvpReward : UIBase
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 }

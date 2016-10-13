@@ -41,10 +41,6 @@ public class InstanceList : UIBase
         return instanceUi;
     }
 
-    public override void Init()
-    {
-
-    }
     //删除界面，对子对象的清理操作
     public override void Clean()
     {
@@ -105,7 +101,7 @@ public class InstanceList : UIBase
 
     void OnClose(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     public  void    RefreshWithChapterId(int chapterIndex, InstanceDifficulty difficulty = InstanceDifficulty.Normal)
@@ -183,6 +179,7 @@ public class InstanceList : UIBase
                 StartCoroutine(AdjustListPosition(focusIndex, listInstanceRuntime.Count));
             }
         }
+        /*
         if (animation)
         {
             Vector2 startPos = oldPosition;
@@ -194,7 +191,7 @@ public class InstanceList : UIBase
         {
             rootRt.anchoredPosition = oldPosition;
         }
-
+        */
 
         ChapterBoxState boxState = InstanceMapService.Instance.GetChapterBoxState(chapterIndex, insDifficulty);
         if(boxState == ChapterBoxState.CanNotReceiv && getStar == allStar)

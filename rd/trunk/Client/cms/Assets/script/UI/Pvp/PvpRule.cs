@@ -30,6 +30,6 @@ public class PvpRule : UIBase
 
     void    OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 }

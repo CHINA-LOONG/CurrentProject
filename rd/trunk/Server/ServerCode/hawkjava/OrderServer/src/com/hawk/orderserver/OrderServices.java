@@ -322,7 +322,7 @@ public class OrderServices {
 			}
 			
 			// 心跳
-			if (action == HawkOrderService.ACTION_ORDER_HEART_BEAT) {
+			else if (action == HawkOrderService.ACTION_ORDER_HEART_BEAT) {
 				HawkLog.logPrintln(String.format("HeartBeat: %s", requestInfo.toString()));
 			}
 		} catch (Exception e) {

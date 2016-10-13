@@ -132,7 +132,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
 
     }
 
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         if (tabIndex==index)
         {

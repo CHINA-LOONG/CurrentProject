@@ -47,6 +47,7 @@ public class UICoinExchange : UIBase
 			firstInit();
 		}
 		RefreshExchangeUI ();
+        base.Init();
 	}
 	
 	private	void	firstInit()
@@ -94,7 +95,7 @@ public class UICoinExchange : UIBase
 
 	void OnCancelButtonClick(GameObject go)
 	{
-		UIMgr.Instance.DestroyUI (this);
+        RequestCloseUi();
 	}
 	
 	void OnBuyButtonClick(GameObject go)

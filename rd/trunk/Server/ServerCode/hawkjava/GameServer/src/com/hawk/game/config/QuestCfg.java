@@ -41,8 +41,8 @@ public class QuestCfg extends HawkConfigBase {
 	// assemble
 	protected int goalTypeValue = 0;
 	protected List<Object> goalParamList = null;
-	protected TimeCfg timeBeginCfg = null;
-	protected TimeCfg timeEndCfg = null;
+	protected TimePointCfg timeBeginCfg = null;
+	protected TimePointCfg timeEndCfg = null;
 	protected RewardCfg rewardCfg = null;
 
 	public QuestCfg() {
@@ -309,16 +309,16 @@ public class QuestCfg extends HawkConfigBase {
 	@Override
 	protected boolean checkValid() {
 		if (timeBeginId != GsConst.UNUSABLE) {
-			timeBeginCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeBeginId);
+			timeBeginCfg = HawkConfigManager.getInstance().getConfigByKey(TimePointCfg.class, timeBeginId);
 			if (timeBeginCfg == null) {
-				HawkLog.errPrintln(String.format("config invalid TimeCfg : %d", timeBeginId));
+				HawkLog.errPrintln(String.format("config invalid TimePointCfg : %d", timeBeginId));
 				return false;
 			}
 		}
 		if (timeEndId != GsConst.UNUSABLE) {
-			timeEndCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeEndId);
+			timeEndCfg = HawkConfigManager.getInstance().getConfigByKey(TimePointCfg.class, timeEndId);
 			if (timeEndCfg == null) {
-				HawkLog.errPrintln(String.format("config invalid TimeCfg : %d", timeEndId));
+				HawkLog.errPrintln(String.format("config invalid TimePointCfg : %d", timeEndId));
 				return false;
 			}
 		}
@@ -400,11 +400,11 @@ public class QuestCfg extends HawkConfigBase {
 		return cycle;
 	}
 
-	public TimeCfg getTimeBegin() {
+	public TimePointCfg getTimeBegin() {
 		return timeBeginCfg;
 	}
 
-	public TimeCfg getTimeEnd() {
+	public TimePointCfg getTimeEnd() {
 		return timeEndCfg;
 	}
 

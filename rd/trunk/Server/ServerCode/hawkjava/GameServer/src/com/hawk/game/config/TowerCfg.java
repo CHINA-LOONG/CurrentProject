@@ -40,9 +40,9 @@ public class TowerCfg extends HawkConfigBase {
 	@Override
 	protected boolean checkValid() {
 		for (int id : refreshTimeList) {
-			TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, id);
+			TimePointCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimePointCfg.class, id);
 			if (timeCfg == null) {
-				HawkLog.errPrintln(String.format("config invalid TimeCfg : %d", id));
+				HawkLog.errPrintln(String.format("config invalid TimePointCfg : %d", id));
 				return false;
 			}
 		}

@@ -273,7 +273,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         }
     }
 
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         if (tabIndex==index)
         {

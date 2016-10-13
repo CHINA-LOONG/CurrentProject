@@ -64,7 +64,7 @@ import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.service.GmService_Dev;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
-import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.TimePointUtil;
 
 /**
  * 游戏应用
@@ -117,7 +117,7 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public boolean init(String cfg) {
-		
+
 		GsConfig appCfg = null;
 		try {
 			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class, getWorkPath());
@@ -196,7 +196,7 @@ public class GsApp extends HawkApp {
 			HawkLog.logPrintln("install activity server fail");
 			return false;
 		}
-		
+
 		// 初始化邮件服务
 		if (GsConfig.getInstance().getEmailUser() != null && GsConfig.getInstance().getEmailUser().length() > 0) {
 			HawkLog.logPrintln("install email service......");
@@ -226,7 +226,7 @@ public class GsApp extends HawkApp {
 		// pvp
 		HawkLog.logPrintln("init pvp manager......");
 		PVPManager.getInstance().init();
-		
+
 		// 初始化开发版GmService
 		HawkServiceManager.getInstance().registerService("GM_Dev", new GmService_Dev());
 
@@ -330,7 +330,7 @@ public class GsApp extends HawkApp {
 			int timeCfgId = GsConst.SysRefreshTime[index];
 
 			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
-			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
+			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
 			if (expectedRefreshTime != null) {
 				// 刷新数据
 				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
@@ -362,7 +362,7 @@ public class GsApp extends HawkApp {
 							}
 						}
 					}
-					
+
 					// 刷新时间点
 					ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 				}
@@ -372,7 +372,7 @@ public class GsApp extends HawkApp {
 						// 刷新时间点
 						ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 					}
-				}		
+				}
 			}
 		}
 
@@ -747,13 +747,13 @@ public class GsApp extends HawkApp {
 			if (objBase != null) {
 				// 已存在会话的情况下, 踢出玩家
 				Player player = (Player) objBase.getImpl();
-				if (player != null && player.getSession() != null && player.getSession() != session) {	
+				if (player != null && player.getSession() != null && player.getSession() != session) {
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 					player.getSession().setAppObject(null);
-			 		
+
 					HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_LOGOUT, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
-			 		msg.pushParam(player);
-					HawkApp.getInstance().postMsg(msg);			
+					msg.pushParam(player);
+					HawkApp.getInstance().postMsg(msg);
 				}
 
 				// 设置玩家puid
@@ -821,8 +821,6 @@ public class GsApp extends HawkApp {
 				if (objBase != null) {
 					objBase.lockObj();
 				}
-				
-				
 
 				playerOffline = true;
 			}
@@ -838,18 +836,17 @@ public class GsApp extends HawkApp {
 					player.getPlayerData().loadAllItem();
 					player.getPlayerData().loadAllEquip();
 					player.getPlayerData().loadShop();
-				}		
+				}
 			}
 		} finally {
 			if (objBase != null) {
 				objBase.unlockObj();
 			}
 		}
-		
+
 		return player;
 	}
-	
-	
+
 	// 主线程运行
 	@Override
 	public void onOrderNotify(JSONObject jsonInfo) {

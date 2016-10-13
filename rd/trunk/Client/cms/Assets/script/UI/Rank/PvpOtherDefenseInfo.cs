@@ -68,6 +68,6 @@ public class PvpOtherDefenseInfo : UIBase
 	}
     void OnCloseImgClick (GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 }

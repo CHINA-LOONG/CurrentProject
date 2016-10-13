@@ -51,10 +51,26 @@ public abstract class UIBase : MonoBehaviour
         }
     }
 
+    public Animator uiAnimator;
+    private static string outAnimationTriger = "animationOut";
+    private static string inAnimationTriger = "animationIn";
+
+    private int inAnimationState = -1;
+    private int outAnimationState = -1;
+
     //初始化界面操作，创建或激活后配置初始状态
     public virtual void Init()
     {
- 
+        if(inAnimationState == -1)
+        {
+            inAnimationState = Animator.StringToHash("uiEnterState");
+            outAnimationState = Animator.StringToHash("uiOutState");
+        }
+
+        if (null != uiAnimator && uiAnimator.HasState(0, inAnimationState))
+        {
+            uiAnimator.SetTrigger(inAnimationTriger);
+        }
     }
     //关闭界面时调用，隐藏和销毁都会调用
     public virtual void Disable()
@@ -69,7 +85,31 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void RefreshOnPreviousUIHide()
     {
+        if (null != uiAnimator && uiAnimator.HasState(0, inAnimationState))
+        {
+            uiAnimator.SetTrigger(inAnimationTriger);
+        }
+    }
 
+    public  void    RequestCloseUi(bool withAni = true)
+    {
+        if(withAni && null != uiAnimator && uiAnimator.HasState(0, outAnimationState))
+        {
+            uiAnimator.SetTrigger(outAnimationTriger);
+        }
+        else
+        {
+            CloseUi();
+        }
+    }
+    protected void OnExitAnimationFinish()
+    {
+        CloseUi();
+    }
+
+    public virtual  void   CloseUi()
+    {
+        UIMgr.Instance.CloseUI_(this);
     }
 
     //public void Update()

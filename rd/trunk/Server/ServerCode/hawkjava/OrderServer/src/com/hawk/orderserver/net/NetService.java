@@ -176,6 +176,7 @@ public class NetService extends HawkMQServer {
 				if (!serverZmq.send(data.getBytes(), 0)) {
 					HawkLog.logPrintln("send notify failed, data: " + data);
 				}
+				
 			} else {
 				BlockingQueue<HawkMQSession> sessionQueue = identifySession.get(identify);
 				if (sessionQueue != null) {

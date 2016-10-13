@@ -32,11 +32,6 @@ public class UISociatyTask : UIBase, TabButtonDelegate
         taskUi.InitType((int)taskType);
     }
 
-    public override void Init()
-    {
-        
-    }
-
     public override void Clean()
     {
         if(null != taskList)
@@ -82,7 +77,7 @@ public class UISociatyTask : UIBase, TabButtonDelegate
         tabBtnGroup.OnChangeItem(initType);
     }
 
-    public  void OnTabButtonChanged(int index)
+    public  void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
        // if ((int)taskType != index)
        // {
@@ -199,7 +194,7 @@ public class UISociatyTask : UIBase, TabButtonDelegate
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     void OnAllianceLeave_N_S(ProtocolMessage message)
     {

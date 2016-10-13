@@ -1,12 +1,12 @@
 ﻿#NUM,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,NUM ,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM
 id,comments,name,title,desc,image,type,children,rechargeId,buyPrice,baseGift,extraGift,buyTimes,timeBegin,timeEnd,relativeTimeBegin,duration,weight
 #礼包id,注释,名称,标题,描述,底图,类型(1-进阶礼包/2-碎片礼包/101-活动礼包/102-选择礼【103】),子礼包,充值ID,数量,基本奖励,额外奖励,最大购买次数,开始时间id,结束时间id,相对开服开始时间,持续秒数,权重
-101,进阶礼包a1,,giftspecial_jinjiea1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,1,0,,2000,jinjie1_base_1,,1,-1,-1,-1,86400,800
-102,进阶礼包a2,,giftspecial_jinjiea2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,1,0,,3500,jinjie1_base_2,,1,-1,-1,-1,86400,200
-103,进阶礼包b1,,giftspecial_jinjieb1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,5,0,,3500,jinjie2_base_1,,1,-1,-1,-1,86400,800
-104,进阶礼包b2,,giftspecial_jinjieb2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,5,0,,7500,jinjie2_base_2,,1,-1,-1,-1,86400,200
-105,进阶礼包c1,,giftspecial_jinjiec1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,6,0,,7500,jinjie3_base_1,,1,-1,-1,-1,86400,800
-106,进阶礼包c2,,giftspecial_jinjiec2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,6,0,,16000,jinjie3_base_2,,1,-1,-1,-1,86400,200
+101,进阶礼包a1,,giftspecial_jinjiea1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,1,0,,1499,jinjie1_base_1,,1,-1,-1,-1,86400,800
+102,进阶礼包a2,,giftspecial_jinjiea2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,1,0,,1999,jinjie1_base_2,,1,-1,-1,-1,86400,200
+103,进阶礼包b1,,giftspecial_jinjieb1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,5,0,,2999,jinjie2_base_1,,1,-1,-1,-1,86400,800
+104,进阶礼包b2,,giftspecial_jinjieb2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,5,0,,5999,jinjie2_base_2,,1,-1,-1,-1,86400,200
+105,进阶礼包c1,,giftspecial_jinjiec1_name,giftspecial_jinjie1_desc,teshushoumai_chongwujinjie,6,0,,6999,jinjie3_base_1,,1,-1,-1,-1,86400,800
+106,进阶礼包c2,,giftspecial_jinjiec2_name,giftspecial_jinjie2_desc,teshushoumai_chongwujinjie,6,0,,12999,jinjie3_base_2,,1,-1,-1,-1,86400,200
 202,活动礼包1,,giftspecial_huodong1_name,giftspecial_huodong1_desc,teshushoumai_changzhu,101,0,com.diandian.undergroundguardian.giftspecial.99.99,0,huodong_base_1,huodong_extra_1,3,407,408,-1,-1,100
 203,活动礼包2,,giftspecial_huodong2_name,giftspecial_huodong2_desc,teshushoumai_caihongguai,101,0,com.diandian.undergroundguardian.giftspecial.99.99,0,huodong_base_2,huodong_extra_2,3,409,410,-1,-1,100
 204,选择礼包子礼包11,,,,teshushoumai_sguai,103,0,com.diandian.undergroundguardian.giftspecial.0.99,0,xuanze_zuo_1,,1,-1,-1,-1,-1,100

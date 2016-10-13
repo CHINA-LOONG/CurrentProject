@@ -240,7 +240,7 @@ public class UIQuest : UIBase,
     #endregion
 
     #region TabButtonDelegate
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         if (tabIndex==index)
         {

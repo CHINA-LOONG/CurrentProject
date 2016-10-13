@@ -9,7 +9,8 @@ public enum LoadingType
     loadingHole = 3,
     loadingTower = 4,
     loadingGuild = 5,
-    loadingPvp = 6
+    loadingPvp = 6,
+	loadingLog = 7
 }
 
 public class UILoading : UIBase
@@ -35,10 +36,10 @@ public class UILoading : UIBase
     public Image contentImage;
     public GameObject pvploadingG;
     public GameObject loadingContent;
-
+    public Image ordinaryBg;
     private float loadingBarSizeDelthaX = 100;
     private float loadingBarSizeDelthaY = 9;
-
+    int loadingNum = 0;
     private RectTransform _loadingProgressRt;
     private RectTransform loadingProgressRt
     {
@@ -78,7 +79,8 @@ public class UILoading : UIBase
             {
                 loadingProgressRt.sizeDelta = new Vector2((1.0f - (float)remainCount / totalAssetCount) * loadingBarSizeDelthaX, loadingBarSizeDelthaY);
             }
-            loadingText.text = (totalAssetCount - remainCount).ToString() + "/" + totalAssetCount.ToString();
+            loadingNum = totalAssetCount - remainCount;
+            loadingText.text = ((loadingNum / totalAssetCount) * 100).ToString() + "%"; 
 
             if (remainCount == 0)
             {
@@ -105,11 +107,19 @@ public class UILoading : UIBase
     //---------------------------------------------------------------------------------------------
     public void SetLoading(LoadingType loadingType)
     {
-        loadingContent.SetActive(true);
         if (StaticDataMgr.Instance.GetLoadingData((int)loadingType) == null)
             loadingType = LoadingType.loadingDefault;
         LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData((int)loadingType);
-        int randomNum = Random.Range(0, loadingData.loadingResource.Length);
+        int randomNum = Random.Range(0, loadingData.loadingTips.Length);
+        gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.loadingTips[randomNum]);
+        if (loadingType == LoadingType.loadingLog)
+        {
+            ordinaryBg.gameObject.SetActive(true);
+            ordinaryBg.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("loadingloginImage");
+            return;
+        }
+        loadingContent.SetActive(true);
+        randomNum = Random.Range(0, loadingData.loadingResource.Length);
         Loadinglocation loadingLocation = StaticDataMgr.Instance.GetLoadinglocationData(loadingData.loadingResource[randomNum]);
         contentName.text = StaticDataMgr.Instance.GetTextByID(loadingLocation.tips);
 
@@ -119,8 +129,6 @@ public class UILoading : UIBase
         contentImage.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentImage" + loadingLocation.location).transform.localPosition;
         contentName.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentText" + loadingLocation.location).transform.localPosition;
 
-        randomNum = Random.Range(0, loadingData.loadingTips.Length);
-        gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.loadingTips[randomNum]);
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()

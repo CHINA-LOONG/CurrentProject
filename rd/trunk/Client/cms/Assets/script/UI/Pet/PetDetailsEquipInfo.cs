@@ -67,7 +67,7 @@ public class PetDetailsEquipInfo : PetDetailsRight,
         tabTitle3.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
     }
 
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         if (tabIndex == index)
         {

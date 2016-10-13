@@ -36,6 +36,7 @@ public class SelectPet : UIBase
     {
         contentView.ClearAllElement();
         RefreshUI();
+        base.Init();
     }
     //删除界面，对子对象的清理操作
     public override void Clean()
@@ -59,7 +60,7 @@ public class SelectPet : UIBase
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     void OnBgMaskClick (GameObject go)

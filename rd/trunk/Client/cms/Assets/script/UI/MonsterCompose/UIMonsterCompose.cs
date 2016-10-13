@@ -173,7 +173,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
         }
     }
     #region GetByTips
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         selIndex = index;
         RefreshFoundTips(index);

@@ -44,7 +44,7 @@ public class PvpDefensiveRecord : UIBase, IScrollView
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
    void RequestRecordData()

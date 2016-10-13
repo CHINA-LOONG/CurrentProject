@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public interface TabButtonDelegate
 {
-	void OnTabButtonChanged (int index);
+    void OnTabButtonChanged(int index, TabButtonGroup tab);
 }
 
 public class TabButtonGroup : MonoBehaviour {
@@ -41,7 +41,7 @@ public class TabButtonGroup : MonoBehaviour {
 		selectedIndex = itemIndex;
 		if (tabDelegate != null)
 		{
-			tabDelegate.OnTabButtonChanged(itemIndex);
+            tabDelegate.OnTabButtonChanged(itemIndex, this);
 		}
 	}
 

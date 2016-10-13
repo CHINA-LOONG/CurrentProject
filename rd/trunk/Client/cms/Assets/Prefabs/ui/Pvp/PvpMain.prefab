@@ -10331,6 +10331,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9525412}
   titleText: {fileID: 11434256}
   seasonCountDownText: {fileID: 11475376}
   closeButton: {fileID: 11404630}
@@ -34659,10 +34660,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22467632}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: -32}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22413858
 RectTransform:
@@ -35305,10 +35306,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22467632}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 119.304352, y: -32}
+  m_SizeDelta: {x: 110.608696, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22427188
 RectTransform:
@@ -36385,7 +36386,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: .000275611877, y: -80}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 174.608704, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22456144
 RectTransform:
@@ -36876,7 +36877,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 174.608704, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22468158
 RectTransform:
@@ -36909,10 +36910,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22455824}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: -32}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22469880
 RectTransform:
@@ -37177,10 +37178,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22455824}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 119.304352, y: -32}
+  m_SizeDelta: {x: 110.608696, y: 64}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22473624
 RectTransform:

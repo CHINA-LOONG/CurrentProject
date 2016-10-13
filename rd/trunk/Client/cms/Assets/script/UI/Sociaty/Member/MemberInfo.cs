@@ -79,7 +79,7 @@ public class MemberInfo : UIBase
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     ///-----------------------------------------------------------------------------------
     void OnTransferButtonClick()

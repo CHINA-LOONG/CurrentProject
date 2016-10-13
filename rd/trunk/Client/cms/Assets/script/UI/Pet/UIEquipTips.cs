@@ -62,7 +62,7 @@ public class UIEquipTips : UIBase
         }
         else
         {
-            EquipIcon.RefreshWithEquipInfo(curData);
+            EquipIcon.RefreshWithEquipInfo(curData,false);
         }
 
         #region 显示属性

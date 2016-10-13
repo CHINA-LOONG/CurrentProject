@@ -34,6 +34,10 @@ public class SociatyPray : UIBase
     //---------------------------------------------------------------------------------------------
     void OnClose(GameObject go)
     {
+        RequestCloseUi();
+    }
+    public override void CloseUi()
+    {
         UIMgr.Instance.DestroyUI(this);
     }
     //---------------------------------------------------------------------------------------------

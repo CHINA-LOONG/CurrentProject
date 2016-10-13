@@ -29,7 +29,7 @@ import com.hawk.game.protocol.PVP.HSSetPVPDefenceMonsterRet;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MonsterUtil;
-import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.TimePointUtil;
 
 public class PlayerPVPModule extends PlayerModule{
 	
@@ -239,13 +239,13 @@ public class PlayerPVPModule extends PlayerModule{
 		PVPRankEntity rankEntity = PVPManager.getInstance().getPVPRankEntity(player.getId());
 		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
 		
-		Calendar refreshTime = TimeUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
+		Calendar refreshTime = TimePointUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
 		int leftTime = (3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEEK_SECOND;
 		if (refreshTime != null) {
 			leftTime += (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
 		}
 		
-		if (rankEntity != null) {	
+		if (rankEntity != null) {
 			// 排行榜之内的需要考虑并列情况
 			if (rankEntity.getRank() > GsConst.PVP.PVP_RANK_SIZE + 10) {
 				response.setPvpPoint(rankEntity.getPoint());
@@ -257,7 +257,7 @@ public class PlayerPVPModule extends PlayerModule{
 		 		msg.pushParam(leftTime);
 				HawkApp.getInstance().postMsg(msg);
 				return true;
-			}			
+			}
 		}
 		else{
 			response.setPvpPoint(GsConst.PVP.PVP_DEFAULT_POINT);

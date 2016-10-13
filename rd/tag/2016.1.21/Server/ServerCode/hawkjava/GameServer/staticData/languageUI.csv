@@ -2091,9 +2091,9 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 217_name1,神话守护者胜利1次,Completing 1 stage in Mytho Guardian,
 217_name2,神话守护者胜利5次,Completing 5 stage in Mytho Guardian,
 217_name3,神话守护者胜利9次,Completing 9 stage in Mytho Guardian,
-217_name4,同一个时间段内进行boss挑战1次,Battling once in Deity Invasion,
-217_name5,同一个时间段内进行boss挑战3次,Battling 3 times in Deity Invasion,
-217_name6,同一个时间段内进行boss挑战6次,Battling 6 times in Deity Invasion,
+217_name4,同一个时间段内进行神怪入侵挑战1次,Battling once in Deity Invasion,
+217_name5,同一个时间段内进行神怪入侵挑战3次,Battling 3 times in Deity Invasion,
+217_name6,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,
 217_name7,竞技场挑战1次,Battle the Arena once today,
 217_name8,竞技场挑战5次,Battle the Arena 5 times today,
 217_name9,竞技场挑战10次,Battle the Arena 10 times today,
@@ -2135,3 +2135,6 @@ eventinstance_close_desc,活动已经结束，下次活动见！,"This event has
 setting_language_chineseTW,繁體中文,繁體中文,繁體中文
 eventinstance_title,封印之日,Rift Day,封印之日
 eventinstance_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久战后仍未分出胜负，请调整阵容后继续挑战！
+loading_tips58,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。
+fragmentwish_fragmentnum,碎片数量：{0},碎片数量：{0},碎片数量：{0}
+decompose_choise1,（品质为绿色及以上的宠物可以炼化）,（品质为绿色及以上的宠物可以炼化）,（品质为绿色及以上的宠物可以炼化）

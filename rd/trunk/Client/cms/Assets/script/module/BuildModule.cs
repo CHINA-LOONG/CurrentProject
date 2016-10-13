@@ -57,10 +57,17 @@ public class BuildModule : ModuleBase
             needSyncInfo = false;
             RequestPlayerData();
         }
-        //ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
-
-        UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
-        loading.SetLoading(LoadingType.loadingDefault);
+		//ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
+		UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+        if (GameDataMgr.Instance.loadingNum == 0)
+		{			
+			loading.SetLoading(LoadingType.loadingLog);
+            GameDataMgr.Instance.loadingNum++;
+		}
+       else 
+		{
+			loading.SetLoading(LoadingType.loadingDefault);
+		}
         if (loading != null)
         {
             UIMgr.Instance.FixBrokenWord();

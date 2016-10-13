@@ -331,7 +331,7 @@ public class PvpAdjustBattleTeam : UIBase
     {
         if(click == MsgBox.PrompButtonClick.OK)
         {
-            UIMgr.Instance.CloseUI_(this);
+            RequestCloseUi();
         }
     }
 	

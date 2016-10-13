@@ -120,7 +120,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 	{
 	}
 
-	public	void OnTabButtonChanged (int index)
+	public	void OnTabButtonChanged (int index, TabButtonGroup tab)
 	{
 
 	}

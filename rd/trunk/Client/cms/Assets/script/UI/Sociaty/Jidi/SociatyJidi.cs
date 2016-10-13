@@ -28,11 +28,6 @@ public class SociatyJidi : UIBase, TabButtonDelegate
         SociatyJidi jidiUi = (SociatyJidi)UIMgr.Instance.OpenUI_(ViewName);
         jidiUi.InitType((int)contentType);
     }
-
-    public override void Init()
-    {
-
-    }
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_LEAVE_N_S.GetHashCode().ToString(), OnAllianceLeave_N_S);
@@ -76,7 +71,7 @@ public class SociatyJidi : UIBase, TabButtonDelegate
         tabBtnGroup.OnChangeItem(initType);
     }
 
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
         SetJidiContentType((SociatyJidiContenType)index);
     }
@@ -143,7 +138,7 @@ public class SociatyJidi : UIBase, TabButtonDelegate
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     void OnAllianceLeave_N_S(ProtocolMessage message)
     {

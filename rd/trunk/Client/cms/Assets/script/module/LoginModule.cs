@@ -213,6 +213,7 @@ public class LoginModule : ModuleBase
 	{
 		BindListener();
         AudioSystemMgr.Instance.PlayMusicByName("Loginmusic");
+        GameDataMgr.Instance.loadingNum = 0;
 	}
 	
 	public override void OnExecute()

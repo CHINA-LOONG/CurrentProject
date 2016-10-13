@@ -79,7 +79,7 @@ import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
 import com.hawk.game.util.QuestUtil;
-import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.TimePointUtil;
 
 /**
  * 玩家对象
@@ -763,7 +763,7 @@ public class Player extends HawkAppObj {
 
 		//TODO BI
 	}
-	
+
 	/**
 	 * 设置玩家等级
 	 * 
@@ -812,7 +812,7 @@ public class Player extends HawkAppObj {
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level up message to alliance failed: " + getName());
 			}
-			
+
 			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_UP, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 			msg.pushParam(this);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
@@ -876,7 +876,7 @@ public class Player extends HawkAppObj {
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level up message to pvp failed: " + getName());
 			}
-			
+
 			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
 		}
 
@@ -1568,7 +1568,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.notifyUpdate(true);
 		return cur;
 	}
-	
+
 	/**
 	 * 增加大冒险条件刷新次数
 	 */
@@ -1812,7 +1812,7 @@ public class Player extends HawkAppObj {
 			int timeCfgId = GsConst.PlayerRefreshTime[index];
 
 			Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
-			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
+			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
 			if (expectedRefreshTime != null) {
 				statisticsEntity.setRefreshTime(timeCfgId, expectedRefreshTime);
 				refreshIndexList.add(index);

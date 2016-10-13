@@ -88,6 +88,8 @@ public class BattleModule : ModuleBase
                 loading.SetLoading(LoadingType.loadingHole);
             else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
                 loading.SetLoading(LoadingType.loadingTower);
+			else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
+				loading.SetLoading(LoadingType.loadingGuild);
             if (loading != null)
             {
                 UIMgr.Instance.FixBrokenWord();
@@ -99,7 +101,6 @@ public class BattleModule : ModuleBase
         else if (pvpParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
-            loading.SetLoading(LoadingType.loadingPvp);
             loading.OpenPvploading(pvpParam);
             if (loading != null)
             {

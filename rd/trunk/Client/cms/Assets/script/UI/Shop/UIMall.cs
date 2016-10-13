@@ -36,6 +36,7 @@ public class UIMall : UIBase
 
 		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_chongzhi");
         UIUtil.SetButtonTitle(storeButton.transform, StaticDataMgr.Instance.GetTextByID("shop_store"));
+        base.Init();
 	}
     public void ShowStoreButton(bool isShow)
     {
@@ -61,7 +62,7 @@ public class UIMall : UIBase
 
 	void OnCloseButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI_ (this);
+        RequestCloseUi();
 	}
 
     void OnStoreButtonClick()

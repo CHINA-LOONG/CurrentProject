@@ -27,8 +27,6 @@ public class PvpMain : UIBase
     public GameObject[] stageImageObject;
     public GameObject[] stageEffectObject;
 
-    private Animator animator = null;
-
     private List<MonsterIcon> defenseMonsterIcon = new List<MonsterIcon>();
 
     bool pvpTimesIsFull = true;
@@ -72,17 +70,17 @@ public class PvpMain : UIBase
         functionEntryButtons[2].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_record");
         functionEntryButtons[3].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_rules");
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
-
-        animator = GetComponent<Animator>();
     }
     public override void Init()
     {
+        base.Init();
         PvpDataMgrAttr.RequestPvpInfo(OnRequestPvpInfoFinished);
         RefreshDefensePosition();
         RefreshPvpTimes();
     }
     public override void RefreshOnPreviousUIHide()
     {
+        base.RefreshOnPreviousUIHide();
         PvpDataMgrAttr.RequestPvpInfo(OnRequestPvpInfoFinished);
         RefreshDefensePosition();
         RefreshPvpTimes();
@@ -282,19 +280,7 @@ public class PvpMain : UIBase
     }
     void OnCloseButtonClick()
     {
-        if(animator != null)
-        {
-            animator.SetTrigger("outTriger");
-        }
-        else
-        {
-            UIMgr.Instance.CloseUI_(this);
-        }
-    }
-
-    void OnOutAniEnd()
-    {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     void OnFightButtonClick()

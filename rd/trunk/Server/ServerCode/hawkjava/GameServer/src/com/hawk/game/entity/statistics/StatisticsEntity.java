@@ -296,7 +296,9 @@ public class StatisticsEntity {
 
 	public void clearInstanceEnterTimesDaily() {
 		for (int[] state : hfEntity.instanceStateMap.values()) {
-			state[GsConst.Instance.STATE_ENTER_INDEX] = 0;
+			if (state.length == GsConst.Instance.STATE_STORY_SIZE) {
+				state[GsConst.Instance.STATE_ENTER_INDEX] = 0;
+			}
 		}
 		hfEntity.instanceStateFlag = true;
 		hfUpdate = true;

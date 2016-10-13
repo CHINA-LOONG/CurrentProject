@@ -51,9 +51,25 @@ public class InstanceMap : UIBase
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(mInstanceList);
-        UnBindListener();
     }
 
+    void    OnEnable()
+    {
+        BindListener();
+    }
+    void OnDisable()
+    {
+        UnBindListener();
+        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild != null && (uiBuild.uiAdjustBattleTeam != null && uiBuild.uiAdjustBattleTeam.gameObject.activeSelf))
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Entermusic");
+        }
+        else
+        {
+            AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
+        }
+    }
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int>(GameEventList.OpenNewChapter, OnOpenNewChapter);
@@ -74,7 +90,6 @@ public class InstanceMap : UIBase
     }
     private void FirstInit()
     {
-        BindListener();
         chapterButtonCankao.gameObject.SetActive(false);
         mapScrollRect.onValueChanged.AddListener(OnScrollRectValueChanged);
         EventTriggerListener.Get(backButton.gameObject).onClick = OnBackButtonClicked;
@@ -243,16 +258,4 @@ public class InstanceMap : UIBase
     //    yield break;
     //}
     
-    void OnDisable()
-    {
-        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
-        if (uiBuild != null && (uiBuild.uiAdjustBattleTeam != null && uiBuild.uiAdjustBattleTeam.gameObject.activeSelf))
-        {
-            AudioSystemMgr.Instance.PlayMusicByName("Entermusic");
-        }
-        else
-        {
-            AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
-        }
-    }
 }

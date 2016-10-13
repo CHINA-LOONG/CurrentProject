@@ -139,10 +139,10 @@ public class UIBag : UIBase,TabButtonDelegate
 
     void CloseBagButtonDown(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
-	public void OnTabButtonChanged (int index)
+	public void OnTabButtonChanged (int index, TabButtonGroup tab)
 	{
 		if ((int)curBagType == index)
 			return;

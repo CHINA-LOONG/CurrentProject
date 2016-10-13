@@ -2945,6 +2945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
   rewardButton: {fileID: 189046}
   closeRewardButton: {fileID: 188464}
   towerReward: {fileID: 169022}
@@ -7068,7 +7071,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22461496
 RectTransform:

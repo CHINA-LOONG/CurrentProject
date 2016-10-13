@@ -56,6 +56,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
             isFirst = false;
             FirsInit();
         }
+        base.Init();
     }
     //---------------------------------------------------------------------------------------------
     void FirsInit()
@@ -86,9 +87,10 @@ public class SociatyMain : UIBase, TabButtonDelegate
         {
             contentPages[(int)SociatyContenType.Infomation].RefreshUI();
         }
+        base.RefreshOnPreviousUIHide();
     }
     //---------------------------------------------------------------------------------------------
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
        // if((int)contentType != index)
       //  {
@@ -138,7 +140,7 @@ public class SociatyMain : UIBase, TabButtonDelegate
     //---------------------------------------------------------------------------------------------
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     //---------------------------------------------------------------------------------------------
     void OnLevelChange(ProtocolMessage msg)

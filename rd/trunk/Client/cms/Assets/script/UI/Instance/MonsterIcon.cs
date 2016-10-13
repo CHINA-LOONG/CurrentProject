@@ -19,6 +19,7 @@ public class MonsterIcon : MonoBehaviour
 	public	Text	qualityText;
 	public Text 	nickNameText;
 
+    public Image xiyouduImage;
     public Image maoxianImage;
     public Image zhushouImage;
     public Image pvpImage;
@@ -114,16 +115,23 @@ public class MonsterIcon : MonoBehaviour
 		HideItems ();
 	}
 
-	public void	SetStage(int stage)
+	public void	SetStage(int stage,bool showGrade=true)
 	{
 		int quallity = 0;
 		int plusQuality = 0;
 		UIUtil.CalculationQuality (stage, out quallity, out plusQuality);
-
-		string assetname = "grade_" + quallity.ToString ();
-		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
-		if (null != headImg)
-			qualityImage.sprite = headImg;
+        Sprite headImg;
+        if (showGrade)
+        {
+            string assetname = "grade_" + quallity.ToString();
+            headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
+        }
+        else
+        {
+            headImg = ResourceMgr.Instance.LoadAssetType<Sprite>("chongwu_tubiaokuang") as Sprite;
+        }
+        if (null != headImg)
+            qualityImage.sprite = headImg;
 
 		string temp = "";
 		if (plusQuality > 0)
@@ -187,6 +195,46 @@ public class MonsterIcon : MonoBehaviour
 		nickNameText.text = nickname;
 	}
 
+    public void ShowXiyouduImage(bool bShow = true)
+    {
+        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(monsterId);
+        if (null == unitData)
+        {
+            xiyouduImage.gameObject.SetActive(false);
+            Logger.LogError("Error:instance info , monsterId config error :" + monsterId);
+            return;
+        }
+        xiyouduImage.gameObject.SetActive(bShow);
+        string assetname = "";
+        switch (unitData.rarity)
+        {
+            case 0:
+                assetname = "c";
+                break;
+            case 1:
+                assetname = "b";
+                break;
+            case 2:
+                assetname = "a";
+                break;
+            case 3:
+                assetname = "s";
+                break;
+            case 4:
+                assetname = "ss";
+                break;
+            case 5:
+                assetname = "sss";
+                break;
+            default:
+                break;
+        }
+        assetname = "chongwu_xiyoudu_" + assetname;
+
+        Sprite assetImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
+
+        xiyouduImage.sprite = assetImg;
+    }
     public void ShowMaoxianImage(bool bShow = true)
     {
         maoxianImage.gameObject.SetActive(bShow);

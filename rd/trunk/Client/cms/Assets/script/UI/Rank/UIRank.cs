@@ -38,6 +38,7 @@ public class UIRank : UIBase
         }
         titleText.text = StaticDataMgr.Instance.GetTextByID("pvp_titlerank");
         pvpRank.RequestPvpRank();
+        base.Init();
     }
     public override void Clean()
     {
@@ -49,6 +50,6 @@ public class UIRank : UIBase
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 }

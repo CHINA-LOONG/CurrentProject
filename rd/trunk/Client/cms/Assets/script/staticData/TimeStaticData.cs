@@ -7,6 +7,7 @@ public class TimeStaticData
     public int minute;
     public int hour;
     public int dayOfWeek;
+    public int dayOfWeekInMonth;
     public int dayOfMonth;
     public int month;
     public int year;

@@ -41,7 +41,7 @@ import com.hawk.game.util.ProtoUtil;
 import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.ShopUtil;
 import com.hawk.game.util.QuestUtil.QuestGroup;
-import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.TimePointUtil;
 
 /**
  * 任务模块
@@ -126,7 +126,7 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 
 		if (null != questCfg.getTimeBegin() && null != questCfg.getTimeEnd()) {
-			if (false == TimeUtil.isTimeInPeriod(curTime, questCfg.getTimeBegin(), questCfg.getTimeEnd())) {
+			if (false == TimePointUtil.isTimeInPeriod(curTime, questCfg.getTimeBegin().getType(), questCfg.getTimeEnd().getType())) {
 				sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_OPEN_VALUE, 1));
 				return true;
 			}

@@ -35,6 +35,6 @@ public class JidiRewardConform : UIBase
 
 	void OnConformButtonClick ()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
 	}
 }

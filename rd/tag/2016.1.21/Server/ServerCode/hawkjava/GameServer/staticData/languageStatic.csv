@@ -965,13 +965,7 @@ guide_ability5,"其他技能战斗中<color=#ffcc00>自动施放</color>，
 点击切换技能","Other abilities are <color=#ffcc00>cast automatically</color> by the 
 monster in battle. Try tapping on the other abilities.","其他技能戰鬥中<color=#ffcc00>自動施放</color>，
 點擊切換技能"
-guide_ability6,"大多数技能可以升级，但
-需要消耗<color=#ffcc00>金币和技能点</color>
-（点击任意位置结束）","Most abilities can be upgraded 
-with <color=#ffcc00>coins and abilitiy points</color>. 
-(Tap anywhere to continue)","大多數技能可以升級，但
-需要消耗<color=#ffcc00>金幣和技能點</color>
-（點擊任意位置結束）"
+guide_ability6,大多数技能可以升级，但需要消耗<color=#ffcc00>金币和技能点</color>,Most abilities can be upgraded with <color=#ffcc00>coins and abilitiy points</color>. ,大多數技能可以升級，但需要消耗<color=#ffcc00>金幣和技能點</color>
 guide_equip1,"获得了<color=#ffcc00>宠物装备</color>，
 去给宠物穿上吧！","You've received some <color=#ffcc00>monster equipment</color>, 
 let's go put it on now!","獲得了<color=#ffcc00>寵物裝備</color>，
@@ -2392,12 +2386,12 @@ worldentry,神怪入侵,Deity Invasion,
 10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.,
 10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.,
 10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.,
-10246_miaoshu,同一个时间段内挑战boss达到5次,Battle a boss 5 times in a single time period.,
-10247_miaoshu,同一个时间段内挑战boss达到6次,Battle a boss 6 times in a single time period.,
-10248_miaoshu,同一个时间段内挑战boss达到7次,Battle a boss 7 times in a single time period.,
-10249_miaoshu,同一个时间段内挑战boss达到8次,Battle a boss 8 times in a single time period.,
-10250_miaoshu,同一个时间段内挑战boss达到9次,Battle a boss 9 times in a single time period.,
-10251_miaoshu,同一个时间段内挑战boss达到10次,Battle a boss 10 times in a single time period.,
+10246_miaoshu,同一个时间段内进行神怪入侵挑战5次,Battling 5 times in Deity Invasion,
+10247_miaoshu,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,
+10248_miaoshu,同一个时间段内进行神怪入侵挑战7次,Battling 7 times in Deity Invasion,
+10249_miaoshu,同一个时间段内进行神怪入侵挑战8次,Battling 8 times in Deity Invasion,
+10250_miaoshu,同一个时间段内进行神怪入侵挑战9次,Battling 9 times in Deity Invasion,
+10251_miaoshu,同一个时间段内进行神怪入侵挑战10次,Battling 10 times in Deity Invasion,
 10252_miaoshu,神怪入侵排名达到前50名,Reach the top 50 in Deity Invasion rankings.,
 10253_miaoshu,神怪入侵排名达到前20名,Reach the top 20 in Deity Invasion rankings.,
 10254_miaoshu,神怪入侵排名达到前10名,Reach the top 10 in Deity Invasion rankings.,
@@ -2537,3 +2531,4 @@ baonu4_bubble_001,你感觉到我的怒火了吗？,Can you feel my fury?,你感
 baonu4_bubble_002,失去头盔的我会更加的愤怒！,Losing my helmet will just make me more angry!,失去头盔的我会更加的愤怒！
 yafogemeng5_bubble_001,感受到黑暗了吗？,Do you feel the darkness creeping in?,感受到黑暗了吗？
 yafogemeng5_bubble_002,我还会回来的！,I will be back!,我还会回来的！
+guide_road3,<color=#ffcc00>20级</color>开启公会玩法后，可以<color=#ffcc00>借用公会好友的宠物</color>帮助自己作战。,20级开启公会玩法后，可以借用公会好友的宠物帮助自己作战。,20级开启公会玩法后，可以借用公会好友的宠物帮助自己作战。

@@ -121,11 +121,6 @@ public class UIMail : UIBase//,TabButtonDelegate
         mailList.RefreshList(sysMailList);
     }
 
-    //public void OnTabButtonChanged(int index)
-    //{
-    //    mailList.RefreshList(sysMailList);
-    //}
-
     void SetMailCount()
     {
         textCount.text = string.Format("{0}/{1}", mailCount, UIMail.maxCount);

@@ -114,7 +114,7 @@ public class SociatyList : UIBase
 
     void OnCloseButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     
     void    OnCreateButtonClick()

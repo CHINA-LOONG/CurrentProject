@@ -30,7 +30,7 @@ public class SellConformDlg : UIBase
 			isFirst = false;
 			FirsInit();
 		}
-
+        base.Init();
 	}
 	
 	void FirsInit()

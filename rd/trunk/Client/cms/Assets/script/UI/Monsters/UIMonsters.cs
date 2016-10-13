@@ -18,9 +18,6 @@ public class UIMonsters : UIBase,
 
     public Button btn_Close;
 
-    public Button btn_Owned;
-    public Button btn_Collection;
-
     public FixCountScrollView scrollView_Owend;
     public FixCountScrollView scrollView_Collect;
 
@@ -60,23 +57,13 @@ public class UIMonsters : UIBase,
             if (tabIndex1st != (int)value)
             {
                 tabIndex1st = (int)value;
-                Animator Own = btn_Owned.GetComponent<Animator>();
-                Animator Collect = btn_Collection.GetComponent<Animator>();
-                Own.SetBool("Selected", false);
-                Collect.SetBool("Selected", false);
                 if (tabIndex1st == (int)UIType.Owned)
                 {
-                    text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
                     objFragmentsInfo.SetActive(false);
-                    Own.SetTrigger("Normal");
-                    Own.SetBool("Selected", true);
                 }
                 else
                 {
-                    text_Title.text = StaticDataMgr.Instance.GetTextByID("handbook_btn");
                     objFragmentsInfo.SetActive(true);
-                    Collect.SetTrigger("Normal");
-                    Collect.SetBool("Selected", true);
                 }
             }
 
@@ -85,18 +72,33 @@ public class UIMonsters : UIBase,
     private int tabIndex1st = -1;
     private int selIndex1st = 0;
 
-
-    private TabButtonGroup tabGroup;
-    public TabButtonGroup TabGroup
+    public TabButtonGroup tabGroup1;
+    private bool isRegedit1 = false;
+    public TabButtonGroup TabGroup1
     {
         get
         {
-            if (tabGroup == null)
+            if (!isRegedit1)
             {
-                tabGroup = GetComponentInChildren<TabButtonGroup>();
-                tabGroup.InitWithDelegate(this);
+                isRegedit1 = true;
+                tabGroup1.InitWithDelegate(this);
             }
-            return tabGroup;
+            return tabGroup1;
+        }
+    }
+
+    public TabButtonGroup tabGroup2;
+    private bool isRegedit2 = false;
+    public TabButtonGroup TabGroup2
+    {
+        get
+        {
+            if (!isRegedit2)
+            {
+                isRegedit2 = true;
+                tabGroup2.InitWithDelegate(this);
+            }
+            return tabGroup2;
         }
     }
 
@@ -223,11 +225,9 @@ public class UIMonsters : UIBase,
         text_Owned.text = StaticDataMgr.Instance.GetTextByID("handbook_owned");
         text_Collection.text = StaticDataMgr.Instance.GetTextByID("handbook_shouji");
 
-        text_Collect.text= StaticDataMgr.Instance.GetTextByID("handbook_shouji");
+        text_Collect.text= StaticDataMgr.Instance.GetTextByID("handbook_ready");
 
         btn_Close.onClick.AddListener(OnClickCloseBtn);
-        btn_Owned.onClick.AddListener(OnClickOwnedBtn);
-        btn_Collection.onClick.AddListener(OnClickCollectionBtn);
     }
 
     public void Refresh(int select1st = -1, int select2nd = -1)
@@ -238,7 +238,7 @@ public class UIMonsters : UIBase,
         selIndex2nd = (select2nd == -1 ? selIndex2nd : select2nd);
         if (tabIndex2nd != selIndex2nd)
         {
-            TabGroup.OnChangeItem(selIndex2nd);
+            TabGroup2.OnChangeItem(selIndex2nd);
         }
         else
         {
@@ -257,12 +257,32 @@ public class UIMonsters : UIBase,
         {
             scrollView_Owend.gameObject.SetActive(false);
             scrollView_Collect.gameObject.SetActive(true);
+
+            List<CollectUnit> list = GameDataMgr.Instance.PlayerDataAttr.collectUnit;
+            ItemData curFragment;
+            int curCount = 0;
+            int curSummom = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                curFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(list[i].unit.fragmentId);
+                curCount = (curFragment == null ? 0 : curFragment.count);
+                if (curCount>=list[i].unit.fragmentCount)
+                {
+                    curSummom++;
+                }
+            }
+            ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
+            textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());
+            textCollect.text = curSummom.ToString();
+
             ReLoadCollectData(index);
         }
     }
 
     void ReLoadOwnedData(int index)
     {
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
+
         int curType = GetTypeByIndex(index);
 
         GameDataMgr.Instance.PlayerDataAttr.GetAllPet(ref mPetList);
@@ -296,11 +316,13 @@ public class UIMonsters : UIBase,
     void ReLoadCollectData(int index)
     {
         int curType = GetTypeByIndex(index);
-        
-        //List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
-        //List<string> collect = GameDataMgr.Instance.PlayerDataAttr.petCollect;
 
         List<CollectUnit> list = GameDataMgr.Instance.PlayerDataAttr.collectUnit;//SetCollectList(unitList, collect);
+        //List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
+        //List<string> collect = GameDataMgr.Instance.PlayerDataAttr.petCollect;
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("handbook_btn")+string.Format("({0}/{1})",
+                                                                                            GameDataMgr.Instance.PlayerDataAttr.petCollect.Count,
+                                                                                            list.Count);
         CollectList.Clear();
         if (0 == curType)
         {
@@ -329,9 +351,6 @@ public class UIMonsters : UIBase,
                 CollectIconLoadCallback
                 );
         }
-        ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
-        textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());
-        textCollect.text = string.Format("{0}/{1}", GameDataMgr.Instance.PlayerDataAttr.GetCollectCount(), list.Count);
     }
 
     int GetTypeByIndex(int index)
@@ -372,24 +391,23 @@ public class UIMonsters : UIBase,
     {
         UIMgr.Instance.CloseUI_(this);
     }
-    void OnClickOwnedBtn()
-    {
-        Refresh(0, -1);
-    }
-    void OnClickCollectionBtn()
-    {
-        Refresh(1, -1);
-    }
     
-    public void OnTabButtonChanged(int index)
+    public void OnTabButtonChanged(int index, TabButtonGroup tab)
     {
-        if (tabIndex2nd == index)
+        if (tab==TabGroup1)
         {
-            return;
+            Refresh(index, -1);
         }
-        tabIndex2nd = index;
-        selIndex2nd = index;
-        ReLoadData(tabIndex2nd);
+        else if(tab==TabGroup2)
+        {
+            if (tabIndex2nd == index)
+            {
+                return;
+            }
+            tabIndex2nd = index;
+            selIndex2nd = index;
+            ReLoadData(tabIndex2nd);
+        }
     }
 
     public Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent)

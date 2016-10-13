@@ -36,6 +36,7 @@ public class UIShop : UIBase
 		{
 			FistInit();
 		}
+        base.Init();
 	}
 	
 	public override void Clean()
@@ -134,7 +135,7 @@ public class UIShop : UIBase
 
 	void OnCloseButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI_ (this);
+        RequestCloseUi();
 	}
 
 	void OnLeftButtonClick(GameObject go)

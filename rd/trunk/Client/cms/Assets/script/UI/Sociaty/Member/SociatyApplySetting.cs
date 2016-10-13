@@ -110,7 +110,7 @@ public class SociatyApplySetting : UIBase
 
     void OnCancelButtonClick()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     void OnConformButtonClick()
