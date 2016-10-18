@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &102666
 GameObject:
   m_ObjectHideFlags: 1
@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &132424
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &170478
 GameObject:
   m_ObjectHideFlags: 1
@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &403456
 Transform:
   m_ObjectHideFlags: 1
@@ -763,7 +763,7 @@ ParticleSystem:
           rgba: 8781675
         key1:
           serializedVersion: 2
-          rgba: 4289658776
+          rgba: 1252982680
         key2:
           serializedVersion: 2
           rgba: 16777215
@@ -6983,10 +6983,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 16777215
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 1392508927
         key2:
           serializedVersion: 2
           rgba: 0
@@ -9017,7 +9017,7 @@ ParticleSystem:
           rgba: 3276625
         key1:
           serializedVersion: 2
-          rgba: 4281335744
+          rgba: 2016411584
         key2:
           serializedVersion: 2
           rgba: 16777215

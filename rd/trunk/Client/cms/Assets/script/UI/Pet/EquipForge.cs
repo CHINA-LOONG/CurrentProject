@@ -40,6 +40,7 @@ public class EquipForge : EquipInfoBase
 
     public EquipForgeEffect forgeEffect;
     private bool isPlayingFX = false;
+    private int materialIndex;
     void Start()
     {
         btnForge.onClick.AddListener(OnClickForgeBtn);
@@ -162,7 +163,7 @@ public class EquipForge : EquipInfoBase
         List<ItemInfo> curDemand = new List<ItemInfo>();
         nextForge.GetLevelDemand(ref curDemand);
         materialItems.ForEach(delegate (EquipMaterialItem item) { item.gameObject.SetActive(false); });
-        int materialIndex = 0;
+        materialIndex = 0;
         enoughCoin = true;
         enoughItem = true;
         for (int i = 0; i < curDemand.Count; i++)
@@ -333,15 +334,19 @@ public class EquipForge : EquipInfoBase
             }
             else
             {//成功
-                if (curData.stage != stage)
+                if (materialIndex==2)
                 {
                     isPlayingFX = true;
                     forgeEffect.Play(2, EffectEnd);
                 }
-                else
+                else if (materialIndex == 1)
                 {
                     isPlayingFX = true;
                     forgeEffect.Play(1, EffectEnd);
+                }
+                else
+                {
+                    Logger.LogError("需求物品配置异常");
                 }
 
                 {

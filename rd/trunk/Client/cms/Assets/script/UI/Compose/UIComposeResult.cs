@@ -10,6 +10,7 @@ public class UIComposeResult : UIBase
     public Button btnClose;
     public Transform content;
 
+    public Text text_title;
     public Text text_btnText;
 
 
@@ -21,6 +22,7 @@ public class UIComposeResult : UIBase
     void Start()
     {
         EventTriggerListener.Get(btnClose.gameObject).onClick = OnClickClose;
+        text_title.text = StaticDataMgr.Instance.GetTextByID("compose_success");
         text_btnText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
 
@@ -81,14 +83,10 @@ public class UIComposeResult : UIBase
         items.Clear();
     }
 
-
-
-
     void OnClickClose(GameObject go)
     {
-        UIMgr.Instance.DestroyUI(this);
+        this.RequestCloseUi();
     }
-
 
 
 }

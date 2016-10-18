@@ -58,6 +58,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UIDecompose uiDecompose;
     [HideInInspector]
     public UIAdventure uiAdventure;
+    [HideInInspector]
+    public UISignIn uiSignin;
 
     public Text mTestShowExp;
 
@@ -203,7 +205,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public void PetLoadCallback(GameObject instance, System.EventArgs args)
     {
         uiMonsters = instance.GetComponent<UIBase>() as UIMonsters;
-        uiMonsters.Refresh();
+        uiMonsters.Refresh(0, 0);
     }
 
 
@@ -245,7 +247,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnSigninButtonClick(GameObject go)
     {
         //签到作为弹出框层popup
-        UISignIn.Open();
+        if (uiSignin == null)
+        {
+            uiSignin = UISignIn.Open();
+        }
     }
 
     void    OnHuoliButtonClick (GameObject go)
@@ -353,6 +358,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiCompose);
         UIMgr.Instance.DestroyUI(uiDecompose);
         UIMgr.Instance.DestroyUI(uiAdventure);
+        UIMgr.Instance.DestroyUI(uiSignin);
         
         if(null != UISociatyTask.Instance)
         {

@@ -7,12 +7,6 @@ public class SimpleShadow : MonoBehaviour {
     private GameObject mShadowObj;
 
     //---------------------------------------------------------------------------------------------
-    // Use this for initialization
-    void Awake ()
-    {
-        mShadowObj = ResourceMgr.Instance.LoadAsset("simpleShadow");
-    }
-    //---------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update ()
     {
@@ -40,6 +34,11 @@ public class SimpleShadow : MonoBehaviour {
         {
             mShadowObj.SetActive(visible);
         }
+        else if (visible ==  true)
+        {
+            mShadowObj = ResourceMgr.Instance.LoadAsset("simpleShadow");
+        }
+
     }
     //---------------------------------------------------------------------------------------------
     public void DestroyShadowObj()

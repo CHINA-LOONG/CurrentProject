@@ -143,6 +143,10 @@ public class AdventureSelfMonster : MonoBehaviour
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_009"), (int)PB.ImType.PROMPT);
         }
+        else if (CurData.unit.pbUnit.IsInPvp())
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("adventure_record_012"), (int)PB.ImType.PROMPT);
+        }
         else
         {
             if (IAdventureSelfMonsterDelegate != null)

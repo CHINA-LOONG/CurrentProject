@@ -88,6 +88,13 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 			}
 
 		}
+
+		if (NormalScript.GetTotalRound() > 15 && jishu==0) 
+		{
+			Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp01_state3to0", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
+			jishu ++;
+		}
 	
 		attackResult.useSpell = useSpell;
 

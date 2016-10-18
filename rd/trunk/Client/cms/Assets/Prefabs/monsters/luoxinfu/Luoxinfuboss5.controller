@@ -1956,10 +1956,10 @@ AnimatorStateMachine:
     m_Position: {x: 235, y: 65, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110219820}
-    m_Position: {x: 270, y: 130, z: 0}
+    m_Position: {x: 564, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110267010}
-    m_Position: {x: 305, y: 195, z: 0}
+    m_Position: {x: -36, y: 348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110275716}
     m_Position: {x: 340, y: 260, z: 0}
@@ -1986,7 +1986,7 @@ AnimatorStateMachine:
     m_Position: {x: 585, y: 715, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110241828}
-    m_Position: {x: 620, y: 780, z: 0}
+    m_Position: {x: 156, y: 396, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

@@ -132,6 +132,8 @@ namespace Funplus.Internal
 			process.StartInfo.RedirectStandardOutput = false;
 			process.Start ();
 			process.WaitForExit ();
+
+
 		}
 
 		private static void ModifyAppController ()
@@ -252,6 +254,20 @@ namespace Funplus.Internal
 			facebookCom.SetBoolean ("NSIncludesSubdomains", true);
 			facebookCom.SetBoolean ("NSThirdPartyExceptionRequiresForwardSecrecy", false);
 
+            PlistElementDict baiduCom = null;
+            if (exceptionDomains.values.ContainsKey("baidu.com"))
+            {
+                baiduCom = exceptionDomains["facebook.com"].AsDict();
+            }
+            else
+            {
+                baiduCom = exceptionDomains.CreateDict("baidu.com");
+            }
+
+            baiduCom.SetBoolean("NSIncludesSubdomains", true);
+            baiduCom.SetBoolean("NSThirdPartyExceptionRequiresForwardSecrecy", false);
+
+
 			PlistElementDict fbcdnNet = null;
 			if (exceptionDomains.values.ContainsKey ("fbcdn.net"))
 			{
@@ -334,6 +350,20 @@ namespace Funplus.Internal
 		private static void ValidateBuild ()
 		{
 			// TODO
+            string xcodeprojFile = Path.Combine(BuildPath, "Unity-iPhone.xcodeproj");
+            xcodeprojFile = Path.Combine(xcodeprojFile, "project.pbxproj");
+
+            if (File.Exists(xcodeprojFile))
+            {
+                FileModifier projFile = new FileModifier(xcodeprojFile);
+                int times = 10;
+                while (times > 0)
+                {
+                    times--;
+                    projFile.Replace("build/iPhone/Libraries", "Libraries");
+                }
+                projFile.Write();
+            }
 		}
 	}
 

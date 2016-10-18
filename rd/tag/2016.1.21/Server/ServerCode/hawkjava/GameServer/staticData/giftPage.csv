@@ -4,7 +4,7 @@ id,comments,name,title,desc,image,pointIcon,level,recharge,offlineDay,timeBegin,
 201,累计登录1,gift_name_110,gift_name_110,gift_desc_110,facebook_xuenv,,1,0_9999999,0,-1,-1,11,864000,0
 202,累计登录2,gift_name_110,gift_name_110,gift_desc_110,facebook_xuenv,,1,0_9999999,0,-1,-1,10,864000,0
 203,冲级,gift_name_112,gift_name_112,gift_desc_112,,,1,0_9999999,0,-1,-1,11,2592000,0
-204,每日充值1,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,-1,-1,11,864000,0
+204,每日充值1,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,-1,-1,11,604800,0
 205,每日充值2,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,-1,-1,12,604800,0
 206,每日充值3,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,-1,-1,10,604800,0
 207,每日充值4,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,-1,-1,13,604800,0

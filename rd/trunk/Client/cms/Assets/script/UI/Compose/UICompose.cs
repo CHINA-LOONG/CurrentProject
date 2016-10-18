@@ -14,6 +14,13 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
     public Text text_Tab1;
     public Text text_Tab2;
 
+    public GameObject composeEffect;
+    public GameObject uiMask;
+    public float minDelay;
+    private bool bSuccess;
+    private bool bFail;
+    private List<PB.RewardItem> rewardList;
+
     [Serializable]
     public class ComposeView
     {
@@ -104,14 +111,19 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
 
     public override void Init()
     {
+        base.Init();
+
         tabIndex = -1;
         selIndex = 0;
+        ShowComposeEffect(false);
         Refresh();
     }
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(uiComposeResult);
         composeList.scrollView.CleanContent();
+
+        base.Clean();
     }
     
     public void Refresh(int select = -1)
@@ -481,6 +493,29 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         }
     }
 
+    void ShowComposeEffect(bool show)
+    {
+        composeEffect.SetActive(show);
+        uiMask.SetActive(show);
+    }
+
+    IEnumerator IComposeStart()
+    {
+        ShowComposeEffect(true);
+        yield return new WaitForSeconds(minDelay);
+        while (!bSuccess && !bFail)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        ShowComposeEffect(false);
+        if (bSuccess)
+        {
+            Refresh();
+            uiComposeResult = UIMgr.Instance.OpenUI_(UIComposeResult.ViewName) as UIComposeResult;
+            uiComposeResult.ReloadData(rewardList);
+        }
+    }
+
     void OnClickRemoveAll()
     {
         Logger.Log("移除所有");
@@ -489,7 +524,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
 
     void OnClickCloseBtn(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        this.RequestCloseUi();
     }
 
     void OnClickComposeOne()
@@ -538,6 +573,9 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
             #endregion
             param.composeAll = composeAll;
             GameApp.Instance.netManager.SendMessage(PB.code.GEM_COMPOSE_C.GetHashCode(), param);
+            bSuccess = false;
+            bFail = false;
+            StartCoroutine(IComposeStart());
         }
         else
         {
@@ -545,6 +583,9 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
             param.itemId = composeView.selectItems[0];
             param.composeAll = composeAll;
             GameApp.Instance.netManager.SendMessage(PB.code.ITEM_COMPOSE_C.GetHashCode(), param);
+            bSuccess = false;
+            bFail = false;
+            StartCoroutine(IComposeStart());
         }
     }
 
@@ -593,8 +634,8 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
             return;
         if (reward.hsCode == PB.code.GEM_COMPOSE_C.GetHashCode() || reward.hsCode == PB.code.ITEM_COMPOSE_C.GetHashCode())
         {
-            uiComposeResult = UIMgr.Instance.OpenUI_(UIComposeResult.ViewName) as UIComposeResult;
-            uiComposeResult.ReloadData(reward.RewardItems);
+            rewardList = reward.RewardItems;
+            bSuccess = true;
         }
         else
         {
@@ -608,9 +649,9 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("合成物品错误");
+            bFail = true;
             return;
         }
-        Refresh();
     }
     void OnItemComposeRet(ProtocolMessage msg)
     {
@@ -618,9 +659,9 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("合成物品错误");
+            bFail = true;
             return;
         }
-        Refresh();
     }
 
     public void IScrollViewReloadItem(FixCountScrollView scrollView, Transform item, int index)

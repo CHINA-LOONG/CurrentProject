@@ -30,8 +30,8 @@ public class Hint : MonoBehaviour
             battleTitleTw = gameObject.transform.DOLocalMoveY(230, gradualTime);
             battleTitleTw.SetUpdate(true);
             //gameObject.transform.DOScale(0, gradualTime).SetUpdate(true);
-            bak.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
-            text.DOColor(new Color(0, 0, 0, 0), gradualTime).SetUpdate(true);
+            bak.gameObject.GetComponent<Graphic>().CrossFadeAlpha(0, gradualTime, true);
+            text.gameObject.GetComponent<Graphic>().CrossFadeAlpha(0, gradualTime, true);
             battleTitleTw.OnComplete(End);
         }
     }

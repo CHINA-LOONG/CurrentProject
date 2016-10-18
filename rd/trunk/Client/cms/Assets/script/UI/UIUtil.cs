@@ -385,6 +385,22 @@ public class UIUtil
 
     }
 
+    public static void SetStageName(Text label, GameUnit unit)
+    {
+        int quallity = 0;
+        int plusQuality = 0;
+        UIUtil.CalculationQuality(unit.pbUnit.stage, out quallity, out plusQuality);
+        
+        if (plusQuality == 0)
+        {
+            label.text = unit.name;
+        }
+        else
+        {
+            label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).NickNameAttr, plusQuality);
+        }
+
+    }
     public static void SetStageColor(Text label, ItemStaticData itemData)
     {
         label.color = ColorConst.GetStageTextColor(itemData.grade);

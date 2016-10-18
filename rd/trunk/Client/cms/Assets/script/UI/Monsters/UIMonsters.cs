@@ -57,6 +57,7 @@ public class UIMonsters : UIBase,
             if (tabIndex1st != (int)value)
             {
                 tabIndex1st = (int)value;
+                selIndex1st = (int)value;
                 if (tabIndex1st == (int)UIType.Owned)
                 {
                     objFragmentsInfo.SetActive(false);
@@ -233,7 +234,10 @@ public class UIMonsters : UIBase,
     public void Refresh(int select1st = -1, int select2nd = -1)
     {
         selIndex1st = (select1st == -1 ? selIndex1st : select1st);
-        uiType = (UIType)selIndex1st;
+        if (tabIndex1st!=selIndex1st)
+        {
+            TabGroup1.OnChangeItem(selIndex1st);
+        }
 
         selIndex2nd = (select2nd == -1 ? selIndex2nd : select2nd);
         if (tabIndex2nd != selIndex2nd)
@@ -396,7 +400,8 @@ public class UIMonsters : UIBase,
     {
         if (tab==TabGroup1)
         {
-            Refresh(index, -1);
+            uiType = (UIType)index;
+            Refresh();
         }
         else if(tab==TabGroup2)
         {

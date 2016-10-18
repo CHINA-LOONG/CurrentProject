@@ -91,6 +91,10 @@ public class ObjectDataMgr : MonoBehaviour
         bo.originalScale = unitObject.transform.localScale.x;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
         bo.mSimpleShadow = unitObject.GetComponent<SimpleShadow>();
+        if (bo.mSimpleShadow != null)
+        {
+            bo.mSimpleShadow.SetShadowVisible(false);
+        }
 
 		//weakpoint
 		if (bo.camp == UnitCamp.Enemy) {

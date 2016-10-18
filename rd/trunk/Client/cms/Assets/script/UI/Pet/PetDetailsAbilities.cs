@@ -28,7 +28,8 @@ public class PetDetailsAbilities : PetDetailsRight
 
     public Transform spellParent;
 
-    public GameObject effectLevelUp;
+    //public GameObject effectLevelUp;
+    public Animator animatorEffect;
 
     private int index = 0;
     private int spellCount;
@@ -218,13 +219,14 @@ public class PetDetailsAbilities : PetDetailsRight
             return;
         }
 
-        effectLevelUp.gameObject.SetActive(true);
-        Tweener tweener = effectLevelUp.transform.DOScale(2.0f, 0.5f)
-                                                 .SetEase(Ease.Linear)
-                                                 .OnComplete(delegate ()
-                                                            {
-                                                                SetInitEffect();
-                                                            });
+        //effectLevelUp.gameObject.SetActive(true);
+        //Tweener tweener = effectLevelUp.transform.DOScale(2.0f, 0.5f)
+        //                                         .SetEase(Ease.Linear)
+        //                                         .OnComplete(delegate ()
+        //                                                    {
+        //                                                        SetInitEffect();
+        //                                        levelup            });
+        animatorEffect.SetTrigger("levelup");
         curAbilitie.PlayEffect();
 
 
@@ -238,8 +240,8 @@ public class PetDetailsAbilities : PetDetailsRight
 
     void SetInitEffect()
     {
-        effectLevelUp.SetActive(false);
-        effectLevelUp.transform.localScale = Vector3.one;
+        //effectLevelUp.SetActive(false);
+        //effectLevelUp.transform.localScale = Vector3.one;
     }
 
     void OnCoinChangedRefresh(long coin)

@@ -249,6 +249,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
 
     public override void Init()
     {
+        base.Init();
         tabIndex = -1;
         selIndex = 0;
         Refresh();
@@ -256,6 +257,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
     public override void Clean()
     {
         decomposeList.scrollView.CleanContent();
+        base.Clean();
     }
 
     public void Refresh(int select = -1)
@@ -587,7 +589,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
 
     void OnClickCloseBtn(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        this.RequestCloseUi();
     }
 
     void OnClickWhiteBtn()

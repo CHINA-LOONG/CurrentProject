@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &143950
 GameObject:
   m_ObjectHideFlags: 1
@@ -99,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &161144
 GameObject:
   m_ObjectHideFlags: 1
@@ -667,7 +667,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294966258
+          rgba: 16776178
         key1:
           serializedVersion: 2
           rgba: 5555199
@@ -5810,7 +5810,7 @@ ParticleSystem:
           rgba: 16776178
         key1:
           serializedVersion: 2
-          rgba: 2304033791
+          rgba: 1599390719
         key2:
           serializedVersion: 2
           rgba: 0
@@ -8949,7 +8949,7 @@ ParticleSystem:
           rgba: 8059135
         key1:
           serializedVersion: 2
-          rgba: 2717932543
+          rgba: 1442864127
         key2:
           serializedVersion: 2
           rgba: 0

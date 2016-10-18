@@ -3276,8 +3276,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultxiaochou2Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
-				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" attach="true" locky=""/>
-				<Particle asset="ultxiaochou2Hit" bundle="effect/particle" parent="" attach="true" locky=""/>
+				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultxiaochou2Hit" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="xiaochou21"/>
@@ -3287,8 +3287,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		<Ani id="txXiaochou2" state="0" AniType="Skill">
 			<ParticleList>
 				<Particle asset="ultxiaochou2Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
-				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" attach="true" locky=""/>
-				<Particle asset="ultxiaochou2Hit" bundle="effect/particle" parent="" attach="true" locky=""/>
+				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultxiaochou2Hit" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="xiaochou21"/>
@@ -4416,16 +4416,16 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="" attach=""/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cwater"/>
+				<Audio time="0" name="cearth"/>
 			</AudioList>
 		</Ani>
 		
 		<Ani id="psvLongnv3e3" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuffDefense" bundle="effect/particle" locky="true" parent=""/>
+				<Particle asset="commonDebuffDefense" bundle="effect/particle" locky="true" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff"/>
@@ -4463,7 +4463,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</SpeedList>
 		</Ani>
 		
-		
 		<Ani id="ultMomo1e3" state="0" AniType="Buff">
 			<ParticleList>
 				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
@@ -4473,6 +4472,15 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 			<SpeedList>
 			</SpeedList>
+		</Ani>
+		
+		<Ani id="ultMomo1e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="bd_wulijianmian" bundle="effect/particle" attach="true" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
 		</Ani>
 	
 		<Ani id="txMomo1" state="0" AniType="Skill">
@@ -5026,7 +5034,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</MotionList>
 			<ParticleList>
 				<Particle asset="ultAmutePre" bundle="effect/particle" locky="true"/>
-				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true"/>
+				<Particle time="1.5" asset="ultAmuteBuff" bundle="effect/particle" locky="true"/>
 				<Particle time="3.0" asset="ultAmute3Hit" bundle="effect/particle" parent="0" attach="scene"/>
 			</ParticleList>
 			<AudioList>
@@ -5056,11 +5064,20 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		<Ani id="txAmute3" state="0" AniType="Skill">
 			<ParticleList>
 				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
-				<Particle asset="ultAmuteBuff" bundle="effect/particle" attach="true"/>
+				<Particle time="1.5" asset="ultAmuteBuff" bundle="effect/particle" attach="true"/>
 				<Particle time="3.5" asset="ultAmute3Hit" bundle="effect/particle" parent="0" attach="scene"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Amute1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="psvAmute3e5" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="bd_niepan" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute2"/>
 			</AudioList>
 		</Ani>
 	</AniList>
@@ -6705,22 +6722,31 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin32Longnv32" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="fagong" value="true" ignore_rot="true"/>
+				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle time="0" asset="" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
+				<Particle time="0" asset="castWater" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="cwater"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosssenlin32Longnv32e2" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="magicWaterBallp" bundle="effect/particle" parent="" locky=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1" name="waterp3"/>
 			</AudioList>
 		</Ani>
 		
 		<Ani id="bosssenlin32Longnv32e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicWaterColumnp" bundle="effect/particle" parent="" locky=""/>
+				<Particle time="0" asset="magicWaterBall" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="waterp2"/>
+				<Audio time="0" name="watere1"/>
 			</AudioList>
 		</Ani>
 		
@@ -6730,7 +6756,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultlongnv3Pre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultlongnv3Pre" bundle="effect/particle" parent="" locky="true"/>
 				<Particle asset="ultlongnv3pre_weapon" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
 				<Particle asset="ultlongnv3pre_weapon" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
 			</ParticleList>
@@ -6739,7 +6765,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bosssenlin32Longnv33e2" state="0" AniType="Damage">
+		<Ani id="bosssenlin32Longnv33e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="ultLongnv3Hit" bundle="effect/particle" parent="e_shouji" attach="true"/>
 			</ParticleList>
@@ -6766,34 +6792,16 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="buff"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="bosssenlin32Longnv34e4" state="0" AniType="Buff">
-			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="buff"/>
-			</AudioList>
-		</Ani>
-		
-		
+				
 		<Ani id="bosssenlin32Longnv34b1" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_wulijianmian" bundle="effect/particle" attach="true" locky="true" parent=""/>
+				<Particle asset="ultlongnv3Pre_hudun" bundle="effect/particle" parent="" attach="" locky=""/>
 			</ParticleList>
 		</Ani>
 		
 		<Ani id="bosssenlin32Longnv34b1Finish" state="1" finish_event="bosssenlin32Longnv34b1">
 		</Ani>	
 		
-		<Ani id="bosssenlin32Longnv34b2" state="0" AniType="">
-			<ParticleList>
-				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" locky="true" parent=""/>
-			</ParticleList>
-		</Ani>
-		
-		<Ani id="bosssenlin32Longnv34b2Finish" state="1" finish_event="bosssenlin32Longnv34b2">
-		</Ani>
 	</AniList>
 
 	<AniList group="bosssenlin33Luoxinfu5">
@@ -6945,14 +6953,14 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="" bundle="effect/particle" attach=""/>
+				<Particle asset="castWater" bundle="effect/particle" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="cwater"/>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bosssenlin34Amute33e2" state="0" AniType="Persistent">
+		<Ani id="bosssenlin34Amute33e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle time="0" asset="magicWaterColumnp" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
@@ -6976,7 +6984,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
+				<Particle asset="ultAmutePre" bundle="effect/particle" locky="true"/>
+				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true"/>
 				<Particle time="3.5" asset="ultAmute3Hit" bundle="effect/particle" parent="0" attach="scene"/>
 			</ParticleList>
 			<AudioList>
@@ -7011,10 +7020,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<!--ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList-->
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" attach="true"/>
+			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
 		
@@ -7031,10 +7041,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<!--ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList-->
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" attach="true"/>
+			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="cplant"/>
 			</AudioList>
 		</Ani>
 		
@@ -7073,7 +7084,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultxiaochou3Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
+				<Particle asset="ultxiaochou2Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
 				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
@@ -7083,10 +7094,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin35Xiaochou24e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="2.35" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="ultxiaochou2Hit" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="2.35" name="plantp1"/>
+				<Audio time="0" name="plantp1"/>
 			</AudioList>
 		</Ani>
 		
@@ -7095,7 +7106,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="ultxiaochou3Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
+				<Particle asset="ultxiaochou2Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
 				<Particle asset="ultxiaochou2Pre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
@@ -7105,10 +7116,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin35Xiaochou25e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="2.35" asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="ultxiaochou2Hit" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="2.35" name="plantp1"/>
+				<Audio time="0" name="plantp1"/>
 			</AudioList>
 		</Ani>
 		
@@ -7141,10 +7152,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
-			<!--ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList-->
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="cmetal"/>
 			</AudioList>
 		</Ani>
 		
@@ -7153,7 +7165,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Longgongtongzi32"/>
+				<Audio time="0" name="curep1"/>
 			</AudioList>
 		</Ani>
 		
@@ -7333,7 +7345,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion ani="" key="qunsheluanwu" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle" ani="" parent="Bip001 Head" attach="true"/>
+				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle" ani="" parent="wp_head" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Meidushaqunsheluanwu" />
@@ -7352,7 +7364,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion ani="" key="shihuaguangxian" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle time="0" asset="meidushaShihuaguangxian" bundle="effect/particle" ani="" parent="Bip001 Head" attach="true"/>
+				<Particle time="0" asset="meidushaShihuaguangxian" bundle="effect/particle" ani="" parent="wp_head" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Meidushashihuaguangxian" />
@@ -7840,6 +7852,194 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
+		
+	</AniList>
+	
+	<AniList group="bosszhifuletuJiuweihu4">
+	
+		<Ani id="bosszhifuletuJiuweihu41" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="wugong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultjiuweihu4pre_1" bundle="effect/particle" locky="true"/>
+				<Particle asset="ultjiuweihu4pre_1_hand" bundle="effect/particle" attach="Bip001 L Hand"/>
+				<Particle asset="ultjiuweihu4pre_1_hand" bundle="effect/particle" attach="Bip001 R Hand"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosszhifuletuJiuweihu41e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicFireBall" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firee1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosszhifuletuJiuweihu42" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultjiuweihu4pre_2" bundle="effect/particle" locky="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosszhifuletuJiuweihu42e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosszhifuletuJiuweihu43" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultjiuweihu4pre_3" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultjiuweihu4pre_3_hand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultjiuweihu4pre_3_hand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosszhifuletuJiuweihu43e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicFireBall" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firee1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	
+	
+	<AniList group="bosshuoshan48Hehuaisituosi4">
+	
+		<Ani id="bosshuoshan48Hehuaisituosi41" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshehuaisituosi1" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre1_hand" bundle="effect/particle" parent="Bone021(mirrored)(mirrored)" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre1" bundle="effect/particle" locky="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi41e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi42" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshehuaisituosi2" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre1_hand" bundle="effect/particle" parent="Bone021(mirrored)(mirrored)" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre2_hand" bundle="effect/particle" parent="Bone021(mirrored) 1" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre2" bundle="effect/particle" locky="true"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi42e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre5_hit" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi43" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshehuaisituosi3" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre3" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ulthehuaisituosi4pre2_hand" bundle="effect/particle" parent="Bone021(mirrored) 1" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre1_hand" bundle="effect/particle" parent="Bone021(mirrored)(mirrored)" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi43e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi44" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshehuaisituosi4" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre4_hand" bundle="effect/particle" parent="Bone021(mirrored)" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre4_hand" bundle="effect/particle" parent="Bone021" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre2_hand" bundle="effect/particle" parent="Bone021(mirrored) 1" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre2_hand" bundle="effect/particle" parent="Bone021(mirrored)(mirrored)" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre4" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi44e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="ulthehuaisituosi4pre4_hit" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi45" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="bosshehuaisituosi5" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ulthehuaisituosi4pre5" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ulthehuaisituosi4pre2_hand" bundle="effect/particle" parent="Bone021(mirrored) 1" attach="true"/>
+				<Particle asset="ulthehuaisituosi4pre1_hand" bundle="effect/particle" parent="Bone021(mirrored)(mirrored)" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bosshuoshan48Hehuaisituosi45e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="ulthehuaisituosi4pre5_hit" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firep1"/>
+			</AudioList>
+		</Ani>
 		
 	</AniList>
 	
@@ -8361,11 +8561,15 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Speed time="0" speed_ratio="0.5" duration="2"/>
 			</SpeedList>
 		</Ani>
-		
 		<Ani id="hetong2_wp03dead" state="0" action_delay="0">
 			<SpeedList>
 				<Speed time="0" speed_ratio="0.5" duration="2"/>
 			</SpeedList>
+		</Ani>
+		<Ani id="hehuaisituosi4_wp01_state3to0" state="0" action_delay="0">
+			<WpStateList>
+				<Wp time="0.1" name="bosshuoshan48Hehuaisituosi4wp01" state="0"/>
+			</WpStateList>
 		</Ani>
 	</AniList>
 </AniGroupList>

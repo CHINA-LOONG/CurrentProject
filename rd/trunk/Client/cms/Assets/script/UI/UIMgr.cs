@@ -451,6 +451,7 @@ public class UIMgr : MonoBehaviour
                 uiItem.gameObject.SetActive(true);
                 uiItem.transform.SetAsLastSibling();
                 uiItem.Init();
+                callback(uiItem.gameObject,null);
                 //显示管理
                 if (string.Equals(uiName, UINetRequest.ViewName) == false)
                 {

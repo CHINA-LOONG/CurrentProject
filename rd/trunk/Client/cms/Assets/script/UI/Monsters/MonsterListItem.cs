@@ -42,7 +42,7 @@ public class MonsterListItem : MonoBehaviour
     public void ReloadData(GameUnit unit)
     {
         curData = unit;
-        UIUtil.SetStageColor(textName, curData);
+        UIUtil.SetStageName(textName, curData);
         imgPro.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
 
         if (iconMonster == null)

@@ -487,10 +487,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4102911
+          rgba: 16758590
         key1:
           serializedVersion: 2
-          rgba: 4282286847
+          rgba: 4294928190
         key2:
           serializedVersion: 2
           rgba: 0
@@ -1317,7 +1317,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .200000003
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1332,7 +1332,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2513,10 +2513,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4102911
+          rgba: 16758590
         key1:
           serializedVersion: 2
-          rgba: 4282286847
+          rgba: 4294928190
         key2:
           serializedVersion: 2
           rgba: 0
@@ -3343,7 +3343,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .200000003
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3358,7 +3358,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -4281,7 +4281,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 51ae07184c3ce9e4199bead7834beef6, type: 2}
+  - {fileID: 2100000, guid: 364302e788be29744a5ad4ad4e012a72, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4317,7 +4317,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 51ae07184c3ce9e4199bead7834beef6, type: 2}
+  - {fileID: 2100000, guid: 364302e788be29744a5ad4ad4e012a72, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

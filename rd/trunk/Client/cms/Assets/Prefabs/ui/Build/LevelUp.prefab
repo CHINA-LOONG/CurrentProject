@@ -83,6 +83,7 @@ GameObject:
   - 222: {fileID: 22200650}
   - 114: {fileID: 11495766}
   - 114: {fileID: 11429492}
+  - 114: {fileID: 11437982}
   m_Layer: 5
   m_Name: LevelUp
   m_TagString: Untagged
@@ -481,6 +482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 1
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 0}
   levelDesc: {fileID: 11421770}
   curPilaoDesc: {fileID: 11453280}
   curPilaoValue: {fileID: 11487898}
@@ -574,6 +579,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: OK
+--- !u!114 &11437982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded68550bd8fcc458e8fd2beacd5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 50
+  isUI: 1
 --- !u!114 &11451040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,7 +1141,7 @@ RectTransform:
   m_GameObject: {fileID: 117362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22456180}
   m_Father: {fileID: 0}

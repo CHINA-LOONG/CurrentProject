@@ -247,6 +247,7 @@ public class InstanceMap : UIBase
         //TODO:duplicate code
         if (data != null)
         {
+            OpenInstanceList(data.instanceId);
             UIAdjustBattleTeam.OpenWith(data.instanceId, data.star,true);
             /*
             UIAdjustBattleTeam adjustUi = UIMgr.Instance.OpenUI_(UIAdjustBattleTeam.ViewName) as UIAdjustBattleTeam;

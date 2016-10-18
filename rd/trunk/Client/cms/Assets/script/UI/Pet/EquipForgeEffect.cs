@@ -10,18 +10,16 @@ public class EquipForgeEffect : MonoBehaviour
         CallBack = StopBack;
         if (index==1)
         {
-            animator.SetBool("PlayEffect1", true);
+            animator.SetTrigger("playEffect1");
         }
         else
         {
-            animator.SetBool("PlayEffect2", true);
+            animator.SetTrigger("playEffect2");
         }
     }
 
     public void OnStop()
     {
-        animator.SetBool("PlayEffect1", false);
-        animator.SetBool("PlayEffect2", false);
         if (CallBack!=null)
         {
             CallBack();

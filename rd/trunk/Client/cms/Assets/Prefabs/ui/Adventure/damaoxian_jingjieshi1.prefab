@@ -79,7 +79,7 @@ GameObject:
   - 198: {fileID: 19818168}
   - 199: {fileID: 19979634}
   m_Layer: 5
-  m_Name: Particle System (5)
+  m_Name: Particle System (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100.000031, z: 100.000031}
   m_Children: []
   m_Father: {fileID: 22489950}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &434830
 Transform:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 22489950}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &440014
 Transform:
   m_ObjectHideFlags: 1
@@ -120,7 +120,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100.000305, z: 100.000259}
   m_Children: []
   m_Father: {fileID: 22489950}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &482340
 Transform:
   m_ObjectHideFlags: 1
@@ -128,11 +128,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186178}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 6.80000019, y: 49.2999992, z: -96.1914062}
-  m_LocalScale: {x: 100, y: 100.000099, z: 100.000099}
+  m_LocalPosition: {x: -3.0999999, y: 72.6999969, z: -96.1999969}
+  m_LocalScale: {x: 100, y: 100.000122, z: 100.000122}
   m_Children: []
   m_Father: {fileID: 22489950}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!114 &11418948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1310,7 +1310,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 1
+      scalar: .5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4250,7 +4250,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a3266a1fbc570f4a81a2df86ace080c, type: 2}
+  - {fileID: 2100000, guid: 26b4fa9fc08b9954ebbe273a433f6c97, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4292,10 +4292,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 482340}
   - {fileID: 403736}
   - {fileID: 434830}
   - {fileID: 440014}
+  - {fileID: 482340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
