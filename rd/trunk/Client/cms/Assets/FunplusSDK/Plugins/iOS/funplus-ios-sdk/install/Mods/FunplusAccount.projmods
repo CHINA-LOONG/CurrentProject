@@ -1,0 +1,11 @@
+{
+    "group": "FunplusSDK",
+    "libs": ["libstdc++.tbd"],
+    "frameworks": ["UIKit.framework", "AssetsLibrary.framework", "AdSupport.framework", "MobileCoreServices.framework"],
+    "headerpaths": [],
+    "files":   ["FunplusSdkResources.bundle"],
+    "folders": [],
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

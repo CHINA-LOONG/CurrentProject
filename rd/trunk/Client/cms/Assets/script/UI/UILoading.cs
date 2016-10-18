@@ -9,8 +9,7 @@ public enum LoadingType
     loadingHole = 3,
     loadingTower = 4,
     loadingGuild = 5,
-    loadingPvp = 6,
-	loadingLog = 7
+    loadingPvp = 6
 }
 
 public class UILoading : UIBase
@@ -36,10 +35,8 @@ public class UILoading : UIBase
     public Image contentImage;
     public GameObject pvploadingG;
     public GameObject loadingContent;
-    public Image ordinaryBg;
     private float loadingBarSizeDelthaX = 100;
     private float loadingBarSizeDelthaY = 9;
-    int loadingNum = 0;
     private RectTransform _loadingProgressRt;
     private RectTransform loadingProgressRt
     {
@@ -79,8 +76,8 @@ public class UILoading : UIBase
             {
                 loadingProgressRt.sizeDelta = new Vector2((1.0f - (float)remainCount / totalAssetCount) * loadingBarSizeDelthaX, loadingBarSizeDelthaY);
             }
-            loadingNum = totalAssetCount - remainCount;
-            loadingText.text = ((loadingNum / totalAssetCount) * 100).ToString() + "%"; 
+            float percent = (totalAssetCount - remainCount) / (float)totalAssetCount;
+            loadingText.text = string.Format("{0:D}%", (int)(percent * 100));
 
             if (remainCount == 0)
             {
@@ -112,12 +109,8 @@ public class UILoading : UIBase
         LoadingData loadingData = StaticDataMgr.Instance.GetLoadingData((int)loadingType);
         int randomNum = Random.Range(0, loadingData.loadingTips.Length);
         gamePrompt.text = StaticDataMgr.Instance.GetTextByID(loadingData.loadingTips[randomNum]);
-        if (loadingType == LoadingType.loadingLog)
-        {
-            ordinaryBg.gameObject.SetActive(true);
-            ordinaryBg.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("loadingloginImage");
+        if (loadingType == LoadingType.loadingPvp)
             return;
-        }
         loadingContent.SetActive(true);
         randomNum = Random.Range(0, loadingData.loadingResource.Length);
         Loadinglocation loadingLocation = StaticDataMgr.Instance.GetLoadinglocationData(loadingData.loadingResource[randomNum]);

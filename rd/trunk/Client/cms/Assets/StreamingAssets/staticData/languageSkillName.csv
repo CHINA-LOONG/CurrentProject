@@ -972,10 +972,10 @@ psvNvyao5Nextlvl,使用法术技能时，10%降低被攻击者80%防御力，持
 psvHapi1Nextlvl,死亡时，己方全体回复60%法攻的生命值,"Upon dying, recover (60% of magic ATK) HP for all allies"
 psvPiying5Nextlvl,使用法术技能时，20%给被攻击者附加痛楚效果,"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Anguish effect"
 psvShuigui3Nextlvl,使用buff技能时，12.5%给被攻击者附加眩晕效果,"Whenever you cast a buff ability, there is a 12.5% chance of stunning your target"
-bossxiaoxiang28Muling21Name,抓挠,抓挠
-bossxiaoxiang28Muling22Name,震地,震地
-bossxiaoxiang28Muling23Name,木刺,木刺
-bossxiaoxiang28Muling24Name,践踏,践踏
+bossxiaoxiang28Muling21Name,抓挠,Swipe
+bossxiaoxiang28Muling22Name,震地,Earthquake
+bossxiaoxiang28Muling23Name,裂片,Splinter
+bossxiaoxiang28Muling24Name,践踏,Trample
 bossxiaoxiang28Muling21Tips,给单体目标造成150%法攻木属性伤害,Deals (150% of magic ATK) grass type magic damage to a single target 
 bossxiaoxiang28Muling22Tips,给群体目标造成100%法攻木属性伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets 
 bossxiaoxiang28Muling23Tips,给单体目标造成150%法攻木属性伤害中概率附加眩晕效果,Deals (150% of magic ATK) grass type magic damage to a single target with a medium chance of stunning effects

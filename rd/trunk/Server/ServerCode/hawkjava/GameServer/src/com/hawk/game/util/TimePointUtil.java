@@ -9,6 +9,8 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.TimePointCfg;
 
+// TODO 对间隔周期的支持，对闰年2.29的支持
+
 /**
  * 通用时间点库
  * 
@@ -91,6 +93,10 @@ public class TimePointUtil {
 	public static Calendar getExpectedRefreshTime(int timeCfgId, Calendar curTime, Calendar lastRefreshTime) {
 		TimePointCfg timePoint = HawkConfigManager.getInstance().getConfigByKey(TimePointCfg.class, timeCfgId);
 		if (null != timePoint) {
+			if (null == lastRefreshTime) {
+				lastRefreshTime = HawkTime.getCalendar();
+				lastRefreshTime.setTimeInMillis(0);
+			}
 			Calendar expectedRefreshTime = computeMaxPastTriggerTime(timePoint, curTime);
 			if (null != expectedRefreshTime && true == expectedRefreshTime.after(lastRefreshTime)) {
 				return expectedRefreshTime;

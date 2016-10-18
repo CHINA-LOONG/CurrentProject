@@ -451,14 +451,7 @@ public class UISummon : UIBase
         summEffect.Reset();
         if (go != null)
         {
-            if (timeEvent != null)
-            {
-                timeEvent.RemoveTimeEvent();
-                timeEvent.RemoveUpdateEvent(OnUpdateTime);
-            }
-            UIMgr.Instance.CloseUI_(UISummon.ViewName);
-            MainSummon.Instance.SetReset();
-            freeState.text = "";
+            RequestCloseUi();
         }
         else
         {
@@ -474,6 +467,19 @@ public class UISummon : UIBase
             choudanAnim.SetBool("skip", true);
             animSumBegin = "jingyaK";
         }
+    }
+
+    public override void CloseUi()
+    {
+        if (timeEvent != null)
+        {
+            timeEvent.RemoveTimeEvent();
+            timeEvent.RemoveUpdateEvent(OnUpdateTime);
+        }
+        UIMgr.Instance.CloseUI_(UISummon.ViewName);
+        MainSummon.Instance.SetReset();
+        freeState.text = "";
+      //  base.CloseUi();
     }
     //---------------------------------------------------------------------------
     void Start()

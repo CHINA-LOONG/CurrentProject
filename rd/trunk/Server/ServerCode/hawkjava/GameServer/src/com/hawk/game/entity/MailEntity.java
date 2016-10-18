@@ -11,11 +11,10 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.google.gson.reflect.TypeToken;
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.util.GsConst.ItemParseType;
 
 /**
  * 邮件数据
@@ -51,7 +50,7 @@ public class MailEntity extends HawkDBEntity {
 	protected String content = "";
 
 	@Column(name = "rewardList", nullable = false)
-	protected String rewardJson = "";
+	protected String rewardStr = "";
 
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -66,7 +65,7 @@ public class MailEntity extends HawkDBEntity {
 	protected List<ItemInfo> rewardList = new ArrayList<ItemInfo>();
 
 	public MailEntity() {
-		
+
 	}
 
 	public MailEntity(int receiverId, int senderId, String senderName, byte state, String subject, String content) {
@@ -144,15 +143,15 @@ public class MailEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (rewardJson != null && false == "".equals(rewardJson) && false == "null".equals(rewardJson)) {
-			rewardList = HawkJsonUtil.getJsonInstance().fromJson(rewardJson, new TypeToken<List<ItemInfo>>() {}.getType());
+		if (null != rewardStr && false == "".equals(rewardStr) && false == "null".equals(rewardStr)) {
+			rewardList = ItemInfo.GetItemInfoList(this.rewardStr, ItemParseType.PARSE_DEFAULT);
 		}
 		return true;
 	}
 
 	@Override
 	public boolean encode() {
-		rewardJson = HawkJsonUtil.getJsonInstance().toJson(rewardList);
+		rewardStr = ItemInfo.toString(rewardList);
 		return true;
 	}
 

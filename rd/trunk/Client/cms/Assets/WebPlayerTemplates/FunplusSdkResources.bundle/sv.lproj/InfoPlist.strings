@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Inget fel";
+
+"ErrorUnspecific_9999"="Ospecificerad fel";
+
+"FPErrorNotInstall_0100"="SDK installation misslyckades";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Misslyckades att koppla till konfiguration server";
+
+"FPErrorInvalidConfigRequestData_0102"="Förfrågan av konfiguration server data misslyckades";
+
+"FPErrorFailedToParseConfig_0103"="Misslyckades att analysera konfigurationen";
+
+"FPErrorInvalidConfigData_0104"="Inkorrekt spel konfiguration";
+
+"FPErrorWrongSignature_1101"="Underskriften är inkorrekt";
+
+"FPErrorFailedCreateID_1102"="Misslyckades att skapa FunPlus ID, var vänligen och försök igen senare";
+
+"FPErrorWrongGameID_1103"="Inkorrekt spel ID";
+
+"FPErrorWrongEmail_1104"="Inkorrekt epost";
+
+"FPErrorWrongPassword_1105"="Inkorrekt lösenord";
+
+"FPErrorWrongGUID_1106"="Inkorrekt GUID";
+
+"FPErrorEmailExisted_1107"="Eposten har redan blivit använd";
+
+"FPErrorFailedCreateAccount_1108"="Misslyckades att skapa konto";
+
+"FPErrorAccountBound_1109"="Detta konto har redan blivit bundet";
+
+"FPErrorEmailNotFound_1110"="Kunde inte hitta eposten.";
+
+"FPErrorLoginFailed_1111"="Inloggning misslyckades";
+
+"FPErrorPasswordLength_1112"="Lösenord längd fel ";
+
+"FPErrorFailedResetPassword_1113"="Nollställ lösenordet misslyckades";
+
+"FPErrorWrongResetPasswordToken_1114"="Nollställ lösenordet misslyckades på grund av inkorrekt token";
+
+"FPErrorEmptyResetPasswordToken_1115"="Nollställ lösenordet misslyckades på grund av tomma token";
+
+"FPErrorPasswordNotChanged_1116"="Det nya lösenordet är likt det gamla lösenordet";
+
+"FPErrorFailedChangePassword_1117"="Byte av lösenord misslyckades";
+
+"FPErrorFailedAccountNotFound_1118"="Konto kunde inte hittas";
+
+"FPErrorFailedResetPasswordEmail_1119"="Kunde inte skicka lösenord återställning till din epost adress";
+
+"FPErrorFailedWrongGameSetting_1120"="Inkorrekt spel inställningar";
+
+"FPErrorFailedResetPasswordTemp_1121"="Du har nollställ ditt lösenord för många gånger, var vänligen och prova igen senare";
+
+"FPErrorEmptyFPID_1122"="Tomt FPID";
+
+"FPErrorWrongPlatformId_1123"="Inkorrekt plattform ID";
+
+"FPErrorFailedToBindWithSocialID_1124"="Bind ditt Social ID misslyckades";
+
+"FPErrorReachLoginLimit_1125"="Överskred inloggings begränsningen";
+
+"FPErrorEmailTooLong_1126"="Epost är för lång";
+
+"FPErrorEmptySession_1127"="Session är tom";
+
+"FPErrorSessionNotFound_1128"="Session hittades inte";
+
+"FPErrorSessionExpired_1129"="Session utlöpt";
+
+"FPErrorSessionAppMismatch_1130"="Session och nuvarande spel ID stämmer inte";
+
+"FPErrorWrongPlatformToken_1131"="Plattform token fel";
+
+"FPErrorWrongPlatformType_1132"="Plattform typ fel";
+
+"FPErrorInvalidPlatformToken_1133"="Plattform token är inkorrekt";
+
+"FPErrorUnknownAccountType_1200"="Konto typ är okänd";
+
+"FPErrorNotLoggedIn_1201"="Användare är inte inloggad";
+
+"FPErrorAlreadyLoggedIn_1202"="Användare är redan inloggad";
+
+"FPErrorIoginInProgress_1203"="En annan inloggning är förnärvarande i process";
+
+"FPErrorWrongLoginParams_1204"="Parameter inkorrekt för inloggning";
+
+"FPErrorFailedLoginAccount_1205"="Misslyckades att logga in";
+
+"FPErrorAccountBoundToOther_1206"="Binda till kontot misslyckades";
+
+"FPErrorFailedToConnectAccountServer_1207"="Koppla till konto server misslyckades";
+
+"FPErrorFailedToParseAccountResponse_1208"="Misslyckades att analysera konto responsdata";
+
+"FPErrorWechatClientIssue_2000"="Wechat: Klient Fel";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Användare avbröt handlingen";
+
+"FPErrorWechatLoginFailed_2002"="WeChat:  Användare misslyckades att logga in";
+
+"FPErrorWechatDiffId_2003"="WeChat: Inkonsekvent WeChat konto";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Inte i den rekommenderade listan";
+
+"FPErrorWechatAccountBoundToOther_2005"="DittWeChat konto är bundit till ett annat FunPlus ID, var vänligen och bytWeChat konto eller koppla via epost ";
+
+"FPErrorWechatGetUserDataFailed_2006"="Wechat: Misslyckades att hämta användar information";
+
+"FPErrorWechatException_2007"="Wechat: Odefinierad undantag";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="Wechat: Misslyckades att hämta vänner information";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Användare är inte inloggad";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Användare misslyckades att logga in";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Misslyckades att hämta användardata";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Misslyckades att skicka spel inbjudan";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Användare avbröt handlingen";
+
+"FPErrorFacebookException_2105"="Facebook: Odefinierad undantag";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Ditt Facebook konto är bundit till ett annat FunPlus ID, var vänligen och byt Facebook konto eller koppla via epost ";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Misslyckades att hämta vänner data";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Vänner tillåtelse krävs";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: Användare är inte inloggad ";
+
+"FPErrorVkLoginFailed_2201"="VK: Användare misslyckades att logga in";
+
+"FPErrorVkCaptchaError_2202"="VK: Captcha fel";
+
+"FPErrorVkAccessDenied_2203"="VK: Tillgång nekades";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Misslyckades att acceptera användar token";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Misslyckades att hämta användar token";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Misslyckades att förnya token";
+
+"FPErrorVkException_2207"="VK: Odefinierad undantag";
+
+"FPErrorVkUserCanceledAction_2208"="VK: Användare avbröt handlingen";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Misslyckades att hämta användardata";
+
+"FPErrorVkAccountBoundToOther_2210"="Ditt VK konto är bundit till ett annat FunPlus ID. Var vänligen och koppla ditt konto med ett annat VK konto. ";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Hämta kompis data misslyckades";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Ditt Game Center konto är bundit till ett annat FunPlus ID. Var vänligen och koppla ditt konto med ett annat Game Center konto. ";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Ansluta till betalningsservern misslyckades";
+
+"FPErrorInvalidPaymentRequestData_3001"="Förfrågan av betalningsdata misslyckades";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Misslyckades att analysera betalnings responsdata ";
+
+"FPErrorPaymentResponseError_3003"="Betalnings server respons är inkorrekt";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Initialisera fel";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Köpet misslyckades";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Google konto är inte konfiguerad";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Kunde inte slutföra köpet";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Köpet misslyckades";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Produkt information är incorrekt";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Produkt ID är incorrekt";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Kvittot hittades inte";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

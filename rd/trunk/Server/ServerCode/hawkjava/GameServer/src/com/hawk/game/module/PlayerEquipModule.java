@@ -26,6 +26,9 @@ import com.hawk.game.log.BILogger;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.Const.changeType;
+import com.hawk.game.protocol.Const.itemType;
+import com.hawk.game.protocol.Consume.ConsumeItem;
 import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Equip.HSEquipBuyRet;
@@ -226,6 +229,12 @@ public class PlayerEquipModule extends PlayerModule{
 
 		ConsumeItems consume = new ConsumeItems();
 		consume.addItemInfos(EquipForgeCfg.getLevelDemandList(equipEntity.getStage(), equipEntity.getLevel() + 1));
+		
+		// 调整金币
+		ConsumeItem.Builder consumeItem = consume.getConsumeItem(itemType.PLAYER_ATTR_VALUE, String.valueOf(changeType.CHANGE_ARENA_COIN_VALUE));
+		if (consumeItem != null) {
+			consumeItem.setCount((int)(consumeItem.getCount() * itemCfg.getForgeAdjust()));
+		}
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
@@ -299,6 +308,13 @@ public class PlayerEquipModule extends PlayerModule{
 
 		ConsumeItems consume = new ConsumeItems();
 		consume.addItemInfos(EquipForgeCfg.getLevelDemandList(equipEntity.getStage() + 1, 0));
+		
+		// 调整金币
+		ConsumeItem.Builder consumeItem = consume.getConsumeItem(itemType.PLAYER_ATTR_VALUE, String.valueOf(changeType.CHANGE_ARENA_COIN_VALUE));
+		if (consumeItem != null) {
+			consumeItem.setCount((int)(consumeItem.getCount() * itemCfg.getForgeAdjust()));
+		}
+		
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}

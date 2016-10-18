@@ -51,8 +51,8 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 20022,name_20022_suipian_piying5,-1,icon_xgPiying_hei,2,1,1,0,1,-1,tips_20022_suipian_piying5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_senlin26",1
 20023,name_20023_suipian_kairuisi5,-1,icon_xgKairuisi_hei,2,1,1,0,1,-1,tips_20023_suipian_kairuisi5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_xueshan27",1
 20024,name_20024_suipian_bingxuenvwang3,-1,icon_xgBingxuenvwang_lan,2,1,1,0,1,-1,tips_20024_suipian_bingxuenvwang3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
-20025,name_20025_suipian_wendige3,-1,icon_xgWendige_lan,2,1,1,0,1,-1,tips_20025_suipian_wendige3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_4,1_huoshan25",1
-20026,name_20026_suipian_wendige2,-1,icon_xgWendige_lv,2,1,1,0,1,-1,tips_20026_suipian_wendige2,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,1
+20025,name_20025_suipian_wendige3,-1,icon_xgWendige_lan,2,1,1,0,1,-1,tips_20025_suipian_wendige3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_huoshan25",1
+20026,name_20026_suipian_wendige2,-1,icon_xgWendige_lv,2,1,1,0,1,-1,tips_20026_suipian_wendige2,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_4",1
 20027,name_20027_suipian_longnv3,-1,icon_xgLongnv_lan,2,1,1,0,1,-1,tips_20027_suipian_longnv3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20028,name_20028_suipian_momo1,-1,icon_xgMomo_bai,2,1,1,0,1,-1,tips_20028_suipian_momo1,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_minghe25",0
 20029,name_20029_suipian_amute3,-1,icon_xgAmute_lan,2,1,1,0,1,-1,tips_20029_suipian_amute3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_xueshan26",0
@@ -62,7 +62,7 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 20033,name_20033_suipian_anpusha5,-1,icon_xgAnpusha_hei,2,1,1,0,1,-1,tips_20033_suipian_anpusha5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20034,name_20034_suipian_daochengsizhong4,-1,icon_xgDaochengsizhong_hong,2,1,1,0,1,-1,tips_20034_suipian_daochengsizhong4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_4",0
 20035,name_20035_suipian_huoniao4,-1,icon_xgHuoniao_hong,2,1,1,0,1,-1,tips_20035_suipian_huoniao4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
-20036,name_20036_suipian_ifrit4,-1,icon_xgYifulite_hong,2,1,1,0,1,-1,tips_20036_suipian_ifrit4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
+20036,name_20036_suipian_ifrit4,-1,icon_xgYifulite_hong,2,1,1,0,1,-1,tips_20036_suipian_ifrit4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_3",0
 20037,name_20037_suipian_moguguai4,-1,icon_xgMoguren_hong,2,1,1,0,1,-1,tips_20037_suipian_moguguai4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_dajie21",1
 20038,name_20038_suipian_tianshizhang4,-1,icon_xgMijiale_hong,2,1,1,0,1,-1,tips_20038_suipian_tianshizhang4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20039,name_20039_suipian_xiaochou2,-1,icon_xgXiaochou_lv,2,1,1,0,1,-1,tips_20039_suipian_xiaochou2,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,1_minghe23",1
@@ -78,7 +78,7 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 20049,name_20049_suipian_dujiaoshou5,-1,icon_xgDujiaoshou_hei,2,1,1,0,1,-1,tips_20049_suipian_dujiaoshou5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_3",0
 20050,name_20050_suipian_change5,-1,icon_xgChange_hei,2,1,1,0,1,-1,tips_20050_suipian_change5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20051,name_20051_suipian_huoniao3,-1,icon_xgHuoniao_lan,2,1,1,0,1,-1,tips_20051_suipian_huoniao3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
-20052,name_20052_suipian_ifrit5,-1,icon_xgYifulite_hei,2,1,1,0,1,-1,tips_20052_suipian_ifrit5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"6,3_3",0
+20052,name_20052_suipian_ifrit5,-1,icon_xgYifulite_hei,2,1,1,0,1,-1,tips_20052_suipian_ifrit5,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20053,name_20053_suipian_datiangou4,-1,icon_xgDatiangou_hong,2,1,1,0,1,-1,tips_20053_suipian_datiangou4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20054,name_20054_suipian_tianshizhang1,-1,icon_xgMijiale_bai,2,1,1,0,1,-1,tips_20054_suipian_tianshizhang1,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0
 20055,name_20055_suipian_longnv1,-1,icon_xgLongnv_bai,2,1,1,0,1,-1,tips_20055_suipian_longnv1,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0

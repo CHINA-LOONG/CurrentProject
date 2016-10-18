@@ -76,6 +76,10 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final int stack;
 	/**
+	 * 锻造系数
+	 */
+	protected final float forgeAdjust;
+	/**
 	 * 宝箱的奖励id
 	 */
 	protected final String rewardId;
@@ -155,6 +159,7 @@ public class ItemCfg extends HawkConfigBase {
 		componentItem = null;
 		needItem = null;
 		stack = 0;
+		forgeAdjust = 0;
 		rewardId = null;
 		targetItem = null;
 		needCount = 0;
@@ -220,6 +225,38 @@ public class ItemCfg extends HawkConfigBase {
 
 	public int getStack() {
 		return stack;
+	}
+
+	public float getForgeAdjust() {
+		return forgeAdjust;
+	}
+
+	public String getRewardId() {
+		return rewardId;
+	}
+
+	public String getComponentItem() {
+		return componentItem;
+	}
+
+	public String getNeedItem() {
+		return needItem;
+	}
+
+	public String getTargetItem() {
+		return targetItem;
+	}
+
+	public String getItemfounds() {
+		return itemfounds;
+	}
+
+	public RewardCfg getRewardCfg() {
+		return rewardCfg;
+	}
+
+	public static Map<Integer, Map<Integer, ItemCfg>> getGemList() {
+		return gemList;
 	}
 
 	public int getNeedCount() {

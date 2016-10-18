@@ -72,6 +72,22 @@ public class ConsumeItems {
 	public boolean hasConsumeItem() {
 		return consumeInfo.getConsumeItemsList().size() > 0;
 	}
+	
+	/**
+	 * 获取消耗类型
+	 * @param type
+	 * @param itemId
+	 * @return
+	 */
+	public ConsumeItem.Builder getConsumeItem(int type, String itemId){
+		for (ConsumeItem.Builder consume : consumeInfo.getConsumeItemsBuilderList()) {
+			if (consume.getType() == type && itemId.equals(consume.getItemId())) {
+				return consume;
+			}
+		}
+		
+		return null;
+	}
 
 	/**
 	 * 生成存储字符串

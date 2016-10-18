@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a40a882b38bc93544b7e8ff92c8df4ee, type: 3}
+          m_Texture: {fileID: 2800000, guid: bf87a0ec17d4dda4e92816e48634db16, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -32,10 +32,6 @@ Material:
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _HeatTime
         second: .400000006
       data:
@@ -46,6 +42,10 @@ Material:
         first:
           name: _ForceY
         second: .300000012
+      data:
+        first:
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:

@@ -11,6 +11,6 @@ public class NullEquip : MonoBehaviour
 
     public void ShowAdd(bool showadd)
     {
-        addEquip.gameObject.SetActive(showadd);
+        gameObject.SetActive(showadd);
     }
 }

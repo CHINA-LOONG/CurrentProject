@@ -85,7 +85,6 @@ public class DecomposeItem : MonoBehaviour
     private MonsterIcon monsterIcon;
 
     public Text monsterName;
-    public Image proIcon;
     public Text textMonsterBP;
     public Text text_MonsterBP;
 
@@ -98,11 +97,7 @@ public class DecomposeItem : MonoBehaviour
     private ItemIcon equipIcon;
 
     public Text equipName;
-    public Text textEquipBP;
-    public Text textDengji;
-
-    public Text text_EquipBP;
-    public Text text_Dengji;
+    public Text textPart;
 
     public Transform content;
     [HideInInspector]
@@ -166,9 +161,6 @@ public class DecomposeItem : MonoBehaviour
         ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickItem;
 
         text_MonsterBP.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
-
-        text_Dengji.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
-        text_EquipBP.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
     }
 
     public void Init(System.Action<DecomposeItem> clickBack)
@@ -213,9 +205,8 @@ public class DecomposeItem : MonoBehaviour
             equipIcon.RefreshWithEquipInfo(CurData.curEquip,true,true);
         }
         UIUtil.SetStageColor(equipName, staticData.NameAttr, curEquip.stage);
-        //TODO:设置战力
-        //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)
-        textDengji.text = staticData.minLevel.ToString();
+
+        textPart.text = staticData.PartAttr;
         RefreshGem(curEquip.gemList);
     }
     void ReloadData(GameUnit data)
@@ -225,8 +216,6 @@ public class DecomposeItem : MonoBehaviour
 
         GameUnit curMonster = CurData.curMonster;
         UIUtil.SetStageColor(monsterName, curMonster);
-
-        proIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + curMonster.property) as Sprite;
 
         textMonsterBP.text = data.mBp.ToString();
 

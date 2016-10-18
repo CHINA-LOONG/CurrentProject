@@ -663,9 +663,20 @@ public class BattleObject : MonoBehaviour
     private void SetParticleScale(GameObject psObject, float scale)
     {
         ParticleSystem[] psList = psObject.GetComponentsInChildren<ParticleSystem>();
+        ParticleSystem localPs = null;
         for (int psIndex = 0; psIndex < psList.Length; ++psIndex)
         {
-            psList[psIndex].startSize *= scale;
+            localPs = psList[psIndex];
+            localPs.startSpeed *= scale;
+            localPs.startSize *= scale;
+            localPs.gravityModifier *= scale;
+        }
+        
+        TrailRenderer[] trails = GetComponentsInChildren<TrailRenderer>();
+        foreach (TrailRenderer trail in trails)
+        {
+            trail.startWidth *= scale;
+            trail.endWidth *= scale;
         }
     }
     //---------------------------------------------------------------------------------------------

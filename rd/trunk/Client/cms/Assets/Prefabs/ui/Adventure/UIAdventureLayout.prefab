@@ -2672,6 +2672,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9565600}
   text_Title: {fileID: 11415588}
   btnClose: {fileID: 11417136}
   btnCondition: {fileID: 11463324}

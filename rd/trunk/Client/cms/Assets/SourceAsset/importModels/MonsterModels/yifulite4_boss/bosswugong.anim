@@ -122616,8 +122616,8 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: .0666666701
-    functionName: OnWuGongEnd
-    data: 
+    functionName: OnNormalEnd
+    data: bosswugong
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

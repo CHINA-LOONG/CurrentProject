@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Nenhum erro";
+
+"ErrorUnspecific_9999"="Erro não especificado";
+
+"FPErrorNotInstall_0100"="Falha na instalação do SDK";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Falha ao conectar ao servidor de configuração";
+
+"FPErrorInvalidConfigRequestData_0102"="Falha na requisição do servidor de configuração";
+
+"FPErrorFailedToParseConfig_0103"="Falha na análise de configuração";
+
+"FPErrorInvalidConfigData_0104"="Configuração de jogo inválida";
+
+"FPErrorWrongSignature_1101"="Assinatura incorreta";
+
+"FPErrorFailedCreateID_1102"="Falha ao criar o ID FunPlus, por favor tente novamente mais tarde";
+
+"FPErrorWrongGameID_1103"="ID do jogo incorreto";
+
+"FPErrorWrongEmail_1104"="E-mail inválido";
+
+"FPErrorWrongPassword_1105"="Senha incorreta";
+
+"FPErrorWrongGUID_1106"="GUID Inválido";
+
+"FPErrorEmailExisted_1107"="Este e-mail já está sendo usado";
+
+"FPErrorFailedCreateAccount_1108"="Falha ao criar conta";
+
+"FPErrorAccountBound_1109"="Esta conta já foi vinculada";
+
+"FPErrorEmailNotFound_1110"="Não é possível encontrar e-mail";
+
+"FPErrorLoginFailed_1111"="Falha no login";
+
+"FPErrorPasswordLength_1112"="Tamanho da senha incorreta";
+
+"FPErrorFailedResetPassword_1113"="Falha ao resetar senha";
+
+"FPErrorWrongResetPasswordToken_1114"="Falha ao resetar senha: token inválido";
+
+"FPErrorEmptyResetPasswordToken_1115"="Falha ao resetar senha: token em branco";
+
+"FPErrorPasswordNotChanged_1116"="Nova senha é similar a antiga";
+
+"FPErrorFailedChangePassword_1117"="Falha ao alterar senha";
+
+"FPErrorFailedAccountNotFound_1118"="Conta não encontrada";
+
+"FPErrorFailedResetPasswordEmail_1119"="não foi possível enviar o e-mail de resetar conta para o seu endereço de e-mail";
+
+"FPErrorFailedWrongGameSetting_1120"="Configurações do jogo inválidas";
+
+"FPErrorFailedResetPasswordTemp_1121"="Você resetou muitas vezes, por favor tente novamente mais tarde";
+
+"FPErrorEmptyFPID_1122"="FPID em branco";
+
+"FPErrorWrongPlatformId_1123"="ID de plataforma incorreto";
+
+"FPErrorFailedToBindWithSocialID_1124"="Falha ao vincular o ID Social";
+
+"FPErrorReachLoginLimit_1125"="Limite de logins excedido";
+
+"FPErrorEmailTooLong_1126"="E-mail muito longo";
+
+"FPErrorEmptySession_1127"="Sessão vazia";
+
+"FPErrorSessionNotFound_1128"="Sessão não encontrada";
+
+"FPErrorSessionExpired_1129"="Sessão expirada";
+
+"FPErrorSessionAppMismatch_1130"="Sessão e ID do jogo atual incompatíveis";
+
+"FPErrorWrongPlatformToken_1131"="Erro no token da plataforma";
+
+"FPErrorWrongPlatformType_1132"="Erro no tipo da plataforma";
+
+"FPErrorInvalidPlatformToken_1133"="Token da plataforma inválido";
+
+"FPErrorUnknownAccountType_1200"="Tipo de conta desconhecido";
+
+"FPErrorNotLoggedIn_1201"="Usuário não logado";
+
+"FPErrorAlreadyLoggedIn_1202"="Usuário já logado";
+
+"FPErrorIoginInProgress_1203"="Há outro login em progresso";
+
+"FPErrorWrongLoginParams_1204"="Parâmetros de login inválidos";
+
+"FPErrorFailedLoginAccount_1205"="Falha no login";
+
+"FPErrorAccountBoundToOther_1206"="Falha na vinculação da conta";
+
+"FPErrorFailedToConnectAccountServer_1207"="Falha ao conectar ao servidor de contas";
+
+"FPErrorFailedToParseAccountResponse_1208"="Falha ao analisar os dados de resposta da conta";
+
+"FPErrorWechatClientIssue_2000"="WeChat: Erro no cliente";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Ação cancelada pelo usuário";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: Falha no login do usuário";
+
+"FPErrorWechatDiffId_2003"="WeChat: Contas do WeChat inconsistentes";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Não se encontra na lista de Desbloqueados";
+
+"FPErrorWechatAccountBoundToOther_2005"="Esta conta do WeChat já está vinculada a outro ID FunPlus, por favor utilize outra conta do WeChat OU vincule com seu e-mail";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: Falha ao receber informações do usuário";
+
+"FPErrorWechatException_2007"="WeChat: Erro não definido";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: Falha ao receber informações de amigos";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Usuário não logado";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Falha no login do usuário";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Falha no recebimento dos dados do usuário";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Falha no envio de convite para o jogo";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Ação cancelada pelo usuário";
+
+"FPErrorFacebookException_2105"="Facebook: Exceção não definida";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Esta conta do Facebook já está vinculada a outro ID FunPlus, por favor utilize outra conta do Facebook OU vincule com seu e-mail";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Falha ao receber informações de amigos";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Permissão de amigos necessária";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: Usuário não logado";
+
+"FPErrorVkLoginFailed_2201"="VK: Falha no login do usuário";
+
+"FPErrorVkCaptchaError_2202"="VK: Erro de captcha";
+
+"FPErrorVkAccessDenied_2203"="VK: Acesso não permitido";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Falha na aceitação do token do usuário";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Falha ao receber token do usuário";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Falha na renovação do token";
+
+"FPErrorVkException_2207"="VK: Exceção não definida";
+
+"FPErrorVkUserCanceledAction_2208"="VK: Ação cancelada pelo usuário";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Falha no recebimento dos dados do usuário";
+
+"FPErrorVkAccountBoundToOther_2210"="Esta conta do VK já está vinculada a outro ID FunPlus, por favor utilize outra conta do VK para vincular.";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Falha ao receber informações de amigos";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Esta conta do Game Center já está vinculada a outro ID FunPlus, por favor utilize outra conta do Game Center para vincular.";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Falha na conexão com o servidor de pagamento";
+
+"FPErrorInvalidPaymentRequestData_3001"="Dados de requisição de pagamento inválidos";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Falha ao analisar os dados de resposta do pagamento";
+
+"FPErrorPaymentResponseError_3003"="Dados de resposta do pagamento inválidos";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Erro de inicialização";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Falha na compra";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Conta Google não configurada";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Não foi possível completar a compra";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Falha na compra";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Informação do produto inválida";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: ID do produto inválido";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Raiz local não encontrada";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

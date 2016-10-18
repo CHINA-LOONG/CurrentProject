@@ -311,6 +311,22 @@ public class AwardItems {
 		}
 		return 0;
 	}
+	
+	/**
+	 * 获取奖励物品
+	 * @param type
+	 * @param itemId
+	 * @return
+	 */
+	public RewardItem.Builder getRewradItem(int type, String itemId){
+		for (RewardItem.Builder rewardItem : rewardInfo.getRewardItemsBuilderList()) {
+			if (rewardItem.getType() == type && itemId.equals(rewardItem.getItemId())) {
+				return rewardItem;
+			}
+		}
+		
+		return null;
+	}
 
 	public AwardItems addFreeGold(int gold) {
 		if (gold > 0) {

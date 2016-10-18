@@ -40,6 +40,8 @@ public class PetDetailsLeft : MonoBehaviour,
     public GameObject objDispositionTips;
     public Text textDisName;
     public Text textDisDesc;
+    public GameObject objEquipTips;
+    public Text textEquipTips;
     public bool IsLocked
     {
         get { return curData.pbUnit.IsLocked(); }
@@ -79,6 +81,8 @@ public class PetDetailsLeft : MonoBehaviour,
             if (fields[i] != null)
             {
                 fields[i].iClickBack = this;
+                ScrollViewEventListener.Get(fields[i].IconPos.gameObject).onDown = OnFieldPointerEnter;
+                ScrollViewEventListener.Get(fields[i].IconPos.gameObject).onUp = OnFieldPointerExit;
             }
         }
     }
@@ -109,10 +113,12 @@ public class PetDetailsLeft : MonoBehaviour,
 
     void SetDisposition(int index)
     {
-        btnDisposition.image.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("chongwu_xinge"+ index);
-        SpriteState state = btnDisposition.spriteState;
-        state.pressedSprite = ResourceMgr.Instance.LoadAssetType<Sprite>("chongwu_xinge" + index + "_anxia");
-        btnDisposition.spriteState = state;
+        Sprite sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(StaticDataMgr.Instance.GetCharacterData(index).picture);
+        if (sprite != null)
+        {
+            btnDisposition.image.sprite = sprite;
+
+        }
     }
 
     void OnDispositionDown(GameObject go)
@@ -124,6 +130,21 @@ public class PetDetailsLeft : MonoBehaviour,
     void OnDispositionUp(GameObject go)
     {
         objDispositionTips.SetActive(false);
+    }
+
+    public void OnFieldPointerEnter(GameObject go)
+    {
+        objEquipTips.SetActive(true);
+        UIUtil.SetParentReset(objEquipTips.transform, go.transform);
+        RectTransform rectTrans = objEquipTips.transform as RectTransform;
+        rectTrans.anchoredPosition = Vector2.zero;
+        EquipField field = go.GetComponentInParent<EquipField>();
+        textEquipTips.text = curUnitData.EquipAttr + ItemStaticData.GetEquipPart((int)field.Part);
+    }
+
+    public void OnFieldPointerExit(GameObject go)
+    {
+        objEquipTips.SetActive(false);
     }
 
     public void RefreshLevelExp(int level, int exp)

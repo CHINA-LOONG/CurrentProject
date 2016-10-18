@@ -1,0 +1,194 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Geen fout";
+
+"ErrorUnspecific_9999"="Fout niet gedefinieerd";
+
+"FPErrorNotInstall_0100"="SDK installatie mislukt";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Verbinden met configuratieserver mislukt";
+
+"FPErrorInvalidConfigRequestData_0102"="Data opvragen van configuratieserver mislukt";
+
+"FPErrorFailedToParseConfig_0103"="Data verwerkingsfout";
+
+"FPErrorInvalidConfigData_0104"="Ongeldige spelconfiguratie";
+
+"FPErrorWrongSignature_1101"="Ondertekening incorrect";
+
+"FPErrorFailedCreateID_1102"="FunPlus ID aanmaken mislukt, probeer het later nog eens";
+
+"FPErrorWrongGameID_1103"="Spel ID incorrect";
+
+"FPErrorWrongEmail_1104"="E-mail incorrect";
+
+"FPErrorWrongPassword_1105"="Wachtwoord incorrect";
+
+"FPErrorWrongGUID_1106"="GUID ongeldig";
+
+"FPErrorEmailExisted_1107"="E-mail is al gebruikt";
+
+"FPErrorFailedCreateAccount_1108"="Account aanmaken mislukt";
+
+"FPErrorAccountBound_1109"="Dit account is al verbonden";
+
+"FPErrorEmailNotFound_1110"="E-mail niet gevonden.";
+
+"FPErrorLoginFailed_1111"="Inloggen mislukt";
+
+"FPErrorPasswordLength_1112"="Wachtwoord is te lang";
+
+"FPErrorFailedResetPassword_1113"="Wachtwoord opnieuw instellen mislukt";
+
+"FPErrorWrongResetPasswordToken_1114"="Wachtwoord opnieuw instellen mislukt: token is ongeldig";
+
+"FPErrorEmptyResetPasswordToken_1115"="Wachtwoord opnieuw instellen mislukt: token is leeg";
+
+"FPErrorPasswordNotChanged_1116"="Nieuw wachtwoord lijkt veel op het oude";
+
+"FPErrorFailedChangePassword_1117"="Wachtwoord veranderen mislukt";
+
+"FPErrorFailedAccountNotFound_1118"="Account niet gevonden";
+
+"FPErrorFailedResetPasswordEmail_1119"="E-mail voor wachtwoord opnieuw instellen kon niet worden verzonden naar je E-mail adres";
+
+"FPErrorFailedWrongGameSetting_1120"="Ongeldige spelinstellingen";
+
+"FPErrorFailedResetPasswordTemp_1121"="Je hebt je wachtwoord te vaak opnieuw ingesteld, probeer het later nog eens";
+
+"FPErrorEmptyFPID_1122"="FPID is leeg";
+
+"FPErrorWrongPlatformId_1123"="Platform ID incorrect";
+
+"FPErrorFailedToBindWithSocialID_1124"="Verbinden met Sociaal ID mislukt";
+
+"FPErrorReachLoginLimit_1125"="Inloglimiet overschreden";
+
+"FPErrorEmailTooLong_1126"="E-mail te lang";
+
+"FPErrorEmptySession_1127"="Sessie is leeg";
+
+"FPErrorSessionNotFound_1128"="Sessie niet gevonden";
+
+"FPErrorSessionExpired_1129"="Sessie verlopen";
+
+"FPErrorSessionAppMismatch_1130"="Sessie en huidig spel ID komen niet overeen";
+
+"FPErrorWrongPlatformToken_1131"="Platform token fout";
+
+"FPErrorWrongPlatformType_1132"="Platform type fout";
+
+"FPErrorInvalidPlatformToken_1133"="Platform token ongeldig";
+
+"FPErrorUnknownAccountType_1200"="Account type onbekend";
+
+"FPErrorNotLoggedIn_1201"="Gebruiker niet ingelogd";
+
+"FPErrorAlreadyLoggedIn_1202"="Gebruiker is al ingelogd";
+
+"FPErrorIoginInProgress_1203"="Andere login is in behandeling";
+
+"FPErrorWrongLoginParams_1204"="Login parameters ongeldig";
+
+"FPErrorFailedLoginAccount_1205"="Inloggen mislukt
+";
+
+"FPErrorAccountBoundToOther_1206"="Account verbinden mislukt";
+
+"FPErrorFailedToConnectAccountServer_1207"="Verbinden met account server mislukt";
+
+"FPErrorFailedToParseAccountResponse_1208"="Verwerken account respons data mislukt";
+
+"FPErrorWechatClientIssue_2000"="WeChat: fout in app";
+
+"FPErrorWechatUserCancel_2001"="WeChat: handeling geannuleerd door gebruiker";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: inloggen gebruiker mislukt";
+
+"FPErrorWechatDiffId_2003"="WeChat: inconsistente WeChat accounts";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: niet in toegestane apps";
+
+"FPErrorWechatAccountBoundToOther_2005"="Dit WeChat account is al verbonden met een ander FunPlus ID. Gebruik een ander WeChat account of verbind met je E-mail.";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: gebruikersdata ophalen mislukt";
+
+"FPErrorWechatException_2007"="WeChat: ongedefinieerde fout";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: data van vrienden ophalen mislukt";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: gebruiker niet ingelogd";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: inloggen gebruiker mislukt";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: gebruikersdata ophalen mislukt";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: speluitnodiging versturen mislukt";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: handeling geannuleerd door gebruiker";
+
+"FPErrorFacebookException_2105"="Facebook: ongedefinieerde uitzondering";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Dit Facebook account is al verbonden met een ander FunPlus ID. Gebruik een ander Facebook account of verbind met je E-mail.";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: data van vrienden ophalen mislukt";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: toestemming voor vrienden vereist";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: gebruiker niet ingelogd";
+
+"FPErrorVkLoginFailed_2201"="VK: inloggen gebruiker mislukt";
+
+"FPErrorVkCaptchaError_2202"="VK: captcha fout";
+
+"FPErrorVkAccessDenied_2203"="VK: toegang geweigerd";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: gebruikerstoken accepteren mislukt";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: gebruikerstoken ophalen mislukt";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: token vernieuwen mislukt";
+
+"FPErrorVkException_2207"="VK: ongedefinieerde uitzondering";
+
+"FPErrorVkUserCanceledAction_2208"="VK: handeling geannuleerd door gebruiker";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: gebruikersdata ophalen mislukt";
+
+"FPErrorVkAccountBoundToOther_2210"="Dit VK account is al verbonden met een ander FunPlus ID. Gebruik een ander VK account.";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: data van vrienden ophalen mislukt";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Dit Game Center account is al verbonden met een ander FunPlus ID. Gebruik een ander Game Center account.";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Verbinding met betaalserver mislukt";
+
+"FPErrorInvalidPaymentRequestData_3001"="Betaalverzoek data ongeldig";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Verwerken betalingsrespons data mislukt";
+
+"FPErrorPaymentResponseError_3003"="Betaalserver respons ongeldig";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: initialisatie fout";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: aankoop mislukt";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Google account niet geconfigureerd";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: aankoop kan niet worden voltooid";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: aankoop mislukt";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: productinformatie ongeldig";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Product ID ongeldit";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: factuurdata kan niet worden opgehaald";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

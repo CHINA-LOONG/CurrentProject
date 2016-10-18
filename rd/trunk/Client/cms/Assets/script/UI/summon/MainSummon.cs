@@ -63,9 +63,14 @@ public class MainSummon : UIBase
     //---------------------------------------------------------------------------
     void Exit(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(MainSummon.ViewName);
-         mMainStageControl.QuitSelectGroup();
-         UIIm.Instance.HideIm(false);
+        RequestCloseUi();
+         
+    }
+    public override void CloseUi()
+    {
+        base.CloseUi();
+        mMainStageControl.QuitSelectGroup();
+        UIIm.Instance.HideIm(false);
     }
     //---------------------------------------------------------------------------
     void SetFree(bool isfree,GameObject free1,GameObject free2)

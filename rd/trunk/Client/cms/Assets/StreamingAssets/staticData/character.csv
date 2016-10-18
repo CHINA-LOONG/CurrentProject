@@ -1,9 +1,9 @@
-ï»¿#NUM,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM
-index,name,desc,physicsWeight,magicWeight,cureMagicWeight,gainWeight,negativeWeight,defenseWeight,tauntDefenseWeight
-#æ€§æ ¼ID,æ€§æ ¼åç§°,æ€§æ ¼æè¿°,ç‰©ç†æ”»å‡»æƒé‡,æ³•æœ¯æ”»å‡»æƒé‡,æ²»ç–—æ³•æœ¯æƒé‡ï¼Œä¸æ³•æœ¯æ”»å‡»æƒé‡äº’æ–¥,å¢ç›Šæ•ˆæœæ”»å‡»æƒé‡,å‡ç›Šæ•ˆæœæƒé‡ï¼Œå’ŒgainWeightäº’æ–¥,é˜²å¾¡æ•ˆæœæƒé‡,æœ‰è‡ªèº«å˜²è®½buffé˜²å¾¡çš„æƒé‡ï¼Œä¸é˜²å¾¡äº’æ–¥
-1,Valor,descrip_valor,8000,1000,1,1000,1000,1,0
-2,Spiritual,descrip_spiritual,1000,8000,1,1000,1000,1,0
-3,Mischievous,descrip_mischievous,1000,1000,1,1,8000,1,0
-4,Collaborate,descrip_collaborate,1000,1000,1,8000,1,1,0
-5,Compassion,descrip_compassion,1000,1000,8000,1000,1000,1,0
-6,Humility,descrip_humility,3000,3000,1,3000,3000,1000,6000
+#NUM,TEXT,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+index,name,desc,picture,physicsWeight,magicWeight,cureMagicWeight,gainWeight,negativeWeight,defenseWeight,tauntDefenseWeight
+#ĞÔ¸ñID,ĞÔ¸ñÃû³Æ,ĞÔ¸ñÃèÊö,ĞÔ¸ñÍ¼Æ¬,ÎïÀí¹¥»÷È¨ÖØ,·¨Êõ¹¥»÷È¨ÖØ,ÖÎÁÆ·¨ÊõÈ¨ÖØ£¬Óë·¨Êõ¹¥»÷È¨ÖØ»¥³â,ÔöÒæĞ§¹û¹¥»÷È¨ÖØ,¼õÒæĞ§¹ûÈ¨ÖØ£¬ºÍgainWeight»¥³â,·ÀÓùĞ§¹ûÈ¨ÖØ,ÓĞ×ÔÉí³°·íbuff·ÀÓùµÄÈ¨ÖØ£¬Óë·ÀÓù»¥³â
+1,Valor,descrip_valor,,8000,1000,1,1000,1000,1,0
+2,Spiritual,descrip_spiritual,,1000,8000,1,1000,1000,1,0
+3,Mischievous,descrip_mischievous,,1000,1000,1,1,8000,1,0
+4,Collaborate,descrip_collaborate,,1000,1000,1,8000,1,1,0
+5,Compassion,descrip_compassion,,1000,1000,8000,1000,1000,1,0
+6,Humility,descrip_humility,,3000,3000,1,3000,3000,1000,6000

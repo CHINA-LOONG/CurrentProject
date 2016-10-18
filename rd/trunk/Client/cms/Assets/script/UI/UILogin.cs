@@ -62,7 +62,7 @@ public class UILogin : UIBase
 
     void OnFunPlusButtonClicked(GameObject go)
     {
-        FunplusAccount.GetInstance().OpenSession();
+        FunplusAccount.Instance.OpenSession();
     }
 
     void OnFunPlusGetPuid(string funplusPuid) {

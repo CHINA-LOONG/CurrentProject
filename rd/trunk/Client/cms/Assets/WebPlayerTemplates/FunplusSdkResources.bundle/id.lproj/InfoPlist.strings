@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Tidak ada error";
+
+"ErrorUnspecific_9999"="Error tidak spesifik";
+
+"FPErrorNotInstall_0100"="Gagal menginstal SDK";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Gagal menghubungi server config";
+
+"FPErrorInvalidConfigRequestData_0102"="Gagal meminta data dari server config";
+
+"FPErrorFailedToParseConfig_0103"="Gagal mengurai config";
+
+"FPErrorInvalidConfigData_0104"="Config permainan tidak valid";
+
+"FPErrorWrongSignature_1101"="Tanda tangan salah";
+
+"FPErrorFailedCreateID_1102"="Gagal membuat ID FunPlus, silakan coba kembali";
+
+"FPErrorWrongGameID_1103"="ID permainan tidak valid";
+
+"FPErrorWrongEmail_1104"="Email tidak valid";
+
+"FPErrorWrongPassword_1105"="Kata sandi tidak valid";
+
+"FPErrorWrongGUID_1106"="GUID tidak valid";
+
+"FPErrorEmailExisted_1107"="Email telah digunakan";
+
+"FPErrorFailedCreateAccount_1108"="Gagal membuat akun";
+
+"FPErrorAccountBound_1109"="Akun ini telah diikat";
+
+"FPErrorEmailNotFound_1110"="Tidak dapat menemukan email";
+
+"FPErrorLoginFailed_1111"="Masuk gagal";
+
+"FPErrorPasswordLength_1112"="Error panjang kata sandi";
+
+"FPErrorFailedResetPassword_1113"="Gagal reset kata sandi";
+
+"FPErrorWrongResetPasswordToken_1114"="Reset kata sandi gagal karena token tidak valid";
+
+"FPErrorEmptyResetPasswordToken_1115"="Reset kata sandi gagal karena token kosong";
+
+"FPErrorPasswordNotChanged_1116"="Kata sandi baru mirip dengan yang lama";
+
+"FPErrorFailedChangePassword_1117"="Gagal ganti kata sandi";
+
+"FPErrorFailedAccountNotFound_1118"="Akun tidak ditemukan";
+
+"FPErrorFailedResetPasswordEmail_1119"="Tidak dapat mengirim reset kata sandi ke alamat email anda";
+
+"FPErrorFailedWrongGameSetting_1120"="Pengaturan permainan tidak valid";
+
+"FPErrorFailedResetPasswordTemp_1121"="Anda telah mereset kata sandi berulang kali, silakan coba lagi";
+
+"FPErrorEmptyFPID_1122"="FPID kosong";
+
+"FPErrorWrongPlatformId_1123"="Platform ID salah";
+
+"FPErrorFailedToBindWithSocialID_1124"="Gagal ikat dengan ID sosial";
+
+"FPErrorReachLoginLimit_1125"="Melebihi limit masuk";
+
+"FPErrorEmailTooLong_1126"="Email terlalu panjang";
+
+"FPErrorEmptySession_1127"="Sesi kosong";
+
+"FPErrorSessionNotFound_1128"="Sesi tidak ditemukan";
+
+"FPErrorSessionExpired_1129"="Sesi kadaluarsa";
+
+"FPErrorSessionAppMismatch_1130"="Sesi dan ID permainan saat ini tidak cocok";
+
+"FPErrorWrongPlatformToken_1131"="Error token Platform";
+
+"FPErrorWrongPlatformType_1132"="Error tipe Platform";
+
+"FPErrorInvalidPlatformToken_1133"="Token Platform tidak valid";
+
+"FPErrorUnknownAccountType_1200"="Tipe akun tidak diketahui";
+
+"FPErrorNotLoggedIn_1201"="Pengguna tidak masuk";
+
+"FPErrorAlreadyLoggedIn_1202"="Pengguna sudah masuk";
+
+"FPErrorIoginInProgress_1203"="Masuk lain sedang dalam proses";
+
+"FPErrorWrongLoginParams_1204"="Parameter masuk tidak valid";
+
+"FPErrorFailedLoginAccount_1205"="Masuk gagal";
+
+"FPErrorAccountBoundToOther_1206"="Gagal ikat akun";
+
+"FPErrorFailedToConnectAccountServer_1207"="Gagal menghubungkan server akun";
+
+"FPErrorFailedToParseAccountResponse_1208"="Gagal mengurai data respon akun";
+
+"FPErrorWechatClientIssue_2000"="WeChat: Error klien";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Pengguna membatalkan aksi";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: Pengguna gagal masuk";
+
+"FPErrorWechatDiffId_2003"="WeChat: Akun WeChat tidak konsisten";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Tidak dalam Daftar Putih";
+
+"FPErrorWechatAccountBoundToOther_2005"="Akun WeChat ini telah diikat ke ID FunPlus lain, silakan ganti akun WeChat ATAU ikat dengan email";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: Gagal mendapatkan informasi pengguna";
+
+"FPErrorWechatException_2007"="WeChat: Error tak terdefinisi";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: Gagal mendapatkan informasi teman";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Pengguna tidak masuk";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Pengguna gagal masuk";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Gagal mendapatkan data pengguna";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Gagal mengirim undangan permainan";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Pengguna membatalkan aksi";
+
+"FPErrorFacebookException_2105"="Facebook: Pengecualian tak terdefinisi";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Akun Facebook ini telah diikat ke ID FunPlus lain, silakan ganti akun Facebook ATAU ikat dengan email";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Gagal mendapatkan data teman";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Membutukan izin teman";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: Pengguna tidak masuk";
+
+"FPErrorVkLoginFailed_2201"="VK: Pengguna gagal masuk";
+
+"FPErrorVkCaptchaError_2202"="VK: Error captcha";
+
+"FPErrorVkAccessDenied_2203"="VK: Akses ditolak";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Pengguna gagal menerima token";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Gagal mendapatkan token pengguna";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Gagal memperbarui token";
+
+"FPErrorVkException_2207"="VK: Pengecualian tak terdefinisi";
+
+"FPErrorVkUserCanceledAction_2208"="VK: Pengguna membatalkan aksi";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Gagal mendapatkan data pengguna";
+
+"FPErrorVkAccountBoundToOther_2210"="Akun VK ini telah diikat ke ID FunPlus lain, silakan ganti akun VK lain";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Gagal mendapatkan data teman";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Akun Game Center ini telah diikat ke ID FunPlus lain, silakan ganti akun Game Center lain";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Koneksi ke server pembayaran gagal";
+
+"FPErrorInvalidPaymentRequestData_3001"="Data permintaan pembayaran tidak valid";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Gagal mengurai data respon pembayaran";
+
+"FPErrorPaymentResponseError_3003"="Respon server pembayaran tidak valid";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Error inisialisasi";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Pembelian gagal";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Akun Google tidak dikonfigurasi";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Tidak dapat menyelesaikan pembelian";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Pembelian gagal";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Info produk tidak valid";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: ID produk tidak valid";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Root lokal tidak ditemukan";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

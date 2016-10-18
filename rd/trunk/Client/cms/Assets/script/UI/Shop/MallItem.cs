@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using BestHTTP;
+using Funplus;
 
 public class MallItem : MonoBehaviour 
 {
@@ -43,12 +44,13 @@ public class MallItem : MonoBehaviour
 	void OnItemButtonClicked(GameObject go)
 	{
 		Logger.Log ("Store buy item!!!");
-		StartCoroutine (BuyItem ());
-
+		//StartCoroutine ();
+        BuyItem();
 	}
 
-	IEnumerator  BuyItem()
+	void BuyItem()
 	{
+        /*
 		string url = "http://123.59.45.55:9600/test";
 		//string url = "http://192.168.199.177:9600/test";
 
@@ -70,6 +72,10 @@ public class MallItem : MonoBehaviour
 		string retjson = httpRquest.Response.DataAsText;
 		Logger.LogError ("buy item returnjson = " + retjson);
 		Hashtable ht = MiniJsonExtensions.hashtableFromJson (retjson);
+        */
+
+        UINetRequest.Open();
+        FunplusPayment.Instance.Buy(rechargeStaticData.id, GameDataMgr.Instance.ShopDataMgrAttr.orderThroughCargo);
 	}
 
 }

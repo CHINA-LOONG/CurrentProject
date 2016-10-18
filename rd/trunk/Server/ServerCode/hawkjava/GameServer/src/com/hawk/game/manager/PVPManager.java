@@ -386,7 +386,7 @@ public class PVPManager extends HawkAppObj {
 				}
 			}
 			
-			if (stageList == null || stageList.size() <= 0) {
+			if (i == 0 || stageList == null || stageList.size() <= 0) {
 				player.sendError(HS.code.PVP_MATCH_TARGET_C_VALUE, Status.pvpError.PVP_NOT_MATCH_TARGET_VALUE);
 				return;
 			}			

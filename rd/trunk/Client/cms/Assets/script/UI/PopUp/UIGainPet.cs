@@ -8,7 +8,9 @@ public class UIGainPet : UIBase
     public static string ViewName = "UIGainPet";
     public Button mConfirmBtn;
     public Text mConfirmBtnText;
+    public GameObject mGainPetTipRoot;
     public Text mGainPetText;
+    public Image mGainPetRareImg;
 
     private GameObject mGainPetRender;
     private BattleObject mGainPetBo;
@@ -21,7 +23,7 @@ public class UIGainPet : UIBase
         mGainPetEndTime = -1.0f;
         mConfirmBtnText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         mConfirmBtn.gameObject.SetActive(false);
-        mGainPetText.gameObject.SetActive(false);
+        mGainPetTipRoot.gameObject.SetActive(false);
         mFadeWhite = Camera.main.GetComponent<Fade>();
     }
     //---------------------------------------------------------------------------------------------
@@ -33,7 +35,7 @@ public class UIGainPet : UIBase
             mGainPetEndTime = -1.0f;
 
             mConfirmBtn.gameObject.SetActive(true);
-            mGainPetText.gameObject.SetActive(true);
+            mGainPetTipRoot.gameObject.SetActive(true);
             //mGainPetBo.TriggerEvent("chuchang", Time.time, null);
         }
     }
@@ -91,7 +93,9 @@ public class UIGainPet : UIBase
             Logger.LogError("the gain pet camera already created!");
         }
 
-        mGainPetText.text = StaticDataMgr.Instance.GetTextByID("gain_pet") + gainPet.name;
+        mGainPetText.text = gainPet.name;// StaticDataMgr.Instance.GetTextByID("gain_pet") + gainPet.name;
+        string rarityAsset = UIUtil.GetRareImg(gainPet.rarity);
+        mGainPetRareImg.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(rarityAsset) as Sprite;
 
         mGainPetRender = ResourceMgr.Instance.LoadAsset("GainPetCamera");
         if (mGainPetRender != null)

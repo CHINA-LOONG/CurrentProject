@@ -38,6 +38,7 @@ public class UIAdventureTeams : UIBase,
     }
     public override void Init()
     {
+        base.Init();
         RefreshData();
     }
     public override void Clean()
@@ -79,8 +80,12 @@ public class UIAdventureTeams : UIBase,
 
     void OnClickCloseBtn()
     {
+        RequestCloseUi();
+    }
+    public override void CloseUi()
+    {
         scrollView.CleanContent();
-        UIMgr.Instance.CloseUI_(this);
+        base.CloseUi();
     }
 
 

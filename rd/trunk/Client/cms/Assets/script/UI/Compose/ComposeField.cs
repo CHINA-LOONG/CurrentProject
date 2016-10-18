@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ComposeField : MonoBehaviour
 {
     public Transform transPos;
     [HideInInspector]
     public ItemIcon itemIcon;
-    public GameObject objMask;
+    public Image imageField;
     [HideInInspector]
     public ItemData curData;
     private System.Action<ComposeField> onClickBack;
+    private Sprite fieldActive;
+    private Sprite fieldUnactive;
 
     public void Initialize()
     {
@@ -54,7 +57,22 @@ public class ComposeField : MonoBehaviour
 
     public void SetDisable(bool disable)
     {
-        objMask.SetActive(disable);
+        if (disable)
+        {
+            if (fieldUnactive==null)
+            {
+                fieldUnactive = ResourceMgr.Instance.LoadAssetType<Sprite>("hecheng_tubiaokuang1");
+            }
+            imageField.sprite = fieldUnactive;
+        }
+        else
+        {
+            if (fieldActive==null)
+            {
+                fieldActive = ResourceMgr.Instance.LoadAssetType<Sprite>("hecheng_tubiaokuang2");
+            }
+            imageField.sprite = fieldActive;
+        }
     }
 
     void OnClickItem(GameObject go)

@@ -1,7 +1,9 @@
 ﻿#NUM,NUM,TEXT,TEXT
 id,scene,tips,picture
 id,场景,提示信息组,展示内容组
-1,1,"惇亲王的文档起钉器,到期未到期到期未到期的",Q
-2,2,"竞技体育竞技体育,各位哥和热火",S
-3,7,"大叔大婶,范围分为非,绯闻绯闻",null
-4,6,"绯闻绯闻,顾问违规为",null
+1,1,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
+2,2,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
+3,3,loading_tips7,"bingxuenvwang,jiuweihu"
+4,4,"loading_tips5,loading_tips6","bingxuenvwang,jiuweihu"
+5,5,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
+6,6,"loading_tips8,loading_tips9,loading_tips10,loading_tips11,loading_tips12,loading_tips13,loading_tips14",null

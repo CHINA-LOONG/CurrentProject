@@ -179,7 +179,8 @@ public class EquipForge : EquipInfoBase
                 if (curDemand[i].itemId.Equals(((int)PB.changeType.CHANGE_COIN).ToString()))
                 {
                     imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(BattleConst.icon_jinbi);
-                    if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count)
+                    ItemStaticData itemData= StaticDataMgr.Instance.GetItemData(curData.equipId);
+                    if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count* itemData.forgeAdjust)
                     {
                         textCoin.color = ColorConst.text_color_nReq;
                         enoughCoin = false;

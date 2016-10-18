@@ -1351,8 +1351,7 @@ public class Player extends HawkAppObj {
 		while (mailList.size() > GsConst.MAX_MAIL_COUNT) {
 			MailEntity mailEntity = mailList.get(0);
 			mailEntity.setState((byte)Const.mailState.OVERFLOW_VALUE);
-			mailEntity.setInvalid(true);
-			mailEntity.notifyUpdate(true);
+			mailEntity.delete();
 			overflowList.add(mailEntity.getId());
 			mailList.remove(0);
 

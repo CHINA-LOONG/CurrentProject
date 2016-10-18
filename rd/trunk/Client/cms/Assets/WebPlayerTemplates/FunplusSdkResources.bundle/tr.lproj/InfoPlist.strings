@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Hata yok";
+
+"ErrorUnspecific_9999"="Hata belirlenemedi";
+
+"FPErrorNotInstall_0100"="Yazılım Geliştirme Kiti yüklenemedi";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Konfigürasyon ağına bağlanılamadı";
+
+"FPErrorInvalidConfigRequestData_0102"="";
+
+"FPErrorFailedToParseConfig_0103"="Çözümleme konfigürasyonu başarısız";
+
+"FPErrorInvalidConfigData_0104"="Geçersiz oyun konfigürasyonu";
+
+"FPErrorWrongSignature_1101"="İmza geçersiz";
+
+"FPErrorFailedCreateID_1102"="FunPlus ID oluştuma başarısız, lütfen yenidene deneyin";
+
+"FPErrorWrongGameID_1103"="Geçersiz oyun ID";
+
+"FPErrorWrongEmail_1104"="Geçersiz e-posta";
+
+"FPErrorWrongPassword_1105"="Geçersiz şifre";
+
+"FPErrorWrongGUID_1106"="Geçersiz GUID";
+
+"FPErrorEmailExisted_1107"="Bu e-posta adresi önceden kullanılmış";
+
+"FPErrorFailedCreateAccount_1108"="Hesap oluşturma başarısız";
+
+"FPErrorAccountBound_1109"="Bu hesap zaten bağlanmış";
+
+"FPErrorEmailNotFound_1110"="E-posta bulunamıyor";
+
+"FPErrorLoginFailed_1111"="Giriş başarısız";
+
+"FPErrorPasswordLength_1112"="Şifre uzunluğu hatası";
+
+"FPErrorFailedResetPassword_1113"="Şifre sıfırlama başarısız";
+
+"FPErrorWrongResetPasswordToken_1114"="Geçersiz bilgi yüzünden şifre sıfırlama başarısız";
+
+"FPErrorEmptyResetPasswordToken_1115"="Boş bilgi yüzünden şifre sıfırlama başarısız";
+
+"FPErrorPasswordNotChanged_1116"="Yeni şifre eskisine benziyor";
+
+"FPErrorFailedChangePassword_1117"="Şifre değiştirme başarısız";
+
+"FPErrorFailedAccountNotFound_1118"="Hesap bulunamadı";
+
+"FPErrorFailedResetPasswordEmail_1119"="E-posta adresinize şifre sıfırlama postası gönderilemedi";
+
+"FPErrorFailedWrongGameSetting_1120"="Geçersiz oyun ayarları";
+
+"FPErrorFailedResetPasswordTemp_1121"="Şifrenizi çok sık sıfırladınız, sonra yeniden deneyiniz";
+
+"FPErrorEmptyFPID_1122"="Boş FPID";
+
+"FPErrorWrongPlatformId_1123"="Yanlış platform ID";
+
+"FPErrorFailedToBindWithSocialID_1124"="Sosyal ID ile bağlama başarısız";
+
+"FPErrorReachLoginLimit_1125"="Giriş sınırı aşıldı";
+
+"FPErrorEmailTooLong_1126"="E-posta çok uzun";
+
+"FPErrorEmptySession_1127"="Oturum boş";
+
+"FPErrorSessionNotFound_1128"="Oturum bulunamadı";
+
+"FPErrorSessionExpired_1129"="Oturum süresi doldu";
+
+"FPErrorSessionAppMismatch_1130"="Oturum ve şu anki oyun ID'si eşleşmiyor";
+
+"FPErrorWrongPlatformToken_1131"="Platform bilgisi hatası";
+
+"FPErrorWrongPlatformType_1132"="Platform türü hatası";
+
+"FPErrorInvalidPlatformToken_1133"="Platform bilgisi geçersiz";
+
+"FPErrorUnknownAccountType_1200"="Hesap türü bilinmiyor";
+
+"FPErrorNotLoggedIn_1201"="Kullanıcı girişi yapılmadı";
+
+"FPErrorAlreadyLoggedIn_1202"="Kullanıcı zaten giriş yapmış";
+
+"FPErrorIoginInProgress_1203"="Şu anda başka bir giriş yapılmakta";
+
+"FPErrorWrongLoginParams_1204"="Giriş parametreleri geçersiz";
+
+"FPErrorFailedLoginAccount_1205"="Giriş başarısız";
+
+"FPErrorAccountBoundToOther_1206"="Hesap bağlama başarısız";
+
+"FPErrorFailedToConnectAccountServer_1207"="Hesap sunucusuna bağlanma başarısız";
+
+"FPErrorFailedToParseAccountResponse_1208"="Hesap yanıt verisini çözme hatası";
+
+"FPErrorWechatClientIssue_2000"="WeChat: İstemci hatası";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Kullanıcı işlemi iptal etti";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: Kullanıcı girişi başarısız";
+
+"FPErrorWechatDiffId_2003"="WeChat: Tutarsız WeChat hesapları";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Beyaz listede değil";
+
+"FPErrorWechatAccountBoundToOther_2005"="Mevcut WeChat hesabı zaten bir FunPlus ID'sine bağlı. Lütfen FunPlus ID'nizi farklı bir WeChat hesabına bağlayın VEYA e-posta ile bağlanın";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: Kullanıcı verisini alma başarısız";
+
+"FPErrorWechatException_2007"="WeChat: Belirlenemeyen hata";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: Arkadaşların verisini alma başarısız";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Kullanıcı giriş yapmadı";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Kullanıcı girişi başarısız";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Kullanıcı verisini alma başarısız";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Oyun daveti gönderme başarısız";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Kullanıcı işlemi iptal etti";
+
+"FPErrorFacebookException_2105"="Facebook: Belirlenemeyen özel durum";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Mevcut Facebook hesabı zaten bir FunPlus ID'sine bağlı. Lütfen FunPlus ID'nizi farklı bir Facebook hesabına bağlayın VEYA e-posta ile bağlanın";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Arkadaş verisini alma başarısız";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Arkadaşlara erişim izni gerekli";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: Kullanıcı giriş yapmadı";
+
+"FPErrorVkLoginFailed_2201"="VK: Kullanıcı girişi başarısız";
+
+"FPErrorVkCaptchaError_2202"="VK: Güvenlik kodu hatası";
+
+"FPErrorVkAccessDenied_2203"="VK: Giriş reddedildi";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Kullanıcı bilgi kabulü hatası";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Kullanıcı bilgisini alma hatalı";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Bilgi yenileme başarısız";
+
+"FPErrorVkException_2207"="VK: Tanımlanamayan özel durum";
+
+"FPErrorVkUserCanceledAction_2208"="VK: Kullanıcı işlemi iptal etti";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Kullanıcı verilerini alma başarısız";
+
+"FPErrorVkAccountBoundToOther_2210"="Mevcut VK hesabı zaten bir FunPlus ID'sine bağlı. Lütfen FunPlus ID'nizi farklı bir VK hesabına bağlayın.";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Arkadaşlar verisini alma başarısız";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Mevcut Game Center hesabı zaten bir FunPlus ID'sine bağlı. Lütfen FunPlus ID'nizi farklı bir Game Center hesabına bağlayın ya da e-posta ile bağlanın";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Ödeme sunucuna bağlanma başarısız";
+
+"FPErrorInvalidPaymentRequestData_3001"="Ödeme isteği verisi geçersiz";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Ödeme yanıt verisini çözümleme başarısız";
+
+"FPErrorPaymentResponseError_3003"="Ödeme sunucusu yanıtı geçersiz";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Başlatma hatası";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Ödeme başarısız";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Google hesabı yapılandırılmadı";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Ödemeyi tamamlama başarısız";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Ödeme başarısız";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Ürün bilgisi geçersiz";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Ürün ID geçersiz";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Makbuz verisi alınamıyor";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

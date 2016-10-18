@@ -1939,6 +1939,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9558318}
   text_Title: {fileID: 11453766}
   btn_Close: {fileID: 11434734}
   text_qianghua: {fileID: 11475118}

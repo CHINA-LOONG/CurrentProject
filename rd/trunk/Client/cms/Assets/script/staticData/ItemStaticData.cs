@@ -94,5 +94,31 @@ public class ItemStaticData
             return ItemInfo.valueof(targetItem, ItemParseType.DemandItemType);
         }
     }
-
+    public string PartAttr
+    {
+        get
+        {
+            return GetEquipPart(part);
+        }
+    }
+    public static string GetEquipPart(int part)
+    {
+        switch (part)
+        {
+            case 1:
+                return StaticDataMgr.Instance.GetTextByID("equip_Weapon");
+            case 2:
+                return StaticDataMgr.Instance.GetTextByID("equip_Armor");
+            case 3:
+                return StaticDataMgr.Instance.GetTextByID("equip_Helmet");
+            case 4:
+                return StaticDataMgr.Instance.GetTextByID("equip_Bracer");
+            case 5:
+                return StaticDataMgr.Instance.GetTextByID("equip_Ring");
+            case 6:
+                return StaticDataMgr.Instance.GetTextByID("equip_Jewelry");
+            default:
+                return "";
+        }
+    }
 }

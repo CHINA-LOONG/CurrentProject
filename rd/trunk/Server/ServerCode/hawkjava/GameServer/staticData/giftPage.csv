@@ -13,8 +13,8 @@ id,comments,name,title,desc,image,pointIcon,level,recharge,offlineDay,timeBegin,
 210,累计充值3,gift_name_115,gift_name_115,gift_desc_115,,,1,0_9999999,0,-1,-1,10,604800,0
 211,累计充值4,gift_name_115,gift_name_115,gift_desc_115,,,1,0_9999999,0,-1,-1,13,604800,0
 212,竞技场活动,gift_name_116,gift_name_116,gift_desc_116,libao_tianshizhang,icon_jingjichangjifen,12,0_9999999,0,-1,-1,12,604800,0
-213,通天塔活动,gift_name_117,gift_name_117,gift_desc_117,libao_tianshizhang,icon_tongtiantajifen,25,0_9999999,0,-1,-1,9,864000,0
+213,通天塔活动,gift_name_117,gift_name_117,gift_desc_117,libao_tianshizhang,icon_tongtiantajifen,25,0_9999999,0,-1,-1,15,864000,0
 214,公会活动,gift_name_118,gift_name_118,gift_desc_118,libao_tianshizhang,icon_gonghuijifen,20,0_9999999,0,-1,-1,14,864000,0
 215,大冒险活动,gift_name_119,gift_name_119,gift_desc_119,,,22,0_9999999,0,-1,-1,12,604800,0
 216,钻石抽奖活动,gift_name_120,gift_name_120,gift_desc_120,,,1,0_9999999,0,-1,-1,11,1209600,0
-217,综合活动,gift_name_121,gift_name_121,gift_desc_121,,,15,0_9999999,0,415,416,-1,0,0
+217,综合活动,gift_name_121,gift_name_121,gift_desc_121,,icon_ganenjifen,15,0_9999999,0,415,416,-1,0,0

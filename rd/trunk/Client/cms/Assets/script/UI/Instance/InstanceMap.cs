@@ -48,6 +48,12 @@ public class InstanceMap : UIBase
         OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
         AudioSystemMgr.Instance.PlayMusicByName("Instancemusic");
     }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        RefreshChapterButtons();
+        OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+    }
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(mInstanceList);
@@ -73,14 +79,14 @@ public class InstanceMap : UIBase
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int>(GameEventList.OpenNewChapter, OnOpenNewChapter);
-        GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
+        //GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.OpenNewChapter, OnOpenNewChapter);
-        GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
+      //  GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
 
@@ -130,8 +136,8 @@ public class InstanceMap : UIBase
     {
         RefreshChapterButtons();
     }
-
-    void OnShowInstanceList(string instanceId)
+    
+    public  void OpenInstanceList(string instanceId)
     {
         if (GameDataMgr.Instance.curInstanceType != (int)InstanceType.Normal)
             return;
@@ -145,6 +151,7 @@ public class InstanceMap : UIBase
             InstanceMap.Instance.OpenInstanceList(chapterIndex);
         }
     }
+    
 
     void OnHuoliChanged(int newHuoli)
     {

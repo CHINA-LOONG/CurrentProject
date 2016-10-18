@@ -78,16 +78,16 @@ name_20059_suipian_kahuna2,卡胡纳碎片（木）,Kahuna Fgmt(Grass),卡胡納
 name_20060_suipian_yifanmumian1,一反木棉碎片（光）,Ittan Momen Fgmt(Light),一反木棉碎片（光）
 name_20061_suipian_jinglingwang2,精灵王子碎片（木）,Prince Elve Fgmt(Grass),精靈王子碎片（木）
 name_20062_suipian_luoxinfu1,络新妇碎片（光）,Nephila Fgmt(Light),絡新婦碎片（光）
-name_20063_suipian_amute2,鳄鱼判官碎片（木）,Croc Warden Fgmt(Grass),
-name_20064_suipian_amute4,鳄鱼判官碎片（火）,Croc Warden Fgmt(Fire),
-name_20065_suipian_cike2,火刺壳碎片（木）,Fireshell Fgmt(Grass),
-name_20066_suipian_cike3,火刺壳碎片（水）,Fireshell Fgmt(Water),
-name_20067_suipian_longgongtongzi1,龙宫童子碎片（光）,Ryuku Doji Fgmt(Light),
-name_20068_suipian_yifanmumian3,一反木棉碎片（水）,Ittan Momen Fgmt(Water),
-name_20069_suipian_renyu3,人鱼碎片（水）,Mermaid Fgmt(Water),
-name_20070_suipian_shixianggui5,石像鬼碎片（暗）,Gargolye Fgmt(Dark),
-name_20071_suipian_senlinnvshen2,森林女神碎皮（木）,Dryad Fgmt(Grass),
-name_20072_suipian_bingxuenvwang5,冰雪女王碎片（暗）,Chione Fgmt(Dark),
+name_20063_suipian_amute2,鳄鱼判官碎片（木）,Croc Warden Fgmt(Grass),鱷魚判官碎片（木）
+name_20064_suipian_amute4,鳄鱼判官碎片（火）,Croc Warden Fgmt(Fire),鱷魚判官碎片（火）
+name_20065_suipian_cike2,火刺壳碎片（木）,Fireshell Fgmt(Grass),火刺殼碎片（木）
+name_20066_suipian_cike3,火刺壳碎片（水）,Fireshell Fgmt(Water),火刺殼碎片（水）
+name_20067_suipian_longgongtongzi1,龙宫童子碎片（光）,Ryuku Doji Fgmt(Light),龍宮童子碎片（光）
+name_20068_suipian_yifanmumian3,一反木棉碎片（水）,Ittan Momen Fgmt(Water),一反木棉碎片（水）
+name_20069_suipian_renyu3,人鱼碎片（水）,Mermaid Fgmt(Water),人魚碎片（水）
+name_20070_suipian_shixianggui5,石像鬼碎片（暗）,Gargolye Fgmt(Dark),石像鬼碎片（暗）
+name_20071_suipian_senlinnvshen2,森林女神碎皮（木）,Dryad Fgmt(Grass),森林女神碎皮（木）
+name_20072_suipian_bingxuenvwang5,冰雪女王碎片（暗）,Chione Fgmt(Dark),冰雪女王碎片（暗）
 name_30011_BloodStone_1,生命纹章lv1,Blood Insignia(lv1),生命紋章lv1
 name_30012_BloodStone_2,生命纹章lv2,Blood Insignia(lv2),生命紋章lv2
 name_30013_BloodStone_3,生命纹章lv3,Blood Insignia(lv3),生命紋章lv3
@@ -289,16 +289,16 @@ tips_20059_suipian_kahuna2,用于合成卡胡纳（木）,To craft Kahuna(Grass)
 tips_20060_suipian_yifanmumian1,用于合成一反木棉（光）,To craft Ittan Momen(Light),用於合成一反木棉（光）
 tips_20061_suipian_jinglingwang2,用于合成精灵王子（木）,To craft Prince Elve(Grass),用於合成精靈王子（木）
 tips_20062_suipian_luoxinfu1,用于合成络新妇（光）,To craft Nephila(Light),用於合成絡新婦（光）
-tips_20063_suipian_amute2,用于合成鳄鱼判官碎片（木）,To craft Croc Warden(Grass),
-tips_20064_suipian_amute4,用于合成鳄鱼判官碎片（火）,To craft Croc Warden(Fire),
-tips_20065_suipian_cike2,用于合成火刺壳碎片（木）,To craft Fireshell(Grass),
-tips_20066_suipian_cike3,用于合成火刺壳碎片（水）,To craft Fireshell(Water),
-tips_20067_suipian_longgongtongzi1,用于合成龙宫童子碎片（光）,To craft Ryuku Doji(Light),
-tips_20068_suipian_yifanmumian3,用于合成一反木棉碎片（水）,To craft Ittan Momen(Water),
-tips_20069_suipian_renyu3,用于合成人鱼碎片（水）,To craft Mermaid(Water),
-tips_20070_suipian_shixianggui5,用于合成石像鬼碎片（暗）,To craft Gargolye(Dark),
-tips_20071_suipian_senlinnvshen2,用于合成森林女神碎皮（木）,To craft Dryad(Grass),
-tips_20072_suipian_bingxuenvwang5,用于合成冰雪女王碎片（暗）,To craft Chione(Dark),
+tips_20063_suipian_amute2,用于合成鳄鱼判官碎片（木）,To craft Croc Warden(Grass),用於合成鱷魚判官碎片（木）
+tips_20064_suipian_amute4,用于合成鳄鱼判官碎片（火）,To craft Croc Warden(Fire),用於合成鱷魚判官碎片（火）
+tips_20065_suipian_cike2,用于合成火刺壳碎片（木）,To craft Fireshell(Grass),用於合成火刺殼碎片（木）
+tips_20066_suipian_cike3,用于合成火刺壳碎片（水）,To craft Fireshell(Water),用於合成火刺殼碎片（水）
+tips_20067_suipian_longgongtongzi1,用于合成龙宫童子碎片（光）,To craft Ryuku Doji(Light),用於合成龍宮童子碎片（光）
+tips_20068_suipian_yifanmumian3,用于合成一反木棉碎片（水）,To craft Ittan Momen(Water),用於合成一反木棉碎片（水）
+tips_20069_suipian_renyu3,用于合成人鱼碎片（水）,To craft Mermaid(Water),用於合成人魚碎片（水）
+tips_20070_suipian_shixianggui5,用于合成石像鬼碎片（暗）,To craft Gargolye(Dark),用於合成石像鬼碎片（暗）
+tips_20071_suipian_senlinnvshen2,用于合成森林女神碎皮（木）,To craft Dryad(Grass),用於合成森林女神碎皮（木）
+tips_20072_suipian_bingxuenvwang5,用于合成冰雪女王碎片（暗）,To craft Chione(Dark),用於合成冰雪女王碎片（暗）
 tips_30011_BloodStone_1,寄宿着生命之力的纹章，镶嵌在装备上可以提高50生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 50.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高50生命。
 tips_30012_BloodStone_2,寄宿着生命之力的纹章，镶嵌在装备上可以提高100生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 100.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高100生命。
 tips_30013_BloodStone_3,寄宿着生命之力的纹章，镶嵌在装备上可以提高180生命。,An Insignia containing the power of the life. Embed into a piece of Equipment to increase HP by 180.,寄宿著生命之力的紋章，鑲嵌在裝備上可以提高180生命。
@@ -357,21 +357,21 @@ tips_40000_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材"
 tips_40001_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.,"遊戲自然產出的寶箱,開啟獲得裝備打造素材"
 tips_40002_baoxiang,"游戏自然产出的宝箱,开启获得装备打造素材",A chest produced by the game. Open it to receive Raw Iron.,"遊戲自然產出的寶箱,開啟獲得裝備打造素材"
 tips_40005_bigTaskleader201,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，金币*10000，祝福之力lv1*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Coin*10000, Blessing Power(lv1)*1</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*1, Coin*10000, Blessing Power(lv1)*1</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*1，金幣*10000，祝福之力lv1*1</color>
 tips_40006_bigTaskleader301,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，金币*15000，祝福之力lv1*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1,  Coin*15000 , Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*1,  Coin*15000 , Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*1，金幣*15000，祝福之力lv1*2</color>
 tips_40007_bigTaskleader401,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*20000，祝福之力lv2*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*20000 , Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*20000 , Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，金幣*20000，祝福之力lv2*1</color>
 tips_40014_bigTaskleader501,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*25000，祝福之力lv2*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*25000 , Blessing Power(lv2)*2</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*25000 , Blessing Power(lv2)*2</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，金幣*25000，祝福之力lv2*2</color>
 tips_40008_bigTaskleader202,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，初级灵铁*3，妖力结晶*1，祝福之力lv1*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*3 , Crystal Ball*1 ,Blessing Power(lv1)*1 </color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*3 , Crystal Ball*1 ,Blessing Power(lv1)*1 </color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*1，初級靈鐵*3，妖力結晶*1，祝福之力lv1*1</color>
 tips_40009_bigTaskleader302,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*1，初级灵铁*4，妖力结晶*1，祝福之力lv1*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*4 , Crystal Ball*1 ,Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*1, Basic Raw Iron*4 , Crystal Ball*1 ,Blessing Power(lv1)*2</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*1，初級靈鐵*4，妖力結晶*1，祝福之力lv1*2</color>
 tips_40010_bigTaskleader402,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*2，妖力结晶*1，祝福之力lv2*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*2 , Crystal Ball*1 ,Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*2 , Crystal Ball*1 ,Blessing Power(lv2)*1</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，中級靈鐵*2，妖力結晶*1，祝福之力lv2*1</color>
 tips_40015_bigTaskleader502,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*3，妖力结晶*2，祝福之力lv2*2</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*3 , Crystal Ball*2 ,Blessing Power(lv2)*2 </color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*3 , Crystal Ball*2 ,Blessing Power(lv2)*2 </color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，中級靈鐵*3，妖力結晶*2，祝福之力lv2*2</color>
 tips_40052_pvpstagereward,随机开出1个1级纹章,Open to randomly receive 1 level 1 insignia,隨機開出1個1級紋章
 tips_40053_pvpstagereward,随机开出1个2级纹章,Open to randomly receive 1 level 2 insignia,隨機開出1個2級紋章
 tips_40054_pvpstagereward,随机开出1个3级纹章,Open to randomly receive 1 level 3 insignia,隨機開出1個3級紋章
@@ -389,9 +389,9 @@ tips_40065_towerbox,开启宝箱可以随机获得独角兽碎片（暗）或伊
 tips_40066_bfregmentda,随机开出30个B级宠物碎片,Class B Monster Fragments (30 pcs),隨機開出30個B級寵物碎片
 tips_40067_afregmentda,随机开出50个A级宠物碎片,Class A Monster Fragments (50 pcs),隨機開出50個A級寵物碎片
 tips_40068_bigTaskleader601,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，金币*30000，祝福之力lv3*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*30000 , Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2,  Coin*30000 , Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，金幣*30000，祝福之力lv3*1</color>
 tips_40069_bigTaskleader602,公会任务发给队长的宝箱，内有  <color=#FFCC00>1级纹章箱子*2，中级灵铁*4，妖力结晶*2，祝福之力lv3*1</color>,"Chest filled with 
-<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*4 , Crystal Ball*2 ,Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",
+<color=#FFCC00>Level 1 Insignia Chest*2, Average Raw Iron*4 , Crystal Ball*2 ,Blessing Power(lv3)*1</color> sent to Team Leaders from Guild Quests",公會任務發給隊長的寶箱，內有  <color=#FFCC00>1級紋章箱子*2，中級靈鐵*4，妖力結晶*2，祝福之力lv3*1</color>
 tips_40070_commonfregmentda,随机开出整只B级宠物(通过碎片方式)，小概率开出A级宠物(通过碎片方式),"Reward one Class B Monster (by ways of fragments), or small chance of one Class A Monster (by ways of fragments)",隨機開出整只B級寵物(通過碎片方式)，小機率開出A級寵物(通過碎片方式)
 tips_40071_rarefregmentda,随机开出整只A级宠物(通过碎片方式)，小概率开出S级宠物(通过碎片方式),"Reward one Class A Monster (by ways of fragments), or small chance of one Class S Monster (by ways of fragments)",隨機開出整只A級寵物(通過碎片方式)，小機率開出S級寵物(通過碎片方式)
 tips_40072_epicfregmentda,随机开出整只S级宠物(通过碎片方式)，小概率开出SS级宠物(通过碎片方式),"Reward one Class S Monster (by ways of fragments), or small chance of one Class SS Monster (by ways of fragments)",隨機開出整只S級寵物(通過碎片方式)，小機率開出SS級寵物(通過碎片方式)
@@ -466,9 +466,9 @@ name_10025_caihongguai2,中级怪物之魂,Average Monster Spirit,中級怪物�
 name_10026_caihongguai3,高级怪物之魂,Advanced Monster Spirit,高級怪物之魂
 name_10027_caihongguai4,史诗怪物之魂,Epic Monster Spirit,史詩怪物之魂
 tips_10024_caihongguai1,"初级宠物之魂,可以替代C,B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance.","初級寵物之魂,可以替代C,B級寵物進行寵物進階"
-tips_10025_caihongguai2,"中级宠物之魂,可以替代A级宠物进行宠物进阶,可以通过3个初级怪物之魂合成","Average Monster Spirit, can be used instead of Class A whole monster for Monster Advance. Average Monster Spirit can be received by combining 3 Basic Monster Spirit.","中級寵物之魂,可以替代A級寵物進行寵物進階,可以通過3個初級怪物之魂合成"
-tips_10026_caihongguai3,"高级宠物之魂,可以替代S级宠物进行宠物进阶,可以通过3个中级怪物之魂合成","Advanced Monster Spirit, can be used instead of Class S whole monster for Monster Advance.Advanced Monster Spirit can be received by combining 3 Average Monster Spirit.","高級寵物之魂,可以替代S級寵物進行寵物進階,可以通過3個中級怪物之魂合成"
-tips_10027_caihongguai4,"史诗宠物之魂,可以替代SS级宠物进行宠物进阶,可以通过3个高级怪物之魂合成","Epic Monster Spirit, can be used instead of Class SS whole monster for Monster Advance.Epic Monster Spirit can be received by combining 3 Advanced Monster Spirit.","史詩寵物之魂,可以替代SS級寵物進行寵物進階,可以通過3個高級怪物之魂合成"
+tips_10025_caihongguai2,"中级宠物之魂,可以替代A级宠物进行宠物进阶,可以通过5个初级怪物之魂合成","Average Monster Spirit, can be used instead of Class A whole monster for Monster Advance. Average Monster Spirit can be received by combining 5 Basic Monster Spirit.","中級寵物之魂,可以替代A級寵物進行寵物進階,可以通過5個初級怪物之魂合成"
+tips_10026_caihongguai3,"高级宠物之魂,可以替代S级宠物进行宠物进阶,可以通过5个中级怪物之魂合成","Advanced Monster Spirit, can be used instead of Class S whole monster for Monster Advance.Advanced Monster Spirit can be received by combining 5 Average Monster Spirit.","高級寵物之魂,可以替代S級寵物進行寵物進階,可以通過5個中級怪物之魂合成"
+tips_10027_caihongguai4,"史诗宠物之魂,可以替代SS级宠物进行宠物进阶,可以通过5个高级怪物之魂合成","Epic Monster Spirit, can be used instead of Class SS whole monster for Monster Advance.Epic Monster Spirit can be received by combining 5 Advanced Monster Spirit.","史詩寵物之魂,可以替代SS級寵物進行寵物進階,可以通過5個高級怪物之魂合成"
 name_40075_wenzhanglibao1,蓝色纹章箱子,Blue Insignia Chest,藍色紋章箱子
 name_40076_wenzhanglibao2,紫色纹章箱子,Purple Insignia Chest,紫色紋章箱子
 tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,Open to receive 1 random level 3 or 4 insignia,隨機開出1個3級或4級紋章
@@ -479,15 +479,15 @@ tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎�
 tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)",隨機開出25個B級寵物碎片、15個A級寵物碎片以及20個驚喜碎片（10個A級、S級或者SS級寵物碎片）
 name_90009_xinyangzhili,书魂,Soul Tome,書魂
 tips_90009_xinyangzhili,可以在神话守护者玩法中兑换珍稀奖励！,"Accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards！",可以在神話守護者玩法中兌換珍稀獎勵！
-name_10028_zhufuzhili1,祝福之力lv1,Blessing Power(lv1),
-name_10029_zhufuzhili2,祝福之力lv2,Blessing Power(lv2),
-name_10030_zhufuzhili3,祝福之力lv3,Blessing Power(lv3),
-name_10031_zhufuzhili4,祝福之力lv4,Blessing Power(lv4),
-name_10032_zhufuzhili5,祝福之力lv5,Blessing Power(lv5),
-tips_10028_zhufuzhili1,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv1 insignias to get a lv2 insignia of the same type.,
-tips_10029_zhufuzhili2,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv2 insignias to get a lv3 insignia of the same type.,
-tips_10030_zhufuzhili3,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv3 insignias to get a lv4 insignia of the same type.,
-tips_10031_zhufuzhili4,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv4 insignias to get a lv5 insignia of the same type.,
-tips_10032_zhufuzhili5,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv5 insignias to get a lv6 insignia of the same type.,
-name_40077_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest,
-tips_40077_epicfregmentda,随机开出整只SS级宠物(通过碎片方式),Reward one Class SS Monster (by ways of fragments),
+name_10028_zhufuzhili1,祝福之力lv1,Blessing Power(lv1),祝福之力lv1
+name_10029_zhufuzhili2,祝福之力lv2,Blessing Power(lv2),祝福之力lv2
+name_10030_zhufuzhili3,祝福之力lv3,Blessing Power(lv3),祝福之力lv3
+name_10031_zhufuzhili4,祝福之力lv4,Blessing Power(lv4),祝福之力lv4
+name_10032_zhufuzhili5,祝福之力lv5,Blessing Power(lv5),祝福之力lv5
+tips_10028_zhufuzhili1,来自异界的神秘力量，合成5个完全相同的1级纹章时使用，保证获得1个2级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv1 insignias to get a lv2 insignia of the same type.,來自異界的神秘力量，合成5個完全相同的1級紋章時使用，保證獲得1個2級同類型紋章
+tips_10029_zhufuzhili2,来自异界的神秘力量，合成5个完全相同的2级纹章时使用，保证获得1个3级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv2 insignias to get a lv3 insignia of the same type.,來自異界的神秘力量，合成5個完全相同的2級紋章時使用，保證獲得1個3級同類型紋章
+tips_10030_zhufuzhili3,来自异界的神秘力量，合成5个完全相同的3级纹章时使用，保证获得1个4级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv3 insignias to get a lv4 insignia of the same type.,來自異界的神秘力量，合成5個完全相同的3級紋章時使用，保證獲得1個4級同類型紋章
+tips_10031_zhufuzhili4,来自异界的神秘力量，合成5个完全相同的4级纹章时使用，保证获得1个5级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv4 insignias to get a lv5 insignia of the same type.,來自異界的神秘力量，合成5個完全相同的4級紋章時使用，保證獲得1個5級同類型紋章
+tips_10032_zhufuzhili5,来自异界的神秘力量，合成5个完全相同的5级纹章时使用，保证获得1个6级同类型纹章,A mysterious power from Mythos. Use to combine 5 of the same lv5 insignias to get a lv6 insignia of the same type.,來自異界的神秘力量，合成5個完全相同的5級紋章時使用，保證獲得1個6級同類型紋章
+name_40077_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragments Chest,史詩寵物碎片箱子
+tips_40077_epicfregmentda,随机开出整只SS级宠物(通过碎片方式),Reward one Class SS Monster (by ways of fragments),隨機開出整只SS級寵物(通過碎片方式)

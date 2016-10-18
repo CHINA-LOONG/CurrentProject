@@ -3,8 +3,6 @@ package com.hawk.game.item;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.hawk.game.util.GsConst.ItemParseType;
-
 public class ItemInfo {
 	/**
 	 * 种类
@@ -112,7 +110,19 @@ public class ItemInfo {
 
 	@Override
 	public String toString() {
-		return String.format("%d_%d_%d", type, itemId, count);
+		return String.format("%d_%s_%d_%d_%d", type, itemId, count, stage, level);
+	}
+
+	public static String toString(List<ItemInfo> itemList) {
+		if (true == itemList.isEmpty()) {
+			return "";
+		}
+		StringBuilder builder = new StringBuilder();
+		for (ItemInfo itemInfo : itemList) {
+			builder.append(itemInfo.toString()).append(",");
+		}
+		builder.deleteCharAt(builder.length() - 1);
+		return builder.toString();
 	}
 
 	public static ItemInfo valueOf(int type, String itemId, int count) {
@@ -157,7 +167,7 @@ public class ItemInfo {
 			type = Integer.parseInt(items[0]);
 			itemId = items[1];
 			count = Integer.parseInt(items[2]);
-			if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
+			// if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
 				if (items.length == 4)
 				{
 					stage = Integer.parseInt(items[3]);
@@ -166,7 +176,7 @@ public class ItemInfo {
 					stage = Integer.parseInt(items[3]);
 					level = Integer.parseInt(items[4]);
 				}
-			}
+			//}
 
 			return true;
 		}

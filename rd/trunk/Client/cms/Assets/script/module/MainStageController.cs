@@ -54,14 +54,14 @@ public class MainStageController : MonoBehaviour
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
-        GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
+      //  GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
         GameDataMgr.Instance.mTowerRefreshed = false;
     }
     //---------------------------------------------------------------------------------------------
     public void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.DailyRefresh, OnDailyRefresh);
-        GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
+      //  GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
 
         if (UIMgr.IsUIDestroyed() == false)
         {
@@ -83,13 +83,13 @@ public class MainStageController : MonoBehaviour
         RefreshHoleState(true);
     }
     //---------------------------------------------------------------------------------------------
-    void OnBackToTower(string instanceId)
-    {
-        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower && mUITower == null)
-        {
-            mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
-        }
-    }
+    //void OnBackToTower(string instanceId)
+    //{
+    //    if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower && mUITower == null)
+    //    {
+    //        mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
+    //    }
+    //}
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start ()

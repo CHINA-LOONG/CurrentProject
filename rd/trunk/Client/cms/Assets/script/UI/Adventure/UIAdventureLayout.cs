@@ -54,19 +54,6 @@ public class UIAdventureLayout : UIBase,
     private int filterProperty = -1;
     private int conditionStep = 0;
     public AdventureExtraConditon showConditonStep;
-    public Animator Animator
-    {
-        get
-        {
-            if (animator == null)
-            {
-                animator = GetComponent<Animator>();
-            }
-            return animator;
-        }
-    }
-    private Animator animator;
-
 
     private AdventureInfo curData;
     void Start()
@@ -483,19 +470,7 @@ public class UIAdventureLayout : UIBase,
     //点击关闭按钮和调用关闭事件共用
     void OnClickCloseBtn()
     {
-        //if (Animator != null)
-        //{
-        //    Animator.SetTrigger("exit");
-        //}
-        //else
-        {
-            UIMgr.Instance.CloseUI_(this);
-        }
-    }
-
-    void OnExitAnimationEnd()
-    {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     void OnClickRefeshConditionBtn()
@@ -645,10 +620,7 @@ public class UIAdventureLayout : UIBase,
         {
             teamList[i].ReloadData<object>(null);
         }
-        if (Animator!=null)
-        {
-            Animator.SetTrigger("enter");
-        }
+        base.Init();
     }
     public override void Clean()
     {

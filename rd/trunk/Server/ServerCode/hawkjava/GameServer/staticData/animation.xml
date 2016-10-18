@@ -12889,11 +12889,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="bossrehuo" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="bossrenjie82Huoniao4awaken6" state="0" AniType="Skill">
-			<BubbleList>
-				<Bubble time="0" text="huoniao4awaken_bubble_001" duration="3.5" particle="" />
-			</BubbleList>
-		</Ani>
 		
 	</AniList>
 	
@@ -15071,6 +15066,14 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<SpeedList>
 				<Speed time="0" speed_ratio="0.5" duration="2"/>
 			</SpeedList>
+			<BubbleList>
+				<Bubble time="0" text="shuigui3_bubble_001" duration="3.5" particle="" />
+			</BubbleList>
+		</Ani>
+		<Ani id="Huoniao4awakenbubble" state="0" action_delay="2">
+			<BubbleList>
+				<Bubble time="0" text="huoniao4awaken_bubble_001" duration="3.5" particle="" />
+			</BubbleList>
 		</Ani>
 		<Ani id="Shuigui3_state1to3" state="0" action_delay="0">
 			<WpStateList>
@@ -15096,9 +15099,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</WpStateList>
 		</Ani>
 		<Ani id="Hetong2_state1to2" state="0" action_delay="2">
-			<WpStateList>
-				<Wp time="0" name="bossxiaoxiang27Hetong2wp03" state="3"/>
-			</WpStateList>
 			<BubbleList>
 				<Bubble time="0" text="hetong2_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
@@ -15794,7 +15794,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="luoxinfu1_wp3" state="0" action_delay="2">
@@ -15810,7 +15810,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="luoxinfu1_wp4" state="0" action_delay="2">
@@ -15826,7 +15826,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="luoxinfu1_wp5" state="0" action_delay="2">
@@ -15842,7 +15842,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="luoxinfu1_wp6" state="0" action_delay="2">
@@ -15858,7 +15858,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="luoxinfu1_wp7" state="0" action_delay="2">
@@ -15874,7 +15874,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="0"/>
 			</WpStateList>
 			<BubbleList>
-				<Bubble time="0" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="2" text="luoxinfu1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="piying1_wprefresh" state="0" action_delay="2">
@@ -15901,7 +15901,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosschaoxue52Yifanmumian3wp01" state="1"/>
 				<Wp time="0.5" name="bosschaoxue52Yifanmumian3wp02" state="0"/>
 				<Wp time="0.5" name="bosschaoxue52Yifanmumian3wp03" state="3"/>
-				<Wp time="0.5" name="bosschaoxue52Yifanmumian3wp04" state="3"/>
+				<Wp time="0.5" name="bosschaoxue52Yifanmumian3wp04" state="4"/>
+				<Wp time="1" name="bosschaoxue52Yifanmumian3wp04" state="3"/>
 			</WpStateList>
 			<BubbleList>
 				<Bubble time="0" text="yifanmumian3_bubble_001" duration="3.5" particle="" />
@@ -16207,7 +16208,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="hehuaisituosi4_bubble" state="0" action_delay="2">
 			<BubbleList>
-				<Bubble time="0" text="tiejiang4_bubble_004" duration="3.5" particle="" />
+				<Bubble time="1" text="tiejiang4_bubble_004" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="langren5_bubble" state="0" action_delay="2">
@@ -16237,12 +16238,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="Yifanmumian1_bubble1" state="0" action_delay="2">
 			<BubbleList>
-				<Bubble time="0" text="yifanmumian1_bubble_001" duration="3.5" particle="" />
+				<Bubble time="0" text="yifanmumian1_bubble_002" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="Yifanmumian1_bubble2" state="0" action_delay="2">
 			<BubbleList>
-				<Bubble time="0" text="yifanmumian1_bubble_002" duration="3.5" particle="" />
+				<Bubble time="0" text="yifanmumian1_bubble_001" duration="3.5" particle="" />
 			</BubbleList>
 		</Ani>
 		<Ani id="Yifanmumian1_bubble3" state="0" action_delay="2">

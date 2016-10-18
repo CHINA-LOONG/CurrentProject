@@ -183,7 +183,6 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
     [Serializable]
     public class DecomposeList
     {
-        public Text text_Material;
         public FixCountScrollView scrollView;
         
         public List<DecomposeItemInfo> itemsInfo = new List<DecomposeItemInfo>();
@@ -245,8 +244,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         UIUtil.SetStageColor(decomposeView.text_White, StaticDataMgr.Instance.GetTextByID("decompose_white"), 1);
         UIUtil.SetStageColor(decomposeView.text_Green, StaticDataMgr.Instance.GetTextByID("decompose_green"), 2);
         UIUtil.SetStageColor(decomposeView.text_Blue, StaticDataMgr.Instance.GetTextByID("decompose_blue"), 3);
-
-        decomposeList.text_Material.text = StaticDataMgr.Instance.GetTextByID("decompose_material");
+        
     }
 
     public override void Init()

@@ -58,6 +58,7 @@ public class UIMail : UIBase//,TabButtonDelegate
     }
     public override void Init()
     {
+        base.Init();
         if (coinBtn==null)
         {
             coinBtn = CoinButton.CreateWithType(CoinButton.CoinType.Jinbi);
@@ -269,7 +270,8 @@ public class UIMail : UIBase//,TabButtonDelegate
     //界面关闭处理
     void CloseUIMail()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
+        //UIMgr.Instance.CloseUI_(this);
     }
 
     //同步邮件列表，收取新邮件

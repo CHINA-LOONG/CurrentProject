@@ -988,10 +988,10 @@ public class UIAdjustBattleTeam : UIBase
     }
     public override void CloseUi()
     {
-        if (showInstanceListExit)
-        {
-            GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
-        }
+        //if (showInstanceListExit)
+        //{
+        //    GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
+        //}
         base.CloseUi();
     }
     #endregion

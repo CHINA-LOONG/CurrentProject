@@ -41,19 +41,6 @@ public class UIAdventure : UIBase,
         }
     }
 
-    public Animator Animator
-    {
-        get
-        {
-            if (animator == null)
-            {
-                animator = GetComponent<Animator>();
-            }
-            return animator;
-        }
-    }
-    private Animator animator;
-
     private AdventureInfo curData;
 
     [HideInInspector]
@@ -109,30 +96,23 @@ public class UIAdventure : UIBase,
     }
     void OnClickCloseBtn()
     {
-        if (Animator != null)
-        {
-            Animator.SetTrigger("exit");
-        }
-        else
-        {
-            OnExitAnimationEnd();
-        }
+        RequestCloseUi();
     }
-    void OnExitAnimationEnd()
+    public override void CloseUi()
     {
         for (int i = 0; i < adventures.Count; i++)
         {
             adventures[i].CleanItem();
         }
-        UIMgr.Instance.CloseUI_(this);
+        base.CloseUi();
     }
 
     #region UIBase
     public override void Init()
     {
+        base.Init();
         tabIndex = -1;
         selIndex = 0;
-        Animator.SetTrigger("enter");
         //临时测试代码
         //Refresh();
     }

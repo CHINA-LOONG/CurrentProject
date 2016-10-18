@@ -158,6 +158,7 @@ public class GameUnit : IComparable
     //进化
     public bool isEvolutionable;
     public string evolutionID;
+    public int rarity;//稀有度
 
     //状态数据
     //技能加成系数
@@ -278,6 +279,7 @@ public class GameUnit : IComparable
             UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(unitID);
             gameUnit.assetID = unitRowData.assetID;
             gameUnit.name = unitRowData.NickNameAttr;
+            gameUnit.rarity = unitRowData.rarity;
         }
 
         if (gameUnit.buffList == null)
@@ -320,6 +322,7 @@ public class GameUnit : IComparable
         UpdateAttributeInternal();
 
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
+        rarity = unitRowData.rarity;
         property = unitRowData.property;
         assetID = unitRowData.assetID;
         isEvolutionable = unitRowData.isEvolutionable!=0;
@@ -942,8 +945,8 @@ public class GameUnit : IComparable
             {
                 if (this.pbUnit.stage == target.pbUnit.stage)
                 {
-                    int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).rarity;
-                    int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).rarity;
+                    int selfGrade = rarity;//StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).rarity;
+                    int targetGrade = target.rarity;//StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).rarity;
                     if (selfGrade == targetGrade)
                     {
                         result = 0;

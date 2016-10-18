@@ -38,7 +38,7 @@ public class LfStatisticsEntity extends HawkDBEntity {
 
 	// 怪物图鉴
 	@Column(name = "monsterCollect", nullable = false)
-	protected String monsterCollectJson = "";
+	protected String monsterCollectStr = "";
 
 	// 历史合成怪物次数
 	@Column(name = "monsterMixTimes", nullable = false)
@@ -180,8 +180,12 @@ public class LfStatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (null != monsterCollectJson && false == "".equals(monsterCollectJson) && false == "null".equals(monsterCollectJson)) {
-			monsterCollectSet = HawkJsonUtil.getJsonInstance().fromJson(monsterCollectJson, new TypeToken<HashSet<String>>() {}.getType());
+		if (null != monsterCollectStr && false == "".equals(monsterCollectStr) && false == "null".equals(monsterCollectStr)) {
+			String[] monsterArray = monsterCollectStr.split(",");
+			monsterCollectSet.clear();
+			for (int i = 0; i < monsterArray.length; ++i) {
+				monsterCollectSet.add(monsterArray[i]);
+			}
 		}
 		if (null != chapterXBoxNormalJson && false == "".equals(chapterXBoxNormalJson) && false == "null".equals(chapterXBoxNormalJson)) {
 			chapterBoxNormalList = HawkJsonUtil.getJsonInstance().fromJson(chapterXBoxNormalJson, new TypeToken<ArrayList<Integer>>() {}.getType());
@@ -209,7 +213,16 @@ public class LfStatisticsEntity extends HawkDBEntity {
 	public boolean encode() {
 		if (true == monsterCollectFlag) {
 			monsterCollectFlag = false;
-			monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
+			if (true == monsterCollectSet.isEmpty()) {
+				monsterCollectStr = "";
+			} else {
+				StringBuilder builder = new StringBuilder();
+				for (String monster : monsterCollectSet) {
+					builder.append(monster).append(",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				monsterCollectStr = builder.toString();
+			}
 		}
 		if (true == chapterBoxNormalFlag) {
 			chapterBoxNormalFlag = false;

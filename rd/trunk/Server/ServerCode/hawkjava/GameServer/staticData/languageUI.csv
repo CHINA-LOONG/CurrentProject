@@ -248,7 +248,7 @@ decompose_preview,预览,Preview,預覽
 decompose_choise,请选择要操作目标,Please select target item,請選擇操作目標
 decompose_tips1,*分解装备将获得金币,*Discarding equipment gives coins,*分解裝備將獲得金幣
 decompose_tips2,*装备镶嵌的纹章将自动返还到背包,*Any attached Insignia will automatically be returned to your Bag,*裝備鑲嵌的紋章將自動返還到背包
-decompose_tips3,*炼化宠物将返还合成1只该宠物需要的碎片,*Refining a monster will return the fragments required for combining this monster once.,
+decompose_tips3,*炼化宠物将返还合成1只该宠物需要的碎片,*Refining a monster will return the fragments required for combining this monster once.,*煉化寵物將返還合成1只該寵物需要的碎片
 decompose_tips4,*宠物佩戴的装备将自动返还到背包,*Any equipment on the monster will be automatically returned to your Bag,*寵物佩戴的裝備將自動返還到背包
 decompose_choice,筛选,Filter,篩選
 decompose_white,白色品质,White Grade,白色品質
@@ -376,7 +376,7 @@ monster_record_015,战力下降{0},BP decrease {0},戰力下降{0}
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade,該技能不能升級
 pet_list_title,宠物,Monsters,寵物
 pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!","擁有過多寵物,快去消耗一些吧"
-pet_tip_full2,到达300将无法继续获得宠物,"Upon reaching 300 monsters, you will no longer be able to receive any more.",
+pet_tip_full2,到达300将无法继续获得宠物,"Upon reaching 300 monsters, you will no longer be able to receive any more.",到達300將無法繼續獲得寵物
 pet_skill_point_not_enough,技能点不足,skill point not enough,技能點不足
 exp_title,信仰之力,Mytho Essence,信仰之力
 exp_monsterlevel,当前等级：LVL,Current：LVL,當前等級：LVL
@@ -407,12 +407,12 @@ energy_button_use,使用,Use,使用
 energy_button_buy&use,购买使用,Buy & Use,購買使用
 energy_times_enough,已达到上限,Limit reached,已達到上限
 energy_times,本日剩余次数 {0},Remaining today {0},本日剩餘次數 {0}
-energy_supple,购买   50  ,Purchase   50  ,
+energy_supple,购买   50  ,Purchase   50  ,購買 50
 energy_hint_unhint,本次登录不再提示该界面,Don't show again for current session.,本次登入不再提示該介面
 energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?,購買並使用一個 {0}?
-energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe,活力值已達到最大數量
+energy_hint_max,活力值已达到最大数量,Energy has already reached the maximum limit.,活力值已達到最大數量
 energy_get, 获得 {0} 点活力,get {0} energy, 獲得 {0} 點活力
-im_recordhuoli_002,活力值已达到最大数量,Energy to the greatest numbe,活力值已達到最大數量
+im_recordhuoli_002,活力值已达到最大数量,Energy has already reached the maximum limit.,活力值已達到最大數量
 arrayselect_saodang_title,扫荡完成,Raid Complete,掃蕩完成
 arrayselect_saodang_reward,额外奖励,Bonus Rewards,額外獎勵
 arrayselect_saodang_num,第 {0} 战,Battle {0},第 {0} 戰
@@ -592,7 +592,7 @@ sociaty_record_045,数据已过期,Data has expired.,資料已過期
 sociaty_record_046,请先升级科技,Please level up your guild tech first.,請先升級科技
 sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.,這個傢伙已經不在公會了，領取失敗
 sociaty_record_048,已达可完成的队内任务上限,Team quests limit reached.,已達可完成的隊內任務上限
-sociaty_record_052,点击这里加入我的小队：{0},Tap here to join my squad: {0},
+sociaty_record_052,点击这里加入我的小队：{0},Tap here to join my squad: {0},點擊這裡加入我的小隊：{0}
 sociaty_record_053,{0}升至{1}级,{0} is now Lvl {1}.,{0}升至{1}級
 sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.,申請數量已達上限，請先取消再操作
 sociaty_record_056,存在非法字符,Contains illegal characters.,存在非法字符
@@ -602,7 +602,7 @@ sociaty_record_059,公会名称输入过长,Guild name is too long.,公會名稱
 sociaty_record_060,已有成员加入，不能放弃,"Members have already joined, unable to abandon.",已有成員加入，不能放棄
 sociaty_record_061,公会公告输入过长,Announcement content is too long.,公會公告輸入過長
 sociaty_record_062,输入内容过长,Content entered is too long.,輸入內容過長
-sociaty_record_063,招募发布成功,Recruit message successfully announced.,
+sociaty_record_063,招募发布成功,Recruit message successfully announced.,招募發布成功
 sociaty_record_064,全部批准成功,Successfully approved all.,全部批准成功
 sociaty_record_065,已经领取过了哦,Already collected!,已經領取過了哦
 sociaty_gonghuiyaoqing,[公会邀请]({0}) {1},[Guild invitation]({0}) {1},[公會邀請]({0}) {1}
@@ -611,7 +611,7 @@ sociaty_member1,成员,Member,成員
 sociaty_mybing,我的驻兵,My Garrison,我的駐兵
 sociaty_otherbing,基地列兵,Base Garrison,基地列兵
 sociaty_lishi,个人历史贡献值：<color=#ffCC00ff>{0}</color>,Total personal contribution: <color=#ffCC00ff>{0}</color>,個人歷史貢獻值：<color=#ffCC00ff>{0}</color>
-sociaty_tipsjidichang,宠物可根据驻守时长获得金币，被雇佣时也可获得金币收入，战力越高收入越高哦,"Monsters accumulate coins based on the amount of time garrisoned. They will also earn coins when they are hired as mercenaries, with more coins given for higher BP.",
+sociaty_tipsjidichang,宠物可根据驻守时长获得金币，被雇佣时也可获得金币收入，战力越高收入越高哦,"Monsters accumulate coins based on the amount of time garrisoned. They will also earn coins when they are hired as mercenaries, with more coins given for higher BP.",寵物可根據駐守時長獲得金幣，被雇傭時也可獲得金幣收入，戰力越高收入越高哦
 sociaty_addmonster,添加宠物,Add monster,添加寵物
 sociaty_tipslock,公会历史贡献值达到<color=#ffCC00ff>{0}</color>解锁,Unlocked when total guild contribution reaches <color=#ffCC00ff>{0}</color>.,公會歷史貢獻值達到<color=#ffCC00ff>{0}</color>解鎖
 sociaty_zhushoutime,驻守时长：,Garrison time:,駐守時長：
@@ -916,7 +916,7 @@ login_weihu_001,当前服务器正在维护，请稍后再试！,The current ser
 login_duankai_001,已与服务器断开连接，请重新登录！,"Disconnected from server, please re-login.",已與伺服器斷開連接，請重新登入！
 login_dinghao_001,该账号已在其他设备上登录，请确认账号安全并重新登录！,This account is already logged in from another device. Please confirm your account is secure and re-login.,該帳號已在其他設備上登入，請確認帳號安全並重新登入！
 hecheng_name,合成,Combine,合成
-fenjie_name,炼解,Refi/Disc,
+fenjie_name,炼解,Refi/Disc,煉解
 dazao_name,装备打造,Equipment Forge,裝備打造
 saodang_name,扫荡,Raid,掃蕩
 saodangN_name,扫荡多次,Multiple Raids,掃蕩多次
@@ -1203,7 +1203,7 @@ loading_yifulitehei,<color=#b888ff>伊芙利特</color>,<color=#b888ff>Ifrit</co
 loading_dujiaoshouhei,<color=#b888ff>独角兽</color>,<color=#b888ff>Pegasus</color>,<color=#b888ff>獨角獸</color>
 loading_hongniuhong,<color=#fff8c8>米诺到诺斯</color>,<color=#fff8c8>Minotaur</color>,<color=#fff8c8>米諾到諾斯</color>
 loading_tips1,任务是获得角色经验最快的途径哦！,Completing quests is the best way to get EXP for your character!,任務是獲得角色經驗最快的途徑哦！
-loading_tips2,日常任务中每日共有两次免费领取活力的机会：12点，18点，可不要错过哦！,"There are 2 chances to receive free Energy each day in the Daily Quests: 12:00, and 18:00. Don't miss them!",日常任務中每日共有兩次免費領取活力的機會：12點，18點，可不要錯過哦！
+loading_tips2,日常任务中每日共有两次免费领取活力的机会：6:00—10:00，18:00—22:00，可不要错过哦！,"There are 2 chances to receive free Energy each day in the Daily Quests: from 6:00 to 10:00, and from 18:00 to 22:00. Don't miss them!",日常任務中每日共有兩次免費領取活力的機會：6:00—10:00，18:00—22:00，可不要錯過哦！
 loading_tips4,一些没有用的材料可以在背包里卖掉换钱。,Some unneeded items in your Bag can be sold for Coins.,一些沒有用的材料可以在背包裡賣掉換錢。
 loading_tips5,宠物不给力？尝试一下召唤吧~,Not satisfied with your current monsters? Try summoning some more!,寵物不給力？嘗試一下召喚吧~
 loading_tips6,集齐宠物碎片能够合成宠物。,Collect monster fragments to craft more monsters!,集齊寵物碎片能夠合成寵物。
@@ -1283,7 +1283,7 @@ main_icon_renwu,任务,Quests,任務
 main_icon_youjian,邮件,Inbox,信件
 main_icon_beibao,背包,Bag,背包
 main_icon_hecheng,合成,Combine,合成
-main_icon_fenjie,炼解,Refi/Disc,
+main_icon_fenjie,炼解,Refi/Disc,煉解
 main_icon_qiandao,签到,Signin,簽到
 main_icon_shangdian,商店,Store,商店
 main_icon_gonggao,公告,Event,公告
@@ -1576,7 +1576,7 @@ gift_event_notreach,未达成,In progress,未達成
 invite_alreadyinvite,领取,Collect,領取
 invite_paihangbang,排行榜,Rankings,排行榜
 invite_fuzhi,快速邀请,Quick Invite,快速邀請
-invite_imtext,我的id是{0}，点击这里接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, tap here to accept my invitation under Friends Collaboration in the Events.",
+invite_imtext,我的id是{0}，点击这里接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, tap here to accept my invitation under Friends Collaboration in the Events.",我的id是{0}，點擊這裡接收我的邀請吧，可在“活動中心——好友助力”處進行操作。
 facebookshare_fuhuo,"立即获得免费复活机会
 （每天1次）！","Immediately revive for free 
 (once per day)!","立即獲得免費復活機會
@@ -1682,16 +1682,24 @@ mythoPath_rule_desc,"1.玩家每天均可以挑战<color=#ffcd00>9个</color>神
 7.成功挑战最后一个神话守护者<color=#ffcd00>必定</color>会获得<color=#ffcd00>惊喜之书</color>奖励哦！
 8.每个关卡只能<color=#ffcd00>成功挑战1次</color>，挑战失败后可以继续进行挑战，但是挑战失败不会获得任何奖励。
 9.挑战成功后还可以获得<color=#ffcd00>书魂</color>，可以用于兑换<color=#ffcd00>丰富奖励</color>！
-","1.玩家每天均可以挑战<color=#ffcd00>9个</color>神话的守护者。
-2.9个神话守护者的难度会根据玩家当日挑战成功的<color=#ffcd00>次数</color>逐渐<color=#ffcd00>提升</color>。
-3.神话守护者们的实力会随着<color=#ffcd00>玩家能力提升而增强</color>。
-4.已经阵亡的宠物<color=#ffcd00>无法继续上阵</color>，同时无法继续参加<color=#ffcd00>当日后续关卡</color>的挑战。
-5.每一关结束后敌我双方的<color=#ffcd00>血量值</color>和<color=#ffcd00>能量值</color>均会继承到下次神话守护者的战斗中。
-6.每次挑战成功均会获得<color=#ffcd00>大量奖励</color>，并有几率获得额外<color=#ffcd00>惊喜之书</color>奖励！
-7.成功挑战最后一个神话守护者<color=#ffcd00>必定</color>会获得<color=#ffcd00>惊喜之书</color>奖励哦！
-8.每个关卡只能<color=#ffcd00>成功挑战1次</color>，挑战失败后可以继续进行挑战，但是挑战失败不会获得任何奖励。
-9.挑战成功后还可以获得<color=#ffcd00>书魂</color>，可以用于兑换<color=#ffcd00>丰富奖励</color>！
-",
+","1. Players can challenge <color=#ffcd00>9</color> Myth Guardians each day.
+2. The difficulty of the 9 Myth Guardians will gradually <color=#ffcd00>increase</color> based upon the <color=#ffcd00>number</color> of guardians the player has defeated for the day.
+3. The BP of the Myth Guardians will be <color=#ffcd00>increased based upon the player's BP</color>.
+4. Monsters that have already died <color=#ffcd00>cannot be put in the lineup</color>, and will be <color=#ffcd00>unable to participate</color> in any of the Myth Guardian stages for the rest of the day.
+5. After a stage finishes, the remaining <color=#ffcd00>HP</color> and <color=#ffcd00>Power</color> of the player's monsters (or enemy monsters) will be saved and used for the next battle.
+6. Players will <color=#ffcd00>receive rewards upon completing</color> each stage, with a chance of receiving <color=#ffcd00>additional Tome of Surprises rewards</color>!
+7. Successfully completing the last stage is <color=#ffcd00>guaranteed</color> to drop a <color=#ffcd00>Tome of Surprises</color>! 
+8. Each stage can be <color=#ffcd00>completed only once</color>, and if you are defeated, you may continue the battle. However, being defeated will not give any rewards.
+9. Completing a stage will give <color=#ffcd00>Soul Tomes</color> which can be <color=#ffcd00>exchanged for rewards</color>! 
+","1.玩家每天均可以挑戰<color=#ffcd00>9個</color>神話的守護者。
+2.9個神話守護者的難度會根據玩家當日挑戰成功的<color=#ffcd00>次數</color>逐漸<color=#ffcd00>提升</color>。
+3.神話守護者們的實力會隨著<color=#ffcd00>玩家能力提升而增強</color>。
+4.已經陣亡的寵物<color=#ffcd00>無法繼續上陣</color>，同時無法繼續參加<color=#ffcd00>當日後續關卡</color>的挑戰。
+5.每一關結束後敵我雙方的<color=#ffcd00>血量值</color>和<color=#ffcd00>能量值</color>均會繼承到下次神話守護者的戰鬥中。
+6.每次挑戰成功均會獲得<color=#ffcd00>大量獎勵</color>，並有機率獲得額外<color=#ffcd00>驚喜之書</color>獎勵！
+7.成功挑戰最後一個神話守護者<color=#ffcd00>必定</color>會獲得<color=#ffcd00>驚喜之書</color>獎勵哦！
+8.每個關卡只能<color=#ffcd00>成功挑戰1次</color>，挑戰失敗後可以繼續進行挑戰，但是挑戰失敗不會獲得任何獎勵。
+9.挑戰成功後還可以獲得<color=#ffcd00>書魂</color>，可以用於兌換<color=#ffcd00>豐富獎勵</color>！"
 mythoPath_surprise_title,惊喜之书,Tome of Surprises,驚喜之書
 mythoPath_surprise_desc,概率获得下列物品之一,Set chance of receiving 1 of the following items,機率獲得下列物品之一
 mythoPath_battle_start,挑战,Battle,挑戰
@@ -1701,7 +1709,7 @@ mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,A well-planne
 mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,Training more monsters will greatly increase your chances of clearing stages!,培養更多的寵物會大幅度提升通關的機率哦！
 mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,Rewards from the Tome of Surprises can be pretty amazing!,驚喜之書的獎勵可是十分誘人的哦！
 mythoPath_loading_tips4,通关最后一个关卡一定会获得惊喜之书奖励哦！,Clearing the final stage will drop some awesome rewards for sure!,通關最後一個關卡一定會獲得驚喜之書獎勵哦！
-mythoPath_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",
+mythoPath_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久戰後仍未分出勝負，請調整陣容後繼續挑戰！
 giftspecial_jinjie1_name,进阶礼包,Advancement Package,進階禮包
 giftspecial_jinjie1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!,快速提升寵物戰力的方式！
 giftspecial_jinjie2_name,进阶礼包（稀有）,Advancement Package (Rare),進階禮包（稀有）
@@ -1712,12 +1720,12 @@ giftspecial_suipian2_name,碎片礼包（稀有）,Fragment Package (Rare),碎�
 giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>60 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!",共可獲得<color=#ffcc00>60片寵物碎片</color>，必定獲得<color=#ffcc00>10片A級及以上寵物碎片</color>！
 giftspecial_huodong1_name,惊喜礼包,Surprise Package,驚喜禮包
 giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,The <color=#ffcc00>SS grade monster</color> you've been after is right in front of you!,你想要的<color=#ffcc00>SS級寵物</color>就在眼前！
-giftspecial_huodong2_name,惊喜怪物之魂！,Surprise Monster Souls,
-giftspecial_huodong2_desc,怪物之魂来临！！机会难得！,Monsters souls have arrived! This is a rare opportunity!,
-giftspecial_xuanze1_name,新人钜惠,Starter Package,
-giftspecial_xuanze1_desc,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose<color=#ffcc00> one</color>!,
-giftspecial_xuanze2_name,超值钜惠,Amazing Value,
-giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>one</color>!,超值钜惠，錯過難尋！只能選擇<color=#ffcc00>一個</color>進行購買哦！
+giftspecial_huodong2_name,惊喜怪物之魂！,Surprise Monster Souls,驚喜怪物之魂！
+giftspecial_huodong2_desc,怪物之魂来临！！机会难得！,Monsters souls have arrived! This is a rare opportunity!,怪物之魂來臨！！機會難得！
+giftspecial_xuanze1_name,新人钜惠,Starter Package,新人優惠
+giftspecial_xuanze1_desc,新人钜惠，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose<color=#ffcc00> one</color>!,新人優惠，機會難得！只能選擇<color=#ffcc00>一個</color>進行購買哦！
+giftspecial_xuanze2_name,超值钜惠,Amazing Value,超值優惠
+giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>one</color>!,超值優惠，錯過難尋！只能選擇<color=#ffcc00>一個</color>進行購買哦！
 xinyangzhilu_name,神话守护者,Myth Guardian,神話守護者
 main_icon_mythopath,神话守护者,"Myth
 Guardian",神話守護者
@@ -1845,50 +1853,50 @@ gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领
 120_name7,累计进行钻石十连抽50次,Complete '10 Diamond Summons' 50 times,累計進行鑽石十連抽50次
 xinyang_instance_title,神话守护者,Myth Guardian,神話守護者
 setting_pvpweikai,尚未开启竞技场玩法,Arena has not been opened yet,尚未開啟競技場玩法
-setting_headpicturetips,拥有过的宠物可以设置为头像,Monsters that you have collected can be set as your avatar.,
+setting_headpicturetips,拥有过的宠物可以设置为头像,Monsters that you have collected can be set as your avatar.,擁有過的寵物可以設定為頭像
 decompose_sureother,确定操作么？,Confirm this action?,確定操作嗎？
-decompose_c,稀有度C,C Class,
-decompose_b,稀有度B,B Class,
-compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.,
-worldboss_title,神怪入侵,Deity Invasion,
-worldboss_timesbefore,每天可参与1场活动,Participate once per day,
-worldboss_timesafter,今日已参与,Participated today already,
-worldboss_rankbutton,排行榜,Rankings,
-worldboss_rankrewardbutton,排名奖励,Reward,
-worldboss_rulebutton,规则说明,Rules,
-worldboss_myrank,我的排名,My Ranking,
-worldboss_myhurt,我的伤害,My Damage,
-worldboss_kong,无,None,
-worldboss_myrank500,500名之后,500 and above,
-worldboss_kexingtitle,神怪克星,Deity Nemesis,
-worldboss_kexingdiji,低级克星,Minor Nemesis,
-worldboss_kexinggaoji,高级克星,Major Nemesis,
-worldboss_moraletitle1,士气提升,Increase Morale,
-worldboss_moraletitle2,（每项最多100%）,(Up to 100% each),
-worldboss_moralestrenth,力量,STR,
-worldboss_moraleintelligence,智力,INT,
-worldboss_moralehealth,体力,STA,
-worldboss_moralebutton,提升,Increase,
-worldboss_battlebuttonyicanjia,已参与,Participated,
-worldboss_battlebuttonweikai,未开启,Locked,
-worldboss_battlebuttongo,挑战,Battle,
-worldboss_battlebuttonrevive,再次挑战,Battle Again,
-worldboss_battlebuttonrevivetime,<color=#7aff00>{0}</color>秒后可再次挑战,Can battle again after <color=#7aff00>{0}</color> seconds,
-worldboss_revivesure,确认立即挑战吗？,Battle now?,
-worldboss_timetips,下场活动开启时间 {0} {1:D2}:{2:D2} {3},Next event start time {0} {1:D2}:{2:D2} {3},
-worldboss_timelefttips,本场活动将于<color=#ffcc00>{0:D2}:{1:D2}</color>后结束,This event will end after <color=#ffcc00>{0:D2}:{1:D2}</color>,
-worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!",
-worldboss_kexinglow,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>,
-worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>,
-worldboss_kexinglow1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>,
-worldboss_kexinghigh1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>,
-worldboss_kexingcomplain,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each monster has a nemesis. Adding that nemesis to your lineup will grant the specified buff to all your monsters. ,
-worldboss_battle,挑战,Battle,
-worldboss_rulestitle,规则说明,Rules,
+decompose_c,稀有度C,C Class,稀有度C
+decompose_b,稀有度B,B Class,稀有度B
+compose_record_008,已选择所有{0}目标,All {0} targets have already been selected.,已選擇所有{0}目標
+worldboss_title,神怪入侵,Deity Invasion,神怪入侵
+worldboss_timesbefore,每天可参与1场活动,Participate once per day,每天可參與1場活動
+worldboss_timesafter,今日已参与,Participated today already,今日已參與
+worldboss_rankbutton,排行榜,Rankings,排行榜
+worldboss_rankrewardbutton,排名奖励,Reward,排名獎勵
+worldboss_rulebutton,规则说明,Rules,規則說明
+worldboss_myrank,我的排名,My Ranking,我的排名
+worldboss_myhurt,我的伤害,My Damage,我的傷害
+worldboss_kong,无,None,無
+worldboss_myrank500,500名之后,500 and above,500名之後
+worldboss_kexingtitle,神怪克星,Deity Nemesis,神怪剋星
+worldboss_kexingdiji,低级克星,Minor Nemesis,低級剋星
+worldboss_kexinggaoji,高级克星,Major Nemesis,高級剋星
+worldboss_moraletitle1,士气提升,Increase Morale,士氣提升
+worldboss_moraletitle2,（每项最多100%）,(Up to 100% each),（每項最多100%）
+worldboss_moralestrenth,力量,STR,力量
+worldboss_moraleintelligence,智力,INT,智力
+worldboss_moralehealth,体力,STA,體力
+worldboss_moralebutton,提升,Increase,提升
+worldboss_battlebuttonyicanjia,已参与,Participated,已參與
+worldboss_battlebuttonweikai,未开启,Locked,未開啟
+worldboss_battlebuttongo,挑战,Battle,挑戰
+worldboss_battlebuttonrevive,再次挑战,Battle Again,再次挑戰
+worldboss_battlebuttonrevivetime,<color=#7aff00>{0}</color>秒后可再次挑战,Can battle again after <color=#7aff00>{0}</color> seconds,<color=#7aff00>{0}</color>秒後可再次挑戰
+worldboss_revivesure,确认立即挑战吗？,Battle now?,確認立即挑戰嗎？
+worldboss_timetips,下场活动开启时间 {0} {1:D2}:{2:D2} {3},Next event start time {0} {1:D2}:{2:D2} {3},下場活動開啟時間 {0} {1:D2}:{2:D2} {3}
+worldboss_timelefttips,本场活动将于<color=#ffcc00>{0:D2}:{1:D2}</color>后结束,This event will end after <color=#ffcc00>{0:D2}:{1:D2}</color>,本場活動將於<color=#ffcc00>{0:D2}:{1:D2}</color>後結束
+worldboss_overtips,本场神怪入侵活动已经结束，快去邮箱领取奖励吧！,"This Monster Invasion event has already ended, be sure to check for rewards in your mailbox!",本場神怪入侵活動已經結束，快去信箱領取獎勵吧！
+worldboss_kexinglow,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>,出戰全員傷害<color=#ffcc00>+{0}%</color>
+worldboss_kexinghigh,出战全员伤害<color=#ffcc00>+{0}%</color>,Ally monster damage <color=#ffcc00>+{0}%</color>,出戰全員傷害<color=#ffcc00>+{0}%</color>
+worldboss_kexinglow1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>,<color=#7aff00>出戰全員傷害+{0}%</color>
+worldboss_kexinghigh1,<color=#7aff00>出战全员伤害+{0}%</color>,<color=#7aff00>Ally monster damage +{0}%</color>,<color=#7aff00>出戰全員傷害+{0}%</color>
+worldboss_kexingcomplain,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each monster has a nemesis. Adding that nemesis to your lineup will grant the specified buff to all your monsters. ,每個神怪都有固定的剋星，只要將剋星配置進陣容，全員獲得指定buff加成。
+worldboss_battle,挑战,Battle,挑戰
+worldboss_rulestitle,规则说明,Rules,規則說明
 worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。
-    开放时间：每天中午12:45——13:00
-                         每天晚上20:00——20:15
-                         每天晚上21:45——22:00
+    开放时间：7:00——7:15
+                         11:00——11:15
+                         21:00——21:15
 2.每场神怪入侵活动中，可以通过提升士气来提升出战怪物的属性，出战宠物能够得到力量、智力、体力的全面提升！
    提升士气消耗钻石，在单场活动里，士气最高能被提升到100%。  
 3.每个boss都有克星，当日只要将克星配置进阵容，全员获得指定buff加成。Buff能够叠加存在哦！
@@ -1902,9 +1910,9 @@ worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与
     第3名               150钻石
     第4-20名          100钻石
     第21-100名      50钻石","1.Deity Invasion opens for 3 battles daily. Players may only participate in 1 of the 3 battles each day.
-   Open every afternoon from 12:45 to 13:00
-   Open every night from 20:00 to 20:15
-   Open every night from 21:45 to 22:00
+   Open from 7:00 to 7:15
+   Open from 11:00 to 11:15
+   Open from 21:00 to 21:15
 2.In each Deity Invasion battle, players can increase morale to increase their monsters' stats. Monsters can receive increases to STR, INT, and Power.
   Increasing moral requires diamonds. In one battle, morale can be upgraded up to 100%.
 3.Each boss has a nemesis. Players simply need to put the nemesis in their lineup and all their monsters will receive the specified buff. This buff can be stacked!
@@ -1917,108 +1925,124 @@ worldboss_rules,"1.神怪入侵活动每天开放3场，玩家每天只能参与
    Rank 2                     200 Diamonds
    Rank 3                     150 Diamonds
    Ranks 4 - 20            100 Diamonds
-   Ranks 21 - 100        50   Diamonds",
-worldboss_rewardtitle,排名奖励,Ranking Reward,
+   Ranks 21 - 100        50   Diamonds","1.神怪入侵活動每天開放3場，玩家每天只能參與其中的1場。
+    開放時間：7:00——7:15
+                         11:00——11:15
+                         21:00——21:15
+2.每場神怪入侵活動中，可以通過提升士氣來提升出戰怪物的屬性，出戰寵物能夠得到力量、智力、體力的全面提升！
+   提升士氣消耗鑽石，在單場活動裡，士氣最高能被提升到100%。  
+3.每個boss都有剋星，當日只要將剋星配置進陣容，全員獲得指定buff加成。Buff能夠疊加存在哦！
+   低級剋星buff：出戰全員增加傷害10%
+   高級剋星buff：出戰全員增加傷害20%
+4.神怪入侵活動會根據個人對boss的總傷害量進行排名，傷害量越高，排名越靠前，獎勵也就越豐厚哦！
+5.每場活動持續時間為15分鐘，本場活動的boss死亡或者活動時間到達後，本場活動結束。
+6.如果單場活動boss被消滅，排名前100的玩家將根據排名獲得不同的額外鑽石獎勵！排名越靠前，鑽石越多哦！
+    第1名               250鑽石
+    第2名               200鑽石
+    第3名               150鑽石
+    第4-20名          100鑽石
+    第21-100名      50鑽石"
+worldboss_rewardtitle,排名奖励,Ranking Reward,排名獎勵
 worldboss_ranklast,{0}及以后,"{0} and 
-above",
-worldboss_rewardtips,奖励将在活动结束后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. ,
-worldboss_ranktitle1,上场伤害排名,Previous damage ranking,
-worldboss_ranktitle2,本场伤害排名,Current damage ranking,
-worldboss_shuchushanghai,输出伤害,Damage Output,
-worldboss_startbefore,活动即将开启（参加活动将获得纹章、开孔石、金币奖励，快来参加吧！伤害量越多，奖励越丰厚！）,"The event is about to begin! (Participate to receive insignias, engraving stones, and coin rewards, so join now! The more damage dealt, the better the rewards!)",
-worldboss_timeleftfight,活动倒计时,Event Countdown,
-worldboss_deathtips,前方传来捷报，神怪已被消灭！,Good news from the frontlines! The invading deities has already been defeated!,
-worldboss_battleovertips,时间到啦！活动已结束~,Time's up! The event has ended.,
-worldboss_gongxiandu,宠物贡献度,Monster Contribution,
-worldboss_totaldamage,总伤害量,Total Damage,
-worldboss_record_001,购买失败，已经可以挑战啦！,Purchase failed. You may already battle now!,
-worldboss_record_002,士气已提升至最高！快去征战神怪吧！,Morale already increased to the max! Join the battle now!,
-worldboss_record_003,金币提升已达上限，试试钻石提升吧！,"Coins increased to the max, try increasing diamonds!",
-worldboss_record_004,活动已经结束，正在结算，稍后去邮箱查看奖励哦！,Event has already ended and results are being calculated. Your reward will be available in your mailbox shortly.,
-worldboss_record_005,请先选择要提升的士气,Please select the morale to be increased.,
-worldboss_record_006,<color=#ff0000>很遗憾，本场活动已达参与人数上限，下场再来吧。</color>,"<color=#ff0000>Unfortunately, this event has already reached the max number of participants. Please come for the next event.</color>",
-gohorselight_bossstart,神怪即将降临！代行者们，准备好率领自己的宠物战队将这些怪物驱逐回神怪界了吗！,"The Deities are invading! Monster keepers, prepare to command your monsters to battle and banish these invaders back to where they came from!",
-gohorselight_bossover,恭喜<color=#ffcc00>{0}</color>获得本场神怪入侵活动的第一名，获得了丰厚的纹章等奖励！,Congratulations to <color=#ffcc00>{0}</color> who has reached 1st place in the Deity Invasion event. ,
-loading_tips52,神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。,Deity Invasion will be open for battle 3 times per day. Players may participate in 1 of the 3 battles each day.,
-loading_tips53,可以通过提升士气来提升出战怪物的属性。,Players can increase morale to increase their monsters' stats in battle.,
-loading_tips54,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each deity boss has a set nemesis. Players simply need to put the nemesis in the lineup and all their monsters will receive the specified buff.,
-loading_tips55,输出伤害量越高，排名越靠前，奖励也就越丰厚哦！,"The higher the damage dealt, the higher the ranking and the better the rewards!",
-loading_tips56,神怪入侵战斗中，需要手动施放大招、集火、使用照妖镜！,"During the Deity Invasion, players need to manually cast abilities, concentrate attacks, and use the Mytho Lens.",
-arrayselect_count_006,活力不足，请先补充活力,"Insufficient energy, please recharge some energy first.",
-bag_record_008,钥匙不足，请先购买钥匙,"Insufficient keys, please purchase some more keys first.",
-summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit reached, unable to summon.",
-handbook_record_006,已达宠物最大持有量，无法合成,"Max monster limit reached, unable to craft.",
-list_byname,按名称排序,By Name,
-list_bylevel,按等级排序,By Level,
-compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},<color=#ffcc00>{0}%</color> chance of receiving {1}.,
-compose_insignia_003,祝福之力,Blessing Power,
-compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,"Can combine <color=#ffcc00>{0}</color> times, with a <color=#ffcc00>100%</color> chance each time of receiving {1}.",
-compose_insignia_005,将消耗,Will consume,
-compose_record_010,请添加5个相同名称的纹章,Please add 5 insignias with the same name.,
-compose_record_011,祝福之力不足,Insufficient Blessing Power.,
-dazhao_jieduan,连续,Keep,
-dazhao_shifang,可获得多次伤害,for more damage,
-compose_monster_name,宠物,Monster,
-monstercompose_tips,*合成5个同稀有度的宠物可以几率获得更高稀有度的宠物碎片,*Combine 5 same class Monster and receive 1 higher class monster fragments,
-compose_monster_filter,筛选,Filter,
-compose_monster_hecheng,合成,Compose,
-monstercompose_hecheng_tips,材料宠物合成后将<color=#ffcc00>消失</color>，确定进行合成操作吗？,Material monsters will be <color=#ffcc00>consumed</color> upon combining them. Continue?,
-compose_filter_c,稀有度C,C Class,
-compose_filter_b,稀有度B,B Class,
-compose_filter_a,稀有度A,A Class,
-compose_filter_all,全部,All,
-worldboss_record_007,活动未开始，可以在规则说明处查看活动时间哦！,"Event not started yet, please check Rules for event starting time.",
-compose_monster_target1,随机B稀有度宠物碎片,Random B-Class Monster Fragments,
-compose_monster_target2,随机A稀有度宠物碎片,Random A-Class Monster Fragments,
-compose_monster_target3,随机S稀有度宠物碎片,Random S-Class Monster Fragments,
-giftspecial_jinjiea1_name,A级进阶礼包,Package for A Class,
-giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Package for A Class (Rare),
-giftspecial_jinjieb1_name,S级进阶礼包,Package for S Class,
-giftspecial_jinjieb2_name,S级进阶礼包（稀有）,Package for S Class (Rare),
-giftspecial_jinjiec1_name,SS级进阶礼包,Package for SS Class,
-giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Package for SS Class (Rare),
-server_limit_002,当前服务器爆满，请稍后登录或选择其他服务器进行游戏！,"The server is busy now. Please try again shortly, or select another server to play on!",
-server_limit_001,当前服务器已达到注册上限，请选择其他服务器进行游戏！,The current server has already reached the max player limit. Please select another server to play on!,
-3D_unlock_tips,<color=#ffcc00>神怪入侵</color>尚未达到开启条件,<color=#ffcc00>Deity Invasion</color> has not been opened yet.,
-jiasu_name,加速,Speed-up,
-tuoguan_name,托管,Auto-battle,
-instance_zhuzhan_002,当前玩法无法使用公会助战功能哦！,Unable to use Guild Assistance in the current game mode!,
-instance_zhuzhan_004,雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 花费,Hired <color=#ffcc00ff>{1}</color> from<color=#ffcc00ff>{0}</color> cost ,
-instance_zhuzhan_003,请至少选择一位己方成员上阵！,Please select at least one member to enter battle!,
-instance_zhuzhan_jifang,己方宠物,My Monsters,
-instance_zhuzhan_gonghui,助战宠物,Guild Monsters,
-instance_zhuzhan_005,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?,
-instance_zhuzhan_006,一次战斗只能雇佣一只宠物,Only 1 monster may be hired for each battle.,
-im_chat_day,{0}天{1}小时,{0} days {1} hrs,
-im_chat_hour,{0}小时{1}分,{0} hrs {1} min,
-im_chat_minite,{0}分,{0} min,
-im_chat_missiontips,存在正在进行的公会任务，点击这里查看,"Can be found in the current Guild Quest, tap here to view.",
-retry_pinfandenglu,登录操作过于频繁，请稍后再试！,"The login operation too frequently, please try again later.",
-pvp_resultteambp,战力,BP,
-instance_zhuzhan_007,将支付给雇佣宠物所属玩家,the mercenary fee will be given to the keeper of the monster.,
-3D_unlock_tips_xinyangzhilu,<color=#ffcc00>神话守护者</color>尚未达到开启条件,<color=#ffcc00>Mytho Guardian</color> has not been opened yet.,
-giftspecial_huodong3_name,珍稀纹章礼包,Prized Insignia Package,
-giftspecial_huodong3_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!,
-giftspecial_huodong4_name,雪女降临,Chione Appears,
-giftspecial_huodong4_desc,冰雪女王来临！机会难得！,Chione has appeared! Take advantage of this rare opportunity!,
-xinyangzhishu_name,神话守护者,Myth Guardian,
-shijieboss_name,神怪入侵,Deity Invasion,
-fragmentwish_title,幸运卡牌,Mytho Cards,
-fragmentwish_mubiao,选择目标宠物,Select target monster,
+above",{0}及以後
+worldboss_rewardtips,奖励将在活动结束后通过邮件发放,Rewards will be sent via in-game mail after the event has ended. ,獎勵將在活動結束後通過信件發放
+worldboss_ranktitle1,上场伤害排名,Previous damage ranking,上場傷害排名
+worldboss_ranktitle2,本场伤害排名,Current damage ranking,本場傷害排名
+worldboss_shuchushanghai,输出伤害,Damage Output,輸出傷害
+worldboss_startbefore,活动即将开启（参加活动将获得纹章、开孔石、金币奖励，快来参加吧！伤害量越多，奖励越丰厚！）,"The event is about to begin! (Participate to receive insignias, engraving stones, and coin rewards, so join now! The more damage dealt, the better the rewards!)",活動即將開啟（參加活動將獲得紋章、開孔石、金幣獎勵，快來參加吧！傷害量越多，獎勵越豐厚！）
+worldboss_timeleftfight,活动倒计时,Event Countdown,活動倒計時
+worldboss_deathtips,前方传来捷报，神怪已被消灭！,Good news from the frontlines! The invading deities has already been defeated!,前方傳來捷報，神怪已被消滅！
+worldboss_battleovertips,时间到啦！活动已结束~,Time's up! The event has ended.,時間到啦！活動已結束~
+worldboss_gongxiandu,宠物贡献度,Monster Contribution,寵物貢獻度
+worldboss_totaldamage,总伤害量,Total Damage,總傷害量
+worldboss_record_001,购买失败，已经可以挑战啦！,Purchase failed. You may already battle now!,購買失敗，已經可以挑戰啦！
+worldboss_record_002,士气已提升至最高！快去征战神怪吧！,Morale already increased to the max! Join the battle now!,士氣已提升至最高！快去征戰神怪吧！
+worldboss_record_003,金币提升已达上限，试试钻石提升吧！,"Coins increased to the max, try increasing diamonds!",金幣提升已達上限，試試鑽石提升吧！
+worldboss_record_004,活动已经结束，正在结算，稍后去邮箱查看奖励哦！,Event has already ended and results are being calculated. Your reward will be available in your mailbox shortly.,活動已經結束，正在結算，稍後去信箱查看獎勵哦！
+worldboss_record_005,请先选择要提升的士气,Please select the morale to be increased.,請先選擇要提升的士氣
+worldboss_record_006,<color=#ff0000>很遗憾，本场活动已达参与人数上限，下场再来吧。</color>,"<color=#ff0000>Unfortunately, this event has already reached the max number of participants. Please come for the next event.</color>",<color=#ff0000>很遺憾，本場活動已達參與人數上限，下場再來吧。</color>
+gohorselight_bossstart,神怪即将降临！代行者们，准备好率领自己的宠物战队将这些怪物驱逐回神怪界了吗！,"The Deities are invading! Monster keepers, prepare to command your monsters to battle and banish these invaders back to where they came from!",神怪即將降臨！代行者們，準備好率領自己的寵物戰隊將這些怪物驅逐回神怪界了嗎！
+gohorselight_bossover,恭喜<color=#ffcc00>{0}</color>获得本场神怪入侵活动的第一名，获得了丰厚的纹章等奖励！,Congratulations to <color=#ffcc00>{0}</color> who has reached 1st place in the Deity Invasion event. ,恭喜<color=#ffcc00>{0}</color>獲得本場神怪入侵活動的第一名，獲得了豐厚的紋章等獎勵！
+loading_tips52,神怪入侵活动每天开放3场，玩家每天只能参与其中的1场。,Deity Invasion will be open for battle 3 times per day. Players may participate in 1 of the 3 battles each day.,神怪入侵活動每天開放3場，玩家每天只能參與其中的1場。
+loading_tips53,可以通过提升士气来提升出战怪物的属性。,Players can increase morale to increase their monsters' stats in battle.,可以通過提升士氣來提升出戰怪物的屬性。
+loading_tips54,每个神怪都有固定的克星，只要将克星配置进阵容，全员获得指定buff加成。,Each deity boss has a set nemesis. Players simply need to put the nemesis in the lineup and all their monsters will receive the specified buff.,每個神怪都有固定的剋星，只要將剋星配置進陣容，全員獲得指定buff加成。
+loading_tips55,输出伤害量越高，排名越靠前，奖励也就越丰厚哦！,"The higher the damage dealt, the higher the ranking and the better the rewards!",輸出傷害量越高，排名越靠前，獎勵也就越豐厚哦！
+loading_tips56,神怪入侵战斗中，需要手动施放大招、集火、使用照妖镜！,"During the Deity Invasion, players need to manually cast abilities, concentrate attacks, and use the Mytho Lens.",神怪入侵戰鬥中，需要手動施放大招、集火、使用照妖鏡！
+arrayselect_count_006,活力不足，请先补充活力,"Insufficient energy, please recharge some energy first.",活力不足，請先補充活力
+bag_record_008,钥匙不足，请先购买钥匙,"Insufficient keys, please purchase some more keys first.",鑰匙不足，請先購買鑰匙
+summon_record_001,已达宠物最大持有量，无法召唤,"Max monster limit reached, unable to summon.",已達寵物最大持有量，無法召喚
+handbook_record_006,已达宠物最大持有量，无法合成,"Max monster limit reached, unable to craft.",已達寵物最大持有量，無法合成
+list_byname,按名称排序,By Name,按名稱排序
+list_bylevel,按等级排序,By Level,按等級排序
+compose_insignia_001,<color=#ffcc00>{0}%</color>概率获得{1},<color=#ffcc00>{0}%</color> chance of receiving {1}.,<color=#ffcc00>{0}%</color>機率獲得{1}
+compose_insignia_003,祝福之力,Blessing Power,祝福之力
+compose_insignia_004,可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>概率获得{1}！,"Can combine <color=#ffcc00>{0}</color> times, with a <color=#ffcc00>100%</color> chance each time of receiving {1}.",可合成<color=#ffcc00>{0}</color>次，每次合成<color=#ffcc00>100%</color>機率獲得{1}！
+compose_insignia_005,将消耗,Will consume,將消耗
+compose_record_010,请添加5个相同名称的纹章,Please add 5 insignias with the same name.,請添加5個相同名稱的紋章
+compose_record_011,祝福之力不足,Insufficient Blessing Power.,祝福之力不足
+dazhao_jieduan,连续,Keep,連續
+dazhao_shifang,可获得多次伤害,for more damage,可獲得多次傷害
+compose_monster_name,宠物,Monster,寵物
+monstercompose_tips,*合成5个同稀有度的宠物可以几率获得更高稀有度的宠物碎片,*Combine 5 same class Monster and receive 1 higher class monster fragments,*合成5個同稀有度的寵物可以機率獲得更高稀有度的寵物碎片
+compose_monster_filter,筛选,Filter,篩選
+compose_monster_hecheng,合成,Compose,合成
+monstercompose_hecheng_tips,材料宠物合成后将<color=#ffcc00>消失</color>，确定进行合成操作吗？,Material monsters will be <color=#ffcc00>consumed</color> upon combining them. Continue?,材料寵物合成後將<color=#ffcc00>消失</color>，確定進行合成操作嗎？
+compose_filter_c,稀有度C,C Class,稀有度C
+compose_filter_b,稀有度B,B Class,稀有度B
+compose_filter_a,稀有度A,A Class,稀有度A
+compose_filter_all,全部,All,全部
+worldboss_record_007,活动未开始，可以在规则说明处查看活动时间哦！,"Event not started yet, please check Rules for event starting time.",活動未開始，可以在規則說明處查看活動時間哦！
+compose_monster_target1,随机B稀有度宠物碎片,Random B-Class Monster Fragments,隨機B稀有度寵物碎片
+compose_monster_target2,随机A稀有度宠物碎片,Random A-Class Monster Fragments,隨機A稀有度寵物碎片
+compose_monster_target3,随机S稀有度宠物碎片,Random S-Class Monster Fragments,隨機S稀有度寵物碎片
+giftspecial_jinjiea1_name,A级进阶礼包,Package for A Class,A級進階禮包
+giftspecial_jinjiea2_name,A级进阶礼包（稀有）,Package for A Class (Rare),A級進階禮包（稀有）
+giftspecial_jinjieb1_name,S级进阶礼包,Package for S Class,S級進階禮包
+giftspecial_jinjieb2_name,S级进阶礼包（稀有）,Package for S Class (Rare),S級進階禮包（稀有）
+giftspecial_jinjiec1_name,SS级进阶礼包,Package for SS Class,SS級進階禮包
+giftspecial_jinjiec2_name,SS级进阶礼包（稀有）,Package for SS Class (Rare),SS級進階禮包（稀有）
+server_limit_002,当前服务器爆满，请稍后登录或选择其他服务器进行游戏！,"The server is busy now. Please try again shortly, or select another server to play on!",當前伺服器爆滿，請稍後登入或選擇其他伺服器進行遊戲！
+server_limit_001,当前服务器已达到注册上限，请选择其他服务器进行游戏！,The current server has already reached the max player limit. Please select another server to play on!,當前伺服器已達到註冊上限，請選擇其他伺服器進行遊戲！
+3D_unlock_tips,<color=#ffcc00>神怪入侵</color>尚未达到开启条件,<color=#ffcc00>Deity Invasion</color> has not been opened yet.,<color=#ffcc00>神怪入侵</color>尚未達到開啟條件
+jiasu_name,加速,Speed-up,加速
+tuoguan_name,托管,Auto-battle,自動戰鬥
+instance_zhuzhan_002,当前玩法无法使用公会助战功能哦！,Unable to use Guild Assistance in the current game mode!,當前玩法無法使用公會助戰功能哦！
+instance_zhuzhan_004,雇佣<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 花费,Hired <color=#ffcc00ff>{1}</color> from<color=#ffcc00ff>{0}</color> cost ,雇傭<color=#ffcc00ff>{0}</color>的<color=#ffcc00ff>{1}</color> 花費
+instance_zhuzhan_003,请至少选择一位己方成员上阵！,Please select at least one member to enter battle!,請至少選擇一位己方成員上陣！
+instance_zhuzhan_jifang,己方宠物,My Monsters,己方寵物
+instance_zhuzhan_gonghui,助战宠物,Guild Monsters,助戰寵物
+instance_zhuzhan_005,确定雇佣宠物进行挑战吗？,Hire this mercenary monster to enter battle?,確定雇傭寵物進行挑戰嗎？
+instance_zhuzhan_006,一次战斗只能雇佣一只宠物,Only 1 monster may be hired for each battle.,一次戰鬥只能雇傭一隻寵物
+im_chat_day,{0}天{1}小时,{0} days {1} hrs,{0}天{1}小時
+im_chat_hour,{0}小时{1}分,{0} hrs {1} min,{0}小時{1}分
+im_chat_minite,{0}分,{0} min,{0}分
+im_chat_missiontips,存在正在进行的公会任务，点击这里查看,"Can be found in the current Guild Quest, tap here to view.",存在正在進行的公會任務，點擊這裡查看
+retry_pinfandenglu,登录操作过于频繁，请稍后再试！,"The login operation too frequently, please try again later.",登入操作過於頻繁，請稍後再試！
+pvp_resultteambp,战力,BP,戰力
+instance_zhuzhan_007,将支付给雇佣宠物所属玩家,the mercenary fee will be given to the keeper of the monster.,將支付給雇傭寵物所屬玩家
+3D_unlock_tips_xinyangzhilu,<color=#ffcc00>神话守护者</color>尚未达到开启条件,<color=#ffcc00>Mytho Guardian</color> has not been opened yet.,<color=#ffcc00>神話守護者</color>尚未達到開啟條件
+giftspecial_huodong3_name,珍稀纹章礼包,Prized Insignia Package,珍稀紋章禮包
+giftspecial_huodong3_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!,得到<color=#ffcc00>頂級紋章</color>的絕佳機會！
+giftspecial_huodong4_name,雪女降临,Chione Appears,雪女降臨
+giftspecial_huodong4_desc,冰雪女王来临！机会难得！,Chione has appeared! Take advantage of this rare opportunity!,冰雪女王來臨！機會難得！
+xinyangzhishu_name,神话守护者,Myth Guardian,神話守護者
+shijieboss_name,神怪入侵,Deity Invasion,神怪入侵
+fragmentwish_title,幸运卡牌,Mytho Cards,幸運卡牌
+fragmentwish_mubiao,选择目标宠物,Select target monster,選擇目標寵物
 fragmentwish_freetips,翻牌可以获得目标宠物碎片，每日前2次翻牌免费，每日0点重置,"Flip cards to receive fragments for the target monster. 
-Players may flip 2 times for free daily; cards reset at 00:00.",
-fragmentwish_start,洗牌,Shuffle,
-fregmentwish_record2,请先选择目标宠物,Please select a target monster first.,
-fregmentwish_record3,新的一天到啦！重新开始吧！,With a new day comes a new beginning! Let's start again!,
-fragmentwish_3Dtitle,幸运卡牌,Mytho Cards,
-decompose_equipmenttitle,装备分解,Discard Equipment,
-decompose_monstertitle,宠物炼化,Refine Monster,
-decompose_btndecompose,分解,Discard,
-decompose_btnlianhua,炼化,Refine,
-decompose_s,稀有度S,S Class,
-3D_unlock_tips_fragmentwish,<color=#ffcc00>幸运卡牌</color>尚未达到开启条件,<color=#ffcc00>Mytho Cards</color> has not been opened yet.,
-energy_noduihuantimes,今日<color=#ffcc00>活力购买次数</color>已经用完。,You have already reached the <color=#ffcc00>Energy purchase limit</color> for today.,
-loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该宠物的碎片。,Refining a monster will return any materials used for advancement as well as the fragments required for combining the monster once.,
+Players may flip 2 times for free daily; cards reset at 00:00.",翻牌可以獲得目標寵物碎片，每日前2次翻牌免費，每日0點重置
+fragmentwish_start,洗牌,Shuffle,洗牌
+fregmentwish_record2,请先选择目标宠物,Please select a target monster first.,請先選擇目標寵物
+fregmentwish_record3,新的一天到啦！重新开始吧！,With a new day comes a new beginning! Let's start again!,新的一天到啦！重新開始吧！
+fragmentwish_3Dtitle,幸运卡牌,Mytho Cards,幸運卡牌
+decompose_equipmenttitle,装备分解,Discard Equipment,裝備分解
+decompose_monstertitle,宠物炼化,Refine Monster,寵物煉化
+decompose_btndecompose,分解,Discard,分解
+decompose_btnlianhua,炼化,Refine,煉化
+decompose_s,稀有度S,S Class,稀有度S
+3D_unlock_tips_fragmentwish,<color=#ffcc00>幸运卡牌</color>尚未达到开启条件,<color=#ffcc00>Mytho Cards</color> has not been opened yet.,<color=#ffcc00>幸運卡牌</color>尚未達到開啟條件
+energy_noduihuantimes,今日<color=#ffcc00>活力购买次数</color>已经用完。,You have already reached the <color=#ffcc00>Energy purchase limit</color> for today.,今日<color=#ffcc00>活力購買次數</color>已經用完。
+loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该宠物的碎片。,Refining a monster will return any materials used for advancement as well as the fragments required for combining the monster once.,煉化寵物會返還寵物進階消耗的材料和合成1只該寵物的碎片。
 201_name1,累计登录1天,Accumulate 1 login day,累計登入1天
 201_name2,累计登录2天,Accumulate 2 login days,累計登入2天
 201_name3,累计登录3天,Accumulate 3 login days,累計登入3天
@@ -2088,19 +2112,19 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 216_name5,累计进行钻石十连抽20次,Complete '10 Diamond Summons' 20 times,累計進行鑽石十連抽20次
 216_name6,累计进行钻石十连抽30次,Complete '10 Diamond Summons' 30 times,累計進行鑽石十連抽30次
 216_name7,累计进行钻石十连抽50次,Complete '10 Diamond Summons' 50 times,累計進行鑽石十連抽50次
-217_name1,神话守护者胜利1次,Completing 1 stage in Mytho Guardian,
-217_name2,神话守护者胜利5次,Completing 5 stage in Mytho Guardian,
-217_name3,神话守护者胜利9次,Completing 9 stage in Mytho Guardian,
-217_name4,同一个时间段内进行神怪入侵挑战1次,Battling once in Deity Invasion,
-217_name5,同一个时间段内进行神怪入侵挑战3次,Battling 3 times in Deity Invasion,
-217_name6,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,
-217_name7,竞技场挑战1次,Battle the Arena once today,
-217_name8,竞技场挑战5次,Battle the Arena 5 times today,
-217_name9,竞技场挑战10次,Battle the Arena 10 times today,
-217_name10,大冒险奖励1次,Collect 1 Adventure reward today,
-217_name11,大冒险奖励5次,Collect 5 Adventure reward today,
-217_name12,大冒险奖励10次,Collect 10 Adventure reward today,
-217_name13,完成一次公会许愿,Complete 1 Guild Wish today,
+217_name1,今日神话守护者胜利1次,Completing 1 stage in Mytho Guardian today,神話守護者勝利1次
+217_name2,今日神话守护者胜利5次,Completing 5 stage in Mytho Guardian today,神話守護者勝利5次
+217_name3,今日神话守护者胜利9次,Completing 9 stage in Mytho Guardian today,神話守護者勝利9次
+217_name4,今日同一个时间段内进行神怪入侵挑战1次,Battling once in Deity Invasion today,同一個時間段內進行boss挑戰1次
+217_name5,今日同一个时间段内进行神怪入侵挑战3次,Battling 3 times in Deity Invasion today,同一個時間段內進行boss挑戰5次
+217_name6,今日同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion today,同一個時間段內進行boss挑戰9次
+217_name7,今日完成竞技场挑战1次,Battle the Arena once today,競技場挑戰1次
+217_name8,今日完成竞技场挑战5次,Battle the Arena 5 times today,競技場挑戰5次
+217_name9,今日完成竞技场挑战10次,Battle the Arena 10 times today,競技場挑戰10次
+217_name10,今日领取大冒险奖励1次,Collect 1 Adventure reward today,大冒險獎勵1次
+217_name11,今日领取大冒险奖励5次,Collect 5 Adventure reward today,大冒險獎勵5次
+217_name12,今日领取大冒险奖励10次,Collect 10 Adventure reward today,大冒險獎勵10次
+217_name13,今日完成一次公会许愿,Complete 1 Guild Wish today,完成一次公會許願
 eventinstance_UI_title,封印之日,Rift Day,封印之日
 eventinstance_monster1_name,主战怪,Primary Monster,主戰怪
 eventinstance_monster2_name,辅战怪,Support Monsters,輔戰怪
@@ -2134,7 +2158,39 @@ eventinstance_surprise_title,碎片宝箱,Fragment Chest,碎片寶箱
 eventinstance_close_desc,活动已经结束，下次活动见！,"This event has already ended, please come back again!",活動已經結束，下次活動見！
 setting_language_chineseTW,繁體中文,繁體中文,繁體中文
 eventinstance_title,封印之日,Rift Day,封印之日
-eventinstance_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久战后仍未分出胜负，请调整阵容后继续挑战！
-loading_tips58,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。
-fragmentwish_fragmentnum,碎片数量：{0},碎片数量：{0},碎片数量：{0}
-decompose_choise1,（品质为绿色及以上的宠物可以炼化）,（品质为绿色及以上的宠物可以炼化）,（品质为绿色及以上的宠物可以炼化）
+eventInstance_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久战后仍未分出胜负，请调整阵容后继续挑战！
+loading_tips58,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,"In Story mode and Myth Guardians mode, you can hire monsters for battle from the guild base. ",
+fragmentwish_fragmentnum,碎片数量：{0},Currently have：{0},
+decompose_choise1,"请选择要操作目标
+（<color=#ffcc00>品质为绿色及以上的宠物</color>可以炼化）","Please select target item
+(<color=#ffcc00>Monsters green grade or higher</color> can undergo refinement)",
+209_name1,累计充值200个钻石,Top-up up to 200 Diamonds,累計儲值200個鑽石
+209_name2,累计充值800个钻石,Top-up up to 800 Diamonds,累計儲值800個鑽石
+209_name3,累计充值1200个钻石,Top-up up to 1200 Diamonds,累計儲值1200個鑽石
+209_name4,累计充值2000个钻石,Top-up up to 2000 Diamonds,累計儲值2000個鑽石
+209_name5,累计充值3000个钻石,Top-up up to 3000 Diamonds,累計儲值3000個鑽石
+209_name6,累计充值5000个钻石,Top-up up to 5000 Diamonds,累計儲值5000個鑽石
+209_name7,累计充值10000个钻石,Top-up up to 10000 Diamonds,累計儲值10000個鑽石
+210_name1,累计充值500个钻石,Top-up up to 500 Diamonds,累計儲值500個鑽石
+210_name2,累计充值1000个钻石,Top-up up to 1000 Diamonds,累計儲值1000個鑽石
+210_name3,累计充值1500个钻石,Top-up up to 1500 Diamonds,累計儲值1500個鑽石
+210_name4,累计充值2000个钻石,Top-up up to 2000 Diamonds,累計儲值2000個鑽石
+210_name5,累计充值3000个钻石,Top-up up to 3000 Diamonds,累計儲值3000個鑽石
+210_name6,累计充值5000个钻石,Top-up up to 5000 Diamonds,累計儲值5000個鑽石
+210_name7,累计充值10000个钻石,Top-up up to 10000 Diamonds,累計儲值10000個鑽石
+rate_satisfiedtips,请问您对我们的游戏是否满意？,Are you satisfied with the game?,
+rate_btnunsatisfied,不满意,Not satisfied,
+rate_btnsatisfied,满意,Satisfied,
+rate_ios,是否介意花费一点时间在App  Store为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the App Store?,
+rate_google,是否介意花费一点时间在Google Play为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the Google Play store?,
+rate_btnnothank,不，谢谢,"No, thanks.",
+rate_btngogo,欣然前往,Continue,
+rate_tucaotips,您对游戏的想法：,Any thoughts/suggestions for the game:,
+gift_name_121,感恩祈福季,Season of Thanksgiving Blessings,感恩祈福季
+gift_desc_121,感恩节期间，参与指定活动内容即可换取祈福币，可以用于兑换惊喜道具哦！快去参加吧！,"During the Thanksgiving Season, participate in the specified events to receive Blessing Coins, which can be used to exchange for surprise items! Check it out!",感恩节期间，参与指定活动内容即可换取祈福币，可以用于兑换惊喜道具哦！快去参加吧！
+giftspecial_lingtie_name,强化大礼包,Advancement Package,强化大礼包
+giftspecial_lingtie_desc,快速获得灵铁，每天只能购买<color=#70ecff>3次</color>哦！,Get Raw Iron immediately! Can only be purchased <color=#70ecff>3 times</color> per day!,快速获得灵铁，每天只能购买<color=#70ecff>3次</color>哦！
+eventinstance_surprise_desc,概率获得下列物品,Set chance of receiving the following items,機率獲得下列物品
+loading_longnvlan,<color=#70ecff>龙女</color>,<color=#70ecff>Dragon Girl</color>,<color=#70ecff>龍女</color>
+loading_tips59,通关层数越多获得的碎片奖励越丰富哦！,"The more levels you clear, the better the fragment reward you will receive!",
+loading_tips60,阵容搭配和属性克制是通关的关键！,Using monsters that counter the enemy's elements is key to victory!,

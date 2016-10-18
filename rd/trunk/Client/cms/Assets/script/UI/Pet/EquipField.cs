@@ -20,11 +20,10 @@ public class EquipField : MonoBehaviour
     private GameUnit unit;
 
     private PartType part;
-    //public PartType Part
-    //{
-    //    get { return part; }
-    //    set { part = value; }
-    //}
+    public PartType Part
+    {
+        get { return part; }
+    }
 
     private EquipData data;
     public EquipData Data

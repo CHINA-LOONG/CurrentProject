@@ -101,6 +101,7 @@ public class BattleModule : ModuleBase
         else if (pvpParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+            loading.SetLoading(LoadingType.loadingPvp);
             loading.OpenPvploading(pvpParam);
             if (loading != null)
             {

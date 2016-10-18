@@ -29,6 +29,7 @@ public class UITowerEntry : UIBase
     //---------------------------------------------------------------------------------------------
     public override void Init()
     {
+        base.Init();
         TowerData towerShilian = StaticDataMgr.Instance.GetTowerData((int)TowerType.Tower_Shilian);
         if (towerShilian != null)
         {
@@ -101,6 +102,10 @@ public class UITowerEntry : UIBase
     }
     //---------------------------------------------------------------------------------------------
     void OnReturn(GameObject go)
+    {
+        RequestCloseUi();
+    }
+    public override void CloseUi()
     {
         mMainStageControl.QuitSelectGroup();
     }

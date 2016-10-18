@@ -205,31 +205,7 @@ public class MonsterIcon : MonoBehaviour
             return;
         }
         xiyouduImage.gameObject.SetActive(bShow);
-        string assetname = "";
-        switch (unitData.rarity)
-        {
-            case 0:
-                assetname = "c";
-                break;
-            case 1:
-                assetname = "b";
-                break;
-            case 2:
-                assetname = "a";
-                break;
-            case 3:
-                assetname = "s";
-                break;
-            case 4:
-                assetname = "ss";
-                break;
-            case 5:
-                assetname = "sss";
-                break;
-            default:
-                break;
-        }
-        assetname = "chongwu_xiyoudu_" + assetname;
+        string assetname = UIUtil.GetRareImg(unitData.rarity);
 
         Sprite assetImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
 

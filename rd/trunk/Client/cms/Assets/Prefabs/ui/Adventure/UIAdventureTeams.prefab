@@ -304,6 +304,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9584680}
   textTitle: {fileID: 11441898}
   textCount: {fileID: 11487426}
   itemParent: {fileID: 22495238}
@@ -562,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ScrollRect: {fileID: 11456714}
   m_Grid: {fileID: 11482430}
+  ElementSize: {x: 0, y: 0}
 --- !u!114 &11472456
 MonoBehaviour:
   m_ObjectHideFlags: 1

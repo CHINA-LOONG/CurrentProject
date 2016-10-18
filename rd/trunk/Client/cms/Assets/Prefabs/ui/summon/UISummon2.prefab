@@ -1102,6 +1102,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 0}
   exit: {fileID: 197470}
   onceButton: {fileID: 123244}
   tenButton: {fileID: 193224}

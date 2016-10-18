@@ -1,0 +1,11 @@
+{
+    "group": "FunplusSDK",
+    "libs": [],
+    "frameworks": ["FunplusSdk.framework", "UIKit.framework", "CoreGraphics.framework", "SystemConfiguration.framework", "CoreTelephony.framework", "Security.framework", "AssetsLibrary.framework", "AdSupport.framework", "MobileCoreServices.framework"],
+    "headerpaths": [],
+    "files":   [],
+    "folders": [],
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

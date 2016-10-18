@@ -908,7 +908,8 @@ public class StaticDataMgr : MonoBehaviour
             {
                 LoadingData loadingList = new LoadingData();
                 loadingList.loadingTips = item.tips.Split(',');
-                loadingList.loadingResource = item.picture.Split(',');
+                if (item.picture != null)
+                    loadingList.loadingResource = item.picture.Split(',');
                 loadingData.Add(item.scene, loadingList);
             }
         }

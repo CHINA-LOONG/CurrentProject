@@ -221,6 +221,11 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void HyperlinkJumpRecruit(GameObject btn)
     {
+        if (!LevelLimits.IsOpen(LimitsType.guildLimits))
+        {
+            ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("start_record_001"), (int)LimitsType.guildLimits), (int)PB.ImType.PROMPT);
+            return;
+        }
         if (GameMain.Instance.IsCurModule<BattleModule>())
             ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_006"), (int)PB.ImType.PROMPT);
         else
@@ -242,6 +247,11 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     void SelectGuild(GameObject btn)
     {
+        if (!LevelLimits.IsOpen(LimitsType.guildLimits))
+        {
+            ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("start_record_001"),(int)LimitsType.guildLimits), (int)PB.ImType.PROMPT);
+            return;
+        }
         if (GameMain.Instance.IsCurModule<BattleModule>())
             ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_record_006"), (int)PB.ImType.PROMPT);
         else

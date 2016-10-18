@@ -278,6 +278,10 @@ public class UITower : UIBase
     //---------------------------------------------------------------------------------------------------------------------------------------
     void ExitTowerClick(GameObject btn)
     {
+        RequestCloseUi();
+    }
+    public override void CloseUi()
+    {
         CloseReward();
         UIMgr.Instance.DestroyUI(transform.GetComponent<UITower>());
     }

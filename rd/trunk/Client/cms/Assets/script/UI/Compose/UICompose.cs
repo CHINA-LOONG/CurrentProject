@@ -44,7 +44,6 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
     [Serializable]
     public class ComposeList
     {
-        public Text text_Material;
         public FixCountScrollView scrollView;
         public Dictionary<string, ComposeItemInfo> ItemInfo = new Dictionary<string, ComposeItemInfo>();
     }
@@ -100,8 +99,6 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
         composeView.text_RemoveAll.text = StaticDataMgr.Instance.GetTextByID("compose_unload");
         composeView.text_ComposeOne.text = StaticDataMgr.Instance.GetTextByID("compose_btnone");
         composeView.text_ComposeTen.text = StaticDataMgr.Instance.GetTextByID("compose_btnten");
-
-        composeList.text_Material.text = StaticDataMgr.Instance.GetTextByID("compose_chmaterial");
 
     }
 

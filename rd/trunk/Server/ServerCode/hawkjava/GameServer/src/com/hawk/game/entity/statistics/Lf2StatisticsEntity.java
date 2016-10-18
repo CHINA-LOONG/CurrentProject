@@ -1,10 +1,7 @@
 package com.hawk.game.entity.statistics;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
@@ -41,10 +37,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 
 	@Column(name = "playerId", unique = true)
 	protected int playerId = 0;
-
-	// 刷新时间点X上次刷新时间
-	@Column(name = "refreshTimeX")
-	protected String refreshTimeXJson = "";
 
 	// 大冒险条件刷新次数
 	@Column(name = "adventureChange", nullable = false)
@@ -184,17 +176,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 	// decode-------------------------------------------------------------------
 
 	@Transient
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-	// 每一项刷新时间
-	@Transient
-	protected Map<Integer, Calendar> refreshTimeMap = new HashMap<Integer, Calendar>();
-	@Transient
-	protected Map<Integer, String> refreshDateMap = new HashMap<Integer, String>();
-	@Transient
-	boolean refreshTimeFlag = false;
-
-	@Transient
 	protected List<Integer> callMonsterStageTimesList = new ArrayList<Integer>();
 	@Transient
 	boolean callMonsterStageTimesFlag = false;
@@ -230,21 +211,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (null != refreshTimeXJson && false == "".equals(refreshTimeXJson) && false == "null".equals(refreshTimeXJson)) {
-			refreshDateMap = HawkJsonUtil.getJsonInstance().fromJson(refreshTimeXJson, new TypeToken<HashMap<Integer, String>>() {}.getType());
-			for (Map.Entry<Integer, String> entry : refreshDateMap.entrySet()) {
-				try {
-					Date date = dateFormat.parse(entry.getValue());
-					Calendar calendar = Calendar.getInstance();
-					calendar.setTime(date);
-					refreshTimeMap.put(entry.getKey(), calendar);
-				} catch (ParseException e) {
-					HawkException.catchException(e);
-					return false;
-				}
-			}
-		}
-
 		if (null != callMonsterStageXTimesJson && false == "".equals(callMonsterStageXTimesJson) && false == "null".equals(callMonsterStageXTimesJson)) {
 			callMonsterStageTimesList = HawkJsonUtil.getJsonInstance().fromJson(callMonsterStageXTimesJson, new TypeToken<ArrayList<Integer>>() {}.getType());
 		}
@@ -260,15 +226,6 @@ public class Lf2StatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean encode() {
-		if (true == refreshTimeFlag) {
-			refreshTimeFlag = false;
-			refreshDateMap.clear();
-			for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
-				refreshDateMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
-			}
-			refreshTimeXJson = HawkJsonUtil.getJsonInstance().toJson(refreshDateMap);
-		}
-
 		if (true == callMonsterStageTimesFlag) {
 			callMonsterStageTimesFlag = false;
 			callMonsterStageXTimesJson = HawkJsonUtil.getJsonInstance().toJson(callMonsterStageTimesList);

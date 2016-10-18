@@ -1,20 +1,20 @@
 ﻿#TEXT,TEXT,TEXT,TEXT
 id,chinese,english,traditional
 #文字Id,文字内容,文字内容,文字内容
-pet_character_1,物理输出,Physical DPS,
-pet_character_2,法术输出,Magic DPS,
+pet_character_1,物理输出,Physical DPS,物理輸出
+pet_character_2,法术输出,Magic DPS,法術輸出
 pet_character_3,支援,Support,支援
 pet_character_4,支援,Support,支援
 pet_character_5,治疗,Healer,治療
 pet_character_6,肉盾,Tank,肉盾
-Valor,物理输出,Physical DPS,
-Spiritual,法术输出,Magic DPS,
+Valor,物理输出,Physical DPS,物理輸出
+Spiritual,法术输出,Magic DPS,法術輸出
 Mischievous,支援,Support,支援
 Collaborate,支援,Support,支援
 Compassion,治疗,Healer,治療
 Humility,肉盾,Tank,肉盾
-descrip_valor,力量的化身，善于运用物理技能对敌方造成物理伤害，是队伍的主要输出,The epitome of strength; excels at using physical abilities to deal physical damage to the enemy. An important part of your team's DPS.,
-descrip_spiritual,智慧的代表，善于运用法术技能对敌方造成法术伤害，是队伍的主要输出,The representative of wisdom; excels at using magic abilities to deal magic damage to the enemy. An important part of your team's DPS.,
+descrip_valor,力量的化身，善于运用物理技能对敌方造成物理伤害，是队伍的主要输出,The epitome of strength; excels at using physical abilities to deal physical damage to the enemy. An important part of your team's DPS.,力量的化身，善於運用物理技能對敵方造成物理傷害，是隊伍的主要輸出
+descrip_spiritual,智慧的代表，善于运用法术技能对敌方造成法术伤害，是队伍的主要输出,The representative of wisdom; excels at using magic abilities to deal magic damage to the enemy. An important part of your team's DPS.,智慧的代表，善於運用法術技能對敵方造成法術傷害，是隊伍的主要輸出
 descrip_mischievous,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle,提供各種增益和減益狀態，輔助隊伍
 descrip_collaborate,提供各种增益和减益状态，辅助队伍,Provides buffs and debuffs to support the team in battle,提供各種增益和減益狀態，輔助隊伍
 descrip_compassion,善于运用治疗技能，可以恢复队伍的生命和状态,Uses healing abilities to recover HP and increase survivability,善於運用治療技能，可以恢復隊伍的生命和狀態
@@ -61,7 +61,7 @@ xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?,蜥蜴人的小
 xiyiren2hide_claw,锋利的爪子,Attack its Bracelet could be where its secret lies.,鋒利的爪子
 panshen2hide_eye,口中的玫瑰，散发着迷人的香气,The rose in his mouth is emitting a strange scent.,口中的玫瑰，散發著迷人的香氣
 shuigui3hide_box,船长脚边的宝箱好像有些奇怪！,Something interesting besides the captain.,船長腳邊的寶箱好像有些奇怪！
-shuigui3hide_skull,船长的头顶已经失去了保护,The top of the pirate's head is no longer protected.,
+shuigui3hide_skull,船长的头顶已经失去了保护,The top of the pirate's head is no longer protected.,船長的頭頂已經失去了保護
 shuigui3hide_bird,注意到船长头顶的乌鸦了么？,Notice there is a Crow on his head?,注意到船長頭頂的烏鴉了嗎？
 kairuisi5hide_head,帽子下掩藏的头部会是他的弱点么？,This shape looks like her hood?,帽子下掩藏的頭部會是他的弱點嗎？
 kairuisi5hide_weapon,手中挥舞的镰刀,How about her Sickle？,手中揮舞的鐮刀
@@ -77,7 +77,7 @@ piying5normal1_lbody,右半身能够压制我方物理攻击力,Right shadow cri
 piying5normal1_rbody,左半身能够压制我方法术攻击力,Left shadow cripples all magical attack.,左半身能夠壓制我方法術攻擊力
 piying5normal1_head,皮影的软肋就在头部,His head is his weakest part!,皮影的軟肋就在頭部
 huapo2normal1_flower,花魄高连击的永动机,The petal increases the Pixie's number of strikes.,花魄高連擊的永動機
-zouyincao2normal1_trumpet,喇叭竟是它的弱点！,The Trumpet is where it's weakpoint lies.,
+zouyincao2normal1_trumpet,喇叭竟是它的弱点！,The Trumpet is where it's weakpoint lies.,喇叭竟牠的弱點！
 wushi4normal1_horn,尖尖角竟是舞狮的弱点！,The Horn is where it's weakpoint lies.,尖尖角竟是舞獅的弱點！
 wushi4normal1_ball,打破它的球！压制他的法术攻击！,This Magic Ball can increase the Lion's magical abilities.,打破它的球！壓制他的法術攻擊！
 xiyiren2normal1_hand,蜥蜴人的薄弱所在,His Claw is his weakpoint.,蜥蜴人的薄弱所在
@@ -85,7 +85,7 @@ xiyiren2normal1_claw,干掉爪子！看看爪子下隐藏着怎样的黑手！,D
 panshen2normal1_eye,攻击玫瑰会让潘神心碎,Let's break his heart by attacking the Rose.,攻擊玫瑰會讓潘神心碎
 shuigui3normal1_box,击破宝箱，船长会丧失眩晕我方的能力,This Magic Chest Box can increase in Stunning Effect,擊破寶箱，船長會喪失眩暈我方的能力
 siwangtashuigui3normal1_box,附加炸弹效果,Increases bomb effect,附加炸彈效果
-shuigui3normal1_skull,船长的头顶，不堪一击….,The top of the pirate's head is quite vunerable…,
+shuigui3normal1_skull,船长的头顶，不堪一击….,The top of the pirate's head is quite vunerable…,船長的頭頂，不堪一擊….
 shuigui3normal1_bird,乌鸦似乎在保护着什么…打掉它看看,The Crow could be protect his weakpoint.,烏鴉似乎在保護著什麼…打掉牠看看
 kairuisi5normal1_head,凯瑞斯的软肋,This is her weakpoint.,凱瑞斯的軟肋
 kairuisi5normal1_weapon,镰刀不仅提升法术攻击，还能够治疗凯瑞斯！,This Sickle increases her attack and healing power.,鐮刀不僅提升法術攻擊，還能夠治療凱瑞斯！
@@ -680,8 +680,8 @@ momo1hide_dun,得莫菲的周围好像有什么诡异的力量,Find this shape a
 meidushahide_zuoshetou,美杜莎的秘密,Medusa's secret.,美杜莎的秘密
 meidushahide_youshetou,美杜莎的秘密,Medusa's secret.,美杜莎的秘密
 meidushahide_xiaoshetou,美杜莎的秘密,Medusa's secret.,美杜莎的秘密
-wendige2normal1_lhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time,
-wendige2normal1_rhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time,
+wendige2normal1_lhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time,雙角是持續傷害效果的源動力
+wendige2normal1_rhorn,双角是持续伤害效果的源动力,His horn provides higher damage over time,雙角是持續傷害效果的源動力
 longnv3normal1_head,龙女的要害,This is her weakpoint.,龍女的要害
 longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield,破壞2處靈印護盾將被擊碎
 longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield,破壞2處靈印護盾將被擊碎
@@ -737,8 +737,8 @@ tianshizhang4normal_lwing,翅膀让天使长拥有更快的攻击速度,His wing
 tianshizhang4normal_rwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.,翅膀讓天使長擁有更快的攻擊速度
 tianshizhang4normal_aura,光环是天使长大招能量的源泉,His Ultimate energy increases with his Aura.,光環是天使長大招能量的源泉
 tianshizhang4normal_weapon,长剑是天使长高攻击和自我治疗的保障,His Sword increases his attack.,長劍是天使長高攻擊和自我治療的保障
-ifrit4normal_lleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.,
-ifrit4normal_rleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.,
+ifrit4normal_lleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.,兩側暗火是持續傷害效果的源動力
+ifrit4normal_rleg,两侧暗火是持续伤害效果的源动力,His Dark Fire increases his damage over time.,兩側暗火是持續傷害效果的源動力
 ifrit4normal_stone,敲断他的法杖！削弱他的法术攻击！,His Staff enhances his attack.,敲斷他的法杖！削弱他的法術攻擊！
 hehuaisituosi4hide_luweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.,是什麼讓工匠之神如此可怕？
 hehuaisituosi4hide_ruweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.,是什麼讓工匠之神如此可怕？
@@ -767,9 +767,9 @@ bossdajie11Moguguai4wp02,蘑菇,Mushroom,蘑菇
 moguguai4hide_mushroom,蘑菇盖会不会是它的保护伞呢？,Would his Cap be the secret to Mantango?,蘑菇蓋會不會是牠的保護傘呢？
 moguguai4normal_mushroom,原来蘑菇盖是他的弱点！全力攻击！,Mantango's Cap is its weakpoint! Concentrate your fire at it!,原來蘑菇蓋是他的弱點！全力攻擊！
 bossdajie18Ladong5wp02,头,Head,頭
-bossdajie18Ladong5wp03,坚硬的保护壳,Protective Shell,
+bossdajie18Ladong5wp03,坚硬的保护壳,Protective Shell,堅硬的保護殼
 ladong5hide_head,屠龙先揍头,Try hitting it's Head first?,屠龍先揍頭
-ladong5normal_head,守护龙的要害,Attack this weakpoint.,
+ladong5normal_head,守护龙的要害,Attack this weakpoint.,守護龍的要害
 ladong5normal_goldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!,金蘋果是守護龍的弱點所在，狠狠地攻擊！
 speechname_jiuwei,九尾狐,Nine Tails,九尾狐
 speechname_bingxuenvwang,冰雪女王,Chione,冰雪女王
@@ -835,7 +835,7 @@ speech_xinshouadventure6,当你选择好冒险的5只宠物后，点击<color=#f
 speech_xinshouadventure7,悄悄的告诉你，如果不想等待冒险时间，也可以<color=#ffcc00>通过花费钻石快速完成探险</color>~跟我来看看吧~,"I'll let you in on a little secret… If you don't want to wait for the adventure time, you can also <color=#ffcc00>spend some diamonds to speed up the exploration</color>. Let's give it a shot!",悄悄的告訴你，如果不想等待冒險時間，也可以<color=#ffcc00>通過花費鑽石快速完成探險</color>~跟我來看看吧~
 speech_xinshouadventure8,这里列出了你所有小队的探险情况哟，点击“<color=#ffcc00>立即完成</color>”按钮，就可以<color=#ffcc00>立即召回冒险的宠物并获得冒险奖励</color>。,"The statuses of all your adventure teams are listed here. Tap the ""<color=#ffcc00>Complete Now</color>"" button to <color=#ffcc00>immediately recall your monsters and receive the adventure rewards</color>. ",這裡列出了你所有小隊的探險情況喲，點擊“<color=#ffcc00>立即完成</color>”按鈕，就可以<color=#ffcc00>立即召回冒險的寵物並獲得冒險獎勵</color>。
 speech_xinshoudecompose1,可以将没用的<color=#ffcc00>装备分解掉</color>，转化成<color=#ffcc00>金币</color>。,You may <color=#ffcc00>discard any useless equipment</color> and turn them into <color=#ffcc00>coins</color>. ,可以將沒用的<color=#ffcc00>裝備分解掉</color>，轉化成<color=#ffcc00>金幣</color>。
-speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~进阶需要的<color=#ffcc00>化形之书</color>在每章副本<color=#ffcc00>挑战难度</color>的<color=#ffcc00>第四和第八个本</color>掉落。,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster.Advancing monsters requires <color=#ffcc00>Books of Transformation</color>, which can acquired via <color=#ffcc00>Stage 4 or Stage 8 of Story Mode (Heroic)</color>.",
+speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~进阶需要的<color=#ffcc00>化形之书</color>在每章副本<color=#ffcc00>挑战难度</color>的<color=#ffcc00>第四和第八个本</color>掉落。,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster.Advancing monsters requires <color=#ffcc00>Books of Transformation</color>, which can acquired via <color=#ffcc00>Stage 4 or Stage 8 of Story Mode (Heroic)</color>.",當然，滿足一定的<color=#ffcc00>道具、金幣和等級要求</color>才能完成進階哦~進階需要的<color=#ffcc00>化形之書</color>在每章副本< color=#ffcc00>挑戰難度</color>的<color=#ffcc00>第四和第八個本</color>掉落。
 speech_xinshouxiangqian1,装备达到<color=#ffcc00>蓝色品质</color>后就可以开孔了，<color=#ffcc00>品质越高，开孔上限越高</color>。,"<color=#ffcc00>Blue</color> equipment or higher can have slots, and <color=#ffcc00>the higher the grade of the equipment, the higher the slot limit</color>.",裝備達到<color=#ffcc00>藍色品質</color>後就可以開孔了，<color=#ffcc00>品質越高，開孔上限越高</color>。
 speech_xinshouxiangqian2,开孔后，就可以将形状对应的<color=#ffcc00>纹章镶嵌</color>进去了，纹章分为9种，给装备附加的属性各不相同。,"After opening a slot, you can <color=#ffcc00>attach the corresponding insignia</color>. There are 9 types of insignia, each boosting different stats for the equipment.",開孔後，就可以將形狀對應的<color=#ffcc00>紋章鑲嵌</color>進去了，紋章分為9種，給裝備附加的屬性各不相同。
 speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，直到开到满意的形状为止~自己试试吧~,"If you are not happy with the slots, you can re-open the slots until you are satisfied with the results.Let's give it a try!",如果開到的孔不滿意，還可以重複開孔，直到開到滿意的形狀為止~自己試試吧~
@@ -1276,8 +1276,8 @@ anpusha5normal1_heart,没有了心的安普莎就无法给我方添加减益效�
 ifrit5hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.,根據圖形提示找到弱點
 ifrit5hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.,根據圖形提示找到弱點
 ifrit5hide_stone,根据图形提示找到弱点,Find this shape on Ifrit.,根據圖形提示找到弱點
-ifrit5normal_lleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.,
-ifrit5normal_rleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.,
+ifrit5normal_lleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.,兩側暗火是持續傷害效果的源動力
+ifrit5normal_rleg,两侧暗火是持续伤害效果的源动力,This Dark Fire could burn you over a few rounds.,兩側暗火是持續傷害效果的源動力
 ifrit5normal_stone,敲断他的法杖！削弱他的物理攻击！,This Staff increases her attack.,敲斷他的法杖！削弱他的物理攻擊！
 nvyao5hide_mask,根据图形提示找到弱点,Find this shape on Banshee.,根據圖形提示找到弱點
 nvyao5hide_head,根据图形提示找到弱点,Find this shape on Banshee.,根據圖形提示找到弱點
@@ -1367,8 +1367,10 @@ speech_blt_51_5,那是…狼人！？雪之国应该没有狼人的！,Is that a
 speech_blt_51_6,他扑过来了！,He's coming straight for us!,他撲過來了！
 speech_blt_52_1,雪之国……一定发生了什么……,Snow Kingdom… Something must have happened…,雪之國……一定發生了什麼……
 speech_blt_52_2,出现了不该出现在这里的妖怪，这到底是怎么回事,"Monsters that shouldn't be here appearing suddenly, I wonder what's going on.",出現了不該出現在這裡的妖怪，這到底是怎麼回事
-speech_blt_53_1,前面那个妖怪是梦魇，我们要小心别被他拖进梦里！,The monster just ahead is a Bangungot. Be careful not to be dragged into his dream!,前面那個妖怪是夢魘，我們要小心別被他拖進夢裡！
-speech_blt_53_2,狼人…梦魇…,Werewolves… Bangungots…,狼人…夢魘…
+speech_blt_53_1,前面那个妖怪是一反木棉，小心别被他卷走！,That monster up ahead is  Ittan Momen. Be careful not to get swept away.,前面那个妖怪是一反木棉，小心别被他卷走！
+speech_blt_53_2,"狼人，一反木棉，这些妖怪都不应该在雪之国呀
+=_=这和我之前见的一反木棉不一样呀","Werewolves,  Ittan Momen… These monsters shouldn't be in the Snow Kingdom. =_= And why do I feel this  Ittan Momen is somehow different than the one we saw before…","狼人，一反木棉，这些妖怪都不应该在雪之国呀
+=_=这和我之前见的一反木棉不一样呀"
 speech_blt_54_1,在前面就是我的行宫了，我被卷到人界的时候正在喝茶……,Just ahead is one of my palaces. I remember I was just there drinking tea before being swept away to the real world…,在前面就是我的行宮了，我被卷到人界的時候正在喝茶……
 speech_blt_54_2,呼，那么说到这里应该安全些了……,"Whew, so it should be safer there, right?",呼，那麼說到這裡應該安全些了……
 speech_blt_54_3,行宫中留着我的雪人守卫，那些外来的家伙根本进不来,"With the snowman guards inside my palace, those monsters from the outside shouldn't be able to get in.",行宮中留著我的雪人守衛，那些外來的傢伙根本進不來
@@ -1754,7 +1756,7 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10081_miaoshu,普通商店购买任意等级灵铁500次,Purchase raw iron of any grade 500 times ,普通商店購買任意等級靈鐵500次
 10082_miaoshu,普通商店购买任意等级灵铁1000次,Purchase raw iron of any grade 1000 times ,普通商店購買任意等級靈鐵1000次
 10083_miaoshu,公会商店购买开孔石5次,Purchase 5 Insignia Stones from the guild store,公會商店購買開孔石5次
-10084_miaoshu,公会商店购买开孔石10次,Purchase 10 engraving stones from the guild store,公會商店購買開孔石10次
+10084_miaoshu,公会商店购买开孔石10次,Purchase 10 Insignia stones from the guild store,公會商店購買開孔石10次
 10085_miaoshu,在任意商店进行刷新操作达到5次,Use the refresh button in any store 5 times,在任意商店進行刷新操作達到5次
 10086_miaoshu,在任意商店进行刷新操作达到10次,Use the refresh button in any store 10 times,在任意商店進行刷新操作達到10次
 10087_miaoshu,在任意商店进行刷新操作达到50次,Use the refresh button in any store 50 times,在任意商店進行刷新操作達到50次
@@ -1868,12 +1870,12 @@ speech_blt_68_14,不但劫船，还要把这么萌的小女孩绑架到人界吗
 10195_miaoshu,召唤获得宠物达到20只,Summon 20 monsters,召喚獲得寵物達到20只
 10196_miaoshu,召唤获得宠物达到50只,Summon 50 monsters,召喚獲得寵物達到50只
 10197_miaoshu,召唤获得宠物达到100只,Summon 100 monsters,召喚獲得寵物達到100只
-10198_miaoshu,召唤获得1只A级宠物,Summon 1 A Class monster,召喚獲得1只A級寵物
-10199_miaoshu,召唤获得5只A级宠物,Summon 5 A Class monster,召喚獲得5只A級寵物
-10200_miaoshu,召唤获得10只A级宠物,Summon 10 A Class monster,召喚獲得10只A級寵物
-10201_miaoshu,召唤获得1只S级宠物,Summon 1 S Class monster,召喚獲得1只S級寵物
-10202_miaoshu,召唤获得5只S级宠物,Summon 5 S Class monster,召喚獲得5只S級寵物
-10203_miaoshu,召唤获得1只SS级宠物,Summon 1 SS Class monster,召喚獲得1只SS級寵物
+10198_miaoshu,召唤获得1只A级以上宠物,Summon 1 A Class monster,召喚獲得1只A級以上寵物
+10199_miaoshu,召唤获得5只A级以上宠物,Summon 5 A Class monster,召喚獲得5只A級以上寵物
+10200_miaoshu,召唤获得10只A级以上宠物,Summon 10 A Class monster,召喚獲得10只A級以上寵物
+10201_miaoshu,召唤获得1只S级以上宠物,Summon 1 S Class monster,召喚獲得1只S級以上寵物
+10202_miaoshu,召唤获得5只S级以上宠物,Summon 5 S Class monster,召喚獲得5只S級以上寵物
+10203_miaoshu,召唤获得1只SS级以上宠物,Summon 1 SS Class monster,召喚獲得1只SS級以上寵物
 10204_miaoshu,召唤获得动物类宠物达到5只,Summon 5 animal monsters,召喚獲得動物類寵物達到5只
 10205_miaoshu,召唤获得动物类宠物达到10只,Summon 10 animal monsters,召喚獲得動物類寵物達到10只
 10206_miaoshu,召唤获得神类宠物达到5只,Summon 5 deity monsters,召喚獲得神類寵物達到5只
@@ -2226,9 +2228,9 @@ story_jinglingwang,诞生于朝露之中的妖精之王，优雅的剑术大师�
 story_duoduoluo,生活在世界树上的妖精，森林的播种者。每到夜晚会行走在森林里，脚印踏过的土地会长出新的幼苗。,"A sprite that lives on the Tree of Life and sower of the great forest. Every night, he will go down to the forest, and saplings will begin to grow wherever his feet touched the soil.",生活在世界樹上的妖精，森林的播種者。每到夜晚會行走在森林裡，腳印踏過的土地會長出新的幼苗。
 story_yifanmumian,日本传说中的妖怪，长相是一根白色布带。会袭击夜间独自出行的行人，把人的身体和头包裹起来带到半空中。,"A monster of Japanese origin that appears to be a white belt. He will attack people walking alone at night by surprise, and wrap the body and head to be taken up to the heavens.",日本傳說中的妖怪，長相是一根白色布帶。會襲擊夜間獨自出行的行人，把人的身體和頭包裹起來帶到半空中。
 ruodian_hide_name,线索,Clue,線索
-guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Myth Guardian Mode</color> unlocked!,<color=#ffcc00>神話守護者</color>開啟啦！
+guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Myth Guardians Mode</color> unlocked!,<color=#ffcc00>神話守護者</color>開啟啦！
 guide_road2,进入第一个关卡,Enter the first stage,進入第一個關卡
-speech_xinyangzhilu1,神话守护者玩法共有<color=#ffcc00>9个关卡</color>，每关都有<color=#ffcc00>5只怪物</color>镇守，打败这些怪物才能够拿到奖励哦！,"Myth Guardian Mode has a total of <color=#ffcc00>9 stages</color>, with each stage guarded by <color=#ffcc00>5 monsters</color>. Defeat the monsters to get rewards!",神話守護者玩法共有<color=#ffcc00>9個關卡</color>，每關都有<color=#ffcc00>5只怪物</color>鎮守，打敗這些怪物才能夠拿到獎勵哦！
+speech_xinyangzhilu1,神话守护者玩法共有<color=#ffcc00>9个关卡</color>，每关都有<color=#ffcc00>5只怪物</color>镇守，打败这些怪物才能够拿到奖励哦！,"Myth Guardians Mode has a total of <color=#ffcc00>9 stages</color>, with each stage guarded by <color=#ffcc00>5 monsters</color>. Defeat the monsters to get rewards!",神話守護者玩法共有<color=#ffcc00>9個關卡</color>，每關都有<color=#ffcc00>5只怪物</color>鎮守，打敗這些怪物才能夠拿到獎勵哦！
 speech_xinyangzhilu2,闯关过程中，我方怪物的<color=#ffcc00>血量和能量</color>在战斗结束后是会<color=#ffcc00>保留到下一场战斗</color>的，所以要合适的排布怪物们出场的先后顺序哦。,"While battling stages in this mode, the <color=#ffcc00>HP and Power</color> of players' monsters at the end of battle will be <color=#ffcc00>saved and used in the next battle</color>. So players should carefully consider their lineups and the order their monsters enter the battlefield.",闖關過程中，我方怪物的<color=#ffcc00>血量和能量</color>在戰鬥結束後是會<color=#ffcc00>保留到下一場戰鬥</color>的，所以要合適的排布怪物們出場的先後順序哦。
 speech_xinyangzhilu3,当然，通关奖励是不会少的！除了<color=#ffcc00>基础奖励</color>外，还有<color=#ffcc00>概率获得神秘的宝箱奖励</color>哦！,"Of course, there will be great rewards upon clearing a stage! In addition to the <color=#ffcc00>basic rewards</color>, there will also be <color=#ffcc00>a chance of receiving mysterious treasure rewards</color>!",當然，通關獎勵是不會少的！除了<color=#ffcc00>基礎獎勵</color>外，還有<color=#ffcc00>機率獲得神秘的寶箱獎勵</color>哦！
 speech_xinyangzhilu4,还等什么！开启征战之旅吧！,What are you waiting for? Start your adventure now!,還等什麼！開啟征戰之旅吧！
@@ -2242,293 +2244,298 @@ guide_ruodian4,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</col
 看起来<color=#ffcc00>花瓣</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
 It appears to be her <color=#ffcc00>petal</color>.","這是<color=#ffcc00>弱點</color>位置的<color=#ffcc00>線索</color>，
 看起來<color=#ffcc00>花瓣</color>是弱點"
-mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.,神話守護者已刷新！重新挑戰，領取豐厚獎勵吧。
+mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardians has refreshed. Go and battle for some more rewards.,神話守護者已刷新！重新挑戰，領取豐厚獎勵吧。
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.,根據圖形提示找到弱點
 guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoints</color>?,記得如何找到<color=#ffcc00>弱點</color>嗎？
-zouyincao2normal1_yinfu1,音符守护着他不受伤害！,The Musical Notes prevent him from taking damage!,
-zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,What secret is being surrounded by these Musical Notes?,
-bossdajie16Zouyincao2wp03,音符盾,Notes Shield,
-bosschaoxue52Yifanmumian3wp02,吊坠,Pendant,
-bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll,
-yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？,
-yifanmumian3normal1_pendant,吊坠是持续伤害效果的源动力,The pendant is the source of her DOT effects.,
-yifanmumian1normal1_zhiren,干掉她的保护伞！,Destroy her protective scroll!,
-ladong5hide_appleshell,这坚硬的壳里面会有什么秘密？,What secrets lie under this protective shield?,
-ladong5normal_appleshell,金苹果可能就在里面！,Maybe the Golden Apple is inside!,
-guide_hero1,一起来看看<color=#ffcc00>挑战难度</color>的副本吧,Let's try a stage on <color=#ffcc00>heroic difficulty</color>!,
-guide_hero2,选择第一章,Select Chapter 1.,
+zouyincao2normal1_yinfu1,音符守护着他不受伤害！,The Musical Notes prevent him from taking damage!,音符守護著他不受傷害！
+zouyincao2hide_yinfu1,环绕的音符，会有什么样的秘密？,What secret is being surrounded by these Musical Notes?,環繞的音符，會有什麼樣的秘密？
+bossdajie16Zouyincao2wp03,音符盾,Notes Shield,音符盾
+bosschaoxue52Yifanmumian3wp02,吊坠,Pendant,吊墜
+bosschaoxue52Yifanmumian3wp04,纸人,Paper Scroll,紙人
+yifanmumian1hide_zhiren,是什么力量在守护着一反木棉？,What force could this be protecting Ittan Momen？,是什麼力量在守護著一反木棉？
+yifanmumian3normal1_pendant,吊坠是持续伤害效果的源动力,The pendant is the source of her DOT effects.,吊墜是持續傷害效果的源動力
+yifanmumian1normal1_zhiren,干掉她的保护伞！,Destroy her protective scroll!,消滅她的保護傘！
+ladong5hide_appleshell,这坚硬的壳里面会有什么秘密？,What secrets lie under this protective shield?,這堅硬的殼裡面會有什麼秘密？
+ladong5normal_appleshell,金苹果可能就在里面！,Maybe the Golden Apple is inside!,金蘋果可能就在裡面！
+guide_hero1,一起来看看<color=#ffcc00>挑战难度</color>的副本吧,Let's try a stage on <color=#ffcc00>heroic difficulty</color>!,一起來看看<color=#ffcc00>挑戰難度</color>的副本吧
+guide_hero2,选择第一章,Select Chapter 1.,選擇第一章
 guide_hero3,这里可以切换<color=#ffcc00>普通与挑战难度</color>,"Here you can switch between 
-<color=#ffcc00>normal and heroic difficulty</color>.",
-guide_hero4,选择挑战难度,Select heroic difficulty.,
-guide_hero5,点击这里看看奖励多棒吧,Tap here to view the possible rewards.,
-speech_hero1,挑战难度副本主要产出<color=#ffcc00>宠物进阶的相关材料、宠物碎片</color>等，三星通关挑战难度副本能够获得<color=#ffcc00>钻石</color>等丰富的奖励呢！,Heroic stages will drop <color=#ffcc00>monster advancement materials and monster fragments</color>. Clearing a heroic stage with 3-stars will give <color=#ffcc00>diamond</color> rewards!,
-guide_worldboss1,<color=#ffcc00>神怪入侵</color>玩法开启啦！,<color=#ffcc00>Deity Invasion</color> unlocked!,
+<color=#ffcc00>normal and heroic difficulty</color>.",這裡可以切換<color=#ffcc00>普通與挑戰難度</color>
+guide_hero4,选择挑战难度,Select heroic difficulty.,選擇挑戰難度
+guide_hero5,点击这里看看奖励多棒吧,Tap here to view the possible rewards.,點擊這裡看看獎勵多棒吧
+speech_hero1,挑战难度副本主要产出<color=#ffcc00>宠物进阶的相关材料、宠物碎片</color>等，三星通关挑战难度副本能够获得<color=#ffcc00>钻石</color>等丰富的奖励呢！,Heroic stages will drop <color=#ffcc00>monster advancement materials and monster fragments</color>. Clearing a heroic stage with 3-stars will give <color=#ffcc00>diamond</color> rewards!,挑戰難度副本主要產出<color=#ffcc00>寵物進階的相關材料、寵物碎片</color>等，三星通關挑戰難度副本能夠獲得<color=#ffcc00>鑽石</color>等豐富的獎勵呢！
+guide_worldboss1,<color=#ffcc00>神怪入侵</color>玩法开启啦！,<color=#ffcc00>Deity Invasion</color> unlocked!,<color=#ffcc00>神怪入侵</color>玩法開啟啦！
 guide_worldboss2,"每个神怪都有<color=#ffcc00>克星</color>，
 战斗时将克星上阵，
 就能获得对应的<color=#ffcc00>伤害加成</color>","Each deity has a <color=#ffcc00>nemesis</color>. 
 If you add the nemesis to your lineup, 
-then you can receive the corresponding <color=#ffcc00>damage bonuses</color>.",
-speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续<color=#ffcc00>15分钟</color>，每天只能选择<color=#ffcc00>一场</color>参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for <color=#ffcc00>15 minutes</color> each. Players may only participate in <color=#ffcc00>1 of the 3 battles</color> each day.,
-speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! ",
-speech_worldboss3,偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!",
-bossworldbossjidu5wp02,右手,Right Hand,
-bossworldbossjidu5wp03,左手,Left Hand,
-bossworldbossjidu5wp04,剪刀,Shears,
-bossworldbossjidu5wp05,右翅膀,Right Wing,
-bossworldbossjidu5wp06,左翅膀,Left Wing,
-bossworldbossjidu5wp07,角,Horn,
-bossworldbossjidu5wp08,披风右下摆,Cloak right,
-bossworldbossjidu5wp09,披风左下摆,Cloak left,
-bossworldbossjidu5wp10,兜帽,Hood,
-jidu5hide_rhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_lhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_scissors,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_rwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_lwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_angle,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_rcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_lcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5hide_hood,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-jidu5normal_rhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_lhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_scissors,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_rwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_lwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_angle,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_rcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_lcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-jidu5normal_hood,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,
-bossworldbossmeitatelong1wp02,右翅膀,Right Wing,
-bossworldbossmeitatelong1wp03,左翅膀,Left Wing,
-bossworldbossmeitatelong1wp04,神秘之星,Secret Star,
-bossworldbossmeitatelong1wp05,右下翅膀,Lower-right Wing,
-bossworldbossmeitatelong1wp06,左下翅膀,Lower-left Wing,
-bossworldbossmeitatelong1wp07,神秘之脸,Secret Face,
-bossworldbossmeitatelong1wp08,右上翅膀,Upper-right Wing,
-bossworldbossmeitatelong1wp09,左上翅膀,Upper-left Wing,
-bossworldbossmeitatelong1wp10,神秘之架,Secret cross,
-meitatelong1hide_rmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_lmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_star,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_rdwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_ldwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_face,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_ruwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_luwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1hide_cross,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",
-meitatelong1normal_rmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_lmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_star,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_rdwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_ldwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_face,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,
-worldentry,神怪入侵,Deity Invasion,
-10233_name,守护者挑战达人 I,Guardian Challenger I,
-10234_name,守护者挑战达人 II,Guardian Challenger II,
-10235_name,守护者挑战达人 III,Guardian Challenger III,
-10236_name,守护者挑战达人 IV,Guardian Challenger IV,
-10237_name,守护者通关达人 I,Guardian Slayer I,
-10238_name,守护者通关达人 II,Guardian Slayer II,
-10239_name,守护者通关达人 III,Guardian Slayer III,
-10240_name,守护者通关达人 IV,Guardian Slayer IV,
-10241_name,守护者通关达人 V,Guardian Slayer V,
-10242_name,一起打boss I,Battle Together I,
-10243_name,一起打boss II,Battle Together II,
-10244_name,一起打boss III,Battle Together III,
-10245_name,一起打boss IV,Battle Together IV,
-10246_name,极限挑战 I,Extreme Challenge I,
-10247_name,极限挑战 II,Extreme Challenge II,
-10248_name,极限挑战 III,Extreme Challenge III,
-10249_name,极限挑战 IV,Extreme Challenge IV,
-10250_name,极限挑战 V,Extreme Challenge V,
-10251_name,极限挑战 VI,Extreme Challenge VI,
-10252_name,boss杀手 I,Boss Slayer I,
-10253_name,boss杀手 II,Boss Slayer II,
-10254_name,boss杀手 III,Boss Slayer III,
-10255_name,boss杀手 IV,Boss Slayer IV,
-10256_name,boss杀手 V,Boss Slayer V,
-10257_name,极限输出 I,Massive DPS I,
-10258_name,极限输出 II,Massive DPS II,
-10259_name,极限输出 III,Massive DPS III,
-10260_name,极限输出 IV,Massive DPS IV,
-10261_name,分享达人 I,Share the Fun I,
-10262_name,分享达人 II,Share the Fun II,
-10263_name,分享达人 III,Share the Fun III,
-10264_name,分享达人 IV,Share the Fun IV,
-10265_name,分享达人 V,Share the Fun V,
-10266_name,勇闯巅峰 I,Brave the Arena I,
-10267_name,勇闯巅峰 II,Brave the Arena II,
-10268_name,勇闯巅峰 III,Brave the Arena III,
-10269_name,勇闯巅峰 IV,Brave the Arena IV,
-10270_name,勇闯巅峰 V,Brave the Arena V,
-10271_name,时间如金 I,Pure Skill I,
-10272_name,时间如金 II,Pure Skill II,
-10273_name,时间如金 III,Pure Skill III,
-10274_name,时间如金 IV,Pure Skill IV,
-10275_name,时间如金 V,Pure Skill V,
-10276_name,收集达人 I,Avatar Collector I,
-10277_name,收集达人 II,Avatar Collector II,
-10278_name,收集达人 III,Avatar Collector III,
-10279_name,收集达人 IV,Avatar Collector IV,
-10233_miaoshu,累计参与神话守护者达到5次,Participate in Myth Guardians mode 5 times.,
-10234_miaoshu,累计参与神话守护者达到10次,Participate in Myth Guardians mode 10 times.,
-10235_miaoshu,累计参与神话守护者达到50次,Participate in Myth Guardians mode 50 times.,
-10236_miaoshu,累计参与神话守护者达到100次,Participate in Myth Guardians mode 100 times.,
-10237_miaoshu,通关神话守护者达到1次,Clear Myth Guardian mode once.,
-10238_miaoshu,通关神话守护者达到5次,Clear Myth Guardian mode 5 times.,
-10239_miaoshu,通关神话守护者达到10次,Clear Myth Guardian mode 10 times.,
-10240_miaoshu,通关神话守护者达到20次,Clear Myth Guardian mode 20 times.,
-10241_miaoshu,通关神话守护者达到50次,Clear Myth Guardian mode 50 times.,
-10242_miaoshu,参与神怪入侵挑战达到5次,Participate in Deity Invasion mode 5 times.,
-10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.,
-10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.,
-10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.,
-10246_miaoshu,同一个时间段内进行神怪入侵挑战5次,Battling 5 times in Deity Invasion,
-10247_miaoshu,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,
-10248_miaoshu,同一个时间段内进行神怪入侵挑战7次,Battling 7 times in Deity Invasion,
-10249_miaoshu,同一个时间段内进行神怪入侵挑战8次,Battling 8 times in Deity Invasion,
-10250_miaoshu,同一个时间段内进行神怪入侵挑战9次,Battling 9 times in Deity Invasion,
-10251_miaoshu,同一个时间段内进行神怪入侵挑战10次,Battling 10 times in Deity Invasion,
-10252_miaoshu,神怪入侵排名达到前50名,Reach the top 50 in Deity Invasion rankings.,
-10253_miaoshu,神怪入侵排名达到前20名,Reach the top 20 in Deity Invasion rankings.,
-10254_miaoshu,神怪入侵排名达到前10名,Reach the top 10 in Deity Invasion rankings.,
-10255_miaoshu,神怪入侵排名达到前3名,Reach the top 3 in Deity Invasion rankings.,
-10256_miaoshu,神怪入侵排名达到第1名,Reach the top 1 in Deity Invasion rankings.,
-10257_miaoshu,神怪入侵单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.,
-10258_miaoshu,神怪入侵单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.,
-10259_miaoshu,神怪入侵单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.,
-10260_miaoshu,神怪入侵单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.,
-10261_miaoshu,facebook分享达到1次,Share via Facebook once.,
-10262_miaoshu,facebook分享达到5次,Share via Facebook 5 times.,
-10263_miaoshu,facebook分享达到10次,Share via Facebook 10 times.,
-10264_miaoshu,facebook分享达到20次,Share via Facebook 20 times.,
-10265_miaoshu,facebook分享达到50次,Share via Facebook 50 times.,
-10266_miaoshu,购买竞技场出战点数达到1次,Purchase Arena Entries once.,
-10267_miaoshu,购买竞技场出战点数达到5次,Purchase Arena Entries 5 times.,
-10268_miaoshu,购买竞技场出战点数达到10次,Purchase Arena Entries 10 times.,
-10269_miaoshu,购买竞技场出战点数达到20次,Purchase Arena Entries 20 times.,
-10270_miaoshu,购买竞技场出战点数达到50次,Purchase Arena Entries 50 times.,
-10271_miaoshu,购买宠物技能点数达到1次,Purchase Monster Ability Points once.,
-10272_miaoshu,购买宠物技能点数达到5次,Purchase Monster Ability Points 5 times.,
-10273_miaoshu,购买宠物技能点数达到10次,Purchase Monster Ability Points 10 times.,
-10274_miaoshu,购买宠物技能点数达到20次,Purchase Monster Ability Points 20 times.,
-10275_miaoshu,购买宠物技能点数达到50次,Purchase Monster Ability Points 50 times.,
-10276_miaoshu,点亮宠物头像达到5个,Accumulate 5 Monster Avatars.,
-10277_miaoshu,点亮宠物头像达到10个,Accumulate 10 Monster Avatars.,
-10278_miaoshu,点亮宠物头像达到20个,Accumulate 20 Monster Avatars.,
-10279_miaoshu,点亮宠物头像达到50个,Accumulate 50 Monster Avatars.,
-story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird.",
-story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…",
-biaoti8023,挑战守护者,Face the Guardians,
-biaoti8024,抵御入侵者,Resist the Invasion,
-mubiao8023,完成1次神话守护者,Complete Myth Guardian mode once. ,
-mubiao8024,完成1次神怪入侵,Complete Deity Invasion mode once.,
-bossdajie18Ladong5wp04,金苹果,Golden Apple,
-ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!,
-push_worldboss,神怪入侵活动将在5分钟后开启！快来和伙伴们一起征战吧！,Deity Invasion will be starting in 5 minutes! Come and battle alongside your friends!,
-story_renyu,居住在深海的梦幻种族，拥有美妙的歌喉。人鱼族每月会随着潮汐来到海面歌唱，路过的海员听到歌声会被蛊惑跳海，投入人鱼的怀抱。,"A race of creatures that reside in fabled kingdoms shrouded in the depths of the sea. Mermaids will follow the tide once a month to the surface and sing beautiful songs. Any sailors that happen to hear the sound will become charmed and jump into the sea, right into the arms of the mermaids.",
-story_shixianggui,守护城堡的石像在月光长年的浸润下获得了生命。拥有坚不可摧的躯体和怪力，攻击一切试图闯入城堡的探险者。,"Once stationary stone guardians perched on the lofty ledges of the castle, these statues came to life after years of absorbing the power of the moonlight. With durable bodies and monstrous strength, the gargoyles will attack anything that tries to enter the castle uninvited.",
-story_senlinnvshen,森林意志汇聚而成的实体，高贵的王者。守护着森林中所有的生灵，对于破坏森林的入侵者给予严厉的制裁。,A race of noble rulers that were formed from the very essence of the forest’s will. They serve to protect all the creatures of the forest and punish anyone that threatens its tranquility.,
-biaoti2028,挑战守护者,Face the Guardians,
-biaoti2029,抵御入侵者,Resist the Invasion,
-mubiao2028,完成1次神话守护者,Complete Myth Guardian mode once. ,
-mubiao2029,完成1次神怪入侵,Complete Deity Invasion mode once.,
-guide_fragmentwish1,<color=#ffcc00>幸运卡牌</color>玩法开启啦！,<color=#ffcc00>Mytho Cards</color> unlocked!,
+then you can receive the corresponding <color=#ffcc00>damage bonuses</color>.","每個神怪都有<color=#ffcc00>剋星</color>，
+戰鬥時將剋星上陣，
+就能獲得對應的<color=#ffcc00>傷害加成</color>"
+speech_worldboss1,神怪入侵活动是代行者们大展实力的地方，每天开放三场，每场持续<color=#ffcc00>15分钟</color>，每天只能选择<color=#ffcc00>一场</color>参与。,The Deity Invasion event is where monster keepers can show their true strength. The event opens 3 times a day for <color=#ffcc00>15 minutes</color> each. Players may only participate in <color=#ffcc00>1 of the 3 battles</color> each day.,神怪入侵活動是代行者們大展實力的地方，每天開放三場，每場持續<color=#ffcc00>15分鐘</color>，每天只能選擇<color=#ffcc00>一場</color>參與。
+speech_worldboss2,活动开始后，根据玩家对神怪的<color=#ffcc00>总伤害输出</color>进行排行，输出越高排名越高，奖励也会越好啦！,"After the event starts, players will be ranked according to the <color=#ffcc00>total amount of damage</color> dealt, with higher damage resulting in a higher ranking and better rewards! ",活動開始後，根據玩家對神怪的<color=#ffcc00>總傷害輸出</color>進行排行，輸出越高排名越高，獎勵也會越好啦！
+speech_worldboss3,偷偷告诉你哦，挑战神怪能够获得珍贵的<color=#ffcc00>纹章</color>呐。,"Oh, and word has it that players can receive rare <color=#ffcc00>insignias</color> from Deity Invasion!",偷偷告訴你哦，挑戰神怪能夠獲得珍貴的<color=#ffcc00>紋章</color>哦。
+bossworldbossjidu5wp02,右手,Right Hand,右手
+bossworldbossjidu5wp03,左手,Left Hand,左手
+bossworldbossjidu5wp04,剪刀,Shears,剪刀
+bossworldbossjidu5wp05,右翅膀,Right Wing,右翅膀
+bossworldbossjidu5wp06,左翅膀,Left Wing,左翅膀
+bossworldbossjidu5wp07,角,Horn,角
+bossworldbossjidu5wp08,披风右下摆,Cloak right,披風右下擺
+bossworldbossjidu5wp09,披风左下摆,Cloak left,披風左下擺
+bossworldbossjidu5wp10,兜帽,Hood,兜帽
+jidu5hide_rhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_lhand,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_scissors,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_rwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_lwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_angle,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_rcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_lcloak,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5hide_hood,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+jidu5normal_rhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_lhand,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_scissors,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_rwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_lwing,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_angle,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_rcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_lcloak,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+jidu5normal_hood,嫉妒的要害！全力攻击！,Concentrate your attack on Beelzebub's weakpoint.,嫉妒的要害！全力攻擊！
+bossworldbossmeitatelong1wp02,右翅膀,Right Wing,右翅膀
+bossworldbossmeitatelong1wp03,左翅膀,Left Wing,左翅膀
+bossworldbossmeitatelong1wp04,神秘之星,Secret Star,神秘之星
+bossworldbossmeitatelong1wp05,右下翅膀,Lower-right Wing,右下翅膀
+bossworldbossmeitatelong1wp06,左下翅膀,Lower-left Wing,左下翅膀
+bossworldbossmeitatelong1wp07,神秘之脸,Secret Face,神秘之臉
+bossworldbossmeitatelong1wp08,右上翅膀,Upper-right Wing,右上翅膀
+bossworldbossmeitatelong1wp09,左上翅膀,Upper-left Wing,左上翅膀
+bossworldbossmeitatelong1wp10,神秘之架,Secret cross,神秘之架
+meitatelong1hide_rmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_lmwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_star,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_rdwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_ldwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_face,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_ruwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_luwing,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1hide_cross,变幻莫测的弱点会隐藏在何处？,"His weakpoints seems very unpredictable, where could it be?",變幻莫測的弱點會隱藏在何處？
+meitatelong1normal_rmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_lmwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_star,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_rdwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_ldwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_face,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_ruwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_luwing,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+meitatelong1normal_cross,梅塔特隆的要害！全力攻击！,Concentrate your attack on Metatron's weakpoint.,梅塔特隆的要害！全力攻擊！
+worldentry,神怪入侵,Deity Invasion,神怪入侵
+10233_name,守护者挑战达人 I,Guardian Challenger I,守護者挑戰達人 I
+10234_name,守护者挑战达人 II,Guardian Challenger II,守護者挑戰達人 II
+10235_name,守护者挑战达人 III,Guardian Challenger III,守護者挑戰達人 III
+10236_name,守护者挑战达人 IV,Guardian Challenger IV,守護者挑戰達人 IV
+10237_name,守护者通关达人 I,Guardian Slayer I,守護者通關達人 I
+10238_name,守护者通关达人 II,Guardian Slayer II,守護者通關達人 II
+10239_name,守护者通关达人 III,Guardian Slayer III,守護者通關達人 III
+10240_name,守护者通关达人 IV,Guardian Slayer IV,守護者通關達人 IV
+10241_name,守护者通关达人 V,Guardian Slayer V,守護者通關達人 V
+10242_name,一起打boss I,Battle Together I,一起打boss I
+10243_name,一起打boss II,Battle Together II,一起打boss II
+10244_name,一起打boss III,Battle Together III,一起打boss III
+10245_name,一起打boss IV,Battle Together IV,一起打boss IV
+10246_name,极限挑战 I,Extreme Challenge I,極限挑戰 I
+10247_name,极限挑战 II,Extreme Challenge II,極限挑戰 II
+10248_name,极限挑战 III,Extreme Challenge III,極限挑戰 III
+10249_name,极限挑战 IV,Extreme Challenge IV,極限挑戰 IV
+10250_name,极限挑战 V,Extreme Challenge V,極限挑戰 V
+10251_name,极限挑战 VI,Extreme Challenge VI,極限挑戰 VI
+10252_name,boss杀手 I,Boss Slayer I,boss殺手 I
+10253_name,boss杀手 II,Boss Slayer II,boss殺手 II
+10254_name,boss杀手 III,Boss Slayer III,boss殺手 III
+10255_name,boss杀手 IV,Boss Slayer IV,boss殺手 IV
+10256_name,boss杀手 V,Boss Slayer V,boss殺手 V
+10257_name,极限输出 I,Massive DPS I,極限輸出 I
+10258_name,极限输出 II,Massive DPS II,極限輸出 II
+10259_name,极限输出 III,Massive DPS III,極限輸出 III
+10260_name,极限输出 IV,Massive DPS IV,極限輸出 IV
+10261_name,分享达人 I,Share the Fun I,分享達人 I
+10262_name,分享达人 II,Share the Fun II,分享達人 II
+10263_name,分享达人 III,Share the Fun III,分享達人 III
+10264_name,分享达人 IV,Share the Fun IV,分享達人 IV
+10265_name,分享达人 V,Share the Fun V,分享達人 V
+10266_name,勇闯巅峰 I,Brave the Arena I,勇闖巔峰 I
+10267_name,勇闯巅峰 II,Brave the Arena II,勇闖巔峰 II
+10268_name,勇闯巅峰 III,Brave the Arena III,勇闖巔峰 III
+10269_name,勇闯巅峰 IV,Brave the Arena IV,勇闖巔峰 IV
+10270_name,勇闯巅峰 V,Brave the Arena V,勇闖巔峰 V
+10271_name,时间如金 I,Pure Skill I,時間如金 I
+10272_name,时间如金 II,Pure Skill II,時間如金 II
+10273_name,时间如金 III,Pure Skill III,時間如金 III
+10274_name,时间如金 IV,Pure Skill IV,時間如金 IV
+10275_name,时间如金 V,Pure Skill V,時間如金 V
+10276_name,收集达人 I,Avatar Collector I,收集達人 I
+10277_name,收集达人 II,Avatar Collector II,收集達人 II
+10278_name,收集达人 III,Avatar Collector III,收集達人 III
+10279_name,收集达人 IV,Avatar Collector IV,收集達人 IV
+10233_miaoshu,累计参与神话守护者达到5次,Participate in Myth Guardians mode 5 times.,累計參與神話守護者達到5次
+10234_miaoshu,累计参与神话守护者达到10次,Participate in Myth Guardians mode 10 times.,累計參與神話守護者達到10次
+10235_miaoshu,累计参与神话守护者达到50次,Participate in Myth Guardians mode 50 times.,累計參與神話守護者達到50次
+10236_miaoshu,累计参与神话守护者达到100次,Participate in Myth Guardians mode 100 times.,累計參與神話守護者達到100次
+10237_miaoshu,通关神话守护者达到1次,Clear Myth Guardians mode once.,通關神話守護者達到1次
+10238_miaoshu,通关神话守护者达到5次,Clear Myth Guardians mode 5 times.,通關神話守護者達到5次
+10239_miaoshu,通关神话守护者达到10次,Clear Myth Guardians mode 10 times.,通關神話守護者達到10次
+10240_miaoshu,通关神话守护者达到20次,Clear Myth Guardians mode 20 times.,通關神話守護者達到20次
+10241_miaoshu,通关神话守护者达到50次,Clear Myth Guardians mode 50 times.,通關神話守護者達到50次
+10242_miaoshu,参与神怪入侵挑战达到5次,Participate in Deity Invasion mode 5 times.,參與神怪入侵挑戰達到5次
+10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.,參與神怪入侵挑戰達到10次
+10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.,參與神怪入侵挑戰達到50次
+10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.,參與神怪入侵挑戰達到100次
+10246_miaoshu,同一个时间段内进行神怪入侵挑战5次,Battling 5 times in Deity Invasion,同一個時間段內挑戰boss達到5次
+10247_miaoshu,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,同一個時間段內挑戰boss達到6次
+10248_miaoshu,同一个时间段内进行神怪入侵挑战7次,Battling 7 times in Deity Invasion,同一個時間段內挑戰boss達到7次
+10249_miaoshu,同一个时间段内进行神怪入侵挑战8次,Battling 8 times in Deity Invasion,同一個時間段內挑戰boss達到8次
+10250_miaoshu,同一个时间段内进行神怪入侵挑战9次,Battling 9 times in Deity Invasion,同一個時間段內挑戰boss達到9次
+10251_miaoshu,同一个时间段内进行神怪入侵挑战10次,Battling 10 times in Deity Invasion,同一個時間段內挑戰boss達到10次
+10252_miaoshu,神怪入侵排名达到前50名,Reach the top 50 in Deity Invasion rankings.,神怪入侵排名達到前50名
+10253_miaoshu,神怪入侵排名达到前20名,Reach the top 20 in Deity Invasion rankings.,神怪入侵排名達到前20名
+10254_miaoshu,神怪入侵排名达到前10名,Reach the top 10 in Deity Invasion rankings.,神怪入侵排名達到前10名
+10255_miaoshu,神怪入侵排名达到前3名,Reach the top 3 in Deity Invasion rankings.,神怪入侵排名達到前3名
+10256_miaoshu,神怪入侵排名达到第1名,Reach the top 1 in Deity Invasion rankings.,神怪入侵排名達到第1名
+10257_miaoshu,神怪入侵单次挑战伤害量达到100000,Deal 100k damage in a single Deity Invasion battle.,神怪入侵單次挑戰傷害量達到100000
+10258_miaoshu,神怪入侵单次挑战伤害量达到200000,Deal 200k damage in a single Deity Invasion battle.,神怪入侵單次挑戰傷害量達到200000
+10259_miaoshu,神怪入侵单次挑战伤害量达到500000,Deal 500k damage in a single Deity Invasion battle.,神怪入侵單次挑戰傷害量達到500000
+10260_miaoshu,神怪入侵单次挑战伤害量达到1000000,Deal 1000k damage in a single Deity Invasion battle.,神怪入侵單次挑戰傷害量達到1000000
+10261_miaoshu,facebook分享达到1次,Share via Facebook once.,facebook分享達到1次
+10262_miaoshu,facebook分享达到5次,Share via Facebook 5 times.,facebook分享達到5次
+10263_miaoshu,facebook分享达到10次,Share via Facebook 10 times.,facebook分享達到10次
+10264_miaoshu,facebook分享达到20次,Share via Facebook 20 times.,facebook分享達到20次
+10265_miaoshu,facebook分享达到50次,Share via Facebook 50 times.,facebook分享達到50次
+10266_miaoshu,购买竞技场出战点数达到1次,Purchase Arena Entries once.,購買競技場出戰點數達到1次
+10267_miaoshu,购买竞技场出战点数达到5次,Purchase Arena Entries 5 times.,購買競技場出戰點數達到5次
+10268_miaoshu,购买竞技场出战点数达到10次,Purchase Arena Entries 10 times.,購買競技場出戰點數達到10次
+10269_miaoshu,购买竞技场出战点数达到20次,Purchase Arena Entries 20 times.,購買競技場出戰點數達到20次
+10270_miaoshu,购买竞技场出战点数达到50次,Purchase Arena Entries 50 times.,購買競技場出戰點數達到50次
+10271_miaoshu,购买宠物技能点数达到1次,Purchase Monster Ability Points once.,購買寵物技能點數達到1次
+10272_miaoshu,购买宠物技能点数达到5次,Purchase Monster Ability Points 5 times.,購買寵物技能點數達到5次
+10273_miaoshu,购买宠物技能点数达到10次,Purchase Monster Ability Points 10 times.,購買寵物技能點數達到10次
+10274_miaoshu,购买宠物技能点数达到20次,Purchase Monster Ability Points 20 times.,購買寵物技能點數達到20次
+10275_miaoshu,购买宠物技能点数达到50次,Purchase Monster Ability Points 50 times.,購買寵物技能點數達到50次
+10276_miaoshu,点亮宠物头像达到5个,Accumulate 5 Monster Avatars.,點亮寵物頭像達到5個
+10277_miaoshu,点亮宠物头像达到10个,Accumulate 10 Monster Avatars.,點亮寵物頭像達到10個
+10278_miaoshu,点亮宠物头像达到20个,Accumulate 20 Monster Avatars.,點亮寵物頭像達到20個
+10279_miaoshu,点亮宠物头像达到50个,Accumulate 50 Monster Avatars.,點亮寵物頭像達到50個
+story_shuiniao,冰鸟是一种传说中的生物，起源于到达了北极最深处的旅人之口。这种鸟能够在北方凛冽的寒风中翱翔，能把巢穴建筑在冰穴的最深处。它拥有操纵寒冰的强大能力，想要打败这种狡猾的鸟类，仅仅靠火可是远远不够的。,"Soaring upon the frigid winds of the north and nesting in the deepest of ice caves, the Arcticbird is a legendary creature originating from travelers to the farthest reaches of the Arctic. Capable of encapsulating entire buildings in ice, it takes more than just some fire to defeat this cunning bird.",冰鳥是一種傳說中的生物，起源於到達了北極最深處的旅人之口。這種鳥能夠在北方凜冽的寒風中翱翔，能把巢穴建築在冰穴的最深處。牠擁有操縱寒冰的強大能力，想要打敗這種狡猾的鳥類，僅僅靠火可是遠遠不夠的。
+story_ifulite5,暗伊芙利特被烈焰环绕，被黑暗操控，相比于他的那些火属性的堂兄弟们，暗伊芙利特似乎拥有着更可怕的力量。有人说最强大的伊芙利特才会成为黑暗伊芙利特，但是至今为止，没有一个遇到黑暗伊芙利特的人活了下来回答这个问题….,"Wreathed in flames and controlled by the darkness, the Dark Ifrit is no less intimidating than their fiery cousins. Some say that only the strongest of Ifrits can become a Dark Ifrit, but no one has survived an encounter with one long enough to ask…",暗伊芙利特被烈焰環繞，被黑暗操控，相比於他的那些火屬性的堂兄弟們，暗伊芙利特似乎擁有著更可怕的力量。有人說最強大的伊芙利特才會成為黑暗伊芙利特，但是至今為止，沒有一個遇到黑暗伊芙利特的人活了下來回答這個問題….
+biaoti8023,挑战守护者,Face the Guardians,挑戰守護者
+biaoti8024,抵御入侵者,Resist the Invasion,抵禦入侵者
+mubiao8023,完成1次神话守护者,Complete Myth Guardians mode once. ,完成1次神話守護者
+mubiao8024,完成1次神怪入侵,Complete Deity Invasion mode once.,完成1次神怪入侵
+bossdajie18Ladong5wp04,金苹果,Golden Apple,金蘋果
+ladong5normal_cgoldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!,金蘋果是守護龍的弱點所在，狠狠地攻擊！
+push_worldboss,神怪入侵活动将在5分钟后开启！快来和伙伴们一起征战吧！,Deity Invasion will be starting in 5 minutes! Come and battle alongside your friends!,神怪入侵活動將在5分鐘後開啟！快來和夥伴們一起征戰吧！
+story_renyu,居住在深海的梦幻种族，拥有美妙的歌喉。人鱼族每月会随着潮汐来到海面歌唱，路过的海员听到歌声会被蛊惑跳海，投入人鱼的怀抱。,"A race of creatures that reside in fabled kingdoms shrouded in the depths of the sea. Mermaids will follow the tide once a month to the surface and sing beautiful songs. Any sailors that happen to hear the sound will become charmed and jump into the sea, right into the arms of the mermaids.",居住在深海的夢幻種族，擁有美妙的歌喉。人魚族每月會隨著潮汐來到海面歌唱，路過的海員聽到歌聲會被蠱惑跳海，投入人魚的懷抱。
+story_shixianggui,守护城堡的石像在月光长年的浸润下获得了生命。拥有坚不可摧的躯体和怪力，攻击一切试图闯入城堡的探险者。,"Once stationary stone guardians perched on the lofty ledges of the castle, these statues came to life after years of absorbing the power of the moonlight. With durable bodies and monstrous strength, the gargoyles will attack anything that tries to enter the castle uninvited.",守護城堡的石像在月光長年的浸潤下獲得了生命。擁有堅不可摧的軀體和怪力，攻擊一切試圖闖入城堡的探險者。
+story_senlinnvshen,森林意志汇聚而成的实体，高贵的王者。守护着森林中所有的生灵，对于破坏森林的入侵者给予严厉的制裁。,A race of noble rulers that were formed from the very essence of the forest’s will. They serve to protect all the creatures of the forest and punish anyone that threatens its tranquility.,森林意志匯聚而成的實體，高貴的王者。守護著森林中所有的生靈，對於破壞森林的入侵者給予嚴厲的制裁。
+biaoti2028,挑战守护者,Face the Guardians,挑戰守護者
+biaoti2029,抵御入侵者,Resist the Invasion,抵禦入侵者
+mubiao2028,完成1次神话守护者,Complete Myth Guardians mode once. ,完成1次神話守護者
+mubiao2029,完成1次神怪入侵,Complete Deity Invasion mode once.,完成1次神怪入侵
+guide_fragmentwish1,<color=#ffcc00>幸运卡牌</color>玩法开启啦！,<color=#ffcc00>Mytho Cards</color> unlocked!,<color=#ffcc00>幸運卡牌</color>玩法開啟啦！
 guide_fragmentwish2,"先选择一个想要获得
 碎片的目标宠物吧。","First select a target monster that 
-you wish to receive fragments for.",
-speech_fragmentwish1,幸运卡牌是获得宠物碎片的绝佳场所！可以<color=#ffcc00>自己选择</color>获得的<color=#ffcc00>宠物碎片目标</color>哦！,Mytho Cards is a great way to get monster fragments! You can even <color=#ffcc00>select which monster you would like to receive fragments for</color>!,
-speech_fragmentwish2,翻开卡牌，即可获得牌面数字标示数量的碎片。每天有<color=#ffcc00>2次免费翻牌机会</color>呢！,Flip over cards to receive the amount of fragments indicated on the card. All players have <color=#ffcc00>2 free chances each day</color>!,
-speech_xinshoudecompose2,<color=#ffcc00>炼化宠物</color>可以得到宠物<color=#ffcc00>进阶消耗的材料和合成1只该宠物的碎片</color>。这可是变废为宝的好方法哦~,<color=#ffcc00>Refining a monster</color> will return <color=#ffcc00>any materials used for advancement as well as the fragments required for combining the monster once</color>.This is the best way to get value from any unused items.,
-huapo2_bubble_001,看我花瓣连击,Watch my petal combo!,看我花瓣连击
-huapo2_bubble_002,诶？我怎么不能连击了..我的花瓣呢,Huh… What happened to my petals!,诶？我怎么不能连击了..我的花瓣呢
-mantuoluo2_bubble_001,有我的根在，你是打不过我的！哈哈,"With my roots, there is no way you can defeat me! Haha",有我的根在，你是打不过我的！哈哈
-langren3_bubble_001,手环护体，天下无敌，嗷~,These bracers aren't just decoration ya know!,手环护体，天下无敌，嗷~
+you wish to receive fragments for.","先選擇一個想要獲得
+碎片的目標寵物吧。"
+speech_fragmentwish1,幸运卡牌是获得宠物碎片的绝佳场所！可以<color=#ffcc00>自己选择</color>获得的<color=#ffcc00>宠物碎片目标</color>哦！,Mytho Cards is a great way to get monster fragments! You can even <color=#ffcc00>select which monster you would like to receive fragments for</color>!,幸運卡牌是獲得寵物碎片的絕佳場所！可以<color=#ffcc00>自己選擇</color>獲得的<color=#ffcc00>寵物碎片目標</color>哦！
+speech_fragmentwish2,翻开卡牌，即可获得牌面数字标示数量的碎片。每天有<color=#ffcc00>2次免费翻牌机会</color>呢！,Flip over cards to receive the amount of fragments indicated on the card. All players have <color=#ffcc00>2 free chances each day</color>!,翻開卡牌，即可獲得牌面數字標示數量的碎片。每天有<color=#ffcc00>2次免費翻牌機會</color>呢！
+speech_xinshoudecompose2,<color=#ffcc00>炼化宠物</color>可以得到宠物<color=#ffcc00>进阶消耗的材料和合成1只该宠物的碎片</color>。这可是变废为宝的好方法哦~,<color=#ffcc00>Refining a monster</color> will return <color=#ffcc00>any materials used for advancement as well as the fragments required for combining the monster once</color>.This is the best way to get value from any unused items.,<color=#ffcc00>煉化寵物</color>可以得到寵物<color=#ffcc00>進階消耗的材料和合成1只該寵物的碎片</color>。這可是變廢為寶的好方法哦~
+huapo2_bubble_001,看我花瓣连击,Watch my petal combo!,看我花瓣連擊
+huapo2_bubble_002,诶？我怎么不能连击了..我的花瓣呢,Huh… What happened to my petals!,誒？我怎麼不能連擊了..我的花瓣呢
+mantuoluo2_bubble_001,有我的根在，你是打不过我的！哈哈,"With my roots, there is no way you can defeat me! Haha",有我的根在，你是打不過我的！哈哈
+langren3_bubble_001,手环护体，天下无敌，嗷~,These bracers aren't just decoration ya know!,手環護體，天下無敵，嗷~
 zouyincao2_bubble_001,嘛咪嘛咪哄,Wha… Wha… Woah!!!!,嘛咪嘛咪哄
-huocike4_bubble_001,多亏了我的龟壳护体，嘿嘿,"I owe it all to my shell, hehe!",多亏了我的龟壳护体，嘿嘿
-ladong5_bubble_001,期待我的下一次攻击吧！,Just wait till my next attack!,期待我的下一次攻击吧！
-ladong5_bubble_002,啊，我的苹果…,Ah! My apple…,啊，我的苹果…
-ladong5_bubble_003,不要碰我的苹果…,Don't touch my apple…,不要碰我的苹果…
-shuigui3_bubble_001,啊，我~的~鸟~,Ah! My… Birdie…,啊，我~的~鸟~
-longgongtongzi3_bubble_001,宝物护体，你奈我何？,My treasure protects me…,宝物护体，你奈我何？
-kairuisi5_bubble_001,勾魂镰刀，你可知道？,This sickle ain't just for grass ya know…,勾魂镰刀，你可知道？
-hetong2_bubble_001,可以打脸，不要碰我的围巾哦！,"Sure, hit my face, just don't mess up my scarf!",可以打脸，不要碰我的围巾哦！
-hetong2_bubble_002,竟然摧毁我的至爱~受死吧！,You have destroyed my beloved! Die!!!,竟然摧毁我的至爱~受死吧！
-muling2_bubble_001,糟糕，被发现了~,"Oh no, you found me!",糟糕，被发现了~
-muling2_bubble_002,打不过，我溜~,I will now slip away...,打不过，我溜~
-longnv3_bubble_001,看我灵印护体~,The spirits protect me.,看我灵印护体~
-luoxinfu5_bubble_001,看我百爪连击,Watch my 100 slash combo!,看我百爪连击
-luoxinfu5_bubble_002,诶？我连击的效果怎么有点差？,"Huh, my combo isn't working?",诶？我连击的效果怎么有点差？
-luoxinfu5_bubble_003,诶？我连击的效果怎么越来越差？,"Huh, why am I weaker and weaker?",诶？我连击的效果怎么越来越差？
-amute3_bubble_001,没有人能揭掉我的面具后活着离开！,No one tears off my mask and lives to tell about it!,没有人能揭掉我的面具后活着离开！
-xiaochou2_bubble_001,大锤一挥，全部带走！,I will sweep you all away in one swing!,大锤一挥，全部带走！
-momo1_bubble_001,我的房子多么结实~,My house is so sturdy!,我的房子多么结实~
-momo1_bubble_002,诶？我的房子呢？,Huh! What happened to my house!,诶？我的房子呢？
-hapi1_bubble_001,翅膀会带着我飞得更快~,On my wings I soar!,翅膀会带着我飞得更快~
+huocike4_bubble_001,多亏了我的龟壳护体，嘿嘿,"I owe it all to my shell, hehe!",多虧了我的龜殼護體，嘿嘿
+ladong5_bubble_001,期待我的下一次攻击吧！,Just wait till my next attack!,期待我的下一次攻擊吧！
+ladong5_bubble_002,啊，我的苹果…,Ah! My apple…,啊，我的蘋果…
+ladong5_bubble_003,不要碰我的苹果…,Don't touch my apple…,不要碰我的蘋果…
+shuigui3_bubble_001,啊，我~的~鸟~,Ah! My… Birdie…,啊，我~的~鳥~
+longgongtongzi3_bubble_001,宝物护体，你奈我何？,My treasure protects me…,寶物護體，你奈我何？
+kairuisi5_bubble_001,勾魂镰刀，你可知道？,This sickle ain't just for grass ya know…,勾魂鐮刀，你可知道？
+hetong2_bubble_001,可以打脸，不要碰我的围巾哦！,"Sure, hit my face, just don't mess up my scarf!",可以打臉，不要碰我的圍巾哦！
+hetong2_bubble_002,竟然摧毁我的至爱~受死吧！,You have destroyed my beloved! Die!!!,竟然摧毀我的至愛~受死吧！
+muling2_bubble_001,糟糕，被发现了~,"Oh no, you found me!",糟糕，被發現了~
+muling2_bubble_002,打不过，我溜~,I will now slip away...,打不過，我溜~
+longnv3_bubble_001,看我灵印护体~,The spirits protect me.,看我靈印護體~
+luoxinfu5_bubble_001,看我百爪连击,Watch my 100 slash combo!,看我百爪連擊
+luoxinfu5_bubble_002,诶？我连击的效果怎么有点差？,"Huh, my combo isn't working?",誒？我連擊的效果怎麼有點差？
+luoxinfu5_bubble_003,诶？我连击的效果怎么越来越差？,"Huh, why am I weaker and weaker?",誒？我連擊的效果怎麼越來越差？
+amute3_bubble_001,没有人能揭掉我的面具后活着离开！,No one tears off my mask and lives to tell about it!,沒有人能揭掉我的面具後活著離開！
+xiaochou2_bubble_001,大锤一挥，全部带走！,I will sweep you all away in one swing!,大錘一揮，全部帶走！
+momo1_bubble_001,我的房子多么结实~,My house is so sturdy!,我的房子多麼結實~
+momo1_bubble_002,诶？我的房子呢？,Huh! What happened to my house!,誒？我的房子呢？
+hapi1_bubble_001,翅膀会带着我飞得更快~,On my wings I soar!,翅膀會帶著我飛得更快~
 hapi1_bubble_002,我的翅膀呢~,My… Wings…,我的翅膀呢~
-meidusha2_bubble_001,每一个凝视我的人都将被石化为雕像！,Any man who looks at me shall be petrified!,每一个凝视我的人都将被石化为雕像！
-meidusha2_bubble_002,啊！我的头发…,Ah! My hair…,啊！我的头发…
-meidusha2_bubble_003,啊！我的头发…不要激怒我,"Ah! My hair, don't make me angry!",啊！我的头发…不要激怒我
-meidusha2_bubble_004,啊！我的头发…你激怒了我,Ah! My hair! Now you've done it!,啊！我的头发…你激怒了我
-meidusha2_bubble_005,我..我的头...发…,My… My… Hair…,我..我的头...发…
-hongniu4_bubble_001,看到我锋利的犄角了吗？有没有吓到你？,I hope my razor sharp horns haven't scared you…,看到我锋利的犄角了吗？有没有吓到你？
-daochengsizhong4_bubble_001,绝招来咯，小心了哦~,"I'm tricky, so be careful!",绝招来咯，小心了哦~
-huoniao4_bubble_001,我有羽毛保护~,My feathers protect me!,我有羽毛保护~
-huoniao4_bubble_002,来尝尝火旋风的厉害！,Witness the power of fire and wind!,来尝尝火旋风的厉害！
-datiangou4_bubble_001,我的翅膀可是快如闪电！,My wings are quick as lightning!,我的翅膀可是快如闪电！
-datiangou4_bubble_002,让你见识下我的厉害！,I will show you my true power!,让你见识下我的厉害！
-saibulesi4_bubble_001,看我三头连击,Watch my three-headed combo!,看我三头连击
-saibulesi4_bubble_002,诶？怎么打不出来效果了？,Huh! That used to always work…,诶？怎么打不出来效果了？
-tianshizhang4_bubble_001,翅膀让我有更快的攻击速度,My wings give me quicker attack speed!,翅膀让我有更快的攻击速度
-tiejiang4_bubble_001,感受下锤子武器的厉害吧！,Feel the power of my hammer!,感受下锤子武器的厉害吧！
-tiejiang4_bubble_002,感受下钉子武器的厉害吧！,Feel the power of my nail!,感受下钉子武器的厉害吧！
+meidusha2_bubble_001,每一个凝视我的人都将被石化为雕像！,Any man who looks at me shall be petrified!,每一個凝視我的人都將被石化為雕像！
+meidusha2_bubble_002,啊！我的头发…,Ah! My hair…,啊！我的頭髮…
+meidusha2_bubble_003,啊！我的头发…不要激怒我,"Ah! My hair, don't make me angry!",啊！我的頭髮…不要激怒我
+meidusha2_bubble_004,啊！我的头发…你激怒了我,Ah! My hair! Now you've done it!,啊！我的頭髮…你激怒了我
+meidusha2_bubble_005,我..我的头...发…,My… My… Hair…,我..我的頭..髮…
+hongniu4_bubble_001,看到我锋利的犄角了吗？有没有吓到你？,I hope my razor sharp horns haven't scared you…,看到我鋒利的犄角了嗎？有沒有嚇到你？
+daochengsizhong4_bubble_001,绝招来咯，小心了哦~,"I'm tricky, so be careful!",絕招來咯，小心了哦~
+huoniao4_bubble_001,我有羽毛保护~,My feathers protect me!,我有羽毛保護~
+huoniao4_bubble_002,来尝尝火旋风的厉害！,Witness the power of fire and wind!,來嘗嘗火旋風的厲害！
+datiangou4_bubble_001,我的翅膀可是快如闪电！,My wings are quick as lightning!,我的翅膀可是快如閃電！
+datiangou4_bubble_002,让你见识下我的厉害！,I will show you my true power!,讓你見識下我的厲害！
+saibulesi4_bubble_001,看我三头连击,Watch my three-headed combo!,看我三頭連擊
+saibulesi4_bubble_002,诶？怎么打不出来效果了？,Huh! That used to always work…,誒？怎麼打不出效果了？
+tianshizhang4_bubble_001,翅膀让我有更快的攻击速度,My wings give me quicker attack speed!,翅膀讓我有更快的攻擊速度
+tiejiang4_bubble_001,感受下锤子武器的厉害吧！,Feel the power of my hammer!,感受下錘子武器的厲害吧！
+tiejiang4_bubble_002,感受下钉子武器的厉害吧！,Feel the power of my nail!,感受下釘子武器的厲害吧！
 tiejiang4_bubble_003,武器在手，天下我有！,"With a weapon in my hand, nothing shall dare to stand!",武器在手，天下我有！
 tiejiang4_bubble_004,我的武器呢？,Where'd my weapon go?,我的武器呢？
-langren5_bubble_001,尝试下“铁腕”的厉害吧！,"Feel the power of my ""Iron First!""",尝试下“铁腕”的厉害吧！
-langren5_bubble_002,我..我的“铁腕”…,"My… My ""Iron First"" …",我..我的“铁腕”…
-yifanmumian3_bubble_001,挂饰挂饰，强我心智！,The ornaments strengthen my mind!,挂饰挂饰，强我心智！
-yifanmumian3_bubble_002,有“它”在，你岂能伤我？,"With 'it' here, how could you hurt me?",有“它”在，你岂能伤我？
-bingyan3_bubble_001,你不可能找到我真正的弱点！,You will never find my true weakpoint!,你不可能找到我真正的弱点！
-huoniao_bubble_001,让你见识下水旋风的厉害！,I'll show you the power of water and wind!,让你见识下水旋风的厉害！
-wendige3_bubble_001,啊，我脆弱的心脏~,Ah! My delicate heart…,啊，我脆弱的心脏~
-binglong3_bubble_001,哼，随便一件装备都会让我战斗力倍增！,"Hmph, any equipment will increase my battle power!",哼，随便一件装备都会让我战斗力倍增！
-dujiaoshou5_bubble_001,准备好接受黑暗的诅咒了吗？,Are you ready to receive the darkest of curses?,准备好接受黑暗的诅咒了吗？
-anpusha5_bubble_001,你觉得我的“心”好看吗？,Do you think my 'heart' is pretty?,你觉得我的“心”好看吗？
-ifrit5_bubble_001,我是不是比红色那家伙帅一些呢？,"I'm more handsome than that red guy, right?",我是不是比红色那家伙帅一些呢？
-nvyao5_bubble_001,感觉魂器将我重生~,I feel renewed!,感觉魂器将我重生~
-weitianshi5_bubble_001,不要浪费了，光环会让你丧失回血能力的！,Don't even bother! The aura will reduce your HP regen!,不要浪费了，光环会让你丧失回血能力的！
-saibulesi5_bubble_001,哼，我和红色哪只可不是兄弟！,"Hmph, anything red could never be my brother!",哼，我和红色哪只可不是兄弟！
-change5_bubble_001,你还挺不好对付，我可要画阵啦！,Your tougher than I thought! Let me cast a spell here…,你还挺不好对付，我可要画阵啦！
-change5_bubble_002,我的兔兔~我要你赔我..的..兔..兔..,"My little bunny! I want you with me, my little bunny…",我的兔兔~我要你赔我..的..兔..兔..
-karong5_bubble_001,你想见到我嘛？哈~哈~哈,You want to see me? Hahaha,你想见到我嘛？哈~哈~哈
-karong5_bubble_002,你居然识破了，那就让我来收拾你！,So you saw through it after all. I'll take care of you!,你居然识破了，那就让我来收拾你！
-weitianshi1_bubble_001,让你也感受下翅膀折断后的伤痛！,I'll show you the pain of having your wings clipped off!,让你也感受下翅膀折断后的伤痛！
-nvyao1_bubble_001,回来吧，我亲爱的宝贝！,"Come back, my love!",回来吧，我亲爱的宝贝！
-luoxinfu1_bubble_001,哈哈哈，你这愚蠢的人类！,"Hahaha, you foolish human!",哈哈哈，你这愚蠢的人类！
-piying1_bubble_001,三兄弟永远不分离！,The three brothers will never be seperated!,三兄弟永远不分离！
-piying1_bubble_002,三兄弟永远不分离！,My brothers protect me!,兄弟在，护盾在！
-piying1_bubble_003,兄弟在，护盾在！,My brothers protect me!,兄弟在，护盾在！
-piying1_bubble_004,兄弟在，护盾在！,My brothers protect me!,兄弟在，护盾在！
+langren5_bubble_001,尝试下“铁腕”的厉害吧！,"Feel the power of my ""Iron First!""",嘗試下“鐵腕”的厲害吧！
+langren5_bubble_002,我..我的“铁腕”…,"My… My ""Iron First"" …",我..我的“鐵腕”…
+yifanmumian3_bubble_001,挂饰挂饰，强我心智！,The ornaments strengthen my mind!,掛飾掛飾，強我心智！
+yifanmumian3_bubble_002,有“它”在，你岂能伤我？,"With 'it' here, how could you hurt me?",有“它”在，你豈能傷我？
+bingyan3_bubble_001,你不可能找到我真正的弱点！,You will never find my true weakpoint!,你不可能找到我真正的弱點！
+huoniao_bubble_001,让你见识下水旋风的厉害！,I'll show you the power of water and wind!,讓你見識下水旋風的厲害！
+wendige3_bubble_001,啊，我脆弱的心脏~,Ah! My delicate heart…,啊，我脆弱的心臟~
+binglong3_bubble_001,哼，随便一件装备都会让我战斗力倍增！,"Hmph, any equipment will increase my battle power!",哼，隨便一件裝備都會讓我戰鬥力倍增！
+dujiaoshou5_bubble_001,准备好接受黑暗的诅咒了吗？,Are you ready to receive the darkest of curses?,準備好接受黑暗的詛咒了嗎？
+anpusha5_bubble_001,你觉得我的“心”好看吗？,Do you think my 'heart' is pretty?,你覺得我的“心”好看嗎？
+ifrit5_bubble_001,我是不是比红色那家伙帅一些呢？,"I'm more handsome than that red guy, right?",我是不是比紅色那傢伙帥一些呢？
+nvyao5_bubble_001,感觉魂器将我重生~,I feel renewed!,感覺魂器將我重生~
+weitianshi5_bubble_001,不要浪费了，光环会让你丧失回血能力的！,Don't even bother! The aura will reduce your HP regen!,不要浪費了，光環會讓你喪失回血能力的！
+saibulesi5_bubble_001,哼，我和红色哪只可不是兄弟！,"Hmph, anything red could never be my brother!",哼，我和紅色那只可不是兄弟！
+change5_bubble_001,你还挺不好对付，我可要画阵啦！,Your tougher than I thought! Let me cast a spell here…,你還挺不好對付，我可要畫陣啦！
+change5_bubble_002,我的兔兔~我要你赔我..的..兔..兔..,"My little bunny! I want you with me, my little bunny…",我的兔兔~我要你賠我..的..兔..兔..
+karong5_bubble_001,你想见到我嘛？哈~哈~哈,You want to see me? Hahaha,你想見到我嘛？哈~哈~哈
+karong5_bubble_002,你居然识破了，那就让我来收拾你！,So you saw through it after all. I'll take care of you!,你居然識破了，那就讓我來收拾你！
+weitianshi1_bubble_001,让你也感受下翅膀折断后的伤痛！,I'll show you the pain of having your wings clipped off!,讓你也感受下翅膀折斷後的傷痛！
+nvyao1_bubble_001,回来吧，我亲爱的宝贝！,"Come back, my love!",回來吧，我親愛的寶貝！
+luoxinfu1_bubble_001,哈哈哈，你这愚蠢的人类！,"Hahaha, you foolish human!",哈哈哈，你這愚蠢的人類！
+piying1_bubble_001,三兄弟永远不分离！,The three brothers will never be seperated!,三兄弟永遠不分離！
+piying1_bubble_002,三兄弟永远不分离！,My brothers protect me!,三兄弟永遠不分離！
+piying1_bubble_003,兄弟在，护盾在！,My brothers protect me!,兄弟在，護盾在！
+piying1_bubble_004,兄弟在，护盾在！,My brothers protect me!,兄弟在，護盾在！
 yifanmumian1_bubble_001,啊，我的左手~,Ah! My left hand!,啊，我的左手~
 yifanmumian1_bubble_002,啊，我的右手~,Ah! My right hand!,啊，我的右手~
-yifanmumian1_bubble_003,宝贝吊坠赋予了我无限的护盾能力！,The baby's pendant grants me unlimited protection!,宝贝吊坠赋予了我无限的护盾能力！
-longnv1_bubble_001,哈哈，让你们尝尝眩晕的滋味！,"Haha, I will let you try something stunning!",哈哈，让你们尝尝眩晕的滋味！
-jinglingwangzi1_bubble_001,神圣的皇冠如同神圣的我一样不容侵犯！,The crown must be like me... Pure and divine!,神圣的皇冠如同神圣的我一样不容侵犯！
-jinglingwangzi1_bubble_002,所有人在我面前都需要低着头！,All who are before me must bow!,所有人在我面前都需要低着头！
-huapo2awaken_bubble_001,我感觉到他们的存在了，吼吼~,I have sensed their presence.,我感觉到他们的存在了，吼吼~
-huoniao4awaken_bubble_001,把~我~的~羽毛…还给我！,Give… My… Feathers… Back!!!,把~我~的~羽毛…还给我！
-amute3awaken_bubble_001,如果你与我不是一个属性，那么你是伤害不了我的！,Those who are different than me cannot hurt me!,如果你与我不是一个属性，那么你是伤害不了我的！
-amute3awaken_bubble_002,你以为这一回也是打掉面具你就赢了吗？哼！,You thought you could win by simply removing my mask? Hah!,你以为这一回也是打掉面具你就赢了吗？哼！
-anpusha5awaken_bubble_001,亲爱的，你的心...有所属了吗？,"Dear, does your heart… Belong to someone?",亲爱的，你的心...有所属了吗？
-anpusha5awaken_bubble_002,你怎么忍心破坏人家的小心肝呐…,How could you... Destroy my heart…,你怎么忍心破坏人家的小心肝呐…
-dujiaoshou1awaken_bubble_001,凡人，你将无法再伤害我！,Mortals! You have no way to hurt me!,凡人，你将无法再伤害我！
-dujiaoshou1awaken_bubble_002,失去翅膀并不一定代表我会失败！,Losing my wings doesn't mean I'm beaten!,失去翅膀并不一定代表我会失败！
-landuo2_bubble_001,是谁吵醒了我？,Who has awakened me?,是谁吵醒了我？
-baonu4_bubble_001,你感觉到我的怒火了吗？,Can you feel my fury?,你感觉到我的怒火了吗？
-baonu4_bubble_002,失去头盔的我会更加的愤怒！,Losing my helmet will just make me more angry!,失去头盔的我会更加的愤怒！
-yafogemeng5_bubble_001,感受到黑暗了吗？,Do you feel the darkness creeping in?,感受到黑暗了吗？
-yafogemeng5_bubble_002,我还会回来的！,I will be back!,我还会回来的！
-guide_road3,<color=#ffcc00>20级</color>开启公会玩法后，可以<color=#ffcc00>借用公会好友的宠物</color>帮助自己作战。,20级开启公会玩法后，可以借用公会好友的宠物帮助自己作战。,20级开启公会玩法后，可以借用公会好友的宠物帮助自己作战。
+yifanmumian1_bubble_003,宝贝吊坠赋予了我无限的护盾能力！,The baby's pendant grants me unlimited protection!,寶貝吊墜賦予了我無限的護盾能力！
+longnv1_bubble_001,哈哈，让你们尝尝眩晕的滋味！,"Haha, I will let you try something stunning!",哈哈，讓你們嘗嘗眩暈的滋味！
+jinglingwangzi1_bubble_001,神圣的皇冠如同神圣的我一样不容侵犯！,The crown must be like me... Pure and divine!,神聖的皇冠如同神聖的我一樣不容侵犯！
+jinglingwangzi1_bubble_002,所有人在我面前都需要低着头！,All who are before me must bow!,所有人在我面前都需要低著頭！
+huapo2awaken_bubble_001,我感觉到他们的存在了，吼吼~,I have sensed their presence.,我感覺到他們的存在了，吼吼~
+huoniao4awaken_bubble_001,把~我~的~羽毛…还给我！,Give… My… Feathers… Back!!!,把~我~的~羽毛…還給我！
+amute3awaken_bubble_001,如果你与我不是一个属性，那么你是伤害不了我的！,Those who are different than me cannot hurt me!,如果你與我不是一個屬性，那麼你是傷害不了我的！
+amute3awaken_bubble_002,你以为这一回也是打掉面具你就赢了吗？哼！,You thought you could win by simply removing my mask? Hah!,你以為這一回也是打掉面具你就贏了嗎？哼！
+anpusha5awaken_bubble_001,亲爱的，你的心...有所属了吗？,"Dear, does your heart… Belong to someone?",親愛的，你的心...有所屬了嗎？
+anpusha5awaken_bubble_002,你怎么忍心破坏人家的小心肝呐…,How could you... Destroy my heart…,你怎麼忍心破壞人家的小心肝呐…
+dujiaoshou1awaken_bubble_001,凡人，你将无法再伤害我！,Mortals! You have no way to hurt me!,凡人，你將無法再傷害我！
+dujiaoshou1awaken_bubble_002,失去翅膀并不一定代表我会失败！,Losing my wings doesn't mean I'm beaten!,失去翅膀並不一定代表我會失敗！
+landuo2_bubble_001,是谁吵醒了我？,Who has awakened me?,是誰吵醒了我？
+baonu4_bubble_001,你感觉到我的怒火了吗？,Can you feel my fury?,你感覺到我的怒火了嗎？
+baonu4_bubble_002,失去头盔的我会更加的愤怒！,Losing my helmet will just make me more angry!,失去頭盔的我會更加的憤怒！
+yafogemeng5_bubble_001,感受到黑暗了吗？,Do you feel the darkness creeping in?,感受到黑暗了嗎？
+yafogemeng5_bubble_002,我还会回来的！,I will be back!,我還會回來的！
+guide_road3,"别忘记可以借助<color=#ffcc00>公会好友
+的宠物</color>帮助自己作战","Don't forget that you can hire your 
+<color=#ffcc00>guild friends' monsters</color> to assist in battle!",

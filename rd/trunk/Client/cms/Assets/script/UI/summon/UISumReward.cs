@@ -108,6 +108,7 @@ public class UISumReward : UIBase
                 icon.SetMonsterStaticId(monster.cfgId);
                 icon.SetLevel(monster.level);
                 icon.SetStage(monster.stage);
+                icon.ShowXiyouduImage();
                 SetEffect((StaticDataMgr.Instance.GetUnitRowData(monster.cfgId).rarity + 1), icon.transform.gameObject);
                 rewardImage.Add(icon.transform.gameObject);
             }

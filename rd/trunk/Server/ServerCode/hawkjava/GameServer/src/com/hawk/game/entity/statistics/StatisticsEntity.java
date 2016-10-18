@@ -1,8 +1,10 @@
 package com.hawk.game.entity.statistics;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.hawk.config.HawkConfigManager;
@@ -20,7 +22,6 @@ import com.hawk.game.util.QuestUtil;
  * 玩家统计数据包装类
  * 
  * @author walker
- * 
  */
 public class StatisticsEntity {
 
@@ -28,17 +29,21 @@ public class StatisticsEntity {
 	private MfStatisticsEntity mfEntity;
 	private LfStatisticsEntity lfEntity;
 	private Lf2StatisticsEntity lf2Entity;
+	private Map<Integer, RefreshStatisticsEntity> refreshEntityMap;
 
 	private boolean hfUpdate;
 	private boolean mfUpdate;
 	private boolean lfUpdate;
 	private boolean lf2Update;
+	private Map<Integer, Boolean> refreshUpdateMap;
 
 	public StatisticsEntity() {
 		hfUpdate = false;
 		mfUpdate = false;
 		lfUpdate = false;
 		lf2Update = false;
+		refreshUpdateMap = new HashMap<Integer, Boolean>();
+		refreshEntityMap = new HashMap<Integer, RefreshStatisticsEntity>();
 	}
 
 	public void load(int playerId) {
@@ -85,6 +90,16 @@ public class StatisticsEntity {
 				lf2Entity.notifyCreate();
 			}
 		}
+
+		if (true == refreshEntityMap.isEmpty()) {
+			List<RefreshStatisticsEntity> resultList = HawkDBManager.getInstance().query("from RefreshStatisticsEntity where playerId = ? and invalid = 0", playerId);
+			if (null != resultList && resultList.size() > 0) {
+				for (RefreshStatisticsEntity entity: resultList) {
+					entity.decode();
+					refreshEntityMap.put(entity.timePoint, entity);
+				}
+			}
+		}
 	}
 
 	public void notifyUpdate(boolean async) {
@@ -103,6 +118,11 @@ public class StatisticsEntity {
 		if (true == lf2Update) {
 			lf2Update = false;
 			lf2Entity.notifyUpdate(async);
+		}
+		for (Entry<Integer, Boolean> entry : refreshUpdateMap.entrySet()) {
+			if (true == entry.getValue()) {
+				refreshEntityMap.get(entry.getKey()).notifyUpdate(async);
+			}
 		}
 
 		// 更新任务
@@ -478,7 +498,7 @@ public class StatisticsEntity {
 		mfEntity.skillPointBeginTime = time;
 		mfUpdate = true;
 	}
-	
+
 	// pvpTime----------------------------------------------
 	public int getPVPTime() {
 		return mfEntity.pvpTime;
@@ -497,7 +517,6 @@ public class StatisticsEntity {
 		mfEntity.pvpTimeBeginTime = time;
 		mfUpdate = true;
 	}
-	
 
 	// monsterCount--------------------------------------------
 //	public List<Integer> getMonsterCountOverStageList() {
@@ -1244,17 +1263,6 @@ public class StatisticsEntity {
 
 	// LF 2 method=========================================================================
 
-	// refreshTime---------------------------------------------
-	public Calendar getLastRefreshTime(int timeCfgId) {
-		return lf2Entity.refreshTimeMap.get(timeCfgId);
-	}
-
-	public void setRefreshTime(int timeCfgId, Calendar time) {
-		lf2Entity.refreshTimeMap.put(timeCfgId, time);
-		lf2Entity.refreshTimeFlag = true;
-		lf2Update = true;
-	}
-
 	// adventureChange----------------------------------------------
 	public int getAdventureChange() {
 		return lf2Entity.adventureChange;
@@ -1665,5 +1673,29 @@ public class StatisticsEntity {
 	public void setDumpTime(int dumpTime) {
 		lf2Entity.dumpTime = dumpTime;
 		lf2Update = true;
+	}
+
+	// Refresh method=========================================================================
+
+	// refreshTime---------------------------------------------
+	public Calendar getLastRefreshTime(int timeCfgId) {
+		RefreshStatisticsEntity refreshEntity = refreshEntityMap.get(timeCfgId);
+		if (null != refreshEntity) {
+			return refreshEntity.refreshTime;
+		}
+		return null;
+	}
+
+	public void setRefreshTime(int timeCfgId, Calendar time) {
+		RefreshStatisticsEntity refreshEntity = refreshEntityMap.get(timeCfgId);
+		if (null == refreshEntity) {
+			refreshEntity = new RefreshStatisticsEntity(getPlayerId(),timeCfgId);
+			refreshEntity.refreshTime = time;
+			refreshEntity.notifyCreate();
+			refreshEntityMap.put(timeCfgId, refreshEntity);
+		} else {
+			refreshEntity.refreshTime = time;
+			refreshUpdateMap.put(timeCfgId, true);
+		}
 	}
 }

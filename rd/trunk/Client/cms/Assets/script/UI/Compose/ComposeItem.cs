@@ -48,7 +48,8 @@ public class ComposeItem : MonoBehaviour
     public Transform transPos;
     private ItemIcon itemIcon;
 
-    public Text textName;
+    public Text textNameGem;
+    public Text textNameItem;
 
     //宝石属性  物品隐藏
     public GameObject objAttr;
@@ -95,16 +96,20 @@ public class ComposeItem : MonoBehaviour
     {
         this.CurData = info;
 
-        UIUtil.SetStageColor(textName, CurData.itemInfo.staticData);
+        //UIUtil.SetStageColor(textName, CurData.itemInfo.staticData);
         if (CurData.itemInfo.staticData.type==(int)PB.toolType.GEMTOOL)
         {
             objAttr.SetActive(true);
+            textNameItem.gameObject.SetActive(false);
+            textNameGem.text = CurData.itemInfo.staticData.NameAttr;
             EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(CurData.itemInfo.staticData.gemId);
             UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
         }
         else
         {
             objAttr.SetActive(false);
+            textNameItem.gameObject.SetActive(true);
+            textNameItem.text = CurData.itemInfo.staticData.NameAttr;
         }
         SetSelCount(CurData.SelectCount);
         SetDisable(CurData.IsDisable);

@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="لا يوجد اخطاء";
+
+"ErrorUnspecific_9999"="خطأ غير محدد";
+
+"FPErrorNotInstall_0100"="خطأ في تثبيت SDK";
+
+"FPErrorFailedToConnectToConfigServer_0101"="فشل اتصال بالسيرفر";
+
+"FPErrorInvalidConfigRequestData_0102"="فشلت بيانات التكوين في السيرفر ";
+
+"FPErrorFailedToParseConfig_0103"="فشل تحليل التكوين";
+
+"FPErrorInvalidConfigData_0104"="لعبة غير صالحة";
+
+"FPErrorWrongSignature_1101"="توقيع غير صحيح";
+
+"FPErrorFailedCreateID_1102"="فشل في انشاء حساب فان بلاس. حاول لاحقاً";
+
+"FPErrorWrongGameID_1103"="حساب غير صحيح";
+
+"FPErrorWrongEmail_1104"="ايميل غير صحيح";
+
+"FPErrorWrongPassword_1105"="كلمة المرور غير صحيح";
+
+"FPErrorWrongGUID_1106"="مرشد غير صحيح";
+
+"FPErrorEmailExisted_1107"="لقد تم استخدام هذا الايميل";
+
+"FPErrorFailedCreateAccount_1108"="فشل في انشاء حساب";
+
+"FPErrorAccountBound_1109"="لقد تم ربط هذا الحساب مسبقاً";
+
+"FPErrorEmailNotFound_1110"="لا يمكن العثور على هذا الايميل";
+
+"FPErrorLoginFailed_1111"="فشل التسجيل";
+
+"FPErrorPasswordLength_1112"="خطأ كلمة المرور";
+
+"FPErrorFailedResetPassword_1113"="فشل في اعادة تعيين كلمة المرور";
+
+"FPErrorWrongResetPasswordToken_1114"="فشل في إعادة تعيين كلمة المرور بسبب رمز غير صالح";
+
+"FPErrorEmptyResetPasswordToken_1115"="فشل في إعادة تعيين كلمة المرور بسبب رموز فارغة";
+
+"FPErrorPasswordNotChanged_1116"="كلمة المرور الجديدة تشبه الكلمة القديمة";
+
+"FPErrorFailedChangePassword_1117"="فشل في تغيير كلمة المرور";
+
+"FPErrorFailedAccountNotFound_1118"="لم يتم العثور على الحساب";
+
+"FPErrorFailedResetPasswordEmail_1119"="لا يمكنك ارسال اعادة تعيين كلمة المرور الى الايميل الخاص بك";
+
+"FPErrorFailedWrongGameSetting_1120"="اعدادات اللعبة غير صالحة";
+
+"FPErrorFailedResetPasswordTemp_1121"="لقد قمت باعادة تعيين كلمة المرور عدة مرات. حاول لاحقاً";
+
+"FPErrorEmptyFPID_1122"="فارغ";
+
+"FPErrorWrongPlatformId_1123"="حساب المنصة غير صحيح";
+
+"FPErrorFailedToBindWithSocialID_1124"="فشل في ربط الحساب";
+
+"FPErrorReachLoginLimit_1125"="تسجيل الدخول تجاوز الحد";
+
+"FPErrorEmailTooLong_1126"="الايميل طويل جداً";
+
+"FPErrorEmptySession_1127"="دورة فارغة";
+
+"FPErrorSessionNotFound_1128"="لم يتم العثور على الدورة";
+
+"FPErrorSessionExpired_1129"="انتهاء صلاحية الدورة";
+
+"FPErrorSessionAppMismatch_1130"="الدورة والحالي عدم تطابق حساب اللعبة";
+
+"FPErrorWrongPlatformToken_1131"="خطأ في رموز المنصبه";
+
+"FPErrorWrongPlatformType_1132"="خطأ في كتابه المنصبه";
+
+"FPErrorInvalidPlatformToken_1133"="رموز غير صالحة ";
+
+"FPErrorUnknownAccountType_1200"="الحساب غير معروف";
+
+"FPErrorNotLoggedIn_1201"="لم يتم تسجيل الدخول";
+
+"FPErrorAlreadyLoggedIn_1202"="لقد قمت بدخول مسبقاً";
+
+"FPErrorIoginInProgress_1203"="تسجيل الدخول قيد التنفيذ";
+
+"FPErrorWrongLoginParams_1204"="معلومات تسجيل الدخول غير صالحة";
+
+"FPErrorFailedLoginAccount_1205"="فشل التسجيل";
+
+"FPErrorAccountBoundToOther_1206"="فشل ربط الحساب";
+
+"FPErrorFailedToConnectAccountServer_1207"="فشل اتصال الحساب بالسيرفر";
+
+"FPErrorFailedToParseAccountResponse_1208"="فشل في تحليل البيانات";
+
+"FPErrorWechatClientIssue_2000"="ويشات: فشل العميل";
+
+"FPErrorWechatUserCancel_2001"="ويشات: الغاء العملية";
+
+"FPErrorWechatLoginFailed_2002"="ويشات: فشل الدخول";
+
+"FPErrorWechatDiffId_2003"="ويشات: حساب ويشات غير متناسق";
+
+"FPErrorWechatNotInWhiteList_2004"="ويشات: ليس في قائمة البيضاء";
+
+"FPErrorWechatAccountBoundToOther_2005"="لقد تم ربط حساب الويشات بحساب فان بلاس، قم بتغير حساب ويشات او قم بالربط عبر الايميل";
+
+"FPErrorWechatGetUserDataFailed_2006"="ويشات: فشل في الحصول على بيانات المستخدم";
+
+"FPErrorWechatException_2007"="ويشات: خطأ غير محدد";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="ويشات: فشل في الحصول على بيانات الصديق";
+
+"FPErrorFacebookNotLoggedIn_2100"="فيسبوك: لم يقم مستخدم بتسجيل دخول";
+
+"FPErrorFacebookLoginFailed_2101"="فيسبوك: فشل تسجيل المستخدم";
+
+"FPErrorFacebookGetUserDataFailed_2102"="فيسبوك: فشل الحصول على بيانات المستخدم";
+
+"FPErrorFacebookSendRequestError_2103"="فيسبوك: فشل في ارسال دعوة في اللعبة";
+
+"FPErrorFacebookUserCanceledAction_2104"="فيسبوك: المستخدم الغى العملية";
+
+"FPErrorFacebookException_2105"="فيسبوك: استثناء غير معروف";
+
+"FPErrorFacebookAccountBoundToOther_2106"="لقد قمت بربط حساب الفيسبوك بحساب فان بلاس آخر. قم بتغير حساب الفيسبوك او قم بالربط عن طريق الايميل";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="فيسبوك: فشل في لحصول على بيانات اصدقائك";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="فيسبوك: إذن أصدقاء مطلوبة";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: لم يقم مستخدم بتسجيل الدخول";
+
+"FPErrorVkLoginFailed_2201"="VK: فشل دخول المستخدم";
+
+"FPErrorVkCaptchaError_2202"="VK: خطأ";
+
+"FPErrorVkAccessDenied_2203"="VK: تم الرفض";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK:فشل في استلام رموز المستخدم";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK:فشل في رموز المستخدم";
+
+"FPErrorVkRenewTokenFailed_2206"="VK:فشل في رموز ";
+
+"FPErrorVkException_2207"="VK:استثناء غير معروفة";
+
+"FPErrorVkUserCanceledAction_2208"="VK:المستخدم الغى العملية";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: فشل في الحصول على بيانات المستخدم";
+
+"FPErrorVkAccountBoundToOther_2210"="لقد تم ربط حساب VK بحساب فان بلاس. قم بربط VK بحساب آخر";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: فشل في الحصول على بيانات اصدقائك";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="لقد تم ربط حساب جوجل بلاس بحساب فان بلاس. قم بربط جوجل بلاس بحساب آخر";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="فشل في الاتصال للدفع";
+
+"FPErrorInvalidPaymentRequestData_3001"="بيانات الدفع غير صالحة";
+
+"FPErrorFailedToParsePaymentResponse_3002"="فشل في تحليل بيانات الدفع";
+
+"FPErrorPaymentResponseError_3003"="سيرفر الدفع غير صالح";
+
+"FPErrorInitGoogleIab_3100"="جوجل لاب: خطأ التهيئة";
+
+"FPErrorGoogleIabFailedToBuy_3101"="جوجل لاب: فشل الشراء";
+
+"FPErrorGoogleAccountNotConfigured_3102"="جوجل لاب: لم يتم توثيق حساب جوجل";
+
+"FPErrorGoogleIabFailedToConsume_3103"="جوجل لاب: لا يمكن اكمال الشراء";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: فشل في الشراء";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: المنتج غير صالح";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: حساب منتج غير صالح";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: لا يمكن حصول على البيانات";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

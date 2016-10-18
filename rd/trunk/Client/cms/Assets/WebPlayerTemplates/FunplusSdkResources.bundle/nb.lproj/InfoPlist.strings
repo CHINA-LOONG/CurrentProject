@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Ingen feil";
+
+"ErrorUnspecific_9999"="Uspesifisert feil";
+
+"FPErrorNotInstall_0100"="SDK installerer ulykket";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Mislykkes å koble til konfigurasjon server";
+
+"FPErrorInvalidConfigRequestData_0102"="Mislykkes å konfigurere server forespørsel data";
+
+"FPErrorFailedToParseConfig_0103"="Mislykkes å analysere konfigurasjon";
+
+"FPErrorInvalidConfigData_0104"="Ugyldig spill konfigurasjon";
+
+"FPErrorWrongSignature_1101"="Uriktig underskrift";
+
+"FPErrorFailedCreateID_1102"="Mislykkes å opprette FunPlus ID, vennligst å prøve igjen senere";
+
+"FPErrorWrongGameID_1103"="Uriktig spill ID";
+
+"FPErrorWrongEmail_1104"="Ugyldig e-post";
+
+"FPErrorWrongPassword_1105"="Uriktig passord";
+
+"FPErrorWrongGUID_1106"="Ugyldig GUID";
+
+"FPErrorEmailExisted_1107"="E-post har allerede vært brukt";
+
+"FPErrorFailedCreateAccount_1108"="Mislykkes å opprette kontoen";
+
+"FPErrorAccountBound_1109"="Denne kontoen har allerede vært bundet";
+
+"FPErrorEmailNotFound_1110"="Kan ikke finne e-post";
+
+"FPErrorLoginFailed_1111"="Logg inn ulykket";
+
+"FPErrorPasswordLength_1112"="Passord lengde feil";
+
+"FPErrorFailedResetPassword_1113"="Mislykkes å nullstille passord";
+
+"FPErrorWrongResetPasswordToken_1114"="Mislykkes å nullstille passord på grunn av ugyldig pollett";
+
+"FPErrorEmptyResetPasswordToken_1115"="Mislykkes å nullstille passord på grunn av tom pollett";
+
+"FPErrorPasswordNotChanged_1116"="Nytt passord er lignende som det gamle";
+
+"FPErrorFailedChangePassword_1117"="Mislykkes å endre passord";
+
+"FPErrorFailedAccountNotFound_1118"="Kontoen funnet ikke";
+
+"FPErrorFailedResetPasswordEmail_1119"="Kunne ikke sende e-post om å nullstille passord til din e-post adresse";
+
+"FPErrorFailedWrongGameSetting_1120"="Ugyldig spill innstillinger";
+
+"FPErrorFailedResetPasswordTemp_1121"="Du har nullstilt passordet ditt for mange ganger, vennligst å prøve igjen senere";
+
+"FPErrorEmptyFPID_1122"="Tomt FPID";
+
+"FPErrorWrongPlatformId_1123"="Uriktig plattform ID";
+
+"FPErrorFailedToBindWithSocialID_1124"="Mislykkes å binde med Sosial ID";
+
+"FPErrorReachLoginLimit_1125"="Loggingsgrense overskred";
+
+"FPErrorEmailTooLong_1126"="E-post for langt";
+
+"FPErrorEmptySession_1127"="Sesjon er tom";
+
+"FPErrorSessionNotFound_1128"="Sesjon funnet ikke";
+
+"FPErrorSessionExpired_1129"="Sesjon utløpt";
+
+"FPErrorSessionAppMismatch_1130"="Mislykkes å knytte sesjon til nylig spill ID";
+
+"FPErrorWrongPlatformToken_1131"="Plattform pollett feil";
+
+"FPErrorWrongPlatformType_1132"="Plattform type feil";
+
+"FPErrorInvalidPlatformToken_1133"="Ugyldig plattform pollett";
+
+"FPErrorUnknownAccountType_1200"="Ukjent konto type";
+
+"FPErrorNotLoggedIn_1201"="Bruker logget ikke in";
+
+"FPErrorAlreadyLoggedIn_1202"="Bruker har allerede logget inn";
+
+"FPErrorIoginInProgress_1203"="En annen logging i prosessen for tiden";
+
+"FPErrorWrongLoginParams_1204"="Ugyldig logging paramenter";
+
+"FPErrorFailedLoginAccount_1205"="Mislykkes å logge inn";
+
+"FPErrorAccountBoundToOther_1206"="Mislykkes å binde kontoen";
+
+"FPErrorFailedToConnectAccountServer_1207"="Mislykkes å koble til konto server";
+
+"FPErrorFailedToParseAccountResponse_1208"="Mislykkes å analysere konto respons data";
+
+"FPErrorWechatClientIssue_2000"="WeChat: Klient feil";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Bruker avlyste aksjon";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: Bruker logger inn ulykket";
+
+"FPErrorWechatDiffId_2003"="WeChat: Inkonsekvente WeChat kontoer";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Ikke i Hviteliste";
+
+"FPErrorWechatAccountBoundToOther_2005"="Den WeChat kontoen har allerede bundet med en annen FunPlus ID, vennligst å skifte WeChat kontoen ELLER bind med e-post";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: Mislykkes å få informasjon om bruker";
+
+"FPErrorWechatException_2007"="WeChat: Udefinert feil";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: Mislykkes å få informasjon om venner";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Bruker logget ikke inn";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Bruker logget inn ulykket";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Mislykkes å få bruker data";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Mislykkes å sende spill invitasjon";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Bruker sletter aksjon";
+
+"FPErrorFacebookException_2105"="Facebook: Udefinert unntak";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Den Facebook kontoen har allerede bundet med en annen FunPlus ID, vennligst å skifte Facebook kontoen ELLER bind med e-post";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Mislykkes å få venner data";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Venner tillatelse kreves";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="VK: Bruker logget ikke inn";
+
+"FPErrorVkLoginFailed_2201"="VK: Bruker logget in ulykket";
+
+"FPErrorVkCaptchaError_2202"="VK: Captcha feil";
+
+"FPErrorVkAccessDenied_2203"="VK: Tilgang nektet";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK: Mislykkes å akseptere bruker pollett";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK: Mislykkes å få brukers pollett";
+
+"FPErrorVkRenewTokenFailed_2206"="VK: Mislykkes å fornye pollett";
+
+"FPErrorVkException_2207"="VK: Udefinert unntak";
+
+"FPErrorVkUserCanceledAction_2208"="VK: Bruker avlyste aksjon";
+
+"FPErrorVkGetUserDataFailed_2209"="VK: Mislykkes å få bruker data";
+
+"FPErrorVkAccountBoundToOther_2210"="Den VK kontoen har allerede bundet med en annen FunPlus ID. Vennligst å binde kontoen din med en annen VK konto";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK: Mislykkes å få venner data";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Den Game Center kontoen har allerede bundet med en annen FunPlus ID. Vennligst å binde kontoen din med en annen Game Center konto";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Mislykkes å koble til betaling server";
+
+"FPErrorInvalidPaymentRequestData_3001"="Ugyldig betalling forespørsel data";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Mislykkes å analysere konto respons data";
+
+"FPErrorPaymentResponseError_3003"="Ugyldig betalling servers respons";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Initialisering feil";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Mislykkes å kjøpe";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Konfiguerte ikke Google konto ";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Kan ikke fullføre kjøp";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Mislykkes å kjøpe";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Ugyldig produkt informasjon";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Ugyldig produkt ID";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Fant ikke lokal kvittering";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";

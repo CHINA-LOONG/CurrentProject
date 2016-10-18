@@ -1,5 +1,5 @@
 ﻿#NUM,TEXT,NUM,TEXT,TEXT,TEXT
 id,picture,location,background,tips,asset
 id,展示内容,坐标组编号,背景,提示文字,展示内容资源
-1,Q,0,denglu_bg1,aaa,baojiditu
-2,S,1,tongyong_bg_1,bbb,duiju_bossditu
+1,bingxuenvwang,0,tongyong_bg_1,loading_bingxuenvwang,loading_bingxuenvwang
+2,jiuweihu,1,tongyong_bg_1,loading_jiuweihu,loading_jiuweihu

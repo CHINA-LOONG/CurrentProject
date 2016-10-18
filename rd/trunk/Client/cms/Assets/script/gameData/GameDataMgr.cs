@@ -27,7 +27,6 @@ public class GameDataMgr : MonoBehaviour
     public int summonZuanshi;
     public int summonJinbi;
     public int freeJinbiSumNum;
-    public byte loadingNum = 0;
     bool mGoldMaxHinted = false;
     bool mCoinMaxHinted = false;
 

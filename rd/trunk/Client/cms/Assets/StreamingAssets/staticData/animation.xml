@@ -4351,13 +4351,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
 			</MotionList>
-		</Ani>
-		
-		<Ani id="ultWendige2" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-			</ParticleList>
 			<AudioList>
 				<Audio time="0.75" name="Wendige21"/>
 			</AudioList>
@@ -4512,7 +4505,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg6" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Luoxinfu51"/>
+				<Audio time="0" name="Luoxinfu1"/>
 			</AudioList>
 		</Ani>
 	
@@ -4521,7 +4514,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="commonDebuff" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="0" name="debuff"/>
 			</AudioList>
 			<SpeedList>
 			</SpeedList>
@@ -4538,7 +4531,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg6" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Luoxinfu51"/>
+				<Audio time="0" name="Luoxinfu1"/>
 			</AudioList>
 		</Ani>
 		
@@ -4773,6 +4766,41 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultyifulite4Pre_wuqi" bundle="effect/particle" parent="Bip001 Prop1" attach="true"/>
 				<Particle asset="ultyifulite4Pre" bundle="effect/particle" parent="" attach="true"/>
 				<Particle time="3.5" asset="ultIfrit4Hit" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	
+	<AniList group="xgMoguguai4">
+	
+		<Ani id="ultMoguguai4" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultmogurenpre4" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="ultmogurenpre4_juqi" bundle="effect/particle" parent="Bone003(mirrored)(mirrored)" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultMoguguai4e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackFireSmash" bundle="effect/particle" ani="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="smash"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txMoguguai4" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultmogurenpre4" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultmogurenpre4_juqi" bundle="effect/particle" parent="Bone003(mirrored)(mirrored)" attach="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -6580,7 +6608,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	
 		<Ani id="bosssenlin31Wendige21" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true"/>
+				<Motion time="0" ani="" key="bosswugong" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle time="0" asset="" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
@@ -6592,16 +6620,16 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin31Wendige21e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackPlantCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="0" asset="attackPlantStab" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="0" name="stab"/>
 			</AudioList>
 		</Ani>
 		
 		<Ani id="bosssenlin31Wendige22" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true" ignore_rot="true"/>
+				<Motion time="0" ani="" key="bosswugong" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle time="0" asset="" bundle="effect/particle" parent="" attach="" ignore_rot=""/>
@@ -6613,10 +6641,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin31Wendige22e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackPlantCut" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="0" asset="attackPlantStab" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="cut"/>
+				<Audio time="0" name="stab"/>
 			</AudioList>
 		</Ani>
 		
@@ -6893,11 +6921,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosssenlin34Amute32" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true"/>
+				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
-			<!--ParticleList>
-				<Particle asset="" bundle="effect/particle" attach="true"/>
-			</ParticleList-->
+			<ParticleList>
+				<Particle asset="amute3pre_bossbuff" bundle="effect/particle" locky="true"/>
+			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>
 			</AudioList>
@@ -7225,6 +7253,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultHapiPre01" bundle="effect/particle" parent="wp_body" attach="true"/>
 			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="Hapi11"/>
+				<Audio time="1.5" name="Hapi12"/>
 			</AudioList>
 		</Ani>
 		
@@ -7413,6 +7443,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<ParticleList>
 				<Particle time="0" asset="attackFireStab" bundle="effect/particle" parent="" locky=""/>
 			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
 		</Ani>
 		
 		<Ani id="bosshuoshan41Hongniu43" state="0" AniType="Skill">
@@ -7655,9 +7688,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosshuoshan44Datiangou43" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="fagong" value="true"/>
+				<Motion time="0" ani="" key="bossbuff" value="true"/>
 			</MotionList>
 			<ParticleList>
+				<Particle asset="ultdatiangou4pre_bossbuff_hand" bundle="effect/particle" parent="Bip001 L Hand" attach="true"/>
+				<Particle asset="ultdatiangou4pre_bossbuff" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 			</AudioList>
@@ -7677,6 +7712,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
 			</MotionList>
 			<ParticleList>
+				<Particle time="0" asset="ultdatiangou4pre_wuqi" bundle="effect/particle" parent="wp_fan" attach="true"/>
+				<Particle time="0" asset="ultdatiangou4pre" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name=""/>
@@ -7686,10 +7723,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosshuoshan44Datiangou44e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="attackFireCut" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
 		
@@ -7716,6 +7753,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultyifulite4Prebosswugong" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="ifrit_huoyanti"/>
 			</AudioList>
 		</Ani>
 		
@@ -7736,6 +7774,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultyifulite4Prebosswugong" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="ifrit_huoyanti"/>
 			</AudioList>
 		</Ani>
 		
@@ -7750,7 +7789,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosshuoshan47Ifrit42e4" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDeBuff" bundle="effect/particle" parent="" locky="true"/>
+				<Particle asset="commonDebuff" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff"/>
@@ -7765,6 +7804,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultyifulite4Prebosswugong" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
+				<Audio time="0" name="ifrit_huoyanti"/>
 			</AudioList>
 		</Ani>
 		
@@ -7784,10 +7824,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<ParticleList>
 				<Particle asset="ultyifulite4Pre_wuqi" bundle="effect/particle" parent="Bip001 Prop1" attach="true"/>
 				<Particle asset="ultyifulite4Pre" bundle="effect/particle" parent="" attach="true"/>
-				<Particle time="3.5" asset="ultIfrit4Hit" bundle="effect/particle" parent="1" attach="scene"/>
+				<Particle time="2.5" asset="ultIfrit4Hit" bundle="effect/particle" parent="1" attach="scene"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="ifrit51"/>
 			</AudioList>
 		</Ani>
 		
@@ -8092,6 +8132,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		
 		<Ani id="daochengsizhong4_wp02dead" state="0" action_delay="0">
+			<WpStateList>
+				<Wp time="0.1" name="bosshuoshan42Daochengsizhong4wp02" state="3"/>
+				<Wp time="0.1" name="bosshuoshan42Daochengsizhong4wp03" state="1"/>
+			</WpStateList>
 			<SpeedList>
 				<Speed time="0" speed_ratio="0.5" duration="2"/>
 			</SpeedList>

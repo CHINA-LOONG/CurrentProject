@@ -115,4 +115,27 @@ public class UnitData
         }
     }
 
+    public string EquipAttr
+    {
+        get
+        {
+            return GetEquipAttr(equip);
+        }
+    }
+    public static string GetEquipAttr(int equip)
+    {
+        switch (equip)
+        {
+            case 1:
+                return StaticDataMgr.Instance.GetTextByID("common_type_defence");
+            case 2:
+                return StaticDataMgr.Instance.GetTextByID("common_type_physical");
+            case 3:
+                return StaticDataMgr.Instance.GetTextByID("common_type_magic");
+            case 4:
+                return StaticDataMgr.Instance.GetTextByID("common_type_support");
+            default:
+                return "";
+        }
+    }
 }

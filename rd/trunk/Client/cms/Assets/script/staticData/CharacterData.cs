@@ -6,7 +6,8 @@ public class CharacterData
 	public int 	index;
     public string name;
 	public	string desc;
-	public int	physicsWeight;
+    public string picture;
+    public int	physicsWeight;
 	public int	magicWeight;
 	public int	cureMagicWeight;
 	public int	gainWeight;

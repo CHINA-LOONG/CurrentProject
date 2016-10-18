@@ -14,7 +14,7 @@ public class ShopDataMgr : MonoBehaviour
 	//商城中数据
 	public	int	monthCardLeft = 0;
 	public	List<PB.RechargeState> listRechageState;
-
+    public string orderThroughCargo;
 
 	public	Dictionary<int,PB.ShopData> shopDataDic = new Dictionary<int, PB.ShopData> ();
 	TimeStaticData	lastRefreshTime;

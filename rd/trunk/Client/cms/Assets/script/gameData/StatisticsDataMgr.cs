@@ -132,6 +132,8 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.UserDataAttr.orderServerKey = msgData.orderServerKey;
         GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = msgData.monthCardLeft;
         GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = msgData.rechargeState;
+        GameDataMgr.Instance.ShopDataMgrAttr.orderThroughCargo = msgData.orderServerKey;
+
         expLeftTime = msgData.expLeftTimes;
         gold2coinExchargeTimes = msgData.gold2CoinTimes;
 

@@ -30,21 +30,7 @@ public class bosssenlin33Luoxinfu5 : BossAi {
 		
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Luoxinfu5Unit);
-		int count = 0;
-		for(int n = wpList.Count -1 ;n > 0;n--)
-		{
-			if (wpList[n] == "bosssenlin33Luoxinfu5wp02")
-				count++;
-			if (wpList[n] == "bosssenlin33Luoxinfu5wp03")
-				count++;
-			if (wpList[n] == "bosssenlin33Luoxinfu5wp04")
-				count++;
-			if (wpList[n] == "bosssenlin33Luoxinfu5wp05")
-				count++;
-		}
-		
-		
-		
+		int count = wpList.Count -1;		
 
 		if (GetAttackCount(Luoxinfu5Unit) % 4 == 0 && GetAttackCount(Luoxinfu5Unit) != 0 && count == 4) 
 		{

@@ -302,7 +302,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void OnUserCenterButtonClick(GameObject go)
     {
-        FunplusAccount.GetInstance().ShowUserCenter();
+        FunplusAccount.Instance.ShowUserCenter();
     }
 
     public void OnPopupListChanged(int index)

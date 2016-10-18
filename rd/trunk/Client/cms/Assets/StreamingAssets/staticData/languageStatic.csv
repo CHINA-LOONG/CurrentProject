@@ -302,60 +302,60 @@ zhimubiao20001,通关2-3  4次,Raid 2-3 4 times
 zhimubiao20002,通关2-4  4次,Raid 2-4 4 times
 zhimubiao20003,通关2-7  4次,Raid 2-7 4 times
 zhimubiao20004,通关2-8  4次,Raid 2-8 4 times
-bosssenlin31Wendige2wp01,胸,Body
+bosssenlin31Wendige2wp01,本体,Body
 bosssenlin31Wendige2wp02,右角,Right Horn
 bosssenlin31Wendige2wp03,左角,Life Horn
-bosssenlin32Longnv3wp01,胸,Body
+bosssenlin32Longnv3wp01,本体,Body
 bosssenlin32Longnv3wp02,头,Head
 bosssenlin32Longnv3wp03,左灵印,Life Lingyin
 bosssenlin32Longnv3wp04,中灵印,Mid Lingyin
-bosssenlin33Luoxinfu5wp01,胸,Body
-bosssenlin33Luoxinfu5wp02,左下爪,Bottom Left Claw
-bosssenlin33Luoxinfu5wp03,右下爪,Bottom Right Claw
-bosssenlin33Luoxinfu5wp04,右上爪,Top Right Claw
-bosssenlin33Luoxinfu5wp05,左上爪,Top Left Claw
-bosssenlin34Amute3wp01,胸,Body
+bosssenlin33Luoxinfu5wp01,本体,Body
+bosssenlin33Luoxinfu5wp02,左下蜘蛛爪,Lower-left Leg
+bosssenlin33Luoxinfu5wp03,右下蜘蛛爪,Lower-right Leg
+bosssenlin33Luoxinfu5wp04,右上蜘蛛爪,Upper-right Leg
+bosssenlin33Luoxinfu5wp05,左上蜘蛛爪,Upper-left Leg
+bosssenlin34Amute3wp01,本体,Body
 bosssenlin34Amute3wp02,面具,Mask
 bosssenlin34Amute3wp03,脸,Face
-bosssenlin35Xiaochou2wp01,胸,Body
+bosssenlin35Xiaochou2wp01,本体,Body
 bosssenlin35Xiaochou2wp02,武器,Weapon
-bosssenlin36Momo1wp01,胸,Body
+bosssenlin36Momo1wp01,本体,Body
 bosssenlin36Momo1wp02,盾,Shield
-bosssenlin37Hapi1wp01,胸,Body
+bosssenlin37Hapi1wp01,本体,Body
 bosssenlin37Hapi1wp02,右翅膀,Right Wing
 bosssenlin37Hapi1wp03,左翅膀,Left Wing
-bosshuoshan41Hongniu4wp01,胸,Body
+bosshuoshan41Hongniu4wp01,本体,Body
 bosshuoshan41Hongniu4wp02,左角,Life Horn
 bosshuoshan41Hongniu4wp03,右角,Right Horn
-bosshuoshan42Daochengsizhong4wp01,胸,Body
+bosshuoshan42Daochengsizhong4wp01,本体,Body
 bosshuoshan42Daochengsizhong4wp02,钟,Clock
 bosshuoshan42Daochengsizhong4wp03,心脏,Heart
-bosshuoshan43Huoniao4wp01,胸,Body
+bosshuoshan43Huoniao4wp01,本体,Body
 bosshuoshan43Huoniao4wp02,右羽毛,Right Feather
 bosshuoshan43Huoniao4wp03,中羽毛,Mid Feather
 bosshuoshan43Huoniao4wp04,左羽毛,Left Feather
-bosshuoshan44Datiangou4wp01,胸,Body
+bosshuoshan44Datiangou4wp01,本体,Body
 bosshuoshan44Datiangou4wp02,右翅膀,Right Wing
 bosshuoshan44Datiangou4wp03,左翅膀,Left Wing
 bosshuoshan44Datiangou4wp04,扇子,Fun
-bosshuoshan45Saibulesi4wp01,胸,Body
+bosshuoshan45Saibulesi4wp01,本体,Body
 bosshuoshan45Saibulesi4wp02,中头,Mid Head
 bosshuoshan45Saibulesi4wp03,右头,Right Head
 bosshuoshan45Saibulesi4wp04,左头,Left Head
-bosshuoshan46Tianshizhang4wp01,胸,Body
+bosshuoshan46Tianshizhang4wp01,本体,Body
 bosshuoshan46Tianshizhang4wp02,右翅膀,Right Wing
 bosshuoshan46Tianshizhang4wp03,左翅膀,Left Wing
-bosshuoshan46Tianshizhang4wp04,光环,Aura
+bosshuoshan46Tianshizhang4wp04,光环,Halo
 bosshuoshan46Tianshizhang4wp05,武器,Weapon
-bosshuoshan47Ifrit4wp01,胸,Body
-bosshuoshan47Ifrit4wp02,武器,Weapon
+bosshuoshan47Ifrit4wp01,本体,Body
+bosshuoshan47Ifrit4wp02,左裤脚,Left Trousers
 bosshuoshan47Ifrit4wp03,右裤脚,Right Trousers
-bosshuoshan47Ifrit4wp04,左裤脚,Left Trousers
+bosshuoshan47Ifrit4wp04,武器,Weapon
 bosssenlin38Meidusha2wp01,身体,Body
-bosssenlin38Meidusha2wp02,右下蛇头,Bottom Right Snake
-bosssenlin38Meidusha2wp03,左下蛇头,Bottom Left Snake
-bosssenlin38Meidusha2wp04,右上蛇头,Top Right Snake
-bosssenlin38Meidusha2wp05,左上蛇头,Top Left Snake
+bosssenlin38Meidusha2wp02,右上蛇头,Upper-right Snake Head
+bosssenlin38Meidusha2wp03,右下蛇头,Lower-right Snake Head
+bosssenlin38Meidusha2wp04,左上蛇头,Upper-left Snake Head
+bosssenlin38Meidusha2wp05,左下蛇头,Lower-left Snake Head
 bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
 bosshuoshan48Hehuaisituosi4wp02,右上武器,Top Right Weapon
 bosshuoshan48Hehuaisituosi4wp03,右下武器,Bottom Right Weapon
@@ -366,8 +366,6 @@ wendige2hide_lhorn,猜猜我在哪,Find me
 wendige2hide_rhorn,猜猜我在哪,Find me
 longnv3hide_body,猜猜我在哪,Find me
 longnv3hide_head,猜猜我在哪,Find me
-longnv3hide_lingyin1,,
-longnv3hide_lingyin2,,
 luoxinfu5hide_body,猜猜我在哪,Find me
 luoxinfu5hide_leg6,猜猜我在哪,Find me
 luoxinfu5hide_leg5,猜猜我在哪,Find me
@@ -384,12 +382,12 @@ meidushahide_zuoshetou,猜猜我在哪,Find me
 meidushahide_youshetou,猜猜我在哪,Find me
 meidushahide_xiaoshetou,猜猜我在哪,Find me
 wendige2normal1_body,本体,Default
-wendige2normal1_lhorn,添加dot效果,添加dot效果
-wendige2normal1_rhorn,添加dot效果,添加dot效果
+wendige2normal1_lhorn,添加dot效果,Increases DOT effect
+wendige2normal1_rhorn,添加dot效果,Increases DOT effect
 longnv3normal1_body,本体,Default
 longnv3normal1_head,弱点,Weakness
-longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,
-longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,
+longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,Break the Soul Seal in 2 spots and the shield will shatter
+longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,Break the Soul Seal in 2 spots and the shield will shatter
 luoxinfu5normal1_body,本体,Default
 luoxinfu5normal1_leg6,提高大招连击次数,Increase Number of Strikes per turn
 luoxinfu5normal1_leg5,提高大招连击次数,Increase Number of Strikes per turn
@@ -403,6 +401,70 @@ xiaochou2normal1_weapon,提高智力,Increase Intelligence
 momo1normal1_body,本体,Default
 momo1normal1_dun,反伤护盾,Against injury
 meidushanormal1_xiong,一定有别的方法摧毁它,Default
-meidushanormal1_zuoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
-meidushanormal1_youshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
-meidushanormal1_xiaoshetou,美杜莎很在意它的头发,美杜莎很在意它的头发
+meidushanormal1_zuoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+meidushanormal1_youshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+meidushanormal1_xiaoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
+hapi1hide_lwing,猜猜我在哪,Find me
+hapi1hide_rwing,猜猜我在哪,Find me
+hongniu4hide_lhorn,猜猜我在哪,Find me
+hongniu4hide_rhorn,猜猜我在哪,Find me
+daochengsizhong4hide_bell,猜猜我在哪,Find me
+daochengsizhong4hide_heart,猜猜我在哪,Find me
+huoniao4hide_ltail,猜猜我在哪,Find me
+huoniao4hide_mtail,猜猜我在哪,Find me
+huoniao4hide_rtail,猜猜我在哪,Find me
+datiangou4hide_lwing,猜猜我在哪,Find me
+datiangou4hide_rwing,猜猜我在哪,Find me
+datiangou4hide_fun,猜猜我在哪,Find me
+saibulesi4hide_lhead,猜猜我在哪,Find me
+saibulesi4hide_mhead,猜猜我在哪,Find me
+saibulesi4hide_rhead,猜猜我在哪,Find me
+tianshizhang4hide_lwing,猜猜我在哪,Find me
+tianshizhang4hide_rwing,猜猜我在哪,Find me
+tianshizhang4hide_aura,猜猜我在哪,Find me
+tianshizhang4hide_weapon,猜猜我在哪,Find me
+ifrit4hide_lleg,猜猜我在哪,Find me
+ifrit4hide_rleg,猜猜我在哪,Find me
+ifrit4hide_stone,猜猜我在哪,Find me
+hapi1normal_body,本体,Default
+hapi1normal_lwing,提高速度,Increase Speed
+hapi1normal_rwing,提高速度,Increase Speed
+hongniu4normal_body,本体,Default
+hongniu4normal_lhorn,提高力量,Increase Strength
+hongniu4normal_rhorn,提高力量,Increase Strength
+daochengsizhong4normal_body,本体,Default
+daochengsizhong4normal_bell,保护弱点,Protect Weakness
+daochengsizhong4normal_heart,弱点,Weakness
+huoniao4normal_body,本体,Default
+huoniao4normal_ltail,强力恢复生命值,Massive Recovery
+huoniao4normal_mtail,强力恢复生命值,Massive Recovery
+huoniao4normal_rtail,强力恢复生命值,Massive Recovery
+datiangou4normal_body,本体,Default
+datiangou4normal_lwing,提高速度,Increase Speed
+datiangou4normal_rwing,提高速度,Increase Speed
+datiangou4normal_fun,提高智力,Increase Intelligence
+saibulesi4normal_body,本体,Default
+saibulesi4normal_lhead,提高大招连击次数,Increase Number of Strikes per turn
+saibulesi4normal_mhead,提高大招连击次数,Increase Number of Strikes per turn
+saibulesi4normal_rhead,提高大招连击次数,Increase Number of Strikes per turn
+tianshizhang4normal_body,提高速度,Increase Speed
+tianshizhang4normal_lwing,提高速度,Increase Speed
+tianshizhang4normal_rwing,提高速度,Increase Speed
+tianshizhang4normal_aura,大招能源,Ult energy source
+tianshizhang4normal_weapon,提升攻击和治疗效果,Increases attack and healing effects
+ifrit4normal_body,本体,Default
+ifrit4normal_lleg,添加dot效果,Increases DOT effect
+ifrit4normal_rleg,添加dot效果,Increases DOT effect
+ifrit4normal_stone,提高智力,Increase Strength
+hehuaisituosi4hide_eye,猜猜我在哪,Find me
+hehuaisituosi4hide_luweapon,猜猜我在哪,Find me
+hehuaisituosi4hide_ruweapon,猜猜我在哪,Find me
+hehuaisituosi4hide_ldweapon,猜猜我在哪,Find me
+hehuaisituosi4hide_rdweapon,猜猜我在哪,Find me
+hehuaisituosi4hide_head,猜猜我在哪,Find me
+hehuaisituosi4normal_eye,弱点,Weakness
+hehuaisituosi4normal_luweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
+hehuaisituosi4normal_ruweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
+hehuaisituosi4normal_ldweapon,黄金网制作工具,Tool used to make the Net of Gold
+hehuaisituosi4normal_rdweapon,黄金网制作工具,Tool used to make the Net of Gold
+hehuaisituosi4normal_head,本体,Default

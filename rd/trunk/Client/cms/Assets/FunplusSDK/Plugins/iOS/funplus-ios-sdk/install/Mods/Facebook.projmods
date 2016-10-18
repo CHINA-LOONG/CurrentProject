@@ -1,0 +1,11 @@
+{
+    "group": "FunplusSDK",
+    "libs": [],
+    "frameworks": ["FBSDKCoreKit.framework", "FBSDKLoginKit.framework", "FBSDKShareKit.framework", "Social.framework"],
+    "headerpaths": [],
+    "files":   [],
+    "folders": [],
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

@@ -517,6 +517,7 @@ public class HawkAccountService extends HawkTickable {
 				try {
 					reportData = reportDatas.remove(0);
 				} finally {
+					//和stop操作产生线程安全问题 忽略
 					reportLock.unlock();
 				}
 

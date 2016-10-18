@@ -28,7 +28,7 @@ public class bosssenlin34Amute3 : BossAi {
 		Amute3SpellDic.TryGetValue ("bosssenlin34Amute31", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Amute3Unit);
-		if (NormalScript.GetWpLifeLeft(Amute3Unit.battleUnit, "bosssenlin34Amute3wp02") != 0 )
+		if (jishu == 0 )
 		{
 
 			if (GetAttackCount(Amute3Unit) % 6 == 0 && GetAttackCount(Amute3Unit) != 0) 

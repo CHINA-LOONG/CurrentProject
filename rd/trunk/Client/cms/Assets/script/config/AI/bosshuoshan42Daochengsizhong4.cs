@@ -62,6 +62,7 @@ public class bosshuoshan42Daochengsizhong4 : BossAi {
 		if (args.wpID == "bosshuoshan42Daochengsizhong4wp02")
 		{
 			target.TriggerEvent("daochengsizhong4_wp02dead", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 		}
 	}
 	//---------------------------------------------------------------------------------------------

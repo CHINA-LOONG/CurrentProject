@@ -798,6 +798,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9590546}
   text_Title: {fileID: 11474670}
   text_Base: {fileID: 11404500}
   text_Extra: {fileID: 11411216}

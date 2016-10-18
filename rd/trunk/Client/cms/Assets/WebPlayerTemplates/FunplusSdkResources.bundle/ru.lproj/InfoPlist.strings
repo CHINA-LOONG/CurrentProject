@@ -1,0 +1,193 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorNone_0"="Нет ошибки";
+
+"ErrorUnspecific_9999"="Неустановленная ошибка";
+
+"FPErrorNotInstall_0100"="Не удалось установить SDK";
+
+"FPErrorFailedToConnectToConfigServer_0101"="Не удалось подключиться к конфигурационному серверу";
+
+"FPErrorInvalidConfigRequestData_0102"="Не удалось получить данные от конфигурационного сервера";
+
+"FPErrorFailedToParseConfig_0103"="Не удалось провести анализ конфигурации";
+
+"FPErrorInvalidConfigData_0104"="Недопустимая конфигурация игры";
+
+"FPErrorWrongSignature_1101"="Неверная подпись";
+
+"FPErrorFailedCreateID_1102"="Не удалось создать FunPlus ID, пожалуйста, попробуйте позже";
+
+"FPErrorWrongGameID_1103"="Неверный ID игры";
+
+"FPErrorWrongEmail_1104"="Недопустимый email";
+
+"FPErrorWrongPassword_1105"="Неверный пароль";
+
+"FPErrorWrongGUID_1106"="Недопустимый GUID";
+
+"FPErrorEmailExisted_1107"="Этот email уже был использован";
+
+"FPErrorFailedCreateAccount_1108"="Не удалось создать учетную запись";
+
+"FPErrorAccountBound_1109"="Эта учетная запись уже привязана";
+
+"FPErrorEmailNotFound_1110"="Невозможно найти email";
+
+"FPErrorLoginFailed_1111"="Не удалось войти";
+
+"FPErrorPasswordLength_1112"="Неверная длина пароля";
+
+"FPErrorFailedResetPassword_1113"="Не удалось восстановить пароль";
+
+"FPErrorWrongResetPasswordToken_1114"="Не удалось восстановить пароль из-за недопустимого символа";
+
+"FPErrorEmptyResetPasswordToken_1115"="Не удалось восстановить пароль из-за пустого символа";
+
+"FPErrorPasswordNotChanged_1116"="Новый пароль совпадает со старым";
+
+"FPErrorFailedChangePassword_1117"="Не удалось изменить пароль";
+
+"FPErrorFailedAccountNotFound_1118"="Учетная запись не найдена";
+
+"FPErrorFailedResetPasswordEmail_1119"="Невозможно отправить письмо о восстановлении пароля на ваш email";
+
+"FPErrorFailedWrongGameSetting_1120"="Недопустимые настройки игры";
+
+"FPErrorFailedResetPasswordTemp_1121"="Вы восстанавливали пароль слишком много раз, пожалуйста, попробуйте повторить позднее";
+
+"FPErrorEmptyFPID_1122"="Пустой FPID";
+
+"FPErrorWrongPlatformId_1123"="Неверный ID платформы";
+
+"FPErrorFailedToBindWithSocialID_1124"="Не удалось привязать к Social ID";
+
+"FPErrorReachLoginLimit_1125"="Превышен лимит входа";
+
+"FPErrorEmailTooLong_1126"="Слишком длинный email";
+
+"FPErrorEmptySession_1127"="Сеанс пуст";
+
+"FPErrorSessionNotFound_1128"="Сеанс не найден";
+
+"FPErrorSessionExpired_1129"="Сеанс истёк";
+
+"FPErrorSessionAppMismatch_1130"="Сеанс и ID текущей игры не совпадают";
+
+"FPErrorWrongPlatformToken_1131"="Ошибка символа платформы";
+
+"FPErrorWrongPlatformType_1132"="Ошибка типа платформы";
+
+"FPErrorInvalidPlatformToken_1133"="Недопустимый символ платформы";
+
+"FPErrorUnknownAccountType_1200"="Неизвестный тип аккаунта";
+
+"FPErrorNotLoggedIn_1201"="Пользователь не авторизован";
+
+"FPErrorAlreadyLoggedIn_1202"="Пользователь уже авторизован";
+
+"FPErrorIoginInProgress_1203"="В настоящий момент выполняется другой вход";
+
+"FPErrorWrongLoginParams_1204"="Недопустимые параметры входа";
+
+"FPErrorFailedLoginAccount_1205"="Не удалось выполнить вход";
+
+"FPErrorAccountBoundToOther_1206"="Не удалось привязать учетную запись";
+
+"FPErrorFailedToConnectAccountServer_1207"="Не удалось соединиться с сервером учетных записей";
+
+"FPErrorFailedToParseAccountResponse_1208"="Не удалось провести анализ данных об отклике учетной записи";
+
+"FPErrorWechatClientIssue_2000"="WeChat: Ошибка клиента";
+
+"FPErrorWechatUserCancel_2001"="WeChat: Пользователь отменил действие";
+
+"FPErrorWechatLoginFailed_2002"="WeChat: Не удалось авторизовать пользователя";
+
+"FPErrorWechatDiffId_2003"="WeChat: Противоречащие учетные записи WeChat";
+
+"FPErrorWechatNotInWhiteList_2004"="WeChat: Не в белом списке";
+
+"FPErrorWechatAccountBoundToOther_2005"="Эта учетная запись WeChat привязана к другому FunPlus ID, пожалуйста, перейдите к другой учетной записи WeChat ИЛИ привяжите к вашему email";
+
+"FPErrorWechatGetUserDataFailed_2006"="WeChat: Не удалось получить данные о пользователе";
+
+"FPErrorWechatException_2007"="WeChat: Неопределенная ошибка";
+
+"FPErrorWechatGetFriendsDataFailed_2008"="WeChat: Не удалось получить данные о друзьях";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook: Пользователь не авторизован";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook: Не удалось авторизовать пользователя";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook: Не удалось получить данные о пользователе";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook: Не удалось отправить приглашение в игру";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook: Пользователь отменил действие";
+
+"FPErrorFacebookException_2105"="Facebook: Неопределенное исключение";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Эта учетная запись Facebook привязана к другому FunPlus ID, пожалуйста, перейдите к другой учетной записи Facebook ИЛИ привяжите к вашему email";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook: Не удалось получить данные о друзьях";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook: Требуется доступ к списку друзей";
+
+"FPErrorFacebookNotInTestGroup_2109"="";
+
+"FPErrorFacebookAntherOpenGraphPublishingIsOnGoing_2110"="";
+
+"FPErrorVkNotLoggedIn_2200"="ВКонтакте: Пользователь не авторизован";
+
+"FPErrorVkLoginFailed_2201"="ВКонтакте: Не удалось авторизовать пользователя";
+
+"FPErrorVkCaptchaError_2202"="ВКонтакте: Ошибка капчи";
+
+"FPErrorVkAccessDenied_2203"="ВКонтакте: Нет доступа";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="ВКонтакте: Не удалось принять токен пользователя";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="ВКонтакте: Не удалось получить токен пользователя";
+
+"FPErrorVkRenewTokenFailed_2206"="ВКонтакте: Не удалось обновить токен";
+
+"FPErrorVkException_2207"="ВКонтакте: Неопределенное исключение";
+
+"FPErrorVkUserCanceledAction_2208"="ВКонтакте: Пользователь отменил действие";
+
+"FPErrorVkGetUserDataFailed_2209"="ВКонтакте: Не удалось получить данные о пользователе";
+
+"FPErrorVkAccountBoundToOther_2210"="Указанный вами аккаунт VK был привязан к другому FunPlus ID, пожалуйста, используйте другой аккаунт ВКонтакте.";
+
+"FPErrorVkGetFriendsDataFailed_2211"="ВКонтакте: Не удалось получить данные о друзьях";
+
+"FPErrorGameCenterAccountBoundToOther_2410"="Указанный вами аккаунт Game Center был привязан к другому FunPlus ID, пожалуйста, используйте другой аккаунт Game Center.";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="Не удалось установить соединение с сервером платежей";
+
+"FPErrorInvalidPaymentRequestData_3001"="Недопустимые данные запроса о платеже";
+
+"FPErrorFailedToParsePaymentResponse_3002"="Не удалось провести анализ данных отклика платежа";
+
+"FPErrorPaymentResponseError_3003"="Недопустимый ответ сервера платежей";
+
+"FPErrorInitGoogleIab_3100"="Google IAB: Ошибка инициализации";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google IAB: Не удалось совершить покупку";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google IAB: Учетная запись Google не конфигурирована";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google IAB: Невозможно завершить покупку";
+
+"FPErrorPurchaseFailed_3200"="Apple IAP: Не удалось совершить покупку";
+
+"FPErrorProductsInfoInvalid_3201"="Apple IAP: Недопустимая информация о продукте";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple IAP: Недопустимое ID продукта";
+
+"FPErrorNoLocalReceipt_3203"="Apple IAP: Невозможно получить данные о квитанции";
+
+"FPErrorBiNoSuchEvent_4000"="";
+
+"FPEventPropertiesNotValid_4001"="";
