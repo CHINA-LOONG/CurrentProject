@@ -116,10 +116,10 @@ name_30093_MorbidStone_3,三级太阳石,Morbid Stone(LV3)
 name_30094_MorbidStone_4,四级太阳石,Morbid Stone(LV4)
 name_30095_MorbidStone_5,五级太阳石,Morbid Stone(LV5)
 name_30096_MorbidStone_6,六级太阳石,Morbid Stone(LV6)
-name_40001_baoxiang1,木质宝箱,Wood Treasurecase
-name_40002_baoxiang2,铁质宝箱,Iron Treasurecase
-name_40003_baoxiang3,白银宝箱,Silver Treasurecase
-name_40004_baoxiang4,黄金宝箱,Gold Treasurecase
+name_40000_baoxiang,木质宝箱,Wood Treasurecase
+name_40001_baoxiang,铁质宝箱,Iron Treasurecase
+name_40002_baoxiang,白银宝箱,Silver Treasurecase
+name_40003_baoxiang,黄金宝箱,Gold Treasurecase
 name_40005_bigTaskleader201,队长礼包,Team Leader Gift
 name_40006_bigTaskleader301,队长礼包,Team Leader Gift
 name_40007_bigTaskleader401,队长礼包,Team Leader Gift
@@ -280,10 +280,10 @@ tips_30093_MorbidStone_3,测试用tips,test Open Sockets: Reveals a Gem slot aft
 tips_30094_MorbidStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30095_MorbidStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30096_MorbidStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_40001_baoxiang1,"开启后可获得初级装备强化石*1,中级装备强化石*1，高级装备强化石*1，装备进阶石*1和100金币",After opening available basic upgrade stone * 1，standard  upgrade stone * 1，superior  upgrade stone * 1，Advanced stone * 1 and goldcoin * 100.
-tips_40002_baoxiang2,"开启后可获得初级装备强化石*3,中级装备强化石*3，高级装备强化石*3，装备进阶石*3和300金币",After opening available basic upgrade stone * 3，standard  upgrade stone * 3，superior  upgrade stone * 3，Advanced stone * 3 and goldcoin * 300.
-tips_40003_baoxiang3,"开启后可获得初级装备强化石*5,中级装备强化石*5，高级装备强化石*5，装备进阶石*5和500金币",After opening available basic upgrade stone * 5，standard  upgrade stone * 5，superior  upgrade stone * 5，Advanced stone * 1 and goldcoin * 500.
-tips_40004_baoxiang4,"开启后可获得初级装备强化石*7,中级装备强化石*7，高级装备强化石*7，装备进阶石*7和1000金币",After opening available basic upgrade stone * 7，standard  upgrade stone * 7，superior  upgrade stone * 7，Advanced stone * 1 and goldcoin * 1000.
+tips_40000_baoxiang,"开启后可获得初级装备强化石*1,中级装备强化石*1，高级装备强化石*1，装备进阶石*1和100金币",After opening available basic upgrade stone * 1，standard  upgrade stone * 1，superior  upgrade stone * 1，Advanced stone * 1 and goldcoin * 100.
+tips_40001_baoxiang,"开启后可获得初级装备强化石*3,中级装备强化石*3，高级装备强化石*3，装备进阶石*3和300金币",After opening available basic upgrade stone * 3，standard  upgrade stone * 3，superior  upgrade stone * 3，Advanced stone * 3 and goldcoin * 300.
+tips_40002_baoxiang,"开启后可获得初级装备强化石*5,中级装备强化石*5，高级装备强化石*5，装备进阶石*5和500金币",After opening available basic upgrade stone * 5，standard  upgrade stone * 5，superior  upgrade stone * 5，Advanced stone * 1 and goldcoin * 500.
+tips_40003_baoxiang,"开启后可获得初级装备强化石*7,中级装备强化石*7，高级装备强化石*7，装备进阶石*7和1000金币",After opening available basic upgrade stone * 7，standard  upgrade stone * 7，superior  upgrade stone * 7，Advanced stone * 1 and goldcoin * 1000.
 tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"

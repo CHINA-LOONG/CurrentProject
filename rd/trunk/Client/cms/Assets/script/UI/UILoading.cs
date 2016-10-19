@@ -118,7 +118,7 @@ public class UILoading : UIBase
 
         loadingBackground.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.background);
         contentImage.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(loadingLocation.asset);
-
+        contentImage.SetNativeSize();
         contentImage.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentImage" + loadingLocation.location).transform.localPosition;
         contentName.gameObject.transform.localPosition = loadingContent.transform.FindChild("contentText" + loadingLocation.location).transform.localPosition;
 

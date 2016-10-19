@@ -102,7 +102,7 @@ public class QuestUtil {
 	public static void postQuestDataUpdateMsg(HawkXID xid) {
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, xid);
 		if (false == HawkApp.getInstance().postMsg(msg)) {
-			HawkLog.errPrintln("post statistics update message failed: " + xid.getId());
+			//HawkLog.errPrintln("post statistics update message failed: " + xid.getId());
 		}
 	}
 

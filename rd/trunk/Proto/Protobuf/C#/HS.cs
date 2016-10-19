@@ -138,6 +138,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_S", Value=1203)]
       SIGNIN_S = 1203,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"GUIDE_FINISH_C", Value=1301)]
+      GUIDE_FINISH_C = 1301,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GUIDE_FINISH_S", Value=1302)]
+      GUIDE_FINISH_S = 1302,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2001)]
       MONSTER_ADD_S = 2001,
             

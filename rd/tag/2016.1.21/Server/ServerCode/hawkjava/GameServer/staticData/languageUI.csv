@@ -1128,7 +1128,8 @@ Bronze Rank 3        1099 and below","1.競技場中戰鬥需要消耗<color=#ff
 4.競技場中戰鬥採取<color=#ffcd00>5V5</color>的方式，戰鬥過程是<color=#ffcd00>全自動</color>的，不能手動操作。
 5.競技成功時，會獲得<color=#ffcd00>榮譽點</color>獎勵，榮譽點可以用來在<color=#ffcd00>競技商店</color>中換取物品
 6.若與敵人僵持不下，出現平局按鈕後，可以選擇以<color=#ffcd00>平局</color>結束本場競技，平局仍會得到1點榮譽點
-7.<color=#ffcd00>競技積分</color>是評價玩家階級的唯一標準，當然，也是排行榜排名的唯一標準
+7. 根據每場戰鬥的結果（包括平局）以及競技雙方的積分，玩家增減的競技積分也會不同
+8.<color=#ffcd00>競技積分</color>是評價玩家階級的唯一標準，當然，也是排行榜排名的唯一標準
 9.競技場每週週一淩晨1點都會根據玩家當時所在階級發放一次<color=#ffcd00>階級獎勵</color>，獎勵通過信件發放
 10.競技場中，每個賽季持續四周，賽季結束時，排名前100的玩家會獲得<color=#ffcd00>排名獎勵</color>，獎勵通過信件發放，記得查收哦
 11.競技場<color=#ffcd00>前100名</color>的排行資料每10分鐘刷新一次
@@ -2112,23 +2113,23 @@ loading_tips57,炼化宠物会返还宠物进阶消耗的材料和合成1只该�
 216_name5,累计进行钻石十连抽20次,Complete '10 Diamond Summons' 20 times,累計進行鑽石十連抽20次
 216_name6,累计进行钻石十连抽30次,Complete '10 Diamond Summons' 30 times,累計進行鑽石十連抽30次
 216_name7,累计进行钻石十连抽50次,Complete '10 Diamond Summons' 50 times,累計進行鑽石十連抽50次
-217_name1,今日神话守护者胜利1次,Completing 1 stage in Mytho Guardian today,神話守護者勝利1次
-217_name2,今日神话守护者胜利5次,Completing 5 stage in Mytho Guardian today,神話守護者勝利5次
-217_name3,今日神话守护者胜利9次,Completing 9 stage in Mytho Guardian today,神話守護者勝利9次
-217_name4,今日同一个时间段内进行神怪入侵挑战1次,Battling once in Deity Invasion today,同一個時間段內進行boss挑戰1次
-217_name5,今日同一个时间段内进行神怪入侵挑战3次,Battling 3 times in Deity Invasion today,同一個時間段內進行boss挑戰5次
-217_name6,今日同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion today,同一個時間段內進行boss挑戰9次
-217_name7,今日完成竞技场挑战1次,Battle the Arena once today,競技場挑戰1次
-217_name8,今日完成竞技场挑战5次,Battle the Arena 5 times today,競技場挑戰5次
-217_name9,今日完成竞技场挑战10次,Battle the Arena 10 times today,競技場挑戰10次
-217_name10,今日领取大冒险奖励1次,Collect 1 Adventure reward today,大冒險獎勵1次
-217_name11,今日领取大冒险奖励5次,Collect 5 Adventure reward today,大冒險獎勵5次
-217_name12,今日领取大冒险奖励10次,Collect 10 Adventure reward today,大冒險獎勵10次
-217_name13,今日完成一次公会许愿,Complete 1 Guild Wish today,完成一次公會許願
+217_name1,今日神话守护者胜利1次,Completing 1 stage in Mytho Guardian today,今日神話守護者勝利1次
+217_name2,今日神话守护者胜利5次,Completing 5 stage in Mytho Guardian today,今日神話守護者勝利5次
+217_name3,今日神话守护者胜利9次,Completing 9 stage in Mytho Guardian today,今日神話守護者勝利9次
+217_name4,今日同一个时间段内进行神怪入侵挑战1次,Battling once in Deity Invasion today,今日同一個時間段內進行神怪入侵挑戰1次
+217_name5,今日同一个时间段内进行神怪入侵挑战3次,Battling 3 times in Deity Invasion today,今日同一個時間段內進行神怪入侵挑戰3次
+217_name6,今日同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion today,今日同一個時間段內進行神怪入侵挑戰6次
+217_name7,今日完成竞技场挑战1次,Battle the Arena once today,今日完成競技場挑戰1次
+217_name8,今日完成竞技场挑战5次,Battle the Arena 5 times today,今日完成競技場挑戰5次
+217_name9,今日完成竞技场挑战10次,Battle the Arena 10 times today,今日完成競技場挑戰10次
+217_name10,今日领取大冒险奖励1次,Collect 1 Adventure reward today,今日領取大冒險獎勵1次
+217_name11,今日领取大冒险奖励5次,Collect 5 Adventure reward today,今日領取大冒險獎勵5次
+217_name12,今日领取大冒险奖励10次,Collect 10 Adventure reward today,今日領取大冒險獎勵10次
+217_name13,今日完成一次公会许愿,Complete 1 Guild Wish today,今日完成一次公會許願
 eventinstance_UI_title,封印之日,Rift Day,封印之日
 eventinstance_monster1_name,主战怪,Primary Monster,主戰怪
 eventinstance_monster2_name,辅战怪,Support Monsters,輔戰怪
-eventinstance_time,活动剩余时间,Time remaining,活動剩余時間
+eventinstance_time,活动剩余时间,Time remaining,活動剩餘時間
 eventinstance_guize_desc,"<color=#ffcc00>受星象运行影响,两界封印松动,灵界深处的罕见神怪苏醒侵扰人间,so……勇敢的少年快去收服神怪加固封印吧！</color>
 
 1.“封印日”为<color=#ffcc00>每周六中午12点至周日中午12点</color>，开放期间玩家可以<color=#ffcc00>消耗活力</color>进行挑战。
@@ -2145,25 +2146,26 @@ eventinstance_guize_desc,"<color=#ffcc00>受星象运行影响,两界封印松�
 
 3. Each battle will require passing through <color=#ffcc00>9 trials</color>. With <color=#ffcc00>more trials</color> completed, players have <color=#ffcc00>better chances</color> of getting deity fragments, and receiving them in a <color=#ffcc00>larger amounts</color>!
 
-4. The monsters that appear in “Rift Day” will be <color=#ffcc00>different each week</color>. If you encounter a deity monster that you want to collect, then take advantage of the opportunity and join the battle!","<color=#ffcc00>受星象運行影響,兩界封印松動,靈界深處的罕見神怪蘇醒侵擾人間,so……勇敢的少年快去收服神怪加固封印吧！</color>
+4. The monsters that appear in “Rift Day” will be <color=#ffcc00>different each week</color>. If you encounter a deity monster that you want to collect, then take advantage of the opportunity and join the battle!","<color=#ffcc00>受星象運行影響,兩界封印鬆動,靈界深處的罕見神怪蘇醒侵擾人間,so……勇敢的少年快去收服神怪加固封印吧！</color>
 
-1.“封印日”為<color=#ffcc00>每周六中午12點至周日中午12點</color>，開放期間玩家可以<color=#ffcc00>消耗活力</color>進行挑戰。
+1.“封印日”為<color=#ffcc00>每週六中午12點至周日中午12點</color>，開放期間玩家可以<color=#ffcc00>消耗活力</color>進行挑戰。
 
-2.每逢“封印日”封印松動之時，會由異界來臨壹位<color=#ffcc00>主戰神怪</color>與壹位<color=#ffcc00>輔戰神怪</color>降臨，玩家挑戰成功則有機會獲得該<color=#ffcc00>神怪的碎片</color>！
+2.每逢“封印日”封印鬆動之時，會由異界來臨一位<color=#ffcc00>主戰神怪</color>與一位<color=#ffcc00>輔戰神怪</color>降臨，玩家挑戰成功則有機會獲得該<color=#ffcc00>神怪的碎片</color>！
 
-3.每次挑戰需要經過<color=#ffcc00>9層</color>考驗，通關層數<color=#ffcc00>越多</color>，獲得主戰神怪的碎片幾率<color=#ffcc00>越大</color>、數量<color=#ffcc00>越多</color>！
+3.每次挑戰需要經過<color=#ffcc00>9層</color>考驗，通關層數<color=#ffcc00>越多</color>，獲得主戰神怪的碎片機率<color=#ffcc00>越大</color>、數量<color=#ffcc00>越多</color>！
 
-4.“封印日”降臨的神怪每周<color=#ffcc00>各不相同</color>，遇到喜歡的神怪要抓緊時間進行挑戰哦！"
+4.“封印日”降臨的神怪每週<color=#ffcc00>各不相同</color>，遇到喜歡的神怪要抓緊時間進行挑戰哦！"
 eventinstance_surprise_title,碎片宝箱,Fragment Chest,碎片寶箱
 eventinstance_close_desc,活动已经结束，下次活动见！,"This event has already ended, please come back again!",活動已經結束，下次活動見！
 setting_language_chineseTW,繁體中文,繁體中文,繁體中文
 eventinstance_title,封印之日,Rift Day,封印之日
-eventInstance_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久战后仍未分出胜负，请调整阵容后继续挑战！
-loading_tips58,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,"In Story mode and Myth Guardians mode, you can hire monsters for battle from the guild base. ",
-fragmentwish_fragmentnum,碎片数量：{0},Currently have：{0},
+eventInstance_battle_draw,久战后仍未分出胜负，请调整阵容后继续挑战！,"If the battle ends up timing out, please edit team and try again!",久戰後仍未分出勝負，請調整陣容後繼續挑戰！
+loading_tips58,在剧情副本、神话守护者、许愿树等玩法中，可以借助公会基地的宠物帮助自己作战。,"In Story mode and Myth Guardians mode, you can hire monsters for battle from the guild base. ",在劇情副本、神話守護者、許願樹等玩法中，可以借助公會基地的寵物幫助自己作戰。
+fragmentwish_fragmentnum,碎片数量：{0},Currently have：{0},碎片數量：{0}
 decompose_choise1,"请选择要操作目标
 （<color=#ffcc00>品质为绿色及以上的宠物</color>可以炼化）","Please select target item
-(<color=#ffcc00>Monsters green grade or higher</color> can undergo refinement)",
+(<color=#ffcc00>Monsters green grade or higher</color> can undergo refinement)","請選擇要操作目標
+（<color=#ffcc00>品質為綠色及以上的寵物</color>可以煉化）"
 209_name1,累计充值200个钻石,Top-up up to 200 Diamonds,累計儲值200個鑽石
 209_name2,累计充值800个钻石,Top-up up to 800 Diamonds,累計儲值800個鑽石
 209_name3,累计充值1200个钻石,Top-up up to 1200 Diamonds,累計儲值1200個鑽石
@@ -2178,19 +2180,19 @@ decompose_choise1,"请选择要操作目标
 210_name5,累计充值3000个钻石,Top-up up to 3000 Diamonds,累計儲值3000個鑽石
 210_name6,累计充值5000个钻石,Top-up up to 5000 Diamonds,累計儲值5000個鑽石
 210_name7,累计充值10000个钻石,Top-up up to 10000 Diamonds,累計儲值10000個鑽石
-rate_satisfiedtips,请问您对我们的游戏是否满意？,Are you satisfied with the game?,
-rate_btnunsatisfied,不满意,Not satisfied,
-rate_btnsatisfied,满意,Satisfied,
-rate_ios,是否介意花费一点时间在App  Store为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the App Store?,
-rate_google,是否介意花费一点时间在Google Play为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the Google Play store?,
-rate_btnnothank,不，谢谢,"No, thanks.",
-rate_btngogo,欣然前往,Continue,
-rate_tucaotips,您对游戏的想法：,Any thoughts/suggestions for the game:,
+rate_satisfiedtips,请问您对我们的游戏是否满意？,Are you satisfied with the game?,請問您對我們的遊戲是否滿意？
+rate_btnunsatisfied,不满意,Not satisfied,不滿意
+rate_btnsatisfied,满意,Satisfied,滿意
+rate_ios,是否介意花费一点时间在App  Store为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the App Store?,是否介意花費一點時間在App  Store為我們遊戲進行評價？
+rate_google,是否介意花费一点时间在Google Play为我们游戏进行评价？,Would you like to leave a review for Legends Awake in the Google Play store?,是否介意花費一點時間在Google Play為我們遊戲進行評價？
+rate_btnnothank,不，谢谢,"No, thanks.",不，謝謝
+rate_btngogo,欣然前往,Continue,欣然前往
+rate_tucaotips,您对游戏的想法：,Any thoughts/suggestions for the game:,您對遊戲的想法：
 gift_name_121,感恩祈福季,Season of Thanksgiving Blessings,感恩祈福季
-gift_desc_121,感恩节期间，参与指定活动内容即可换取祈福币，可以用于兑换惊喜道具哦！快去参加吧！,"During the Thanksgiving Season, participate in the specified events to receive Blessing Coins, which can be used to exchange for surprise items! Check it out!",感恩节期间，参与指定活动内容即可换取祈福币，可以用于兑换惊喜道具哦！快去参加吧！
-giftspecial_lingtie_name,强化大礼包,Advancement Package,强化大礼包
-giftspecial_lingtie_desc,快速获得灵铁，每天只能购买<color=#70ecff>3次</color>哦！,Get Raw Iron immediately! Can only be purchased <color=#70ecff>3 times</color> per day!,快速获得灵铁，每天只能购买<color=#70ecff>3次</color>哦！
+gift_desc_121,感恩节期间，参与指定活动内容即可换取祈福币，可以用于兑换惊喜道具哦！快去参加吧！,"During the Thanksgiving Season, participate in the specified events to receive Blessing Coins, which can be used to exchange for surprise items! Check it out!",感恩節期間，參與指定活動內容即可換取祈福幣，可以用於兌換驚喜道具哦！快去參加吧！
+giftspecial_lingtie_name,强化大礼包,Advancement Package,強化大禮包
+giftspecial_lingtie_desc,快速获得灵铁，每天只能购买<color=#70ecff>3次</color>哦！,Get Raw Iron immediately! Can only be purchased <color=#70ecff>3 times</color> per day!,快速獲得靈鐵，每天只能購買3次哦！
 eventinstance_surprise_desc,概率获得下列物品,Set chance of receiving the following items,機率獲得下列物品
 loading_longnvlan,<color=#70ecff>龙女</color>,<color=#70ecff>Dragon Girl</color>,<color=#70ecff>龍女</color>
-loading_tips59,通关层数越多获得的碎片奖励越丰富哦！,"The more levels you clear, the better the fragment reward you will receive!",
-loading_tips60,阵容搭配和属性克制是通关的关键！,Using monsters that counter the enemy's elements is key to victory!,
+loading_tips59,通关层数越多获得的碎片奖励越丰富哦！,"The more levels you clear, the better the fragment reward you will receive!",通關層數越多獲得的碎片獎勵越豐富哦！
+loading_tips60,阵容搭配和属性克制是通关的关键！,Using monsters that counter the enemy's elements is key to victory!,陣容搭配和屬性克制是通關的關鍵！

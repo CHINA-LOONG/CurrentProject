@@ -2030,9 +2030,9 @@ activity2_6_extra,"3_20031_1_1.0,3_20031_1_0.5,3_20027_1_0.75"
 activity2_7_extra,"3_20031_2_1.0,3_20027_1_1.0"
 activity2_8_extra,"3_20031_2_1.0,3_20027_1_1.0,3_20027_1_0.25"
 activity2_9_extra,"3_20031_2_1.0,3_20031_1_0.5,3_20027_1_1.0,3_20027_1_0.5"
-lingtei_chuji,3_11001_50_1.0
-lingtei_zhongji,3_11002_50_1.0
-lingtei_gaoji,3_11003_50_1.0
+lingtei_chuji,3_11001_20_1.0
+lingtei_zhongji,3_11002_20_1.0
+lingtei_gaoji,3_11003_20_1.0
 activity3_1_base,1_2_700_0.25
 activity3_2_base,1_2_800_0.25
 activity3_3_base,1_2_900_0.25

@@ -16076,8 +16076,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp02" state="0"/>
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp03" state="0"/>
-				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp06" state="3"/>
-				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp07" state="3"/>
+				<!--Wp time="0.5" name="bossrenjie88Yafogemeng5wp06" state="4"/>
+				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp07" state="4"/-->
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp01" state="1"/>
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp08" state="3"/>
 			</WpStateList>

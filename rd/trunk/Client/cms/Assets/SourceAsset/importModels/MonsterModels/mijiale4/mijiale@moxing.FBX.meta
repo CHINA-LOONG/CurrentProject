@@ -1,0 +1,258 @@
+fileFormatVersion: 2
+guid: 27a1ab5a5ab07e24886df259f688d4fc
+timeCreated: 1457592479
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bip001
+    100002: Bip001 Head
+    100004: Bip001 L Calf
+    100006: Bip001 L Clavicle
+    100008: Bip001 L Finger0
+    100010: Bip001 L Finger01
+    100012: Bip001 L Finger1
+    100014: Bip001 L Finger11
+    100016: Bip001 L Finger2
+    100018: Bip001 L Finger21
+    100020: Bip001 L Foot
+    100022: Bip001 L Forearm
+    100024: Bip001 L Hand
+    100026: Bip001 L Thigh
+    100028: Bip001 L Toe0
+    100030: Bip001 L UpperArm
+    100032: Bip001 Neck
+    100034: Bip001 Pelvis
+    100036: Bip001 R Calf
+    100038: Bip001 R Clavicle
+    100040: Bip001 R Finger0
+    100042: Bip001 R Finger01
+    100044: Bip001 R Finger1
+    100046: Bip001 R Finger11
+    100048: Bip001 R Finger2
+    100050: Bip001 R Finger21
+    100052: Bip001 R Foot
+    100054: Bip001 R Forearm
+    100056: Bip001 R Hand
+    100058: Bip001 R Thigh
+    100060: Bip001 R Toe0
+    100062: Bip001 R UpperArm
+    100064: Bip001 Spine
+    100066: Bip001 Spine1
+    100068: Bip001 Spine2
+    100070: Bone001
+    100072: Bone001(mirrored)
+    100074: Bone002
+    100076: Bone002(mirrored)
+    100078: Bone003
+    100080: Bone003(mirrored)
+    100082: Bone005
+    100084: Bone005(mirrored)
+    100086: Bone006
+    100088: Bone006(mirrored)
+    100090: Bone007
+    100092: Bone007(mirrored)
+    100094: Bone009
+    100096: Bone010
+    100098: Bone011
+    100100: Bone013
+    100102: Bone013(mirrored)
+    100104: Bone044
+    100106: Bone046
+    100108: Bone047
+    100110: Bone047(mirrored)
+    100112: Bone048(mirrored)001
+    100114: Bone049
+    100116: Bone049(mirrored)
+    100118: Bone050
+    100120: Bone050(mirrored)
+    100122: Bone052
+    100124: Bone052(mirrored)
+    100126: Bone053
+    100128: Bone053(mirrored)
+    100130: Bone054
+    100132: Bone054(mirrored)
+    100134: Bone055
+    100136: Bone055(mirrored)
+    100138: Bone060
+    100140: Bone061
+    100142: Bone062
+    100144: e_jihuo
+    100146: e_shifa
+    100148: e_shouji
+    100150: mesh_aura
+    100152: mesh_body
+    100154: mesh_lwing
+    100156: mesh_rwing
+    100158: mesh_weapon
+    100160: mesh_wing
+    100162: //RootNode
+    100164: wp_aura
+    100166: wp_body
+    100168: wp_lwing
+    100170: wp_rwing
+    100172: wp_weapon
+    400000: Bip001
+    400002: Bip001 Head
+    400004: Bip001 L Calf
+    400006: Bip001 L Clavicle
+    400008: Bip001 L Finger0
+    400010: Bip001 L Finger01
+    400012: Bip001 L Finger1
+    400014: Bip001 L Finger11
+    400016: Bip001 L Finger2
+    400018: Bip001 L Finger21
+    400020: Bip001 L Foot
+    400022: Bip001 L Forearm
+    400024: Bip001 L Hand
+    400026: Bip001 L Thigh
+    400028: Bip001 L Toe0
+    400030: Bip001 L UpperArm
+    400032: Bip001 Neck
+    400034: Bip001 Pelvis
+    400036: Bip001 R Calf
+    400038: Bip001 R Clavicle
+    400040: Bip001 R Finger0
+    400042: Bip001 R Finger01
+    400044: Bip001 R Finger1
+    400046: Bip001 R Finger11
+    400048: Bip001 R Finger2
+    400050: Bip001 R Finger21
+    400052: Bip001 R Foot
+    400054: Bip001 R Forearm
+    400056: Bip001 R Hand
+    400058: Bip001 R Thigh
+    400060: Bip001 R Toe0
+    400062: Bip001 R UpperArm
+    400064: Bip001 Spine
+    400066: Bip001 Spine1
+    400068: Bip001 Spine2
+    400070: Bone001
+    400072: Bone001(mirrored)
+    400074: Bone002
+    400076: Bone002(mirrored)
+    400078: Bone003
+    400080: Bone003(mirrored)
+    400082: Bone005
+    400084: Bone005(mirrored)
+    400086: Bone006
+    400088: Bone006(mirrored)
+    400090: Bone007
+    400092: Bone007(mirrored)
+    400094: Bone009
+    400096: Bone010
+    400098: Bone011
+    400100: Bone013
+    400102: Bone013(mirrored)
+    400104: Bone044
+    400106: Bone046
+    400108: Bone047
+    400110: Bone047(mirrored)
+    400112: Bone048(mirrored)001
+    400114: Bone049
+    400116: Bone049(mirrored)
+    400118: Bone050
+    400120: Bone050(mirrored)
+    400122: Bone052
+    400124: Bone052(mirrored)
+    400126: Bone053
+    400128: Bone053(mirrored)
+    400130: Bone054
+    400132: Bone054(mirrored)
+    400134: Bone055
+    400136: Bone055(mirrored)
+    400138: Bone060
+    400140: Bone061
+    400142: Bone062
+    400144: e_jihuo
+    400146: e_shifa
+    400148: e_shouji
+    400150: mesh_aura
+    400152: mesh_body
+    400154: mesh_lwing
+    400156: mesh_rwing
+    400158: mesh_weapon
+    400160: mesh_wing
+    400162: //RootNode
+    400164: wp_aura
+    400166: wp_body
+    400168: wp_lwing
+    400170: wp_rwing
+    400172: wp_weapon
+    4300000: mesh_body
+    4300002: mesh_weapon
+    4300004: mesh_wing
+    4300006: mesh_rwing
+    4300008: mesh_lwing
+    4300010: mesh_aura
+    9500000: //RootNode
+    13700000: mesh_aura
+    13700002: mesh_body
+    13700004: mesh_lwing
+    13700006: mesh_rwing
+    13700008: mesh_weapon
+    13700010: mesh_wing
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

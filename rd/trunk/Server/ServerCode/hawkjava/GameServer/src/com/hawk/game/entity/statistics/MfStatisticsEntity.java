@@ -103,30 +103,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Column(name = "adventureTimesDaily", nullable = false)
 	protected int adventureTimesDaily = 0;
 
-	// 历史提升技能次数
-	@Column(name = "upSkillTimes", nullable = false)
-	protected int upSkillTimes = 0;
-
-	// 今日提升技能次数
-	@Column(name = "upSkillTimesDaily", nullable = false)
-	protected int upSkillTimesDaily = 0;
-
-	// 历史升级装备次数
-	@Column(name = "upEquipTimes", nullable = false)
-	protected int upEquipTimes = 0;
-
-	// 今日升级装备次数
-	@Column(name = "upEquipTimesDaily", nullable = false)
-	protected int upEquipTimesDaily = 0;
-
-	// 历史使用物品X数量
-	@Column(name = "useItemXCount", nullable = false)
-	protected String useItemXCountJson = "";
-
-	// 今日使用X物品数量
-	@Column(name = "useItemXCountDaily", nullable = false)
-	protected String useItemXCountDailyJson = "";
-
 	// 历史获得通天塔币数量
 	@Column(name = "coinTowerCount", nullable = false)
 	protected int coinTowerCount = 0;
@@ -138,10 +114,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	// 今日获得公会币数量
 	@Column(name = "coinAllianceCountDaily", nullable = false)
 	protected int coinAllianceCountDaily = 0;
-
-	// 历史购买物品X次数
-	@Column(name = "buyItemXTimes", nullable = false)
-	protected String buyItemXTimesJson = "";
 
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -192,21 +164,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	@Transient
 	boolean hireMonsterDailyFlag = false;
 
-	@Transient
-	protected Map<String, Integer> useItemCountMap = new HashMap<String, Integer>();
-	@Transient
-	boolean useItemCountFlag = false;
-
-	@Transient
-	protected Map<String, Integer> useItemCountDailyMap = new HashMap<String, Integer>();
-	@Transient
-	boolean useItemCountDailyFlag = false;
-
-	@Transient
-	protected Map<String, Integer> buyItemTimesMap = new HashMap<String, Integer>();
-	@Transient
-	boolean buyItemTimesFlag = false;
-
 	// method-------------------------------------------------------------------
 
 	protected MfStatisticsEntity() {
@@ -243,15 +200,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 		}
 		if (null != hireMonsterDailyJson && false == "".equals(hireMonsterDailyJson) && false == "null".equals(hireMonsterDailyJson)) {
 			hireMonsterDailySet = HawkJsonUtil.getJsonInstance().fromJson(hireMonsterDailyJson, new TypeToken<HashSet<Integer>>() {}.getType());
-		}
-		if (null != useItemXCountJson && false == "".equals(useItemXCountJson) && false == "null".equals(useItemXCountJson)) {
-			useItemCountMap = HawkJsonUtil.getJsonInstance().fromJson(useItemXCountJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
-		}
-		if (null != useItemXCountDailyJson && false == "".equals(useItemXCountDailyJson) && false == "null".equals(useItemXCountDailyJson)) {
-			useItemCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(useItemXCountDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
-		}
-		if (null != buyItemXTimesJson && false == "".equals(buyItemXTimesJson) && false == "null".equals(buyItemXTimesJson)) {
-			buyItemTimesMap = HawkJsonUtil.getJsonInstance().fromJson(buyItemXTimesJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
 
 		return true;
@@ -290,18 +238,6 @@ public class MfStatisticsEntity extends HawkDBEntity {
 		if (true == hireMonsterDailyFlag) {
 			hireMonsterDailyFlag = false;
 			hireMonsterDailyJson = HawkJsonUtil.getJsonInstance().toJson(hireMonsterDailySet);
-		}
-		if (true == useItemCountFlag) {
-			useItemCountFlag = false;
-			useItemXCountJson = HawkJsonUtil.getJsonInstance().toJson(useItemCountMap);
-		}
-		if (true == useItemCountDailyFlag) {
-			useItemCountDailyFlag = false;
-			useItemXCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(useItemCountDailyMap);
-		}
-		if (true == buyItemTimesFlag) {
-			buyItemTimesFlag = false;
-			buyItemXTimesJson = HawkJsonUtil.getJsonInstance().toJson(buyItemTimesMap);
 		}
 
 		return true;

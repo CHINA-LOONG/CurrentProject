@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonObject;
+import com.hawk.orderserver.OrderServices;
 import com.hawk.orderserver.entify.CallbackInfo;
 import com.hawk.orderserver.service.OrderManager;
 import com.sun.net.httpserver.HttpExchange;
@@ -31,15 +32,9 @@ public class CallbackHttpHandler implements HttpHandler {
 	public void handle(HttpExchange httpExchange) throws IOException {
 		JsonObject retStatus = new JsonObject();
 		retStatus.addProperty("status", "ERROR");
-		retStatus.addProperty("reason", "REASON");
-		
-		logger.info("有回调");
-		
-		
+		retStatus.addProperty("reason", "REASON");	
 		try {
-			logger.info("11111");
 			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
-			logger.info("22222");
 			logger.info(params.toString());
 			// 验证
 			String token_all_Content = params.get("app_data")
@@ -57,39 +52,33 @@ public class CallbackHttpHandler implements HttpHandler {
 									 + params.get("user_locale")
 									 + params.get("vcurrency")
 									 + params.get("vcurrency_key")
-									 + "cunf-)&^#9#)0=-wj3up52hf!#&&sc+r-0suz+*_73m_uwx669";
+									 + OrderServices.getInstance().getFunplusKey();
 			
 			String token_all = HawkMd5.makeMD5(token_all_Content);
 			if (token_all.equals(params.get("token_all"))) {
-				logger.info("验证通过");
-			}
-			else {
-				logger.info("验证未通过");
-			}
-			
-			if (params.containsKey("app_data")) {
-				JSONObject appData = JSONObject.fromObject(params.get("app_data")); 
-				for (Object element : appData.keySet()) {
-					String key = (String) element;
-					params.put(key, appData.getString(key));
+				if (params.containsKey("app_data")) {
+					JSONObject appData = JSONObject.fromObject(params.get("app_data")); 
+					for (Object element : appData.keySet()) {
+						String key = (String) element;
+						params.put(key, appData.getString(key));
+					}
 				}
-			}
-			
-			logger.info(params.toString());
-			
-			CallbackInfo callbackInfo = new CallbackInfo();
-			if (callbackInfo.fromMap(params)) {
-				if (OrderManager.getInstance().addCallbackInfo(callbackInfo)) {
-					retStatus.addProperty("status", "OK");
-					retStatus.addProperty("reason", "no reason");
-				}
-				else {
-					retStatus.addProperty("status", "ERROR");
-					retStatus.addProperty("reason", "repeat");
+				
+				logger.info(params.toString());
+				
+				CallbackInfo callbackInfo = new CallbackInfo();
+				if (callbackInfo.fromMap(params)) {
+					if (OrderManager.getInstance().addCallbackInfo(callbackInfo)) {
+						retStatus.addProperty("status", "OK");
+						retStatus.addProperty("reason", "no reason");
+					}
+					else {
+						retStatus.addProperty("status", "ERROR");
+						retStatus.addProperty("reason", "repeat");
+					}
 				}
 			}
 		} catch (Exception e) {
-			logger.info(e.getMessage());
 			HawkException.catchException(e);
 		} finally {
 			HawkOSOperator.sendHttpResponse(httpExchange, retStatus.toString());

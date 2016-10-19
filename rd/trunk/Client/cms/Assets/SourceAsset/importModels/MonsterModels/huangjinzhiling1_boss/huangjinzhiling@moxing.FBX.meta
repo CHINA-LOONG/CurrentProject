@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: bdd36b85d3d0d5544af8c6e1f4edc6c6
+timeCreated: 1457609484
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bip01
+    100002: Bip01 Head
+    100004: Bip01 HeadNub
+    100006: Bip01 L Clavicle
+    100008: Bip01 L Finger0
+    100010: Bip01 L Finger01
+    100012: Bip01 L Finger0Nub
+    100014: Bip01 L Finger1
+    100016: Bip01 L Finger11
+    100018: Bip01 L Finger1Nub
+    100020: Bip01 L Finger2
+    100022: Bip01 L Finger21
+    100024: Bip01 L Finger2Nub
+    100026: Bip01 L Finger3
+    100028: Bip01 L Finger31
+    100030: Bip01 L Finger3Nub
+    100032: Bip01 L Forearm
+    100034: Bip01 L Hand
+    100036: Bip01 L UpperArm
+    100038: Bip01 Neck
+    100040: Bip01 Pelvis
+    100042: Bip01 R Clavicle
+    100044: Bip01 R Finger0
+    100046: Bip01 R Finger01
+    100048: Bip01 R Finger0Nub
+    100050: Bip01 R Finger1
+    100052: Bip01 R Finger11
+    100054: Bip01 R Finger1Nub
+    100056: Bip01 R Finger2
+    100058: Bip01 R Finger21
+    100060: Bip01 R Finger2Nub
+    100062: Bip01 R Finger3
+    100064: Bip01 R Finger31
+    100066: Bip01 R Finger3Nub
+    100068: Bip01 R Forearm
+    100070: Bip01 R Hand
+    100072: Bip01 R UpperArm
+    100074: Bip01 Spine
+    100076: Bip01 Spine1
+    100078: Bip01 Spine2
+    100080: e_jihuo1
+    100082: e_jihuo2
+    100084: e_shifa1
+    100086: e_shifa2
+    100088: e_shouji1
+    100090: e_shouji2
+    100092: goldensoul_Bone01
+    100094: goldensoul_Bone03
+    100096: goldensoul_Bone04
+    100098: goldensoul_Bone05
+    100100: goldensoul_Bone06
+    100102: goldensoul_Bone07
+    100104: goldensoul_Bone08
+    100106: goldensoul_Bone09
+    100108: goldensoul_Bone10
+    100110: goldensoul_Bone11
+    100112: goldensoul_Bone12
+    100114: goldensoul_Bone13
+    100116: goldensoul_Bone14
+    100118: goldensoul_Bone15
+    100120: goldensoul_Bone16
+    100122: goldensoul_Bone17
+    100124: goldensoul_Bone18
+    100126: goldensoul_Bone19
+    100128: goldensoul_Bone20
+    100130: goldensoul_Bone21
+    100132: goldensoul_Bone22
+    100134: goldensoul_Bone23
+    100136: goldensoul_Bone24
+    100138: goldensoul_Bone25
+    100140: goldensoul_Dummy01
+    100142: goldensoul_Dummy02
+    100144: goldensoul_Dummy04
+    100146: goldensoul_Dummy05
+    100148: goldensoul_Dummy06
+    100150: goldensoul_Dummy07
+    100152: goldensoul_Dummy08
+    100154: goldensoul_Dummy09
+    100156: goldensoul_Dummy10
+    100158: goldensoul_Dummy11
+    100160: goldensoul_Dummy12
+    100162: goldensoul_Dummy13
+    100164: goldensoul_Dummy14
+    100166: goldensoul_Dummy15
+    100168: //RootNode
+    100170: mesh_body
+    100172: wp_body
+    100174: wp_head
+    100176: wp_Shell
+    100178: wp_spirit
+    400000: Bip01
+    400002: Bip01 Head
+    400004: Bip01 HeadNub
+    400006: Bip01 L Clavicle
+    400008: Bip01 L Finger0
+    400010: Bip01 L Finger01
+    400012: Bip01 L Finger0Nub
+    400014: Bip01 L Finger1
+    400016: Bip01 L Finger11
+    400018: Bip01 L Finger1Nub
+    400020: Bip01 L Finger2
+    400022: Bip01 L Finger21
+    400024: Bip01 L Finger2Nub
+    400026: Bip01 L Finger3
+    400028: Bip01 L Finger31
+    400030: Bip01 L Finger3Nub
+    400032: Bip01 L Forearm
+    400034: Bip01 L Hand
+    400036: Bip01 L UpperArm
+    400038: Bip01 Neck
+    400040: Bip01 Pelvis
+    400042: Bip01 R Clavicle
+    400044: Bip01 R Finger0
+    400046: Bip01 R Finger01
+    400048: Bip01 R Finger0Nub
+    400050: Bip01 R Finger1
+    400052: Bip01 R Finger11
+    400054: Bip01 R Finger1Nub
+    400056: Bip01 R Finger2
+    400058: Bip01 R Finger21
+    400060: Bip01 R Finger2Nub
+    400062: Bip01 R Finger3
+    400064: Bip01 R Finger31
+    400066: Bip01 R Finger3Nub
+    400068: Bip01 R Forearm
+    400070: Bip01 R Hand
+    400072: Bip01 R UpperArm
+    400074: Bip01 Spine
+    400076: Bip01 Spine1
+    400078: Bip01 Spine2
+    400080: e_jihuo1
+    400082: e_jihuo2
+    400084: e_shifa1
+    400086: e_shifa2
+    400088: e_shouji1
+    400090: e_shouji2
+    400092: goldensoul_Bone01
+    400094: goldensoul_Bone03
+    400096: goldensoul_Bone04
+    400098: goldensoul_Bone05
+    400100: goldensoul_Bone06
+    400102: goldensoul_Bone07
+    400104: goldensoul_Bone08
+    400106: goldensoul_Bone09
+    400108: goldensoul_Bone10
+    400110: goldensoul_Bone11
+    400112: goldensoul_Bone12
+    400114: goldensoul_Bone13
+    400116: goldensoul_Bone14
+    400118: goldensoul_Bone15
+    400120: goldensoul_Bone16
+    400122: goldensoul_Bone17
+    400124: goldensoul_Bone18
+    400126: goldensoul_Bone19
+    400128: goldensoul_Bone20
+    400130: goldensoul_Bone21
+    400132: goldensoul_Bone22
+    400134: goldensoul_Bone23
+    400136: goldensoul_Bone24
+    400138: goldensoul_Bone25
+    400140: goldensoul_Dummy01
+    400142: goldensoul_Dummy02
+    400144: goldensoul_Dummy04
+    400146: goldensoul_Dummy05
+    400148: goldensoul_Dummy06
+    400150: goldensoul_Dummy07
+    400152: goldensoul_Dummy08
+    400154: goldensoul_Dummy09
+    400156: goldensoul_Dummy10
+    400158: goldensoul_Dummy11
+    400160: goldensoul_Dummy12
+    400162: goldensoul_Dummy13
+    400164: goldensoul_Dummy14
+    400166: goldensoul_Dummy15
+    400168: //RootNode
+    400170: mesh_body
+    400172: wp_body
+    400174: wp_head
+    400176: wp_Shell
+    400178: wp_spirit
+    4300000: mesh_body
+    9500000: //RootNode
+    13700000: mesh_body
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

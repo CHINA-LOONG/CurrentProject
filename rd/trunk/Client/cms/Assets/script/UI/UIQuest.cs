@@ -20,8 +20,6 @@ public class UIQuest : UIBase,
     //not find quest
     //public Text text_tips;
 
-    public Animator animator;
-
     private int tabIndex = -1;
     private int selIndex = 0;
     public int TabIndex
@@ -146,18 +144,7 @@ public class UIQuest : UIBase,
 
     void ClickCloseButton(GameObject go)
     {
-        if (animator != null)
-        {
-            animator.SetTrigger("TriggerOut");
-        }
-        else
-        {
-            EndAnimOver();
-        }
-    }
-    void EndAnimOver()
-    {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     void OnEnable()
@@ -220,21 +207,20 @@ public class UIQuest : UIBase,
     //初始化状态
     public override void Init()
     {
+        base.Init();
         tabIndex = -1;
         selIndex = 0;
-        if (animator != null)
-        {
-            animator.SetTrigger("TriggerIn");
-        }
     }
     //清理资源缓存
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(uiQuestInfo);
+        base.Clean();
     }
 
     public override void RefreshOnPreviousUIHide()
     {
+        base.RefreshOnPreviousUIHide();
         Refresh();
     }
     #endregion

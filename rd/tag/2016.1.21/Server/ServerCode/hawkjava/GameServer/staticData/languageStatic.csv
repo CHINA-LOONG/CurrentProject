@@ -617,10 +617,10 @@ chengmubiao30303,个人贡献收集3800,Accumulate 3800 Contribution Pts,個人�
 chengmubiao30304,个人贡献收集6500,Accumulate 6500 Contribution Pts,個人貢獻收集6500
 chengmubiao30305,个人贡献收集25000,Accumulate 25000 Contribution Pts,個人貢獻收集25000
 chengmubiao30306,个人贡献收集65000,Accumulate 65000 Contribution Pts,個人貢獻收集65000
-tili1,吃午饭了,Lunch Time,吃午飯了
-tili2,吃晚饭了,Dinner Time,吃晚飯了
-tilitips1,点击即送45点活力12:00~14:00 {0} 限时领取,"Tap to collect 45 Energy, available 12:00 - 14:00 {0} ",點擊即送45點活力12:00~14:00 {0} 限時領取
-tilitips2,点击即送45点活力18:00~20:00 {0} 限时领取,"Tap to collect 45 Energy, available 18:00 - 20:00 {0} ",點擊即送45點活力18:00~20:00 {0} 限時領取
+tili1,活力补充,Replenish Energy,活力補充
+tili2,活力补充,Replenish Energy,活力補充
+tilitips1,点击即送45点活力6:00~10:00 {0} 限时领取,"Tap to collect 45 Energy, available 6:00~10:00 {0} ",點擊即送45點活力6:00~10:00 {0} 限時領取
+tilitips2,点击即送45点活力18:00~22:00 {0} 限时领取,"Tap to collect 45 Energy, available 18:00~22:00 {0} ",點擊即送45點活力18:00~22:00 {0} 限時領取
 bosssenlin31Wendige2wp02,左角,Left Horn,左角
 bosssenlin31Wendige2wp03,右角,Right Horn,右角
 bosssenlin32Longnv3wp02,头,Head,頭
@@ -864,8 +864,9 @@ guide_tips,查看形状,Notice the shape.,查看形狀
 guide_tips1,使用照妖镜<color=#ffcc00>查看怪物</color>,Use Mytho Lens to <color=#ffcc00>detect Monster</color>.,使用照妖鏡<color=#ffcc00>查看怪物</color>
 guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>到她的
 <color=#ffcc00>头部</color>进行<color=#ffcc00>弱点鉴定</color>","Drag and Hold the <color=#ffcc00>Mytho Lens</color> over her
-<color=#ffcc00>head</color> to <color=#ffcc00>scan for weakpoint</color>. ","拖動<color=#ffcc00>照妖鏡</color>至
-怪物身上<color=#ffcc00>尋找弱點</color>"
+<color=#ffcc00>head</color> to <color=#ffcc00>scan for weakpoint</color>. ","
+拖動<color=#ffcc00>照妖鏡</color>到她的
+<color=#ffcc00>頭部</color>進行<color=#ffcc00>弱點鑑定</color>"
 guide_drag,拖动,Drag,拖動
 guide_hold,停留,Hold,停留
 guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"Now, <color=#ffcc00>tap</color> the head once 
@@ -971,7 +972,7 @@ guide_equip1,"获得了<color=#ffcc00>宠物装备</color>，
 let's go put it on now!","獲得了<color=#ffcc00>寵物裝備</color>，
 去給寵物穿上吧！"
 guide_equip2,这里可以查看到自己所有的宠物哦~,Here you can view all of your monsters.,這裡可以查看到自己所有的寵物哦~
-guide_equip3,给花魄穿上装备吧~,Let's put some equipment on Flower Pixie.,給花魄穿上裝備吧~
+guide_equip3,给花魄穿上装备吧~,Let's put some equipment on Flower Pixie.,給冰雪女王穿上裝備吧~
 guide_equip4,<color=#ffcc00>加号</color>代表这个位置有可穿的装备,"The <color=#ffcc00>symbol</color> indicates you have equipment 
 that can be used for this spot.",<color=#ffcc00>加號</color>代表這個位置有可穿的裝備
 guide_equip5,穿上装备的宠物更强大啦！,Monsters with equipment are much stronger!,穿上裝備的寵物更強大啦！
@@ -1367,10 +1368,10 @@ speech_blt_51_5,那是…狼人！？雪之国应该没有狼人的！,Is that a
 speech_blt_51_6,他扑过来了！,He's coming straight for us!,他撲過來了！
 speech_blt_52_1,雪之国……一定发生了什么……,Snow Kingdom… Something must have happened…,雪之國……一定發生了什麼……
 speech_blt_52_2,出现了不该出现在这里的妖怪，这到底是怎么回事,"Monsters that shouldn't be here appearing suddenly, I wonder what's going on.",出現了不該出現在這裡的妖怪，這到底是怎麼回事
-speech_blt_53_1,前面那个妖怪是一反木棉，小心别被他卷走！,That monster up ahead is  Ittan Momen. Be careful not to get swept away.,前面那个妖怪是一反木棉，小心别被他卷走！
+speech_blt_53_1,前面那个妖怪是一反木棉，小心别被他卷走！,That monster up ahead is  Ittan Momen. Be careful not to get swept away.,前面那個妖怪是一反木棉，小心別被牠卷走！
 speech_blt_53_2,"狼人，一反木棉，这些妖怪都不应该在雪之国呀
-=_=这和我之前见的一反木棉不一样呀","Werewolves,  Ittan Momen… These monsters shouldn't be in the Snow Kingdom. =_= And why do I feel this  Ittan Momen is somehow different than the one we saw before…","狼人，一反木棉，这些妖怪都不应该在雪之国呀
-=_=这和我之前见的一反木棉不一样呀"
+=_=这和我之前见的一反木棉不一样呀","Werewolves,  Ittan Momen… These monsters shouldn't be in the Snow Kingdom. =_= And why do I feel this  Ittan Momen is somehow different than the one we saw before…","狼人，一反木棉，這些妖怪都不應該在雪之國呀
+=_=這和我之前見的一反木棉不一樣呀"
 speech_blt_54_1,在前面就是我的行宫了，我被卷到人界的时候正在喝茶……,Just ahead is one of my palaces. I remember I was just there drinking tea before being swept away to the real world…,在前面就是我的行宮了，我被卷到人界的時候正在喝茶……
 speech_blt_54_2,呼，那么说到这里应该安全些了……,"Whew, so it should be safer there, right?",呼，那麼說到這裡應該安全些了……
 speech_blt_54_3,行宫中留着我的雪人守卫，那些外来的家伙根本进不来,"With the snowman guards inside my palace, those monsters from the outside shouldn't be able to get in.",行宮中留著我的雪人守衛，那些外來的傢伙根本進不來
@@ -2237,12 +2238,12 @@ speech_xinyangzhilu4,还等什么！开启征战之旅吧！,What are you waitin
 guide_ruodian1,每个怪物都有<color=#ffcc00>弱点</color>,Every Monster's got a secret <color=#ffcc00>weakpoint</color>.,每個怪物都有<color=#ffcc00>弱點</color>
 guide_ruodian2,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
 看起来她的<color=#ffcc00>头</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
-It appears to be her <color=#ffcc00>head</color>.","這是<color=#ffcc00>弱點</color>位置的<color=#ffcc00>線索</color>，
+It appears to be her <color=#ffcc00>head</color>.","這是<color=#ffcc00>弱點</color>的<color=#ffcc00>線索</color>，
 看起來她的<color=#ffcc00>頭</color>是弱點"
 guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it's her <color=#ffcc00>head</color>.,看起來她的<color=#ffcc00>頭</color>是弱點
 guide_ruodian4,"这是<color=#ffcc00>弱点</color>的<color=#ffcc00>线索</color>，
 看起来<color=#ffcc00>花瓣</color>是弱点","Here's the <color=#ffcc00>Clue</color> for <color=#ffcc00>the weakpoint</color>.
-It appears to be her <color=#ffcc00>petal</color>.","這是<color=#ffcc00>弱點</color>位置的<color=#ffcc00>線索</color>，
+It appears to be her <color=#ffcc00>petal</color>.","這是<color=#ffcc00>弱點</color>的<color=#ffcc00>線索</color>，
 看起來<color=#ffcc00>花瓣</color>是弱點"
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardians has refreshed. Go and battle for some more rewards.,神話守護者已刷新！重新挑戰，領取豐厚獎勵吧。
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.,根據圖形提示找到弱點
@@ -2390,12 +2391,12 @@ worldentry,神怪入侵,Deity Invasion,神怪入侵
 10243_miaoshu,参与神怪入侵挑战达到10次,Participate in Deity Invasion mode 10 times.,參與神怪入侵挑戰達到10次
 10244_miaoshu,参与神怪入侵挑战达到50次,Participate in Deity Invasion mode 50 times.,參與神怪入侵挑戰達到50次
 10245_miaoshu,参与神怪入侵挑战达到100次,Participate in Deity Invasion mode 100 times.,參與神怪入侵挑戰達到100次
-10246_miaoshu,同一个时间段内进行神怪入侵挑战5次,Battling 5 times in Deity Invasion,同一個時間段內挑戰boss達到5次
-10247_miaoshu,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,同一個時間段內挑戰boss達到6次
-10248_miaoshu,同一个时间段内进行神怪入侵挑战7次,Battling 7 times in Deity Invasion,同一個時間段內挑戰boss達到7次
-10249_miaoshu,同一个时间段内进行神怪入侵挑战8次,Battling 8 times in Deity Invasion,同一個時間段內挑戰boss達到8次
-10250_miaoshu,同一个时间段内进行神怪入侵挑战9次,Battling 9 times in Deity Invasion,同一個時間段內挑戰boss達到9次
-10251_miaoshu,同一个时间段内进行神怪入侵挑战10次,Battling 10 times in Deity Invasion,同一個時間段內挑戰boss達到10次
+10246_miaoshu,同一个时间段内进行神怪入侵挑战5次,Battling 5 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰5次
+10247_miaoshu,同一个时间段内进行神怪入侵挑战6次,Battling 6 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰6次
+10248_miaoshu,同一个时间段内进行神怪入侵挑战7次,Battling 7 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰7次
+10249_miaoshu,同一个时间段内进行神怪入侵挑战8次,Battling 8 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰8次
+10250_miaoshu,同一个时间段内进行神怪入侵挑战9次,Battling 9 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰9次
+10251_miaoshu,同一个时间段内进行神怪入侵挑战10次,Battling 10 times in Deity Invasion,同一個時間段內進行神怪入侵挑戰10次
 10252_miaoshu,神怪入侵排名达到前50名,Reach the top 50 in Deity Invasion rankings.,神怪入侵排名達到前50名
 10253_miaoshu,神怪入侵排名达到前20名,Reach the top 20 in Deity Invasion rankings.,神怪入侵排名達到前20名
 10254_miaoshu,神怪入侵排名达到前10名,Reach the top 10 in Deity Invasion rankings.,神怪入侵排名達到前10名
@@ -2538,4 +2539,5 @@ yafogemeng5_bubble_001,感受到黑暗了吗？,Do you feel the darkness creepin
 yafogemeng5_bubble_002,我还会回来的！,I will be back!,我還會回來的！
 guide_road3,"别忘记可以借助<color=#ffcc00>公会好友
 的宠物</color>帮助自己作战","Don't forget that you can hire your 
-<color=#ffcc00>guild friends' monsters</color> to assist in battle!",
+<color=#ffcc00>guild friends' monsters</color> to assist in battle!","別忘記可以借助<color=#ffcc00>公會好友
+的寵物</color>幫助自己作戰"

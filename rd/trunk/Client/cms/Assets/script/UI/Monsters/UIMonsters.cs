@@ -126,11 +126,13 @@ public class UIMonsters : UIBase,
 
     public override void RefreshOnPreviousUIHide()
     {
+        base.RefreshOnPreviousUIHide();
         Refresh();
     }
 
     public override void Init()
     {
+        base.Init();
         tabIndex1st = -1;
         selIndex1st = 0;
 
@@ -153,6 +155,7 @@ public class UIMonsters : UIBase,
 
         scrollView_Owend.CleanContent();
         scrollView_Collect.CleanContent();
+        base.Clean();
     }
     void ReloadPetLevelNotify(GameUnit gameUnit)
     {
@@ -393,7 +396,7 @@ public class UIMonsters : UIBase,
 
     void OnClickCloseBtn()
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
     
     public void OnTabButtonChanged(int index, TabButtonGroup tab)

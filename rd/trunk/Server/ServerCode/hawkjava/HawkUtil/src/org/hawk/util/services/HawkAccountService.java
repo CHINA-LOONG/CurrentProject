@@ -525,11 +525,11 @@ public class HawkAccountService extends HawkTickable {
 				try {
 					if (gameName.length() > 0 && platform.length() > 0) {
 						if (reportData instanceof CreateRoleData) {
-							doReport((CreateRoleData) reportData);
+							//doReport((CreateRoleData) reportData);
 						} else if (reportData instanceof RenameRoleData) {
 							doReport((RenameRoleData) reportData);
 						} else if (reportData instanceof LevelUpData) {
-							doReport((LevelUpData) reportData);
+							//doReport((LevelUpData) reportData);
 						} else if (reportData instanceof RegitsterGameServer) {
 							doReport((RegitsterGameServer) reportData);
 						} else if (reportData instanceof UnRegitsterGameServer) {

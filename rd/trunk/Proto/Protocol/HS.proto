@@ -70,6 +70,10 @@ enum code
 	SIGNIN_FILL_C               = 1202;
 	SIGNIN_S                    = 1203;
 
+	// 新手引导
+	GUIDE_FINISH_C              = 1301;
+	GUIDE_FINISH_S              = 1302;
+
 	// 怪物
 	MONSTER_ADD_S               = 2001;
 	MONSTER_CATCH_C             = 2002;

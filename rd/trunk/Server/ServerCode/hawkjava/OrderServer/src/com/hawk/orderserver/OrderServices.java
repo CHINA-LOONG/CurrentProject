@@ -58,6 +58,11 @@ public class OrderServices {
 	BlockingQueue<QueueInfo> recvQueue;
 	
 	/**
+	 * 密匙
+	 */
+	String funplusKey;
+	
+	/**
 	 * 单例对象
 	 */
 	static OrderServices instance;
@@ -114,6 +119,10 @@ public class OrderServices {
 	 */
 	public int getExpireSeconds() {
 		return expireSeconds;
+	}
+
+	public String getFunplusKey() {
+		return funplusKey;
 	}
 
 	/**
@@ -177,6 +186,11 @@ public class OrderServices {
 				}
 			}
 
+			// 获取趣加的密匙
+			if (conf.containsKey("key.secret")) {
+				funplusKey = conf.getString("key.secret");
+			}
+			
 			// 初始化http的回调服务器
 			if (conf.containsKey("httpserver.addr")) {
 				if (CallbackHttpServer.getInstance().setup(conf.getString("httpserver.addr"), conf.getInt("httpserver.port"), conf.getInt("httpserver.pool"))) {

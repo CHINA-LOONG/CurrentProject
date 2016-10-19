@@ -2509,6 +2509,7 @@ GameObject:
   - 224: {fileID: 22426926}
   - 222: {fileID: 22288022}
   - 114: {fileID: 11449794}
+  - 95: {fileID: 9524694}
   m_Layer: 5
   m_Name: InstanceList
   m_TagString: Untagged
@@ -3523,6 +3524,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &9524694
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167996}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c000bc6c26208644eb452f0df7c479aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9541614
 Animator:
   serializedVersion: 3
@@ -6500,6 +6518,8 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
+  mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 9524694}
   difficultyDropDown: {fileID: 11457308}
   dropButton: {fileID: 11489974}
   chaptrName: {fileID: 11472030}

@@ -692,7 +692,7 @@ public abstract class HawkApp extends HawkAppObj {
 			
 			// 检测内存不足
 			Runtime run = Runtime.getRuntime();
-			if ((run.maxMemory() - run.totalMemory() + run.freeMemory()) * 1.0 / run.maxMemory() < 0.2) {
+			if ((run.maxMemory() - run.totalMemory() + run.freeMemory()) * 1.0 / run.maxMemory() < 0.5) {
 				onMemoryOutWarning();
 			}
 		}
@@ -1262,7 +1262,7 @@ public abstract class HawkApp extends HawkAppObj {
 						objBase.unlockObj();
 						long costTimeMs = HawkTime.getMillisecond() - beginTimeMs;
 						if (costTimeMs > HawkApp.getInstance().getAppCfg().getProtoTimeout()) {
-							HawkLog.logPrintln("protocol timeout, protocol: " + protocol.getType() + ", costtime: " + costTimeMs);
+							//HawkLog.logPrintln("protocol timeout, protocol: " + protocol.getType() + ", costtime: " + costTimeMs);
 						}
 					}
 				}
@@ -1311,7 +1311,7 @@ public abstract class HawkApp extends HawkAppObj {
 						objBase.unlockObj();
 						long costTimeMs = HawkTime.getMillisecond() - beginTimeMs;
 						if (costTimeMs > HawkApp.getInstance().getAppCfg().getProtoTimeout()) {
-							HawkLog.logPrintln("message timeout, msg: " + msg.getMsg() + ", costtime: " + costTimeMs);
+							//HawkLog.logPrintln("message timeout, msg: " + msg.getMsg() + ", costtime: " + costTimeMs);
 						}
 					}
 				}
@@ -1473,25 +1473,37 @@ public abstract class HawkApp extends HawkAppObj {
 		int pushCount = 0;
 		int popCount = 0;
 		
+		int totalPushCount = 0;
+		int totalPopCount = 0;
+		
 		for (int i = 0; i < msgExecutor.getThreadNum(); i++) {
 			pushCount = (int)msgExecutor.getThread(i).getPushTaskCnt();
 			popCount = (int)msgExecutor.getThread(i).getPopTaskCnt();
+			
+			totalPushCount += pushCount;
+			totalPopCount += popCount;
 			HawkLog.errPrintln(String.format("线程ID : %d, msg任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
 		
-		HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", pushCount, popCount));
+		HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", totalPushCount, totalPopCount));
 		HawkLog.errPrintln("");
 		
 		pushCount = 0;
 		popCount = 0;
 		
+		totalPushCount = 0;
+		totalPopCount = 0;		
+		
 		for (int i = 0; i < taskExecutor.getThreadNum(); i++) {
 			pushCount = (int)taskExecutor.getThread(i).getPushTaskCnt();
 			popCount = (int)taskExecutor.getThread(i).getPopTaskCnt();
+			
+			totalPushCount += pushCount;
+			totalPopCount += popCount;
 			HawkLog.errPrintln(String.format("线程ID : %d, tsk任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
 		
-		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", pushCount, popCount));	
+		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", totalPushCount, totalPopCount));	
 		HawkLog.errPrintln("");
 		HawkLog.errPrintln(String.format("等待更新的Entity数量： %d", HawkDBManager.getInstance().getUnUpdateEntitySize()));	
 		

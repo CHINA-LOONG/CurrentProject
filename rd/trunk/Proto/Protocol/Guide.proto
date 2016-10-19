@@ -1,0 +1,19 @@
+import "Protocol/Reward.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+
+// protocol-----------------------------------------------------
+
+// GUIDE_FINISH_C
+message HSGuideFinish
+{
+	repeated int32 guideId = 1;
+}
+
+// GUIDE_FINISH_S
+message HSGuideFinishRet
+{
+}

@@ -14,26 +14,11 @@ public class UIAdventureReward:UIBase
     private List<GameObject> baseList = new List<GameObject>();
     public Transform extraPos;
     private List<GameObject> extraList = new List<GameObject>();
-    public Animator Animator
-    {
-        get
-        {
-            if (animator == null)
-            {
-                animator = GetComponent<Animator>();
-            }
-            return animator;
-        }
-    }
-    private Animator animator;
 
     public Button btnClose;
     public override void Init()
     {
-        if (Animator != null)
-        {
-            Animator.SetTrigger("enter");
-        }
+        base.Init();
     }
     void Start()
     {

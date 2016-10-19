@@ -267,7 +267,7 @@ handbook_huodeway,获得途径,Get By
 handbook_petsuipian,宠物碎片,Monster Fragments
 handbook_tips1,确定进行1次召唤吗？,Confirm summon once?
 handbook_record_001,碎片不足,Insufficent fragments.
-,,
+handbook_ready,可召唤,ready to summon
 xl_itemtips,,
 tips_main1,副本,Stage
 shop_main,商店,Shop
@@ -1045,8 +1045,18 @@ lose_guidetips8,可以给蓝色及以上品质的装备镶嵌宝石，提升装�
 setting_exit,退出,Exit
 setting_continue,继续战斗,Continue
 setting_exit_tips,确定要退出战斗吗？,Are you sure you want to quit?
-loading_bingxuenvwang,冰雪女王,snow queen
+loading_bingxuenvwanglan,<color=#70ecff>冰雪女王</color>,<color=#70ecff>Chione</color>
 loading_jiuweihu,九尾狐,nine tails fox
+loading_changehei,<color=#b888ff>嫦娥</color>,<color=#b888ff>Chang'e</color>
+loading_changebai,<color=#fff8c8>嫦娥</color>,<color=#fff8c8>Chang'e</color>
+loading_datiangouhong,<color=#fff8c8>大天狗</color>,<color=#fff8c8>Tengu</color>
+loading_mijialebai,<color=#fff8c8>天使长</color>,<color=#fff8c8>Mijiale</color>
+loading_mijialehong,<color=#fff8c8>天使长</color>,<color=#fff8c8>Mijiale</color>
+loading_weitianshibai,<color=#fff8c8>伪天使</color>,<color=#fff8c8>Fallen Angel</color>
+loading_weitianshihei,<color=#b888ff>伪天使</color>,<color=#b888ff>Fallen Angel</color>
+loading_yifulitehei,<color=#b888ff>伊芙利特</color>,<color=#b888ff>Ifrit</color>
+loading_dujiaoshouhei,<color=#b888ff>独角兽</color>,<color=#b888ff>Unicorn</color>
+loading_hongniuhong,<color=#fff8c8>红牛弥诺陶洛斯</color>,<color=#fff8c8>Minotaur</color>
 loading_tips1,要注意怪物属性哦~要注意怪物属性哦~要注意怪物属性哦~,notice monster property notice monster property notice monster property notice monster property
 loading_tips2,记得多提升怪物等级、怪物技能、穿戴装备，能够大幅提升战斗力！,"Remember to upgrade the monster level, monster skills, wearable equipment, can significantly enhance the combat effectiveness!"
 loading_tips3,剧情副本看剧情，不看剧情不是好玩家！,"A copy of the story to see the story, not to see the story is not a good player"
@@ -1061,3 +1071,12 @@ loading_tips11,竞技成功时，会获得荣誉点奖励，荣誉点可以用�
 loading_tips12,若与敌人僵持不下，出现平局按钮后，可以选择以平局结束本场竞技，平局仍会得到1点荣誉点。,"If the battle turns into a stalemate between you and the opponent, a Draw button will appear, and the battle can be ended as a draw. A draw will still award 1 Honor Point."
 loading_tips13,根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。,The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
 loading_tips14,竞技场前100名的排行数据每10分钟刷新一次。,The top 100 player rankings are updated every 10 minutes.
+start_record_001,该功能{0}级开启,start at level {0}
+Zhifuletu - 1,至福乐土,Bliss paradise
+Zhifuletu - 2,至福乐土,Bliss paradise
+Zhifuletu - 3,至福乐土,Bliss paradise
+Zhifuletu - 4,至福乐土,Bliss paradise
+Midasigong - 1,弥达斯宫,Midas's?Palace
+Midasigong - 2,弥达斯宫,Midas's?Palace
+Midasigong - 3,弥达斯宫,Midas's?Palace
+Midasigong - 4,弥达斯宫,Midas's?Palace

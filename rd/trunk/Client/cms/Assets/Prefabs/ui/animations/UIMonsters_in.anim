@@ -43,19 +43,19 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 350
+        value: 61.1199989
         inSlope: -447.824921
         outSlope: -1.27740777
         tangentMode: 1
       - time: .13333334
-        value: 271
+        value: -8
         inSlope: -781.519226
         outSlope: -238.91246
         tangentMode: 1
       - time: .166666672
-        value: 270
-        inSlope: -30.0000019
-        outSlope: -30.0000019
+        value: -7
+        inSlope: 30.0000019
+        outSlope: 30.0000019
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -190,19 +190,19 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 350
+        value: 61.1199989
         inSlope: -447.824921
         outSlope: -1.27740777
         tangentMode: 1
       - time: .13333334
-        value: 271
+        value: -8
         inSlope: -781.519226
         outSlope: -238.91246
         tangentMode: 1
       - time: .166666672
-        value: 270
-        inSlope: -30.0000019
-        outSlope: -30.0000019
+        value: -7
+        inSlope: 30.0000019
+        outSlope: 30.0000019
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2

@@ -413,7 +413,7 @@ public class GsApp extends HawkApp {
 	@Override
 	public void printState() {
 		super.printState();
-//		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
+		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
 	}
 
 	/**
@@ -434,9 +434,7 @@ public class GsApp extends HawkApp {
 			}
 		}
 
-		HawkLog.debugPrintln(String.format("移除对象个数 %d", removeCount));
-
-		System.gc();
+		HawkLog.errPrintln(String.format("移除对象个数 %d", removeCount));
 	}
 
 	/**
@@ -600,9 +598,7 @@ public class GsApp extends HawkApp {
 		} finally {
 			protoTime = HawkTime.getMillisecond() - protoTime;
 			if (protoTime >= 20) {
-				logger.info(
-						"protocol cost time exception, protocolId: {}, costTime: {}ms",
-						protocol.getType(), protoTime);
+				//logger.info("protocol cost time exception, protocolId: {}, costTime: {}ms",protocol.getType(), protoTime);
 			}
 		}
 	}

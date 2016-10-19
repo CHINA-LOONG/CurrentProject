@@ -951,18 +951,18 @@ public class PVPManager extends HawkAppObj {
 	public boolean onTick(long tickTime) {
 		if (refreshTime + SysBasicCfg.getInstance().getPvpRankBuilderRefreshTime() * 1000 < tickTime) {
 			refreshTime = tickTime;
-			HawkLog.logPrintln("排行榜:");
-			for (PVPRankEntity rankEntity : pvpRankList) {
-				HawkLog.logPrintln(rankEntity.getName() + " " + rankEntity.getPlayerId() + " " + rankEntity.getRank() + " " + rankEntity.getPoint());
-			}
+			//HawkLog.logPrintln("排行榜:");
+			//for (PVPRankEntity rankEntity : pvpRankList) {
+			//	HawkLog.logPrintln(rankEntity.getName() + " " + rankEntity.getPlayerId() + " " + rankEntity.getRank() + " " + rankEntity.getPoint());
+			//}
 			
-			HawkLog.logPrintln("匹配池:");
-			for (Map.Entry<Integer, HashMap<Integer, PVPDefenceEntity>> stageList : pvpPoolList.entrySet()) {
-				HawkLog.logPrintln("stage: " + stageList.getKey());
-				for (PVPDefenceEntity pvpDefenceEntity : stageList.getValue().values()) {
-					HawkLog.logPrintln(pvpDefenceEntity.getName() + " " + pvpDefenceEntity.getPlayerId() + " ");
-				}
-			}
+			//HawkLog.logPrintln("匹配池:");
+			//for (Map.Entry<Integer, HashMap<Integer, PVPDefenceEntity>> stageList : pvpPoolList.entrySet()) {
+			//	HawkLog.logPrintln("stage: " + stageList.getKey());
+			//	for (PVPDefenceEntity pvpDefenceEntity : stageList.getValue().values()) {
+			//		HawkLog.logPrintln(pvpDefenceEntity.getName() + " " + pvpDefenceEntity.getPlayerId() + " ");
+			//	}
+			//}
 			generatePVPRankBuilder();
 		}
 	

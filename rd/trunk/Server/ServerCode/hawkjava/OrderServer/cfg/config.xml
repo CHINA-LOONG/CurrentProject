@@ -18,4 +18,8 @@
 		<port>9600</port>
 		<pool>2</pool>
 	</httpserver>
+	
+	<key>
+		<secret>cunf-)&^#9#)0=-wj3up52hf!#&&sc+r-0suz+*_73m_uwx669</secret>
+	</key>
 </config>

@@ -495,6 +495,7 @@ GameObject:
   - 222: {fileID: 22255562}
   - 114: {fileID: 11405956}
   - 114: {fileID: 11439958}
+  - 95: {fileID: 9545808}
   m_Layer: 5
   m_Name: UISummon2
   m_TagString: Untagged
@@ -502,6 +503,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &9545808
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199446}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d995da31d543c9d42b3028e677f1b1b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,7 +1120,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
-  uiAnimator: {fileID: 0}
+  uiAnimator: {fileID: 9545808}
   exit: {fileID: 197470}
   onceButton: {fileID: 123244}
   tenButton: {fileID: 193224}

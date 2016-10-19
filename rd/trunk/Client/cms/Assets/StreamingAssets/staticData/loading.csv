@@ -1,9 +1,9 @@
 ﻿#NUM,NUM,TEXT,TEXT
 id,scene,tips,picture
 id,场景,提示信息组,展示内容组
-1,1,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
-2,2,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
-3,3,loading_tips7,"bingxuenvwang,jiuweihu"
-4,4,"loading_tips5,loading_tips6","bingxuenvwang,jiuweihu"
-5,5,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwang,jiuweihu"
+1,1,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
+2,2,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
+3,3,loading_tips7,shilian
+4,4,"loading_tips5,loading_tips6",tongtiantai
+5,5,"loading_tips1,loading_tips2,loading_tips3,loading_tips4","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
 6,6,"loading_tips8,loading_tips9,loading_tips10,loading_tips11,loading_tips12,loading_tips13,loading_tips14",null

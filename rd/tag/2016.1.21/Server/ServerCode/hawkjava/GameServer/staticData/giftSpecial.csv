@@ -19,5 +19,5 @@ id,comments,name,title,desc,image,imageoff,type,children,rechargeId,buyPrice,bas
 207,选择礼包子礼包11,,,,teshushoumai_aguai,teshushoumai_50zhekou,999,0,com.diandian.undergroundguardian.giftspecial.24.99,0,xuanze_zuo_2,,1,-1,-1,-1,-1,100
 208,选择礼包子礼包12,,,,teshushoumai_sguai,teshushoumai_30zhekou,999,0,com.diandian.undergroundguardian.giftspecial.49.99,0,xuanze_you_2,,1,-1,-1,-1,-1,100
 209,选择礼包父礼包1,,giftspecial_xuanze1_name,giftspecial_xuanze1_desc,,,102,"204,205",,0,,,1,-1,-1,11,604800,100
-210,活动礼包1,,giftspecial_huodong3_name,giftspecial_huodong3_desc,teshushoumai_wenzhang,teshushoumai_50zhekou,101,0,com.diandian.undergroundguardian.giftspecial.49.99,0,huodong_base_3,huodong_extra_3,3,-1,-1,10,604800,100
-211,活动礼包2,,giftspecial_huodong4_name,giftspecial_huodong4_desc,teshushoumai_bingxuenvwang,teshushoumai_70zhekou,101,0,com.diandian.undergroundguardian.giftspecial.9.99,0,huodong_base_4,huodong_extra_4,10,-1,-1,12,604800,100
+210,活动礼包1,,giftspecial_huodong3_name,giftspecial_huodong3_desc,teshushoumai_wenzhang,teshushoumai_50zhekou,101,0,com.diandian.undergroundguardian.giftspecial.49.99,0,huodong_base_3,huodong_extra_3,3,-1,-1,12,604800,100
+211,活动礼包2,,giftspecial_huodong4_name,giftspecial_huodong4_desc,teshushoumai_bingxuenvwang,teshushoumai_70zhekou,101,0,com.diandian.undergroundguardian.giftspecial.9.99,0,huodong_base_4,huodong_extra_4,10,-1,-1,10,604800,100

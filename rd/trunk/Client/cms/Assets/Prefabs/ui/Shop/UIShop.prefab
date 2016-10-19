@@ -1450,7 +1450,8 @@ MonoBehaviour:
   mViewType: 0
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
-  mDontDestroyWhenSwitchScene: 0
+  mDontDestroyWhenSwitchScene: 1
+  uiAnimator: {fileID: 9515506}
   jinbiCoinBtn: {fileID: 11481208}
   zuanshiCoinBtn: {fileID: 11474970}
   shopItemsScrollView: {fileID: 11415300}
@@ -1951,10 +1952,10 @@ RectTransform:
   - {fileID: 22490700}
   m_Father: {fileID: 22441998}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -1.5}
-  m_SizeDelta: {x: 0, y: 3}
+  m_SizeDelta: {x: 820, y: 461}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22430764
 RectTransform:
@@ -2071,10 +2072,10 @@ RectTransform:
   - {fileID: 22420522}
   m_Father: {fileID: 22492806}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 9}
-  m_SizeDelta: {x: -81, y: -162}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 9}
+  m_SizeDelta: {x: 819, y: 458}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22446026
 RectTransform:
@@ -2175,7 +2176,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: -3.09999561, y: 8.6000061}
+  m_AnchoredPosition: {x: 0, y: 8.6000061}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: .5, y: 1}
 --- !u!224 &22477188
@@ -2248,7 +2249,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -554}
+  m_AnchoredPosition: {x: 0, y: -549}
   m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22483580

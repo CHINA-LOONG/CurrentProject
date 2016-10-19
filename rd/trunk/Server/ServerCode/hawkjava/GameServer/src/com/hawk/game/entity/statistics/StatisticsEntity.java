@@ -27,12 +27,14 @@ public class StatisticsEntity {
 
 	private HfStatisticsEntity hfEntity;
 	private MfStatisticsEntity mfEntity;
+	private Mf2StatisticsEntity mf2Entity;
 	private LfStatisticsEntity lfEntity;
 	private Lf2StatisticsEntity lf2Entity;
 	private Map<Integer, RefreshStatisticsEntity> refreshEntityMap;
 
 	private boolean hfUpdate;
 	private boolean mfUpdate;
+	private boolean mf2Update;
 	private boolean lfUpdate;
 	private boolean lf2Update;
 	private Map<Integer, Boolean> refreshUpdateMap;
@@ -40,6 +42,7 @@ public class StatisticsEntity {
 	public StatisticsEntity() {
 		hfUpdate = false;
 		mfUpdate = false;
+		mf2Update = false;
 		lfUpdate = false;
 		lf2Update = false;
 		refreshUpdateMap = new HashMap<Integer, Boolean>();
@@ -66,6 +69,17 @@ public class StatisticsEntity {
 			} else {
 				mfEntity = new MfStatisticsEntity(playerId);
 				mfEntity.notifyCreate();
+			}
+		}
+
+		if (null == mf2Entity) {
+			List<Mf2StatisticsEntity> resultList = HawkDBManager.getInstance().query("from Mf2StatisticsEntity where playerId = ? and invalid = 0", playerId);
+			if (null != resultList && resultList.size() > 0) {
+				mf2Entity = resultList.get(0);
+				mf2Entity.decode();
+			} else {
+				mf2Entity = new Mf2StatisticsEntity(playerId);
+				mf2Entity.notifyCreate();
 			}
 		}
 
@@ -110,6 +124,10 @@ public class StatisticsEntity {
 		if (true == mfUpdate) {
 			mfUpdate = false;
 			mfEntity.notifyUpdate(async);
+		}
+		if (true == mf2Update) {
+			mf2Update = false;
+			mf2Entity.notifyUpdate(async);
 		}
 		if (true == lfUpdate) {
 			lfUpdate = false;
@@ -739,122 +757,7 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	// upSkillTimes--------------------------------------------
-	public int getUpSkillTimes() {
-		return mfEntity.upSkillTimes;
-	}
 
-	public void increaseUpSkillTimes() {
-		++mfEntity.upSkillTimes;
-		mfUpdate = true;
-	}
-
-	public int getUpSkillTimesDaily() {
-		return mfEntity.upSkillTimesDaily;
-	}
-
-	public void increaseUpSkillTimesDaily() {
-		++mfEntity.upSkillTimesDaily;
-		mfUpdate = true;
-	}
-
-	public void clearUpSkillTimesDaily() {
-		mfEntity.upSkillTimesDaily = 0;
-		mfUpdate = true;
-	}
-
-	// upEquipTimes--------------------------------------------
-	public int getUpEquipTimes() {
-		return mfEntity.upEquipTimes;
-	}
-
-	public void increaseUpEquipTimes() {
-		++mfEntity.upEquipTimes;
-		mfUpdate = true;
-	}
-
-	public int getUpEquipTimesDaily() {
-		return mfEntity.upEquipTimesDaily;
-	}
-
-	public void increaseUpEquipTimesDaily() {
-		++mfEntity.upEquipTimesDaily;
-		mfUpdate = true;
-	}
-
-	public void clearUpEquipTimesDaily() {
-		mfEntity.upEquipTimesDaily = 0;
-		mfUpdate = true;
-	}
-
-	// useItemCount--------------------------------------------
-//	public Map<String, Integer> getUseItemCountMap() {
-//		return mfEntity.useItemCountMap;
-//	}
-
-	/**
-	 * @return 物品使用次数，如未使用返回0
-	 */
-	public int getUseItemCount(String itemCfgId) {
-		Integer count = mfEntity.useItemCountMap.get(itemCfgId);
-		if (null != count) {
-			return count;
-		}
-		return 0;
-	}
-
-	public void increaseUseItemCount(String itemCfgId, int count) {
-		Integer cur = mfEntity.useItemCountMap.get(itemCfgId);
-		if (null == cur) {
-			cur = 0;
-		}
-		mfEntity.useItemCountMap.put(itemCfgId, cur + count);
-		mfEntity.useItemCountFlag = true;
-		mfUpdate = true;
-	}
-
-//	public void setUseItemCount(String itemCfgId, int count) {
-//		mfEntity.useItemCountMap.put(itemCfgId, count);
-//		mfEntity.useItemCountFlag = true;
-//		mfUpdate = true;
-//	}
-
-	public Map<String, Integer> getUseItemCountDailyMap() {
-		return mfEntity.useItemCountDailyMap;
-	}
-
-	/**
-	 * @return 物品使用次数，如未使用返回0
-	 */
-	public int getUseItemCountDaily(String itemCfgId) {
-		Integer count = mfEntity.useItemCountDailyMap.get(itemCfgId);
-		if (null != count) {
-			return count;
-		}
-		return 0;
-	}
-
-	public void increaseUseItemCountDaily(String itemCfgId, int count) {
-		Integer curCount = mfEntity.useItemCountDailyMap.get(itemCfgId);
-		if (null == curCount) {
-			curCount = 0;
-		}
-		mfEntity.useItemCountDailyMap.put(itemCfgId, curCount + count);
-		mfEntity.useItemCountDailyFlag = true;
-		mfUpdate = true;
-	}
-
-//	public void setUseItemCountDaily(String itemCfgId, int count) {
-//		mfEntity.useItemCountDailyMap.put(itemCfgId, count);
-//		mfEntity.useItemCountDailyFlag = true;
-//		mfUpdate = true;
-//	}
-
-	public void clearUseItemCountDaily() {
-		mfEntity.useItemCountDailyMap.clear();
-		mfEntity.useItemCountDailyFlag = true;
-		mfUpdate = true;
-	}
 
 	// coinTower-----------------------------------------------
 	public int getCoinTowerCount() {
@@ -890,16 +793,87 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
+	// MF 2 method=========================================================================
+
+	// useItemCount--------------------------------------------
+//	public Map<String, Integer> getUseItemCountMap() {
+//		return mf2Entity.useItemCountMap;
+//	}
+
+	/**
+	 * @return 物品使用次数，如未使用返回0
+	 */
+	public int getUseItemCount(String itemCfgId) {
+		Integer count = mf2Entity.useItemCountMap.get(itemCfgId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+
+	public void increaseUseItemCount(String itemCfgId, int count) {
+		Integer cur = mf2Entity.useItemCountMap.get(itemCfgId);
+		if (null == cur) {
+			cur = 0;
+		}
+		mf2Entity.useItemCountMap.put(itemCfgId, cur + count);
+		mf2Entity.useItemCountFlag = true;
+		mf2Update = true;
+	}
+
+//	public void setUseItemCount(String itemCfgId, int count) {
+//		mf2Entity.useItemCountMap.put(itemCfgId, count);
+//		mf2Entity.useItemCountFlag = true;
+//		mf2Update = true;
+//	}
+
+	public Map<String, Integer> getUseItemCountDailyMap() {
+		return mf2Entity.useItemCountDailyMap;
+	}
+
+	/**
+	 * @return 物品使用次数，如未使用返回0
+	 */
+	public int getUseItemCountDaily(String itemCfgId) {
+		Integer count = mf2Entity.useItemCountDailyMap.get(itemCfgId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+
+	public void increaseUseItemCountDaily(String itemCfgId, int count) {
+		Integer curCount = mf2Entity.useItemCountDailyMap.get(itemCfgId);
+		if (null == curCount) {
+			curCount = 0;
+		}
+		mf2Entity.useItemCountDailyMap.put(itemCfgId, curCount + count);
+		mf2Entity.useItemCountDailyFlag = true;
+		mf2Update = true;
+	}
+
+//	public void setUseItemCountDaily(String itemCfgId, int count) {
+//		mf2Entity.useItemCountDailyMap.put(itemCfgId, count);
+//		mf2Entity.useItemCountDailyFlag = true;
+//		mf2Update = true;
+//	}
+
+	public void clearUseItemCountDaily() {
+		mf2Entity.useItemCountDailyMap.clear();
+		mf2Entity.useItemCountDailyFlag = true;
+		mf2Update = true;
+	}
+
 	// buyItemTimes--------------------------------------------
 //	public Map<String, Integer> getBuyItemTimesMap() {
-//		return mfEntity.buyItemTimesMap;
+//		return mf2Entity.buyItemTimesMap;
 //	}
 
 	/**
 	 * @return 物品购买次数，如未购买返回0
 	 */
 	public int getBuyItemTimes(String itemCfgId) {
-		Integer times = mfEntity.buyItemTimesMap.get(itemCfgId);
+		Integer times = mf2Entity.buyItemTimesMap.get(itemCfgId);
 		if (null != times) {
 			return times;
 		}
@@ -907,13 +881,61 @@ public class StatisticsEntity {
 	}
 
 	public void increaseBuyItemTimes(String itemCfgId) {
-		Integer cur = mfEntity.buyItemTimesMap.get(itemCfgId);
+		Integer cur = mf2Entity.buyItemTimesMap.get(itemCfgId);
 		if (null == cur) {
 			cur = 0;
 		}
-		mfEntity.buyItemTimesMap.put(itemCfgId, cur + 1);
-		mfEntity.buyItemTimesFlag = true;
-		mfUpdate = true;
+		mf2Entity.buyItemTimesMap.put(itemCfgId, cur + 1);
+		mf2Entity.buyItemTimesFlag = true;
+		mf2Update = true;
+	}
+
+	// upSkillTimes--------------------------------------------
+	public int getUpSkillTimes() {
+		return mf2Entity.upSkillTimes;
+	}
+
+	public void increaseUpSkillTimes() {
+		++mf2Entity.upSkillTimes;
+		mf2Update = true;
+	}
+
+	public int getUpSkillTimesDaily() {
+		return mf2Entity.upSkillTimesDaily;
+	}
+
+	public void increaseUpSkillTimesDaily() {
+		++mf2Entity.upSkillTimesDaily;
+		mf2Update = true;
+	}
+
+	public void clearUpSkillTimesDaily() {
+		mf2Entity.upSkillTimesDaily = 0;
+		mf2Update = true;
+	}
+
+	// upEquipTimes--------------------------------------------
+	public int getUpEquipTimes() {
+		return mf2Entity.upEquipTimes;
+	}
+
+	public void increaseUpEquipTimes() {
+		++mf2Entity.upEquipTimes;
+		mf2Update = true;
+	}
+
+	public int getUpEquipTimesDaily() {
+		return mf2Entity.upEquipTimesDaily;
+	}
+
+	public void increaseUpEquipTimesDaily() {
+		++mf2Entity.upEquipTimesDaily;
+		mf2Update = true;
+	}
+
+	public void clearUpEquipTimesDaily() {
+		mf2Entity.upEquipTimesDaily = 0;
+		mf2Update = true;
 	}
 
 	// LF method=========================================================================

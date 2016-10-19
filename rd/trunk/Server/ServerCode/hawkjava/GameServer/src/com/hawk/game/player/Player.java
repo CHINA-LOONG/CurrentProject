@@ -286,7 +286,7 @@ public class Player extends HawkAppObj {
 
 		// 玩家不在线而且不是登陆协议(非法协议时机)
 		if (!isOnline() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
-			HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
+			//HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
 
