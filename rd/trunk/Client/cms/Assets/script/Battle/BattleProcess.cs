@@ -1122,7 +1122,7 @@ public class BattleProcess : MonoBehaviour
 
         if (aiResult.useSpell != null)
         {
-            SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, bo.unit, aiResult.attackTarget, Time.time);
+            SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.textId, bo.unit, aiResult.attackTarget, Time.time);
             bo.unit.OnRoundEnd(Time.time);
         }
         else
@@ -1194,7 +1194,7 @@ public class BattleProcess : MonoBehaviour
                 Vector3 relativePos = attackTarget.battleUnit.transform.position - actionCaster.transform.position;
                 actionCaster.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
             }
-            SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, casterUnit, attackTarget, Time.time);
+            SpellService.Instance.SpellRequest(dazhaoSpell.spellData.textId, casterUnit, attackTarget, Time.time);
             casterUnit.OnRoundEnd(Time.time);
 		}
 		else

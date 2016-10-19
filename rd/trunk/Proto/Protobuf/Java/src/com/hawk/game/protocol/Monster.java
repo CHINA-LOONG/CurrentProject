@@ -8274,20 +8274,15 @@ public final class Monster {
      */
     int getMonsterId();
 
-    // required string skillId = 2;
+    // required int32 skillId = 2;
     /**
-     * <code>required string skillId = 2;</code>
+     * <code>required int32 skillId = 2;</code>
      */
     boolean hasSkillId();
     /**
-     * <code>required string skillId = 2;</code>
+     * <code>required int32 skillId = 2;</code>
      */
-    java.lang.String getSkillId();
-    /**
-     * <code>required string skillId = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getSkillIdBytes();
+    int getSkillId();
   }
   /**
    * Protobuf type {@code HSMonsterSkillUp}
@@ -8349,9 +8344,9 @@ public final class Monster {
               monsterId_ = input.readInt32();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              skillId_ = input.readBytes();
+              skillId_ = input.readInt32();
               break;
             }
           }
@@ -8410,52 +8405,25 @@ public final class Monster {
       return monsterId_;
     }
 
-    // required string skillId = 2;
+    // required int32 skillId = 2;
     public static final int SKILLID_FIELD_NUMBER = 2;
-    private java.lang.Object skillId_;
+    private int skillId_;
     /**
-     * <code>required string skillId = 2;</code>
+     * <code>required int32 skillId = 2;</code>
      */
     public boolean hasSkillId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string skillId = 2;</code>
+     * <code>required int32 skillId = 2;</code>
      */
-    public java.lang.String getSkillId() {
-      java.lang.Object ref = skillId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          skillId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string skillId = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSkillIdBytes() {
-      java.lang.Object ref = skillId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        skillId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getSkillId() {
+      return skillId_;
     }
 
     private void initFields() {
       monsterId_ = 0;
-      skillId_ = "";
+      skillId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8481,7 +8449,7 @@ public final class Monster {
         output.writeInt32(1, monsterId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getSkillIdBytes());
+        output.writeInt32(2, skillId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -8498,7 +8466,7 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getSkillIdBytes());
+          .computeInt32Size(2, skillId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8622,7 +8590,7 @@ public final class Monster {
         super.clear();
         monsterId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        skillId_ = "";
+        skillId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -8680,9 +8648,7 @@ public final class Monster {
           setMonsterId(other.getMonsterId());
         }
         if (other.hasSkillId()) {
-          bitField0_ |= 0x00000002;
-          skillId_ = other.skillId_;
-          onChanged();
+          setSkillId(other.getSkillId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8752,76 +8718,35 @@ public final class Monster {
         return this;
       }
 
-      // required string skillId = 2;
-      private java.lang.Object skillId_ = "";
+      // required int32 skillId = 2;
+      private int skillId_ ;
       /**
-       * <code>required string skillId = 2;</code>
+       * <code>required int32 skillId = 2;</code>
        */
       public boolean hasSkillId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string skillId = 2;</code>
+       * <code>required int32 skillId = 2;</code>
        */
-      public java.lang.String getSkillId() {
-        java.lang.Object ref = skillId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          skillId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getSkillId() {
+        return skillId_;
       }
       /**
-       * <code>required string skillId = 2;</code>
+       * <code>required int32 skillId = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getSkillIdBytes() {
-        java.lang.Object ref = skillId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          skillId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string skillId = 2;</code>
-       */
-      public Builder setSkillId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      public Builder setSkillId(int value) {
+        bitField0_ |= 0x00000002;
         skillId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string skillId = 2;</code>
+       * <code>required int32 skillId = 2;</code>
        */
       public Builder clearSkillId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        skillId_ = getDefaultInstance().getSkillId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string skillId = 2;</code>
-       */
-      public Builder setSkillIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        skillId_ = value;
+        skillId_ = 0;
         onChanged();
         return this;
       }
@@ -13053,7 +12978,7 @@ public final class Monster {
       "s\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMonste" +
       "rId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"6\n" +
       "\020HSMonsterSkillUp\022\021\n\tmonsterId\030\001 \002(\005\022\017\n\007" +
-      "skillId\030\002 \002(\t\"F\n\023HSMonsterSkillUpRet\022\022\n\n" +
+      "skillId\030\002 \002(\005\"F\n\023HSMonsterSkillUpRet\022\022\n\n" +
       "skillPoint\030\001 \002(\005\022\033\n\023skillPointTimeStamp\030" +
       "\002 \002(\005\"?\n\020HSMonsterStageUp\022\021\n\tmonsterId\030\001" +
       " \002(\005\022\030\n\020consumeMonsterId\030\002 \003(\005\"\025\n\023HSMons",

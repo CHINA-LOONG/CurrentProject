@@ -141,7 +141,7 @@ public class ServerData {
 		}
 
 		if (serverDataEntity != null) {
-			setRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeekRefreshTime()));
+			setRefreshTime(GsConst.Pvp.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeekRefreshTime()));
 		}
 	}
 
@@ -392,7 +392,7 @@ public class ServerData {
 
 	public void setRefreshTime(int timeCfgId, Calendar time) {
 		this.refreshTimeMap.put(timeCfgId, time);
-		if (timeCfgId == GsConst.PVP_WEEK_REFRESH_TIME_ID) {
+		if (timeCfgId == GsConst.Pvp.PVP_WEEK_REFRESH_TIME_ID) {
 			serverDataEntity.setPvpWeekRefreshTime(time.getTimeInMillis());
 			serverDataEntity.notifyUpdate(false);
 		}

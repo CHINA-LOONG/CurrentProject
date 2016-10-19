@@ -94,7 +94,7 @@ public class SpellFunctions
         int count = caster.buffList.Count;
         for (int i = 0; i < count; ++i)
         {
-			if (caster.buffList[count].buffProto.category == 5)
+			if (caster.buffList[i].buffProto.category == 5)
 				return 1 ;
         }
 		return 0;

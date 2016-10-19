@@ -28,7 +28,7 @@ public class bosshuoshan42Daochengsizhong4 : BossAi {
 		Daochengsizhong4SpellDic.TryGetValue ("bosshuoshan42Daochengsizhong42", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Daochengsizhong4Unit);
-		if (NormalScript.GetWpLifeLeft(Daochengsizhong4Unit.battleUnit, "bosshuoshan42Daochengsizhong4wp02") != 0)
+		if (jishu == 0)
 		{
 			if (GetAttackCount(Daochengsizhong4Unit) % 7 == 0 && GetAttackCount(Daochengsizhong4Unit) != 0) 
 			{
@@ -63,6 +63,7 @@ public class bosshuoshan42Daochengsizhong4 : BossAi {
 		{
 			target.TriggerEvent("daochengsizhong4_wp02dead", Time.time, null);
 			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
+			jishu ++;
 		}
 	}
 	//---------------------------------------------------------------------------------------------

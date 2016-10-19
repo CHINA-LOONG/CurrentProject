@@ -11,20 +11,15 @@ public final class Skill {
   public interface HSSkillOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required string skillId = 1;
+    // required int32 skillId = 1;
     /**
-     * <code>required string skillId = 1;</code>
+     * <code>required int32 skillId = 1;</code>
      */
     boolean hasSkillId();
     /**
-     * <code>required string skillId = 1;</code>
+     * <code>required int32 skillId = 1;</code>
      */
-    java.lang.String getSkillId();
-    /**
-     * <code>required string skillId = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getSkillIdBytes();
+    int getSkillId();
 
     // required int32 level = 2;
     /**
@@ -87,9 +82,9 @@ public final class Skill {
               }
               break;
             }
-            case 10: {
+            case 8: {
               bitField0_ |= 0x00000001;
-              skillId_ = input.readBytes();
+              skillId_ = input.readInt32();
               break;
             }
             case 16: {
@@ -137,47 +132,20 @@ public final class Skill {
     }
 
     private int bitField0_;
-    // required string skillId = 1;
+    // required int32 skillId = 1;
     public static final int SKILLID_FIELD_NUMBER = 1;
-    private java.lang.Object skillId_;
+    private int skillId_;
     /**
-     * <code>required string skillId = 1;</code>
+     * <code>required int32 skillId = 1;</code>
      */
     public boolean hasSkillId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string skillId = 1;</code>
+     * <code>required int32 skillId = 1;</code>
      */
-    public java.lang.String getSkillId() {
-      java.lang.Object ref = skillId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          skillId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string skillId = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSkillIdBytes() {
-      java.lang.Object ref = skillId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        skillId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getSkillId() {
+      return skillId_;
     }
 
     // required int32 level = 2;
@@ -197,7 +165,7 @@ public final class Skill {
     }
 
     private void initFields() {
-      skillId_ = "";
+      skillId_ = 0;
       level_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -221,7 +189,7 @@ public final class Skill {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getSkillIdBytes());
+        output.writeInt32(1, skillId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, level_);
@@ -237,7 +205,7 @@ public final class Skill {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getSkillIdBytes());
+          .computeInt32Size(1, skillId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -359,7 +327,7 @@ public final class Skill {
 
       public Builder clear() {
         super.clear();
-        skillId_ = "";
+        skillId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -416,9 +384,7 @@ public final class Skill {
       public Builder mergeFrom(com.hawk.game.protocol.Skill.HSSkill other) {
         if (other == com.hawk.game.protocol.Skill.HSSkill.getDefaultInstance()) return this;
         if (other.hasSkillId()) {
-          bitField0_ |= 0x00000001;
-          skillId_ = other.skillId_;
-          onChanged();
+          setSkillId(other.getSkillId());
         }
         if (other.hasLevel()) {
           setLevel(other.getLevel());
@@ -458,76 +424,35 @@ public final class Skill {
       }
       private int bitField0_;
 
-      // required string skillId = 1;
-      private java.lang.Object skillId_ = "";
+      // required int32 skillId = 1;
+      private int skillId_ ;
       /**
-       * <code>required string skillId = 1;</code>
+       * <code>required int32 skillId = 1;</code>
        */
       public boolean hasSkillId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string skillId = 1;</code>
+       * <code>required int32 skillId = 1;</code>
        */
-      public java.lang.String getSkillId() {
-        java.lang.Object ref = skillId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          skillId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getSkillId() {
+        return skillId_;
       }
       /**
-       * <code>required string skillId = 1;</code>
+       * <code>required int32 skillId = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getSkillIdBytes() {
-        java.lang.Object ref = skillId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          skillId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string skillId = 1;</code>
-       */
-      public Builder setSkillId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      public Builder setSkillId(int value) {
+        bitField0_ |= 0x00000001;
         skillId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string skillId = 1;</code>
+       * <code>required int32 skillId = 1;</code>
        */
       public Builder clearSkillId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        skillId_ = getDefaultInstance().getSkillId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string skillId = 1;</code>
-       */
-      public Builder setSkillIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        skillId_ = value;
+        skillId_ = 0;
         onChanged();
         return this;
       }
@@ -591,7 +516,7 @@ public final class Skill {
   static {
     java.lang.String[] descriptorData = {
       "\n\024Protocol/Skill.proto\")\n\007HSSkill\022\017\n\007ski" +
-      "llId\030\001 \002(\t\022\r\n\005level\030\002 \002(\005B\030\n\026com.hawk.ga" +
+      "llId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005B\030\n\026com.hawk.ga" +
       "me.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

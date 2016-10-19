@@ -417,13 +417,13 @@ public class ItemCfg extends HawkConfigBase {
 				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 				return false;
 			}
-			
+
 			BaseAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(BaseAttrCfg.class, this.gemId);
 			if (attrCfg == null) {
 				HawkLog.errPrintln(String.format("gemID not found in BaseAttrCfg : %s %s", this.id, this.gemId));
 				return false;
 			}
-			
+
 		} else if (this.gemType != GsConst.UNUSABLE) {
 			HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", this.id));
 			return false;

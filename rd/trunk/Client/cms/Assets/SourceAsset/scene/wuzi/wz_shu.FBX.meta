@@ -6,10 +6,30 @@ ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: ganbishilian
+    100004: ganbishilian_02
+    100006: Object002
+    100008: wz_shu
     400000: //RootNode
+    400002: ganbishilian
+    400004: ganbishilian_02
+    400006: Object002
+    400008: wz_shu
     2300000: //RootNode
+    2300002: ganbishilian
+    2300004: ganbishilian_02
+    2300006: Object002
+    2300008: wz_shu
     3300000: //RootNode
+    3300002: ganbishilian
+    3300004: ganbishilian_02
+    3300006: Object002
+    3300008: wz_shu
     4300000: Object003
+    4300002: Object002
+    4300004: wz_shu
+    4300006: ganbishilian
+    4300008: ganbishilian_02
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -20,10 +40,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -67,10 +83,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

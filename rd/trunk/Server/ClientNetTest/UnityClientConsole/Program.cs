@@ -41,10 +41,10 @@ namespace UnityClientConsole
                 // string name = "shuadong2";// +(1 + i);
                 // string name = "root" + (0 + 1 + i);
                 //string name = "_chat" + (1 + i);
-                string name = "sign3";
+                string name = "lf4";
 
                 test[i] = new App();
-                if (test[i].Init("127.0.0.1", 9595, name) == false)
+                if (test[i].Init("192.168.199.122", 9595, name) == false)
                 {
                     Console.Out.WriteLine(name);
                 }

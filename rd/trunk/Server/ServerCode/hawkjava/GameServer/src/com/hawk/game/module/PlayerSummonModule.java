@@ -59,7 +59,7 @@ public class PlayerSummonModule extends PlayerModule {
 
 		switch (type) {
 		case Const.SummonType.SUMMON_COIN_VALUE: {
-			consume.addCoin(GsConst.summon.ONE_COIN_PRICE);
+			consume.addCoin(GsConst.Summon.ONE_COIN_PRICE);
 			if (false == consume.checkConsume(player, hsCode)) {
 				return true;
 			}
@@ -71,12 +71,12 @@ public class PlayerSummonModule extends PlayerModule {
 		}
 
 		case Const.SummonType.SUMMON_COIN_FREE_VALUE: {
-			if (statisticsEntity.getEggCoin1FreeTimesDaily() >= GsConst.summon.MAX_COIN_FREE_TIMES_DAILY) {
+			if (statisticsEntity.getEggCoin1FreeTimesDaily() >= GsConst.Summon.MAX_COIN_FREE_TIMES_DAILY) {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_NO_FREE);
 				return true;
 			}
 			Calendar curTime = HawkTime.getCalendar();
-			if (curTime.getTimeInMillis() < statisticsEntity.getEggCoin1FreeLastTime().getTimeInMillis() + GsConst.summon.COIN_FREE_CD * 1000) {
+			if (curTime.getTimeInMillis() < statisticsEntity.getEggCoin1FreeLastTime().getTimeInMillis() + GsConst.Summon.COIN_FREE_CD * 1000) {
 				sendError(hsCode, Status.summonError.SUMMON_COIN_FREE_CD);
 				return true;
 			}
@@ -89,13 +89,13 @@ public class PlayerSummonModule extends PlayerModule {
 		}
 
 		case Const.SummonType.SUMMON_DIAMOND_VALUE: {
-			consume.addGold(GsConst.summon.ONE_DIAMOND_PRICE);
+			consume.addGold(GsConst.Summon.ONE_DIAMOND_PRICE);
 			if (false == consume.checkConsume(player, hsCode)) {
 				return true;
 			}
 			consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 			// 假奖励
-			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.summon.FIRST_N_ONE_PSEUDO_REWARD);
+			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.Summon.FIRST_N_ONE_DIAMOND_PSEUDO);
 			if (statisticsEntity.getEggDiamond1PayTimes() < pseudoCfg.getTimes()) {
 				reward.addItemInfos(pseudoCfg.getReward().getRewardList());
 			} else {
@@ -110,7 +110,13 @@ public class PlayerSummonModule extends PlayerModule {
 				sendError(hsCode, Status.summonError.SUMMON_DIAMOND_NO_FREE);
 				return true;
 			}
-			reward.addItemInfos(summonCfg.getReward().getRewardList());
+			// 假奖励
+			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.Summon.FIRST_N_ONE_DIAMOND_FREE_PSEUDO);
+			if (statisticsEntity.getEggDiamond1FreeTimes() < pseudoCfg.getTimes()) {
+				reward.addItemInfos(pseudoCfg.getReward().getRewardList());
+			} else {
+				reward.addItemInfos(summonCfg.getReward().getRewardList());
+			}
 			Calendar curTime = HawkTime.getCalendar();
 			// 最大1点，直接重置
 			statisticsEntity.increaseEggDiamond1FreeTimes();
@@ -158,7 +164,7 @@ public class PlayerSummonModule extends PlayerModule {
 
 		switch (type) {
 		case Const.SummonType.SUMMON_COIN_VALUE: {
-			consume.addCoin(GsConst.summon.TEN_COIN_PRICE);
+			consume.addCoin(GsConst.Summon.TEN_COIN_PRICE);
 			if (false == consume.checkConsume(player, hsCode)) {
 				return true;
 			}
@@ -186,13 +192,13 @@ public class PlayerSummonModule extends PlayerModule {
 		}
 
 		case Const.SummonType.SUMMON_DIAMOND_VALUE: {
-			consume.addGold(GsConst.summon.TEN_DIAMOND_PRICE);
+			consume.addGold(GsConst.Summon.TEN_DIAMOND_PRICE);
 			if (false == consume.checkConsume(player, hsCode)) {
 				return true;
 			}
 			consume.consumeTakeAffectAndPush(player, Action.NULL, hsCode);
 			// 假奖励
-			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.summon.FIRST_N_TEN_PSEUDO_REWARD);
+			SummonPseudoCfg pseudoCfg = HawkConfigManager.getInstance().getConfigByKey(SummonPseudoCfg.class, GsConst.Summon.FIRST_N_TEN_DIAMOND_PSEUDO);
 			if (statisticsEntity.getEggDiamond10Times() < pseudoCfg.getTimes()) {
 				for (int i = 0; i < 10; ++i) {
 					AwardItems reward = AwardItems.valueOf();

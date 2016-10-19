@@ -3,11 +3,16 @@ package com.hawk.game.module;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hawk.annotation.ProtocolHandler;
 import org.hawk.msg.HawkMsg;
+import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.entity.statistics.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Guide.HSGuideFinish;
+import com.hawk.game.protocol.Guide.HSGuideFinishRet;
+import com.hawk.game.protocol.HS;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -19,6 +24,23 @@ public class PlayerStatisticsModule  extends PlayerModule {
 
 	public PlayerStatisticsModule(Player player) {
 		super(player);
+	}
+
+	/**
+	 * 新手引导
+	 */
+	@ProtocolHandler(code = HS.code.GUIDE_FINISH_C_VALUE)
+	private boolean onGuideFinsish(HawkProtocol cmd) {
+		HSGuideFinish protocol = cmd.parseProtocol(HSGuideFinish.getDefaultInstance());
+		List<Integer> guideIdList = protocol.getGuideIdList();
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		statisticsEntity.addGuideFinishList(guideIdList);
+		statisticsEntity.notifyUpdate(true);
+
+		HSGuideFinishRet.Builder response = HSGuideFinishRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.GUIDE_FINISH_S, response));
+		return true;
 	}
 
 	@Override
@@ -69,9 +91,9 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 
 		for (int index : refreshIndexList) {
-			int mask = GsConst.PlayerRefreshMask[index];
+			int mask = GsConst.Refresh.PlayerMaskArray[index];
 
-			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
+			if (0 != (mask & GsConst.Refresh.DAILY )) {
 				statisticsEntity.clearAdventureTimesDaily();
 				statisticsEntity.clearAllianceContriRewardDaily();
 				statisticsEntity.clearAllianceFatigueTimesDaily();
@@ -108,7 +130,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 					player.getPlayerData().syncDailyRefreshInfo();
 				}
 
-			} else if (0 != (mask & GsConst.RefreshMask.MONTHLY)) {
+			} else if (0 != (mask & GsConst.Refresh.MONTHLY)) {
 				statisticsEntity.clearTowerFloorMap();
 				statisticsEntity.clearSigninTimesMonthly();
 				statisticsEntity.clearSigninFillTimesMonthly();

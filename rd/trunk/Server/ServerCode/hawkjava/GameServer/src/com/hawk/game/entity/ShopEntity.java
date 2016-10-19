@@ -126,7 +126,7 @@ public class ShopEntity extends HawkDBEntity{
 	public boolean decode() {
 		shopItemsList = new LinkedList<>();
 		if (shopItems != null && !shopItems.equals("")) {
-			String[] items = shopItems.trim().split(" ");
+			String[] items = shopItems.trim().split(",");
 			for (String item  : items) {
 				ShopItemInfo itemInfo = ShopItemInfo.generateFromDB(item);
 				if (itemInfo != null) {
@@ -139,17 +139,18 @@ public class ShopEntity extends HawkDBEntity{
 	
 	@Override
 	public boolean encode() {
-		StringBuilder builder = new StringBuilder();
 		if (shopItemsList == null || shopItemsList.isEmpty() == true) {
 			this.shopItems = null;
 		}
 		else{
+			StringBuilder builder = new StringBuilder();
 			for (ShopItemInfo shopItem : shopItemsList) {
-				builder.append(shopItem.toString()).append(" ");
+				builder.append(shopItem.toString()).append(",");
 			}
+			builder.deleteCharAt(builder.length() - 1);
 			this.shopItems = builder.toString().trim();
 		}
-		
+
 		return true;
 	}
 	

@@ -1,5 +1,6 @@
-﻿#NUM,TEXT,NUM,TEXT
-id,comments,times,reward
-#id,注释,次数,rewardId
-1,前3次钻石单抽,1,jinbi1st
-2,钻石十连抽,1,zuanshiten1st
+﻿#NUM,NUM,TEXT,TEXT
+id,times,reward,comments
+#id,次数,rewardId,注释
+1,1,jinbi1st,前3次钻石收费单抽
+2,1,zuanshiten1st,第1次钻石十连抽
+3,1,jinbi1st,第1次钻石免费单抽

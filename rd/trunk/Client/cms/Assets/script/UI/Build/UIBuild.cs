@@ -13,7 +13,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	public BuildButton instanceButton;
 
     public BuildButton m_QuestButton;
-    public Button m_SpeechButton;
 	public BuildButton shopButton;
 
     public BuildButton m_ComposeButton;
@@ -74,7 +73,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_BagButton.gameObject).onClick = BagButtonClick;
         EventTriggerListener.Get(instanceButton.gameObject).onClick = OnInstanceButtonClick;
         EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
-        EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
         EventTriggerListener.Get(shopButton.gameObject).onClick = OnShopButtonClick;
         EventTriggerListener.Get(userCenter.gameObject).onClick = OnUserCenterButtonClick;
@@ -285,25 +283,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		UICoinExchange.Open ();
 	}
-
-    void OnSpeechButtonClick(GameObject go)
-    {
-        //UISpeech.Open(m_SpeechInput.text);
-        //AudioSystemMgr.Instance.PlaySound(go,SoundType.Click);
-        PB.HSMonsterCatch mcache = new PB.HSMonsterCatch();
-
-      //  mcache.cfgId = m_SpeechInput.text.ToString();// Unit_Demo_jiuweihu  Unit_Demo_qingniao.
-        UnitData monster = StaticDataMgr.Instance.GetUnitRowData(mcache.cfgId);
-        if (monster == null) return;
-        ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(monster.spellIDList);
-        for (int i = 0; i < spellArrayList.Count; ++i)
-        {
-            string spellID = spellArrayList[i] as string;
-            mcache.skill.Add(new PB.HSSkill() { skillId = spellID, level = 2 });
-        }	
-
-        GameApp.Instance.netManager.SendMessage(ProtocolMessage.Create(PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
-    }
 
     void OnUserCenterButtonClick(GameObject go)
     {

@@ -27,7 +27,7 @@ public class AbilitieOptionItem : MonoBehaviour
         {
             spellIcon = SpellIcon.CreateWith(iconPos);
         }
-        spellIcon.SetData(curData.level, curData.spellData.id);
+        spellIcon.SetData(curData.level, curData.spellData.textId);
         IsSelect = false;
 
         if (objEffect != null)

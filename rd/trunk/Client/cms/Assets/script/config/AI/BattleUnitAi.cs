@@ -558,7 +558,7 @@ public class BattleUnitAi : MonoBehaviour {
 			return null;
 		
 		bool isBuffSelf = false;
-		if (selfBuffSpell.spellData.id.Contains ("Self")) 
+		if (selfBuffSpell.spellData.textId.Contains ("Self")) 
 		{
 			isBuffSelf = true;
 		}
@@ -575,7 +575,7 @@ public class BattleUnitAi : MonoBehaviour {
 				if(subUnit != battleUnit)
 					continue;
 			}
-			if(IsGameUnitHaveBuff(subUnit,selfBuffSpell.spellData.id))
+			if(IsGameUnitHaveBuff(subUnit,selfBuffSpell.spellData.textId))
 				continue;
 			
 			if(spellType == (int)SpellType.Spell_Type_Beneficial)
@@ -633,7 +633,7 @@ public class BattleUnitAi : MonoBehaviour {
 		GameUnit fireTarget = GetFireFocusTarget (battleUnit);
 		if (null != fireTarget)
 		{
-			if(!IsGameUnitHaveBuff(fireTarget,buffSpell.spellData.id))
+			if(!IsGameUnitHaveBuff(fireTarget,buffSpell.spellData.textId))
 			{
 				return fireTarget;
 			}
@@ -646,7 +646,7 @@ public class BattleUnitAi : MonoBehaviour {
 		for (int i = 0; i< listTarget.Count; ++i)
 		{
 			subUnit = listTarget[i];
-			if(!IsGameUnitHaveBuff(subUnit,buffSpell.spellData.id))
+			if(!IsGameUnitHaveBuff(subUnit,buffSpell.spellData.textId))
 			{
 				listValidTarget.Add(subUnit);
 			}
@@ -761,7 +761,7 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		foreach (Buff subBuff in listBuffer)
 		{
-			if(subBuff.IsFinish == false && subBuff.ownedSpell.spellData.id == spellID)
+			if(subBuff.IsFinish == false && subBuff.ownedSpell.spellData.textId == spellID)
 			{
 				return true;
 			}

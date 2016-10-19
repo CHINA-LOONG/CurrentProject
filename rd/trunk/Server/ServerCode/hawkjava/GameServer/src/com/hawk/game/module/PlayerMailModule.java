@@ -229,9 +229,9 @@ public class PlayerMailModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (MailEntity entity : player.getPlayerData().getMailEntityList()) {
-			entity.notifyUpdate(false);
-		}
+		//for (MailEntity entity : player.getPlayerData().getMailEntityList()) {
+		//	entity.notifyUpdate(false);
+		//}
 		return true;
 	}
 }

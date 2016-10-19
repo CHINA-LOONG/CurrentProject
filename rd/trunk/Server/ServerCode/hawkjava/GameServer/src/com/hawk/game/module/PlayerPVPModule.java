@@ -32,7 +32,7 @@ import com.hawk.game.util.MonsterUtil;
 import com.hawk.game.util.TimePointUtil;
 
 public class PlayerPVPModule extends PlayerModule{
-	
+
 	public PlayerPVPModule(Player player) {
 		super(player);
 		listenProto(HS.code.PVP_MATCH_TARGET_C_VALUE);
@@ -46,19 +46,19 @@ public class PlayerPVPModule extends PlayerModule{
 		listenProto(HS.code.PVP_GET_RANK_DEFENCE_C_VALUE);
 		listenMsg(GsConst.MsgType.PVP_RECORD);
 	}
-	
+
 	/**
 	 * 玩家上线处理
 	 * 
 	 * @return
 	 */
 	protected boolean onPlayerLogin() {
-		player.getPlayerData().loadPVPDefenceData();	
+		player.getPlayerData().loadPVPDefenceData();
 		player.getPlayerData().loadPVPDefenceRecordData();
 		player.getPlayerData().syncPVPDefenceInfo();
-		return true;	
+		return true;
 	}
-	
+
 	/**
 	 * 处理玩家下线
 	 */
@@ -73,18 +73,18 @@ public class PlayerPVPModule extends PlayerModule{
 				}
 			}
 		}
-		
+
 		player.getPlayerData().getPVPDefenceEntity().setBP((int)(MonsterUtil.calculateBP(monstersBuilder.getMonsterInfoBuilderList())));
 		player.getPlayerData().getPVPDefenceEntity().setLevel(player.getLevel());
 		player.getPlayerData().getPVPDefenceEntity().setMonsterDefenceBuilder(monstersBuilder);
 		player.getPlayerData().getPVPDefenceEntity().notifyUpdate(true);
-		
+
  		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_LOGOUT, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
  		msg.pushParam(player);
 		HawkApp.getInstance().postMsg(msg);
 		return true;
 	}
-	
+
 	/**
 	 * 协议响应
 	 * 
@@ -140,10 +140,10 @@ public class PlayerPVPModule extends PlayerModule{
 		else if (protocol.getType() == HS.code.PVP_GET_MY_INFO_C_VALUE) {
 			onGetPVPMyInfo(protocol);
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * 设置防守阵容
 	 * @param cmd
@@ -163,7 +163,7 @@ public class PlayerPVPModule extends PlayerModule{
 				return true;
 			}
 		}
-		
+
 		if (player.getPlayerData().getPVPDefenceEntity().hasSetDefenceMonsters()) {
 			for (HSMonster monster : player.getPlayerData().getPVPDefenceEntity().getMonsterDefenceBuilder().getMonsterInfoList()) {
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monster.getMonsterId());
@@ -173,7 +173,7 @@ public class PlayerPVPModule extends PlayerModule{
 				}
 			}
 		}
-		
+
 		for (int monsterId : protocol.getMonsterIdList()) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 			if (monsterEntity != null) {
@@ -181,17 +181,17 @@ public class PlayerPVPModule extends PlayerModule{
 				monsterEntity.notifyUpdate(true);
 			}
 		}
-		
+
 		player.getPlayerData().getPVPDefenceEntity().setBP((int)(MonsterUtil.calculateBP(monstersBuilder.getMonsterInfoBuilderList())));
 		player.getPlayerData().getPVPDefenceEntity().setMonsterDefenceBuilder(monstersBuilder);
 		player.getPlayerData().getPVPDefenceEntity().notifyUpdate(true);
-		
+
 		HSSetPVPDefenceMonsterRet.Builder response = HSSetPVPDefenceMonsterRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_SET_DEFENCE_MONSTERS_S_VALUE, response));
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 获取防守阵容
 	 * @param cmd
@@ -202,12 +202,12 @@ public class PlayerPVPModule extends PlayerModule{
 		for (HSMonster.Builder monster : player.getPlayerData().getPVPDefenceEntity().getMonsterDefenceBuilder().getMonsterInfoBuilderList()) {
 			response.addMonsterId(monster.getMonsterId());
 		}
-		
+
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_DEFENCE_MONSTERS_S_VALUE, response));
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 获取防守记录
 	 * @param cmd
@@ -215,7 +215,7 @@ public class PlayerPVPModule extends PlayerModule{
 	 */
 	private boolean onGetPVPDefenceRecord(HawkProtocol cmd){
 		HSPVPDefenceRecordRet.Builder response = HSPVPDefenceRecordRet.newBuilder();
-		
+
 		for (PVPDefenceRecordEntity pvpDefenceRecordEntity : player.getPlayerData().getPVPDefenceRecordList()) {
 			PVPDefenceRecordData.Builder pvpDefenceRecordData = PVPDefenceRecordData.newBuilder();
 			pvpDefenceRecordData.setAttacker(pvpDefenceRecordEntity.getAttackerName());
@@ -223,31 +223,31 @@ public class PlayerPVPModule extends PlayerModule{
 			pvpDefenceRecordData.setPoint(pvpDefenceRecordEntity.getAttackerPoint());
 			pvpDefenceRecordData.setLevel(pvpDefenceRecordEntity.getAttackerLevel());
 			pvpDefenceRecordData.setResult(pvpDefenceRecordEntity.getResult());
-			
+
 			response.addPvpDefenceRecordList(pvpDefenceRecordData);
-			
-			if (response.getPvpDefenceRecordListCount() >= GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
+
+			if (response.getPvpDefenceRecordListCount() >= GsConst.Pvp.PVP_DEFENCE_RECORD_SIZE) {
 				break;
 			}
 		}
-		
+
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_DEFENCE_RECORD_S_VALUE, response));
 		return true;
 	}
-	
+
 	private boolean onGetPVPMyInfo(HawkProtocol cmd){;
 		PVPRankEntity rankEntity = PVPManager.getInstance().getPVPRankEntity(player.getId());
 		HSPVPInfoRet.Builder response = HSPVPInfoRet.newBuilder();
-		
-		Calendar refreshTime = TimePointUtil.getComingRefreshTime(GsConst.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
+
+		Calendar refreshTime = TimePointUtil.getComingRefreshTime(GsConst.Pvp.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar());
 		int leftTime = (3 - ServerData.getInstance().getPVPWeekRewardCount()) * GsConst.WEEK_SECOND;
 		if (refreshTime != null) {
 			leftTime += (int)((refreshTime.getTimeInMillis() - HawkTime.getMillisecond()) / 1000);
 		}
-		
+
 		if (rankEntity != null) {
 			// 排行榜之内的需要考虑并列情况
-			if (rankEntity.getRank() > GsConst.PVP.PVP_RANK_SIZE + 10) {
+			if (rankEntity.getRank() > GsConst.Pvp.PVP_RANK_SIZE + 10) {
 				response.setPvpPoint(rankEntity.getPoint());
 				response.setPvpRank(rankEntity.getRank() + 1);
 			}
@@ -260,26 +260,26 @@ public class PlayerPVPModule extends PlayerModule{
 			}
 		}
 		else{
-			response.setPvpPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			response.setPvpPoint(GsConst.Pvp.PVP_DEFAULT_POINT);
 			response.setPvpRank(0);
 		}
-	
+
 		response.setMonthRewardTimeLeft(leftTime);
-		
+
 		sendProtocol(HawkProtocol.valueOf(HS.code.PVP_GET_MY_INFO_S_VALUE, response));
 		return true;
 	}
-	
+
 	@Override
 	public boolean onMessage(HawkMsg msg) {
 		if(msg.getMsg() == GsConst.MsgType.PVP_RECORD){
 			onPVPRecord(msg);
 			return true;
 		}
-		
+
 		return super.onMessage(msg);
 	}
-	
+
 	private boolean onPVPRecord(HawkMsg msg) {
 		PVPDefenceRecordEntity pvpDefenceRecordEntity = msg.getParam(0);
 		player.getPlayerData().addPVPDefenceRecord(pvpDefenceRecordEntity);

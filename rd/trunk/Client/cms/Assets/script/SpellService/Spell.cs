@@ -12,7 +12,8 @@ public class SpellUpLevelPrice
 [Serializable]
 public class SpellProtoType
 {
-    public string id;
+    public int id;
+    public string textId;
     public string rootEffectID;
     public int actionCount;
     public int channelTime;
@@ -124,7 +125,7 @@ public class Spell
         //generate spell event
         SpellFireArgs args = new SpellFireArgs();
         args.triggerTime = triggerTime;
-        args.spellID = spellData.id;
+        args.spellID = spellData.textId;
         args.casterID = casterID;
         args.targetID = targetID;
         args.ignoreEvent = ignoreEvent;

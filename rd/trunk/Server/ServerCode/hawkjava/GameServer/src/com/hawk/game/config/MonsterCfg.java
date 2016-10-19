@@ -43,7 +43,7 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final String monsterfounds = null;
 
 	// assemble
-	protected String[] skillIdList;
+	protected int[] skillIdList;
 	protected ItemCfg fragment;
 
 	public MonsterCfg() {
@@ -69,7 +69,6 @@ public class MonsterCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
-		skillIdList = HawkJsonUtil.getJsonInstance().fromJson(spellIDList, new TypeToken<String[]>() {}.getType());
 		return true;
 	}
 
@@ -85,6 +84,18 @@ public class MonsterCfg extends HawkConfigBase {
 			}
 		} else if (fragmentCount != GsConst.UNUSABLE) {
 			return false;
+		}
+
+		// 检测技能，textId转为numId
+		String[] textSkillIdList = HawkJsonUtil.getJsonInstance().fromJson(spellIDList, new TypeToken<String[]>() {}.getType());
+		skillIdList = new int[textSkillIdList.length];
+		for (int i = 0; i < textSkillIdList.length; ++i) {
+			SpellCfg skillCfg = SpellCfg.getCfg(textSkillIdList[i]);
+			if (null == skillCfg) {
+				HawkLog.errPrintln(String.format("config invalid SpellCfg : %s", textSkillIdList[i]));
+				return false;
+			}
+			skillIdList[i] = skillCfg.getId();
 		}
 
 		return true;
@@ -146,7 +157,7 @@ public class MonsterCfg extends HawkConfigBase {
 		return equip;
 	}
 
-	public String[] getSkillIdList() {
+	public int[] getSkillIdList() {
 		return skillIdList;
 	}
 

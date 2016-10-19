@@ -132,12 +132,12 @@ public class PlayerData {
 	 * pvp 防守阵容数据
 	 */
 	private PVPDefenceEntity pvpDefenceEntity = null;
-	
+
 	/**
 	 * pvp 防守记录
 	 */
 	private LinkedList<PVPDefenceRecordEntity> pvpDefenceRecordEntityList = new LinkedList<PVPDefenceRecordEntity>();
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -259,7 +259,7 @@ public class PlayerData {
 		if (shopEntityMap == null) {
 			loadShop();
 		}
-		
+
 		return shopEntityMap.get(type);
 	}
 
@@ -648,18 +648,18 @@ public class PlayerData {
 	public PVPDefenceEntity getPVPDefenceEntity(){
 		return pvpDefenceEntity;
 	}
-	
+
 	public List<PVPDefenceRecordEntity> getPVPDefenceRecordList(){
 		return pvpDefenceRecordEntityList;
 	}
-	
+
 	public void addPVPDefenceRecord(PVPDefenceRecordEntity pvpDefenceRecordEntity){
 		pvpDefenceRecordEntityList.addFirst(pvpDefenceRecordEntity);
-		while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
+		while (pvpDefenceRecordEntityList.size() > GsConst.Pvp.PVP_DEFENCE_RECORD_SIZE) {
 			pvpDefenceRecordEntityList.removeLast().delete(true);
 		}
 	}
-	
+
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -784,9 +784,9 @@ public class PlayerData {
 					shopEntity.decode();
 					shopEntityMap.put(shopEntity.getType(), shopEntity);
 				}
-			}	
+			}
 		}
-		
+
 		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.SHOPNUM_VALUE; i++) {
 			if (!shopEntityMap.containsKey(i)) {
 				ShopEntity shopEntity= new ShopEntity();
@@ -851,10 +851,10 @@ public class PlayerData {
 			}
 		}
 	}
-	
+
 	public void loadPVPDefenceData(){
-		if (pvpDefenceEntity == null) {			
-			pvpDefenceEntity = PVPManager.getInstance().getPVPDefenceEntity(getId(), getNickname(), getLevel(), true);	
+		if (pvpDefenceEntity == null) {
+			pvpDefenceEntity = PVPManager.getInstance().getPVPDefenceEntity(getId(), getNickname(), getLevel(), true);
 		}
 	}
 
@@ -869,27 +869,27 @@ public class PlayerData {
 			rankEntity.setPlayerId(getId());
 			rankEntity.setName(player.getName());
 			rankEntity.setLevel(getLevel());
-			rankEntity.setPoint(GsConst.PVP.PVP_DEFAULT_POINT);
+			rankEntity.setPoint(GsConst.Pvp.PVP_DEFAULT_POINT);
 			rankEntity.setInRank(true);
 			rankEntity.notifyCreate();
 		}
-		
+
 		return rankEntity;
 	}
-	
+
 	public void loadPVPDefenceRecordData(){
 		if (pvpDefenceRecordEntityList == null || pvpDefenceRecordEntityList.isEmpty()) {
 			List<PVPDefenceRecordEntity> resultList = HawkDBManager.getInstance().query("from PVPDefenceRecordEntity where playerId = ? and invalid = 0 order by id DESC ", getId());
 			if (resultList != null && resultList.size() > 0) {
 				pvpDefenceRecordEntityList.addAll(resultList);
-				while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
+				while (pvpDefenceRecordEntityList.size() > GsConst.Pvp.PVP_DEFENCE_RECORD_SIZE) {
 					PVPDefenceRecordEntity pvpDefenceRecordEntity = pvpDefenceRecordEntityList.removeLast();
 					pvpDefenceRecordEntity.delete(true);
 				}
 			}
 		}
 	}
-	
+
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/
@@ -1091,15 +1091,15 @@ public class PlayerData {
 	/**
 	 * 同步PVP防守阵容
 	 */
-	public void syncPVPDefenceInfo(){		
+	public void syncPVPDefenceInfo(){
 		HSGetPVPDefenceMonsterRet.Builder response = HSGetPVPDefenceMonsterRet.newBuilder();
 		for (HSMonster.Builder monster : getPVPDefenceEntity().getMonsterDefenceBuilder().getMonsterInfoBuilderList()) {
 			response.addMonsterId(monster.getMonsterId());
 		}
-		
+
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.PVP_DEFENCE_SYNC_S_VALUE, response));
 	}
-	
+
 	/**
 	 * 获取在线玩家快照数据
 	 * @return

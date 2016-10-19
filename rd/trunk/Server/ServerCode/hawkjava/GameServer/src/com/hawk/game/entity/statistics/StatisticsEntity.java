@@ -15,7 +15,6 @@ import org.hawk.xid.HawkXID;
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.GsConst.Cycle;
 import com.hawk.game.util.QuestUtil;
 
 /**
@@ -459,7 +458,7 @@ public class StatisticsEntity {
 			return;
 		}
 
-		if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
+		if (questCfg.getCycle() == GsConst.Quest.DAILY_CYCLE) {
 			mfEntity.questCompleteDailySet.add(questId);
 			mfEntity.questCompleteDailyFlag = true;
 		} else {
@@ -482,7 +481,7 @@ public class StatisticsEntity {
 			return;
 		}
 
-		if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
+		if (questCfg.getCycle() == GsConst.Quest.DAILY_CYCLE) {
 			mfEntity.questCompleteDailySet.remove(questId);
 			mfEntity.questCompleteDailyFlag = true;
 		} else {
@@ -794,6 +793,17 @@ public class StatisticsEntity {
 	}
 
 	// MF 2 method=========================================================================
+
+	// guideFinish-------------------------------------------
+	public Set<Integer> getGuideFinishSet() {
+		return mf2Entity.guideFinishSet;
+	}
+
+	public void addGuideFinishList(List<Integer> guideList) {
+		mf2Entity.guideFinishSet.addAll(guideList);
+		mf2Entity.guideFinishFlag = true;
+		mf2Update = true;
+	}
 
 	// useItemCount--------------------------------------------
 //	public Map<String, Integer> getUseItemCountMap() {

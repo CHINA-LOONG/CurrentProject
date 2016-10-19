@@ -64,7 +64,7 @@ public class SociatyQuestCfg extends HawkConfigBase{
 			return false;
 		}
 
-		if (goalType == GsConst.AllianceQuestType.INSTANCE_QUEST && HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, goalParam) == null) {
+		if (goalType == GsConst.Alliance.INSTANCE_QUEST && HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, goalParam) == null) {
 			return false;
 		}
 

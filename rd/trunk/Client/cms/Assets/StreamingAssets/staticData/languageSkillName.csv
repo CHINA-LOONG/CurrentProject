@@ -185,23 +185,23 @@ bossdajie12Mantuoluo21Name,花刺,Thorns
 bossdajie12Mantuoluo22Name,飞叶斩,Leaf Darts
 bossdajie12Mantuoluo23Name,光合作用,Photosynthesis
 bossdajie12Mantuoluo24Name,吸取养分,Absorption
-bossdajie13Langren31Name,利爪,Claw
-bossdajie13Langren32Name,壁垒,Barrier
-bossdajie13Langren34Name,疯狂抓挠,Rampant Swipe
+bossdajie15Langren31Name,利爪,Claw
+bossdajie15Langren32Name,壁垒,Barrier
+bossdajie15Langren34Name,疯狂抓挠,Rampant Swipe
 bossdajie14Piying51Name,暗影术,Shadow Tactics
 bossdajie14Piying52Name,全面压制,Crushing All
 bossdajie14Piying53Name,力量压制,Crushing Force
 bossdajie14Piying54Name,黑暗风暴,Shadowstorm
 bossdajie14Piying55Name,智力压制,Crushing Intellect
-bossdajie15Huapo21Name,花刺,Thorns
-bossdajie15Huapo22Name,花舞,Flower dance
-bossdajie15Huapo23Name,花刺扫射,Spike Spray
+bossdajie17Huapo21Name,花刺,Thorns
+bossdajie17Huapo22Name,花舞,Flower dance
+bossdajie17Huapo23Name,花刺扫射,Spike Spray
 bossdajie16Xiaochou31Name,水球,Liquid Sphere
 bossdajie16Xiaochou33Name,水浪,Tidal Wave
 bossdajie16Xiaochou34Name,水龙卷,Waterspout
-bossdajie17Zouyincao21Name,花刺,Thorns
-bossdajie17Zouyincao22Name,噪音,Noise
-bossdajie17Zouyincao23Name,生根,Take Root
+bossdajie16Zouyincao21Name,花刺,Thorns
+bossdajie16Zouyincao22Name,噪音,Noise
+bossdajie16Zouyincao23Name,生根,Take Root
 bossxiaoxiang21Wushi41Name,吐焰,Fire Breath
 bossxiaoxiang21Wushi42Name,狮舞,Lion Ritual
 bossxiaoxiang21Wushi43Name,慌张,Fluster
@@ -411,23 +411,23 @@ bossdajie12Mantuoluo21Tips,给单体目标造成100%物攻的木属性物理伤�
 bossdajie12Mantuoluo22Tips,给群体目标造成60%法攻的木属性法术伤害,Deals (60% of magic ATK) grass type magic damage to all enemy targets
 bossdajie12Mantuoluo23Tips,给自身回复100%法攻的生命值,Recovers (100% of magic ATK) of your HP
 bossdajie12Mantuoluo24Tips,给自身回复大量生命值,Recovers a large amount of your HP
-bossdajie13Langren31Tips,给单体目标造成100%物攻的水属性物理伤害,Deals (100% of physical ATK) water type physical damage to a single target
-bossdajie13Langren32Tips,降低自身受伤比,Decreases your Injury Rate
-bossdajie13Langren34Tips,给单体目标连续造成6次75%物攻的水属性物理伤害,Repeatedly deals (75% of physical ATK) water type physical damage 6 times to a single target
+bossdajie15Langren31Tips,给单体目标造成100%物攻的水属性物理伤害,Deals (100% of physical ATK) water type physical damage to a single target
+bossdajie15Langren32Tips,降低自身受伤比,Decreases your Injury Rate
+bossdajie15Langren34Tips,给单体目标连续造成6次75%物攻的水属性物理伤害,Repeatedly deals (75% of physical ATK) water type physical damage 6 times to a single target
 bossdajie14Piying51Tips,给单体目标造成50%法攻的暗属性法术伤害,Deals (50% of magic ATK) dark type magic damage to a single target
 bossdajie14Piying52Tips,使群体目标力量和智力降低80%，持续3回合,Reduces STR and  INT of all enemy targets by 80% for 3 turns
 bossdajie14Piying53Tips,使群体目标力量降低80%，持续3回合,Reduces STR of all enemy targets by 80% for 3 turns
 bossdajie14Piying54Tips,给群体目标造成200%法攻的暗属性法术伤害,Deals (200% of magic ATK) dark type magic damage to all enemy targets
 bossdajie14Piying55Tips,使单体目标智力降低80%，持续3回合,Reduces INT of all enemy targets by 80% for 3 turns
-bossdajie15Huapo21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossdajie15Huapo22Tips,给单体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
-bossdajie15Huapo23Tips,给单体目标连续造成多次100%物攻的水属性物理伤害,Repeatedly deals numbers of(100% of physical ATK) water type physical damage to a single target.
+bossdajie17Huapo21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
+bossdajie17Huapo22Tips,给单体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
+bossdajie17Huapo23Tips,给单体目标连续造成多次100%物攻的水属性物理伤害,Repeatedly deals numbers of(100% of physical ATK) water type physical damage to a single target.
 bossdajie16Xiaochou31Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
 bossdajie16Xiaochou33Tips,给群体目标造成120%法攻的水属性法术伤害,Deals (120% of magic ATK) water type magic damage to all enemy targets
 bossdajie16Xiaochou34Tips,给敌方目标造成水属性法术伤害,Deals water type magic damage an enemy target 
-bossdajie17Zouyincao21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossdajie17Zouyincao22Tips,给群体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets
-bossdajie17Zouyincao23Tips,提升自身300%智力，持续3回合,Increases your INT by 300% for 3 turns
+bossdajie16Zouyincao21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
+bossdajie16Zouyincao22Tips,给群体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to all enemy targets
+bossdajie16Zouyincao23Tips,提升自身300%智力，持续3回合,Increases your INT by 300% for 3 turns
 bossxiaoxiang21Wushi41Tips,给单体目标造成100%法攻的火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
 bossxiaoxiang21Wushi42Tips,提升自身60%智力，持续3回合,Increase your INT by 60% for 3 turns
 bossxiaoxiang21Wushi43Tips,血量小于等于总血量25%时，提升自身40%速度,"When HP drops below 25% of your total HP amount, increase your SPD by 40%"
@@ -1224,3 +1224,23 @@ bosszhifuletuJiuweihu42Tips,给群体目标造成{0}%法攻的火属性法术伤
 bosszhifuletuJiuweihu43Tips,给自身回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) of your HP
 bossmidasigongHuangjinzhiling11Tips,给单体目标造成光属性伤害,Deals light type damage to a single target
 bossmidasigongHuangjinzhiling13Tips,给群体目标造成光属性伤害,Deals light type damage to all enemy targets
+bossdajie13Cike41Name,火焰爪,Flame Claws
+bossdajie13Cike42Name,龟甲防御,Turtle Shell
+bossdajie13Cike43Name,盛怒爆发,Enrage
+bossdajie13Cike44Name,反伤护盾,Staving Shield
+bossdajie13Cike41Tips,给单体目标造成2次{0}%物攻火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage 2 times to a single target
+bossdajie13Cike42Tips,提升自身{0}%防御力，持续3回合,Increases your DEF by {0}% for 3 turns
+bossdajie13Cike43Tips,给群体目标造成{0}%物攻火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to all enemy targets
+bossdajie13Cike44Tips,受到伤害时，反弹攻击者{0}%物攻的火属性物理伤害,Reflects ({0}% of physical ATK) fire type physical damage back at the attacker whenever you take damage
+bossdajie18Ladong51Name,风术,Blazing Wind
+bossdajie18Ladong52Name,龙卷风,Tornado
+bossdajie18Ladong54Name,龙之吐息,Dragon's Breath
+bossdajie18Ladong51Tips,给单体目标造成{0}%法攻暗属性法术伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+bossdajie18Ladong52Tips,给群体目标造成{0}%法攻暗属性法术伤害,Deals ({0}% of magic ATK) dark type magic damage to all enemy targets
+bossdajie18Ladong54Tips,给群体目标造成{0}%法攻暗属性法术伤害并附加痛楚效果,Deals ({0}% of magic ATK) dark type magic damage to all enemy targets with an additional Anguish effect
+bossdajie11Moguguai41Name,火焰重击,Flame Strike
+bossdajie11Moguguai42Name,火焰旋风,Fire Cyclone
+bossdajie11Moguguai43Name,火磷粉,Explosive Dust
+bossdajie11Moguguai41Tips,给单体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+bossdajie11Moguguai42Tips,给群体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
+bossdajie11Moguguai43Tips,给群体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets

@@ -454,7 +454,7 @@ public class GmService_Dev extends GameService {
 			else if (gmOperation.equals("week")) {
 				PVPManager.getInstance().onPVPWeekReward(null);
 			}
-			
+
 			break;
 		}
 		// 设置故事副本星级
@@ -705,14 +705,14 @@ public class GmService_Dev extends GameService {
 
 			actionHandled = true;
 			break;
-			
+
 		}
 
 		// 每日刷新
 		case "dailyrefresh": {
 			List<Integer> refreshIndexList = new ArrayList<Integer>();
-			for (int i = 0; i < GsConst.PlayerRefreshMask.length; ++i) {
-				if (0 != (GsConst.PlayerRefreshMask[i] & GsConst.RefreshMask.DAILY )) {
+			for (int i = 0; i < GsConst.Refresh.PlayerMaskArray.length; ++i) {
+				if (0 != (GsConst.Refresh.PlayerMaskArray[i] & GsConst.Refresh.DAILY )) {
 					refreshIndexList.add(i);
 					break;
 				}
@@ -737,7 +737,7 @@ public class GmService_Dev extends GameService {
 			actionHandled = true;
 			break;
 		}
-		
+
 		default:
 			break;
 		}

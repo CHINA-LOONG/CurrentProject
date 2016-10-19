@@ -15,7 +15,7 @@ public class SelectMonsterPanel : UIBase
     public Text textClose;
     public Text countLabel;
     //public Text demandLabel;
-    public Image scrollIcon;
+    //public Image scrollIcon;
     public GameObject elementContainer;
     public Transform monIconPos;
     private MonsterIcon avatar;

@@ -165,7 +165,7 @@ public class PhyDazhaoController : MonoBehaviour
 		}
 		battleGo.unit.attackWpName = weakpointName;
 	
-		SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, casterBattleGo.unit, battleGo.unit, Time.time, false, dazhaoUseCount > 0);
+		SpellService.Instance.SpellRequest(dazhaoSpell.spellData.textId, casterBattleGo.unit, battleGo.unit, Time.time, false, dazhaoUseCount > 0);
 
 		dazhaoUseCount++;
 		int comboIndex = dazhaoUseCount;

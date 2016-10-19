@@ -2,6 +2,7 @@ package com.hawk.game.entity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +13,8 @@ import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
 import org.hawk.os.HawkTime;
-import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.google.gson.reflect.TypeToken;
 import com.hawk.game.protocol.Const;
 
 /**
@@ -58,7 +57,7 @@ public class MonsterEntity extends HawkDBEntity {
 	protected byte disposition = 0;
 
 	@Column(name = "skillList", nullable = false)
-	private String skillJson = "";
+	private String skillStr = "";
 
 	@Column(name = "state", nullable = false)
 	protected int state = 0;
@@ -73,7 +72,7 @@ public class MonsterEntity extends HawkDBEntity {
 	protected boolean invalid = false;
 
 	@Transient
-	protected Map<String, Integer> skillMap = new HashMap<String, Integer>();
+	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getSeconds();
@@ -163,15 +162,15 @@ public class MonsterEntity extends HawkDBEntity {
 		this.disposition = disposition;
 	}
 
-	public Map<String, Integer> getSkillMap() {
+	public Map<Integer, Integer> getSkillMap() {
 		return skillMap;
 	}
 
-	public Integer getSkillLevel(String skillId) {
+	public Integer getSkillLevel(int skillId) {
 		return skillMap.get(skillId);
 	}
 
-	public void setSkillLevel(String skillId, int level) {
+	public void setSkillLevel(int skillId, int level) {
 		skillMap.put(skillId, level);
 	}
 
@@ -197,15 +196,29 @@ public class MonsterEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {
-			skillMap = HawkJsonUtil.getJsonInstance().fromJson(skillJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		if (null != skillStr && false == "".equals(skillStr) && false == "null".equals(skillStr)) {
+			String[] skillArray = skillStr.split(",");
+			skillMap.clear();
+			for (int i = 0; i < skillArray.length; ++i) {
+				String[] pair = skillArray[i].split(":");
+				skillMap.put(Integer.parseInt(pair[0]), Integer.parseInt(pair[1]));
+			}
 		}
 		return true;
 	}
 
 	@Override
 	public boolean encode() {
-		skillJson = HawkJsonUtil.getJsonInstance().toJson(skillMap);
+		if (true == skillMap.isEmpty()) {
+			skillStr = "";
+		} else {
+			StringBuilder builder = new StringBuilder();
+			for (Entry<Integer, Integer> skill : skillMap.entrySet()) {
+				builder.append(skill.getKey()).append(":").append(skill.getValue()).append(",");
+			}
+			builder.deleteCharAt(builder.length() - 1);
+			skillStr = builder.toString();
+		}
 		return true;
 	}
 

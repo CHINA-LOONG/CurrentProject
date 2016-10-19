@@ -62,7 +62,7 @@ public class MfStatisticsEntity extends HawkDBEntity {
 	// pvp次数开始计时时间
 	@Column(name = "pvpTimeBeginTime")
 	protected int pvpTimeBeginTime = 0;
-	
+
 	// 历史达到品级X怪物数量
 	@Column(name = "monsterStageXCount", nullable = false)
 	protected String monsterStageXCountJson = "";

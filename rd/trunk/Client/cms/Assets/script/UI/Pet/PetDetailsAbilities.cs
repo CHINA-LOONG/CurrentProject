@@ -78,7 +78,7 @@ public class PetDetailsAbilities : PetDetailsRight
             {
                 continue;
             }
-            if (spellDict.ContainsKey(spellList[i].id))
+            if (spellDict.ContainsKey(spellList[i].textId))
             {
                 if (null == spellIcons[spellCount])
                 {
@@ -91,7 +91,7 @@ public class PetDetailsAbilities : PetDetailsRight
                 {
                     spellIcons[spellCount].gameObject.SetActive(true);
                 }
-                spellIcons[spellCount].ReloadData(spellDict[spellList[i].id]);
+                spellIcons[spellCount].ReloadData(spellDict[spellList[i].textId]);
                 spellCount++;
                 if (spellCount >= spellIcons.Count)
                 {
@@ -231,8 +231,8 @@ public class PetDetailsAbilities : PetDetailsRight
 
 
         PB.HSMonsterSkillUpRet skillUpResponse = msg.GetProtocolBody<PB.HSMonsterSkillUpRet>();
-        curData.spellList[curAbilitie.curData.spellData.id].level += 1;
-        curData.LevelUpdateSpell(curAbilitie.curData.spellData.id);
+        curData.spellList[curAbilitie.curData.spellData.textId].level += 1;
+        curData.LevelUpdateSpell(curAbilitie.curData.spellData.textId);
 
         StatisticsDataMgr.Instance.ResetSkillPointState(skillUpResponse.skillPoint, skillUpResponse.skillPointTimeStamp);
         ReloadAbilitie(curAbilitie);

@@ -110,7 +110,12 @@ public class ItemInfo {
 
 	@Override
 	public String toString() {
-		return String.format("%d_%s_%d_%d_%d", type, itemId, count, stage, level);
+		StringBuilder builder = new StringBuilder();
+		return builder.append(type).append("_")
+			.append(itemId).append("_")
+			.append(count).append("_")
+			.append(stage).append("_")
+			.append(level).toString();
 	}
 
 	public static String toString(List<ItemInfo> itemList) {

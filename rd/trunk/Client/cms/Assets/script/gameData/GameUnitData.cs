@@ -311,11 +311,11 @@ public class GameUnit : IComparable
             int skillCount = pbUnit.spellPbList.Count;
             for (int skillIndex = 0; skillIndex < skillCount; ++skillIndex)
             {
-                string spellID = pbUnit.spellPbList[skillIndex].skillId;
-                spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
+                int spellID = pbUnit.spellPbList[skillIndex].skillId;
+                spellPt = StaticDataMgr.Instance.GetSpellProtoDataByID(spellID);
                 if (spellPt != null)
                 {
-                    spellList.Add(spellID, new Spell(spellPt, pbUnit.spellPbList[skillIndex].level));
+                    spellList.Add(spellPt.textId, new Spell(spellPt, pbUnit.spellPbList[skillIndex].level));
                 }
             }
         }
@@ -983,7 +983,7 @@ public class GameUnit : IComparable
             Spell curSpell = itor.Current.Value;
             if (curSpell.spellData.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(curSpell.spellData.firstSpell) == true)
             {
-                SpellService.Instance.SpellRequest(curSpell.spellData.id, this, this, triggerTime);
+                SpellService.Instance.SpellRequest(curSpell.spellData.textId, this, this, triggerTime);
             }
         }
     }

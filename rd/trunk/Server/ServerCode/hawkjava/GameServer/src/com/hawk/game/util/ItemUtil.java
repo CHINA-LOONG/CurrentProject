@@ -21,7 +21,7 @@ public class ItemUtil {
 	public static boolean itemCanOverlap(int itemType) {
 		return itemType == Const.itemType.PLAYER_ATTR_VALUE || itemType == Const.itemType.ITEM_VALUE;
 	}
-	
+
 	/**
 	 * 随机一个形状的宝石
 	 * 
@@ -35,7 +35,7 @@ public class ItemUtil {
 		} catch (Exception e) {
 			random = 100;
 		}
-		
+
 		int type = GsConst.GemTypeWeight.NONE_GEM_TYPE.ordinal();
 		if (random <= GsConst.GemTypeWeight.FIRST_GEM_TYPE.GetWeight()) {
 			type = GsConst.GemTypeWeight.FIRST_GEM_TYPE.ordinal();
@@ -64,10 +64,10 @@ public class ItemUtil {
 		else if (random <= GsConst.GemTypeWeight.NINTH_GEM_TYPE.GetWeight()) {
 			type = GsConst.GemTypeWeight.NINTH_GEM_TYPE.ordinal();
 		}
-		
+
 		return ItemCfg.getGemCfg(level, type);
 	}
-	
+
 	/**
 	 * 查看最大使用的经验药水数量
 	 * 
@@ -76,8 +76,8 @@ public class ItemUtil {
 	 * @param expPerItem   每瓶经验药水提高的经验数量
 	 * @return 实际使用的瓶数
 	 */
-	public static int checkExpItemCount(MonsterEntity monster, int expItemCount, int expPerItem){	
-		Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);	
+	public static int checkExpItemCount(MonsterEntity monster, int expItemCount, int expPerItem){
+		Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);
 		int itemUseCount = 0;
 		float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 		int level = monster.getLevel();
@@ -91,7 +91,7 @@ public class ItemUtil {
 				level++;
 			}
 		}
-		
+
 		return itemUseCount;
 	}
 }

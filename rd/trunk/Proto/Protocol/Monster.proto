@@ -98,7 +98,7 @@ message HSMonsterFeedRet
 message HSMonsterSkillUp
 {
 	required int32 monsterId = 1;
-	required string skillId = 2;
+	required int32 skillId = 2;
 }
 
 // MONSTER_SKILL_UP_S

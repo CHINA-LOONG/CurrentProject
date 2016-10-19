@@ -13,8 +13,10 @@ ModelImporter:
     400004: //RootNode
     2300000: guizi@moxing
     2300002: guizi_02
+    2300004: //RootNode
     3300000: guizi@moxing
     3300002: guizi_02
+    3300004: //RootNode
     4300000: guizi_02
     4300002: guizi@moxing
     9500000: //RootNode
@@ -27,10 +29,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -74,10 +72,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -598,8 +598,8 @@ public class ImManager extends HawkAppObj {
 				for (int j = 0; j < langList.size(); ++j) {
 					transArray[i].targetLangArray[j] = langList.get(j);
 				}
-				transArray[i].profanity = GsConst.Profanity.CENSOR;
-				transArray[i].textType = GsConst.TextType.CHAT;
+				transArray[i].profanity = GsConst.Translation.CENSOR_PROFANITY;
+				transArray[i].textType = GsConst.Translation.CHAT_TYPE;
 			}
 
 			// 异步翻译

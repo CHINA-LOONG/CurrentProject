@@ -29,10 +29,10 @@ public class ShopItemInfo extends ItemInfo{
 		this.slot = 0;
 		this.price = 0;
 		this.priceType = 0;
-		this.discount = 1;		
+		this.discount = 1;
 		this.hasBuy = false;
 	}
-	
+
 	public ShopItemInfo(int type, String itemId, int count, int priceType, int price, float discount) {
 		super();
 		this.type = type;
@@ -40,9 +40,9 @@ public class ShopItemInfo extends ItemInfo{
 		this.count = count;
 		this.priceType = priceType;
 		this.price = price;
-		this.discount = discount;	
+		this.discount = discount;
 	}
-	
+
 	public ShopItemInfo(int type, String itemId, int count, int stage, int level, int priceType, int price, float discount) {
 		super();
 		this.type = type;
@@ -52,9 +52,9 @@ public class ShopItemInfo extends ItemInfo{
 		this.level = level;
 		this.priceType = priceType;
 		this.price = price;
-		this.discount = discount;		
+		this.discount = discount;
 	}
-	
+
 	public ShopItemInfo clone() {
 		ShopItemInfo ret = new ShopItemInfo();
 		ret.type = this.type;
@@ -65,11 +65,11 @@ public class ShopItemInfo extends ItemInfo{
 		ret.slot = this.slot;
 		ret.priceType = this.priceType;
 		ret.price = this.price;
-		ret.discount = this.discount;	
+		ret.discount = this.discount;
 		ret.hasBuy = this.hasBuy;
 		return ret;
 	}
-	
+
 	public int getSlot() {
 		return slot;
 	}
@@ -110,19 +110,18 @@ public class ShopItemInfo extends ItemInfo{
 		this.hasBuy = hasBuy;
 	}
 
+	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-		if (this.type != Const.itemType.EQUIP_VALUE) {
-			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(priceType).append("_").append(price).append("_").append(discount).append("_").append(slot).append("_").append(hasBuy).append("_");
+		if (this.type == Const.itemType.EQUIP_VALUE) {
+			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(stage).append("_").append(level).append("_").append(priceType).append("_").append(price).append("_").append(discount).append("_").append(slot).append("_").append(hasBuy);
+		} else {
+			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(priceType).append("_").append(price).append("_").append(discount).append("_").append(slot).append("_").append(hasBuy);
 		}
-		else
-		{
-			builder.append(type).append("_").append(itemId).append("_").append(count).append("_").append(stage).append("_").append(level).append("_").append(priceType).append("_").append(price).append("_").append(discount).append("_").append(slot).append("_").append(hasBuy).append("_");
-		}
-		
+
 		return builder.toString();
 	}
-	
+
 	public static ShopItemInfo valueOf(int type, String itemId, int count, int priceType, int price, float discount) {
 		return new ShopItemInfo(type, itemId, count, priceType, price, discount);
 	}
@@ -130,30 +129,30 @@ public class ShopItemInfo extends ItemInfo{
 	public static ShopItemInfo valueOf(int type, String itemId, int count, int stage, int level, int priceType, int price, float discount) {
 		return new ShopItemInfo(type, itemId, count, stage, level, priceType, price, discount);
 	}
-	
+
 	public static ShopItemInfo generateFromDB(String info)
 	{
 		String[] items = info.split("_");
 		ShopItemInfo shopItem = null;
 		if (items.length == 8) {
-			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));					
+			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));
 			shopItem.setSlot(Integer.valueOf(items[6]));
 			shopItem.setHasBuy(Boolean.valueOf(items[7]));
 		}
 		else if (items.length == 10) {
 			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Integer.valueOf(items[6]), Float.valueOf(items[7]));
 			shopItem.setSlot(Integer.valueOf(items[8]));
-			shopItem.setHasBuy(Boolean.valueOf(items[9]));		
+			shopItem.setHasBuy(Boolean.valueOf(items[9]));
 		}
 		return shopItem;
 	}
-	
+
 	public static ShopItemInfo generateFromConfig(String info)
 	{
 		String[] items = info.split("_");
 		ShopItemInfo shopItem = null;
 		if (items.length == 6) {
-			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));					
+			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Float.valueOf(items[5]));
 		}
 		else if (items.length == 8) {
 			shopItem = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]), Integer.valueOf(items[5]), Integer.valueOf(items[6]), Float.valueOf(items[7]));

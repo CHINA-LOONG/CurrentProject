@@ -69,12 +69,12 @@ namespace PB
       get { return _result; }
       set { _result = value; }
     }
-    private int _point;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"point", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int point
+    private int _changePoint;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"changePoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int changePoint
     {
-      get { return _point; }
-      set { _point = value; }
+      get { return _changePoint; }
+      set { _changePoint = value; }
     }
     private string _attacker;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"attacker", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -90,12 +90,12 @@ namespace PB
       get { return _level; }
       set { _level = value; }
     }
-    private int _grade;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"grade", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int grade
+    private int _point;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"point", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int point
     {
-      get { return _grade; }
-      set { _grade = value; }
+      get { return _point; }
+      set { _point = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -275,6 +275,26 @@ namespace PB
       get { return _changeTime; }
       set { _changeTime = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPVPEnter")]
+  public partial class HSPVPEnter : global::ProtoBuf.IExtensible
+  {
+    public HSPVPEnter() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPVPEnterRet")]
+  public partial class HSPVPEnterRet : global::ProtoBuf.IExtensible
+  {
+    public HSPVPEnterRet() {}
+    
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

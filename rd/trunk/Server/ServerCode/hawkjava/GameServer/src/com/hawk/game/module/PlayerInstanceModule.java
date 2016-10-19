@@ -693,18 +693,18 @@ public class PlayerInstanceModule extends PlayerModule {
 		int hsCode = cmd.getType();
 
 		int reviveCount = this.curReviveCount + 1;
-		if (reviveCount > GsConst.INSTANCE_REVIVE_COUNT) {
+		if (reviveCount > GsConst.Instance.REVIVE_COUNT) {
 			sendError(hsCode, Status.instanceError.INSTANCE_REVIVE_COUNT);
 			return true;
 		}
 
-		if(player.getGold() < GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]){
+		if(player.getGold() < GsConst.Instance.REVIVE_CONSUME[reviveCount - 1]){
 			sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 			return true;
 		}
 
 		ConsumeItems consume = ConsumeItems.valueOf();
-		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
+		consume.addGold(GsConst.Instance.REVIVE_CONSUME[reviveCount - 1]);
 		consume.consumeTakeAffectAndPush(player, Action.REVIVE, HS.code.INSTANCE_REVIVE_C_VALUE);
 
 		this.curReviveCount = reviveCount;
@@ -861,7 +861,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		if (boxState == Const.ChapterBoxState.INVALID_VALUE) {
 			for (InstanceEntryCfg entry : instanceList) {
-				if (statisticsEntity.getInstanceStar(entry.getInstanceId()) != GsConst.MAX_INSTANCE_STAR) {
+				if (statisticsEntity.getInstanceStar(entry.getInstanceId()) != GsConst.Instance.MAX_STAR) {
 					return false;
 				}
 			}
@@ -914,7 +914,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	private int checkBattleMonsterList(List<Integer> battleMonsterList) {
 		// 阵型
 		int size = battleMonsterList.size();
-		if (size == 0 || size > GsConst.MAX_BATTLE_MONSTER_COUNT) {
+		if (size == 0 || size > GsConst.Instance.MAX_BATTLE_MONSTER_COUNT) {
 			return Status.monsterError.BATTLE_MONSTER_COUNT_VALUE;
 		}
 
@@ -1075,7 +1075,7 @@ public class PlayerInstanceModule extends PlayerModule {
 					statisticsEntity.setNormalTopIndex(this.curIndex);
 				}
 
-				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
+				if (0 == (this.refreshMask & GsConst.Refresh.DAILY)) {
 					statisticsEntity.increaseInstanceNormalTimesDaily(1);
 				}
 				statisticsEntity.increaseInstanceNormalTimes(1);
@@ -1093,7 +1093,7 @@ public class PlayerInstanceModule extends PlayerModule {
 					statisticsEntity.setHardTopIndex(this.curIndex);
 				}
 
-				if (0 == (this.refreshMask & GsConst.RefreshMask.DAILY)) {
+				if (0 == (this.refreshMask & GsConst.Refresh.DAILY)) {
 					statisticsEntity.increaseInstanceHardTimesDaily(1);
 				}
 				statisticsEntity.increaseInstanceHardTimes(1);
@@ -1140,7 +1140,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			float moreCoinRatio = 0;
 			List<ItemInfo> moreItemList = null;
 
-			if (this.curHoleId == GsConst.HoleType.EXP_HOLE) {
+			if (this.curHoleId == GsConst.Instance.EXP_HOLE) {
 				ItemInfo itemInfo = AllianceUtil.getAllianceExp(player);
 				if (itemInfo != null) {
 					moreItemList = new ArrayList<ItemInfo>();
@@ -1149,7 +1149,7 @@ public class PlayerInstanceModule extends PlayerModule {
 				// 奖励
 				genSettleReward(moreCoinRatio, moreItemList, Action.EXP_HOLE_INSTANCE_REWARD, hsCode);
 
-			} else if (this.curHoleId == GsConst.HoleType.COIN_HOLE) {
+			} else if (this.curHoleId == GsConst.Instance.COIN_HOLE) {
 				moreCoinRatio = AllianceUtil.getAllianceCoinRatio(player);
 				// 奖励
 				genSettleReward(moreCoinRatio, moreItemList, Action.COIN_HOLE_INSTANCE_REWARD, hsCode);
@@ -1181,7 +1181,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 胜利
 		if (true == isWin) {
-			if (0 == (this.refreshMask & GsConst.RefreshMask.MONTHLY)) {
+			if (0 == (this.refreshMask & GsConst.Refresh.MONTHLY)) {
 				StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 				statisticsEntity.increaseTowerFloor(this.curTowerId);
 				statisticsEntity.notifyUpdate(true);
@@ -1392,7 +1392,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	@Override
 	public boolean onPlayerRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		for (int index : refreshIndexList) {
-			this.refreshMask |= GsConst.PlayerRefreshMask[index];
+			this.refreshMask |= GsConst.Refresh.PlayerMaskArray[index];
 		}
 		return true;
 	}

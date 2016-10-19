@@ -390,9 +390,9 @@ namespace PB
       get { return _monsterId; }
       set { _monsterId = value; }
     }
-    private string _skillId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"skillId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string skillId
+    private int _skillId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"skillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillId
     {
       get { return _skillId; }
       set { _skillId = value; }

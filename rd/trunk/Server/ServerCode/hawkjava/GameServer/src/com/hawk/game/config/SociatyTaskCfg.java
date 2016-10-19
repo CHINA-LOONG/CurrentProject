@@ -207,21 +207,21 @@ public class SociatyTaskCfg extends HawkConfigBase{
 
 		for (int element : itemTaskSet) {
 			if (HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element) == null || 
-				HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.AllianceQuestType.ITEM_QUEST) {
+				HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.Alliance.ITEM_QUEST) {
 				return false;
 			}
 		}
 
 		for (int element : coinTaskSet) {
 			if (HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element) == null || 
-					HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.AllianceQuestType.COIN_QUEST) {
+					HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.Alliance.COIN_QUEST) {
 					return false;
 				}
 		}
 
 		for (int element : instanceTaskSet) {
 			if (HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element) == null || 
-					HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.AllianceQuestType.INSTANCE_QUEST) {
+					HawkConfigManager.getInstance().getConfigByKey(SociatyQuestCfg.class, element).getGoalType() != GsConst.Alliance.INSTANCE_QUEST) {
 					return false;
 				}
 		}

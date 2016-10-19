@@ -27,7 +27,12 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 		attackResult.attackTarget = GetAttackRandomTarget(Tianshizhang4Unit);
 		
-		if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
+		int a = NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02");
+		int b = NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03");
+		int c = NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04");
+		int d = NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05");
+			
+		if(a != 0 && b != 0 && c != 0 && d != 0)	
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -41,7 +46,33 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 			}
 		}
 
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
+		else if (a == 0 && b != 0 && c != 0 && d != 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
+			}
+			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a != 0 && b == 0 && c != 0 && d != 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
+			}
+			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a == 0 && b == 0 && c != 0 && d != 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -54,7 +85,7 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
+		else if (a != 0 && b != 0 && c == 0 && d != 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -63,7 +94,7 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
+		else if (a != 0 && b != 0 && c != 0 && d == 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -76,7 +107,51 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
+		else if (a == 0 && b != 0 && c == 0 && d != 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a != 0 && b == 0 && c == 0 && d != 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a == 0 && b != 0 && c != 0 && d == 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
+			}
+			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a != 0 && b == 0 && c != 0 && d == 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
+			}
+			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a != 0 && b != 0 && c == 0 && d == 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -85,7 +160,7 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
+		else if (a == 0 && b == 0 && c == 0 && d != 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -94,7 +169,7 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
+		else if (a == 0 && b == 0 && c != 0 && d == 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
@@ -107,56 +182,30 @@ public class bosshuoshan46Tianshizhang4 : BossAi {
 
 			}
 		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
+		else if (a == 0 && b != 0 && c == 0 && d == 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a != 0 && b == 0 && c == 0 && d == 0)
+		{
+			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
+			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
+			{
+				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
+
+			}
+		}
+		else if (a == 0 && b == 0 && c == 0 && d == 0)
 		{
 			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
 			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
 			{
 				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang45", out useSpell);
-
-			}
-		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 || NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
-		{
-			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
-			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
-			}
-			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
-
-			}
-		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 || NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") != 0)
-		{
-			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang41", out useSpell);
-			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
-
-			}
-		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 || NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") != 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
-		{
-			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
-			if (GetAttackCount(Tianshizhang4Unit) % 7 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang46", out useSpell);
-			}
-			else if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
-
-			}
-		}
-		else if (NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp02") == 0 || NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp03") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp04") == 0 && NormalScript.GetWpLifeLeft(Tianshizhang4Unit.battleUnit, "bosshuoshan46Tianshizhang4wp05") == 0)
-		{
-			Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang42", out useSpell);
-			if (GetAttackCount(Tianshizhang4Unit) % 3 == 0 && GetAttackCount(Tianshizhang4Unit) != 0) 
-			{
-				Tianshizhang4SpellDic.TryGetValue ("bosshuoshan46Tianshizhang44", out useSpell);
 
 			}
 		}

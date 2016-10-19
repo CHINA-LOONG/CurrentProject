@@ -37,6 +37,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, BuffPrototype> buffData = new Dictionary<string, BuffPrototype>();
     Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
     Dictionary<string, SpellProtoType> spellData = new Dictionary<string, SpellProtoType>();
+    Dictionary<int, SpellProtoType> spellIdData = new Dictionary<int, SpellProtoType>();
     Dictionary<int, int> spellUpLevelData = new Dictionary<int, int>();
     Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
     Dictionary<string, BattleLevelData> battleLevelData = new Dictionary<string, BattleLevelData>();
@@ -101,6 +102,9 @@ public class StaticDataMgr : MonoBehaviour
     //loading
     Dictionary<int, LoadingData> loadingData = new Dictionary<int, LoadingData>();
     Dictionary<string, Loadinglocation> loadinglocationData = new Dictionary<string, Loadinglocation>();
+    //guide battle level(NOTE:load guide step first)
+    //Dictionary<int, GuideBattleData> guideBattleList = new Dictionary<int, GuideBattleData>();
+    //Dictionary<string, GuideBattleStepData> guideBattleStepList = new Dictionary<string, GuideBattleStepData>();
 
     public void Init()
     {
@@ -125,7 +129,8 @@ public class StaticDataMgr : MonoBehaviour
             foreach (var item in data)
             {
                 //Logger.Log(item.id);
-                spellData.Add(item.id, item);
+                spellData.Add(item.textId, item);
+                spellIdData.Add(item.id, item);
             }
         }
         {
@@ -920,6 +925,51 @@ public class StaticDataMgr : MonoBehaviour
                 loadinglocationData.Add(item.picture, item);
             }
         }
+        ////guide battle data
+        //{
+        //    //init step data first
+        //    var stepList = InitTable<GuideBattleStepData>("guideBattleStep");
+        //    int count = stepList.Count;
+        //    GuideBattleStepData curStepData;
+        //    for (int i = 0; i < count; ++i)
+        //    {
+        //        curStepData = stepList[i];
+        //        guideBattleStepList.Add(curStepData.id, curStepData);
+        //    }
+
+        //    //init guide level data
+        //    var guideStaticList = InitTable<GuideBattleStaticData>("guideBattleStaticData");
+        //    count = guideStaticList.Count;
+        //    GuideBattleStaticData curGBStaticData;
+        //    for (int i = 0; i < count; ++i)
+        //    {
+        //        curGBStaticData = guideStaticList[i];
+        //        GuideBattleData tmpGuideData = new GuideBattleData();
+        //        tmpGuideData.battleStepList = new List<GuideBattleStepData>();
+        //        tmpGuideData.id = curGBStaticData.id;
+        //        tmpGuideData.successStepIndex = curGBStaticData.successStepIndex;
+        //        if (string.IsNullOrEmpty(curGBStaticData.condition) == false)
+        //        {
+        //            var cls = typeof(NormalScript);
+        //            tmpGuideData.condition = cls.GetMethod(curGBStaticData.condition);
+        //        }
+
+        //        ArrayList stepArrayList = MiniJsonExtensions.arrayListFromJson(curGBStaticData.battleStepIDList);
+        //        int stepCount = stepArrayList.Count;
+        //        string tmpStr;
+        //        for (int stepIndex = 0; stepIndex < stepCount; ++stepIndex)
+        //        {
+        //            tmpStr = stepArrayList[stepIndex] as string;
+        //            if (tmpStr != null &&
+        //                guideBattleStepList.TryGetValue(tmpStr, out curStepData)
+        //                )
+        //            {
+        //                tmpGuideData.battleStepList.Add(curStepData);
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -975,12 +1025,20 @@ public class StaticDataMgr : MonoBehaviour
         return collectData;
     }
 
-    public SpellProtoType GetSpellProtoData(string id)
+    public SpellProtoType GetSpellProtoData(string textID)
     {
-        if (spellData.ContainsKey(id))
-            return spellData[id];
+        if (spellData.ContainsKey(textID))
+            return spellData[textID];
         return null;
     }
+    public SpellProtoType GetSpellProtoDataByID(int id)
+    {
+        if (spellIdData.ContainsKey(id))
+            return spellIdData[id];
+
+        return null;
+    }
+
     public int GetSPellLevelPrice(int nextLevel)
     {
         if (spellUpLevelData.ContainsKey(nextLevel))

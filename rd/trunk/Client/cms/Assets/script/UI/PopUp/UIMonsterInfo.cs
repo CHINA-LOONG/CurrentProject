@@ -151,14 +151,14 @@ public class UIMonsterInfo : UIBase
 			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
 			if(pet != null)
 			{
-				Spell sp = pet.GetSpell(spellType.id);
+				Spell sp = pet.GetSpell(spellType.textId);
 				if(sp!=null)
 				{
 					spellLevel = sp.level;
 				}
 			}
 		}
-		icon.SetData (spellLevel, spellType.id);
+		icon.SetData (spellLevel, spellType.textId);
 
 		EventTriggerListener.Get (icon.iconButton.gameObject).onEnter = OnPointerEnter;
 		EventTriggerListener.Get (icon.iconButton.gameObject).onExit = OnPointerExit;

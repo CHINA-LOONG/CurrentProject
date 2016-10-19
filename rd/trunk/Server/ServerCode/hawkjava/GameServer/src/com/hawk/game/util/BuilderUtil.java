@@ -182,6 +182,7 @@ public class BuilderUtil {
 		builder.setIsSigninDaily(statisticsEntity.isSigninDaily());
 		builder.setLoginTimesDaily(statisticsEntity.getLoginTimesDaily());
 		builder.setDumpEndTime(statisticsEntity.getDumpTime());
+		builder.addAllGuideFinish(statisticsEntity.getGuideFinishSet());
 
 		return builder;
 	}
@@ -256,7 +257,7 @@ public class BuilderUtil {
 		}
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
-		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
+		for (Entry<Integer, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
 			skill.setSkillId(entry.getKey());
 			skill.setLevel(entry.getValue());
 			builder.addSkill(skill);

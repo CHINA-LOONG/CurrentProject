@@ -15,10 +15,8 @@ import javax.persistence.Transient;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBEntity;
 import org.hawk.os.HawkTime;
-import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.google.gson.reflect.TypeToken;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
@@ -67,7 +65,7 @@ public class HfStatisticsEntity extends HawkDBEntity {
 
 	// 副本X状态[历史通关次数，星级0-3，今日进入次数]
 	@Column(name = "instanceXState", nullable = false)
-	protected String instanceXStateJson = "";
+	protected String instanceXStateStr = "";
 
 	// 今日普通副本完成次数
 	@Column(name = "normalTimesDaily", nullable = false)
@@ -124,8 +122,18 @@ public class HfStatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (null != instanceXStateJson && false == "".equals(instanceXStateJson) && false == "null".equals(instanceXStateJson)) {
-			instanceStateMap = HawkJsonUtil.getJsonInstance().fromJson(instanceXStateJson, new TypeToken<HashMap<String, int[]>>() {}.getType());
+		if (null != instanceXStateStr && false == "".equals(instanceXStateStr) && false == "null".equals(instanceXStateStr)) {
+			String[] stateArray = instanceXStateStr.split(",");
+			instanceStateMap.clear();
+			for (int i = 0; i < stateArray.length; ++i) {
+				String[] statePair = stateArray[i].split(":", 2);
+				String[] textState = statePair[1].split("_");
+				int[] numState = new int[textState.length];
+				for (int j = 0; j < textState.length; ++j) {
+					numState[j] = Integer.parseInt(textState[j]);
+				}
+				instanceStateMap.put(statePair[0], numState);
+			}
 		}
 
 		normalTimes = 0;
@@ -176,7 +184,21 @@ public class HfStatisticsEntity extends HawkDBEntity {
 	public boolean encode() {
 		if (true == instanceStateFlag) {
 			instanceStateFlag = false;
-			instanceXStateJson = HawkJsonUtil.getJsonInstance().toJson(instanceStateMap);
+			if (true == instanceStateMap.isEmpty()) {
+				instanceXStateStr = "";
+			} else {
+				StringBuilder builder = new StringBuilder();
+				for (Entry<String, int[]> stateEntry : instanceStateMap.entrySet()) {
+					builder.append(stateEntry.getKey()).append(":");
+					int[] state = stateEntry.getValue();
+					for (int i = 0; i < state.length; ++i) {
+						builder.append(state[i]).append("_");
+					}
+					builder.replace(builder.length() - 1, builder.length(), ",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				instanceXStateStr = builder.toString();
+			}
 		}
 
 		return true;

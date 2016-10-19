@@ -50,7 +50,6 @@ public class TimeEventWrap
     {
         if (!updateList.Contains(update))
         {
-            Logger.LogError("添加更新事件" + update.Method.Name);
             updateList.Add(update);
             TimeEventMgr.Instance.UpdataEventInTime(this);
         }
@@ -63,7 +62,6 @@ public class TimeEventWrap
     {
         if (updateList.Contains(update))
         {
-            Logger.LogError("删除更新事件" + update.Method.Name);
             updateList.Remove(update);
         }
         else

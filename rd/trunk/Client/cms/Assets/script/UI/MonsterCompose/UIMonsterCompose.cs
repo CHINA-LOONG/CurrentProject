@@ -246,7 +246,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
             {
                 spellIcons[spellCount].gameObject.SetActive(true);
             }
-            spellIcons[spellCount].SetData(1, spellList[i].id);
+            spellIcons[spellCount].SetData(1, spellList[i].textId);
             spellCount++;
             if (spellCount >= spellIcons.Length)
             {

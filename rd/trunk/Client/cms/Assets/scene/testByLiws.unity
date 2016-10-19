@@ -533,6 +533,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 877455796}
+--- !u!114 &1132432434 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11461430, guid: 791b9002cfe517d4e8ef67ee52088795,
+    type: 2}
+  m_PrefabInternal: {fileID: 1505855636}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1297742864
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +671,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22475310, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22475310, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -734,6 +740,26 @@ Prefab:
     - target: {fileID: 11417628, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
       propertyPath: m_Color.a
       value: .39199999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488604, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: gmText
+      value: 
+      objectReference: {fileID: 1132432434}
+    - target: {fileID: 11461430, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_Text
+      value: 256 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 11461430, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471398, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 152
+      objectReference: {fileID: 0}
+    - target: {fileID: 133010, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 791b9002cfe517d4e8ef67ee52088795, type: 2}

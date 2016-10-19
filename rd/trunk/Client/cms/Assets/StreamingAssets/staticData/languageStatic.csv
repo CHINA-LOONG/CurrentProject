@@ -71,20 +71,20 @@ piying5hide_head,猜猜我在哪,Find me
 huapo2hide_flower,猜猜我在哪,Find me
 xiaochou3hide_weapon,猜猜我在哪,Find me
 zouyincao2hide_trumpet,猜猜我在哪,Find me
-wushi4hide_horn,我的角很脆弱,My horn is where I become fragile.
-wushi4hide_ball,龙珠将给我带来攻击加成,Magic ball gives me ATK power!
-xiyiren2hide_hand,我的手很脆弱,Hands are very delicate.
-xiyiren2hide_claw,爪子能保护好我,Claws are good protectors.
-panshen2hide_eye,想找到的我的弱点，没那么容易！,My weakness is not easy to find
-shuigui3hide_box,宝箱，宝箱，快把他晕住！,This magical box can stun you!
-shuigui3hide_rfoot,我的骨头很脆弱,My skeleton is weak.
-shuigui3hide_bird,乌鸦守护着我,Crows gives me protections.
-kairuisi5hide_head,我的弱点很普通,My weakness is very common
-kairuisi5hide_weapon,你想知道我是怎么提高攻击的么？,You know how I increase my ATK?
-longgongtongzi3hide_head,我的弱点很普通,My weakness is very common
-longgongtongzi3hide_ball,龙宫至宝,My treasure.
-hetong2hide_head,我的弱点很普通,My weakness is very common
-hetong2hide_scarf,我每天都会戴它,I wear this everyday!
+wushi4hide_horn,猜猜我在哪,Find me
+wushi4hide_ball,猜猜我在哪,Find me
+xiyiren2hide_hand,猜猜我在哪,Find me
+xiyiren2hide_claw,猜猜我在哪,Find me
+panshen2hide_eye,猜猜我在哪,Find me
+shuigui3hide_box,猜猜我在哪,Find me
+shuigui3hide_rfoot,猜猜我在哪,Find me
+shuigui3hide_bird,猜猜我在哪,Find me
+kairuisi5hide_head,猜猜我在哪,Find me
+kairuisi5hide_weapon,猜猜我在哪,Find me
+longgongtongzi3hide_head,猜猜我在哪,Find me
+longgongtongzi3hide_ball,猜猜我在哪,Find me
+hetong2hide_head,猜猜我在哪,Find me
+hetong2hide_scarf,猜猜我在哪,Find me
 xiaochou4normal1_body,本体,Default
 xiaochou4normal1_head,弱点,Weakness
 mantuoluo2normal1_body,本体,Default
@@ -103,26 +103,26 @@ xiaochou3normal1_weapon,提高智力,Increase Intelligence
 zouyincao2normal1_body,本体,Default
 zouyincao2normal1_trumpet,提高智力,Increase Intelligence
 wushi4normal1_body,本体,Default
-wushi4normal1_horn,我的角很脆弱,My horn is where I become fragile.
-wushi4normal1_ball,龙珠将给我带来攻击加成,Magic ball gives me ATK power!
+wushi4normal1_horn,弱点,Weakness
+wushi4normal1_ball,提高智力,Increase Intelligence
 xiyiren2normal1_body,本体,Default
-xiyiren2normal1_hand,我的手很脆弱,Hands are very delicate.
-xiyiren2normal1_claw,爪子能保护好我,Claws are good protectors.
+xiyiren2normal1_hand,弱点,Weakness
+xiyiren2normal1_claw,保护弱点,Protect Weakness
 panshen2normal1_body,本体,Default
-panshen2normal1_eye,被你发现了，玫瑰是我的弱点,Rose are my real weaknesses.
+panshen2normal1_eye,弱点,Weakness
 shuigui3normal1_body,本体,Default
-shuigui3normal1_box,宝箱，宝箱，快把他晕住！,This magical box can stun you!
-shuigui3normal1_rfoot,我的骨头很脆弱,My skeleton is weak.
-shuigui3normal1_bird,乌鸦守护着我,Crows gives me protections.
+shuigui3normal1_box,带来眩晕效果,Increases stun  effect
+shuigui3normal1_rfoot,弱点,Weakness
+shuigui3normal1_bird,保护弱点,Protect Weakness
 kairuisi5normal1_body,本体,Default
-kairuisi5normal1_head,被你发现了，头是我的弱点,My head is my weakness.
-kairuisi5normal1_weapon,镰刀请助我一臂之力,This Scythe is very powerful!
+kairuisi5normal1_head,弱点,Weakness
+kairuisi5normal1_weapon,提升攻击和治疗效果,Increases attack and healing effects
 longgongtongzi3normal1_body,本体,Default
-longgongtongzi3normal1_head,被你发现了，头是我的弱点,My head is my weakness.
-longgongtongzi3normal1_ball,隐藏着重生的秘密,You know how I revives myself?
+longgongtongzi3normal1_head,弱点,Weakness
+longgongtongzi3normal1_ball,提供重生效果,Increases revive effect
 hetong2normal1_body,本体,Default
-hetong2normal1_head,被你发现了，头顶是我的弱点,My bald head is my weakness
-hetong2normal1_scarf,敢碰它，你死定了！,I will be really angry if you touch my bowtie.
+hetong2normal1_head,弱点,Weakness
+hetong2normal1_scarf,最好不要碰它,Don't touch it
 bigTaskname201,小巷探秘,Alley Quest
 bigTaskname202,小巷寻宝,Lane Digging Treasure
 bigTaskname301,森林探秘,Forest Explore
@@ -165,16 +165,16 @@ wpName74,精灵,spirit
 wpName75,中间树洞,Intermediate Hollow
 wpName76,精灵,spirit
 wpName77,右侧树洞,Right Hollow
-muling2hide_hole1,精灵也许就藏这！,A spirit is hiding here!
-muling2hide_hole2,精灵也许就藏这！,A spirit is hiding here!
-muling2hide_hole3,精灵也许就藏这！,A spirit is hiding here!
-muling2normal1_body,一定有别的方法摧毁它,Default
-muling2normal1_child1,原来木霊只是被精灵控制了,This Kodama is controlled by spirits.
-muling2normal1_hole1,精灵也许就藏这！,A spirit is hiding here!
-muling2normal1_child2,原来木霊只是被精灵控制了,This Kodama is controlled by spirits.
-muling2normal1_hole2,精灵也许就藏这！,A spirit is hiding here!
-muling2normal1_child3,原来木霊只是被精灵控制了,This Kodama is controlled by spirits.
-muling2normal1_hole3,精灵也许就藏这！,A spirit is hiding here!
+muling2hide_hole1,猜猜我在哪,Find me
+muling2hide_hole2,猜猜我在哪,Find me
+muling2hide_hole3,猜猜我在哪,Find me
+muling2normal1_body,本体,Default
+muling2normal1_child1,弱点,Weakness
+muling2normal1_hole1,保护弱点,Protect Weakness
+muling2normal1_child2,弱点,Weakness
+muling2normal1_hole2,保护弱点,Protect Weakness
+muling2normal1_child3,弱点,Weakness
+muling2normal1_hole3,保护弱点,Protect Weakness
 adventure_conditions1,{0}只光属性宠物,{0} light type monsters
 adventure_conditions2,{0}只木属性宠物,{0} grass type monsters
 adventure_conditions3,{0}只水属性宠物,{0} water type monsters
@@ -303,27 +303,27 @@ zhimubiao20002,通关2-4  4次,Raid 2-4 4 times
 zhimubiao20003,通关2-7  4次,Raid 2-7 4 times
 zhimubiao20004,通关2-8  4次,Raid 2-8 4 times
 bosssenlin31Wendige2wp01,身体,Body
-bosssenlin31Wendige2wp02,右角,Right Horn
-bosssenlin31Wendige2wp03,左角,Life Horn
+bosssenlin31Wendige2wp02,左角,Life Horn
+bosssenlin31Wendige2wp03,右角,Right Horn
 bosssenlin32Longnv3wp01,身体,Body
 bosssenlin32Longnv3wp02,头,Head
 bosssenlin32Longnv3wp03,左灵印,Life Lingyin
-bosssenlin32Longnv3wp04,中灵印,Mid Lingyin
+bosssenlin32Longnv3wp04,右灵印,Right Lingyin
 bosssenlin33Luoxinfu5wp01,身体,Body
 bosssenlin33Luoxinfu5wp02,左下蜘蛛爪,Lower-left Leg
 bosssenlin33Luoxinfu5wp03,右下蜘蛛爪,Lower-right Leg
 bosssenlin33Luoxinfu5wp04,右上蜘蛛爪,Upper-right Leg
 bosssenlin33Luoxinfu5wp05,左上蜘蛛爪,Upper-left Leg
 bosssenlin34Amute3wp01,身体,Body
-bosssenlin34Amute3wp02,面具,Mask
-bosssenlin34Amute3wp03,脸,Face
+bosssenlin34Amute3wp02,脸,Face
+bosssenlin34Amute3wp03,面具,Mask
 bosssenlin35Xiaochou2wp01,身体,Body
 bosssenlin35Xiaochou2wp02,武器,Weapon
 bosssenlin36Momo1wp01,身体,Body
 bosssenlin36Momo1wp02,盾,Shield
 bosssenlin37Hapi1wp01,身体,Body
-bosssenlin37Hapi1wp02,右翅膀,Right Wing
-bosssenlin37Hapi1wp03,左翅膀,Left Wing
+bosssenlin37Hapi1wp02,左翅膀,Left Wing
+bosssenlin37Hapi1wp03,右翅膀,Right Wing
 bosshuoshan41Hongniu4wp01,身体,Body
 bosshuoshan41Hongniu4wp02,左角,Life Horn
 bosshuoshan41Hongniu4wp03,右角,Right Horn
@@ -331,20 +331,20 @@ bosshuoshan42Daochengsizhong4wp01,身体,Body
 bosshuoshan42Daochengsizhong4wp02,钟,Clock
 bosshuoshan42Daochengsizhong4wp03,心脏,Heart
 bosshuoshan43Huoniao4wp01,身体,Body
-bosshuoshan43Huoniao4wp02,右羽毛,Right Feather
+bosshuoshan43Huoniao4wp02,左羽毛,Left Feather
 bosshuoshan43Huoniao4wp03,中羽毛,Mid Feather
-bosshuoshan43Huoniao4wp04,左羽毛,Left Feather
+bosshuoshan43Huoniao4wp04,右羽毛,Right Feather
 bosshuoshan44Datiangou4wp01,本体,Body
-bosshuoshan44Datiangou4wp02,右翅膀,Right Wing
-bosshuoshan44Datiangou4wp03,左翅膀,Left Wing
+bosshuoshan44Datiangou4wp02,左翅膀,Left Wing
+bosshuoshan44Datiangou4wp03,右翅膀,Right Wing
 bosshuoshan44Datiangou4wp04,扇子,Fun
 bosshuoshan45Saibulesi4wp01,身体,Body
 bosshuoshan45Saibulesi4wp02,左头,Left Head
 bosshuoshan45Saibulesi4wp03,中头,Mid Head
 bosshuoshan45Saibulesi4wp04,右头,Right Head
 bosshuoshan46Tianshizhang4wp01,本体,Body
-bosshuoshan46Tianshizhang4wp02,右翅膀,Right Wing
-bosshuoshan46Tianshizhang4wp03,左翅膀,Left Wing
+bosshuoshan46Tianshizhang4wp02,左翅膀,Left Wing
+bosshuoshan46Tianshizhang4wp03,右翅膀,Right Wing
 bosshuoshan46Tianshizhang4wp04,光环,Halo
 bosshuoshan46Tianshizhang4wp05,武器,Weapon
 bosshuoshan47Ifrit4wp01,身体,Body
@@ -352,10 +352,10 @@ bosshuoshan47Ifrit4wp02,左裤脚,Left Trousers
 bosshuoshan47Ifrit4wp03,右裤脚,Right Trousers
 bosshuoshan47Ifrit4wp04,武器,Weapon
 bosssenlin38Meidusha2wp01,身体,Body
-bosssenlin38Meidusha2wp02,右上蛇头,Upper-right Snake Head
-bosssenlin38Meidusha2wp03,右下蛇头,Lower-right Snake Head
-bosssenlin38Meidusha2wp04,左上蛇头,Upper-left Snake Head
-bosssenlin38Meidusha2wp05,左下蛇头,Lower-left Snake Head
+bosssenlin38Meidusha2wp02,右下蛇头,Lower-right Snake Head
+bosssenlin38Meidusha2wp03,左下蛇头,Lower-left Snake Head
+bosssenlin38Meidusha2wp04,右上蛇头,Upper-right Snake Head
+bosssenlin38Meidusha2wp05,左上蛇头,Upper-left Snake Head
 bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
 bosshuoshan48Hehuaisituosi4wp02,右上武器,Top Right Weapon
 bosshuoshan48Hehuaisituosi4wp03,右下武器,Bottom Right Weapon
@@ -486,3 +486,13 @@ bossmidasigongHuangjinzhiling1wp01,身体,Body
 bossmidasigongHuangjinzhiling1wp02,头,Head
 bossmidasigongHuangjinzhiling1wp03,外壳,Shell
 bossmidasigongHuangjinzhiling1wp04,精灵,Spirit
+huocike4hide_shell,猜猜我在哪,Find me
+huocike4normal1_body,本体,Default
+huocike4normal1_shell,反伤护盾,Against injury
+bossdajie13Cike4wp01,头,Head
+bossdajie13Cike4wp02,龟壳,Shell
+bossdajie11Moguguai4wp01,胸,Body
+bossdajie11Moguguai4wp02,蘑菇,Mushroom
+moguguai4hide_mushroom,猜猜我在哪,Find me
+moguguai4normal_body,本体,Default
+moguguai4normal_mushroom,弱点,Weakness

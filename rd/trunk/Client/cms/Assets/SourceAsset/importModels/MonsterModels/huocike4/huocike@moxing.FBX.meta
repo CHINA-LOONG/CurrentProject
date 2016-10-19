@@ -48,6 +48,8 @@ ModelImporter:
     100080: mesh_body
     100082: wp_body
     100084: wp_head
+    100086: mesh_shell
+    100088: wp_shell
     400000: Bip001
     400002: Bip001 Head
     400004: Bip001 L Calf
@@ -91,9 +93,13 @@ ModelImporter:
     400080: mesh_body
     400082: wp_body
     400084: wp_head
+    400086: mesh_shell
+    400088: wp_shell
     4300000: mesh_body
+    4300002: mesh_shell
     9500000: //RootNode
     13700000: mesh_body
+    13700002: mesh_shell
   materials:
     importMaterials: 1
     materialName: 0

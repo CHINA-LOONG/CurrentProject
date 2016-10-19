@@ -172,7 +172,7 @@ public abstract class HawkApp extends HawkAppObj {
 
 		// 加载库目录
 		HawkOSOperator.installLibPath();
-				
+
 		// 初始化工作目录
 		workPath = System.getProperty("user.dir") + File.separator;
 		loopState = LOOP_CLOSED;
@@ -234,13 +234,13 @@ public abstract class HawkApp extends HawkAppObj {
 			HawkLog.logPrintln("ip 获取失败");
 			return false;
 		}
-		
+
 		// 初始化网络统计
 		HawkNetStatistics.getInstance().init();
-				
+
 		// 初始化zmq管理器
 		HawkZmqManager.getInstance().init(HawkZmq.HZMQ_CONTEXT_THREAD);
-		
+
 		// 初始化service管理对象
 		if (appCfg.servicePath != null && appCfg.servicePath.length() > 0) {
 			if (!HawkServiceManager.getInstance().init(appCfg.servicePath)) {
@@ -307,7 +307,7 @@ public abstract class HawkApp extends HawkAppObj {
 
 		return true;
 	}
-	
+
 	/**
 	 * 开启网络
 	 * 
@@ -340,7 +340,7 @@ public abstract class HawkApp extends HawkAppObj {
 				}
 				HawkNetManager.getInstance().clearWhiteIp();
 				HawkNetManager.getInstance().clearBlackIp();
-				
+
 				if (ipLimit && iptables != null) {
 					for (Entry<String, Integer> entry : iptables.entrySet()) {
 						if (entry.getValue() > 0) {
@@ -355,14 +355,14 @@ public abstract class HawkApp extends HawkAppObj {
 			HawkException.catchException(e);
 		}
 	}
-	
+
 	/**
 	 * 获取hash线程索引
 	 */
 	public int getHashThread(HawkXID xid, int threadNum) {
 		return xid.getId() % threadNum;
 	}
-	
+
 	/**
 	 * 获取工作目录
 	 * 
@@ -389,7 +389,7 @@ public abstract class HawkApp extends HawkAppObj {
 	public void setMyHostIp(String myHostIp) {
 		this.myHostIp = myHostIp;
 	}
-	
+
 	/**
 	 * 获取本机ip
 	 * 
@@ -609,7 +609,7 @@ public abstract class HawkApp extends HawkAppObj {
 		if (!running) {
 			// 构建db会话工厂
 			HawkDBManager.getInstance().buildSessionFactory();
-			
+
 			// 检测网络是否开启
 			if (appCfg.acceptorPort > 0 && !HawkNetManager.getInstance().isStart()) {
 				if (!startNetwork()) {
@@ -689,14 +689,14 @@ public abstract class HawkApp extends HawkAppObj {
 		if (tickTime - lastShowStateTime >= 30000) {
 			lastShowStateTime = tickTime;
 			printState();
-			
+
 			// 检测内存不足
 			Runtime run = Runtime.getRuntime();
 			if ((run.maxMemory() - run.totalMemory() + run.freeMemory()) * 1.0 / run.maxMemory() < 0.5) {
 				onMemoryOutWarning();
 			}
 		}
-		
+
 		// 对象更新
 		for (Entry<Integer, HawkObjManager<HawkXID, HawkAppObj>> entry : objMans.entrySet()) {
 			HawkObjManager<HawkXID, HawkAppObj> objMan = entry.getValue();
@@ -746,7 +746,7 @@ public abstract class HawkApp extends HawkAppObj {
 	protected void onMemoryOutWarning() {
 		HawkLog.errPrintln("内存不足警告");
 	}
-	
+
 	/**
 	 * 处理shell命令, 不可手动调用, 由脚本管理器调用
 	 * 
@@ -1244,7 +1244,7 @@ public abstract class HawkApp extends HawkAppObj {
 					try {
 						if (objBase.isObjValid()) {
 							objBase.setVisitTime(currentTime);
-							
+
 							try {
 								HawkInterceptHandler interceptHandler = getInterceptHandler(objBase.getImpl().getClass().getName());
 								if (interceptHandler != null && interceptHandler.onProtocol(objBase.getImpl(), protocol)) {
@@ -1253,7 +1253,7 @@ public abstract class HawkApp extends HawkAppObj {
 							} catch (Exception e) {
 								HawkException.catchException(e);
 							}
-							
+
 							return objBase.getImpl().onProtocol(protocol);
 						}
 					} catch (Exception e) {
@@ -1293,7 +1293,7 @@ public abstract class HawkApp extends HawkAppObj {
 					long beginTimeMs = HawkTime.getMillisecond();
 					try {
 						if (objBase.isObjValid()) {
-							
+
 							try {
 								HawkInterceptHandler interceptHandler = getInterceptHandler(objBase.getImpl().getClass().getName());
 								if (interceptHandler != null && interceptHandler.onMessage(objBase.getImpl(), msg)) {
@@ -1302,7 +1302,7 @@ public abstract class HawkApp extends HawkAppObj {
 							} catch (Exception e) {
 								HawkException.catchException(e);
 							}
-							
+
 							return objBase.getImpl().onMessage(msg);
 						}
 					} catch (Exception e) {
@@ -1333,7 +1333,7 @@ public abstract class HawkApp extends HawkAppObj {
 				if (objBase != null) {
 					try {
 						if (objBase.isObjValid()) {
-							
+
 							try {
 								HawkInterceptHandler interceptHandler = getInterceptHandler(objBase.getImpl().getClass().getName());
 								if (interceptHandler != null && interceptHandler.onTick(objBase.getImpl())) {
@@ -1342,7 +1342,7 @@ public abstract class HawkApp extends HawkAppObj {
 							} catch (Exception e) {
 								HawkException.catchException(e);
 							}
-							
+
 							return objBase.getImpl().onTick(tickTime);
 						}
 					} catch (Exception e) {
@@ -1433,7 +1433,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * @param e
 	 */
 	public void reportException(Exception e) {
-		
+
 	}
 
 	/**
@@ -1452,7 +1452,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	public void onOrderNotify(JSONObject jsonInfo) {
 	}
-	
+
 	/**
 	 * ip服务拒绝连接
 	 * 
@@ -1462,7 +1462,7 @@ public abstract class HawkApp extends HawkAppObj {
 	public boolean onRefuseByIptables(IoSession session, String ip, int usage) {
 		return false;
 	}
-	
+
 	/**
 	 * 打印当前队列任务数量
 	 * 
@@ -1472,48 +1472,47 @@ public abstract class HawkApp extends HawkAppObj {
 
 		int pushCount = 0;
 		int popCount = 0;
-		
+
 		int totalPushCount = 0;
 		int totalPopCount = 0;
-		
+
 		for (int i = 0; i < msgExecutor.getThreadNum(); i++) {
 			pushCount = (int)msgExecutor.getThread(i).getPushTaskCnt();
 			popCount = (int)msgExecutor.getThread(i).getPopTaskCnt();
-			
+
 			totalPushCount += pushCount;
 			totalPopCount += popCount;
 			HawkLog.errPrintln(String.format("线程ID : %d, msg任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
-		
+
 		HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", totalPushCount, totalPopCount));
 		HawkLog.errPrintln("");
-		
+
 		pushCount = 0;
 		popCount = 0;
-		
+
 		totalPushCount = 0;
-		totalPopCount = 0;		
-		
+		totalPopCount = 0;
+
 		for (int i = 0; i < taskExecutor.getThreadNum(); i++) {
 			pushCount = (int)taskExecutor.getThread(i).getPushTaskCnt();
 			popCount = (int)taskExecutor.getThread(i).getPopTaskCnt();
-			
+
 			totalPushCount += pushCount;
 			totalPopCount += popCount;
 			HawkLog.errPrintln(String.format("线程ID : %d, tsk任务数量： %d, 处理数量： %d", i, pushCount, popCount));
 		}
-		
-		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", totalPushCount, totalPopCount));	
+
+		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", totalPushCount, totalPopCount));
 		HawkLog.errPrintln("");
-		HawkLog.errPrintln(String.format("等待更新的Entity数量： %d", HawkDBManager.getInstance().getUnUpdateEntitySize()));	
-		
+		HawkLog.errPrintln(String.format("等待更新的Entity数量： %d", HawkDBManager.getInstance().getUnUpdateEntitySize()));
+
 		Runtime run = Runtime.getRuntime(); 
 		long max = run.maxMemory(); 
 		long total = run.totalMemory(); 
 		long free = run.freeMemory(); 
 		long usable = max - total + free; 
-		
-		HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));
 
+		HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));
 	}
 }

@@ -17,12 +17,18 @@ public class SoundEffectInfo
 public class AudioSystemMgr : MonoBehaviour {
 
     private static AudioSystemMgr mInst;
+    private static byte dontCreate = 0;
+
+    void OnApplicationQuit()
+    {
+        dontCreate = 1;
+    }
 
     public static AudioSystemMgr Instance
     {
         get 
         {
-            if (mInst==null)
+            if (mInst==null && AudioSystemMgr.dontCreate == 0)
             {
                 GameObject go = new GameObject("AudioSystemMgr"); 
                 go.AddComponent<AudioListener>();

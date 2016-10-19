@@ -1,5 +1,8 @@
 package com.hawk.game.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
@@ -9,7 +12,8 @@ public class SpellCfg extends HawkConfigBase{
 	 * itemId
 	 */
 	@Id
-	protected final String id;
+	protected final int id;
+	protected final String textId;
 
 	/**
 	 * 分类
@@ -25,7 +29,6 @@ public class SpellCfg extends HawkConfigBase{
 	protected final int energyGenerate = 0;
 	protected final float levelAdjust = 0;
 	protected final String icon = null;
-
 	protected final String tips = null;
 	protected final float baseTipValue = 0;
 	protected final int isAoe = 0;
@@ -34,15 +37,34 @@ public class SpellCfg extends HawkConfigBase{
 	protected final String tipsCurlvl = null;
 	protected final String tipsNextlvl = null;
 
+	// global
+	protected static Map<String, SpellCfg> textSpellCfgMap = new HashMap<>();
+
+	public static SpellCfg getCfg(String textSkillId) {
+		return textSpellCfgMap.get(textSkillId);
+	}
+
 	public SpellCfg() {
 		super();
-		this.id = "";
+		this.id = 0;
+		this.textId = "";
 		this.category = 0;
 		this.name = "";
 	}
 
-	public String getId() {
+	@Override
+	protected boolean assemble() {
+		textSpellCfgMap.put(textId, this);
+
+		return true;
+	}
+
+	public int getId() {
 		return id;
+	}
+
+	public String getTextId() {
+		return textId;
 	}
 
 	public int getCategory() {

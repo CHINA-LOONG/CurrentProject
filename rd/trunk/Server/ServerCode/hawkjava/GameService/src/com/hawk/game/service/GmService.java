@@ -58,7 +58,7 @@ public class GmService extends GameService {
 
 		return false;
 	}
-	
+
 	/**
 	 * 生成测试账号
 	 */
@@ -140,8 +140,8 @@ public class GmService extends GameService {
 						MonsterEntity monsterEntity = new MonsterEntity(cfg.getMonsterId(), playerId,
 								cfg.getStage(), cfg.getMonsterLevel(), cfg.getExp(), cfg.getLazy(), cfg.getLazyExp(), cfg.getDisposition());
 
-						Map<String, Integer> skillMap = cfg.getSkillLevelMap();
-						for (Entry<String, Integer> skill : skillMap.entrySet()) {
+						Map<Integer, Integer> skillMap = cfg.getSkillLevelMap();
+						for (Entry<Integer, Integer> skill : skillMap.entrySet()) {
 							monsterEntity.setSkillLevel(skill.getKey(), skill.getValue());
 						}
 

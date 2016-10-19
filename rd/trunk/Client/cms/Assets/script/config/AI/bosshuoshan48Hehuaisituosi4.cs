@@ -12,6 +12,8 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 	
 	}
 	int jishu = 0 ;
+	int jishu1 = 0 ;
+	int jishu2 = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Hehuaisituosi4Unit)
 	{
@@ -39,7 +41,7 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 		}
 		else 
 		{
-			if (NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp02") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp03") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp04") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp05") == 0)
+			if (jishu1 == 0 && jishu2 == 0)
 			{		
 				if (GetAttackCount(Hehuaisituosi4Unit) % 3 == 0 && GetAttackCount(Hehuaisituosi4Unit) != 0) 
 				{
@@ -47,7 +49,7 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 
 				}
 			}
-			else if (NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp02") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp03") != 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp04") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp05") != 0)
+			else if (jishu1 == 0 && jishu2 != 0)
 			{		
 				if (GetAttackCount(Hehuaisituosi4Unit) % 7 == 0 && GetAttackCount(Hehuaisituosi4Unit) != 0) 
 				{
@@ -60,7 +62,7 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 
 				}
 			}
-			else if (NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp02") != 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp03") == 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp04") != 0 && NormalScript.GetWpLifeLeft(Hehuaisituosi4Unit.battleUnit, "bosshuoshan48Hehuaisituosi4wp05") == 0)
+			else if (jishu1 != 0 && jishu2 == 0)
 			{		
 				if (GetAttackCount(Hehuaisituosi4Unit) % 7 == 0 && GetAttackCount(Hehuaisituosi4Unit) != 0) 
 				{
@@ -94,6 +96,19 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 			Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp01_state3to0", Time.time, null);
 			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
 			jishu ++;
+			List<string> wpList = null;
+			wpList = GetAliveWeakPointList (Hehuaisituosi4Unit);
+			for(int n = wpList.Count -1 ;n > 0;n--)
+			{
+				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp02")
+					jishu1++;
+				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp03")
+					jishu2++;
+				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp04")
+					jishu1++;
+				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp05")
+					jishu2++;
+			}
 		}
 	
 		attackResult.useSpell = useSpell;
@@ -122,6 +137,7 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 		{
 			target.TriggerEvent("hehuaisituosi4_wp05dead", Time.time, null);
 		}
+
 	}
 	//---------------------------------------------------------------------------------------------
 }

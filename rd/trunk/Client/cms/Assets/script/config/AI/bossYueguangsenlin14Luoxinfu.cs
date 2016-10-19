@@ -29,7 +29,7 @@ public class bossYueguangsenlin14Luoxinfu : BossAi
         wpList = GetAliveWeakPointList (luoxinfuUnit);
         int wp_count = wpList.Count -1;
 
-		if (attackResult.useSpell.spellData.id == "attackStabTriSlight")
+		if (attackResult.useSpell.spellData.textId == "attackStabTriSlight")
 		{
 	        if (wp_count >2 && wp_count <=4)
 	        {

@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
@@ -25,7 +26,7 @@ public class TestAccountCfg extends HawkConfigBase {
 	protected final String skillList;
 
 	// assemble
-	protected Map<String, Integer> skillLevelMap;
+	protected Map<Integer, Integer> skillLevelMap;
 
 	public TestAccountCfg() {
 		puid = "";
@@ -49,6 +50,16 @@ public class TestAccountCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
+		// 检测技能，textId转为numId
+		Map<String, Integer> skillTextLevelMap = HawkJsonUtil.getJsonInstance().fromJson(skillList, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		skillLevelMap = new HashMap<Integer, Integer>();
+		for (Entry<String, Integer> entry : skillTextLevelMap.entrySet()) {
+			SpellCfg skillCfg = SpellCfg.getCfg(entry.getKey());
+			if (null == skillCfg) {
+				return false;
+			}
+			skillLevelMap.put(skillCfg.getId(), entry.getValue());
+		}
 		return true;
 	}
 
@@ -92,7 +103,7 @@ public class TestAccountCfg extends HawkConfigBase {
 		return (byte)disposition;
 	}
 
-	public  Map<String, Integer> getSkillLevelMap() {
+	public Map<Integer, Integer> getSkillLevelMap() {
 		return skillLevelMap;
 	}
 }

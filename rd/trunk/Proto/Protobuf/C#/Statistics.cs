@@ -434,6 +434,13 @@ namespace PB
       get { return _dumpEndTime; }
       set { _dumpEndTime = value; }
     }
+    private readonly global::System.Collections.Generic.List<int> _guideFinish = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(11, Name=@"guideFinish", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> guideFinish
+    {
+      get { return _guideFinish; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

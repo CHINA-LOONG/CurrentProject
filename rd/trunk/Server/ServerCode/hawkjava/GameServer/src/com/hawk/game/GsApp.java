@@ -326,14 +326,14 @@ public class GsApp extends HawkApp {
 		Map<Object, HoleCfg> holeCfgMap = null;
 		boolean refreshHole = false;
 
-		for (int index = 0; index < GsConst.SysRefreshTime.length; ++index) {
-			int timeCfgId = GsConst.SysRefreshTime[index];
+		for (int index = 0; index < GsConst.Refresh.SysTimePointArray.length; ++index) {
+			int timeCfgId = GsConst.Refresh.SysTimePointArray[index];
 
 			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
 			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
 			if (expectedRefreshTime != null) {
 				// 刷新数据
-				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
+				if (0 != (GsConst.Refresh.SysMaskArray[index] & GsConst.Refresh.HOLE)) {
 					if (false == refreshHole) {
 						refreshHole = true;
 						// 初始化洞刷新所需临时数据
@@ -366,7 +366,7 @@ public class GsApp extends HawkApp {
 					// 刷新时间点
 					ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 				}
-				else if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.PVP)) {
+				else if (0 != (GsConst.Refresh.SysMaskArray[index] & GsConst.Refresh.PVP)) {
 			 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_WEEK_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
 					if (HawkApp.getInstance().postMsg(msg)) {
 						// 刷新时间点

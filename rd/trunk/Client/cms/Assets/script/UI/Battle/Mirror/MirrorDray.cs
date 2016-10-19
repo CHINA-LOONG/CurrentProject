@@ -231,11 +231,13 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 				if(rt != null )
 				{
 					Vector3 mirrorScreenPos = UIUtil.GetSpacePos(rectTrans,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-					mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
-					mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
-					
-					float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
-					rt.anchoredPosition = new Vector2(mirrorScreenPos.x/fscale,mirrorScreenPos.y/fscale);
+                    float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
+                    mirrorScreenPos.x /= fscale;
+                    mirrorScreenPos.y /= fscale;
+                    mirrorScreenPos.x -= (rectTrans.pivot.x - 0.5f) * rectTrans.rect.width;
+                    mirrorScreenPos.y -= (rectTrans.pivot.y - 0.5f) * rectTrans.rect.height;
+                   
+					rt.anchoredPosition = new Vector2(mirrorScreenPos.x,mirrorScreenPos.y);
 				}
 			}
 			else

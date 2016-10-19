@@ -11,27 +11,32 @@ ModelImporter:
     100006: wz_wenjiandai
     100008: wz_xiangkuang
     100010: //RootNode
+    100012: wz_jiangbei
     400000: wz_dianniaozhuo
     400002: wz_pvpzhuozi
     400004: wz_shu_08
     400006: wz_wenjiandai
     400008: wz_xiangkuang
     400010: //RootNode
+    400012: wz_jiangbei
     2300000: wz_dianniaozhuo
     2300002: wz_pvpzhuozi
     2300004: wz_shu_08
     2300006: wz_wenjiandai
     2300008: wz_xiangkuang
+    2300010: wz_jiangbei
     3300000: wz_dianniaozhuo
     3300002: wz_pvpzhuozi
     3300004: wz_shu_08
     3300006: wz_wenjiandai
     3300008: wz_xiangkuang
+    3300010: wz_jiangbei
     4300000: wz_dianniaozhuo
     4300002: wz_pvpzhuozi
     4300004: wz_xiangkuang
     4300006: wz_shu_08
     4300008: wz_wenjiandai
+    4300010: wz_jiangbei
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -42,10 +47,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -89,10 +90,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

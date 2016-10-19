@@ -25,7 +25,7 @@ public class BIGuildFlowData extends BIData{
 		jsonPropertyData.put("guildcontribution_in", contributionIn);
 		jsonPropertyData.put("guildcontribution_out", contributionOut);
 		jsonPropertyData.put("guildcontribution_bal", allianceEntity.getContribution());
-		jsonPropertyData.put("guild_level", allianceEntity.getLevel());	
+		jsonPropertyData.put("guild_level", allianceEntity.getLevel());
 		if (action == Action.GUILD_TECH_LEVELUP) {
 			JSONObject skillObject = new JSONObject();
 			skillObject.put("skill_id", techType);
@@ -53,13 +53,13 @@ public class BIGuildFlowData extends BIData{
 			default:
 				break;
 			}
-			
-			jsonPropertyData.put("guild_skill", skillObject);	
+
+			jsonPropertyData.put("guild_skill", skillObject);
 		}
-		
+
 		logEnd();
 	}
-	
+
 	/**
 	 * 
 	 * @param player
@@ -69,22 +69,22 @@ public class BIGuildFlowData extends BIData{
 	 * @param contributionIn
 	 * @param contributionOut
 	 */
-	public void logTask(Player player, Action action, AllianceEntity allianceEntity, AllianceTeamEntity teamEntity, int subTaskId, int contributionIn, int contributionOut){	
-			
+	public void logTask(Player player, Action action, AllianceEntity allianceEntity, AllianceTeamEntity teamEntity, int subTaskId, int contributionIn, int contributionOut){
+
 		logBegin(player, "Guild_Flow");
 		jsonPropertyData.put("guild_id", allianceEntity.getId());
 		jsonPropertyData.put("guild_name", allianceEntity.getName());
 		jsonPropertyData.put("guildcontribution_in", contributionIn);
 		jsonPropertyData.put("guildcontribution_out", contributionOut);
 		jsonPropertyData.put("guildcontribution_bal", allianceEntity.getContribution());
-		jsonPropertyData.put("guild_level", allianceEntity.getLevel());	
-	
+		jsonPropertyData.put("guild_level", allianceEntity.getLevel());
+
 		JSONObject taskObject = new JSONObject();
 		taskObject.put("task_id", teamEntity.getTaskId());
 		taskObject.put("subtask_id", "");
 		taskObject.put("subtask_complete", "");
 		taskObject.put("giveup_time", teamEntity.getCreateTime() + teamEntity.getOverTime());
-		
+
 		if (action == Action.GUILD_TASK_OPEN) {
 			StringBuilder questList = new StringBuilder();
 			questList.append(teamEntity.getCoinQuest1()).append(",").append(teamEntity.getCoinQuest2()).append(",");
@@ -95,9 +95,9 @@ public class BIGuildFlowData extends BIData{
 		else if (action == Action.GUILD_SUB_MISSION) {
 			taskObject.put("subtask_complete", subTaskId);
 		}
-		
-		jsonPropertyData.put("guild_task", taskObject);	
-		
+
+		jsonPropertyData.put("guild_task", taskObject);
+
 		logEnd();
 	}
 }

@@ -30,7 +30,7 @@ public class HawkProtoTask extends HawkTask {
 	 */
 	protected HawkProtoTask() {
 	}
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -71,7 +71,7 @@ public class HawkProtoTask extends HawkTask {
 	protected HawkCacheObj clone() {
 		return new HawkProtoTask();
 	}
-	
+
 	/**
 	 * 执行协议任务
 	 */
@@ -99,7 +99,7 @@ public class HawkProtoTask extends HawkTask {
 		HawkProtoTask task = new HawkProtoTask();
 		return task;
 	}
-	
+
 	/**
 	 * 创建协议任务的统一出口
 	 * 

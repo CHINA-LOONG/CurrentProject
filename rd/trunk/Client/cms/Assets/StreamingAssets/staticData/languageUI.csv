@@ -256,6 +256,7 @@ compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
 compose_record_005,请先选择分解原料,Please choose disenchantment material first.
 compose_record_006,原料不足,Insufficent materials.
+compose_record_007,操作失败，至少要保留1只宠物,one at least
 xl_monsterbook,,
 handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned

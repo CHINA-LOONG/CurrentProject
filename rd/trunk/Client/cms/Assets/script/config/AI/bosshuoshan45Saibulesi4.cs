@@ -29,16 +29,8 @@ public class bosshuoshan45Saibulesi4 : BossAi {
 		attackResult.attackTarget = GetAttackRandomTarget(Saibulesi4Unit);
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (Saibulesi4Unit);
-		int count = 0;
-		for(int n = wpList.Count -1 ;n > 0;n--)
-		{
-			if (wpList[n] == "bosshuoshan45Saibulesi4wp02")
-				count++;
-			if (wpList[n] == "bosshuoshan45Saibulesi4wp03")
-				count++;
-			if (wpList[n] == "bosshuoshan45Saibulesi4wp04")
-				count++;
-		}
+		int count = wpList.Count -1;
+
 		if(count == 3)
 		{
 			if (GetAttackCount(Saibulesi4Unit) % 7 == 0 && GetAttackCount(Saibulesi4Unit) != 0 ) 

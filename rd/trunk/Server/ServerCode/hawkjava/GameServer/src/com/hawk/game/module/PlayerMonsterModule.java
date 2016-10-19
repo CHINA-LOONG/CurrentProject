@@ -55,7 +55,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		HSMonsterSkillUp protocol = cmd.parseProtocol(HSMonsterSkillUp.getDefaultInstance());
 		int hsCode = cmd.getType();
 		int monsterId = protocol.getMonsterId();
-		String skillId = protocol.getSkillId();
+		int skillId = protocol.getSkillId();
 
 		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 		if (monsterEntity == null) {
@@ -381,9 +381,9 @@ public class PlayerMonsterModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (MonsterEntity entity : player.getPlayerData().getMonsterEntityMap().values()) {
-			entity.notifyUpdate(false);
-		}
+		//for (MonsterEntity entity : player.getPlayerData().getMonsterEntityMap().values()) {
+		//	entity.notifyUpdate(false);
+		//}
 		return true;
 	}
 

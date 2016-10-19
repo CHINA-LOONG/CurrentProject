@@ -255,6 +255,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450652}
   - 137: {fileID: 13701566}
+  - 114: {fileID: 11430048}
   m_Layer: 10
   m_Name: mesh_weapon
   m_TagString: Untagged
@@ -2929,6 +2930,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mShadowPos: {fileID: 484326}
   mShadowProjectPos: {fileID: 470226}
+--- !u!114 &11430048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 66a3459322f71344da37111c720c55b2, type: 2}
 --- !u!114 &11467382
 MonoBehaviour:
   m_ObjectHideFlags: 1

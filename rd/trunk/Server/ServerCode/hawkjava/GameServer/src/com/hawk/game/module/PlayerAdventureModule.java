@@ -128,7 +128,7 @@ public class PlayerAdventureModule extends PlayerModule {
 
 		// 阵型
 		int size = selfMonsterList.size();
-		if ((size +  ((null == hireMonster) ? 0 : 1)) != GsConst.ADVENTURE_MONSTER_COUNT) {
+		if ((size +  ((null == hireMonster) ? 0 : 1)) != GsConst.Adventure.MONSTER_COUNT) {
 			sendError(hsCode, Status.adventureError.ADVENTURE_MONSTER_COUNT);
 			return true;
 		}
@@ -187,7 +187,7 @@ public class PlayerAdventureModule extends PlayerModule {
 			HawkApp.getInstance().postMsg(msg);
 		}
 
-		int endTime = HawkTime.getSeconds() + GsConst.ADVENTURE_TIME_GEAR[gear - 1];
+		int endTime = HawkTime.getSeconds() + GsConst.Adventure.TIME_GEAR[gear - 1];
 
 		teamEntity.setAdventureId(adventureCfg.getId());
 		teamEntity.setEndTime(endTime);
@@ -251,7 +251,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		AdventureEntity advenEntity = player.getPlayerData().getAdventureEntity(advenCfg.getType(), advenCfg.getGear());
 
 		// self monster
-		List<MonsterCfg> monsterList = new ArrayList<>(GsConst.ADVENTURE_MONSTER_COUNT);
+		List<MonsterCfg> monsterList = new ArrayList<>(GsConst.Adventure.MONSTER_COUNT);
 		for (Integer monsterId : teamEntity.getSelfMonsterList()) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 
@@ -396,7 +396,7 @@ public class PlayerAdventureModule extends PlayerModule {
 		}
 
 		ConsumeItems consume = ConsumeItems.valueOf();
-		consume.addGold(GsConst.ADVENTURE_CHANGE_BUY_CONSUME);
+		consume.addGold(GsConst.Adventure.BUY_CHANGE_CONSUME);
 		if (false == consume.checkConsume(player, hsCode)) {
 			return true;
 		}
@@ -466,12 +466,12 @@ public class PlayerAdventureModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (AdventureEntity entity : player.getPlayerData().getAdventureEntityList()) {
-			entity.notifyUpdate(false);
-		}
-		for (AdventureTeamEntity entity : player.getPlayerData().getAdventureTeamEntityMap().values()) {
-			entity.notifyUpdate(false);
-		}
+		//for (AdventureEntity entity : player.getPlayerData().getAdventureEntityList()) {
+		//	entity.notifyUpdate(false);
+		//}
+		//for (AdventureTeamEntity entity : player.getPlayerData().getAdventureTeamEntityMap().values()) {
+		//	entity.notifyUpdate(false);
+		//}
 		return true;
 	}
 }

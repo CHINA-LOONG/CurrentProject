@@ -122,6 +122,7 @@ public class PlayerAllianceModule extends PlayerModule {
 		}
 		
 		player.getPlayerData().getPlayerAllianceEntity().setLogoutTime(HawkTime.getSeconds());	
+		player.getPlayerData().getPlayerAllianceEntity().notifyUpdate(true);
 		return true;
 	}
 

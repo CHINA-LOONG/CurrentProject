@@ -20,7 +20,7 @@ public class BIPetSkillData extends BIData{
 		jsonPropertyData.put("pet_id", monsterCfg.getId());
 		jsonPropertyData.put("pet_identify", petId);
 		jsonPropertyData.put("pet_name", LanguageStaticCfg.getEnglishName(monsterCfg.getNickname()));
-		jsonPropertyData.put("skill_id", spellCfg.getId());
+		jsonPropertyData.put("skill_id", spellCfg.getTextId());
 		jsonPropertyData.put("skill_name", LanguageStaticCfg.getEnglishName(spellCfg.getName()));
 		jsonPropertyData.put("petskilllevel", petSkillLevel);
 		jsonPropertyData.put("after_petsskilllevel", afterPetSkillLevel);

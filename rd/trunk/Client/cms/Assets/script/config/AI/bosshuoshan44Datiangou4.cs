@@ -26,7 +26,7 @@ public class bosshuoshan44Datiangou4 : BossAi {
 		Spell useSpell = null;
 
 		attackResult.attackTarget = GetAttackRandomTarget(Datiangou4Unit);
-		if (NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp02") == 0 && NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp03") == 0 && NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp04") == 0)
+		if (NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp02") != 0 && NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp03") != 0 && NormalScript.GetWpLifeLeft(Datiangou4Unit.battleUnit, "bosshuoshan44Datiangou4wp04") != 0)
 		{
 			Datiangou4SpellDic.TryGetValue ("bosshuoshan44Datiangou42", out useSpell);
 			if (GetAttackCount(Datiangou4Unit) % 9 == 0 && GetAttackCount(Datiangou4Unit) != 0) 

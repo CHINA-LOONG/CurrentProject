@@ -1175,10 +1175,10 @@ public class Player extends HawkAppObj {
 		byte lazy = 1;
 		int lazyExp = 0;
 		byte disposition = (byte)monster.getDisposition();
-		String[] skillList = monster.getSkillIdList();
+		int[] skillList = monster.getSkillIdList();
 
 		MonsterEntity monsterEntity = new MonsterEntity(monsterCfgId, playerId, (byte)stage, level, exp, lazy, lazyExp, disposition);
-		for (String skillId : skillList) {
+		for (int skillId : skillList) {
 			monsterEntity.setSkillLevel(skillId, 1);
 		}
 
@@ -1581,7 +1581,7 @@ public class Player extends HawkAppObj {
 
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		int old = statisticsEntity.getAdventureChange();
-		int remain = old + times - GsConst.MAX_ADVENTURE_CHANGE;
+		int remain = old + times - GsConst.Adventure.MAX_CHANGE;
 		int increase = times - (remain > 0 ? remain : 0);
 		if (0 != increase) {
 			statisticsEntity.setAdventureChange(old + increase);
@@ -1605,7 +1605,7 @@ public class Player extends HawkAppObj {
 		int cur = old - times;
 
 		// 从低于上限的时间开始恢复
-		if (old >= GsConst.MAX_ADVENTURE_CHANGE && cur < GsConst.MAX_ADVENTURE_CHANGE) {
+		if (old >= GsConst.Adventure.MAX_CHANGE && cur < GsConst.Adventure.MAX_CHANGE) {
 			statisticsEntity.setAdventureChangeBeginTime(HawkTime.getCalendar());
 		}
 
@@ -1621,7 +1621,7 @@ public class Player extends HawkAppObj {
 	public int regainAdventureChangeTimes() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		int old = statisticsEntity.getAdventureChange();
-		if (old == GsConst.MAX_ADVENTURE_CHANGE) {
+		if (old == GsConst.Adventure.MAX_CHANGE) {
 			return old;
 		}
 
@@ -1629,17 +1629,17 @@ public class Player extends HawkAppObj {
 		Calendar beginTime = statisticsEntity.getAdventureChangeBeginTime();
 
 		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int cur = old + delta / GsConst.ADVENTURE_CHANGE_TIME;
+		int cur = old + delta / GsConst.Adventure.CHANGE_TIME;
 
-		if (cur > GsConst.MAX_ADVENTURE_CHANGE) {
-			cur = GsConst.MAX_ADVENTURE_CHANGE;
+		if (cur > GsConst.Adventure.MAX_CHANGE) {
+			cur = GsConst.Adventure.MAX_CHANGE;
 		}
 
 		if (old == cur) {
 			return cur;
 		}
 
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.ADVENTURE_CHANGE_TIME  * 1000);
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.Adventure.CHANGE_TIME  * 1000);
 		statisticsEntity.setAdventureChange(cur);
 		statisticsEntity.setAdventureChangeBeginTime(beginTime);
 
@@ -1653,7 +1653,7 @@ public class Player extends HawkAppObj {
 	public int regainEggDiamondFreePoint() {
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		int old = statisticsEntity.getEggDiamond1FreePoint();
-		if (old == GsConst.summon.MAX_DIAMOND_FREE_TIMES) {
+		if (old == GsConst.Summon.MAX_DIAMOND_FREE_TIMES) {
 			return old;
 		}
 
@@ -1661,17 +1661,17 @@ public class Player extends HawkAppObj {
 		Calendar beginTime = statisticsEntity.getEggDiamond1FreePointBeginTime();
 
 		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int cur = old + delta / GsConst.summon.DIAMOND_FREE_TIME;
+		int cur = old + delta / GsConst.Summon.DIAMOND_FREE_TIME;
 
-		if (cur > GsConst.summon.MAX_DIAMOND_FREE_TIMES) {
-			cur = GsConst.summon.MAX_DIAMOND_FREE_TIMES;
+		if (cur > GsConst.Summon.MAX_DIAMOND_FREE_TIMES) {
+			cur = GsConst.Summon.MAX_DIAMOND_FREE_TIMES;
 		}
 
 		if (old == cur) {
 			return cur;
 		}
 
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.summon.DIAMOND_FREE_TIME  * 1000);
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.Summon.DIAMOND_FREE_TIME  * 1000);
 		statisticsEntity.setEggDiamond1FreePoint(cur);
 		statisticsEntity.setEggDiamond1FreePointBeginTime(beginTime);
 
@@ -1724,18 +1724,18 @@ public class Player extends HawkAppObj {
 			statisticsEntity.setFatigue(attrCfg.getFatigue());
 		}
 		statisticsEntity.setSkillPoint(GsConst.MAX_SKILL_POINT);
-		statisticsEntity.setAdventureChange(GsConst.MAX_ADVENTURE_CHANGE);
-		statisticsEntity.setEggDiamond1FreePoint(GsConst.summon.MAX_DIAMOND_FREE_TIMES);
+		statisticsEntity.setAdventureChange(GsConst.Adventure.MAX_CHANGE);
+		statisticsEntity.setEggDiamond1FreePoint(GsConst.Summon.MAX_DIAMOND_FREE_TIMES);
 
 		// 上次钻石免费抽蛋时间提前，避免自动恢复
 		// 因上限1点特殊情况，客户端已完成不修改了。其他情况采用通用自动恢复逻辑，如skillPoint
 		Calendar eggDiamondTime = Calendar.getInstance();
-		eggDiamondTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.summon.DIAMOND_FREE_TIME) * 1000L);
+		eggDiamondTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.Summon.DIAMOND_FREE_TIME) * 1000L);
 		statisticsEntity.setEggDiamond1FreePointBeginTime(eggDiamondTime);
 
 		// 上次金币免费抽蛋时间提前，避免冷却时间
 		Calendar eggCoinTime = Calendar.getInstance();
-		eggCoinTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.summon.COIN_FREE_CD) * 1000L);
+		eggCoinTime.setTimeInMillis((playerData.getPlayerEntity().getCreateTime() - GsConst.Summon.COIN_FREE_CD) * 1000L);
 		statisticsEntity.setEggCoin1FreeLastTime(eggCoinTime);
 
 		statisticsEntity.notifyUpdate(true);
@@ -1807,8 +1807,8 @@ public class Player extends HawkAppObj {
 
 		// 刷新时间点
 		List<Integer> refreshIndexList = new ArrayList<Integer>();
-		for (int index = 0; index < GsConst.PlayerRefreshTime.length; ++index) {
-			int timeCfgId = GsConst.PlayerRefreshTime[index];
+		for (int index = 0; index < GsConst.Refresh.PlayerTimePointArray.length; ++index) {
+			int timeCfgId = GsConst.Refresh.PlayerTimePointArray[index];
 
 			Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
 			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);

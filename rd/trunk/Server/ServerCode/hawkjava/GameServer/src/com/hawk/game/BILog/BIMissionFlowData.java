@@ -19,13 +19,13 @@ public class BIMissionFlowData extends BIData{
 	public void log(Player player, Action action, int mainType, int id, String nameId, float progress){
 		logBegin(player, "Mission_Flow");
 		switch (mainType) {
-		case GsConst.QuestType.STORY_QUEST:
+		case GsConst.Quest.STORY_TYPE:
 			jsonPropertyData.put("mission_maintype", "Mission");
 			break;
-		case GsConst.QuestType.DAILY_QUEST:
+		case GsConst.Quest.DAILY_TYPE:
 			jsonPropertyData.put("mission_maintype", "Daily");
 			break;
-		case GsConst.QuestType.BIOGRAPHY_QUEST:
+		case GsConst.Quest.BIOGRAPHY_TYPE:
 			jsonPropertyData.put("mission_maintype", "Achievement");
 			break;
 		default:

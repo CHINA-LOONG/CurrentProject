@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &133974
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &149660
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473890}
-  - 114: {fileID: 11445688}
   m_Layer: 0
   m_Name: ultAnpushaPre
   m_TagString: Untagged
@@ -117,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &155102
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 149660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485712}
   - {fileID: 456618}
@@ -426,19 +425,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd7eee7d96ec6e4e9920dab948582e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleScale: 2
-  alsoScaleGameobject: 1
---- !u!114 &11445688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149660}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dd7eee7d96ec6e4e9920dab948582e2, type: 3}
@@ -1669,7 +1655,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 32
+      scalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11031,7 +11017,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 32
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14477,7 +14463,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149660}

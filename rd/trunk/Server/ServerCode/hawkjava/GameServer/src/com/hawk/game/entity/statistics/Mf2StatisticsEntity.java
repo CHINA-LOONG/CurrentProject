@@ -1,7 +1,10 @@
 package com.hawk.game.entity.statistics;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,17 +37,21 @@ public class Mf2StatisticsEntity extends HawkDBEntity {
 	@Column(name = "playerId", unique = true)
 	protected int playerId = 0;
 
+	// 新手引导
+	@Column(name = "guideFinish", nullable = false)
+	protected String guideFinishJson = "";
+
 	// 历史使用物品X数量
 	@Column(name = "useItemXCount", nullable = false)
-	protected String useItemXCountJson = "";
+	protected String useItemXCountStr = "";
 
 	// 今日使用X物品数量
 	@Column(name = "useItemXCountDaily", nullable = false)
-	protected String useItemXCountDailyJson = "";
+	protected String useItemXCountDailyStr = "";
 
 	// 历史购买物品X次数
 	@Column(name = "buyItemXTimes", nullable = false)
-	protected String buyItemXTimesJson = "";
+	protected String buyItemXTimesStr = "";
 
 	// 历史提升技能次数
 	@Column(name = "upSkillTimes", nullable = false)
@@ -70,6 +77,11 @@ public class Mf2StatisticsEntity extends HawkDBEntity {
 	protected boolean invalid = false;
 
 	// decode-------------------------------------------------------------------
+	
+	@Transient
+	protected Set<Integer> guideFinishSet = new HashSet<Integer>();
+	@Transient
+	boolean guideFinishFlag = false;
 
 	@Transient
 	protected Map<String, Integer> useItemCountMap = new HashMap<String, Integer>();
@@ -97,14 +109,33 @@ public class Mf2StatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (null != useItemXCountJson && false == "".equals(useItemXCountJson) && false == "null".equals(useItemXCountJson)) {
-			useItemCountMap = HawkJsonUtil.getJsonInstance().fromJson(useItemXCountJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		if (null != guideFinishJson && false == "".equals(guideFinishJson) && false == "null".equals(guideFinishJson)) {
+			guideFinishSet = HawkJsonUtil.getJsonInstance().fromJson(guideFinishJson, new TypeToken<HashSet<Integer>>() {}.getType());
 		}
-		if (null != useItemXCountDailyJson && false == "".equals(useItemXCountDailyJson) && false == "null".equals(useItemXCountDailyJson)) {
-			useItemCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(useItemXCountDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+
+		if (null != useItemXCountStr && false == "".equals(useItemXCountStr) && false == "null".equals(useItemXCountStr)) {
+			String[] itemArray = useItemXCountStr.split(",");
+			useItemCountMap.clear();
+			for (int i = 0; i < itemArray.length; ++i) {
+				String[] pair = itemArray[i].split(":");
+				useItemCountMap.put(pair[0], Integer.parseInt(pair[1]));
+			}
 		}
-		if (null != buyItemXTimesJson && false == "".equals(buyItemXTimesJson) && false == "null".equals(buyItemXTimesJson)) {
-			buyItemTimesMap = HawkJsonUtil.getJsonInstance().fromJson(buyItemXTimesJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		if (null != useItemXCountDailyStr && false == "".equals(useItemXCountDailyStr) && false == "null".equals(useItemXCountDailyStr)) {
+			String[] itemArray = useItemXCountDailyStr.split(",");
+			useItemCountDailyMap.clear();
+			for (int i = 0; i < itemArray.length; ++i) {
+				String[] pair = itemArray[i].split(":");
+				useItemCountDailyMap.put(pair[0], Integer.parseInt(pair[1]));
+			}
+		}
+		if (null != buyItemXTimesStr && false == "".equals(buyItemXTimesStr) && false == "null".equals(buyItemXTimesStr)) {
+			String[] itemArray = buyItemXTimesStr.split(",");
+			buyItemTimesMap.clear();
+			for (int i = 0; i < itemArray.length; ++i) {
+				String[] pair = itemArray[i].split(":");
+				buyItemTimesMap.put(pair[0], Integer.parseInt(pair[1]));
+			}
 		}
 
 		return true;
@@ -112,17 +143,49 @@ public class Mf2StatisticsEntity extends HawkDBEntity {
 
 	@Override
 	public boolean encode() {
+		if (true == guideFinishFlag) {
+			guideFinishFlag = false;
+			guideFinishJson = HawkJsonUtil.getJsonInstance().toJson(guideFinishSet);
+		}
+
 		if (true == useItemCountFlag) {
 			useItemCountFlag = false;
-			useItemXCountJson = HawkJsonUtil.getJsonInstance().toJson(useItemCountMap);
+			if (true == useItemCountMap.isEmpty()) {
+				useItemXCountStr = "";
+			} else {
+				StringBuilder builder = new StringBuilder();
+				for (Entry<String, Integer> entry : useItemCountMap.entrySet()) {
+					builder.append(entry.getKey()).append(":").append(entry.getValue()).append(",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				useItemXCountStr = builder.toString();
+			}
 		}
 		if (true == useItemCountDailyFlag) {
 			useItemCountDailyFlag = false;
-			useItemXCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(useItemCountDailyMap);
+			if (true == useItemCountDailyMap.isEmpty()) {
+				useItemXCountDailyStr = "";
+			} else {
+				StringBuilder builder = new StringBuilder();
+				for (Entry<String, Integer> entry : useItemCountDailyMap.entrySet()) {
+					builder.append(entry.getKey()).append(":").append(entry.getValue()).append(",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				useItemXCountDailyStr = builder.toString();
+			}
 		}
 		if (true == buyItemTimesFlag) {
 			buyItemTimesFlag = false;
-			buyItemXTimesJson = HawkJsonUtil.getJsonInstance().toJson(buyItemTimesMap);
+			if (true == buyItemTimesMap.isEmpty()) {
+				buyItemXTimesStr = "";
+			} else {
+				StringBuilder builder = new StringBuilder();
+				for (Entry<String, Integer> entry : buyItemTimesMap.entrySet()) {
+					builder.append(entry.getKey()).append(":").append(entry.getValue()).append(",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				buyItemXTimesStr = builder.toString();
+			}
 		}
 
 		return true;

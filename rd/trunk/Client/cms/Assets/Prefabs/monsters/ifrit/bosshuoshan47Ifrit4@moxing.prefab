@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411852}
   - 137: {fileID: 13754810}
+  - 114: {fileID: 11420540}
   m_Layer: 10
   m_Name: mesh_stone
   m_TagString: Untagged
@@ -2252,7 +2253,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.60000002, y: 1, z: 1}
+  m_Size: {x: 1.60000002, y: .300000012, z: 1}
   m_Center: {x: -.300000012, y: 0, z: 0}
 --- !u!65 &6519844
 BoxCollider:
@@ -2264,8 +2265,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .5, y: .300000012, z: .300000012}
-  m_Center: {x: -.100000001, y: 0, z: 0}
+  m_Size: {x: .5, y: .5, z: .300000012}
+  m_Center: {x: -.100000001, y: .200000003, z: 0}
 --- !u!65 &6529856
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2288,8 +2289,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .5, y: .300000012, z: .300000012}
-  m_Center: {x: -.100000001, y: 0, z: 0}
+  m_Size: {x: .5, y: .5, z: .300000012}
+  m_Center: {x: -.100000001, y: .200000003, z: 0}
 --- !u!95 &9510764
 Animator:
   serializedVersion: 3
@@ -2307,6 +2308,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11420540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: faa3ba87dc8552a44a8dc3c520a04e62, type: 2}
 --- !u!114 &11481864
 MonoBehaviour:
   m_ObjectHideFlags: 1

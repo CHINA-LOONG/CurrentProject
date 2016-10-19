@@ -451,7 +451,7 @@ public class UISummon : UIBase
         summEffect.Reset();
         if (go != null)
         {
-            RequestCloseUi();
+            RequestCloseUi(false);
         }
         else
         {

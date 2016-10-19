@@ -138,6 +138,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_S", Value=1203)]
       SIGNIN_S = 1203,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"GUIDE_FINISH_C", Value=1301)]
+      GUIDE_FINISH_C = 1301,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GUIDE_FINISH_S", Value=1302)]
+      GUIDE_FINISH_S = 1302,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2001)]
       MONSTER_ADD_S = 2001,
             
@@ -486,17 +492,17 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_STORE_BUY_S", Value=8013)]
       SHOP_STORE_BUY_S = 8013,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_C", Value=9101)]
-      SUMMON_ONE_C = 9101,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_C", Value=8101)]
+      SUMMON_ONE_C = 8101,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_S", Value=9102)]
-      SUMMON_ONE_S = 9102,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_ONE_S", Value=8102)]
+      SUMMON_ONE_S = 8102,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_C", Value=9103)]
-      SUMMON_TEN_C = 9103,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_C", Value=8103)]
+      SUMMON_TEN_C = 8103,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_S", Value=9104)]
-      SUMMON_TEN_S = 9104,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUMMON_TEN_S", Value=8104)]
+      SUMMON_TEN_S = 8104,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_C", Value=9001)]
       ALLIANCE_CREATE_C = 9001,
@@ -835,7 +841,13 @@ namespace PB
       PVP_GET_RANK_DEFENCE_C = 12015,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_GET_RANK_DEFENCE_S", Value=12016)]
-      PVP_GET_RANK_DEFENCE_S = 12016
+      PVP_GET_RANK_DEFENCE_S = 12016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_ENTER_ROOM_C", Value=12017)]
+      PVP_ENTER_ROOM_C = 12017,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PVP_ENTER_ROOM_S", Value=12018)]
+      PVP_ENTER_ROOM_S = 12018
     }
   
 }
