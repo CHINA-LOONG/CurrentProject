@@ -375,6 +375,69 @@ public class PlayerData : MonoBehaviour
     {
         return petCollect.Count;
     }
+    /// <summary>
+    /// 检测可合成宠物数量
+    /// </summary>
+    /// <param name="useCommon">是否使用万能碎片</param>
+    /// <returns></returns>
+    public int GetMonsterCountByCompose(bool useCommon)
+    {
+        int curSummom = 0;
+        
+        ItemData fragment;
+        int curCount = 0;
+        int needCount = 0;
+        int curCommon = 0;
+        if (useCommon)
+        {
+            ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
+            curCommon = (comFragment == null) ? 0 : comFragment.count;
+        }
+
+        for (int i = 0; i < collectUnit.Count; i++)
+        {
+            fragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(collectUnit[i].unit.fragmentId);
+            curCount = (fragment == null ? 0 : fragment.count);
+            needCount = collectUnit[i].unit.fragmentCount;
+
+            if (curCount >= needCount)
+            {
+                curSummom++;
+            }
+            else if (useCommon)
+            {
+                UnitRarityData rarity = StaticDataMgr.Instance.GetUnitRarityData(collectUnit[i].unit.rarity);
+                if (curCount + Mathf.Min(curCommon, needCount * rarity.commonRatio) >= needCount)
+                {
+                    curSummom++;
+                }
+            }
+        }
+        return curSummom;
+    }
+    public bool CheckMonsterCompose(UnitData unit, bool useCommon)
+    {
+        ItemData fragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unit.fragmentId);
+        int count = (fragment == null ? 0 : fragment.count);
+        int need = unit.fragmentCount;
+
+        if (count >= need)
+        {
+            return true;
+        }
+        else if (useCommon)
+        {
+            ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
+            int common = (comFragment == null) ? 0 : comFragment.count;
+            UnitRarityData rarity = StaticDataMgr.Instance.GetUnitRarityData(unit.rarity);
+            if (count + Mathf.Min(common, need * rarity.commonRatio) >= need)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     //---------------------------------------------------------------------------------------------
 
@@ -427,7 +490,6 @@ public class PlayerData : MonoBehaviour
             equipTypePart[itemTemp.subType - 1, itemTemp.part - 1] += 1;
         }
     }
-
     public bool CheckEquipTypePart(int type, int part)
     {
         if (equipTypePart[type-1,part-1]>0)
@@ -438,6 +500,25 @@ public class PlayerData : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public int GetMonsterCountByPart(int part)
+    {
+        int curSummon = 0;
+        
+        UnitData petData;
+        foreach (var gameUnit in allUnitDic.Values)
+        {
+            if (gameUnit.equipList[part-1]==null)
+            {
+                petData = StaticDataMgr.Instance.GetUnitRowData(gameUnit.pbUnit.id);
+                if (CheckEquipTypePart(petData.equip, part))
+                {
+                    curSummon++;
+                }
+            }
+        }
+        return curSummon;
     }
     //-----------------------------------------------------------------------
 }

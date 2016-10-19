@@ -100,6 +100,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                 //mCurLvlDescript.text = string.Format(sdMgr.GetTextByID("sociaty_startlevel"), nextTechData.sociatyLevel);
                 //mNextLvlDescript.text = string.Empty;
 
+                mContributeConsumValue.text = nextTechData.levelUp.ToString();
                 SetLvlInfoInternal(curLvlEffect, mTechData, ref mCurLvlDescript);
                 SetLvlInfoInternal(nextLvlEffect, nextTechData, ref mNextLvlDescript);
                 string openText = sdMgr.GetTextByID("sociaty_limitlevel");
@@ -107,7 +108,6 @@ public class SociatyTechnologyItem : MonoBehaviour
             }
             else
             {
-                mContributeConsumValue.text = mTechData.levelUp.ToString();
                 SetLvlInfoInternal(curLvlEffect, mTechData, ref mCurLvlDescript);
                 //set next level info
                 if (nextTechData == null)
@@ -123,6 +123,7 @@ public class SociatyTechnologyItem : MonoBehaviour
                 }
                 else
                 {
+                    mContributeConsumValue.text = nextTechData.levelUp.ToString();
                     //mContributeConsumValue.gameObject.SetActive(true);
                     //mContributeConsumIcon.gameObject.SetActive(true);
                     //mTecLvlUp.gameObject.SetActive(true);

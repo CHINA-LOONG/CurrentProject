@@ -430,6 +430,17 @@ public class GsConst {
 		public static final int[] TIME_GEAR = new int[] { 5 * 3600, 8 * 3600, 12 * 3600 };
 	}
 
+	/**
+	 * 新手引导
+	 */
+	public static class Guide {
+		public static final int[] QUEST_COMPLETE = new int[] {10001};
+		public static final String[] EXP_ITEM = new String[] {"50002", "50003", "50004"};
+
+		// TODO: 临时常量，用配置数量代替
+		public static final int guideCount = 333;
+	}
+
 	// 系统常量================================================================================
 
 	/**

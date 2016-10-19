@@ -131,8 +131,8 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
-		if (entryCfg == null) {
-			sendError(hsCode, Status.error.CONFIG_ERROR);
+		if (entryCfg == null || entryCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return true;
 		}
 		InstanceChapterCfg chapterCfg = entryCfg.getChapterCfg();
@@ -229,6 +229,18 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		HoleCfg holeCfg = HawkConfigManager.getInstance().getConfigByKey(HoleCfg.class, holeId);
 		if (holeCfg == null) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return true;
+		}
+
+		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
+		if (entryCfg == null || entryCfg.getType() != Const.InstanceType.INSTANCE_HOLE_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return true;
+		}
+
+		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
+		if (instanceCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return true;
 		}
@@ -243,18 +255,6 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 		if (index == -1) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return true;
-		}
-
-		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
-		if (instanceCfg == null) {
-			sendError(hsCode, Status.error.CONFIG_ERROR);
-			return true;
-		}
-
-		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
-		if (entryCfg == null) {
-			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return true;
 		}
 
@@ -364,7 +364,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		String instanceId = instanceList[floor - 1];
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
-		if (entryCfg == null) {
+		if (entryCfg == null || entryCfg.getType() != Const.InstanceType.INSTANCE_TOWER_VALUE) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return true;
 		}
@@ -427,8 +427,8 @@ public class PlayerInstanceModule extends PlayerModule {
 		List<Integer> battleMonsterList = protocol.getBattleMonsterIdList();
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
-		if (entryCfg == null) {
-			sendError(hsCode, Status.error.CONFIG_ERROR);
+		if (entryCfg == null || entryCfg.getType() != Const.InstanceType.INSTANCE_GUILD_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return true;
 		}
 

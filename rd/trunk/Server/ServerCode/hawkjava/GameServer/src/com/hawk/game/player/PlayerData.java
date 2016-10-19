@@ -910,6 +910,9 @@ public class PlayerData {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART1_S, BuilderUtil.genStatisticsPart1Builder(statisticsEntity)));
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART2_S, BuilderUtil.genStatisticsPart2Builder(statisticsEntity)));
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART3_S, BuilderUtil.genStatisticsPart3Builder(statisticsEntity)));
+		if (GsConst.Guide.guideCount > statisticsEntity.getGuideFinishSet().size()) {
+			player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_GUIDE_S, BuilderUtil.genStatisticsGuideBuilder(statisticsEntity)));
+		}
 	}
 
 	/**

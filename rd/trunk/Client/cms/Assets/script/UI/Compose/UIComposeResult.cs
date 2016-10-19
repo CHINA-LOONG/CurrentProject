@@ -53,7 +53,7 @@ public class UIComposeResult : UIBase
         ItemIcon item = null;
         if (itemPool.Count <= 0)
         {
-            item = ItemIcon.CreateItemIcon(data,false);
+            item = ItemIcon.CreateItemIcon(data, true, false);
             UIUtil.SetParentReset(item.transform, content);
         }
         else
@@ -61,7 +61,7 @@ public class UIComposeResult : UIBase
             item = itemPool[itemPool.Count - 1];
             item.gameObject.SetActive(true);
             itemPool.Remove(item);
-            item.RefreshWithItemInfo(data,false);
+            item.RefreshWithItemInfo(data,true,false);
         }
         item.transform.SetAsLastSibling();
         items.Add(item);

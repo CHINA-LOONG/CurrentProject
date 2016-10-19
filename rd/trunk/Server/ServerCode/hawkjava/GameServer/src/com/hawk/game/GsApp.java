@@ -303,7 +303,7 @@ public class GsApp extends HawkApp {
 	public boolean onTick(long tickTime) {
 		if (super.onTick(tickTime)) {
 			// 显示服务器信息
-			ServerData.getInstance().showServerInfo();
+			//ServerData.getInstance().showServerInfo();
 			return true;
 		}
 		return false;
@@ -413,7 +413,10 @@ public class GsApp extends HawkApp {
 	@Override
 	public void printState() {
 		super.printState();
+		// 管理器中玩家数量
 		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
+		// 显示服务器信息
+		ServerData.getInstance().showServerInfo();
 	}
 
 	/**
@@ -424,17 +427,14 @@ public class GsApp extends HawkApp {
 		super.onMemoryOutWarning();
 		HawkObjManager<HawkXID, HawkAppObj> objMan = objMans.get(GsConst.ObjType.PLAYER);
 		Iterator<Map.Entry<HawkXID, HawkObjBase<HawkXID, HawkAppObj>>> iterator = objMan.getObjBaseMap().entrySet().iterator();
-		int removeCount = 0;
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
 			 if (player.isOnline() == false && objBase.getVisitTime() + 600000 < currentTime) {
 				iterator.remove();
-				removeCount++;
+				ServerData.getInstance().addReleasePlayer();
 			}
 		}
-
-		HawkLog.errPrintln(String.format("移除对象个数 %d", removeCount));
 	}
 
 	/**

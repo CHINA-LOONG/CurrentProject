@@ -66,6 +66,8 @@ public class MonsterCollectItem : MonoBehaviour
     void SetFragmentCount(UnitData unit)
     {
         ItemData fragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unit.fragmentId);
+
+
         int need = unit.fragmentCount;
         int count = (fragment == null ? 0 : fragment.count);
         textCount.text = string.Format("{0}/{1}", count, need);
@@ -76,7 +78,17 @@ public class MonsterCollectItem : MonoBehaviour
         }
         else
         {
-            SetComposeTips(false);
+            ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
+            int common = (comFragment == null) ? 0 : comFragment.count;
+            UnitRarityData rarity = StaticDataMgr.Instance.GetUnitRarityData(curData.unit.rarity);
+            if (count + Mathf.Min(common, need * rarity.commonRatio) >= need)
+            {
+                SetComposeTips(true);
+            }
+            else
+            {
+                SetComposeTips(false);
+            }
             textCount.color = ColorConst.system_color_white;
         }
     }

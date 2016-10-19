@@ -50,6 +50,7 @@ import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.InstanceState;
 import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.QuestUtil;
 
@@ -461,7 +462,7 @@ public class GmService_Dev extends GameService {
 		case "setstar": {
 			// 因为是GM未优化
 			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
-			if (targetCfg == null || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
+			if (null == targetCfg || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
@@ -483,7 +484,7 @@ public class GmService_Dev extends GameService {
 					int targetIndex = targetCfg.getIndex();
 					int targetDifficult = targetCfg.getDifficult();
 
-					Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+					Map<String, InstanceEntryCfg> cfgMap = InstanceUtil.getStoryInstanceMap();
 					for (InstanceEntryCfg entry : cfgMap.values()) {
 						if(targetDifficult == entry.getDifficult()) {
 							if (entry.getChapter() < targetChapter
@@ -575,7 +576,7 @@ public class GmService_Dev extends GameService {
 		case "setpass": {
 			// 因为是GM未优化
 			InstanceEntryCfg targetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
-			if (targetCfg == null || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
+			if (null == targetCfg || targetCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
 				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
 				return;
 			}
@@ -594,7 +595,7 @@ public class GmService_Dev extends GameService {
 				int targetIndex = targetCfg.getIndex();
 				int targetDifficult = targetCfg.getDifficult();
 
-				Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+				Map<String, InstanceEntryCfg> cfgMap = InstanceUtil.getStoryInstanceMap();
 				for (InstanceEntryCfg entry : cfgMap.values()) {
 					if(targetDifficult == entry.getDifficult()) {
 						if (entry.getChapter() < targetChapter
@@ -621,7 +622,7 @@ public class GmService_Dev extends GameService {
 				int targetIndex = targetCfg.getIndex();
 				int targetDifficult = targetCfg.getDifficult();
 
-				Map<Object, InstanceEntryCfg> cfgMap = HawkConfigManager.getInstance().getConfigMap(InstanceEntryCfg.class);
+				Map<String, InstanceEntryCfg> cfgMap = InstanceUtil.getStoryInstanceMap();
 				for (InstanceEntryCfg entry : cfgMap.values()) {
 					if (targetDifficult == entry.getDifficult()) {
 						if (entry.getChapter() > targetChapter
@@ -705,7 +706,6 @@ public class GmService_Dev extends GameService {
 
 			actionHandled = true;
 			break;
-
 		}
 
 		// 每日刷新

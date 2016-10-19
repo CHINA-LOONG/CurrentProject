@@ -1,0 +1,3 @@
+﻿#NUM,TEXT,TEXT,TEXT,NUM
+Id,guidPurpose,finishOther,steps,finishAtStep
+#id,教学目的,完成后同步完成的其它引导,新手引导步骤,完成任务时的步骤

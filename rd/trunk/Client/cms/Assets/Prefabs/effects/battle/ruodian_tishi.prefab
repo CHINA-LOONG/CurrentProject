@@ -3793,7 +3793,7 @@ ParticleSystem:
           rgba: 10018559
         key1:
           serializedVersion: 2
-          rgba: 4288078335
+          rgba: 1184293375
         key2:
           serializedVersion: 2
           rgba: 0
@@ -3822,14 +3822,14 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 18119
-        atime2: 33153
+        atime2: 65535
         atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -5869,7 +5869,7 @@ ParticleSystem:
           rgba: 10018559
         key1:
           serializedVersion: 2
-          rgba: 4288078335
+          rgba: 1184293375
         key2:
           serializedVersion: 2
           rgba: 0
@@ -5897,15 +5897,15 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 18119
-        atime2: 33153
+        atime1: 18504
+        atime2: 65535
         atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -10830,7 +10830,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d145c648cca8b04468836d5c7650458f, type: 2}
+  - {fileID: 2100000, guid: de33850b34e92b140a555c5fae7b9ec7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

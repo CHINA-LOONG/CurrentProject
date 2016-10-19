@@ -686,7 +686,7 @@ public abstract class HawkApp extends HawkAppObj {
 		}
 
 		//打印任务队列状态
-		if (tickTime - lastShowStateTime >= 30000) {
+		if (tickTime - lastShowStateTime >= 10000) {
 			lastShowStateTime = tickTime;
 			printState();
 

@@ -91,6 +91,7 @@ public class BattleUnitUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Destroy()
     {
+        gameObject.SetActive(false);
         ResourceMgr.Instance.DestroyAsset(gameObject);
         //Destroy(gameObject);
     }

@@ -11,7 +11,7 @@ public class MonsterIcon : MonoBehaviour
 
 	public	Transform	itemsParent;
 	public	Image	bossImage;
-	public	Image	friendImage;
+	//public	Image	friendImage;
 	public	Image	selectImage;
 	public  Image  	maskImage;
   //  public Image levelImage;
@@ -163,10 +163,10 @@ public class MonsterIcon : MonoBehaviour
 		bossImage.gameObject.SetActive (bshow);
 	}
 
-	public	void	ShowFriendItem(bool bshow = true)
-	{
-		friendImage.gameObject.SetActive (bshow);
-	}
+	//public	void	ShowFriendItem(bool bshow = true)
+	//{
+	//	friendImage.gameObject.SetActive (bshow);
+	//}
 
 	public	void	ShowSelectImage(bool bshow = true)
 	{

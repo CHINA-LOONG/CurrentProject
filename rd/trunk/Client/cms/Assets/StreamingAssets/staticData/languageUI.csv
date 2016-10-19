@@ -250,8 +250,7 @@ decompose_blue,蓝色品质,Blue Grade
 decompose_coin1,金币,coin
 decompose_sure,确定分解操作么？,Confirm disenchantment?
 decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
-compose_record_001,分解成功,Disenchantment success!
-compose_record_002,获得,Received 
+compose_record_001,分解成功！获得,Disenchantment success!Received
 compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
 compose_record_005,请先选择分解原料,Please choose disenchantment material first.

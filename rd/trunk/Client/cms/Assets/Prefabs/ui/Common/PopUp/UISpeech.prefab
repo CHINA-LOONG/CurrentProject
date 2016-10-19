@@ -876,7 +876,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1e7e7da91da64934e8b1ffecb0444721, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79d027d7f7cc81946a3de1d9183cc7ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1353,6 +1353,7 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
   mDontDestroyWhenSwitchScene: 0
+  uiAnimator: {fileID: 0}
   btnSkip: {fileID: 11418066}
   btnNext: {fileID: 11459404}
   animatorA: {fileID: 9540328}

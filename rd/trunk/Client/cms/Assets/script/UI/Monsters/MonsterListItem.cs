@@ -93,11 +93,12 @@ public class MonsterListItem : MonoBehaviour
                     equipIcon[i] = ItemIcon.CreateItemIcon(equipData, false);
                     UIUtil.SetParentReset(equipIcon[i].transform, equipSlot[i].FindChild("equipPos"));
                     //equipIcon[i].HideExceptIcon();
+                    equipIcon[i].HideItemButton();
                 }
                 else
                 {
                     equipIcon[i].gameObject.SetActive(true);
-                    equipIcon[i].RefreshWithEquipInfo(equipData);
+                    equipIcon[i].RefreshWithEquipInfo(equipData,false);
                     //equipIcon[i].HideExceptIcon();
                 }
             }

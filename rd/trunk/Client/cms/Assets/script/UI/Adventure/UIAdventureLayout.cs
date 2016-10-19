@@ -124,7 +124,7 @@ public class UIAdventureLayout : UIBase,
             curGameUnit = item.Value;
             curUnitData = StaticDataMgr.Instance.GetUnitRowData(curGameUnit.pbUnit.id);
             //if (curGameUnit.pbUnit.IsLocked())
-            if (true)
+            //if (true)
             {
                 allSelfs.Add(new AdventureSelfMonsterInfo() { unit = curGameUnit, unitData = curUnitData });
             }

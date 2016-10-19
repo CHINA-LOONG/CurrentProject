@@ -46,7 +46,7 @@ public class PetDetailsAttribute : PetDetailsRight
 
     void Start()
     {
-        text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("detail_title");
         text_BaseAttr.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
         text_STR.text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
         text_STA.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");

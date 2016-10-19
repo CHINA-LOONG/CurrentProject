@@ -190,6 +190,22 @@ public class UIMgr : MonoBehaviour
         }
         uiItem.transform.SetAsLastSibling();
         uiItem.Init();
+
+#if UNITY_STANDALONE_WIN
+        {
+            if(!uiName.Equals("uishowMsg"))
+            {
+                GameObject textGo = ResourceMgr.Instance.LoadAsset("LogUIViewName", false);
+                Text text = textGo.GetComponentInChildren<Text>();
+                text.text = uiName;
+
+                textGo.transform.SetParent(uiItem.gameObject.transform);
+                RectTransform textRt = textGo.transform as RectTransform;
+                textRt.localScale = Vector3.one;
+                textRt.anchoredPosition = Vector2.zero;
+            }
+        }
+#endif
         //显示管理
         if (!string.Equals(uiName, UINetRequest.ViewName))
         {
@@ -206,6 +222,7 @@ public class UIMgr : MonoBehaviour
     private void SetUIInternal(ref UIBase uiItem, GameObject ui, string uiName, bool cache)
     {
         uiItem = ui.GetComponent<UIBase>();
+        uiItem.uiViewName = uiName;
         ui.name = uiName;
         if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
         {

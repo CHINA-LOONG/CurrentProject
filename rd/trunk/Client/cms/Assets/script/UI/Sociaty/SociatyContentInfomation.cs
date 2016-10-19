@@ -230,6 +230,6 @@ public class SociatyContentInfomation : SociatyContentBase
 
     void OnBossButtonClick()
     {
-        UIIm.Instance.ShowSystemHints("comming Later!", (int)PB.ImType.PROMPT);
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_012"), (int)PB.ImType.PROMPT);
     }
 }

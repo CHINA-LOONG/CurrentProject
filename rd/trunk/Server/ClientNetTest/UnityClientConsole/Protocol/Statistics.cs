@@ -446,6 +446,44 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsSyncGuide")]
+  public partial class HSStatisticsSyncGuide : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsSyncGuide() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _guideQuestComplete = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"guideQuestComplete", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> guideQuestComplete
+    {
+      get { return _guideQuestComplete; }
+    }
+  
+    private int _expItemUseCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"expItemUseCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int expItemUseCount
+    {
+      get { return _expItemUseCount; }
+      set { _expItemUseCount = value; }
+    }
+    private int _upSkillTimes;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"upSkillTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int upSkillTimes
+    {
+      get { return _upSkillTimes; }
+      set { _upSkillTimes = value; }
+    }
+    private bool _hasWear;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"hasWear", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool hasWear
+    {
+      get { return _hasWear; }
+      set { _hasWear = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncDailyRefresh")]
   public partial class HSSyncDailyRefresh : global::ProtoBuf.IExtensible
   {

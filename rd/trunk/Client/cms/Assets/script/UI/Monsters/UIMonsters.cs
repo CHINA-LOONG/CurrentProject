@@ -265,27 +265,41 @@ public class UIMonsters : UIBase,
             scrollView_Owend.gameObject.SetActive(false);
             scrollView_Collect.gameObject.SetActive(true);
 
-            List<CollectUnit> list = GameDataMgr.Instance.PlayerDataAttr.collectUnit;
-            ItemData curFragment;
-            int curCount = 0;
-            int curSummom = 0;
-            for (int i = 0; i < list.Count; i++)
-            {
-                curFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(list[i].unit.fragmentId);
-                curCount = (curFragment == null ? 0 : curFragment.count);
-                if (curCount>=list[i].unit.fragmentCount)
-                {
-                    curSummom++;
-                }
-            }
             ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
-            textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());
-            textCollect.text = curSummom.ToString();
+            int curCommon = (comFragment == null) ? 0 : comFragment.count;
+            textComFragments.text = curCommon.ToString();
+            
+            textCollect.text = GameDataMgr.Instance.PlayerDataAttr.GetMonsterCountByCompose(true).ToString();
 
             ReLoadCollectData(index);
         }
     }
 
+    public void ReSortOwned(int part)
+    {
+        if (uiType == UIType.Owned)
+        {
+            for (int i = 0; i < OwnedList.Count; i++)
+            {
+                if (i != 0 && OwnedList[i].equipList[part - 1] == null)
+                {
+                    UnitData petData = StaticDataMgr.Instance.GetUnitRowData(OwnedList[i].pbUnit.id);
+                    if (GameDataMgr.Instance.PlayerDataAttr.CheckEquipTypePart(petData.equip, part))
+                    {
+                        GameUnit temp = OwnedList[0];
+                        OwnedList[0] = OwnedList[i];
+                        OwnedList[i] = temp;
+                        break;
+                    }
+                }
+            }
+            scrollView_Owend.InitContentSize(OwnedList.Count, this);
+        }
+        else
+        {
+            Debug.LogError("当前不在宠物列表页面");
+        }
+    }
     void ReLoadOwnedData(int index)
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
@@ -320,6 +334,27 @@ public class UIMonsters : UIBase,
         iconFragment.HideExceptIcon();
     }
 
+    public void ReSortCollect(bool useCommon)
+    {
+        if (uiType == UIType.Collection)
+        {
+            for (int i = 0; i < CollectList.Count; i++)
+            {
+                if (i != 0 && GameDataMgr.Instance.PlayerDataAttr.CheckMonsterCompose(CollectList[i].unit,useCommon))
+                {
+                    CollectUnit temp = CollectList[0];
+                    CollectList[0] = CollectList[i];
+                    CollectList[i] = temp;
+                    break;
+                }
+            }
+            scrollView_Collect.InitContentSize(CollectList.Count, this);
+        }
+        else
+        {
+            Debug.LogError("当前不在宠物图鉴页面");
+        }
+    }
     void ReLoadCollectData(int index)
     {
         int curType = GetTypeByIndex(index);
@@ -353,8 +388,8 @@ public class UIMonsters : UIBase,
             //iconFragment = ItemIcon.CreateItemIcon();
             ItemIcon.CreateItemIconIconAsync(
                 new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 },
-                false,
-                false,
+                true,
+                true,
                 CollectIconLoadCallback
                 );
         }
@@ -404,7 +439,7 @@ public class UIMonsters : UIBase,
         if (tab==TabGroup1)
         {
             uiType = (UIType)index;
-            Refresh();
+            Refresh(-1, 0);
         }
         else if(tab==TabGroup2)
         {

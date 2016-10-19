@@ -190,7 +190,7 @@ public class EquipForge : EquipInfoBase
                     {
                         textCoin.color = ColorConst.text_color_Req;
                     }
-                    textCoin.text = curDemand[i].count.ToString();
+                    textCoin.text = ((int)(curDemand[i].count * itemData.forgeAdjust)).ToString();
                 }
                 else
                 {

@@ -128,7 +128,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
         textType.text = StaticDataMgr.Instance.GetTextByID("monstertype" + CurData.unit.type);
         imgProIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + CurData.unit.property);
 
-        if (!string.Equals(monsterId, CurData.unit.id))
+        if (!string.Equals(monsterId, CurData.unit.id) || imageView.model == null)
         {
             unitModel = imageView.ReloadData(CurData.unit.id);
             monsterId = CurData.unit.id;

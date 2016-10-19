@@ -9,6 +9,7 @@ public interface IGemSlotItem
 
 public class GemSlotItem : MonoBehaviour
 {
+    public GameObject objGem;
     public Image imageType;
     public Transform iconPos;
     private ItemIcon gemIcon;
@@ -49,7 +50,7 @@ public class GemSlotItem : MonoBehaviour
     {
         curInfo = info;
 
-        imageType.gameObject.SetActive(curInfo != null);
+        objGem.gameObject.SetActive(curInfo != null);
         if (curInfo == null)  //未解锁
         {
             Type = SlotType.Locked;

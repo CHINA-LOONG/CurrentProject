@@ -55,10 +55,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (fatigue < 1) {
 			return false;
 		}
-
-		// 计算InstanceChapter
 		InstanceUtil.addInstance(this);
-
 		return true;
 	}
 

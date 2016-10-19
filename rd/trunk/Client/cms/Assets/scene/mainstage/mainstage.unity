@@ -34607,11 +34607,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6578428, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6578428, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128224, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
       propertyPath: m_IsActive

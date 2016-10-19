@@ -55,6 +55,7 @@ public class PetDetailsAdvance : PetDetailsRight
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
+        text_BaseAttr.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
         text_LevelText.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_demand_level");
         text_Advance.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage");
         textAdvanceFull.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_full");

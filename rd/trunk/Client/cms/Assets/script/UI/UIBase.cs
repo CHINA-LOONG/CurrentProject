@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class UIBase : MonoBehaviour 
 {
@@ -51,12 +52,16 @@ public abstract class UIBase : MonoBehaviour
         }
     }
 
+    public List<GuidePositionObject> posObjectList = new List<GuidePositionObject>();
+
     public Animator uiAnimator;
     private static string outAnimationTriger = "animationOut";
     private static string inAnimationTriger = "animationIn";
 
     private int inAnimationState = -1;
     private int outAnimationState = -1;
+
+    public string uiViewName;
 
     //初始化界面操作，创建或激活后配置初始状态
     public virtual void Init()

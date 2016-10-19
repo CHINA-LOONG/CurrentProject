@@ -22,6 +22,7 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.ServerData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.BILog.BICoinData;
 import com.hawk.game.BILog.BIEnergyFlowData;
@@ -1833,4 +1834,10 @@ public class Player extends HawkAppObj {
 		}
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+		ServerData.getInstance().addGCPlayer();
+	}
 }

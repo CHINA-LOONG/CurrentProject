@@ -6,7 +6,9 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.protocol.Const;
 
 public class InstanceUtil {
 
@@ -21,12 +23,24 @@ public class InstanceUtil {
 	 */
 	private static Map<Integer, InstanceChapter> chapterMap = new HashMap<>();
 
+	/**
+	 * @key instanceId
+	 */
+	private static Map<String, InstanceEntryCfg> storyInstanceMap = new HashMap<>();
+
 	// 构造阶段---------------------------------------------------------------------
 
 	/**
 	 * 添加副本
 	 */
 	public static void addInstance(InstanceEntryCfg entryCfg) {
+		// 非故事副本不记录
+		if (entryCfg.getType() != Const.InstanceType.INSTANCE_STORY_VALUE) {
+			return;
+		}
+
+		storyInstanceMap.put(entryCfg.getInstanceId(), entryCfg);
+
 		InstanceChapter chapter = chapterMap.get(entryCfg.getChapter());
 		if (chapter == null) {
 			chapter = new InstanceChapter();
@@ -57,4 +71,9 @@ public class InstanceUtil {
 	public static InstanceChapter getInstanceChapter(int chapterId) {
 		return chapterMap.get(chapterId);
 	}
+
+	public static Map<String, InstanceEntryCfg> getStoryInstanceMap() {
+		return Collections.unmodifiableMap(storyInstanceMap);
+	}
+
 }

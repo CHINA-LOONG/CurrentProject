@@ -105,14 +105,17 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PVP_DEFENCE_SYNC_S", Value=1028)]
       PVP_DEFENCE_SYNC_S = 1028,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART1_S", Value=1030)]
-      STATISTICS_SYNC_PART1_S = 1030,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART1_S", Value=1040)]
+      STATISTICS_SYNC_PART1_S = 1040,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART2_S", Value=1031)]
-      STATISTICS_SYNC_PART2_S = 1031,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART2_S", Value=1041)]
+      STATISTICS_SYNC_PART2_S = 1041,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART3_S", Value=1032)]
-      STATISTICS_SYNC_PART3_S = 1032,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_PART3_S", Value=1042)]
+      STATISTICS_SYNC_PART3_S = 1042,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SYNC_GUIDE_S", Value=1043)]
+      STATISTICS_SYNC_GUIDE_S = 1043,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1099)]
       ASSEMBLE_FINISH_S = 1099,

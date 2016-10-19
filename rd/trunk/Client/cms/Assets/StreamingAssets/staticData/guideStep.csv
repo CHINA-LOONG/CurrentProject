@@ -1,0 +1,3 @@
+﻿#NUM,TEXT,TEXT,TEXT,NUM,NUM,TEXT,TEXT,NUM
+Id,trigerView,talkId,posObject,tipsX,tipsY,tipsContent,finishEvent,jump
+#id,触发界面,会话Id,焦点位置对象,tipsX偏移,tipsY偏移,tips内容,完成后事件,跳过并完成

@@ -324,7 +324,11 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
             monsterInfos.Clear();
             foreach (var item in allMonster)
             {
-                if (item.Value.pbUnit.IsLocked() || CheckMainMonster(item.Value))
+                if (item.Value.pbUnit.IsLocked() || 
+                    CheckMainMonster(item.Value)||
+                    item.Value.pbUnit.IsInAdventure()||
+                    item.Value.pbUnit.IsInAllianceBase()||
+                    item.Value.pbUnit.IsInPvp())
                 {
                     continue;
                 }
@@ -632,6 +636,10 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_005"), (int)PB.ImType.PROMPT);
         }
+        else if (Type == type.Monsters && decomposeView.selectItems.Count >= GameDataMgr.Instance.PlayerDataAttr.allUnitDic.Count)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_007"), (int)PB.ImType.PROMPT);
+        }
         else
         {
             MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
@@ -743,7 +751,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         
         if (reward.hsCode == PB.code.EQUIP_DECOMPOSE_C.GetHashCode() || reward.hsCode == PB.code.MONSTER_DECOMPOSE_C.GetHashCode())
         {
-            string tips = StaticDataMgr.Instance.GetTextByID("compose_record_002");
+            string tips = StaticDataMgr.Instance.GetTextByID("compose_record_001");
             string tips1 = "{0}*{1}";
 
             #region tips=金币*1000    物品A*20……
@@ -780,7 +788,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
             }
             #endregion
 
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_001"), (int)PB.ImType.PROMPT);
+            //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_001"), (int)PB.ImType.PROMPT);
             UIIm.Instance.ShowSystemHints(tips, (int)PB.ImType.PROMPT);
         }
         else
@@ -811,6 +819,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         for (int i = 0; i < decomposeView.UnloadEquip.Count; i++)
         {
             decomposeView.UnloadEquip[i].monsterId = BattleConst.invalidMonsterID;
+            GameDataMgr.Instance.PlayerDataAttr.AddEquipTypePart(decomposeView.UnloadEquip[i]);
         }
         Refresh();
     }

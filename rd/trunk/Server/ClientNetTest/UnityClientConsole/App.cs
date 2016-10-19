@@ -181,6 +181,11 @@ namespace UnityClientConsole
                 HSStatisticsSyncPart3 statisticsInfo = protocol.GetProtocolBody<HSStatisticsSyncPart3>();
                 Console.WriteLine("同步统计信息3");
             }
+            else if (protocol.checkType(code.STATISTICS_SYNC_GUIDE_S.GetHashCode()))
+            {
+                HSStatisticsSyncGuide statisticsInfo = protocol.GetProtocolBody<HSStatisticsSyncGuide>();
+                Console.WriteLine("同步统计信息_新手引导");
+            }
             else if (protocol.checkType(code.SETTING_INFO_SYNC_S.GetHashCode()))
             {
                 HSSettingInfoSync settingSyn = protocol.GetProtocolBody<HSSettingInfoSync>();
@@ -426,14 +431,14 @@ namespace UnityClientConsole
 //                 HSSummonTen summonTen = new HSSummonTen();
 //                 summonTen.type = 4;
 //                 netmanaget.SendProtocol(code.SUMMON_TEN_C.GetHashCode(), summonTen);
-
-                HSSignin signin = new HSSignin();
-                signin.month = 2;
-                netmanaget.SendProtocol(code.SIGNIN_C.GetHashCode(), signin);
-
-                HSSigninFill signinFill = new HSSigninFill();
-                signinFill.month = 2;
-                netmanaget.SendProtocol(code.SIGNIN_FILL_C.GetHashCode(), signinFill);
+// 
+//                 HSSignin signin = new HSSignin();
+//                 signin.month = 2;
+//                 netmanaget.SendProtocol(code.SIGNIN_C.GetHashCode(), signin);
+// 
+//                 HSSigninFill signinFill = new HSSigninFill();
+//                 signinFill.month = 2;
+//                 netmanaget.SendProtocol(code.SIGNIN_FILL_C.GetHashCode(), signinFill);
             }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))

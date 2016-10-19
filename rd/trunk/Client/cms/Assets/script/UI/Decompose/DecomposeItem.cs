@@ -204,7 +204,8 @@ public class DecomposeItem : MonoBehaviour
         {
             equipIcon.RefreshWithEquipInfo(CurData.curEquip,true,true);
         }
-        UIUtil.SetStageColor(equipName, staticData.NameAttr, curEquip.stage);
+        //UIUtil.SetStageColor(equipName, staticData.NameAttr, curEquip.stage);
+        equipName.text = staticData.NameAttr;
 
         textPart.text = staticData.PartAttr;
         RefreshGem(curEquip.gemList);
@@ -215,8 +216,8 @@ public class DecomposeItem : MonoBehaviour
         equipUI.SetActive(false);
 
         GameUnit curMonster = CurData.curMonster;
-        UIUtil.SetStageColor(monsterName, curMonster);
-
+        //UIUtil.SetStageColor(monsterName, curMonster);
+        UIUtil.SetStageName(monsterName, curMonster);
         textMonsterBP.text = data.mBp.ToString();
 
         if (monsterIcon==null)

@@ -470,7 +470,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139726}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: -.121000007, z: 0}
+  m_LocalPosition: {x: 0, y: -.185000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416976}
@@ -7332,10 +7332,10 @@ ParticleSystem:
           rgba: 16777215
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 1946157055
         key2:
           serializedVersion: 2
-          rgba: 4278190080
+          rgba: 0
         key3:
           serializedVersion: 2
           rgba: 0
@@ -7361,14 +7361,14 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 8674
-        atime2: 28334
+        atime2: 65535
         atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -10493,10 +10493,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 2010368
+          rgba: 753747
         key1:
           serializedVersion: 2
-          rgba: 4280659456
+          rgba: 4279412070
         key2:
           serializedVersion: 2
           rgba: 16777215
@@ -12554,10 +12554,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 2010368
+          rgba: 1022000
         key1:
           serializedVersion: 2
-          rgba: 4280659456
+          rgba: 4278415650
         key2:
           serializedVersion: 2
           rgba: 16777215
@@ -19654,7 +19654,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31dacfc22ecb48c479f6a6cba3c088b9, type: 2}
+  - {fileID: 2100000, guid: d2de6467502cc1f4688344d94723c797, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

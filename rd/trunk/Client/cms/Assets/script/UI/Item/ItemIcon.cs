@@ -187,6 +187,11 @@ public class ItemIcon : MonoBehaviour
         itemCountText.text = "";
     }
 
+    public void HideItemButton(bool hide = true)
+    {
+        iconButton.gameObject.SetActive(!hide);
+    }
+
     public void HideExceptIcon()
     {
         backGround.gameObject.SetActive(false);

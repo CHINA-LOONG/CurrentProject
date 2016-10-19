@@ -37,6 +37,7 @@ import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.ChapterState;
+import com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide;
 import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart1;
 import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart2;
 import com.hawk.game.protocol.Statistics.HSStatisticsSyncPart3;
@@ -183,6 +184,34 @@ public class BuilderUtil {
 		builder.setLoginTimesDaily(statisticsEntity.getLoginTimesDaily());
 		builder.setDumpEndTime(statisticsEntity.getDumpTime());
 		builder.addAllGuideFinish(statisticsEntity.getGuideFinishSet());
+
+		return builder;
+	}
+
+	public static HSStatisticsSyncGuide.Builder genStatisticsGuideBuilder(StatisticsEntity statisticsEntity) {
+		HSStatisticsSyncGuide.Builder builder = HSStatisticsSyncGuide.newBuilder();
+
+		for (int questId : GsConst.Guide.QUEST_COMPLETE) {
+			if (true == statisticsEntity.isQuestComplete(questId)) {
+				builder.addGuideQuestState(true);
+			} else {
+				builder.addGuideQuestState(false);
+			}
+		}
+
+		builder.setUpSkillTimes(statisticsEntity.getUpSkillTimes());
+
+		int expItemUseCount = 0;
+		for (String itemId : GsConst.Guide.EXP_ITEM) {
+			expItemUseCount += statisticsEntity.getUseItemCount(itemId);
+		}
+		builder.setExpItemUseCount(expItemUseCount);
+
+		if (statisticsEntity.getEquipMaxCountOverStage(1) > 0) {
+			builder.setHasWear(true);
+		} else {
+			builder.setHasWear(false);
+		}
 
 		return builder;
 	}

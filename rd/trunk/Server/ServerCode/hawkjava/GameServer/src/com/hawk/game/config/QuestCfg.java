@@ -360,7 +360,7 @@ public class QuestCfg extends HawkConfigBase {
 		case GsConst.Quest.INSTANCE_X_STAR_3:
 			for (Object instanceId : goalParamList) {
 				if (null == HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, (String) instanceId)) {
-					HawkLog.errPrintln(String.format("config invalid InstanceCfg : %d", instanceId));
+					HawkLog.errPrintln(String.format("config invalid InstanceCfg : %s", instanceId));
 					return false;
 				}
 			}

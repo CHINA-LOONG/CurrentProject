@@ -128,6 +128,19 @@ message HSStatisticsSyncPart3
 	repeated int32 guideFinish = 11;
 }
 
+// STATISTICS_SYNC_GUIDE_S
+message HSStatisticsSyncGuide
+{
+	// 新手引导相关任务状态
+	repeated bool guideQuestState = 1;
+	// 经验药水使用次数
+	required int32 expItemUseCount = 2;
+	// 升级技能次数
+	required int32 upSkillTimes = 3;
+	// 是否穿戴过装备
+	required bool hasWear = 4;
+}
+
 // SYNC_DAILY_REFRESH_S
 message HSSyncDailyRefresh
 {

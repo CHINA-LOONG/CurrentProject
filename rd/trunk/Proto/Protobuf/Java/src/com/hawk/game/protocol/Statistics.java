@@ -11283,6 +11283,898 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:HSStatisticsSyncPart3)
   }
 
+  public interface HSStatisticsSyncGuideOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated bool guideQuestState = 1;
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    java.util.List<java.lang.Boolean> getGuideQuestStateList();
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    int getGuideQuestStateCount();
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    boolean getGuideQuestState(int index);
+
+    // required int32 expItemUseCount = 2;
+    /**
+     * <code>required int32 expItemUseCount = 2;</code>
+     *
+     * <pre>
+     * 经验药水使用次数
+     * </pre>
+     */
+    boolean hasExpItemUseCount();
+    /**
+     * <code>required int32 expItemUseCount = 2;</code>
+     *
+     * <pre>
+     * 经验药水使用次数
+     * </pre>
+     */
+    int getExpItemUseCount();
+
+    // required int32 upSkillTimes = 3;
+    /**
+     * <code>required int32 upSkillTimes = 3;</code>
+     *
+     * <pre>
+     * 升级技能次数
+     * </pre>
+     */
+    boolean hasUpSkillTimes();
+    /**
+     * <code>required int32 upSkillTimes = 3;</code>
+     *
+     * <pre>
+     * 升级技能次数
+     * </pre>
+     */
+    int getUpSkillTimes();
+
+    // required bool hasWear = 4;
+    /**
+     * <code>required bool hasWear = 4;</code>
+     *
+     * <pre>
+     * 是否穿戴过装备
+     * </pre>
+     */
+    boolean hasHasWear();
+    /**
+     * <code>required bool hasWear = 4;</code>
+     *
+     * <pre>
+     * 是否穿戴过装备
+     * </pre>
+     */
+    boolean getHasWear();
+  }
+  /**
+   * Protobuf type {@code HSStatisticsSyncGuide}
+   *
+   * <pre>
+   * STATISTICS_SYNC_GUIDE_S
+   * </pre>
+   */
+  public static final class HSStatisticsSyncGuide extends
+      com.google.protobuf.GeneratedMessage
+      implements HSStatisticsSyncGuideOrBuilder {
+    // Use HSStatisticsSyncGuide.newBuilder() to construct.
+    private HSStatisticsSyncGuide(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSStatisticsSyncGuide(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSStatisticsSyncGuide defaultInstance;
+    public static HSStatisticsSyncGuide getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSStatisticsSyncGuide getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSStatisticsSyncGuide(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              guideQuestState_.add(input.readBool());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                guideQuestState_.add(input.readBool());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              expItemUseCount_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              upSkillTimes_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              hasWear_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          guideQuestState_ = java.util.Collections.unmodifiableList(guideQuestState_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsSyncGuide_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsSyncGuide_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.class, com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSStatisticsSyncGuide> PARSER =
+        new com.google.protobuf.AbstractParser<HSStatisticsSyncGuide>() {
+      public HSStatisticsSyncGuide parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSStatisticsSyncGuide(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSStatisticsSyncGuide> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated bool guideQuestState = 1;
+    public static final int GUIDEQUESTSTATE_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Boolean> guideQuestState_;
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    public java.util.List<java.lang.Boolean>
+        getGuideQuestStateList() {
+      return guideQuestState_;
+    }
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    public int getGuideQuestStateCount() {
+      return guideQuestState_.size();
+    }
+    /**
+     * <code>repeated bool guideQuestState = 1;</code>
+     *
+     * <pre>
+     * 新手引导相关任务状态
+     * </pre>
+     */
+    public boolean getGuideQuestState(int index) {
+      return guideQuestState_.get(index);
+    }
+
+    // required int32 expItemUseCount = 2;
+    public static final int EXPITEMUSECOUNT_FIELD_NUMBER = 2;
+    private int expItemUseCount_;
+    /**
+     * <code>required int32 expItemUseCount = 2;</code>
+     *
+     * <pre>
+     * 经验药水使用次数
+     * </pre>
+     */
+    public boolean hasExpItemUseCount() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 expItemUseCount = 2;</code>
+     *
+     * <pre>
+     * 经验药水使用次数
+     * </pre>
+     */
+    public int getExpItemUseCount() {
+      return expItemUseCount_;
+    }
+
+    // required int32 upSkillTimes = 3;
+    public static final int UPSKILLTIMES_FIELD_NUMBER = 3;
+    private int upSkillTimes_;
+    /**
+     * <code>required int32 upSkillTimes = 3;</code>
+     *
+     * <pre>
+     * 升级技能次数
+     * </pre>
+     */
+    public boolean hasUpSkillTimes() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 upSkillTimes = 3;</code>
+     *
+     * <pre>
+     * 升级技能次数
+     * </pre>
+     */
+    public int getUpSkillTimes() {
+      return upSkillTimes_;
+    }
+
+    // required bool hasWear = 4;
+    public static final int HASWEAR_FIELD_NUMBER = 4;
+    private boolean hasWear_;
+    /**
+     * <code>required bool hasWear = 4;</code>
+     *
+     * <pre>
+     * 是否穿戴过装备
+     * </pre>
+     */
+    public boolean hasHasWear() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required bool hasWear = 4;</code>
+     *
+     * <pre>
+     * 是否穿戴过装备
+     * </pre>
+     */
+    public boolean getHasWear() {
+      return hasWear_;
+    }
+
+    private void initFields() {
+      guideQuestState_ = java.util.Collections.emptyList();
+      expItemUseCount_ = 0;
+      upSkillTimes_ = 0;
+      hasWear_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasExpItemUseCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUpSkillTimes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHasWear()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < guideQuestState_.size(); i++) {
+        output.writeBool(1, guideQuestState_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(2, expItemUseCount_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(3, upSkillTimes_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(4, hasWear_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        dataSize = 1 * getGuideQuestStateList().size();
+        size += dataSize;
+        size += 1 * getGuideQuestStateList().size();
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, expItemUseCount_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, upSkillTimes_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, hasWear_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSStatisticsSyncGuide}
+     *
+     * <pre>
+     * STATISTICS_SYNC_GUIDE_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.HSStatisticsSyncGuideOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsSyncGuide_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsSyncGuide_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.class, com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        guideQuestState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        expItemUseCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        upSkillTimes_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        hasWear_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsSyncGuide_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide build() {
+        com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide buildPartial() {
+        com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide result = new com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          guideQuestState_ = java.util.Collections.unmodifiableList(guideQuestState_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.guideQuestState_ = guideQuestState_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.expItemUseCount_ = expItemUseCount_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.upSkillTimes_ = upSkillTimes_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.hasWear_ = hasWear_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide other) {
+        if (other == com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.getDefaultInstance()) return this;
+        if (!other.guideQuestState_.isEmpty()) {
+          if (guideQuestState_.isEmpty()) {
+            guideQuestState_ = other.guideQuestState_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureGuideQuestStateIsMutable();
+            guideQuestState_.addAll(other.guideQuestState_);
+          }
+          onChanged();
+        }
+        if (other.hasExpItemUseCount()) {
+          setExpItemUseCount(other.getExpItemUseCount());
+        }
+        if (other.hasUpSkillTimes()) {
+          setUpSkillTimes(other.getUpSkillTimes());
+        }
+        if (other.hasHasWear()) {
+          setHasWear(other.getHasWear());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasExpItemUseCount()) {
+          
+          return false;
+        }
+        if (!hasUpSkillTimes()) {
+          
+          return false;
+        }
+        if (!hasHasWear()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated bool guideQuestState = 1;
+      private java.util.List<java.lang.Boolean> guideQuestState_ = java.util.Collections.emptyList();
+      private void ensureGuideQuestStateIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>(guideQuestState_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public java.util.List<java.lang.Boolean>
+          getGuideQuestStateList() {
+        return java.util.Collections.unmodifiableList(guideQuestState_);
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public int getGuideQuestStateCount() {
+        return guideQuestState_.size();
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public boolean getGuideQuestState(int index) {
+        return guideQuestState_.get(index);
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public Builder setGuideQuestState(
+          int index, boolean value) {
+        ensureGuideQuestStateIsMutable();
+        guideQuestState_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public Builder addGuideQuestState(boolean value) {
+        ensureGuideQuestStateIsMutable();
+        guideQuestState_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public Builder addAllGuideQuestState(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensureGuideQuestStateIsMutable();
+        super.addAll(values, guideQuestState_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool guideQuestState = 1;</code>
+       *
+       * <pre>
+       * 新手引导相关任务状态
+       * </pre>
+       */
+      public Builder clearGuideQuestState() {
+        guideQuestState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      // required int32 expItemUseCount = 2;
+      private int expItemUseCount_ ;
+      /**
+       * <code>required int32 expItemUseCount = 2;</code>
+       *
+       * <pre>
+       * 经验药水使用次数
+       * </pre>
+       */
+      public boolean hasExpItemUseCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 expItemUseCount = 2;</code>
+       *
+       * <pre>
+       * 经验药水使用次数
+       * </pre>
+       */
+      public int getExpItemUseCount() {
+        return expItemUseCount_;
+      }
+      /**
+       * <code>required int32 expItemUseCount = 2;</code>
+       *
+       * <pre>
+       * 经验药水使用次数
+       * </pre>
+       */
+      public Builder setExpItemUseCount(int value) {
+        bitField0_ |= 0x00000002;
+        expItemUseCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 expItemUseCount = 2;</code>
+       *
+       * <pre>
+       * 经验药水使用次数
+       * </pre>
+       */
+      public Builder clearExpItemUseCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        expItemUseCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 upSkillTimes = 3;
+      private int upSkillTimes_ ;
+      /**
+       * <code>required int32 upSkillTimes = 3;</code>
+       *
+       * <pre>
+       * 升级技能次数
+       * </pre>
+       */
+      public boolean hasUpSkillTimes() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 upSkillTimes = 3;</code>
+       *
+       * <pre>
+       * 升级技能次数
+       * </pre>
+       */
+      public int getUpSkillTimes() {
+        return upSkillTimes_;
+      }
+      /**
+       * <code>required int32 upSkillTimes = 3;</code>
+       *
+       * <pre>
+       * 升级技能次数
+       * </pre>
+       */
+      public Builder setUpSkillTimes(int value) {
+        bitField0_ |= 0x00000004;
+        upSkillTimes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 upSkillTimes = 3;</code>
+       *
+       * <pre>
+       * 升级技能次数
+       * </pre>
+       */
+      public Builder clearUpSkillTimes() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        upSkillTimes_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool hasWear = 4;
+      private boolean hasWear_ ;
+      /**
+       * <code>required bool hasWear = 4;</code>
+       *
+       * <pre>
+       * 是否穿戴过装备
+       * </pre>
+       */
+      public boolean hasHasWear() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required bool hasWear = 4;</code>
+       *
+       * <pre>
+       * 是否穿戴过装备
+       * </pre>
+       */
+      public boolean getHasWear() {
+        return hasWear_;
+      }
+      /**
+       * <code>required bool hasWear = 4;</code>
+       *
+       * <pre>
+       * 是否穿戴过装备
+       * </pre>
+       */
+      public Builder setHasWear(boolean value) {
+        bitField0_ |= 0x00000008;
+        hasWear_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool hasWear = 4;</code>
+       *
+       * <pre>
+       * 是否穿戴过装备
+       * </pre>
+       */
+      public Builder clearHasWear() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hasWear_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSStatisticsSyncGuide)
+    }
+
+    static {
+      defaultInstance = new HSStatisticsSyncGuide(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSStatisticsSyncGuide)
+  }
+
   public interface HSSyncDailyRefreshOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -13349,6 +14241,11 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSStatisticsSyncPart3_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSStatisticsSyncGuide_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSStatisticsSyncGuide_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSSyncDailyRefresh_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13412,12 +14309,15 @@ public final class Statistics {
       "inTimesMonthly\030\006 \002(\005\022\036\n\026signinFillTimesM" +
       "onthly\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\022\027\n\017l" +
       "oginTimesDaily\030\t \002(\005\022\023\n\013dumpEndTime\030\n \001(" +
-      "\005\022\023\n\013guideFinish\030\013 \003(\005\"3\n\022HSSyncDailyRef" +
-      "resh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState\"\026\n\024H" +
-      "SSyncMonthlyRefresh\"%\n\021HSSyncShopRefresh" +
-      "\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeftTimes" +
-      "\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleExpLeft",
-      "\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\005\022\023\n\013guideFinish\030\013 \003(\005\"p\n\025HSStatisticsSy" +
+      "ncGuide\022\027\n\017guideQuestState\030\001 \003(\010\022\027\n\017expI" +
+      "temUseCount\030\002 \002(\005\022\024\n\014upSkillTimes\030\003 \002(\005\022" +
+      "\017\n\007hasWear\030\004 \002(\010\"3\n\022HSSyncDailyRefresh\022\035" +
+      "\n\tholeState\030\001 \003(\0132\n.HoleState\"\026\n\024HSSyncM",
+      "onthlyRefresh\"%\n\021HSSyncShopRefresh\022\020\n\010sh" +
+      "opType\030\001 \002(\005\"B\n\022HSSyncExpLeftTimes\022\025\n\rdo" +
+      "ubleExpLeft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005" +
+      "B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13478,26 +14378,32 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart3_descriptor,
               new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", "LoginTimesDaily", "DumpEndTime", "GuideFinish", });
-          internal_static_HSSyncDailyRefresh_descriptor =
+          internal_static_HSStatisticsSyncGuide_descriptor =
             getDescriptor().getMessageTypes().get(9);
+          internal_static_HSStatisticsSyncGuide_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSStatisticsSyncGuide_descriptor,
+              new java.lang.String[] { "GuideQuestState", "ExpItemUseCount", "UpSkillTimes", "HasWear", });
+          internal_static_HSSyncDailyRefresh_descriptor =
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncDailyRefresh_descriptor,
               new java.lang.String[] { "HoleState", });
           internal_static_HSSyncMonthlyRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_HSSyncMonthlyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncMonthlyRefresh_descriptor,
               new java.lang.String[] { });
           internal_static_HSSyncShopRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSSyncShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncShopRefresh_descriptor,
               new java.lang.String[] { "ShopType", });
           internal_static_HSSyncExpLeftTimes_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSSyncExpLeftTimes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncExpLeftTimes_descriptor,

@@ -41,6 +41,14 @@ public class ServerData {
 	 */
 	private AtomicInteger onlinePlayer;
 	/**
+	 * 释放玩家数量
+	 */
+	private AtomicInteger releasePlayer;
+	/**
+	 * 回收玩家数量
+	 */
+	private AtomicInteger gcPlayer;
+	/**
 	 * puid和玩家id的映射表
 	 */
 	protected ConcurrentHashMap<String, Integer> puidMap;
@@ -111,6 +119,8 @@ public class ServerData {
 	private ServerData() {
 		registerPlayer = new AtomicInteger();
 		onlinePlayer = new AtomicInteger();
+		gcPlayer = new AtomicInteger();
+		releasePlayer = new AtomicInteger();
 		puidMap = new ConcurrentHashMap<String, Integer>();
 		idMap = new ConcurrentHashMap<Integer, String>();
 		nameMap = new ConcurrentHashMap<String, Integer>();
@@ -239,6 +249,34 @@ public class ServerData {
 	 */
 	public int getOnlinePlayer() {
 		return onlinePlayer.get();
+	}
+
+	/**
+	 * 增加释放玩家数
+	 */
+	public int addReleasePlayer() {
+		return releasePlayer.addAndGet(1);
+	}
+
+	/**
+	 * 获取释放玩家数
+	 */
+	public int getReleasePlayer() {
+		return releasePlayer.get();
+	}
+
+	/**
+	 * 增加回收玩家数
+	 */
+	public int addGCPlayer() {
+		return gcPlayer.addAndGet(1);
+	}
+
+	/**
+	 * 获取回收玩家数
+	 */
+	public int getGCPlayer() {
+		return gcPlayer.get();
 	}
 
 	/**
@@ -424,11 +462,13 @@ public class ServerData {
 	 */
 	public void showServerInfo() {
 		// 每分钟显示一个服务器信息
-		if (HawkTime.getSeconds() - lastShowTime >= 60) {
+		//if (HawkTime.getSeconds() - lastShowTime >= 60) {
 			lastShowTime = HawkTime.getSeconds();
 			// 记录信息
 			logger.info("online user: {}", onlineMap.size());
-		}
+			logger.info("release user: {}", getReleasePlayer());
+			logger.info("gc user: {}", getGCPlayer());
+		//}
 	}
 
 }
