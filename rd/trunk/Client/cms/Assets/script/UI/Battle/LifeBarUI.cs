@@ -67,12 +67,12 @@ public class LifeBarUI : MonoBehaviour
         
         width = currentBar.rect.width;
 
-        if (shieldImage!=null)
+        if (shieldImage != null)
         {
             shieldRect = shieldImage.transform as RectTransform;
             shieldWidth = shieldRect.rect.width;
             shieldImage.gameObject.SetActive(false);
-			//shieldEffect.SetActive(false);
+            //shieldEffect.SetActive(false);
             //modify xiaolong 2015-8-30 17:36:57
             shieldEffect.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
@@ -98,19 +98,20 @@ public class LifeBarUI : MonoBehaviour
             //size.x = width * (0.2f + currentLife * 0.8f);
             size.x = width * currentLife;
             currentBar.sizeDelta = size;
+            shieldEffect.enabled = true;
 			RefreshShieldUI((int)(currentLife*lifeTarget.unit.maxLife));
         }
     }
 
     public void RefreshShieldUI(int currentLife = -1)
     {
-        if (lifeTarget==null)
+        if (lifeTarget == null)
             return;
         if (shieldImage == null)
             return;
         if (lifeTarget.unit.spellMagicShield > 0 || lifeTarget.unit.spellPhyShield > 0)
         {
-			int curLife = lifeTarget.unit.curLife;
+            int curLife = lifeTarget.unit.curLife;
             if (currentLife != -1)
             {
                 curLife = currentLife;
@@ -123,11 +124,11 @@ public class LifeBarUI : MonoBehaviour
                 if (targetBar.sizeDelta.x + life > width)
                     shieldNum.x = width + 100;
                 else
-                    shieldNum.x = targetBar.sizeDelta.x + life;              
+                    shieldNum.x = targetBar.sizeDelta.x + life;
             }
             else
             {
-                life = width / lifeTarget.unit.maxLife *  lifeTarget.unit.spellPhyShield;
+                life = width / lifeTarget.unit.maxLife * lifeTarget.unit.spellPhyShield;
                 if (targetBar.sizeDelta.x + life > width)
                     shieldNum.x = width + 100;
                 else
@@ -150,12 +151,12 @@ public class LifeBarUI : MonoBehaviour
             }
             shieldImage.gameObject.SetActive(true);
             shieldRect.sizeDelta = shieldNum;
-           
+
         }
         else
         {
             shieldImage.gameObject.SetActive(false);
-			//shieldEffect.SetActive(false);
+            //shieldEffect.SetActive(false);
             //modify:xiaolong 2015-8-27 14:23:05
             SetShildMaxImage(false);
         }
@@ -163,7 +164,14 @@ public class LifeBarUI : MonoBehaviour
     //add xuelong 2015-8-30 17:37:29
     void SetShildMaxImage(bool isMax)
     {
-        if (shieldMax==(isMax?1:-1))
+        if (!isMax)
+        {
+            shieldEffect.enabled = false;
+            return;
+        }
+
+        shieldEffect.enabled = true;
+        if (shieldMax == (isMax ? 1 : -1))
         {
             return;
         }
@@ -172,10 +180,10 @@ public class LifeBarUI : MonoBehaviour
         {
             shieldMax = 0;
             curAlpha += Time.deltaTime / 0.5f;
-            if (curAlpha>=1.0f)
-	        {
-                shieldMax=1;
-	        }
+            if (curAlpha >= 1.0f)
+            {
+                shieldMax = 1;
+            }
         }
         else
         {
@@ -186,7 +194,7 @@ public class LifeBarUI : MonoBehaviour
                 shieldMax = -1;
             }
         }
-        curAlpha=Mathf.Clamp01(curAlpha);
+        curAlpha = Mathf.Clamp01(curAlpha);
         Color color = shieldEffect.color;
         color.a = curAlpha;
         shieldEffect.color = color;

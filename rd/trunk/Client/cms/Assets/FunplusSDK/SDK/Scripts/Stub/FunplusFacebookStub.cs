@@ -10,6 +10,7 @@ namespace Funplus.Stub
 	{
 		private static FunplusFacebookStub instance;
 		private static readonly object locker = new object ();
+		public FunplusSocialUser User { get; set; }
 		
 		public static FunplusFacebookStub Instance
 		{
@@ -52,7 +53,14 @@ namespace Funplus.Stub
 		
 		public override void GetUserData ()
 		{
-			Debug.Log ("[funsdk] Calling FunplusFacebookStub.GetUserData ().");
+			if (User != null)
+			{
+				FunplusFacebook.Instance.OnFacebookGetUserDataSuccess (User.ToJsonString ());
+			}
+			else
+			{
+				FunplusFacebook.Instance.OnFacebookGetUserDataError (FunplusError.E (2102).ToJsonString ());
+			}
 		}
 		
 		public override void GetGameFriends ()

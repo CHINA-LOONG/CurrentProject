@@ -129,30 +129,49 @@ bigTaskname301,森林探秘,Forest Explore
 bigTaskname302,森林寻宝,Forest Treasure
 bigTaskname401,火山探秘,Volcano Explore
 bigTaskname402,火山寻宝,Volcano Treasure
-bigTaskdesc1,（主产宠物碎片）,(Drops Monster Fragments)
-bigTaskdesc2,（主产宝石）,(Drops Gems)
-smallTarget10001,提交1000金币,Retrieve 1000 Coins
-smallTarget10002,提交2000金币,Retrieve 2000 Coins
-smallTarget10003,提交3000金币,Retrieve 3000 Coins
-smallTarget10004,提交4000金币,Retrieve 4000 Coins
-smallTarget10005,提交5000金币,Retrieve 5000 Coins
-smallTarget10006,提交6000金币,Retrieve 6000 Coins
-smallTarget10007,提交7000金币,Retrieve 7000 Coins
-smallTarget10008,提交8000金币,Retrieve 8000 Coins
-smallTarget10009,提交9000金币,Retrieve 9000 Coins
-smallTarget10010,提交9500金币,Retrieve 9500 Coins
-smallTarget10011,提交8500金币,Retrieve 8500 Coins
-smallTarget20001,提交5个初级装备强化石,Retrieve 5 of basic upgrade stone
-smallTarget20002,提交5个初级装备强化石,Retrieve 5 of basic upgrade stone
-smallTarget20003,提交5个中级装备强化石,Retrieve 5 of standard  upgrade stone
-smallTarget20004,提交5个高级装备强化石,Retrieve 5 of superior  upgrade stone
-smallTarget20005,提交5个装备进阶石,Retrieve 5 of Advanced stone
-smallTarget20006,提交5个装备进阶卷轴,Retrieve 5 of Advanced scroll
-smallTarget20007,提交5个宝石开孔石,Retrieve 5 of Gem Socketing Chisel
-smallTarget20008,提交5个进阶卷轴碎片,Retrieve 5 of Advanced scroll chip
-smallTarget20009,提交5个木质宝箱钥匙,Retrieve 5 of Wood Key
-smallTarget20010,提交5个铁质宝箱钥匙,Retrieve 5 of Iron Key
-smallTarget20011,提交5个白银宝箱钥匙,Retrieve 5 of Silver Key
+bigTaskname501,巢穴探秘,Chaoxue Explore
+bigTaskname502,巢穴寻宝,Chaoxue Treasure
+bigTaskdesc1,（主产金币）,(Drops Coins)
+bigTaskdesc2,（主产道具）,(Drops Items)
+smallTarget10001,提交2000金币,Retrieve 2000 Coins
+smallTarget10002,提交3000金币,Retrieve 3000 Coins
+smallTarget10003,提交4000金币,Retrieve 4000 Coins
+smallTarget10004,提交2500金币,Retrieve 2500 Coins
+smallTarget10005,提交3500金币,Retrieve 3500 Coins
+smallTarget10006,提交5000金币,Retrieve 5000 Coins
+smallTarget10007,提交3500金币,Retrieve 3500 Coins
+smallTarget10008,提交5000金币,Retrieve 5000 Coins
+smallTarget10009,提交7000金币,Retrieve 7000 Coins
+smallTarget10010,提交4500金币,Retrieve 4500 Coins
+smallTarget10011,提交6500金币,Retrieve 6500 Coins
+smallTarget10012,提交9000金币,Retrieve 9000 Coins
+smallTarget20001,提交1个天使之羽,Retrieve 1 of tianshizhiyu
+smallTarget20002,提交2个天使之羽,Retrieve 2 of tianshizhiyu
+smallTarget20003,提交3个天使之羽,Retrieve 3 of tianshizhiyu
+smallTarget20004,提交1个恶魔之羽,Retrieve 1 of emozhiyu
+smallTarget20005,提交2个恶魔之羽,Retrieve 2 of emozhiyu
+smallTarget20006,提交3个恶魔之羽,Retrieve 3 of emozhiyu
+smallTarget20007,提交1个精灵之羽,Retrieve 1 of jinglingzhiyu
+smallTarget20008,提交2个精灵之羽,Retrieve 2 of jinglingzhiyu
+smallTarget20009,提交3个精灵之羽,Retrieve 3 of jinglingzhiyu
+smallTarget20010,提交1个天使之羽,Retrieve 1 of tianshizhiyu
+smallTarget20011,提交3个天使之羽,Retrieve 3 of tianshizhiyu
+smallTarget20012,提交7个天使之羽,Retrieve 7 of tianshizhiyu
+smallTarget20013,提交1个恶魔之羽,Retrieve 1 of emozhiyu
+smallTarget20014,提交3个恶魔之羽,Retrieve 3 of emozhiyu
+smallTarget20015,提交7个恶魔之羽,Retrieve 7 of emozhiyu
+smallTarget20016,提交1个精灵之羽,Retrieve 1 of jinglingzhiyu
+smallTarget20017,提交3个精灵之羽,Retrieve 3 of jinglingzhiyu
+smallTarget20018,提交7个精灵之羽,Retrieve 7 of jinglingzhiyu
+smallTarget20019,提交2个天使之羽,Retrieve 2 of tianshizhiyu
+smallTarget20020,提交4个天使之羽,Retrieve 4 of tianshizhiyu
+smallTarget20021,提交8个天使之羽,Retrieve 8 of tianshizhiyu
+smallTarget20022,提交2个恶魔之羽,Retrieve 2 of emozhiyu
+smallTarget20023,提交4个恶魔之羽,Retrieve 4 of emozhiyu
+smallTarget20024,提交8个恶魔之羽,Retrieve 8 of emozhiyu
+smallTarget20025,提交2个精灵之羽,Retrieve 2 of jinglingzhiyu
+smallTarget20026,提交4个精灵之羽,Retrieve 4 of jinglingzhiyu
+smallTarget20027,提交8个精灵之羽,Retrieve 8 of jinglingzhiyu
 smallTarget30001,成功通关副本,Clear Stage
 smallTarget30002,成功通关副本,Clear Stage
 smallTarget30003,成功通关副本,Clear Stage
@@ -302,6 +321,114 @@ zhimubiao20001,通关2-3  4次,Raid 2-3 4 times
 zhimubiao20002,通关2-4  4次,Raid 2-4 4 times
 zhimubiao20003,通关2-7  4次,Raid 2-7 4 times
 zhimubiao20004,通关2-8  4次,Raid 2-8 4 times
+linshi4,帅气潘神,
+linshi5,双重强化,
+linmubiao4,通关2-3,
+linmubiao5,2只宠物进阶到绿+1,
+mubiao10034,通关3-3,
+mubiao10035,升级宠物15三只,
+mubiao10036,进行一次金钱试炼,
+mubiao10037,通关3-4,
+mubiao10038,挑战1-8,
+mubiao10039,通关3-8,
+mubiao10040,有1件蓝色品质装备,Have one piece of blue equipment 
+mubiao10041,装备开孔,Open an equipment socket 
+mubiao10042,装备镶嵌,Insert a gem in equipment
+mubiao10043,加入公会,
+mubiao10044,公会祈福,
+mubiao10045,一只20级宠物,
+mubiao10046,宠物进阶蓝,
+mubiao10047,通关4-2,
+mubiao10048,拥有10个宠物,
+mubiao10049,进行一次大冒险,
+mubiao10050,通关4-3,
+mubiao10051,通关4-4,
+mubiao10052,公会BOSS,
+mubiao10053,通关4-8,
+zhuxian10034,幽幽森林,
+zhuxian10035,整体提升,
+zhuxian10036,金钱试炼,
+zhuxian10037,鳄鱼面具,
+zhuxian10038,魔龙逆袭,
+zhuxian10039,蛇发女妖,
+zhuxian10040,蓝色超量,Blue Power
+zhuxian10041,次元能力探秘,True Craftsman
+zhuxian10042,驾驭次元,Infused Power
+zhuxian10043,公会力量,
+zhuxian10044,公会祈福,
+zhuxian10045,进阶准备,
+zhuxian10046,实力激发,
+zhuxian10047,炙热火山,
+zhuxian10048,收集伙伴,
+zhuxian10049,冒险历练,
+zhuxian10050,熔岩蔓延,
+zhuxian10051,大天狗,
+zhuxian10052,公会BOSS,
+zhuxian10053,叫我铁匠,
+zhixian20005,扫荡3-3,Raid 3-3
+zhixian20006,扫荡3-4,Raid 3-4
+zhixian20007,扫荡3-7,Raid 3-7
+zhixian20008,扫荡3-8,Raid 3-8
+zhixian20009,扫荡4-3,Raid 4-3
+zhixian20010,扫荡4-4,Raid 4-4
+zhixian20011,扫荡4-7,Raid 4-7
+zhixian20012,扫荡4-8,Raid 4-8
+zhimubiao20005,通关3-3  4次,Raid 3-3 4 times
+zhimubiao20006,通关3-4  4次,Raid 3-4 4 times
+zhimubiao20007,通关3-7  4次,Raid 3-7 4 times
+zhimubiao20008,通关3-8  4次,Raid 3-8 4 times
+zhimubiao20009,通关4-3  4次,Raid 4-3 4 times
+zhimubiao20010,通关4-4  4次,Raid 4-4 4 times
+zhimubiao20011,通关4-7  4次,Raid 4-7 4 times
+zhimubiao20012,通关4-8  4次,Raid 4-8 4 times
+chengjiu30001,收集碎片1,
+chengjiu30002,收集碎片2,
+chengjiu30003,收集碎片3,
+chengjiu30004,收集碎片4,
+chengjiu30101,竞技高手,
+chengjiu30102,竞技胜者,
+chengjiu30103,竞技强者,
+chengjiu30104,竞技老手,
+chengjiu30105,竞技大师,
+chengjiu30201,战斗历练1,
+chengjiu30202,战斗历练2,
+chengjiu30203,战斗历练3,
+chengjiu30204,战斗历练4,
+chengjiu30205,战斗历练5,
+chengjiu30206,战斗历练6,
+chengjiu30301,公会进步1,
+chengjiu30302,公会进步2,
+chengjiu30303,公会进步3,
+chengjiu30304,公会进步4,
+chengjiu30305,公会进步5,
+chengjiu30306,公会进步6,
+chengmubiao30001,获得封印碎片500,
+chengmubiao30002,获得封印碎片1000,
+chengmubiao30003,获得封印碎片5000,
+chengmubiao30004,获得封印碎片10000,
+chengmubiao30101,竞技场100次,
+chengmubiao30102,竞技场800次,
+chengmubiao30103,竞技场2000次,
+chengmubiao30104,竞技场5000次,
+chengmubiao30105,竞技场10000次,
+chengmubiao30201,进行副本战斗200次,
+chengmubiao30202,进行副本战斗1000次,
+chengmubiao30203,进行副本战斗5000次,
+chengmubiao30204,进行副本战斗20000次,
+chengmubiao30205,进行副本战斗35000次,
+chengmubiao30206,进行副本战斗50000次,
+chengmubiao30301,个人贡献收集200,
+chengmubiao30302,个人贡献收集1200,
+chengmubiao30303,个人贡献收集3800,
+chengmubiao30304,个人贡献收集6500,
+chengmubiao30305,个人贡献收集25000,
+chengmubiao30306,个人贡献收集65000,
+tili1,吃午饭了,
+tili2,吃晚饭了,
+tili3,吃宵夜了,
+tilitips1,点击即送60点活力12:00~14:00限时领取,
+tilitips2,点击即送60点活力18:00~20:00限时领取,
+tilitips3,点击即送60点活力21:00~23:00限时领取,
 bosssenlin31Wendige2wp01,身体,Body
 bosssenlin31Wendige2wp02,左角,Life Horn
 bosssenlin31Wendige2wp03,右角,Right Horn

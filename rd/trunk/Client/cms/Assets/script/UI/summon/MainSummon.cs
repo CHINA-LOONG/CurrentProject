@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class MainSummon : UIBase
+public class MainSummon : UIBase,GuideBase
 {
     public static string ViewName = "UISummon1";
     UISummon uiSummon = null;
@@ -110,6 +110,7 @@ public class MainSummon : UIBase
             jinbiText.color = Color.red;
         else
             jinbiText.color = ColorConst.system_color_black;
+        GuideManager.Instance.RequestGuide(this);
     }
     //---------------------------------------------------------------------------
     void Start()
@@ -142,11 +143,13 @@ public class MainSummon : UIBase
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     //---------------------------------------------------------------------------
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
     //---------------------------------------------------------------------------
     void BindListener()
@@ -159,5 +162,12 @@ public class MainSummon : UIBase
     {
         GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.ZuanshiChanged, OnZuanshiChanged);
+    }
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if(message.Equals("gd_summon1_zuanshi"))
+        {
+            ZhuanshiSummon(null);
+        }
     }
 }

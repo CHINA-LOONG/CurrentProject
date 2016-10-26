@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Funplus;
 
-public class UIBuild : UIBase,PopupListIndextDelegate
+public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
 {
     public static string ViewName = "UIBuild";
 
@@ -123,6 +123,14 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_C.GetHashCode().ToString(), OnSettingLanguageRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_LANGUAGE_S.GetHashCode().ToString(), OnSettingLanguageRet);
+    }
+    void OnEnable()
+    {
+        GuideListener(true);
+    }
+    void OnDisable()
+    {
+        GuideListener(false);
     }
 
 	void OnLevelChanged(int level)
@@ -323,6 +331,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
             OnSigninButtonClick(null);
         }
         OnSigninChanged();
+        base.Init();
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
     }
     public override void Clean()
     {
@@ -373,4 +387,47 @@ public class UIBuild : UIBase,PopupListIndextDelegate
             Logger.Log("设置成功");
         }
     }
+
+    #region 为新手引导提供的接口
+    /// <summary>
+    /// 镜头切换到3D对象，并返回投影到屏幕的 2DUI坐标, （左下点为0,0）
+    /// </summary>
+    /// <param name="pos3DObject"></param>
+    /// <returns></returns>
+    public Vector2  Focus3DObject(string pos3DObject)
+    {
+        return new Vector2(100, 100);
+    }
+    /// <summary>
+    /// 新手引导任务回调
+    /// </summary>
+    /// <param name="message"></param>
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if(message.Equals("gd_build_more"))
+        {
+            MoreButton.Instance.OnMoreButtonClicked(null);
+        }
+        else if (message.Equals("gd_build_instance"))
+        {
+            OpenInstanceUI();
+        }
+        else if (message.Equals("gd_build_pet"))
+        {
+            PetButtonClick(null);
+        }
+        else if (message.Equals("gd_build_task"))
+        {
+            OnQuestButtonClick(null);
+        }
+        else if (message.Equals("3D_choudan_obj"))
+        {
+            MainStageController mainStage = UIMgr.Instance.MainstageInstance;
+            if (mainStage != null)
+            {
+                mainStage.SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Summon);
+            }
+        }
+    }
+    #endregion
 }

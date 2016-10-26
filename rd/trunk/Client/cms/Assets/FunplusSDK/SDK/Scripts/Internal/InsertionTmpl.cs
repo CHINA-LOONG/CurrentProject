@@ -52,17 +52,22 @@ allprojects {{
 
 android {{
     compileSdkVersion {0}
-    buildToolsVersion ""{1}""
+    buildToolsVersion '{1}'
 
     defaultConfig {{
-        applicationId ""{2}""
+        applicationId '{2}'
         minSdkVersion {3}
         targetSdkVersion {4}
+    }}
+
+    signingConfigs {{
+        {5}
     }}
 
     buildTypes {{
         release {{
             minifyEnabled false
+			signingConfig signingConfigs.release
         }}
     }}
 
@@ -96,6 +101,7 @@ dependencies {{
     compile(name:'funplus-sdk-marketing-localytics', ext:'aar')
     compile(name:'funplus-sdk-payment', ext:'aar')
     compile(name:'funplus-sdk-payment-googleiab', ext:'aar')
+    compile(name:'funplus-sdk-payment-thirdparty', ext:'aar')
     compile(name:'funplus-sdk-rum', ext:'aar')
     compile(name:'funplus-sdk-social', ext:'aar')
     compile(name:'funplus-sdk-social-facebook', ext:'aar')
@@ -111,6 +117,14 @@ dependencies {{
     compile(name:'play-services-basement-8.4.0', ext:'aar')
     compile(name:'play-services-gcm-8.4.0', ext:'aar')
 }}";
+
+			public static readonly string RELEASE_KEYSTORE_CONFIG = @"
+		release {{
+            storeFile file('{0}')
+            keyPassword '{1}'
+            keyAlias '{2}'
+            storePassword '{3}'
+        }}";
 
 			public static readonly string FACEBOOK = @"
 	<activity

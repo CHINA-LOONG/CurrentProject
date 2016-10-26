@@ -29,6 +29,60 @@ static BOOL statusIsLoggedIn(FunplusAccountStatus status) {
     };
 }
 
+static id FPObjectOrNull(id object)
+{
+    return object ?: [NSNull null];
+}
+
+static NSString * FPGetUnitySessionJSONString(NSString * fpid, NSString * sessionKey, FunplusAccountStatus status) {
+    NSString* accountType;
+    NSString* snsPlatform;
+    switch (status)
+    {
+        case FPAStatusLoggedInExpress:
+            accountType = @"express";
+            break;
+        case FPAStatusLoggedInEmail:
+            accountType = @"email";
+            break;
+            //case FunplusAccountStatus.FPAccountTypeMobile:
+            //return "mobile";
+        case FPAStatusLoggedInFacebook:
+            accountType = @"facebook";
+            snsPlatform = @"facebook";
+            break;
+        case FPAStatusLoggedInVk:
+            accountType = @"vk";
+            snsPlatform = @"vk";
+            break;
+        case FPAStatusLoggedInWechat:
+            accountType = @"wechat";
+            snsPlatform = @"wechat";
+            break;
+        case FPAStatusLoggedInGameCenter:
+            accountType = @"gamecenter";
+            snsPlatform = @"gamecenter";
+            break;
+        default:
+            accountType = @"unknown";
+            snsPlatform = nil;
+    }
+
+    NSString *email = [[FunplusAccount sharedInstance] getEmail];
+    NSString *snsId = [[FunplusAccount sharedInstance] getPlatformId];
+    NSDictionary * data = @{@"fpid": FPObjectOrNull(fpid),
+                            @"session_key": FPObjectOrNull(sessionKey),
+                            @"account_type": FPObjectOrNull(accountType),
+                            @"email": FPObjectOrNull(email),
+                            @"sns_platform": FPObjectOrNull(snsPlatform),
+                            @"sns_id": FPObjectOrNull(snsId)};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
+    
+    NSString * message = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return message;
+}
 
 extern "C" {
 
@@ -80,7 +134,7 @@ extern "C" {
 
         Class cls = NSClassFromString(@"FunplusAccount");
         [[cls sharedInstance] getLoginStatus:^(FunplusError *error,
-                                                          FunplusAccountStatus status) {
+                                               FunplusAccountStatus status) {
             NSString *message;
 
             if (statusIsLoggedIn(status)) { // Login success.
@@ -90,8 +144,8 @@ extern "C" {
                 // Retrieve fpid & sessionKey.
                 NSString *fpid = [[cls sharedInstance] getFpid];
                 NSString *sessionKey = [[cls sharedInstance] getSessionKey];
-                NSString *loginMessage = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\"}", fpid, sessionKey];
 
+                NSString * loginMessage = FPGetUnitySessionJSONString(fpid, sessionKey, status);
                 UnitySendMessage(gameObject,
                                  "OnAccountLoginSuccess",
                                  [loginMessage cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -123,8 +177,7 @@ extern "C" {
                                  [errMessage cStringUsingEncoding:NSUTF8StringEncoding]);
             } else {                            // Login success.
                 isLoggedIn = true;
-                NSString *successMessage = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\"}", fpid, sessionKey];
-
+                NSString *successMessage = FPGetUnitySessionJSONString(fpid, sessionKey, status);
                 UnitySendMessage(gameObject,
                                  "OnAccountLoginSuccess",
                                  [successMessage cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -150,11 +203,72 @@ extern "C" {
                                  [errMessage cStringUsingEncoding:NSUTF8StringEncoding]);
             } else {                            // Login success.
                 isLoggedIn = true;
-                NSString *successMessage = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\"}", fpid, sessionKey];
+                NSString *successMessage = FPGetUnitySessionJSONString(fpid, sessionKey, status);
 
                 UnitySendMessage(gameObject,
                                  "OnAccountLoginSuccess",
                                  [successMessage cStringUsingEncoding:NSUTF8StringEncoding]);
+            }
+        }];
+    }
+    
+    void com_funplus_sdk_account_loginWithEmail(const char* email, const char* password){
+        NSLog(@"com_funplus_sdk_account_loginWithEmail() called.");
+        Class cls = NSClassFromString(@"FunplusAccount");
+        [[cls sharedInstance] loginWithEmail:[NSString stringWithUTF8String:email] password:[NSString stringWithUTF8String:password] callback:^(FunplusAccountStatus status, FunplusError *error, NSString *fpid, NSString *sessionKey) {
+            
+            if (!statusIsLoggedIn(status)) {
+                isLoggedIn = false;
+                NSString *errMessage = error == nil ? @"Login failed: unknown error" : [error toJSONString];
+                
+                UnitySendMessage(gameObject,
+                                 "OnAccountLoginError",
+                                 [errMessage cStringUsingEncoding:NSUTF8StringEncoding]);
+            } else {
+                isLoggedIn = true;
+                NSString *successMessage = FPGetUnitySessionJSONString(fpid, sessionKey, status);
+                
+                UnitySendMessage(gameObject,
+                                 "OnAccountLoginSuccess",
+                                 [successMessage cStringUsingEncoding:NSUTF8StringEncoding]);
+            }
+        }];
+    }
+    
+    void com_funplus_sdk_account_registerWithEmail(const char* email, const char* password){
+        NSLog(@"com_funplus_sdk_account_registerWithEmail() called.");
+        Class cls = NSClassFromString(@"FunplusAccount");
+        [[cls sharedInstance] registerWithEmail:[NSString stringWithUTF8String:email] password:[NSString stringWithUTF8String:password] callback:^(FunplusAccountStatus status, FunplusError *error, NSString *fpid, NSString *sessionKey) {
+            
+            if (!statusIsLoggedIn(status)) {
+                isLoggedIn = false;
+                NSString *errMessage = error == nil ? @"Register failed: unknown error" : [error toJSONString];
+                
+                UnitySendMessage(gameObject,
+                                 "OnAccountLoginError",
+                                 [errMessage cStringUsingEncoding:NSUTF8StringEncoding]);
+            } else {
+                isLoggedIn = true;
+                NSString *successMessage = FPGetUnitySessionJSONString(fpid, sessionKey, status);
+                
+                UnitySendMessage(gameObject,
+                                 "OnAccountLoginSuccess",
+                                 [successMessage cStringUsingEncoding:NSUTF8StringEncoding]);
+            }
+        }];
+    }
+    
+    void com_funplus_sdk_account_resetPassword(const char* email){
+        NSLog(@"com_funplus_sdk_account_resetPassword() called.");
+        Class cls = NSClassFromString(@"FunplusAccount");
+        [[cls sharedInstance] resetPassword:[NSString stringWithUTF8String:email] callback:^(NSString *fpid, FunplusError *error) {
+            
+            if (error.code == 0) {
+                UnitySendMessage(gameObject,
+                                 "OnAccountResetPasswordSuccess",
+                                 [fpid cStringUsingEncoding:NSUTF8StringEncoding]);
+            }else{
+                UnitySendMessage(gameObject,"OnAccountResetPasswordError",[[error toJSONString] cStringUsingEncoding:NSUTF8StringEncoding]);
             }
         }];
     }
@@ -184,36 +298,6 @@ extern "C" {
                                                NSString *sessionKey,
                                                FunplusOperation userOperation
                                                ) {
-            NSString* accountType;
-            switch (status)
-            {
-                case FPAStatusLoggedInExpress:
-                    accountType = @"express";
-                    break;
-                case FPAStatusLoggedInEmail:
-                    accountType = @"email";
-                    break;
-                    //case FunplusAccountStatus.FPAccountTypeMobile:
-                    //return "mobile";
-                case FPAStatusLoggedInFacebook:
-                    accountType = @"facebook";
-                    break;
-                case FPAStatusLoggedInVk:
-                    accountType = @"vk";
-                    break;
-                case FPAStatusLoggedInWechat:
-                    accountType = @"wechat";
-                    break;
-                    //case FunplusAccountType.FPAccountTypeGooglePlus:
-                    //return "googleplus";
-                case FPAStatusLoggedInGameCenter:
-                    accountType = @"gamecenter";
-                    break;
-                default:
-                    accountType = @"unknown";
-            }
-            
-            
             if (userOperation == FPUserCenterClose) {
                 UnitySendMessage(gameObject,
                                  "OnAccountCloseUserCenter",
@@ -236,7 +320,7 @@ extern "C" {
                                  "OnAccountCloseUserCenter",
                                  "");
                 if (statusIsLoggedIn(status)) {
-                    NSString *message = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\", \"account_type\":\"%@\"}", fpid, sessionKey, accountType];
+                    NSString *message = FPGetUnitySessionJSONString(fpid, sessionKey, status);
                     UnitySendMessage(gameObject,
                                      "OnAccountBindAccountSuccess",
                                      [message cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -249,7 +333,7 @@ extern "C" {
             
             if (userOperation == FPUserCenterSwitchAccount) {
                 if (statusIsLoggedIn(status)) {
-                    NSString *message = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\", \"account_type\":\"%@\"}", fpid, sessionKey, accountType];
+                    NSString *message = FPGetUnitySessionJSONString(fpid, sessionKey, status);
                     UnitySendMessage(gameObject,
                                      "OnAccountLoginSuccess",
                                      [message cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -271,7 +355,7 @@ extern "C" {
         NSLog(@"com_funplus_sdk_account_bindAccountWithType() called.");
         Class cls = NSClassFromString(@"FunplusAccount");
         [[cls sharedInstance] bind:(FunplusAccountType)type
-                                     callback:^(FunplusAccountStatus state,
+                                     callback:^(FunplusAccountStatus status,
                                                 FunplusError *error,
                                                 NSString *fpid,
                                                 NSString *sessionKey) {
@@ -280,7 +364,7 @@ extern "C" {
                                  "OnAccountBindAccountError",
                                  [[error toJSONString] cStringUsingEncoding:NSUTF8StringEncoding]);
             } else {                        // Bind account success.
-                NSString *message = [NSString stringWithFormat:@"{\"fpid\": \"%@\", \"session_key\": \"%@\"}", fpid, sessionKey];
+                NSString *message = FPGetUnitySessionJSONString(fpid, sessionKey, status);
                 UnitySendMessage(gameObject,
                                  "OnAccountBindAccountSuccess",
                                  [message cStringUsingEncoding:NSUTF8StringEncoding]);

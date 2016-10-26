@@ -8,3 +8,8 @@ speech_test,1,a,雪姬,zhujiemian_ditu,jiesuan_shengji,"0,0",speak_001
 ,,a,雪姬,zhujiemian_ditu,jiesuan_shengji,"-40,500",speak_005
 ,,b,兔桑,zhujiemian_ditu,jiesuan_shengji,"-40,500",speak_006
 demo_tishi,0,a,兔桑,lihui_1,lihui_1,"-40,500",speak_006
+speech_xinshousummon,0,a,雪姬,zhujiemian_ditu,jiesuan_shengji,"0,0",speak_001
+,,b,兔桑,zhujiemian_ditu,jiesuan_shengji,"0,0",speak_002
+,,a,雪姬,zhujiemian_ditu,jiesuan_shengji,"20,400",speak_003
+speech_xinshoutask,0,a,雪姬,zhujiemian_ditu,jiesuan_shengji,"0,0",speak_001
+,,b,兔桑,zhujiemian_ditu,jiesuan_shengji,"0,0",speak_002

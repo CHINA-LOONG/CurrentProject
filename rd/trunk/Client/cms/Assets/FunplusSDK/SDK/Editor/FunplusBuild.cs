@@ -32,10 +32,9 @@ namespace Funplus.Internal
 
 	internal class FunplusBuild {
 
-		private const string sdkVersion = "3.0.19";
+		private const string sdkVersion = "3.0.22";
 
 		private const string funplusPath = "Assets/FunplusSDK/SDK/";
-		private const string samplePath = "Assets/FunplusSDK/Sample/";
 		private const string pluginsPath = "Assets/FunplusSDK/Plugins/";
 		private const string webpagesPath = "Assets/WebPlayerTemplates/";
 
@@ -89,15 +88,14 @@ namespace Funplus.Internal
 				AssetDatabase.MoveAsset(funplusPath + "Resources/FunplusSettings.asset", "Assets/Temp/FunplusSettings.asset");
 
 				string[] funplusFiles = (string[])Directory.GetFiles(funplusPath, "*.*", SearchOption.AllDirectories);
-				string[] sampleFiles = (string[])Directory.GetFiles(samplePath, "*.*", SearchOption.AllDirectories);
+//				string[] sampleFiles = (string[])Directory.GetFiles(samplePath, "*.*", SearchOption.AllDirectories);
 				string[] pluginsFiles = (string[])Directory.GetFiles(pluginsPath, "*.*", SearchOption.AllDirectories);
 				string[] webpagesFiles = (string[])Directory.GetFiles(webpagesPath, "*.*", SearchOption.AllDirectories);
-				string[] files = new string[funplusFiles.Length + sampleFiles.Length + pluginsFiles.Length + webpagesFiles.Length];
+				string[] files = new string[funplusFiles.Length + pluginsFiles.Length + webpagesFiles.Length];
 
 				funplusFiles.CopyTo(files, 0);
-				sampleFiles.CopyTo(files, funplusFiles.Length);
-				pluginsFiles.CopyTo(files, funplusFiles.Length + sampleFiles.Length);
-				webpagesFiles.CopyTo(files, funplusFiles.Length + sampleFiles.Length + pluginsFiles.Length);
+				pluginsFiles.CopyTo(files, funplusFiles.Length);
+				webpagesFiles.CopyTo(files, funplusFiles.Length + pluginsFiles.Length);
 
 				AssetDatabase.ExportPackage(
 					files,

@@ -44,7 +44,9 @@ namespace Funplus
 		{
 			get
 			{
-				#if UNITY_ANDROID
+				#if UNITY_EDITOR
+				return FunplusSdkUtilsStub.Instance;
+				#elif UNITY_ANDROID
 				return FunplusSdkUtilsAndroid.Instance;
 				#elif UNITY_IOS
 				return FunplusSdkUtilsIOS.Instance;

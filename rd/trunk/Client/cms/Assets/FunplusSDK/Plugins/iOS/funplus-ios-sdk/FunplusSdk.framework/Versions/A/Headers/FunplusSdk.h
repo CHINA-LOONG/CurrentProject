@@ -4,7 +4,7 @@
 //
 //  Created by yu.zhang on 15/5/13.
 //  Copyright (c) 2015年 Funplus Inc. All rights reserved.
-//  Version: v3.0.17
+//  Version: v3.0.20
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -45,7 +45,7 @@ typedef void (^FunplusSdkCallback)(FunplusError* _Nonnull  error);
 
 - (void) appWillResignActive;
 
-- (void) registerPushNotification:(NSDictionary*) launchOptions;
+- (void) registerPushNotification:(nonnull NSDictionary*) launchOptions;
 
 - (void) handleRemoteNotification:(nonnull NSDictionary*) userInfo;
 

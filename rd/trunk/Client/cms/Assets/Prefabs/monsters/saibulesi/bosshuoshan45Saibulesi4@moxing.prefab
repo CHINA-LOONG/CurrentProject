@@ -675,6 +675,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 451382}
   - 137: {fileID: 13733390}
+  - 114: {fileID: 11469478}
   m_Layer: 10
   m_Name: mesh_mhead
   m_TagString: Untagged
@@ -691,6 +692,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 410886}
   - 137: {fileID: 13774058}
+  - 114: {fileID: 11425452}
   m_Layer: 10
   m_Name: mesh_lhead
   m_TagString: Untagged
@@ -1119,6 +1121,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 430338}
   - 137: {fileID: 13733498}
+  - 114: {fileID: 11469366}
   m_Layer: 10
   m_Name: mesh_rhead
   m_TagString: Untagged
@@ -2417,6 +2420,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mShadowPos: {fileID: 486416}
   mShadowProjectPos: {fileID: 473496}
+--- !u!114 &11425452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: c4b8a32731a9e064d984dfd3fb5a59ea, type: 2}
 --- !u!114 &11448764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2429,6 +2444,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseXgAi: 0
+--- !u!114 &11469366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 57d69008f77f06f40a1aec9f28466ed9, type: 2}
+--- !u!114 &11469478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: dfc1c6ab9dead724d8fe4f0a0492f9e0, type: 2}
 --- !u!137 &13733390
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

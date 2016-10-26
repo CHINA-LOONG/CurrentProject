@@ -24,6 +24,8 @@
 		<string></string>
 		<key>Search highlight color</key>
 		<string></string>
+		<key>Status bar light content</key>
+		<string>NO</string>
 	</dict>
 	<key>Navigation Bar</key>
 	<dict>

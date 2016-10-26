@@ -191,7 +191,7 @@ public class AudioSystemMgr : MonoBehaviour {
     {
         get
         {
-            if (audioMusic == null)
+            if (audioMusic == null && AudioSystemMgr.dontCreate == 0)
             {
                 GameObject obj = new GameObject("bgMusic");
                 obj.transform.parent = transform;

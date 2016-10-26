@@ -4,8 +4,24 @@ using System.Collections;
 
 
 public class StatisticsDataMgr : MonoBehaviour {
-    
-    private  int SkillPoints = 0;
+
+    #region 客户端统计数据，如果数据太多则封装
+    public int ShopOpenTimesAttr
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("shopOpenTimes");
+        }
+        set
+        {
+            PlayerPrefs.SetInt("shopOpenTimes", value);
+        }
+    }
+
+    #endregion
+    public PB.HSStatisticsSyncGuide guideSyncData = null;
+
+    private int SkillPoints = 0;
     private  int skillTimeBegin = 0;
 
     private  int systemTime = 0;
@@ -44,6 +60,11 @@ public class StatisticsDataMgr : MonoBehaviour {
         }
     }
 
+    public void ClearData()
+    {
+        guideSyncData = null;
+    }
+
     public void Init()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_PART1_S.GetHashCode().ToString(), OnStatisticsPart1Sync);
@@ -55,6 +76,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.gm.GM_INSTANCE_PUSH_S.GetHashCode().ToString(), OnGMInstanceStateChange);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_GUIDE_S.GetHashCode().ToString(), OnGuideStatisticsSync);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -69,6 +91,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.gm.GM_INSTANCE_PUSH_S.GetHashCode().ToString(), OnGMInstanceStateChange);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SYNC_GUIDE_S.GetHashCode().ToString(), OnGuideStatisticsSync);
     }
 
     void OnStatisticsPart1Sync(ProtocolMessage  message)
@@ -136,6 +159,7 @@ public class StatisticsDataMgr : MonoBehaviour {
 
         expLeftTime = msgData.expLeftTimes;
         gold2coinExchargeTimes = msgData.gold2CoinTimes;
+        //msgData.guideFinish
 
         SigninDataMgr.Instance.ReloadDateInfo(msgData.signinTimesMonthly, msgData.signinFillTimesMonthly, msgData.isSigninDaily,msgData.loginTimesDaily);
     }
@@ -199,6 +223,15 @@ public class StatisticsDataMgr : MonoBehaviour {
         {
             InstanceMapService.Instance.chapterState = gmInstance.chapterState;
         }
+    }
+
+    void OnGuideStatisticsSync(ProtocolMessage message)
+    {
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        guideSyncData = message.GetProtocolBody<PB.HSStatisticsSyncGuide>();
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

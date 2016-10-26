@@ -63,6 +63,7 @@ GameObject:
   - 114: {fileID: 11480230}
   - 114: {fileID: 11452178}
   - 114: {fileID: 11490354}
+  - 114: {fileID: 11433740}
   m_Layer: 5
   m_Name: Summon2
   m_TagString: Untagged
@@ -1877,7 +1878,10 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  posObjectList:
+  - {fileID: 11433740}
   uiAnimator: {fileID: 9517224}
+  uiViewName: 
   jinbiSumName: {fileID: 11422824}
   zuanshiSumName: {fileID: 11478442}
   sumIntroduce1: {fileID: 11458304}
@@ -1918,6 +1922,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11433740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_summon1_zuanshi
 --- !u!114 &11433860
 MonoBehaviour:
   m_ObjectHideFlags: 1

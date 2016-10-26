@@ -1811,9 +1811,9 @@ worldboss_deathreward2,1_1_200_1.0
 worldboss_deathreward3,1_1_150_1.0
 worldboss_deathreward4,1_1_100_1.0
 worldboss_deathreward5,1_1_50_1.0
-composemonster_c,"6_composemonsterb_1_0.999,6_composemonstera_1_0.001"
-composemonster_b,"6_composemonstera_1_0.999,6_composemonsters_1_0.001"
-composemonster_a,"6_composemonsters_1_0.999,6_composemonsterss_1_0.001"
+composemonster_c,6_composemonsterb_1_1.0
+composemonster_b,6_composemonstera_1_1.0
+composemonster_a,6_composemonsters_1_1.0
 10233_reward,1_2_5000_1.0
 10234_reward,1_2_8000_1.0
 10235_reward,1_2_12000_1.0

@@ -32,6 +32,9 @@ using System.Collections.Generic;
 namespace Funplus.Internal
 {
 
+	/// <summary>
+	/// This script is used for Unity version 5.2 and below, for a new version, use `InstallSdkInAndroid.cs` instead.
+	/// </summary>
 	public class AndroidBuild
 	{
 		private static readonly string[] SKIP_FILES = {@".*\.meta$"};
@@ -46,13 +49,20 @@ namespace Funplus.Internal
 		private static string ProductOutPath { get; set; }
 		private static string SdkOutPath { get; set; }
 
-		public static void Build(bool debuggable)
+		public static bool Build(bool debuggable, string path = null)
 		{
-			BuildPath = SettingUtils.ChooseBuildPath ();
+			if (string.IsNullOrEmpty (path))
+			{
+				BuildPath = SettingUtils.ChooseBuildPath ();
+			}
+			else
+			{
+				BuildPath = path;
+			}
 
 			if (BuildPath == null)
 			{
-				return;
+				return false;
 			}
 
 			EnabledScenes = SettingUtils.GetEnabledScenes ();
@@ -68,30 +78,31 @@ namespace Funplus.Internal
 			if (result.HasError ())
 			{
 				SettingUtils.LogError (result);
-				return;
+				return false;
 			}
 
 			result = SettingUtils.CheckFacebookSettings ();
 			if (result.HasError ())
 			{
 				SettingUtils.LogError (result);
-				return;
+				return false;
 			}
 
 			result = SettingUtils.CheckAndroidSettings ();
 			if (result.HasError ())
 			{
 				SettingUtils.LogError (result);
-				return;
+				return false;
 			}
 
 			BeforeBuildPlayer ();
 			RunBuildPlayer ();
-			AfterBuildPlayer ();
+			AfterBuildPlayer (debuggable);
 
 			ValidateBuild ();
 
 			UnityEngine.Debug.Log ("Build success!");
+			return true;
 		}
 			
 		private static void BeforeBuildPlayer ()
@@ -117,7 +128,7 @@ namespace Funplus.Internal
 			BuildPipeline.BuildPlayer (EnabledScenes.ToArray (), BuildPath, BuildTarget.Android, Options);
 		}
 
-		private static void AfterBuildPlayer ()
+		private static void AfterBuildPlayer (bool debuggable)
 		{
 			foreach (string file in Directory.GetFiles(Path.Combine (ProductOutPath, "libs"), "*.aar"))
 			{
@@ -129,7 +140,7 @@ namespace Funplus.Internal
 			GenRootSettingsGradle ();
 			GenRootBuildGradle ();
 			GenProductBuildGradle ();
-			ModifyAndroidManifest ();
+			ModifyAndroidManifest (debuggable);
 			ModifyLauncherActivity ();
 		}
 
@@ -151,6 +162,19 @@ namespace Funplus.Internal
 
 		private static void GenProductBuildGradle ()
 		{
+			string releaseKeystoreConfig = "";
+
+			if (!string.IsNullOrEmpty (FunplusSettings.AndroidKeystorePath))
+			{
+				releaseKeystoreConfig = string.Format (
+                   InsertionTmpl.AndroidTmpl.RELEASE_KEYSTORE_CONFIG,
+                   FunplusSettings.AndroidKeystorePath,
+                   FunplusSettings.AndroidKeystorePassword,
+                   FunplusSettings.AndroidKeystoreAlias,
+                   FunplusSettings.AndroidKeystoreAliasPassword
+				);
+			}
+			
 			File.WriteAllText (
 				Path.Combine (ProductOutPath, "build.gradle"),
 				string.Format (
@@ -159,12 +183,13 @@ namespace Funplus.Internal
 					FunplusSettings.AndroidBuildToolsVersion,
 					ProductId,
 					FunplusSettings.AndroidMinSdkVersion,
-					FunplusSettings.AndroidTargetSdkVersion
+					FunplusSettings.AndroidTargetSdkVersion,
+					releaseKeystoreConfig
 				)
 			);
 		}
 
-		private static void ModifyAndroidManifest ()
+		private static void ModifyAndroidManifest (bool debuggable)
 		{
 			FileModifier sdkAndroidManifest = new FileModifier (Path.Combine (ProductOutPath, "AndroidManifest.xml"));
 
@@ -206,6 +231,15 @@ namespace Funplus.Internal
 				InsertionTmpl.AndroidTmpl.PERMISSION_WEAK_LOCK
 			);
 
+			if (debuggable)
+			{
+				sdkAndroidManifest.Replace ("android:debuggable=\"true\"", "");
+			}
+			else
+			{
+				sdkAndroidManifest.Replace ("android:debuggable=\"true\"", "");
+				sdkAndroidManifest.Replace ("android:debuggable=\"false\"", "");
+			}
 			sdkAndroidManifest.Write ();
 		}
 

@@ -23,7 +23,7 @@ typedef void (^FPFacebookFriendsDataHandler)(FunplusError* error, NSArray * frie
 
 typedef void (^FPFacebookInvitableFriendsDataHandler)(FunplusError* error, NSArray * friends);
 
-typedef void (^FPFacebookRequestResultHandler)(NSString* requestId,FunplusError* error);
+typedef void (^FPFacebookRequestResultHandler)(NSString* facebookRequestID,NSArray* facebookRequestTo,FunplusError* error);
 
 typedef void (^FPFacebookPublishOpenGraphResultHandler)(FunplusError* error);
 

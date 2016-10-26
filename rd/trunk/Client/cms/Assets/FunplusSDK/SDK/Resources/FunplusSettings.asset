@@ -14,14 +14,25 @@ MonoBehaviour:
   funplusGameId: 1013
   funplusGameKey: aacbb2be28236338a3cb61d610a76f9e
   environment: sandbox
-  androidLauncherActivity: 
+  fakeDeviceId: ffbc8c7432c35b4402:00:00:00:00:00
+  androidLauncherActivity: com.gamegarifee.hs.UnityPlayerActivity
   androidCompileSdkVersion: 23
   androidBuildToolsVersion: 23.0.1
   androidMinSdkVersion: 15
   androidTargetSdkVersion: 23
-  iosAppController: 
+  androidKeystorePath: 
+  androidKeystorePassword: 
+  androidKeystoreAlias: 
+  androidKeystoreAliasPassword: 
+  androidIabEnabled: 0
+  androidHelpshiftEnabled: 0
+  androidMarketingEnabled: 0
+  androidGcmEnabled: 0
+  androidRumEnabled: 0
+  iosAppController: Classes/UnityAppController.mm
   facebookEnabled: 1
   facebookAppId: 1022378007793163
-  facebookAppName: hawk
-  sdkVersion: 3.0.19
+  facebookAppName: Hawk
+  facebookDebugAccessToken: 
+  sdkVersion: 3.0.21
   buildPath: 

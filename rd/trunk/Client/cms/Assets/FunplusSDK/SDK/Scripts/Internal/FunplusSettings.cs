@@ -57,6 +57,8 @@ namespace Funplus.Internal
 		private string funplusGameKey;
 		[SerializeField]
 		private string environment;
+		[SerializeField]
+		private string fakeDeviceId;
 
 		[SerializeField]
 		private string androidLauncherActivity;
@@ -68,6 +70,24 @@ namespace Funplus.Internal
 		private string androidMinSdkVersion = "15";
 		[SerializeField]
 		private string androidTargetSdkVersion = "23";
+		[SerializeField]
+		private string androidKeystorePath;
+		[SerializeField]
+		private string androidKeystorePassword;
+		[SerializeField]
+		private string androidKeystoreAlias;
+		[SerializeField]
+		private string androidKeystoreAliasPassword;
+		[SerializeField]
+		private bool androidIabEnabled = false;
+		[SerializeField]
+		private bool androidHelpshiftEnabled = false;
+		[SerializeField]
+		private bool androidMarketingEnabled = false;
+		[SerializeField]
+		private bool androidGcmEnabled = false;
+		[SerializeField]
+		private bool androidRumEnabled = false;
 
 		[SerializeField]
 		private string iosAppController;
@@ -78,10 +98,12 @@ namespace Funplus.Internal
 		private string facebookAppId;
 		[SerializeField]
 		private string facebookAppName;
+		[SerializeField]
+		private string facebookDebugAccessToken;
 
 		// TODO
 		[SerializeField]
-		private string sdkVersion = "3.0.19";
+		private string sdkVersion = "3.0.21";
 
 		[SerializeField]
 		private string buildPath;
@@ -169,6 +191,27 @@ namespace Funplus.Internal
 			}
 		}
 
+		public static string FakeDeviceId
+		{
+			get
+			{
+				if (Instance.fakeDeviceId == null)
+				{
+					Instance.fakeDeviceId = "ffbc8c7432c35b4402:00:00:00:00:00";
+				}
+				return Instance.fakeDeviceId;
+			}
+
+			set
+			{
+				if (Instance.fakeDeviceId != value)
+				{
+					Instance.fakeDeviceId = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
 		public static bool FacebookEnabled
 		{
 			get
@@ -215,6 +258,23 @@ namespace Funplus.Internal
 				if (Instance.facebookAppName != value)
 				{
 					Instance.facebookAppName = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
+		public static string FacebookDebugAccessToken
+		{
+			get
+			{
+				return Instance.facebookDebugAccessToken;
+			}
+
+			set
+			{
+				if (Instance.facebookDebugAccessToken != value)
+				{
+					Instance.facebookDebugAccessToken = value;
 					FunplusSettings.DirtyEditor();
 				}
 			}
@@ -312,6 +372,159 @@ namespace Funplus.Internal
 			}
 		}
 
+		public static string AndroidKeystorePath
+		{
+			get
+			{
+				return Instance.androidKeystorePath;
+			}
+
+			set
+			{
+				if (Instance.androidKeystorePath != value)
+				{
+					Instance.androidKeystorePath = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
+		public static string AndroidKeystorePassword
+		{
+			get
+			{
+				return Instance.androidKeystorePassword;
+			}
+
+			set
+			{
+				if (Instance.androidKeystorePassword != value)
+				{
+					Instance.androidKeystorePassword = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
+		public static string AndroidKeystoreAlias
+		{
+			get
+			{
+				return Instance.androidKeystoreAlias;
+			}
+
+			set
+			{
+				if (Instance.androidKeystoreAlias != value)
+				{
+					Instance.androidKeystoreAlias = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
+		public static string AndroidKeystoreAliasPassword
+		{
+			get
+			{
+				return Instance.androidKeystoreAliasPassword;
+			}
+
+			set
+			{
+				if (Instance.androidKeystoreAliasPassword != value)
+				{
+					Instance.androidKeystoreAliasPassword = value;
+					FunplusSettings.DirtyEditor();
+				}
+			}
+		}
+
+		public static bool AndroidIabEnabled
+		{
+			get
+			{
+				return Instance.androidIabEnabled;
+			}
+
+			set
+			{
+				if (Instance.androidIabEnabled != value)
+				{
+					Instance.androidIabEnabled = value;
+					FunplusSettings.DirtyEditor ();
+				}
+			}
+		}
+
+		public static bool AndroidHelpshiftEnabled
+		{
+			get
+			{
+				return Instance.androidHelpshiftEnabled;
+			}
+
+			set
+			{
+				if (Instance.androidHelpshiftEnabled != value)
+				{
+					Instance.androidHelpshiftEnabled = value;
+					FunplusSettings.DirtyEditor ();
+				}
+			}
+		}
+
+		public static bool AndroidMarketingEnabled
+		{
+			get
+			{
+				return Instance.androidMarketingEnabled;
+			}
+
+			set
+			{
+				if (Instance.androidMarketingEnabled != value)
+				{
+					Instance.androidMarketingEnabled = value;
+					FunplusSettings.DirtyEditor ();
+				}
+			}
+		}
+
+		public static bool AndroidGcmEnabled
+		{
+			get
+			{
+				return Instance.androidGcmEnabled;
+			}
+
+			set
+			{
+				if (Instance.androidGcmEnabled != value)
+				{
+					Instance.androidGcmEnabled = value;
+					FunplusSettings.DirtyEditor ();
+				}
+			}
+		}
+
+		public static bool AndroidRumEnabled
+		{
+			get
+			{
+				return Instance.androidRumEnabled;
+			}
+
+			set
+			{
+				if (Instance.androidRumEnabled != value)
+				{
+					Instance.androidRumEnabled = value;
+					FunplusSettings.DirtyEditor ();
+				}
+			}
+		}
+
 		public static string IosAppController
 		{
 			get
@@ -385,17 +598,31 @@ namespace Funplus.Internal
 
 		#if UNITY_EDITOR
 		[MenuItem("FunPlusSDK/Export Android Project/Debug", false, 1)]
-		public static void ExportAndroidDebugProject ()
+		public static bool ExportAndroidDebugProject ()
 		{
-			AndroidBuild.Build (true);
+			return AndroidBuild.Build (true);
 		}
 		#endif
 
 		#if UNITY_EDITOR
 		[MenuItem("FunPlusSDK/Export Android Project/Release", false, 2)]
-		public static void ExportAndroidReleaseProject ()
+		public static bool ExportAndroidReleaseProject ()
 		{
-			AndroidBuild.Build (false);
+			return AndroidBuild.Build (false);
+		}
+		#endif
+
+		#if UNITY_EDITOR
+		public static bool ExportAndroidDebugProject (string buildPath)
+		{
+			return AndroidBuild.Build (true, buildPath);
+		}
+		#endif
+
+		#if UNITY_EDITOR
+		public static bool ExportAndroidReleaseProject (string buildPath)
+		{
+			return AndroidBuild.Build (false, buildPath);
 		}
 		#endif
 

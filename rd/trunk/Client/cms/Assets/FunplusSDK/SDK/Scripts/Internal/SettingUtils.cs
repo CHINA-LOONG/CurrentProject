@@ -140,7 +140,7 @@ namespace Funplus.Internal
 		{
 			if (debuggable)
 			{
-				return BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.AllowDebugging;
+				return BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.AllowDebugging | BuildOptions.Development;
 			}
 			else
 			{

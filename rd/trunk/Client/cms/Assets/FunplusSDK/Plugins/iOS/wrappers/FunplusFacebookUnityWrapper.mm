@@ -150,11 +150,11 @@ extern "C" {
     
     void com_funplus_sdk_social_facebook_sendGameRequest(const char * message){
         NSLog(@">>>>>>com_funplus_sdk_social_facebook_sendGameRequest message = %@",[NSString stringWithUTF8String:message]);
-        [[FunplusFacebookHelper sharedInstance] sendRequestWithPlatformId:@"" message:[NSString stringWithUTF8String:message] handler:^(NSString*  requestId,FunplusError *error) {
-            NSLog(@">>>>>>send game request result = %@ %u %@",[error toJSONString],error.code,error.localizedDescription);
+        [[FunplusFacebookHelper sharedInstance] sendRequestWithPlatformId:@"" message:[NSString stringWithUTF8String:message] handler:^(NSString *facebookRequestID, NSArray *facebookRequestTo, FunplusError *error) {
             if (error.code == 0) {
-                NSString * message = [NSString stringWithFormat:@"{\"request_id\": \"%@\"}",requestId];
-                NSLog(@">>>>>>com_funplus_sdk_social_facebook_sendGameRequest result message = %@",message);
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:facebookRequestTo options:NSJSONWritingPrettyPrinted error:nil];
+                NSString *platformIds = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                NSString * message = [NSString stringWithFormat:@"{\"request_id\": \"%@\",\"platform_ids\":%@}",facebookRequestID,platformIds];
                 UnitySendMessage(gameObject, "OnFacebookSendGameRequestSuccess", [message cStringUsingEncoding:NSUTF8StringEncoding]);
             }else{
                 UnitySendMessage(gameObject, "OnFacebookSendGameRequestError", [[error toJSONString] cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -164,13 +164,11 @@ extern "C" {
 
     void com_funplus_sdk_social_facebook_sendGameRequestWithPlatformId(const char * platformId,const char * message) {
         NSLog(@">>>>>>com_funplus_sdk_social_facebook_sendGameRequestWithPlatformId id = %@, message = %@",[NSString stringWithUTF8String:platformId],[NSString stringWithUTF8String:message]);
-        
-        NSString *requestFBUserIDs = [NSString stringWithUTF8String:platformId];
-        [[FunplusFacebookHelper sharedInstance] sendRequestWithPlatformId:[NSString stringWithUTF8String:platformId] message:[NSString stringWithUTF8String:message] handler:^(NSString* requestId,FunplusError *error) {
-            NSLog(@">>>>>>send game request result = %@ %u %@",[error toJSONString],error.code,error.localizedDescription);
+        [[FunplusFacebookHelper sharedInstance] sendRequestWithPlatformId:[NSString stringWithUTF8String:platformId] message:[NSString stringWithUTF8String:message] handler:^(NSString *facebookRequestID, NSArray *facebookRequestTo, FunplusError *error) {
             if (error.code == 0) {
-                NSString * message = [NSString stringWithFormat:@"{\"request_id\": \"%@\",\"platformId\":\"%@\"}",requestId,requestFBUserIDs];
-                NSLog(@">>>>>>com_funplus_sdk_social_facebook_sendGameRequestWithPlatformId result message = %@",message);
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:facebookRequestTo options:NSJSONWritingPrettyPrinted error:nil];
+                NSString *platformIds = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                NSString * message = [NSString stringWithFormat:@"{\"request_id\": \"%@\",\"platform_ids\":%@}",facebookRequestID,platformIds];
                 UnitySendMessage(gameObject, "OnFacebookSendGameRequestSuccess", [message cStringUsingEncoding:NSUTF8StringEncoding]);
             }else{
                 UnitySendMessage(gameObject, "OnFacebookSendGameRequestError", [[error toJSONString] cStringUsingEncoding:NSUTF8StringEncoding]);

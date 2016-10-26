@@ -61,6 +61,18 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
+		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, id);
+		if (null == instanceCfg) {
+			HawkLog.errPrintln(String.format("config invalid InstanceCfg : %s", id));
+			return false;
+		}
+
+		InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, id);
+		if (null == instanceRewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid InstanceRewardCfg : %s", id));
+			return false;
+		}
+
 		if (chapter != GsConst.UNUSABLE) {
 			chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapter);
 			if (null == chapterCfg) {

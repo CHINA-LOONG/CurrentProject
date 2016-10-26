@@ -27,11 +27,19 @@ public class MoreButton : MonoBehaviour
     private bool isCanChangeState = true;
 
     private Vector2 minPosition = new Vector2(0, 0);
-    
 
+    public bool IsMoreButtonExpand
+    {
+        get
+        {
+            return curMoreState == MoreState.Open;
+        }
+    }
+    public static MoreButton Instance = null;
 	// Use this for initialization
 	void Start ()
     {
+        Instance = this;
         InitListButtons();
         EventTriggerListener.Get(moreButton.gameObject).onClick = OnMoreButtonClicked;
         OnMoreButtonClicked(null);
@@ -53,7 +61,7 @@ public class MoreButton : MonoBehaviour
         }
     }
 
-    void OnMoreButtonClicked(GameObject go)
+    public  void OnMoreButtonClicked(GameObject go)
     {
         if (isCanChangeState)
         {

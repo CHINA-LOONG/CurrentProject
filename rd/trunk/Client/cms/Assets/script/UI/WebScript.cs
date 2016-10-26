@@ -19,7 +19,7 @@ public class WebScript : MonoBehaviour {
             mWebView.insets = new UniWebViewEdgeInsets(10, 10, 60, 10);
             mWebView.url = "https://www.baidu.com";
             mWebView.Load();
-            //_webView.Show();
+            mWebView.Show();
         }
         else
         {

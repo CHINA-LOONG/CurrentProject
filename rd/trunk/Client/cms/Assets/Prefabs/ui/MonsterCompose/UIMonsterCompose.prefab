@@ -995,6 +995,7 @@ GameObject:
   - 114: {fileID: 11410760}
   - 114: {fileID: 11453804}
   - 95: {fileID: 9590062}
+  - 114: {fileID: 11439930}
   m_Layer: 5
   m_Name: LButton
   m_TagString: Untagged
@@ -1250,6 +1251,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList:
+  - {fileID: 11439930}
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   textName: {fileID: 11447426}
   textType: {fileID: 11451148}
   imgProIcon: {fileID: 11464328}
@@ -1754,6 +1762,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11439930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_petCompose_compose
 --- !u!114 &11440554
 MonoBehaviour:
   m_ObjectHideFlags: 1

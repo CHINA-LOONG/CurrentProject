@@ -72,6 +72,14 @@ public class FunPlus : MonoBehaviour, FunplusSdk.IDelegate,
     void FunplusAccount.IDelegate.OnCloseUserCenter()
     {
     }
+
+    void FunplusAccount.IDelegate.OnResetPasswordSuccess(string fpid)
+    {
+    }
+    void FunplusAccount.IDelegate.OnResetPasswordError(FunplusError error)
+    {
+    }
+
     #endregion // FunplusPayment.IDelegate
 
     #region FunplusPayment.IDelegate

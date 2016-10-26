@@ -1,8 +1,0 @@
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/app_logo"
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/com_funplus_sdk_logo_padding"
-    android:src="@drawable/com_funplus_sdk_logo"
-    android:background="@color/com_funplus_sdk_account_white" />

@@ -65,6 +65,7 @@ public class UISignIn : UIBase,
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("monthlyevent_title");
+        textRetroactive.text = StaticDataMgr.Instance.GetTextByID("monthlyevent_anniu");
         btnClose.onClick.AddListener(OnClickCloseBtn);
         btnRetroactive.onClick.AddListener(OnClickRetroactiveBtn);
     }

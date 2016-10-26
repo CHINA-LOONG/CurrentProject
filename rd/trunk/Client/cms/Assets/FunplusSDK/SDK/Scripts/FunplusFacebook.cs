@@ -139,7 +139,9 @@ namespace Funplus
 		{
 			get
 			{
-				#if UNITY_ANDROID
+				#if UNITY_EDITOR
+				return FunplusFacebookStub.Instance;
+				#elif UNITY_ANDROID
 				return FunplusFacebookAndroid.Instance;
 				#elif UNITY_IOS
 				return FunplusFacebookIOS.Instance;

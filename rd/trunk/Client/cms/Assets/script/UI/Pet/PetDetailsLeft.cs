@@ -137,7 +137,7 @@ public class PetDetailsLeft : MonoBehaviour,
         objEquipTips.SetActive(true);
         UIUtil.SetParentReset(objEquipTips.transform, go.transform);
         RectTransform rectTrans = objEquipTips.transform as RectTransform;
-        rectTrans.anchoredPosition = Vector2.zero;
+        rectTrans.anchoredPosition = new Vector2(-10,-10);
         EquipField field = go.GetComponentInParent<EquipField>();
         textEquipTips.text = curUnitData.EquipAttr + ItemStaticData.GetEquipPart((int)field.Part);
     }

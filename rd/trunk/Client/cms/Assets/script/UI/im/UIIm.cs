@@ -32,6 +32,7 @@ public class UIIm : UIBase
     public GameObject imMsgFather;
     public RectTransform msgBox;
     public Text basicsValue;
+    public Text basicsContent;
     public Text globalText;
     public Text guildText;
     public GameObject msgPos;//位置
@@ -332,7 +333,8 @@ public class UIIm : UIBase
             else
             {
                 msg = "<color=" + ColorConst.colorTo_Hstr(ColorConst.guildColor) + ">[" + StaticDataMgr.Instance.GetTextByID("im_chat_guild") + "] </color>" +
-                       allMsg.senderName + ": <color=" + ColorConst.colorTo_Hstr(ColorConst.guildColor) + ">" + allMsg.origText + "</color>";
+                       allMsg.senderName + ": ";
+                basicsContent.text = allMsg.origText;
             }
             basicsValue.text = msg;
             StartCoroutine(Func());

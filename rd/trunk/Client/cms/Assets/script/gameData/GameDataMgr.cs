@@ -114,6 +114,12 @@ public class GameDataMgr : MonoBehaviour
             return pvpDataMgr;
         }
     }
+    [SerializeField]
+    GuideDataMgr guideDataMgr;
+    public GuideDataMgr GuideDataMgrAttr
+    {
+        get { return guideDataMgr; }
+    }
 
     //--------------------------------------------------------------------------------------------
     public void ClearAllData()//重新登录重置删除数据
@@ -122,6 +128,8 @@ public class GameDataMgr : MonoBehaviour
         shopDataMgr.ClearData();
         sociatyDataMgr.ClearData();
         pvpDataMgr.ClearData();
+        guideDataMgr.ClearData();
+        StatisticsDataMgr.Instance.ClearData();
     }
     //---------------------------------------------------------------------------------------------
     public void Init()
@@ -153,6 +161,10 @@ public class GameDataMgr : MonoBehaviour
         GameObject pvpGo = new GameObject("PvpDataMgr");
         pvpGo.transform.SetParent(transform);
         pvpDataMgr = pvpGo.AddComponent<PvpDataMgr>();
+
+        GameObject guideGo = new GameObject("GuideDataMgr");
+        guideGo.transform.SetParent(transform);
+        guideDataMgr = guideGo.AddComponent<GuideDataMgr>();
 
         BindListener();
     }

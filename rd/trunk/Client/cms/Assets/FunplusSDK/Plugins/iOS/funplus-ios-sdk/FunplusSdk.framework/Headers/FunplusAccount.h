@@ -18,7 +18,7 @@ typedef void (^FunplusAccountCallback)(FunplusAccountStatus status, FunplusError
 typedef void (^FunplusUserCenterCallback)(FunplusAccountStatus status, FunplusError* error, NSString* fpid, NSString* sessionKey, FunplusOperation userOperation);
 typedef void (^FunplusAccountStatusCallback)(FunplusError* error, FunplusAccountStatus status);
 typedef void (^FunplusGetAvailableAccountTypesCallback)(FunplusError* error, NSArray * availableTypes);
-typedef void (^FunplusAccountEmailCallback)(FunplusError* error);
+typedef void (^FunplusAccountEmailCallback)(NSString* fpid, FunplusError* error);
 
 @interface FunplusAccount : FunplusObject
 
@@ -38,9 +38,19 @@ typedef void (^FunplusAccountEmailCallback)(FunplusError* error);
 
 - (void) getLoginStatus:(FunplusAccountStatusCallback) callback;
 
+- (void) registerWithEmail:(NSString*) email password:(NSString*) password callback:(FunplusAccountCallback) callback;
+
+- (void) loginWithEmail:(NSString*) email password:(NSString*) password callback:(FunplusAccountCallback) callback;
+
+- (void) resetPassword:(NSString*) email callback:(FunplusAccountEmailCallback) callback;
+
 - (NSString *) getFpid;
 
 - (NSString *) getSessionKey;
+
+- (NSString *) getEmail;
+
+- (NSString *) getPlatformId;
 
 - (BOOL) isUserLoggedIn;
 

@@ -38,16 +38,27 @@ namespace Funplus.Internal
 		private GUIContent funplusGameIdLabel = new GUIContent ("Funplus Game Id [?]:", "Funplus Game Id can be found at http://developer.funplus.com");
 		private GUIContent funplusGameKeyLabel = new GUIContent ("Funplus Game Key [?]:", "Funplus Game Key can be found at http://developer.funplus.com");
 		private GUIContent funplusEnvironmentLabel = new GUIContent ("Environment [?]:", "production or sandbox, default is sandbox");
+		private GUIContent fakeDeviceIdLabel = new GUIContent ("Fake Device Id [?]:", "provide a unique device ID which can be used for testing, like this: \"ffbc8c7432c35b4402:00:00:00:00:00\"");
 
 		private GUIContent facebookEnabledLabel = new GUIContent ("Enable Facebook?");
 		private GUIContent facebookAppNameLabel = new GUIContent ("Facebook App Name [?]:", "Facebook App Name can be found at https://developers.facebook.com/apps");
 		private GUIContent facebookAppIdLabel = new GUIContent ("Facebook App Id [?]:", "Facebook App Id can be found at https://developers.facebook.com/apps");
+		private GUIContent facebookDebugAccessTokenLabel = new GUIContent("Debug Access Token [?]:", "A testing acess token");
 
-		private GUIContent androidLauncherActivityLabel = new GUIContent ("Launcher Activity [?]:", "Full identifier of the Android launcher activity, e.g. com.funplus.game.UnityPlayerActivity");
+		private GUIContent androidLauncherActivityLabel = new GUIContent ("Launcher Activity [?]:", "Identifier of the Android launcher activity (without package name, e.g. UnityPlayerActivity");
 		private GUIContent androidCompileSdkVersionLabel = new GUIContent ("Compile SDK Version [?]:", "Android Compile SDK version");
 		private GUIContent androidBuildToolsVersionLabel = new GUIContent ("Build Tools Version [?]:", "Android Build Tools version");
 		private GUIContent androidMinSdkVersionLabel = new GUIContent ("Min SDK Version [?]:", "Android Min SDK version");
 		private GUIContent androidTargetSdkVersionLabel = new GUIContent ("Target SDK Version [?]:", "Android Target SDK version");
+		private GUIContent androidKeystorePathLabel = new GUIContent ("Keystore Path [?]:", "For release version");
+		private GUIContent androidKeystorePasswordLabel = new GUIContent ("Keystore Password [?]:", "The password for the keystore file");
+		private GUIContent androidKeystoreAliasLabel = new GUIContent ("Keystore alias [?]:", "The alias for the keystore file");
+		private GUIContent androidKeystoreAliasPasswordLabel = new GUIContent ("Keystore alias password [?]:", "The password for this alias");
+		private GUIContent androidIabEnabledLabel = new GUIContent ("Enable IAB?");
+		private GUIContent androidHelpshiftEnabledLabel = new GUIContent ("Enable HelpShift?");
+		private GUIContent androidMarketingEnabledLabel = new GUIContent ("Enable Marketing?");
+		private GUIContent androidGcmEnabledLabel = new GUIContent ("Enable GCM?");
+		private GUIContent androidRumEnabledLabel = new GUIContent ("Enable Rum?");
 
 		private GUIContent iosAppControllerLabel = new GUIContent ("Application Controller [?]:", "iOS application controller");
 
@@ -90,6 +101,11 @@ namespace Funplus.Internal
 			FunplusSettings.Environment = EditorGUILayout.TextField (FunplusSettings.Environment);
 			EditorGUILayout.EndHorizontal ();
 
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.LabelField (this.fakeDeviceIdLabel);
+			FunplusSettings.FakeDeviceId = EditorGUILayout.TextField (FunplusSettings.FakeDeviceId);
+			EditorGUILayout.EndHorizontal ();
+
 			EditorGUILayout.Space ();
 		}
 
@@ -109,6 +125,11 @@ namespace Funplus.Internal
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField (this.facebookAppIdLabel);
 				FunplusSettings.FacebookAppId = EditorGUILayout.TextField (FunplusSettings.FacebookAppId);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.LabelField (this.facebookDebugAccessTokenLabel);
+				FunplusSettings.FacebookDebugAccessToken = EditorGUILayout.TextField (FunplusSettings.FacebookDebugAccessToken);
 				EditorGUILayout.EndHorizontal ();
 			}
 
@@ -143,6 +164,46 @@ namespace Funplus.Internal
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField (this.androidTargetSdkVersionLabel);
 				FunplusSettings.AndroidTargetSdkVersion = EditorGUILayout.TextField (FunplusSettings.AndroidTargetSdkVersion);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.LabelField (this.androidKeystorePathLabel);
+				FunplusSettings.AndroidKeystorePath = EditorGUILayout.TextField (FunplusSettings.AndroidKeystorePath);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.LabelField (this.androidKeystorePasswordLabel);
+				FunplusSettings.AndroidKeystorePassword = EditorGUILayout.TextField (FunplusSettings.AndroidKeystorePassword);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.LabelField (this.androidKeystoreAliasLabel);
+				FunplusSettings.AndroidKeystoreAlias = EditorGUILayout.TextField (FunplusSettings.AndroidKeystoreAlias);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.LabelField (this.androidKeystoreAliasPasswordLabel);
+				FunplusSettings.AndroidKeystoreAliasPassword = EditorGUILayout.TextField (FunplusSettings.AndroidKeystoreAliasPassword);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				FunplusSettings.AndroidIabEnabled = EditorGUILayout.Toggle (this.androidIabEnabledLabel, FunplusSettings.AndroidIabEnabled);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				FunplusSettings.AndroidHelpshiftEnabled = EditorGUILayout.Toggle (this.androidHelpshiftEnabledLabel, FunplusSettings.AndroidHelpshiftEnabled);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				FunplusSettings.AndroidMarketingEnabled = EditorGUILayout.Toggle (this.androidMarketingEnabledLabel, FunplusSettings.AndroidMarketingEnabled);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				FunplusSettings.AndroidGcmEnabled = EditorGUILayout.Toggle (this.androidGcmEnabledLabel, FunplusSettings.AndroidGcmEnabled);
+				EditorGUILayout.EndHorizontal ();
+
+				EditorGUILayout.BeginHorizontal ();
+				FunplusSettings.AndroidRumEnabled = EditorGUILayout.Toggle (this.androidRumEnabledLabel, FunplusSettings.AndroidRumEnabled);
 				EditorGUILayout.EndHorizontal ();
 			}
 

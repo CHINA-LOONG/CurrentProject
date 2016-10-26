@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3346470}
   - 65: {fileID: 6578428}
   - 23: {fileID: 2318126}
-  - 65: {fileID: 6551028}
   - 114: {fileID: 11423350}
   m_Layer: 9
   m_Name: selectableObj
@@ -27,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.27563906, y: 5.00337458, z: 5.06366682}
+  m_LocalPosition: {x: -5.40999985, y: -.550000012, z: -4.03000021}
+  m_LocalScale: {x: 1.50496256, y: .76053232, z: .794443071}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,7 +38,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128224}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 3b0b1861df4099d4396505deb48da794, type: 2}
@@ -62,19 +61,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128224}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6551028
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 4.76837158e-07, y: 0, z: 0}
+  m_Mesh: {fileID: 0}
 --- !u!65 &6578428
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -85,7 +72,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11423350
 MonoBehaviour:
@@ -100,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mNormalMat: {fileID: 2100000, guid: 3b0b1861df4099d4396505deb48da794, type: 2}
   mSelectedMat: {fileID: 2100000, guid: 1e6a9a748b1f93e4b8e3177a5baf5482, type: 2}
+  mNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  mDisableColor: {r: .498039216, g: .498039216, b: .498039216, a: 1}
   mSelectType: 0
 --- !u!1001 &100100000
 Prefab:

@@ -78,6 +78,18 @@ namespace Funplus
 			void OnLoginError (FunplusError error);
 
 			/// <summary>
+			/// This method will be called after player reset password.
+			/// </summary>
+			/// <param name="fpid">Funplus user id</param>
+			void OnResetPasswordSuccess (string fpid);
+
+			/// <summary>
+			/// This method will be called after player fails to reset password.
+			/// </summary>
+			/// <param name="error">Error.</param>
+			void OnResetPasswordError (FunplusError error);
+
+			/// <summary>
 			/// This method will be called after player logs out.
 			/// </summary>
 			void OnLogout ();
@@ -109,10 +121,12 @@ namespace Funplus
 		{
 			get
 			{
-				#if UNITY_ANDROID
-			return FunplusAccountAndroid.Instance;
+				#if UNITY_EDITOR
+				return FunplusAccountStub.Instance;
+				#elif UNITY_ANDROID
+				return FunplusAccountAndroid.Instance;
 				#elif UNITY_IOS
-			return FunplusAccountIOS.Instance;
+				return FunplusAccountIOS.Instance;
 				#else
 				return FunplusAccountStub.Instance;
 				#endif
@@ -164,7 +178,7 @@ namespace Funplus
 				_delegate = accountDelegate;
 				Wrapper.SetGameObject (gameObjectName);
 			} 
-			else 
+			else
 			{
 				Debug.LogWarning ("[funsdk] Delegate has already been set.");
 			}
@@ -213,6 +227,27 @@ namespace Funplus
 			Wrapper.Login (type);
 		}
 
+//		public void LoginWithEmail (string email, string password)
+//		{
+//			Wrapper.LoginWithEmail (email, password);
+//		}
+
+		/// <summary>
+		/// Email regist
+		/// </summary>
+		public void RegisterWithEmail (string email, string password)
+		{
+			Wrapper.RegisterWithEmail (email, password);
+		}
+
+		/// <summary>
+		/// Reset password with email
+		/// </summary>
+		public void ResetPassword (string email)
+		{
+			Wrapper.ResetPassword (email);
+		}
+
 		/// <summary>
 		/// Note: this method should only be called in Unity Editor.
 		/// </summary>
@@ -220,9 +255,15 @@ namespace Funplus
 		/// <param name="password">Password.</param>
 		public void LoginWithEmail (string email, string password)
 		{
-			#if UNITY_EDITOR
-			FunplusAccountStub.Instance.EmailLogin (email, password);
-			#endif
+//			#if UNITY_EDITOR
+//			FunplusAccountStub.Instance.EmailLogin (email, password);
+//			#elif UNITY_ANDROID
+//				FunplusAccountIOS.Instance.LoginWithEmail (email, password);
+//			#elif  UNITY_IOS
+//				FunplusAccountAndroid.Instance.LoginWithEmail (email, password);
+//			#endif
+
+			Wrapper.LoginWithEmail (email, password);
 		}
 
 		/// <summary>
@@ -294,7 +335,9 @@ namespace Funplus
 		
 		public void OnAccountOpenSession (string message)
 		{
+			Debug.LogFormat ("[funsdk] OnAccountOpenSession, message: {0}.", message);
 			var dict = Json.Deserialize (message) as Dictionary<string,object>;
+
 			try {
 				bool isLoggedIn = (bool)dict ["is_logged_in"];
 				_delegate.OnOpenSession (isLoggedIn);
@@ -316,6 +359,20 @@ namespace Funplus
 			Debug.LogErrorFormat ("[funsdk] Account Login Error: {0}.", message);
 
 			_delegate.OnLoginError (FunplusError.FromMessage (message));
+		}
+
+		public void OnAccountResetPasswordSuccess (string message)
+		{
+			Debug.LogFormat ("[funsdk] Account Reset password Success: {0}.", message);
+			
+			_delegate.OnResetPasswordSuccess (message);
+		}
+
+		public void OnAccountResetPasswordError (string message)
+		{
+			Debug.LogFormat ("[funsdk] Account Reset Password Error: {0}.", message);
+
+			_delegate.OnResetPasswordError (FunplusError.FromMessage (message));
 		}
 
 		public void OnAccountLogout (string message)

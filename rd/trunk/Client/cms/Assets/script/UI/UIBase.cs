@@ -117,6 +117,29 @@ public abstract class UIBase : MonoBehaviour
         UIMgr.Instance.CloseUI_(this);
     }
 
+    public  void GuideListener(bool yesAddnoRemove)
+    {
+        if(null != posObjectList)
+        {
+            for(int i =0;i<posObjectList.Count;++i)
+            {
+                if(yesAddnoRemove)
+                {
+                    GameEventMgr.Instance.AddListener<string>(posObjectList[i].Id, OnGuideMessageCallback);
+                }
+                else
+                {
+                    GameEventMgr.Instance.RemoveListener<string>(posObjectList[i].Id, OnGuideMessageCallback);
+                }
+            }
+        }
+    }
+
+   protected   virtual  void    OnGuideMessageCallback(string message)
+    {
+
+    }
+
     //public void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.A))

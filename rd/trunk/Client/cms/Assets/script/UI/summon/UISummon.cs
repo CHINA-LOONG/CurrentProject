@@ -21,7 +21,7 @@ public enum ConsumeType
     Consume_Free_zuanshi = 4,
     Num_Consume
 }
-public class UISummon : UIBase
+public class UISummon : UIBase,GuideBase
 {
     public static string ViewName = "UISummon2";
     public List<SummonItem> summonList = new List<SummonItem>();
@@ -70,6 +70,7 @@ public class UISummon : UIBase
         }
         if (jimbiIcon != null)
             SetConsumIcon();
+        GuideManager.Instance.RequestGuide(this);
     }
     //---------------------------------------------------------------------------
     void SetConsumIcon()//初始化设置
@@ -579,11 +580,13 @@ public class UISummon : UIBase
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     //---------------------------------------------------------------------------
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
     //---------------------------------------------------------------------------
     void BindListener()
@@ -604,5 +607,13 @@ public class UISummon : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_TEN_S.GetHashCode().ToString(), OnTenSummonRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_ONE_C.GetHashCode().ToString(), OnOneSummonRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SUMMON_TEN_C.GetHashCode().ToString(), OnTenSummonRet);
+    }
+
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if (message.Equals("gd_summon2_free"))
+        {
+            SummonOnce(null);
+        }
     }
 }

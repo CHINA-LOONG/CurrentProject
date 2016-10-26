@@ -98,6 +98,14 @@ namespace Funplus
 		{
 			return AccessToken;
 		}
+
+		public string ToJsonString ()
+		{
+			return string.Format (
+				@"{{""uid"": ""{0}"", ""pic"": ""{1}"", ""name"": ""{2}"", ""gender"": ""{3}"", ""email"": ""{4}"", ""access_token"": ""{5}""}}",
+				Uid, Pic, Name, Gender, Email, AccessToken
+			);
+		}
 	}
 
 }

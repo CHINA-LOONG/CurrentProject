@@ -14,6 +14,11 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 	int jishu = 0 ;
 	int jishu1 = 0 ;
 	int jishu2 = 0 ;
+	int wp02 = 0 ;
+	int wp03 = 0 ;
+	int wp04 = 0 ;
+	int wp05 = 0 ;
+
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Hehuaisituosi4Unit)
 	{
@@ -101,13 +106,54 @@ public class bosshuoshan48Hehuaisituosi4 : BossAi {
 			for(int n = wpList.Count -1 ;n > 0;n--)
 			{
 				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp02")
+				{
 					jishu1++;
+					wp02++;
+				}
 				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp03")
+				{
 					jishu2++;
+					wp03++;
+				}
 				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp04")
+				{
 					jishu1++;
+					wp04++;
+				}
 				if (wpList[n] == "bosshuoshan48Hehuaisituosi4wp05")
+				{
 					jishu2++;
+					wp05++;
+				}
+			}
+			if(jishu1==1 && wp02==1)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp02_state0to3", Time.time, null);
+			}
+			
+			if(jishu2==1 && wp03==1)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp03_state0to3", Time.time, null);
+			}
+
+			if(jishu2==2)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp0305_state0to3", Time.time, null);
+			}
+			
+			if(jishu1==1 && wp04==1)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp04_state0to3", Time.time, null);
+			}
+			
+			if(jishu2==1 && wp05==1)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp05_state0to3", Time.time, null);
+			}
+
+			if(jishu1==2)
+			{
+				Hehuaisituosi4Unit.battleUnit.TriggerEvent("hehuaisituosi4_wp0204_state0to3", Time.time, null);
 			}
 		}
 	

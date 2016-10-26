@@ -82,6 +82,8 @@ public class UIShop : UIBase
         GameEventMgr.Instance.AddListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
+
+        ++StatisticsDataMgr.Instance.ShopOpenTimesAttr;
     }
 	
 	void OnDisable()

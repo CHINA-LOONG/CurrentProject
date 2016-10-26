@@ -95,6 +95,7 @@ GameObject:
   - 224: {fileID: 22427656}
   - 222: {fileID: 22218928}
   - 114: {fileID: 11436622}
+  - 114: {fileID: 11415432}
   m_Layer: 5
   m_Name: ChapterButton (1)
   m_TagString: Untagged
@@ -804,6 +805,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Back
+--- !u!114 &11415432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_insmap_chapter1
 --- !u!114 &11419002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1282,7 +1295,10 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  posObjectList:
+  - {fileID: 11415432}
   uiAnimator: {fileID: 0}
+  uiViewName: 
   scrollViewRt: {fileID: 22495750}
   scrollContentRt: {fileID: 22428058}
   mapScrollRect: {fileID: 11467280}

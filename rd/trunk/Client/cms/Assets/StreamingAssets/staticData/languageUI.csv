@@ -238,7 +238,7 @@ decompose_equip,装备,Equipment
 decompose_monster,宠物,Monsters
 decompose_material,选择分解原料,Select disenchant materials
 decompose_preview,分解预览,Disenchant preview
-decompose_choise,请选择要分解的装备,Select equipment to disenchant
+decompose_choise,请选择要分解的目标,Select item to disenchant
 decompose_tips1,*分解装备将获得装备打造材料,*Disenchanting equipment yields the materials used to create it
 decompose_tips2,*装备镶嵌的宝石将自动返还到背包,*Any embedded Gems will automatically be returned to your Bag
 decompose_tips3,*分解宠物将获得宠物进阶材料,*Disenchanting monsters yields evolution materials
@@ -261,13 +261,13 @@ handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned
 handbook_shouji,收集宠物,Collected
 item_type_chip,碎片,Fragment
-handbook_tips,*万能碎片最大只能替换{0:0%}的宠物碎片哟！,Core Fragments can be used for up to {0:0%} of a Monster's Fragments.
-handbook_zhaohuan,召唤,Summon
+handbook_tips,*万能碎片最大能替换{0:0%}的宠物碎片哟！,Core Fragments can be used for up to {0:0%} of a Monster's Fragments.
+handbook_zhaohuan,合成,Combine
 handbook_huodeway,获得途径,Get By
 handbook_petsuipian,宠物碎片,Monster Fragments
-handbook_tips1,确定进行1次召唤吗？,Confirm summon once?
+handbook_tips1,确定进行1次合成吗？,Confirm combine once?
 handbook_record_001,碎片不足,Insufficent fragments.
-handbook_ready,可召唤,ready to summon
+handbook_ready,可合成,ready to combine
 xl_itemtips,,
 tips_main1,副本,Stage
 shop_main,商店,Shop
@@ -604,7 +604,7 @@ sociaty_paichuqueren,派出的宠物至少要驻扎1个小时才可以召回哦�
 sociaty_record_066,该位置未解锁,This position has not been unlocked
 sociaty_record_067,派出时间未满1小时，不能召回,"Dispatch time is still under 1hr, unable to recall"
 sociaty_record_068,宠物已不在公会基地,Monster is already no longer in the base
-,,
+sociaty_record_069,升级成功,Upgrade success
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas
 tower_exp_name,至福乐土,Fields of Elysium
@@ -1024,6 +1024,7 @@ pvp_record_002,竞技次数已用完,No remaining Arena entries
 pvp_record_003,防御至少要安排一个以上的宠物,one at  least
 pvp_battle,开战,Start Battle
 pvp_titleshengduan,进阶成功！,Advancement complete!
+pvp_battlestart,战斗开始,Battle Start
 ui_battle_go,前往,Go
 lose_guide1,搜寻弱点,Search for weakpoints
 lose_guide2,聚合,Gather

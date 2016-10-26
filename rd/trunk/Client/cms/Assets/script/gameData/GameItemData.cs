@@ -108,6 +108,20 @@ public class GameItemData
         return itemStData.times;
     }
 
+    public int GetItemsCount (string[] itemIds)
+    {
+        int count = 0;
+        for (int i = 0; i < itemIds.Length; ++i)
+        {
+            ItemData subItem = getItem(itemIds[i]);
+            if(null != subItem)
+            {
+                count += subItem.count;
+            }
+        }
+        return count;
+    }
+
     public void ClearData()
     {
         itemList.Clear();

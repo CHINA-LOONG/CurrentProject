@@ -79,6 +79,21 @@ namespace Funplus.IOS
 			com_funplus_sdk_account_loginWithType ((int)type);
 		}
 
+		public override void LoginWithEmail (string email, string password)
+		{
+			com_funplus_sdk_account_loginWithEmail (email, password);
+		}
+
+		public override void RegisterWithEmail (string email, string password)
+		{
+			com_funplus_sdk_account_registerWithEmail (email, password);
+		}
+
+		public override void ResetPassword (string email)
+		{
+			com_funplus_sdk_account_resetPassword (email);
+		}
+
 		public override void Logout () 
 		{
 			com_funplus_sdk_account_logout ();
@@ -113,6 +128,15 @@ namespace Funplus.IOS
 
 		[DllImport ("__Internal")]
 		private static extern void com_funplus_sdk_account_loginWithType (int type);
+
+		[DllImport ("__Internal")]
+		private static extern void com_funplus_sdk_account_loginWithEmail (string email, string password);
+
+		[DllImport ("__Internal")]
+		private static extern void com_funplus_sdk_account_registerWithEmail (string eamil, string password);
+
+		[DllImport ("__Internal")]
+		private static extern void com_funplus_sdk_account_resetPassword (string eamil);
 
 		[DllImport ("__Internal")]
 		private static extern void com_funplus_sdk_account_logout ();

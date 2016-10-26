@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22287590}
   - 114: {fileID: 11472292}
   - 114: {fileID: 11406902}
+  - 114: {fileID: 11433190}
   m_Layer: 5
   m_Name: SumType1
   m_TagString: Untagged
@@ -1006,6 +1007,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11433190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_summon2_free
 --- !u!114 &11434196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1120,7 +1133,10 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  posObjectList:
+  - {fileID: 11433190}
   uiAnimator: {fileID: 9545808}
+  uiViewName: 
   exit: {fileID: 197470}
   onceButton: {fileID: 123244}
   tenButton: {fileID: 193224}

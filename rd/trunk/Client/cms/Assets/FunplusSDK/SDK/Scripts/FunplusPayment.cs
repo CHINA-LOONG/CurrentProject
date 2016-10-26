@@ -89,7 +89,9 @@ namespace Funplus
 		{
 			get 
 			{
-				#if UNITY_ANDROID
+				#if UNITY_EDITOR
+				return FunplusPaymentStub.Instance;
+				#elif UNITY_ANDROID
 				return FunplusGoogleIabAndroid.Instance;
 				#elif UNITY_IOS
 				return FunplusAppleIapIOS.Instance;
@@ -206,8 +208,8 @@ namespace Funplus
 			products = FunplusProduct.FromGoogleIabMessage (message);
 			#elif UNITY_IOS
 			products = FunplusProduct.FromAppleIapMessage (message);
-            #else
-            products = FunplusProduct.FromAppleIapMessage(message);
+			#else
+			products = FunplusProduct.FromAppleIapMessage (message);
 			#endif
 
 			_delegate.OnInitializeSuccess (products);
@@ -220,6 +222,8 @@ namespace Funplus
 		
 		public void OnPaymentPurchaseSuccess (string message)
 		{
+			Debug.Log ("{FunplusPayment.OnPurchaseSuccess()}" + message);
+
 			var dict = Json.Deserialize (message) as Dictionary<string,object>;
 			try
 			{

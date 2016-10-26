@@ -174,8 +174,9 @@ namespace Funplus
             {2303, "Google Plus failed to get game friends"},
             // Payment errors.
             {3000, "Failed to submit data to funplus payment server"},
-            {3001, "xxx"},
-            {3002, "xxx"},
+			{3001, "Invalid Payment Request Data"},
+			{3002, "Failed to parse payment response"},
+			{3003, "Got a unsuccessful response from payment ser"},
             // Third party payment errors.
             {3900, "Non-successful get_local_pacakges response"},
             {3901, "Error parsing get_local_pacakges response"},
@@ -184,7 +185,10 @@ namespace Funplus
             {3100, "Failed to initialize Google IAB"},
             {3101, "Failed to buy product via Google IAB"},
             {3102, "Google account is not configured"},
-            {3103, "Failed to consume product via Google IAB"},
+			{3103, "Failed to consume product via Google IAB"},
+			{3104, "User canceld the purchase"},
+			{3105, "The item is not available"},
+			{3106, "The item is already owned, you could try restart the game to get the item"},
             // BI errors.
             {4000, "No such BI event"},
             {4001, "BI event properties are not valid"},

@@ -10,12 +10,16 @@ using HSMiniJSON;
 namespace Funplus
 {
 
-	public delegate void RequestSuccess (Dictionary<string, object> data);
-	public delegate void RequestError (FunplusError error);
+	public delegate void FpRequestSuccess (Dictionary<string, object> data);
+	public delegate void FpRequestError (FunplusError error);
+
+	public delegate void FbRequestSuccess (Dictionary<string, object> data);
+	public delegate void FbRequestError (string error);
 
 	public class FunplusRequest : MonoBehaviour
 	{
 		private const string PASSPORT_ENDPOINT = "https://passport.funplusgame.com/client_api.php?ver=3";
+		private const string FACEBOOK_ENDPOINT = "https://graph.facebook.com/me";
 
 		public static FunplusRequest Instance { get; set; }
 
@@ -24,12 +28,12 @@ namespace Funplus
 			Instance = this;
 		}
 
-		public void Post (Dictionary<string, string> formData, RequestSuccess onSuccess = null, RequestError onError = null)
+		public void FpPost (Dictionary<string, string> formData, FpRequestSuccess onSuccess = null, FpRequestError onError = null)
 		{
-			StartCoroutine (Request (formData, onSuccess, onError));
+			StartCoroutine (FpRequest (formData, onSuccess, onError));
 		}
 
-		public IEnumerator Request (Dictionary<string, string> formData, RequestSuccess onSuccess, RequestError onError)
+		public IEnumerator FpRequest (Dictionary<string, string> formData, FpRequestSuccess onSuccess, FpRequestError onError)
 		{
 			WWW www;
 
@@ -75,8 +79,7 @@ namespace Funplus
 			}
 			else
 			{
-//				Debug.LogFormat ("Requesting to {0}.", PASSPORT_ENDPOINT);
-//				Debug.LogFormat ("Response: {0}.", www.text);
+				Debug.Log (www.text);
 
 				try
 				{
@@ -108,6 +111,77 @@ namespace Funplus
 					if (onError != null)
 					{
 						onError (FunplusError.E (1208));
+					}
+				}
+			}
+		}
+
+		public void FbGet (string accessToken, FbRequestSuccess onSuccess = null, FbRequestError onError = null)
+		{
+			StartCoroutine (FbRequest (accessToken, onSuccess, onError));
+		}
+			
+		public IEnumerator FbRequest (string accessToken, FbRequestSuccess onSuccess = null, FbRequestError onError = null)
+		{
+			WWW www;
+			
+			if (string.IsNullOrEmpty (accessToken))
+			{
+				if (onError != null)
+				{
+					onError ("[funsdk] AccessToken cannot be null, check your configurations.");
+				}
+				www = null;
+			}
+			else
+			{
+				string url = string.Format ("{0}?access_token={1}", FACEBOOK_ENDPOINT, accessToken);
+				www = new WWW (url);
+			}
+
+			yield return www;
+
+			if (www == null || www.error != null || !www.isDone)
+			{
+				if (onError != null)
+				{
+					onError ("[funsdk] failed to request to Facebook");
+				}
+			}
+			else if (string.IsNullOrEmpty (www.text))
+			{
+				if (onError != null) {
+					onError ("[funsdk] Response from Facebook is empty.");
+				}
+			}
+			else
+			{
+				Debug.Log (www.text);
+
+				try
+				{
+					var dict = Json.Deserialize (www.text) as Dictionary<string,object>;
+
+					if (dict.ContainsKey("error"))
+					{
+						if (onError != null)
+						{
+							onError((string) dict["error"]);
+						}
+					}
+					else
+					{
+						if (onSuccess != null)
+						{
+							onSuccess (dict);
+						}
+					}
+				}
+				catch (Exception e)
+				{
+					if (onError != null)
+					{
+						onError (e.Message);
 					}
 				}
 			}

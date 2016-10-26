@@ -87,12 +87,12 @@ public class GsConst {
 		public static final int PVP = 1 << 7;  // 128
 
 		// 系统刷新时间点
-		public static int[] SysTimePointArray = { 103, 104, 105, 106, 107, 108, 109, 110};
-		public static int[] SysMaskArray = { 4, 4, 4, 4, 4, 4, 4, 128};
+		public static int[] SysTimePointArray = { 103, 104, 105, 106, 107, 108, 109, 110 };
+		public static int[] SysMaskArray = { 4, 4, 4, 4, 4, 4, 4, 128 };
 
 		// 玩家刷新时间点
-		public static int[] PlayerTimePointArray = { 101, 102, 201, 202, 203, 204, 205, 206, 207, 208};
-		public static int[] PlayerMaskArray = { 1, 2, 8, 8, 8, 16, 16, 16, 32, 64};
+		public static int[] PlayerTimePointArray = { 101, 102, 201, 202, 203, 204, 205, 206, 207, 208 };
+		public static int[] PlayerMaskArray = { 1, 2, 8, 8, 8, 16, 16, 16, 32, 64 };
 	}
 
 	/**
@@ -434,8 +434,8 @@ public class GsConst {
 	 * 新手引导
 	 */
 	public static class Guide {
-		public static final int[] QUEST_COMPLETE = new int[] {10001};
-		public static final String[] EXP_ITEM = new String[] {"50002", "50003", "50004"};
+		public static final int[] QUEST_COMPLETE = new int[] { 10001 };
+		public static final String[] EXP_ITEM = new String[] { "50002", "50003", "50004" };
 
 		// TODO: 临时常量，用配置数量代替
 		public static final int guideCount = 333;

@@ -213,11 +213,23 @@ namespace Funplus
 			return SnsName;
 		}
 
+		public void Clear ()
+		{
+			AccountType = FunplusAccountType.FPAccountTypeUnknown;
+			Fpid = null;
+			Email = null;
+			SessionKey = null;
+			SnsPlatform = null;
+			SnsId = null;
+			SnsName = null;
+			ExpireOn = 0;
+		}
+
 		public string ToJsonString ()
 		{
 			return string.Format (
-				@"{{""account_type"": ""{0}"", ""fpid"": ""{1}"", ""email"": ""{2}"", ""session_key"": ""{3}"", ""expire_on"": {4}}}",
-				FunplusAccountTypeUtils.ToString (AccountType), Fpid, Email, SessionKey, ExpireOn
+				@"{{""account_type"": ""{0}"", ""fpid"": ""{1}"", ""email"": ""{2}"", ""session_key"": ""{3}"", ""sns_platform"": ""{4}"", ""sns_id"": ""{5}"", ""sns_name"": ""{6}"", ""expire_on"": {7}}}",
+				FunplusAccountTypeUtils.ToString (AccountType), Fpid, Email, SessionKey, SnsPlatform, SnsId, SnsName, ExpireOn
 			);
 		}
 	}

@@ -106,6 +106,10 @@ public class StaticDataMgr : MonoBehaviour
     //Dictionary<int, GuideBattleData> guideBattleList = new Dictionary<int, GuideBattleData>();
     //Dictionary<string, GuideBattleStepData> guideBattleStepList = new Dictionary<string, GuideBattleStepData>();
 
+    //新手引导
+    List<GuideGroup> listGuideGroup = new List<GuideGroup>();
+    Dictionary<int, GuideStep> guideStepDic = new Dictionary<int, GuideStep>();
+
     public void Init()
     {
         DontDestroyOnLoad(gameObject);
@@ -970,6 +974,16 @@ public class StaticDataMgr : MonoBehaviour
 
         //    }
         //}
+
+        {
+            listGuideGroup = InitTable<GuideGroup>("guideGroup");
+
+            var stepData = InitTable<GuideStep>("guideStep");
+            foreach(var stepItem in stepData)
+            {
+                guideStepDic.Add(stepItem.Id, stepItem);
+            }
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -1538,6 +1552,16 @@ public class StaticDataMgr : MonoBehaviour
         Loadinglocation item = null;
         loadinglocationData.TryGetValue(picture, out item);
         return item;
+    }
+    public List<GuideGroup> GetGuideGroupList()
+    {
+        return listGuideGroup;
+    }
+    public GuideStep GetGuideStep(int stepId)
+    {
+        GuideStep gstep = null;
+        guideStepDic.TryGetValue(stepId, out gstep);
+        return gstep;
     }
     #endregion
 }

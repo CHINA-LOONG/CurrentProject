@@ -40,208 +40,15 @@ using HSMiniJSON;
 namespace Funplus.Stub
 {
 
-	// TODO make this class behavior more like the native `FunplusAccount` class.
-	#if UNITY_EDITOR
-	[InitializeOnLoad]
-	#endif
-	public class SessionStub : ScriptableObject
-	{
-		private const string ASSET_NAME = "SessionStub";
-		private const string ASSET_PATH = "FunplusSDK/SDK/Resources";
-		private const string ASSET_EXT = ".asset";
-
-		[SerializeField]
-		private FunplusAccountType accountType;
-		[SerializeField]
-		private string fpid;
-		[SerializeField]
-		private string email;
-		[SerializeField]
-		private string sessionKey;
-		[SerializeField]
-		private long expireOn;
-
-		private static SessionStub instance;
-
-		public static SessionStub Instance
-		{
-			get
-			{
-				if (instance == null)
-				{
-					instance = Resources.Load(ASSET_NAME) as SessionStub;
-					if (instance == null)
-					{
-						// If not found, autocreate the asset object.
-						instance = ScriptableObject.CreateInstance<SessionStub>();
-						#if UNITY_EDITOR
-						string properPath = Path.Combine(Application.dataPath, ASSET_PATH);
-						if (!Directory.Exists(properPath))
-						{
-							Directory.CreateDirectory(properPath);
-						}
-
-						string fullPath = Path.Combine(Path.Combine("Assets", ASSET_PATH), ASSET_NAME + ASSET_EXT);
-						AssetDatabase.CreateAsset(instance, fullPath);
-						#endif
-					}
-				}
-
-				return instance;
-			}
-		}
-
-		public static FunplusSession NewSession (FunplusAccountType accoutType, string fpid, string email, string sessionKey, long expireOn)
-		{
-			Instance.AccountType = accoutType;
-			Instance.Fpid = fpid;
-			Instance.Email = email;
-			Instance.SessionKey = sessionKey;
-
-			return Session;
-		}
-
-		public static void ClearSession ()
-		{
-			Instance.AccountType = FunplusAccountType.FPAccountTypeUnknown;
-			Instance.Fpid = null;
-			Instance.Email = null;
-			Instance.SessionKey = null;
-			Instance.ExpireOn = -1;
-		}
-
-		public static FunplusSession Session
-		{
-			get
-			{
-				if (string.IsNullOrEmpty (Instance.Fpid) || string.IsNullOrEmpty (Instance.SessionKey))
-				{
-					return null;
-				}
-				else
-				{
-					return new FunplusSession {
-						AccountType = Instance.AccountType,
-						Fpid = Instance.Fpid,
-						Email = Instance.Email,
-						SessionKey = Instance.SessionKey,
-						ExpireOn = Instance.ExpireOn
-					};
-				}
-			}
-		}
-
-		public FunplusAccountType AccountType
-		{
-			get
-			{
-				return Instance.accountType;
-			}
-
-			set
-			{
-				if (Instance.accountType != value)
-				{
-					Instance.accountType = value;
-					SessionStub.DirtyEditor ();
-				}
-			}
-		}
-
-		public string Fpid
-		{
-			get
-			{
-				return Instance.fpid;
-			}
-
-			set
-			{
-				if (Instance.fpid != value)
-				{
-					Instance.fpid = value;
-					SessionStub.DirtyEditor ();
-				}
-			}
-		}
-
-		public string Email
-		{
-			get
-			{
-				return Instance.email;
-			}
-
-			set
-			{
-				if (Instance.email != value)
-				{
-					Instance.email = value;
-					SessionStub.DirtyEditor ();
-				}
-			}
-		}
-
-		public string SessionKey
-		{
-			get
-			{
-				return Instance.sessionKey;
-			}
-
-			set
-			{
-				if (Instance.sessionKey != value)
-				{
-					Instance.sessionKey = value;
-					SessionStub.DirtyEditor ();
-				}
-			}
-		}
-
-		public long ExpireOn
-		{
-			get
-			{
-				return Instance.expireOn;
-			}
-
-			set
-			{
-				if (Instance.expireOn != value)
-				{
-					Instance.expireOn = value;
-					SessionStub.DirtyEditor ();
-				}
-			}
-		}
-			
-		private static void DirtyEditor ()
-		{
-			#if UNITY_EDITOR
-			EditorUtility.SetDirty (Instance);
-			#endif
-		}
-	}
-
 	public class FunplusAccountStub : BaseAccountWrapper
 	{
-		private const string ASSET_NAME = "FunplusAccountStub";
-		private const string ASSET_PATH = "FunplusSDK/SDK/Resources";
-		private const string ASSET_EXT = ".asset";
-
-		// Fake Android ID.
-		private const string ANDROID_ID = "ffbc8c7432c35b4402:00:00:00:00:00";
-		// Fake GUID.
-		private const string GUID = "f0ad6b6300428a34dd2d7fa8f2168cad";
-
 		private static FunplusAccountStub instance;
 		private static readonly object locker = new object ();
-
-		// Note: this field is not thread safe.
-		private static string userEmail;
+		private string deviceId;
+		private string guid;
 
 		private static SessionState sessionState = SessionState.Closed;
+		private static FunplusSession session = new FunplusSession ();
 
 		private enum SessionState
 		{
@@ -266,6 +73,32 @@ namespace Funplus.Stub
 			}
 		}
 
+		public string DeviceId
+		{
+			get
+			{
+				#if UNITY_EDITOR
+				if (string.IsNullOrEmpty (deviceId))
+				{
+					deviceId = FunplusSettings.FakeDeviceId;
+				}
+				#endif
+				return deviceId;
+			}
+		}
+
+		public string Guid
+		{
+			get
+			{
+				if (string.IsNullOrEmpty (guid))
+				{
+					guid = GetMd5Hash (DeviceId);
+				}
+				return guid;
+			}
+		}
+
 		#region override methods
 		public override void SetGameObject (string gameObjectName) 
 		{
@@ -287,22 +120,35 @@ namespace Funplus.Stub
 				Debug.LogError ("[funsdk] Session has been opened, no need to open it again.");
 				return;
 			}
-				
-			if (SessionStub.Session == null)
-			{
-				sessionState = SessionState.Opened;
-				FunplusAccount.Instance.OnAccountOpenSession ("{\"is_logged_in\": false}");
-			}
-			else
-			{
-				sessionState = SessionState.Actived;
-				FunplusAccount.Instance.OnAccountOpenSession ("{\"is_logged_in\": true}");
-				FunplusAccount.Instance.OnAccountLoginSuccess (SessionStub.Session.ToJsonString ());
-			}
+
+			#if UNITY_EDITOR
+			FacebookManager.Init (OnFacebookInit);
+			#else
+			sessionState = SessionState.Opened;
+			FunplusAccount.Instance.OnAccountOpenSession ("{\"is_logged_in\": false}");
+			#endif
 		}
 
 		public override void Login () 
 		{
+			if (sessionState.Equals (SessionState.Closed))
+			{
+				Debug.LogError ("[funsdk] Session has not been opened, please open session first.");
+				return;
+			}
+
+			if (sessionState.Equals (SessionState.Activating))
+			{
+				Debug.LogError ("[funsdk] Another authenticating process is going on.");
+				return;
+			}
+
+			if (sessionState.Equals (SessionState.Actived))
+			{
+				Debug.LogError ("[funsdk] Session has already been activated.");
+				return;
+			}
+
 			ExpressLogin ();
 		}
 		
@@ -326,7 +172,35 @@ namespace Funplus.Stub
 				return;
 			}
 
-			Debug.Log ("[funsdk] Calling FunplusAccountStub.Login(type).");
+			switch (type)
+			{
+			case FunplusAccountType.FPAccountTypeExpress:
+				ExpressLogin ();
+				break;
+			case FunplusAccountType.FPAccountTypeFacebook:
+				#if UNITY_EDITOR
+				FacebookManager.Login (OnFacebookLoginSuccess, OnFacebookLoginFailed);
+				#endif
+				break;
+			default:
+				// TODO
+				break;
+			}
+		}
+
+		public override void LoginWithEmail (string email, string password)
+		{
+			
+		}
+
+		public override void RegisterWithEmail (string email, string password)
+		{
+			
+		}
+
+		public override void ResetPassword (string email)
+		{
+			
 		}
 		
 		public override void Logout ()
@@ -338,7 +212,7 @@ namespace Funplus.Stub
 			}
 
 			sessionState = SessionState.Opened;
-			SessionStub.ClearSession ();
+			session.Clear ();
 			FunplusAccount.Instance.OnAccountLogout (null);
 		}
 		
@@ -369,40 +243,37 @@ namespace Funplus.Stub
 				Debug.LogError ("[funsdk] Please login first.");
 			}
 
-			Debug.Log ("[funsdk] Calling FunplusAccountStub.BindAccount(type).");
+			switch (type)
+			{
+			case FunplusAccountType.FPAccountTypeExpress:
+				ExpressLogin ();
+				break;
+			case FunplusAccountType.FPAccountTypeFacebook:
+				#if UNITY_EDITOR
+				FacebookManager.Login (OnFacebookLoginSuccess, OnFacebookLoginFailed);
+				#endif
+				break;
+			default:
+				// TODO
+				break;
+			}
 		}
 		#endregion // override methods
 
 		#region testing methods
 		public void ExpressLogin ()
-		{
-			if (sessionState.Equals (SessionState.Closed))
-			{
-				Debug.LogError ("[funsdk] Session has not been opened, please open session first.");
-				return;
-			}
-
-			if (sessionState.Equals (SessionState.Activating))
-			{
-				Debug.LogError ("[funsdk] Another authenticating process is going on.");
-				return;
-			}
-
-			if (sessionState.Equals (SessionState.Actived))
-			{
-				Debug.LogError ("[funsdk] Session has already been activated.");
-				return;
-			}
-			
+		{			
 			Dictionary<string, string> data = new Dictionary<string, string> ();
 			data.Add ("game_id", FunplusSdk.Instance.GameId);
 			data.Add ("method", "express_signin");
-			data.Add ("android_id", ANDROID_ID);
-			data.Add ("guid", GUID);
+			data.Add ("android_id", deviceId);
+			data.Add ("guid", Guid);
 
-			RequestSuccess onSuccess = FunplusAccountStub.OnExpressLoginRequestSuccess;
-			RequestError onError = FunplusAccountStub.OnExpressLoginRequestError;
-			FunplusRequest.Instance.Post (data, onSuccess, onError);
+			session.AccountType = FunplusAccountType.FPAccountTypeExpress;
+
+			FpRequestSuccess onSuccess = FunplusAccountStub.OnLoginSuccess;
+			FpRequestError onError = FunplusAccountStub.OnLoginError;
+			FunplusRequest.Instance.FpPost (data, onSuccess, onError);
 		}
 
 		public void EmailLogin (string email, string password)
@@ -425,19 +296,50 @@ namespace Funplus.Stub
 				return;
 			}
 
-			userEmail = email;
+			session.AccountType = FunplusAccountType.FPAccountTypeExpress;
+			session.Email = email;
 
 			Dictionary<string, string> data = new Dictionary<string, string> ();
 			data.Add ("game_id", FunplusSdk.Instance.GameId);
 			data.Add ("method", "signin");
 			data.Add ("email", email);
 			data.Add ("password", password);
-			data.Add ("android_id", ANDROID_ID);
-			data.Add ("guid", GUID);
+			data.Add ("android_id", DeviceId);
+			data.Add ("guid", Guid);
 
-			RequestSuccess onSuccess = FunplusAccountStub.OnEmailLoginRequestSuccess;
-			RequestError onError = FunplusAccountStub.OnEmailLoginRequestError;
-			FunplusRequest.Instance.Post (data, onSuccess, onError);
+			FunplusRequest.Instance.FpPost (data, OnLoginSuccess, OnLoginError);
+		}
+
+		public void FacebookLogin (string accessToken, string platformId)
+		{
+			Dictionary<string, string> data = new Dictionary<string, string> ();
+			data.Add ("game_id", FunplusSdk.Instance.GameId);
+			data.Add ("method", "login_with_sns");
+			data.Add ("platform_id", platformId);
+			data.Add ("access_token", accessToken);
+
+			session.AccountType = FunplusAccountType.FPAccountTypeFacebook;
+
+			FunplusRequest.Instance.FpPost (data, OnLoginSuccess, OnLoginError);
+		}
+
+		public void FacebookBind (string accessToken, string fpid, string platformId)
+		{
+			if (!sessionState.Equals (SessionState.Actived))
+			{
+				Debug.LogError ("[funsdk] Please login first.");
+			}
+
+			Dictionary<string, string> data = new Dictionary<string, string> ();
+			data.Add ("game_id", FunplusSdk.Instance.GameId);
+			data.Add ("method", "login_with_sns");
+			data.Add ("fpid", fpid);
+			data.Add ("platform_id", platformId);
+			data.Add ("access_token", accessToken);
+
+			session.AccountType = FunplusAccountType.FPAccountTypeFacebook;
+
+			FunplusRequest.Instance.FpPost (data, OnLoginSuccess, OnLoginError);
 		}
 
 		public void Register (string email, string password)
@@ -448,9 +350,10 @@ namespace Funplus.Stub
 			data.Add ("email", email);
 			data.Add ("password", password);
 
-			RequestSuccess onSuccess = FunplusAccountStub.OnEmailLoginRequestSuccess;
-			RequestError onError = FunplusAccountStub.OnEmailLoginRequestError;
-			FunplusRequest.Instance.Post (data, onSuccess, onError);
+			session.AccountType = FunplusAccountType.FPAccountTypeEmail;
+			session.Email = email;
+
+			FunplusRequest.Instance.FpPost (data, OnLoginSuccess, OnLoginError);
 		}
 
 		public void BindAccountWithEmail (string fpid, string email, string password)
@@ -460,7 +363,8 @@ namespace Funplus.Stub
 				Debug.LogError ("[funsdk] Please login first.");
 			}
 
-			userEmail = email;
+			session.AccountType = FunplusAccountType.FPAccountTypeEmail;
+			session.Email = email;
 
 			Dictionary<string, string> data = new Dictionary<string, string> ();
 			data.Add ("game_id", FunplusSdk.Instance.GameId);
@@ -469,37 +373,12 @@ namespace Funplus.Stub
 			data.Add ("email", email);
 			data.Add ("password", password);
 
-			RequestSuccess onSuccess = FunplusAccountStub.OnBindAccountSuccess;
-			RequestError onError = FunplusAccountStub.OnBindAccountError;
-			FunplusRequest.Instance.Post (data, onSuccess, onError);
+			FunplusRequest.Instance.FpPost (data, OnLoginSuccess, OnLoginError);
 		}
 		#endregion
 
 		#region callbacks
-		private static void OnExpressLoginRequestSuccess (Dictionary<string, object> data)
-		{
-			sessionState = SessionState.Actived;
-
-			string fpid = (string)data ["fpid"];
-			string email = (string)data ["email"];
-			string sessionKey = (string)data ["session_key"];
-			long expireIn = (long)data ["session_expire_in"];
-
-			long epochTicks = new DateTime (1970, 1, 1).Ticks;
-			long timestamp = (DateTime.UtcNow.Ticks - epochTicks) / TimeSpan.TicksPerSecond;
-			long expireOn = timestamp + expireIn;
-
-			FunplusSession session = SessionStub.NewSession (FunplusAccountType.FPAccountTypeExpress, fpid, email, sessionKey, expireOn);
-			FunplusAccount.Instance.OnAccountLoginSuccess (session.ToJsonString ());
-		}
-
-		private static void OnExpressLoginRequestError (FunplusError error)
-		{
-			// TODO error message
-			FunplusAccount.Instance.OnAccountLoginError (error.ToJsonString ());
-		}
-
-		private static void OnEmailLoginRequestSuccess (Dictionary<string, object> data)
+		private static void OnLoginSuccess (Dictionary<string, object> data)
 		{
 			sessionState = SessionState.Actived;
 
@@ -511,35 +390,79 @@ namespace Funplus.Stub
 			long timestamp = (DateTime.UtcNow.Ticks - epochTicks) / TimeSpan.TicksPerSecond;
 			long expireOn = timestamp + expireIn;
 
-			FunplusSession session = SessionStub.NewSession (FunplusAccountType.FPAccountTypeEmail, fpid, userEmail, sessionKey, expireOn);
-			FunplusAccount.Instance.OnAccountLoginSuccess (session.ToJsonString ());
+			session.SessionKey = sessionKey;
+			session.ExpireOn = expireOn;
+
+			if (string.IsNullOrEmpty (session.Fpid))
+			{
+				session.Fpid = fpid;
+				FunplusAccount.Instance.OnAccountLoginSuccess (session.ToJsonString ());
+			}
+			else
+			{
+				FunplusAccount.Instance.OnAccountBindAccountSuccess (session.ToJsonString ());
+			}
 		}
 
-		private static void OnEmailLoginRequestError (FunplusError error)
+		private static void OnLoginError (FunplusError error)
 		{
 			// TODO error message
-			FunplusAccount.Instance.OnAccountLoginError (error.ToJsonString ());
-		}
-
-		private static void OnBindAccountSuccess (Dictionary<string, object> data)
-		{
-			string fpid = (string)data ["fpid"];
-			string sessionKey = (string)data ["session_key"];
-			long expireIn = (long)data ["session_expire_in"];
-
-			long epochTicks = new DateTime (1970, 1, 1).Ticks;
-			long timestamp = (DateTime.UtcNow.Ticks - epochTicks) / TimeSpan.TicksPerSecond;
-			long expireOn = timestamp + expireIn;
-
-			FunplusSession session = SessionStub.NewSession (FunplusAccountType.FPAccountTypeEmail, fpid, userEmail, sessionKey, expireOn);
-			FunplusAccount.Instance.OnAccountBindAccountSuccess (session.ToJsonString ());
-		}
-
-		private static void OnBindAccountError (FunplusError error)
-		{
-			FunplusAccount.Instance.OnAccountBindAccountError (error.ToJsonString ());
+			if (string.IsNullOrEmpty (session.Fpid)) {
+				FunplusAccount.Instance.OnAccountLoginError (error.ToJsonString ());
+			} else {
+				FunplusAccount.Instance.OnAccountBindAccountError (error.ToJsonString ());
+			}
 		}
 		#endregion // callbacks
+
+		private void OnFacebookInit ()
+		{
+			sessionState = SessionState.Opened;
+			FunplusAccount.Instance.OnAccountOpenSession ("{\"is_logged_in\": false}");
+		}
+
+		private void OnFacebookLoginSuccess (string accessToken, string uid)
+		{
+			session.SnsPlatform = "fb";
+			session.SnsId = uid;
+
+			string platformId = string.Format ("fb:{0}", uid);
+			if (string.IsNullOrEmpty(session.Fpid))
+			{
+				Instance.FacebookLogin (accessToken, platformId);
+			}
+			else
+			{
+				string fpid = session.Fpid;
+				Instance.FacebookBind (accessToken, fpid, platformId);
+			}
+		}
+
+		private void OnFacebookLoginFailed ()
+		{
+			if (string.IsNullOrEmpty(session.Fpid))
+			{
+				FunplusAccount.Instance.OnAccountLoginError (FunplusError.E (2101).ToJsonString ());
+			}
+			else
+			{
+				FunplusAccount.Instance.OnAccountBindAccountError (FunplusError.E (2106).ToJsonString ());
+			}
+		}
+
+		private static string GetMd5Hash (string s)
+		{
+			MD5 md5 = MD5.Create ();
+			byte[] bytes = Encoding.ASCII.GetBytes (s);
+			byte[] hash = md5.ComputeHash (bytes);
+
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < hash.Length; i++)
+			{
+				sb.Append(hash[i].ToString("x2"));
+			}
+			return sb.ToString();
+		}
 	}
 
 }

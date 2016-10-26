@@ -3517,6 +3517,7 @@ GameObject:
   - 222: {fileID: 22234996}
   - 114: {fileID: 11466138}
   - 114: {fileID: 11474748}
+  - 114: {fileID: 11406186}
   m_Layer: 5
   m_Name: InstanceItem
   m_TagString: Untagged
@@ -3764,6 +3765,18 @@ MonoBehaviour:
   m_EffectColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &11406186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_inslist_first
 --- !u!114 &11406738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6519,7 +6532,10 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
   mDontDestroyWhenSwitchScene: 0
+  posObjectList:
+  - {fileID: 11406186}
   uiAnimator: {fileID: 9524694}
+  uiViewName: 
   difficultyDropDown: {fileID: 11457308}
   dropButton: {fileID: 11489974}
   chaptrName: {fileID: 11472030}

@@ -73,7 +73,7 @@ public class SigninCfg extends HawkConfigBase {
 	}
 
 	private boolean checkReward(String rewardId) {
-		if (rewardId != null && rewardId.equals("") == false) {
+		if (null != rewardId && false == rewardId.equals("")) {
 			RewardCfg rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
 			if (null == rewardCfg) {
 				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", col1));

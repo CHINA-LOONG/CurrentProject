@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PvpMain : UIBase
+public class PvpMain : UIBase,GuideBase
 {
     public static string ViewName = "PvpMain";
 

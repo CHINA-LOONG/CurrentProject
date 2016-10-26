@@ -22,6 +22,9 @@ name_10014_yibanlaji2,妖兽的皮毛,Wicked Pelt
 name_10015_yibanlaji3,妖兽的指甲,Wicked Nails
 name_10016_chongwuqianghuashi,宠物强化石,Monster Upgrade Stone
 name_10017_chongwujinjieshi,宠物进阶石,Monster Advancement Stone
+name_10021_gongpin,天使之羽,
+name_10022_gongpin,恶魔之羽,
+name_10023_gongpin,精灵之羽,
 name_20001_suipian_common,灵魂本源,Core Fragments
 name_20002_suipian_xiaochou3,水小丑碎片,xiaochou3suipian
 name_20003_suipian_kairuisi4,火凯瑞斯碎片,kairuisi4suipian
@@ -124,9 +127,11 @@ name_40003_baoxiang,黄金宝箱,Gold Treasurecase
 name_40005_bigTaskleader201,队长礼包,Team Leader Gift
 name_40006_bigTaskleader301,队长礼包,Team Leader Gift
 name_40007_bigTaskleader401,队长礼包,Team Leader Gift
+name_40007_bigTaskleader501,队长礼包,Team Leader Gift
 name_40008_bigTaskleader202,队长礼包,Team Leader Gift
 name_40009_bigTaskleader302,队长礼包,Team Leader Gift
 name_40010_bigTaskleader402,队长礼包,Team Leader Gift
+name_40010_bigTaskleader502,队长礼包,Team Leader Gift
 name_50001_jingyanyaoshui,经验药水,expMedicine
 name_50002_chujichongwujingyanyaoshui,初级宠物经验药水,primaryexpMedicine
 name_50003_zhongjichongwujingyanyaoshui,中级宠物经验药水,mediumexpMedicine
@@ -187,6 +192,9 @@ tips_10014_yibanlaji2,还是拿去换钱好些,Might be a good idea to sell this
 tips_10015_yibanlaji3,还是拿去换钱好些,Might be a good idea to sell this one…
 tips_10016_chongwuqianghuashi,宠物强化材料,Monster upgrade material.
 tips_10017_chongwujinjieshi,宠物进阶材料,Monster advancement material.
+tips_10021_gongpin,带着光明气息的羽翼，可交给公会任务,
+tips_10022_gongpin,带着黑暗气息的羽翼，可交给公会任务,
+tips_10023_gongpin,带有自然气息的羽翼，可交给公会任务,
 tips_20001_suipian_common,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20002_suipian_xiaochou3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20003_suipian_kairuisi4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
@@ -289,9 +297,11 @@ tips_40003_baoxiang,"开启后可获得初级装备强化石*7,中级装备强�
 tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40014_bigTaskleader501,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40008_bigTaskleader202,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40009_bigTaskleader302,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40010_bigTaskleader402,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
+tips_40015_bigTaskleader502,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_50001_jingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_50002_chujichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_50003_zhongjichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.

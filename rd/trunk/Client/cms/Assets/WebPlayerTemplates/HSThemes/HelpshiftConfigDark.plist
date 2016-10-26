@@ -24,6 +24,8 @@
 		<string>444A4B</string>
 		<key>Search highlight color</key>
 		<string>FFBB00</string>
+		<key>Status bar light content</key>
+		<string>YES</string>
 	</dict>
 	<key>Navigation Bar</key>
 	<dict>

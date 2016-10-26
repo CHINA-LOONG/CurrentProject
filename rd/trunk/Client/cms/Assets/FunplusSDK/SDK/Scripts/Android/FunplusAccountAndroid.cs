@@ -85,6 +85,21 @@ namespace Funplus.Android
 		{
 			funplusAccountWrapper.CallStatic ("login", (int)type);
 		}
+
+		public override void LoginWithEmail (string email, string password)
+		{
+			funplusAccountWrapper.CallStatic ("loginWithEmail", email, password);
+		}
+
+		public override void RegisterWithEmail (string email, string password)
+		{
+			funplusAccountWrapper.CallStatic ("registerWithEmail", email, password);
+		}
+
+		public override void ResetPassword (string email)
+		{
+			funplusAccountWrapper.CallStatic ("resetPassword", email);
+		}
 		
 		public override void Logout ()
 		{

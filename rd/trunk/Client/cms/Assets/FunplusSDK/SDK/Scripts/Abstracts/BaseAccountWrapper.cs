@@ -33,6 +33,9 @@ namespace Funplus.Abstract
 		abstract public void OpenSession ();
 		abstract public void Login ();
 		abstract public void Login (FunplusAccountType type);
+		abstract public void LoginWithEmail (string email, string password);
+		abstract public void RegisterWithEmail (string email, string password);
+		abstract public void ResetPassword (string email);
 		abstract public void Logout ();
 		abstract public void ShowUserCenter ();
 		abstract public void BindAccount ();
