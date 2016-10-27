@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.hawk.app.HawkApp;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.xid.HawkXID;
 

@@ -247,7 +247,7 @@ public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
         
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
         tabIndex = -1;

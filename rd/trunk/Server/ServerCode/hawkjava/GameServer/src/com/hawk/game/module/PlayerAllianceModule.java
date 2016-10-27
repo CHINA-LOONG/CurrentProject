@@ -148,174 +148,152 @@ public class PlayerAllianceModule extends PlayerModule {
 		if (protocol.checkType(HS.code.ALLIANCE_CREATE_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CREATE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_APPLY_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_HANDLE_APPLY_C_VALUE)){
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_HANDLE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-			msg.pushParam(player);
-			msg.pushParam(protocol);
+			msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CHANGE_POS_C_VALUE)){
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CHANGE_POS, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-			msg.pushParam(player);
-			msg.pushParam(protocol);
+			msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CHANGE_OWNER_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CHANGE_OWNER, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_MEMBER_KICK_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_KICK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_MEMBER_LEAVE_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_LEAVE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_LEVEL_UP_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_LEVEL_UP, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_PRAY_C))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_PRAY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_SETTING_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_SETTING, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_FATIGUE_GIVE_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_FATIGUE_GIVE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CANCLE_APPLY_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CANCLE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CREATE_TEAM_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_TEAM_CREATE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_JOIN_TEAM_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_TEAM_JOIN, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_ACCEPT_TASK_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_TASK_ACCEPT, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_COMMIT_TASK_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_TASK_COMMIT, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_INSTANCE_TASK_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_TASK_REWARD_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_REWARD_TASK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_DISSOVLE_TEAM_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_DISSOLVE_TEAM, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_CONTRI_REWARD_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CONTRIBUTION_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_BASE_SEND_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_BASE_SEND, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}
 		else if (protocol.checkType(HS.code.ALLIANCE_BASE_RECALL_C_VALUE))
 		{
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_BASE_RECALL, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(protocol);
+	 		msg.pushParam(player, protocol);
 			HawkApp.getInstance().postMsg(msg);
 			return true;
 		}

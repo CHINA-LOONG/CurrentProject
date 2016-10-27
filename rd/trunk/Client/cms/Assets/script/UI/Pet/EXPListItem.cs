@@ -139,7 +139,7 @@ public class EXPListItem : MonoBehaviour
         OnSendMsg();
     }
 
-    void OnButtonDown(GameObject go)
+    public void OnButtonDown(GameObject go)
     {
         if (!IsMaxlevel)
         {
@@ -152,7 +152,7 @@ public class EXPListItem : MonoBehaviour
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("monster_record_002"), (int)PB.ImType.PROMPT);
         }
     }
-    void OnButtonUp(GameObject go)
+    public void OnButtonUp(GameObject go)
     {
         CancelInvoke("UsedExp");
         OnSendMsg();

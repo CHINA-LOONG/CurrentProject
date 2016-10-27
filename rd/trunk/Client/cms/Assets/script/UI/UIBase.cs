@@ -64,7 +64,7 @@ public abstract class UIBase : MonoBehaviour
     public string uiViewName;
 
     //初始化界面操作，创建或激活后配置初始状态
-    public virtual void Init()
+    public virtual void Init(bool forbidGuide = false)
     {
         if(inAnimationState == -1)
         {

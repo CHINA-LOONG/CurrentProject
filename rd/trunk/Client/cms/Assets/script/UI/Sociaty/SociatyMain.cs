@@ -49,14 +49,14 @@ public class SociatyMain : UIBase, TabButtonDelegate
         main.SetContentPage(contentType,search);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         if (isFirst)
         {
             isFirst = false;
             FirsInit();
         }
-        base.Init();
+        base.Init(forbidGuide);
     }
     //---------------------------------------------------------------------------------------------
     void FirsInit()

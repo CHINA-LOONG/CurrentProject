@@ -27,9 +27,9 @@ public class UITowerEntry : UIBase
     private MainStageController mMainStageControl;
 
     //---------------------------------------------------------------------------------------------
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
-        base.Init();
+        base.Init(forbidGuide);
         TowerData towerShilian = StaticDataMgr.Instance.GetTowerData((int)TowerType.Tower_Shilian);
         if (towerShilian != null)
         {

@@ -6,11 +6,12 @@ using System;
 
 public class UIPetDetails : UIBase,
                             IPetDetailsLeft,
-                            IPetDetailsRight
+                            IPetDetailsRight,
+                            GuideBase
 {
     public static string ViewName = "UIPetDetails";
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         if (coinBtn == null)
         {
@@ -22,6 +23,12 @@ public class UIPetDetails : UIBase,
             goldBtn = CoinButton.CreateWithType(CoinButton.CoinType.Zuanshi);
             UIUtil.SetParentReset(goldBtn.transform, goldButtonPos);
         }
+        GuideManager.Instance.RequestGuide(this);
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
     }
     public override void Disable()
     {
@@ -243,11 +250,31 @@ public class UIPetDetails : UIBase,
     void OnEnable()
     {
         BindListener();
-
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
+    }
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_petDetail_weapon"))
+        {
+            OpenSelectEquipList(PartType.Head);
+        }
+        else if (message.Equals("gd_petDetail_expAdd"))
+        {
+            leftView.OnClickAddExpBtn();
+        }
+        else if (message.Equals("gd_petDetail_skillUp"))
+        {
+            if (rightView== (petDetailsAbilities as PetDetailsRight))
+            {
+                petDetailsAbilities.OnClickLevelUPBtn();
+            }
+        }
     }
 
     void BindListener()

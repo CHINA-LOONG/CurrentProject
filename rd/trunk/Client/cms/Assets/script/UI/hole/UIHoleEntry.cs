@@ -51,7 +51,7 @@ public class UIHoleEntry : UIBase
         }
     }
     //---------------------------------------------------------------------------------------------
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         RefreshUI();
     }

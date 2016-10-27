@@ -164,9 +164,9 @@ public class UIScore : UIBase
         mOriginalPlayerLvl = mCurrentPlayerLvl = 0;
     }
     //---------------------------------------------------------------------------------------------
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
-        base.Init();
+        base.Init(forbidGuide);
 
         mSkipEnable = false;
         mUIMonsterExpList.Clear();

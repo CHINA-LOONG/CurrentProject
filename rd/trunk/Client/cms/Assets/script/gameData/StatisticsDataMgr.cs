@@ -159,7 +159,6 @@ public class StatisticsDataMgr : MonoBehaviour {
 
         expLeftTime = msgData.expLeftTimes;
         gold2coinExchargeTimes = msgData.gold2CoinTimes;
-        //msgData.guideFinish
 
         SigninDataMgr.Instance.ReloadDateInfo(msgData.signinTimesMonthly, msgData.signinFillTimesMonthly, msgData.isSigninDaily,msgData.loginTimesDaily);
     }
@@ -232,6 +231,8 @@ public class StatisticsDataMgr : MonoBehaviour {
             return;
         }
         guideSyncData = message.GetProtocolBody<PB.HSStatisticsSyncGuide>();
+        GameDataMgr.Instance.GuideDataMgrAttr.guideFinished.Clear();
+        GameDataMgr.Instance.GuideDataMgrAttr.guideFinished.AddRange(guideSyncData.guideFinish);       
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

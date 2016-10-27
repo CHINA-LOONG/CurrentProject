@@ -71,9 +71,9 @@ public class PvpMain : UIBase,GuideBase
         functionEntryButtons[3].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_rules");
         functionEntryButtons[4].nameText.text = StaticDataMgr.Instance.GetTextByID("pvp_shop");
     }
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
-        base.Init();
+        base.Init(forbidGuide);
         PvpDataMgrAttr.RequestPvpInfo(OnRequestPvpInfoFinished);
         RefreshDefensePosition();
         RefreshPvpTimes();

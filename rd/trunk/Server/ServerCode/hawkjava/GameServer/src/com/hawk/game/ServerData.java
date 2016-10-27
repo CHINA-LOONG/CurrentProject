@@ -78,6 +78,11 @@ public class ServerData {
 	 */
 	protected HashMap<Integer, Calendar> refreshTimeMap;
 	/**
+	 * 刷新时间缓存（毫秒）
+	 * 只有主线程使用
+	 */
+	private long[] refreshTimeCache = new long[GsConst.Refresh.SysTimePointArray.length];
+	/**
 	 * 已付费订单列表
 	 */
 	protected Set<String> rechargeList;
@@ -151,7 +156,7 @@ public class ServerData {
 		}
 
 		if (serverDataEntity != null) {
-			setRefreshTime(GsConst.Pvp.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeekRefreshTime()));
+			setLastRefreshTime(GsConst.PVP.PVP_WEEK_REFRESH_TIME_ID, HawkTime.getCalendar(serverDataEntity.getPvpWeekRefreshTime()));
 		}
 	}
 
@@ -428,12 +433,20 @@ public class ServerData {
 		return refreshTimeMap.get(timeCfgId);
 	}
 
-	public void setRefreshTime(int timeCfgId, Calendar time) {
+	public void setLastRefreshTime(int timeCfgId, Calendar time) {
 		this.refreshTimeMap.put(timeCfgId, time);
-		if (timeCfgId == GsConst.Pvp.PVP_WEEK_REFRESH_TIME_ID) {
+		if (timeCfgId == GsConst.PVP.PVP_WEEK_REFRESH_TIME_ID) {
 			serverDataEntity.setPvpWeekRefreshTime(time.getTimeInMillis());
 			serverDataEntity.notifyUpdate(false);
 		}
+	}
+
+	public long getCacheRefreshTime(int refreshIndex) {
+		return refreshTimeCache[refreshIndex];
+	}
+
+	public void setCacheRefreshTime(int refreshIndex, long refreshTime) {
+		refreshTimeCache[refreshIndex] = refreshTime;
 	}
 
 	public Map<Integer, Boolean> getHoleStateMap() {

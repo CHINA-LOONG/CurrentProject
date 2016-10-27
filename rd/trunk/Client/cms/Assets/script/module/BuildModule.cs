@@ -93,8 +93,8 @@ public class BuildModule : ModuleBase
         //wait for ui
         yield return new WaitForFixedUpdate();
         UIMgr.Instance.CloseUI_(UILoading.ViewName);
-
-        UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
+        bool forbidGuide = (mParam != null);
+        UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName, forbidGuide) as UIBuild;
         UIIm imUI = UIMgr.Instance.OpenUI_(UIIm.ViewName) as UIIm;
         //播放循环的主界面背景音乐
         AudioSystemMgr.Instance.PlayMusicByName("Homemusic");
@@ -110,7 +110,7 @@ public class BuildModule : ModuleBase
                 {
                     case (int)ExitInstanceType.Exit_Instance_Next:
                         {
-                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
+                            InstanceMap uiInstance = InstanceMap.OpenWith(true);
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
@@ -120,7 +120,7 @@ public class BuildModule : ModuleBase
                         break;
                     case (int)ExitInstanceType.Exit_Instance_Retry:
                         {
-                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
+                            InstanceMap uiInstance = InstanceMap.OpenWith(true);
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
@@ -130,12 +130,12 @@ public class BuildModule : ModuleBase
                         break;
                     case (int)ExitInstanceType.Exit_Instance_OK:
                         {
-                            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
+                            InstanceMap uiInstance = InstanceMap.OpenWith(true);
                             EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
                             if (curInstance != null)
                             {
                                 InstanceMap.Instance.FocusOnChapterButton(curInstance.instanceData.instanceId);
-                                InstanceMap.Instance.OpenInstanceList(curInstance.instanceData.instanceId);
+                                InstanceMap.Instance.OpenInstanceList(curInstance.instanceData.instanceId, false);
                                // GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, curInstance.instanceData.instanceId);
                             }
                         }

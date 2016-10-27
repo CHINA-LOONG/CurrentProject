@@ -44,11 +44,17 @@ public class GuideCondition
 
     static bool  guide1_2IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         return GuideHelp.Instance.IsBuidMoreButtonExpand() == moreButtonIsOpen;
     }
 
     static  bool guide3_4IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
 
@@ -56,6 +62,9 @@ public class GuideCondition
     }
     static bool guide5_6IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
         return true;
@@ -63,12 +72,18 @@ public class GuideCondition
 
     static bool guide7_8IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
         return true;
     }
     static bool guide9_10IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
         return true;
@@ -76,12 +91,18 @@ public class GuideCondition
 
     static bool guide11_12IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
         return true;
     }
     static bool guide13_14IsOk(bool moreButtonIsOpen)
     {
+        if (GuideHelp.Instance.IsSigninAutoOpen())
+            return false;
+
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
         return true;

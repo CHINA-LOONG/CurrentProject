@@ -175,7 +175,7 @@ public class PetDetailsAbilities : PetDetailsRight
         AbilitieOptionItem abilitie = go.GetComponent<AbilitieOptionItem>();
         ReloadAbilitie(abilitie);
     }
-    void OnClickLevelUPBtn()
+    public void OnClickLevelUPBtn()
     {
         Spell spell = curAbilitie.curData;
         //判断金币

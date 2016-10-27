@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class InstanceList : UIBase
+public class InstanceList : UIBase,GuideBase
 {
     public static string ViewName = "InstanceList";
     public Dropdown difficultyDropDown;
@@ -34,9 +34,9 @@ public class InstanceList : UIBase
 
     PB.HSRewardInfo boxReward = null;
 
-    public static InstanceList OpenWith(int chapterId, InstanceDifficulty difficulty = InstanceDifficulty.Normal)
+    public static InstanceList OpenWith(int chapterId,bool forbidGuide = false, InstanceDifficulty difficulty = InstanceDifficulty.Normal)
     {
-        InstanceList instanceUi = (InstanceList)UIMgr.Instance.OpenUI_(ViewName);
+        InstanceList instanceUi = (InstanceList)UIMgr.Instance.OpenUI_(ViewName,forbidGuide);
         instanceUi.RefreshWithChapterId(chapterId, difficulty);
         return instanceUi;
     }
@@ -66,11 +66,13 @@ public class InstanceList : UIBase
     void    OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
 
     void    OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
 
     bool isFirst = true;
@@ -102,6 +104,19 @@ public class InstanceList : UIBase
     void OnClose(GameObject go)
     {
         RequestCloseUi();
+    }
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init(forbidGuide);
+        if(!forbidGuide)
+        {
+            GuideManager.Instance.RequestGuide(this);
+        }
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
     }
 
     public  void    RefreshWithChapterId(int chapterIndex, InstanceDifficulty difficulty = InstanceDifficulty.Normal)
@@ -179,19 +194,6 @@ public class InstanceList : UIBase
                 StartCoroutine(AdjustListPosition(focusIndex, listInstanceRuntime.Count));
             }
         }
-        /*
-        if (animation)
-        {
-            Vector2 startPos = oldPosition;
-            startPos.x = 0;
-            rootRt.anchoredPosition = startPos;
-            rootRt.DOAnchorPos(oldPosition, 1.0f);
-        }
-        else
-        {
-            rootRt.anchoredPosition = oldPosition;
-        }
-        */
 
         ChapterBoxState boxState = InstanceMapService.Instance.GetChapterBoxState(chapterIndex, insDifficulty);
         if(boxState == ChapterBoxState.CanNotReceiv && getStar == allStar)
@@ -354,6 +356,15 @@ public class InstanceList : UIBase
        else
         {
             UpdateUI(false);
+        }
+    }
+
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if(message.Equals("gd_inslist_first"))
+        {
+            InstanceItem firstItem = listInstanceItemCache[0];
+            firstItem.OnItemClicked(null);
         }
     }
 }

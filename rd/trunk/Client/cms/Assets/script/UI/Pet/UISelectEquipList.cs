@@ -6,7 +6,8 @@ using System;
 
 public class UISelectEquipList : UIBase, 
                                  IScrollView, 
-                                 IClickUsedEquip
+                                 IClickUsedEquip,
+                                 GuideBase
 {
 
     public static string ViewName = "UISelectEquipList";
@@ -24,6 +25,11 @@ public class UISelectEquipList : UIBase,
         textTitle.text = StaticDataMgr.Instance.GetTextByID("equip_title");
         textNotfound.text = StaticDataMgr.Instance.GetTextByID("list_empty");
         btnClose.onClick.AddListener(OnClickCloseBtn);
+    }
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init(forbidGuide);
+        GuideManager.Instance.RequestGuide(this);
     }
 
     public void ReloadData(GameUnit unit,PartType part)
@@ -84,10 +90,20 @@ public class UISelectEquipList : UIBase,
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
+    }
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_selectEquip_equip"))
+        {
+            OnUsedEquip(Infos[0]);
+        }
     }
     void BindListener()
     {

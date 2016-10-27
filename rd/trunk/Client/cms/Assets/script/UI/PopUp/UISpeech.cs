@@ -10,7 +10,7 @@ public class UISpeech : UIBase
         SpeechData info = StaticDataMgr.Instance.GetSpeechData(speechId);
         if (info == null)
         {
-            Logger.Log("缺少本地数据配置…………");
+            Logger.LogError("立绘对话框， 缺少本地数据配置………… speechId  = " + speechId);
             return;
         }
         UISpeech speech = UIMgr.Instance.OpenUI_(UISpeech.ViewName) as UISpeech;

@@ -11,7 +11,8 @@ public interface IUIPetFeedList
 }
 
 public class UIPetFeedList : UIBase,
-                             IUsedExpCallBack
+                             IUsedExpCallBack,
+                             GuideBase
 {
 
     public static string ViewName = "UIPetFeedList";
@@ -54,6 +55,11 @@ public class UIPetFeedList : UIBase,
 
         btnClose.onClick.AddListener(OnClickCloseBtn);
 
+    }
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init();
+        GuideManager.Instance.RequestGuide(this);
     }
 
     public void ReloadData(GameUnit unit)
@@ -210,12 +216,22 @@ public class UIPetFeedList : UIBase,
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
-
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_petFeed_use"))
+        {
+            items[0].OnButtonDown(null);
+            items[0].OnButtonUp(null);
+        }
+    }
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_C.GetHashCode().ToString(), OnUseExpReturn);

@@ -36,12 +36,12 @@ public class ChapterButton : MonoBehaviour
         rectTrans.localScale = new Vector3(1, 1, 1);
     }
 
-    void OnClicked(GameObject go)
+   public void OnClicked(GameObject go)
     {
         InstanceMap.Instance.OnChapterButtonOnClicked(this);
         if(InstanceMapService.Instance.IsChapterOpened(chapterIndex))
         {
-            InstanceMap.Instance.OpenInstanceList(chapterIndex);
+            InstanceList.OpenWith(chapterIndex);
             return;
         }
 

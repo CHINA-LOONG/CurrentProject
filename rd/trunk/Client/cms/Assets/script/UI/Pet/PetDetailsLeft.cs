@@ -189,7 +189,7 @@ public class PetDetailsLeft : MonoBehaviour,
         param.locked = !curData.pbUnit.IsLocked();
         GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_LOCK_C.GetHashCode(), param,false);
     }
-    void OnClickAddExpBtn()
+    public void OnClickAddExpBtn()
     {
         if (UIUtil.CheckPetIsMaxLevel(curData.pbUnit.level) == 0)
         {

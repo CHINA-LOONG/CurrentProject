@@ -36,7 +36,7 @@ public class UIMonsterInfo : UIBase
         EventTriggerListener.Get(closeImage.gameObject).onClick = OnCloseButtonClick;
 	}
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
 		name.text = ""; 
 		skilTips.gameObject.SetActive (false);

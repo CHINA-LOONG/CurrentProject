@@ -321,7 +321,7 @@ public class GsConst {
 	/** 
 	 * PVP
 	 */
-	public static class Pvp {
+	public static class PVP {
 		public static final int PVP_DEFAULT_POINT = 1000;
 		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
 		public static final int PVP_RANK_SIZE = 100;
@@ -467,7 +467,7 @@ public class GsConst {
 		public static final int ALLIANCE = 4;
 		// 快照
 		public static final int SNAPSHOT = 5;
-		// 快照
+		// PVP
 		public static final int PVP = 6;
 	}
 

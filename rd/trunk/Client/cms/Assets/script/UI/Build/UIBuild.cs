@@ -17,8 +17,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
 
     public BuildButton m_ComposeButton;
     public BuildButton m_DecomposeButton;
-    public BuildButton m_AdventureButton;
-    public BuildButton pvpButton;
     public BuildButton m_SigninButton;
 
     public Button huoliButton;
@@ -42,8 +40,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
     [HideInInspector]
     public UIBag uiBag;
     [HideInInspector]
-    public InstanceMap uiInstance;
-    [HideInInspector]
     public UIMonsters uiMonsters;
     [HideInInspector]
     public UIAdjustBattleTeam uiAdjustBattleTeam;
@@ -59,6 +55,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
     public UIAdventure uiAdventure;
     [HideInInspector]
     public UISignIn uiSignin;
+    [HideInInspector]
+    public PvpMain uiPvp;
 
     public Text mTestShowExp;
 
@@ -79,8 +77,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
 
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
-        EventTriggerListener.Get(m_AdventureButton.gameObject).onClick = OnAdventureButtonClick;
-        EventTriggerListener.Get(pvpButton.gameObject).onClick = OnPvpButtonClick;
         EventTriggerListener.Get(m_SigninButton.gameObject).onClick = OnSigninButtonClick;
         EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
         EventTriggerListener.Get(huoliTipButton).onClick = OnHuoliTipButtonClick;
@@ -199,8 +195,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
     void BagButtonClick(GameObject go)
     {
         uiBag = UIBag.OpenWith();
-        // GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
-
     }
 
     void PetButtonClick(GameObject go)
@@ -217,7 +211,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
 
     void OnInstanceButtonClick(GameObject go)
 	{
-        OpenInstanceUI();
+        InstanceMap.OpenWith();
 	}
 
     void OnQuestButtonClick(GameObject go)
@@ -245,9 +239,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         uiAdventure = UIMgr.Instance.OpenUI_(UIAdventure.ViewName) as UIAdventure;
         uiAdventure.Refresh(0);
     }
-    void OnPvpButtonClick(GameObject go)
+    public void OnPvpButtonClick(GameObject go)
     {
-        PvpMain.Open();
+       uiPvp = PvpMain.Open();
     }
 
     void OnSigninButtonClick(GameObject go)
@@ -318,7 +312,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         }
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         OnQuestChanged();
         OnMailChanged(0);
@@ -329,9 +323,19 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         if (!SigninDataMgr.Instance.isSigninDaily && !SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.loginTimesDaily <= 0)
         {
             OnSigninButtonClick(null);
+            GuideHelp.isSignAutoOpen = true;
+        }
+        else
+        {
+            GuideHelp.isSignAutoOpen = false;
         }
         OnSigninChanged();
-        base.Init();
+        base.Init(forbidGuide);
+        if(!forbidGuide)
+        {
+            GuideManager.Instance.RequestGuide(this);
+        }
+        GuideHelp.isSignAutoOpen = false;
     }
     public override void RefreshOnPreviousUIHide()
     {
@@ -343,7 +347,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         UIMgr.Instance.DestroyUI(uiQuest);
         UIMgr.Instance.DestroyUI(uiMail);
         UIMgr.Instance.DestroyUI(uiBag);
-        UIMgr.Instance.DestroyUI(uiInstance);
+        if(InstanceMap.Instance != null)
+        {
+            UIMgr.Instance.DestroyUI(InstanceMap.Instance);
+            InstanceMap.Instance = null;
+        }
         UIMgr.Instance.DestroyUI(uiMonsters);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
 		UIMgr.Instance.DestroyUI (uiShop);
@@ -352,7 +360,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         UIMgr.Instance.DestroyUI(uiDecompose);
         UIMgr.Instance.DestroyUI(uiAdventure);
         UIMgr.Instance.DestroyUI(uiSignin);
-        
+        UIMgr.Instance.DestroyUI(uiPvp);
+
         if(null != UISociatyTask.Instance)
         {
             UIMgr.Instance.DestroyUI(UISociatyTask.Instance);
@@ -363,13 +372,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
             UIMgr.Instance.DestroyUI(SociatyMain.Instance);
             SociatyMain.Instance = null;
         }
-    }
-
-    public InstanceMap OpenInstanceUI()
-    {
-
-        uiInstance = UIMgr.Instance.OpenUI_(InstanceMap.ViewName) as InstanceMap;
-        return uiInstance;
     }
 
     void SettingLanguage()
@@ -410,7 +412,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         }
         else if (message.Equals("gd_build_instance"))
         {
-            OpenInstanceUI();
+            InstanceMap.OpenWith();
         }
         else if (message.Equals("gd_build_pet"))
         {

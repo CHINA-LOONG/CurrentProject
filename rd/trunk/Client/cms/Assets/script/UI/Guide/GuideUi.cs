@@ -7,6 +7,7 @@ public class GuideUi : UIBase
 {
     public static string ViewName = "GuideUI";
 
+    public GameObject exitObject;
     public GameObject focusEffect;
     public Button focusButton;
     public RectTransform focusRt;
@@ -21,18 +22,26 @@ public class GuideUi : UIBase
     void    Start()
     {
         focusButton.onClick.AddListener(OnFocusButtonClick);
+        EventTriggerListener.Get(exitObject).onClick = OnExitGuidObjectClick;
     }
 	public void InitWithStep(GuideStep gstep)
     {
+        name = string.Format("GuideUI:guideStep {0}", gstep.Id);
+        focusRt.gameObject.SetActive(false);
         guideStep = gstep;
-        if(!string.IsNullOrEmpty(guideStep.talkId))
+        StartCoroutine(RefreshUI());
+    }
+    IEnumerator RefreshUI()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (!string.IsNullOrEmpty(guideStep.talkId))
         {
             InitGuideWithTalk();
         }
         else if (guideStep.posObject.Contains("3D_"))
         {
             InitGuideWithFocus3DObject();
-        }  
+        }
         else
         {
             InitGuideWithFocus2DObject();
@@ -79,7 +88,6 @@ public class GuideUi : UIBase
 
     void OnFocusButtonClick()
     {
-        GameEventMgr.Instance.FireEvent<string>(guideStep.posObject, guideStep.posObject);
         FinishStep();
     }
     void OnTalkFinish(float d)
@@ -87,9 +95,17 @@ public class GuideUi : UIBase
         FinishStep();
     }
 	
-    void FinishStep()
+    void OnExitGuidObjectClick(GameObject go)
     {
-        GuideManager.Instance.FinishStep();
+        if(guideStep.exitNoEvent == 1)
+        {
+            FinishStep(false);
+        }
+    }
+
+    void FinishStep(bool sendEvent = true)
+    {
         RequestCloseUi();
+        GuideManager.Instance.FinishStep(sendEvent);
     }
 }

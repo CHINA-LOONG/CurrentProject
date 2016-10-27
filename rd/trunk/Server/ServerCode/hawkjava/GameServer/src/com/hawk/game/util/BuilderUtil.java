@@ -183,13 +183,14 @@ public class BuilderUtil {
 		builder.setIsSigninDaily(statisticsEntity.isSigninDaily());
 		builder.setLoginTimesDaily(statisticsEntity.getLoginTimesDaily());
 		builder.setDumpEndTime(statisticsEntity.getDumpTime());
-		builder.addAllGuideFinish(statisticsEntity.getGuideFinishSet());
 
 		return builder;
 	}
 
 	public static HSStatisticsSyncGuide.Builder genStatisticsGuideBuilder(StatisticsEntity statisticsEntity) {
 		HSStatisticsSyncGuide.Builder builder = HSStatisticsSyncGuide.newBuilder();
+
+		builder.addAllGuideFinish(statisticsEntity.getGuideFinishSet());
 
 		for (int questId : GsConst.Guide.QUEST_COMPLETE) {
 			if (true == statisticsEntity.isQuestComplete(questId)) {

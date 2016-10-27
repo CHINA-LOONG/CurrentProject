@@ -56,7 +56,7 @@ public class UIMail : UIBase//,TabButtonDelegate
         textTips.text = StaticDataMgr.Instance.GetTextByID("mail_zidongshantips");
         //textTab1.text = StaticDataMgr.Instance.GetTextByID("mail_tab1");
     }
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
         if (coinBtn==null)

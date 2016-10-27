@@ -31,7 +31,7 @@ public class CreateSociaty : UIBase
         ((Text)gonggaoInputField.placeholder).text = "";
     }
 
-    public override  void Init()
+    public override  void Init(bool forbidGuide = false)
     {
         titleText.text = StaticDataMgr.Instance.GetTextByID("sociaty_buildtitle");
         nameLabel.text = StaticDataMgr.Instance.GetTextByID("sociaty_name");

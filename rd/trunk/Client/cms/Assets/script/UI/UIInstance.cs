@@ -32,7 +32,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 		EventTriggerListener.Get (rightButton.gameObject).onClick = OnRightButtonClcked;
 	}
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         if (insChapter != null)
         {

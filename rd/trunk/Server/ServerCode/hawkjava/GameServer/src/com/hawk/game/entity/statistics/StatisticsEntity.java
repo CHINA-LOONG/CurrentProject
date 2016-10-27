@@ -474,7 +474,7 @@ public class StatisticsEntity {
 		mfUpdate = true;
 	}
 
-	// GM only begin-------------------------------------------
+	// GM only begin/////////////////
 	public void removeQuestComplete(int questId) {
 		QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
 		if (null == questCfg) {
@@ -495,7 +495,7 @@ public class StatisticsEntity {
 		mfEntity.questCompleteFlag = true;
 		mfUpdate = true;
 	}
-	// Gm only end---------------------------------------------
+	// GM only end/////////////////////
 
 	// skillPoint----------------------------------------------
 	public int getSkillPoint() {
@@ -804,6 +804,14 @@ public class StatisticsEntity {
 		mf2Entity.guideFinishFlag = true;
 		mf2Update = true;
 	}
+
+	// GM only begin/////////////////
+	public void clearGuideFinish() {
+		mf2Entity.guideFinishSet.clear();
+		mf2Entity.guideFinishFlag = true;
+		mf2Update = true;
+	}
+	// GM only end/////////////////////
 
 	// useItemCount--------------------------------------------
 //	public Map<String, Integer> getUseItemCountMap() {
@@ -1718,7 +1726,7 @@ public class StatisticsEntity {
 		return null;
 	}
 
-	public void setRefreshTime(int timeCfgId, Calendar time) {
+	public void setLastRefreshTime(int timeCfgId, Calendar time) {
 		RefreshStatisticsEntity refreshEntity = refreshEntityMap.get(timeCfgId);
 		if (null == refreshEntity) {
 			refreshEntity = new RefreshStatisticsEntity(getPlayerId(),timeCfgId);

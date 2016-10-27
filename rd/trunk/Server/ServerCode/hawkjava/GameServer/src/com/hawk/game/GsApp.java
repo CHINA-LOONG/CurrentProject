@@ -77,22 +77,15 @@ public class GsApp extends HawkApp {
 	 * 日志记录器
 	 */
 	private static final Logger logger = LoggerFactory.getLogger("Server");
-
 	/**
 	 * puid登陆时间
 	 */
 	private Map<String, Long> puidLoginTime;
-
 	/**
 	 * 全局静态对象
 	 */
 	private static GsApp instance = null;
 
-	/**
-	 * 获取全局静态对象
-	 * 
-	 * @return
-	 */
 	public static GsApp getInstance() {
 		return instance;
 	}
@@ -238,8 +231,6 @@ public class GsApp extends HawkApp {
 
 	/**
 	 * 初始化应用对象管理器
-	 * 
-	 * @return
 	 */
 	private boolean initAppObjMan() {
 		HawkObjManager<HawkXID, HawkAppObj> objMan = null;
@@ -268,8 +259,6 @@ public class GsApp extends HawkApp {
 
 	/**
 	 * 查询Player
-	 * @param playerId
-	 * @return
 	 */
 	public Player queryPlayer(int playerId) {
 		HawkObjBase<HawkXID, HawkAppObj> objBase = queryObject(HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId));
@@ -313,34 +302,59 @@ public class GsApp extends HawkApp {
 	 * 刷新数据
 	 */
 	@Override
-	protected boolean onRefresh(long refreshTime) {
+	protected boolean onRefresh(long refreshTimeMs) {
 		// 第1步，刷新全局数据
-		Calendar curTime = HawkTime.getCalendar(refreshTime);
+		Calendar curTime = HawkTime.getCalendar(refreshTimeMs);
 
 		// 洞最大刷新时间
 		class HoleRefreshMaxTime {
 			long time = 0;
 			boolean isOpen = false;
 		}
-		Map<Integer, HoleRefreshMaxTime> HoleRefreshMaxTimeMap = null;
+		Map<Integer, HoleRefreshMaxTime> holeRefreshMaxTimeMap = null;
 		Map<Object, HoleCfg> holeCfgMap = null;
 		boolean refreshHole = false;
 
+		// 检测刷新时间点
 		for (int index = 0; index < GsConst.Refresh.SysTimePointArray.length; ++index) {
-			int timeCfgId = GsConst.Refresh.SysTimePointArray[index];
+			long cacheRefreshTimeMs = ServerData.getInstance().getCacheRefreshTime(index); 
+			// 如果缓存的刷新时间不会再刷新或者还未到，跳过
+			if (cacheRefreshTimeMs == GsConst.UNUSABLE
+					|| (cacheRefreshTimeMs != 0 && curTime.getTimeInMillis() < cacheRefreshTimeMs)) {
+				continue;
+			}
 
-			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
-			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
-			if (expectedRefreshTime != null) {
-				// 刷新数据
+			int timeCfgId = GsConst.Refresh.SysTimePointArray[index];
+			Calendar pointRefreshTime = null;
+
+			if (0 == cacheRefreshTimeMs || curTime.getTimeInMillis() > cacheRefreshTimeMs) {
+				pointRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
+				pointRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, pointRefreshTime);
+			} else {  // curTime.getTimeInMillis() == cacheRefreshTimeMs
+				pointRefreshTime = HawkTime.getCalendar(cacheRefreshTimeMs);
+			}
+
+			// 增加1毫秒，避免当前时间就是刷新时间
+			curTime.setTimeInMillis(curTime.getTimeInMillis() + 1);
+			Calendar cacheRefreshTime = TimePointUtil.getComingRefreshTime(timeCfgId, curTime);
+			if (null == cacheRefreshTime) {
+				ServerData.getInstance().setCacheRefreshTime(index, GsConst.UNUSABLE);
+			} else {
+				ServerData.getInstance().setCacheRefreshTime(index, cacheRefreshTime.getTimeInMillis());
+			}
+
+			// 刷新数据
+			if (null != pointRefreshTime) {
+				ServerData.getInstance().setLastRefreshTime(timeCfgId, pointRefreshTime);
+
 				if (0 != (GsConst.Refresh.SysMaskArray[index] & GsConst.Refresh.HOLE)) {
 					if (false == refreshHole) {
 						refreshHole = true;
 						// 初始化洞刷新所需临时数据
-						HoleRefreshMaxTimeMap = new HashMap<Integer, HoleRefreshMaxTime>();
+						holeRefreshMaxTimeMap = new HashMap<Integer, HoleRefreshMaxTime>();
 						holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
 						for (HoleCfg hole : holeCfgMap.values()) {
-							HoleRefreshMaxTimeMap.put(hole.getId(), new HoleRefreshMaxTime());
+							holeRefreshMaxTimeMap.put(hole.getId(), new HoleRefreshMaxTime());
 						}
 					}
 					// 在所有洞刷新时间（都小于当前时间）中选择最接近当前时间的
@@ -355,36 +369,30 @@ public class GsApp extends HawkApp {
 						}
 
 						if (isOpen != null) {
-							HoleRefreshMaxTime max = HoleRefreshMaxTimeMap.get(hole.getId());
-							if (max.time < expectedRefreshTime.getTimeInMillis()) {
-								max.time = expectedRefreshTime.getTimeInMillis();
+							HoleRefreshMaxTime max = holeRefreshMaxTimeMap.get(hole.getId());
+							if (max.time < pointRefreshTime.getTimeInMillis()) {
+								max.time = pointRefreshTime.getTimeInMillis();
 								max.isOpen = isOpen;
 							}
 						}
 					}
-
-					// 刷新时间点
-					ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 				}
 				else if (0 != (GsConst.Refresh.SysMaskArray[index] & GsConst.Refresh.PVP)) {
 			 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PVP_WEEK_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.PVP));
-					if (HawkApp.getInstance().postMsg(msg)) {
-						// 刷新时间点
-						ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
-					}
+					HawkApp.getInstance().postMsg(msg);
 				}
 			}
 		}
 
 		// 刷新洞
 		if (true == refreshHole) {
-			for (Entry<Integer, HoleRefreshMaxTime> entry : HoleRefreshMaxTimeMap.entrySet()) {
+			for (Entry<Integer, HoleRefreshMaxTime> entry : holeRefreshMaxTimeMap.entrySet()) {
 				ServerData.getInstance().setHoleOpen(entry.getKey(), entry.getValue().isOpen);
 			}
 		}
 
 		// 第2步，调用父类刷新其它对象
-		super.onRefresh(refreshTime);
+		super.onRefresh(refreshTimeMs);
 		return true;
 	}
 
@@ -414,6 +422,7 @@ public class GsApp extends HawkApp {
 	public void printState() {
 		super.printState();
 		// 管理器中玩家数量
+		HawkLog.errPrintln(String.format("msg 数量: %d ", PVPManager.test.size()));
 		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
 		// 显示服务器信息
 		ServerData.getInstance().showServerInfo();
@@ -430,7 +439,7 @@ public class GsApp extends HawkApp {
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
-			 if (player.isOnline() == false && objBase.getVisitTime() + 600000 < currentTime) {
+			 if (player.isOnline() == false && objBase.getVisitTime() + 10000 < currentTime) {
 				iterator.remove();
 				ServerData.getInstance().addReleasePlayer();
 			}

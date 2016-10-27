@@ -109,7 +109,7 @@ public class UIBattle : UIBase
         mVitalChangeList.Clear();
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         //TODO：战斗界面不会隐藏了，只会删除
         //gameObject.SetActive(true);
@@ -210,7 +210,7 @@ public class UIBattle : UIBase
         if (state == MsgBox.PrompButtonClick.OK)
         {
             PB.HSInstanceRevive reviveParam = new PB.HSInstanceRevive();
-            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam, false);
+            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam, true);
             ////test only
             //CloseReviveUI();
             //BattleController battleInstance = BattleController.Instance;

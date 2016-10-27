@@ -23,21 +23,27 @@ public class GuideManager
     private int finishStepCount = 0;
     public GuideBase curRequestGuide;
 
-    public void FinishStep()
+    public void FinishStep(bool sendEvent)
     {
-        GameEventMgr.Instance.FireEvent(nextGuideStep.finishEvent);
-
+        if (null == nextGuideStep)
+        {
+            Logger.LogError("Pre Guide Error,Need check Log!");
+            return;
+        }    
+        string targetEvent = nextGuideStep.posObject;
+        
         finishStepCount++;
         if(curGuideGroup.finishAtStep == nextGuideStep.Id)
         {
             List<int> finishGuide = new List<int>();
-            finishGuide.Add(nextGuideStep.Id);
+            finishGuide.Add(curGuideGroup.Id);
             if(curGuideGroup.FinishOtherGuideAttr.Count > 0)
             {
                 finishGuide.AddRange(curGuideGroup.FinishOtherGuideAttr);
             }
             GameDataMgr.Instance.GuideDataMgrAttr.RequestFinishGuide(finishGuide, OnFinishRequestFinishGuide);
         }
+
         if(curGuideGroup.StepListAttr.Count == finishStepCount)
         {
             //finish
@@ -51,8 +57,12 @@ public class GuideManager
             nextGuideStep = StaticDataMgr.Instance.GetGuideStep(curGuideGroup.StepListAttr[finishStepCount]);
             if(preGuideStep.trigerView.Equals(nextGuideStep.trigerView))
             {
-
+                GuideRunningGuide();
             }
+        }
+        if (sendEvent && !string.IsNullOrEmpty(targetEvent))
+        {
+            GameEventMgr.Instance.FireEvent<string>(targetEvent, targetEvent);
         }
     }
     void OnFinishRequestFinishGuide(bool succ)
@@ -110,6 +120,7 @@ public class GuideManager
                 nextGuideStep = firstStep;
                 finishStepCount = 0;
                 ShowGuideUi(firstStep);
+                Logger.LogErrorFormat("触发了新手引导 guideGroupid = {0} ", curGuideGroup.Id);
                 break;
             }
         }
@@ -131,7 +142,7 @@ public class GuideManager
 
     void ShowGuideUi(GuideStep step)
     {
-
+        GuideUi.OpenWith(step);
     }
 
 }

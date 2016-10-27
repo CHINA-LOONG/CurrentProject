@@ -12,12 +12,12 @@ public class GuideDataMgr : MonoBehaviour
     void Start()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.GUIDE_FINISH_C.GetHashCode().ToString(), OnGuideNetCallback);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.GUIDE_FINISH_C.GetHashCode().ToString(), OnGuideNetCallback);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.GUIDE_FINISH_S.GetHashCode().ToString(), OnGuideNetCallback);
     }
     void OnDestroy()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.GUIDE_FINISH_C.GetHashCode().ToString(), OnGuideNetCallback);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.GUIDE_FINISH_C.GetHashCode().ToString(), OnGuideNetCallback);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.GUIDE_FINISH_S.GetHashCode().ToString(), OnGuideNetCallback);
     }
     public void ClearData()
     {
@@ -42,13 +42,13 @@ public class GuideDataMgr : MonoBehaviour
         this.callBack = callBack;
         PB.HSGuideFinish param = new PB.HSGuideFinish();
         param.guideId.AddRange(listFinish);
-        GameApp.Instance.netManager.SendMessage(PB.code.GUIDE_FINISH_C.GetHashCode(), param);
+        GameApp.Instance.netManager.SendMessage(PB.code.GUIDE_FINISH_C.GetHashCode(), param, false);
     }
 
     void OnGuideNetCallback(ProtocolMessage message)
     {
         bool succ = true;
-        UINetRequest.Close();
+        //UINetRequest.Close();
         if(message.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             succ = false;

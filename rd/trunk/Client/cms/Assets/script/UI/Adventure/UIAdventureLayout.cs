@@ -608,7 +608,7 @@ public class UIAdventureLayout : UIBase,
     #endregion
 
     #region UIBase
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         allSelfs = null;
         allGuilds = null;

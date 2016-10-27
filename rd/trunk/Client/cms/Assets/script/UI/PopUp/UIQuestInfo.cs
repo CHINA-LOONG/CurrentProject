@@ -133,7 +133,7 @@ public class UIQuestInfo : UIBase
     }
 
     #region UIBase
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         //effect.SetActive(true);
     }

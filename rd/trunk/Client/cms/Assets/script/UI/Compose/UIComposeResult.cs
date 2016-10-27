@@ -26,7 +26,7 @@ public class UIComposeResult : UIBase
         text_btnText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
     }

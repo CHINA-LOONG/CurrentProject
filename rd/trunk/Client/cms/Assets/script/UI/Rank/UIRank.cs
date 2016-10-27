@@ -26,7 +26,7 @@ public class UIRank : UIBase
         closeButton.onClick.AddListener(OnCloseButtonClick);
 	}
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         if(null ==pvpRank)
         {

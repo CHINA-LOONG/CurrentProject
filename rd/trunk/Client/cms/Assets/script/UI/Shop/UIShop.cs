@@ -30,13 +30,13 @@ public class UIShop : UIBase
 		
 	#region ------------ override method---------------
 
-	public override void Init()
+	public override void Init(bool forbidGuide = false)
 	{
 		if (!isInit) 
 		{
 			FistInit();
 		}
-        base.Init();
+        base.Init(forbidGuide);
 	}
 	
 	public override void Clean()

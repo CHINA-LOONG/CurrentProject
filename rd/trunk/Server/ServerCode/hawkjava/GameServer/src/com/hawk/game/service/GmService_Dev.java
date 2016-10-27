@@ -446,7 +446,7 @@ public class GmService_Dev extends GameService {
 			actionHandled = true;
 			break;
 		}
-		// 每日刷新
+		// PVP
 		case "pvp": {
 			if (gmOperation.equals("vs")) {
 				PVPManager.GMTargetID = (int) gmTargetId;
@@ -712,7 +712,7 @@ public class GmService_Dev extends GameService {
 		case "dailyrefresh": {
 			List<Integer> refreshIndexList = new ArrayList<Integer>();
 			for (int i = 0; i < GsConst.Refresh.PlayerMaskArray.length; ++i) {
-				if (0 != (GsConst.Refresh.PlayerMaskArray[i] & GsConst.Refresh.DAILY )) {
+				if (0 != (GsConst.Refresh.PlayerMaskArray[i] & GsConst.Refresh.DAILY)) {
 					refreshIndexList.add(i);
 					break;
 				}
@@ -733,6 +733,43 @@ public class GmService_Dev extends GameService {
 				alliance.dailyRefresh();
 				alliance.notifyUpdate(true);
 			}
+
+			actionHandled = true;
+			break;
+		}
+
+		// 每月刷新
+		case "monthrefresh": {
+			List<Integer> refreshIndexList = new ArrayList<Integer>();
+			for (int i = 0; i < GsConst.Refresh.PlayerMaskArray.length; ++i) {
+				if (0 != (GsConst.Refresh.PlayerMaskArray[i] & GsConst.Refresh.MONTHLY)) {
+					refreshIndexList.add(i);
+					break;
+				}
+			}
+			if (false == refreshIndexList.isEmpty()) {
+				for (HawkObjModule module : player.getObjModules().values()) {
+					PlayerModule playerModule = (PlayerModule) module;
+					try {
+						playerModule.onPlayerRefresh(refreshIndexList, false);
+					} catch (Exception e) {
+						HawkException.catchException(e);
+					}
+				}
+			}
+
+			actionHandled = true;
+			break;
+		}
+
+		// 清空当前角色已完成的新手引导
+		case "clearguide": {
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			statisticsEntity.clearGuideFinish();
+			statisticsEntity.notifyUpdate(true);
+
+			// 重新推送新手引导
+			player.getPlayerData().syncStatisticsGuideInfo();
 
 			actionHandled = true;
 			break;

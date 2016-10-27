@@ -61,7 +61,7 @@ public class InstanceItem : MonoBehaviour
 
     }
 
-    void OnItemClicked(GameObject go)
+   public void OnItemClicked(GameObject go)
     {
         if(instanceData.isOpen)
         {

@@ -31,7 +31,7 @@ public class UINetRequest : UIBase
         //UIMgr.Instance.CloseUI_(UINetRequest.ViewName);
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         //前置
 

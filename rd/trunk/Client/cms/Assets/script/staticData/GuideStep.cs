@@ -11,6 +11,6 @@ public class GuideStep
     public float tipsX;
     public float tipsY;
     public string tipsContent;
-    public string finishEvent;
+    public int exitNoEvent;//点击非focus区域退出
 
 }

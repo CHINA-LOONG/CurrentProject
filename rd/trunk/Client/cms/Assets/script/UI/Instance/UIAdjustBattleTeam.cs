@@ -19,7 +19,7 @@ public enum InstanceType
     Guild = PB.InstanceType.INSTANCE_GUILD,
 }
 
-public class UIAdjustBattleTeam : UIBase
+public class UIAdjustBattleTeam : UIBase,GuideBase
 {
     public enum SaodangState
     {
@@ -89,6 +89,9 @@ public class UIAdjustBattleTeam : UIBase
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
     private bool showInstanceListExit = true;
+
+    GameObject firstPetForGuide;
+    GameObject secondPetForGuide;
 
     private int oldPlayerLevel = 0;
     private int oldHuoliValue = 0;
@@ -176,6 +179,19 @@ public class UIAdjustBattleTeam : UIBase
         bpLabelArray[0].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
         bpLabelArray[1].text = StaticDataMgr.Instance.GetTextByID("arrayselect_bp_001");
     }
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init(forbidGuide);
+        if(!forbidGuide)
+        {
+            GuideManager.Instance.RequestGuide(this);
+        }
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
+    }
     public override void Clean()
     {
         //TODO: destroy MonsterIcon
@@ -186,12 +202,14 @@ public class UIAdjustBattleTeam : UIBase
     {
         BindListener();
         isBattleClick = false;
+        GuideListener(true);
     }
 
     void OnDisable()
     {
         UnBindListener();
         isBattleClick = false;
+        GuideListener(false);
 
         if (InstanceMap.Instance!=null&&InstanceMap.Instance.gameObject.activeSelf)
         {
@@ -483,6 +501,14 @@ public class UIAdjustBattleTeam : UIBase
 			MonsterIcon icon = MonsterIcon.CreateIcon();
 			//EventTriggerListener.Get(icon.iconButton.gameObject).onClick = OnPlayerWarehouseIconClick;
 			ScrollViewEventListener.Get(icon.iconButton.gameObject).onClick = OnPlayerWarehouseIconClick;
+            if( i ==0)
+            {
+                firstPetForGuide = icon.iconButton.gameObject;
+            }
+            else if (i == 1)
+            {
+                secondPetForGuide = icon.iconButton.gameObject;
+            }
 			ScrollViewEventListener.Get(icon.iconButton.gameObject).onPressEnter = OnPlayerWarehouseIconPressEnter;
 			scrollView.AddElement(icon.gameObject);
 			icon.SetMonsterStaticId(monsterId);
@@ -1188,4 +1214,20 @@ public class UIAdjustBattleTeam : UIBase
     }
     //---------------------------------------------------------------------------------------------
     #endregion
+
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if (message.Equals("gd_adjustteam_pet1"))
+        {
+            OnPlayerWarehouseIconClick(firstPetForGuide);
+        }
+        else if (message.Equals("gd_adjustteam_pet2"))
+        {
+            OnPlayerWarehouseIconClick(secondPetForGuide);
+        }
+        else if (message.Equals("gd_adjustteam_fight"))
+        {
+            OnBattleButtonClick(null);
+        }
+    }
 }

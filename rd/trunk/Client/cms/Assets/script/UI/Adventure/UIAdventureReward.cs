@@ -16,9 +16,9 @@ public class UIAdventureReward:UIBase
     private List<GameObject> extraList = new List<GameObject>();
 
     public Button btnClose;
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
-        base.Init();
+        base.Init(forbidGuide);
     }
     void Start()
     {

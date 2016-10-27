@@ -182,8 +182,7 @@ public class PlayerAdventureModule extends PlayerModule {
 			statisticsEntity.notifyUpdate(true);
 
 	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_HIRE_REWARD, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-	 		msg.pushParam(player);
-	 		msg.pushParam(hireMonster.getMonsterId());
+	 		msg.pushParam(player, hireMonster.getMonsterId());
 			HawkApp.getInstance().postMsg(msg);
 		}
 

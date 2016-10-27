@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PromptComposeMST : UIBase
+public class PromptComposeMST : UIBase,GuideBase
 {
 
     public static string ViewName = "PromptComposeMST";
@@ -36,7 +36,8 @@ public class PromptComposeMST : UIBase
     {
         PromptComposeMST prompt = UIMgr.Instance.OpenUI_(PromptComposeMST.ViewName, false) as PromptComposeMST;
         prompt.SetData(title, msg, currentItem, currentCount, commonCount, clickConfirm, clickCancel);
-        return null;
+        GuideManager.Instance.RequestGuide(prompt);
+        return prompt;
     }
 
     public void SetData(string title,
@@ -105,5 +106,23 @@ public class PromptComposeMST : UIBase
             CancelEvent();
         }
         UIMgr.Instance.DestroyUI(this);
+    }
+
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_promptCompose_conform"))
+        {
+            ClickConfirmBtn();
+        }
+    }
+
+    void OnEnable()
+    {
+        GuideListener(true);
+    }
+    void OnDisable()
+    {
+        GuideListener(false);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GuideHelp 
 {
+    public static bool isSignAutoOpen = false;
     private static  GuideHelp _instance = null;
     public static GuideHelp Instance
     {
@@ -199,6 +200,13 @@ public class GuideHelp
     /// <returns></returns>
     public bool IsBuidMoreButtonExpand()
     {
+        if (MoreButton.Instance == null)
+            return true;
         return MoreButton.Instance.IsMoreButtonExpand;
+    }
+
+    public bool IsSigninAutoOpen()
+    {
+        return isSignAutoOpen;
     }
 }

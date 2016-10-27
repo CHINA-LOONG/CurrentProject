@@ -36,7 +36,7 @@ public class UIAdventureTeams : UIBase,
         btnClose.onClick.AddListener(OnClickCloseBtn);
         btnAddTeam.onClick.AddListener(OnClickAddTeamBtn);
     }
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
         RefreshData();

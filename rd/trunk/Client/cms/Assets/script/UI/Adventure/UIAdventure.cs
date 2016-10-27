@@ -108,7 +108,7 @@ public class UIAdventure : UIBase,
     }
 
     #region UIBase
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
         tabIndex = -1;

@@ -32,11 +32,11 @@ public class SelectPet : UIBase
             Instance = null;
         }
     }
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         contentView.ClearAllElement();
         RefreshUI();
-        base.Init();
+        base.Init(forbidGuide);
     }
     //删除界面，对子对象的清理操作
     public override void Clean()

@@ -24,7 +24,7 @@ public class UIMall : UIBase
 	}
 	
 	#region ------------ override method---------------
-	public override void Init()
+	public override void Init(bool forbidGuide = false)
 	{
 		RefreshMallItems ();
 
@@ -36,7 +36,7 @@ public class UIMall : UIBase
 
 		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_chongzhi");
         UIUtil.SetButtonTitle(storeButton.transform, StaticDataMgr.Instance.GetTextByID("shop_store"));
-        base.Init();
+        base.Init(forbidGuide);
 	}
     public void ShowStoreButton(bool isShow)
     {

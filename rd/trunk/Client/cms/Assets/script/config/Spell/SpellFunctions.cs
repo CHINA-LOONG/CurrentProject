@@ -729,4 +729,63 @@ public class SpellFunctions
 			}
 			return 0;
 		}
+		
+	//使用魔法攻击(未包含大招)
+    public static int UsingMagicRateContainsdebuff_50(
+          Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+        if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
+        {
+            Spell ownedSpell = triggerEffect.ownedSpell;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(triggerEffect.targetID);
+			int count = target.unit.buffList.Count;
+            if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack && randNum <= 0.5f)
+            {
+               for (int i = 0; i < count; ++i)
+				{
+					if (target.unit.buffList[i].buffProto.category == 4)
+						return 1 ;
+				}
+            }
+        }
+        return 0;
+    }	
+	
+	public static int UsingMagicRateContainsbeneficialbuff_50(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+        if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
+        {
+			Spell ownedSpell = triggerEffect.ownedSpell;
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(triggerEffect.targetID);
+			int count = target.unit.buffList.Count;
+			if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack && randNum <= 0.5f)
+			{
+               for (int i = 0; i < count; ++i)
+				{
+					if (target.unit.buffList[i].buffProto.category == 5)
+						return 1 ;
+				}
+            }
+        }
+        return 0;
+    }	
+		
+		
 }		

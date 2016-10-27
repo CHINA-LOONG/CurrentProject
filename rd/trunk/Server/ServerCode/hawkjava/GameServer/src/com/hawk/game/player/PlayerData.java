@@ -1,6 +1,7 @@
 package com.hawk.game.player;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -137,6 +138,11 @@ public class PlayerData {
 	 * pvp 防守记录
 	 */
 	private LinkedList<PVPDefenceRecordEntity> pvpDefenceRecordEntityList = new LinkedList<PVPDefenceRecordEntity>();
+
+	/**
+	 * 刷新时间缓存（毫秒）
+	 */
+	private long[] refreshTimeCache = new long[GsConst.Refresh.PlayerTimePointArray.length];
 
 	/**
 	 * 构造函数
@@ -655,9 +661,17 @@ public class PlayerData {
 
 	public void addPVPDefenceRecord(PVPDefenceRecordEntity pvpDefenceRecordEntity){
 		pvpDefenceRecordEntityList.addFirst(pvpDefenceRecordEntity);
-		while (pvpDefenceRecordEntityList.size() > GsConst.Pvp.PVP_DEFENCE_RECORD_SIZE) {
+		while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
 			pvpDefenceRecordEntityList.removeLast().delete(true);
 		}
+	}
+
+	public long getCacheRefreshTime(int refreshIndex) {
+		return refreshTimeCache[refreshIndex];
+	}
+
+	public void setCacheRefreshTime(int refreshIndex, long refreshTime) {
+		refreshTimeCache[refreshIndex] = refreshTime;
 	}
 
 	/**********************************************************************************************************
@@ -869,7 +883,7 @@ public class PlayerData {
 			rankEntity.setPlayerId(getId());
 			rankEntity.setName(player.getName());
 			rankEntity.setLevel(getLevel());
-			rankEntity.setPoint(GsConst.Pvp.PVP_DEFAULT_POINT);
+			rankEntity.setPoint(GsConst.PVP.PVP_DEFAULT_POINT);
 			rankEntity.setInRank(true);
 			rankEntity.notifyCreate();
 		}
@@ -882,7 +896,7 @@ public class PlayerData {
 			List<PVPDefenceRecordEntity> resultList = HawkDBManager.getInstance().query("from PVPDefenceRecordEntity where playerId = ? and invalid = 0 order by id DESC ", getId());
 			if (resultList != null && resultList.size() > 0) {
 				pvpDefenceRecordEntityList.addAll(resultList);
-				while (pvpDefenceRecordEntityList.size() > GsConst.Pvp.PVP_DEFENCE_RECORD_SIZE) {
+				while (pvpDefenceRecordEntityList.size() > GsConst.PVP.PVP_DEFENCE_RECORD_SIZE) {
 					PVPDefenceRecordEntity pvpDefenceRecordEntity = pvpDefenceRecordEntityList.removeLast();
 					pvpDefenceRecordEntity.delete(true);
 				}
@@ -910,9 +924,14 @@ public class PlayerData {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART1_S, BuilderUtil.genStatisticsPart1Builder(statisticsEntity)));
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART2_S, BuilderUtil.genStatisticsPart2Builder(statisticsEntity)));
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_PART3_S, BuilderUtil.genStatisticsPart3Builder(statisticsEntity)));
-		if (GsConst.Guide.guideCount > statisticsEntity.getGuideFinishSet().size()) {
-			player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_GUIDE_S, BuilderUtil.genStatisticsGuideBuilder(statisticsEntity)));
-		}
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_GUIDE_S, BuilderUtil.genStatisticsGuideBuilder(statisticsEntity)));
+	}
+
+	/**
+	 * 同步新手引导信息
+	 */
+	public void syncStatisticsGuideInfo() {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SYNC_GUIDE_S, BuilderUtil.genStatisticsGuideBuilder(statisticsEntity)));
 	}
 
 	/**

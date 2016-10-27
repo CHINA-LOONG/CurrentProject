@@ -20,7 +20,10 @@ public class MainStageController : MonoBehaviour
     public SelectableObj mTowerSiwangObj;
     public SelectableObj mHoleJinbiObj;
     public SelectableObj mHoleJingyanObj;
-    public SelectableObj mChoudanObj;
+    //public SelectableObj mChoudanObj;
+    public SelectableObj mPvpObj;
+    public SelectableObj mAdventureObj;
+    public SelectableObj mGonghuiObj;
     //lise all group
     public SelectableObjGroup mTowerGroup;
     public SelectableObjGroup mHoleGroup;
@@ -472,7 +475,7 @@ public class MainStageController : MonoBehaviour
         GameDataMgr.Instance.mainStageRotAngle = mRotAngle;
     }
     //---------------------------------------------------------------------------------------------
-    private void OnSelectableObjClicked(SelectableObj selectedObj)
+    public void OnSelectableObjClicked(SelectableObj selectedObj)
     {
         if (selectedObj != null)
         {
@@ -501,14 +504,13 @@ public class MainStageController : MonoBehaviour
             //普通副本
             if (selectedObj == mInstanceObj)
             {
-                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
-                /*
-                UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
-                if (uiBuild != null)
-                {
-                    uiBuild.OpenInstanceUI();
-                }
-                */
+                //TODO:destroy instancemap
+                InstanceMap.OpenWith();
+                //UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+                //if (uiBuild != null)
+                //{
+                //    uiBuild.OpenInstanceUI();
+                //}
             }
             //死亡之塔
             else if (selectedObj == mTowerSiwangObj)
@@ -551,10 +553,33 @@ public class MainStageController : MonoBehaviour
                     mUIHole = UIHole.OpenHole((int)HoleType.Hole_Exp);
                 }
             }
-            //抽蛋
-            else if (selectedObj == mChoudanObj)
+            //大冒险
+            else if (selectedObj == mAdventureObj)
             {
+                UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+                if (uiBuild != null)
+                {
+                    uiBuild.OnAdventureButtonClick(null);
+                }
             }
+            //pvp
+            else if (selectedObj == mPvpObj)
+            {
+                UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+                if (uiBuild != null)
+                {
+                    uiBuild.OnPvpButtonClick(null);
+                }
+            }
+            else if (selectedObj == mGonghuiObj)
+            {
+                //TODO:add common interface in uiBuild for destroy
+                GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
+            }
+            //抽蛋
+            //else if (selectedObj == mChoudanObj)
+            //{
+            //}
         }
     }
     //---------------------------------------------------------------------------------------------

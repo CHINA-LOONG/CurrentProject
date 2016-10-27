@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class UIQuest : UIBase,
                        TabButtonDelegate,
-                       IScrollView
+                       IScrollView,
+                       GuideBase
 {
     public static string ViewName = "UIQuest";
 
@@ -150,10 +151,12 @@ public class UIQuest : UIBase,
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
 
     void BindListener()
@@ -167,6 +170,22 @@ public class UIQuest : UIBase,
         GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_C.GetHashCode().ToString(), OnSubmitReturn);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_S.GetHashCode().ToString(), OnSubmitReturn);
+    }
+
+    protected override void OnGuideMessageCallback(string message)
+    {
+        if (message.Equals("gd_quest_firstButton"))
+        {
+            ParseBase parse = ParseFactory.CreateParse(CurrentList[0].staticData.PathList);
+            string name;
+            bool condition;
+            System.Action onClickEvent = null;
+            parse.GetResult(CurrentList[0].staticData.PathList, out name, out onClickEvent, out condition);
+            if (onClickEvent != null)
+            {
+                onClickEvent();
+            }
+        }
     }
     void OnLanguageChanged()
     {
@@ -205,11 +224,12 @@ public class UIQuest : UIBase,
 
     #region UIBase
     //初始化状态
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
-        base.Init();
+        base.Init(forbidGuide);
         tabIndex = -1;
         selIndex = 0;
+        GuideManager.Instance.RequestGuide(this);
     }
     //清理资源缓存
     public override void Clean()
@@ -222,6 +242,7 @@ public class UIQuest : UIBase,
     {
         base.RefreshOnPreviousUIHide();
         Refresh();
+        GuideManager.Instance.RequestGuide(this);
     }
     #endregion
 

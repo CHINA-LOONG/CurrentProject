@@ -56,7 +56,7 @@ namespace MsgBox
 		private	PrompDelegate  buttonClick = null;
 	
 		bool	isFirst = true;
-		public override void Init()
+		public override void Init(bool forbidGuide = false)
 		{
 			if (isFirst)
 			{

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 
-public class UIMonsterCompose : UIBase,TabButtonDelegate
+public class UIMonsterCompose : UIBase,TabButtonDelegate,GuideBase
 {
     public static string ViewName = "UIMonsterCompose";
 
@@ -112,6 +112,12 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
         //text_GetBy.text = StaticDataMgr.Instance.GetTextByID("handbook_huodeway");
         text_Tab1.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
         text_Tab2.text = StaticDataMgr.Instance.GetTextByID("item_type_chip");
+    }
+
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init(forbidGuide);
+        GuideManager.Instance.RequestGuide(this);
     }
 
     public void SetTypeList(CollectUnit unit, List<CollectUnit> unitList)
@@ -304,8 +310,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
         icon.SetMask(false);
         skilTips.gameObject.SetActive(false);
     }
-
-
+    
     void ClickPreviousBtn()
     {
         if (curUnitList.Count == 1)
@@ -405,11 +410,22 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
     }
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_petCompose_compose"))
+        {
+            ClickComposeBtn();
+        }
+    }
+
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);

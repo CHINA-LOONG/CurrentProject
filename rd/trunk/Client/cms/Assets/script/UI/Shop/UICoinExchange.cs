@@ -40,14 +40,14 @@ public class UICoinExchange : UIBase
 		}
 	}
 
-	public override void Init()
+	public override void Init(bool forbidGuide = false)
 	{
 		if (isFirst)
 		{
 			firstInit();
 		}
 		RefreshExchangeUI ();
-        base.Init();
+        base.Init(forbidGuide);
 	}
 	
 	private	void	firstInit()

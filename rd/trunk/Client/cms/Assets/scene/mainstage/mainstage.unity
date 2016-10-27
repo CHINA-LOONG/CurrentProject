@@ -4302,6 +4302,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &92236132 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11423350, guid: 5aee64292a58b7a4f869446420e3c23b,
+    type: 2}
+  m_PrefabInternal: {fileID: 92236131}
+  m_Script: {fileID: 11500000, guid: 9d9f4c2126e860b49b62b08ba9601b68, type: 3}
 --- !u!1 &93571051
 GameObject:
   m_ObjectHideFlags: 0
@@ -37652,13 +37658,15 @@ MonoBehaviour:
   mBoundAngle: 10
   mMoveSpeed: 45
   mBoundsSpeed: 100
-  mInstanceObj: {fileID: 1168631794}
+  mInstanceObj: {fileID: 1584311077}
   mTowerShilianObj: {fileID: 519497058}
   mTowerJuewangObj: {fileID: 900743350}
   mTowerSiwangObj: {fileID: 1992913909}
   mHoleJinbiObj: {fileID: 1081001233}
   mHoleJingyanObj: {fileID: 679929323}
-  mChoudanObj: {fileID: 2105204437}
+  mPvpObj: {fileID: 92236132}
+  mAdventureObj: {fileID: 1919915369}
+  mGonghuiObj: {fileID: 1168631794}
   mTowerGroup: {fileID: 1657453191}
   mHoleGroup: {fileID: 1496638330}
   mChoudanGroup: {fileID: 704310947}
@@ -52619,6 +52627,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1584311077 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11423350, guid: 5aee64292a58b7a4f869446420e3c23b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1584311076}
+  m_Script: {fileID: 11500000, guid: 9d9f4c2126e860b49b62b08ba9601b68, type: 3}
 --- !u!1 &1587499507
 GameObject:
   m_ObjectHideFlags: 0
@@ -59062,6 +59076,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1919915369 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11423350, guid: 5aee64292a58b7a4f869446420e3c23b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1919915368}
+  m_Script: {fileID: 11500000, guid: 9d9f4c2126e860b49b62b08ba9601b68, type: 3}
 --- !u!1 &1923210210
 GameObject:
   m_ObjectHideFlags: 0
@@ -62723,12 +62743,6 @@ Prefab:
     - {fileID: 6578428, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2105204437 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11423350, guid: 5aee64292a58b7a4f869446420e3c23b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2105204436}
-  m_Script: {fileID: 11500000, guid: 9d9f4c2126e860b49b62b08ba9601b68, type: 3}
 --- !u!1 &2105204438 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 128224, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}

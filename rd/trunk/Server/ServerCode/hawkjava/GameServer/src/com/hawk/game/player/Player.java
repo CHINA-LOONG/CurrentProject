@@ -1802,20 +1802,42 @@ public class Player extends HawkAppObj {
 	/**
 	 * 个人刷新
 	 */
-	private void onPlayerRefresh(long refreshTime, boolean onLogin) {
-		Calendar curTime = HawkTime.getCalendar(refreshTime);
+	private void onPlayerRefresh(long refreshTimeMs, boolean onLogin) {
+		Calendar curTime = HawkTime.getCalendar(refreshTimeMs);
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 
-		// 刷新时间点
+		// 检测刷新时间点
 		List<Integer> refreshIndexList = new ArrayList<Integer>();
 		for (int index = 0; index < GsConst.Refresh.PlayerTimePointArray.length; ++index) {
-			int timeCfgId = GsConst.Refresh.PlayerTimePointArray[index];
+			long cacheRefreshTimeMs = playerData.getCacheRefreshTime(index); 
+			// 如果缓存的刷新时间不会再刷新或者还未到，跳过
+			if (cacheRefreshTimeMs == GsConst.UNUSABLE
+					|| (cacheRefreshTimeMs != 0 && curTime.getTimeInMillis() < cacheRefreshTimeMs)) {
+				continue;
+			}
 
-			Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
-			Calendar expectedRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
-			if (expectedRefreshTime != null) {
-				statisticsEntity.setRefreshTime(timeCfgId, expectedRefreshTime);
+			int timeCfgId = GsConst.Refresh.PlayerTimePointArray[index];
+			Calendar pointRefreshTime = null;
+
+			if (0 == cacheRefreshTimeMs || curTime.getTimeInMillis() > cacheRefreshTimeMs) {
+				pointRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
+				pointRefreshTime = TimePointUtil.getExpectedRefreshTime(timeCfgId, curTime, pointRefreshTime);
+			} else {  // curTime.getTimeInMillis() == cacheRefreshTimeMs
+				pointRefreshTime = HawkTime.getCalendar(cacheRefreshTimeMs);
+			}
+
+			if (null != pointRefreshTime) {
+				statisticsEntity.setLastRefreshTime(timeCfgId, pointRefreshTime);
 				refreshIndexList.add(index);
+			}
+
+			// 增加1毫秒，避免当前时间就是刷新时间
+			curTime.setTimeInMillis(curTime.getTimeInMillis() + 1);
+			pointRefreshTime = TimePointUtil.getComingRefreshTime(timeCfgId, curTime);
+			if (null == pointRefreshTime) {
+				playerData.setCacheRefreshTime(index, GsConst.UNUSABLE);
+			} else {
+				playerData.setCacheRefreshTime(index, pointRefreshTime.getTimeInMillis());
 			}
 		}
 

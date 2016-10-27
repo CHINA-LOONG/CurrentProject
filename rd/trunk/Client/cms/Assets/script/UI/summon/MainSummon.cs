@@ -34,6 +34,7 @@ public class MainSummon : UIBase,GuideBase
     public void SetMainStageControl(MainStageController control)
     {
         mMainStageControl = control;
+        //GuideManager.Instance.RequestGuide(this);
     }
     //---------------------------------------------------------------------------------------------
     void OnReturn(GameObject go)
@@ -65,6 +66,20 @@ public class MainSummon : UIBase,GuideBase
     {
         RequestCloseUi();
          
+    }
+    public override void Init(bool forbidGuide = false)
+    {
+        base.Init(forbidGuide);
+        if(!forbidGuide)
+        {
+            GuideManager.Instance.RequestGuide(this);
+        }
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
+
     }
     public override void CloseUi()
     {
@@ -110,7 +125,6 @@ public class MainSummon : UIBase,GuideBase
             jinbiText.color = Color.red;
         else
             jinbiText.color = ColorConst.system_color_black;
-        GuideManager.Instance.RequestGuide(this);
     }
     //---------------------------------------------------------------------------
     void Start()

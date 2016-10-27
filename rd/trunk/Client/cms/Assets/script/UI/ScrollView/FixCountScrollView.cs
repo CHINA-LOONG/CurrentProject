@@ -14,6 +14,7 @@ public interface IScrollView
     void IScrollViewReloadItem(FixCountScrollView scrollView,Transform item, int index);
     Transform IScrollViewCreateItem(FixCountScrollView scrollView, Transform parent);
     void IScrollViewCleanItem(FixCountScrollView scrollView, List<Transform> itemList);
+    
 }
 
 [DisallowMultipleComponent]
@@ -151,6 +152,7 @@ public class FixCountScrollView : MonoBehaviour
         OnDrag(Vector2.zero);
         m_ScrollRect.onValueChanged.AddListener(OnDrag);
     }
+    
     public void CleanContent()
     {
         if (iScrollViewDelegate != null)

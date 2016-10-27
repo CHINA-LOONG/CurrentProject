@@ -50,7 +50,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: buff_icon
+  spritePackingTag: others_icon
   userData: 
   assetBundleName: texture/icon
   assetBundleVariant: 

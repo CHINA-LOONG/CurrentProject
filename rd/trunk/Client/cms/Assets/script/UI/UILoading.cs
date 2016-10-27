@@ -53,7 +53,7 @@ public class UILoading : UIBase
     }
 
     //-------------------------------------------------------------------------------------------
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         mLoadingCallback = null;
     }

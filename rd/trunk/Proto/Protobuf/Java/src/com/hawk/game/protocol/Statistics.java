@@ -9180,32 +9180,6 @@ public final class Statistics {
      * </pre>
      */
     int getDumpEndTime();
-
-    // repeated int32 guideFinish = 11;
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    java.util.List<java.lang.Integer> getGuideFinishList();
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    int getGuideFinishCount();
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    int getGuideFinish(int index);
   }
   /**
    * Protobuf type {@code HSStatisticsSyncPart3}
@@ -9319,27 +9293,6 @@ public final class Statistics {
               dumpEndTime_ = input.readInt32();
               break;
             }
-            case 88: {
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
-                guideFinish_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000400;
-              }
-              guideFinish_.add(input.readInt32());
-              break;
-            }
-            case 90: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400) && input.getBytesUntilLimit() > 0) {
-                guideFinish_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000400;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                guideFinish_.add(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -9350,9 +9303,6 @@ public final class Statistics {
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
-        }
-        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
-          guideFinish_ = java.util.Collections.unmodifiableList(guideFinish_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -9699,41 +9649,6 @@ public final class Statistics {
       return dumpEndTime_;
     }
 
-    // repeated int32 guideFinish = 11;
-    public static final int GUIDEFINISH_FIELD_NUMBER = 11;
-    private java.util.List<java.lang.Integer> guideFinish_;
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    public java.util.List<java.lang.Integer>
-        getGuideFinishList() {
-      return guideFinish_;
-    }
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    public int getGuideFinishCount() {
-      return guideFinish_.size();
-    }
-    /**
-     * <code>repeated int32 guideFinish = 11;</code>
-     *
-     * <pre>
-     * 已完成新手引导
-     * </pre>
-     */
-    public int getGuideFinish(int index) {
-      return guideFinish_.get(index);
-    }
-
     private void initFields() {
       orderServerKey_ = "";
       rechargeState_ = java.util.Collections.emptyList();
@@ -9745,7 +9660,6 @@ public final class Statistics {
       isSigninDaily_ = false;
       loginTimesDaily_ = 0;
       dumpEndTime_ = 0;
-      guideFinish_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9831,9 +9745,6 @@ public final class Statistics {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeInt32(10, dumpEndTime_);
       }
-      for (int i = 0; i < guideFinish_.size(); i++) {
-        output.writeInt32(11, guideFinish_.get(i));
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9882,15 +9793,6 @@ public final class Statistics {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, dumpEndTime_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < guideFinish_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(guideFinish_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getGuideFinishList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10038,8 +9940,6 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000100);
         dumpEndTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        guideFinish_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -10117,11 +10017,6 @@ public final class Statistics {
           to_bitField0_ |= 0x00000100;
         }
         result.dumpEndTime_ = dumpEndTime_;
-        if (((bitField0_ & 0x00000400) == 0x00000400)) {
-          guideFinish_ = java.util.Collections.unmodifiableList(guideFinish_);
-          bitField0_ = (bitField0_ & ~0x00000400);
-        }
-        result.guideFinish_ = guideFinish_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10192,16 +10087,6 @@ public final class Statistics {
         }
         if (other.hasDumpEndTime()) {
           setDumpEndTime(other.getDumpEndTime());
-        }
-        if (!other.guideFinish_.isEmpty()) {
-          if (guideFinish_.isEmpty()) {
-            guideFinish_ = other.guideFinish_;
-            bitField0_ = (bitField0_ & ~0x00000400);
-          } else {
-            ensureGuideFinishIsMutable();
-            guideFinish_.addAll(other.guideFinish_);
-          }
-          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -11178,100 +11063,6 @@ public final class Statistics {
         return this;
       }
 
-      // repeated int32 guideFinish = 11;
-      private java.util.List<java.lang.Integer> guideFinish_ = java.util.Collections.emptyList();
-      private void ensureGuideFinishIsMutable() {
-        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
-          guideFinish_ = new java.util.ArrayList<java.lang.Integer>(guideFinish_);
-          bitField0_ |= 0x00000400;
-         }
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public java.util.List<java.lang.Integer>
-          getGuideFinishList() {
-        return java.util.Collections.unmodifiableList(guideFinish_);
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public int getGuideFinishCount() {
-        return guideFinish_.size();
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public int getGuideFinish(int index) {
-        return guideFinish_.get(index);
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public Builder setGuideFinish(
-          int index, int value) {
-        ensureGuideFinishIsMutable();
-        guideFinish_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public Builder addGuideFinish(int value) {
-        ensureGuideFinishIsMutable();
-        guideFinish_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public Builder addAllGuideFinish(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureGuideFinishIsMutable();
-        super.addAll(values, guideFinish_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 guideFinish = 11;</code>
-       *
-       * <pre>
-       * 已完成新手引导
-       * </pre>
-       */
-      public Builder clearGuideFinish() {
-        guideFinish_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000400);
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:HSStatisticsSyncPart3)
     }
 
@@ -11286,9 +11077,35 @@ public final class Statistics {
   public interface HSStatisticsSyncGuideOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated bool guideQuestState = 1;
+    // repeated int32 guideFinish = 1;
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getGuideFinishList();
+    /**
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    int getGuideFinishCount();
+    /**
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    int getGuideFinish(int index);
+
+    // repeated bool guideQuestState = 2;
+    /**
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11296,7 +11113,7 @@ public final class Statistics {
      */
     java.util.List<java.lang.Boolean> getGuideQuestStateList();
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11304,7 +11121,7 @@ public final class Statistics {
      */
     int getGuideQuestStateCount();
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11312,9 +11129,9 @@ public final class Statistics {
      */
     boolean getGuideQuestState(int index);
 
-    // required int32 expItemUseCount = 2;
+    // required int32 expItemUseCount = 3;
     /**
-     * <code>required int32 expItemUseCount = 2;</code>
+     * <code>required int32 expItemUseCount = 3;</code>
      *
      * <pre>
      * 经验药水使用次数
@@ -11322,7 +11139,7 @@ public final class Statistics {
      */
     boolean hasExpItemUseCount();
     /**
-     * <code>required int32 expItemUseCount = 2;</code>
+     * <code>required int32 expItemUseCount = 3;</code>
      *
      * <pre>
      * 经验药水使用次数
@@ -11330,9 +11147,9 @@ public final class Statistics {
      */
     int getExpItemUseCount();
 
-    // required int32 upSkillTimes = 3;
+    // required int32 upSkillTimes = 4;
     /**
-     * <code>required int32 upSkillTimes = 3;</code>
+     * <code>required int32 upSkillTimes = 4;</code>
      *
      * <pre>
      * 升级技能次数
@@ -11340,7 +11157,7 @@ public final class Statistics {
      */
     boolean hasUpSkillTimes();
     /**
-     * <code>required int32 upSkillTimes = 3;</code>
+     * <code>required int32 upSkillTimes = 4;</code>
      *
      * <pre>
      * 升级技能次数
@@ -11348,9 +11165,9 @@ public final class Statistics {
      */
     int getUpSkillTimes();
 
-    // required bool hasWear = 4;
+    // required bool hasWear = 5;
     /**
-     * <code>required bool hasWear = 4;</code>
+     * <code>required bool hasWear = 5;</code>
      *
      * <pre>
      * 是否穿戴过装备
@@ -11358,7 +11175,7 @@ public final class Statistics {
      */
     boolean hasHasWear();
     /**
-     * <code>required bool hasWear = 4;</code>
+     * <code>required bool hasWear = 5;</code>
      *
      * <pre>
      * 是否穿戴过装备
@@ -11423,18 +11240,39 @@ public final class Statistics {
             }
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                guideFinish_ = new java.util.ArrayList<java.lang.Integer>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              guideQuestState_.add(input.readBool());
+              guideFinish_.add(input.readInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
-                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                guideFinish_ = new java.util.ArrayList<java.lang.Integer>();
                 mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                guideFinish_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              guideQuestState_.add(input.readBool());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
                 guideQuestState_.add(input.readBool());
@@ -11442,17 +11280,17 @@ public final class Statistics {
               input.popLimit(limit);
               break;
             }
-            case 16: {
+            case 24: {
               bitField0_ |= 0x00000001;
               expItemUseCount_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 32: {
               bitField0_ |= 0x00000002;
               upSkillTimes_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 40: {
               bitField0_ |= 0x00000004;
               hasWear_ = input.readBool();
               break;
@@ -11466,6 +11304,9 @@ public final class Statistics {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          guideFinish_ = java.util.Collections.unmodifiableList(guideFinish_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           guideQuestState_ = java.util.Collections.unmodifiableList(guideQuestState_);
         }
         this.unknownFields = unknownFields.build();
@@ -11500,11 +11341,46 @@ public final class Statistics {
     }
 
     private int bitField0_;
-    // repeated bool guideQuestState = 1;
-    public static final int GUIDEQUESTSTATE_FIELD_NUMBER = 1;
+    // repeated int32 guideFinish = 1;
+    public static final int GUIDEFINISH_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Integer> guideFinish_;
+    /**
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getGuideFinishList() {
+      return guideFinish_;
+    }
+    /**
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    public int getGuideFinishCount() {
+      return guideFinish_.size();
+    }
+    /**
+     * <code>repeated int32 guideFinish = 1;</code>
+     *
+     * <pre>
+     * 已完成新手引导
+     * </pre>
+     */
+    public int getGuideFinish(int index) {
+      return guideFinish_.get(index);
+    }
+
+    // repeated bool guideQuestState = 2;
+    public static final int GUIDEQUESTSTATE_FIELD_NUMBER = 2;
     private java.util.List<java.lang.Boolean> guideQuestState_;
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11515,7 +11391,7 @@ public final class Statistics {
       return guideQuestState_;
     }
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11525,7 +11401,7 @@ public final class Statistics {
       return guideQuestState_.size();
     }
     /**
-     * <code>repeated bool guideQuestState = 1;</code>
+     * <code>repeated bool guideQuestState = 2;</code>
      *
      * <pre>
      * 新手引导相关任务状态
@@ -11535,11 +11411,11 @@ public final class Statistics {
       return guideQuestState_.get(index);
     }
 
-    // required int32 expItemUseCount = 2;
-    public static final int EXPITEMUSECOUNT_FIELD_NUMBER = 2;
+    // required int32 expItemUseCount = 3;
+    public static final int EXPITEMUSECOUNT_FIELD_NUMBER = 3;
     private int expItemUseCount_;
     /**
-     * <code>required int32 expItemUseCount = 2;</code>
+     * <code>required int32 expItemUseCount = 3;</code>
      *
      * <pre>
      * 经验药水使用次数
@@ -11549,7 +11425,7 @@ public final class Statistics {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 expItemUseCount = 2;</code>
+     * <code>required int32 expItemUseCount = 3;</code>
      *
      * <pre>
      * 经验药水使用次数
@@ -11559,11 +11435,11 @@ public final class Statistics {
       return expItemUseCount_;
     }
 
-    // required int32 upSkillTimes = 3;
-    public static final int UPSKILLTIMES_FIELD_NUMBER = 3;
+    // required int32 upSkillTimes = 4;
+    public static final int UPSKILLTIMES_FIELD_NUMBER = 4;
     private int upSkillTimes_;
     /**
-     * <code>required int32 upSkillTimes = 3;</code>
+     * <code>required int32 upSkillTimes = 4;</code>
      *
      * <pre>
      * 升级技能次数
@@ -11573,7 +11449,7 @@ public final class Statistics {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 upSkillTimes = 3;</code>
+     * <code>required int32 upSkillTimes = 4;</code>
      *
      * <pre>
      * 升级技能次数
@@ -11583,11 +11459,11 @@ public final class Statistics {
       return upSkillTimes_;
     }
 
-    // required bool hasWear = 4;
-    public static final int HASWEAR_FIELD_NUMBER = 4;
+    // required bool hasWear = 5;
+    public static final int HASWEAR_FIELD_NUMBER = 5;
     private boolean hasWear_;
     /**
-     * <code>required bool hasWear = 4;</code>
+     * <code>required bool hasWear = 5;</code>
      *
      * <pre>
      * 是否穿戴过装备
@@ -11597,7 +11473,7 @@ public final class Statistics {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required bool hasWear = 4;</code>
+     * <code>required bool hasWear = 5;</code>
      *
      * <pre>
      * 是否穿戴过装备
@@ -11608,6 +11484,7 @@ public final class Statistics {
     }
 
     private void initFields() {
+      guideFinish_ = java.util.Collections.emptyList();
       guideQuestState_ = java.util.Collections.emptyList();
       expItemUseCount_ = 0;
       upSkillTimes_ = 0;
@@ -11637,17 +11514,20 @@ public final class Statistics {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      for (int i = 0; i < guideFinish_.size(); i++) {
+        output.writeInt32(1, guideFinish_.get(i));
+      }
       for (int i = 0; i < guideQuestState_.size(); i++) {
-        output.writeBool(1, guideQuestState_.get(i));
+        output.writeBool(2, guideQuestState_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(2, expItemUseCount_);
+        output.writeInt32(3, expItemUseCount_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(3, upSkillTimes_);
+        output.writeInt32(4, upSkillTimes_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(4, hasWear_);
+        output.writeBool(5, hasWear_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11660,21 +11540,30 @@ public final class Statistics {
       size = 0;
       {
         int dataSize = 0;
+        for (int i = 0; i < guideFinish_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(guideFinish_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getGuideFinishList().size();
+      }
+      {
+        int dataSize = 0;
         dataSize = 1 * getGuideQuestStateList().size();
         size += dataSize;
         size += 1 * getGuideQuestStateList().size();
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, expItemUseCount_);
+          .computeInt32Size(3, expItemUseCount_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, upSkillTimes_);
+          .computeInt32Size(4, upSkillTimes_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, hasWear_);
+          .computeBoolSize(5, hasWear_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11796,14 +11685,16 @@ public final class Statistics {
 
       public Builder clear() {
         super.clear();
-        guideQuestState_ = java.util.Collections.emptyList();
+        guideFinish_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        expItemUseCount_ = 0;
+        guideQuestState_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        upSkillTimes_ = 0;
+        expItemUseCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        hasWear_ = false;
+        upSkillTimes_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        hasWear_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -11833,19 +11724,24 @@ public final class Statistics {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          guideQuestState_ = java.util.Collections.unmodifiableList(guideQuestState_);
+          guideFinish_ = java.util.Collections.unmodifiableList(guideFinish_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
+        result.guideFinish_ = guideFinish_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          guideQuestState_ = java.util.Collections.unmodifiableList(guideQuestState_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
         result.guideQuestState_ = guideQuestState_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000001;
         }
         result.expItemUseCount_ = expItemUseCount_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000002;
         }
         result.upSkillTimes_ = upSkillTimes_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000004;
         }
         result.hasWear_ = hasWear_;
@@ -11865,10 +11761,20 @@ public final class Statistics {
 
       public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide other) {
         if (other == com.hawk.game.protocol.Statistics.HSStatisticsSyncGuide.getDefaultInstance()) return this;
+        if (!other.guideFinish_.isEmpty()) {
+          if (guideFinish_.isEmpty()) {
+            guideFinish_ = other.guideFinish_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureGuideFinishIsMutable();
+            guideFinish_.addAll(other.guideFinish_);
+          }
+          onChanged();
+        }
         if (!other.guideQuestState_.isEmpty()) {
           if (guideQuestState_.isEmpty()) {
             guideQuestState_ = other.guideQuestState_;
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureGuideQuestStateIsMutable();
             guideQuestState_.addAll(other.guideQuestState_);
@@ -11923,16 +11829,110 @@ public final class Statistics {
       }
       private int bitField0_;
 
-      // repeated bool guideQuestState = 1;
-      private java.util.List<java.lang.Boolean> guideQuestState_ = java.util.Collections.emptyList();
-      private void ensureGuideQuestStateIsMutable() {
+      // repeated int32 guideFinish = 1;
+      private java.util.List<java.lang.Integer> guideFinish_ = java.util.Collections.emptyList();
+      private void ensureGuideFinishIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>(guideQuestState_);
+          guideFinish_ = new java.util.ArrayList<java.lang.Integer>(guideFinish_);
           bitField0_ |= 0x00000001;
          }
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getGuideFinishList() {
+        return java.util.Collections.unmodifiableList(guideFinish_);
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public int getGuideFinishCount() {
+        return guideFinish_.size();
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public int getGuideFinish(int index) {
+        return guideFinish_.get(index);
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public Builder setGuideFinish(
+          int index, int value) {
+        ensureGuideFinishIsMutable();
+        guideFinish_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public Builder addGuideFinish(int value) {
+        ensureGuideFinishIsMutable();
+        guideFinish_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public Builder addAllGuideFinish(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureGuideFinishIsMutable();
+        super.addAll(values, guideFinish_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 guideFinish = 1;</code>
+       *
+       * <pre>
+       * 已完成新手引导
+       * </pre>
+       */
+      public Builder clearGuideFinish() {
+        guideFinish_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      // repeated bool guideQuestState = 2;
+      private java.util.List<java.lang.Boolean> guideQuestState_ = java.util.Collections.emptyList();
+      private void ensureGuideQuestStateIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          guideQuestState_ = new java.util.ArrayList<java.lang.Boolean>(guideQuestState_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -11943,7 +11943,7 @@ public final class Statistics {
         return java.util.Collections.unmodifiableList(guideQuestState_);
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -11953,7 +11953,7 @@ public final class Statistics {
         return guideQuestState_.size();
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -11963,7 +11963,7 @@ public final class Statistics {
         return guideQuestState_.get(index);
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -11977,7 +11977,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -11990,7 +11990,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -12004,7 +12004,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated bool guideQuestState = 1;</code>
+       * <code>repeated bool guideQuestState = 2;</code>
        *
        * <pre>
        * 新手引导相关任务状态
@@ -12012,25 +12012,25 @@ public final class Statistics {
        */
       public Builder clearGuideQuestState() {
         guideQuestState_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      // required int32 expItemUseCount = 2;
+      // required int32 expItemUseCount = 3;
       private int expItemUseCount_ ;
       /**
-       * <code>required int32 expItemUseCount = 2;</code>
+       * <code>required int32 expItemUseCount = 3;</code>
        *
        * <pre>
        * 经验药水使用次数
        * </pre>
        */
       public boolean hasExpItemUseCount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 expItemUseCount = 2;</code>
+       * <code>required int32 expItemUseCount = 3;</code>
        *
        * <pre>
        * 经验药水使用次数
@@ -12040,46 +12040,46 @@ public final class Statistics {
         return expItemUseCount_;
       }
       /**
-       * <code>required int32 expItemUseCount = 2;</code>
+       * <code>required int32 expItemUseCount = 3;</code>
        *
        * <pre>
        * 经验药水使用次数
        * </pre>
        */
       public Builder setExpItemUseCount(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         expItemUseCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 expItemUseCount = 2;</code>
+       * <code>required int32 expItemUseCount = 3;</code>
        *
        * <pre>
        * 经验药水使用次数
        * </pre>
        */
       public Builder clearExpItemUseCount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         expItemUseCount_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 upSkillTimes = 3;
+      // required int32 upSkillTimes = 4;
       private int upSkillTimes_ ;
       /**
-       * <code>required int32 upSkillTimes = 3;</code>
+       * <code>required int32 upSkillTimes = 4;</code>
        *
        * <pre>
        * 升级技能次数
        * </pre>
        */
       public boolean hasUpSkillTimes() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 upSkillTimes = 3;</code>
+       * <code>required int32 upSkillTimes = 4;</code>
        *
        * <pre>
        * 升级技能次数
@@ -12089,46 +12089,46 @@ public final class Statistics {
         return upSkillTimes_;
       }
       /**
-       * <code>required int32 upSkillTimes = 3;</code>
+       * <code>required int32 upSkillTimes = 4;</code>
        *
        * <pre>
        * 升级技能次数
        * </pre>
        */
       public Builder setUpSkillTimes(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         upSkillTimes_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 upSkillTimes = 3;</code>
+       * <code>required int32 upSkillTimes = 4;</code>
        *
        * <pre>
        * 升级技能次数
        * </pre>
        */
       public Builder clearUpSkillTimes() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         upSkillTimes_ = 0;
         onChanged();
         return this;
       }
 
-      // required bool hasWear = 4;
+      // required bool hasWear = 5;
       private boolean hasWear_ ;
       /**
-       * <code>required bool hasWear = 4;</code>
+       * <code>required bool hasWear = 5;</code>
        *
        * <pre>
        * 是否穿戴过装备
        * </pre>
        */
       public boolean hasHasWear() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required bool hasWear = 4;</code>
+       * <code>required bool hasWear = 5;</code>
        *
        * <pre>
        * 是否穿戴过装备
@@ -12138,27 +12138,27 @@ public final class Statistics {
         return hasWear_;
       }
       /**
-       * <code>required bool hasWear = 4;</code>
+       * <code>required bool hasWear = 5;</code>
        *
        * <pre>
        * 是否穿戴过装备
        * </pre>
        */
       public Builder setHasWear(boolean value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         hasWear_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool hasWear = 4;</code>
+       * <code>required bool hasWear = 5;</code>
        *
        * <pre>
        * 是否穿戴过装备
        * </pre>
        */
       public Builder clearHasWear() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         hasWear_ = false;
         onChanged();
         return this;
@@ -14301,7 +14301,7 @@ public final class Statistics {
       "\n\030summonCoinFreeTimesDaily\030\n \002(\005\022\036\n\026summ" +
       "onCoinFreeLastTime\030\013 \002(\005\022\026\n\016hiredMonster" +
       "Id\030\014 \003(\005\022\020\n\010pvpTimes\030\r \002(\005\022\031\n\021pvpTimesBe" +
-      "ginTime\030\016 \002(\005\"\306\002\n\025HSStatisticsSyncPart3\022" +
+      "ginTime\030\016 \002(\005\"\261\002\n\025HSStatisticsSyncPart3\022" +
       "\026\n\016orderServerKey\030\001 \002(\t\022%\n\rrechargeState" +
       "\030\002 \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030",
       "\003 \002(\005\022\026\n\016gold2CoinTimes\030\004 \002(\005\022)\n\014expLeft" +
@@ -14309,15 +14309,15 @@ public final class Statistics {
       "inTimesMonthly\030\006 \002(\005\022\036\n\026signinFillTimesM" +
       "onthly\030\007 \002(\005\022\025\n\risSigninDaily\030\010 \002(\010\022\027\n\017l" +
       "oginTimesDaily\030\t \002(\005\022\023\n\013dumpEndTime\030\n \001(" +
-      "\005\022\023\n\013guideFinish\030\013 \003(\005\"p\n\025HSStatisticsSy" +
-      "ncGuide\022\027\n\017guideQuestState\030\001 \003(\010\022\027\n\017expI" +
-      "temUseCount\030\002 \002(\005\022\024\n\014upSkillTimes\030\003 \002(\005\022" +
-      "\017\n\007hasWear\030\004 \002(\010\"3\n\022HSSyncDailyRefresh\022\035" +
-      "\n\tholeState\030\001 \003(\0132\n.HoleState\"\026\n\024HSSyncM",
-      "onthlyRefresh\"%\n\021HSSyncShopRefresh\022\020\n\010sh" +
-      "opType\030\001 \002(\005\"B\n\022HSSyncExpLeftTimes\022\025\n\rdo" +
-      "ubleExpLeft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005" +
-      "B\030\n\026com.hawk.game.protocol"
+      "\005\"\205\001\n\025HSStatisticsSyncGuide\022\023\n\013guideFini" +
+      "sh\030\001 \003(\005\022\027\n\017guideQuestState\030\002 \003(\010\022\027\n\017exp" +
+      "ItemUseCount\030\003 \002(\005\022\024\n\014upSkillTimes\030\004 \002(\005" +
+      "\022\017\n\007hasWear\030\005 \002(\010\"3\n\022HSSyncDailyRefresh\022" +
+      "\035\n\tholeState\030\001 \003(\0132\n.HoleState\"\026\n\024HSSync",
+      "MonthlyRefresh\"%\n\021HSSyncShopRefresh\022\020\n\010s" +
+      "hopType\030\001 \002(\005\"B\n\022HSSyncExpLeftTimes\022\025\n\rd" +
+      "oubleExpLeft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002 \002(" +
+      "\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -14377,13 +14377,13 @@ public final class Statistics {
           internal_static_HSStatisticsSyncPart3_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncPart3_descriptor,
-              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", "LoginTimesDaily", "DumpEndTime", "GuideFinish", });
+              new java.lang.String[] { "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "SigninTimesMonthly", "SigninFillTimesMonthly", "IsSigninDaily", "LoginTimesDaily", "DumpEndTime", });
           internal_static_HSStatisticsSyncGuide_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_HSStatisticsSyncGuide_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsSyncGuide_descriptor,
-              new java.lang.String[] { "GuideQuestState", "ExpItemUseCount", "UpSkillTimes", "HasWear", });
+              new java.lang.String[] { "GuideFinish", "GuideQuestState", "ExpItemUseCount", "UpSkillTimes", "HasWear", });
           internal_static_HSSyncDailyRefresh_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new

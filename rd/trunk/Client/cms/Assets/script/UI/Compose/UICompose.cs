@@ -109,7 +109,7 @@ public class UICompose : UIBase, TabButtonDelegate,IScrollView
 
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
 

@@ -7,7 +7,8 @@ public class UIMonsters : UIBase,
                           TabButtonDelegate,
                           IScrollView,
                           IOwnedPetItem,
-                          ICollectItem
+                          ICollectItem,
+                          GuideBase
 {
 
     public static string ViewName = "UIMonsters";
@@ -128,9 +129,10 @@ public class UIMonsters : UIBase,
     {
         base.RefreshOnPreviousUIHide();
         Refresh();
+        GuideManager.Instance.RequestGuide(this);
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         base.Init();
         tabIndex1st = -1;
@@ -146,7 +148,7 @@ public class UIMonsters : UIBase,
                        StaticDataMgr.Instance.GetTextByID("pet_tip_full2"));
         }
 
-        //Refresh();
+        GuideManager.Instance.RequestGuide(this);
     }
     public override void Clean()
     {
@@ -192,10 +194,28 @@ public class UIMonsters : UIBase,
     void OnEnable()
     {
         BindListener();
+        GuideListener(true);
     }
     void OnDisable()
     {
         UnBindListener();
+        GuideListener(false);
+    }
+    protected override void OnGuideMessageCallback(string message)
+    {
+        base.OnGuideMessageCallback(message);
+        if (message.Equals("gd_monsters_shouji"))
+        {
+            Refresh(1, 0);
+        }
+        else if (message.Equals("gd_monsters_firstPet"))
+        {
+            OnClickOwnedPet(OwnedList[0]);
+        }
+        else if (message.Equals("gd_monsters_firstPetFragment"))
+        {
+            OnClickCollectPet(CollectList[0]);
+        }
     }
 
     void BindListener()

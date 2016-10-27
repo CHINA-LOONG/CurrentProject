@@ -51,7 +51,7 @@ public class UseHuoLi : UIBase
         title.text = StaticDataMgr.Instance.GetTextByID("energy_supple");
     }
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         RefreshUi();
     }

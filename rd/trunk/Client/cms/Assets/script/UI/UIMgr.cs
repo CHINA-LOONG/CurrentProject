@@ -168,7 +168,7 @@ public class UIMgr : MonoBehaviour
         GameObject topGo = Util.FindChildByName(rootObj, "topPanel");
         rootData.topPanelTransform = topGo.transform;
     }
-    public UIBase OpenUI_(string uiName, bool cache = true)
+    public UIBase OpenUI_(string uiName,bool forbidGuide = false, bool cache = true)
     {
         UIBase uiItem = null;
         if (cache)
@@ -189,7 +189,7 @@ public class UIMgr : MonoBehaviour
             SetUIInternal(ref uiItem, ui, uiName, cache);
         }
         uiItem.transform.SetAsLastSibling();
-        uiItem.Init();
+        uiItem.Init(forbidGuide);
 
 #if UNITY_STANDALONE_WIN
         {

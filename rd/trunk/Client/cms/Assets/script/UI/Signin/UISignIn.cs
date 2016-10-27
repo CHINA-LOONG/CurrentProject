@@ -182,7 +182,7 @@ public class UISignIn : UIBase,
 
     #region UIBase
 
-    public override void Init()
+    public override void Init(bool forbidGuide = false)
     {
         if (Animator != null)
         {

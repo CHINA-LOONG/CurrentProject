@@ -1211,8 +1211,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (true == isWin) {
 			// 公会消息
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
-			msg.pushParam(player);
-			msg.pushParam(this.curInstanceId);
+			msg.pushParam(player, this.curInstanceId);
 			HawkApp.getInstance().postMsg(msg);
 
 			// 奖励
