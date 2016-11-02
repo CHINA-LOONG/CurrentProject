@@ -11,6 +11,8 @@ public class GuideUi : UIBase
     public GameObject focusEffect;
     public Button focusButton;
     public RectTransform focusRt;
+    public RectTransform tipsRt;
+    public Text tipsText;
 
     private GuideStep guideStep;
     public static void OpenWith(GuideStep gstep)
@@ -28,6 +30,7 @@ public class GuideUi : UIBase
     {
         name = string.Format("GuideUI:guideStep {0}", gstep.Id);
         focusRt.gameObject.SetActive(false);
+        tipsRt.gameObject.SetActive(false);
         guideStep = gstep;
         StartCoroutine(RefreshUI());
     }
@@ -60,6 +63,7 @@ public class GuideUi : UIBase
             UIBuild buidUi = (UIBuild)GuideManager.Instance.curRequestGuide;
             Vector2 focusPos = buidUi.Focus3DObject(guideStep.posObject);
             focusRt.anchoredPosition = focusPos;
+            CheckAndShowTips();
         }
     }
     void InitGuideWithFocus2DObject()
@@ -84,6 +88,32 @@ public class GuideUi : UIBase
         Vector3 spacePosition = UIUtil.GetSpacePos(targetRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
         float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
         focusRt.anchoredPosition = new Vector2(spacePosition.x / fscale, spacePosition.y / fscale);
+        CheckAndShowTips();
+    }
+
+    void CheckAndShowTips()
+    {
+        if (string.IsNullOrEmpty(guideStep.tipsContent))
+            return;
+        tipsRt.gameObject.SetActive(true);
+        tipsText.text = StaticDataMgr.Instance.GetTextByID(guideStep.tipsContent);
+
+        Vector2 tipsPivot = tipsRt.pivot;
+        tipsPivot.x = 0.5f;
+        tipsPivot.y = 0.5f;
+        if (guideStep.tipsX > 0)
+            tipsPivot.x = 0.0f;
+        else if (guideStep.tipsX < 0)
+            tipsPivot.x = 1.0f;
+
+        if (guideStep.tipsY > 0)
+            tipsPivot.y = 0.0f;
+        else if (guideStep.tipsY < 0)
+            tipsPivot.y = 1.0f;
+
+        tipsRt.pivot = tipsPivot;
+        Vector2 focusPos = focusRt.anchoredPosition;
+        tipsRt.anchoredPosition = new Vector2(focusPos.x + guideStep.tipsX, focusPos.y + guideStep.tipsY);
     }
 
     void OnFocusButtonClick()

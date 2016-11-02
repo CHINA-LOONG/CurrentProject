@@ -351,8 +351,8 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 348,bosszhifuletuJiuweihu42,bosszhifuletuJiuweihu42e1,0,0,0,50,1,0,icon_attackSmashStrong,bosszhifuletuJiuweihu42Name,bosszhifuletuJiuweihu42Tips,0,1,,,,
 349,bosszhifuletuJiuweihu43,bosszhifuletuJiuweihu43e1,0,0,0,50,8,0,icon_attackSmashStrong,bosszhifuletuJiuweihu43Name,bosszhifuletuJiuweihu43Tips,0,0,,,,
 350,bossmidasigongHuangjinzhiling11,bossmidasigongHuangjinzhiling11e1,0,0,0,50,0,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling11Name,bossmidasigongHuangjinzhiling11Tips,0,0,,,,
-351,bossmidasigongHuangjinzhiling12,bossmidasigongHuangjinzhiling12e1,0,0,0,50,1,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling11Name,,0,1,,,,
-352,bossmidasigongHuangjinzhiling13,bossmidasigongHuangjinzhiling13e1,0,0,0,50,0,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling13Name,bossmidasigongHuangjinzhiling13Tips,0,0,,,,
+351,bossmidasigongHuangjinzhiling12,bossmidasigongHuangjinzhiling12e1,0,0,0,50,1,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling11Name,,0,0,,,,
+352,bossmidasigongHuangjinzhiling13,bossmidasigongHuangjinzhiling13e1,0,0,0,50,0,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling13Name,bossmidasigongHuangjinzhiling13Tips,0,1,,,,
 353,bossmidasigongHuangjinzhiling14,bossmidasigongHuangjinzhiling14e1,0,0,0,50,1,0,icon_attackSmashStrong,bossmidasigongHuangjinzhiling13Name,,0,1,,,,
 354,ultMoguguai3,ultMoguguai3e1,0,0,100,0,9,0.03,icon_ultMomo,ultMoguguai3Name,ultMoguguai3Tips,1.3,1,,ultMoguguai3Description,ultMoguguai3Curlvl,ultMoguguai3Nextlvl
 355,psvMoguguai3,psvMoguguai3e1,0,0,0,0,4,0,icon_psvLuoxinfu,psvMoguguai3Name,psvMoguguai3Tips,0,0,,psvMoguguai3Description,,

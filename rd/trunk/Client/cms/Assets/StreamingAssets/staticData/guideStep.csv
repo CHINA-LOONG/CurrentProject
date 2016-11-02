@@ -1,9 +1,9 @@
 ﻿#NUM,TEXT,TEXT,TEXT,TEXT,NUM,NUM,TEXT,NUM
 Id,trigerView,purpose,talkId,posObject,tipsX,tipsY,tipsContent,exitNoEvent
 #id,触发界面,配置目的,会话Id,焦点位置对象,tipsX偏移,tipsY偏移,tips内容,点击非focus区域退出
-1,UIBuild,点击更多按钮,,gd_build_more,,,,
+1,UIBuild,点击更多按钮,,gd_build_more,200,,测试，点击更多按钮,
 2,UIBuild,,speech_xinshousummon,,,,,1
-3,UIBuild,3D抽卡接口对象,,3D_choudan_obj,,,,1
+3,UIBuild,3D抽卡接口对象,,3D_choudan_obj,200,,测试，这里其实点击的是书本,1
 4,UISummon1,抽卡钻石档（右侧）,,gd_summon1_zuanshi,,,,
 5,UISummon2,免费抽一次,,gd_summon2_free,,,,
 6,UIBuild,更多按钮中的 任务按钮,,gd_build_task,,,,
@@ -14,8 +14,8 @@ Id,trigerView,purpose,talkId,posObject,tipsX,tipsY,tipsContent,exitNoEvent
 11,UIMonsters,图鉴第一宠物位置,,gd_monsters_firstPetFragment,,,,
 12,UIMonsterCompose,合成按钮,,gd_petCompose_compose,,,,
 13,PromptComposeMST,确定按钮,,gd_promptCompose_conform,,,,
-14,UIBuild,更多按钮中的副本按钮,,gd_build_instance,,,,
-15,InstanceMap,第一章按钮,,gd_insmap_chapter1,,,,
+14,UIBuild,更多按钮中的副本按钮,,gd_build_instance,-200,,测试，点击副本试试,
+15,InstanceMap,第一章按钮,,gd_insmap_chapter1,,-200,第一章按钮测试,
 16,InstanceList,第一个本,,gd_inslist_first,,,,
 17,UIAdjustBattleTeam,上阵第一个宠物,,gd_adjustteam_pet1,,,,
 18,UIAdjustBattleTeam,上阵第二个宠物,,gd_adjustteam_pet2,,,,

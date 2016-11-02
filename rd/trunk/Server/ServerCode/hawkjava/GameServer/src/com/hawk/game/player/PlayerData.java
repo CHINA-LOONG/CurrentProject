@@ -1,7 +1,6 @@
 package com.hawk.game.player;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +10,7 @@ import java.util.Map.Entry;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
 
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.AdventureEntity;
@@ -698,6 +698,13 @@ public class PlayerData {
 //					}
 //				} catch (Exception e) {
 //				}
+			}
+			else {
+				try {
+					throw new HawkException(" test null exception");
+				} catch (Exception e) {
+					HawkException.catchException(e);
+				}
 			}
 		}
 		return playerEntity;

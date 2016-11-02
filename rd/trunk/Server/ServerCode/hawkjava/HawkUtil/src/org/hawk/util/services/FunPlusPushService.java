@@ -126,17 +126,21 @@ public class FunPlusPushService extends HawkTickable {
 	private HttpUriRequest genHttpRequest(String msg, List<Integer> funplusIdList) {
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put(HawkURL.urlEncodeRFC3986("game_id", false), HawkURL.urlEncodeRFC3986(this.gameId, false));
-		dataMap.put(HawkURL.urlEncodeRFC3986("message", false), HawkURL.urlEncodeRFC3986(msg, false));
-		if (funplusIdList != null) {
+		dataMap.put(HawkURL.urlEncodeRFC3986("message", false), msg);
+
+		final HttpPost httpPost;
+		if (null == funplusIdList || true == funplusIdList.isEmpty()) {
+			httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to_all");
+		} else {
 			dataMap.put(HawkURL.urlEncodeRFC3986("funplus_ids", false), funplusIdList);
+			httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to");
 		}
 
-		final HttpPost httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to_all");
 		httpPost.addHeader("Accept", "application/json;charset=UTF-8");
 		httpPost.addHeader("Content-type", "application/json;charset=UTF-8");
 		httpPost.addHeader("Authorization", this.authentication);
 		try {
-			StringEntity jsonEntity = new StringEntity(HawkJsonUtil.getJsonInstance().toJson(dataMap));
+			StringEntity jsonEntity = new StringEntity(HawkJsonUtil.getJsonInstance().toJson(dataMap), "UTF-8");
 			httpPost.setEntity(jsonEntity);
 		} catch (Exception e) {
 			HawkException.catchException(e);

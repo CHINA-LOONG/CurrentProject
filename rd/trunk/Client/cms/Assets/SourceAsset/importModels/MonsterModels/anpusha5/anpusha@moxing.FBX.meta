@@ -70,6 +70,25 @@ ModelImporter:
     100124: mesh_head
     100126: wp_body
     100128: wp_head
+    100130: Bip001 Xtra01
+    100132: Bip001 Xtra0102
+    100134: Bip001 Xtra0103
+    100136: Bip001 Xtra0104
+    100138: Bip001 Xtra01Opp
+    100140: Bip001 Xtra01Opp02
+    100142: Bip001 Xtra01Opp03
+    100144: Bip001 Xtra01Opp04
+    100146: Bip001 Xtra02
+    100148: Bip001 Xtra0202
+    100150: Bip001 Xtra0203
+    100152: Bip001 Xtra0204
+    100154: Bip001 Xtra02Opp
+    100156: Bip001 Xtra02Opp02
+    100158: Bip001 Xtra02Opp03
+    100160: Bip001 Xtra02Opp04
+    100162: e_shouji
+    100164: mesh_heart
+    100166: wp_heart
     400000: :e_shouji
     400002: //RootNode
     400004: Bip001
@@ -135,11 +154,32 @@ ModelImporter:
     400124: mesh_head
     400126: wp_body
     400128: wp_head
+    400130: Bip001 Xtra01
+    400132: Bip001 Xtra0102
+    400134: Bip001 Xtra0103
+    400136: Bip001 Xtra0104
+    400138: Bip001 Xtra01Opp
+    400140: Bip001 Xtra01Opp02
+    400142: Bip001 Xtra01Opp03
+    400144: Bip001 Xtra01Opp04
+    400146: Bip001 Xtra02
+    400148: Bip001 Xtra0202
+    400150: Bip001 Xtra0203
+    400152: Bip001 Xtra0204
+    400154: Bip001 Xtra02Opp
+    400156: Bip001 Xtra02Opp02
+    400158: Bip001 Xtra02Opp03
+    400160: Bip001 Xtra02Opp04
+    400162: e_shouji
+    400164: mesh_heart
+    400166: wp_heart
     4300000: mesh_head
     4300002: mesh_body
+    4300004: mesh_heart
     9500000: //RootNode
     13700000: mesh_body
     13700002: mesh_head
+    13700004: mesh_heart
   materials:
     importMaterials: 1
     materialName: 0
@@ -196,8 +236,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

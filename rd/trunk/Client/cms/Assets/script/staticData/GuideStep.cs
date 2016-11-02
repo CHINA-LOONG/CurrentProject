@@ -8,8 +8,8 @@ public class GuideStep
     public string purpose;
     public string talkId;
     public string posObject;
-    public float tipsX;
-    public float tipsY;
+    public int tipsX;
+    public int tipsY;
     public string tipsContent;
     public int exitNoEvent;//点击非focus区域退出
 

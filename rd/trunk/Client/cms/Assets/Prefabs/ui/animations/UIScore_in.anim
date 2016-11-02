@@ -202,12 +202,12 @@ AnimationClip:
         outSlope: 2149.37134
         tangentMode: 1
       - time: .333333343
-        value: 378
+        value: 298
         inSlope: 0
         outSlope: 0
         tangentMode: 1
       - time: .633333325
-        value: 378
+        value: 298
         inSlope: 0
         outSlope: 0
         tangentMode: 1
@@ -595,12 +595,12 @@ AnimationClip:
         outSlope: 2149.37134
         tangentMode: 1
       - time: .333333343
-        value: 378
+        value: 298
         inSlope: 0
         outSlope: 0
         tangentMode: 1
       - time: .633333325
-        value: 378
+        value: 298
         inSlope: 0
         outSlope: 0
         tangentMode: 1

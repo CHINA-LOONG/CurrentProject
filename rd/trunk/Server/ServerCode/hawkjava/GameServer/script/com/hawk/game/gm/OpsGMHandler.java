@@ -1,6 +1,7 @@
 package com.hawk.game.gm;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.hawk.os.HawkTime;
 import org.hawk.script.HawkScript;
 import org.hawk.script.HawkScriptManager;
 import org.hawk.util.HawkJsonUtil;
+import org.hawk.util.services.FunPlusPushService;
 import org.hawk.util.services.HawkAccountService;
 import org.hawk.xid.HawkXID;
 
@@ -525,6 +527,22 @@ public class OpsGMHandler extends HawkScript{
 				if (mailCfg != null) {
 					MailUtil.SendSysMail(mailCfg, player.getId(), count);
 				}
+				commadnHandled = true;
+			}
+			break;
+		}
+		// 推送
+		case "push": {
+			String message = request.containsKey("message") ? request.getString("message") : "";
+			String funplusIdJson = request.containsKey("funplusid") ? request.getString("funplusid") : "";
+			List<Integer> puidList = new ArrayList<Integer>();
+
+			JSONArray puids = JSONArray.fromObject(funplusIdJson);
+			for (Object element : puids) {
+				puidList.add((Integer) element);
+			}
+
+			if (true == FunPlusPushService.getInstance().pushSimple(message, puidList)) {
 				commadnHandled = true;
 			}
 			break;

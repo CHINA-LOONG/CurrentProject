@@ -294,7 +294,7 @@ public class Player extends HawkAppObj {
 		// 玩家未组装完成
 		if (!isAssembleFinish() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
 			//HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
-			//return true;
+			return true;
 		}
 
 		return false;

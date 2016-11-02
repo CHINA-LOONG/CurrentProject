@@ -26,7 +26,7 @@ public class bossmidasigongHuangjinzhiling1 : BossAi {
 		Spell useSpell = null;
 
 		attackResult.attackTarget = GetAttackRandomTarget(Huangjinzhiling1Unit);
-		if (Huangjinzhiling1Unit.curLife / Huangjinzhiling1Unit.maxLife >= 0.5) 
+		if (Huangjinzhiling1Unit.curLife / (float)Huangjinzhiling1Unit.maxLife >= 0.5) 
 		{
 			Huangjinzhiling1SpellDic.TryGetValue ("bossmidasigongHuangjinzhiling11", out useSpell);
 			if (GetAttackCount (Huangjinzhiling1Unit) % 3 == 0 && GetAttackCount (Huangjinzhiling1Unit) != 0) 

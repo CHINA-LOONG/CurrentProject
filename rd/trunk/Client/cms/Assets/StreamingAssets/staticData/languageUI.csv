@@ -608,53 +608,55 @@ sociaty_record_069,升级成功,Upgrade success
 tower_instance_title,愿望树,The Wishing Tree
 tower_gold_name,米达斯宫,Palace of Midas
 tower_exp_name,至福乐土,Fields of Elysium
-tower_instance_time,开启时间：,Starting time:
-tower_instance_drop,掉落物品：,Possible drops:
-tower_gold_time,每周二、四、六、和周日,"Every Tuesday, Thursday, Saturday, and Sunday"
-tower_exp_time,每周一、三、五、和周日,"Every Monday, Wednesday, Friday, and Sunday"
-tower_instance_count,剩余次数：{0},Remaining tries:
+tower_instance_drop,掉落物品,Possible drops
+tower_gold_time,每周二、四、六、和周日,"Every Tue, Thu, Sat, and Sun"
+tower_exp_time,每周一、三、五、和周日,"Every Mon, Wed, Fri, and Sun"
+tower_instance_count,剩余次数 {0},Remaining tries {0}
 tower_difficulty_title,选择难度,Select Difficulty
-tower_difficulty_1,难度I,Newbie
-tower_difficulty_2,难度II,Easy
-tower_difficulty_3,难度III,Normal
-tower_difficulty_4,难度IV,Hard
+tower_difficulty_1,难度I,Difficulty - 1
+tower_difficulty_2,难度II,Difficulty - 2
+tower_difficulty_3,难度III,Difficulty - 3
+tower_difficulty_4,难度IV,Difficulty - 4
 tower_record_001,该副本今日不开启,This stage is not open today.
 tower_record_002,今日已达到最大次数,Already reached the maximum number for today.
 tower_record_003,该难度将在玩家{0}级时开启,This difficulty unlocks at Player Level {0}.
 tower_record_004,该副本已关闭,This stage is already closed.
 towerBoss_instance_title,通天塔,Towers Of Trials 
-towerBoss_instance_name1,试炼之塔（20层）,Tower Of Gauntlets (Floor 20)
-towerBoss_instance_name2,绝望之塔（30层）,Tower Of Despair (Floor 30)
-towerBoss_instance_name3,死亡之塔（40层）,Tower Of Death (Floor 40)
-towerBoss_instance_level,开启等级：,Unlock level:
-towerBoss_instance_fatigue,每层消耗活力值：,Energy required per floor:
+towerBoss_instance_name1,试炼之塔,Tower Of Gauntlets
+towerBoss_instance_name2,绝望之塔,Tower Of Despair
+towerBoss_instance_name3,死亡之塔,Tower Of Death
 towerBoss_instance_shop,通天塔商店,Tower Shop
-towerBoss_instance_time,刷新时间剩余:{0}天,Time until refresh: {0} days
+towerBoss_instance_time1,刷新时间剩余:{0}天,Time until refresh: {0} days
+towerBoss_instance_time2,刷新时间剩余:{0}小时,Time until refresh: {0} hours
+towerBoss_instance_time3,刷新时间剩余：不足1小时,Time until refresh: Less than 1 hour
 towerBoss_instance_reward,Stage奖励,Stage Reward
+towerBoss_instance_floor1,总层数 20,Total floor 20
+towerBoss_instance_floor2,总层数 30,Total floor 30
+towerBoss_instance_floor3,总层数 40,Total floor 40
 towerBoss_record_001,玩家等级不足，无法进入,Player has not reached the required level. Unable to enter.
 towerBoss_record_002,已通关该层,This floor has already been cleared.
 towerBoss_record_003,尚未通关之前的层数,The previous floors must be cleared first.
 towerBoss_record_004,副本进度已重置,Stage progress has already been reset.
-towerBoss_1_1,试炼之塔 - 1,Tower Of Gauntlets - 1
-towerBoss_1_2,试炼之塔 - 2,Tower Of Gauntlets - 2
-towerBoss_1_3,试炼之塔 - 3,Tower Of Gauntlets - 3
-towerBoss_1_4,试炼之塔 - 4,Tower Of Gauntlets - 4
-towerBoss_1_5,试炼之塔 - 5,Tower Of Gauntlets - 5
-towerBoss_1_6,试炼之塔 - 6,Tower Of Gauntlets - 6
-towerBoss_1_7,试炼之塔 - 7,Tower Of Gauntlets - 7
-towerBoss_1_8,试炼之塔 - 8,Tower Of Gauntlets - 8
-towerBoss_1_9,试炼之塔 - 9,Tower Of Gauntlets - 9
-towerBoss_1_10,试炼之塔 - 10,Tower Of Gauntlets - 10
-towerBoss_1_11,试炼之塔 - 11,Tower Of Gauntlets - 11
-towerBoss_1_12,试炼之塔 - 12,Tower Of Gauntlets - 12
-towerBoss_1_13,试炼之塔 - 13,Tower Of Gauntlets - 13
-towerBoss_1_14,试炼之塔 - 14,Tower Of Gauntlets - 14
-towerBoss_1_15,试炼之塔 - 15,Tower Of Gauntlets - 15
-towerBoss_1_16,试炼之塔 - 16,Tower Of Gauntlets - 16
-towerBoss_1_17,试炼之塔 - 17,Tower Of Gauntlets - 17
-towerBoss_1_18,试炼之塔 - 18,Tower Of Gauntlets - 18
-towerBoss_1_19,试炼之塔 - 19,Tower Of Gauntlets - 19
-towerBoss_1_20,试炼之塔 - 20,Tower Of Gauntlets - 20
+shilianta - 1,试炼之塔 - 1,Tower Of Gauntlets - 1
+shilianta - 2,试炼之塔 - 2,Tower Of Gauntlets - 2
+shilianta - 3,试炼之塔 - 3,Tower Of Gauntlets - 3
+shilianta - 4,试炼之塔 - 4,Tower Of Gauntlets - 4
+shilianta - 5,试炼之塔 - 5,Tower Of Gauntlets - 5
+shilianta - 6,试炼之塔 - 6,Tower Of Gauntlets - 6
+shilianta - 7,试炼之塔 - 7,Tower Of Gauntlets - 7
+shilianta - 8,试炼之塔 - 8,Tower Of Gauntlets - 8
+shilianta - 9,试炼之塔 - 9,Tower Of Gauntlets - 9
+shilianta - 10,试炼之塔 - 10,Tower Of Gauntlets - 10
+shilianta - 11,试炼之塔 - 11,Tower Of Gauntlets - 11
+shilianta - 12,试炼之塔 - 12,Tower Of Gauntlets - 12
+shilianta - 13,试炼之塔 - 13,Tower Of Gauntlets - 13
+shilianta - 14,试炼之塔 - 14,Tower Of Gauntlets - 14
+shilianta - 15,试炼之塔 - 15,Tower Of Gauntlets - 15
+shilianta - 16,试炼之塔 - 16,Tower Of Gauntlets - 16
+shilianta - 17,试炼之塔 - 17,Tower Of Gauntlets - 17
+shilianta - 18,试炼之塔 - 18,Tower Of Gauntlets - 18
+shilianta - 19,试炼之塔 - 19,Tower Of Gauntlets - 19
+shilianta - 20,试炼之塔 - 20,Tower Of Gauntlets - 20
 towerBoss_2_1,绝望之塔 - 1,Tower Of Despair - 1
 towerBoss_2_2,绝望之塔 - 2,Tower Of Despair - 2
 towerBoss_2_3,绝望之塔 - 3,Tower Of Despair - 3
@@ -1073,11 +1075,11 @@ loading_tips12,若与敌人僵持不下，出现平局按钮后，可以选择�
 loading_tips13,根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。,The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
 loading_tips14,竞技场前100名的排行数据每10分钟刷新一次。,The top 100 player rankings are updated every 10 minutes.
 start_record_001,该功能{0}级开启,start at level {0}
-Zhifuletu - 1,至福乐土,Bliss paradise
-Zhifuletu - 2,至福乐土,Bliss paradise
-Zhifuletu - 3,至福乐土,Bliss paradise
-Zhifuletu - 4,至福乐土,Bliss paradise
-Midasigong - 1,弥达斯宫,Midas's?Palace
-Midasigong - 2,弥达斯宫,Midas's?Palace
-Midasigong - 3,弥达斯宫,Midas's?Palace
-Midasigong - 4,弥达斯宫,Midas's?Palace
+Zhifuletu - 1,至福乐土,Bliss paradise - 1
+Zhifuletu - 2,至福乐土,Bliss paradise - 2
+Zhifuletu - 3,至福乐土,Bliss paradise - 3
+Zhifuletu - 4,至福乐土,Bliss paradise - 4
+Midasigong - 1,弥达斯宫,Midas's?Palace - 1
+Midasigong - 2,弥达斯宫,Midas's?Palace - 2
+Midasigong - 3,弥达斯宫,Midas's?Palace - 3
+Midasigong - 4,弥达斯宫,Midas's?Palace - 4
