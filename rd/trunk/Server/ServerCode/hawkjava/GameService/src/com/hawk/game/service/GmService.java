@@ -90,7 +90,7 @@ public class GmService extends GameService {
 				String nickname = entry.getValue().get(0).getNickname();
 				short level = entry.getValue().get(0).getPlayerLevel();
 
-				PlayerEntity playerEntity = new PlayerEntity(puid, nickname, (byte)1, 1, 1, 1, 1);
+				PlayerEntity playerEntity = new PlayerEntity(puid, nickname);
 				playerEntity.setLevel(level);
 				if (false == playerEntity.notifyCreate()) {
 					continue;

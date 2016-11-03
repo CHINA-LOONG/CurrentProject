@@ -401,7 +401,7 @@ public class GameDataMgr : MonoBehaviour
         //}
         mainPlayer.playerId = playerInfo.playerId;
         mainPlayer.nickName = playerInfo.nickname;
-        mainPlayer.career = playerInfo.career;
+        mainPlayer.portraitId = playerInfo.portraitId;
         {
             mainPlayer.LevelAttr = playerInfo.level;
            // GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
@@ -420,11 +420,6 @@ public class GameDataMgr : MonoBehaviour
 
         mainPlayer.TowerCoinAttr = playerInfo.towerCoin;
         mainPlayer.HonorAtr = playerInfo.honor;
-
-        mainPlayer.gender = playerInfo.gender;
-        mainPlayer.eye = playerInfo.eye;
-        mainPlayer.hair = playerInfo.hair;
-        mainPlayer.hairColor = playerInfo.hairColor;
         mainPlayer.recharget = playerInfo.recharge;
         mainPlayer.vipLevel = playerInfo.vipLevel;
     }

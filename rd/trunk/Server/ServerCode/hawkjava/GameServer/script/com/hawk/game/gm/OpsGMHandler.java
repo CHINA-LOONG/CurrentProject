@@ -348,7 +348,7 @@ public class OpsGMHandler extends HawkScript{
 				}
 			}
 			response.put("monsterList", monsters);
-			
+
 			commadnHandled = true;
 			break;
 		}

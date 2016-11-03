@@ -11,7 +11,6 @@ import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
-import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;

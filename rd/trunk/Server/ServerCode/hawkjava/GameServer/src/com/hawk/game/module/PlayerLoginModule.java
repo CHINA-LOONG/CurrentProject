@@ -1,11 +1,12 @@
 package com.hawk.game.module;
 
+import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
-import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
+import org.hawk.util.services.HawkAccountService;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
@@ -14,6 +15,8 @@ import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Login.HSSyncInfo;
 import com.hawk.game.protocol.Login.HSSyncInfoRet;
+import com.hawk.game.protocol.Player.HSPlayerComplete;
+import com.hawk.game.protocol.Player.HSPlayerCompleteRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
@@ -24,46 +27,23 @@ import com.hawk.game.util.ProtoUtil;
  * @author hawk
  */
 public class PlayerLoginModule extends PlayerModule {
-	/**
-	 * 构造函数
-	 * 
-	 * @param player
-	 */
+
 	public PlayerLoginModule(Player player) {
 		super(player);
-		listenProto(HS.code.SYNCINFO_C_VALUE);
-	}
-
-	/**
-	 * 协议响应
-	 * 
-	 * @param protocol
-	 * @return
-	 */
-	@Override
-	public boolean onProtocol(HawkProtocol protocol)
-	{
-		if (protocol.checkType(HS.code.SYNCINFO_C_VALUE))
-		{
-			// 处理本会话的玩家登录协议
-			onPlayerLogin(protocol.getSession(), protocol.getType(), protocol.parseProtocol(HSSyncInfo.getDefaultInstance()));
-			return true;
-		}
-		return super.onProtocol(protocol);
 	}
 
 	/**
 	 * 登录协议处理
-	 * 
-	 * @param session
-	 * @param protocol
 	 */
-	private boolean onPlayerLogin(HawkSession session, int hsCode, HSSyncInfo protocol)
-	{
+	@ProtocolHandler(code = HS.code.SYNCINFO_C_VALUE)
+	private boolean onPlayerLoginSync(HawkProtocol cmd) {
+		HSSyncInfo protocol = cmd.parseProtocol(HSSyncInfo.getDefaultInstance());
+		int hsCode = cmd.getType();
+		 
 		// 在线人数达到上限
 		int sessionMaxSize = HawkApp.getInstance().getAppCfg().getSessionMaxSize();
 		if (sessionMaxSize > 0 && ServerData.getInstance().getOnlinePlayer() >= sessionMaxSize) {
-			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.ONLINE_MAX_LIMIT_VALUE, 1));
+			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.ONLINE_MAX_LIMIT_VALUE, 1));
 			return true;
 		}
 
@@ -115,11 +95,11 @@ public class PlayerLoginModule extends PlayerModule {
 			if (phoneType != null && phoneType.length() >= 0) {
 				playerEntity.setPhoneType(phoneType);
 			}
-			
+
 			if (osName != null && osName.length() >= 0) {
 				playerEntity.setOsName(osName);
 			}
-			
+
 			if (osVersion != null && osVersion.length() >= 0) {
 				playerEntity.setOsName(osVersion);
 			}
@@ -128,7 +108,7 @@ public class PlayerLoginModule extends PlayerModule {
 		// 玩家对象信息错误
 		if (playerEntity == null || playerEntity.getId() <= 0)
 		{
-			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
+			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
 			return true;
 		}
 
@@ -140,7 +120,7 @@ public class PlayerLoginModule extends PlayerModule {
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
-		// 登录回复协议
+		// 回复登录完成协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
 		response.setStatus(error.NONE_ERROR_VALUE);
 		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
@@ -154,7 +134,37 @@ public class PlayerLoginModule extends PlayerModule {
 
 		return true;
 	}
-	
+
+	/**
+	 * 登录协议处理
+	 */
+	@ProtocolHandler(code = HS.code.PLAYER_COMPLETE_C_VALUE)
+	private boolean onPlayerComplete(HawkProtocol cmd) {
+		HSPlayerComplete protocol = cmd.parseProtocol(HSPlayerComplete.getDefaultInstance());
+		int hsCode = cmd.getType();
+		String nickname = protocol.getNickname();
+		int portraitId = 0;
+		if (true == protocol.hasPortraitId()) {
+			portraitId = protocol.getPortraitId();
+		}
+
+		if (ServerData.getInstance().isExistName(nickname)) {
+			sendError(hsCode, Status.PlayerError.PLAYER_NICKNAME_EXIST);
+		}
+
+		player.getEntity().setNickname(nickname);
+		player.getEntity().setPortrait(portraitId);
+		player.getEntity().notifyUpdate(true);
+
+		ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), player.getId());
+
+		HawkAccountService.getInstance().report(new HawkAccountService.RenameRoleData(player.getPuid(), player.getId(), nickname));
+
+		HSPlayerCompleteRet.Builder response = HSPlayerCompleteRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_COMPLETE_S, response));
+		 return true;
+	}
+
 	@Override
 	protected boolean onPlayerReconnect(HawkMsg msg){
 		player.getEntity().setLoginTime(HawkTime.getCalendar());
@@ -168,9 +178,9 @@ public class PlayerLoginModule extends PlayerModule {
 		player.getEntity().setLogoutTime(HawkTime.getCalendar());
 		// 重要数据下线就存储
 		player.getEntity().notifyUpdate(false);
-		
+
 		return true;
 	}
-	
-	
+
+
 }

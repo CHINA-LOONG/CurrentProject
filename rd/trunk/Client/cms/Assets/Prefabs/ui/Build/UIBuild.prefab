@@ -63,6 +63,7 @@ GameObject:
   - 222: {fileID: 22205788}
   - 114: {fileID: 11440238}
   - 114: {fileID: 11404780}
+  - 114: {fileID: 11495654}
   m_Layer: 5
   m_Name: BuildButton_shop
   m_TagString: Untagged
@@ -929,6 +930,7 @@ GameObject:
   - 222: {fileID: 22217818}
   - 114: {fileID: 11491526}
   - 114: {fileID: 11486986}
+  - 114: {fileID: 11476340}
   m_Layer: 5
   m_Name: BuildButton_qiandao
   m_TagString: Untagged
@@ -3458,6 +3460,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11476340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_build_qiandao
 --- !u!114 &11477054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3629,6 +3643,8 @@ MonoBehaviour:
   - {fileID: 11438160}
   - {fileID: 11442222}
   - {fileID: 11441238}
+  - {fileID: 11476340}
+  - {fileID: 11495654}
   uiAnimator: {fileID: 0}
   uiViewName: 
   m_PetButton: {fileID: 11464682}
@@ -3952,6 +3968,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11495654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c6a7f8a1087448a4a162e3d022d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: gd_build_shop
 --- !u!114 &11495684
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -35,8 +35,23 @@ public class GuideCondition
                 return guide13_14IsOk(true);
             case 14:
                 return guide13_14IsOk(false);
+            case 15:
+                return guide15IsOk();
+            case 16:
+                return guide16_17IsOK(true);
+            case 17:
+                return guide16_17IsOK(false);
+            case 18:
+                return guide18_19_20IsOK();
+            case 19:
+                return guide18_19_20IsOK();
+            case 20:
+                return guide18_19_20IsOK();
+            case 21:
+                return guide21IsOK();
+
             default:
-                Logger.LogErrorFormat("新手引导groupId 为 {0},这个谁配置的，需要在GuideCondition中增加条件！FF ");
+                Logger.LogErrorFormat("新手引导groupId 为 {0},这个谁配置的，需要在GuideCondition中增加条件！FF ", guideGroupId);
                 break;
         }
         return false;
@@ -58,7 +73,7 @@ public class GuideCondition
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
 
-        return true;
+        return  GuideHelp.Instance.IsFirstTaskFinished();
     }
     static bool guide5_6IsOk(bool moreButtonIsOpen)
     {
@@ -67,7 +82,8 @@ public class GuideCondition
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
-        return true;
+
+        return GuideHelp.Instance.IsPetFragmentEnough();
     }
 
     static bool guide7_8IsOk(bool moreButtonIsOpen)
@@ -86,7 +102,10 @@ public class GuideCondition
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
-        return true;
+        if (GuideHelp.Instance.GetExpItemCount() > 0 && GuideHelp.Instance.GetExpUseCount() == 0)
+            return true;
+        else
+            return false;
     }
 
     static bool guide11_12IsOk(bool moreButtonIsOpen)
@@ -96,7 +115,12 @@ public class GuideCondition
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
-        return true;
+
+        if (GuideHelp.Instance.GetPetNumberWithLevelMore(1) > 1 &&
+            GuideHelp.Instance.GetPetSkilledTimes() == 0)
+            return true;
+        else
+            return false;
     }
     static bool guide13_14IsOk(bool moreButtonIsOpen)
     {
@@ -105,6 +129,25 @@ public class GuideCondition
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
+        if (!GuideHelp.Instance.IsPetHasWear() && GuideHelp.Instance.GetCanWeaponPetNumber() > 0)
+            return true;
+        else
+            return false;
+    }
+    static bool guide15IsOk()
+    {
+        return true;
+    }
+    static bool guide16_17IsOK(bool moreButtonIsOpen)
+    {
+        return true;
+    }
+    static bool guide18_19_20IsOK()
+    {
+        return true;
+    }
+    static bool guide21IsOK()
+    {
         return true;
     }
 }

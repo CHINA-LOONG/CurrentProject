@@ -473,7 +473,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Rewards:'
+  m_Text: 
 --- !u!114 &11495750
 MonoBehaviour:
   m_ObjectHideFlags: 1

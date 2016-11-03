@@ -48,8 +48,7 @@ message HSReconnectRet
 }
 
 // KICKOUT_S
-message HSUserKickout
+message HSKickPlayer
 {
-	required int32 playerId = 1;
-	optional int32 reason = 2;	
+	required int32 reason = 1;
 }

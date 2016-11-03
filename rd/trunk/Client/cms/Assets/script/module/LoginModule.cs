@@ -193,15 +193,9 @@ public class LoginModule : ModuleBase
         BuildModule.needSyncInfo = true;
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();
 		UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILogin.ViewName));
-		if (loginS.playerId > 0) 
-		{
-			GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
-			GameMain.Instance.ChangeModule<BuildModule>();
-		}
-		else
-		{
-			GameMain.Instance.ChangeModule<CreatePlayerModule>();
-        }
+
+		GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
+		GameMain.Instance.ChangeModule<BuildModule>();
 	}
 
 	public override void OnInit(object param)

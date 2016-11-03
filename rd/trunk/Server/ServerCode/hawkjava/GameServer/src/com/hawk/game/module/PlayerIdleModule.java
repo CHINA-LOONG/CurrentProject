@@ -35,7 +35,7 @@ public class PlayerIdleModule extends PlayerModule {
 		// 最后通知组装完成
 		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
 		response.setPlayerId(player.getId());
-		response.setAllianceID(player.getAllianceId());
+		response.setAllianceId(player.getAllianceId());
 		response.setContribution(player.getPlayerData().getPlayerAllianceEntity().getContribution());
 		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
 		
@@ -50,7 +50,7 @@ public class PlayerIdleModule extends PlayerModule {
 	protected boolean onPlayerReconnect(HawkMsg msg) {
 		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
 		response.setPlayerId(player.getId());
-		response.setAllianceID(player.getAllianceId());
+		response.setAllianceId(player.getAllianceId());
 		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
 		return true;
 	}

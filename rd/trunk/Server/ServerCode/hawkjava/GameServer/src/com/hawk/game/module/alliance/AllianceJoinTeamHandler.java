@@ -103,7 +103,7 @@ public class AllianceJoinTeamHandler implements HawkMsgHandler{
 		
 		HSAllianceTeamJoinNotify.Builder notify = HSAllianceTeamJoinNotify.newBuilder();
 		notify.setMember(AllianceUtil.getTeamMemberInfo(player.getId(), allianceEntity));
-		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_JOIN_N_S_VALUE, notify), 0);
+		AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEAM_JOIN_N_S_VALUE, notify), 0);
 		
 		HSAllianceJoinTeamRet.Builder response = HSAllianceJoinTeamRet.newBuilder();
 		response.setTeamId(teamEntity.getId());

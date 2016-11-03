@@ -28,12 +28,6 @@ message HSErrorCode
 	optional int32  errFlag = 4 [default = 0];
 }
 
-// KICK_PLAYER
-message HSKickPlayer
-{
-	required int32 reason = 1;
-}
-
 // WARN
 message HSWarnPlayer
 {

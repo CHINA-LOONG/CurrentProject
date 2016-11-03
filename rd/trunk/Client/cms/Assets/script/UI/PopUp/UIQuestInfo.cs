@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIQuestInfo : UIBase
+public class UIQuestInfo : UIBase,GuideBase
 {
 
     public static string ViewName = "UIQuestInfo";
@@ -135,13 +135,27 @@ public class UIQuestInfo : UIBase
     #region UIBase
     public override void Init(bool forbidGuide = false)
     {
-        //effect.SetActive(true);
+        base.Init(forbidGuide);
+        GuideManager.Instance.RequestGuide(this);
     }
-
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
+    }
     public override void Clean()
     {
 
     }
+    void OnEnable()
+    {
+        GuideListener(true);
+    }
+    void OnDisable()
+    {
+        GuideListener(false);
+    }
+   
 
     #endregion
 

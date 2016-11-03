@@ -29,6 +29,14 @@ ModelImporter:
     100042: Dummy007
     100044: Dummy008
     100046: wz_qiangmian_02
+    100048: shuye_02
+    100050: shuye_03
+    100052: shuye_04
+    100054: shuye_05
+    100056: shuye_06
+    100058: shuye_07
+    100060: shuye_08
+    100062: shuye_09
     400000: //RootNode
     400002: Bone008
     400004: Bone009
@@ -53,9 +61,43 @@ ModelImporter:
     400042: Dummy007
     400044: Dummy008
     400046: wz_qiangmian_02
+    400048: shuye_02
+    400050: shuye_03
+    400052: shuye_04
+    400054: shuye_05
+    400056: shuye_06
+    400058: shuye_07
+    400060: shuye_08
+    400062: shuye_09
     2300000: //RootNode
+    2300002: shuye_02
+    2300004: shuye_03
+    2300006: shuye_04
+    2300008: shuye_05
+    2300010: shuye_06
+    2300012: shuye_07
+    2300014: shuye_08
+    2300016: shuye_09
+    2300018: wz_qiangmian_02
     3300000: //RootNode
+    3300002: shuye_02
+    3300004: shuye_03
+    3300006: shuye_04
+    3300008: shuye_05
+    3300010: shuye_06
+    3300012: shuye_07
+    3300014: shuye_08
+    3300016: shuye_09
+    3300018: wz_qiangmian_02
     4300000: wz_qiangmian_02
+    4300002: shuye_02
+    4300004: shuye_03
+    4300006: shuye_04
+    4300008: shuye_05
+    4300010: shuye_06
+    4300012: shuye_07
+    4300014: shuye_09
+    4300016: shuye_08
     7400000: Take 001
     9500000: //RootNode
     11100000: //RootNode

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIShop : UIBase
+public class UIShop : UIBase,GuideBase
 {
 	public static string ViewName = "UIShop";
 
@@ -37,9 +37,15 @@ public class UIShop : UIBase
 			FistInit();
 		}
         base.Init(forbidGuide);
+        GuideManager.Instance.RequestGuide(this);
 	}
-	
-	public override void Clean()
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
+    }
+
+    public override void Clean()
 	{
 		for (int i = 0; i<listShopItem.Count; ++i) 
 		{
@@ -84,6 +90,7 @@ public class UIShop : UIBase
         GameEventMgr.Instance.AddListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
 
         ++StatisticsDataMgr.Instance.ShopOpenTimesAttr;
+        GuideListener(true);
     }
 	
 	void OnDisable()
@@ -95,6 +102,7 @@ public class UIShop : UIBase
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.TowerCoinChanged, OnTowerCoinChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.GonghuiCoinChanged, OnGonghuibiChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HonorValueChanged, OnPvpHonorChanged);
+        GuideListener(false);
     }
 
 	void OnRefreshButtonClilck(GameObject go)

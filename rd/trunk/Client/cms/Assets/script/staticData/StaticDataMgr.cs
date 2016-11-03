@@ -991,17 +991,33 @@ public class StaticDataMgr : MonoBehaviour
         // Deserialization
         List<string> rowData = new List<string>();
         List<List<string>> rows = new List<List<string>>();
-        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv"), Encoding.UTF8))
+        CsvFileReader reader;
+        string filePath = Path.Combine(Util.StaticDataPath, filename + ".csv");
+#if (UNITY_EDITOR)
+        reader = new CsvFileReader(filePath, Encoding.UTF8);
+#else
+
+    if (filename.Equals("assetMap"))
         {
-            while (reader.ReadRow(rowData))
-            {
-                rows.Add(rowData);
-                rowData = new List<string>();
-            }
-            var serializer = new CsvSerializer<T>();
-            var data = serializer.Deserialize(rows[1], rows.GetRange(3, rows.Count - 3));
-            return data;
+            reader = new CsvFileReader(filePath, Encoding.UTF8);
         }
+        else
+        {
+            byte[] buffer = Encrypt.encodeFile(Const.CSVENCRYKEY, filePath);
+            Stream stream = new MemoryStream(buffer);
+            reader = new CsvFileReader(stream, Encoding.UTF8);
+        }
+#endif
+
+        while (reader.ReadRow(rowData))
+        {
+            rows.Add(rowData);
+            rowData = new List<string>();
+        }
+        var serializer = new CsvSerializer<T>();
+        var data = serializer.Deserialize(rows[1], rows.GetRange(3, rows.Count - 3));
+
+        return data;
     }
      
     #region Get Data

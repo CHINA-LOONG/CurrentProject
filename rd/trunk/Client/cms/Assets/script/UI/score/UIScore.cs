@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class UIScore : UIBase 
+public class UIScore : UIBase ,GuideBase
 {
     public static string ViewName = "UIScore";
 
@@ -163,6 +163,14 @@ public class UIScore : UIBase
         gameObject.SetActive(false);
         mOriginalPlayerLvl = mCurrentPlayerLvl = 0;
     }
+    void OnEnable()
+    {
+        GuideListener(true);
+    }
+    void OnDisable()
+    {
+        GuideListener(false);
+    }
     //---------------------------------------------------------------------------------------------
     public override void Init(bool forbidGuide = false)
     {
@@ -178,6 +186,12 @@ public class UIScore : UIBase
         mConfirmBtn.gameObject.SetActive(false);
         mBackground.SetActive(false);
         mLineMonsterItem.SetActive(false);
+        GuideManager.Instance.RequestGuide(this);
+    }
+    public override void RefreshOnPreviousUIHide()
+    {
+        base.RefreshOnPreviousUIHide();
+        GuideManager.Instance.RequestGuide(this);
     }
     //---------------------------------------------------------------------------------------------
     public override void Clean()

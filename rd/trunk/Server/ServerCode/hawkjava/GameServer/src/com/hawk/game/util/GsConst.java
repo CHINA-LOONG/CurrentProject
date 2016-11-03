@@ -71,6 +71,8 @@ public class GsConst {
 	// 趣加Funplus
 	public static final String FUNPLUS_APP_ID = "1013";
 	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
+	// 默认昵称
+	public static final String DEFAULT_NICKNAME = "";
 
 	/**
 	 * 刷新时间

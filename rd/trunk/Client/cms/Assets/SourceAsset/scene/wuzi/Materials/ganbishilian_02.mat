@@ -85,6 +85,27 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ToonShade
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LightMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -137,7 +158,15 @@ Material:
       data:
         first:
           name: _Emission
-        second: 1
+        second: 4
+      data:
+        first:
+          name: _AmbientRatio
+        second: 0
+      data:
+        first:
+          name: _Outline
+        second: .00499999989
     m_Colors:
       data:
         first:
@@ -146,4 +175,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .658999979, g: .658999979, b: .658999979, a: 1}
+        second: {r: .441000015, g: .441000015, b: .441000015, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}

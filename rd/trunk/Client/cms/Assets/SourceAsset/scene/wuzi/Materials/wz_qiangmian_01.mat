@@ -9,7 +9,7 @@ Material:
   m_Name: wz_qiangmian_01
   m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 1
+  m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
@@ -85,6 +85,27 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ToonShade
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LightMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -138,6 +159,10 @@ Material:
         first:
           name: _Emission
         second: 1
+      data:
+        first:
+          name: _Outline
+        second: .00499999989
     m_Colors:
       data:
         first:
@@ -147,3 +172,7 @@ Material:
         first:
           name: _Color
         second: {r: .764705896, g: .764705896, b: .764705896, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}

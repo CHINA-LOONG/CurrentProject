@@ -91,7 +91,7 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 			teamEntity.removePlayerFromTeam(player.getId());
 			HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
 			notify.setPlayerId(player.getId());
-			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
+			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEAM_LEAVE_N_S, notify), 0);
 		}
 
 		AllianceManager.getInstance().removePlayerAndAllianceMap(player.getId());

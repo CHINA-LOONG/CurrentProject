@@ -15,8 +15,9 @@ namespace UnityClientConsole
     {
         private static App instance;
         private NetManager netmanaget;
-        private int    playerID;
         public string puid;
+        private int playerId;
+        private string nickname;
         private long lastBeatTime = 0;
         private long lastIMTime = 0;
         private long lastInstanceime = 0;
@@ -123,36 +124,8 @@ namespace UnityClientConsole
             if (protocol.checkType(code.LOGIN_S.GetHashCode()))
             {
                 HSLoginRet loginReturn = protocol.GetProtocolBody<HSLoginRet>();
+                Console.WriteLine("登录成功");
 
-                this.playerID = loginReturn.playerId;
-
-                // 创建角色
-                if (playerID == 0)
-                {
-                    Console.WriteLine("角色不存在，创角色");
-
-                    HSPlayerCreate createRole = new HSPlayerCreate();
-                    createRole.puid = puid;
-                    createRole.nickname = puid;
-                    createRole.career = 1;
-                    createRole.gender = 0;
-                    createRole.eye = 1;
-                    createRole.hair = 1;
-                    createRole.hairColor = 1;
-                    netmanaget.SendProtocol(code.PLAYER_CREATE_C.GetHashCode(), createRole);
-                }
-                else
-                {
-                    Console.WriteLine("登录成功");
-                    HSSyncInfo syncInfo = new HSSyncInfo();
-                    netmanaget.SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
-                }
-            }
-            else if (protocol.checkType(code.PLAYER_CREATE_S.GetHashCode()))
-            {
-                Console.WriteLine("创建角色成功 ");
-
-                playerID = protocol.GetProtocolBody<HSPlayerCreateRet>().palyerID;
                 HSSyncInfo syncInfo = new HSSyncInfo();
                 netmanaget.SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
             }
@@ -164,6 +137,7 @@ namespace UnityClientConsole
             else if (protocol.checkType(code.PLAYER_INFO_SYNC_S.GetHashCode()))
             {
                 HSPlayerInfoSync playerInfo = protocol.GetProtocolBody<HSPlayerInfoSync>();
+                nickname = playerInfo.info.nickname;
                 Console.WriteLine("同步玩家信息");
             }
             else if (protocol.checkType(code.STATISTICS_SYNC_PART1_S.GetHashCode()))
@@ -227,11 +201,21 @@ namespace UnityClientConsole
             {
                 isAssemble = true;
 
-               // HSSettingBlock settingBlock = new HSSettingBlock();
-               //settingBlock.playerId = 731; //xiaozhen1
-               // settingBlock.isBlock = true;
-               // netmanaget.SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
-               // Console.WriteLine("屏蔽");
+                // 补完角色
+                if (nickname == "")
+                {
+                    Console.WriteLine("新角色，补完角色");
+
+                    HSPlayerComplete complete = new HSPlayerComplete();
+                    complete.nickname = puid;
+                    netmanaget.SendProtocol(code.PLAYER_COMPLETE_C.GetHashCode(), complete);
+                }
+
+//                 HSSettingBlock settingBlock = new HSSettingBlock();
+//                 settingBlock.playerId = 731; //xiaozhen1
+//                 settingBlock.isBlock = true;
+//                 netmanaget.SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
+//                 Console.WriteLine("屏蔽");
 // 
 //                 HSSettingLanguage settingLang = new HSSettingLanguage();
 //                 settingLang.language = "en";
@@ -244,62 +228,62 @@ namespace UnityClientConsole
 //                 chatSend.expansion = "ha\0haha";
 //                 netmanaget.SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
 
-                //for (int i = 0; i < 1000; ++i)
-                //{
-                //    chatSend.text = "hello world!";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "你好世界~";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "这个服务器太给力了，性能超棒，不像腾讯的小霸王服务器";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "这个游戏真不错，和我这一身chanel很搭呢，有那晚和lucy一起在Hawaii的feel";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "操，怎么死机了，sbQQ，干死马化腾";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "法轮功是邪教，我们要听江泽民爷爷的话";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "his document specifies an Internet standards track protocol for the" +
-                //        " Internet community, and requests discussion and suggestions for" +
-                //        " improvements.  Please refer to the current edition of the \"Internet" +
-                //        " Official Protocol Standards\" (STD 1) for the standardization state" +
-                //        " and status of this protocol.  Distribution of this memo is unlimited.";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "你只需要记住，我叫叶良辰。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "在本地我有一百种方法让你活不下去，如果你想试试，良辰不妨陪你玩玩儿！";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "兄台，别逼我动用在北京的势力，我本不想掀起一场腥风血雨！";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "我家三世三代都是军统做事，原子弹，我爷爷都参与研究。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "不错，我就是叶良辰。你们的行为实在欺人太甚，你们若是感觉有实力跟我玩，良辰不介意奉陪到底。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "呵呵，我会让你们明白，良辰从不说空话。别让我碰到你们，如果在我的地盘，我有一百种方法让你们待不下去，可你们，却无可奈何。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "呵呵，良辰最喜欢对那些自认为能力出众的人出手，你们只需要记住，我叫叶良辰。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "无妨，你们可以把所有认识的人全部叫出来，良辰不介意陪你们玩玩，若我赢了，你们给我乖乖滚出贴吧，别欺人太甚。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-
-                //    chatSend.text = "当然，若是你们就此罢手，那良辰在此多谢了，他日，必有重谢。";
-                //    NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
-                //}
-
-                //Console.WriteLine("聊天");
+//                 for (int i = 0; i < 1000; ++i)
+//                 {
+//                     chatSend.text = "hello world!";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "你好世界~";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "这个服务器太给力了，性能超棒，不像腾讯的小霸王服务器";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "这个游戏真不错，和我这一身chanel很搭呢，有那晚和lucy一起在Hawaii的feel";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "操，怎么死机了，sbQQ，干死马化腾";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "法轮功是邪教，我们要听江泽民爷爷的话";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "his document specifies an Internet standards track protocol for the" +
+//                         " Internet community, and requests discussion and suggestions for" +
+//                         " improvements.  Please refer to the current edition of the \"Internet" +
+//                         " Official Protocol Standards\" (STD 1) for the standardization state" +
+//                         " and status of this protocol.  Distribution of this memo is unlimited.";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "你只需要记住，我叫叶良辰。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "在本地我有一百种方法让你活不下去，如果你想试试，良辰不妨陪你玩玩儿！";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "兄台，别逼我动用在北京的势力，我本不想掀起一场腥风血雨！";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "我家三世三代都是军统做事，原子弹，我爷爷都参与研究。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "不错，我就是叶良辰。你们的行为实在欺人太甚，你们若是感觉有实力跟我玩，良辰不介意奉陪到底。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "呵呵，我会让你们明白，良辰从不说空话。别让我碰到你们，如果在我的地盘，我有一百种方法让你们待不下去，可你们，却无可奈何。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "呵呵，良辰最喜欢对那些自认为能力出众的人出手，你们只需要记住，我叫叶良辰。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "无妨，你们可以把所有认识的人全部叫出来，良辰不介意陪你们玩玩，若我赢了，你们给我乖乖滚出贴吧，别欺人太甚。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+// 
+//                     chatSend.text = "当然，若是你们就此罢手，那良辰在此多谢了，他日，必有重谢。";
+//                     NetManager.GetInstance().SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+//                 }
+// 
+//                 Console.WriteLine("聊天");
 
 //                 HSImPlayerGet imPlayer = new HSImPlayerGet();
 //                 imPlayer.playerId = 725;
@@ -311,11 +295,10 @@ namespace UnityClientConsole
 //                 Console.WriteLine("生成测试账号");
 
 //                 GMOperation gmOperation = new GMOperation();
-//                 gmOperation.action = "setpass";
-//                 gmOperation.itemId = "minghe12";
+//                 gmOperation.action = "clearguide";
+//                 gmOperation.itemId = "";
 //                 gmOperation.value = 0;
 //                 netmanaget.SendProtocol(gm.GMOPERATION_C.GetHashCode(), gmOperation);
-
 
 //                 HSMailRead mailRead = new HSMailRead();
 //                 mailRead.mailId = 2;
@@ -370,10 +353,10 @@ namespace UnityClientConsole
 //                 tower.battleMonsterId.Add(44278);
 //                 netmanaget.SendProtocol(code.TOWER_ENTER_C.GetHashCode(), tower);
 
-                //HSChapterBox chapterBox = new HSChapterBox();
-                //chapterBox.chapterId = 1;
-                //chapterBox.difficulty = 0;
-                //netmanaget.SendProtocol(code.CHAPTER_BOX_C.GetHashCode(), chapterBox);
+//                 HSChapterBox chapterBox = new HSChapterBox();
+//                 chapterBox.chapterId = 1;
+//                 chapterBox.difficulty = 0;
+//                 netmanaget.SendProtocol(code.CHAPTER_BOX_C.GetHashCode(), chapterBox);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -440,6 +423,11 @@ namespace UnityClientConsole
 //                 signinFill.month = 2;
 //                 netmanaget.SendProtocol(code.SIGNIN_FILL_C.GetHashCode(), signinFill);
             }
+            // 补完角色------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.PLAYER_COMPLETE_S.GetHashCode()))
+            {
+                Console.WriteLine("补完角色成功 ");
+            }
             // 刷新----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SYNC_DAILY_REFRESH_S.GetHashCode()))
             {
@@ -458,21 +446,21 @@ namespace UnityClientConsole
                  instanceSettle.passBattleCount = 3;
                  netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
 
-                //HSInstanceRevive instanceRevive = new HSInstanceRevive();
-                //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
+//                 HSInstanceRevive instanceRevive = new HSInstanceRevive();
+//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
             }
             else if (protocol.checkType(code.INSTANCE_SETTLE_S.GetHashCode()))
             {
                 HSInstanceSettleRet settleReturn = protocol.GetProtocolBody<HSInstanceSettleRet>();
                 Console.WriteLine("副本结算");
 
-                //HSInstanceOpenCard openCard = new HSInstanceOpenCard();
-                //openCard.openCount = 1;
-                //NetManager.GetInstance().SendProtocol(code.INSTANCE_OPEN_CARD_C.GetHashCode(), openCard);
+//                 HSInstanceOpenCard openCard = new HSInstanceOpenCard();
+//                 openCard.openCount = 1;
+//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_OPEN_CARD_C.GetHashCode(), openCard);
 
-                HSInstanceResetCount resetCount = new HSInstanceResetCount();
-                resetCount.instanceId = "minghe13";
-                netmanaget.SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
+//                 HSInstanceResetCount resetCount = new HSInstanceResetCount();
+//                 resetCount.instanceId = "minghe13";
+//                 netmanaget.SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
             }
             else if (protocol.checkType(code.INSTANCE_OPEN_CARD_S.GetHashCode()))
             {
@@ -597,6 +585,13 @@ namespace UnityClientConsole
             {
                 GMOperationRet imPlayer = protocol.GetProtocolBody<GMOperationRet>();
                 Console.WriteLine("gm 操作成功");
+
+                HSInstanceEnter instanceEnter = new HSInstanceEnter();
+                instanceEnter.instanceId = "dajie13";
+                instanceEnter.battleMonsterId.Add(62379);
+                instanceEnter.battleMonsterId.Add(62380);
+                instanceEnter.battleMonsterId.Add(62381);
+                netmanaget.SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
             }
             // ALLIANCE-------------------------------------------------------------------------------------------------------
 //             else if (protocol.checkType(code.ALLIANCE_CREATE_S.GetHashCode()))
@@ -609,11 +604,12 @@ namespace UnityClientConsole
 //                 HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
 //                 Console.WriteLine("工会列表");
 //             }
-             //if (protocol.checkType(code.ALLIANCE_JOINLIST_S.GetHashCode()))
-             //{
-             //    HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
-             //    Console.WriteLine("工会列表");
-             //}
+
+//             if (protocol.checkType(code.ALLIANCE_JOINLIST_S.GetHashCode()))
+//             {
+//                 HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
+//                 Console.WriteLine("工会列表");
+//             }
             // 大冒险----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.ADVENTURE_ENTER_S.GetHashCode()))
             {
@@ -624,8 +620,8 @@ namespace UnityClientConsole
                 settle.teamId = 1;
                 netmanaget.SendProtocol(code.ADVENTURE_SETTLE_C.GetHashCode(), settle);
 
-                //HSInstanceRevive instanceRevive = new HSInstanceRevive();
-                //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
+//                 HSInstanceRevive instanceRevive = new HSInstanceRevive();
+//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
             }
             // 抽蛋----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SUMMON_ONE_S.GetHashCode()))

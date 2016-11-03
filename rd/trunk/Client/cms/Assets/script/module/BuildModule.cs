@@ -202,7 +202,7 @@ public class BuildModule : ModuleBase
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
             //GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
 			Logger.LogWarning("player info sync finished!");
-            GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = finishState.allianceID;
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = finishState.allianceId;
             GameDataMgr.Instance.PlayerDataAttr.GonghuiCoinAttr = finishState.contribution;
             StatisticsDataMgr.Instance.BeginHeartBreak();
 		}

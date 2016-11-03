@@ -45,7 +45,7 @@ public class MemberInfo : UIBase
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_CHANGE_POS_S.GetHashCode().ToString(), OnRequestAppointmentFinished);
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KICK_C.GetHashCode().ToString(), OnRequestKichFinished);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KCIK_S.GetHashCode().ToString(), OnRequestKichFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KICK_S.GetHashCode().ToString(), OnRequestKichFinished);
     }
 
     void OnDisable()
@@ -57,7 +57,7 @@ public class MemberInfo : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_CHANGE_POS_S.GetHashCode().ToString(), OnRequestAppointmentFinished);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KICK_C.GetHashCode().ToString(), OnRequestKichFinished);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KCIK_S.GetHashCode().ToString(), OnRequestKichFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_MEMBER_KICK_S.GetHashCode().ToString(), OnRequestKichFinished);
     }
 
     public void InitWith(PB.AllianceMember allianceMember)

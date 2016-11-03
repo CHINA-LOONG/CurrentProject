@@ -185,21 +185,13 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSUserKickout")]
-  public partial class HSUserKickout : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSKickPlayer")]
+  public partial class HSKickPlayer : global::ProtoBuf.IExtensible
   {
-    public HSUserKickout() {}
+    public HSKickPlayer() {}
     
-    private int _playerId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int playerId
-    {
-      get { return _playerId; }
-      set { _playerId = value; }
-    }
-    private int _reason = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _reason;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int reason
     {
       get { return _reason; }

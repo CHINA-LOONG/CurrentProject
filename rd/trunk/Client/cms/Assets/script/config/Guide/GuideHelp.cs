@@ -204,7 +204,10 @@ public class GuideHelp
             return true;
         return MoreButton.Instance.IsMoreButtonExpand;
     }
-
+    /// <summary>
+    /// 签到页面是否是自动打开的
+    /// </summary>
+    /// <returns></returns>
     public bool IsSigninAutoOpen()
     {
         return isSignAutoOpen;

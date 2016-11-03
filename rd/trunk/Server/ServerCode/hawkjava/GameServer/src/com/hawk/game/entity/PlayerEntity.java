@@ -40,20 +40,8 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "nickname", unique = true, nullable = false)
 	protected String nickname = "";
 
-	@Column(name = "gender", nullable = false)
-	protected byte gender = 0;
-
-	@Column(name = "eye", nullable = false)
-	protected byte eye = 0;
-
-	@Column(name = "hair", nullable = false)
-	protected byte hair = 0;
-
-	@Column(name = "hairColor", nullable = false)
-	protected byte hairColor = 0;
-
-	@Column(name = "career", nullable = false)
-	protected byte career = 0;
+	@Column(name = "portrait", nullable = false)
+	protected int portrait = 0;
 
 	@Column(name = "recharge", nullable = false)
 	protected int recharge = 0;
@@ -68,8 +56,8 @@ public class PlayerEntity extends HawkDBEntity {
 	protected int exp = 0;
 
 	@Column(name = "honorPoint", nullable = false)
-	protected int honorPoint = 0;	
-	
+	protected int honorPoint = 0;
+
 	@Column(name = "goldBuy", nullable = false)
 	protected int goldBuy = 0;
 
@@ -81,7 +69,7 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "coinTower", nullable = false)
 	protected int coinTower = 0;
-	
+
 	@Column(name = "coinArena", nullable = false)
 	protected int coinArena = 0;
 
@@ -102,14 +90,14 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "osVersion", nullable = false)
 	protected String osVersion = "";
-	
+
 	@Column(name = "osName", nullable = false)
 	protected String osName = "";
 
 	// 锁定时间
 	@Column(name = "lockTime", nullable = false)
 	protected int lockTime = 0;
-	
+
 	@Column(name = "loginTime")
 	protected Calendar loginTime = null;
 
@@ -135,20 +123,15 @@ public class PlayerEntity extends HawkDBEntity {
 		this.loginTime = HawkTime.getCalendar();
 	}
 
-	public PlayerEntity(String puid, String device, String platform, String phoneInfo) {
+	public PlayerEntity(String puid){
 		this.puid = puid;
 		this.loginTime = HawkTime.getCalendar();
 	}
 
-	public PlayerEntity(String puid, String nickname, byte career, int gender, int eye, int hair, int hairColor){
+	public PlayerEntity(String puid, String nickname){
 		this.puid = puid;
+		this.nickname = puid;
 		this.loginTime = HawkTime.getCalendar();
-		this.nickname = nickname;
-		this.career = career;
-		this.gender = (byte)gender;
-		this.eye = (byte)eye;
-		this.hair = (byte)hair;
-		this.hairColor = (byte)hairColor;
 	}
 
 	public int getId() {
@@ -175,12 +158,12 @@ public class PlayerEntity extends HawkDBEntity {
 		this.nickname = nickname;
 	}
 
-	public byte getCareer() {
-		return career;
+	public int getPortrait() {
+		return portrait;
 	}
 
-	public void setCareer(byte career) {
-		this.career = career;
+	public void setPortrait(int portrait) {
+		this.portrait = portrait;
 	}
 
 	public short getLevel() {
@@ -285,22 +268,6 @@ public class PlayerEntity extends HawkDBEntity {
 		this.vipLevel = vipLevel;
 	}
 
-	public int getGender() {
-		return this.gender;
-	}
-
-	public int getEye() {
-		return this.eye;
-	}
-
-	public int getHair() {
-		return this.hair;
-	}
-
-	public int getHairColor() {
-		return this.hairColor;
-	}
-
 	public String getDevice() {
 		return device;
 	}
@@ -348,7 +315,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setLockTime(int lockTime) {
 		this.lockTime = lockTime;
 	}
-	
+
 	public Calendar getLoginTime() {
 		return loginTime;
 	}

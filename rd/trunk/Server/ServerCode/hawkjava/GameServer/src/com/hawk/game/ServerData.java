@@ -326,7 +326,10 @@ public class ServerData {
 	 * 增加name和玩家id的映射
 	 */
 	public void addNameAndPlayerId(String name, int playerId) {
-		nameMap.put(name.toLowerCase(), playerId);
+		name = name.toLowerCase();
+		if (name != GsConst.DEFAULT_NICKNAME) {
+			nameMap.put(name, playerId);
+		}
 	}
 
 	public void replaceNameAndPlayerId(String oldName, String newName, int playerId) {

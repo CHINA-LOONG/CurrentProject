@@ -181,7 +181,16 @@ public class ActorEventService
             XmlDocument xmlDoc = new XmlDocument();
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreComments = true;
-            XmlReader reader = XmlReader.Create(filepath, settings);
+            XmlReader reader = null;
+
+#if (UNITY_EDITOR)
+            reader = XmlReader.Create(filepath, settings);
+#else
+             byte[] buffer = Encrypt.encodeFile(Const.CSVENCRYKEY, filepath);
+                Stream stream = new MemoryStream(buffer);
+                reader = XmlReader.Create(stream, settings);
+#endif
+
             xmlDoc.Load(reader);
             XmlNodeList nodeList=xmlDoc.SelectSingleNode("AniGroupList").ChildNodes;
             foreach (XmlElement groupNode in nodeList)

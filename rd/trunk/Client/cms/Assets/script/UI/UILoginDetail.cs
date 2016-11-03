@@ -27,7 +27,7 @@ public class UILoginDetail : UIBase {
             return;
         }
 
-        GameEventMgr.Instance.FireEvent<string>(GameEventList.createPlayerClick, nicknameField.text);
+        GameEventMgr.Instance.FireEvent<string>(GameEventList.completePlayerClick, nicknameField.text);
         
     }
 }

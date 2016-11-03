@@ -430,6 +430,14 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
                 mainStage.SetCurrentSelectGroup((int)SelectableGroupType.Select_Group_Summon);
             }
         }
+        else if (message.Equals("gd_build_shop"))
+        {
+            OnShopButtonClick(null);
+        }
+        else if (message.Equals("gd_build_qiandao"))
+        {
+            OnSigninButtonClick(null);
+        }
     }
     #endregion
 }

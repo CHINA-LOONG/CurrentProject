@@ -6,7 +6,7 @@ public class PlayerData : MonoBehaviour
 {
 	public	int	playerId = 0;
 	public	string nickName;
-	public	int career;
+    public  int portraitId;
 	private	int level = 1;
     public  int LevelAttr
     {
@@ -70,11 +70,7 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-	public	int	gender;
-	public	int	eye;
-	public	int	hair;
-	public	int	hairColor;
-	public	int	recharget;
+    public	int	recharget;
 	public	int	vipLevel;
     private int huoli = 0;//活力值
     public  int HuoliAttr

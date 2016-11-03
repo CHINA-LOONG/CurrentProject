@@ -175,8 +175,8 @@ public class SociatyTaskRunning : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
 
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
     }
     void OnDisable()
@@ -200,8 +200,8 @@ public class SociatyTaskRunning : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_QUEST_FINISH_N_S.GetHashCode().ToString(), OnTeamQuestFinish_N_S);
 
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEMA_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_JOIN_N_S.GetHashCode().ToString(), OnNewMemberJoin_N_S);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TEAM_LEAVE_N_S.GetHashCode().ToString(), OnMemberLeave_N_S);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ALLIANCE_TASK_TIMEOUT_N_S.GetHashCode().ToString(), OnTaskTimeOut_N_S);
         isNeedUpdateTime = false;
     }

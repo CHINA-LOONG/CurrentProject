@@ -6,6 +6,7 @@ public class GuideStep
     public int Id;
     public string trigerView;
     public string purpose;
+    public int rotationZ;
     public string talkId;
     public string posObject;
     public int tipsX;

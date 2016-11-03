@@ -99,7 +99,7 @@ public class AllianceTaskRewardHandler implements HawkMsgHandler{
 					
 					HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
 					notify.setPlayerId(player.getId());
-					AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
+					AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEAM_LEAVE_N_S, notify), 0);
 					
 					HSAllianceTaskRewardRet.Builder response = HSAllianceTaskRewardRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_TASK_REWARD_S_VALUE, response));

@@ -81,4 +81,7 @@ public class Const
 	public	static	string	channel = "funplus";//渠道号
 	public	static	string	platform = "ios";//平台 ios  android
 
+    [SerializeField]
+    public static string CSVENCRYKEY = "ybyfok6895bala";
+
 }

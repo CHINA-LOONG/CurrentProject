@@ -63,6 +63,7 @@ public class GuideUi : UIBase
             UIBuild buidUi = (UIBuild)GuideManager.Instance.curRequestGuide;
             Vector2 focusPos = buidUi.Focus3DObject(guideStep.posObject);
             focusRt.anchoredPosition = focusPos;
+            focusRt.localEulerAngles = new Vector3(0, 0, guideStep.rotationZ);
             CheckAndShowTips();
         }
     }
@@ -88,6 +89,7 @@ public class GuideUi : UIBase
         Vector3 spacePosition = UIUtil.GetSpacePos(targetRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
         float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
         focusRt.anchoredPosition = new Vector2(spacePosition.x / fscale, spacePosition.y / fscale);
+        focusRt.localEulerAngles = new Vector3(0, 0, guideStep.rotationZ);
         CheckAndShowTips();
     }
 

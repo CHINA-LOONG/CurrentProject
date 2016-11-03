@@ -23,7 +23,7 @@ public class UICreatePlayer : UIBase
             Logger.LogError("input name is empty!");
             return;
         }
-        GameEventMgr.Instance.FireEvent<string>(GameEventList.createPlayerClick, nameInputFileld.text);
+        GameEventMgr.Instance.FireEvent<string>(GameEventList.completePlayerClick, nameInputFileld.text);
 	}
 
 }

@@ -90,7 +90,7 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 			teamEntity.removePlayerFromTeam(request.getTargetId());
 			HSAllianceTeamLeaveNotify.Builder notify = HSAllianceTeamLeaveNotify.newBuilder();
 			notify.setPlayerId(request.getTargetId());
-			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEMA_LEAVE_N_S, notify), 0);
+			AllianceManager.getInstance().broadcastNotify(teamEntity, HawkProtocol.valueOf(HS.code.ALLIANCE_TEAM_LEAVE_N_S, notify), 0);
 		}
 
 		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
@@ -117,7 +117,7 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		}
 
 		HSAllianceMemKickRet.Builder response = HSAllianceMemKickRet.newBuilder();
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_KCIK_S_VALUE, response));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_KICK_S_VALUE, response));
 		
 		HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_LEAVE_N_S_VALUE, HSAllianceLeave.newBuilder());
 		AllianceManager.getInstance().memberNotify(targetPlayerAllianceEntity.getPlayerId(), notify);

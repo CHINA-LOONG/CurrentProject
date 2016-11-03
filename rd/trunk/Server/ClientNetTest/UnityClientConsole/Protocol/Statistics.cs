@@ -434,13 +434,6 @@ namespace PB
       get { return _dumpEndTime; }
       set { _dumpEndTime = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _guideFinish = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(11, Name=@"guideFinish", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> guideFinish
-    {
-      get { return _guideFinish; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -451,29 +444,36 @@ namespace PB
   {
     public HSStatisticsSyncGuide() {}
     
-    private readonly global::System.Collections.Generic.List<int> _guideQuestComplete = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"guideQuestComplete", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> guideQuestComplete
+    private readonly global::System.Collections.Generic.List<int> _guideFinish = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"guideFinish", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> guideFinish
     {
-      get { return _guideQuestComplete; }
+      get { return _guideFinish; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<bool> _guideQuestState = new global::System.Collections.Generic.List<bool>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"guideQuestState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<bool> guideQuestState
+    {
+      get { return _guideQuestState; }
     }
   
     private int _expItemUseCount;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"expItemUseCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"expItemUseCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int expItemUseCount
     {
       get { return _expItemUseCount; }
       set { _expItemUseCount = value; }
     }
     private int _upSkillTimes;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"upSkillTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"upSkillTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int upSkillTimes
     {
       get { return _upSkillTimes; }
       set { _upSkillTimes = value; }
     }
     private bool _hasWear;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"hasWear", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"hasWear", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool hasWear
     {
       get { return _hasWear; }
