@@ -1,0 +1,11 @@
+﻿#TEXT,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
+id,pauseBattle,pausePhyDazhao,showMirror,speechID,tipsID,hintUIname,hintPos,hintStyle,endEvent
+#教程step id,是否暂停对局,是否暂停大招,是否显示照妖镜对话id,立绘对话id,提示语言id,提示框位置，2d关联提示框位置,提示框位置，3d关联提示框位置,提示框大小类型,结束当前step事件
+g1_s1,0,1,0,,,,0,0,g1_s1_end
+g1_s2,0,0,1,,,,4,0,g1_s2_end
+g1_s3,1,1,1,,,,0,0,g1_s3_end
+g1_s4,1,1,1,,,,0,0,g1_s4_end
+g2_s1,1,1,1,,,,0,0,g2_s1_end
+g2_s2,1,1,1,,,,0,0,g2_s2_end 
+g2_s3,1,1,1,,,,0,0,g2_s3_end
+g2_s4,1,1,1,,,,0,0,g2_s4_end

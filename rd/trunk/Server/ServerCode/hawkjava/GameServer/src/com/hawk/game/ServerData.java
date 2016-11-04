@@ -327,7 +327,7 @@ public class ServerData {
 	 */
 	public void addNameAndPlayerId(String name, int playerId) {
 		name = name.toLowerCase();
-		if (name != GsConst.DEFAULT_NICKNAME) {
+		if (name != GsConst.UNCOMPLETE_NICKNAME) {
 			nameMap.put(name, playerId);
 		}
 	}

@@ -1,4 +1,5 @@
 package com.hawk.game.module;
+import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
@@ -7,7 +8,9 @@ import com.hawk.game.ServerData;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.HS.sys;
 import com.hawk.game.protocol.Player.HSAssembleFinish;
+import com.hawk.game.protocol.SysProtocol.HSDelayTest;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -25,6 +28,19 @@ public class PlayerIdleModule extends PlayerModule {
 		super(player);
 	}
 
+	/**
+	 * 测试延迟时间
+	 * @param cmd
+	 * @return
+	 */
+	@ProtocolHandler(code = sys.DELAY_TEST_VALUE)
+	protected boolean onDelayTest(HawkProtocol cmd) {
+		HSDelayTest.Builder delayTest = HSDelayTest.newBuilder();
+		delayTest.setTimeStamp(cmd.parseProtocol(HSDelayTest.getDefaultInstance()).getTimeStamp());
+		sendProtocol(HawkProtocol.valueOf(sys.DELAY_TEST_VALUE, delayTest));
+		return true;
+	}
+	
 	/**
 	 * 玩家上线处理
 	 * 

@@ -49,7 +49,7 @@ public class CreatePlayerModule : ModuleBase
             Logger.LogError("完善账号失败");
             PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
 
-            if (error.errCode == (int)PB.PlayerError.PLAYER_NICKNAME_EXIST)
+            if (error.errCode == (int)PB.PlayerError.NICKNAME_EXIST)
             {
                 Logger.LogError("昵称重复");
             }

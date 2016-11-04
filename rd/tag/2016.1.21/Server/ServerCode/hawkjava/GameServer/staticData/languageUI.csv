@@ -1361,17 +1361,17 @@ lv506_title,6.你喜欢现在的新手教程吗?,6.What do you think about the g
 lv507_title,7.你是否能认出游戏中的神怪来自哪些神话,7.How well do you recognize the monsters in the game from the mythologie?,7.你是否能認出遊戲中的神怪來自哪些神話
 lv508_title,8.一般你最常从哪个地方获取游戏信息,8.Where do you usually go for gaming news?,8.一般你最常從哪個地方獲取遊戲資訊
 lv2001_title,1.当你进行到哪一章时，感到战斗开始困难呢？,1.At which chapter did you feel the game started to become difficult?,1.當你進行到哪一章時，感到戰鬥開始困難呢？
-lv2002_title,2.你觉得战斗中，输出职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"2.Do you think that monsters of Dps serve their purpose well in battle?(1 = useless, 5 = very useful)",2.你覺得戰鬥中，輸出職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
-lv2003_title,3.你觉得战斗中，治疗职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"3.Do you think that monsters of Heal serve their purpose well in battle?(1 = useless, 5 = very useful)",3.你覺得戰鬥中，治療職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
-lv2004_title,4.你觉得战斗中，支援职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"4.Do you think that monsters of Support serve their purpose well in battle?(1 = useless, 5 = very useful)",4.你覺得戰鬥中，支援職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
-lv2005_title,5.你觉得战斗中，肉盾职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"5.Do you think that monsters of Tank serve their purpose well in battle?(1 = useless, 5 = very useful)",5.你覺得戰鬥中，肉盾職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
-lv2006_title,6.你对怪物的技能丰富程度是否满意（分越高越满意）,"6.Are you statisfied with the variety of monster abilities? (1 = not satisifed, 5 = very satisfied)",6.你對怪物的技能豐富程度是否滿意（分越高越滿意）
-lv2007_title,7.你对怪物的技能的视觉特效是否满意（分越高越满意）,"7.Are you statisfied with the visual effects of monster abilities? (1 = not satisifed, 5 = very satisfied)",7.你對怪物的技能的視覺特效是否滿意（分越高越滿意）
-lv2008_title,8.你对怪物的技能的平衡性是否满意（分越高越满意）,"8.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)",8.你對怪物的技能的平衡性是否滿意（分越高越滿意）
-lv2009_title,9.你觉得ss和s品质的怪物够酷吗？,9.Do you think S & SS grade monsters are cool enough?,9.你覺得ss和s品質的怪物夠酷嗎？
-lv2010_title,10.你现在已经20级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣）,"10.You have already reached level 20, do you still think the Mytho Lens is fun? ",10.你現在已經20級以上，照妖鏡玩法是否還讓你感到有樂趣（分越高越有樂趣）
-lv2011_title,11.你平均每天登录几次？,11.How many times do you log in each day?,11.你平均每天登入幾次？
-lv2012_title,12.你觉得神话守护者的奖励如何？,12.What do you think of the rewards from Mytho Guardian?,12.你覺得神話守護者的獎勵如何？
+lv2002_title,2.你对怪物的技能丰富程度是否满意（分越高越满意）,"2.Are you statisfied with the variety of monster abilities? (1 = not satisifed, 5 = very satisfied)",2.你對怪物的技能豐富程度是否滿意（分越高越滿意）
+lv2003_title,3.你对怪物的技能的视觉特效是否满意（分越高越满意）,"3.Are you statisfied with the visual effects of monster abilities? (1 = not satisifed, 5 = very satisfied)",3.你對怪物的技能的視覺特效是否滿意（分越高越滿意）
+lv2004_title,4.你对怪物的技能的平衡性是否满意（分越高越满意）,"4.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)",4.你對怪物的技能的平衡性是否滿意（分越高越滿意）
+lv2005_title,5.你觉得ss和s品质的怪物够酷吗？,5.Do you think S & SS grade monsters are cool enough?,5.你覺得ss和s品質的怪物夠酷嗎？
+lv2006_title,6.你现在已经20级以上，照妖镜玩法是否还让你感到有乐趣,"6.You have already reached level 20, do you still think the Mytho Lens is fun? ",6.你現在已經20級以上，照妖鏡玩法是否還讓你感到有樂趣
+lv2007_title,7.你平均每天登录几次？,7.How many times do you log in each day?,7.你平均每天登入幾次？
+lv2008_title,8.每天的信仰之路玩法通常可以打到几关？,8.Which stage are you usually able to reach in the daily Myth Guardians game mode?,8.每天的信仰之路玩法通常可以打到几关？
+lv2009_title,9.你觉得你目前的怪物数量是否足够使用？,9.Do you feel that you have enough monsters now?,9.你觉得你目前的怪物数量是否足够使用？
+lv2010_title,10.你觉得你目前的怪物种类是否足够使用？（多选）,10.Do you feel you have enough of each type of monster? (Select multiple),10.你觉得你目前的怪物种类是否足够使用？（多选）
+lv2011_title,11.你觉得培养怪物的材料够用吗？（多选）,11.Do you feel you have enough materials to train your monsters? (Select multiple),11.你觉得培养怪物的材料够用吗？（多选）
+lv2012_title,12.你觉得幸运卡牌是否有用？,12.Do you feel the Mytho Cards game mode is useful?,12.你觉得幸运卡牌是否有用？
 lv2013_title,13.你觉得神话守护者的难度如何？,13.How would you rate the difficulty of Myth Guardian mode?,13.你覺得神話守護者的難度如何？
 lv5questionfor1000,新手玩家问卷,The novice players questionnaire,新手玩家問卷
 lv20questionfor1000,资深玩家问卷,Senior players questionnaire,資深玩家問卷
@@ -1429,42 +1429,42 @@ lv2004_op2,4,4,4
 lv2004_op3,3,3,3
 lv2004_op4,2,2,2
 lv2004_op5,1,1,1
-lv2005_op1,5,5,5
-lv2005_op2,4,4,4
-lv2005_op3,3,3,3
-lv2005_op4,2,2,2
-lv2005_op5,1,1,1
-lv2006_op1,5,5,5
-lv2006_op2,4,4,4
-lv2006_op3,3,3,3
-lv2006_op4,2,2,2
-lv2006_op5,1,1,1
-lv2007_op1,5,5,5
-lv2007_op2,4,4,4
-lv2007_op3,3,3,3
-lv2007_op4,2,2,2
-lv2007_op5,1,1,1
-lv2008_op1,5,5,5
-lv2008_op2,4,4,4
-lv2008_op3,3,3,3
-lv2008_op4,2,2,2
-lv2008_op5,1,1,1
-lv2009_op1,非常酷,Really cool,非常酷
-lv2009_op2,还行,They're ok,還行
-lv2009_op3,和A级B级差不多,About same as A and B grade,和A級B級差不多
-lv2009_op4,需要加强,Needs improvement ,需要加強
-lv2010_op1,让我很无聊,Make me so bored,讓我很無聊
-lv2010_op2,有点不好玩,A little boring,有點不好玩
-lv2010_op3,还行,Just ok,還行
-lv2010_op4,仍然有趣,Still fun,仍然有趣
-lv2011_op1,每天1次,Once per day,每天1次
-lv2011_op2,每天2~3次,2~3 times per day,每天2~3次
-lv2011_op3,每天3次以上,3+ times per day,每天3次以上
-lv2011_op4,2天才登录一次,2 days One time,2天才登入一次
-lv2011_op5,我超过3天可能才上线一次,More than 3 days 1 time,我超過3天可能才上線一次
-lv2012_op1,很好,Very good,很好
-lv2012_op2,一般,Average,一般
-lv2012_op3,不好,Poor,不好
+lv2005_op1,非常酷,Really cool,非常酷
+lv2005_op2,还行,They're ok,還行
+lv2005_op3,和A级B级差不多,About same as A and B grade,和A級B級差不多
+lv2005_op4,需要加强,Needs improvement ,需要加強
+lv2005_op5,需要加强,Needs improvement ,需要加強
+lv2006_op1,让我很无聊,Make me so bored,讓我很無聊
+lv2006_op2,有点不好玩,A little boring,有點不好玩
+lv2006_op3,还行,Just ok,還行
+lv2006_op4,仍然有趣,Still fun,仍然有趣
+lv2006_op5,根本不玩,I don't play this game mode,根本不玩
+lv2007_op1,每天1次,Once per day,每天1次
+lv2007_op2,每天2~3次,2~3 times per day,每天2~3次
+lv2007_op3,每天3次以上,3+ times per day,每天3次以上
+lv2007_op4,2天才登录一次,2 days One time,2天才登入一次
+lv2007_op5,我超过3天可能才上线一次,More than 3 days 1 time,我超過3天可能才上線一次
+lv2008_op1,5关及以下,Stage 5 or below,5關及以下
+lv2008_op2,6关,Stage 6,6關
+lv2008_op3,7关,Stage 7,7關
+lv2008_op4,8关,Stage 8,8關
+lv2008_op5,9关,Stage 9,9關
+lv2009_op1,不够用,Not enough,不夠用
+lv2009_op2,刚刚好,Just enough,剛剛好
+lv2009_op3,多了好多,Too many,多了好多
+lv2009_op4,缺少辅助,Need more support monsters,缺少輔助
+lv2010_op1,够用,Enough,夠用
+lv2010_op2,缺少输出,Need more DPS monsters,缺少輸出
+lv2010_op3,缺少治疗,Need more healer monsters,缺少治療
+lv2010_op4,缺少肉盾,Need more tank monsters,缺少肉盾
+lv2011_op1,够用,Enough,夠用
+lv2011_op2,缺少怪物升级道具,Need more items for leveling up monsters,缺少怪物升級道具
+lv2011_op3,缺少怪物装备,Need more equipment,缺少怪物裝備
+lv2011_op4,缺少装备强化道具,Need more items for upgrading equipment,缺少裝備強化道具
+lv2011_op5,很有用，我每天都会进行许愿,"Very useful, I play it every day",很有用，我每天都會進行許願
+lv2012_op1,很有用，我每天都会进行许愿,"Very useful, I play it every day",很有用，我每天都會進行許願
+lv2012_op2,还可以，只是获得的碎片太少,"It's ok, but I get too few fragments from it",還可以，只是獲得的碎片太少
+lv2012_op3,没有用，不知道在获得一只同样的怪物有什么作用,"Not useful, I don't know why I would want to receive more fragments for the same monster",沒有用，不知道在獲得壹只同樣的怪物有什麽作用
 lv2013_op1,简单,Easy,簡單
 lv2013_op2,普通,Normal,普通
 lv2013_op3,困难,Difficult,困難
@@ -2196,3 +2196,54 @@ eventinstance_surprise_desc,概率获得下列物品,Set chance of receiving the
 loading_longnvlan,<color=#70ecff>龙女</color>,<color=#70ecff>Dragon Girl</color>,<color=#70ecff>龍女</color>
 loading_tips59,通关层数越多获得的碎片奖励越丰富哦！,"The more levels you clear, the better the fragment reward you will receive!",通關層數越多獲得的碎片獎勵越豐富哦！
 loading_tips60,阵容搭配和属性克制是通关的关键！,Using monsters that counter the enemy's elements is key to victory!,陣容搭配和屬性克制是通關的關鍵！
+lv30questionfor1000,进阶玩家问卷,Advance players questionnaire,進階玩家問卷
+lv30question_desc,完成问卷可以获得丰厚奖励！,Complete the survey can have huge rewards!,完成問卷可以獲得豐厚獎勵！
+lv3001_title,1.你觉得战斗中，输出职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"1.Do you think that monsters of Dps serve their purpose well in battle?(1 = useless, 5 = very useful)",1.你覺得戰鬥中，輸出職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
+lv3002_title,2.你觉得战斗中，治疗职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"2.Do you think that monsters of Heal serve their purpose well in battle?(1 = useless, 5 = very useful)",2.你覺得戰鬥中，治療職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
+lv3003_title,3.你觉得战斗中，支援职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"3.Do you think that monsters of Support serve their purpose well in battle?(1 = useless, 5 = very useful)",3.你覺得戰鬥中，支援職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
+lv3004_title,4.你觉得战斗中，肉盾职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"4.Do you think that monsters of Tank serve their purpose well in battle?(1 = useless, 5 = very useful)",4.你覺得戰鬥中，肉盾職業的神怪是否起到了應該有的作用，並為他們起到的作用打分（分越高越有用）
+lv3005_title,5.请各列举一只你最喜欢与最不喜欢的怪物，并给出理由,"5.Please tell us which monster you like the most,  which monster you dislike the most, and the reasons why.",5.請各列舉一隻您最喜歡與最不喜歡的怪物，並給出理由
+lv3006_title,6.你会积极参与神怪入侵玩法吗？,6.Do you actively participate in the Deity Invasion mode?,6.您會積極參與神怪入侵玩法嗎？
+lv3007_title,7.你对通天塔玩法的看法是怎样的？,7.How do you feel about the Tower of Darkness?,7.您對通天塔玩法的看法是怎樣的？
+lv3008_title,8.你会积极参与公会祈福玩法吗？,8.Do actively participate in the Guild Wish feature?,8.您會積極參與公會祈福玩法嗎？
+lv3009_title,9.你会积极参与公会任务玩法吗？,9.Do you actively participate in Guild Quests?,9.您會積極參與公會任務玩法嗎？
+lv3010_title,10.你认为公会商店里面的物品怎么样？,10.How do you like the items available in the Guild Store?,10.您認為公會商店裡面的物品怎麼樣？
+lv3011_title,11.你认为公会系统有哪些需要改进的地方？我们会针对性进行改进,11.Which parts of the Guild system do you think need improvement? We will do our best to direct our improvements based on your feedback.,11.您認為公會系統有哪些需要改進的地方？我們會針對性進行改進
+lv3012_title,12.请留下你的联系方式（电子邮箱），如您的意见被我们采纳，将给予你一个特殊的奖励！,"12.Please leave us your contact information (email), if your feedback is selected by us, you will receive a special reward!",12.請留下您的聯繫方式（電子信箱），如您的意見被我們採納，將給予您一個特殊的獎勵！
+lv3001_op1,5,5,5
+lv3001_op2,4,4,4
+lv3001_op3,3,3,3
+lv3001_op4,2,2,2
+lv3001_op5,1,1,1
+lv3002_op1,5,5,5
+lv3002_op2,4,4,4
+lv3002_op3,3,3,3
+lv3002_op4,2,2,2
+lv3002_op5,1,1,1
+lv3003_op1,5,5,5
+lv3003_op2,4,4,4
+lv3003_op3,3,3,3
+lv3003_op4,2,2,2
+lv3003_op5,1,1,1
+lv3004_op1,5,5,5
+lv3004_op2,4,4,4
+lv3004_op3,3,3,3
+lv3004_op4,2,2,2
+lv3004_op5,1,1,1
+lv3006_op1,每天都会按时参与,I play every day on time,每天都會按時參與
+lv3006_op2,想起来会参与一次,I will play once if I remember,想起來會參與一次
+lv3006_op3,不参与，奖励不够吸引我 ,"I don't play, the rewards are not good enough",不參與，獎勵不夠吸引我
+lv3006_op4,不参与，总是赶不上开启时间,"I don't play, I can't ever make it online during the event time",不參與，總是趕不上開啟時間
+lv3007_op1,我会打到与我战力接近的关卡,I will play until I reach a stage with enemies about the same level as me,我會打到與我戰力接近的關卡
+lv3007_op2,我喜欢挑战比我战力高的关卡,I like to challenge stages with enemies that are a higher level than me,我喜歡挑戰比我戰力高的關卡
+lv3007_op3,会体验，但是总是打不过,"I like to play this mode, but I can never clear the stage",會體驗，但是總是打不過
+lv3007_op4,几乎不怎么玩通天塔,I hardly play this game mode at all,幾乎不怎麼玩通天塔
+lv3008_op1,每天都会参与,Every day,每天都會參與
+lv3008_op2,偶尔参与,Sometimes,偶爾參與
+lv3008_op3,不会参与,Not at all,不會參與
+lv3009_op1,每天都会参与,Every day,每天都會參與
+lv3009_op2,偶尔参与,Sometimes,偶爾參與
+lv3009_op3,不会参与,Not at all,不會參與
+lv3010_op1,非常好，我会经常兑换里面的道具,Great! I exchange for items often,非常好，我會經常兌換裡面的道具
+lv3010_op2,还可以，里面都是我所需要的道具,It's ok. There are many items I need there,還可以，裡面都是我所需要的道具
+lv3010_op3,不太好，兑换的纹章等级略低,Not so good. The level of the exchangeable insignia is too low,不太好，兌換的紋章等級略低

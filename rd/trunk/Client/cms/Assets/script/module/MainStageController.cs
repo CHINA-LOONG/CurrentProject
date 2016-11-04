@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MainStageController : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class MainStageController : MonoBehaviour
     public SelectableObjGroup mTowerGroup;
     public SelectableObjGroup mHoleGroup;
     public SelectableObjGroup mChoudanGroup;
+
+    //dynamic load lightmap root node
+    public Transform mLightmapInfoRoot;
 
     //ui ref
     private UIHoleEntry mUIHoleEntry;
@@ -59,6 +63,30 @@ public class MainStageController : MonoBehaviour
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
       //  GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
         GameDataMgr.Instance.mTowerRefreshed = false;
+
+        //load lightmap info
+        if (mLightmapInfoRoot != null)
+        {
+            Renderer[] rendererList = mLightmapInfoRoot.GetComponentsInChildren<Renderer>();
+            int count = rendererList.Length;
+            SceneLightmapData curLightmapData = null;
+            StaticDataMgr sDataMgr = StaticDataMgr.Instance;
+            for (int i = 0; i < count; ++i)
+            {
+                Renderer targetRenderer = rendererList[i];
+                curLightmapData = sDataMgr.GetLightmapInfo(targetRenderer.gameObject.name);
+                if (curLightmapData != null)
+                {
+                    targetRenderer.lightmapIndex = curLightmapData.lightIndex;
+                    targetRenderer.lightmapScaleOffset = new Vector4(
+                                                                curLightmapData.lightX,
+                                                                curLightmapData.lightY,
+                                                                curLightmapData.lightZ,
+                                                                curLightmapData.lightW
+                                                                );
+                }
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void OnDisable()

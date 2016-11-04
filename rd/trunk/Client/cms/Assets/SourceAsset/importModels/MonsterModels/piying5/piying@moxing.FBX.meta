@@ -71,6 +71,16 @@ ModelImporter:
     100126: wp_head
     100128: wp_lbody
     100130: wp_rbody
+    100132: Bip001 Footsteps
+    100134: Bip001 HeadNub
+    100136: Bip001 L Foot
+    100138: Bip001 L Hand
+    100140: Bip001 L Toe0
+    100142: Bip001 L Toe0Nub
+    100144: Bip001 R Foot
+    100146: Bip001 R Hand
+    100148: Bip001 R Toe0
+    100150: Bip001 R Toe0Nub
     400000: Bip001
     400002: Bip001 Head
     400004: Bip001 L Calf
@@ -137,6 +147,16 @@ ModelImporter:
     400126: wp_head
     400128: wp_lbody
     400130: wp_rbody
+    400132: Bip001 Footsteps
+    400134: Bip001 HeadNub
+    400136: Bip001 L Foot
+    400138: Bip001 L Hand
+    400140: Bip001 L Toe0
+    400142: Bip001 L Toe0Nub
+    400144: Bip001 R Foot
+    400146: Bip001 R Hand
+    400148: Bip001 R Toe0
+    400150: Bip001 R Toe0Nub
     4300000: mesh_body
     4300002: mesh_lbody
     4300004: mesh_rbody

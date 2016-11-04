@@ -15,6 +15,41 @@ public class GuideUi : UIBase
     public Text tipsText;
 
     private GuideStep guideStep;
+
+    //for guide level
+    public static void OpenWith(
+        string tipsContent,
+        Vector2 tipsPos,
+        Vector2 focusPos,
+        float focusRot
+        )
+    {
+        GuideUi guideUI = UIMgr.Instance.OpenUI_(ViewName) as GuideUi;
+        if (string.IsNullOrEmpty(tipsContent) == false)
+        {
+            //guideUI.tipsRt.gameObject.SetActive(true);
+            //guideUI.tipsText.text = StaticDataMgr.Instance.GetTextByID(guideUI.guideStep.tipsContent);
+
+            //Vector2 tipsPivot = guideUI.tipsRt.pivot;
+            //tipsPivot.x = 0.5f;
+            //tipsPivot.y = 0.5f;
+            //if (guideStep.tipsX > 0)
+            //    tipsPivot.x = 0.0f;
+            //else if (guideStep.tipsX < 0)
+            //    tipsPivot.x = 1.0f;
+
+            //if (guideStep.tipsY > 0)
+            //    tipsPivot.y = 0.0f;
+            //else if (guideStep.tipsY < 0)
+            //    tipsPivot.y = 1.0f;
+
+            //tipsRt.pivot = tipsPivot;
+            //Vector2 focusPos = focusRt.anchoredPosition;
+            //tipsRt.anchoredPosition = new Vector2(focusPos.x + guideStep.tipsX, focusPos.y + guideStep.tipsY);
+        }
+
+    }
+
     public static void OpenWith(GuideStep gstep)
     {
         GuideUi guideUi = (GuideUi)UIMgr.Instance.OpenUI_(ViewName);

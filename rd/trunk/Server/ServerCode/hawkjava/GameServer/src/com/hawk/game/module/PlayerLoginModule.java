@@ -21,6 +21,7 @@ import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.TextUtil;
 /**
  * 玩家登录模块
  * 
@@ -148,8 +149,15 @@ public class PlayerLoginModule extends PlayerModule {
 			portraitId = protocol.getPortraitId();
 		}
 
-		if (ServerData.getInstance().isExistName(nickname)) {
-			sendError(hsCode, Status.PlayerError.PLAYER_NICKNAME_EXIST);
+		// 昵称合法性
+		int error = TextUtil.checkNickname(nickname);
+		if (error != Status.error.NONE_ERROR_VALUE) {
+			sendError(hsCode, error);
+		}
+
+		// 昵称重复
+		if (true == ServerData.getInstance().isExistName(nickname)) {
+			sendError(hsCode, Status.PlayerError.NICKNAME_EXIST);
 		}
 
 		player.getEntity().setNickname(nickname);

@@ -72,6 +72,24 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSDelayTest")]
+  public partial class HSDelayTest : global::ProtoBuf.IExtensible
+  {
+    public HSDelayTest() {}
+    
+    private long _timeStamp = default(long);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long timeStamp
+    {
+      get { return _timeStamp; }
+      set { _timeStamp = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSErrorCode")]
   public partial class HSErrorCode : global::ProtoBuf.IExtensible
   {

@@ -358,6 +358,22 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getId() {
+		try {
+			if (playerData == null) {
+				throw new HawkException("playerData is null");
+			}
+			else if (playerData.getPlayerEntity() == null && playerData.getStatisticsEntity() != null)
+			{
+				throw new HawkException("PlayerEntity is null but staticEntity is not null");
+			}
+			else if (playerData.getPlayerEntity() == null) {
+				throw new HawkException("PlayerEntity is null");
+			}
+				
+		} catch (Exception e) {
+			HawkException.catchException(e);
+		}
+		
 		return playerData.getPlayerEntity().getId();
 	}
 
@@ -489,6 +505,22 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getLevel() {
+		try {
+			if (playerData == null) {
+				throw new HawkException("playerData is null");
+			}
+			else if (playerData.getPlayerEntity() == null && playerData.getStatisticsEntity() != null)
+			{
+				throw new HawkException("PlayerEntity is null but staticEntity is not null");
+			}
+			else if (playerData.getPlayerEntity() == null) {
+				throw new HawkException("PlayerEntity is null");
+			}
+				
+		} catch (Exception e) {
+			HawkException.catchException(e);
+		}
+		
 		return playerData.getPlayerEntity().getLevel();
 	}
 

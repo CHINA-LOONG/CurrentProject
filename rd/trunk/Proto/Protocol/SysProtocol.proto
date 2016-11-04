@@ -19,6 +19,12 @@ message HSHeartBeat
 	optional bytes data = 2;
 }
 
+// DELAY_TEST
+message HSDelayTest
+{
+	optional int64 timeStamp = 1;
+}
+
 // ERROR_CODE
 message HSErrorCode
 {

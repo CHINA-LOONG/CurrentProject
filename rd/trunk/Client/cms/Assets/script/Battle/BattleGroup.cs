@@ -67,15 +67,41 @@ public class BattleGroup
         }
     }
 
-    public void SetPlayerList(ref List<int> idList)
+    public void SetGuidePlayerList(ref List<string> idList)
     {
         if (playerList.Count > 0)
         {
-            Debug.LogError("player count not zero");
+            Logger.LogError("player count not zero");
         }
 
         playerList.Clear();
         ObjectDataMgr objMgr = ObjectDataMgr.Instance;
+        int count = idList.Count;
+        int playerStartID = 1000;
+        for (int i = 0; i < count; ++i)
+        {
+            PbUnit pbUnit = new PbUnit();
+            pbUnit.guid = ++playerStartID;
+            pbUnit.id = idList[i];
+            pbUnit.level = 40;
+            pbUnit.camp = UnitCamp.Player;
+            pbUnit.slot = i;
+            pbUnit.lazy = BattleConst.defaultLazy;
+            pbUnit.character = 1;
+            GameUnit curGameUnit = GameUnit.FromPb(pbUnit, true);
+
+            SetPlayerListInternal(curGameUnit, i);
+        }
+    }
+
+    public void SetPlayerList(ref List<int> idList)
+    {
+        if (playerList.Count > 0)
+        {
+            Logger.LogError("player count not zero");
+        }
+
+        playerList.Clear();
         PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
         int count = idList.Count;
         for (int i = 0; i < count; ++i)
@@ -86,30 +112,36 @@ public class BattleGroup
                 Logger.LogError("SetPlayerList failed, bcoz no such id");
                 continue;
             }
-            BattleObject bo = objMgr.CreateBattleObject(
-                                curUnit,
-                                null,
-                                Vector3.zero,
-                                Quaternion.identity
-                                );
 
-            curUnit.ResetAllState(false);
-            if (i >= BattleConst.slotIndexMin && i <= BattleController.Instance.CurMaxSlotIndex)
-            {
-                curUnit.pbUnit.slot = i;
-                curUnit.backUp = false;
-                playerField[i] = bo;
-                bo.OnEnterField();
-            }
-            else
-            {
-                curUnit.pbUnit.slot = BattleConst.offsiteSlot;
-                curUnit.backUp = true;
-                bo.OnExitField();
-            }
-
-            playerList.Add(bo);
+            SetPlayerListInternal(curUnit, i);
         }
+    }
+
+    private void SetPlayerListInternal(GameUnit curUnit, int slotIndex)
+    {
+        BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(
+                            curUnit,
+                            null,
+                            Vector3.zero,
+                            Quaternion.identity
+                            );
+
+        curUnit.ResetAllState(false);
+        if (slotIndex >= BattleConst.slotIndexMin && slotIndex <= BattleController.Instance.CurMaxSlotIndex)
+        {
+            curUnit.pbUnit.slot = slotIndex;
+            curUnit.backUp = false;
+            playerField[slotIndex] = bo;
+            bo.OnEnterField();
+        }
+        else
+        {
+            curUnit.pbUnit.slot = BattleConst.offsiteSlot;
+            curUnit.backUp = true;
+            bo.OnExitField();
+        }
+
+        playerList.Add(bo);
     }
 
     //summon from hell
@@ -143,6 +175,73 @@ public class BattleGroup
                 curUnit.State = UnitState.None;
                 playerList[i].OnExitField();
                 //OnUnitExitField(itor.Current, slot);
+            }
+        }
+    }
+
+    public void RestartGuideLevel()
+    {
+        int slot = 0;
+        GameUnit curUnit = null;
+        int count = playerList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            curUnit = playerList[i].unit;
+            slot = curUnit.pbUnit.slot;
+            curUnit.ResetAllState(false);
+            if (slot >= BattleConst.slotIndexMin && slot <= BattleController.Instance.CurMaxSlotIndex)
+            {
+                curUnit.backUp = false;
+                playerField[slot] = playerList[i];
+                curUnit.ResetAcionOrder();
+                curUnit.CalcNextActionOrder();
+                playerList[i].OnEnterField(false);
+                BattleController.Instance.GetUIBattle().ShowUnitUI(curUnit.battleUnit, slot);
+            }
+            else
+            {
+                curUnit.pbUnit.slot = BattleConst.offsiteSlot;
+                curUnit.backUp = true;
+                curUnit.State = UnitState.None;
+                playerList[i].OnExitField();
+            }
+        }
+
+        count = enemyList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            curUnit = enemyList[i].unit;
+            slot = curUnit.pbUnit.slot;
+            curUnit.ResetAllState(false);
+            if (slot >= BattleConst.slotIndexMin && slot <= BattleController.Instance.CurMaxSlotIndex)
+            {
+                curUnit.backUp = false;
+                enemyField[slot] = enemyList[i];
+                curUnit.ResetAcionOrder();
+                curUnit.CalcNextActionOrder();
+                enemyList[i].OnEnterField(false);
+                if (curUnit.battleUnit.aniControl != null)
+                {
+                    curUnit.battleUnit.aniControl.OnWinEnd();
+                }
+
+                SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                args.vitalType = (int)VitalType.Vital_Type_FixLife;
+                args.triggerTime = Time.time;
+                args.casterID = curUnit.pbUnit.guid;
+                args.targetID = curUnit.pbUnit.guid;
+                args.isCritical = false;
+                args.vitalChange = 0;
+                args.vitalCurrent = curUnit.maxLife;
+                args.vitalMax = curUnit.maxLife;
+                GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpellLifeChange, args);
+            }
+            else
+            {
+                curUnit.pbUnit.slot = BattleConst.offsiteSlot;
+                curUnit.backUp = true;
+                curUnit.State = UnitState.None;
+                enemyList[i].OnExitField();
             }
         }
     }

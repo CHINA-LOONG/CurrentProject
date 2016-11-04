@@ -74,44 +74,67 @@ public class BattleModule : ModuleBase
         BindListener();
         EnterInstanceParam enterParam = param as EnterInstanceParam;
         PvpFightParam pvpParam = null;
+        GuideLevelParam guideParam = null;
         if (enterParam == null)
         {
             pvpParam = param as PvpFightParam;
+            if (pvpParam == null)
+            {
+                guideParam = param as GuideLevelParam;
+            }
         }
         //pve
         if (enterParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
-            if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
-                loading.SetLoading(LoadingType.loadingFb);
-            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
-                loading.SetLoading(LoadingType.loadingHole);
-            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
-                loading.SetLoading(LoadingType.loadingTower);
-			else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
-				loading.SetLoading(LoadingType.loadingGuild);
             if (loading != null)
             {
+                if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
+                    loading.SetLoading(LoadingType.loadingFb);
+                else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
+                    loading.SetLoading(LoadingType.loadingHole);
+                else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
+                    loading.SetLoading(LoadingType.loadingTower);
+                else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Guild)
+                    loading.SetLoading(LoadingType.loadingGuild);
+
                 UIMgr.Instance.FixBrokenWord();
                 controller.StartBattlePrepare(enterParam);
                 loading.SetLoadingCallback(LoadResourceFinish);
                 loading.UpdateTotalAssetCount();
             }
         }
+        //pvp
         else if (pvpParam != null)
         {
             UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
-            loading.SetLoading(LoadingType.loadingPvp);
-            loading.OpenPvploading(pvpParam);
             if (loading != null)
             {
+                loading.SetLoading(LoadingType.loadingPvp);
+                loading.OpenPvploading(pvpParam);
                 UIMgr.Instance.FixBrokenWord();
                 controller.StartBattlePvpPrepare(pvpParam);
                 loading.SetLoadingCallback(LoadResourceFinish);
                 loading.UpdateTotalAssetCount();
             }
         }
-        UIIm.Instance.UpdateIMPos(true);
+        //guide
+        else if (guideParam != null)
+        {
+            UILoading loading = UIMgr.Instance.OpenUI_(UILoading.ViewName) as UILoading;
+            if (loading != null)
+            {
+                loading.SetLoading(LoadingType.loadingFb);
+                UIMgr.Instance.FixBrokenWord();
+                controller.StartBattleGuidePrepare(guideParam);
+                loading.SetLoadingCallback(LoadResourceFinish);
+                loading.UpdateTotalAssetCount();
+            }
+        }
+
+        //if in first guide level, no im
+        if (guideParam == null)
+            UIIm.Instance.UpdateIMPos(true);
     }
 
     public override void OnExecute()
@@ -142,7 +165,10 @@ public class BattleModule : ModuleBase
         //destroy battle camera manual,since camera may attach to gamemain throw ani
         Destroy(BattleCamera.Instance.gameObject);
         startBattle = false;
-        UIIm.Instance.UpdateIMPos(false);
+        if (UIIm.Instance != null)
+        {
+            UIIm.Instance.UpdateIMPos(false);
+        }
     }
 
 #region  Event

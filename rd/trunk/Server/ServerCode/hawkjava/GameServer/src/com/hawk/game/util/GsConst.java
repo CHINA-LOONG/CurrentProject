@@ -66,13 +66,13 @@ public class GsConst {
 	// 最大合成次数
 	public static final int COMPOSE_MAX_COUNT = 10;
 	public static final int WEEK_SECOND = 604800;
+	// 角色未补完时昵称
+	public static final String UNCOMPLETE_NICKNAME = "";
 	// BI版本
 	public static final String BIVersion = "2.0";
 	// 趣加Funplus
 	public static final String FUNPLUS_APP_ID = "1013";
 	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
-	// 默认昵称
-	public static final String DEFAULT_NICKNAME = "";
 
 	/**
 	 * 刷新时间

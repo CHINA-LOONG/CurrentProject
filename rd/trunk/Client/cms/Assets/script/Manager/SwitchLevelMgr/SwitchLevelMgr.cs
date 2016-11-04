@@ -7,25 +7,26 @@ public class SwitchLevelEventArgs : EventArgs
 {
     public EnterInstanceParam enterParam;
     public PvpFightParam pvpParam;
+    public GuideLevelParam guideParam;
 }
 
-public class SwitchLevelMgr : MonoBehaviour
-{
-    //---------------------------------------------------------------------------------------------
+//public class SwitchLevelMgr : MonoBehaviour
+//{
+//    //---------------------------------------------------------------------------------------------
 
-    static SwitchLevelMgr mInst = null;
-    //---------------------------------------------------------------------------------------------
-    public static SwitchLevelMgr Instance
-    {
-        get
-        {
-            if (mInst == null)
-            {
-                GameObject go = new GameObject("SwitchLevelMgr");
-                mInst = go.AddComponent<SwitchLevelMgr>();
-            }
-            return mInst;
-        }
-    }
-    //---------------------------------------------------------------------------------------------
-}
+//    static SwitchLevelMgr mInst = null;
+//    //---------------------------------------------------------------------------------------------
+//    public static SwitchLevelMgr Instance
+//    {
+//        get
+//        {
+//            if (mInst == null)
+//            {
+//                GameObject go = new GameObject("SwitchLevelMgr");
+//                mInst = go.AddComponent<SwitchLevelMgr>();
+//            }
+//            return mInst;
+//        }
+//    }
+//    //---------------------------------------------------------------------------------------------
+//}

@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zuanshiTypeImage: {fileID: 11439842}
-  zuanshiText: {fileID: 0}
+  zuanshiText: {fileID: 11446268}
   moneyText: {fileID: 11438830}
   firstbuyPanel: {fileID: 22447902}
   itemButton: {fileID: 11450266}

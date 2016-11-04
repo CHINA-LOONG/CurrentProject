@@ -51,49 +51,52 @@ enum PlayerError
 {
 	// 角色不存在
 	PLAYER_NOT_EXIST           = 0x00010001;
+	// puid重复
+	PUID_EXIST                 = 0x00010002;
 	// 昵称存在
-	PLAYER_NICKNAME_EXIST      = 0x00010002;
-	// 账号名成重复
-	PUID_EXIST                 = 0x00010003;
+	NICKNAME_EXIST             = 0x00010003;
+	// 昵称不符合规定
+	NICKNAME_INVALID           = 0x00010004;
+
 	// 金币不足
-	COIN_NOT_ENOUGH            = 0x00010004;
+	COIN_NOT_ENOUGH            = 0x00011004;
 	// 金币上限
-	COIN_LIMIT                 = 0x00010005;
+	COIN_LIMIT                 = 0x00011005;
 	// 钻石不足
-	GOLD_NOT_ENOUGH            = 0x00010006;
+	GOLD_NOT_ENOUGH            = 0x00011006;
 	// 钻石上限
-	GOLD_LIMIT                 = 0x00010007;
+	GOLD_LIMIT                 = 0x00011007;
 	// 疲劳值不足
-	FATIGUE_NOT_ENOUGH         = 0x00010008;
+	FATIGUE_NOT_ENOUGH         = 0x00011008;
 	// 疲劳值上限
-	FATIGUE_LIMIT              = 0x00010009;
+	FATIGUE_LIMIT              = 0x00011009;
 	// 通天塔币不足
-	TOWER_COIN_NOT_ENOUGH      = 0x0001000A;
+	TOWER_COIN_NOT_ENOUGH      = 0x0001100A;
 	// 通天塔币上限
-	TOWER_COIN_LIMIT           = 0x0001000B;
+	TOWER_COIN_LIMIT           = 0x0001100B;
 	// 竞技场币不足
-	ARENA_COIN_NOT_ENOUGH      = 0x0001000C;
+	ARENA_COIN_NOT_ENOUGH      = 0x0001100C;
 	// 竞技场币上限
-	ARENA_COIN_LIMIT           = 0x0001000D;
+	ARENA_COIN_LIMIT           = 0x0001100D;
 	// 公会贡献值不足
-	CONTRIBUTION_NOT_ENOUGH    = 0x0001000E;
+	CONTRIBUTION_NOT_ENOUGH    = 0x0001100E;
 	// 公会贡献值上限
-	CONTRIBUTION_LIMIT         = 0x0001000F;
+	CONTRIBUTION_LIMIT         = 0x0001100F;
 	// 荣誉点上限
-	HONOR_POINT_LIMIT          = 0x00010010;
+	HONOR_POINT_LIMIT          = 0x00011010;
 	// 荣誉点不足
-	HONOR_POINT_NOT_ENOUGH     = 0x00010011;
+	HONOR_POINT_NOT_ENOUGH     = 0x00011011;
 
 	// 今日已签到
-	SIGNIN_ALREADY             = 0x00011001;
+	SIGNIN_ALREADY             = 0x00012001;
 	// 今日还未签到
-	SIGNIN_NOT_YET             = 0x00011002;
+	SIGNIN_NOT_YET             = 0x00012002;
 	// 没有补签次数
-	SIGNIN_FILL_ZERO           = 0x00011003;
+	SIGNIN_FILL_ZERO           = 0x00012003;
 	// 本月签到已完成
-	SIGNIN_FINISH              = 0x00011004;
+	SIGNIN_FINISH              = 0x00012004;
 	// 本月签到已结束
-	SIGNIN_STOP                = 0x00011005;
+	SIGNIN_STOP                = 0x00012005;
 }
 
 enum monsterError

@@ -25,7 +25,9 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.TextUtil;
 
 /**
  * GM服务
@@ -88,10 +90,12 @@ public class GmService extends GameService {
 			int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 			if (playerId == 0) {
 				String nickname = entry.getValue().get(0).getNickname();
-				short level = entry.getValue().get(0).getPlayerLevel();
+				if (TextUtil.checkNickname(nickname) != Status.error.NONE_ERROR_VALUE) {
+					continue;
+				}
 
 				PlayerEntity playerEntity = new PlayerEntity(puid, nickname);
-				playerEntity.setLevel(level);
+				playerEntity.setLevel(entry.getValue().get(0).getPlayerLevel());
 				if (false == playerEntity.notifyCreate()) {
 					continue;
 				}

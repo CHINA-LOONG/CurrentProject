@@ -189,4 +189,4 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 106,name_106,-1,icon_buffDefense,1,1,1,0,1,-1,tips_106,3,-1,-1,-1,-1,-1,1,,,,,-1,-1,-1,,-1,-1,-1,
 90001,name_90001_jinbi,-1,icon_jinbi2,6,1,1,0,1,-1,tips_90001,1,-1,-1,-1,-1,-1,1,,,,,-1,-1,-1,,-1,-1,-1,
 90002,name_90002_zuanshi,-1,icon_zuanshi2,6,1,1,0,1,-1,tips_90002,1,-1,-1,-1,-1,-1,1,,,,,-1,-1,-1,,-1,-1,-1,
-90003,name_90003_rongyudian,-1,icon_gongxianzhi,6,1,1,0,1,-1,tips_90003,1,-1,-1,-1,-1,-1,1,,,,,-1,-1,-1,,-1,-1,-1,
+90003,name_90003_rongyudian,-1,icon_rongyudian2,6,1,1,0,1,-1,tips_90003,1,-1,-1,-1,-1,-1,1,,,,,-1,-1,-1,,-1,-1,-1,

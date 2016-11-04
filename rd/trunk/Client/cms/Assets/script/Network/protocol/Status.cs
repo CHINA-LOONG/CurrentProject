@@ -108,68 +108,71 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_NOT_EXIST", Value=65537)]
       PLAYER_NOT_EXIST = 65537,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_NICKNAME_EXIST", Value=65538)]
-      PLAYER_NICKNAME_EXIST = 65538,
+      [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=65538)]
+      PUID_EXIST = 65538,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=65539)]
-      PUID_EXIST = 65539,
+      [global::ProtoBuf.ProtoEnum(Name=@"NICKNAME_EXIST", Value=65539)]
+      NICKNAME_EXIST = 65539,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COIN_NOT_ENOUGH", Value=65540)]
-      COIN_NOT_ENOUGH = 65540,
+      [global::ProtoBuf.ProtoEnum(Name=@"NICKNAME_INVALID", Value=65540)]
+      NICKNAME_INVALID = 65540,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COIN_LIMIT", Value=65541)]
-      COIN_LIMIT = 65541,
+      [global::ProtoBuf.ProtoEnum(Name=@"COIN_NOT_ENOUGH", Value=69636)]
+      COIN_NOT_ENOUGH = 69636,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=65542)]
-      GOLD_NOT_ENOUGH = 65542,
+      [global::ProtoBuf.ProtoEnum(Name=@"COIN_LIMIT", Value=69637)]
+      COIN_LIMIT = 69637,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_LIMIT", Value=65543)]
-      GOLD_LIMIT = 65543,
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=69638)]
+      GOLD_NOT_ENOUGH = 69638,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_NOT_ENOUGH", Value=65544)]
-      FATIGUE_NOT_ENOUGH = 65544,
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_LIMIT", Value=69639)]
+      GOLD_LIMIT = 69639,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_LIMIT", Value=65545)]
-      FATIGUE_LIMIT = 65545,
+      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_NOT_ENOUGH", Value=69640)]
+      FATIGUE_NOT_ENOUGH = 69640,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_NOT_ENOUGH", Value=65546)]
-      TOWER_COIN_NOT_ENOUGH = 65546,
+      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_LIMIT", Value=69641)]
+      FATIGUE_LIMIT = 69641,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_LIMIT", Value=65547)]
-      TOWER_COIN_LIMIT = 65547,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_NOT_ENOUGH", Value=69642)]
+      TOWER_COIN_NOT_ENOUGH = 69642,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_NOT_ENOUGH", Value=65548)]
-      ARENA_COIN_NOT_ENOUGH = 65548,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_COIN_LIMIT", Value=69643)]
+      TOWER_COIN_LIMIT = 69643,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_LIMIT", Value=65549)]
-      ARENA_COIN_LIMIT = 65549,
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_NOT_ENOUGH", Value=69644)]
+      ARENA_COIN_NOT_ENOUGH = 69644,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_NOT_ENOUGH", Value=65550)]
-      CONTRIBUTION_NOT_ENOUGH = 65550,
+      [global::ProtoBuf.ProtoEnum(Name=@"ARENA_COIN_LIMIT", Value=69645)]
+      ARENA_COIN_LIMIT = 69645,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_LIMIT", Value=65551)]
-      CONTRIBUTION_LIMIT = 65551,
+      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_NOT_ENOUGH", Value=69646)]
+      CONTRIBUTION_NOT_ENOUGH = 69646,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_LIMIT", Value=65552)]
-      HONOR_POINT_LIMIT = 65552,
+      [global::ProtoBuf.ProtoEnum(Name=@"CONTRIBUTION_LIMIT", Value=69647)]
+      CONTRIBUTION_LIMIT = 69647,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_NOT_ENOUGH", Value=65553)]
-      HONOR_POINT_NOT_ENOUGH = 65553,
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_LIMIT", Value=69648)]
+      HONOR_POINT_LIMIT = 69648,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_ALREADY", Value=69633)]
-      SIGNIN_ALREADY = 69633,
+      [global::ProtoBuf.ProtoEnum(Name=@"HONOR_POINT_NOT_ENOUGH", Value=69649)]
+      HONOR_POINT_NOT_ENOUGH = 69649,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_NOT_YET", Value=69634)]
-      SIGNIN_NOT_YET = 69634,
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_ALREADY", Value=73729)]
+      SIGNIN_ALREADY = 73729,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FILL_ZERO", Value=69635)]
-      SIGNIN_FILL_ZERO = 69635,
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_NOT_YET", Value=73730)]
+      SIGNIN_NOT_YET = 73730,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FINISH", Value=69636)]
-      SIGNIN_FINISH = 69636,
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FILL_ZERO", Value=73731)]
+      SIGNIN_FILL_ZERO = 73731,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_STOP", Value=69637)]
-      SIGNIN_STOP = 69637
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_FINISH", Value=73732)]
+      SIGNIN_FINISH = 73732,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SIGNIN_STOP", Value=73733)]
+      SIGNIN_STOP = 73733
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]

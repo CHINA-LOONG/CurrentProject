@@ -23,11 +23,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"HEART_BEAT", Value=3)]
       HEART_BEAT = 3,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=4)]
-      ERROR_CODE = 4,
+      [global::ProtoBuf.ProtoEnum(Name=@"DELAY_TEST", Value=4)]
+      DELAY_TEST = 4,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"WARN", Value=5)]
-      WARN = 5
+      [global::ProtoBuf.ProtoEnum(Name=@"ERROR_CODE", Value=5)]
+      ERROR_CODE = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WARN", Value=6)]
+      WARN = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"gm")]

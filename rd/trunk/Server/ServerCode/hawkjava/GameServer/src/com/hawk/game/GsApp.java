@@ -654,7 +654,7 @@ public class GsApp extends HawkApp {
 	 * 创建puid对应的角色
 	 */
 	private boolean createNewPlayer(String puid, HawkSession session, HawkProtocol cmd) {
-		PlayerEntity playerEntity = new PlayerEntity(puid);
+		PlayerEntity playerEntity = new PlayerEntity(puid, GsConst.UNCOMPLETE_NICKNAME);
 		if (false == playerEntity.notifyCreate()) {
 			return false;
 		}
@@ -663,7 +663,7 @@ public class GsApp extends HawkApp {
 		ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
 		logger.info("create player entity: {}, puid: {}", playerId, puid);
 
-		HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, GsConst.DEFAULT_NICKNAME));
+		HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, GsConst.UNCOMPLETE_NICKNAME));
 		return true;
 	}
 

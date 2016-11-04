@@ -37,8 +37,8 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "puid", unique = true, nullable = false)
 	protected String puid = "";
 
-	@Column(name = "nickname", unique = true, nullable = false)
-	protected String nickname = "";
+	@Column(name = "nickname", nullable = false)
+	protected String nickname = GsConst.UNCOMPLETE_NICKNAME;
 
 	@Column(name = "portrait", nullable = false)
 	protected int portrait = 0;
@@ -130,7 +130,7 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public PlayerEntity(String puid, String nickname){
 		this.puid = puid;
-		this.nickname = puid;
+		this.nickname = nickname;
 		this.loginTime = HawkTime.getCalendar();
 	}
 

@@ -103,12 +103,15 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, LoadingData> loadingData = new Dictionary<int, LoadingData>();
     Dictionary<string, Loadinglocation> loadinglocationData = new Dictionary<string, Loadinglocation>();
     //guide battle level(NOTE:load guide step first)
-    //Dictionary<int, GuideBattleData> guideBattleList = new Dictionary<int, GuideBattleData>();
-    //Dictionary<string, GuideBattleStepData> guideBattleStepList = new Dictionary<string, GuideBattleStepData>();
+    Dictionary<int, GuideBattleData> guideBattleList = new Dictionary<int, GuideBattleData>();
+    Dictionary<string, GuideBattleStepData> guideBattleStepList = new Dictionary<string, GuideBattleStepData>();
 
     //新手引导
     List<GuideGroup> listGuideGroup = new List<GuideGroup>();
     Dictionary<int, GuideStep> guideStepDic = new Dictionary<int, GuideStep>();
+
+    //scene light map info
+    Dictionary<string, SceneLightmapData> sceneLightmapInfoList = new Dictionary<string, SceneLightmapData>();
 
     public void Init()
     {
@@ -929,51 +932,51 @@ public class StaticDataMgr : MonoBehaviour
                 loadinglocationData.Add(item.picture, item);
             }
         }
-        ////guide battle data
-        //{
-        //    //init step data first
-        //    var stepList = InitTable<GuideBattleStepData>("guideBattleStep");
-        //    int count = stepList.Count;
-        //    GuideBattleStepData curStepData;
-        //    for (int i = 0; i < count; ++i)
-        //    {
-        //        curStepData = stepList[i];
-        //        guideBattleStepList.Add(curStepData.id, curStepData);
-        //    }
+        //guide battle data
+        {
+            //init step data first
+            var stepList = InitTable<GuideBattleStepData>("guideBattleStep");
+            int count = stepList.Count;
+            GuideBattleStepData curStepData;
+            for (int i = 0; i < count; ++i)
+            {
+                curStepData = stepList[i];
+                guideBattleStepList.Add(curStepData.id, curStepData);
+            }
 
-        //    //init guide level data
-        //    var guideStaticList = InitTable<GuideBattleStaticData>("guideBattleStaticData");
-        //    count = guideStaticList.Count;
-        //    GuideBattleStaticData curGBStaticData;
-        //    for (int i = 0; i < count; ++i)
-        //    {
-        //        curGBStaticData = guideStaticList[i];
-        //        GuideBattleData tmpGuideData = new GuideBattleData();
-        //        tmpGuideData.battleStepList = new List<GuideBattleStepData>();
-        //        tmpGuideData.id = curGBStaticData.id;
-        //        tmpGuideData.successStepIndex = curGBStaticData.successStepIndex;
-        //        if (string.IsNullOrEmpty(curGBStaticData.condition) == false)
-        //        {
-        //            var cls = typeof(NormalScript);
-        //            tmpGuideData.condition = cls.GetMethod(curGBStaticData.condition);
-        //        }
+            //init guide level data
+            var guideStaticList = InitTable<GuideBattleStaticData>("guideBattleStaticData");
+            count = guideStaticList.Count;
+            GuideBattleStaticData curGBStaticData;
+            for (int i = 0; i < count; ++i)
+            {
+                curGBStaticData = guideStaticList[i];
+                GuideBattleData tmpGuideData = new GuideBattleData();
+                tmpGuideData.battleStepList = new List<GuideBattleStepData>();
+                tmpGuideData.id = curGBStaticData.id;
+                tmpGuideData.successStepIndex = curGBStaticData.successStepIndex;
+                if (string.IsNullOrEmpty(curGBStaticData.condition) == false)
+                {
+                    var cls = typeof(NormalScript);
+                    tmpGuideData.condition = cls.GetMethod(curGBStaticData.condition);
+                }
 
-        //        ArrayList stepArrayList = MiniJsonExtensions.arrayListFromJson(curGBStaticData.battleStepIDList);
-        //        int stepCount = stepArrayList.Count;
-        //        string tmpStr;
-        //        for (int stepIndex = 0; stepIndex < stepCount; ++stepIndex)
-        //        {
-        //            tmpStr = stepArrayList[stepIndex] as string;
-        //            if (tmpStr != null &&
-        //                guideBattleStepList.TryGetValue(tmpStr, out curStepData)
-        //                )
-        //            {
-        //                tmpGuideData.battleStepList.Add(curStepData);
-        //            }
-        //        }
-
-        //    }
-        //}
+                ArrayList stepArrayList = MiniJsonExtensions.arrayListFromJson(curGBStaticData.battleStepIDList);
+                int stepCount = stepArrayList.Count;
+                string tmpStr;
+                for (int stepIndex = 0; stepIndex < stepCount; ++stepIndex)
+                {
+                    tmpStr = stepArrayList[stepIndex] as string;
+                    if (tmpStr != null &&
+                        guideBattleStepList.TryGetValue(tmpStr, out curStepData)
+                        )
+                    {
+                        tmpGuideData.battleStepList.Add(curStepData);
+                    }
+                }
+                guideBattleList.Add(tmpGuideData.id, tmpGuideData);
+            }
+        }
 
         {
             listGuideGroup = InitTable<GuideGroup>("guideGroup");
@@ -982,6 +985,17 @@ public class StaticDataMgr : MonoBehaviour
             foreach(var stepItem in stepData)
             {
                 guideStepDic.Add(stepItem.Id, stepItem);
+            }
+        }
+        //scene lightmap info
+        {
+            var lightmapArray = InitTable<SceneLightmapData>("lightmapInfo");
+            int count = lightmapArray.Count;
+            SceneLightmapData curSceneLightmapData;
+            for (int i = 0; i < count; ++i)
+            {
+                curSceneLightmapData = lightmapArray[i];
+                sceneLightmapInfoList.Add(curSceneLightmapData.nodeID, curSceneLightmapData);
             }
         }
     }
@@ -1569,6 +1583,14 @@ public class StaticDataMgr : MonoBehaviour
         loadinglocationData.TryGetValue(picture, out item);
         return item;
     }
+    public GuideBattleData GetGuideBattleData(int guideID)
+    {
+        GuideBattleData curGuideBattleData = null;
+        guideBattleList.TryGetValue(guideID, out curGuideBattleData);
+
+        return curGuideBattleData;
+    }
+
     public List<GuideGroup> GetGuideGroupList()
     {
         return listGuideGroup;
@@ -1578,6 +1600,14 @@ public class StaticDataMgr : MonoBehaviour
         GuideStep gstep = null;
         guideStepDic.TryGetValue(stepId, out gstep);
         return gstep;
+    }
+
+    public SceneLightmapData GetLightmapInfo(string nodename)
+    {
+        SceneLightmapData curLightmapInfo = null;
+        sceneLightmapInfoList.TryGetValue(nodename, out curLightmapInfo);
+
+        return curLightmapInfo;
     }
     #endregion
 }

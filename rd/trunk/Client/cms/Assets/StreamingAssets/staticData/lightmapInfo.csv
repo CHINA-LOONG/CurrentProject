@@ -1,0 +1,5 @@
+﻿#TEXT,FLOAT,FLOAT,FLOAT,FLOAT,NUM
+nodeID,lightX,lightY,lightZ,lightW,lightIndex
+#nodeID,lightX,lightY,lightZ,lightW,lightIndex
+shuye_01,0,0,0.2,0.1,0
+wz_shu_009,0,0,0.1,0.2,0

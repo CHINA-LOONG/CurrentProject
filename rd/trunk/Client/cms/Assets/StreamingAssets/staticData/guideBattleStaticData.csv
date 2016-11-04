@@ -1,0 +1,5 @@
+﻿#NUM,TEXT,NUM,TEXT
+id,condition,successStepIndex,battleStepIDList
+#教程id(从100开始),开启条件,过了这步 就算教程成功(从1开始数),是否显示照妖镜对话id
+101,0,4,"[""g1_s1"",""g1_s2"",""g1_s3"",""g1_s4""]"
+102,0,4,"[""g2_s1"",""g2_s2"",""g2_s3"",""g2_s4""]"

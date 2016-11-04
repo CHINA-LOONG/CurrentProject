@@ -506,7 +506,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 503,bosssiwangta14Piying52,bossdajie14Piying52e1,0,0,0,50,6,0,icon_ultKairuisi5,bossdajie14Piying52Name,,0,1,,,,
 504,pvp,pvpe1,0,0,0,0,4,0,icon_psvMoguguai3,psvMoguguai3Name,psvMoguguai3Tips,0,0,,psvMoguguai3Description,,
 505,ultNvyao1,ultNvyao1e1,0,0,100,0,9,0.03,icon_ultNvyao1,ultNvyao1Name,ultNvyao1Tips,4.4,0,,ultNvyao1Description,ultNvyao1Curlvl,ultNvyao1Nextlvl
-506,ultLuoxinfu1,ultLuoxinfu1e1,0,0,100,0,9,0,icon_ultLuoxinfu1,ultLuoxinfu1Name,ultLuoxinfu1Tips,0,1,,ultLuoxinfu1Description,ultLuoxinfu1Curlvl,ultLuoxinfu1Nextlvl
+506,ultLuoxinfu1,ultLuoxinfu1e1,0,0,100,0,9,0,icon_ultLuoxinfu1,ultLuoxinfu1Name,ultLuoxinfu1Tips,0,1,,ultLuoxinfu1Description,,
 507,ultPiying1,ultPiying1e1,0,0,100,0,9,0.015,icon_ultPiying1,ultPiying1Name,ultPiying1Tips,2.7,1,,ultPiying1Description,ultPiying1Curlvl,ultPiying1Nextlvl
 508,ultJinglingwang2,ultJinglingwang2e1,0,0,100,0,9,0.03,icon_attackPlantStrong,ultJinglingwang2Name,ultJinglingwang2Tips,4.5,0,,ultJinglingwang2Description,ultJinglingwang2Curlvl,ultJinglingwang2Nextlvl
 509,ultKahuna2,ultKahuna2e1,0,0,100,0,9,0.01,icon_attackPlantStrong,ultKahuna2Name,ultKahuna2Tips,0.3,1,,ultKahuna2Description,ultKahuna2Curlvl,ultKahuna2Nextlvl

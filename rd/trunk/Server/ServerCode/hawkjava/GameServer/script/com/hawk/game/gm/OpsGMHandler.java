@@ -43,6 +43,7 @@ import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.HS.code;
 import com.hawk.game.protocol.HS.sys;
 import com.hawk.game.protocol.Im.HSImDump;
@@ -50,6 +51,7 @@ import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.SysProtocol.HSWarnPlayer;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
+import com.hawk.game.util.TextUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
 import com.hawk.game.util.QuestUtil;
 import com.sun.net.httpserver.HttpExchange;
@@ -485,16 +487,19 @@ public class OpsGMHandler extends HawkScript{
 		// 修改人物昵称
 		case "rename": {
 			String newname = request.containsKey("newname") ? request.getString("newname") : "";
-			ServerData.getInstance().replaceNameAndPlayerId(player.getName(), newname, player.getId());
-			player.getEntity().setNickname(newname);
-			player.getEntity().notifyUpdate(true);
-			HawkAccountService.getInstance().report(new HawkAccountService.RenameRoleData(player.getPuid(), player.getId(), newname));
+			if (TextUtil.checkNickname(newname) == Status.error.NONE_ERROR_VALUE) {
+				ServerData.getInstance().replaceNameAndPlayerId(player.getName(), newname, player.getId());
+				player.getEntity().setNickname(newname);
+				player.getEntity().notifyUpdate(true);
+				HawkAccountService.getInstance().report(new HawkAccountService.RenameRoleData(player.getPuid(), player.getId(), newname));
 
-			MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.GM_RENAME);
-			if (mailCfg != null) {
-				MailUtil.SendSysMail(mailCfg, player.getId(), newname);
+				MailSysCfg mailCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, GsConst.SysMail.GM_RENAME);
+				if (mailCfg != null) {
+					MailUtil.SendSysMail(mailCfg, player.getId(), newname);
+				}
+				commadnHandled = true;
 			}
-			commadnHandled = true;
+
 			break;
 		}
 		// 扣金币

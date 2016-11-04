@@ -122,6 +122,13 @@ public class BattleController : MonoBehaviour
         get { return mCurPvpParam; }
     }
     private PvpFightParam mCurPvpParam;
+
+    public GuideLevelParam GuideLevelParam
+    {
+        get { return mCurGuideLevelParam; }
+    }
+    private GuideLevelParam mCurGuideLevelParam;
+
     public int PvpHornorPointGet
     {
         get { return mPvpHornorPointGet; }
@@ -330,6 +337,7 @@ public class BattleController : MonoBehaviour
     {
         curInstanceParam = enterParam;
         mCurPvpParam = null;
+        mCurGuideLevelParam = null;
         //add player to load
         PbUnit pb = null;
         Dictionary<int, PbUnit> unitPbList = GameDataMgr.Instance.PlayerDataAttr.unitPbList;
@@ -363,6 +371,7 @@ public class BattleController : MonoBehaviour
         mCurPvpParam = pvpParam;
         mPvpHornorPointGet = 0;
         curInstanceParam = null;
+        mCurGuideLevelParam = null;
         //add player to load
         PbUnit pb = null;
         Dictionary<int, PbUnit> unitPbList = GameDataMgr.Instance.PlayerDataAttr.unitPbList;
@@ -388,6 +397,26 @@ public class BattleController : MonoBehaviour
         StartBattlePrepareCommon();
     }
     //---------------------------------------------------------------------------------------------
+    public void StartBattleGuidePrepare(GuideLevelParam guideParam)
+    {
+        mCurGuideLevelParam = guideParam;
+        mCurPvpParam = null;
+        curInstanceParam = null;
+        //add player to load
+        int count = mCurGuideLevelParam.selfIdList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            AddUnitDataRequestInternal(mCurGuideLevelParam.selfIdList[i]);
+        }
+        //add enemy to load
+        count = mCurGuideLevelParam.enemyIdList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            AddUnitDataRequestInternal(mCurGuideLevelParam.enemyIdList[i]);
+        }
+        StartBattlePrepareCommon();
+    }
+    //---------------------------------------------------------------------------------------------
     private void StartBattlePrepareCommon()
     {
         ActorEventService.Instance.AddResourceGroup("common");
@@ -397,10 +426,13 @@ public class BattleController : MonoBehaviour
         ActorEventService.Instance.AddResourceGroup("commonDeBuff");
         ActorEventService.Instance.AddResourceGroup("commonPassive");
 
-        //add scoreui
-        UIScore.AddResourceRequest();
-        //add hint message
-        ResourceMgr.Instance.AddAssetRequest(new AssetRequest("hintMessage"));
+        if (mCurGuideLevelParam == null)
+        {
+            //add scoreui
+            UIScore.AddResourceRequest();
+            //add hint message
+            ResourceMgr.Instance.AddAssetRequest(new AssetRequest("hintMessage"));
+        }
     }
     //---------------------------------------------------------------------------------------------
     public EnterInstanceParam GetCurrentInstance()
@@ -408,17 +440,17 @@ public class BattleController : MonoBehaviour
         return curInstanceParam;
     }
     //---------------------------------------------------------------------------------------------
-    private void AddUnitDataRequestInternal(string assetID)
+    private void AddUnitDataRequestInternal(string unitID)
     {
         ResourceMgr resMgr = ResourceMgr.Instance;
-        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(assetID);
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(unitID);
         if (unitRowData != null)
         {
             resMgr.AddAssetRequest(new AssetRequest(unitRowData.assetID));
         }
 
         //TODO:add spell request
-        ActorEventService.Instance.AddResourceGroup(assetID);
+        ActorEventService.Instance.AddResourceGroup(unitID);
     }
     //---------------------------------------------------------------------------------------------
     public void StartBattle()
@@ -449,6 +481,12 @@ public class BattleController : MonoBehaviour
         else if (mCurPvpParam != null)
         {
             instanceData = StaticDataMgr.Instance.GetInstanceData("pvp_scene");
+            maxProcessIndex = 1;
+            instanceStar = 0;
+        }
+        else if (mCurGuideLevelParam != null)
+        {
+            instanceData = StaticDataMgr.Instance.GetInstanceData(mCurGuideLevelParam.instanceId);
             maxProcessIndex = 1;
             instanceStar = 0;
         }
@@ -516,6 +554,10 @@ public class BattleController : MonoBehaviour
         {
             battleGroup.SetPlayerList(ref curInstanceParam.playerTeam);
         }
+        else if (mCurGuideLevelParam != null)
+        {
+            battleGroup.SetGuidePlayerList(ref mCurGuideLevelParam.selfIdList);
+        }
 
         SetCameraDefault();
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
@@ -525,6 +567,14 @@ public class BattleController : MonoBehaviour
         if (entryData != null)
         {
             mUILevelInfo.SetInstanceName(entryData.NameAttr);
+        }
+        else if (mCurPvpParam != null)
+        {
+
+        }
+        else if (mCurGuideLevelParam != null)
+        {
+            mUILevelInfo.SetInstanceName(StaticDataMgr.Instance.GetTextByID("guide_level_name"));
         }
         //UIIm.Instance.transform.SetAsLastSibling();
         StartProcess(curProcessIndex);
@@ -600,7 +650,14 @@ public class BattleController : MonoBehaviour
         curBattleScene = null;
 
         process.Clear();
-        GameMain.Instance.ChangeModule<BuildModule>((int)state);
+        if (mCurGuideLevelParam == null)
+        {
+            GameMain.Instance.ChangeModule<BuildModule>((int)state);
+        }
+        else
+        {
+            GameMain.Instance.ChangeModule<CreatePlayerModule>();
+        }
         UIMgr.Instance.DestroyUI(mUIScore);
         UIMgr.Instance.DestroyUI(mUILevelInfo);
         UIMgr.Instance.DestroyUI(uiBattle);
@@ -704,13 +761,19 @@ public class BattleController : MonoBehaviour
         if (isVisible == true)
         {
             uiBattle.ShowUI(false);
-            UIIm.Instance.SetLevelVisible(false);
+            if (mCurGuideLevelParam == null)
+            {
+                UIIm.Instance.SetLevelVisible(false);
+            }
             mUILevelInfo.SetBattleLevelProcess(curProcessIndex + 1, maxProcessIndex);
         }
         else
         {
             uiBattle.ShowUI(true);
-            UIIm.Instance.SetLevelVisible(true);
+            if (mCurGuideLevelParam == null)
+            {
+                UIIm.Instance.SetLevelVisible(true);
+            }
             mUILevelInfo.SetVisible(false);
         }
     }
@@ -723,6 +786,7 @@ public class BattleController : MonoBehaviour
             floorHeight = slotNode.transform.position.y;
             process.ClearRewardItem();
 
+            //pvp
             if (mCurPvpParam != null)
             {
                 curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(instanceData.battleLevelList[0]);
@@ -737,7 +801,8 @@ public class BattleController : MonoBehaviour
                 }
                 battleGroup.SetEnemyList(pbList, true);
             }
-            else
+            //pve
+            else if (curInstanceParam != null)
             {
                 PB.HSBattle curBattle = curInstanceParam.instanceData.battle[index];
                 curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
@@ -779,6 +844,27 @@ public class BattleController : MonoBehaviour
                     {
                         process.AddRewardItem(pbUnit.guid, curBattle.monsterDrop[i]);
                     }
+                }
+                battleGroup.SetEnemyList(pbList);
+            }
+            //guide level
+            else if (mCurGuideLevelParam != null)
+            {
+                curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(instanceData.battleLevelList[0]);
+                ObjectDataMgr objMgr = ObjectDataMgr.Instance;
+                List<PbUnit> pbList = new List<PbUnit>();
+                int count = mCurGuideLevelParam.enemyIdList.Count;
+                int enemyStartID = -100;
+                for (int i = 0; i < count; ++i)
+                {
+                    PbUnit pbUnit = new PbUnit();
+                    pbUnit.guid = --enemyStartID;
+                    pbUnit.id = mCurGuideLevelParam.enemyIdList[i];
+                    pbUnit.level = 40;
+                    pbUnit.camp = UnitCamp.Enemy;
+                    pbUnit.slot = i;
+                    pbUnit.lazy = BattleConst.defaultLazy;
+                    pbList.Add(pbUnit);
                 }
                 battleGroup.SetEnemyList(pbList);
             }
@@ -1000,7 +1086,37 @@ public class BattleController : MonoBehaviour
             instanceParam.passBattleCount = (mBattleResult == 0) ? maxProcessIndex : curProcessIndex;
             GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
         }
-    } 
+        else if (mCurGuideLevelParam != null)
+        {
+            if (mBattleResult == 0)
+            {
+                UnLoadBattleScene(ExitInstanceType.Num_Exit_Instance_Type);
+            }
+            else if (mBattleResult == 2)
+            {
+                MsgBox.PromptMsg.Open(
+                    MsgBox.MsgBoxType.Conform,
+                    string.Format(StaticDataMgr.Instance.GetTextByID("guid_level_failed")),
+                    OnGuideLevelFailed,
+                    true,
+                    false
+                    );
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnGuideLevelFailed(MsgBox.PrompButtonClick btnParam)
+    {
+        RestartGuideLevel();
+    }
+
+    //---------------------------------------------------------------------------------------------
+    private void RestartGuideLevel()
+    {
+        //battleGroup.RestartGuideLevel();
+        if (process != null)
+            process.RestartCurGuideLevel();
+    }
     //---------------------------------------------------------------------------------------------
     void OnInstanceSettleResult(ProtocolMessage msg)
     {

@@ -141,6 +141,10 @@ public class UIAdventure : UIBase,
     void OnDisable()
     {
         UnBindListener();
+        for (int i = 0; i < adventures.Count; i++)
+        {
+            adventures[i].CleanItem();
+        }
     }
 
     void BindListener()

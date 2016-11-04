@@ -691,6 +691,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   fatherBox: {fileID: 22412882}
   Close: {fileID: 129942}
   selectDifficultyTitle: {fileID: 11496980}
@@ -1029,7 +1035,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453682
 RectTransform:

@@ -7385,7 +7385,9 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
   uiAnimator: {fileID: 0}
+  uiViewName: 
   bottomLayer: {fileID: 22424888}
   dazhaoGroup: {fileID: 22480898}
   publicTopGroup: {fileID: 22406946}
@@ -78596,9 +78598,9 @@ RectTransform:
   - {fileID: 22459780}
   m_Father: {fileID: 22487622}
   m_RootOrder: 12
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 429, y: 177}
+  m_AnchorMin: {x: 1, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: -80, y: 177}
   m_SizeDelta: {x: 141, y: 49}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22454624

@@ -7897,7 +7897,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosszhifuletuJiuweihu43e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicCureSlight" bundle="effect/particle" parent="e_shouji" attach="true"/>
+				<Particle time="0" asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1"/>
@@ -7909,7 +7909,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	
 		<Ani id="bossdajie13Cike41" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="wugong" value="true"/>
+				<Motion time="0" ani="" key="fagong" value="true"/>
 			</MotionList>
 			<ParticleList>
 			</ParticleList>
@@ -7928,7 +7928,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 						
 		<Ani id="bossdajie13Cike42" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="fagong" value="true"/>
+				<Motion time="0" ani="" key="wugong" value="true"/>
 			</MotionList>
 			<ParticleList>
 				<Particle asset="castFire" bundle="effect/particle" attach=""/>
@@ -7986,7 +7986,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossmidasigongHuangjinzhiling11e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="attackMetalSmash" bundle="effect/particle" parent="e_shouji" attach="true"/>
+				<Particle time="0" asset="attackMetalSmash" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="smash"/>
@@ -9002,7 +9002,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		<Ani id="huangjinzhiling1_ctrl" state="0" action_delay="2">
 			<ControllerList>
-				<Controller time="0.5" name="Huangjinzhiling1boss2"/>
+				<Controller time="2" name="Huangjinzhiling1boss2"/>
 			</ControllerList>
 			<WpStateList>
 				<Wp time="0.5" name="bossmidasigongHuangjinzhiling1wp01" state="3"/>

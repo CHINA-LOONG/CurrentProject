@@ -208,6 +208,18 @@ public class PlayerData {
 	 * 获取玩家基础数据
 	 */
 	public PlayerEntity getPlayerEntity() {
+		try {
+			if (playerEntity == null &&getStatisticsEntity() != null)
+			{
+				throw new HawkException("PlayerEntity is null but staticEntity is not null");
+			}
+			else if (playerEntity == null) {
+				throw new HawkException("PlayerEntity is null");
+			}
+				
+		} catch (Exception e) {
+			HawkException.catchException(e);
+		}
 		return playerEntity;
 	}
 

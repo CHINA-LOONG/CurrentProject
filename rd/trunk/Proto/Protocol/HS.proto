@@ -9,10 +9,12 @@ enum sys
 	KEY_EXCHANGE                = 2;
 	// 心跳通知
 	HEART_BEAT                  = 3;
+	// 延迟测试
+	DELAY_TEST                  = 4;
 	// 错误码提示
-	ERROR_CODE                  = 4;
+	ERROR_CODE                  = 5;
 	// 警告
-	WARN                        = 5;
+	WARN                        = 6;
 }
 
 // GM协议ID列表(100<=gm<1000)

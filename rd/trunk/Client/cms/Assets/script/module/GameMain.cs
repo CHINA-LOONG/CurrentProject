@@ -141,6 +141,19 @@ public class GameMain : MonoBehaviour
         UIMgr.Instance.ClearUILayerList();
     }
     //---------------------------------------------------------------------------------------------
+    public void LoadBattleLevelGuide(GuideLevelParam guideParam)
+    {
+        SwitchLevelEventArgs args = new SwitchLevelEventArgs();
+        //TODO: need config files or just set it in codes
+        args.guideParam = guideParam;
+        args.enterParam = null;
+        args.pvpParam = null;
+
+        InstanceData guideInstance = StaticDataMgr.Instance.GetInstanceData(guideParam.instanceId);
+        ResourceMgr.Instance.LoadLevelAsyn(guideInstance.instanceProtoData.sceneID, false, OnSceneLoaded, args);
+        UIMgr.Instance.ClearUILayerList();
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnSceneLoaded(GameObject instance, System.EventArgs args)
     {
         ClearModule();
@@ -152,6 +165,10 @@ public class GameMain : MonoBehaviour
         else if (slArgs.pvpParam != null)
         {
             ChangeModuleDirect<BattleModule>(slArgs.pvpParam);
+        }
+        else if (slArgs.guideParam != null)
+        {
+            ChangeModuleDirect<BattleModule>(slArgs.guideParam);
         }
         //StartCoroutine(FuckingU3d(args));
     }

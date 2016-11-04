@@ -73,6 +73,10 @@ public class UIBattle : UIBase
 			return instance;
 		}
 	}
+    //for guide level only
+    private byte mSpeedShow = 1;
+    private byte mSettingShow = 1;
+
 
 	// Use this for initialization
     public void Initialize()
@@ -352,8 +356,14 @@ public class UIBattle : UIBase
 
     public void ShowDazhaoReleateUI(bool isShow)
     {
-        m_ButtonSpeed.gameObject.SetActive(isShow);
-        mSetting.gameObject.SetActive(isShow);
+        m_ButtonSpeed.gameObject.SetActive(isShow && mSpeedShow == 1);
+        mSetting.gameObject.SetActive(isShow && mSettingShow == 1);
+        RectTransform mirrorTrans = mirrorUI.gameObject.transform as RectTransform;
+        SetMirrorVisible(isShow);
+    }
+    //for guidelevel only
+    public void SetMirrorVisible(bool isShow)
+    {
         RectTransform mirrorTrans = mirrorUI.gameObject.transform as RectTransform;
         if (isShow == true)
         {
@@ -365,6 +375,12 @@ public class UIBattle : UIBase
             mirrorTrans.anchoredPosition += BattleConst.uiFarDistance;
         }
     }
+    public void HideGuidLevelReleateUI()
+    {
+        mSpeedShow = 0;
+        mSettingShow = 0;
+    }
+
 	public void ShowUI(bool ishow)
     {
         GameEventMgr.Instance.FireEvent<bool>(GameEventList.ShowBattleUI, ishow);

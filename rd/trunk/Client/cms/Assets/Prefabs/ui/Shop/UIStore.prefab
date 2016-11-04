@@ -657,6 +657,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mViewType: 0
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   storeName: {fileID: 11475270}
   closeButton: {fileID: 11452620}
   payButton: {fileID: 11430562}
@@ -1235,10 +1241,10 @@ RectTransform:
   - {fileID: 22496212}
   m_Father: {fileID: 22454138}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -1.52587891e-05}
-  m_SizeDelta: {x: 900, y: 620}
+  m_SizeDelta: {x: -238, y: -20}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22436778
 RectTransform:
@@ -1403,8 +1409,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -13}
-  m_SizeDelta: {x: 0, y: 26}
+  m_AnchoredPosition: {x: 5, y: -13}
+  m_SizeDelta: {x: 318, y: 26}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22468704
 RectTransform:

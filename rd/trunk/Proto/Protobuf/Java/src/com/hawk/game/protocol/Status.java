@@ -489,173 +489,181 @@ public final class Status {
      */
     PLAYER_NOT_EXIST(0, 65537),
     /**
-     * <code>PLAYER_NICKNAME_EXIST = 65538;</code>
+     * <code>PUID_EXIST = 65538;</code>
+     *
+     * <pre>
+     * puid重复
+     * </pre>
+     */
+    PUID_EXIST(1, 65538),
+    /**
+     * <code>NICKNAME_EXIST = 65539;</code>
      *
      * <pre>
      * 昵称存在
      * </pre>
      */
-    PLAYER_NICKNAME_EXIST(1, 65538),
+    NICKNAME_EXIST(2, 65539),
     /**
-     * <code>PUID_EXIST = 65539;</code>
+     * <code>NICKNAME_INVALID = 65540;</code>
      *
      * <pre>
-     * 账号名成重复
+     * 昵称不符合规定
      * </pre>
      */
-    PUID_EXIST(2, 65539),
+    NICKNAME_INVALID(3, 65540),
     /**
-     * <code>COIN_NOT_ENOUGH = 65540;</code>
+     * <code>COIN_NOT_ENOUGH = 69636;</code>
      *
      * <pre>
      * 金币不足
      * </pre>
      */
-    COIN_NOT_ENOUGH(3, 65540),
+    COIN_NOT_ENOUGH(4, 69636),
     /**
-     * <code>COIN_LIMIT = 65541;</code>
+     * <code>COIN_LIMIT = 69637;</code>
      *
      * <pre>
      * 金币上限
      * </pre>
      */
-    COIN_LIMIT(4, 65541),
+    COIN_LIMIT(5, 69637),
     /**
-     * <code>GOLD_NOT_ENOUGH = 65542;</code>
+     * <code>GOLD_NOT_ENOUGH = 69638;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    GOLD_NOT_ENOUGH(5, 65542),
+    GOLD_NOT_ENOUGH(6, 69638),
     /**
-     * <code>GOLD_LIMIT = 65543;</code>
+     * <code>GOLD_LIMIT = 69639;</code>
      *
      * <pre>
      * 钻石上限
      * </pre>
      */
-    GOLD_LIMIT(6, 65543),
+    GOLD_LIMIT(7, 69639),
     /**
-     * <code>FATIGUE_NOT_ENOUGH = 65544;</code>
+     * <code>FATIGUE_NOT_ENOUGH = 69640;</code>
      *
      * <pre>
      * 疲劳值不足
      * </pre>
      */
-    FATIGUE_NOT_ENOUGH(7, 65544),
+    FATIGUE_NOT_ENOUGH(8, 69640),
     /**
-     * <code>FATIGUE_LIMIT = 65545;</code>
+     * <code>FATIGUE_LIMIT = 69641;</code>
      *
      * <pre>
      * 疲劳值上限
      * </pre>
      */
-    FATIGUE_LIMIT(8, 65545),
+    FATIGUE_LIMIT(9, 69641),
     /**
-     * <code>TOWER_COIN_NOT_ENOUGH = 65546;</code>
+     * <code>TOWER_COIN_NOT_ENOUGH = 69642;</code>
      *
      * <pre>
      * 通天塔币不足
      * </pre>
      */
-    TOWER_COIN_NOT_ENOUGH(9, 65546),
+    TOWER_COIN_NOT_ENOUGH(10, 69642),
     /**
-     * <code>TOWER_COIN_LIMIT = 65547;</code>
+     * <code>TOWER_COIN_LIMIT = 69643;</code>
      *
      * <pre>
      * 通天塔币上限
      * </pre>
      */
-    TOWER_COIN_LIMIT(10, 65547),
+    TOWER_COIN_LIMIT(11, 69643),
     /**
-     * <code>ARENA_COIN_NOT_ENOUGH = 65548;</code>
+     * <code>ARENA_COIN_NOT_ENOUGH = 69644;</code>
      *
      * <pre>
      * 竞技场币不足
      * </pre>
      */
-    ARENA_COIN_NOT_ENOUGH(11, 65548),
+    ARENA_COIN_NOT_ENOUGH(12, 69644),
     /**
-     * <code>ARENA_COIN_LIMIT = 65549;</code>
+     * <code>ARENA_COIN_LIMIT = 69645;</code>
      *
      * <pre>
      * 竞技场币上限
      * </pre>
      */
-    ARENA_COIN_LIMIT(12, 65549),
+    ARENA_COIN_LIMIT(13, 69645),
     /**
-     * <code>CONTRIBUTION_NOT_ENOUGH = 65550;</code>
+     * <code>CONTRIBUTION_NOT_ENOUGH = 69646;</code>
      *
      * <pre>
      * 公会贡献值不足
      * </pre>
      */
-    CONTRIBUTION_NOT_ENOUGH(13, 65550),
+    CONTRIBUTION_NOT_ENOUGH(14, 69646),
     /**
-     * <code>CONTRIBUTION_LIMIT = 65551;</code>
+     * <code>CONTRIBUTION_LIMIT = 69647;</code>
      *
      * <pre>
      * 公会贡献值上限
      * </pre>
      */
-    CONTRIBUTION_LIMIT(14, 65551),
+    CONTRIBUTION_LIMIT(15, 69647),
     /**
-     * <code>HONOR_POINT_LIMIT = 65552;</code>
+     * <code>HONOR_POINT_LIMIT = 69648;</code>
      *
      * <pre>
      * 荣誉点上限
      * </pre>
      */
-    HONOR_POINT_LIMIT(15, 65552),
+    HONOR_POINT_LIMIT(16, 69648),
     /**
-     * <code>HONOR_POINT_NOT_ENOUGH = 65553;</code>
+     * <code>HONOR_POINT_NOT_ENOUGH = 69649;</code>
      *
      * <pre>
      * 荣誉点不足
      * </pre>
      */
-    HONOR_POINT_NOT_ENOUGH(16, 65553),
+    HONOR_POINT_NOT_ENOUGH(17, 69649),
     /**
-     * <code>SIGNIN_ALREADY = 69633;</code>
+     * <code>SIGNIN_ALREADY = 73729;</code>
      *
      * <pre>
      * 今日已签到
      * </pre>
      */
-    SIGNIN_ALREADY(17, 69633),
+    SIGNIN_ALREADY(18, 73729),
     /**
-     * <code>SIGNIN_NOT_YET = 69634;</code>
+     * <code>SIGNIN_NOT_YET = 73730;</code>
      *
      * <pre>
      * 今日还未签到
      * </pre>
      */
-    SIGNIN_NOT_YET(18, 69634),
+    SIGNIN_NOT_YET(19, 73730),
     /**
-     * <code>SIGNIN_FILL_ZERO = 69635;</code>
+     * <code>SIGNIN_FILL_ZERO = 73731;</code>
      *
      * <pre>
      * 没有补签次数
      * </pre>
      */
-    SIGNIN_FILL_ZERO(19, 69635),
+    SIGNIN_FILL_ZERO(20, 73731),
     /**
-     * <code>SIGNIN_FINISH = 69636;</code>
+     * <code>SIGNIN_FINISH = 73732;</code>
      *
      * <pre>
      * 本月签到已完成
      * </pre>
      */
-    SIGNIN_FINISH(20, 69636),
+    SIGNIN_FINISH(21, 73732),
     /**
-     * <code>SIGNIN_STOP = 69637;</code>
+     * <code>SIGNIN_STOP = 73733;</code>
      *
      * <pre>
      * 本月签到已结束
      * </pre>
      */
-    SIGNIN_STOP(21, 69637),
+    SIGNIN_STOP(22, 73733),
     ;
 
     /**
@@ -667,173 +675,181 @@ public final class Status {
      */
     public static final int PLAYER_NOT_EXIST_VALUE = 65537;
     /**
-     * <code>PLAYER_NICKNAME_EXIST = 65538;</code>
+     * <code>PUID_EXIST = 65538;</code>
+     *
+     * <pre>
+     * puid重复
+     * </pre>
+     */
+    public static final int PUID_EXIST_VALUE = 65538;
+    /**
+     * <code>NICKNAME_EXIST = 65539;</code>
      *
      * <pre>
      * 昵称存在
      * </pre>
      */
-    public static final int PLAYER_NICKNAME_EXIST_VALUE = 65538;
+    public static final int NICKNAME_EXIST_VALUE = 65539;
     /**
-     * <code>PUID_EXIST = 65539;</code>
+     * <code>NICKNAME_INVALID = 65540;</code>
      *
      * <pre>
-     * 账号名成重复
+     * 昵称不符合规定
      * </pre>
      */
-    public static final int PUID_EXIST_VALUE = 65539;
+    public static final int NICKNAME_INVALID_VALUE = 65540;
     /**
-     * <code>COIN_NOT_ENOUGH = 65540;</code>
+     * <code>COIN_NOT_ENOUGH = 69636;</code>
      *
      * <pre>
      * 金币不足
      * </pre>
      */
-    public static final int COIN_NOT_ENOUGH_VALUE = 65540;
+    public static final int COIN_NOT_ENOUGH_VALUE = 69636;
     /**
-     * <code>COIN_LIMIT = 65541;</code>
+     * <code>COIN_LIMIT = 69637;</code>
      *
      * <pre>
      * 金币上限
      * </pre>
      */
-    public static final int COIN_LIMIT_VALUE = 65541;
+    public static final int COIN_LIMIT_VALUE = 69637;
     /**
-     * <code>GOLD_NOT_ENOUGH = 65542;</code>
+     * <code>GOLD_NOT_ENOUGH = 69638;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    public static final int GOLD_NOT_ENOUGH_VALUE = 65542;
+    public static final int GOLD_NOT_ENOUGH_VALUE = 69638;
     /**
-     * <code>GOLD_LIMIT = 65543;</code>
+     * <code>GOLD_LIMIT = 69639;</code>
      *
      * <pre>
      * 钻石上限
      * </pre>
      */
-    public static final int GOLD_LIMIT_VALUE = 65543;
+    public static final int GOLD_LIMIT_VALUE = 69639;
     /**
-     * <code>FATIGUE_NOT_ENOUGH = 65544;</code>
+     * <code>FATIGUE_NOT_ENOUGH = 69640;</code>
      *
      * <pre>
      * 疲劳值不足
      * </pre>
      */
-    public static final int FATIGUE_NOT_ENOUGH_VALUE = 65544;
+    public static final int FATIGUE_NOT_ENOUGH_VALUE = 69640;
     /**
-     * <code>FATIGUE_LIMIT = 65545;</code>
+     * <code>FATIGUE_LIMIT = 69641;</code>
      *
      * <pre>
      * 疲劳值上限
      * </pre>
      */
-    public static final int FATIGUE_LIMIT_VALUE = 65545;
+    public static final int FATIGUE_LIMIT_VALUE = 69641;
     /**
-     * <code>TOWER_COIN_NOT_ENOUGH = 65546;</code>
+     * <code>TOWER_COIN_NOT_ENOUGH = 69642;</code>
      *
      * <pre>
      * 通天塔币不足
      * </pre>
      */
-    public static final int TOWER_COIN_NOT_ENOUGH_VALUE = 65546;
+    public static final int TOWER_COIN_NOT_ENOUGH_VALUE = 69642;
     /**
-     * <code>TOWER_COIN_LIMIT = 65547;</code>
+     * <code>TOWER_COIN_LIMIT = 69643;</code>
      *
      * <pre>
      * 通天塔币上限
      * </pre>
      */
-    public static final int TOWER_COIN_LIMIT_VALUE = 65547;
+    public static final int TOWER_COIN_LIMIT_VALUE = 69643;
     /**
-     * <code>ARENA_COIN_NOT_ENOUGH = 65548;</code>
+     * <code>ARENA_COIN_NOT_ENOUGH = 69644;</code>
      *
      * <pre>
      * 竞技场币不足
      * </pre>
      */
-    public static final int ARENA_COIN_NOT_ENOUGH_VALUE = 65548;
+    public static final int ARENA_COIN_NOT_ENOUGH_VALUE = 69644;
     /**
-     * <code>ARENA_COIN_LIMIT = 65549;</code>
+     * <code>ARENA_COIN_LIMIT = 69645;</code>
      *
      * <pre>
      * 竞技场币上限
      * </pre>
      */
-    public static final int ARENA_COIN_LIMIT_VALUE = 65549;
+    public static final int ARENA_COIN_LIMIT_VALUE = 69645;
     /**
-     * <code>CONTRIBUTION_NOT_ENOUGH = 65550;</code>
+     * <code>CONTRIBUTION_NOT_ENOUGH = 69646;</code>
      *
      * <pre>
      * 公会贡献值不足
      * </pre>
      */
-    public static final int CONTRIBUTION_NOT_ENOUGH_VALUE = 65550;
+    public static final int CONTRIBUTION_NOT_ENOUGH_VALUE = 69646;
     /**
-     * <code>CONTRIBUTION_LIMIT = 65551;</code>
+     * <code>CONTRIBUTION_LIMIT = 69647;</code>
      *
      * <pre>
      * 公会贡献值上限
      * </pre>
      */
-    public static final int CONTRIBUTION_LIMIT_VALUE = 65551;
+    public static final int CONTRIBUTION_LIMIT_VALUE = 69647;
     /**
-     * <code>HONOR_POINT_LIMIT = 65552;</code>
+     * <code>HONOR_POINT_LIMIT = 69648;</code>
      *
      * <pre>
      * 荣誉点上限
      * </pre>
      */
-    public static final int HONOR_POINT_LIMIT_VALUE = 65552;
+    public static final int HONOR_POINT_LIMIT_VALUE = 69648;
     /**
-     * <code>HONOR_POINT_NOT_ENOUGH = 65553;</code>
+     * <code>HONOR_POINT_NOT_ENOUGH = 69649;</code>
      *
      * <pre>
      * 荣誉点不足
      * </pre>
      */
-    public static final int HONOR_POINT_NOT_ENOUGH_VALUE = 65553;
+    public static final int HONOR_POINT_NOT_ENOUGH_VALUE = 69649;
     /**
-     * <code>SIGNIN_ALREADY = 69633;</code>
+     * <code>SIGNIN_ALREADY = 73729;</code>
      *
      * <pre>
      * 今日已签到
      * </pre>
      */
-    public static final int SIGNIN_ALREADY_VALUE = 69633;
+    public static final int SIGNIN_ALREADY_VALUE = 73729;
     /**
-     * <code>SIGNIN_NOT_YET = 69634;</code>
+     * <code>SIGNIN_NOT_YET = 73730;</code>
      *
      * <pre>
      * 今日还未签到
      * </pre>
      */
-    public static final int SIGNIN_NOT_YET_VALUE = 69634;
+    public static final int SIGNIN_NOT_YET_VALUE = 73730;
     /**
-     * <code>SIGNIN_FILL_ZERO = 69635;</code>
+     * <code>SIGNIN_FILL_ZERO = 73731;</code>
      *
      * <pre>
      * 没有补签次数
      * </pre>
      */
-    public static final int SIGNIN_FILL_ZERO_VALUE = 69635;
+    public static final int SIGNIN_FILL_ZERO_VALUE = 73731;
     /**
-     * <code>SIGNIN_FINISH = 69636;</code>
+     * <code>SIGNIN_FINISH = 73732;</code>
      *
      * <pre>
      * 本月签到已完成
      * </pre>
      */
-    public static final int SIGNIN_FINISH_VALUE = 69636;
+    public static final int SIGNIN_FINISH_VALUE = 73732;
     /**
-     * <code>SIGNIN_STOP = 69637;</code>
+     * <code>SIGNIN_STOP = 73733;</code>
      *
      * <pre>
      * 本月签到已结束
      * </pre>
      */
-    public static final int SIGNIN_STOP_VALUE = 69637;
+    public static final int SIGNIN_STOP_VALUE = 73733;
 
 
     public final int getNumber() { return value; }
@@ -841,27 +857,28 @@ public final class Status {
     public static PlayerError valueOf(int value) {
       switch (value) {
         case 65537: return PLAYER_NOT_EXIST;
-        case 65538: return PLAYER_NICKNAME_EXIST;
-        case 65539: return PUID_EXIST;
-        case 65540: return COIN_NOT_ENOUGH;
-        case 65541: return COIN_LIMIT;
-        case 65542: return GOLD_NOT_ENOUGH;
-        case 65543: return GOLD_LIMIT;
-        case 65544: return FATIGUE_NOT_ENOUGH;
-        case 65545: return FATIGUE_LIMIT;
-        case 65546: return TOWER_COIN_NOT_ENOUGH;
-        case 65547: return TOWER_COIN_LIMIT;
-        case 65548: return ARENA_COIN_NOT_ENOUGH;
-        case 65549: return ARENA_COIN_LIMIT;
-        case 65550: return CONTRIBUTION_NOT_ENOUGH;
-        case 65551: return CONTRIBUTION_LIMIT;
-        case 65552: return HONOR_POINT_LIMIT;
-        case 65553: return HONOR_POINT_NOT_ENOUGH;
-        case 69633: return SIGNIN_ALREADY;
-        case 69634: return SIGNIN_NOT_YET;
-        case 69635: return SIGNIN_FILL_ZERO;
-        case 69636: return SIGNIN_FINISH;
-        case 69637: return SIGNIN_STOP;
+        case 65538: return PUID_EXIST;
+        case 65539: return NICKNAME_EXIST;
+        case 65540: return NICKNAME_INVALID;
+        case 69636: return COIN_NOT_ENOUGH;
+        case 69637: return COIN_LIMIT;
+        case 69638: return GOLD_NOT_ENOUGH;
+        case 69639: return GOLD_LIMIT;
+        case 69640: return FATIGUE_NOT_ENOUGH;
+        case 69641: return FATIGUE_LIMIT;
+        case 69642: return TOWER_COIN_NOT_ENOUGH;
+        case 69643: return TOWER_COIN_LIMIT;
+        case 69644: return ARENA_COIN_NOT_ENOUGH;
+        case 69645: return ARENA_COIN_LIMIT;
+        case 69646: return CONTRIBUTION_NOT_ENOUGH;
+        case 69647: return CONTRIBUTION_LIMIT;
+        case 69648: return HONOR_POINT_LIMIT;
+        case 69649: return HONOR_POINT_NOT_ENOUGH;
+        case 73729: return SIGNIN_ALREADY;
+        case 73730: return SIGNIN_NOT_YET;
+        case 73731: return SIGNIN_FILL_ZERO;
+        case 73732: return SIGNIN_FINISH;
+        case 73733: return SIGNIN_STOP;
         default: return null;
       }
     }
@@ -3795,112 +3812,112 @@ public final class Status {
       "\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_INVALI" +
       "D\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\024\n\020UNSUPPORT_A" +
       "CTION\020\010\022\030\n\024LOGIN_INTERVAL_SHORT\020\t\022\016\n\nLOG" +
-      "IN_LOCK\020\n\022\021\n\014SERVER_ERROR\020\200 *\233\004\n\013PlayerE" +
-      "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\004\022\033\n\025PLAYER_N" +
-      "ICKNAME_EXIST\020\202\200\004\022\020\n\nPUID_EXIST\020\203\200\004\022\025\n\017C" +
-      "OIN_NOT_ENOUGH\020\204\200\004\022\020\n\nCOIN_LIMIT\020\205\200\004\022\025\n\017" +
-      "GOLD_NOT_ENOUGH\020\206\200\004\022\020\n\nGOLD_LIMIT\020\207\200\004\022\030\n" +
-      "\022FATIGUE_NOT_ENOUGH\020\210\200\004\022\023\n\rFATIGUE_LIMIT",
-      "\020\211\200\004\022\033\n\025TOWER_COIN_NOT_ENOUGH\020\212\200\004\022\026\n\020TOW" +
-      "ER_COIN_LIMIT\020\213\200\004\022\033\n\025ARENA_COIN_NOT_ENOU" +
-      "GH\020\214\200\004\022\026\n\020ARENA_COIN_LIMIT\020\215\200\004\022\035\n\027CONTRI" +
-      "BUTION_NOT_ENOUGH\020\216\200\004\022\030\n\022CONTRIBUTION_LI" +
-      "MIT\020\217\200\004\022\027\n\021HONOR_POINT_LIMIT\020\220\200\004\022\034\n\026HONO" +
-      "R_POINT_NOT_ENOUGH\020\221\200\004\022\024\n\016SIGNIN_ALREADY" +
-      "\020\201\240\004\022\024\n\016SIGNIN_NOT_YET\020\202\240\004\022\026\n\020SIGNIN_FIL" +
-      "L_ZERO\020\203\240\004\022\023\n\rSIGNIN_FINISH\020\204\240\004\022\021\n\013SIGNI" +
-      "N_STOP\020\205\240\004*\254\002\n\014monsterError\022\026\n\020MONSTER_M" +
-      "AX_SIZE\020\201\200\010\022\027\n\021MONSTER_NOT_EXIST\020\202\200\010\022\034\n\026",
-      "SKILL_POINT_NOT_ENOUGH\020\203\200\010\022\027\n\021SKILL_LEVE" +
-      "L_LIMIT\020\204\200\010\022\021\n\013STAGE_LIMIT\020\205\200\010\022\034\n\026STAGE_" +
-      "LEVEL_NOT_ENOUGH\020\206\200\010\022\023\n\rSTAGE_CONSUME\020\207\200" +
-      "\010\022\032\n\024BATTLE_MONSTER_COUNT\020\210\200\010\022\024\n\016MONSTER" +
-      "_LOCKED\020\211\200\010\022\022\n\014LOCK_ALREADY\020\212\200\010\022\024\n\016UNLOC" +
-      "K_ALREADY\020\213\200\010\022\022\n\014MONSTER_BUSY\020\214\200\010*\310\004\n\tit" +
-      "emError\022\024\n\016ITEM_NOT_FOUND\020\201\200\014\022\025\n\017ITEM_NO" +
-      "T_ENOUGH\020\202\200\014\022\030\n\022ITEM_BUY_NOT_ALLOW\020\203\200\014\022\031" +
-      "\n\023ITEM_SELL_NOT_ALLOW\020\204\200\014\022\031\n\023ITEM_EXP_LE" +
-      "FT_TIMES\020\205\200\014\022\024\n\016ITEM_USE_COUNT\020\206\200\014\022\025\n\017EQ",
-      "UIP_NOT_FOUND\020\201\240\014\022\035\n\027EQUIP_MAX_LEVEL_ALR" +
-      "EADY\020\202\240\014\022\034\n\026EQUIP_LEVEL_NOT_ENOUGH\020\203\240\014\022\035" +
-      "\n\027EQUIP_MAX_STAGE_ALREADY\020\204\240\014\022\031\n\023EQUIP_D" +
-      "RESS_ALREADY\020\205\240\014\022\033\n\025EQUIP_NOT_DRESS_OTHE" +
-      "R\020\206\240\014\022\037\n\031EQUIP_DRESS_OTHER_ALREADY\020\207\240\014\022\027" +
-      "\n\021EQUIP_NOT_DRESSED\020\210\240\014\022\032\n\024EQUIP_SLOT_NO" +
-      "T_EMPTY\020\211\240\014\022\026\n\020EQUIP_SLOT_EMPTY\020\212\240\014\022\031\n\023E" +
-      "QUIP_GEM_NOT_FOUND\020\213\240\014\022\035\n\027EQUIP_CAN_NOT_" +
-      "OPEN_SLOT\020\214\240\014\022\030\n\022EQUIP_GEM_MISMATCH\020\215\240\014\022" +
-      "\032\n\024EQUIP_SLOT_NOT_PUNCH\020\216\240\014\022\037\n\031EQUIP_PLA",
-      "YER_LEVEL_DEMAND\020\217\240\014*T\n\nquestError\022\026\n\020QU" +
-      "EST_NOT_ACCEPT\020\201\200\020\022\030\n\022QUEST_NOT_COMPLETE" +
-      "\020\202\200\020\022\024\n\016QUEST_NOT_OPEN\020\203\200\020*\214\002\n\rinstanceE" +
-      "rror\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\024\022\024\n\016INSTANC" +
-      "E_LEVEL\020\202\200\024\022\024\n\016INSTANCE_COUNT\020\203\200\024\022\026\n\020INS" +
-      "TANCE_FATIGUE\020\204\200\024\022\033\n\025INSTANCE_REVIVE_COU" +
-      "NT\020\205\200\024\022\026\n\020SWEEP_STAR_COUNT\020\206\200\024\022\034\n\026CHAPTE" +
-      "R_BOX_STAR_COUNT\020\207\200\024\022\036\n\030CHAPTER_BOX_ALRE" +
-      "ADY_OPEN\020\210\200\024\022\030\n\022INSTANCE_NOT_ENTER\020\211\200\024\022\021" +
-      "\n\013TOWER_FLOOR\020\212\200\024*^\n\tmailError\022\024\n\016MAIL_N",
-      "OT_EXIST\020\201\200\030\022\017\n\tMAIL_NONE\020\202\200\030\022\024\n\016MAIL_CO" +
-      "IN_FULL\020\203\200\030\022\024\n\016MAIL_GOLD_FULL\020\204\200\030*4\n\007imE" +
-      "rror\022\024\n\016IM_CHAT_LENGTH\020\201\200\034\022\023\n\rIM_DUMP_ER" +
-      "ROR\020\202\200\034*\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TI" +
-      "MEOUT\020\201\200 \022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200 \022\034" +
-      "\n\026SHOP_REFRESH_MAX_COUNT\020\203\200 \022\036\n\030SHOP_GOL" +
-      "D2COIN_MAX_COUNT\020\204\200 *\257\013\n\rallianceError\022\037" +
-      "\n\031ALLIANCE_LEVEL_NOT_ENOUGH\020\201\200$\022\031\n\023ALLIA" +
-      "NCE_ALREADY_IN\020\202\200$\022\030\n\022ALLIANCE_NOT_EXIST" +
-      "\020\203\200$\022\031\n\023ALLIANCE_NAME_ERROR\020\204\200$\022\031\n\023ALLIA",
-      "NCE_NAME_EXIST\020\205\200$\022\027\n\021ALLIANCE_NOT_JOIN\020" +
-      "\206\200$\022\026\n\020ALLIANCE_NO_MAIN\020\207\200$\022\033\n\025ALLIANCE_" +
-      "NOTICE_ERROR\020\210\200$\022\034\n\026ALLIANCE_ALREADY_APP" +
-      "LY\020\211\200$\022\033\n\025ALLIANCE_ALREADY_FULL\020\212\200$\022\036\n\030A" +
-      "LLIANCE_APPLY_NOT_EXIST\020\213\200$\022\035\n\027ALLIANCE_" +
-      "POSITION_ERROR\020\214\200$\022\037\n\031ALLIANCE__LEAVE_NO" +
-      "T_EMPTY\020\215\200$\022\036\n\030ALLIANCE_TARGET_NOT_JOIN\020" +
-      "\216\200$\022\"\n\034ALLIANCE_TARGET_ALREADY_JOIN\020\217\200$\022" +
-      "\030\n\022ALLIANCE_TECH_FULL\020\220\200$\022\032\n\024ALLIANCE_LE" +
-      "VEL_LIMIT\020\221\200$\022 \n\032ALLIANCE_CONTRI_NOT_ENO",
-      "UGH\020\222\200$\022\035\n\027ALLIANCE_PRAY_MAX_COUNT\020\223\200$\022\032" +
-      "\n\024ALLIANCE_FRIZEN_TIME\020\224\200$\022 \n\032ALLIANCE_M" +
-      "AX_FAGIGUE_COUNT\020\225\200$\022#\n\035ALLIANCE_FAGIGUE" +
-      "_GIVE_ALREADY\020\226\200$\022\"\n\034ALLIANCE_CAPACITY_N" +
-      "OT_ENOUGH\020\227\200$\022\034\n\026ALLIANCE_SAME_POSITION\020" +
-      "\230\200$\022\030\n\022ALLIANCE_MAX_APPLY\020\231\200$\022\036\n\030ALLIANC" +
-      "E_ALREADY_IN_TEAM\020\232\200$\022\035\n\027ALLIANCE_TEAM_N" +
-      "OT_EXIST\020\233\200$\022\032\n\024ALLIANCE_TEAM_FINISH\020\234\200$" +
-      "\022\030\n\022ALLIANCE_TEAM_FULL\020\235\200$\022\032\n\024ALLIANCE_T" +
-      "ASK_FINISH\020\236\200$\022\032\n\024ALLIANCE_NOT_IN_TEAM\020\237",
-      "\200$\022\035\n\027ALLIANCE_TASK_NOT_EXIST\020\240\200$\022\033\n\025ALL" +
-      "IANCE_MAX_BIG_TASK\020\241\200$\022\035\n\027ALLIANCE_MAX_S" +
-      "MALL_TASK\020\242\200$\022\036\n\030ALLIANCE_QUEST_NOT_EXIS" +
-      "T\020\243\200$\022\033\n\025ALLIANCE_QUEST_FINISH\020\244\200$\022\036\n\030AL" +
-      "LIANCE_TASK_NOT_FINISH\020\245\200$\022\032\n\024ALLIANCE_N" +
-      "OT_CAPTAIN\020\246\200$\022\032\n\024ALLIANCE_HAVE_MEMBER\020\247" +
-      "\200$\022\"\n\034ALLIANCE_REWARD_ALREADY_GIVE\020\250\200$\022\034" +
-      "\n\026ALLIANCE_MAX_COPY_MAIN\020\251\200$\022\037\n\031ALLIANCE" +
-      "_APPLY_LIST_EMPTY\020\252\200$\022 \n\032ALLIANCE_BASE_H" +
-      "AVE_MONSTER\020\253\200$\022#\n\035ALLIANCE_BASE_HAVE_NO",
-      "_MONSTER\020\254\200$\022!\n\033ALLIANCE_BASE_POSITION_L" +
-      "OCK\020\255\200$\022%\n\037ALLIANCE_BASE_MONSTER_HAVE_SE" +
-      "ND\020\256\200$\022\036\n\030ALLIANCE_BASE_TIME_LIMIT\020\257\200$*\225" +
-      "\002\n\016adventureError\022\032\n\024ADVENTURE_TEAM_COUN" +
-      "T\020\201\200(\022\033\n\025ADVENTURE_CHANGE_ZERO\020\202\200(\022\037\n\031AD" +
-      "VENTURE_CHANGE_NOT_ZERO\020\203\200(\022\035\n\027ADVENTURE" +
-      "_MONSTER_COUNT\020\204\200(\022\035\n\027ADVENTURE_TEAM_NOT" +
-      "_OPEN\020\205\200(\022\031\n\023ADVENTURE_TEAM_BUSY\020\206\200(\022\031\n\023" +
-      "ADVENTURE_TEAM_IDLE\020\207\200(\022\027\n\021ADVENTURE_NOT" +
-      "_END\020\210\200(\022\034\n\026ADVENTURE_HIRE_ALREADY\020\211\200(*(",
-      "\n\014settingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200," +
-      "*a\n\013summonError\022\034\n\026SUMMON_DIAMOND_NO_FRE" +
-      "E\020\201\2000\022\031\n\023SUMMON_COIN_NO_FREE\020\202\2000\022\031\n\023SUMM" +
-      "ON_COIN_FREE_CD\020\203\2000*\302\001\n\010pvpError\022\032\n\024PVP_" +
-      "NOT_MATCH_TARGET\020\201\2008\022\031\n\023PVP_NOT_SET_DEFE" +
-      "NCE\020\202\2008\022\032\n\024PVP_NOT_MATCH_BEFORE\020\203\2008\022\032\n\024P" +
-      "VP_TIMES_NOT_ENOUGH\020\204\2008\022\032\n\024PVP_NOT_IN_RA" +
-      "NK_LIST\020\205\2008\022\023\n\rPVP_NOT_ENTER\020\206\2008\022\026\n\020PVP_" +
-      "ENTER_BEFORE\020\207\2008B\030\n\026com.hawk.game.protoc" +
-      "ol"
+      "IN_LOCK\020\n\022\021\n\014SERVER_ERROR\020\200 *\254\004\n\013PlayerE" +
+      "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\004\022\020\n\nPUID_EXI" +
+      "ST\020\202\200\004\022\024\n\016NICKNAME_EXIST\020\203\200\004\022\026\n\020NICKNAME" +
+      "_INVALID\020\204\200\004\022\025\n\017COIN_NOT_ENOUGH\020\204\240\004\022\020\n\nC" +
+      "OIN_LIMIT\020\205\240\004\022\025\n\017GOLD_NOT_ENOUGH\020\206\240\004\022\020\n\n" +
+      "GOLD_LIMIT\020\207\240\004\022\030\n\022FATIGUE_NOT_ENOUGH\020\210\240\004",
+      "\022\023\n\rFATIGUE_LIMIT\020\211\240\004\022\033\n\025TOWER_COIN_NOT_" +
+      "ENOUGH\020\212\240\004\022\026\n\020TOWER_COIN_LIMIT\020\213\240\004\022\033\n\025AR" +
+      "ENA_COIN_NOT_ENOUGH\020\214\240\004\022\026\n\020ARENA_COIN_LI" +
+      "MIT\020\215\240\004\022\035\n\027CONTRIBUTION_NOT_ENOUGH\020\216\240\004\022\030" +
+      "\n\022CONTRIBUTION_LIMIT\020\217\240\004\022\027\n\021HONOR_POINT_" +
+      "LIMIT\020\220\240\004\022\034\n\026HONOR_POINT_NOT_ENOUGH\020\221\240\004\022" +
+      "\024\n\016SIGNIN_ALREADY\020\201\300\004\022\024\n\016SIGNIN_NOT_YET\020" +
+      "\202\300\004\022\026\n\020SIGNIN_FILL_ZERO\020\203\300\004\022\023\n\rSIGNIN_FI" +
+      "NISH\020\204\300\004\022\021\n\013SIGNIN_STOP\020\205\300\004*\254\002\n\014monsterE" +
+      "rror\022\026\n\020MONSTER_MAX_SIZE\020\201\200\010\022\027\n\021MONSTER_",
+      "NOT_EXIST\020\202\200\010\022\034\n\026SKILL_POINT_NOT_ENOUGH\020" +
+      "\203\200\010\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\010\022\021\n\013STAGE_LI" +
+      "MIT\020\205\200\010\022\034\n\026STAGE_LEVEL_NOT_ENOUGH\020\206\200\010\022\023\n" +
+      "\rSTAGE_CONSUME\020\207\200\010\022\032\n\024BATTLE_MONSTER_COU" +
+      "NT\020\210\200\010\022\024\n\016MONSTER_LOCKED\020\211\200\010\022\022\n\014LOCK_ALR" +
+      "EADY\020\212\200\010\022\024\n\016UNLOCK_ALREADY\020\213\200\010\022\022\n\014MONSTE" +
+      "R_BUSY\020\214\200\010*\310\004\n\titemError\022\024\n\016ITEM_NOT_FOU" +
+      "ND\020\201\200\014\022\025\n\017ITEM_NOT_ENOUGH\020\202\200\014\022\030\n\022ITEM_BU" +
+      "Y_NOT_ALLOW\020\203\200\014\022\031\n\023ITEM_SELL_NOT_ALLOW\020\204" +
+      "\200\014\022\031\n\023ITEM_EXP_LEFT_TIMES\020\205\200\014\022\024\n\016ITEM_US",
+      "E_COUNT\020\206\200\014\022\025\n\017EQUIP_NOT_FOUND\020\201\240\014\022\035\n\027EQ" +
+      "UIP_MAX_LEVEL_ALREADY\020\202\240\014\022\034\n\026EQUIP_LEVEL" +
+      "_NOT_ENOUGH\020\203\240\014\022\035\n\027EQUIP_MAX_STAGE_ALREA" +
+      "DY\020\204\240\014\022\031\n\023EQUIP_DRESS_ALREADY\020\205\240\014\022\033\n\025EQU" +
+      "IP_NOT_DRESS_OTHER\020\206\240\014\022\037\n\031EQUIP_DRESS_OT" +
+      "HER_ALREADY\020\207\240\014\022\027\n\021EQUIP_NOT_DRESSED\020\210\240\014" +
+      "\022\032\n\024EQUIP_SLOT_NOT_EMPTY\020\211\240\014\022\026\n\020EQUIP_SL" +
+      "OT_EMPTY\020\212\240\014\022\031\n\023EQUIP_GEM_NOT_FOUND\020\213\240\014\022" +
+      "\035\n\027EQUIP_CAN_NOT_OPEN_SLOT\020\214\240\014\022\030\n\022EQUIP_" +
+      "GEM_MISMATCH\020\215\240\014\022\032\n\024EQUIP_SLOT_NOT_PUNCH",
+      "\020\216\240\014\022\037\n\031EQUIP_PLAYER_LEVEL_DEMAND\020\217\240\014*T\n" +
+      "\nquestError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\020\022\030\n\022Q" +
+      "UEST_NOT_COMPLETE\020\202\200\020\022\024\n\016QUEST_NOT_OPEN\020" +
+      "\203\200\020*\214\002\n\rinstanceError\022\027\n\021INSTANCE_NOT_OP" +
+      "EN\020\201\200\024\022\024\n\016INSTANCE_LEVEL\020\202\200\024\022\024\n\016INSTANCE" +
+      "_COUNT\020\203\200\024\022\026\n\020INSTANCE_FATIGUE\020\204\200\024\022\033\n\025IN" +
+      "STANCE_REVIVE_COUNT\020\205\200\024\022\026\n\020SWEEP_STAR_CO" +
+      "UNT\020\206\200\024\022\034\n\026CHAPTER_BOX_STAR_COUNT\020\207\200\024\022\036\n" +
+      "\030CHAPTER_BOX_ALREADY_OPEN\020\210\200\024\022\030\n\022INSTANC" +
+      "E_NOT_ENTER\020\211\200\024\022\021\n\013TOWER_FLOOR\020\212\200\024*^\n\tma",
+      "ilError\022\024\n\016MAIL_NOT_EXIST\020\201\200\030\022\017\n\tMAIL_NO" +
+      "NE\020\202\200\030\022\024\n\016MAIL_COIN_FULL\020\203\200\030\022\024\n\016MAIL_GOL" +
+      "D_FULL\020\204\200\030*4\n\007imError\022\024\n\016IM_CHAT_LENGTH\020" +
+      "\201\200\034\022\023\n\rIM_DUMP_ERROR\020\202\200\034*\202\001\n\tshopError\022\032" +
+      "\n\024SHOP_REFRESH_TIMEOUT\020\201\200 \022\033\n\025SHOP_ITEM_" +
+      "ALREADY_BUY\020\202\200 \022\034\n\026SHOP_REFRESH_MAX_COUN" +
+      "T\020\203\200 \022\036\n\030SHOP_GOLD2COIN_MAX_COUNT\020\204\200 *\257\013" +
+      "\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_NOT_EN" +
+      "OUGH\020\201\200$\022\031\n\023ALLIANCE_ALREADY_IN\020\202\200$\022\030\n\022A" +
+      "LLIANCE_NOT_EXIST\020\203\200$\022\031\n\023ALLIANCE_NAME_E",
+      "RROR\020\204\200$\022\031\n\023ALLIANCE_NAME_EXIST\020\205\200$\022\027\n\021A" +
+      "LLIANCE_NOT_JOIN\020\206\200$\022\026\n\020ALLIANCE_NO_MAIN" +
+      "\020\207\200$\022\033\n\025ALLIANCE_NOTICE_ERROR\020\210\200$\022\034\n\026ALL" +
+      "IANCE_ALREADY_APPLY\020\211\200$\022\033\n\025ALLIANCE_ALRE" +
+      "ADY_FULL\020\212\200$\022\036\n\030ALLIANCE_APPLY_NOT_EXIST" +
+      "\020\213\200$\022\035\n\027ALLIANCE_POSITION_ERROR\020\214\200$\022\037\n\031A" +
+      "LLIANCE__LEAVE_NOT_EMPTY\020\215\200$\022\036\n\030ALLIANCE" +
+      "_TARGET_NOT_JOIN\020\216\200$\022\"\n\034ALLIANCE_TARGET_" +
+      "ALREADY_JOIN\020\217\200$\022\030\n\022ALLIANCE_TECH_FULL\020\220" +
+      "\200$\022\032\n\024ALLIANCE_LEVEL_LIMIT\020\221\200$\022 \n\032ALLIAN",
+      "CE_CONTRI_NOT_ENOUGH\020\222\200$\022\035\n\027ALLIANCE_PRA" +
+      "Y_MAX_COUNT\020\223\200$\022\032\n\024ALLIANCE_FRIZEN_TIME\020" +
+      "\224\200$\022 \n\032ALLIANCE_MAX_FAGIGUE_COUNT\020\225\200$\022#\n" +
+      "\035ALLIANCE_FAGIGUE_GIVE_ALREADY\020\226\200$\022\"\n\034AL" +
+      "LIANCE_CAPACITY_NOT_ENOUGH\020\227\200$\022\034\n\026ALLIAN" +
+      "CE_SAME_POSITION\020\230\200$\022\030\n\022ALLIANCE_MAX_APP" +
+      "LY\020\231\200$\022\036\n\030ALLIANCE_ALREADY_IN_TEAM\020\232\200$\022\035" +
+      "\n\027ALLIANCE_TEAM_NOT_EXIST\020\233\200$\022\032\n\024ALLIANC" +
+      "E_TEAM_FINISH\020\234\200$\022\030\n\022ALLIANCE_TEAM_FULL\020" +
+      "\235\200$\022\032\n\024ALLIANCE_TASK_FINISH\020\236\200$\022\032\n\024ALLIA",
+      "NCE_NOT_IN_TEAM\020\237\200$\022\035\n\027ALLIANCE_TASK_NOT" +
+      "_EXIST\020\240\200$\022\033\n\025ALLIANCE_MAX_BIG_TASK\020\241\200$\022" +
+      "\035\n\027ALLIANCE_MAX_SMALL_TASK\020\242\200$\022\036\n\030ALLIAN" +
+      "CE_QUEST_NOT_EXIST\020\243\200$\022\033\n\025ALLIANCE_QUEST" +
+      "_FINISH\020\244\200$\022\036\n\030ALLIANCE_TASK_NOT_FINISH\020" +
+      "\245\200$\022\032\n\024ALLIANCE_NOT_CAPTAIN\020\246\200$\022\032\n\024ALLIA" +
+      "NCE_HAVE_MEMBER\020\247\200$\022\"\n\034ALLIANCE_REWARD_A" +
+      "LREADY_GIVE\020\250\200$\022\034\n\026ALLIANCE_MAX_COPY_MAI" +
+      "N\020\251\200$\022\037\n\031ALLIANCE_APPLY_LIST_EMPTY\020\252\200$\022 " +
+      "\n\032ALLIANCE_BASE_HAVE_MONSTER\020\253\200$\022#\n\035ALLI",
+      "ANCE_BASE_HAVE_NO_MONSTER\020\254\200$\022!\n\033ALLIANC" +
+      "E_BASE_POSITION_LOCK\020\255\200$\022%\n\037ALLIANCE_BAS" +
+      "E_MONSTER_HAVE_SEND\020\256\200$\022\036\n\030ALLIANCE_BASE" +
+      "_TIME_LIMIT\020\257\200$*\225\002\n\016adventureError\022\032\n\024AD" +
+      "VENTURE_TEAM_COUNT\020\201\200(\022\033\n\025ADVENTURE_CHAN" +
+      "GE_ZERO\020\202\200(\022\037\n\031ADVENTURE_CHANGE_NOT_ZERO" +
+      "\020\203\200(\022\035\n\027ADVENTURE_MONSTER_COUNT\020\204\200(\022\035\n\027A" +
+      "DVENTURE_TEAM_NOT_OPEN\020\205\200(\022\031\n\023ADVENTURE_" +
+      "TEAM_BUSY\020\206\200(\022\031\n\023ADVENTURE_TEAM_IDLE\020\207\200(" +
+      "\022\027\n\021ADVENTURE_NOT_END\020\210\200(\022\034\n\026ADVENTURE_H",
+      "IRE_ALREADY\020\211\200(*(\n\014settingError\022\030\n\022SETTI" +
+      "NG_BLOCK_FULL\020\201\200,*a\n\013summonError\022\034\n\026SUMM" +
+      "ON_DIAMOND_NO_FREE\020\201\2000\022\031\n\023SUMMON_COIN_NO" +
+      "_FREE\020\202\2000\022\031\n\023SUMMON_COIN_FREE_CD\020\203\2000*\302\001\n" +
+      "\010pvpError\022\032\n\024PVP_NOT_MATCH_TARGET\020\201\2008\022\031\n" +
+      "\023PVP_NOT_SET_DEFENCE\020\202\2008\022\032\n\024PVP_NOT_MATC" +
+      "H_BEFORE\020\203\2008\022\032\n\024PVP_TIMES_NOT_ENOUGH\020\204\2008" +
+      "\022\032\n\024PVP_NOT_IN_RANK_LIST\020\205\2008\022\023\n\rPVP_NOT_" +
+      "ENTER\020\206\2008\022\026\n\020PVP_ENTER_BEFORE\020\207\2008B\030\n\026com" +
+      ".hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -80,13 +80,13 @@ equip_Bracer,<护腕>,<Bracer>
 equip_Ring,<戒指>,<Ring>
 equip_Jewelry,<饰品>,<Accessory>
 equip_gem_NotSet,未镶嵌,Not Embedded
-equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
+equip_gem_NotKong,未开孔：开孔后将获得纹章槽,"No slots opened: after opening, an Insignia slot will be opened."
 equip_Change,更换,Change
 item_type,类型:,Type:
 item_demandLevel,需求等级:,Req. LVL:
 bag_tag_box,宝箱,Treasure
 bag_tag_use,消耗品,Consumable
-bag_tag_gem,宝石,Gem
+bag_tag_gem,纹章,Insignia
 bag_tag_item,材料,Material
 im_chat_global,世界,Global
 im_chat_guild,公会,Guild
@@ -189,26 +189,26 @@ im_forge_success,打造成功,Forge success!
 im_forge_failed,打造失败,Forge failed.
 im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
-equip_smalltitle,宝石,Gem
-equip_inlay_openmax,宝石槽已全开,Gem slots are full.
+equip_smalltitle,纹章,Insignia
+equip_inlay_openmax,纹章槽已全开,Insignia slots are full.
 equip_inlay_btnopen,开孔,Open
 equip_inlay_tips,1到{0}个孔，试试你的运气吧！,"Opens one to {0} Gem Slots, give your luck a shot!"
-equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
+equip_inlay_lockTips,点击开孔有机会开启纹章槽,Tap 'Open Slots' for a chance of revealing Insignia slots.
 equip_inlay_unlockTips,点击镶嵌,Tap to embed.
 equip_inlay_xiexia,卸下,Remove
-equip_select_gem,请从右侧宝石列表选择镶嵌的宝石,Please select a Gem from the list on the right.
+equip_select_gem,请从右侧纹章列表选择镶嵌的纹章,Please select an Insignia from the list on the right.
 equip_confirm_open,确定开孔么？,Confirm Open Sockets?
-equip_random_open,开孔将随机开启不同数量的宝石槽,Opening Sockets will randomly reveal different amounts of Gem slots.
-equip_return_gem,若已镶嵌宝石，宝石将全部返还到背包,Any inserted Gems will all be returned to your Bag.
+equip_random_open,开孔将随机开启不同数量的纹章槽,Opening Sockets will randomly reveal different amounts of Insignia slots.
+equip_return_gem,若已镶嵌纹章，纹章将全部返还到背包,Any inserted Insignias will all be returned to your Bag.
 xl_equip_list,薛龙_装备列表界面,
 equip_title,装备列表,Amories
 equip_List_zhuangbeileixing,装备类型,Type
 equip_List_xianzhidengji,等级限制,Level
 equip_List_zhuangbei,装备,Equip
 xl_gem_list,薛龙_宝石列表界面,
-gem_title,宝石列表,Gems
-equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
-equip_gem_casting,宝石属性,Gem Attributes
+gem_title,纹章列表,Insignias
+equip_gem_NotMent,该品质装备不可镶嵌纹章,This grade of equipment is unable to embed Insignia.
+equip_gem_casting,纹章属性,Insignia Attributes
 xl_pet_exp,,
 exp_use,使用,Use
 xl_pet_attr,,
@@ -223,9 +223,9 @@ xl_compose,,
 compose_title,合成,Combine
 compose_chmaterial,选择合成原料,Select combine materials
 compose_preview,合成预览,Combine preview
-compose_gemrandom,随机{0}级宝石,Random level {0} Gem
+compose_gemrandom,随机{0}级纹章,Random level {0} Insignia
 compose_unload,全卸,Remove All
-compose_tips1,*合成5个同级宝石可获得高一级的宝石,"*Combine 5 same level Gems, and receive 1 higher level Gem"
+compose_tips1,*合成5个同级纹章可获得高一级的纹章,*Combine 5 same level Insignia and receive 1 higher level Insignia
 compose_tips2,*若干个同种类材料可合成更高等级该种类材料,*Several same type materials can be combined for a higher level material
 compose_tips3,*{0}个同种类材料可合成更高等级该种类材料,*Combine {0} of the same material for a higher level material
 compose_btnone,合成一个,Combine One
@@ -240,7 +240,7 @@ decompose_material,选择分解原料,Select disenchant materials
 decompose_preview,分解预览,Disenchant preview
 decompose_choise,请选择要分解的目标,Select item to disenchant
 decompose_tips1,*分解装备将获得装备打造材料,*Disenchanting equipment yields the materials used to create it
-decompose_tips2,*装备镶嵌的宝石将自动返还到背包,*Any embedded Gems will automatically be returned to your Bag
+decompose_tips2,*装备镶嵌的纹章将自动返还到背包,*Any embedded Insignia will automatically be returned to your Bag
 decompose_tips3,*分解宠物将获得宠物进阶材料,*Disenchanting monsters yields evolution materials
 decompose_tips4,*宠物佩戴的装备将自动返还到背包,*Any equipment on the monster will be automatically returned to your Bag
 decompose_choice,筛选,Filter
@@ -255,7 +255,7 @@ compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
 compose_record_005,请先选择分解原料,Please choose disenchantment material first.
 compose_record_006,原料不足,Insufficent materials.
-compose_record_007,操作失败，至少要保留1只宠物,one at least
+compose_record_007,操作失败，至少要保留1只宠物,"Action failed, at least 1 monster must be retained"
 xl_monsterbook,,
 handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned
@@ -285,7 +285,7 @@ record_notopen4,该商店未开启,This shop has not been opened yet.
 record_notopen5,尚未加入公会,You have not joined a Guild yet.
 instanceselect_open_005,章节未开启,This capter has not been opened yet.
 compose_item,材料合成,材料合成
-compose_gem,宝石合成,宝石合成
+compose_gem,纹章合成,纹章合成
 decompose_item,道具分解,道具分解
 tips_monster,宠物分解,宠物分解
 tips_go,进入,go to
@@ -827,7 +827,7 @@ saodang_name,扫荡功能,Raid Function
 putongshangdian_name,普通商店,Normal Store
 tiaozhan_name,挑战副本,Heroic Stage
 gengduo_name,更多精彩玩法,More exciting content
-hecheng_desc,可以获得更高等级的宝石和材料！,You can receive more advanced Gems and Materials!
+hecheng_desc,可以获得更高等级的纹章和材料！,You can receive more advanced Insignias and Materials!
 fenjie_desc,分解多余的宠物和装备可以快速获得材料！,Disenchant extra monsters and equipment to quickly get more Materials!
 dazao_desc,提升战力最直接的方式。,The most direct way to increase BP.
 houbei_desc,开启了一个后备站位，可以派遣第四个宠物上场啦！,Reserve position unlocked! You can add a 4th monster to your battle team!
@@ -896,19 +896,19 @@ adventure_record_011,探险任务已完成,complete
 arrayselect_bp_001,综合战力,Team BP
 adventure_filter,筛选,Filter
 adventure_record_012,该宠物正在PVP防守，无法上阵哦,This monster is currently in PvP defense and cannot be used.
-summon_titlecoin,聚合,Gather
-summon_tipscoin,聚合获得物品或宠物,Gathering gives items or monsters
+summon_titlecoin,昼之召唤,Dawn Summon
+summon_tipscoin,召唤获得物品或宠物,Summoning gives items or monsters
 summon_free,免费,Free
-summon_titlegold,纯粹聚合,Pure Gather
-summon_tipsgold,十连聚合必得宠物,Gather 10 guarantees a monster
-summon_onetime,聚合1次,Gather 1
+summon_titlegold,夜之召唤,Dusk Summon
+summon_tipsgold,十连召唤必得宠物,Summoning 10 guarantees a monster
+summon_onetime,召唤1次,Summon 1
 summon_lefttimecoin,免费次数：{0}/5,Free chances: {0}/5
 summon_recovertimecoin,冷却时间{0},CD time {0}
 summon_useout,今日免费次数已用完,You have used today's free chances.
-summon_tentime,聚合10次,Gather 10
+summon_tentime,召唤10次,Summon 10
 summon_recovertimegold,{0}后免费,Free in {0}
 summon_skip,跳过,Skip
-summon_result,聚合结果,You gathered
+summon_result,召唤结果,Summoning Results
 ,,
 pvp_title,竞技场,Arena
 pvp_daojishijiesuan,赛季结算倒计时：,Season ends in:
@@ -1029,22 +1029,21 @@ pvp_titleshengduan,进阶成功！,Advancement complete!
 pvp_battlestart,战斗开始,Battle Start
 ui_battle_go,前往,Go
 lose_guide1,搜寻弱点,Search for weakpoints
-lose_guide2,聚合,Gather
+lose_guide2,召唤,Summon
 lose_guide3,升级宠物,Level up your monsters
 lose_guide4,进阶宠物,Advance your monsters
 lose_guide5,升级技能,Upgrade abilities
 lose_guide6,更新装备,Equip different equipment
 lose_guide7,打造装备,Forge equipment
-lose_guide8,镶嵌宝石,Embed gems
+lose_guide8,镶嵌纹章,Embed Insignia
 lose_guidetips1,善于利用照妖镜搜寻boss弱点，会让你事半功倍！,Using the Magic Lens to spot enemy weakpoints can be a big help in defeating the enemy.
-lose_guidetips2,"宠物不给力？试试聚合新的伙伴一同战斗吧！
-Fighting！",Need stronger monsters? Try gathering more to fight together!
+lose_guidetips2,宠物不给力？试试召唤新的伙伴一同战斗吧！Fighting！,Your current monsters just not cutting it? Try summoning more to fight together!
 lose_guidetips3,通过战斗和宠物经验药可以提升宠物等级！,You can upgrade your monsters by battling or using EXP Potions.
 lose_guidetips4,进阶宠物可以极大地提升宠物实力！,Advancing a monster can greatly increase it's power!
 lose_guidetips5,提升宠物技能可以使宠物变得更强！,Increasing your monsters' abilities can improve their effectiveness in battle.
 lose_guidetips6,给宠物穿上装备，宠物会更强大。,Equip more equipment on your monsters to make them stronger.
 lose_guidetips7,打造装备能够提升装备属性，进而提升宠物实力。,Forging your equipment can improve equipment stats and increase your monster's power.
-lose_guidetips8,可以给蓝色及以上品质的装备镶嵌宝石，提升装备属性。,"Equipment that is blue grade or better can be embedded with gems, increasing its stats."
+lose_guidetips8,可以给蓝色及以上品质的装备镶嵌纹章，提升装备属性。,"Equipment that is blue grade or better can be embedded with Insignia, increasing its stats."
 setting_exit,退出,Exit
 setting_continue,继续战斗,Continue
 setting_exit_tips,确定要退出战斗吗？,Are you sure you want to quit?
@@ -1060,21 +1059,58 @@ loading_weitianshihei,<color=#b888ff>伪天使</color>,<color=#b888ff>Fallen Ang
 loading_yifulitehei,<color=#b888ff>伊芙利特</color>,<color=#b888ff>Ifrit</color>
 loading_dujiaoshouhei,<color=#b888ff>独角兽</color>,<color=#b888ff>Unicorn</color>
 loading_hongniuhong,<color=#fff8c8>红牛弥诺陶洛斯</color>,<color=#fff8c8>Minotaur</color>
-loading_tips1,要注意怪物属性哦~要注意怪物属性哦~要注意怪物属性哦~,notice monster property notice monster property notice monster property notice monster property
-loading_tips2,记得多提升怪物等级、怪物技能、穿戴装备，能够大幅提升战斗力！,"Remember to upgrade the monster level, monster skills, wearable equipment, can significantly enhance the combat effectiveness!"
-loading_tips3,剧情副本看剧情，不看剧情不是好玩家！,"A copy of the story to see the story, not to see the story is not a good player"
-loading_tips4,你照弱点了么？照了么？照了么？没照？是不是….,Did you take your weakness? Did you take care of it? Did you take care of it? Did not take care? Is not... .
-loading_tips5,通天塔很难，所以没事是不开放的,通天塔很难，所以没事是不开放的
-loading_tips6,通天塔里都是妖怪，到处都是,"The tower of Babel is a monster, everywhere"
-loading_tips7,试炼有金币和经验，开放时间不同，没事多来瞧瞧,试炼有金币和经验，开放时间不同，没事多来瞧瞧
-loading_tips8,竞技场中战斗需要消耗竞技点数，每次消耗1点。竞技点数每小时恢复1点。,Each battle in the Arena requires 1 Arena entry. Your Arena entries recover at a rate of 1 per hour.
-loading_tips9,玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~,Players must set their own defense to defend against other players' challenges. Points are deducted when a player's defense is defeated.
-loading_tips10,竞技场中战斗采取5V5的方式，战斗过程中可以手动施放大招技能、集火敌人，但不能使用照妖镜。,"The Arena uses a 5v5 battle setting. In battle, the attacking player can manually cast ultimate abilities and select enemy targets, but cannot use the Magic Lens."
-loading_tips11,竞技成功时，会获得荣誉点奖励，荣誉点可以用来在竞技商店中换取物品。,"When players are victorious in the Arena, they will receive Honor Points. These points can be used to purchase items in the Arena Store."
-loading_tips12,若与敌人僵持不下，出现平局按钮后，可以选择以平局结束本场竞技，平局仍会得到1点荣誉点。,"If the battle turns into a stalemate between you and the opponent, a Draw button will appear, and the battle can be ended as a draw. A draw will still award 1 Honor Point."
-loading_tips13,根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。,The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
-loading_tips14,竞技场前100名的排行数据每10分钟刷新一次。,The top 100 player rankings are updated every 10 minutes.
-start_record_001,该功能{0}级开启,start at level {0}
+loading_tips1,任务是获得角色经验最快的途径哦！,Completing quests is the best way to get EXP for your character!
+loading_tips2,日常任务中每日共有三次免费领取活力的机会：12点，18点，21点，可不要错过哦！,"There are 3 chances to receive free Energy each day in the Daily Quests: 12:00, 18:00, and 21:00. Don't miss them!"
+loading_tips3,“补签”功能可以保证你连续签到哦！,"The ""Recover Login"" feature can help you ensure that you get every day's login reward!"
+loading_tips4,一些没有用的材料可以在背包里卖掉换钱。,Some unneeded items in your Bag can be sold for Coins.
+loading_tips5,宠物不给力？尝试一下召唤吧~,Not satisfied with your current monsters? Try summoning some more!
+loading_tips6,集齐宠物碎片能够合成宠物。,Collect monster fragments to combine more monsters!
+loading_tips7,宠物碎片不够？试试分解宠物，就能够获得万能碎片。,Need more monster fragments? Try disenchanting some monsters to receive some Core Fragments.
+loading_tips8,吃经验药是提升宠物等级的最快方法。,Using Faith Vials is the fastest way to increase the level of your monsters.
+loading_tips9,宠物装备可以打造，打造能够大幅提升装备战力。,Monster equipment can be forged. Forging equipment greatly increases the equipment's effectiveness in battle.
+loading_tips10,宠物有白、绿、蓝、紫、橙、红六个品质，通过进化能够达到更高品质。,"Monsters have White, Green, Blue, Purple, Orange, and Red grades. Monster grades can be increased via Evolution."
+loading_tips11,宠物装备有白、绿、蓝、紫、橙、红六个品质，通过打造能够达到更高品质。,"Monster equipment has White, Green, Blue, Purple, Orange, and Red grades. Monster equipment grades can be increased via Forging."
+loading_tips12,蓝色及以上品质的装备可以镶嵌纹章。,Insignia can be embedded into equipment Blue grade and above. 
+loading_tips50,9种纹章提升的属性不同，选择适合宠物的才是明智之举。,"9 different kinds of Insignia affect equipment atrributes differently, so make sure to choose the Insignia that best suits your monster."
+loading_tips13,纹章有白、绿、蓝、紫、橙、红六个品质，通过合成能够达到更高品质。,"Insignia have White, Green, Blue, Purple, Orange, and Red grades. Insignia grades can be increased via Combining."
+loading_tips14,商店根据顾客的等级，商品的品质也会有所不同。,Items in the store may vary according to the level of the customer!
+loading_tips15,商店每天固定时间刷新商品，常去逛逛~,The Store will be refreshed with new items at set times each day. Make sure to check for new items often!
+loading_tips16,分解掉没有用处的装备或者宠物，变废为宝。,Remember to disenchant any unneeded equipment or monsters.
+loading_tips17,纹章和有些材料能够通过合成获得更高品质的。,Insignias and some materials can be improved to a higher grade via Combining.
+loading_tips18,还在独自战斗？快加入公会，寻找一起并肩作战的小伙伴吧~,Still battling alone? Join a Guild and fight side by side with some new friends!
+loading_tips19,参与公会活动，获得的贡献值能够在公会商店中兑换各种道具。,Participate in Guild events to receive Participation Points that can be used in the Guild Store to purchase equipment.
+loading_tips20,将一些空闲的宠物派去大冒险，会有意想不到的收获哦~,Send some of your free monsters to go on adventures. They might discover something you didn't expect!
+loading_tips21,要尝试满足大冒险的额外奖励获得条件，才能获得丰厚的奖励。,Try to complete the bonus reward requirements in Adventures to receive some awesome bonus rewards!
+loading_tips22,三星通关每个章节的全部副本都可以领取宝箱奖励哦！,Clear all stages with a 3-Star rating to receive a reward chest!
+loading_tips23,“扫荡”操作是节省时间的最佳方式！,"Using ""Raid Passes"" is the best way to save time!"
+loading_tips24,三星通关副本后可以获得该副本的“扫荡”使用权。,Clearing a stage with a 3-Star rating will grant you the ability to use Raid Passes.
+loading_tips25,合理搭配阵容，配合使用照妖镜可以确保你安全通关。,A smart line-up in combination with using the Magic Lens can do a lot to ensure your victory.
+loading_tips26,战斗前长按头像查看敌方信息，合理布置宠物。,"Before the battle, you can tap and hold on enemy avatars to view more information needed to adjust your line-up."
+loading_tips27,BOSS的弱点有的有血条，能够被打掉；有的没有血条，不能被打掉。,"Some Boss weakpoints have a certain amount of HP and can be destroyed. Others have no HP, and cannot."
+loading_tips28,战斗中适当换怪，可以带来避免怪物死亡、积攒大招等等好处哦~,Get used to switching monsters in battle. It will help you avoid losing monsters in battle and allow you to combine their ultimate abilities.
+loading_tips29,打掉弱点多数情况是好的，但是也有例外哟！,"Destroying weakpoints is good in most cases, but remember that there are exceptions!"
+loading_tips30,集火操作能够集中我方火力，快速攻下敌方小怪或者弱点目标。,"Concentrating fire from your monsters' attacks can help you quickly defeat enemy monsters, and deal more damage to enemy weakpoints."
+loading_tips31,米达斯宫能够产出大量金币，快来挑战吧！,"You can earn large amounts of Coins in Midas' Palace, give it a try!"
+loading_tips32,难度越高获得的金币也就越多，加油挑战吧！,"The higher the difficulty, the more Coins that can be earned. Fighting!"
+loading_tips33,每周日米达斯宫和至福乐土都会开放，快来挑战吧！,Midas' Palace and Fields of Elysium will both open every Sunday. Make sure to give it a try!
+loading_tips34,至福乐土能够产出大量经验药水，快来挑战吧！,"You can earn large amounts of Faith Vials in Fields of Elysium, give it a try! "
+loading_tips35,难度越高获得的经验药水也就越多，加油挑战吧！,"The higher the difficulty, the more EXP that can be earned. Fighting!"
+loading_tips36,每周日米达斯宫和至福乐土都会开放，快来挑战吧！,Midas' Palace and Fields of Elysium will both open every Sunday. Make sure to give it a try!
+loading_tips37,通天塔每月1号都会刷新进度，刷新后可重新进行挑战。,Tower of Trials progress will be refreshed on the first day of each month.
+loading_tips38,通天塔每过5层就会给一个阶段性奖励，快来挑战吧！,"The Tower of Trials will grant you a reward every 5 levels, give it a try!"
+loading_tips39,通天塔掉落的XXXX可以在通天塔商店兑换奖励。,The XXXX that drops from the Tower of Trials can be used to exchange in the Tower of Trials Store.
+loading_tips40,挑战每座塔的层数越高，难度也就越大，同时阶段奖励也会越好。,"Difficulty will increase with every level of the Tower of Trials, and the 5-level reward will also increase in value."
+loading_tips41,清楚的了解boss的技能和弱点，能够帮助你更好的战胜它。,Make sure you understand Boss weaknesses and abilities to help you defeat it more easily.
+loading_tips42,运用克制boss的宠物，能够帮助你更好的战胜它。,Try to use monsters that are strong against each boss to make the battle go in your favor.
+loading_tips43,合理的运用照妖镜，集火与换怪，能够让你通关到更高层。,Use the Magic Lens and concentrate your monsters' fire to help you complete higher stages.
+loading_tips44,竞技场中战斗需要消耗竞技点数，每次消耗1点。竞技点数每小时恢复1点。,Each battle in the Arena requires 1 Arena entry. Your Arena entries recover at a rate of 1 per hour.
+loading_tips45,玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~,Players must set their own defense to defend against other players' challenges. Points are deducted when a player's defense is defeated.
+loading_tips46,若对匹配的对手不满意，可以通过花费金币刷新对手。,The opponent you are matched against can be changed by spending Coins.
+loading_tips47,竞技场中战斗采取5V5的方式。,The Arena uses a 5v5 battle setting. 
+loading_tips51,战斗过程中可以手动施放大招技能、集火敌人，但不能使用照妖镜。,"In battle, the attacking player can manually cast ultimate abilities and select enemy targets, but cannot use the Magic Lens."
+loading_tips48,竞技成功时，会获得荣誉点奖励，荣誉点可以用来在竞技商店中换取物品。,"When players are victorious in the Arena, they will receive Honor Points. These points can be used to purchase items in the Arena Store."
+loading_tips49,根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。,The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
+start_record_001,该功能{0}级开启,This feature unlocks at level {0}
 Zhifuletu - 1,至福乐土,Fields of Elysium - 1
 Zhifuletu - 2,至福乐土,Fields of Elysium - 2
 Zhifuletu - 3,至福乐土,Fields of Elysium - 3

@@ -23,7 +23,8 @@ public class BattleProcess : MonoBehaviour
         UnitReplaceDead,//替换死亡怪物出场
         FirstSpell,//先置技能
         ReviveUnit,
-        Dazhao
+        Dazhao,
+        Speech,//剧情或新手对话
     }
 
 	public enum DazhaoType
@@ -55,6 +56,11 @@ public class BattleProcess : MonoBehaviour
     {
         public string firstSpellID;
         public float triggerTime;
+    }
+
+    public class SpeechAction : Action
+    {
+        public string speechID;
     }
 
     public float ActionDelayTime
@@ -590,6 +596,23 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
+    public void RestartCurGuideLevel()
+    {
+        mIsProcessFinish = false;
+        forceResult = -1;
+        replaceDeadUnitCount = 0;
+        hasInsertReplaceDeadUnitAction = false;
+        lastUpdateTime = Time.time;
+        inDazhaoAction = false;
+
+        round = 0;
+        lastActionOrder = 0.0f;
+        battleGroup.RestartGuideLevel();
+        //battleGroup.OnStartNewBattle(Time.time);//TODO: trigger time use leveltime
+        //battleGroup.CastFirstSpell();
+        StartCoroutine(Process(0));
+    }
+
     public void ClearRewardItem()
     {
         rewardInfoList.Clear();
@@ -686,9 +709,14 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator PlayCountDownAnim()
     {
-        BattleController.Instance.ShowLevelInfo(true);
+        BattleController bc = BattleController.Instance;
+        bc.ShowLevelInfo(true);
+        if (bc.PvpParam != null)
+        {
+            bc.curBattleScene.TriggerEvent("pvp_show", Time.time, null);
+        }
         yield return new WaitForSeconds(BattleConst.battleLevelTime * Time.timeScale);
-        BattleController.Instance.ShowLevelInfo(false);
+        bc.ShowLevelInfo(false);
     }
 
     //private void RefreshEnemyState()
@@ -713,7 +741,7 @@ public class BattleProcess : MonoBehaviour
             {
                 actionCaster = curAction.caster.unit;
             }
-            else if (curAction.type != ActionType.ReviveUnit)
+            else if (curAction.type != ActionType.ReviveUnit && curAction.type != ActionType.Speech)
             {
                 OnActionOver();
                 return;
@@ -770,7 +798,10 @@ public class BattleProcess : MonoBehaviour
             case ActionType.ReviveUnit:
                 StartCoroutine(RunReviveAction(curAction));
                 break;
-			default:
+            case ActionType.Speech:
+                RunSpeechAction(curAction);
+                break;
+            default:
 				break;
 			}
 		}
@@ -864,7 +895,7 @@ public class BattleProcess : MonoBehaviour
             }
         }
         
-        if (battleResult == BattleRetCode.MaxRound)
+        if (battleResult == BattleRetCode.MaxRound && BattleController.Instance.GuideLevelParam != null)
         {
             //close setting window if necessary
             mPauseEnable = false;
@@ -877,6 +908,10 @@ public class BattleProcess : MonoBehaviour
 
         if (battleResult == BattleRetCode.Failed)
         {
+            if (BattleController.Instance.GuideLevelParam != null)
+            {
+                GameSpeedService.Instance.SetBattleSpeed(1.0f);
+            }
             //close setting window if necessary
             mPauseEnable = false;
             UIBattle.Instance.CloseBattleSetting();
@@ -886,7 +921,8 @@ public class BattleProcess : MonoBehaviour
             if (
                 mCurrentReviveCount < BattleConst.maxReviveCount &&
                 forceResult < 0 &&
-                BattleController.Instance.CurMaxSlotIndex == BattleConst.slotIndexMax
+                BattleController.Instance.CurMaxSlotIndex == BattleConst.slotIndexMax &&
+                BattleController.Instance.GuideLevelParam == null
                 )
             {
                 StartCoroutine(ShowReviveUI());
@@ -908,6 +944,10 @@ public class BattleProcess : MonoBehaviour
         }
         else if (battleResult == BattleRetCode.Success)
         {
+            if (BattleController.Instance.GuideLevelParam != null)
+            {
+                GameSpeedService.Instance.SetBattleSpeed(1.0f);
+            }
             //close setting window if necessary
             mPauseEnable = false;
             UIBattle.Instance.CloseBattleSetting();
@@ -984,7 +1024,6 @@ public class BattleProcess : MonoBehaviour
             UIBattle.Instance.CloseBattleSetting();
         }
     }
-
 
 
     public void ReviveSuccess(int reviveCount)
@@ -1323,6 +1362,33 @@ public class BattleProcess : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    public void InsertSpeechAction(string speechID)
+    {
+        SpeechAction curAction = new SpeechAction();
+        curAction.type = ActionType.Speech;
+        curAction.speechID = speechID;
+        InsertAction(curAction);
+    }
+    private void RunSpeechAction(Action action)
+    {
+        SpeechAction curAction = action as SpeechAction;
+        System.Action<float> endSpeechEvent = (delayTime) =>
+        {
+            StartCoroutine(EndSpeechAction(delayTime));
+        };
+
+        if (String.IsNullOrEmpty(curAction.speechID) == false)
+        {
+            UISpeech.Open(curAction.speechID, endSpeechEvent);
+        }
+    }
+
+    IEnumerator EndSpeechAction(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        OnActionOver();
     }
 
     #endregion
