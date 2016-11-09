@@ -121,6 +121,9 @@ public class PlayerLoginModule extends PlayerModule {
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
+		// 此时设置session可以防止player的session被置空 session_close消息调用各个idlemodule的onPlayerLogout 会置空session
+		player.setSession(cmd.getSession());
+		
 		// 回复登录完成协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
 		response.setStatus(error.NONE_ERROR_VALUE);

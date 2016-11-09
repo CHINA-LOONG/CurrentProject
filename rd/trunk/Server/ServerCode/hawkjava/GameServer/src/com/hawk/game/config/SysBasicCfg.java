@@ -9,12 +9,10 @@ public class SysBasicCfg extends HawkConfigBase {
 	 * 玩家对象缓存时间
 	 */
 	protected final int playerCacheTime;
-
 	/**
 	 * 创建公会级别限制
 	 */
 	protected final int allianceMinLevel;
-
 	/**
 	 * 创建公会消耗金币数量
 	 */
@@ -64,6 +62,30 @@ public class SysBasicCfg extends HawkConfigBase {
 	 */
 	protected final float allianceThirdPositionContribution;
 	/**
+	 * 工会贡献值奖励1阶贡献值
+	 */
+	protected final int allianceContributionReward1;
+	/**
+	 * 工会贡献值奖励2阶贡献值
+	 */
+	protected final int allianceContributionReward2;
+	/**
+	 * 工会贡献值奖励3阶贡献值
+	 */
+	protected final int allianceContributionReward3;
+	/**
+	 * 工会贡献值奖励1
+	 */
+	protected final String allianceContributionRewardID1;
+	/**
+	 * 工会贡献值奖励2
+	 */
+	protected final String allianceContributionRewardID2;
+	/**
+	 * 工会贡献值奖励3
+	 */
+	protected final String allianceContributionRewardID3;
+	/**
 	 * pvp匹配池初始化大小
 	 */
 	protected final int pvpStageInitSize;
@@ -109,6 +131,12 @@ public class SysBasicCfg extends HawkConfigBase {
 		pvpStageInitSize = 0;
 		pvpStageMaxSize = 0;
 		pvpRankBuilderRefreshTime = 0;
+		allianceContributionReward1 = 0;
+		allianceContributionReward2 = 0;
+		allianceContributionReward3 = 0;
+		allianceContributionRewardID1 = null;
+		allianceContributionRewardID2 = null;
+		allianceContributionRewardID3 = null;
 	}
 
 	public int getPlayerCacheTime() {
@@ -181,4 +209,28 @@ public class SysBasicCfg extends HawkConfigBase {
 	public int getPvpRankBuilderRefreshTime() {
 		return pvpRankBuilderRefreshTime;
 	}
+
+	public int getAllianceContributionReward1() {
+		return allianceContributionReward1;
+	}
+
+	public int getAllianceContributionReward2() {
+		return allianceContributionReward2;
+	}
+
+	public int getAllianceContributionReward3() {
+		return allianceContributionReward3;
+	}
+
+	public String getAllianceContributionRewardID1() {
+		return allianceContributionRewardID1;
+	}
+
+	public String getAllianceContributionRewardID2() {
+		return allianceContributionRewardID2;
+	}
+
+	public String getAllianceContributionRewardID3() {
+		return allianceContributionRewardID3;
+	}	
 }

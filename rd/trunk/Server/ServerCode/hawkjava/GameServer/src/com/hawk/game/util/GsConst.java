@@ -145,23 +145,6 @@ public class GsConst {
 	}
 
 	/**
-	 * equip 品级对应的打孔数量
-	 */
-	public enum AllianceReward {
-		FIRST_REWARD(500), SECOND_REWARD(1500), THIRD_REWARD(3000);
-
-		private int rewardCount;
-
-		private AllianceReward(int count) {
-			this.rewardCount = count;
-		}
-
-		public int GetRewardCount() {
-			return rewardCount;
-		}
-	}
-
-	/**
 	 * item 消耗检查结果
 	 */
 	public static class ConsumeCheckResult {
@@ -308,11 +291,6 @@ public class GsConst {
 		public static final int SEND_FATIGUE_COUNT = 1;
 
 		public static final int BASE_MIN_TIME = 30;
-
-		// 公会贡献值奖励1、2、3
-		public static final String ALLIANCE_CONTRI_REWARD1 = "110001";
-		public static final String ALLIANCE_CONTRI_REWARD2 = "110001";
-		public static final String ALLIANCE_CONTRI_REWARD3 = "110001";
 
 		// 公会任务目标类型
 		public static final int COIN_QUEST = 1;

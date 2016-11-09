@@ -54,7 +54,7 @@ public class ShopItem : MonoBehaviour
         }
 		
 
-		priceText.text = string.Format("{0}", Mathf.CeilToInt(itemData.price * itemData.count* shopItemData.discount));
+		priceText.text = string.Format("{0}", Mathf.CeilToInt(itemData.price * itemData.count* shopItemData.discount - BattleConst.floatZero));
 
 		if (IsCoinEnough (itemData,false)) 
 		{
@@ -90,7 +90,7 @@ public class ShopItem : MonoBehaviour
         {
             cheapPanel.gameObject.SetActive(true);
             oldPrice.text = (itemData.price * itemData.count).ToString();
-            offText.text = string.Format("{0}%", Mathf.CeilToInt(shopItemData.discount * 100));
+            offText.text = string.Format("{0}%", Mathf.CeilToInt(shopItemData.discount * 100 - BattleConst.floatZero));
 
             Sprite oldSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType, itemData.priceType)) as Sprite;
             if (null != oldSp)
@@ -127,7 +127,7 @@ public class ShopItem : MonoBehaviour
 	bool IsCoinEnough(PB.ShopItem itemData,bool showNotEnoughTip)
 	{
         bool isEnough = false;
-        int costCoin = Mathf.CeilToInt(itemData.price * shopItemData.count * shopItemData.discount);
+        int costCoin = Mathf.CeilToInt(itemData.price * shopItemData.count * shopItemData.discount - BattleConst.floatZero);
         switch (shopType)
         {
             case (int)PB.shopType.NORMALSHOP:

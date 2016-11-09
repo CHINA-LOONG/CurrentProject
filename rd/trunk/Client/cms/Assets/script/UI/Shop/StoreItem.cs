@@ -58,7 +58,7 @@ public class StoreItem : MonoBehaviour
         {
             cheapPanel.gameObject.SetActive(true);
             oldPrice.text = (storeItemData.price).ToString();
-            offText.text = offText.text = string.Format("{0}%", Mathf.CeilToInt(storeItemData.discount * 100));
+            offText.text = offText.text = string.Format("{0}%", Mathf.CeilToInt(storeItemData.discount * 100 - BattleConst.floatZero));
         }
     }
     private void RefreshItemIcon(ItemStaticData itemStaticData)
@@ -78,7 +78,7 @@ public class StoreItem : MonoBehaviour
     }
     bool IsCoinEnough( )
     {
-        return GameDataMgr.Instance.PlayerDataAttr.gold >= Mathf.CeilToInt(storeItemData.price * storeItemData.discount);
+        return GameDataMgr.Instance.PlayerDataAttr.gold >= Mathf.CeilToInt(storeItemData.price * storeItemData.discount - BattleConst.floatZero);
     }
 
     void OnBuyButtonClick()

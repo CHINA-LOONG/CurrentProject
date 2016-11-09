@@ -1190,6 +1190,14 @@ ultBingxuenvwang3Description,给群体目标造成水属性法术伤害30%附加
 ultBingxuenvwang3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage,{0}%法攻傷害
 ultBingxuenvwang3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage,{0}%法攻傷害
 psvBingxuenvwang3Description,使用法术技能时，10%降低目标40%速度，持续3回合[被动],Gives an 10% chance of reducing the SPD of your target by 40% for 3 turns whenever you cast a magic ability [Passive],使用法術技能時，10%降低目標40%速度，持續3回合[被動]
+ultBingxuenvwang5Name,冥界之雪,Nether Storm,冥界之雪
+psvBingxuenvwang5Name,反挫,Backlash,反挫
+ultBingxuenvwang5Tips,给群体目标造成{0}%法攻的暗属性法术伤害100%附加痛楚效果（持续伤害），若目标已存在痛楚效果则眩晕1回合,"Deals ({0}% of magic ATK) dark type magic damage to all enemy targets with a 100% chance of causing Anguish effect (DOT); if the target is already affected by Anguish, then stun the target for 1 turn",给群体目标造成{0}%法攻的暗属性法术伤害100%附加痛楚效果（持续伤害），若目标已存在痛楚效果则眩晕1回合
+psvBingxuenvwang5Tips,使用法术技能时，10%给目标添加痛楚效果（持续伤害），持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of adding Anguish effect (DOT) to the target for 3 turns [Passive]",使用法术技能时，10%给目标添加痛楚效果（持续伤害），持续3回合[被动]
+ultBingxuenvwang5Description,给群体目标造成暗属性法术伤害100%附加痛楚效果（持续伤害），若目标已存在痛楚效果则眩晕1回合,"Deals dark type magic damage to all enemy targets with a 100% chance of causing Anguish effect (DOT); if the target is already affected by Anguish, then stun the target for 1 turn",给群体目标造成暗属性法术伤害100%附加痛楚效果（持续伤害），若目标已存在痛楚效果则眩晕1回合
+ultBingxuenvwang5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage,{0}%法攻傷害
+ultBingxuenvwang5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage,{0}%法攻傷害
+psvBingxuenvwang5Description,使用法术技能时，10%给目标添加痛楚效果（持续伤害），持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of adding Anguish effect (DOT) to the target for 3 turns [Passive]",使用法术技能时，10%给目标添加痛楚效果（持续伤害），持续3回合[被动]
 ultSheshou1Name,箭雨,Volley,箭雨
 psvSheshou1Name,眩晕箭,Stun Arrow,眩暈箭
 ultWeitianshi5Name,阴暗,Cover of Night,陰暗

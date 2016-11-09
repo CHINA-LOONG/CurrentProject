@@ -684,3 +684,5 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 690,psvAmute2,psvAmute2e1,0,0,0,0,4,0,icon_psvAmute2,psvAmute2Name,psvAmute2Tips,0,0,,psvAmute2Description,,
 691,ultAmute4,ultAmute4e1,0,0,100,0,9,0,icon_ultAmute4,ultAmute4Name,ultAmute4Tips,0,1,,ultAmute4Description,,
 692,psvAmute4,psvAmute4e1,0,0,0,0,4,0,icon_psvAmute4,psvAmute4Name,psvAmute4Tips,0,0,,psvAmute4Description,,
+693,ultBingxuenvwang5,ultBingxuenvwang5e1,0,0,100,0,9,0.01,icon_ultBingxuenvwang5,ultBingxuenvwang5Name,ultBingxuenvwang5Tips,2.5,1,,ultBingxuenvwang5Description,ultBingxuenvwang5Curlvl,ultBingxuenvwang5Nextlvl
+694,psvBingxuenvwang5,psvBingxuenvwang5e1,0,0,0,0,4,0,icon_psvBingxuenvwang5,psvBingxuenvwang5Name,psvBingxuenvwang5Tips,0,0,,psvBingxuenvwang5Description,,

@@ -66,8 +66,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="NetManager.cs" />
     <Compile Include="Protocol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +86,7 @@
     <Compile Include="Protocol\Mail.cs" />
     <Compile Include="Protocol\Monster.cs" />
     <Compile Include="Protocol\Player.cs" />
+    <Compile Include="Protocol\PVP.cs" />
     <Compile Include="Protocol\Quest.cs" />
     <Compile Include="Protocol\Reward.cs" />
     <Compile Include="Protocol\Role.cs" />
@@ -99,6 +98,8 @@
     <Compile Include="Protocol\Status.cs" />
     <Compile Include="Protocol\Summon.cs" />
     <Compile Include="Protocol\SysProtocol.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SocketClient.cs" />
     <Compile Include="ZlibUtil.cs" />
   </ItemGroup>
   <ItemGroup>

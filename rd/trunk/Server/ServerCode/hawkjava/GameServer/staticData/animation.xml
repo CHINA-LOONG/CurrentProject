@@ -6194,6 +6194,50 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 	</AniList>
 	
+	<AniList group="xgBingxuenvwang5">
+	
+		<Ani id="ultBingxuenvwang5" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultBingxuenvwang5pre" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="2" asset="ultBingxuenvwang5pre_hit" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+				
+		<Ani id="ultBingxuenvwang5e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle time="0" asset="magicEarthBall" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="earthp1"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="ultBingxuenvwang5e6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>	    
+		
+		<Ani id="txBingxuenvwang5" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultBingxuenvwang5pre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle time="2.7" asset="ultBingxuenvwang5pre_hit_player" bundle="effect/particle" parent="1" attach="scene"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Bingxuenvwang31"/>
+			</AudioList>
+		</Ani>
+	</AniList>
+	
 	<AniList group="bossxinshouBingxuenvwang3">
 	
 		<Ani id="bossxinshouBingxuenvwang32" state="0" AniType="Skill">

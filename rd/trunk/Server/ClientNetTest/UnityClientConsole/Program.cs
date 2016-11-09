@@ -17,56 +17,72 @@ namespace UnityClientConsole
 {
     class Program
     {
-        static int  TEST_USER = 1;
+        public static int  onLineTime = 600;
+        public static int  TEST_USER = 1500;
+        public static int  TOTAL_USER = 20000;
+
+        public static HashSet<int> playerIndex = new HashSet<int>();
+        public static Random random = new Random();
 
         public static long GetTimeStamp()
         {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return Convert.ToInt64(ts.TotalMilliseconds);
-        } 
+        }
 
         static void Main(string[] args)
         {
-//             FileStream aFile = new FileStream("test.txt", FileMode.Open);
-//             StreamReader sr = new StreamReader(aFile);
-//             string strLine = sr.ReadLine();
-//             int start = int.Parse(strLine);
-//             sr.Close();
-//             aFile.Close();
+            FileStream aFile = new FileStream("test.txt", FileMode.Open);
+            StreamReader sr = new StreamReader(aFile);
+            string strLine = sr.ReadLine();
+            int start = int.Parse(strLine);
+            sr.Close();
+            aFile.Close();
 
-            App[] test = new App[TEST_USER];
+            Session[] sessions = new Session[TEST_USER];
 
-            for (int i = 0; i < TEST_USER; ++i)
+            while (true)
             {
-                // string name = "shuadong2";// +(1 + i);
-                // string name = "root" + (0 + 1 + i);
-                //string name = "_chat" + (1 + i);
-                string name = "lf4";
 
-                test[i] = new App();
-                if (test[i].Init("192.168.199.122", 9595, name) == false)
+                for (int i = 0; i < TEST_USER; ++i)
                 {
-                    Console.Out.WriteLine(name);
+
+                    if ((sessions[i] == null || sessions[i].CloseFinish()))
+                    {
+                        if (sessions[i] != null)
+                        {
+                            playerIndex.Remove(sessions[i].playerIndex);
+                        }
+
+                        int nextIndex = 0;
+
+                        while(true){
+                            nextIndex = random.Next(start, start + TOTAL_USER / 2);
+                            if (!playerIndex.Contains(nextIndex))
+                            {
+                                playerIndex.Add(nextIndex);
+                                break;
+                            }
+                        }
+
+                        string name = "test" + (nextIndex);
+
+                        sessions[i] = new Session();
+                        if (sessions[i].Init("192.168.199.189", 9595, name, nextIndex, GetTimeStamp()) == false)
+                        {
+                            Console.Out.WriteLine(name);
+                        }
+                        else
+                        {
+                            Console.Out.WriteLine(name);
+                        }
+
+                    }
+
+                    sessions[i].OnTick(GetTimeStamp());
                 }
 
             }
-
-            for (int i = 0; i < TEST_USER; ++i)
-            {
-                test[i].SendLoginProtocol();
-            }
-
-            System.Threading.Thread.Sleep(4000);
-
-            //while (true)
-            //{
-            //    for (int i = 0; i < TEST_USER; ++i)
-            //    {
-            //        test[i].OnTick(GetTimeStamp());
-            //    }
-
-            //    //System.Threading.Thread.Sleep(10);
-            //}
 
             Console.ReadLine();
 

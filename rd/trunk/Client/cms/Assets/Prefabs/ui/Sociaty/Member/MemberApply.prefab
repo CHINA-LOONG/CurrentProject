@@ -356,9 +356,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa2edac5e13d534aa934b75b375abe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 0
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   titleText: {fileID: 11476878}
   nameText: {fileID: 11496086}
   levelText: {fileID: 11438170}

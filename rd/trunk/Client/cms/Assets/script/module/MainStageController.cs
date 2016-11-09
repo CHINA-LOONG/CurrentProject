@@ -320,42 +320,51 @@ public class MainStageController : MonoBehaviour
         {
             mBeginDrag = false;
 
-            if (mCurrentSelectedObj != null)
+            isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
+            if (isMouseOnUI == false)
             {
-                mCurrentSelectedObj.SetState(SelectableObjState.State_Normal);
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 1000))
+                if (mCurrentSelectedObj != null)
                 {
-                    SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                    if (curUpSelectedObj == mCurrentSelectedObj)
+                    mCurrentSelectedObj.SetState(SelectableObjState.State_Normal);
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, 1000))
                     {
-                        OnSelectableObjClicked(mCurrentSelectedObj);
+                        SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                        bool selectValidate = false;
+                        if (mCurrentSelectedObjGroup == null)
+                            selectValidate = (curUpSelectedObj == mCurrentSelectedObj);
+                        else
+                            selectValidate = mCurrentSelectedObjGroup.ContainsSelectobj(curUpSelectedObj);
+                        if (selectValidate == true)
+                        {
+                            OnSelectableObjClicked(mCurrentSelectedObj);
+                        }
                     }
+                    mCurrentSelectedObj = null;
                 }
-                mCurrentSelectedObj = null;
-            }
 
-            if (mCurrentSelectedObjGroup != null && mDisableMove == false)
-            {
-                mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Normal);
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 1000))
+                if (mCurrentSelectedObjGroup != null && mDisableMove == false)
                 {
-                    SelectableObjGroup curGroup = hit.collider.gameObject.GetComponent<SelectableObjGroup>();
-                    if (curGroup == mCurrentSelectedObjGroup)
+                    mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Normal);
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, 1000))
                     {
-                        EnterSelectGroup(ref mCurrentSelectedObjGroup);
+                        SelectableObjGroup curGroup = hit.collider.gameObject.GetComponent<SelectableObjGroup>();
+                        if (curGroup == mCurrentSelectedObjGroup)
+                        {
+                            EnterSelectGroup(ref mCurrentSelectedObjGroup);
+                        }
+                        else
+                        {
+                            mCurrentSelectedObjGroup = null;
+                        }
                     }
                     else
                     {
                         mCurrentSelectedObjGroup = null;
                     }
-                }
-                else
-                {
-                    mCurrentSelectedObjGroup = null;
                 }
             }
         }
@@ -426,43 +435,52 @@ public class MainStageController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             mBeginDrag = false;
-
-            if (mCurrentSelectedObj != null)
+            isMouseOnUI = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+            if (isMouseOnUI == false)
             {
-                mCurrentSelectedObj.SetState(SelectableObjState.State_Normal);
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 1000))
+                if (mCurrentSelectedObj != null)
                 {
-                    SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                    if (curUpSelectedObj == mCurrentSelectedObj)
+                    mCurrentSelectedObj.SetState(SelectableObjState.State_Normal);
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, 1000))
                     {
-                        OnSelectableObjClicked(mCurrentSelectedObj);
+                        SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                        bool selectValidate = false;
+                        if (mCurrentSelectedObjGroup == null)
+                            selectValidate = (curUpSelectedObj == mCurrentSelectedObj);
+                        else
+                            selectValidate = mCurrentSelectedObjGroup.ContainsSelectobj(curUpSelectedObj);
+                        
+                        if (selectValidate == true)
+                        {
+                            OnSelectableObjClicked(mCurrentSelectedObj);
+                        }
                     }
+                    mCurrentSelectedObj = null;
                 }
-                mCurrentSelectedObj = null;
-            }
 
-            if (mCurrentSelectedObjGroup != null && mDisableMove == false)
-            {
-                mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Normal);
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 1000))
+                if (mCurrentSelectedObjGroup != null && mDisableMove == false)
                 {
-                    SelectableObjGroup curGroup = hit.collider.gameObject.GetComponent<SelectableObjGroup>();
-                    if (curGroup == mCurrentSelectedObjGroup)
+                    mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Normal);
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, 1000))
                     {
-                        EnterSelectGroup(ref mCurrentSelectedObjGroup);
+                        SelectableObjGroup curGroup = hit.collider.gameObject.GetComponent<SelectableObjGroup>();
+                        if (curGroup == mCurrentSelectedObjGroup)
+                        {
+                            EnterSelectGroup(ref mCurrentSelectedObjGroup);
+                        }
+                        else
+                        {
+                            mCurrentSelectedObjGroup = null;
+                        }
                     }
                     else
                     {
                         mCurrentSelectedObjGroup = null;
                     }
-                }
-                else
-                {
-                    mCurrentSelectedObjGroup = null;
                 }
             }
         }

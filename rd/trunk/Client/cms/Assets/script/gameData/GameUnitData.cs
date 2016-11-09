@@ -377,6 +377,10 @@ public class GameUnit : IComparable
         else
         {
             headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitRowData.uiAsset) as Sprite;
+            if (isPlayer == false && isPvp == true)
+            {
+                InitWeakPoint(unitRowData.weakpointList);
+            }
         }
 
         //TODO: remove, for fake enemy

@@ -214,6 +214,7 @@ bossdajie18Ladong53b1,13,,2,1,0,0,0,0,0,0,0,bufficon_debuffStun,0,,0,0,0,0,,,0,0
 bossdajie18Ladong53b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddstun_100,bossdajie18Ladong53e2",,999,0,0,0,,-1
 bossdajie18Ladong54b1,1,bossdajie18Ladong54e5,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0,,-1
 psvBingxuenvwang3b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_10,debuffSpeede2",,999,0,0,0,,-1
+psvBingxuenvwang5b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_10,magicdebuffEarthDotStronge3",,999,0,0,0,,-1
 ultWeitianshi5b1,14,,2,0,0,0,0,0,0,0,0,bufficon_debuffnoheal,0,,0,0,0,0,,,0,0,0,0,,-1
 PhyImmuneb1,15,,999,0,0,0,0,0,0,0,0,bufficon_buffPhyImmune,0,,0,0,0,0,,,0,0,0,0,,-1
 MagicImmuneb1,16,,999,0,0,0,0,0,0,0,0,bufficon_buffMagicImmune,0,,0,0,0,0,,,0,0,0,0,,-1

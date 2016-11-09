@@ -12,6 +12,8 @@ public class bossdajie18Ladong5 : BossAi {
 	
 	}
 	int jishu = 0 ;
+	int jishu1 = 0 ;
+	int jishu2 = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Ladong5Unit)
 	{
@@ -38,9 +40,26 @@ public class bossdajie18Ladong5 : BossAi {
 		else if (GetAttackCount(Ladong5Unit) % 3 == 0 && GetAttackCount(Ladong5Unit) != 0) 
 		{
 			Ladong5SpellDic.TryGetValue ("bossdajie18Ladong52", out useSpell);
-
 		}
-		
+
+		for(int n = Ladong5Unit.buffList.Count -1 ;n > 0;n--)
+		{
+			if (Ladong5Unit.buffList[n].buffProto.category == (int)BuffType.Buff_Type_Stun)
+			{
+				jishu1++;
+			}
+			if (Ladong5Unit.buffList[n].buffProto.category != (int)BuffType.Buff_Type_Stun)
+			{
+				jishu2++;
+			}
+		}
+
+		if (jishu2 > 0 && jishu1 > 0)
+		{
+			Ladong5Unit.battleUnit.TriggerEvent("Ladong5_state2to1", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+		}
+
 		attackResult.useSpell = useSpell;
 
 		return attackResult;

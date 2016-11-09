@@ -7567,43 +7567,43 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481874, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 477858, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 460854, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 459678, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 454248, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 450870, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 444918, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 440878, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 416798, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 450870, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -12942,6 +12942,33 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &1896480598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1896480599}
+  m_Layer: 0
+  m_Name: pvp_init_pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896480599
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896480598}
+  m_LocalRotation: {x: .064701438, y: .704140484, z: -.0647014454, w: .704140365}
+  m_LocalPosition: {x: -2.79262328, y: .987090588, z: 0}
+  m_LocalScale: {x: .49602586, y: .496025413, z: .496025503}
+  m_Children: []
+  m_Father: {fileID: 1051044384}
+  m_RootOrder: 16
 --- !u!1 &1902317546
 GameObject:
   m_ObjectHideFlags: 0

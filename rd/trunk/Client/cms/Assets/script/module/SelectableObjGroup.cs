@@ -69,4 +69,16 @@ public class SelectableObjGroup : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
+    public bool ContainsSelectobj(SelectableObj obj)
+    {
+        int count = mSelectObjList.Length;
+        for (int i = 0; i < count; ++i)
+        {
+            if (mSelectObjList[i] != null && mSelectObjList[i] == obj)
+                return true;
+        }
+
+        return false;
+    }
+    //---------------------------------------------------------------------------------------------
 }

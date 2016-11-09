@@ -23,6 +23,7 @@ message HSHeartBeat
 message HSDelayTest
 {
 	optional int64 timeStamp = 1;
+	optional int64 id	= 2;
 }
 
 // ERROR_CODE

@@ -8,6 +8,7 @@ import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.config.RewardCfg;
+import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.item.AwardItems;
@@ -18,7 +19,6 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceContriReward;
 import com.hawk.game.util.AllianceUtil;
-import com.hawk.game.util.GsConst;
 
 public class AllianceContributionRewardHandler implements HawkMsgHandler{
 	/**
@@ -54,17 +54,17 @@ public class AllianceContributionRewardHandler implements HawkMsgHandler{
 	
 		int contributon = 0;
 		String rewardId = null;
-		if (GsConst.AllianceReward.FIRST_REWARD.ordinal() == request.getIndex()) {
-			contributon = GsConst.AllianceReward.FIRST_REWARD.GetRewardCount();
-			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD1;
+		if (0 == request.getIndex()) {
+			contributon = SysBasicCfg.getInstance().getAllianceContributionReward1();
+			rewardId = SysBasicCfg.getInstance().getAllianceContributionRewardID1();
 		}
-		else if (GsConst.AllianceReward.SECOND_REWARD.ordinal() == request.getIndex()) {
-			contributon = GsConst.AllianceReward.SECOND_REWARD.GetRewardCount();
-			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD2;
+		else if (1 == request.getIndex()) {
+			contributon = SysBasicCfg.getInstance().getAllianceContributionReward2();
+			rewardId = SysBasicCfg.getInstance().getAllianceContributionRewardID2();
 		}
-		else if (GsConst.AllianceReward.THIRD_REWARD.ordinal() == request.getIndex()) {
-			contributon = GsConst.AllianceReward.THIRD_REWARD.GetRewardCount();
-			rewardId = GsConst.Alliance.ALLIANCE_CONTRI_REWARD3;
+		else if (2 == request.getIndex()) {
+			contributon = SysBasicCfg.getInstance().getAllianceContributionReward2();
+			rewardId = SysBasicCfg.getInstance().getAllianceContributionRewardID2();
 		}
 		else {
 			player.sendError(protocol.getType(), Status.error.PARAMS_INVALID_VALUE);

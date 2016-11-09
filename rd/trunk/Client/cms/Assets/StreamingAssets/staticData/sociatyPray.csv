@@ -1,6 +1,6 @@
 ﻿#NUM,NUM,NUM,NUM,NUM
 id,memberReward,allianceReward,coinConsume,goldConsume
 #id,个人共享之奖励,工会贡献值奖励,金币消耗,钻石消耗
-1,20,20,10000,0
-2,60,60,0,20
-3,320,320,0,100
+1,50,50,10000,0
+2,100,100,0,40
+3,250,250,0,200

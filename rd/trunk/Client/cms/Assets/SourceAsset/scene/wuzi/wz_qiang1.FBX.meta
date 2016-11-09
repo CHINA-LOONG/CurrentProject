@@ -37,6 +37,52 @@ ModelImporter:
     100058: shuye_07
     100060: shuye_08
     100062: shuye_09
+    100064: Bone001
+    100066: Bone002
+    100068: Bone003
+    100070: Bone004
+    100072: Bone005
+    100074: Bone006
+    100076: Bone007
+    100078: chuanghu_01
+    100080: chuanghu_02
+    100082: Dummy001
+    100084: Dummy009
+    100086: Dummy010
+    100088: Dummy011
+    100090: Dummy012
+    100092: guizi@moxing
+    100094: guizi_02
+    100096: men@moxing
+    100098: shuye_01
+    100100: wz_baozhen_01
+    100102: wz_baozhen_02
+    100104: wz_baozhen_03
+    100106: wz_boli
+    100108: wz_dianniaozhuo
+    100110: wz_diban
+    100112: wz_ditan
+    100114: wz_hengliang
+    100116: wz_pvpzhuozi
+    100118: wz_qangmian
+    100120: wz_qiangmian_01
+    100122: wz_shu_009
+    100124: wz_shu_01
+    100126: wz_shu_02
+    100128: wz_shu_03
+    100130: wz_shu_04
+    100132: wz_shu_05
+    100134: wz_shu_06
+    100136: wz_shu_07
+    100138: wz_shu_08
+    100140: wz_wenjiandai
+    100142: wz_xiangkuang
+    100144: wz_yemian_01
+    100146: wz_yemian_02
+    100148: wz_yemian_03
+    100150: wz_yemian_04
+    100152: wz_zuodian_01
+    100154: wz_zuodian_02
     400000: //RootNode
     400002: Bone008
     400004: Bone009
@@ -69,6 +115,52 @@ ModelImporter:
     400058: shuye_07
     400060: shuye_08
     400062: shuye_09
+    400064: Bone001
+    400066: Bone002
+    400068: Bone003
+    400070: Bone004
+    400072: Bone005
+    400074: Bone006
+    400076: Bone007
+    400078: chuanghu_01
+    400080: chuanghu_02
+    400082: Dummy001
+    400084: Dummy009
+    400086: Dummy010
+    400088: Dummy011
+    400090: Dummy012
+    400092: guizi@moxing
+    400094: guizi_02
+    400096: men@moxing
+    400098: shuye_01
+    400100: wz_baozhen_01
+    400102: wz_baozhen_02
+    400104: wz_baozhen_03
+    400106: wz_boli
+    400108: wz_dianniaozhuo
+    400110: wz_diban
+    400112: wz_ditan
+    400114: wz_hengliang
+    400116: wz_pvpzhuozi
+    400118: wz_qangmian
+    400120: wz_qiangmian_01
+    400122: wz_shu_009
+    400124: wz_shu_01
+    400126: wz_shu_02
+    400128: wz_shu_03
+    400130: wz_shu_04
+    400132: wz_shu_05
+    400134: wz_shu_06
+    400136: wz_shu_07
+    400138: wz_shu_08
+    400140: wz_wenjiandai
+    400142: wz_xiangkuang
+    400144: wz_yemian_01
+    400146: wz_yemian_02
+    400148: wz_yemian_03
+    400150: wz_yemian_04
+    400152: wz_zuodian_01
+    400154: wz_zuodian_02
     2300000: //RootNode
     2300002: shuye_02
     2300004: shuye_03
@@ -79,6 +171,34 @@ ModelImporter:
     2300014: shuye_08
     2300016: shuye_09
     2300018: wz_qiangmian_02
+    2300020: chuanghu_01
+    2300022: chuanghu_02
+    2300024: guizi@moxing
+    2300026: guizi_02
+    2300028: men@moxing
+    2300030: wz_baozhen_01
+    2300032: wz_baozhen_02
+    2300034: wz_baozhen_03
+    2300036: wz_boli
+    2300038: wz_dianniaozhuo
+    2300040: wz_diban
+    2300042: wz_ditan
+    2300044: wz_hengliang
+    2300046: wz_pvpzhuozi
+    2300048: wz_qangmian
+    2300050: wz_qiangmian_01
+    2300052: wz_shu_01
+    2300054: wz_shu_02
+    2300056: wz_shu_03
+    2300058: wz_shu_04
+    2300060: wz_shu_05
+    2300062: wz_shu_06
+    2300064: wz_shu_07
+    2300066: wz_shu_08
+    2300068: wz_wenjiandai
+    2300070: wz_xiangkuang
+    2300072: wz_zuodian_01
+    2300074: wz_zuodian_02
     3300000: //RootNode
     3300002: shuye_02
     3300004: shuye_03
@@ -89,6 +209,34 @@ ModelImporter:
     3300014: shuye_08
     3300016: shuye_09
     3300018: wz_qiangmian_02
+    3300020: chuanghu_01
+    3300022: chuanghu_02
+    3300024: guizi@moxing
+    3300026: guizi_02
+    3300028: men@moxing
+    3300030: wz_baozhen_01
+    3300032: wz_baozhen_02
+    3300034: wz_baozhen_03
+    3300036: wz_boli
+    3300038: wz_dianniaozhuo
+    3300040: wz_diban
+    3300042: wz_ditan
+    3300044: wz_hengliang
+    3300046: wz_pvpzhuozi
+    3300048: wz_qangmian
+    3300050: wz_qiangmian_01
+    3300052: wz_shu_01
+    3300054: wz_shu_02
+    3300056: wz_shu_03
+    3300058: wz_shu_04
+    3300060: wz_shu_05
+    3300062: wz_shu_06
+    3300064: wz_shu_07
+    3300066: wz_shu_08
+    3300068: wz_wenjiandai
+    3300070: wz_xiangkuang
+    3300072: wz_zuodian_01
+    3300074: wz_zuodian_02
     4300000: wz_qiangmian_02
     4300002: shuye_02
     4300004: shuye_03
@@ -98,10 +246,50 @@ ModelImporter:
     4300012: shuye_07
     4300014: shuye_09
     4300016: shuye_08
+    4300018: wz_dianniaozhuo
+    4300020: wz_pvpzhuozi
+    4300022: wz_xiangkuang
+    4300024: wz_shu_08
+    4300026: wz_wenjiandai
+    4300028: wz_diban
+    4300030: wz_qiangmian_01
+    4300032: wz_qangmian
+    4300034: wz_shu_07
+    4300036: wz_shu_06
+    4300038: wz_shu_05
+    4300040: wz_shu_04
+    4300042: wz_shu_02
+    4300044: wz_shu_03
+    4300046: wz_shu_01
+    4300048: wz_yemian_01
+    4300050: wz_yemian_02
+    4300052: wz_yemian_03
+    4300054: wz_yemian_04
+    4300056: wz_hengliang
+    4300058: chuanghu_01
+    4300060: chuanghu_02
+    4300062: guizi_02
+    4300064: guizi@moxing
+    4300066: men@moxing
+    4300068: wz_baozhen_01
+    4300070: wz_baozhen_02
+    4300072: wz_baozhen_03
+    4300074: wz_zuodian_02
+    4300076: wz_zuodian_01
+    4300078: wz_boli
+    4300080: wz_ditan
+    4300082: wz_shu_009
+    4300084: shuye_01
     7400000: Take 001
     9500000: //RootNode
     11100000: //RootNode
     13700000: wz_qiangmian_02
+    13700002: shuye_01
+    13700004: wz_shu_009
+    13700006: wz_yemian_01
+    13700008: wz_yemian_02
+    13700010: wz_yemian_03
+    13700012: wz_yemian_04
   materials:
     importMaterials: 1
     materialName: 0

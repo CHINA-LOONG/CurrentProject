@@ -653,22 +653,6 @@ public class PVPManager extends HawkAppObj {
 	 */
 	public void onPVPLogout(HawkMsg msg){
 		Player player = msg.getParam(0);
-		
-		 if (player.getPlayerData() == null) {
-			try {
-				throw new HawkException("player Data null" + msg.getParams().size() + "长度");
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-		 }
-		 else if (player.getPlayerData().getPlayerEntity() == null){
-			 try {
-					throw new HawkException("player entity Data null" + msg.getParams().size() + "长度");
-				} catch (Exception e) {
-					HawkException.catchException(e);
-				}
-		 }
-		
 		PVPRoom pvpRoom = pvpRoomList.get(player.getId());
 		if (pvpRoom != null) {
 			pvpRoomList.remove(player.getId());

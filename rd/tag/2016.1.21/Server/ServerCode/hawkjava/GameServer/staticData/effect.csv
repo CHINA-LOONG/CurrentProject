@@ -1111,6 +1111,14 @@ ultBingxuenvwang3e4,5,1,0,0,,,,,,,ContainsDespeedBufftarget|ultBingxuenvwang3e5;
 ultBingxuenvwang3e5,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,1
 ultBingxuenvwang3e6,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,0.3
 psvBingxuenvwang3e1,4,1,1,0,,,,,,,,,,,,psvBingxuenvwang3b1,12345,,,,1
+ultBingxuenvwang5e1,1,1,0,0,,,1,ultBingxuenvwang5e2,,,"""""",,,,,,12345,,,,1
+ultBingxuenvwang5e2,2,1,0,0,,,,,ultBingxuenvwang5e3,0,,,,,,,12345,,,,1
+ultBingxuenvwang5e3,3,1,0,0,,,,,,,,1,2.5,0,5,,12345,,,ultBingxuenvwang5e4,1
+ultBingxuenvwang5e4,5,1,0,0,,,,,,,ContainsDotEarth|ultBingxuenvwang5e5;Default|ultBingxuenvwang5e6;,,,,,,12345,,,,1
+ultBingxuenvwang5e5,2,1,0,0,,,,,ultBingxuenvwang5e7,0,0.1|ultBingxuenvwang5e6;,,,,,,12345,,,,1
+ultBingxuenvwang5e6,4,1,0,0,,,,,,,,,,,,magicdebuffEarthDotStrongb1,12345,,,,1
+ultBingxuenvwang5e7,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,1
+psvBingxuenvwang5e1,4,1,1,0,,,,,,,,,,,,psvBingxuenvwang5b1,12345,,,,1
 ultChange1e1,0,1,0,0,"[""ultChange1e2"",""ultChange1e5""]",,,,,,,,,,,,12345,,,,1
 ultChange1e2,1,1,0,0,,,1,ultChange1e3,,,"""""",,,,,,12345,,,,1
 ultChange1e3,2,1,0,0,,,,,ultChange1e4,0,,,,,,,12345,,,,1

@@ -59,7 +59,7 @@ public class SociatyErrorMsg
             case PB.allianceError.ALLIANCE_TECH_FULL:
                 break;
             case PB.allianceError.ALLIANCE_LEVEL_LIMIT:
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_031"), (int)PB.ImType.PROMPT);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_046"), (int)PB.ImType.PROMPT);
                 break;
             case PB.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH:
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_026"),

@@ -549,17 +549,20 @@ public class BattleController : MonoBehaviour
         if (mCurPvpParam != null)
         {
             battleGroup.SetPlayerList(ref mCurPvpParam.playerTeam);
+            //curBattleScene.TriggerEvent("pvp_init_pos", Time.time, null);
+            SetCameraDefault("pvp_init_pos");
         }
         else if (curInstanceParam != null)
         {
+            SetCameraDefault(null);
             battleGroup.SetPlayerList(ref curInstanceParam.playerTeam);
         }
         else if (mCurGuideLevelParam != null)
         {
+            SetCameraDefault(null);
             battleGroup.SetGuidePlayerList(ref mCurGuideLevelParam.selfIdList);
         }
 
-        SetCameraDefault();
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
         uiBattle.Initialize();
         uiBattle.ShowUI(false);
@@ -570,7 +573,7 @@ public class BattleController : MonoBehaviour
         }
         else if (mCurPvpParam != null)
         {
-
+            mUILevelInfo.SetInstanceName(StaticDataMgr.Instance.GetTextByID("pvp_level_name"));
         }
         else if (mCurGuideLevelParam != null)
         {
@@ -580,21 +583,30 @@ public class BattleController : MonoBehaviour
         StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
-    public void SetCameraDefault()
+    public void SetCameraDefault(string nodeName)
     {
-        Transform defaultTrans = GetDefaultCameraNode();
+        Transform defaultTrans = GetDefaultCameraNode(nodeName);
         BattleCamera.Instance.transform.localPosition = defaultTrans.position;
         BattleCamera.Instance.transform.localRotation = defaultTrans.rotation;
         BattleCamera.Instance.transform.localScale = Vector3.Scale(transform.localScale, defaultTrans.localScale);
     }
     //---------------------------------------------------------------------------------------------
-    public Transform GetDefaultCameraNode()
+    public Transform GetDefaultCameraNode(string node = null)
     {
-        string cameraSlotName = "cameraNormal";
-        if (battleType == BattleType.Boss)
+        string cameraSlotName;
+        if (string.IsNullOrEmpty(node) == false)
         {
-            cameraSlotName = "cameraBoss";
+            cameraSlotName = node;
         }
+        else
+        {
+            cameraSlotName = "cameraNormal";
+            if (battleType == BattleType.Boss)
+            {
+                cameraSlotName = "cameraBoss";
+            }
+        }
+
 		Transform defaultTrans = null;
 		if (cameraNodeDic.TryGetValue (cameraSlotName, out defaultTrans))
 		{
@@ -603,7 +615,14 @@ public class BattleController : MonoBehaviour
 
         GameObject posParent = GetPositionRoot();
         GameObject cameraNode = Util.FindChildByName(posParent, cameraSlotName);
-		cameraNodeDic.Add (cameraSlotName, cameraNode.transform);
+        if (cameraNode == null)
+        {
+            cameraNode = Util.FindChildByName(posParent, "cameraNormal");
+        }
+        else
+        {
+            cameraNodeDic.Add(cameraSlotName, cameraNode.transform);
+        }
 		return cameraNode.transform;
     }
 	//---------------------------------------------------------------------------------------------
@@ -717,18 +736,25 @@ public class BattleController : MonoBehaviour
         GameObject posParent = GetPositionRoot();
 
         string nodeName = "pos";
-        if (isBoss)
+        if (mCurPvpParam == null)
         {
-            nodeName = "bosspos";
-        }
-        else 
-        {
-            if (camp == UnitCamp.Enemy)
+            if (isBoss)
             {
-                slotID = slotID + mCurMaxSlotIndex + 1;
+                nodeName = "bosspos";
             }
+            else
+            {
+                if (camp == UnitCamp.Enemy)
+                {
+                    slotID = slotID + mCurMaxSlotIndex + 1;
+                }
 
-            nodeName = nodeName + slotID.ToString();
+                nodeName = nodeName + slotID.ToString();
+            }
+        }
+        else
+        {
+            nodeName = GetSlotNodePvp(camp, slotID);
         }
 
         GameObject slotNode = Util.FindChildByName(posParent, nodeName);
@@ -738,6 +764,28 @@ public class BattleController : MonoBehaviour
         }
 
         return GameMain.Instance.gameObject;
+    }
+    //---------------------------------------------------------------------------------------------
+    private string GetSlotNodePvp(UnitCamp camp, int slotID)
+    {
+        int count = 0;
+        if (camp == UnitCamp.Player)
+        {
+            count = mCurPvpParam.playerTeam.Count;
+        }
+        else
+        {
+            count = mCurPvpParam.targetData.defenceData.monsterInfo.Count;
+            slotID = slotID + mCurMaxSlotIndex + 1;
+        }
+        
+        if (count == 2 || count == 4)
+        {
+            slotID = slotID + 1;
+        }
+
+        string nodeName = string.Format("pos{0}", slotID);
+        return nodeName;
     }
     //---------------------------------------------------------------------------------------------
     //TODO: only need get once every battle level
@@ -929,7 +977,7 @@ public class BattleController : MonoBehaviour
         //uiBattle.ShowUI(true);
         //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
         StartProcess(curProcessIndex);
-        SetCameraDefault();
+        SetCameraDefault(null);
         Appearance(true, waitTime);
         //TODO: fade in and fade out && end event &&recover life etc
     }

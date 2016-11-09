@@ -786,6 +786,25 @@ public class SpellFunctions
         }
         return 0;
     }	
-		
+	public static int HurtbyStun_100(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+        //受到某类技能造成伤害触发示例
+		if (buffEffect != null && buffEffect.targetID == triggerBuff.targetID)
+        {
+			EffectApplyBuffPrototype buffStun = buffEffect.protoEffect as EffectApplyBuffPrototype;
+			BuffPrototype buffPt = StaticDataMgr.Instance.GetBuffProtoData(buffStun.buffID);
+			if (buffPt != null && buffPt.category == 13)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }	
 		
 }		

@@ -6,7 +6,7 @@ public class StarUI : MonoBehaviour
 {
     public RectTransform mStar;
     public Image mStarImg;
-    public ParticleSystem mStarEffect;
+    //public ParticleSystem mStarEffect;
 
     private bool mHasStar;
     private Animator mAniControl;
@@ -35,7 +35,7 @@ public class StarUI : MonoBehaviour
         if (mHasStar == true)
         {
             mAniControl.Play("star_show");
-            mStarEffect.gameObject.SetActive(mSkipped == false);
+            //mStarEffect.gameObject.SetActive(mSkipped == false);
         }
     }
     //---------------------------------------------------------------------------------------------

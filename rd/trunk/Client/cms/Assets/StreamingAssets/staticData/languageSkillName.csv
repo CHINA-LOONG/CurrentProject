@@ -1228,10 +1228,10 @@ bossdajie13Cike41Name,火焰爪,Flame Claws
 bossdajie13Cike42Name,龟甲防御,Turtle Shell
 bossdajie13Cike43Name,盛怒爆发,Enrage
 bossdajie13Cike44Name,反伤护盾,Staving Shield
-bossdajie13Cike41Tips,给单体目标造成2次{0}%物攻火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage 2 times to a single target
-bossdajie13Cike42Tips,提升自身{0}%防御力，持续3回合,Increases your DEF by {0}% for 3 turns
-bossdajie13Cike43Tips,给群体目标造成{0}%物攻火属性物理伤害,Deals ({0}% of physical ATK) fire type physical damage to all enemy targets
-bossdajie13Cike44Tips,受到伤害时，反弹攻击者{0}%物攻的火属性物理伤害,Reflects ({0}% of physical ATK) fire type physical damage back at the attacker whenever you take damage
+bossdajie13Cike41Tips,给单体目标造成2次50%物攻火属性物理伤害,Deals (50% of physical ATK) fire type physical damage 2 times to a single target
+bossdajie13Cike42Tips,提升自身80%防御力，持续3回合,Increases your DEF by 80% for 3 turns
+bossdajie13Cike43Tips,给群体目标造成120%物攻火属性物理伤害,Deals (120% of physical ATK) fire type physical damage to all enemy targets
+bossdajie13Cike44Tips,受到伤害时，反弹攻击者15%物攻的火属性物理伤害,Reflects (15% of physical ATK) fire type physical damage back at the attacker whenever you take damage
 bossdajie18Ladong51Name,风术,Blazing Wind
 bossdajie18Ladong52Name,龙卷风,Tornado
 bossdajie18Ladong54Name,龙之吐息,Dragon's Breath
@@ -1241,6 +1241,10 @@ bossdajie18Ladong54Tips,给群体目标造成{0}%法攻暗属性法术伤害并�
 bossdajie11Moguguai41Name,火焰重击,Flame Strike
 bossdajie11Moguguai42Name,火焰旋风,Fire Cyclone
 bossdajie11Moguguai43Name,火磷粉,Explosive Dust
-bossdajie11Moguguai41Tips,给单体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
-bossdajie11Moguguai42Tips,给群体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
-bossdajie11Moguguai43Tips,给群体目标造成{0}%法攻火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets
+bossdajie11Moguguai41Tips,给单体目标造成100%法攻火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
+bossdajie11Moguguai42Tips,给群体目标造成60%法攻火属性法术伤害,Deals (60% of magic ATK) fire type magic damage to all enemy targets
+bossdajie11Moguguai43Tips,给群体目标造成120%法攻火属性法术伤害,Deals (120% of magic ATK) fire type magic damage to all enemy targets
+ultMoguguai3Name,冰霜粉,冰霜粉
+ultMoguguai3Tips,给群体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to all enemies
+psvMoguguai3Name,成长,Unnatural Growth
+psvMoguguai3Tips,永久提升10%体力,Increases Power permanently by 10%

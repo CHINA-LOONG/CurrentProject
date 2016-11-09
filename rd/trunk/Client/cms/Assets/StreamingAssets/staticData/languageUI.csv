@@ -936,7 +936,7 @@ pvp_defense,防守阵容,Defense Team
 pvp_change,调整阵容,Edit Team
 pvp_pvpchoise,可竞技次数：{0}/10,Arena entries: {0}/10
 pvp_pvptime,（{0}:{1}:{2}后恢复1次）,({0}:{1}:{2} till 1 point)
-pvp_pipei,匹配对手,Matchmaking
+pvp_pipei,匹配,Search
 pvp_shop,竞技商店,Arena Store
 pvp_battlereward,竞技奖励,Arena Reward
 pvp_record,防守记录,Defense Record
@@ -945,7 +945,7 @@ pvp_ranking,排行榜,Rankings
 pvp_fangyumust,请先布置防守宠物,Please set defending monsters
 pvp_fangyumust1,（布置防守宠物后才能进行PVP）,(Setting defense monsters is required for PvP)
 pvp_first,当前没有其他玩家参与pvp，等等他们赶来吧,"There is no one else in PvP at the moment, wait for more to join."
-pvp_save,保存设置,Save Settings
+pvp_save,保存设置,Save
 pvp_oneleast,防御至少要安排一个以上的宠物,At least 2 or more monsters are required for your Defense Team.
 pvp_buzufive,有栏位上未布置宠物，确定完成吗？,"Your team has empty positions, continue?"
 pvp_rewardyulan,奖励预览,Reward Preview

@@ -81,7 +81,7 @@ public class SociatyContentTechnology : SociatyContentBase
         }
         else
         {
-            UIIm.Instance.ShowSystemHints("level up success", (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_069"), (int)PB.ImType.PROMPT);
             mContributeValue.text = GameDataMgr.Instance.SociatyDataMgrAttr.allianceData.contribution.ToString();
             //TODO: broadcast in sociaty channel
         }

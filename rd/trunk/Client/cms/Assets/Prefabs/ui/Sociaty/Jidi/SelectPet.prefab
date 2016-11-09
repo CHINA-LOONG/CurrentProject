@@ -453,9 +453,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54220d908a565bd4fadda453d5d8a59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   titleText: {fileID: 11419352}
   maoxianText: {fileID: 11477636}
   zhushouText: {fileID: 11428744}

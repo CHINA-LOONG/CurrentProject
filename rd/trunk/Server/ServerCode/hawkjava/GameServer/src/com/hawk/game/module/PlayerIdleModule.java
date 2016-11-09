@@ -37,6 +37,7 @@ public class PlayerIdleModule extends PlayerModule {
 	protected boolean onDelayTest(HawkProtocol cmd) {
 		HSDelayTest.Builder delayTest = HSDelayTest.newBuilder();
 		delayTest.setTimeStamp(cmd.parseProtocol(HSDelayTest.getDefaultInstance()).getTimeStamp());
+		delayTest.setId(delayTest.getId());
 		sendProtocol(HawkProtocol.valueOf(sys.DELAY_TEST_VALUE, delayTest));
 		return true;
 	}

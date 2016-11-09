@@ -1322,6 +1322,16 @@ public final class SysProtocol {
      * <code>optional int64 timeStamp = 1;</code>
      */
     long getTimeStamp();
+
+    // optional int64 id = 2;
+    /**
+     * <code>optional int64 id = 2;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int64 id = 2;</code>
+     */
+    long getId();
   }
   /**
    * Protobuf type {@code HSDelayTest}
@@ -1383,6 +1393,11 @@ public final class SysProtocol {
               timeStamp_ = input.readInt64();
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              id_ = input.readInt64();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1439,8 +1454,25 @@ public final class SysProtocol {
       return timeStamp_;
     }
 
+    // optional int64 id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private long id_;
+    /**
+     * <code>optional int64 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int64 id = 2;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
     private void initFields() {
       timeStamp_ = 0L;
+      id_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1457,6 +1489,9 @@ public final class SysProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt64(1, timeStamp_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt64(2, id_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1469,6 +1504,10 @@ public final class SysProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, timeStamp_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, id_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1592,6 +1631,8 @@ public final class SysProtocol {
         super.clear();
         timeStamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1624,6 +1665,10 @@ public final class SysProtocol {
           to_bitField0_ |= 0x00000001;
         }
         result.timeStamp_ = timeStamp_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.id_ = id_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1642,6 +1687,9 @@ public final class SysProtocol {
         if (other == com.hawk.game.protocol.SysProtocol.HSDelayTest.getDefaultInstance()) return this;
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
+        }
+        if (other.hasId()) {
+          setId(other.getId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1699,6 +1747,39 @@ public final class SysProtocol {
       public Builder clearTimeStamp() {
         bitField0_ = (bitField0_ & ~0x00000001);
         timeStamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional int64 id = 2;
+      private long id_ ;
+      /**
+       * <code>optional int64 id = 2;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int64 id = 2;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int64 id = 2;</code>
+       */
+      public Builder setId(long value) {
+        bitField0_ |= 0x00000002;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 id = 2;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        id_ = 0L;
         onChanged();
         return this;
       }
@@ -2981,11 +3062,12 @@ public final class SysProtocol {
       "\n\032Protocol/SysProtocol.proto\"\035\n\rHSDataWa" +
       "rpper\022\014\n\004data\030\001 \001(\014\"\035\n\rHSKeyExchange\022\014\n\004" +
       "keys\030\001 \001(\014\".\n\013HSHeartBeat\022\021\n\ttimeStamp\030\001" +
-      " \001(\005\022\014\n\004data\030\002 \001(\014\" \n\013HSDelayTest\022\021\n\ttim" +
-      "eStamp\030\001 \001(\003\"R\n\013HSErrorCode\022\016\n\006hsCode\030\001 " +
-      "\002(\005\022\017\n\007errCode\030\002 \002(\005\022\016\n\006errMsg\030\003 \001(\t\022\022\n\007" +
-      "errFlag\030\004 \001(\005:\0010\"\037\n\014HSWarnPlayer\022\017\n\007cont" +
-      "ent\030\001 \002(\tB\030\n\026com.hawk.game.protocol"
+      " \001(\005\022\014\n\004data\030\002 \001(\014\",\n\013HSDelayTest\022\021\n\ttim" +
+      "eStamp\030\001 \001(\003\022\n\n\002id\030\002 \001(\003\"R\n\013HSErrorCode\022" +
+      "\016\n\006hsCode\030\001 \002(\005\022\017\n\007errCode\030\002 \002(\005\022\016\n\006errM" +
+      "sg\030\003 \001(\t\022\022\n\007errFlag\030\004 \001(\005:\0010\"\037\n\014HSWarnPl" +
+      "ayer\022\017\n\007content\030\001 \002(\tB\030\n\026com.hawk.game.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3015,7 +3097,7 @@ public final class SysProtocol {
           internal_static_HSDelayTest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSDelayTest_descriptor,
-              new java.lang.String[] { "TimeStamp", });
+              new java.lang.String[] { "TimeStamp", "Id", });
           internal_static_HSErrorCode_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_HSErrorCode_fieldAccessorTable = new

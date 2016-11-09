@@ -76,6 +76,16 @@ public class UIBattle : UIBase
     //for guide level only
     private byte mSpeedShow = 1;
     private byte mSettingShow = 1;
+    private byte mDrawShow = 0;
+    public byte DrawShow
+    {
+        get { return mDrawShow; }
+        set
+        {
+            mDrawShow = value;
+            mDrawBtn.gameObject.SetActive(mDrawShow == 1);
+        }
+    }
 
 
 	// Use this for initialization
@@ -358,6 +368,7 @@ public class UIBattle : UIBase
     {
         m_ButtonSpeed.gameObject.SetActive(isShow && mSpeedShow == 1);
         mSetting.gameObject.SetActive(isShow && mSettingShow == 1);
+        mDrawBtn.gameObject.SetActive(isShow && mDrawShow == 1);
         RectTransform mirrorTrans = mirrorUI.gameObject.transform as RectTransform;
         SetMirrorVisible(isShow);
     }

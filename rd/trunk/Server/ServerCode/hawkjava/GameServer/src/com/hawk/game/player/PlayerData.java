@@ -144,6 +144,11 @@ public class PlayerData {
 	 */
 	private long[] refreshTimeCache = new long[GsConst.Refresh.PlayerTimePointArray.length];
 
+	
+	//TODO
+	public boolean hasloadFlag = false;
+	
+	
 	/**
 	 * 构造函数
 	 * 
@@ -209,12 +214,13 @@ public class PlayerData {
 	 */
 	public PlayerEntity getPlayerEntity() {
 		try {
-			if (playerEntity == null &&getStatisticsEntity() != null)
-			{
-				throw new HawkException("PlayerEntity is null but staticEntity is not null");
-			}
-			else if (playerEntity == null) {
-				throw new HawkException("PlayerEntity is null");
+			if (playerEntity == null) {
+				if (player.getPlayerData().hasloadFlag == true) {
+					throw new HawkException("PlayerEntity is null hasloadFlag == true");
+				}
+				else {
+					throw new HawkException("PlayerEntity is null hasloadFlag == false");
+				}
 			}
 				
 		} catch (Exception e) {
@@ -710,12 +716,9 @@ public class PlayerData {
 //					}
 //				} catch (Exception e) {
 //				}
-			}
-			else {
-				try {
-					throw new HawkException(" test null exception");
-				} catch (Exception e) {
-					HawkException.catchException(e);
+				
+				if (playerEntity != null) {
+					hasloadFlag = true;
 				}
 			}
 		}

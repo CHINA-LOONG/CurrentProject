@@ -850,7 +850,7 @@ public class BattleProcess : MonoBehaviour
         {
             if (NormalScript.GetTotalRound() >= BattleConst.maxPvpRound)
             {
-                BattleController.Instance.GetUIBattle().mDrawBtn.gameObject.SetActive(true);
+                BattleController.Instance.GetUIBattle().DrawShow = 1;
             }
         }
         else

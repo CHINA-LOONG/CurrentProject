@@ -109,7 +109,7 @@ public class BuyItem : UIBase
         StoreStaticData storeItemData = StaticDataMgr.Instance.GetStoreStaticDataWith(itemId);
         if (null != storeItemData)
         {
-            price = Mathf.CeilToInt(storeItemData.price * storeItemData.discount);
+            price = Mathf.CeilToInt(storeItemData.price * storeItemData.discount - BattleConst.floatZero);
         }
         else
         {

@@ -438,7 +438,7 @@ public class GsApp extends HawkApp {
 			 Player player = (Player)objBase.getImpl();
 			 if (player.isOnline() == false && objBase.getVisitTime() + 60000 < currentTime) {
 				 iterator.remove();
-				ServerData.getInstance().addReleasePlayer();
+				 ServerData.getInstance().addReleasePlayer();
 			}
 		}
 	}
@@ -704,7 +704,6 @@ public class GsApp extends HawkApp {
 				player.getPlayerData().setPuid(puid);
 				// 绑定会话对象
 				session.setAppObject(objBase.getImpl());
-				player.setSession(session);
 			}
 		} finally {
 			if (objBase != null) {

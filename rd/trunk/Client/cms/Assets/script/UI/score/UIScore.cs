@@ -315,8 +315,9 @@ public class UIScore : UIBase ,GuideBase
         mWaitStarTime = 0.0f;
         if (mPvpResult == null)
         {
-            endBattleUI.SetStarVisiblebool(mBattleResult == 0);
-            if (mBattleResult == 0)
+            bool showStar = (mBattleResult == 0 && mStarCount > 0);
+            endBattleUI.SetStarVisiblebool(showStar);
+            if (showStar == true)
             {
                 endBattleUI.ShowStar();
                 mWaitStarTime = mStarCount * BattleConst.scoreStarInterval;
