@@ -285,14 +285,15 @@ public class Player extends HawkAppObj {
 			return true;
 		}
 
+		// TODO
 		// 玩家不在线而且不是登陆协议(非法协议时机)
-		if (!isOnline() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
+		if (false == isOnline() && false == (protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C) || protocol.checkType(HS.code.PLAYER_COMPLETE_C))) {
 			//HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
 
 		// 玩家未组装完成
-		if (!isAssembleFinish() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
+		if (false == isAssembleFinish() && false == (protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C) || protocol.checkType(HS.code.PLAYER_COMPLETE_C))) {
 			//HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
@@ -345,7 +346,7 @@ public class Player extends HawkAppObj {
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
-		//HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
+		HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
 		if (onPlayerProtocol(protocol)) {
 			return true;
 		}

@@ -8,76 +8,66 @@ public class LevelUp : UIBase
     public static string ViewName = "LevelUp";
 
     public Text levelDesc;
-    public Text curPilaoDesc;
-    public Text curPilaoValue;
-    public Text maxPilaoDesc;
-    public Text maxPilaoValue;
+    public GameObject openTaskPanel;
+    public Text openTask;
     public ScrollView functionScrollView;
     public Button conformButton;
 
-
-    public static void OpenWith(int oldLevel, int targetLevel,int oldPilao,int newPilao)
+    private Vector2 levelDescOldPositon;
+    private RectTransform levelDescRt;
+    void Awake()
     {
-        LevelUp lup = (LevelUp)UIMgr.Instance.OpenUI_(ViewName);
-        lup.InitWith(oldLevel, targetLevel,oldPilao,newPilao);
-    }
-
-    public  void    InitWith(int oldLevel, int targetLevel, int oldPilao, int newPilao)
-    {
-       // title.text = StaticDataMgr.Instance.GetTextByID("main_levelup_title");
-        curPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_pilao");
-        maxPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_shangxian");
-
-        PlayerLevelAttr oldLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(oldLevel);
-        PlayerLevelAttr newLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(targetLevel);
-       
-        curPilaoValue.text = string.Format("{0}-{1}", oldPilao, newPilao);
-        maxPilaoValue.text = string.Format("{0}-{1}", oldLevelAttr.fatigue, newLevelAttr.fatigue);
-
-        levelDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("main_levelup_dengji"), targetLevel);
-
-        int nextLevel = oldLevel + 1;
-        if(targetLevel < nextLevel)
-        {
-            nextLevel = targetLevel;
-        }
-        InitFunctions(nextLevel);
+        levelDescRt = levelDesc.transform as RectTransform;
+        levelDescOldPositon = levelDescRt.anchoredPosition;
+        openTask.text = StaticDataMgr.Instance.GetTextByID("main_levelup_open");
 
         EventTriggerListener.Get(conformButton.gameObject).onClick = OnConformButtonClicked;
         UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
     }
 
-    void InitFunctions(int targetLevel)
+    public static void OpenWith(int oldLevel, int targetLevel)
+    {
+        LevelUp lup = (LevelUp)UIMgr.Instance.OpenUI_(ViewName);
+        lup.InitWith(oldLevel, targetLevel);
+    }
+
+    public  void    InitWith(int oldLevel, int targetLevel)
+    {
+        PlayerLevelAttr oldLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(oldLevel);
+        PlayerLevelAttr newLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(targetLevel);
+
+        levelDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("main_levelup_dengji"), targetLevel);
+
+        bool isNewOpen = InitOpenFunctions(oldLevel,targetLevel);
+        openTaskPanel.SetActive(isNewOpen);
+        if (isNewOpen)
+        {
+            levelDescRt.anchoredPosition = new Vector2(levelDescOldPositon.x, levelDescOldPositon.y - 150);
+        }
+        else
+        {
+            levelDescRt.anchoredPosition = levelDescOldPositon;
+        }
+    }
+
+    bool InitOpenFunctions(int oldLevel,int targetLevel)
     {
         functionScrollView.ClearAllElement();
-        List<FunctionData> listfunction = StaticDataMgr.Instance.GetFunctionNoSmallerLevel(targetLevel);
-        if (null == listfunction || listfunction.Count ==0)
+        List<FunctionData> listfunction = StaticDataMgr.Instance.GetNewOpenFunction(oldLevel, targetLevel);
+        if (null == listfunction || listfunction.Count == 0)
         {
-            return;
+            return false;
         }
-
-        int noOpenCount = 0;
-        for(int i =0;i<listfunction.Count;++i)
+        for (int i = 0; i < listfunction.Count; ++i)
         {
             var subFunction = listfunction[i];
-            int playerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
-            if (playerLevel < subFunction.needlevel)
-            {
-                noOpenCount++;
-                if (noOpenCount > 2)
-                {
-                    break;
-                }
-            }
             FunctionItem subItem = FunctionItem.CreateWith(subFunction);
             functionScrollView.AddElement(subItem.gameObject);
         }
-        
+        return true;
     }
-
     void    OnConformButtonClicked(GameObject go)
     {
-        UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
-	
 }

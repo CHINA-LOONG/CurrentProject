@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 485802}
   - 137: {fileID: 13723778}
+  - 114: {fileID: 11449832}
   m_Layer: 10
   m_Name: mesh_shell
   m_TagString: Untagged
@@ -920,7 +921,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.41499996, z: 0}
+  m_LocalPosition: {x: 0, y: 1.24800003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448694}
@@ -1477,7 +1478,7 @@ Animator:
   m_GameObject: {fileID: 101860}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a838e0cb569cc1e489d6648030b59d2f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 754d980f25771ec48ba284ad6e188a8d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0891c387bde8b4a42b19a94ac5c64adf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1498,6 +1499,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mShadowPos: {fileID: 498136}
   mShadowProjectPos: {fileID: 490030}
+--- !u!114 &11449832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf2b9a701dc3f24b8b592a949c3f19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDissolveMat: {fileID: 2100000, guid: 2da9f549bde22b1458ed5df0d6f062fa, type: 2}
 --- !u!114 &11491486
 MonoBehaviour:
   m_ObjectHideFlags: 1

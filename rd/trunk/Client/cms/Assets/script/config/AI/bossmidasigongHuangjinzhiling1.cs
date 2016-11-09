@@ -51,12 +51,16 @@ public class bossmidasigongHuangjinzhiling1 : BossAi {
     //---------------------------------------------------------------------------------------------
 	public override void OnVitalChange(SpellVitalChangeArgs args)
 	{
+
 		if (args.vitalCurrent <= args.vitalMax*0.5 && args.vitalType == (int)VitalType.Vital_Type_Default && jishu==0)
 		{
 			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-			target.TriggerEvent("huangjinzhiling1_ctrl",Time.time,null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
-			jishu ++;
+			if(target.unit.State != UnitState.Dead)
+			{
+				target.TriggerEvent("huangjinzhiling1_ctrl",Time.time,null);
+				BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(1.5f);
+				jishu ++;
+			}
 		}
 
 	}

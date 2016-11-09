@@ -436,7 +436,7 @@ public class GsApp extends HawkApp {
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
-			 if (player.isOnline() == false && objBase.getVisitTime() + 60000 < currentTime) {
+			 if (player.isOnline() == false && objBase.getVisitTime() + 600000 < currentTime) {
 				 iterator.remove();
 				 ServerData.getInstance().addReleasePlayer();
 			}
@@ -548,13 +548,18 @@ public class GsApp extends HawkApp {
 							return true;
 						}
 
-						if (false == preparePuidSession(puid, session)) {
+						Player player = preparePuidSession(puid, session);
+						if (null == player) {
 							return true;
 						}
+
+						// 加载玩家实体信息
+						PlayerEntity playerEntity = player.getPlayerData().loadPlayer();
 
 						HSLoginRet.Builder response = HSLoginRet.newBuilder();
 						response.setStatus(Status.error.NONE_ERROR_VALUE);
 						response.setPlayerId(playerId);
+						response.setNickname(playerEntity.getNickname());
 						session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
 						return true;
 
@@ -592,7 +597,7 @@ public class GsApp extends HawkApp {
 		} finally {
 			protoTime = HawkTime.getMillisecond() - protoTime;
 			if (protoTime >= 20) {
-				//logger.info("protocol cost time exception, protocolId: {}, costTime: {}ms",protocol.getType(), protoTime);
+				logger.info("protocol cost time exception, protocolId: {}, costTime: {}ms",protocol.getType(), protoTime);
 			}
 		}
 	}
@@ -670,12 +675,13 @@ public class GsApp extends HawkApp {
 	/**
 	 * 准备puid对应的会话
 	 */
-	private boolean preparePuidSession(String puid, HawkSession session) {
+	private Player preparePuidSession(String puid, HawkSession session) {
 		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 		if (playerId == 0) {
-			return false;
+			return null;
 		}
-
+		
+		Player player = null;
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
 		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
 		try {
@@ -690,7 +696,7 @@ public class GsApp extends HawkApp {
 			// 会话绑定应用对象
 			if (objBase != null) {
 				// 已存在会话的情况下, 踢出玩家
-				Player player = (Player) objBase.getImpl();
+				player = (Player) objBase.getImpl();
 				if (player != null && player.getSession() != null && player.getSession() != session) {
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 					player.getSession().setAppObject(null);
@@ -703,14 +709,15 @@ public class GsApp extends HawkApp {
 				// 设置玩家puid
 				player.getPlayerData().setPuid(puid);
 				// 绑定会话对象
-				session.setAppObject(objBase.getImpl());
+				session.setAppObject(player);
+				// player绑定session放在player线程中处理，防止login protocol和logout message在不同线程处理发生的冲突
 			}
 		} finally {
 			if (objBase != null) {
 				objBase.unlockObj();
 			}
 		}
-		return true;
+		return player;
 	}
 
 	/**

@@ -214,9 +214,7 @@ public class UIQuest : UIBase,
         if (playerLevel != GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             LevelUp.OpenWith(playerLevel,
-                             GameDataMgr.Instance.PlayerDataAttr.LevelAttr,
-                             playerFatigue,
-                             GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+                             GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         }
     }
 

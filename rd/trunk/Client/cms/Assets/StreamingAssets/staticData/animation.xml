@@ -212,6 +212,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Camera time="0.5" ani="guiwei" parent="" is_mover="" duration="" mover_type=""/>
 			</CameraMotionList>
 		</Ani>
+		<Ani id="pvp_show" state="0">
+			<CameraMotionList>
+				<Camera time="0" ani="pvp_xiangjiyidong" parent="" is_mover="" duration="" mover_type=""/>
+			</CameraMotionList>
+		</Ani>
 	</AniList>
 	<AniList group="commonAttack">
 		<!--cut-->
@@ -3035,6 +3040,42 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		</Ani>
 		
 	</AniList>
+	<AniList group="xgMoguguai3">
+	
+		<Ani id="ultMoguguai3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultmogurenpre3_juqi" bundle="effect/particle" parent="Bone003(mirrored)(mirrored)" attach="true"/>
+				<Particle asset="ultmogurenpre3" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Moguguai31"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txMoguguai3" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultMoguguai3Hit_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/>
+				<Particle asset="ultMoguguai3Pre" bundle="effect/particle" parent="" attach="true"/>
+				<Particle asset="ultMoguguai3Hit" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Moguguai31"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultMoguguai3e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantColumnp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="plantp1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
 	<AniList group="xgXiaochou3">
 	
 		<Ani id="ultXiaochou3" state="0" AniType="Skill">
@@ -4321,13 +4362,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	
 		<Ani id="ultTianshizhang4e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
-			<SpeedList>
-			</SpeedList>
 		</Ani>
 		
 		<Ani id="ultTianshizhang4b1" state="0" AniType="">
@@ -4757,7 +4796,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
 	
@@ -5038,10 +5077,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="ultIfrit4e3" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicFireColumnp" bundle="effect/particle" ani="" locky="true"/>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 	
@@ -5170,7 +5209,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -5321,10 +5360,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bossdajie11Moguguai41e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicFireColumnp" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -5910,7 +5949,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="2.35" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="2.35" name="firee1"/>
+				<Audio time="2.35" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -7475,7 +7514,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -7643,7 +7682,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -7700,7 +7739,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -7799,7 +7838,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -7822,7 +7861,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firee1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 						
@@ -7891,7 +7930,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8112,7 +8151,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8125,6 +8164,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="2.0" key="dazhao" value="true"/>
 				<Motion time="2.33" key="dazhao" value="true"/>
 			</MotionList>
+			<AudioList>
+				<Audio time="0" name="Saibulesi41"/>
+			</AudioList>
 		</Ani>
 		
 		<Ani id="bosshuoshan45Saibulesi43e2" state="0" AniType="Damage">
@@ -8197,7 +8239,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8225,7 +8267,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8365,10 +8407,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosshuoshan48Hehuaisituosi41e2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="e_shouji" attach="true"/>
+				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8414,7 +8456,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle time="0" asset="magicFireColumnp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="firep1"/>
+				<Audio time="0" name="firep2"/>
 			</AudioList>
 		</Ani>
 		

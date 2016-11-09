@@ -1347,26 +1347,20 @@ public class StaticDataMgr : MonoBehaviour
         return item;
     }
 
-    public  List<FunctionData> GetFunctionListEqualLevel(int level)
+    public List<FunctionData> GetNewOpenFunction(int oldLevel, int targetLevel)
     {
-        List<FunctionData> itemlist = null;
-        functionLevelDic.TryGetValue(level, out itemlist);
-        return itemlist;
-    }
-
-    public  List<FunctionData> GetFunctionNoSmallerLevel(int level)
-    {
-        List<FunctionData> listitem = new List<FunctionData>();
-
-        foreach(var subItem in functionLevelDic)
+        List<FunctionData> newOpenList = new List<FunctionData>();
+        for (int i = oldLevel + 1; i <= targetLevel; ++i)
         {
-            if(subItem.Key  >= level)
+            List<FunctionData> itemlist = null;
+            functionLevelDic.TryGetValue(i, out itemlist);
+            if (null != itemlist && itemlist.Count > 0)
             {
-                listitem.AddRange(subItem.Value);
+                newOpenList.AddRange(itemlist);
             }
         }
 
-        return listitem;
+        return newOpenList;
     }
 
 

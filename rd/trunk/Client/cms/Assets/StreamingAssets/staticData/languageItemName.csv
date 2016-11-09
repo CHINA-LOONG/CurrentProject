@@ -6,25 +6,25 @@ name_10001_yaoshi,钥匙,key
 name_10002_wuming,无名,no name
 name_10003_duihuanquan,扫荡券,ticket
 name_10004_chujiqianghuacailiao,初级装备强化石,basic upgrade stone
-name_11001_chujizhuangbeiqianghuashi,初级装备强化石,basic upgrade stone
-name_11002_zhongjizhuangbeiqianghuashi,中级装备强化石,standard  upgrade stone
-name_11003_gaojizhuangbeiqianghuashi,高级装备强化石,superior  upgrade stone
-name_10005_zhuangbeijinjieshi,装备进阶石,Advanced stone
+name_11001_chujizhuangbeiqianghuashi,初级灵铁,Basic Raw Iron
+name_11002_zhongjizhuangbeiqianghuashi,中级灵铁,Average Raw Iron
+name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Pure Raw Iron
+name_10005_zhuangbeijinjieshi,妖力结晶,Crystal Ball
 name_10006_zhuangbeijinjiecailiao2,装备进阶卷轴,Advanced scroll
 name_10007_baoshikaikongcailiao,宝石开孔石,Gem Socketing Chisel
 name_10008_zhuangbeijinjiecailiao2chip,进阶卷轴碎片,Advanced scroll chip
-name_10009_baoxiangyaoshi1,木质宝箱钥匙,Wood Key
-name_10010_baoxiangyaoshi2,铁质宝箱钥匙,Iron Key
-name_10011_baoxiangyaoshi3,白银宝箱钥匙,Silver Key
+name_10009_baoxiangyaoshi1,木质钥匙,Deadwood Key
+name_10010_baoxiangyaoshi2,白银钥匙,Gleaming Key
+name_10011_baoxiangyaoshi3,黄金钥匙,Golden Key
 name_10012_baoxiangyaoshi4,黄金宝箱钥匙,Gold Key
 name_10013_yibanlaji1,妖兽的晶核,Wicked Crux
-name_10014_yibanlaji2,妖兽的皮毛,Wicked Pelt
-name_10015_yibanlaji3,妖兽的指甲,Wicked Nails
-name_10016_chongwuqianghuashi,宠物强化石,Monster Upgrade Stone
-name_10017_chongwujinjieshi,宠物进阶石,Monster Advancement Stone
-name_10021_gongpin,天使之羽,
-name_10022_gongpin,恶魔之羽,
-name_10023_gongpin,精灵之羽,
+name_10014_yibanlaji2,妖兽的皮,Wicked Pelt
+name_10015_yibanlaji3,妖兽的爪,Wicked Nails
+name_10016_chongwuqianghuashi,贤者墨水,Sage's Ink
+name_10017_chongwujinjieshi,化形之书,Book of Transformation
+name_10021_gongpin,天使之羽,Angel's feather
+name_10022_gongpin,恶魔之羽,Demon's feather
+name_10023_gongpin,精灵之羽,Fairy's feather.
 name_20001_suipian_common,灵魂本源,Core Fragments
 name_20002_suipian_xiaochou3,水小丑碎片,xiaochou3suipian
 name_20003_suipian_kairuisi4,火凯瑞斯碎片,kairuisi4suipian
@@ -76,76 +76,76 @@ name_20048_suipian_dujiaoshou1,光独角兽碎片,dujiaoshou1suipian
 name_20049_suipian_dujiaoshou5,暗独角兽碎片,dujiaoshou5suipian
 name_20050_suipian_change5,暗嫦娥碎片,change5suipian
 name_20051_suipian_huoniao3,水火鸟碎片,huoniao3suipian
-name_30011_BloodStone_1,一级血魄石,Blood Stone(LV1)
-name_30012_BloodStone_2,二级血魄石,Blood Stone(LV2)
-name_30013_BloodStone_3,三级血魄石,Blood Stone(LV3)
-name_30014_BloodStone_4,四级血魄石,Blood Stone(LV4)
-name_30015_BloodStone_5,五级血魄石,Blood Stone(LV5)
-name_30016_BloodStone_6,六级血魄石,Blood Stone(LV6)
-name_30021_SageStone_1,一级琥珀石,Sage Stone(LV1)
-name_30022_SageStone_2,二级琥珀石,Sage Stone(LV2)
-name_30023_SageStone_3,三级琥珀石,Sage Stone(LV3)
-name_30024_SageStone_4,四级琥珀石,Sage Stone(LV4)
-name_30025_SageStone_5,五级琥珀石,Sage Stone(LV5)
-name_30026_SageStone_6,六级琥珀石,Sage Stone(LV6)
-name_30031_VitalityStone_1,一级锆石,Vitality Stone(LV1)
-name_30032_VitalityStone_2,二级锆石,Vitality Stone(LV2)
-name_30033_VitalityStone_3,三级锆石,Vitality Stone(LV3)
-name_30034_VitalityStone_4,四级锆石,Vitality Stone(LV4)
-name_30035_VitalityStone_5,五级锆石,Vitality Stone(LV5)
-name_30036_VitalityStone_6,六级锆石,Vitality Stone(LV6)
-name_30041_BastionStone_1,一级天青石,Bastion Stone(LV1)
-name_30042_BastionStone_2,二级天青石,Bastion Stone(LV2)
-name_30043_BastionStone_3,三级天青石,Bastion Stone(LV3)
-name_30044_BastionStone_4,四级天青石,Bastion Stone(LV4)
-name_30045_BastionStone_5,五级天青石,Bastion Stone(LV5)
-name_30046_BastionStone_6,六级天青石,Bastion Stone(LV6)
-name_30051_HasteStone_1,一级灰石,Haste Stone(LV1)
-name_30052_HasteStone_2,二级灰石,Haste Stone(LV2)
-name_30053_HasteStone_3,三级灰石,Haste Stone(LV3)
-name_30054_HasteStone_4,四级灰石,Haste Stone(LV4)
-name_30055_HasteStone_5,五级灰石,Haste Stone(LV5)
-name_30056_HasteStone_6,六级灰石,Haste Stone(LV6)
-name_30061_MendingStone_1,一级绿叶石,Mending Stone(LV1)
-name_30062_MendingStone_2,二级绿叶石,Mending Stone(LV2)
-name_30063_MendingStone_3,三级绿叶石,Mending Stone(LV3)
-name_30064_MendingStone_4,四级绿叶石,Mending Stone(LV4)
-name_30065_MendingStone_5,五级绿叶石,Mending Stone(LV5)
-name_30066_MendingStone_6,六级绿叶石,Mending Stone(LV6)
-name_30071_VolatileStone_1,一级恶魔石,Volatile Stone(LV1)
-name_30072_VolatileStone_2,二级恶魔石,Volatile Stone(LV2)
-name_30073_VolatileStone_3,三级恶魔石,Volatile Stone(LV3)
-name_30074_VolatileStone_4,四级恶魔石,Volatile Stone(LV4)
-name_30075_VolatileStone_5,五级恶魔石,Volatile Stone(LV5)
-name_30076_VolatileStone_6,六级恶魔石,Volatile Stone(LV6)
-name_30081_SourceStone_1,一级能量,Source Stone(LV1)
-name_30082_SourceStone_2,二级能量,Source Stone(LV2)
-name_30083_SourceStone_3,三级能量,Source Stone(LV3)
-name_30084_SourceStone_4,四级能量,Source Stone(LV4)
-name_30085_SourceStone_5,五级能量,Source Stone(LV5)
-name_30086_SourceStone_6,六级能量,Source Stone(LV6)
-name_30091_MorbidStone_1,一级太阳石,Morbid Stone(LV1)
-name_30092_MorbidStone_2,二级太阳石,Morbid Stone(LV2)
-name_30093_MorbidStone_3,三级太阳石,Morbid Stone(LV3)
-name_30094_MorbidStone_4,四级太阳石,Morbid Stone(LV4)
-name_30095_MorbidStone_5,五级太阳石,Morbid Stone(LV5)
-name_30096_MorbidStone_6,六级太阳石,Morbid Stone(LV6)
-name_40000_baoxiang,木质宝箱,Wood Treasurecase
-name_40001_baoxiang,铁质宝箱,Iron Treasurecase
-name_40002_baoxiang,白银宝箱,Silver Treasurecase
+name_30011_BloodStone_1,生命纹章lv1,Blood Insignia（lv1）
+name_30012_BloodStone_2,生命纹章lv2,Blood Insignia（lv2）
+name_30013_BloodStone_3,生命纹章lv3,Blood Insignia（lv3）
+name_30014_BloodStone_4,生命纹章lv4,Blood Insignia（lv4）
+name_30015_BloodStone_5,生命纹章lv5,Blood Insignia（lv5）
+name_30016_BloodStone_6,生命纹章lv6,Blood Insignia（lv6）
+name_30021_SageStone_1,海洋纹章lv1,Domain Insignia(lv1)
+name_30022_SageStone_2,海洋纹章lv2,Domain Insignia(lv2)
+name_30023_SageStone_3,海洋纹章lv3,Domain Insignia(lv3)
+name_30024_SageStone_4,海洋纹章lv4,Domain Insignia(lv4)
+name_30025_SageStone_5,海洋纹章lv5,Domain Insignia(lv5)
+name_30026_SageStone_6,海洋纹章lv6,Domain Insignia(lv6)
+name_30031_VitalityStone_1,烈炎纹章lv1,Ember Insignia(lv1)
+name_30032_VitalityStone_2,烈炎纹章lv2,Ember Insignia(lv2)
+name_30033_VitalityStone_3,烈炎纹章lv3,Ember Insignia(lv3)
+name_30034_VitalityStone_4,烈炎纹章lv4,Ember Insignia(lv4)
+name_30035_VitalityStone_5,烈炎纹章lv5,Ember Insignia(lv5)
+name_30036_VitalityStone_6,烈炎纹章lv6,Ember Insignia(lv6)
+name_30041_BastionStone_1,大地纹章lv1,Earth Insignia(lv1)
+name_30042_BastionStone_2,大地纹章lv2,Earth Insignia(lv2)
+name_30043_BastionStone_3,大地纹章lv3,Earth Insignia(lv3)
+name_30044_BastionStone_4,大地纹章lv4,Earth Insignia(lv4)
+name_30045_BastionStone_5,大地纹章lv5,Earth Insignia(lv5)
+name_30046_BastionStone_6,大地纹章lv6,Earth Insignia(lv6)
+name_30051_HasteStone_1,疾风纹章lv1,Wind Insignia(lv1)
+name_30052_HasteStone_2,疾风纹章lv2,Wind Insignia(lv2)
+name_30053_HasteStone_3,疾风纹章lv3,Wind Insignia(lv3)
+name_30054_HasteStone_4,疾风纹章lv4,Wind Insignia(lv4)
+name_30055_HasteStone_5,疾风纹章lv5,Wind Insignia(lv5)
+name_30056_HasteStone_6,疾风纹章lv6,Wind Insignia(lv6)
+name_30061_MendingStone_1,森林纹章lv1,Forest Insignia(lv1)
+name_30062_MendingStone_2,森林纹章lv2,Forest Insignia(lv2)
+name_30063_MendingStone_3,森林纹章lv3,Forest Insignia(lv3)
+name_30064_MendingStone_4,森林纹章lv4,Forest Insignia(lv4)
+name_30065_MendingStone_5,森林纹章lv5,Forest Insignia(lv5)
+name_30066_MendingStone_6,森林纹章lv6,Forest Insignia(lv6)
+name_30071_VolatileStone_1,月之纹章lv1,Moon Insignia(lv1)
+name_30072_VolatileStone_2,月之纹章lv2,Moon Insignia(lv2)
+name_30073_VolatileStone_3,月之纹章lv3,Moon Insignia(lv3)
+name_30074_VolatileStone_4,月之纹章lv4,Moon Insignia(lv4)
+name_30075_VolatileStone_5,月之纹章lv5,Moon Insignia(lv5)
+name_30076_VolatileStone_6,月之纹章lv6,Moon Insignia(lv6)
+name_30081_SourceStone_1,星之纹章lv1,Star Insignia(lv1)
+name_30082_SourceStone_2,星之纹章lv2,Star Insignia(lv2)
+name_30083_SourceStone_3,星之纹章lv3,Star Insignia(lv3)
+name_30084_SourceStone_4,星之纹章lv4,Star Insignia(lv4)
+name_30085_SourceStone_5,星之纹章lv5,Star Insignia(lv5)
+name_30086_SourceStone_6,星之纹章lv6,Star Insignia(lv6)
+name_30091_MorbidStone_1,日之纹章lv1,Sun Insignia(lv1)
+name_30092_MorbidStone_2,日之纹章lv2,Sun Insignia(lv2)
+name_30093_MorbidStone_3,日之纹章lv3,Sun Insignia(lv3)
+name_30094_MorbidStone_4,日之纹章lv4,Sun Insignia(lv4)
+name_30095_MorbidStone_5,日之纹章lv5,Sun Insignia(lv5)
+name_30096_MorbidStone_6,日之纹章lv6,Sun Insignia(lv6)
+name_40000_baoxiang,木质宝箱,Deadwood Chest
+name_40001_baoxiang,白银宝箱,Gleaming Chest
+name_40002_baoxiang,黄金宝箱,Golden Strongbox
 name_40003_baoxiang,黄金宝箱,Gold Treasurecase
-name_40005_bigTaskleader201,队长礼包,Team Leader Gift
-name_40006_bigTaskleader301,队长礼包,Team Leader Gift
-name_40007_bigTaskleader401,队长礼包,Team Leader Gift
-name_40007_bigTaskleader501,队长礼包,Team Leader Gift
-name_40008_bigTaskleader202,队长礼包,Team Leader Gift
-name_40009_bigTaskleader302,队长礼包,Team Leader Gift
-name_40010_bigTaskleader402,队长礼包,Team Leader Gift
-name_40010_bigTaskleader502,队长礼包,Team Leader Gift
+name_40005_bigTaskleader201,团队领袖宝箱LV1,Team Leader Chest Lv. 1
+name_40006_bigTaskleader301,团队领袖宝箱LV2,Team Leader Chest Lv. 2
+name_40007_bigTaskleader401,团队领袖宝箱LV3,Team Leader Chest Lv. 3
+name_40007_bigTaskleader501,团队领袖宝箱LV4,Team Leader Chest Lv. 4
+name_40008_bigTaskleader202,团队领袖宝箱LV1,Team Leader Chest Lv. 1
+name_40009_bigTaskleader302,团队领袖宝箱LV2,Team Leader Chest Lv. 2
+name_40010_bigTaskleader402,团队领袖宝箱LV3,Team Leader Chest Lv. 3
+name_40010_bigTaskleader502,团队领袖宝箱LV4,Team Leader Chest Lv. 4
 name_50001_jingyanyaoshui,经验药水,expMedicine
-name_50002_chujichongwujingyanyaoshui,初级宠物经验药水,primaryexpMedicine
-name_50003_zhongjichongwujingyanyaoshui,中级宠物经验药水,mediumexpMedicine
-name_50004_gaojichongwujingyanyaoshui,高级宠物经验药水,seniorexpMedicine
+name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Power of Faith
+name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Power of Faith
+name_50004_gaojichongwujingyanyaoshui,高级信仰之力,Advanced Power of Faith
 name_50005_chujipilaoyaoshui,活力饼干小,Energy Cookies(Small)
 name_50006_zhongjipilaoyaoshui,活力饼干中,Energy Cookies(Medium)
 name_50007_gaojipilaoyaoshui,活力饼干大,Energy Cookies(Large)
@@ -191,7 +191,7 @@ tips_11002_zhongjizhuangbeiqianghuashi,用于中品质装备打造,For medium-qu
 tips_11003_gaojizhuangbeiqianghuashi,用于高品质装备打造,For high-quality equipment to forge.
 tips_10005_zhuangbeijinjieshi,用于装备强化打造,For equipment to advance.
 tips_10006_zhuangbeijinjiecailiao2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_10007_baoshikaikongcailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10007_baoshikaikongcailiao,可用于装备打孔,For equipment to slot.
 tips_10008_zhuangbeijinjiecailiao2chip,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10009_baoxiangyaoshi1,开启木质宝箱所需要的钥匙,The key to open the Wood Treasurecase
 tips_10010_baoxiangyaoshi2,开启铁质宝箱所需要的钥匙,The key to open the Iron Treasurecase
@@ -256,64 +256,64 @@ tips_20048_suipian_dujiaoshou1,测试用tips,test Open Sockets: Reveals a Gem sl
 tips_20049_suipian_dujiaoshou5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20050_suipian_change5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_20051_suipian_huoniao3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30011_BloodStone_1,镶嵌在装备上可获得：体力 + 10,insert the gem into a equipment available ：STA + 10
-tips_30012_BloodStone_2,镶嵌在装备上可获得：体力 + 20,insert the gem into a equipment available ：STA + 20
-tips_30013_BloodStone_3,镶嵌在装备上可获得：体力 + 40,insert the gem into a equipment available ：STA + 40
-tips_30014_BloodStone_4,镶嵌在装备上可获得：体力 + 70,insert the gem into a equipment available ：STA + 70
-tips_30015_BloodStone_5,镶嵌在装备上可获得：体力 + 100,insert the gem into a equipment available ：STA + 100
-tips_30016_BloodStone_6,镶嵌在装备上可获得：体力 + 150,insert the gem into a equipment available ：STA + 150
-tips_30021_SageStone_1,镶嵌在装备上可获得：智力 + 10,insert the gem into a equipment available ：INT + 10
-tips_30022_SageStone_2,镶嵌在装备上可获得：智力 + 20,insert the gem into a equipment available ：INT + 20
-tips_30023_SageStone_3,镶嵌在装备上可获得：智力 + 40,insert the gem into a equipment available ：INT + 40
-tips_30024_SageStone_4,镶嵌在装备上可获得：智力 + 70,insert the gem into a equipment available ：INT + 70
-tips_30025_SageStone_5,镶嵌在装备上可获得：智力 + 100,insert the gem into a equipment available ：INT + 100
-tips_30026_SageStone_6,镶嵌在装备上可获得：智力 + 150,insert the gem into a equipment available ：INT + 150
-tips_30031_VitalityStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30032_VitalityStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30033_VitalityStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30034_VitalityStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30035_VitalityStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30036_VitalityStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30041_BastionStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30042_BastionStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30043_BastionStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30044_BastionStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30045_BastionStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30046_BastionStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30051_HasteStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30052_HasteStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30053_HasteStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30054_HasteStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30055_HasteStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30056_HasteStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30061_MendingStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30062_MendingStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30063_MendingStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30064_MendingStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30065_MendingStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30066_MendingStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30071_VolatileStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30072_VolatileStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30073_VolatileStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30074_VolatileStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30075_VolatileStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30076_VolatileStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30081_SourceStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30082_SourceStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30083_SourceStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30084_SourceStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30085_SourceStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30086_SourceStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30091_MorbidStone_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30092_MorbidStone_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30093_MorbidStone_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30094_MorbidStone_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30095_MorbidStone_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_30096_MorbidStone_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_40000_baoxiang,"开启后可获得初级装备强化石*1,中级装备强化石*1，高级装备强化石*1，装备进阶石*1和100金币",After opening available basic upgrade stone * 1，standard  upgrade stone * 1，superior  upgrade stone * 1，Advanced stone * 1 and goldcoin * 100.
-tips_40001_baoxiang,"开启后可获得初级装备强化石*3,中级装备强化石*3，高级装备强化石*3，装备进阶石*3和300金币",After opening available basic upgrade stone * 3，standard  upgrade stone * 3，superior  upgrade stone * 3，Advanced stone * 3 and goldcoin * 300.
-tips_40002_baoxiang,"开启后可获得初级装备强化石*5,中级装备强化石*5，高级装备强化石*5，装备进阶石*5和500金币",After opening available basic upgrade stone * 5，standard  upgrade stone * 5，superior  upgrade stone * 5，Advanced stone * 1 and goldcoin * 500.
-tips_40003_baoxiang,"开启后可获得初级装备强化石*7,中级装备强化石*7，高级装备强化石*7，装备进阶石*7和1000金币",After opening available basic upgrade stone * 7，standard  upgrade stone * 7，superior  upgrade stone * 7，Advanced stone * 1 and goldcoin * 1000.
+tips_30011_BloodStone_1,寄宿着生命之力的纹章，镶嵌在装备上可以提高31生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 31.
+tips_30012_BloodStone_2,寄宿着生命之力的纹章，镶嵌在装备上可以提高62生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 62.
+tips_30013_BloodStone_3,寄宿着生命之力的纹章，镶嵌在装备上可以提高114生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 114.
+tips_30014_BloodStone_4,寄宿着生命之力的纹章，镶嵌在装备上可以提高195生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 195.
+tips_30015_BloodStone_5,寄宿着生命之力的纹章，镶嵌在装备上可以提高309生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 309.
+tips_30016_BloodStone_6,寄宿着生命之力的纹章，镶嵌在装备上可以提高522生命。,An Insignia containing the power of life. Embed into a piece of Equipment to increase HP by 522.
+tips_30021_SageStone_1,寄宿着海洋之力的纹章，镶嵌在装备上可以提高6智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 6.
+tips_30022_SageStone_2,寄宿着海洋之力的纹章，镶嵌在装备上可以提高12智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 12.
+tips_30023_SageStone_3,寄宿着海洋之力的纹章，镶嵌在装备上可以提高22智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 22.
+tips_30024_SageStone_4,寄宿着海洋之力的纹章，镶嵌在装备上可以提高37智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 37.
+tips_30025_SageStone_5,寄宿着海洋之力的纹章，镶嵌在装备上可以提高60智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 60.
+tips_30026_SageStone_6,寄宿着海洋之力的纹章，镶嵌在装备上可以提高101智力。,An Insignia containing the power of the seas Embed into a piece of Equipment to increase INT by 101.
+tips_30031_VitalityStone_1,寄宿着火炎之力的纹章，镶嵌在装备上可以提高6力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 6.
+tips_30032_VitalityStone_2,寄宿着火炎之力的纹章，镶嵌在装备上可以提高12力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 12.
+tips_30033_VitalityStone_3,寄宿着火炎之力的纹章，镶嵌在装备上可以提高22力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 22.
+tips_30034_VitalityStone_4,寄宿着火炎之力的纹章，镶嵌在装备上可以提高37力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 37.
+tips_30035_VitalityStone_5,寄宿着火炎之力的纹章，镶嵌在装备上可以提高60力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 60.
+tips_30036_VitalityStone_6,寄宿着火炎之力的纹章，镶嵌在装备上可以提高101力量。,An Insignia containing the power of fire. Embed into a piece of Equipment to increase STR by 101.
+tips_30041_BastionStone_1,寄宿着大地之力的纹章，镶嵌在装备上可以提高5防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 5.
+tips_30042_BastionStone_2,寄宿着大地之力的纹章，镶嵌在装备上可以提高10防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 10.
+tips_30043_BastionStone_3,寄宿着大地之力的纹章，镶嵌在装备上可以提高20防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 20.
+tips_30044_BastionStone_4,寄宿着大地之力的纹章，镶嵌在装备上可以提高34防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 34.
+tips_30045_BastionStone_5,寄宿着大地之力的纹章，镶嵌在装备上可以提高54防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 54.
+tips_30046_BastionStone_6,寄宿着大地之力的纹章，镶嵌在装备上可以提高91防御。,An Insignia containing the power of the Earth. Embed into a piece of Equipment to increase DEF by 91.
+tips_30051_HasteStone_1,寄宿着疾风之力的纹章，镶嵌在装备上可以提高5速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 5.
+tips_30052_HasteStone_2,寄宿着疾风之力的纹章，镶嵌在装备上可以提高7速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 7.
+tips_30053_HasteStone_3,寄宿着疾风之力的纹章，镶嵌在装备上可以提高9速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 9.
+tips_30054_HasteStone_4,寄宿着疾风之力的纹章，镶嵌在装备上可以提高12速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 12.
+tips_30055_HasteStone_5,寄宿着疾风之力的纹章，镶嵌在装备上可以提高15速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 15.
+tips_30056_HasteStone_6,寄宿着疾风之力的纹章，镶嵌在装备上可以提高20速度。,An Insignia containing the power of the wind. Embed into a piece of Equipment to increase SPD by 20.
+tips_30061_MendingStone_1,寄宿着森林之力的纹章，镶嵌在装备上可以提高15%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 15%.
+tips_30062_MendingStone_2,寄宿着森林之力的纹章，镶嵌在装备上可以提高18%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 18%.
+tips_30063_MendingStone_3,寄宿着森林之力的纹章，镶嵌在装备上可以提高21%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 21%.
+tips_30064_MendingStone_4,寄宿着森林之力的纹章，镶嵌在装备上可以提高24%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 24%.
+tips_30065_MendingStone_5,寄宿着森林之力的纹章，镶嵌在装备上可以提高30%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 30%.
+tips_30066_MendingStone_6,寄宿着森林之力的纹章，镶嵌在装备上可以提高36%治疗加成。,An Insignia containing the power of the forest. Embed into a piece of Equipment to increase Healing by 36%.
+tips_30071_VolatileStone_1,寄宿着月亮之力的纹章，镶嵌在装备上可以提高5%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 5%.
+tips_30072_VolatileStone_2,寄宿着月亮之力的纹章，镶嵌在装备上可以提高6%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 6%.
+tips_30073_VolatileStone_3,寄宿着月亮之力的纹章，镶嵌在装备上可以提高8%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 8%.
+tips_30074_VolatileStone_4,寄宿着月亮之力的纹章，镶嵌在装备上可以提高10%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 10%.
+tips_30075_VolatileStone_5,寄宿着月亮之力的纹章，镶嵌在装备上可以提高13%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 13%.
+tips_30076_VolatileStone_6,寄宿着月亮之力的纹章，镶嵌在装备上可以提高17%暴击。,An Insignia containing the power of the moon. Embed into a piece of Equipment to increase Crit by 17%.
+tips_30081_SourceStone_1,寄宿着繁星之力的纹章，镶嵌在装备上可以提高4前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 4.
+tips_30082_SourceStone_2,寄宿着繁星之力的纹章，镶嵌在装备上可以提高7前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 7.
+tips_30083_SourceStone_3,寄宿着繁星之力的纹章，镶嵌在装备上可以提高9前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 9.
+tips_30084_SourceStone_4,寄宿着繁星之力的纹章，镶嵌在装备上可以提高11前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 11.
+tips_30085_SourceStone_5,寄宿着繁星之力的纹章，镶嵌在装备上可以提高15前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 15.
+tips_30086_SourceStone_6,寄宿着繁星之力的纹章，镶嵌在装备上可以提高20前置能量。,An Insignia containing the power of the stars. Embed into a piece of Equipment to increase starting Power by 20.
+tips_30091_MorbidStone_1,寄宿着太阳之力的纹章，镶嵌在装备上可以提高6%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 6%.
+tips_30092_MorbidStone_2,寄宿着太阳之力的纹章，镶嵌在装备上可以提高9%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 9%.
+tips_30093_MorbidStone_3,寄宿着太阳之力的纹章，镶嵌在装备上可以提高13%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 13%.
+tips_30094_MorbidStone_4,寄宿着太阳之力的纹章，镶嵌在装备上可以提高19%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 19%.
+tips_30095_MorbidStone_5,寄宿着太阳之力的纹章，镶嵌在装备上可以提高26%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 26%.
+tips_30096_MorbidStone_6,寄宿着太阳之力的纹章，镶嵌在装备上可以提高34%暴击伤害。,An Insignia containing the power of the sun. Embed into a piece of Equipment to increase Crit DMG by 34%.
+tips_40000_baoxiang,"游戏自然产出的宝箱,开启获得大量金钱",A chest produced by the game. Open it to receive larger gold.
+tips_40001_baoxiang,"游戏自然产出的宝箱,开启获得强化素材",A chest produced by the game. Open it to receive Raw Iron.
+tips_40002_baoxiang,"游戏自然产出的宝箱,开启获得宠物碎片",A chest produced by the game. Open it to receive Fragment.
+tips_40003_baoxiang,"游戏自然产出的宝箱,开启获得产出物",A chest produced by the game. Open it to receive its contents.
 tips_40005_bigTaskleader201,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40006_bigTaskleader301,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40007_bigTaskleader401,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
@@ -323,38 +323,38 @@ tips_40009_bigTaskleader302,这是神奇的队长礼包，能开出好东西,"Th
 tips_40010_bigTaskleader402,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_40015_bigTaskleader502,这是神奇的队长礼包，能开出好东西,"This is a fantastic captain package, can open the good stuff"
 tips_50001_jingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_50002_chujichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_50003_zhongjichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_50004_gaojichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50002_chujichongwujingyanyaoshui,宠物经验提升 60点,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50003_zhongjichongwujingyanyaoshui,宠物经验提升 300点,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50004_gaojichongwujingyanyaoshui,宠物经验提升 1500点,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_50005_chujipilaoyaoshui,恢复12点活力, Supply 12 enegry
 tips_50006_zhongjipilaoyaoshui,恢复30点活力, Supply 30 enegry
 tips_50007_gaojipilaoyaoshui,恢复60点活力, Supply 60 enegry
-tips_50008_shuangbeijingyanyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_50009_sanbeijingyanyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70001_fangyuxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70002_fangyuxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70003_fangyuxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70004_fangyuxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70005_fangyuxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70006_fangyuxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70007_wulixingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70008_wulixinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70009_wulixinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70010_wulixingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70011_wulixingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70012_wulixinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70013_fashuxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70014_fashuxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70015_fashuxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70016_fashuxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70017_fashuxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70018_fashuxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70019_zhiyuanxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70020_zhiyuanxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70021_zhiyuanxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70022_zhiyuanxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70023_zhiyuanxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_70024_zhiyuanxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50008_shuangbeijingyanyao,宠物经验200%倍率获得提升,Increases a monster's EXP rate by 200%
+tips_50009_sanbeijingyanyao,宠物经验300%倍率获得提升,Increases a monster's EXP rate by 300%
+tips_70001_fangyuxingwuqi,宠物穿戴,Worn by monsters.
+tips_70002_fangyuxinghuyao,宠物穿戴,Worn by monsters.
+tips_70003_fangyuxinghujia,宠物穿戴,Worn by monsters.
+tips_70004_fangyuxingshouzhuo,宠物穿戴,Worn by monsters.
+tips_70005_fangyuxingjiezhi,宠物穿戴,Worn by monsters.
+tips_70006_fangyuxinghushenfu,宠物穿戴,Worn by monsters.
+tips_70007_wulixingwuqi,宠物穿戴,Worn by monsters.
+tips_70008_wulixinghuyao,宠物穿戴,Worn by monsters.
+tips_70009_wulixinghujia,宠物穿戴,Worn by monsters.
+tips_70010_wulixingshouzhuo,宠物穿戴,Worn by monsters.
+tips_70011_wulixingjiezhi,宠物穿戴,Worn by monsters.
+tips_70012_wulixinghushenfu,宠物穿戴,Worn by monsters.
+tips_70013_fashuxingwuqi,宠物穿戴,Worn by monsters.
+tips_70014_fashuxinghuyao,宠物穿戴,Worn by monsters.
+tips_70015_fashuxinghujia,宠物穿戴,Worn by monsters.
+tips_70016_fashuxingshouzhuo,宠物穿戴,Worn by monsters.
+tips_70017_fashuxingjiezhi,宠物穿戴,Worn by monsters.
+tips_70018_fashuxinghushenfu,宠物穿戴,Worn by monsters.
+tips_70019_zhiyuanxingwuqi,宠物穿戴,Worn by monsters.
+tips_70020_zhiyuanxinghuyao,宠物穿戴,Worn by monsters.
+tips_70021_zhiyuanxinghujia,宠物穿戴,Worn by monsters.
+tips_70022_zhiyuanxingshouzhuo,宠物穿戴,Worn by monsters.
+tips_70023_zhiyuanxingjiezhi,宠物穿戴,Worn by monsters.
+tips_70024_zhiyuanxinghushenfu,宠物穿戴,Worn by monsters.
 tips_101,会掉落武器,Will drop weapon
 tips_102,会掉落护甲,Will drop belt
 tips_103,会掉落头盔,Will drop armor
@@ -373,9 +373,9 @@ name_40011_pvprankbaoxiang3,小金币箱子,small coin box
 tips_40011_pvprankbaoxiang1,能获得大量金币,Can get large amount of gold
 tips_40011_pvprankbaoxiang2,能获得很多金币,Can get a lot of gold
 tips_40011_pvprankbaoxiang3,能获得一定量金币,Can get some gold
-name_10018_jinjiejuanzhou,未知,Unknow
-name_10019_jinjiejuanzhou,未知,Unknow
-name_10020_jinjiejuanzhou,未知,Unknow
-tips_10018_jinjiejuanzhou,未知,Unknow
-tips_10019_jinjiejuanzhou,未知,Unknow
-tips_10020_jinjiejuanzhou,未知,Unknow
+name_10018_jinjiejuanzhou,妖力晶核LV1,power of monster lv1
+name_10019_jinjiejuanzhou,妖力晶核LV2,power of monster lv2
+name_10020_jinjiejuanzhou,妖力晶核LV3,power of monster lv3
+tips_10018_jinjiejuanzhou,装备强化打造的材料,Equipment strengthening material
+tips_10019_jinjiejuanzhou,装备强化打造的材料,Equipment strengthening material
+tips_10020_jinjiejuanzhou,装备强化打造的材料,Equipment strengthening material

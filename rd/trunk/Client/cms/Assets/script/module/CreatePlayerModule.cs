@@ -60,6 +60,14 @@ public class CreatePlayerModule : ModuleBase
         Logger.Log("complete player finish");
 
         UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILoginDetail.ViewName));
+
+        BuildModule.needSyncInfo = true;
+        UIServer.ResetUserData(GameDataMgr.Instance.UserDataAttr.guid);
+        PlayerPrefs.SetString("testGuid", GameDataMgr.Instance.UserDataAttr.guid);
+      
+       // GameDataMgr.Instance.PlayerDataAttr.playerId = response.palyerID;
+        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILoginDetail.ViewName));
+        GameMain.Instance.ChangeModule<BuildModule>();
     }
 
     void OnNetLoginFinished(ProtocolMessage msg)

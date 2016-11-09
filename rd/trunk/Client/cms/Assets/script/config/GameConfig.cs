@@ -72,18 +72,18 @@ public class GameConfig : MonoBehaviour {
     public int saodangOpenLevelForTenTimes = 20;//扫荡10次开启等级
 
     //公会
-    public int createSociatyCostCoin = 500;//创建公会花费
-    public int maxContributionToday = 3000;//一天公会贡献值上限
-    public int contributionRewordLevel1 = 500;//公会贡献值领取
-    public int contributionRewordLevel2 = 1500;
-    public int contributionRewordLevel3 = 3000;
+    public int createSociatyCostCoin = 175000;//创建公会花费
+    public int maxContributionToday = 30000;//一天公会贡献值上限
+    public int contributionRewordLevel1 = 5000;//公会贡献值领取
+    public int contributionRewordLevel2 = 15000;
+    public int contributionRewordLevel3 = 30000;
     public int sociatyTaskMaxCount = 3;
     public int sociatyTeamMaxMember = 3;
 
     //公会基地
     public int JidiPosition0Contribution = 0;
-    public int JidiPosition1Contribution = 1000;
-    public int JidiPosition2Contribution = 2000;
+    public int JidiPosition1Contribution = 2000;
+    public int JidiPosition2Contribution = 10000;
 
     //功能开启等级限制
     public int OpenLevelForPvp = 25;//公会开发等级

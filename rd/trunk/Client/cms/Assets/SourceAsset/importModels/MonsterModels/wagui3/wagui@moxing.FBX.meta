@@ -74,6 +74,11 @@ ModelImporter:
     100132: e_shouji
     100134: mesh_body
     100136: //RootNode
+    100138: Bone002
+    100140: Bone010
+    100142: Bone013
+    100144: Bone013(mirrored)
+    100146: e_shifa
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -143,6 +148,11 @@ ModelImporter:
     400132: e_shouji
     400134: mesh_body
     400136: //RootNode
+    400138: Bone002
+    400140: Bone010
+    400142: Bone013
+    400144: Bone013(mirrored)
+    400146: e_shifa
     4300000: mesh_body
     9500000: //RootNode
     13700000: mesh_body
@@ -202,8 +212,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

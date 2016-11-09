@@ -165,6 +165,12 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 					HSAllianceTaskCommitRet.Builder response = HSAllianceTaskCommitRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_COMMIT_TASK_S_VALUE, response));
 
+					// 任务完成
+					if (teamEntity.getFinishCount(player.getId()) == SysBasicCfg.getInstance().getAllianceMaxSmallTask()) {
+						
+					}
+					
+					
 					BILogger.getBIData(BIGuildFlowData.class).logTask(
 							player, 
 							Action.GUILD_SUB_MISSION, 

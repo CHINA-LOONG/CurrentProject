@@ -24,7 +24,9 @@ public class LoginModule : ModuleBase
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.LOGIN_S.GetHashCode ().ToString (), OnNetLoginFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.LOGIN_C.GetHashCode().ToString(), OnNetLoginFinished);
 	}
-
+    /// <summary>
+    /// login http服务器，目的是获得游戏服务器信息
+    /// </summary>
 	void OnLoginClick()
 	{
         StartCoroutine(GetGameServer());
@@ -36,44 +38,12 @@ public class LoginModule : ModuleBase
         GameApp.Instance.netManager.GameServerPort = int.Parse(serverInfo["port"].ToString());
 
         GameApp.Instance.netManager.SendConnect();
-        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UISelectServer.ViewName));
+       // UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UISelectServer.ViewName));
     }
 
     IEnumerator GetGameServer()
     {
-        //GameApp.Instance.netManager.SendConnect();
-
         UINetRequest.Open();
-        //HTTPRequest centerRequest = new HTTPRequest(new Uri(Const.CollectorUrl), HTTPMethods.Post);
-        //centerRequest.AddField("game", Const.AppName);
-        //centerRequest.AddField("platform", Const.platform);
-        //centerRequest.AddField("channel", Const.channel);
-        //centerRequest.Send();
-        //yield return StartCoroutine(centerRequest);
-        //if (centerRequest.Response == null || !centerRequest.Response.IsSuccess)
-        //{
-        //    Logger.Log("连接中心服务器失败");
-        //    yield break;
-        //}
-
-        ////账号服务器返回值
-        //string accountServerAddress = centerRequest.Response.DataAsText;
-        //int port = 0;
-        //string ip = null;
-
-        //Hashtable ht = MiniJsonExtensions.hashtableFromJson(accountServerAddress);
-        //if (null == ht)
-        //{
-        //   Logger.Log("账号服务器分配失败");
-        //   yield break;
-        //}
-        //else
-        //{
-        //   port = int.Parse(ht["httpPort"].ToString());
-        //   ip = ht["hostIp"].ToString();
-        //}
-
-        //Logger.Log("连接中心服务器成功");
 
         string path = Const.ServerUrl;//"http://" + "192.168.199.177:9101 " + "/fetch_gameServer";123.59.45.55
         HTTPRequest accountRequest = new HTTPRequest(new Uri(path), HTTPMethods.Post);
@@ -89,6 +59,7 @@ public class LoginModule : ModuleBase
         if (accountRequest.Response == null || !accountRequest.Response.IsSuccess)
         {
             Logger.Log("连接账号服务器失败");
+            OnGetGameServerFaild();
             yield break;
         }
         string gameServerAddress = accountRequest.Response.DataAsText;
@@ -97,6 +68,7 @@ public class LoginModule : ModuleBase
         if (null == jsonObjects)
         {
             Logger.Log("游戏服务器获取失败");
+            OnGetGameServerFaild();
             yield break;
         }
 
@@ -149,18 +121,21 @@ public class LoginModule : ModuleBase
         }
         UINetRequest.Close();
     }
+    void OnGetGameServerFaild()
+    {
+        UINetRequest.Close();
+        MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("retry_yichang"));
+    }
 
-	void OnNetLogin(object param)
-	{
-		GameMain.Instance.ChangeModule<BuildModule>();
-	}
 
+    /// <summary>
+    /// 与GameServer socket连接回调
+    /// </summary>
+    /// <param name="state"></param>
     void OnNetConnectFinished(int state)
     {
         if (1 == state)
-        {
-            Logger.LogWarning("OK for net");
-            
+        {            
             if (string.IsNullOrEmpty(PlayerPrefs.GetString("testGuid")) == false)
             {
                 GameDataMgr.Instance.UserDataAttr.guid = PlayerPrefs.GetString("testGuid");
@@ -176,17 +151,21 @@ public class LoginModule : ModuleBase
         }
         else
         {
-            Logger.LogError("Error for Net");
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("retry_yichang"));
+            Logger.LogError("Error for Net to socket connect!");
         }
     }
-
+    /// <summary>
+    /// socket 连接成功后 的login 回调
+    /// </summary>
+    /// <param name="msg"></param>
 	void OnNetLoginFinished(ProtocolMessage  msg)
     {
         UINetRequest.Close();
 
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("retry_yichang"));
             return;
         }
 
@@ -194,9 +173,16 @@ public class LoginModule : ModuleBase
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();
 		UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILogin.ViewName));
 
-		GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
-		GameMain.Instance.ChangeModule<BuildModule>();
-	}
+        if (loginS.playerId > 0 && !string.IsNullOrEmpty(loginS.nickname))
+        {
+            GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
+            GameMain.Instance.ChangeModule<BuildModule>();
+        }
+        else
+        {
+            GameMain.Instance.ChangeModule<CreatePlayerModule>();
+        }
+    }
 
 	public override void OnInit(object param)
 	{

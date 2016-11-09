@@ -1001,7 +1001,7 @@ public class UIAdjustBattleTeam : UIBase,GuideBase
         int newPlayerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
         if (newPlayerLevel > oldPlayerLevel)
         {
-            LevelUp.OpenWith(oldPlayerLevel,newPlayerLevel,oldHuoliValue,GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+            LevelUp.OpenWith(oldPlayerLevel,newPlayerLevel);
         }
     }
 #endregion

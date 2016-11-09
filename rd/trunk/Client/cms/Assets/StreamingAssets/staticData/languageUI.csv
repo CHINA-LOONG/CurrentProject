@@ -458,7 +458,7 @@ sociaty_minite,{0}分钟前,{0} min ago
 sociaty_hour,{0}小时前,{0} hrs ago
 sociaty_day,{0}天前,{0} days ago
 sociaty_zaixian,在线,Online
-sociaty_quit,退出公会,Leave Guild
+sociaty_quit,退出公会,Leave
 sociaty_newapply,新的申请,Application
 sociaty_yield,移交会长,Transfer Master Role
 sociaty_yieldfu,任命副会长,Promote Elder
@@ -522,7 +522,7 @@ sociaty_findfriends,招募伙伴,Recruit
 sociaty_taskfail,时间已到，任务失败,Time's up! Mission failed.
 sociaty_giveuptips,确定要放弃公会任务吗？,Confirm abandon Guild Mission?
 sociaty_giveuptips1,（放弃将返还80%的开启费用，但会消耗1次任务次数）,"(Abandoning returns 80% of initial cost, but will use up 1 mission chance.)"
-sociaty_enqueue,入队,Join Squad
+sociaty_enqueue,入队,Join
 sociaty_jiarutips,确定加入小队么？,Confirm join squad?
 sociaty_jiarutips1,（加入小队后，完成任务才能退出哦）,(You may only exit after the mission is completed.)
 sociaty_record_001,没有找到相应的公会，请重新输入,"Guild not found, please try again."
@@ -1095,7 +1095,6 @@ loading_tips32,难度越高获得的金币也就越多，加油挑战吧！,"The
 loading_tips33,每周日米达斯宫和至福乐土都会开放，快来挑战吧！,Midas' Palace and Fields of Elysium will both open every Sunday. Make sure to give it a try!
 loading_tips34,至福乐土能够产出大量经验药水，快来挑战吧！,"You can earn large amounts of Faith Vials in Fields of Elysium, give it a try! "
 loading_tips35,难度越高获得的经验药水也就越多，加油挑战吧！,"The higher the difficulty, the more EXP that can be earned. Fighting!"
-loading_tips36,每周日米达斯宫和至福乐土都会开放，快来挑战吧！,Midas' Palace and Fields of Elysium will both open every Sunday. Make sure to give it a try!
 loading_tips37,通天塔每月1号都会刷新进度，刷新后可重新进行挑战。,Tower of Trials progress will be refreshed on the first day of each month.
 loading_tips38,通天塔每过5层就会给一个阶段性奖励，快来挑战吧！,"The Tower of Trials will grant you a reward every 5 levels, give it a try!"
 loading_tips39,通天塔掉落的XXXX可以在通天塔商店兑换奖励。,The XXXX that drops from the Tower of Trials can be used to exchange in the Tower of Trials Store.
@@ -1119,3 +1118,5 @@ Midasigong - 1,弥达斯宫,Palace of Midas - 1
 Midasigong - 2,弥达斯宫,Palace of Midas - 2
 Midasigong - 3,弥达斯宫,Palace of Midas - 3
 Midasigong - 4,弥达斯宫,Palace of Midas - 4
+guide_level_name,大街,Street
+pvp_level_name,竞技场,Arena

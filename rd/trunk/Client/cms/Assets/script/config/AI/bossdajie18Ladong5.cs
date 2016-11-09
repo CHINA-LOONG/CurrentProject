@@ -6,14 +6,38 @@ using System.Collections.Generic;
 
 public class bossdajie18Ladong5 : BossAi {
 
+    private byte mState = 0; //0:normal 1:stun
+    private BattleObject mCurBo;
 	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-	int jishu = 0 ;
-	int jishu1 = 0 ;
-	int jishu2 = 0 ;
+
+    void Start()
+    {
+        mCurBo = gameObject.GetComponent<BattleObject>();
+    }
+
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener<System.EventArgs>(GameEventList.SpellStun, OnStun);
+    } 
+
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<System.EventArgs>(GameEventList.SpellStun, OnStun);
+    }
+
+    private void OnStun(System.EventArgs args)
+    {
+        if (mState == 0)
+        {
+            SpellBuffArgs buffArgs = args as SpellBuffArgs;
+            if (buffArgs != null && buffArgs.isAdd == true)
+            {
+                mState = 1;
+                mCurBo.TriggerEvent("Ladong5_state1to2", Time.time, null);
+                BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(0.5f);
+            }
+        }
+    }
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Ladong5Unit)
 	{
@@ -42,26 +66,30 @@ public class bossdajie18Ladong5 : BossAi {
 			Ladong5SpellDic.TryGetValue ("bossdajie18Ladong52", out useSpell);
 		}
 
+        int curStunbuffCount = 0;
+        Buff curStunBuff;
 		for(int n = Ladong5Unit.buffList.Count -1 ;n > 0;n--)
 		{
-			if (Ladong5Unit.buffList[n].buffProto.category == (int)BuffType.Buff_Type_Stun)
+            curStunBuff = Ladong5Unit.buffList[n];
+            if (
+                curStunBuff.IsFinish == false &&
+                curStunBuff.buffProto.category == (int)BuffType.Buff_Type_Stun &&
+                curStunBuff.PeriodCount > (curStunBuff.buffProto.duration - 1))
 			{
-				jishu1++;
-			}
-			if (Ladong5Unit.buffList[n].buffProto.category != (int)BuffType.Buff_Type_Stun)
-			{
-				jishu2++;
+				curStunbuffCount++;
+                break;
 			}
 		}
 
-		if (jishu2 > 0 && jishu1 > 0)
-		{
-			Ladong5Unit.battleUnit.TriggerEvent("Ladong5_state2to1", Time.time, null);
-			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
-		}
+        if (curStunbuffCount == 0 && mState == 1)
+        {
+            mState = 0;
+            mCurBo.aniControl.SetBool("shoukong", false);
+            Ladong5Unit.battleUnit.TriggerEvent("Ladong5_state2to1", Time.time, null);
+            BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(0.5f);
+        }
 
 		attackResult.useSpell = useSpell;
-
 		return attackResult;
     }
     //---------------------------------------------------------------------------------------------

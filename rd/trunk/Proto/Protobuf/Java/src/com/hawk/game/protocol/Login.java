@@ -673,6 +673,21 @@ public final class Login {
      * <code>required int32 playerId = 2;</code>
      */
     int getPlayerId();
+
+    // required string nickname = 3;
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
   }
   /**
    * Protobuf type {@code HSLoginRet}
@@ -737,6 +752,11 @@ public final class Login {
             case 16: {
               bitField0_ |= 0x00000002;
               playerId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              nickname_ = input.readBytes();
               break;
             }
           }
@@ -811,9 +831,53 @@ public final class Login {
       return playerId_;
     }
 
+    // required string nickname = 3;
+    public static final int NICKNAME_FIELD_NUMBER = 3;
+    private java.lang.Object nickname_;
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nickname = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       status_ = 0;
       playerId_ = 0;
+      nickname_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -825,6 +889,10 @@ public final class Login {
         return false;
       }
       if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNickname()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -840,6 +908,9 @@ public final class Login {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, playerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNicknameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -857,6 +928,10 @@ public final class Login {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, playerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getNicknameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -982,6 +1057,8 @@ public final class Login {
         bitField0_ = (bitField0_ & ~0x00000001);
         playerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -1018,6 +1095,10 @@ public final class Login {
           to_bitField0_ |= 0x00000002;
         }
         result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.nickname_ = nickname_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1040,6 +1121,11 @@ public final class Login {
         if (other.hasPlayerId()) {
           setPlayerId(other.getPlayerId());
         }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000004;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1050,6 +1136,10 @@ public final class Login {
           return false;
         }
         if (!hasPlayerId()) {
+          
+          return false;
+        }
+        if (!hasNickname()) {
           
           return false;
         }
@@ -1137,6 +1227,80 @@ public final class Login {
       public Builder clearPlayerId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string nickname = 3;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 3;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickname_ = value;
         onChanged();
         return this;
       }
@@ -4342,16 +4506,16 @@ public final class Login {
     java.lang.String[] descriptorData = {
       "\n\024Protocol/Login.proto\032\023Protocol/Role.pr" +
       "oto\"&\n\007HSLogin\022\014\n\004puid\030\001 \002(\t\022\r\n\005token\030\002 " +
-      "\001(\t\".\n\nHSLoginRet\022\016\n\006status\030\001 \002(\005\022\020\n\010pla" +
-      "yerId\030\002 \002(\005\"N\n\nHSSyncInfo\022\023\n\010deviceId\030\001 " +
-      "\001(\t:\0010\022\023\n\010platform\030\002 \001(\t:\0010\022\026\n\007version\030\003" +
-      " \001(\t:\0050.0.1\"2\n\rHSSyncInfoRet\022\016\n\006status\030\001" +
-      " \002(\005\022\021\n\ttimeStamp\030\002 \001(\005\"T\n\013HSReconnect\022\014" +
-      "\n\004puid\030\001 \002(\t\022\r\n\005token\030\002 \001(\t\022\023\n\010deviceId\030" +
-      "\003 \001(\t:\0010\022\023\n\010platform\030\004 \001(\t:\0010\"3\n\016HSRecon" +
-      "nectRet\022\016\n\006status\030\001 \002(\005\022\021\n\ttimeStamp\030\002 \001",
-      "(\005\"\036\n\014HSKickPlayer\022\016\n\006reason\030\001 \002(\005B\030\n\026co" +
-      "m.hawk.game.protocol"
+      "\001(\t\"@\n\nHSLoginRet\022\016\n\006status\030\001 \002(\005\022\020\n\010pla" +
+      "yerId\030\002 \002(\005\022\020\n\010nickname\030\003 \002(\t\"N\n\nHSSyncI" +
+      "nfo\022\023\n\010deviceId\030\001 \001(\t:\0010\022\023\n\010platform\030\002 \001" +
+      "(\t:\0010\022\026\n\007version\030\003 \001(\t:\0050.0.1\"2\n\rHSSyncI" +
+      "nfoRet\022\016\n\006status\030\001 \002(\005\022\021\n\ttimeStamp\030\002 \001(" +
+      "\005\"T\n\013HSReconnect\022\014\n\004puid\030\001 \002(\t\022\r\n\005token\030" +
+      "\002 \001(\t\022\023\n\010deviceId\030\003 \001(\t:\0010\022\023\n\010platform\030\004" +
+      " \001(\t:\0010\"3\n\016HSReconnectRet\022\016\n\006status\030\001 \002(",
+      "\005\022\021\n\ttimeStamp\030\002 \001(\005\"\036\n\014HSKickPlayer\022\016\n\006" +
+      "reason\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4369,7 +4533,7 @@ public final class Login {
           internal_static_HSLoginRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSLoginRet_descriptor,
-              new java.lang.String[] { "Status", "PlayerId", });
+              new java.lang.String[] { "Status", "PlayerId", "Nickname", });
           internal_static_HSSyncInfo_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSSyncInfo_fieldAccessorTable = new

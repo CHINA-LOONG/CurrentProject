@@ -27,6 +27,9 @@ namespace UnityClientConsole
         private long lastShopRefreshTime = 0;
         static long  lastPrintStateTime = 0;
 
+        static int IMINTERVAL = 60000;
+        static int OTHERINTERVAL = 60000;
+
         public long startTime = 0;
         public int playerIndex = 0;
 
@@ -91,6 +94,10 @@ namespace UnityClientConsole
             this.startTime = timeStamp - random.Next(1, 1000 * Program.onLineTime / 2);
             this.puid = puid;
             this.playerIndex = playerIndex;
+
+            lastInstanceime = Program.GetTimeStamp() - random.Next(0, IMINTERVAL);
+            lastIMTime = Program.GetTimeStamp() - random.Next(0, OTHERINTERVAL);
+            lastShopRefreshTime = Program.GetTimeStamp() - random.Next(0, OTHERINTERVAL);
 
             return true;
         }
@@ -922,24 +929,21 @@ namespace UnityClientConsole
                 lastBeatTime += random.Next(0, 3000);
             }
 
-            if (lastIMTime + 600000 < timeStamp)
+            if (lastIMTime + IMINTERVAL < timeStamp)
             {
                 SendIMMessage();
                 IMSendCount++;
-                lastIMTime = timeStamp;
-                lastIMTime -= random.Next(0, 600000);
-
+                lastIMTime = timeStamp - random.Next(0, IMINTERVAL);
             }
 
-            if (lastInstanceime + 120000 < timeStamp)
+            if (lastInstanceime + OTHERINTERVAL < timeStamp)
             {
                 SendInstanceMessage();
                 instanceSendCount++;
-                lastInstanceime = timeStamp;
-                lastInstanceime -= random.Next(0, 120000);
+                lastInstanceime = timeStamp - random.Next(0, OTHERINTERVAL);
             }
 
-            if (lastShopRefreshTime + 120000 < timeStamp)
+            if (lastShopRefreshTime + IMINTERVAL < timeStamp)
             {
                 SendRefreshShop();
                 SendGetShopData();
@@ -948,8 +952,7 @@ namespace UnityClientConsole
 
                 summonSendCount++;
                 shopRefreshSendCount++;
-                lastShopRefreshTime = timeStamp;
-                lastShopRefreshTime -= random.Next(0, 120000);
+                lastShopRefreshTime = timeStamp - random.Next(0, IMINTERVAL);
             }
 
             if (lastPrintStateTime + 1000 < timeStamp)

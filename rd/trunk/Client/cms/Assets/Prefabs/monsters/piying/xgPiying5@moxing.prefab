@@ -2269,7 +2269,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7ea2e3b2c27fb2344ac0ca4adbb4b23d, type: 2}
+  - {fileID: 2100000, guid: 23c364adecdfe6c46875cd48c0b3596e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2339,7 +2339,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7ea2e3b2c27fb2344ac0ca4adbb4b23d, type: 2}
+  - {fileID: 2100000, guid: 23c364adecdfe6c46875cd48c0b3596e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2390,7 +2390,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7ea2e3b2c27fb2344ac0ca4adbb4b23d, type: 2}
+  - {fileID: 2100000, guid: 23c364adecdfe6c46875cd48c0b3596e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2437,7 +2437,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23c364adecdfe6c46875cd48c0b3596e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151828}

@@ -713,6 +713,7 @@ public class BattleProcess : MonoBehaviour
         bc.ShowLevelInfo(true);
         if (bc.PvpParam != null)
         {
+            bc.SetCameraDefault(null);
             bc.curBattleScene.TriggerEvent("pvp_show", Time.time, null);
         }
         yield return new WaitForSeconds(BattleConst.battleLevelTime * Time.timeScale);

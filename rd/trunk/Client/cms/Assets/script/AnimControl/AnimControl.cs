@@ -28,6 +28,7 @@ public class AnimControl : MonoBehaviour
     //public delegate void AnimEvent(string clipName);
     //public static event AnimEvent OnAnimationBegin;
     //public static event AnimEvent OnAnimationEnd;
+    bool resetShoukong = false;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -58,6 +59,12 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void Update()
     {
+        if (resetShoukong == true)
+        {
+            resetShoukong = false;
+            StartCoroutine(ResetShoukong());
+        }
+
         AnimatorClipInfo[] aniList = animator.GetCurrentAnimatorClipInfo(0);
         for (int i = 0; i < aniList.Length; ++i)
         {
@@ -72,13 +79,21 @@ public class AnimControl : MonoBehaviour
         //animator.updateMode = AnimatorUpdateMode.Normal;
     }
     //---------------------------------------------------------------------------------------------
+    private IEnumerator ResetShoukong()
+    {
+        yield return new WaitForEndOfFrame();
+        SetBool("shoukong", true);
+    }
+    //---------------------------------------------------------------------------------------------
     public void SetController(string controllerName)
     {
         RuntimeAnimatorController curController = ResourceMgr.Instance.LoadAssetType<RuntimeAnimatorController>(controllerName);
         //RuntimeAnimatorController curController = (RuntimeAnimatorController)Resources.Load(controllerName);
         if (curController != null)
         {
+            bool isShoukong = animator.GetBool("shoukong");
             actualControler.runtimeAnimatorController = curController;
+            resetShoukong = isShoukong;
         }
     }
     //---------------------------------------------------------------------------------------------

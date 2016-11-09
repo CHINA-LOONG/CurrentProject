@@ -648,7 +648,7 @@ public class UIScore : UIBase ,GuideBase
             if (mOriginalPlayerLvl != mCurrentPlayerLvl)
             {
                 PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
-                LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mCurrentHuoli, mainPlayer.HuoliAttr);
+                LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl);
             }
         }
     }

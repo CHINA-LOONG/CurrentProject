@@ -80,8 +80,7 @@ public class PlayerLoginModule extends PlayerModule {
 			platform = platName + "_" + channel;
 		}
 
-		// 加载玩家实体信息
-		PlayerEntity playerEntity = player.getPlayerData().loadPlayer();
+		PlayerEntity playerEntity = player.getEntity();
 
 		// 更新玩家设备相关信息
 		if (playerEntity != null) {
@@ -121,9 +120,10 @@ public class PlayerLoginModule extends PlayerModule {
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
-		// 此时设置session可以防止player的session被置空 session_close消息调用各个idlemodule的onPlayerLogout 会置空session
+		// 此时设置session可以防止player的session被主线程处理登录时置空。
+		// session_close消息触发各module的onPlayerLogout，会把主线程设置的新session置空
 		player.setSession(cmd.getSession());
-		
+
 		// 回复登录完成协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
 		response.setStatus(error.NONE_ERROR_VALUE);
@@ -163,13 +163,18 @@ public class PlayerLoginModule extends PlayerModule {
 			sendError(hsCode, Status.PlayerError.NICKNAME_EXIST);
 		}
 
-		player.getEntity().setNickname(nickname);
-		player.getEntity().setPortrait(portraitId);
-		player.getEntity().notifyUpdate(true);
+		PlayerEntity playerEntity = player.getEntity();
+		playerEntity.setNickname(nickname);
+		playerEntity.setPortrait(portraitId);
+		playerEntity.notifyUpdate(true);
 
 		ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), player.getId());
 
 		HawkAccountService.getInstance().report(new HawkAccountService.RenameRoleData(player.getPuid(), player.getId(), nickname));
+
+		// 此时设置session可以防止player的session被主线程处理登录时置空。
+		// session_close消息触发各module的onPlayerLogout，会把主线程设置的新session置空
+		player.setSession(cmd.getSession());
 
 		HSPlayerCompleteRet.Builder response = HSPlayerCompleteRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_COMPLETE_S, response));

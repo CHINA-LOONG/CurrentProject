@@ -72,7 +72,7 @@ public class SocketClient : MonoBehaviour {
         } 
 		catch (Exception e) {
             Close(); 
-			Logger.LogError(e.Message);
+			Logger.LogError("connectError: " + e.Message);
         }
     }
 
@@ -88,6 +88,7 @@ public class SocketClient : MonoBehaviour {
 		}
 		catch(Exception e)
 		{
+            Logger.LogError("connect error.");
 			Logger.LogException(e);
 			NetworkManager.AddEvent(ResponseState.UnConnect, null);
 		}

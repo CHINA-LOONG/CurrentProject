@@ -65,6 +65,10 @@ public class Buff
     public int targetID;
     public float applyTime;
     private int periodCount;
+    public int PeriodCount
+    {
+        get { return periodCount; }
+    }
     private bool isFinish;
     public bool IsFinish
     {
@@ -435,7 +439,7 @@ public class Buff
                 args.triggerTime = curTime;
                 args.casterID = 1;
                 args.targetID = targetID;
-                args.isAdd = false;
+                args.isAdd = true;
                 args.buffID = buffProto.id;
                 spellService.TriggerEvent(GameEventList.SpellStun, args);
                 if (target.stun == 0)

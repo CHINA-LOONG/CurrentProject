@@ -912,7 +912,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec994ed0b633c843879e8221e8d92d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
+  mIgnorePreviousHide: 0
+  mHidePreviouseUI: 1
+  mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 0}
+  uiViewName: 
   titleText: {fileID: 11438294}
   applyTypeLabelText: {fileID: 11414618}
   applyTypeValueText: {fileID: 11404612}

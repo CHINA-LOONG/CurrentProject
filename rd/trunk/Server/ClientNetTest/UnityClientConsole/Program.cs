@@ -57,7 +57,7 @@ namespace UnityClientConsole
                         int nextIndex = 0;
 
                         while(true){
-                            nextIndex = random.Next(start, start + TOTAL_USER / 2);
+                            nextIndex = random.Next(start, start + TOTAL_USER / 3);
                             if (!playerIndex.Contains(nextIndex))
                             {
                                 playerIndex.Add(nextIndex);
