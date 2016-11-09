@@ -1,12 +1,15 @@
 package com.hawk.game.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+
+import com.hawk.game.util.GsConst;
 @HawkConfigManager.CsvResource(file = "staticData/languageStatic.csv", struct = "map")
 public class LanguageStaticCfg extends HawkConfigBase{
-	/**
-	 * 配置id
-	 */
+
 	@Id
 	protected final String id;
 	/**
@@ -18,6 +21,9 @@ public class LanguageStaticCfg extends HawkConfigBase{
 	 */
 	protected final String english;
 
+	// assemble
+	protected Map<String, String> languageDataMap;
+
 	public LanguageStaticCfg() {
 		super();
 		id = null;
@@ -25,16 +31,25 @@ public class LanguageStaticCfg extends HawkConfigBase{
 		english = null;
 	}
 
+	@Override
+	protected boolean assemble() {
+		languageDataMap = new HashMap<String, String>();
+		languageDataMap.put("zh-CN", chinese);
+		languageDataMap.put("en", english);
+
+		return true;
+	}
+
 	public String getId() {
 		return id;
 	}
 
-	public String getChinese() {
-		return chinese;
-	}
-
-	public String getEnglish() {
-		return english;
+	public String getContent(String lang) {
+		String data = languageDataMap.get(lang);
+		if (data != null) {
+			return data;
+		}
+		return languageDataMap.get(GsConst.DEFAULT_LANGUAGE);
 	}
 
 	/**
@@ -45,7 +60,7 @@ public class LanguageStaticCfg extends HawkConfigBase{
 	public static String getEnglishName(String nameId){
 		LanguageStaticCfg languageCfg = HawkConfigManager.getInstance().getConfigByKey(LanguageStaticCfg.class, nameId);
 		if (languageCfg != null) {
-			return languageCfg.getEnglish();
+			return languageCfg.getContent("en");
 		}
 
 		return "";

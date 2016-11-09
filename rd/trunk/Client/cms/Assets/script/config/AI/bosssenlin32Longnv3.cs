@@ -12,7 +12,7 @@ public class bosssenlin32Longnv3 : BossAi {
 	
 	}
 	int jishu = 0 ;
-	int i = 1 ;
+	public int i = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Longnv3Unit)
 	{
@@ -28,12 +28,7 @@ public class bosssenlin32Longnv3 : BossAi {
 		Longnv3SpellDic.TryGetValue ("bosssenlin32Longnv31", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Longnv3Unit);
-		if (NormalScript.GetWpLifeLeft(Longnv3Unit.battleUnit, "bosssenlin32Longnv3wp03") == 0 && NormalScript.GetWpLifeLeft(Longnv3Unit.battleUnit, "bosssenlin32Longnv3wp04") == 0 && i == 1)
-		{
-			Longnv3SpellDic.TryGetValue ("bosssenlin32Longnv35", out useSpell);
-			i--;
-		}
-		else if ((GetAttackCount(Longnv3Unit) - 4) % 6 == 0  ) 
+		if ((GetAttackCount(Longnv3Unit) - 4) % 6 == 0  ) 
 		{
 			Longnv3SpellDic.TryGetValue ("bosssenlin32Longnv34", out useSpell);
 			Longnv3Unit.battleUnit.TriggerEvent("spell_longnv34", Time.time, null);

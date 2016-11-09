@@ -50,18 +50,18 @@ public class UISignIn : UIBase,
     // Use this for initialization
 
     private int priceRetroactive;
-    public Animator Animator
-    {
-        get
-        {
-            if (animator == null)
-            {
-                animator = GetComponent<Animator>();
-            }
-            return animator;
-        }
-    }
-    private Animator animator;
+    //public Animator Animator
+    //{
+    //    get
+    //    {
+    //        if (animator == null)
+    //        {
+    //            animator = GetComponent<Animator>();
+    //        }
+    //        return animator;
+    //    }
+    //}
+    //private Animator animator;
     void Start()
     {
         text_Title.text = StaticDataMgr.Instance.GetTextByID("monthlyevent_title");
@@ -177,22 +177,31 @@ public class UISignIn : UIBase,
 
     void OnClickCloseBtn()
     {
-        UIMgr.Instance.CloseUI_(this);
+        //UIMgr.Instance.CloseUI_(this);
+        RequestCloseUi();
     }
 
     #region UIBase
 
     public override void Init(bool forbidGuide = false)
     {
-        if (Animator != null)
-        {
-            Animator.SetTrigger("enter");
-        }
+        base.Init();
+
+        //if (Animator != null)
+        //{
+        //    Animator.SetTrigger("enter");
+        //}
     }
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(uiSignInfo);
         UIMgr.Instance.DestroyUI(mGainPetUI);
+        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild != null)
+        {
+            uiBuild.RefreshOnPreviousUIHide();
+        }
+        base.Clean();
     }
     #endregion
 

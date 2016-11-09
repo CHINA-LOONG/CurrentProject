@@ -12,7 +12,6 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 	
 	}
 	int jishu = 0 ;
-	int i = 1 ;
 	int huihe = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Longgongtongzi3Unit)
@@ -35,12 +34,7 @@ public class bossxiaoxiang26Longgongtongzi3 : BossAi {
 
 		if (NormalScript.GetWpLifeLeft(Longgongtongzi3Unit.battleUnit, "bossxiaoxiang26Longgongtongzi3wp03")==0)
 		{
-			if (i == 1) 
-			{
-				Longgongtongzi3SpellDic.TryGetValue ("dispelPassive", out useSpell);
-				i-- ;
-			}
-			else if (huihe % 10 == 0 && huihe != 0)
+			if (huihe % 10 == 0 && huihe != 0)
 			{
 				Longgongtongzi3SpellDic.TryGetValue ("bossxiaoxiang26Longgongtongzi34", out useSpell);
 			}				

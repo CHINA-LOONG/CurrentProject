@@ -436,7 +436,7 @@ public class GsApp extends HawkApp {
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
-			 if (player.isOnline() == false && objBase.getVisitTime() + 600000 < currentTime) {
+			 if (player.isOnline() == false && objBase.getVisitTime() + 60000 < currentTime) {
 				 iterator.remove();
 				 ServerData.getInstance().addReleasePlayer();
 			}

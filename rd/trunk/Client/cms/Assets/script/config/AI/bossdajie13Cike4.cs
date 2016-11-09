@@ -12,7 +12,6 @@ public class bossdajie13Cike4 : BossAi {
 	
 	}
 	int jishu = 0 ;
-	int i = 1 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Cike4Unit)
 	{
@@ -28,12 +27,7 @@ public class bossdajie13Cike4 : BossAi {
 		Cike4SpellDic.TryGetValue ("bossdajie13Cike41", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Cike4Unit);
-		if (NormalScript.GetWpLifeLeft(Cike4Unit.battleUnit, "bossdajie13Cike4wp02") == 0 && i == 1)
-		{
-			Cike4SpellDic.TryGetValue ("dispelPassive", out useSpell);
-			i--;
-		}
-		else if (GetAttackCount(Cike4Unit) % 7 == 0 && GetAttackCount(Cike4Unit) != 0) 
+		if (GetAttackCount(Cike4Unit) % 7 == 0 && GetAttackCount(Cike4Unit) != 0) 
 		{
 			Cike4SpellDic.TryGetValue ("bossdajie13Cike43", out useSpell);
 		}

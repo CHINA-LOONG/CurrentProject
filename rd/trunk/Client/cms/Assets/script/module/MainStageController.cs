@@ -644,7 +644,7 @@ public class MainStageController : MonoBehaviour
 
             if (selectGroup == mTowerGroup)
             {
-                mUITowerEntry = UIMgr.Instance.OpenUI_("UITowerEntry") as UITowerEntry;
+				mUITowerEntry = UIMgr.Instance.OpenUI_(UITowerEntry.ViewName) as UITowerEntry;
                 mUITowerEntry.SetMainStageControl(this);
                 RefreshTowerState();
             }

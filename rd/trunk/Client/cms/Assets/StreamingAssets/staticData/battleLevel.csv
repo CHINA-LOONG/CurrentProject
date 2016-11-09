@@ -2,6 +2,8 @@
 id,preStartEvent,startEvent,endStartEvent,appearType,winFunc,loseFunc,endEvent,monsterList
 #对局id,第一进程前事件,开场动画,刷怪完毕事件,出现方式,胜利条件,失败条件,结束剧情动画,怪物列表
 pvp_test1,,,,0,,,,"{""bossdajie12Mantuoluo2"":""1""}"
+xinshou00,,,,0,,,,"{""bossdajie12Mantuoluo2"":""1""}"
+xinshou00Boss,,,,0,,,,"{""bossxinshouBingxuenvwang3"":""1""}"
 dajie11Level1,,,,0,,,,"{""xgMoguguai3"":""4""}"
 dajie11Level2,,,,0,,,,"{""xgKairuisi4"":""2""}"
 dajie11Boss1,,,,0,,,,"{""bossdajie11Moguguai4"":""1""}"

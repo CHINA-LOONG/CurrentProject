@@ -94,7 +94,7 @@ public class ImManager extends HawkAppObj {
 
 	// 推送线程id区间
 	private static final int PUSH_THREAD_MIN = 0;
-	private static final int PUSH_THREAD_MAX = 1;
+	private static final int PUSH_THREAD_MAX = 3;
 	// 翻译线程id区间
 	private static final int TRANS_THREAD_MIN = 2;
 	private static final int TRANS_THREAD_MAX = 3;

@@ -12,7 +12,6 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 	
 	}
 	int jishu = 0 ;
-	int i = 1;
 	int huihe = 0 ;
 
 	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit Hetong2Unit)
@@ -35,12 +34,7 @@ public class bossxiaoxiang27Hetong2 : BossAi {
 
 		if (NormalScript.GetWpLifeLeft(Hetong2Unit.battleUnit, "bossxiaoxiang27Hetong2wp03")==0)
 		{
-			if (i == 1) 
-			{
-				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong23", out useSpell);
-				i--;
-			}
-			else if (huihe % 5 == 0 && huihe != 0) 
+			if (huihe % 5 == 0 && huihe != 0) 
 			{
 				Hetong2SpellDic.TryGetValue ("bossxiaoxiang27Hetong24", out useSpell);
 			}

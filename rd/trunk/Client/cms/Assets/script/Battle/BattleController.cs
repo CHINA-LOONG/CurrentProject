@@ -551,6 +551,7 @@ public class BattleController : MonoBehaviour
             battleGroup.SetPlayerList(ref mCurPvpParam.playerTeam);
             //curBattleScene.TriggerEvent("pvp_init_pos", Time.time, null);
             SetCameraDefault("pvp_init_pos");
+            //SetCameraDefault();
         }
         else if (curInstanceParam != null)
         {
@@ -585,10 +586,11 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SetCameraDefault(string nodeName)
     {
+        BattleCamera bCamera = BattleCamera.Instance;
         Transform defaultTrans = GetDefaultCameraNode(nodeName);
-        BattleCamera.Instance.transform.localPosition = defaultTrans.position;
-        BattleCamera.Instance.transform.localRotation = defaultTrans.rotation;
-        BattleCamera.Instance.transform.localScale = Vector3.Scale(transform.localScale, defaultTrans.localScale);
+        bCamera.transform.localPosition = defaultTrans.position;
+        bCamera.transform.localRotation = defaultTrans.rotation;
+        bCamera.transform.localScale = Vector3.Scale(transform.localScale, defaultTrans.localScale);
     }
     //---------------------------------------------------------------------------------------------
     public Transform GetDefaultCameraNode(string node = null)

@@ -34,6 +34,7 @@ public class bosssenlin38Meidusha2 : BossAi {
 		wpList = GetAliveWeakPointList (Meidusha2Unit);
 
 		int count = wpList.Count -1;
+
 		if(count == 4)
 		{
 			if (GetAttackCount(Meidusha2Unit) % 7 == 0 && GetAttackCount(Meidusha2Unit) != 0) 
@@ -50,8 +51,20 @@ public class bosssenlin38Meidusha2 : BossAi {
 		{
 			if(i == 1)
 			{
-				Meidusha2SpellDic.TryGetValue ("bosssenlin38Meidusha21", out useSpell);
 				i--;
+				double blood = Meidusha2Unit.maxLife * 0.75;
+				Meidusha2Unit.curLife = (int)blood;
+				
+				SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+				args.vitalType = (int)VitalType.Vital_Type_FixLife;
+				args.triggerTime = Time.time;
+				args.casterID = Meidusha2Unit.battleUnit.guid;
+				args.targetID = args.casterID;
+				args.isCritical = false;
+				args.vitalChange = 0;
+				args.vitalCurrent = Meidusha2Unit.curLife;
+				args.vitalMax = Meidusha2Unit.maxLife;
+				GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpellLifeChange, args);
 			}
 			else if (GetAttackCount(Meidusha2Unit) % 7 == 0 && GetAttackCount(Meidusha2Unit) != 0) 
 			{
@@ -67,8 +80,20 @@ public class bosssenlin38Meidusha2 : BossAi {
 		{
 			if(n == 1)
 			{
-				Meidusha2SpellDic.TryGetValue ("bosssenlin38Meidusha22", out useSpell);
 				n--;
+				double blood = Meidusha2Unit.maxLife * 0.50;
+				Meidusha2Unit.curLife = (int)blood;
+				
+				SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+				args.vitalType = (int)VitalType.Vital_Type_FixLife;
+				args.triggerTime = Time.time;
+				args.casterID = Meidusha2Unit.battleUnit.guid;
+				args.targetID = args.casterID;
+				args.isCritical = false;
+				args.vitalChange = 0;
+				args.vitalCurrent = Meidusha2Unit.curLife;
+				args.vitalMax = Meidusha2Unit.maxLife;
+				GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpellLifeChange, args);
 			}
 			else if (GetAttackCount(Meidusha2Unit) % 7 == 0 && GetAttackCount(Meidusha2Unit) != 0) 
 			{
@@ -84,8 +109,21 @@ public class bosssenlin38Meidusha2 : BossAi {
 		{
 			if(p == 1)
 			{
-				Meidusha2SpellDic.TryGetValue ("bosssenlin38Meidusha23", out useSpell);
 				p--;
+				double blood = Meidusha2Unit.maxLife * 0.25;
+				Meidusha2Unit.curLife = (int)blood;
+				
+				SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+				args.vitalType = (int)VitalType.Vital_Type_FixLife;
+				args.triggerTime = Time.time;
+				args.casterID = Meidusha2Unit.battleUnit.guid;
+				args.targetID = args.casterID;
+				args.isCritical = false;
+				args.vitalChange = 0;
+				args.vitalCurrent = Meidusha2Unit.curLife;
+				args.vitalMax = Meidusha2Unit.maxLife;
+				GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpellLifeChange, args);
+
 			}
 			else if (GetAttackCount(Meidusha2Unit) % 7 == 0 && GetAttackCount(Meidusha2Unit) != 0) 
 			{
@@ -101,8 +139,21 @@ public class bosssenlin38Meidusha2 : BossAi {
 		{
 			if(q == 1)
 			{
-				Meidusha2SpellDic.TryGetValue ("bosssenlin38Meidusha24", out useSpell);
 				q--;
+				double blood = Meidusha2Unit.maxLife * 0.0001;
+				Meidusha2Unit.curLife = (int)blood;
+				
+				SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+				args.vitalType = (int)VitalType.Vital_Type_FixLife;
+				args.triggerTime = Time.time;
+				args.casterID = Meidusha2Unit.battleUnit.guid;
+				args.targetID = args.casterID;
+				args.isCritical = false;
+				args.vitalChange = 0;
+				args.vitalCurrent = Meidusha2Unit.curLife;
+				args.vitalMax = Meidusha2Unit.maxLife;
+				GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpellLifeChange, args);
+
 			}
 			else if (GetAttackCount(Meidusha2Unit) % 7 == 0 && GetAttackCount(Meidusha2Unit) != 0) 
 			{

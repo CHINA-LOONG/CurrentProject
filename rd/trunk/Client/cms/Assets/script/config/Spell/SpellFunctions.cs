@@ -805,6 +805,236 @@ public class SpellFunctions
             }
         }
         return 0;
-    }	
+    }
+	public static int HurtbyPhysicalMagicRateDispelpsv_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bossdajie13Cike4wp02") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+
+	public static int HurtbyPhysicalMagicRateDispelpsvLonggongtongzi_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bossxiaoxiang26Longgongtongzi3wp03") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+
+	public static int HurtbyPhysicalMagicRateAddbuffHetong_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bossxiaoxiang27Hetong2wp03") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateDispelbuffLongnv_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			BossAi curAi = target.gameObject.GetComponent<BossAi>();
+			bosssenlin32Longnv3 actualAi = curAi as bosssenlin32Longnv3;
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin32Longnv3wp03") == 0 && NormalScript.GetWpLifeLeft(target,"bosssenlin32Longnv3wp04") == 0 && actualAi.i == 1)
+			{
+				actualAi.i --;
+				return 1;
+			}
+			
+		}
+		return 0;
+	}
+
+	public static int HurtbyPhysicalMagicRateAddbuffAmute_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin34Amute3wp03") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateDispelpsvMomo_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin36Momo1wp02") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateHurtselfMeidusha1_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin38Meidusha2wp02") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateHurtselfMeidusha2_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin38Meidusha2wp03") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateHurtselfMeidusha3_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin38Meidusha2wp04") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRateHurtselfMeidusha4_100(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(damageEffect.targetID);
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && NormalScript.GetWpLifeLeft(target,"bosssenlin38Meidusha2wp05") == 0)
+			{
+				return 1;
+
+			}
+			
+		}
+		return 0;
+	}
+
+	
+
+
+	
 		
 }		

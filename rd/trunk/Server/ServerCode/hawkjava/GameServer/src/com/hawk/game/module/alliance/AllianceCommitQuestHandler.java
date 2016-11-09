@@ -1,16 +1,25 @@
 package com.hawk.game.module.alliance;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
+import org.hawk.util.services.FunPlusPushService;
 import org.hawk.xid.HawkXID;
 
 import com.hawk.game.GsApp;
+import com.hawk.game.ServerData;
 import com.hawk.game.BILog.BIBehaviorAction.Action;
 import com.hawk.game.BILog.BIGuildFlowData;
+import com.hawk.game.config.LanguageStaticCfg;
 import com.hawk.game.config.SociatyQuestCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
@@ -165,12 +174,35 @@ public class AllianceCommitQuestHandler implements HawkMsgHandler{
 					HSAllianceTaskCommitRet.Builder response = HSAllianceTaskCommitRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_COMMIT_TASK_S_VALUE, response));
 
-					// 任务完成
+					// 任务完成，推送
 					if (teamEntity.getFinishCount(player.getId()) == SysBasicCfg.getInstance().getAllianceMaxSmallTask()) {
-						
+						LanguageStaticCfg msgCfg = HawkConfigManager.getInstance().getConfigByKey(LanguageStaticCfg.class, GsConst.Push.GUILD_QUEST_COMPLETE);
+						if (null != msgCfg) {
+							List<Integer> members = new ArrayList<Integer>(4);
+							if (0 != teamEntity.getCaptain()) { members.add(teamEntity.getCaptain()); }
+							if (0 != teamEntity.getMember1()) { members.add(teamEntity.getMember1()); }
+							if (0 != teamEntity.getMember2()) { members.add(teamEntity.getMember2()); }
+							if (0 != teamEntity.getMember3()) { members.add(teamEntity.getMember3()); }
+
+							Map<String, List<String>> langPuidListMap = new HashMap<String, List<String>>();
+
+							for (Integer playerId : members) {
+								String lang = ServerData.getInstance().getPlayerLang(playerId);
+								String puid = ServerData.getInstance().getPuidByPlayerId(playerId);
+								List<String> puidList = langPuidListMap.get(lang);
+								if (null == puidList) {
+									puidList = new ArrayList<String>(4);
+									langPuidListMap.put(lang, puidList);
+								}
+								puidList.add(puid);
+							}
+
+							for (Entry<String, List<String>> entry : langPuidListMap.entrySet()) {
+								FunPlusPushService.getInstance().pushSimple(msgCfg.getContent((String) entry.getKey()), ((List<String>) entry.getValue()));
+							}
+						}
 					}
-					
-					
+
 					BILogger.getBIData(BIGuildFlowData.class).logTask(
 							player, 
 							Action.GUILD_SUB_MISSION, 

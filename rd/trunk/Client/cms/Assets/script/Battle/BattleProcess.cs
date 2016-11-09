@@ -669,7 +669,16 @@ public class BattleProcess : MonoBehaviour
     }
     IEnumerator Process(int battleLevelIndex)
     {
-        BattleController.Instance.PlayEntranceAnim();
+        BattleController bc = BattleController.Instance;
+        if (bc.PvpParam != null)
+        {
+            //bc.SetCameraDefault(null);
+            bc.curBattleScene.TriggerEvent("pvp_show", Time.time, null);
+            //bc.SetCameraDefault();
+            //BattleCamera.Instance.EnableCamera(true);
+        }
+
+        bc.PlayEntranceAnim();
         yield return new WaitForSeconds(BattleConst.entranceTime);
 
         if (string.IsNullOrEmpty(processData.battleProtoData.startEvent))
@@ -691,31 +700,34 @@ public class BattleProcess : MonoBehaviour
             //TODO fade in && fade out
         }
 
-        BattleController.Instance.processStart = true;
+        //Animator animator = BattleCamera.Instance.gameObject.GetComponent<Animator>();
+        //if (animator != null)
+        //{
+        //    animator.Stop();
+        //}
+        //bc.SetCameraDefault(null);
+
+        //bc.curBattleScene.TriggerEvent("camera_reset", Time.time, null);
+        bc.processStart = true;
         //RefreshEnemyState();
 
         //boss
-        if(BattleController.Instance.battleType == BattleType.Boss)
+        if(bc.battleType == BattleType.Boss)
         {
             WeakPointGroup wpGroup = battleGroup.EnemyFieldList[0].wpGroup;
-            BattleController.Instance.GetUIBattle().wpUI.RefreshWithAni(wpGroup);
+            bc.GetUIBattle().wpUI.RefreshWithAni(wpGroup);
         }
 
         StartAction();
-        BattleController.Instance.mirrorState = MirrorState.Recover;
-        BattleController.Instance.MirrorEnegyAttr = GameConfig.Instance.MirrorInitallyEnegy;
-        BattleController.Instance.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
+        bc.mirrorState = MirrorState.Recover;
+        bc.MirrorEnegyAttr = GameConfig.Instance.MirrorInitallyEnegy;
+        bc.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
     }
 
     IEnumerator PlayCountDownAnim()
     {
         BattleController bc = BattleController.Instance;
         bc.ShowLevelInfo(true);
-        if (bc.PvpParam != null)
-        {
-            bc.SetCameraDefault(null);
-            bc.curBattleScene.TriggerEvent("pvp_show", Time.time, null);
-        }
         yield return new WaitForSeconds(BattleConst.battleLevelTime * Time.timeScale);
         bc.ShowLevelInfo(false);
     }

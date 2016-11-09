@@ -375,7 +375,7 @@ public class HawkSession {
 		}
 		
 		if (protocol != null) {
-			//HawkLog.errPrintln(String.format("send protocol failed, active: %s, protocol: %d", active?"true":"false", protocol.getType()));
+			HawkLog.errPrintln(String.format("send protocol failed, active: %s, protocol: %d", active?"true":"false", protocol.getType()));
 		}
 		return false;
 	}

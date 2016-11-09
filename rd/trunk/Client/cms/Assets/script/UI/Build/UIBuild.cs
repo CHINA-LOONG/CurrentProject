@@ -320,7 +320,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr,false);
         OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
 
-        if (!SigninDataMgr.Instance.isSigninDaily && !SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.loginTimesDaily <= 0)
+        if (!SigninDataMgr.Instance.isSigninDaily &&
+            !SigninDataMgr.Instance.isPopup && SigninDataMgr.Instance.loginTimesDaily <= 0 &&
+            GameDataMgr.Instance.GuideDataMgrAttr.IsGuideListFinishForSigned())
         {
             OnSigninButtonClick(null);
             GuideHelp.isSignAutoOpen = true;

@@ -34,6 +34,18 @@ public class GuideDataMgr : MonoBehaviour
         }
         return false;
     }
+    public bool IsGuideListFinishForSigned()
+    {
+        int [] szGuide = { 1,3,4,5,6,7};
+        for (int i = 0; i < szGuide.Length; ++i)
+        {
+            if (!IsGuideFinished(szGuide[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void RequestFinishGuide(List<int> listFinish, GuideFinishDelegate callBack)
     {

@@ -305,7 +305,7 @@ public class GsConst {
 		public static final int PVP_DEFAULT_POINT = 1000;
 		public static final int PVP_DEFENCE_RECORD_SIZE = 10;
 		public static final int PVP_RANK_SIZE = 100;
-		public static final float PVP_RERANK_K_VALUE = 5.0f;
+		public static final float PVP_RERANK_K_VALUE = 10.0f;
 		public static final float PVP_CHANGE_TARGET_K = 2.0f;
 		public static final int PVP_CHANGE_TARGET_B = 100;
 		public static final int PVP_WEEK_REFRESH_TIME_ID = 110;
@@ -371,6 +371,14 @@ public class GsConst {
 		public static final int ALLIANCE_ELDER_PROMOTE = 104;
 		// 公会解除副会长
 		public static final int ALLIANCE_ELDER_DEMOTE = 105;
+	}
+
+	/**
+	 * 推送
+	 */
+	public static class Push {
+		// 公会任务完成
+		public static final String GUILD_QUEST_COMPLETE = "1";
 	}
 
 	/** 

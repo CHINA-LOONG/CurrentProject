@@ -74,7 +74,7 @@ public class bossdajie18Ladong5 : BossAi {
             if (
                 curStunBuff.IsFinish == false &&
                 curStunBuff.buffProto.category == (int)BuffType.Buff_Type_Stun &&
-                curStunBuff.PeriodCount > (curStunBuff.buffProto.duration - 1))
+                curStunBuff.PeriodCount < (curStunBuff.buffProto.duration - 1))
 			{
 				curStunbuffCount++;
                 break;

@@ -28,37 +28,16 @@ public class bosssenlin34Amute3 : BossAi {
 		Amute3SpellDic.TryGetValue ("bosssenlin34Amute31", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Amute3Unit);
-		if (jishu == 0 )
-		{
-
-			if (GetAttackCount(Amute3Unit) % 6 == 0 && GetAttackCount(Amute3Unit) != 0) 
+		if (GetAttackCount(Amute3Unit) % 6 == 0 && GetAttackCount(Amute3Unit) != 0) 
 			{
 				Amute3SpellDic.TryGetValue ("bosssenlin34Amute34", out useSpell);
 			}
-			else if (GetAttackCount(Amute3Unit) % 3 == 0 && GetAttackCount(Amute3Unit) != 0) 
+		else if (GetAttackCount(Amute3Unit) % 3 == 0 && GetAttackCount(Amute3Unit) != 0) 
 			{
 				Amute3SpellDic.TryGetValue ("bosssenlin34Amute33", out useSpell);
 
 			}
-		}
-		else
-		{
-			if (i == 1) 
-			{
-				Amute3SpellDic.TryGetValue ("bosssenlin34Amute32", out useSpell);
-				i--;
-			}	
-			
-			else if (GetAttackCount(Amute3Unit) % 6 == 0 && GetAttackCount(Amute3Unit) != 0) 
-			{
-				Amute3SpellDic.TryGetValue ("bosssenlin34Amute34", out useSpell);
-			}
-			else if (GetAttackCount(Amute3Unit) % 3 == 0 && GetAttackCount(Amute3Unit) != 0) 
-			{
-				Amute3SpellDic.TryGetValue ("bosssenlin34Amute33", out useSpell);
-
-			}
-		}
+		
 		
 		attackResult.useSpell = useSpell;
 

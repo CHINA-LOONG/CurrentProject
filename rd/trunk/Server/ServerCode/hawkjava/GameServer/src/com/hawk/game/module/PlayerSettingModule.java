@@ -40,6 +40,7 @@ public class PlayerSettingModule extends PlayerModule {
 		player.getEntity().setLanguage(newLang);
 		player.getEntity().notifyUpdate(true);
 		ImManager.getInstance().changeLanguage(oldLang, newLang, player.getPlayerData().getPlayerAllianceEntity().getId());
+		ServerData.getInstance().replaceLanguage(oldLang, newLang, player.getId());
 
 		HSSettingLanguageRet.Builder response = HSSettingLanguageRet.newBuilder();
 		response.setLanguage(newLang);

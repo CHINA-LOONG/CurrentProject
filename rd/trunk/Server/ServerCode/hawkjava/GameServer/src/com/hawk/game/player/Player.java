@@ -212,7 +212,7 @@ public class Player extends HawkAppObj {
 	 */
 	@Override
 	public boolean sendProtocol(HawkProtocol protocol) {
-		if (protocol.getSize() >= 2048) {
+		if (protocol.getSize() >= 4096) {
 			logger.info("send protocol size overflow, protocol: {}, size: {}", new Object[] { protocol.getType(), protocol.getSize() });
 		}
 		return super.sendProtocol(protocol);
@@ -346,7 +346,7 @@ public class Player extends HawkAppObj {
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
-		HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
+		//HawkLog.logPrintln(String.format("player: %d on protocol: %d", this.getXid().getId(), protocol.getType()));
 		if (onPlayerProtocol(protocol)) {
 			return true;
 		}

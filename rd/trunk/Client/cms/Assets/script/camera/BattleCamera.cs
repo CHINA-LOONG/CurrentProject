@@ -69,4 +69,9 @@ public class BattleCamera : MonoBehaviour
         ResourceMgr.Instance.DestroyAsset(mInst.gameObject);
 		mInst = null;
 	}
+
+    public void EnableCamera()
+    {
+        BattleController.Instance.SetCameraDefault(null);
+    }
 }

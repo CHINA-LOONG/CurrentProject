@@ -176,15 +176,16 @@ public class UIQuest : UIBase,
     {
         if (message.Equals("gd_quest_firstButton"))
         {
-            ParseBase parse = ParseFactory.CreateParse(CurrentList[0].staticData.PathList);
-            string name;
-            bool condition;
-            System.Action onClickEvent = null;
-            parse.GetResult(CurrentList[0].staticData.PathList, out name, out onClickEvent, out condition);
-            if (onClickEvent != null)
-            {
-                onClickEvent();
-            }
+            //ParseBase parse = ParseFactory.CreateParse(CurrentList[0].staticData.PathList);
+            //string name;
+            //bool condition;
+            //System.Action onClickEvent = null;
+            //parse.GetResult(CurrentList[0].staticData.PathList, out name, out onClickEvent, out condition);
+            //if (onClickEvent != null)
+            //{
+            //    onClickEvent();
+            //}
+            OnClickSubmit(CurrentList[0]);
         }
     }
     void OnLanguageChanged()

@@ -1,8 +1,8 @@
 package org.hawk.util.services;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -89,7 +89,7 @@ public class FunPlusPushService extends HawkTickable {
 	/**
 	 * 推送默认格式消息，部分用户
 	 */
-	public boolean pushSimple(String msg, List<Integer> funplusIdList) {
+	public boolean pushSimple(String msg, Collection<String> funplusIdList) {
 		final HttpUriRequest httpRequest = genHttpRequest(msg, funplusIdList);
 		final String pushMsg = msg;
 		httpClient.execute(httpRequest, new FutureCallback<HttpResponse>() {
@@ -123,16 +123,16 @@ public class FunPlusPushService extends HawkTickable {
 	/**
 	 * 生成推送http请求
 	 */
-	private HttpUriRequest genHttpRequest(String msg, List<Integer> funplusIdList) {
+	private HttpUriRequest genHttpRequest(String msg, Collection<String> funplusIdList) {
 		Map<String, Object> dataMap = new HashMap<String, Object>();
-		dataMap.put(HawkURL.urlEncodeRFC3986("game_id", false), HawkURL.urlEncodeRFC3986(this.gameId, false));
-		dataMap.put(HawkURL.urlEncodeRFC3986("message", false), msg);
+		dataMap.put("game_id", HawkURL.urlEncodeRFC3986(this.gameId, false));
+		dataMap.put("message", msg);
 
 		final HttpPost httpPost;
 		if (null == funplusIdList || true == funplusIdList.isEmpty()) {
 			httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to_all");
 		} else {
-			dataMap.put(HawkURL.urlEncodeRFC3986("funplus_ids", false), funplusIdList);
+			dataMap.put("funplus_ids", funplusIdList);
 			httpPost = new HttpPost("http://caffeine-api.funplusgame.com/push/to");
 		}
 

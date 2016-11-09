@@ -735,6 +735,9 @@ MonoBehaviour:
   mIgnorePreviousHide: 0
   mHidePreviouseUI: 1
   mDontDestroyWhenSwitchScene: 0
+  posObjectList: []
+  uiAnimator: {fileID: 9560492}
+  uiViewName: 
   text_Title: {fileID: 11447596}
   btnClose: {fileID: 11409366}
   btnRetroactive: {fileID: 11467682}
@@ -1613,7 +1616,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: uiAnimator
+      value: 
+      objectReference: {fileID: 9560492}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126128}

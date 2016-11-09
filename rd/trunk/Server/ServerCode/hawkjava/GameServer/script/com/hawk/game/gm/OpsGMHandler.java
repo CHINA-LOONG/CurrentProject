@@ -2,9 +2,13 @@ package com.hawk.game.gm;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -488,7 +492,7 @@ public class OpsGMHandler extends HawkScript{
 		case "rename": {
 			String newname = request.containsKey("newname") ? request.getString("newname") : "";
 			if (TextUtil.checkNickname(newname) == Status.error.NONE_ERROR_VALUE) {
-				ServerData.getInstance().replaceNameAndPlayerId(player.getName(), newname, player.getId());
+				ServerData.getInstance().replaceNickname(player.getName(), newname, player.getId());
 				player.getEntity().setNickname(newname);
 				player.getEntity().notifyUpdate(true);
 				HawkAccountService.getInstance().report(new HawkAccountService.RenameRoleData(player.getPuid(), player.getId(), newname));
@@ -538,18 +542,71 @@ public class OpsGMHandler extends HawkScript{
 		}
 		// 推送
 		case "push": {
-			String message = request.containsKey("message") ? request.getString("message") : "";
-			String funplusIdJson = request.containsKey("funplusid") ? request.getString("funplusid") : "";
-			List<Integer> puidList = new ArrayList<Integer>();
+			String defaultMsg = request.containsKey("defaultmsg") ? request.getString("defaultmsg") : "";
+			if (true == defaultMsg.isEmpty()) {
+				String msgJson = request.containsKey("message") ? request.getString("message") : "";
+				String funplusIdJson = request.containsKey("funplusid") ? request.getString("funplusid") : "";
+				List<String> puidList = new ArrayList<String>();
+				Map<String, String> langMsgMap = new HashMap<String, String>();
 
-			JSONArray puids = JSONArray.fromObject(funplusIdJson);
-			for (Object element : puids) {
-				puidList.add((Integer) element);
+				JSONArray puidJsonArr = JSONArray.fromObject(funplusIdJson);
+				for (Object element : puidJsonArr) {
+					puidList.add((String) element);
+				}
+
+				JSONObject msgJsonObj = JSONObject.fromObject(msgJson);
+				@SuppressWarnings("rawtypes")
+				Iterator iter = msgJsonObj.keys();
+				while (iter.hasNext()) {
+					String lang = (String) iter.next();
+					langMsgMap.put(lang, msgJsonObj.getString(lang));
+				}
+
+				// 单语言推送
+				if (true == langMsgMap.isEmpty()) {
+					FunPlusPushService.getInstance().pushSimple(defaultMsg, puidList);
+
+				}
+				// 多语言推送
+				else {
+					// 全部玩家
+					if (true == puidList.isEmpty()) {
+						Map<String, Set<String>> langPuidSetMap = ServerData.getInstance().getLangPuidSetMap();
+						synchronized (langPuidSetMap) {
+							for (Entry<String, Set<String>> entry : langPuidSetMap.entrySet()) {
+								String msg = langMsgMap.get((String) entry.getKey());
+								if (null == msg) {
+									msg = defaultMsg;
+								}
+								FunPlusPushService.getInstance().pushSimple(msg, ((Set<String>) entry.getValue()));
+							}
+						}
+					}
+					// 指定玩家
+					else {
+						Map<String, List<String>> langPuidListMap = new HashMap<String, List<String>>();
+						for (String puid : puidList) {
+							String lang = ServerData.getInstance().getPuidLang(puid);
+							List<String> langPuidList = langPuidListMap.get(lang);
+							if (null == langPuidList) {
+								langPuidList = new ArrayList<String>();
+								langPuidListMap.put(lang, langPuidList);
+							}
+							langPuidList.add(puid);
+						}
+
+						for (Entry<String, List<String>> entry : langPuidListMap.entrySet()) {
+							String msg = langMsgMap.get((String) entry.getKey());
+							if (null == msg) {
+								msg = defaultMsg;
+							}
+							FunPlusPushService.getInstance().pushSimple(msg, ((List<String>) entry.getValue()));
+						}
+					}
+				}	
 			}
 
-			if (true == FunPlusPushService.getInstance().pushSimple(message, puidList)) {
-				commadnHandled = true;
-			}
+			commadnHandled = true;
 			break;
 		}
 		default:

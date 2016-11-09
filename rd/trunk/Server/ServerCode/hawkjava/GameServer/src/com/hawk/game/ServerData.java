@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.hawk.config.HawkConfigManager;
@@ -65,6 +66,14 @@ public class ServerData {
 	 */
 	protected ConcurrentHashMap<Integer, String> langMap;
 	/**
+	 * puid和语言映射表
+	 */
+	protected ConcurrentHashMap<String, String> puidLangMap;
+	/**
+	 * 语言和puid列表映射
+	 */
+	protected ConcurrentHashMap<String, Set<String>> langPuidSetMap;
+	/**
 	 * 在线玩家列表
 	 */
 	protected ConcurrentHashMap<Integer, Integer> onlineMap;
@@ -90,12 +99,10 @@ public class ServerData {
 	 * 洞开启状态的映射表
 	 */
 	protected ConcurrentHashMap<Integer, Boolean> holeStateMap;
-
 	/**
 	 * 需要落地的数据
 	 */
 	protected ServerDataEntity serverDataEntity;
-
 	/**
 	 * 上次信息显示时间
 	 */
@@ -106,11 +113,6 @@ public class ServerData {
 	 */
 	private static ServerData instance = null;
 
-	/**
-	 * 获取全局实例对象
-	 * 
-	 * @return
-	 */
 	public static ServerData getInstance() {
 		if (instance == null) {
 			instance = new ServerData();
@@ -130,6 +132,8 @@ public class ServerData {
 		idMap = new ConcurrentHashMap<Integer, String>();
 		nameMap = new ConcurrentHashMap<String, Integer>();
 		langMap = new ConcurrentHashMap<Integer, String>();
+		puidLangMap = new ConcurrentHashMap<String, String>();
+		langPuidSetMap = new ConcurrentHashMap<String, Set<String>>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
 		refreshTimeMap = new HashMap<Integer, Calendar>();
@@ -219,6 +223,19 @@ public class ServerData {
 			for (Object rowInfo : rowInfos) {
 				Object[] colInfos = (Object[]) rowInfo;
 				addPlayerIdAndLang((Integer) colInfos[0], (String) colInfos[1]);
+			}
+		} catch (Exception e) {
+			HawkException.catchException(e);
+			return false;
+		}
+		
+		// 从db拉取玩家puid和language的映射表
+		try {
+			HawkLog.logPrintln("load puid and language from db......");
+			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select puid, language from player");
+			for (Object rowInfo : rowInfos) {
+				Object[] colInfos = (Object[]) rowInfo;
+				addPuidAndLang((String) colInfos[0], (String) colInfos[1]);
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -332,16 +349,77 @@ public class ServerData {
 		}
 	}
 
-	public void replaceNameAndPlayerId(String oldName, String newName, int playerId) {
+	/**
+	 * 改名
+	 */
+	public void replaceNickname(String oldName, String newName, int playerId) {
 		nameMap.remove(oldName.toLowerCase());
 		nameMap.put(newName.toLowerCase(), playerId);
 	}
 
 	/**
-	 * 增加name和玩家id的映射
+	 * 增加language和玩家id的映射
 	 */
 	public void addPlayerIdAndLang(int playerId, String lang) {
 		langMap.put(playerId, lang);
+	}
+
+	/**
+	 * 增加name和puid的映射
+	 */
+	public void addPuidAndLang(String puid, String lang) {
+		puidLangMap.put(puid, lang);
+
+		Set<String> puidSet = langPuidSetMap.get(lang);
+		if (null == puidSet) {
+			puidSet = new ConcurrentSkipListSet<>();
+			langPuidSetMap.put(lang, puidSet);
+		}
+		puidSet.add(puid);
+	}
+
+	/**
+	 * 获取玩家语言
+	 */
+	public String getPlayerLang(int playerId) {
+		return langMap.get(playerId);
+	}
+
+	/**
+	 * 获取puid语言
+	 */
+	public String getPuidLang(String puid) {
+		return puidLangMap.get(puid);
+	}
+
+	/**
+	 * 获取语言和玩家列表映射
+	 */
+	public Map<String, Set<String>> getLangPuidSetMap() {
+		return langPuidSetMap;
+	}
+
+	/**
+	 * 切换语言
+	 */
+	public void replaceLanguage(String oldLang, String newLang, int playerId) {
+		langMap.put(playerId, newLang);
+
+		String puid = getPuidByPlayerId(playerId);
+		puidLangMap.put(puid, newLang);
+
+		synchronized (langPuidSetMap) {
+			Set<String> puidSet = langPuidSetMap.get(oldLang);
+			if (null != puidSet) {
+				puidSet.remove(puid);
+			}
+			puidSet = langPuidSetMap.get(newLang);
+			if (null == puidSet) {
+				puidSet = new ConcurrentSkipListSet<>();
+				langPuidSetMap.put(newLang, puidSet);
+			}
+			puidSet.add(puid);
+		}
 	}
 
 	/**
@@ -356,13 +434,6 @@ public class ServerData {
 	 */
 	public Set<Integer> getAllPlayerIdSet() {
 		return idMap.keySet();
-	}
-
-	/**
-	 * 获取玩家语言
-	 */
-	public String getPlayerLang(int playerId) {
-		return langMap.get(playerId);
 	}
 
 	/**

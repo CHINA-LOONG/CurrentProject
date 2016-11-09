@@ -18,12 +18,20 @@ public class UITowerEntry : UIBase
 
     public Text mRemainTime;
     public Text mShilianText;
+    public Text mShilianName;
     public Text mShilinCostText;
+    public Text mShilinFloor;
     public Text mJuewangText;
+    public Text mJuewangName;
     public Text mJuewangCostText;
+    public Text mJuewangFloor;
     public Text mSiwangText;
+    public Text mSiwangName;
     public Text mSiwangCostText;
-
+    public Text mSiwangFloor;
+    public Text mTitle;
+    public Text mTowerStoreName;
+    public GameObject mTowerStore;
     private MainStageController mMainStageControl;
 
     //---------------------------------------------------------------------------------------------
@@ -33,21 +41,21 @@ public class UITowerEntry : UIBase
         TowerData towerShilian = StaticDataMgr.Instance.GetTowerData((int)TowerType.Tower_Shilian);
         if (towerShilian != null)
         {
-            mShilianText.text = string.Format("shilian lv:{0}", towerShilian.level);
+            mShilianText.text = string.Format("Lv:{0}", towerShilian.level);
             mShilinCostText.text = GetCost(towerShilian);
         }
 
         TowerData towerJuewang = StaticDataMgr.Instance.GetTowerData((int)TowerType.Tower_Juewang);
         if (towerJuewang != null)
         {
-            mJuewangText.text = string.Format("juewang lv:{0}", towerJuewang.level);
+            mJuewangText.text = string.Format("Lv:{0}", towerJuewang.level);
             mJuewangCostText.text = GetCost(towerJuewang);
         }
 
         TowerData towerSiwang = StaticDataMgr.Instance.GetTowerData((int)TowerType.Tower_Siwang);
         if (towerSiwang != null)
         {
-            mSiwangText.text = string.Format("siwang lv:{0}", towerSiwang.level);
+            mSiwangText.text = string.Format("Lv:{0}", towerSiwang.level);
             mSiwangCostText.text = GetCost(towerSiwang);
         }
         RefreshTimeCountDown();
@@ -65,7 +73,6 @@ public class UITowerEntry : UIBase
                 cost = entry.fatigue;
             }
         }
-
         return cost.ToString();
     }
     //---------------------------------------------------------------------------------------------
@@ -75,18 +82,18 @@ public class UITowerEntry : UIBase
         int daysInMonth = DateTime.DaysInMonth(serverDateTime.Year, serverDateTime.Month);
         if (serverDateTime.Day < daysInMonth)
         {
-            mRemainTime.text = string.Format("remain:{0}d", daysInMonth - serverDateTime.Day + 1);
+            mRemainTime.text = string.Format(StaticDataMgr.Instance.GetTextByID("towerBoss_instance_time1"), daysInMonth - serverDateTime.Day + 1);
         }
         else
         {
             int remainHour = 24 - serverDateTime.Hour;
             if (remainHour <= 1)
             {
-                mRemainTime.text = "remain:no 1h";
+                mRemainTime.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_time3");
             }
             else
             {
-                mRemainTime.text = string.Format("remain:{0}h", remainHour - 1);
+                mRemainTime.text = string.Format(StaticDataMgr.Instance.GetTextByID("towerBoss_instance_time2"), remainHour - 1);
             }
         }
     }
@@ -110,10 +117,24 @@ public class UITowerEntry : UIBase
         mMainStageControl.QuitSelectGroup();
     }
     //---------------------------------------------------------------------------------------------
+    void OpenTowerStore(GameObject go)
+    {
+        FoundMgr.Instance.GoToUIShop(PB.shopType.TOWERSHOP);
+    }
+    //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start()
     {
         EventTriggerListener.Get(mReturnBtn.gameObject).onClick = OnReturn;
+        EventTriggerListener.Get(mTowerStore).onClick = OpenTowerStore;
+        mTitle.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_title");
+        mShilianName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_name1");
+        mJuewangName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_name2");
+        mSiwangName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_name3");
+        mTowerStoreName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop");
+        mShilinFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor1") + GameDataMgr.Instance.curTowerShilianFloor;
+        mJuewangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor2") + GameDataMgr.Instance.curTowerJuewangFloor;
+        mSiwangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor3") + GameDataMgr.Instance.curTowerSiwangFloor;
     }
     //---------------------------------------------------------------------------------------------
 }

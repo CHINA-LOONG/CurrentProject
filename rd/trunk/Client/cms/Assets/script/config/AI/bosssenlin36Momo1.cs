@@ -28,35 +28,17 @@ public class bosssenlin36Momo1 : BossAi {
 		Momo1SpellDic.TryGetValue ("bosssenlin36Momo11", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(Momo1Unit);
-		if (NormalScript.GetWpLifeLeft(Momo1Unit.battleUnit, "bosssenlin36Momo1wp02") != 0 )
-		{
-			if (GetAttackCount(Momo1Unit) % 7 == 0 && GetAttackCount(Momo1Unit) != 0) 
+
+		if (GetAttackCount(Momo1Unit) % 7 == 0 && GetAttackCount(Momo1Unit) != 0) 
 			{
 				Momo1SpellDic.TryGetValue ("bosssenlin36Momo13", out useSpell);
 			}
-			else if (GetAttackCount(Momo1Unit) % 3 == 0 && GetAttackCount(Momo1Unit) != 0) 
+		else if (GetAttackCount(Momo1Unit) % 3 == 0 && GetAttackCount(Momo1Unit) != 0) 
 			{
 				Momo1SpellDic.TryGetValue ("bosssenlin36Momo12", out useSpell);
 
 			}
-		}
-		else
-		{
-			if (i == 1)
-			{
-				Momo1SpellDic.TryGetValue ("dispelPassive", out useSpell);
-				i--;
-			}
-			else if (GetAttackCount(Momo1Unit) % 7 == 0 && GetAttackCount(Momo1Unit) != 0) 
-			{
-				Momo1SpellDic.TryGetValue ("bosssenlin36Momo13", out useSpell);
-			}
-			else if (GetAttackCount(Momo1Unit) % 3 == 0 && GetAttackCount(Momo1Unit) != 0) 
-			{
-				Momo1SpellDic.TryGetValue ("bosssenlin36Momo12", out useSpell);
-
-			}
-		}
+		
 		
 		attackResult.useSpell = useSpell;
 
