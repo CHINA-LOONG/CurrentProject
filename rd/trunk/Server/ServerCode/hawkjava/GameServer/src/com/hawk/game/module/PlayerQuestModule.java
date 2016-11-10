@@ -132,10 +132,12 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 
 		// 发奖
-		int exp = questCfg.getExpReward(player.getLevel());
-		List<ItemInfo> list = questCfg.getReward().getRewardList();
 		AwardItems awardItems = AwardItems.valueOf();
-		awardItems.addExp(exp);
+		int exp = questCfg.getExpReward(player.getLevel());
+		if (exp > 0) {
+			awardItems.addExp(exp);
+		}
+		List<ItemInfo> list = questCfg.getReward().getRewardList();
 		awardItems.addItemInfos(list);
 		awardItems.rewardTakeAffectAndPush(player, Action.MISSION_REWARD, HS.code.QUEST_SUBMIT_C_VALUE);
 

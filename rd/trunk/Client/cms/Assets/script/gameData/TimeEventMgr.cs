@@ -8,6 +8,7 @@ public delegate void perCountDownTime(int remainTime);
 public class TimeEventWrap
 {
     public int endTime;
+    public int second;
     public List<perCountDownTime> updateList=new List<perCountDownTime>();
     public Action finishEvent;
     public TimeEventWrap(int time,Action finish=null)
@@ -18,11 +19,12 @@ public class TimeEventWrap
     }
     public void refresh(int realtime)
     {
+        second = endTime - realtime;
         if (updateList.Count> 0)
         {
-            update(endTime - realtime);
+               update(second);
         }
-        if (endTime - realtime <= 0)
+        if (second <= 0)
         {
             finish();
         }

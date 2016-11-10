@@ -196,11 +196,11 @@ public class UISignIn : UIBase,
     {
         UIMgr.Instance.DestroyUI(uiSignInfo);
         UIMgr.Instance.DestroyUI(mGainPetUI);
-        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
-        if (uiBuild != null)
-        {
-            uiBuild.RefreshOnPreviousUIHide();
-        }
+        //UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        //if (uiBuild != null)
+        //{
+        //    uiBuild.RefreshOnPreviousUIHide();
+        //}
         base.Clean();
     }
     #endregion

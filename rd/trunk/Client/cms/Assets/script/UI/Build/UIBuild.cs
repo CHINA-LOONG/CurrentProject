@@ -412,7 +412,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate,GuideBase
         {
             MoreButton.Instance.OnMoreButtonClicked(null);
         }
-        else if (message.Equals("gd_build_instance"))
+        else if (message.Equals("gd_build_instance") || message.Equals("3D_instanceEntry"))
         {
             InstanceMap.OpenWith();
         }

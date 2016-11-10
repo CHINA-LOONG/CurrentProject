@@ -68,7 +68,14 @@ public class PlayerIdleModule extends PlayerModule {
 		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
 		response.setPlayerId(player.getId());
 		response.setAllianceId(player.getAllianceId());
+		response.setContribution(player.getPlayerData().getPlayerAllianceEntity().getContribution());
 		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
+		
+		// 设置组装状态
+		player.setAssembleFinish(true);
+		// 添加在线信息
+		ServerData.getInstance().addOnlinePlayerId(player.getId());
+		
 		return true;
 	}
 	

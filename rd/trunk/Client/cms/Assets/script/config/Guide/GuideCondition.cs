@@ -8,33 +8,33 @@ public class GuideCondition
         switch(guideGroupId)
         {
             case 1:
-                return guide1_2IsOk(true);
+                return guide1IsOk(true);
             case 2:
-                return guide1_2IsOk(false);
+                return guide1IsOk(false);
             case 3:
                 return guide3_4IsOk(true);
             case 4:
                 return guide3_4IsOk(false);
             case 5:
-                return guide5_6IsOk(true);
+                return guide5IsOk(true);
             case 6:
-                return guide5_6IsOk(false);
+                return guide6IsOk(true);
             case 7:
-                return guide7_8IsOk(true);
+                return guide7IsOk(true);
             case 8:
-                return guide7_8IsOk(false);
+                return guide7IsOk(false);
             case 9:
-                return guide9_10IsOk(true);
+                return guide9IsOk(true);
             case 10:
-                return guide9_10IsOk(false);
+                return guide10IsOk(true);
             case 11:
-                return guide11_12IsOk(true);
+                return guide11IsOk(true);
             case 12:
-                return guide11_12IsOk(false);
+                return guide12IsOk(true);
             case 13:
-                return guide13_14IsOk(true);
+                return guide13IsOk(true);
             case 14:
-                return guide13_14IsOk(false);
+                return guide14IsOk(true);
             case 15:
                 return guide15IsOk();
             case 16:
@@ -57,7 +57,7 @@ public class GuideCondition
         return false;
     }
 
-    static bool  guide1_2IsOk(bool moreButtonIsOpen)
+    static bool  guide1IsOk(bool moreButtonIsOpen)
     {
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
@@ -70,12 +70,9 @@ public class GuideCondition
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
 
-        if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
-            return false;
-
-        return  GuideHelp.Instance.IsFirstTaskFinished();
-    }
-    static bool guide5_6IsOk(bool moreButtonIsOpen)
+		return GuideHelp.Instance.IsBuidMoreButtonExpand() == moreButtonIsOpen;
+	}
+	static bool guide5IsOk(bool moreButtonIsOpen)
     {
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
@@ -86,7 +83,18 @@ public class GuideCondition
         return GuideHelp.Instance.IsPetFragmentEnough();
     }
 
-    static bool guide7_8IsOk(bool moreButtonIsOpen)
+	static bool guide6IsOk(bool moreButtonIsOpen)
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		
+		if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen && GuideHelp.Instance.IsPetFragmentEnough())
+			return true;
+		
+		return false;
+	}
+	
+	static bool guide7IsOk(bool moreButtonIsOpen)
     {
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
@@ -95,20 +103,30 @@ public class GuideCondition
             return false;
         return true;
     }
-    static bool guide9_10IsOk(bool moreButtonIsOpen)
+    static bool guide9IsOk(bool moreButtonIsOpen)
     {
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
-        if (GuideHelp.Instance.GetExpItemCount() > 0 && GuideHelp.Instance.GetExpUseCount() == 0)
-            return true;
+		if (GuideHelp.Instance.GetExpItemCount() > 0 && GuideHelp.Instance.GetExpUseCount() == 0 && GuideHelp.Instance.GetPlayerLevel() > GuideHelp.Instance.GetPetMaxLevel())
+			return true;
         else
             return false;
     }
-
-    static bool guide11_12IsOk(bool moreButtonIsOpen)
+	static bool guide10IsOk(bool moreButtonIsOpen)
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		
+		if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen && GuideHelp.Instance.GetExpItemCount() > 0 && GuideHelp.Instance.GetExpUseCount() == 0 && GuideHelp.Instance.GetPlayerLevel() > GuideHelp.Instance.GetPetMaxLevel())
+			return true;
+		else
+			return false;
+	}
+	
+	static bool guide11IsOk(bool moreButtonIsOpen)
     {
         if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
@@ -116,15 +134,26 @@ public class GuideCondition
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
             return false;
 
-        if (GuideHelp.Instance.GetPetNumberWithLevelMore(1) > 1 &&
-            GuideHelp.Instance.GetPetSkilledTimes() == 0)
+        if (GuideHelp.Instance.GetPetNumberWithLevelMore(1) >= 1 && GuideHelp.Instance.GetPetSkilledTimes() == 0)
             return true;
         else
             return false;
     }
-    static bool guide13_14IsOk(bool moreButtonIsOpen)
-    {
-        if (GuideHelp.Instance.IsSigninAutoOpen())
+
+	static bool guide12IsOk(bool moreButtonIsOpen)
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		
+		if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen && GuideHelp.Instance.GetPetNumberWithLevelMore(1) >= 1 && GuideHelp.Instance.GetPetSkilledTimes() == 0)
+			return true;
+		else
+			return false;
+	}
+
+	static bool guide13IsOk(bool moreButtonIsOpen)
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
             return false;
 
         if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
@@ -134,20 +163,49 @@ public class GuideCondition
         else
             return false;
     }
-    static bool guide15IsOk()
-    {
-        return true;
+	static bool guide14IsOk(bool moreButtonIsOpen)
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		
+		if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen && !GuideHelp.Instance.IsPetHasWear() && GuideHelp.Instance.GetCanWeaponPetNumber() > 0)
+			return true;
+		else
+			return false;
+	}
+	static bool guide15IsOk()
+	{
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		if (GuideHelp.Instance.GetPlayerLevel() >= 6)
+			return true;
+		return false;
     }
     static bool guide16_17IsOK(bool moreButtonIsOpen)
     {
-        return true;
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		
+		if (GuideHelp.Instance.IsBuidMoreButtonExpand() != moreButtonIsOpen)
+			return false;
+		if (GuideHelp.Instance.GetOpenShopTimes() > 0 && GuideHelp.Instance.GetPlayerLevel() >= 8)
+			return true;
+		return false;
     }
     static bool guide18_19_20IsOK()
     {
-        return true;
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		if (GuideHelp.Instance.GetStrongStoneCount() > 0)
+			return true;
+        return false;
     }
     static bool guide21IsOK()
     {
-        return true;
+		if (GuideHelp.Instance.IsSigninAutoOpen())
+			return false;
+		if (GuideHelp.Instance.GetInstance1SuccCount() > 0 && GuideHelp.Instance.GetSignTimesThisMonth() == 0)
+			return true;
+        return false;
     }
 }

@@ -43,6 +43,8 @@ enum error
 	LOGIN_INTERVAL_SHORT       = 0x00000009;
 	// 登录被锁定
 	LOGIN_LOCK                 = 0x0000000A;
+	// 重登陆失败
+	RECONNECT_ERROR            = 0x0000000B;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
 }

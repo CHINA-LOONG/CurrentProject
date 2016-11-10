@@ -24,7 +24,7 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,tipsX,tipsY,tipsContent,exitNoE
 20,UIBuild,,0,speech_expqian,,,,,1
 21,UIMonsters,第一个宠物,0,,gd_monsters_firstPet,,50,guide_exp1,
 22,UIPetDetails,经验药加号,0,,gd_petDetail_expAdd,,50,guide_exp2,
-23,UIPetFeedList,第一条药,0,,gd_petFeed_use,,50,guide_exp3,1
+23,UIPetFeedList,第一条药,0,,gd_petFeed_use,,50,guide_exp3,
 24,UIPetFeedList,,0,speech_exphou,,,,,1
 25,UIBuild,,0,speech_levelupqian,,,,,1
 26,UIPetDetails,升级按钮,0,,gd_petDetail_skillUp,,50,guide_levelup,1

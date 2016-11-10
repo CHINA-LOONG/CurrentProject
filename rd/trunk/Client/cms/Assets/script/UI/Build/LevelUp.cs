@@ -12,13 +12,8 @@ public class LevelUp : UIBase
     public Text openTask;
     public ScrollView functionScrollView;
     public Button conformButton;
-
-    private Vector2 levelDescOldPositon;
-    private RectTransform levelDescRt;
     void Awake()
     {
-        levelDescRt = levelDesc.transform as RectTransform;
-        levelDescOldPositon = levelDescRt.anchoredPosition;
         openTask.text = StaticDataMgr.Instance.GetTextByID("main_levelup_open");
 
         EventTriggerListener.Get(conformButton.gameObject).onClick = OnConformButtonClicked;
@@ -42,11 +37,11 @@ public class LevelUp : UIBase
         openTaskPanel.SetActive(isNewOpen);
         if (isNewOpen)
         {
-            levelDescRt.anchoredPosition = new Vector2(levelDescOldPositon.x, levelDescOldPositon.y - 150);
+            levelDesc.alignment = TextAnchor.UpperCenter;
         }
         else
         {
-            levelDescRt.anchoredPosition = levelDescOldPositon;
+            levelDesc.alignment = TextAnchor.LowerCenter;
         }
     }
 

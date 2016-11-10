@@ -70,10 +70,6 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final int ipProxyTimeout;
 	/**
-	 * 是否开启翻译
-	 */
-	protected final boolean translate;
-	/**
 	 * BI log
 	 */
 	protected final boolean logBI;
@@ -86,15 +82,57 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final String emailPwd;
 	/**
+	 * IM-是否开启翻译
+	 */
+	protected final boolean imTrans;
+	/**
+	 * IM-世界频道消息队列释放触发容量
+	 */
+	protected final int imWorldQueueFreeBeginSize;
+	/**
+	 * IM-世界频道消息队列释放目标容量
+	 */
+	protected final int imWorldQueueFreeEndSize;
+	/**
+	 * IM-单人推送协议包含消息最大数量
+	 */
+	protected final int imPushPackMsgMaxCount;
+	/**
+	 * IM-推送线程区间
+	 */
+	protected final int imPushThreadMin;
+	protected final int imPushThreadMax;
+	/**
+	 * IM-翻译线程区间
+	 */
+	protected final int imTransThreadMin;
+	protected final int imTransThreadMax;
+	/**
+	 * IM-生成推送任务帧数间隔
+	 */
+	protected final int imPushTaskTickCount;
+	/**
+	 * IM-生成翻译任务帧数间隔
+	 */
+	protected final int imTransTaskTickCount;
+	/**
+	 * IM-推送任务处理消息最大数量
+	 */
+	protected final int imPushTaskMsgMaxCount;
+	/**
+	 * IM-翻译任务处理消息最大数量
+	 */
+	protected final int imTransTaskMsgMaxCount;
+
+	// assemble
+	protected int[] imPushThreadRange;
+	protected int[] imTransThreadRange;
+
+	/**
 	 * 全局静态对象
 	 */
 	private static GsConfig instance = null;
 
-	/**
-	 * 获取全局静态对象
-	 * 
-	 * @return
-	 */
 	public static GsConfig getInstance() {
 		return instance;
 	}
@@ -115,10 +153,36 @@ public class GsConfig extends HawkAppCfg {
 		serviceDate = "20150101";
 		ipProxyAddr = "";
 		ipProxyTimeout = 1000;
-		translate = false;
 		emailUser = "";
 		emailPwd = "";
 		logBI = false;
+		imTrans = false;
+		imWorldQueueFreeBeginSize = Integer.MAX_VALUE;
+		imWorldQueueFreeEndSize = (int) (imWorldQueueFreeBeginSize * 0.8);
+		imPushPackMsgMaxCount = 20;
+		imPushThreadMin = 0;
+		imPushThreadMax = threadNum - 1;
+		imTransThreadMin = 0;
+		imTransThreadMax = threadNum - 1;
+		imPushTaskTickCount = 1;
+		imTransTaskTickCount = 1;
+		imPushTaskMsgMaxCount = Integer.MAX_VALUE;
+		imTransTaskMsgMaxCount = Integer.MAX_VALUE;
+	}
+
+	@Override
+	protected boolean assemble() {
+		if (this.serviceDate != null) {
+			try {
+				this.serverOpenDate = new SimpleDateFormat("yyyyMMdd").parse(serviceDate);
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+
+		imPushThreadRange = new int[] {imPushThreadMin, imPushThreadMax};
+		imTransThreadRange = new int[] {imTransThreadMin, imTransThreadMax};
+		return true;
 	}
 
 	public int getRegisterMaxSize() {
@@ -181,10 +245,6 @@ public class GsConfig extends HawkAppCfg {
 		return serverOpenDate;
 	}
 
-	public boolean isTranslate() {
-		return translate;
-	}
-
 	public boolean isLogBI() {
 		return logBI;
 	}
@@ -197,15 +257,43 @@ public class GsConfig extends HawkAppCfg {
 		return emailPwd;
 	}
 
-	@Override
-	protected boolean assemble() {
-		if (this.serviceDate != null) {
-			try {
-				this.serverOpenDate = new SimpleDateFormat("yyyyMMdd").parse(serviceDate);
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-		}
-		return true;
+	public boolean isImTranslate() {
+		return imTrans;
+	}
+
+	public int getImWorldQueueFreeBeginSize() {
+		return imWorldQueueFreeBeginSize;
+	}
+
+	public int getImWorldQueueFreeEndSize() {
+		return imWorldQueueFreeEndSize;
+	}
+
+	public int getImPushPackMsgMaxCount() {
+		return imPushPackMsgMaxCount;
+	}
+
+	public int[] getImPushThreadRange() {
+		return imPushThreadRange;
+	}
+
+	public int[] getImTransThreadRange() {
+		return imTransThreadRange;
+	}
+
+	public int getImPushTaskTickCount() {
+		return imPushTaskTickCount;
+	}
+
+	public int getImTransTaskTickCount() {
+		return imTransTaskTickCount;
+	}
+
+	public int getImPushTaskMsgMaxCount() {
+		return imPushTaskMsgMaxCount;
+	}
+
+	public int getImTransTaskMsgMaxCount() {
+		return imTransTaskMsgMaxCount;
 	}
 }

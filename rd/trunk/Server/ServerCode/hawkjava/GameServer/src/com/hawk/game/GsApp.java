@@ -196,10 +196,8 @@ public class GsApp extends HawkApp {
 		}
 
 		// 初始化Funplus翻译服务
-		if (true == GsConfig.getInstance().isTranslate()) {
-			HawkLog.logPrintln("install translate service......");
-			FunPlusTranslateService.getInstance().install(GsConst.FUNPLUS_APP_ID, GsConst.FUNPLUS_KEY);
-		}
+		HawkLog.logPrintln("install translate service......");
+		FunPlusTranslateService.getInstance().install(GsConst.FUNPLUS_APP_ID, GsConst.FUNPLUS_KEY);
 
 		// 初始化Funplus推送服务
 		HawkLog.logPrintln("install push service......");
@@ -567,6 +565,7 @@ public class GsApp extends HawkApp {
 						HSReconnect cmd = protocol.parseProtocol(HSReconnect.getDefaultInstance());
 						String puid = cmd.getPuid().trim().toLowerCase();
 						if (!reconnectPuidSession(cmd, puid, session)) {
+							session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.RECCONECT_C_VALUE, Status.error.RECONNECT_ERROR_VALUE, 1));
 							return true;
 						}
 

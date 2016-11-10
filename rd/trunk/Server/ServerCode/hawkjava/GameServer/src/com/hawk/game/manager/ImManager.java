@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
@@ -92,18 +93,6 @@ public class ImManager extends HawkAppObj {
 
 	// 属性----------------------------------------------------------------------------------------------------------
 
-	// 推送线程id区间
-	private static final int PUSH_THREAD_MIN = 0;
-	private static final int PUSH_THREAD_MAX = 3;
-	// 翻译线程id区间
-	private static final int TRANS_THREAD_MIN = 2;
-	private static final int TRANS_THREAD_MAX = 3;
-
-	// 翻译任务批次最大数量
-	private static final int TRANS_BATCH_SIZE = 2;
-	// 推送任务批次最大数量
-	private static final int PUSH_BATCH_SIZE = 20;
-
 	/**
 	 * 世界频道会话列表
 	 * @key playerId
@@ -139,6 +128,9 @@ public class ImManager extends HawkAppObj {
 	//private List<ImMsg> worldMsgQueue;
 	private ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>> guildMsgQueueMap;
 
+	// ConcurrentLinkedQueue.size()效率低，单独记录
+	private AtomicInteger worldMsgQueueSize = new AtomicInteger(0);
+
 	/**
 	 * 待翻译消息队列
 	 */
@@ -148,6 +140,12 @@ public class ImManager extends HawkAppObj {
 	 * 定时消息队列
 	 */
 	private List<ImMsg> clockMsgList;
+
+	/**
+	 * 帧计数
+	 */
+	private int pushTickCounter = 0;
+	private int transTickCounter = 0;
 
 	private static ImManager instance = null;
 	public static ImManager getInstance() {
@@ -355,7 +353,7 @@ public class ImManager extends HawkAppObj {
 		}
 
 		// 如果开启翻译服务，并且非系统消息
-		if (true == GsConfig.getInstance().isTranslate() && msgObj.sysCfg == null) {
+		if (true == GsConfig.getInstance().isImTranslate() && msgObj.sysCfg == null) {
 			// 加入待翻译列表
 			if (false == transMsgQueue.offer(msgObj)) {
 				// 失败直接加入待推送列表
@@ -388,6 +386,8 @@ public class ImManager extends HawkAppObj {
 	 */
 	@Override
 	public boolean onTick(long tickTime) {
+		++pushTickCounter;
+		++transTickCounter;
 		ImMsg msgObj = null;
 
 		// 定时消息----------------------------------------------------------------------------------
@@ -411,75 +411,110 @@ public class ImManager extends HawkAppObj {
 		}
 
 		// 推送---------------------------------------------------------------------------------------
-		Map<ImPlayer, List<ImMsg>> pushPersonMap = null;
-		List<ImMsg> pushWorldList = null;
-		Map<Integer, List<ImMsg>> pushGuildMap = null;
+		if (pushTickCounter % GsConfig.getInstance().getImPushTaskTickCount() == 0) {
+			pushTickCounter = 0;
 
-		if (false == personMsgQueue.isEmpty()) {
-			pushPersonMap = new HashMap<>();
-			while ((msgObj = personMsgQueue.poll()) != null) {
-				List<ImMsg> pushList = pushPersonMap.get(msgObj.receiver);
-				if (pushList == null) {
-					pushList = new ArrayList<ImMsg>();
-					pushPersonMap.put(msgObj.receiver, pushList);
+			final int pushMaxCount = GsConfig.getInstance().getImPushTaskMsgMaxCount();
+			Map<ImPlayer, List<ImMsg>> pushPersonMap = null;
+			List<ImMsg> pushWorldList = null;
+			Map<Integer, List<ImMsg>> pushGuildMap = null;
+
+			if (false == personMsgQueue.isEmpty()) {
+				pushPersonMap = new HashMap<>();
+				for (int i = 0; i < pushMaxCount; ++i) {
+					msgObj = personMsgQueue.poll();
+					if (null != msgObj) {
+						List<ImMsg> pushList = pushPersonMap.get(msgObj.receiver);
+						if (pushList == null) {
+							pushList = new ArrayList<ImMsg>();
+							pushPersonMap.put(msgObj.receiver, pushList);
+						}
+						pushList.add(msgObj);
+					} else {
+						break;
+					}
 				}
-				pushList.add(msgObj);
 			}
-		}
 
-		if (false == worldMsgQueue.isEmpty()) {
-			pushWorldList = new ArrayList<ImMsg>();
-			while ((msgObj = worldMsgQueue.poll()) != null) {
-				pushWorldList.add(msgObj);
+			if (false == worldMsgQueue.isEmpty()) {
+				pushWorldList = new ArrayList<ImMsg>();
+				for (int i = 0; i < pushMaxCount; ++i) {
+					msgObj = worldMsgQueue.poll();
+					if (null != msgObj) {
+						worldMsgQueueSize.decrementAndGet();
+						pushWorldList.add(msgObj);
+					} else {
+						break;
+					}
+				}
 			}
-		}
-//		if (false == worldMsgQueue.isEmpty()) {
-//			pushWorldList = new ArrayList<ImMsg>();
-//			synchronized(worldMsgQueue){
-//				pushWorldList.addAll(worldMsgQueue);
-//				worldMsgQueue.clear();
+//			if (false == worldMsgQueue.isEmpty()) {
+//				pushWorldList = new ArrayList<ImMsg>();
+//				synchronized(worldMsgQueue){
+//					for (int i = 0; i < pushMaxCount; ++i) {
+//						msgObj = worldMsgQueue.get(0);
+//						if (null != msgObj) {
+//							pushWorldList.add(msgObj);
+//							worldMsgQueue.remove(0);
+//						} else {
+//							break;
+//						}
+//					}
+//				}
 //			}
-//		}
 
-		if (false == guildMsgQueueMap.isEmpty()) {
-			pushGuildMap = new HashMap<>();
-			for (Entry<Integer, ConcurrentLinkedQueue<ImMsg>> entry : guildMsgQueueMap.entrySet()) {
-				// TODO 根据运行情况考虑是否移除空queue
-				Queue<ImMsg> queue = entry.getValue();
-				if (true == queue.isEmpty()) {
-					continue;
-				}
+			if (false == guildMsgQueueMap.isEmpty()) {
+				pushGuildMap = new HashMap<>();
+				for (Entry<Integer, ConcurrentLinkedQueue<ImMsg>> entry : guildMsgQueueMap.entrySet()) {
+					// TODO 根据运行情况考虑是否移除空queue
+					Queue<ImMsg> queue = entry.getValue();
+					if (true == queue.isEmpty()) {
+						continue;
+					}
 
-				List<ImMsg> pushGuildList = new ArrayList<ImMsg>();
-				pushGuildMap.put(entry.getKey(), pushGuildList);
+					List<ImMsg> pushGuildList = new ArrayList<ImMsg>();
+					pushGuildMap.put(entry.getKey(), pushGuildList);
 
-				while ((msgObj = queue.poll()) != null) {
-					pushGuildList.add(msgObj);
+					for (int i = 0; i < pushMaxCount; ++i) {
+						msgObj = queue.poll();
+						if (null != msgObj) {
+							pushGuildList.add(msgObj);
+						} else {
+							break;
+						}
+					}
 				}
 			}
-		}
 
-		if ((null != pushPersonMap && false == pushPersonMap.isEmpty())
-				|| (null != pushWorldList && false == pushWorldList.isEmpty())
-				|| (null != pushGuildMap && false == pushGuildMap.isEmpty())) {
-			HawkApp.getInstance().postCommonTask(new ImPushTask(pushPersonMap, pushWorldList, pushGuildMap), PUSH_THREAD_MIN, PUSH_THREAD_MAX);
+			if ((null != pushPersonMap && false == pushPersonMap.isEmpty())
+					|| (null != pushWorldList && false == pushWorldList.isEmpty())
+					|| (null != pushGuildMap && false == pushGuildMap.isEmpty())) {
+				int[] threadRange = GsConfig.getInstance().getImPushThreadRange();
+				HawkApp.getInstance().postCommonTask(new ImPushTask(pushPersonMap, pushWorldList, pushGuildMap), threadRange[0], threadRange[1]);
+			}
 		}
 
 		// 翻译------------------------------------------------------------------------------------------
-		if (false == transMsgQueue.isEmpty()) {
-			List<ImMsg> transList = new ArrayList<ImMsg>();
+		if (transTickCounter % GsConfig.getInstance().getImTransTaskTickCount() == 0) {
+			transTickCounter = 0;
 
-			for (int i = 0; i < TRANS_BATCH_SIZE; ++i) {
-				msgObj = transMsgQueue.poll();
-				if (msgObj != null) {
-					transList.add(msgObj);
-				} else {
-					break;
+			final int transMaxCount = GsConfig.getInstance().getImTransTaskMsgMaxCount();
+			if (false == transMsgQueue.isEmpty()) {
+				List<ImMsg> transList = new ArrayList<ImMsg>();
+
+				for (int i = 0; i < transMaxCount; ++i) {
+					msgObj = transMsgQueue.poll();
+					if (msgObj != null) {
+						transList.add(msgObj);
+					} else {
+						break;
+					}
 				}
-			}
 
-			if (false == transList.isEmpty()) {
-				HawkApp.getInstance().postCommonTask(new ImTransBatchTask(transList), TRANS_THREAD_MIN, TRANS_THREAD_MAX);
+				if (false == transList.isEmpty()) {
+					int[] threadRange = GsConfig.getInstance().getImTransThreadRange();
+					HawkApp.getInstance().postCommonTask(new ImTransBatchTask(transList), threadRange[0], threadRange[1]);
+				}
 			}
 		}
 
@@ -522,6 +557,17 @@ public class ImManager extends HawkAppObj {
 //				synchronized (worldMsgQueue){
 //					worldMsgQueue.add(msgObj);
 //				}
+				// 消息队列满，释放空间
+				if (worldMsgQueueSize.incrementAndGet() > GsConfig.getInstance().getImWorldQueueFreeBeginSize()) {
+					while (worldMsgQueueSize.get() > GsConfig.getInstance().getImWorldQueueFreeEndSize()) {
+						msgObj = worldMsgQueue.poll();
+						if (null != msgObj) {
+							worldMsgQueueSize.decrementAndGet();
+						} else {
+							break;
+						}
+					}
+				}
 				break;
 			}
 			case Const.ImChannel.GUILD_VALUE: {
@@ -697,7 +743,8 @@ public class ImManager extends HawkAppObj {
 	 * @param playerObj 玩家
 	 */
 	private void push(List<ImMsg> imMsgList,  ImPlayer playerObj) {
-		int size = 0;
+		int count = 0;
+		int maxCount = GsConfig.getInstance().getImPushPackMsgMaxCount();
 		HSImPush.Builder builder = HSImPush.newBuilder();
 
 		try {
@@ -705,18 +752,18 @@ public class ImManager extends HawkAppObj {
 				// 检查屏蔽
 				if (false == playerObj.getBlockPlayerList().contains(msgObj.senderId)) {
 					builder.addImMsg(genImMsgBuilder(msgObj, playerObj.getLanguage()));
-					++size;
+					++count;
 				}
 
 				// 分批发送
-				if (size >= PUSH_BATCH_SIZE) {
-					size = 0;
+				if (count >= maxCount) {
+					count = 0;
 					playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
 					builder.clear();
 				}
 			}
 
-			if (size > 0) {
+			if (count > 0) {
 				playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
 			}
 		} catch (NullPointerException e) {

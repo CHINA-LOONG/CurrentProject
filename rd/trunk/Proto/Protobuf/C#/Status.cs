@@ -97,6 +97,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_LOCK", Value=10)]
       LOGIN_LOCK = 10,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"RECONNECT_ERROR", Value=11)]
+      RECONNECT_ERROR = 11,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }

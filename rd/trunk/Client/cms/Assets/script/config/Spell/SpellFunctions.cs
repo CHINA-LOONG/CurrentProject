@@ -248,6 +248,28 @@ public class SpellFunctions
 		
 		return 0;
 	}
+	public static int UsingPhysicalRate_15(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		
+		//使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
+		{
+			Spell ownedSpell = triggerEffect.ownedSpell;
+			if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 0.15f)
+			{
+				return 1;
+			}
+		}
+		
+		return 0;
+	}
 	
 		public static int UsingPhysicalRate_10(
 		Buff triggerBuff,
@@ -348,6 +370,31 @@ public class SpellFunctions
 		}	
 		return 0;
     }   
+	public static int UsingPhysicalMagicRate_90(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			if (damageProto.isHeal == false)
+			{
+				Spell ownedSpell = triggerEffect.ownedSpell;
+				if (ownedSpell != null && (ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack || ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack) && randNum <= 0.9f)
+				{
+					return 1;
+				}
+			}				
+		}	
+		return 0;
+    }   
 	
 	    public static int UsingMagicRate_10(
         Buff triggerBuff,
@@ -434,6 +481,27 @@ public class SpellFunctions
         {
             Spell ownedSpell = triggerEffect.ownedSpell;
             if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_Cure && randNum <= 0.1f)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+	public static int UsingCureRate_33(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
+        {
+            Spell ownedSpell = triggerEffect.ownedSpell;
+            if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_Cure && randNum <= 0.333f)
             {
                 return 1;
             }
@@ -547,6 +615,27 @@ public class SpellFunctions
 		{
 			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
 			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && randNum <= 0.1f)
+			{
+				return 1;
+			}
+			
+		}
+		return 0;
+	}
+	public static int HurtbyPhysicalMagicRate_50(
+		Buff triggerBuff,
+		Effect triggerEffect,
+		SpellService spellService
+		)
+	{
+		EffectDamage damageEffect = triggerEffect as EffectDamage;
+		EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+		//受到某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && randNum <= 0.5f)
 			{
 				return 1;
 			}
@@ -705,7 +794,31 @@ public class SpellFunctions
 		}	
 		return 0;
     } 
+	public static int UsingBuffRate_25(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        ) 
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
 
+        //使用某类技能造成伤害触发示例
+		float randNum = Random.Range(0.0f, 1.0f);
+		if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+		{
+			EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+			if (damageProto.isHeal == false)
+			{
+				Spell ownedSpell = triggerEffect.ownedSpell;
+				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_Negative && randNum <= 0.25f)
+				{
+					return 1;
+				}
+			}				
+		}	
+		return 0;
+    } 
 
 
 	public static int UsingCureRate_50(

@@ -451,6 +451,7 @@ public class UIMonsterCompose : UIBase,TabButtonDelegate,GuideBase
             reward.hsCode == PB.code.MONSTER_COMPOSE_S.GetHashCode())
         {
             unitModel.TriggerEvent("dazhaoxuanyao_fashu", Time.time, null);
+            GuideManager.Instance.RequestGuide(this);
         }
         else
         {

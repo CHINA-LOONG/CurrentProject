@@ -132,9 +132,9 @@ public class UITowerEntry : UIBase
         mJuewangName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_name2");
         mSiwangName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_name3");
         mTowerStoreName.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop");
-        mShilinFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor1") + GameDataMgr.Instance.curTowerShilianFloor;
-        mJuewangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor2") + GameDataMgr.Instance.curTowerJuewangFloor;
-        mSiwangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor3") + GameDataMgr.Instance.curTowerSiwangFloor;
+        mShilinFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor1");
+        mJuewangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor2") ;
+        mSiwangFloor.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_floor3");
     }
     //---------------------------------------------------------------------------------------------
 }

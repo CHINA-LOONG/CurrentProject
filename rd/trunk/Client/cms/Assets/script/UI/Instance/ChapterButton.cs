@@ -19,11 +19,11 @@ public class ChapterButton : MonoBehaviour
     {
         rectTrans = transform as RectTransform;
 
-        EventTriggerListener.Get(this.gameObject).onDown = OnTouchEnter;
-        EventTriggerListener.Get(this.gameObject).onEnter = OnTouchEnter;
-        EventTriggerListener.Get(this.gameObject).onExit = OnTouchExit;
-        EventTriggerListener.Get(this.gameObject).onUp = OnTouchExit;
-        EventTriggerListener.Get(this.gameObject).onClick = OnClicked;
+        ScrollViewEventListener.Get(this.gameObject).onDown = OnTouchEnter;
+        ScrollViewEventListener.Get(this.gameObject).onEnter = OnTouchEnter;
+        ScrollViewEventListener.Get(this.gameObject).onExit = OnTouchExit;
+        ScrollViewEventListener.Get(this.gameObject).onUp = OnTouchExit;
+        ScrollViewEventListener.Get(this.gameObject).onClick = OnClicked;
 	}
 
     void    OnTouchEnter(GameObject go)
